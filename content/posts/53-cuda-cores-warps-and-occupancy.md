@@ -19,7 +19,7 @@ A GPU is organized into many Streaming Multiprocessors (SMs) — each a largely 
 
 ## Warps: The Actual Unit of Lockstep Execution
 
-Threads on an SM are grouped into warps — commonly groups of 32 threads — and a warp is the granularity at which the SIMT model from Post 52 is enforced: all 32 threads in a warp execute the *same* instruction on the *same* clock cycle, each operating on its own data. This is a direct hardware implementation of the "one shared control unit driving many parallel lanes" efficiency argument from the previous post.
+Threads on an SM are grouped into warps — on NVIDIA GPUs, a warp is always 32 threads (CUDA; AMD wavefronts historically used 64) — and a warp is the granularity at which the SIMT model from Post 52 is enforced: all 32 threads in a warp execute the *same* instruction on the *same* clock cycle, each operating on its own data. This is a direct hardware implementation of the "one shared control unit driving many parallel lanes" efficiency argument from the previous post.
 
 ## Branch Divergence: Where SIMT's Efficiency Breaks Down
 

@@ -15,7 +15,7 @@ Everything so far in this phase has covered connecting components *within* a sin
 
 ## The Baseline: Routing Through the CPU Over PCIe
 
-The naive answer is to let everything talk over the same PCIe fabric covered in Posts 32–33: GPU A wants to send data to GPU B, so it writes to system memory over PCIe, the CPU (or a DMA engine) copies that data, and GPU B reads it back out over its own PCIe link. This works, but it routes every GPU-to-GPU transfer through extra hops — CPU-attached memory, sometimes literal CPU-mediated copies — adding real latency and consuming PCIe bandwidth that is also needed for other traffic.
+Without a peer path, the naive answer is to let everything talk over the same PCIe fabric covered in Posts 32–33: GPU A stages through system memory, and GPU B reads it back — extra hops, latency, and PCIe bandwidth burned on copies. Even on PCIe alone, though, GPUDirect P2P can DMA GPU↔GPU without host staging (still at PCIe bandwidth). NVLink is what adds much higher dedicated bandwidth and better multi-GPU topology on top of that.
 
 ## NVLink: Direct GPU-to-GPU Paths
 

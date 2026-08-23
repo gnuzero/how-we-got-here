@@ -19,7 +19,7 @@ Plot CPU clock frequency against year and something distinctive shows up: a stee
 
 ## The Physics: P ≈ CV²f
 
-The reason is captured in a deceptively simple equation for dynamic power dissipation in CMOS circuits: power is roughly proportional to capacitance times voltage squared times switching frequency (P ≈ CV²f). Push clock frequency higher and power goes up linearly, all else equal — manageable on its own. But historically, higher clock speeds also required higher supply voltage to maintain signal integrity at those speeds, and voltage enters the equation *squared* — so pushing frequency higher while also needing to push voltage higher compounds into power scaling dramatically faster than frequency alone would suggest.
+The reason is captured in a deceptively simple equation for dynamic power dissipation in CMOS circuits: power is roughly proportional to capacitance times voltage squared times switching frequency (P ≈ CV²f). Push clock frequency higher and power goes up linearly, all else equal — manageable on its own. At a fixed process, higher frequency often needed higher supply voltage to keep circuits reliable, and voltage enters the equation *squared* — so frequency and voltage climbing together compounds into power scaling dramatically faster than frequency alone would suggest. The mid-2000s wall was also Dennard scaling breaking down and leakage limiting further voltage reduction.
 
 ## Why This Became a Hard Ceiling, Not Just a Cost
 

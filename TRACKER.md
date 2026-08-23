@@ -116,7 +116,17 @@ A research-backed fact-check of ~35 historical/technical claims was run across P
 - [x] Post 43 — Usenet corrected to "conceived 1979, deployed 1980" (was just "1980")
 - [x] Post 48 (Photolithography) — ASML monopoly caveat added (Dec 2025 Reuters report of a Chinese EUV prototype)
 
-**Still NOT independently verified:** Phases 5, 9, and 10 (memory bus mechanics, GPU architecture, AI hardware specifics). Treat specific numeric/technical claims in those phases as unverified until a separate pass covers them.
+**Still NOT independently verified:** Phase 10 (AI hardware specifics: systolic/quantization/sparsity/attention numbers).
+
+### Phase 5 + 9 fact-check (2026-08-23)
+Posts 31–37 and 52–56 checked. No hard ERRORs. IMPRECISE fixes applied:
+- [x] Post 53 — NVIDIA warps always 32 (not “commonly”)
+- [x] Post 55 — native 4×4×4 MMA in one cycle (not “small number of cycles”)
+- [x] Post 34 — prefetch 8n through DDR4; 16n + dual subchannels at DDR5
+- [x] Post 37 — PCIe GPUDirect P2P vs host-staged path; NVLink as high-BW path
+- [x] Post 33 — Gen3 vs Gen5 x16 ~16 vs ~64 GB/s
+- [x] Post 54 — TSVs fabricated/etched (not “drilled”)
+- [x] Post 36 — soft-pedal V-scaling narrative + Dennard/leakage
 
 ### Phase 2 fact-check (2026-08-23)
 Posts 05–10 checked. 1 ERROR + several IMPRECISE claims fixed in-file:

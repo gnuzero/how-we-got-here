@@ -19,7 +19,7 @@ A CPU, even a many-core one, is executing a relatively modest number of independ
 
 ## HBM: Stacking Memory Instead of Spreading It Out
 
-High Bandwidth Memory (HBM) takes a different physical approach from conventional DIMM-based DDR (Post 34). Rather than DRAM chips sitting on a separate module connected to the processor via relatively long PCB traces, HBM stacks multiple DRAM dies vertically, connected to each other — and ultimately to the GPU compute die — through through-silicon vias (TSVs): vertical electrical connections drilled directly through the silicon dies themselves, rather than routed around their edges.
+High Bandwidth Memory (HBM) takes a different physical approach from conventional DIMM-based DDR (Post 34). Rather than DRAM chips sitting on a separate module connected to the processor via relatively long PCB traces, HBM stacks multiple DRAM dies vertically, connected to each other — and ultimately to the GPU compute die — through through-silicon vias (TSVs): vertical electrical connections fabricated/etched through the silicon dies themselves, rather than routed around their edges.
 
 This stacked structure, combined with an extremely wide interface (far more parallel data lines than a conventional DIMM's interface width), delivers dramatically higher bandwidth than equivalent conventional DDR memory — at the direct cost of the advanced packaging complexity covered in Post 51. HBM dies and the GPU compute die typically sit together on a shared silicon interposer, the same fundamental packaging technology that post described for chiplet designs generally, applied here to stack memory dies extremely close to compute rather than to disaggregate separate functional chiplets.
 

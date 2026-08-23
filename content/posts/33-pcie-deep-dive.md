@@ -23,7 +23,7 @@ The fundamental unit of communication is the Transaction Layer Packet. A TLP car
 
 ## Lanes and Generations
 
-A PCIe "lane" is one differential signal pair in each direction (transmit and receive) — the minimal unit of a PCIe link. Multiple lanes can be bonded together (x1, x4, x8, x16) to multiply available bandwidth for devices that need it. Each PCIe *generation* roughly doubles per-lane bandwidth over the previous one, through a combination of higher signaling rate and improved encoding efficiency — a x16 Gen 5 slot carries dramatically more bandwidth than a x16 Gen 3 slot, even with the identical physical lane count, purely from these generational signaling improvements.
+A PCIe "lane" is one differential signal pair in each direction (transmit and receive) — the minimal unit of a PCIe link. Multiple lanes can be bonded together (x1, x4, x8, x16) to multiply available bandwidth for devices that need it. Each PCIe *generation* roughly doubles per-lane bandwidth over the previous one, through a combination of higher signaling rate and improved encoding efficiency — a x16 Gen 5 slot carries about 4× the unidirectional bandwidth of a x16 Gen 3 slot (~64 GB/s vs ~16 GB/s), even with the identical physical lane count, purely from these generational signaling improvements.
 
 ## Why This Matters for a Custom Fabric Project
 

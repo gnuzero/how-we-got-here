@@ -19,7 +19,7 @@ DDR — Double Data Rate — transfers data on both the rising *and* falling edg
 
 ## Generational Evolution: More Bandwidth, Similar Latency
 
-Each DDR generation (DDR3, DDR4, DDR5) has delivered substantially higher peak bandwidth than its predecessor — driven by higher clock speeds, wider internal prefetch (fetching more bits internally per access and streaming them out over more clock cycles, rather than needing a full fresh access per small chunk of data), and, with DDR5 specifically, splitting each module into two independent channels for improved parallelism.
+Each DDR generation (DDR3, DDR4, DDR5) has delivered substantially higher peak bandwidth than its predecessor — driven mainly by higher I/O rates. Prefetch stayed 8n from DDR3 through DDR4; DDR5 doubles it to 16n and splits each module into two independent 32-bit subchannels for improved parallelism.
 
 What is easy to miss if you only look at the bandwidth headline numbers: raw access *latency* — the time from issuing a request to the first bit of data becoming available — has improved far more slowly across these same generations than bandwidth has. This is exactly the setup for Post 35's Memory Wall discussion: DRAM has gotten dramatically better at sustained *throughput* (once a stream of data starts flowing, it flows fast) without a correspondingly dramatic improvement in the *latency* of the very first access in that stream — a fundamentally different metric with different physical bottlenecks (charge sensing, capacitor physics) behind it.
 
@@ -31,7 +31,7 @@ A memory *channel* is an independent path from the memory controller to a set of
 
 A DIMM (Dual In-line Memory Module) packages multiple DRAM chips onto a single circuit board with a standardized pinout and edge connector, letting a system's memory capacity be configured and upgraded by swapping physical modules — a practical packaging convenience layered on top of everything above, and the reason "how much RAM does this system have" is usually answerable by counting populated DIMM slots and their individual capacities.
 
-This entire evolution — more bandwidth, banked parallelism, wider prefetch — has been DRAM's ongoing attempt to keep pace with ever-faster CPUs. The next two posts examine what happens when that attempt falls short: the memory wall, and its close cousin, the clock speed wall.
+This entire evolution — more bandwidth, banked parallelism, and DDR5's wider prefetch plus dual subchannels — has been DRAM's ongoing attempt to keep pace with ever-faster CPUs. The next two posts examine what happens when that attempt falls short: the memory wall, and its close cousin, the clock speed wall.
 
 <!--
 ASSET CHECKLIST
