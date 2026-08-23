@@ -140,3 +140,19 @@ Share:
 3. One-liner for newcomers: *Read the book → then contribute to `OSS_REPO`.*
 
 Last updated: 2026-08-23 (Lucas)
+
+---
+
+## G. Translations (announcement blocker)
+
+Upon **announcement**, the learning book needs:
+
+- **Thai**
+- **Sinhala**
+- **Tamil**
+
+Titles / short descriptions / attribution already drafted in `TRANSLATIONS.md`.  
+Announcement MVP bodies: Foreword + Phase 1 (01–04) + Attention (63) + site chrome.
+
+Everything else (more languages, full 63-chapter bodies, OSS details) — decide later.
+

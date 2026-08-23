@@ -70,10 +70,13 @@ This work was conceptualized and inspired by Nayana Hettiarachchi. The research,
 
 ## Status
 
+**Announcement requirement (Nayana, 2026-08-23):** Thai, Sinhala, and Tamil must be ready **upon announcement**. Other languages / decisions later.
+
 - Title + short description + key page titles: drafted for Thai, Sinhala, Tamil
 - Attribution paragraphs: drafted for all three languages
-- Full chapter body translations: phased (Phase 1 + Foreword + Attention next)
-- Last updated: 2026-08-22
+- **Announcement MVP bodies:** Foreword + Phase 1 (01–04) + Attention (63) + glossary/home chrome in TH / SI / TA
+- Full remaining chapter bodies: after announcement (phased)
+- Last updated: 2026-08-23
 
 ## Fact-check notes (ongoing)
 
