@@ -156,3 +156,40 @@ Announcement MVP bodies: Foreword + Phase 1 (01–04) + Attention (63) + site ch
 
 Everything else (more languages, full 63-chapter bodies, OSS details) — decide later.
 
+---
+
+## H. Custom domain (`.lk` via Google Cloud DNS)
+
+Nayana controls nameservers in **Google Cloud DNS**. After `ORG` exists:
+
+### CNAME (recommended for `www` or a subdomain)
+
+| Name / host | Type | Data |
+|-------------|------|------|
+| `www` (or `learn`, etc.) | `CNAME` | `ORG.github.io.` |
+
+Trailing dot matters in Cloud DNS. Target is **`ORG.github.io`**, not `ORG.github.io/BOOK_REPO`.
+
+### Apex / bare domain (`example.lk`)
+
+GitHub does not accept a CNAME on the zone apex. Use **A** (and optional **AAAA**) records:
+
+| Type | Data |
+|------|------|
+| A | `185.199.108.153` |
+| A | `185.199.109.153` |
+| A | `185.199.110.153` |
+| A | `185.199.111.153` |
+| AAAA | `2606:50c0:8000::` |
+| AAAA | `2606:50c0:8001::` |
+| AAAA | `2606:50c0:8002::` |
+| AAAA | `2606:50c0:8003::` |
+
+### After DNS
+
+1. Book repo → Settings → Pages → Custom domain → enter the hostname.
+2. Wait for DNS + HTTPS certificate.
+3. Tell Lucas the hostname so `hugo.toml` `baseURL` becomes `https://HOSTNAME/` (and we drop the `/BOOK_REPO/` path style if using a dedicated domain).
+
+Paste to Lucas: `ORG=...` · `BOOK_REPO=...` · `HOSTNAME=...` (e.g. `www.example.lk`).
+
