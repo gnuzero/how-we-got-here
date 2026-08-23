@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Virtual Breadboard Lab</title>
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --border:#30363d; --text:#c9d1d9; --accent:#58a6ff; }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'SF Mono', Consolas, monospace;
+    margin: 0; padding: 16px; }
+  h1 { font-size: 16px; color: var(--accent); margin: 0 0 4px; }
+  .sub { color: #8b949e; font-size: 12px; margin-bottom: 12px; }
+  .toolbar { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  a.btn, button { background: #21262d; color: var(--text); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 12px;
+    text-decoration: none; display: inline-block; }
+  a.btn:hover, button:hover { background: #30363d; }
+  iframe { width: 100%; height: 640px; border: 1px solid var(--border); border-radius: 6px; background: #fff; }
+  .note { font-size: 11px; color: #8b949e; margin-top: 10px; line-height: 1.6; }
+  .note code { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<h1>Virtual Breadboard Lab</h1>
+<div class="sub">Interactive circuit simulator — build logic gates, CMOS stages, and small digital circuits directly in-browser</div>
+
+<div class="toolbar">
+  <a class="btn" href="https://www.falstad.com/circuit/circuitjs.html?startCircuit=and.txt" target="_blank" rel="noopener">Open in new tab ↗</a>
+  <a class="btn" href="https://wokwi.com/projects/new/blank" target="_blank" rel="noopener">Wokwi (physical breadboard + real MCU) ↗</a>
+</div>
+
+<iframe src="https://www.falstad.com/circuit/circuitjs.html" loading="lazy" title="Circuit simulator"></iframe>
+
+<div class="note">
+  This embeds <strong>Falstad's CircuitJS</strong> — free, no account required, runs entirely client-side.
+  Good for logic gates, CMOS inverters/NAND/NOR, and small combinational circuits (matches Phase 2 &amp; Phase 3 posts).
+  <br><br>
+  For posts that need an actual <strong>physical breadboard layout</strong> with real component placement (resistors, LEDs,
+  a real microcontroller like an ATmega328/ESP32) rather than a schematic, use the <strong>Wokwi</strong> link instead —
+  it requires a free account to save projects but the simulator itself is free to use.
+  <br><br>
+  To embed a specific saved circuit instead of a blank canvas, replace the iframe <code>src</code> with a CircuitJS
+  permalink (Falstad's "share" button generates a <code>?ctz=...</code> URL) or a Wokwi <code>embed/&lt;project-id&gt;</code> URL.
+</div>
+
+</body>
+</html>

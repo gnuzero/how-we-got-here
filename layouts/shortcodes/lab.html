@@ -1,0 +1,22 @@
+{{/*
+  Usage in a post:
+    {{< lab type="mini-cpu" >}}
+    {{< lab type="breadboard" height="700" >}}
+    {{< lab type="vm-terminal" height="600" >}}
+
+  type: mini-cpu | breadboard | vm-terminal  (maps to static/labs/<type>/index.html)
+  height: optional, defaults to 560px
+*/}}
+{{ $type := .Get "type" }}
+{{ $height := .Get "height" | default "560" }}
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="{{ "labs/" | relURL }}{{ $type }}/"
+    style="width:100%; height:{{ $height }}px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: {{ $type }}">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="{{ "labs/" | relURL }}{{ $type }}/" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>

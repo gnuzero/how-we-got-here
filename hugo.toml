@@ -1,0 +1,15 @@
+baseURL = "https://devzer01.github.io/how-computers-work/"
+languageCode = "en-us"
+title = "From Relays to Attention: How We Got Here"
+theme = "hugo-book"
+
+[params]
+  BookSection = "posts"
+  BookRepo = "https://github.com/devzer01/how-computers-work"
+
+[markup.goldmark.renderer]
+  unsafe = true   # allow raw HTML/SVG inline for schematics
+
+[markup.highlight]
+  style = "monokai"
+  lineNos = true

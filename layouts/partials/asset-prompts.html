@@ -1,0 +1,17 @@
+<!-- layouts/partials/asset-prompts.html
+     Include in single post template. Shows generation prompts only while draft: true,
+     so they never leak to the published page by accident. -->
+{{ if .Draft }}
+<details style="border:1px dashed #999; padding:1em; margin:1em 0; background:#fafafa;">
+  <summary><strong>🎨 Asset generation prompts (draft-only, hidden on publish)</strong></summary>
+  {{ if .Params.image_prompt }}
+  <p><strong>Image prompt:</strong><br>{{ .Params.image_prompt }}</p>
+  {{ end }}
+  {{ if .Params.video_prompt }}
+  <p><strong>Video prompt:</strong><br>{{ .Params.video_prompt }}</p>
+  {{ end }}
+  {{ if .Params.schematics }}
+  <p><strong>Schematics needed:</strong><br>{{ .Params.schematics }}</p>
+  {{ end }}
+</details>
+{{ end }}

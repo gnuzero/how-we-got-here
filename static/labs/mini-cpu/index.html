@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mini-CPU Lab — 8-bit Toy ISA</title>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --border: #30363d;
+    --text: #c9d1d9; --accent: #58a6ff; --green: #3fb950;
+    --red: #f85149; --amber: #d29922; --mono: 'SF Mono', Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--mono);
+    margin: 0; padding: 16px; font-size: 14px;
+  }
+  h1 { font-size: 16px; color: var(--accent); margin: 0 0 4px; }
+  .sub { color: #8b949e; font-size: 12px; margin-bottom: 16px; }
+  .layout { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 6px; padding: 12px;
+  }
+  .panel h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
+    color: #8b949e; margin: 0 0 8px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  textarea {
+    width: 100%; height: 260px; background: #010409; color: var(--text);
+    border: 1px solid var(--border); border-radius: 4px; padding: 8px;
+    font-family: var(--mono); font-size: 13px; resize: vertical;
+  }
+  .btnrow { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+  button {
+    background: #21262d; color: var(--text); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 4px; cursor: pointer; font-family: var(--mono); font-size: 12px;
+  }
+  button:hover { background: #30363d; }
+  button.primary { background: #238636; border-color: #2ea043; }
+  button.primary:hover { background: #2ea043; }
+  button.danger { background: #3d1418; border-color: var(--red); }
+  .regs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .reg { background: #010409; border: 1px solid var(--border); border-radius: 4px; padding: 8px; text-align: center; }
+  .reg .label { color: #8b949e; font-size: 11px; }
+  .reg .val { font-size: 20px; color: var(--green); margin-top: 2px; }
+  .flags { margin-top: 10px; display: flex; gap: 10px; }
+  .flag { padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); font-size: 11px; }
+  .flag.on { background: #1f3d2b; border-color: var(--green); color: var(--green); }
+  .mem { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 8px; }
+  .cell { background: #010409; border: 1px solid var(--border); border-radius: 3px;
+    padding: 4px; text-align: center; font-size: 11px; }
+  .cell.pc { border-color: var(--amber); color: var(--amber); }
+  .out { font-size: 28px; color: var(--green); text-align: center; padding: 12px;
+    background: #010409; border: 1px solid var(--border); border-radius: 4px; margin-top: 8px; }
+  .log { height: 120px; overflow-y: auto; background: #010409; border: 1px solid var(--border);
+    border-radius: 4px; padding: 6px; font-size: 11px; margin-top: 8px; color: #8b949e; }
+  .err { color: var(--red); }
+  .isa { font-size: 11px; color: #8b949e; line-height: 1.6; margin-top: 8px; }
+  .isa code { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<h1>Mini-CPU Lab</h1>
+<div class="sub">8-bit toy ISA · 4-bit opcode / 4-bit operand · 16 bytes RAM · A/B registers · Carry/Zero flags</div>
+
+<div class="layout">
+
+  <div class="panel">
+    <h2>Assembly</h2>
+    <textarea id="src">; Adds two numbers and outputs the result
+LDI 5
+STA 14
+LDI 8
+ADD 14
+OUT
+HLT</textarea>
+    <div class="btnrow">
+      <button class="primary" onclick="assembleAndLoad()">Assemble</button>
+      <button onclick="step()">Step</button>
+      <button onclick="run()">Run</button>
+      <button onclick="stop()">Stop</button>
+      <button class="danger" onclick="reset()">Reset</button>
+    </div>
+    <div class="isa">
+      <strong>ISA:</strong> <code>NOP</code> <code>LDA a</code> <code>ADD a</code> <code>SUB a</code>
+      <code>STA a</code> <code>LDI n</code> <code>JMP a</code> <code>JC a</code> <code>JZ a</code>
+      <code>OUT</code> <code>HLT</code> — addresses/immediates 0–15
+    </div>
+    <div id="log" class="log"></div>
+  </div>
+
+  <div class="panel">
+    <h2>CPU State</h2>
+    <div class="regs">
+      <div class="reg"><div class="label">A</div><div class="val" id="regA">00</div></div>
+      <div class="reg"><div class="label">B</div><div class="val" id="regB">00</div></div>
+      <div class="reg"><div class="label">PC</div><div class="val" id="regPC">0</div></div>
+      <div class="reg"><div class="label">IR</div><div class="val" id="regIR">--</div></div>
+    </div>
+    <div class="flags">
+      <div class="flag" id="flagC">CARRY</div>
+      <div class="flag" id="flagZ">ZERO</div>
+      <div class="flag" id="flagH">HALT</div>
+    </div>
+    <h2 style="margin-top:14px">Output Register</h2>
+    <div class="out" id="outReg">0</div>
+  </div>
+
+  <div class="panel">
+    <h2>Memory (16 × 8-bit)</h2>
+    <div class="mem" id="memGrid"></div>
+  </div>
+
+</div>
+
+<script>
+// ---- Mini-CPU: 4-bit opcode, 4-bit operand, 16 bytes RAM, A/B regs ----
+const OPS = {NOP:0x0, LDA:0x1, ADD:0x2, SUB:0x3, STA:0x4, LDI:0x5, JMP:0x6, JC:0x7, JZ:0x8, OUT:0xE, HLT:0xF};
+const OPNAMES = Object.fromEntries(Object.entries(OPS).map(([k,v])=>[v,k]));
+
+let mem = new Uint8Array(16);
+let A=0, B=0, PC=0, IR=0, carry=0, zero=1, halted=false, outReg=0, running=false, timer=null;
+
+function logMsg(msg, isErr) {
+  const log = document.getElementById('log');
+  const line = document.createElement('div');
+  if (isErr) line.className = 'err';
+  line.textContent = msg;
+  log.appendChild(line);
+  log.scrollTop = log.scrollHeight;
+}
+
+function assemble(src) {
+  const lines = src.split('\n').map(l => l.replace(/;.*/, '').trim()).filter(Boolean);
+  const bytes = new Uint8Array(16);
+  lines.forEach((line, i) => {
+    if (i >= 16) throw new Error(`Line ${i+1}: program exceeds 16 words`);
+    const [mnem, argStr] = line.split(/\s+/);
+    const op = OPS[mnem.toUpperCase()];
+    if (op === undefined) throw new Error(`Line ${i+1}: unknown mnemonic '${mnem}'`);
+    let arg = 0;
+    if (argStr !== undefined) {
+      arg = parseInt(argStr, 10);
+      if (isNaN(arg) || arg < 0 || arg > 15) throw new Error(`Line ${i+1}: operand out of range (0-15)`);
+    }
+    bytes[i] = (op << 4) | (arg & 0xF);
+  });
+  return bytes;
+}
+
+function assembleAndLoad() {
+  document.getElementById('log').innerHTML = '';
+  try {
+    mem = assemble(document.getElementById('src').value);
+    reset(false);
+    logMsg('Assembled ' + mem.filter(b=>b!==0).length + ' words into memory. Ready.');
+  } catch (e) {
+    logMsg(e.message, true);
+  }
+  render();
+}
+
+function reset(doLog=true) {
+  A=0; B=0; PC=0; IR=0; carry=0; zero=1; halted=false; outReg=0;
+  stop();
+  if (doLog) logMsg('Reset.');
+  render();
+}
+
+function step() {
+  if (halted) { logMsg('CPU halted — reset to run again.', true); return; }
+  IR = mem[PC];
+  const op = (IR >> 4) & 0xF;
+  const arg = IR & 0xF;
+  const name = OPNAMES[op] || '???';
+  PC = (PC + 1) & 0xF;
+
+  switch (op) {
+    case OPS.NOP: break;
+    case OPS.LDA: A = mem[arg]; break;
+    case OPS.ADD: { const r = A + mem[arg]; carry = r > 255 ? 1 : 0; A = r & 0xFF; zero = A===0?1:0; break; }
+    case OPS.SUB: { const r = A - mem[arg]; carry = r < 0 ? 1 : 0; A = (r + 256) & 0xFF; zero = A===0?1:0; break; }
+    case OPS.STA: mem[arg] = A; break;
+    case OPS.LDI: A = arg; zero = A===0?1:0; break;
+    case OPS.JMP: PC = arg; break;
+    case OPS.JC: if (carry) PC = arg; break;
+    case OPS.JZ: if (zero) PC = arg; break;
+    case OPS.OUT: outReg = A; break;
+    case OPS.HLT: halted = true; stop(); logMsg('HLT — program finished. Output = ' + outReg); break;
+    default: logMsg('Unknown opcode 0x' + op.toString(16) + ' at PC ' + PC, true); halted = true; stop();
+  }
+  render();
+}
+
+function run() {
+  if (running) return;
+  running = true;
+  timer = setInterval(() => { if (halted) { stop(); return; } step(); }, 250);
+}
+
+function stop() {
+  running = false;
+  if (timer) { clearInterval(timer); timer = null; }
+}
+
+function render() {
+  document.getElementById('regA').textContent = A.toString(16).padStart(2,'0').toUpperCase();
+  document.getElementById('regB').textContent = B.toString(16).padStart(2,'0').toUpperCase();
+  document.getElementById('regPC').textContent = PC;
+  document.getElementById('regIR').textContent = IR ? IR.toString(16).padStart(2,'0').toUpperCase() : '--';
+  document.getElementById('outReg').textContent = outReg;
+  document.getElementById('flagC').className = 'flag' + (carry ? ' on' : '');
+  document.getElementById('flagZ').className = 'flag' + (zero ? ' on' : '');
+  document.getElementById('flagH').className = 'flag' + (halted ? ' on' : '');
+
+  const grid = document.getElementById('memGrid');
+  grid.innerHTML = '';
+  for (let i = 0; i < 16; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cell' + (i === PC ? ' pc' : '');
+    const op = (mem[i] >> 4) & 0xF;
+    const arg = mem[i] & 0xF;
+    const name = OPNAMES[op] !== undefined ? OPNAMES[op] : '?';
+    cell.textContent = i + ': ' + name + (name!=='NOP'&&name!=='OUT'&&name!=='HLT' ? ' '+arg : '');
+    grid.appendChild(cell);
+  }
+}
+
+assembleAndLoad();
+</script>
+</body>
+</html>
