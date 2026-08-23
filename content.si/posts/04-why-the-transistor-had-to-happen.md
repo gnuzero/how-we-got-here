@@ -5,7 +5,7 @@ draft: true
 phase: "1 — පදනම්: යාන්ත්‍රික සිට රික්තක-නල පරිගණකකරණය දක්වා"
 series_index: 4
 tags: []
-summary: "විශ්වාසනීයත්වය, බලය, ප්‍රමාණය — අර්ධසන්නාහක මාරු කිරීම අනිවාර්ය කළ භෞතික සීමා"
+summary: "විශ්වාසනීයත්වය, බලය, ප්‍රමාණය — අර්ධසන්නායක මාරු කිරීම අනිවාර්ය කළ භෞතික සීමා"
 image_prompt: "Split comparison illustration: vacuum tube vs point-contact transistor at same scale, size and heat dissipation visually contrasted, minimalist technical infographic style, clean typography"
 video_prompt: "15-second animation: vacuum tube shrinking and morphing into a transistor die, symbolizing the miniaturization leap, clean motion graphics style, light background"
 schematics: "Comparison table/diagram: tube vs transistor — size, power draw, switching speed, failure rate"
@@ -27,7 +27,7 @@ schematics: "Comparison table/diagram: tube vs transistor — size, power draw, 
 
 ## ඊළඟට එන දේ
 
-මෙයින් කිසිවක් අදහස් කරන්නේ ට්‍රාන්සිස්ටරය සම්පූර්ණව පැමිණියේ යැයි නොවේ. එය *කෙසේ* මාරු වේද යන්නේ භෞතික විද්‍යාව — අර්ධසන්නාහක, doping, band gaps — තවමත් තේරුම් ගෙන ඉංජිනේරු කළ යුතු විය, සහ එය සිදුවිය යුතු වූයේ ඇයි යන්නට වඩා වෙනස් විෂයකි. Phase 2 එතැනින් ආරම්භ වේ: අර්ධසන්නාහකයක් යනු කුමක්ද, සිලිකන් තෝරා ගත් ද්‍රව්‍යය වූයේ ඇයි, සහ doping මඟින් නල කිසි විටෙකත් විය නොහැකි පාලනය කළ හැකි ස්විචය නිර්මාණය කරන ආකාරය.
+මෙයින් කිසිවක් අදහස් කරන්නේ ට්‍රාන්සිස්ටරය සම්පූර්ණව පැමිණියේ යැයි නොවේ. එය *කෙසේ* මාරු වේද යන්නේ භෞතික විද්‍යාව — අර්ධසන්නායක, doping, band gaps — තවමත් තේරුම් ගෙන ඉංජිනේරු කළ යුතු විය, සහ එය සිදුවිය යුතු වූයේ ඇයි යන්නට වඩා වෙනස් විෂයකි. Phase 2 එතැනින් ආරම්භ වේ: අර්ධසන්නායකයක් යනු කුමක්ද, සිලිකන් තෝරා ගත් ද්‍රව්‍යය වූයේ ඇයි, සහ doping මඟින් නල කිසි විටෙකත් විය නොහැකි පාලනය කළ හැකි ස්විචය නිර්මාණය කරන ආකාරය.
 
 <!--
 ASSET CHECKLIST
