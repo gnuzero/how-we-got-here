@@ -15,7 +15,7 @@ Post 55 covered tensor cores — specialized matrix-multiply hardware embedded w
 
 ## The Core Idea: Data Flows, Computation Happens Along the Way
 
-A systolic array is a 2D grid of simple processing elements, each capable of a basic multiply-accumulate operation, arranged so that data — both input activations and weight values — flows through the grid in a coordinated, rhythmic pattern. Each processing element performs its multiply-accumulate step as data passes through it, then forwards both its result and the data it received onward to its neighbors. The name "systolic" is a deliberate reference to the rhythmic pumping of a heart — data pulses through the array in a coordinated wave, rather than being fetched and processed by a central, shared control path the way conventional architectures typically operate.
+A systolic array is a 2D grid of simple processing elements, each capable of a basic multiply-accumulate operation, arranged so that data moves through the grid in a coordinated, rhythmic pattern. Each PE does a MAC as data arrives. In a weight-stationary design (as in Google's TPU MXU), weights are preloaded and held in the PEs while activations stream across the array and partial sums propagate to neighbors — systolic "heartbeat," not both operands freely flowing. The name "systolic" is a deliberate reference to the rhythmic pumping of a heart — data pulses through the array in a coordinated wave, rather than being fetched and processed by a central, shared control path the way conventional architectures typically operate.
 
 ## Weight-Stationary Dataflow
 

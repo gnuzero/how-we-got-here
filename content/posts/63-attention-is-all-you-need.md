@@ -2,7 +2,7 @@
 title: "Attention Is All You Need"
 date: 2026-01-01
 draft: true
-phase: "10 — Modern AI Hardware & Algorithms"
+phase: "10 — Modern AI Hardware"
 series_index: 63
 tags: ["attention", "transformers", "neural networks"]
 summary: "The algorithm that closed the arc — self-attention, multi-head attention, and why it became the dominant sequence model"
@@ -33,7 +33,7 @@ Because the operation is expressed as matrix multiplies and a softmax, it maps e
 
 A single attention head tends to focus on one kind of relationship. Multi-head attention runs several attention operations in parallel (different learned projections) and concatenates the results. This lets the model simultaneously attend to different types of information — syntactic, semantic, positional, long-range, short-range — within the same layer.
 
-The original Transformer used 8 heads. Modern large language models use dozens or hundreds of heads per layer, stacked across dozens or hundreds of layers.
+The original Transformer used 8 heads. Modern LLMs typically use tens to low hundreds of query heads per layer (e.g. GPT-3: 96; Llama 3 405B: 128) stacked across tens to ~100+ layers (Llama 3 405B: 126) — not routinely "hundreds" of either.
 
 ## Why It Changed Everything
 

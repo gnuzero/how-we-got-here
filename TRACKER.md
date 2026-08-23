@@ -116,7 +116,16 @@ A research-backed fact-check of ~35 historical/technical claims was run across P
 - [x] Post 43 — Usenet corrected to "conceived 1979, deployed 1980" (was just "1980")
 - [x] Post 48 (Photolithography) — ASML monopoly caveat added (Dec 2025 Reuters report of a Chinese EUV prototype)
 
-**Still NOT independently verified:** Phase 10 (AI hardware specifics: systolic/quantization/sparsity/attention numbers).
+### Phase 10 + Attention fact-check (2026-08-23)
+Posts 57–63 checked. No fabricated paper/year/formula errors. Fixes applied:
+- [x] Post 62 — photonics: DC fabrics already optical; CPO/SiPh is packaging/power, not “first light”
+- [x] Post 63 — modern head/layer counts (tens–low hundreds / ~100+ layers); phase string aligned
+- [x] Post 58 — weight-stationary TPU MXU wording (don’t say weights freely flow)
+- [x] Post 60 — 2:4 sparse speedups 1.3–1.8× GEMM / ~1.3–1.5× e2e
+- [x] Post 61 — cluster scale + fat-tree oversubscription nuance
+Posts 57 and 59: all checked claims confirmed.
+
+**Major technical fact-check passes complete** for Phases 1–2, 5, 9–10 (plus prior sampled pass). Remaining: spot-check Phases 3–4, 6–8 claim lists as needed before those waves publish.
 
 ### Phase 5 + 9 fact-check (2026-08-23)
 Posts 31–37 and 52–56 checked. No hard ERRORs. IMPRECISE fixes applied:

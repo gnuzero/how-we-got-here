@@ -11,7 +11,7 @@ video_prompt: "25-second animation: a datacenter-scale fat-tree topology with an
 schematics: "Diagram: rail-optimized fat-tree topology + all-reduce ring/tree communication pattern"
 ---
 
-Post 56 covered multi-GPU scaling within and across a small number of servers — NVLink, NVSwitch, GPUDirect RDMA. Real large-scale AI training operates at a different order of magnitude: thousands of GPUs, across potentially hundreds of physical servers, all needing to coordinate closely enough that the training job's achieved throughput does not collapse under coordination overhead. How you wire that many machines together turns out to matter as much as any individual GPU's own specifications.
+Post 56 covered multi-GPU scaling within and across a small number of servers — NVLink, NVSwitch, GPUDirect RDMA. Real large-scale AI training operates at a different order of magnitude: thousands to tens of thousands of GPUs across hundreds to thousands of servers, all needing to coordinate closely enough that the training job's achieved throughput does not collapse under coordination overhead. How you wire that many machines together turns out to matter as much as any individual GPU's own specifications.
 
 ## Why Naive Wiring Doesn't Scale
 
@@ -19,7 +19,7 @@ Simply connecting every server to every other server directly is not practical a
 
 ## Fat-Tree Topology
 
-A fat-tree network organizes switches into layers — commonly leaf switches connecting directly to individual servers, then spine switches connecting those leaf switches together — with the defining property that bandwidth is deliberately kept high and non-oversubscribed as you move up through the hierarchy, specifically to avoid creating hidden bottlenecks buried deep in the topology that only reveal themselves once traffic patterns hit them under full-scale load. This design goal directly echoes Post 42's datacenter networking discussion, just scaled up to the thousands-of-GPU regime AI training clusters actually operate at.
+A fat-tree network organizes switches into layers — commonly leaf switches connecting directly to individual servers, then spine switches connecting those leaf switches together — often designed for high (ideally non-oversubscribed) bisection bandwidth; real AI clusters may still oversubscribe and/or use rail-optimized variants tuned to collective traffic. This design goal directly echoes Post 42's datacenter networking discussion, just scaled up to the thousands-of-GPU regime AI training clusters actually operate at.
 
 Rail-optimized variants, increasingly common for AI training clusters, further tune the topology around the *specific* communication patterns large-scale training workloads generate — rather than optimizing for fully generic, arbitrary traffic the way a general-purpose datacenter network might. The communication pattern of a large training job is, in practice, quite different from typical general-purpose datacenter traffic, and a topology tuned for that pattern can meaningfully outperform a more generic design.
 
