@@ -1,11 +1,45 @@
-baseURL = "https://devzer01.github.io/how-computers-work/"
-languageCode = "en-us"
+# Placeholder until Nayana provides ORG / BOOK_REPO (see GITHUB_SETUP.md).
+baseURL = "https://ORG.github.io/BOOK_REPO/"
 title = "From Relays to Attention: How We Got Here"
 theme = "hugo-book"
 
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+# Multilingual via per-language contentDir (TRANSLATION_PLAN.md / hugo-book exampleSite).
+[languages]
+[languages.en]
+  label = "English"
+  locale = "en-us"
+  contentDir = "content"
+  weight = 1
+  title = "From Relays to Attention: How We Got Here"
+
+[languages.th]
+  label = "ไทย"
+  locale = "th"
+  contentDir = "content.th"
+  weight = 2
+  title = "จากรีเลย์สู่ Attention: เรามาถึงจุดนี้อย่างไร"
+
+[languages.si]
+  label = "සිංහල"
+  locale = "si"
+  contentDir = "content.si"
+  weight = 3
+  title = "රිලේ සිට අවධානය දක්වා: අප මෙතැනට පැමිණි ආකාරය"
+
+[languages.ta]
+  label = "தமிழ்"
+  locale = "ta"
+  contentDir = "content.ta"
+  weight = 4
+  title = "ரிலேயிலிருந்து Attention வரை: நாம் இங்கு எப்படி வந்தோம்"
+
 [params]
   BookSection = "posts"
-  BookRepo = "https://github.com/devzer01/how-computers-work"
+  # Placeholder until ORG / BOOK_REPO exist.
+  BookRepo = "https://github.com/ORG/BOOK_REPO"
 
 [markup.goldmark.renderer]
   unsafe = true   # allow raw HTML/SVG inline for schematics
