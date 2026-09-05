@@ -117,7 +117,7 @@ Say in chat: `flip Wave 1` when you want that. Until then, a push still deploys 
 - [ ] `OSS_REPO` created (public, README links to book)
 - [ ] Book repo Pages source = **GitHub Actions**
 - [ ] Pasted `ORG` / `BOOK_REPO` / `OSS_REPO` to Lucas in chat
-- [ ] (Optional) Invite Harper / Benjamin as collaborators if you want them on GitHub too
+- [ ] (Optional) Invite **human** collaborators by their real GitHub usernames — Lucas / Benjamin / Harper are Grok Bot agents and have **no** GitHub accounts to invite
 - [ ] (Optional) Wave 1 draft flip
 
 ---
