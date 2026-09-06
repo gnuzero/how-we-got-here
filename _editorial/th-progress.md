@@ -2,9 +2,9 @@
 
 - Desk: Mira
 - Started: 2026-09-06 (Asia/Bangkok)
-- Scope: full bodies for 05–62, then 98-timeline, then about if missing
-- Skip (MVP done): _index, 00, 01–04, 63, 99
-- Rules: draft:false; titles/attribution from TRANSLATIONS.md; keep frontmatter; tech terms in English where normal; no Bridgestack/gossip; no git; no content.si/ta; no Guido/Python-1991 special credit; อ่านเพิ่ม only with verified named Thai works
+- Scope: full bodies for 05–62, then 98-timeline, then about if missing; then VISION distill + widen-lens posts + paths
+- Skip (do not rewrite): 05–62 bodies already shipped (unless later distill pass)
+- Rules: draft:false; titles/attribution from TRANSLATIONS.md; keep frontmatter; tech terms in English where normal; no Bridgestack/gossip; no git; no content.si/ta; no Guido/Python-1991 special credit; อ่านเพิ่ม only with verified named Thai works; match English distill voice (not encyclopedia)
 
 ## Done
 
@@ -32,7 +32,6 @@
 - 21-batch-processing-and-the-birth-of-the-operating-system.md — ยรรยง เต็งอำนวย, *ระบบปฏิบัติการ*; ชูเกียรติ วรสุชีพ, *ระบบปฏิบัติการคอมพิวเตอร์ยุคใหม่*; พิรพร หมุนสนิท และคณะ, *ระบบปฏิบัติการ*
 - 22-time-sharing-and-the-unix-lineage.md — same OS trio (historical: Ken Thompson, Dennis Ritchie, Multics, BSD, System V)
 
-
 ### New full bodies (23–32)
 
 - 23-the-gnu-movement-and-linux.md — ยรรยง เต็งอำนวย, *ระบบปฏิบัติการ*; ชูเกียรติ วรสุชีพ, *ระบบปฏิบัติการคอมพิวเตอร์ยุคใหม่*; พิรพร หมุนสนิท และคณะ, *ระบบปฏิบัติการ*; วิรุฬห์ ศรีบริรักษ์, *Embedded Android Development* (historical: Richard Stallman, Linus Torvalds, GNU, GPL, Linux)
@@ -46,7 +45,6 @@
 - 31-buses-101.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา
 - 32-from-isa-bus-to-pci-to-pcie.md — จันทนา; ปัทมา; เกริก
 
-
 ### New full bodies (33–42)
 
 - 33-pcie-deep-dive.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา
@@ -59,7 +57,6 @@
 - 40-ethernet-and-the-local-area-network.md — โอภาส; จตุชัย/อนุโชต; ภัทรสินี (historical: Xerox PARC / Ethernet 1973)
 - 41-tcp-ip-and-the-modern-internet-stack.md — โอภาส; สุวัฒน์ ปุณณชัยยะ และคณะ; ภัทรสินี
 - 42-datacenter-networking-and-rdma.md — โอภาส; จตุชัย/อนุโชต; ภัทรสินี
-
 
 ### New full bodies (43–52)
 
@@ -92,27 +89,40 @@
 - 98-timeline.md — อ่านเพิ่ม omitted (no single named Thai computing-timeline textbook verified; Wikipedia / untitled lecture notes not used)
 - about.md — created from content/about.md; attribution table + TRANSLATIONS.md Thai paragraph; Nayana Hettiarachchi = แนวคิดและแรงบันดาลใจ; ทีม Grok (Grok, Lucas, Benjamin, Harper) = authorship. No Thai-lit section.
 
+### VISION distill + widen-lens (2026-09-06 Mira pass)
+
+#### A) 64 verified
+- 64-who-decides-the-wire.md — body already matched English distill; draft:false; named people + RFC links kept; อ่านเพิ่ม kept (verified): โอภาส เอี่ยมสิริวงศ์; ภัทรสินี ภัทรโกศล; สุวัฒน์ ปุณณชัยยะ และคณะ
+
+#### B) New / verify widen-lens posts
+- 66-wartime-crypto.md — verified match to English; draft:false; อ่านเพิ่ม: วรเศรษฐ สุวรรณิก, *วิทยาการรหัสลับ* (Chula OPAC bib=1858617)
+- 67-privacy-consent-identity-cyber.md — **created**; draft:false; credits Saltzer/Schroeder, Diffie/Hellman, Rivest/Shamir/Adleman, Needham/Schroeder, Miller/Neuman, Denning; RFC 8446, RFC 6749; อ่านเพิ่ม: วรเศรษฐ สุวรรณิก; ผศ.ดร. ชาญศักดิ์ ศรีสวัสดิ์สกุล, *วิทยาการเข้ารหัสลับและเทคโนโลยีบล็อกเชน*; ยรรยง เต็งอำนวย, *ระบบปฏิบัติการ*
+- 68-visions-that-shipped.md — **created**; draft:false; named: Bosack/Lerner, Gates, Jobs/Wozniak, Stallman, Torvalds, Bezos, Musk; อ่านเพิ่ม omitted (no verified named Thai vision/business seed text for this door)
+- 69-platform-synthesis.md — **created**; draft:false; อ่านเพิ่ม (verified stack doors): ณัฐโชติ พรหมฤทธิ์, *Practical DevOps and Cloud Engineering*; อาณัติ รัตนถิรกุล, *Docker พื้นฐานสู่การใช้งานจริง*; โอภาส เอี่ยมสิริวงศ์; สุพจน์ เฮงพระพรหม
+
+#### C) Phase 1 distill (match CURRENT English)
+- 01-mechanical-electromechanical-computing.md — already matched English distill; draft:false; อ่านเพิ่ม omitted (no verified named Thai computing-history textbook)
+- 02-relays-and-electromechanical-logic.md — already matched; draft:false; อ่านเพิ่ม omitted
+- 03-the-vacuum-tube-era.md — **rewritten**; draft:false (was draft:true); Goldstine door out + named credit; summary aligned; no encyclopedia padding; อ่านเพิ่ม omitted
+- 04-why-the-transistor-had-to-happen.md — **rewritten**; draft:false (was draft:true); Bardeen/Brattain/Shockley named + door out; Phase 8 ref; อ่านเพิ่ม: ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*
+- 63-attention-is-all-you-need.md — **rewritten**; draft:false (was draft:true); summary + body match English distill; full Vaswani et al. author list door out; อ่านเพิ่ม: สุพจน์; นวลวรรณ; วฤษาย์ (verified ML trio from 46)
+
+#### D) Paths
+- content/paths/ had English files → mirrored to content.th/paths/:
+  - _index.md
+  - crypto-wartime.md
+  - who-runs-the-internet.md
+  - find-then-talk.md
+  - privacy-identity-consent.md
+  - visions-that-shipped.md
+- All draft:false; thin-index voice; Thai link titles; English prompts N/A (paths have none)
+
 ### Chapters with none verified
 
 - 53–56: no named Thai CUDA / GPU-programming textbook found after WebSearch (reuse architecture trio instead)
 - 98-timeline: no single Thai timeline source — อ่านเพิ่ม omitted on purpose
+- 01–03, 68: อ่านเพิ่ม omitted on purpose (no verified named Thai work for those doors)
 - (53–62 still each have at least one verified named Thai work)
-
-### Vision widen + close (2026-09-06 evening, Mira)
-
-- 64-who-decides-the-wire.md — already done (prior); not redone
-- 66-wartime-crypto.md — already done (prior); not redone
-- 67-privacy-consent-identity-cyber.md — translated from EN; draft:false; อ่านเพิ่ม: วรเศรษฐ สุวรรณิก *วิทยาการรหัสลับ*; ผศ.ดร. ชาญศักดิ์ ศรีสวัสดิ์สกุล *วิทยาการเข้ารหัสลับและเทคโนโลยีบล็อกเชน*; ปริญญา หอมเอนก *Strategy to Cybersecurity 4.0* (Chula OPAC); ผศ.ดร. จรวย สาวิถี *ความมั่นคงของเครือข่ายคอมพิวเตอร์* (MSU ebook)
-- 68-visions-that-shipped.md — translated from EN; draft:false; อ่านเพิ่ม omitted (no verified Thai Cisco/Gates/Jobs/Bezos/Musk seed literature; GNU+Linus already credited in 23)
-- 69-platform-synthesis.md — translated from EN; draft:false; อ่านเพิ่ม: ณัฐโชติ พรหมฤทธิ์; อาณัติ รัตนถิรกุล; โอภาส เอี่ยมสิริวงศ์; สุพจน์ เฮงพระพรหม (layer books already verified in project)
-
-### Optional learning paths (content.th/paths/)
-
-- _index.md, crypto-wartime.md, who-runs-the-internet.md, find-then-talk.md, privacy-identity-consent.md, visions-that-shipped.md — full Thai thin indexes from EN content/paths/; draft:false
-
-### Phase 1 + 63 distill
-
-- 01–04, 63 — already draft:false and match EN distill (spot-checked; not rewritten this pass)
 
 ## In progress
 
@@ -120,4 +130,4 @@
 
 ## Remaining
 
-(none — 67–69 + content.th/paths/ complete 2026-09-06)
+(none for this VISION distill / widen-lens / paths pass)
