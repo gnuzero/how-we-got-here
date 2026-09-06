@@ -2,7 +2,7 @@
 
 - Desk: Arun
 - Started: 2026-09-06 (Asia/Bangkok)
-- Scope: full bodies for 05–12 (done); 13–20 (done); 21–30 (done); 31–37 (done); 38–43 (done); 44–51 (done); 52–63 + 64/66 (done); 67–69 (done this pass)
+- Scope: full bodies for 05–12 (done); 13–20 (done); 21–30 (done); 31–37 (done); 38–43 (done); 44–51 (done); 52–63 + 64/66 (done); 67–69 + paths (done this pass)
 - Skip (MVP done; do not touch unless a real error): _index, 00-foreword, 01–04, 99-glossary (63 refreshed this pass from current Jules EN — no longer stale MVP)
 - Rules: draft:false; titles/attribution from TRANSLATIONS.md; keep frontmatter date/series_index/tags/image_prompt/video_prompt/schematics in English; tech terms in English where MVP Tamil does (transistor, MOSFET, BJT, silicon/சிலிகான், doping, P-N, cache, CPU, CMOS, SRAM, DRAM, ISA, ALU, pipeline, branch prediction, x86, RISC, ARM, RISC-V, superscalar, out-of-order); named historical people stay English (Bell Labs, Tomasulo, IBM, DEC, Intel, ARM, etc.); மேலும் படிக்க only with verified named Tamil works; Wikipedia / untitled notes / language-unverified bookstore listings omitted; no git; no content.si/th; no MVP overwrite
 
@@ -158,18 +158,27 @@
 
 ### New full bodies (67–69)
 
-- 67-privacy-consent-identity-cyber.md — Saltzer/Schroeder protection, Diffie–Hellman / RSA / TLS, Kerberos / OAuth / OpenID Connect, consent scopes, adversarial cybersecurity (CVE / CERT): no named Tamil security-engineering or identity-protocol textbook verified after WebSearch → மேலும் படிக்க omitted; English paper/RFC door outs kept. Class 11 CS Ch. 17 (கணினி நெறிமுறைகள் மற்றும் இணையப் பாதுகாப்பு) is ethics / encryption intro only — not stretched to chapter depth (same partial-match discipline as 64).
-- 68-visions-that-shipped.md — Cisco / Gates / Jobs / GNU+Linus / Bezos / Musk forward-link seeds: no named Tamil computing-business-history textbook verified → மேலும் படிக்க omitted; named people and companies stay English.
-- 69-platform-synthesis.md — platform as composition of distributed systems + networking + AI infra + privacy engineering + software engineering: synthesis-only; no named Tamil platform-architecture textbook verified → மேலும் படிக்க omitted.
+- 67-privacy-consent-identity-cyber.md — Saltzer/Schroeder isolation → Diffie–Hellman/RSA/TLS → Kerberos/OAuth consent → cybersecurity as feedback; phase `தனியுரிமை / அடையாளம் / ஒப்புதல்`; draft:false. Class 11 CS ethics/encryption intro not stretched to chapter depth. No named Tamil security-engineering textbook verified → மேலும் படிக்க omitted; English door outs kept.
+- 68-visions-that-shipped.md — Cisco, Gates/Microsoft, Jobs/Apple, GNU+Linus, Bezos, Musk as seeds of kinds; derive kin; stop; phase `கப்பலுக்குச் சென்ற பார்வைகள்`; draft:false. No named Tamil product-vision history textbook verified → மேலும் படிக்க omitted.
+- 69-platform-synthesis.md — one-stop composition: distributed systems + networking + AI infra + privacy engineering + software engineering; phase `ஒரு இயந்திரத்திலிருந்து ஒரு Platform வரை`; draft:false. Synthesis-only; மேலும் படிக்க omitted.
+
+### Paths (content.ta/paths/)
+
+- `_index.md` — விருப்பக் கற்றல் பாதைகள்; thin-index voice; draft:false
+- `crypto-wartime.md` — weight 1; links 02 → 66 → 03 → 04
+- `who-runs-the-internet.md` — weight 2; links 39 → 40 → 41 → 64
+- `find-then-talk.md` — weight 3; links 41 → 43 → 44
+- `privacy-identity-consent.md` — weight 4; links 24 → 25 → 66 → 67 → 64
+- `visions-that-shipped.md` — weight 5; links 23 → 68 → 69
+- Markdown link URLs unchanged (`/posts/…`, `/paths/…`, `/labs/`); labels Tamil; proper names English.
 
 ## Omitted / unverified (67–69; do not invent)
 
-- தமிழ்நாடு அரசு 11ஆம் வகுப்பு கணினி அறிவியல் அலகு 17 (Computer Ethics and Cyber Security): official book exists but covers ethics / confidentiality / public-key intro only — not credited in-body for Saltzer principles, Kerberos, OAuth, CVE coordination arc.
-- Anna University / college Cyber Security syllabi and English packs: English.
-- Kaniyam / blog Kerberos–OAuth explainers: blogs, not named textbooks (same rule as prior Kaniyam omissions).
-- ta.wikipedia / Vikatan / marketing privacy pages: not credited.
-- Cisco / Gates / Jobs / Bezos / Musk product-history narrative: no named Tamil business-history textbook verified.
-- Platform-as-composition synthesis: thin Tamil literature expected for widen-the-lens close — English distill only; மேலும் படிக்க omitted on all three.
+- தமிழ்நாடு அரசு 11ஆம் வகுப்பு கணினி அறிவியல் அலகு 17 (Computer Ethics and Cyber Security) / Class 12 E-Commerce Security: encryption/SSL intro only — not credited for Saltzer→OAuth→CVE arc.
+- Anna University / English infosec packs: English.
+- Kaniyam / blog Kerberos–OAuth explainers; Brainkart; ta.wikipedia; SBI cyber-awareness pamphlet: not named textbooks.
+- Cisco / Gates / Jobs / Bezos / Musk business-history Tamil titles: none verified → not invented.
+- Platform-as-composition synthesis: thin Tamil literature — English distill only; மேலும் படிக்க omitted on all three.
 
 ## Wrap slice (2026-09-06 Asia/Bangkok — Arun)
 
@@ -184,12 +193,12 @@
 - content.si / content.th — not touched
 - MVP 00–04 and 99-glossary — not touched
 - No git
+- content.ta/paths/ created this pass (EN paths existed on disk)
 
 ## In progress
 
-(none — 67–69 done; standby)
-
+(none — 67–69 + paths complete)
 
 ## Remaining
 
-(none — 67–69 cleared; standby)
+(none — 67–69 posts and content.ta/paths/ delivered; standby)
