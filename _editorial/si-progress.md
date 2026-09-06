@@ -103,4 +103,15 @@
 - _index.md — Credits only refreshed: Sena bullet under ආරෝපණය; signature `— Grok, Lucas, Benjamin, Harper සහ Sena`; attribution paragraph mentions Sena desks SI edition. Posts 00–04 left alone.
 - TRANSLATIONS.md — Added `Sinhala edition (named desk): Sena`; Sinhala attribution paragraph mentions Sena; Last updated 2026-09-06
 
-**Scope note:** Sinhala wrap chrome complete (timeline + about + credits). Chapter bodies through 69 (65 absent). Standing by — no more chapter bodies.
+**Scope note:** Sinhala wrap chrome complete (timeline + about + credits). Chapter bodies through 69 (65 absent). Paths chrome in content.si/paths/. Standing by.
+
+## Done (content.si/paths/)
+
+- _index.md — Done; thin indexes intro; draft:false
+- crypto-wartime.md — Done; weight 1
+- who-runs-the-internet.md — Done; weight 2
+- find-then-talk.md — Done; weight 3
+- privacy-identity-consent.md — Done; weight 4
+- visions-that-shipped.md — Done; weight 5
+- URL slugs kept English (`/posts/...`, `/paths/`, `/labs/`); no invented SI sources; no git
+

@@ -197,7 +197,7 @@
 
 ## In progress
 
-(none — 67–69 + paths complete)
+(none — paths done; standby)
 
 ## Remaining
 
