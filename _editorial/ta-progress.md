@@ -201,4 +201,4 @@
 
 ## Remaining
 
-(none — 67–69 posts and content.ta/paths/ delivered; standby)
+(none — close-of-book Tamil posts + paths landed; standby)

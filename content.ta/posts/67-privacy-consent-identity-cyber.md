@@ -15,7 +15,7 @@ schematics: "Diagram: isolation (OS) → crypto on the wire → identity/auth �
 
 ## Isolation முதலில் வந்தது
 
-"தனியுரிமைப் பொருள்"க்கு முன், **பாதுகாப்பு** இருந்தது. Jerome Saltzer மற்றும் Michael Schroeder-இன் 1975 கணக்கெடுப்பு, [*The Protection of Information in Computer Systems*](https://web.mit.edu/Saltzer/www/publications/protection/), இன்றும் பொறியியல் சட்டமாகப் படிக்கும் வடிவமைப்புக் கொள்கைகளை வரைந்தது: least privilege, complete mediation, fail-safe defaults, economy of mechanism. Virtual memory (பதிவு 24) மற்றும் containers (பதிவு 25) அதே பந்தயத்தின் பிந்தைய நிகழ்வுகள் — வன்பொருளும் kernel-உம் அமுக்கும் எல்லையை வரையுங்கள், அதனால் ஒரு நிரலாக்கம் மற்றொன்றை சாதாரணமாகப் படிக்க முடியாது.
+"தனியுரிமைப் பொருள்"க்கு முன், **பாதுகாப்பு** இருந்தது. Jerome Saltzer மற்றும் Michael Schroeder-இன் 1975 கணக்கெடுப்பு, [*The Protection of Information in Computer Systems*](https://web.mit.edu/Saltzer/www/publications/protection/), இன்றும் பொறியியல் சட்டமாகப் படிக்கும் வடிவமைப்புக் கொள்கைகளை வரைந்தது: least privilege, complete mediation, fail-safe defaults, economy of mechanism. Virtual memory (பதிவு 24) மற்றும் containers (பதிவு 25) அதே பந்தயத்தின் பிந்தைய நிகழ்வுகள் — வன்பொருளும் kernel-உம் அமல்படுத்தும் எல்லையை வரையுங்கள், அதனால் ஒரு நிரல் மற்றொன்றை எளிதாகப் படிக்க முடியாது.
 
 Door out: Saltzer & Schroeder (1975).
 
