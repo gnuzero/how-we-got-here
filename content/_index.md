@@ -23,7 +23,7 @@ Three client-side labs sit on the path so reading becomes doing:
 
 Start where the journey starts if you want the full foundation. Jump later if you already know the early history and care most about modern silicon. Use the labs wherever they appear (or open them standalone).
 
-Optional side paths widen the lens without breaking the spine — for example who decides the wire (Post 64) and wartime crypto (Post 66). Later, thin learning-path indexes may group thematic routes; those are indexes, not a second book.
+Optional side paths widen the lens without breaking the spine. Thin indexes live under [Optional Learning Paths](/paths/) — thematic routes, not a second book.
 
 ---
 

@@ -30,7 +30,18 @@
 - One high-level stop: distributed systems + networking + AI infra + privacy engineering + software engineering
 - Phase `From One Machine to a Platform`, series_index 69, date 2026-09-06, draft false
 
-## Status
+### Optional learning paths chrome (2026-09-06)
 
-- Autonomy batch from Lucas (Nayana private sandbox): 67+68 minimum delivered; 69 also written.
-- No SI/TA. No git.
+- `content/paths/_index.md` + five thin indexes:
+  - crypto-wartime (hub: 66)
+  - who-runs-the-internet (hub: 64)
+  - find-then-talk (hub: 43)
+  - privacy-identity-consent (hub: 67)
+  - visions-that-shipped (hub: 68)
+- Linked related spine posts; not a second book
+- Also pointed `content/_index.md` and `content/about.md` at `/paths/`
+- draft:false; no SI/TA; no git
+
+## Status (updated)
+
+- **HOLD** after paths chrome unless Lucas assigns fact-check or other work.

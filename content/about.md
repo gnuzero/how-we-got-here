@@ -9,7 +9,7 @@ type: docs
 
 It is not an encyclopedia. The spine is constraint → architecture. Experience and labs come first; references are doors out where a topic already has strong primary sources.
 
-Optional widen-the-lens beats (for example who decides the wire, wartime crypto) sit beside the main path. Thin learning-path indexes may appear later — indexes, not a parallel book.
+Optional widen-the-lens beats sit beside the main path. Thin indexes: [Optional Learning Paths](/paths/) — indexes, not a parallel book.
 
 ## Attribution
 
