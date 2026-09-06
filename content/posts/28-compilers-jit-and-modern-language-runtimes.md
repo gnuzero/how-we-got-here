@@ -1,38 +1,38 @@
 ---
 title: "Compilers, JIT, and Modern Language Runtimes"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
 series_index: 28
 tags: []
-summary: "How source code becomes machine code, then and now"
+summary: "AOT compiles once without runtime facts; JIT waits for hot paths — and garbage collection shifts cost into the runtime"
 image_prompt: "Pipeline diagram of a compiler with a JIT feedback loop shown alongside, clean compiler-textbook diagram style"
 video_prompt: "25-second animation: source flowing through compiler stages, JIT recompiling a hot path, clean technical animation"
 labs: ["vm-terminal"]
 schematics: "Diagram: compiler pipeline block diagram + JIT vs AOT comparison"
 ---
 
-Post 27 covered *why* high-level languages exist. This post covers the machinery that makes them practically usable at all: the compiler, which translates source code into something a real CPU (built from everything in Phase 3) can actually execute.
+Post 27 covered *why* high-level languages exist. This post is the machinery that makes them usable: the compiler, translating source into something a real CPU (Phase 3) can execute.
 
-## The Classical Compiler Pipeline
+## The Classical Pipeline (Short)
 
-A compiler typically works in stages. The **lexer** breaks raw source text into tokens — identifiers, keywords, operators, literals — stripping out whitespace and comments. The **parser** takes that token stream and builds an Abstract Syntax Tree (AST), a structured representation of the program's grammar — which expressions nest inside which statements, how operator precedence groups things. Semantic analysis walks that tree checking things a parser alone cannot catch: type correctness, whether a variable was actually declared before use.
+Lexer → tokens. Parser → Abstract Syntax Tree. Semantic analysis catches what grammar alone cannot (types, undeclared names). Most real compilers then lower to an Intermediate Representation (IR) — more uniform than source syntax, still independent of any target ISA — where the **optimizer** works: dead-code elimination, loop-invariant hoisting, inlining, and dozens of other transformations that preserve behavior while cutting wasted work. **Code generation** emits target instructions and does register allocation (which values live in scarce physical registers versus spilling to memory).
 
-From there, most real compilers lower the AST into an Intermediate Representation (IR) — a lower-level, more uniform format that is easier to analyze and optimize than the original source-level syntax tree, but still independent of any specific target CPU's instruction set. The **optimizer** operates on this IR: eliminating dead code that can never execute, hoisting loop-invariant computations out of loops so they are not needlessly recomputed every iteration, inlining small function calls to avoid call overhead, and dozens of other transformations — all provably preserving the program's original behavior while reducing wasted work. Finally, **code generation** translates the optimized IR into actual machine instructions for the target ISA, handling register allocation (deciding which values live in the limited set of physical registers versus needing to spill to memory) along the way.
+That is the spine. The encyclopedia of every pass is not the point — the constraint is: source abstractions do not run; something must lower them, and that something can run *before* execution or *during* it.
 
 ## Ahead-of-Time vs Just-in-Time
 
-This entire pipeline, run once before the program ever executes, is Ahead-of-Time (AOT) compilation — C and traditional FORTRAN compilers work this way. Just-in-Time (JIT) compilation, used by languages like Java and JavaScript, takes a different approach: initially run code through a simpler interpreter or a fast-but-unoptimized baseline compiler, then *at runtime*, identify "hot" code paths — functions or loops actually being executed frequently — and recompile just those specific paths with heavier, more aggressive optimization.
+Run the whole pipeline once before the program ever executes: Ahead-of-Time (AOT) — C and traditional FORTRAN. Just-in-Time (JIT) — Java, JavaScript, and kin — starts with an interpreter or a fast baseline compiler, then *at runtime* finds hot paths and recompiles those with heavier optimization.
 
-The reasoning behind JIT is clever: a compiler doing this at runtime has information an AOT compiler never had — actual observed branch behavior, actual observed argument types, actual observed hot paths — which can enable optimizations an AOT compiler cannot safely make without that runtime data. The cost is real: JIT compilation itself consumes CPU cycles during program execution, and a program's first few seconds often run slower than its steady state, before the JIT has identified and optimized the hot paths — the classic "JIT warm-up" tradeoff.
+The JIT's advantage is information an AOT compiler never had: observed branches, argument types, actual hot loops — optimizations unsafe to assume without that data. Cost is real: compilation burns cycles during execution, and the first seconds often run slower than steady state — classic warm-up.
 
-## Language Runtimes: More Than Just Compilation
+## Runtimes: More Than Compilation
 
-Modern managed languages (Java, C#, and to varying degrees JavaScript, Python) pair their compiler with a broader runtime system — most consequentially, automatic memory management via garbage collection, which frees programmers from manually tracking every allocation's lifetime (a major source of bugs in languages like C). This shifts real complexity into the runtime itself, trading manual memory-management effort for runtime overhead and, at least historically, less predictable pause behavior — a tradeoff that matters enormously for real-time systems, which is exactly why Posts 29 and 30 treat "real-time" and "garbage-collected managed runtime" as frequently being in tension with each other.
+Managed languages (Java, C#, and to varying degrees JavaScript and Python) pair the compiler with a broader runtime — most consequentially automatic memory management via garbage collection, freeing programmers from tracking every allocation's lifetime (a major bug source in C). Complexity shifts into the runtime: manual effort traded for overhead and, historically, less predictable pauses. That tension is exactly why Posts 29–30 treat "real-time" and "garbage-collected managed runtime" as frequently at odds.
 
-## A Place to See This Live
+## See It Live
 
-The VM terminal lab attached to this post gives you a real environment to compile something — try running `gcc` on a small C program and inspecting the resulting assembly output with `-S`, watching the abstractions from this post become concrete machine instructions.
+The VM terminal below is a real place to compile: try `gcc` on a small C program and inspect assembly with `-S` — abstractions from this post becoming concrete machine instructions.
 
 {{< lab type="vm-terminal" >}}
 

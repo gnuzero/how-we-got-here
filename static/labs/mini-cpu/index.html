@@ -15,7 +15,16 @@
     margin: 0; padding: 16px; font-size: 14px;
   }
   h1 { font-size: 16px; color: var(--accent); margin: 0 0 4px; }
-  .sub { color: #8b949e; font-size: 12px; margin-bottom: 16px; }
+  .sub { color: #8b949e; font-size: 12px; margin-bottom: 12px; }
+  .guide {
+    background: var(--panel); border: 1px solid var(--accent);
+    border-radius: 6px; padding: 12px 14px; margin-bottom: 12px;
+  }
+  .guide h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
+    color: var(--accent); margin: 0 0 8px; }
+  .guide .phase { color: var(--amber); font-size: 12px; margin-bottom: 6px; }
+  .guide .body { color: var(--text); font-size: 13px; line-height: 1.55; }
+  .guide .hint { color: #8b949e; font-size: 11px; margin-top: 8px; }
   .layout { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 12px; }
   @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
   .panel {
@@ -63,15 +72,25 @@
 <h1>Mini-CPU Lab</h1>
 <div class="sub">8-bit toy ISA · 4-bit opcode / 4-bit operand · 16 bytes RAM · A/B registers · Carry/Zero flags</div>
 
+<div class="guide" id="guide">
+  <h2>Guided beat</h2>
+  <div class="phase" id="guidePhase">Ready</div>
+  <div class="body" id="guideBody"></div>
+  <div class="hint" id="guideHint"></div>
+</div>
+
 <div class="layout">
 
   <div class="panel">
     <h2>Assembly</h2>
-    <textarea id="src">; Adds two numbers and outputs the result
+    <textarea id="src">; Guided beat (8 instructions): load 5, store it,
+; load 8, add the stored 5, save result, reload, OUT, HLT
 LDI 5
 STA 14
 LDI 8
 ADD 14
+STA 15
+LDA 15
 OUT
 HLT</textarea>
     <div class="btnrow">
@@ -120,6 +139,47 @@ const OPNAMES = Object.fromEntries(Object.entries(OPS).map(([k,v])=>[v,k]));
 
 let mem = new Uint8Array(16);
 let A=0, B=0, PC=0, IR=0, carry=0, zero=1, halted=false, outReg=0, running=false, timer=null;
+let stepCount = 0;
+
+const INTRO_PHASE = 'Fetch → Decode → Execute';
+const INTRO_BODY =
+  'A canned 8-instruction program is already loaded: load 5, store it at mem[14], load 8, add the stored 5, store the sum at mem[15], reload it, OUT, then HLT. Press Step repeatedly — watch register A and the memory grid light up as PC advances. Edit the source anytime, then Assemble before stepping again.';
+const INTRO_HINT = 'Tip: amber border on a memory cell marks the current PC. After each Step, this panel narrates fetch / decode / execute.';
+
+function setGuide(phase, body, hint) {
+  document.getElementById('guidePhase').textContent = phase;
+  document.getElementById('guideBody').textContent = body;
+  document.getElementById('guideHint').textContent = hint || '';
+}
+
+function explainExecute(op, arg, prevA, prevMem) {
+  switch (op) {
+    case OPS.NOP:
+      return 'NOP does nothing. PC already advanced.';
+    case OPS.LDA:
+      return 'LDA ' + arg + ': A ← mem[' + arg + '] (was ' + prevA + ', now ' + A + '). Watch A.';
+    case OPS.ADD:
+      return 'ADD ' + arg + ': A ← A + mem[' + arg + '] → ' + A + ' (carry=' + carry + ', zero=' + zero + '). Watch A.';
+    case OPS.SUB:
+      return 'SUB ' + arg + ': A ← A − mem[' + arg + '] → ' + A + ' (carry=' + carry + ', zero=' + zero + '). Watch A.';
+    case OPS.STA:
+      return 'STA ' + arg + ': mem[' + arg + '] ← A (' + A + '). Was ' + prevMem + '; watch that memory cell.';
+    case OPS.LDI:
+      return 'LDI ' + arg + ': A ← immediate ' + arg + ' (was ' + prevA + '). Watch A.';
+    case OPS.JMP:
+      return 'JMP ' + arg + ': PC ← ' + arg + ' (unconditional). Watch PC on the memory grid.';
+    case OPS.JC:
+      return 'JC ' + arg + ': ' + (carry ? 'carry set → PC ← ' + arg : 'carry clear → fall through') + '.';
+    case OPS.JZ:
+      return 'JZ ' + arg + ': ' + (zero ? 'zero set → PC ← ' + arg : 'zero clear → fall through') + '.';
+    case OPS.OUT:
+      return 'OUT: output register ← A (' + A + '). Watch the Output Register panel.';
+    case OPS.HLT:
+      return 'HLT: CPU stops. Output = ' + outReg + '. Press Reset to replay, or edit + Assemble.';
+    default:
+      return 'Unknown opcode.';
+  }
+}
 
 function logMsg(msg, isErr) {
   const log = document.getElementById('log');
@@ -145,36 +205,55 @@ function assemble(src) {
     }
     bytes[i] = (op << 4) | (arg & 0xF);
   });
-  return bytes;
+  return { bytes, count: lines.length };
 }
 
 function assembleAndLoad() {
   document.getElementById('log').innerHTML = '';
   try {
-    mem = assemble(document.getElementById('src').value);
+    const result = assemble(document.getElementById('src').value);
+    mem = result.bytes;
     reset(false);
-    logMsg('Assembled ' + mem.filter(b=>b!==0).length + ' words into memory. Ready.');
+    logMsg('Assembled ' + result.count + ' words into memory. Ready.');
+    setGuide(INTRO_PHASE, INTRO_BODY, INTRO_HINT);
   } catch (e) {
     logMsg(e.message, true);
+    setGuide('Assemble error', e.message, 'Fix the source, then press Assemble.');
   }
   render();
 }
 
 function reset(doLog=true) {
   A=0; B=0; PC=0; IR=0; carry=0; zero=1; halted=false; outReg=0;
+  stepCount = 0;
   stop();
-  if (doLog) logMsg('Reset.');
+  if (doLog) {
+    logMsg('Reset.');
+    setGuide(INTRO_PHASE, INTRO_BODY, 'CPU registers cleared; memory still holds the assembled program. Press Step.');
+  }
   render();
 }
 
 function step() {
-  if (halted) { logMsg('CPU halted — reset to run again.', true); return; }
-  IR = mem[PC];
-  const op = (IR >> 4) & 0xF;
-  const arg = IR & 0xF;
+  if (halted) {
+    logMsg('CPU halted — reset to run again.', true);
+    setGuide('Halted', 'CPU is stopped after HLT. Press Reset to replay the beat, or edit the program and Assemble.', '');
+    return;
+  }
+
+  const fetchPC = PC;
+  const fetched = mem[PC];
+  const op = (fetched >> 4) & 0xF;
+  const arg = fetched & 0xF;
   const name = OPNAMES[op] || '???';
+  const prevA = A;
+  const prevMem = (op === OPS.STA) ? mem[arg] : undefined;
+
+  // FETCH
+  IR = fetched;
   PC = (PC + 1) & 0xF;
 
+  // EXECUTE (decode is the op/arg split above)
   switch (op) {
     case OPS.NOP: break;
     case OPS.LDA: A = mem[arg]; break;
@@ -187,14 +266,26 @@ function step() {
     case OPS.JZ: if (zero) PC = arg; break;
     case OPS.OUT: outReg = A; break;
     case OPS.HLT: halted = true; stop(); logMsg('HLT — program finished. Output = ' + outReg); break;
-    default: logMsg('Unknown opcode 0x' + op.toString(16) + ' at PC ' + PC, true); halted = true; stop();
+    default: logMsg('Unknown opcode 0x' + op.toString(16) + ' at PC ' + fetchPC, true); halted = true; stop();
   }
+
+  stepCount += 1;
+  const fetchText = 'FETCH: IR ← mem[' + fetchPC + '] = 0x' + fetched.toString(16).padStart(2,'0').toUpperCase() + '; PC → ' + ((fetchPC + 1) & 0xF);
+  const decodeText = 'DECODE: ' + name + (name !== 'NOP' && name !== 'OUT' && name !== 'HLT' ? ' ' + arg : '') + ' (opcode 0x' + op.toString(16).toUpperCase() + ', operand ' + arg + ')';
+  const execText = 'EXECUTE: ' + explainExecute(op, arg, prevA, prevMem);
+  setGuide(
+    'Step ' + stepCount + ' · Fetch / Decode / Execute',
+    fetchText + ' · ' + decodeText + ' · ' + execText,
+    halted ? 'Beat complete — Output should be 13 (5+8). Reset to watch again.' : 'Press Step again. Keep watching A and memory.'
+  );
+
   render();
 }
 
 function run() {
   if (running) return;
   running = true;
+  setGuide('Run', 'Auto-stepping every 250ms. Watch A, PC, and memory — or press Stop and Step manually for narration.', '');
   timer = setInterval(() => { if (halted) { stop(); return; } step(); }, 250);
 }
 

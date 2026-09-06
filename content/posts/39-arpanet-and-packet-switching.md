@@ -1,36 +1,38 @@
 ---
 title: "ARPANET and Packet Switching"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "6 — Networking Evolution"
 series_index: 39
 tags: []
-summary: "The network that proved packet switching could work"
+summary: "Bursty computer traffic broke circuit switching — ARPANET proved packets and shared links could work"
 image_prompt: "Historical network topology map of early ARPANET nodes connected via IMPs, clean historical network diagram style"
 video_prompt: "20-second animation: a message broken into packets, routed hop-by-hop, reassembled at destination, clean technical animation"
 labs: ["vm-terminal"]
 schematics: "Diagram: early ARPANET topology map + packet switching vs circuit switching comparison"
 ---
 
-Post 38 covered point-to-point serial links — inherently limited to connecting exactly two endpoints directly. ARPANET, beginning operation in 1969, set out to prove something different was viable: a network where many machines could reach many other machines, without a dedicated direct circuit between every pair, by breaking data into discrete packets that could be routed independently.
+Post 38's serial links connect exactly two endpoints. ARPANET, live in 1969 under ARPA (later DARPA), set out to prove something else: many machines reaching many others without a dedicated circuit between every pair, by breaking data into packets routed independently hop by hop.
 
 ## Circuit Switching vs Packet Switching
 
-The telephone network Post 38 relied on used circuit switching: establishing a dedicated, continuous end-to-end path for the *entire duration* of a call, with that path's resources reserved exclusively for that one conversation whether or not anyone is actually speaking at any given moment. This works fine for continuous voice traffic, but it is a poor fit for computer communication, which tends to be bursty — periods of active data transfer interspersed with idle stretches during which a dedicated circuit would sit unused but still fully reserved.
+The telephone network Post 38 rode used circuit switching: reserve a continuous end-to-end path for the *entire* call, whether anyone is speaking or not. Fine for continuous voice; a poor fit for computer traffic, which is bursty — active transfer, then idle stretches during which a reserved circuit sits unused.
 
-Packet switching takes a different approach: break data into discrete packets, each carrying its own destination address, and route each packet independently through the network, hop by hop, sharing the underlying links among many simultaneous conversations rather than dedicating a continuous path to any single one. No connection needs to be reserved in advance for the network's *entire* duration — packets from many different communications can interleave on the same physical links, and each packet finds its own way through, potentially even taking different paths from other packets belonging to the same overall transfer, all reassembled correctly at the destination.
+Packet switching takes the opposite bet. Break data into packets, each carrying a destination address; route each independently; share the physical links among many conversations. No path reserved for a whole session — packets from different transfers interleave, may take different routes, and reassemble at the destination. Paul Baran's RAND work on distributed, survivable communications and Leonard Kleinrock's queueing analysis of packet networks supplied the intellectual ground; Lawrence Roberts at ARPA turned the bet into a funded research network.
 
 ## IMPs: The Original Routers
 
-ARPANET's actual routing was performed by Interface Message Processors (IMPs) — dedicated minicomputers (a direct link back to Phase 3's minicomputer era) sitting at each network site, responsible for accepting packets from the local host, determining the next hop toward the packet's destination, and forwarding it onward. This is conceptually the direct ancestor of what a modern router does, just at a vastly smaller scale. ARPANET's initial deployment connected only four university and research sites (UCLA, Stanford Research Institute, UC Santa Barbara, and the University of Utah) in 1969 — tiny by any modern comparison, but proof that the underlying packet-switching concept worked in practice, not just on paper.
+ARPANET's hops were Interface Message Processors (IMPs) — dedicated minicomputers at each site (Phase 3's minicomputer era, applied to the wire) that accepted packets from the local host, chose the next hop, and forwarded. Conceptually, that is what a modern router still does. The first four nodes — UCLA, Stanford Research Institute, UC Santa Barbara, University of Utah — were tiny by later standards. They were enough to show packet switching worked in practice, not only on paper.
 
-## Why This Was a Genuine Bet, Not an Obvious Choice
+## Why This Was a Real Bet
 
-Packet switching was not an obviously "correct" choice at the time. Telecommunications engineers with deep experience in circuit-switched telephone networks were often skeptical that a network without dedicated, reserved paths could reliably deliver data at all, let alone efficiently. ARPANET's success in demonstrating reliable, efficient data delivery over a shared, packet-switched network was a significant validation of an approach that had real institutional skepticism working against it.
+Telecom engineers steeped in circuit switching often doubted a network without reserved paths could deliver data reliably at all. ARPANET's success was institutional validation of an architecture that had real skepticism against it — not an inevitable "next step" everyone already agreed on.
 
 ## What This Set Up
 
-ARPANET itself used its own specific protocols, not what would eventually become TCP/IP (Post 41 covers that transition directly) — but the fundamental architectural bet it validated, packet switching over dedicated circuits, is the foundation every subsequent network in this phase builds on, right up through the modern internet and the datacenter-scale networks covered in Post 42 and, later, Phase 10's AI training cluster interconnects. Before getting to TCP/IP and the modern internet stack, though, the next two posts cover an important intermediate step: how *local* networks — a single building, a single office — standardized on Ethernet, and how the pre-web internet organized information and let people find things before the World Wide Web existed at all.
+ARPANET's own host-to-host protocols were not yet TCP/IP (Post 41). The architectural win — packets over dedicated circuits — is the foundation every later network in this phase builds on, through the modern internet, datacenter fabrics in Post 42, and Phase 10's training-cluster interconnects. Next, local: how buildings standardized on Ethernet (Post 40) before TCP/IP tied heterogeneous nets into one internetwork.
+
+**Door out:** Paul Baran, *On Distributed Communications* (RAND Corporation, 1964) — the classic distributed/packet argument that, with Kleinrock's queueing work and Roberts's ARPA program, underwrites why ARPANET could bet against circuit switching.
 
 {{< lab type="vm-terminal" >}}
 

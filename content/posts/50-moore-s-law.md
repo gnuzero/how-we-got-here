@@ -1,37 +1,39 @@
 ---
 title: "Moore's Law"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "8 — Process Nodes & Fabrication"
 series_index: 50
 tags: []
-summary: "What's actually slowing, what's still scaling"
+summary: "Moore's observation was economic component count — transistor count still climbs; clocks and cost-per-transistor tell different stories"
 image_prompt: "Graph infographic: transistor count, clock speed, and cost-per-transistor over time, clean data visualization style"
 video_prompt: "15-second animation: three trend lines animating over a timeline from 1970 to 2026, clean data-viz motion graphics"
 schematics: "Diagram: three-panel graph — transistor count, clock frequency, cost-per-transistor over time"
 ---
 
-"Moore's Law" gets invoked constantly, and just as constantly gets declared dead, revived, and reinterpreted — often without precision about what the original observation claimed versus what has actually changed. Untangling that is worth doing directly, especially after the last several posts' look at what has been getting harder.
+"Moore's Law" is constantly declared dead, revived, and stretched to mean whatever the speaker needs. After the last posts' look at what fabrication has gotten harder, it is worth saying precisely what Gordon Moore observed — and which bundled trends are actually different constraints.
 
-## What Moore Actually Observed
+## What Moore Actually Wrote
 
-Gordon Moore's original 1965 observation was specifically about transistor *count*: the number of transistors that could be economically fabricated on a single chip was roughly doubling every year (later revised to roughly every two years). Notice what this claim is *not* about — it says nothing directly about clock speed, nothing directly about single-thread performance, and nothing about cost per transistor beyond the word "economically." Those are separate, related trends often loosely bundled under "Moore's Law" in popular usage, but they are distinct metrics with distinct underlying drivers.
+Gordon Moore's 1965 *Electronics* article observed component *count*: the number of components that could be economically placed on one integrated circuit was doubling on a roughly yearly pace (revised around 1975 to roughly every two years). Notice what that claim is *not*: it is not a law of clock speed, not a promise about single-thread performance, and not a separate theorem about cost per transistor beyond the word "economically." Popular usage often bundles those metrics under one slogan; the underlying drivers are distinct.
 
 ## Transistor Count: Still Climbing
 
-Measured strictly as Moore originally framed it — transistors per chip — the trend has held up remarkably well for decades, and continues climbing today, driven by the lithography and transistor-structure advances in Posts 48 and 49. Modern high-end chips contain many billions of transistors — an almost incomprehensible increase from the roughly 2,300 transistors on Intel's 4004 (Post 18) just over five decades earlier.
+Measured as Moore framed it — components (today: transistors) per chip — the trend held for decades and still climbs, driven by lithography and transistor-structure advances in Posts 48 and 49. Modern high-end chips hold many billions of transistors against the roughly 2,300 on Intel's 4004 (Post 18) five decades earlier.
 
-## Clock Speed: Flattened, for the Reasons Post 36 Covered
+## Clock Speed: A Different Wall
 
-Clock frequency, by contrast, climbed steeply alongside transistor count for decades and then flattened starting around 2005 — not because transistor scaling stopped, but because of the power/thermal wall covered in Post 36. Conflating "Moore's Law" with "chips keep getting faster in the simple, single-thread sense" is a category error: transistor count kept climbing through the clock-speed plateau, and the industry's response — as Post 17 covers — was to spend those additional transistors on more cores and more specialized on-chip functionality, not on pushing a single core's clock further.
+Clock frequency climbed with transistor count for decades, then flattened around 2005 — not because transistor scaling stopped, but because of the power/thermal wall in Post 36. Calling that "the death of Moore's Law" conflates two metrics. Count kept rising through the clock plateau; the industry spent the new transistors on more cores and specialized on-chip function (Post 17), not on pushing one core's frequency further.
 
-## Cost Per Transistor: The Metric That's Struggled Recently
+## Cost Per Transistor: Where Friction Shows
 
-The third, less-discussed dimension is cost per transistor — and this is where recent challenges are most concrete. EUV lithography (Post 48) is extraordinarily expensive to acquire and operate, and each successive process-node generation has required increasingly elaborate, costly manufacturing techniques to keep pushing density further. For a stretch of decades, cost per transistor fell alongside rising transistor count — smaller transistors meant more of them per wafer, driving cost per transistor down even as absolute chip cost held roughly steady or grew modestly. At the most leading-edge nodes today, that relationship has weakened — the newest nodes aren't necessarily delivering cost-per-transistor improvements at the same historical rate, even though raw transistor density keeps climbing.
+The economic half of Moore's framing — cheaper components as density rose — is where recent leading-edge friction is clearest. EUV tools (Post 48) are extraordinarily expensive; each node generation needs more elaborate process steps. For decades, more transistors per wafer drove cost per transistor down even when absolute chip cost held or grew modestly. At the newest nodes that relationship has weakened: density still climbs; cost-per-transistor improvement is no longer automatic at historical rates.
 
-## The Honest Summary
+## Three Metrics, One Slogan
 
-Transistor count: still scaling, driven by ongoing lithography and transistor-structure advances. Clock speed: flattened since the mid-2000s, for well-understood thermal reasons covered in Post 36. Cost per transistor: still improving in absolute terms at most nodes, but with well-documented recent friction at the very leading edge. All three trends get casually lumped under "Moore's Law," but treating them as one metric obscures what's still working versus what's gotten harder — a distinction this entire phase has been building toward making precise.
+Transistor count: still scaling. Clock speed: flat since the mid-2000s for known thermal reasons. Cost per transistor: still improving in absolute terms at many nodes, with documented friction at the leading edge. Treating them as one "law" hides which constraint still yields and which forced the architectural turns this phase has been naming.
+
+**Door out:** Gordon E. Moore, "Cramming more components onto integrated circuits" (*Electronics*, April 19, 1965) — the primary statement of the economic component-count observation later nicknamed Moore's Law.
 
 <!--
 ASSET CHECKLIST

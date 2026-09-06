@@ -1,36 +1,38 @@
 ---
 title: "TCP/IP and the Modern Internet Stack"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "6 — Networking Evolution"
 series_index: 41
 tags: []
-summary: "Layered protocols and how the internet actually routes your data"
+summary: "Heterogeneous unreliable links forced layered guarantees — IP routes; TCP rebuilds a reliable stream"
 image_prompt: "Layered protocol stack diagram with a packet gaining headers at each layer, clean networking textbook diagram style"
 video_prompt: "25-second animation: data flowing down through TCP/IP layers gaining headers, then unwrapped at destination, clean technical animation"
 labs: ["vm-terminal"]
 schematics: "Diagram: TCP/IP four-layer model with encapsulation + TCP three-way handshake diagram"
 ---
 
-ARPANET (Post 39) proved packet switching worked. Ethernet (Post 40) standardized local connectivity. Neither, on its own, defines how to connect *different* networks — built on different physical technologies, with different addressing schemes — into one coherent internetwork that any two machines, anywhere, can use to reach each other. TCP/IP is the protocol suite that solved that problem, and it is still the foundation the entire modern internet runs on.
+ARPANET (Post 39) proved packet switching. Ethernet (Post 40) standardized the local wire. Neither alone says how to stitch *different* networks — different media, different addressing — into one internetwork any two machines can use. Vint Cerf and Bob Kahn's TCP/IP suite solved that; it is still the foundation the modern internet runs on.
 
 ## The Layered Model
 
-TCP/IP is organized into layers, each handling a distinct concern and depending only on the layer directly beneath it — a structuring principle familiar from PCIe's layered stack in Post 33, applied here at internetworking scale rather than within a single hardware link. The **Link layer** handles the actual physical network technology in use for a given hop — Ethernet, WiFi, whatever is locally available. The **Internet layer** (IP) provides universal addressing and routing *across* different underlying link technologies — an IP packet does not care whether it is currently traveling over Ethernet, WiFi, or a fiber backbone link; that is the Link layer's concern, abstracted away. The **Transport layer** (TCP or UDP) provides either reliable, ordered delivery (TCP) or minimal-overhead, unordered best-effort delivery (UDP) on top of IP's basic packet-forwarding service. The **Application layer** is where protocols applications use — HTTP, DNS, SMTP — operate, built on top of whichever transport-layer service fits their needs.
+TCP/IP splits concerns the way PCIe's stack does (Post 33), at internetworking scale. **Link** handles the local hop — Ethernet, Wi-Fi, fiber. **Internet (IP)** gives universal addressing and routing *across* those links; an IP packet does not care what medium carries it. **Transport (TCP or UDP)** offers either reliable ordered delivery (TCP) or minimal-overhead best-effort (UDP) on top of IP. **Application** is where HTTP, DNS, SMTP and kin sit, picking the transport that fits.
 
-## Encapsulation: Headers All the Way Down
+## Encapsulation
 
-Data moving *down* through these layers gains a header at each stage — application data gets a TCP (or UDP) header prepended, forming a segment; that segment gets an IP header prepended, forming a packet; that packet gets a Link-layer header (and often trailer) prepended, forming a frame ready for physical transmission. At the receiving end, the process runs in reverse: each layer strips its own header and passes the remainder up, using the information in the header it just consumed (port numbers for TCP, IP addresses for IP) to know where to route the payload next, all the way up to the correct application.
+Data moving down gains a header at each layer — application bytes under TCP/UDP, that segment under IP, that packet under a link header (and often trailer). At the far end the process reverses: each layer strips its header and uses what it just read (ports, addresses) to hand the remainder upward.
 
-## TCP's Reliability Guarantee, and How the Handshake Works
+## TCP on an Unreliable Substrate
 
-IP itself is explicitly best-effort — no promise of guaranteed delivery, ordering, or even that a packet will not simply be dropped somewhere along its route. TCP builds a reliable, ordered byte stream on top of that unreliable substrate, using sequence numbers (so out-of-order or duplicate packets can be detected and corrected) and acknowledgments (so the sender knows what has actually been received, and can retransmit anything that appears lost) — directly analogous to the reliability mechanism PCIe's Data Link Layer used in Post 33, just operating across an entire unreliable internetwork instead of a single dedicated link.
+IP is explicitly best-effort — no delivery promise, no ordering promise, drops allowed. TCP builds a reliable ordered byte stream on top with sequence numbers and acknowledgments (and retransmission when ACKs do not arrive) — the same reliability *kind* as PCIe's data-link layer (Post 33), stretched across a whole unreliable internetwork instead of one dedicated link.
 
-Establishing a TCP connection uses a three-way handshake: the client sends a SYN (synchronize) packet proposing an initial sequence number; the server responds with a SYN-ACK, acknowledging the client's sequence number and proposing its own; the client responds with a final ACK, acknowledging the server's sequence number. Only after this three-step exchange completes do both sides consider the connection established and begin exchanging application data — a small but deliberate cost paid up front so both sides have verifiably synchronized state before any real data flows.
+A connection starts with a three-way handshake: SYN (client proposes a sequence number), SYN-ACK (server acknowledges and proposes its own), final ACK. Only then does application data flow — a small deliberate cost so both sides share synchronized state first.
 
 ## Why This Design Won
 
-TCP/IP's load-bearing design decision was treating the underlying network as inherently unreliable and heterogeneous, and building guarantees (where needed) at a higher layer rather than assuming every physical link would provide them natively. That assumption turned out to be exactly right for a global internetwork stitched together from wildly different physical technologies, added over decades, by organizations that never coordinated on a single unified physical standard — which is precisely the real-world situation TCP/IP had to work within, and precisely why it is still the addressing and transport foundation underneath essentially the entire modern internet, including every datacenter-scale network covered in the next post.
+The load-bearing assumption was that the underlying network is heterogeneous and unreliable, so guarantees belong at a higher layer rather than in every physical link. That matched a global internetwork stitched over decades from different technologies by organizations that never agreed on one physical standard — which is why TCP/IP still sits under essentially the whole modern internet, including the datacenter networks next.
+
+**Door out:** [RFC 791](https://www.rfc-editor.org/rfc/rfc791) (Internet Protocol) and [RFC 793](https://www.rfc-editor.org/rfc/rfc793) (Transmission Control Protocol) — the primary specs for the addressing/routing and reliable-transport halves of this stack (Cerf/Kahn lineage; Postel as RFC editor for these September 1981 texts).
 
 {{< lab type="vm-terminal" >}}
 

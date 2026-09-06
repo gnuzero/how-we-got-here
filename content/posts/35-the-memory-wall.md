@@ -1,33 +1,33 @@
 ---
 title: "The Memory Wall"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "5 — The Bus & System Architecture"
 series_index: 35
 tags: []
-summary: "Why memory speed couldn't keep pace with compute — and what that gap actually costs"
+summary: "CPU speed and DRAM latency diverged for decades — caches hide the gap; they do not close it"
 image_prompt: "Graph infographic showing CPU speed and DRAM speed diverging from 1980 to today, clean data-visualization diagram style"
 video_prompt: "20-second animation: two trend lines diverging over decades, the gap highlighted and growing, clean data-viz motion graphics"
 schematics: "Diagram: CPU vs DRAM performance divergence graph + memory latency vs bandwidth breakdown"
 ---
 
-Post 34 closed on a specific observation: DDR bandwidth has scaled dramatically across generations, but DRAM *latency* hasn't kept pace nearly as well. This post is about the consequence of that divergence at a systemic level — a gap between CPU speed and memory speed that has been widening for decades, commonly called the memory wall.
+Post 34 closed on a split: DDR bandwidth scaled; DRAM *latency* did not. Zoom out and that split is a system-level gap that has been widening for decades.
 
-## The Divergence, Plotted
+## Diverging Exponentials
 
-Chart CPU performance and DRAM access latency against each other from roughly 1980 to today, and the two lines do not move together at all. CPU performance (driven by the clock-speed and architectural gains covered throughout Phase 3) improved by many orders of magnitude over this period. DRAM latency improved too, but by a dramatically smaller factor — the gap between the two, plotted on a log scale, does not just persist; it visibly widens decade over decade. This divergence has a name in the architecture literature — the memory wall — coined explicitly because it behaves like a hard structural limit, not a minor inconvenience that better engineering quietly absorbs.
+Wm. A. Wulf and Sally A. McKee named it in 1995. Processor speed and DRAM speed both improve exponentially, but the exponents differ — and the difference of diverging exponentials grows exponentially. CPU performance (Phase 3's clocks and architecture) ran away; DRAM latency improved by a much smaller factor. They called the result the **memory wall**: not a nuisance better engineering quietly absorbs, a structural limit.
 
-## Why Bandwidth Improved but Latency Didn't
+## Why Bandwidth Moved and Latency Did Not
 
-This asymmetry is not an engineering oversight — it traces back to real physics. DRAM's fundamental access latency is dominated by the time needed to sense a tiny amount of charge on a capacitor (Post 10's 1T1C cell) reliably enough to distinguish a 1 from a 0 — and that sensing process has genuine physical limits that do not scale down nearly as fast as transistor switching speed does. Bandwidth, by contrast, can be improved through architectural tricks that do not require beating that fundamental sensing-latency limit at all: wider prefetch, more banks operating in parallel, more channels, double-data-rate transfer — all of these increase *throughput* without needing to make any single access latency any shorter. That is why DDR generation-over-generation improvements (Post 34) have consistently emphasized bandwidth, because that is the dimension where engineering effort actually pays off; latency has proven far more stubborn.
+Not an oversight — physics. DRAM access latency is dominated by sensing a tiny charge on a capacitor (Post 10's 1T1C cell) reliably enough to tell 1 from 0. That sensing does not scale down like transistor switching. Bandwidth can be raised *without* beating that limit: wider prefetch, more banks, more channels, double-data-rate transfer. Throughput without a shorter first access. That is why DDR generations (Post 34) sold bandwidth. Latency has stayed stubborn.
 
-## What the Gap Actually Costs
+## What the Gap Costs
 
-A CPU core stalled waiting on a memory access that takes on the order of hundreds of cycles to complete is, for that entire stall duration, not doing useful work — an enormous waste relative to how much computation that same core could otherwise have completed in that time. This is why the cache hierarchy from Post 15 is not merely a performance nicety — it is the *primary* mechanism the industry relies on to paper over the memory wall at all: keep the working set in fast SRAM as much as possible, and the CPU rarely has to pay DRAM's full latency cost. Out-of-order execution (Post 16) helps too, letting independent instructions proceed while one waits on a slow memory access — but neither caching nor out-of-order execution actually *closes* the gap; they both just hide its effects for workloads whose memory access patterns happen to be cache-friendly or have enough independent work available to overlap.
+A core waiting hundreds of cycles on one miss is not computing. The cache hierarchy (Post 15) is not a nicety; it is the industry's main paper over the wall — keep the working set in SRAM so the CPU rarely pays full DRAM latency. Out-of-order execution (Post 16) hides some of the rest, overlapping independent work with a miss. Neither closes the gap. Both hide it for programs that are cache-friendly or have enough independent work.
 
-## Where This Leaves Modern Systems
+Poor locality — large random structures, some graphs, some databases — still pays the wall in full. That is a large part of why *bandwidth* (not just capacity) became a first-class design target, and why GPU memory hierarchies and HBM (Phase 9) spend cost and complexity on moving bytes even though the first-bit wait barely budged. Next: a cousin wall, on the compute side, at almost the same historical moment.
 
-Workloads with poor cache locality — large, effectively random-access data structures, certain graph algorithms, some database workloads — still feel the memory wall directly and severely, because there is no clever hiding mechanism available when nearly every access misses cache. This is a large part of *why* memory bandwidth (not just capacity) has become such a central design consideration in modern high-performance systems — GPU memory hierarchy (Phase 9) and HBM specifically exist substantially because of exactly this pressure, choosing to maximize *bandwidth* even at real cost and complexity, since latency itself has proven so resistant to improvement. The next post covers a closely related, and roughly contemporaneous, wall — one on the compute side rather than the memory side.
+**Door out:** Wm. A. Wulf and Sally A. McKee, "Hitting the Memory Wall: Implications of the Obvious" (*ACM SIGARCH Computer Architecture News*, 1995) — the short note that named the wall and showed why the gap would dominate unless something basic changed.
 
 <!--
 ASSET CHECKLIST

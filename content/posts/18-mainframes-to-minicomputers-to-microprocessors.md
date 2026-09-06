@@ -1,36 +1,38 @@
 ---
 title: "Mainframes to Minicomputers to Microprocessors"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "3 — Building a CPU & Its Architectures"
 series_index: 18
 tags: []
-summary: "How computing scaled down from room-sized mainframes through minicomputers to the single chip"
+summary: "Three eras of who gets a computer — institutional, departmental, then one chip for everyone"
 image_prompt: "Timeline infographic showing mainframe, minicomputer, and microprocessor at matching scale, clean historical infographic style"
 video_prompt: "20-second animation: a room-sized mainframe shrinking through generations down to a single chip, clean motion graphics"
 labs: ["mini-cpu"]
 schematics: "Diagram: mainframe/minicomputer/microprocessor size/cost timeline + IBM S/360 vs PDP-11 vs Intel 4004 comparison"
 ---
 
-ENIAC (Phase 1) occupied 1,800 square feet and weighed 30 tons. A modern smartphone's CPU outperforms it by many orders of magnitude while fitting on a fingertip. That collapse in size did not happen in one step — it happened across three distinct eras, each defined by a different answer to "who gets to use a computer, and how many of them exist."
+ENIAC (Phase 1) occupied about 1,800 square feet and weighed roughly 30 tons. A phone CPU outperforms it by orders of magnitude on a fingertip. That collapse was not one leap — three eras, each answering differently: *who gets a computer, and how many exist?*
 
-## Mainframes: One Machine, Institutional Scale
+## Mainframes: One Machine, Shared
 
-Through the 1950s and into the 60s, computers were mainframes: room-filling, expensive machines owned by large institutions — universities, corporations, governments — and shared among many users through batch processing (Post 21 covers how that worked in practice). The IBM System/360, launched in 1964, is a landmark for a reason beyond raw scale: it introduced a *family* of compatible machines spanning a wide performance range, all running the same software — an early, deliberate separation of ISA (Post 11) from the specific hardware implementing it, so a customer's software investment survived a hardware upgrade.
+1950s–60s: room-filling machines for universities, corporations, governments — shared through batch processing (Post 21). IBM's System/360 (1964) mattered beyond scale: a *family* of compatible machines across a performance range, same software. Deliberate separation of ISA (Post 11) from the box underneath, so a customer's code survived a hardware upgrade. Gene Amdahl, Gerrit Blaauw, and Fred Brooks drove that architecture.
 
-## Minicomputers: Smaller, Cheaper, Departmental
+## Minicomputers: A Department Can Afford One
 
-By 1970 and through the 1970s, minicomputers such as DEC's PDP-11 (introduced 1970) shrank the machine to something a single department — not just a whole institution — could afford and operate directly, without a centralized computing bureau. Around 600,000 PDP-11s were eventually sold across its lifespan, which stretched into the 1990s. The PDP-11's ISA is influential in its own right: its orthogonal addressing modes and clean instruction encoding shaped later architecture design, including aspects of the C programming language itself (Post 27), which was developed alongside Unix (Post 22) largely on PDP-11 hardware.
+1970s: DEC's PDP-11 (1970) and kin shrank the machine to something a department — not a whole institution — could buy and run without a central bureau. Around 600,000 PDP-11s sold across a long life. The ISA's orthogonal addressing and clean encoding shaped later design, including habits in C (Post 27), which grew up with Unix (Post 22) largely on PDP-11 hardware.
 
-## Microprocessors: The Whole CPU on One Chip
+## Microprocessors: The CPU on One Die
 
-The real discontinuity comes with the microprocessor — an entire CPU's logic fabricated on a single integrated circuit, rather than built from a rack of discrete transistors or small-scale-integration chips wired together. Intel's 4004 (1971), originally designed for a calculator, is usually credited as the first commercial single-chip CPU: 4-bit, about 2,300 transistors, clocked at roughly 740 kHz. It is almost comically weak by any modern standard — and it is also the direct technological ancestor of every microprocessor that followed, including the 8080, the Z80, and eventually the x86 lineage covered in the next post.
+The discontinuity: fabricate the whole CPU on one integrated circuit instead of wiring racks of discrete parts. Intel's 4004 (1971), built for a calculator, is usually credited as the first commercial single-chip CPU — 4-bit, about 2,300 transistors, up to roughly 740 kHz. Weak by any modern measure; the direct ancestor of the 8080, the Z80, and the x86 line in the next post.
 
-## Why the Collapse Kept Compounding
+## Why the Collapse Compounded
 
-Each transition here — mainframe to mini to microprocessor — tracks directly with fabrication improvements from Phase 8: fitting more transistors into less silicon area at lower cost. The mainframe era's machines were built from thousands of discrete components wired together on backplanes; the microprocessor era compressed that entire structure onto one piece of silicon. That compounding density improvement is what turned computing from an institutional resource into first a departmental one, then a personal one, and eventually something embedded invisibly into nearly everything — a scaling curve that Phase 8 traces in far more physical detail, right down to what a modern "7nm" label actually means.
+Each step tracks fabrication density from Phase 8: more transistors, less area, lower cost. Mainframes were thousands of components on backplanes; microprocessors compressed that structure onto silicon. Computing moved from institutional resource to departmental tool to personal (then embedded) device — the same scaling curve Phase 8 follows into what a modern process node actually means.
 
 {{< lab type="mini-cpu" >}}
+
+**Door out:** G. M. Amdahl, G. A. Blaauw, and F. P. Brooks Jr., "Architecture of the IBM System/360" (*IBM Journal of Research and Development*, 1964) — the primary statement of a compatible machine family and the ISA/implementation split.
 
 <!--
 ASSET CHECKLIST

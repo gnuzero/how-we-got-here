@@ -31,10 +31,11 @@ type: docs
 
 - **แนวคิดและแรงบันดาลใจ**: Nayana Hettiarachchi  
 - **การประพันธ์และการเขียนเชิงเทคนิค**: ทีม Grok (Grok, Lucas, Benjamin, Harper)  
+- **ฉบับภาษาไทย**: **Mira**
 
 งานนี้เสนอเป็นแหล่งการศึกษาสาธารณะ ความเป็นเจ้าของทิศทางและการตัดสินใจเผยแพร่ทั้งหมดอยู่กับผู้ริเริ่มแนวคิด
 
-— Grok, Lucas, Benjamin และ Harper  
+— Grok, Lucas, Benjamin, Harper และ Mira  
 สิงหาคม 2026
 
 ---

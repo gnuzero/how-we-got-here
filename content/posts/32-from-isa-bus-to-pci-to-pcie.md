@@ -1,35 +1,33 @@
 ---
 title: "From ISA Bus to PCI to PCIe"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "5 — The Bus & System Architecture"
 series_index: 32
 tags: []
-summary: "Serial vs parallel, why PCIe won"
+summary: "Skew killed the wide parallel bus; point-to-point serial is how we escaped"
 image_prompt: "Timeline infographic: ISA → PCI → PCIe evolution with bandwidth numbers, clean historical technical infographic style"
 video_prompt: "20-second animation: parallel bus wires struggling with skew, morphing into serial PCIe lanes, clean motion graphics"
 schematics: "Diagram: parallel bus signal skew illustration + PCIe differential signaling diagram"
 ---
 
-Post 31 described the fundamental limitation of a shared bus: every device contends for the same physical wires, and total bandwidth is a hard ceiling divided across whoever is waiting. The history of expansion buses — ISA, then PCI, then PCIe — is largely the story of engineering around that limitation, and it culminates in a counterintuitive result: going *serial* (fewer wires) ended up faster than staying parallel (more wires).
+Post 31's ceiling: every device contends for the same wires. ISA, then PCI, then PCIe is the engineering around that ceiling — not a catalog of buses, a sequence of constraints. The surprise at the end: going *serial* (fewer wires) beat staying parallel (more wires).
 
-## ISA: Wide, Slow, and Increasingly a Bottleneck
+## The Parallel Intuition, and Where It Breaks
 
-The ISA (Industry Standard Architecture) bus, dominant through the 1980s and into the 90s, was a wide parallel bus — many data lines running in parallel, each carrying one bit simultaneously, clocked together. Parallel buses have an intuitive appeal: more wires should mean more bandwidth, since you move more bits per clock tick. That intuition holds at modest clock speeds — but it runs into a real physical problem as clock speed rises.
+ISA (Industry Standard Architecture) was a wide parallel bus: many data lines, one bit each, clocked together. More wires should mean more bandwidth. At modest clocks, it does.
 
-## Why Parallel Buses Hit a Wall
+Every wire has slightly different length and capacitance, so bits do not arrive at the same instant — **skew**. At a slow clock the variance is a small fraction of the period and does not matter. Raise the clock, shrink the period, and the same fixed skew eats the timing margin until the receiver cannot sample every bit on one edge. That is a physical ceiling, not a missed trick. You cannot crank a wide parallel bus indefinitely.
 
-Every wire in a parallel bus has slightly different length, capacitance, and electrical characteristics — so signals on different wires do not arrive at exactly the same instant, an effect called skew. At low clock speeds, that timing variance is small relative to the clock period and simply does not matter. As clock speed increases, the clock period shrinks, and the same fixed skew becomes a larger fraction of the available timing margin — eventually large enough that some bits arrive too late (or too early) relative to others for the receiver to sample them all correctly at the same clock edge. This is a genuine physical ceiling, not an engineering oversight — you cannot crank a wide parallel bus's clock indefinitely without running into skew.
+## PCI Bought Headroom, Not Escape
 
-## PCI: An Incremental Improvement, Same Fundamental Approach
+PCI (Peripheral Component Interconnect, 1992) was faster than ISA — better arbitration, plug-and-play configuration, more practical bandwidth. It was still a shared parallel bus, still subject to skew as clocks rose. Headroom, not a new architecture.
 
-PCI (Peripheral Component Interconnect), introduced in 1992, was faster and more capable than ISA — better arbitration, plug-and-play device configuration, wider practical bandwidth — but it was still fundamentally a shared parallel bus, and still subject to the same skew-driven ceiling as clock speeds rose. It bought real headroom over ISA, but it did not escape the underlying physical constraint.
+## PCIe Left the Shared Wires
 
-## PCIe: Escaping the Constraint Entirely
+PCI Express (2003) changed the topology. Instead of one shared parallel bus, each device gets a dedicated point-to-point serial link (a lane, or a bundle of lanes) to a switch. One differential pair per direction per lane: nothing to keep in lockstep across a dozen wires, so per-lane clocks can climb far past any parallel bus. Lanes bond (x1, x4, x8, x16) for devices that need more — a GPU takes x16 because it moves far more than a NIC in x1. Unrelated devices no longer share wires, so they no longer wait on each other's arbitration.
 
-PCI Express (PCIe), introduced in 2003, made a different architectural choice: instead of one shared parallel bus with many devices contending for it, PCIe uses dedicated, point-to-point serial links — each device gets its own direct connection (a "lane," or a bundle of lanes) to a switch, rather than sharing wires with every other device on the bus. Being serial (one differential signal pair per direction, per lane) sidesteps the skew problem entirely — there is no need to keep dozens of parallel wires synchronized, because there is only one signal pair to worry about per lane.
-
-Freed from the skew ceiling, PCIe's per-lane clock speed could scale dramatically higher than any parallel bus's, and multiple lanes can be combined (x1, x4, x8, x16 configurations) to scale total bandwidth for devices that need it — a GPU typically uses a x16 slot precisely because it needs far more bandwidth than, say, a network card in a x1 slot. The result: fewer physical wires, dramatically higher achievable bandwidth, and — because it is point-to-point rather than shared — no arbitration contention between unrelated devices. The next post goes deep on how PCIe structures its data transfers to make this work.
+Fewer physical wires. Higher achievable bandwidth. The shared-bus ceiling is gone. Post 33 is how those serial links structure a transfer so the rest of the machine can still *mean* a read or a write.
 
 <!--
 ASSET CHECKLIST

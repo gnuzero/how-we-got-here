@@ -7,42 +7,42 @@ Cadence: **3 posts/week**. 62 posts total (~21 weeks / ~4.8 months).
 Prompts for image/video/schematics are pre-filled in each post's frontmatter.
 
 ## Phase 1 — Foundations: Mechanical to Vacuum-Tube Computing
-- [x] 01 Mechanical & Electromechanical Computing — draft written
-- [x] 02 Relays and Electromechanical Logic — draft written
-- [x] 03 The Vacuum Tube Era — draft written
-- [x] 04 Why the Transistor Had to Happen — draft written
+- [x] 01 Mechanical & Electromechanical Computing — draft written; editorial pass done (draft: false)
+- [x] 02 Relays and Electromechanical Logic — draft written; editorial pass done (draft: false)
+- [x] 03 The Vacuum Tube Era — draft written; editorial pass done (draft: false)
+- [x] 04 Why the Transistor Had to Happen — draft written; editorial pass done (draft: false)
 
 ## Phase 2 — Physics & Devices
-- [x] 05 Semiconductors from First Principles — draft written
-- [x] 06 The Transistor: BJT to MOSFET — draft written
-- [x] 07 Logic Gates from Transistors — draft written
-- [x] 08 From Gates to Combinational Logic — draft written
-- [x] 09 Sequential Logic — draft written
-- [x] 10 The Memory Hierarchy Begins — draft written
+- [x] 05 Semiconductors from First Principles — draft written; editorial pass done (draft: false)
+- [x] 06 The Transistor: BJT to MOSFET — draft written; editorial pass done (draft: false)
+- [x] 07 Logic Gates from Transistors — draft written; editorial pass done (draft: false)
+- [x] 08 From Gates to Combinational Logic — draft written; editorial pass done (draft: false)
+- [x] 09 Sequential Logic — draft written; editorial pass done (draft: false)
+- [x] 10 The Memory Hierarchy Begins — draft written; editorial pass done (draft: false)
 
 ## Phase 3 — Building a CPU & Its Architectures
-- [x] 11 Instruction Sets — draft written
-- [x] 12 Datapath Design — draft written
-- [x] 13 Pipelining — draft written
-- [x] 14 Branch Prediction — draft written
-- [x] 15 Caches — draft written
-- [x] 16 Out-of-Order Execution — draft written
-- [x] 17 Superscalar & Multicore — draft written
-- [x] 18 Mainframes to Minicomputers to Microprocessors — draft written
-- [x] 19 The x86 vs RISC Split — draft written
-- [x] 20 ARM and RISC-V: The Architecture Landscape Today — draft written
+- [x] 11 Instruction Sets — draft written; editorial pass done (draft: false)
+- [x] 12 Datapath Design — draft written; editorial pass done (draft: false)
+- [x] 13 Pipelining — draft written; editorial pass done (draft: false)
+- [x] 14 Branch Prediction — draft written; editorial pass done (draft: false)
+- [x] 15 Caches — draft written; editorial pass done (draft: false)
+- [x] 16 Out-of-Order Execution — draft written; editorial pass done (draft: false)
+- [x] 17 Superscalar & Multicore — draft written; editorial pass done (draft: false)
+- [x] 18 Mainframes to Minicomputers to Microprocessors — draft written; editorial pass done (draft: false)
+- [x] 19 The x86 vs RISC Split — draft written; editorial pass done (draft: false)
+- [x] 20 ARM and RISC-V: The Architecture Landscape Today — draft written; editorial pass done (draft: false)
 
 ## Phase 4 — Software Foundations: OS, Languages & Real-Time Systems
-- [x] 21 Batch Processing and the Birth of the Operating System — draft written
-- [x] 22 Time-Sharing and the Unix Lineage — draft written
-- [x] 23 The GNU Movement and Linux — draft written
-- [x] 24 Virtual Memory and Multitasking — draft written
-- [x] 25 Containers and Modern OS Isolation — draft written
-- [x] 26 From Machine Code to Assembly — draft written
-- [x] 27 High-Level Languages: FORTRAN, COBOL, Lisp, C — draft written
-- [x] 28 Compilers, JIT, and Modern Language Runtimes — draft written
-- [x] 29 Real-Time Systems and Deterministic Scheduling — draft written
-- [x] 30 Real-Time Systems in Practice — draft written
+- [x] 21 Batch Processing and the Birth of the Operating System — draft written; editorial pass done (draft: false)
+- [x] 22 Time-Sharing and the Unix Lineage — draft written; editorial pass done (draft: false)
+- [x] 23 The GNU Movement and Linux — draft written; editorial pass done (draft: false)
+- [x] 24 Virtual Memory and Multitasking — draft written; editorial pass done (draft: false)
+- [x] 25 Containers and Modern OS Isolation — draft written; editorial pass done (draft: false)
+- [x] 26 From Machine Code to Assembly — draft written; editorial pass done (draft: false)
+- [x] 27 High-Level Languages: FORTRAN, COBOL, Lisp, C — draft written; editorial pass done (draft: false)
+- [x] 28 Compilers, JIT, and Modern Language Runtimes — draft written; editorial pass done (draft: false)
+- [x] 29 Real-Time Systems and Deterministic Scheduling — draft written; editorial pass done (draft: false)
+- [x] 30 Real-Time Systems in Practice — draft written; editorial pass done (draft: false)
 
 ## Phase 5 — The Bus & System Architecture
 - [x] 31 Buses 101 — draft written
@@ -102,7 +102,7 @@ Re-verified posts 01–04 for first public cut. Fixes applied:
 - [x] Post 02 — soft polish: relay era span; Z3 ~5.3 Hz parenthetical
 - [x] Posts 03/04 — ENIAC power “about 150–174 kW”
 
-**Wave 1 text ready** (Foreword already draft:false; 01–04 still draft:true pending assets + deploy scaffolding).
+**Wave 1 text ready**; posts 01–04 now also `draft: false` after 2026-09-06 editorial wave (assets still pending).
 
 ## Fact-check pass (completed)
 
@@ -125,7 +125,7 @@ Posts 57–63 checked. No fabricated paper/year/formula errors. Fixes applied:
 - [x] Post 61 — cluster scale + fat-tree oversubscription nuance
 Posts 57 and 59: all checked claims confirmed.
 
-**Major technical fact-check passes complete** for Phases 1–2, 5, 9–10 (plus prior sampled pass). Remaining: spot-check Phases 3–4, 6–8 claim lists as needed before those waves publish.
+**Major technical fact-check passes complete** for Phases 1–2, 5, 9–10 (plus prior sampled pass). Phase 3–4 spot-check done in 2026-09-06 editorial wave. Remaining: spot-check Phases 6–8 claim lists as needed before those waves publish.
 
 ### Phase 5 + 9 fact-check (2026-08-23)
 Posts 31–37 and 52–56 checked. No hard ERRORs. IMPRECISE fixes applied:
@@ -145,6 +145,24 @@ Posts 05–10 checked. 1 ERROR + several IMPRECISE claims fixed in-file:
 - [x] Post 09 — SR latch vs gated-latch transparency clarified
 - [x] Post 10 — D FF ~20T (not “six or more”); DRAM retention “tens of ms” / ~64 ms refresh window
 Posts 06 and 08: all checked claims confirmed, no edits.
+
+## Editorial wave — posts 00–30 (2026-09-06)
+
+Lucas worker pass: English editorial polish + Phase 3–4 spot-check. Foreword already `draft: false`. Posts **01–30** set to `draft: false` after editorial pass. Assets (hero/schematics/video) still outstanding per remaining workflow — do not treat as fully publish-ready without assets.
+
+**Claim fixes this wave:**
+- [x] Post 03 — ENIAC stored-program: added parenthetical that ENIAC itself gained a limited stored-program mode in 1948
+- [x] Post 04 — cross-ref: process-node scaling is Phase 8 (was Phase 7)
+- [x] Post 06 — same Phase 8 cross-ref; removed leftover `<!-- Write here -->` stub
+- [x] Post 08 — removed leftover `<!-- Write here -->` stub
+- [x] Post 16 — Tomasulo / System/360 Model 91 dated to published 1967 (was vague “1960s”)
+- [x] Post 22 — Multics: planned from 1964, publicly described 1965 (was “starting in 1965”)
+
+**Spot-checked and confirmed (no change needed):** Intel 4004 (~2,300 transistors, ~740 kHz, 1971); PDP-11 introduced 1970 / ~600,000 sold; RISC-V ~2010 UC Berkeley; FORTRAN 1957 / COBOL 1959 / Lisp 1958 / C 1972; GNU 1983 / Linux 1991; rate-monotonic optimality claim; DO-178C avionics reference; cache-line 64 B typical; x86 instruction length up to 15 bytes.
+
+**Also:** `content/_index.md` phase list aligned to TRACKER (10 phases + Attention). `content/about.md` status line updated for this wave.
+
+**Left `draft: true`:** none in 00–30 range.
 
 ## Remaining per-post workflow (before flipping draft: false)
 1. Editorial pass on the draft text (all drafts were written quickly, in one internal-only push — verify claims, tighten prose, fact-check specific numbers)

@@ -1,5 +1,4 @@
-# Placeholder until Nayana provides ORG / BOOK_REPO (see GITHUB_SETUP.md).
-baseURL = "https://ORG.github.io/BOOK_REPO/"
+baseURL = "https://gnuzero.github.io/how-we-got-here/"
 title = "From Relays to Attention: How We Got Here"
 theme = "hugo-book"
 
@@ -38,8 +37,7 @@ defaultContentLanguageInSubdir = false
 
 [params]
   BookSection = "posts"
-  # Placeholder until ORG / BOOK_REPO exist.
-  BookRepo = "https://github.com/ORG/BOOK_REPO"
+  BookRepo = "https://github.com/gnuzero/how-we-got-here"
 
 [markup.goldmark.renderer]
   unsafe = true   # allow raw HTML/SVG inline for schematics

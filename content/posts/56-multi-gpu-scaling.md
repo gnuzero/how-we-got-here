@@ -1,33 +1,33 @@
 ---
 title: "Multi-GPU Scaling"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "9 — GPUs & Parallel Compute"
 series_index: 56
 tags: []
-summary: "NVLink, GPUDirect, and where custom fabrics fit"
+summary: "One GPU is finite — interconnect between GPUs becomes the next wall"
 image_prompt: "System diagram of an 8-GPU NVLink-connected node with NVSwitch, clean datacenter GPU cluster diagram style"
 video_prompt: "25-second animation: data moving between 8 GPUs through an NVSwitch mesh vs a PCIe-only bottleneck, clean animation — direct tie-in to BridgeStack GPU memory fabric"
 schematics: "Diagram: NVSwitch all-to-all topology + PCIe tree topology bottleneck comparison"
 ---
 
-A single GPU, however capable, has finite compute throughput and finite HBM capacity (Post 54). Training or serving today's largest models routinely requires coordinating work across many GPUs — sometimes within a single server, sometimes across an entire cluster of servers — and how those GPUs communicate with each other turns out to be at least as important to real achieved performance as any single GPU's own specifications.
+A single GPU has finite compute and finite HBM (Post 54). Today's largest models need many GPUs — in one server, then across a cluster — and how those GPUs talk to each other often decides real throughput as much as any single GPU's peak specs.
 
-## Why Naive Scaling Doesn't Just Work
+## Splitting Work Is Not Free
 
-Splitting work across multiple GPUs isn't free — Post 46's data-parallel and model-parallel training discussion covered *why* this splitting is often necessary, but making it *efficient* depends heavily on how fast those GPUs can exchange data with each other. If inter-GPU communication is slow relative to each GPU's own compute throughput, GPUs spend a meaningful fraction of their time waiting on data from their peers rather than doing useful computation — directly analogous to a CPU core stalling on a slow memory access (Post 35's memory wall, again), just applied at the scale of GPU-to-GPU communication instead of CPU-to-DRAM.
+Post 46 covered *why* data-parallel and model-parallel splits are often necessary. Efficiency depends on how fast GPUs exchange data. If communication is slow relative to each GPU's compute, peers stall waiting on each other — the memory wall (Post 35) again, applied to GPU-to-GPU links instead of CPU-to-DRAM.
 
-## NVLink and NVSwitch: The Direct Path
+## Direct Paths Inside One Server
 
-Post 37 introduced NVLink as a direct, high-bandwidth GPU-to-GPU interconnect, deliberately bypassing the CPU-mediated PCIe path that would otherwise be the default. Within a single server, NVSwitch extends this into a genuine all-to-all topology — every GPU can reach every other GPU in that server directly, at NVLink's substantially higher bandwidth than routing the equivalent transfer through PCIe and the CPU would allow. For workloads requiring frequent, large data exchange between GPUs — exactly what large-scale training's gradient synchronization steps require — this direct, high-bandwidth path is very often the actual determinant of real achieved training throughput, not any single GPU's peak theoretical compute number in isolation.
+Post 37 introduced NVLink as a high-bandwidth GPU-to-GPU interconnect that bypasses the CPU-mediated PCIe path. Within a server, NVSwitch turns that into all-to-all: every GPU reaches every other at NVLink bandwidth rather than through PCIe and the host. For workloads that exchange large gradients constantly, that direct path often determines achieved training throughput more than any isolated peak-FLOPS number.
 
-## Scaling Beyond a Single Server
+## Beyond One Box
 
-NVLink and NVSwitch handle GPU-to-GPU communication within one server extremely well, but real large-scale training frequently spans many servers. That's where the datacenter networking and RDMA concepts from Post 42 become directly relevant again: GPUDirect RDMA lets a network adapter read from or write directly into GPU memory across server boundaries, without unnecessary intermediate copies through host system memory — extending the same "minimize hops, maximize direct bandwidth" philosophy that motivated NVLink within a single server out to the scale of an entire multi-server cluster.
+Large training spans many servers. Post 42's RDMA ideas return: GPUDirect RDMA lets a network adapter read or write GPU memory across servers without extra copies through host DRAM — the same "minimize hops, maximize direct bandwidth" bet, now at cluster scale.
 
-## Where This Leads
+## The Philosophy This Series Keeps Naming
 
-This entire discussion — direct GPU-to-GPU paths, minimizing unnecessary hops, treating interconnect bandwidth as a first-class design constraint rather than an afterthought — is the same underlying philosophy behind the custom GPU memory fabric project this series has referenced periodically throughout: an open, PCIe-based approach to achieving what NVLink achieves within NVIDIA's proprietary ecosystem, making remote GPU memory appear directly addressable rather than requiring every cross-GPU transfer to route through a general-purpose, CPU-mediated software path. Phase 10 picks this thread up at true datacenter scale — not just how a handful of GPUs within one server talk to each other, but how thousands of GPUs across an entire training cluster are wired together and kept fed with data efficiently enough to approach their aggregate theoretical compute potential.
+Direct GPU-to-GPU paths, fewer unnecessary hops, interconnect as a first-class constraint — the same philosophy behind the custom GPU memory fabric this series has referenced: an open, PCIe-based approach to what proprietary GPU fabrics do inside one vendor's stack. Phase 10 picks the thread up at true datacenter scale — not a handful of GPUs in one box, but thousands across a training cluster, wired so aggregate theoretical compute is not lost to coordination.
 
 <!--
 ASSET CHECKLIST

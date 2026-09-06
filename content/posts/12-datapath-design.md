@@ -1,32 +1,30 @@
 ---
 title: "Datapath Design"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "3 — Building a CPU & Its Architectures"
 series_index: 12
 tags: []
-summary: "Single-cycle CPU walkthrough"
+summary: "A single-cycle datapath makes the pieces visible — and shows why its clock is sized to the worst case"
 image_prompt: "Block diagram of a single-cycle RISC datapath, classic computer architecture textbook style"
 video_prompt: "30-second animation: an instruction flowing through a single-cycle datapath, clean technical animation"
 labs: ["mini-cpu"]
 schematics: "Diagram: full single-cycle datapath block diagram with control unit and muxes labeled"
 ---
 
-An ISA (Post 11) is a specification. A datapath is the physical hardware that carries it out. The simplest version — a single-cycle datapath — executes one complete instruction per clock cycle, start to finish, with no pipelining. It is not how real CPUs work today, but it is the clearest way to see how the pieces from earlier phases connect.
+An ISA (Post 11) is a contract. A datapath is the hardware that carries it out. The simplest version — a *single-cycle* datapath — finishes one whole instruction per clock tick: fetch, decode, execute, write-back, done. Real CPUs are not built this way today. It is still the clearest way to see how Phase 2's pieces connect.
 
-## The Core Components
+## One Instruction, One Clock
 
-**Program Counter (PC):** a register (Post 9's flip-flops) holding the address of the current instruction. **Instruction Memory:** read-only from the datapath's perspective, indexed by the PC, returning the raw instruction bits. **Register File:** a small, fast array of registers (built from the same SRAM-family cells as Post 10's cache discussion, organized differently) that the decoded instruction reads its operands from and writes its result to. **ALU:** Post 8's arithmetic/logic unit, performing the operation the instruction specifies. **Data Memory:** for load/store instructions, the path to main memory. **Control Unit:** decodes the opcode and generates every control signal — which ALU operation to perform, whether to write the register file, whether this is a memory access, and so on.
+The pieces: a **program counter** (Post 9's flip-flops) holding the next instruction address; **instruction memory** indexed by that PC; a **register file** for operands and results; an **ALU** (Post 8) for the operation; **data memory** for loads and stores; and a **control unit** that reads the opcode and drives every mux and enable.
 
-## Following an Instruction Through
+Take ADD. The PC indexes instruction memory. The control unit sees a register-register ADD. Two source registers feed the ALU; the ALU result writes the destination; the PC advances. Fetch, decode, register read, ALU, write-back, PC update — all inside *one* clock period.
 
-Take a simple ADD. The cycle begins: the PC indexes instruction memory, and the instruction bits come out. The control unit decodes the opcode and determines that this is an ADD in register-register format. The register file is read using the two source-register fields. Those values enter the ALU, which the control unit has configured for addition. The ALU result goes to the register file's write-data input, and the destination-register field selects where it is written. At the same time, the PC is incremented (or, for a branch, computed differently) to point at the next instruction. Fetch, decode, register read, ALU operation, register write, and PC update all happen within a *single* clock cycle.
+## The Constraint That Forces Pipelining
 
-## Why "Single-Cycle" Is a Teaching Tool, Not a Real Design
+That clock period must be long enough for the *slowest* instruction's full path — even instructions that never touch data memory. Every ADD therefore runs at the speed of the worst case. Throughput sits on the floor.
 
-Notice the constraint: the clock period must be long enough for the *slowest* possible instruction's full path through every stage — even for instructions that do not need every stage. A simple register-to-register ADD never touches data memory, yet the clock period must still accommodate instructions that do. Every instruction therefore runs at the speed of the worst case, which wastes potential throughput.
-
-That is exactly the problem pipelining solves: instead of one long clock period sized for the worst case, break execution into stages, each sized for *its own* worst case, and let different instructions occupy different stages at once. That is the subject of the next post, and arguably the single most important idea in classical CPU microarchitecture.
+Pipelining answers that constraint: cut the long path into stages, clock each stage for *its* worst case, and let different instructions occupy different stages at once. Same ISA. Far more work finished per second. That is the next post — and the central idea of classical microarchitecture.
 
 {{< lab type="mini-cpu" >}}
 

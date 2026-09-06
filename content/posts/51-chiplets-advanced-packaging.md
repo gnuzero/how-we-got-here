@@ -1,35 +1,33 @@
 ---
 title: "Chiplets & Advanced Packaging"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "8 — Process Nodes & Fabrication"
 series_index: 51
 tags: []
-summary: "Why monolithic dies stopped making sense"
+summary: "Yield falls with die area — split into chiplets and buy back bandwidth with advanced packaging"
 image_prompt: "Cutaway diagram comparing a monolithic die vs a chiplet package with interposer, clean semiconductor packaging illustration style"
 video_prompt: "20-second animation: a monolithic die splitting into chiplets connected via an interposer, yield improving, clean explainer motion graphics"
 schematics: "Diagram: monolithic die vs chiplet+interposer cross-section + yield-vs-die-size curve"
 ---
 
-Post 49 covered a pattern worth restating here: when scaling within an existing geometry hits a physical wall, the fix is often a structural change rather than pushing the same approach harder. Chiplets are that same pattern, applied one level up from the individual transistor — not a change to the transistor structure itself, but a change to how an entire *chip* gets assembled.
+Post 49 restated a pattern: when scaling inside one geometry hits a wall, change the structure. Chiplets apply that pattern one level up from the transistor — not a new device physics, but a new answer to how a whole chip is assembled once monolithic dies get too large to yield.
 
-## The Problem With Monolithic Dies
+## Monolithic Dies and the Yield Wall
 
-A traditional chip is fabricated as a single, monolithic piece of silicon — every functional block (CPU cores, memory controllers, I/O interfaces) manufactured together on the same die, in the same manufacturing run. That has an unavoidable downside tied to yield: any random defect *anywhere* on the die can render the entire chip non-functional, and the probability of at least one such defect scales with total die area — larger dies are disproportionately more likely to contain a fatal defect, so yield (the fraction of manufactured dies that work) drops sharply as die size grows. That creates real pressure to keep any single monolithic die from getting too large, even when a larger, more capable chip would otherwise be architecturally desirable.
+A traditional chip is one piece of silicon: cores, memory controllers, I/O fabricated together. Any fatal defect anywhere ruins the whole die, and the chance of such a defect grows with area — large dies yield badly even when a bigger, more capable chip would be architecturally desirable. That is an economic/physics constraint, not a branding choice: keep any single die from growing without bound.
 
-## Chiplets: Splitting the Design, Keeping the Function
+## Split the Silicon, Keep the Function
 
-The chiplet approach splits what would traditionally be one large monolithic die into multiple smaller, individually fabricated dies (chiplets), each handling a specific function, then connects those chiplets within a single package using high-density interconnects — an interposer or advanced substrate engineered to provide the short, high-bandwidth connections that, in a monolithic design, would simply have been adjacent regions on the same piece of silicon.
+Chiplets cut what would have been one large die into smaller, separately fabricated dies, each owning a function, then reconnect them inside one package with high-density interconnects (interposer or advanced substrate). A defect kills only that small chiplet; smaller dies yield better for the same total function. You can also mix process nodes in one package — older, cheaper silicon for I/O; leading-edge only where compute density earns it — flexibility a single-process monolith cannot offer.
 
-The yield math is the direct payoff: a defect on any *one* small chiplet only ruins that chiplet, not the other independently fabricated chiplets in the same package — and smaller dies have inherently higher yield than one large monolithic equivalent covering the same total functional area. You can even mix chiplets fabricated on different process nodes within the same package — putting less performance-critical I/O logic on an older, cheaper, higher-yield process while keeping only the most performance-critical compute logic on the newest, most expensive leading-edge node — flexibility a single monolithic die fabricated entirely on one process cannot offer.
+## Packaging Has to Buy Back the Wire
 
-## The Interposer: Making Disaggregation Practically Viable
+Disaggregation only works if inter-chiplet bandwidth and latency stay close enough to on-die links. Silicon interposers and 3D stacking exist to provide that density — far beyond routing the same signals out through a conventional PCB. Without that packaging step, the yield win would be paid for in a new interconnect wall.
 
-None of this works without high-bandwidth, low-latency connections between chiplets — if inter-chiplet communication were meaningfully slower or higher-latency than equivalent on-die communication in a monolithic design, you'd lose much of the performance the disaggregated design was supposed to preserve. Advanced packaging techniques — silicon interposers, and increasingly 3D stacking — provide exactly this: interconnect density and bandwidth between chiplets that approaches on-die communication far more closely than routing the same signals out through a conventional PCB ever could.
+## Same Packaging, Next Phase's Memory
 
-## Why This Matters for Everything Downstream
-
-This same interposer-based advanced packaging technology is what enables HBM (High Bandwidth Memory), covered in Phase 9's GPU memory hierarchy discussion — HBM stacks memory dies and connects them to a compute die through exactly this kind of high-density interposer interconnect, for the same underlying reason: achieving high bandwidth between physically separate pieces of silicon that behave, from a system-performance perspective, almost as if they were one integrated piece. The chiplet and advanced-packaging story in this post and the HBM story in Phase 9 are, at a deep level, the same packaging technology solving two related instances of the same problem: getting enough bandwidth between physically separate dies that the separation stops being a meaningful performance penalty.
+The same advanced-packaging family enables HBM in Phase 9: stack memory dies, attach them to a compute die through a high-density interposer, and treat physically separate silicon as nearly one piece from a bandwidth perspective. Chiplet compute and HBM memory are two instances of one constraint — get enough bandwidth between separate dies that the split stops being the performance penalty.
 
 <!--
 ASSET CHECKLIST

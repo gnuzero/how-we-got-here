@@ -1,40 +1,42 @@
 ---
 title: "Ethernet and the Local Area Network"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "6 — Networking Evolution"
 series_index: 40
 tags: []
-summary: "CSMA/CD and how LANs standardized"
+summary: "Shared cable, no central arbiter — CSMA/CD solved the LAN collision constraint; switches later removed it"
 image_prompt: "Diagram of a classic Ethernet bus topology showing a collision event and CSMA/CD backoff, clean networking textbook diagram style"
 video_prompt: "20-second animation: two stations colliding on shared Ethernet, backing off randomly, clean technical animation"
 labs: ["vm-terminal"]
 schematics: "Diagram: CSMA/CD collision detection and backoff timing + Ethernet frame structure"
 ---
 
-ARPANET (Post 39) solved wide-area packet switching between geographically distant sites. A separate, related problem needed solving at a much smaller scale: connecting many machines within a single building or office efficiently, without anything as elaborate as IMP-style routing for what is often just a few dozen meters of cable. Ethernet, developed at Xerox PARC starting in 1973, became the dominant answer.
+ARPANET (Post 39) solved wide-area packet switching between distant sites. Inside one building, IMP-style routing for a few dozen meters of cable is the wrong tool. Ethernet, begun at Xerox PARC in 1973 by Robert Metcalfe and David Boggs, became the dominant local answer.
 
 ## The Shared-Medium Problem
 
-Early Ethernet connected multiple stations to a single shared physical cable (a "bus" topology, echoing the shared-bus problem from Phase 5, applied here to networking instead of intra-machine communication). Every station could transmit onto that shared cable, and every station could hear every transmission — which immediately raises the same fundamental question Post 31 raised for system buses: what happens when two stations try to transmit at the same time?
+Early Ethernet put many stations on one shared cable — a bus topology, the same *kind* of contention Post 31 faced inside a machine, now on a LAN. Every station can transmit; every station hears every transmission. Two transmitters at once corrupt both.
 
 ## CSMA/CD: Listen, Transmit, Detect, Back Off
 
-Ethernet's answer is CSMA/CD — Carrier Sense Multiple Access with Collision Detection. **Carrier Sense**: before transmitting, a station listens to check whether the shared medium is currently idle. **Multiple Access**: any station can attempt to transmit once it senses the medium is idle — there is no centralized arbitration granting permission, unlike the more structured arbitration schemes covered in Post 31. **Collision Detection**: because two stations might both sense an idle medium and start transmitting at nearly the same instant, a station continues monitoring the medium *while* transmitting, and if it detects that its own transmission has collided with another station's, both stop immediately, wait a random backoff interval, and retry.
+Ethernet's answer is CSMA/CD. **Carrier Sense:** listen first; transmit only if the medium looks idle. **Multiple Access:** any station may try — no central grant, unlike request/grant on system buses (Post 31). **Collision Detection:** keep listening while sending; if a collision appears, stop, wait a *random* backoff, retry.
 
-The randomized backoff is the clever part: if both stations backed off for the same fixed interval, they would simply collide again on the next attempt, indefinitely. Randomizing the wait means the two stations will very likely pick different retry times, letting one of them transmit successfully before the other retries — a probabilistic, decentralized solution to contention that requires no central arbiter at all, in contrast to the request/grant arbitration scheme described for system buses in Post 31.
+Randomization is the load-bearing trick. Fixed identical backoffs would collide forever. Different random waits let one station succeed before the other retries — decentralized contention without an arbiter.
 
-## The Ethernet Frame
+## The Frame
 
-Data on an Ethernet network is organized into frames — each carrying source and destination MAC addresses (hardware addresses, distinct from and lower-level than the IP addresses covered in Post 41), a type field indicating what higher-layer protocol the payload belongs to, the actual data payload, and a CRC for error detection, directly analogous to the error-checking approach PCIe's data link layer used in Post 33, just applied to a completely different physical medium.
+Ethernet carries data in frames: source and destination MAC addresses (hardware addresses, below the IP addresses of Post 41), a type field for the higher protocol, payload, and a CRC — the same reliability *kind* as PCIe's data-link checks (Post 33), on a different medium.
 
 ## From Shared Bus to Switched Star
 
-Modern Ethernet has moved almost entirely away from the original shared-cable topology, toward switches that give each station its own dedicated point-to-point link to the switch — directly mirroring the shared-bus-to-point-to-point evolution PCIe underwent relative to older parallel buses (Post 32). With a proper switch, collisions in the CSMA/CD sense become largely a non-issue on modern wired networks, since each link genuinely only has two endpoints. CSMA/CD's core ideas remain historically foundational, though, and directly informed the contention-handling approach used in early WiFi, which — being a shared medium (radio spectrum) rather than a switched point-to-point link — still has to solve essentially the same collision problem Ethernet originally faced.
+Modern wired Ethernet mostly left the shared cable for switches that give each station its own point-to-point link — the same shared-to-point-to-point escape PCIe made relative to older parallel buses (Post 32). On a proper switch, classic CSMA/CD collisions largely vanish: each link has two ends. The ideas still matter historically, and early Wi-Fi — still a shared radio medium — had to solve the same collision constraint.
 
 ## Where This Leads
 
-With reliable local connectivity established via Ethernet, and reliable wide-area packet routing established via ARPANET's lineage, the missing piece was a *universal* addressing and routing scheme that could tie networks of different underlying technologies together into one coherent internetwork — which is exactly what TCP/IP, the next post's subject, was designed to provide.
+Local Ethernet plus wide-area packet routing still leave a gap: a *universal* addressing and routing scheme that ties different underlying technologies into one internetwork. That is TCP/IP — next.
+
+**Door out:** Robert M. Metcalfe and David R. Boggs, "Ethernet: Distributed Packet Switching for Local Computer Networks" (*Communications of the ACM*, 1976) — the primary paper that stated the shared-medium LAN and CSMA/CD design.
 
 {{< lab type="vm-terminal" >}}
 

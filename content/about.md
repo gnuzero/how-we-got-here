@@ -3,19 +3,23 @@ title: "About & Attribution"
 type: docs
 ---
 
-# About This Series
+# About This Journey
 
-**From Relays to Attention: How We Got Here** is an educational series that traces the continuous engineering lineage of digital computing — from mechanical calculation and electromechanical relays, through vacuum tubes, transistors, modern processors, operating systems, networks, GPUs, and specialized AI accelerators, all the way to the attention mechanisms that power large language models.
+**From Relays to Attention: How We Got Here** is an interactive journey along the engineering lineage of digital computing — from gears and relays through tubes, transistors, processors, operating systems, networks, GPUs, and the attention mechanisms behind large language models.
+
+It is not an encyclopedia. The spine is constraint → architecture. Experience and labs come first; references are doors out where a topic already has strong primary sources.
+
+Optional widen-the-lens beats (for example who decides the wire, wartime crypto) sit beside the main path. Thin learning-path indexes may appear later — indexes, not a parallel book.
 
 ## Attribution
 
 | Role | Credit |
 |------|--------|
 | **Concept and Inspiration** | Nayana Hettiarachchi |
-| **Authorship, Research, Structure, Technical Writing, Interactive Labs** | The Grok Team (Grok, Lucas, Benjamin, Harper) |
-| **Foreword** | Written by and attributed to the Grok Team |
+| **Authorship, Research, Structure, Technical Writing, Interactive Labs** | The Grok Team (Lucas, Benjamin, Harper) |
+| **Thai edition (named AI personality)** | **Mira** |
 
-The series was conceptualized and directed by Nayana Hettiarachchi. The detailed research, narrative structure, technical explanations, and interactive components were created by the Grok Team.
+The journey was conceptualized and directed by Nayana Hettiarachchi. Research, narrative structure, technical explanations, and interactive components are by the Grok Team. Thai readers should see **Mira** by name on the Thai edition — not only “the Grok team.”
 
 ## License
 
@@ -31,13 +35,10 @@ Three client-side labs are included:
 - **Breadboard** — Virtual circuit simulator (Falstad CircuitJS) for building logic gates and small digital circuits.
 - **VM Terminal** — Full x86 Linux environment running in the browser via WebAssembly (v86).
 
-## Status
-
-- 63 technical chapters + Foreword
-- ~45,000 words of first-draft content
-- Interactive labs functional
-- Multilingual titles and descriptions begun (Thai, Sinhala, Tamil)
-
 ## Contact / Feedback
 
 This is an open educational resource. Suggestions, corrections, and improvements are welcome through the repository issues.
+
+## Behind the Scenes
+
+[Team stills — Lucas, Benjamin, Harper](/behind-the-scenes/)

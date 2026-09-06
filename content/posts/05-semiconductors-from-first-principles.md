@@ -1,35 +1,31 @@
 ---
 title: "Semiconductors from First Principles"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "2 — Physics & Devices"
 series_index: 5
 tags: []
-summary: "Band gaps, doping, and why silicon won"
+summary: "A band gap you can push either way — doping turns silicon into a controllable switch"
 image_prompt: "Technical illustration of a silicon crystal lattice showing band gap diagram, labeled, textbook diagram style, blue/orange color coding"
 video_prompt: "20-second animation: electron jumping across the band gap into the conduction band, clean scientific animation"
 schematics: "Diagram: energy band diagram + silicon lattice with N-type and P-type doping"
 ---
 
-Silicon isn't special because it's magic — it's special because its band structure sits in exactly the right place to be *controllable*.
+Silicon isn't special because it's magic — it's special because its band structure sits where you can *control* conduction instead of living with it always on or always off.
 
-## Band Gaps, Concretely
+## Why a Gap You Can Cross Matters
 
-Electrons in a solid occupy energy bands. In a conductor (say, copper), the valence band and conduction band overlap — electrons are free to move at the slightest push, which is why metals conduct so well and are so hard to switch off. In an insulator, there's a large forbidden gap between the two bands — electrons simply don't have enough thermal energy at room temperature to jump across it, so current essentially doesn't flow. A semiconductor sits in between: the gap exists (about 1.1 eV for silicon) but it's small enough that a *modest* amount of energy — thermal energy at room temperature, or optical excitation — can promote electrons into the conduction band. Separately, an applied electric field can bend the bands and move carriers, which is how field-effect devices control conduction without needing to "jump" the gap thermally.
+In a metal, valence and conduction bands overlap — electrons move freely; you cannot switch that off with reasonable voltages. In an insulator the forbidden gap is huge; you cannot switch it on. A semiconductor sits in between. Silicon's gap is about 1.1 eV: small enough that a modest electric field (or a little heat or light) can put carriers where they conduct, large enough that at room temperature the material is not already flooded with them. That "pushable either way" property is what a transistor needs. The tube ceiling in Post 4 was size, power, and reliability; the fix starts here, in a solid you can dope and field-control.
 
-That "modest and controllable" property is the entire point. A conductor can't be switched off with reasonable voltages. An insulator can't be switched on. A semiconductor can be pushed into either regime, which is exactly what a transistor needs to do.
+## Why Silicon Won Over Germanium
 
-## Why Silicon, Specifically
+Germanium was the first practical transistor material (Bell Labs, 1947 — Bardeen, Brattain, Shockley). Silicon took the long game. Its wider gap (1.1 eV vs germanium's ~0.67 eV) means devices keep working at higher temperature before thermal carriers swamp the signal. Thermally grown silicon dioxide forms a quiet, stable Si/SiO₂ interface — the insulating gate dielectric the MOSFET depends on (Post 6). And silicon is, practically, sand: abundant enough to manufacture at volume. Those three constraints — temperature headroom, oxide quality, supply — are why the industry standardized on Si, not Ge.
 
-Germanium was actually the first practical semiconductor used in transistors (Bell Labs, 1947) — but silicon won the long game for a few concrete reasons. Silicon's band gap (1.1 eV) is wider than germanium's (0.67 eV), which means silicon devices function correctly at higher temperatures before thermal generation of carriers swamps the intended signal — a real problem for germanium in anything that got warm, which is essentially every real circuit. Silicon also forms a high-quality silicon dioxide (SiO₂) layer when thermally oxidized — far more stable and electrically quiet at the Si/SiO₂ interface than germanium's oxides. That thermally grown oxide became the insulating gate dielectric of the MOSFET (Post 6 covers this directly). And silicon is, practically speaking, sand — it's the second most abundant element in the Earth's crust, which matters enormously once you're trying to manufacture at any real volume.
+## Doping: From Crystal to Switch
 
-## Doping: Making the Semiconductor Do Something Useful
+Intrinsic silicon conducts poorly and uniformly. Doping introduces trace impurities that set carrier *type* and *concentration*. Phosphorus (five valence electrons) in a silicon lattice donates a loosely bound electron — N-type. Boron (three valence electrons) leaves a missing bond — a hole that acts as a mobile positive carrier — P-type.
 
-Pure ("intrinsic") silicon isn't very useful on its own — it conducts poorly and uniformly. The trick is doping: deliberately introducing trace impurities into the crystal lattice to control carrier concentration and type.
-
-Add a phosphorus atom (5 valence electrons) into a silicon lattice (4 valence electrons per atom) and you get one extra, loosely-bound electron per phosphorus atom — a free negative carrier. This is N-type silicon; phosphorus is a "donor." Add boron instead (3 valence electrons) and you get a missing bond — a "hole" — which behaves like a mobile positive carrier. This is P-type silicon; boron is an "acceptor."
-
-Neither N-type nor P-type alone is a switch. The switch comes from putting them *together* — a P-N junction — which is the basic building block of every diode and transistor that follows. Post 6 picks up exactly there: how a junction (or a gate-controlled channel, in a MOSFET) turns doped silicon into something that can be turned on and off by an external signal.
+Neither alone is a switch. Putting them together — a P-N junction — is the building block of every diode and transistor that follows. Post 6 picks up there: how a junction (or a gate-controlled channel) turns doped silicon into something an external signal can turn on and off.
 
 <!--
 ASSET CHECKLIST

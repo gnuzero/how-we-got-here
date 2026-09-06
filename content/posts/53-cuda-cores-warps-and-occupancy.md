@@ -1,35 +1,35 @@
 ---
 title: "CUDA Cores, Warps, and Occupancy"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "9 — GPUs & Parallel Compute"
 series_index: 53
 tags: []
-summary: "Programming model meets hardware"
+summary: "SIMT maps onto SMs and warps — lockstep wins until divergence, occupancy hides memory stalls"
 image_prompt: "Block diagram of a GPU Streaming Multiprocessor showing CUDA cores, warp scheduler, register file, clean GPU microarchitecture diagram style"
 video_prompt: "20-second animation: a warp of 32 threads executing in lockstep, branch divergence shown, clean technical animation"
 schematics: "Diagram: SM block diagram + warp scheduling timeline + occupancy calculation illustration"
 ---
 
-Post 52 covered *why* GPUs use a massively parallel SIMT execution model. This post covers the concrete hardware that model maps onto — the Streaming Multiprocessor, warps, and the occupancy metric that determines how efficiently that parallel hardware is used by a given program.
+Post 52 covered *why* GPUs bet on massively parallel SIMT. This post is the concrete map: Streaming Multiprocessors, warps, and occupancy — how fully that parallel hardware is actually used.
 
 ## The Streaming Multiprocessor
 
-A GPU is organized into many Streaming Multiprocessors (SMs) — each a largely self-contained parallel processing unit containing many individual CUDA cores (simple ALU-style execution lanes, deliberately far less complex than a single CPU core from Phase 3 — no out-of-order execution, no branch prediction of the sophisticated kind Post 14 covered), a warp scheduler, and a register file shared across the threads currently resident on that SM. A modern high-end GPU contains many dozens of these SMs, each running largely independently, which is the source of a GPU's enormous aggregate parallelism relative to a CPU's handful of complex cores.
+A GPU is many Streaming Multiprocessors (SMs) — each a largely self-contained parallel unit with many simple CUDA cores (ALU-style lanes, deliberately far less complex than a Phase 3 CPU core: no out-of-order execution, no sophisticated branch prediction of the Post 14 kind), a warp scheduler, and a register file shared by resident threads. Dozens of SMs running largely independently are the source of a GPU's aggregate parallelism versus a CPU's handful of complex cores.
 
-## Warps: The Actual Unit of Lockstep Execution
+## Warps: Lockstep as the Unit
 
-Threads on an SM are grouped into warps — on NVIDIA GPUs, a warp is always 32 threads (CUDA; AMD wavefronts historically used 64) — and a warp is the granularity at which the SIMT model from Post 52 is enforced: all 32 threads in a warp execute the *same* instruction on the *same* clock cycle, each operating on its own data. This is a direct hardware implementation of the "one shared control unit driving many parallel lanes" efficiency argument from the previous post.
+Threads on an SM are grouped into warps — on NVIDIA hardware, always 32 threads (AMD wavefronts historically used 64). A warp is the granularity at which Post 52's SIMT is enforced: all 32 execute the *same* instruction on the *same* cycle, each on its own data. That is the hardware form of "one shared control unit, many lanes."
 
-## Branch Divergence: Where SIMT's Efficiency Breaks Down
+## Branch Divergence: Where Lockstep Costs
 
-Here is the sharp edge of this model: what happens when different threads *within the same warp* need to take different branches of an if/else — some threads' data satisfies the condition, others' doesn't? The hardware handles this, but not for free: it executes *both* branch paths sequentially, with threads that don't belong to the currently executing path masked off (temporarily disabled, contributing no useful work) for that portion. A warp with divergent branches therefore takes as long as executing both paths in sequence, even though only one path's result is needed per individual thread — a real efficiency cost, and a direct consequence of the same lockstep execution that makes the non-divergent case so efficient. Writing GPU code that minimizes this kind of divergence — keeping threads within a warp on the same execution path as much as possible — is an important practical optimization.
+When threads *inside one warp* take different branches, the hardware executes both paths sequentially and masks the inactive half. The warp takes as long as both paths even though each thread needs only one — a direct tax of the same lockstep that makes the non-divergent case cheap. Keeping threads in a warp on the same path is therefore a real optimization, not a style preference.
 
-## Occupancy: How Fully the Hardware Is Actually Used
+## Occupancy: Hiding Latency With Ready Work
 
-An SM has finite resources — a limited register file, limited shared memory — and every warp resident on that SM consumes some share of those resources for as long as it is active. Occupancy measures how many warps are actually resident and eligible to execute on an SM at once, relative to the theoretical maximum the hardware could support. Higher occupancy generally helps hide memory latency (connecting back to the memory wall discussion in Post 35): while one warp is stalled waiting on a slow memory access, the scheduler can switch to a different, ready warp instead, keeping the SM's execution units busy rather than idle during that stall.
+An SM has finite registers and shared memory; every resident warp consumes a share. Occupancy is how many warps are resident and eligible relative to what the hardware could support. Higher occupancy helps hide memory latency (Post 35 again): while one warp stalls on a slow access, the scheduler switches to a ready warp and keeps the lanes busy.
 
-But occupancy isn't simply "maximize this number and you're done" — a kernel using more registers or more shared memory per thread might achieve lower occupancy but still run faster overall, if those extra per-thread resources meaningfully reduce redundant computation or memory traffic elsewhere. Tuning occupancy against per-thread resource usage is a real optimization tradeoff in GPU programming, not a maximize-and-forget metric — a nuance that becomes relevant once actual kernels are written and profiled against real hardware, rather than reasoned about only in the abstract.
+It is not "maximize and stop." A kernel that uses more registers or shared memory per thread may run fewer warps and still finish faster if those resources cut redundant work or memory traffic. Occupancy versus per-thread resources is a real tradeoff — one that shows up when kernels meet real silicon, not only when reasoned about in the abstract.
 
 <!--
 ASSET CHECKLIST

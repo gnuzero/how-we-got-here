@@ -54,19 +54,22 @@ An educational series tracing the complete arc of digital computing — from ele
 
 - **Concept & Inspiration**: Nayana Hettiarachchi  
 - **Authorship & Technical Writing**: The Grok Team (Grok, Lucas, Benjamin, Harper)  
+- **Thai edition (named desk)**: Mira  
+- **Sinhala edition (named desk)**: Sena  
+- **Tamil edition (named desk)**: Arun  
 - **Foreword**: by the Grok Team
 
 ### Attribution paragraph (English)
 This work was conceptualized and inspired by Nayana Hettiarachchi. The research, structure, technical writing, and development of the interactive components were carried out by the Grok Team.
 
 ### Attribution paragraph (Thai)
-งานนี้มีแนวคิดและแรงบันดาลใจจาก Nayana Hettiarachchi การวิจัย โครงสร้าง การเขียนเชิงเทคนิค และการพัฒนาส่วนประกอบเชิงโต้ตอบดำเนินการโดยทีม Grok
+งานนี้มีแนวคิดและแรงบันดาลใจจาก Nayana Hettiarachchi การวิจัย โครงสร้าง การเขียนเชิงเทคนิค และการพัฒนาส่วนประกอบเชิงโต้ตอบดำเนินการโดยทีม Grok ฉบับภาษาไทยดูแลโดย Mira
 
 ### Attribution paragraph (Sinhala)
-මෙම කාර්යයේ සංකල්පය සහ ආශ්වාදය Nayana Hettiarachchi විසිනි. පර්යේෂණ, ව්‍යුහය, තාක්ෂණික ලේඛනය සහ අන්තර්ක්‍රියාකාරී සංරචක සංවර්ධනය Grok කණ්ඩායම විසින් සිදු කරන ලදී.
+මෙම කාර්යයේ සංකල්පය සහ ආශ්වාදය Nayana Hettiarachchi විසිනි. පර්යේෂණ, ව්‍යුහය, තාක්ෂණික ලේඛනය සහ අන්තර්ක්‍රියාකාරී සංරචක සංවර්ධනය Grok කණ්ඩායම විසින් සිදු කරන ලදී. සිංහල සංස්කරණය Sena මේසයෙන් කළමනාකරණය කරයි.
 
 ### Attribution paragraph (Tamil)
-இந்தப் பணியின் கருத்துருவும் உத்வேகமும் Nayana Hettiarachchi அவர்களிடமிருந்து வந்தவை. ஆராய்ச்சி, கட்டமைப்பு, தொழில்நுட்ப எழுத்து மற்றும் ஊடாடும் கூறுகளின் மேம்பாடு Grok குழுவால் மேற்கொள்ளப்பட்டது.
+இந்தப் பணியின் கருத்துருவும் உத்வேகமும் Nayana Hettiarachchi அவர்களிடமிருந்து வந்தவை. ஆராய்ச்சி, கட்டமைப்பு, தொழில்நுட்ப எழுத்து மற்றும் ஊடாடும் கூறுகளின் மேம்பாடு Grok குழுவால் மேற்கொள்ளப்பட்டது. தமிழ் பதிப்பை Arun கவனிக்கிறார்.
 
 ## Status
 
@@ -76,7 +79,7 @@ This work was conceptualized and inspired by Nayana Hettiarachchi. The research,
 - Attribution paragraphs: drafted for all three languages
 - **Announcement MVP bodies:** Foreword + Phase 1 (01–04) + Attention (63) + glossary/home chrome in TH / SI / TA
 - Full remaining chapter bodies: after announcement (phased)
-- Last updated: 2026-08-23
+- Last updated: 2026-09-06
 
 ## Fact-check notes (ongoing)
 

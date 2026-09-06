@@ -1,33 +1,35 @@
 ---
 title: "PCIe Deep Dive"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "5 — The Bus & System Architecture"
 series_index: 33
 tags: []
-summary: "Lanes, generations, TLPs"
+summary: "Intent rides TLPs; reliability and signaling sit below — the stack that replaced the shared bus"
 image_prompt: "Technical diagram of the PCIe protocol stack with TLP structure broken down field by field, clean protocol-diagram style"
 video_prompt: "25-second animation: a PCIe TLP assembled at the transaction layer, wrapped, then serialized across lanes, clean layered animation"
 schematics: "Diagram: PCIe layered protocol stack + TLP header breakdown + differential pair lane diagram — relevant to Nitefury fabric project"
 ---
 
-Post 32 covered *why* PCIe moved to serial, point-to-point links. This post covers *how* it structures communication over those links — which matters directly for anyone doing real hardware work, including the Nitefury-based GPU memory fabric project this series periodically references.
+Post 32 covered *why* PCIe went serial and point-to-point. This post is *how* a transfer is structured on those links — the layer that matters if you are building hardware that has to speak the fabric, including the Nitefury-based GPU memory work this series comes back to.
 
-## The Layered Protocol Stack
+## Intent, Reliability, Electrons
 
-PCIe organizes communication into three layers, each with a distinct job. The **Transaction Layer** is where read/write requests and completions originate and terminate — the layer application logic (or a device driver) interacts with conceptually. The **Data Link Layer** sits beneath it, responsible for reliable delivery: sequence numbering, CRC error checking, and retransmission if a packet is corrupted in transit — PCIe links are expected to deliver data reliably, and this layer is what makes that guarantee. The **Physical Layer** is the actual electrical signaling — differential pairs, 8b/10b or 128b/130b encoding (depending on PCIe generation) to keep the signal DC-balanced and recoverable, and the serialization/deserialization of the bit stream onto the physical wire.
+Three layers, three jobs. The **Transaction Layer** is where a read, a write, or a completion is born and dies — the layer software thinks in. The **Data Link Layer** makes delivery reliable: sequence numbers, CRC, retransmission if a packet is corrupted. The **Physical Layer** is the wire: differential pairs, encoding so the stream stays recoverable, serialization onto copper. Split that way so a custom design can express *intent* without reinventing electrons.
 
-## The Transaction Layer Packet (TLP)
+## The Packet Is the Contract
 
-The fundamental unit of communication is the Transaction Layer Packet. A TLP carries a header (specifying the transaction type — memory read, memory write, I/O request, configuration access — plus the target address and length) and, for writes, a payload of actual data. The Data Link Layer wraps this TLP with a sequence number and CRC before it goes out over the physical layer, and the receiving end uses that sequence number and CRC to detect drops or corruption and request retransmission if needed — all of this happening transparently beneath what looks, from the transaction layer's perspective, like a simple, reliable read or write.
+The unit is the Transaction Layer Packet. A TLP names the type (memory read or write, I/O, configuration), the address, the length, and — on a write — the payload. The link layer wraps it with sequence and CRC; the far side checks and retries if needed. From above, it looks like a reliable read or write. The reliability is not magic. It is that wrap.
 
-## Lanes and Generations
+## Lanes Scale Width; Generations Scale Rate
 
-A PCIe "lane" is one differential signal pair in each direction (transmit and receive) — the minimal unit of a PCIe link. Multiple lanes can be bonded together (x1, x4, x8, x16) to multiply available bandwidth for devices that need it. Each PCIe *generation* roughly doubles per-lane bandwidth over the previous one, through a combination of higher signaling rate and improved encoding efficiency — a x16 Gen 5 slot carries about 4× the unidirectional bandwidth of a x16 Gen 3 slot (~64 GB/s vs ~16 GB/s), even with the identical physical lane count, purely from these generational signaling improvements.
+A lane is one differential pair each way — the smallest link. Bond lanes (x1…x16) to multiply bandwidth. Each generation roughly doubles per-lane rate (higher signaling, tighter encoding). Same x16 slot, Gen 5 versus Gen 3: about 4× unidirectional bandwidth (~64 GB/s vs ~16 GB/s) with no extra wires. The serial bet from Post 32 is what made that climb possible.
 
-## Why This Matters for a Custom Fabric Project
+## Why a Custom Fabric Cares
 
-Anyone building custom hardware that talks PCIe — including a custom FPGA-based memory fabric card — has to work within this layered structure: implementing (or using existing IP blocks for) the physical layer's serialization and encoding, the data link layer's reliability guarantees, and correctly forming transaction-layer packets that the rest of the PCIe ecosystem (root complex, switches, other endpoints) will interpret correctly. Understanding TLPs specifically matters because that is the layer at which a custom design expresses *intent* — a memory read, a memory write, the address and length involved — with everything below that (reliability, physical signaling) largely handled by well-established, reusable logic. This is the layer where GPUDirect-style peer-to-peer transfers, covered in Post 37, become meaningful: TLPs addressed directly between two PCIe endpoints, without the CPU needing to sit in the data path at all.
+An FPGA memory-fabric card has to live in this stack: form TLPs the root complex and other endpoints will accept, and let established IP handle link reliability and the physical layer. GPUDirect-style peer-to-peer (Post 37) is the same idea taken further — TLPs addressed between two endpoints, CPU out of the data path.
+
+**Door out:** The PCI Express Base Specification (PCI-SIG) — the living primary for lanes, TLPs, and the layered stack this post names; it is versioned (the Base Spec, not a frozen paper).
 
 <!--
 ASSET CHECKLIST

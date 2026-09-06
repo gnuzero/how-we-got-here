@@ -1,40 +1,39 @@
 ---
 title: "Superscalar & Multicore"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "3 — Building a CPU & Its Architectures"
 series_index: 17
 tags: []
-summary: "ILP limits — why we went wide instead of fast"
+summary: "ILP and power hit walls — so the industry went wide instead of faster per thread"
 image_prompt: "Comparison infographic: single-core deep pipeline vs multicore chip layout, clean technical style"
 video_prompt: "20-second animation: a single core hitting a power wall, transitioning to multicore, clean motion graphics"
 schematics: "Diagram: ILP vs clock-speed diminishing returns graph + multicore die floorplan"
 ---
 
-Out-of-order execution, deeper pipelines, wider issue — every technique covered so far in this phase aims at extracting more Instruction-Level Parallelism (ILP) from a single stream of instructions. That approach has a ceiling, and by the mid-2000s the industry hit it hard enough to change strategy entirely.
+Out-of-order issue, deeper pipelines, wider superscalar width — everything so far in this phase extracts more Instruction-Level Parallelism (ILP) from *one* instruction stream. By the mid-2000s that approach hit a ceiling hard enough to change strategy.
 
-## Diminishing Returns on ILP
+## Two Walls at Once
 
-Real programs do not contain unlimited independent work to exploit. Branches, true data dependencies, and memory access patterns all limit how many instructions can execute in parallel from a single stream, no matter how aggressive the out-of-order machinery. Each additional increment of ILP-extracting hardware — bigger reorder buffers, more reservation stations, wider issue width — delivers a shrinking performance return for a growing area and power cost. This is not a minor engineering inconvenience; it is a hard architectural wall that no amount of cleverness fully escapes.
+Real programs do not offer unlimited independent work. Branches, true data dependencies, and memory latency cap how many instructions can run in parallel from a single stream. Bigger ROBs, more reservation stations, wider issue: shrinking returns for growing area and power. That is an architectural wall.
 
-## The Power Wall Compounds It
+At the same time, dynamic power scales roughly with capacitance, frequency, and voltage squared (P ≈ CV²f). Pushing clocks higher to compensate for ILP's dwindling gains ran into heat — the clock-speed wall Post 36 covers in detail. Two independent ceilings, mid-2000s, neither with a clean solo fix.
 
-At the same time, Post 36 (The Clock Speed Wall) covers the other half of this story in detail: dynamic power scales roughly with frequency and the *square* of voltage (P ≈ CV²f), and pushing clock speed higher to compensate for ILP's diminishing returns ran into a thermal ceiling around the mid-2000s. Two independent walls — architectural (ILP) and physical (power/heat) — arrived at essentially the same time, and neither had a clean individual fix.
+## Wide Instead of Fast
 
-## The Strategic Pivot: Wide Instead of Fast
+The pivot: stop making one core do more per cycle; put multiple, somewhat simpler cores on the same die, each with its own stream. Chip throughput can keep climbing while per-core complexity and clocks level off — *if* there is parallel work to hand those cores.
 
-The industry's answer was to stop trying to make one core do more work per cycle, and instead put multiple, somewhat simpler cores on the same die, each running its own independent instruction stream. Total chip throughput can keep climbing even as *per-core* complexity and clock speed level off — as long as there is genuinely parallel *work* (multiple threads, multiple processes) to hand those cores.
+"Faster" changed meaning. A single-threaded program does not automatically win on eight cores versus four; it still runs on one core at roughly the same clock. Multicore gain appears only for workloads written (or compiled) for multiple threads. The ILP era mostly gave single-thread speedups "for free" each generation; this era demands parallel-aware software.
 
-This is a real shift in what "faster" means. A single-threaded program does not automatically get faster on an 8-core chip than on a 4-core one — it still executes on one core, at roughly the same clock speed as before. The multicore gain only materializes for workloads that are explicitly written (or compiled) to exploit multiple independent threads. That is a different demand on software than the ILP era placed on it: previously, a faster single-threaded program was mostly "free" from a new chip generation; now, meaningful speedup requires parallel-aware software design.
+## Where the Pivot Points
 
-## Where This Leads
+The same force — many simpler units instead of one complex one — is the philosophy behind GPUs (Phase 9) taken further. It is also why coordinating parallel work correctly becomes a first-class problem in real-time systems (Phase 4) and distributed systems (Phase 7): waiting for the next chip to make one thread faster is no longer the main growth path.
 
-This pivot — parallelism as the primary growth lever instead of single-thread speed — is the same underlying force behind GPUs' design philosophy (Phase 9), which takes "many simple execution units instead of one complex one" to its logical extreme. It is also why software had to change: real-time systems (Phase 4) and distributed systems (Phase 7) both exist partly because getting more performance increasingly means coordinating parallel work correctly, not just waiting for the next chip generation to make a single thread faster.
+**Door out:** Kunle Olukotun, Basem A. Nayfeh, Lance Hammond, Ken Wilson, and Kunyung Chang, "The Case for a Single-Chip Multiprocessor" (ASPLOS 1996) — an early, explicit argument for putting multiple cores on one die as ILP returns flatten.
 
 <!--
 ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
 -->

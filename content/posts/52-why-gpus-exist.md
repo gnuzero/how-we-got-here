@@ -1,33 +1,33 @@
 ---
 title: "Why GPUs Exist"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "9 — GPUs & Parallel Compute"
 series_index: 52
 tags: []
-summary: "SIMD/SIMT and the graphics pipeline origin"
+summary: "Graphics gave an embarrassingly parallel workload — SIMT hardware followed, then general compute found the same shape"
 image_prompt: "Diagram of the graphics rendering pipeline alongside a SIMD execution diagram, clean GPU architecture textbook style"
 video_prompt: "20-second animation: a single instruction broadcast across many parallel ALU lanes, contrasted with a CPU, clean split-screen animation"
 schematics: "Diagram: graphics pipeline stages + SIMD/SIMT execution model diagram"
 ---
 
-Every CPU covered in Phase 3 rests on a core assumption: instructions are independent and unpredictable enough that the machinery must be general-purpose — branch prediction, out-of-order execution, deep caches, all in service of running *arbitrary* sequential code as fast as possible. GPUs start from a different assumption, rooted in their original workload: graphics rendering, where the *same* operation must be applied independently to an enormous number of data points at once.
+Every CPU in Phase 3 assumes instructions are independent and unpredictable enough that the machinery must be general-purpose — branch prediction, out-of-order execution, deep caches, all to run *arbitrary* sequential code fast. GPUs start from a different assumption, rooted in their original workload: the *same* operation applied independently to an enormous number of data points at once.
 
-## The Graphics Pipeline's Natural Parallelism
+## Graphics Made Parallelism Explicit
 
-Rendering a 3D scene means transforming millions of vertices and shading millions of pixels — and the same mathematical operation (a vertex transform, a lighting calculation) is applied independently to each one. There is no meaningful data dependency between how pixel (100, 200) is shaded and how pixel (100, 201) is shaded — given enough parallel hardware, they can all be computed at once.
+Rendering a 3D scene means transforming millions of vertices and shading millions of pixels — the same math on each one, with no meaningful dependency between pixel (100, 200) and pixel (100, 201). Given enough lanes, they all run at once.
 
-That is a different shape of problem than what CPU microarchitecture (Phase 3) was built to handle. A CPU's out-of-order execution and branch prediction exist to extract parallelism from code that *doesn't* have this obvious, embarrassingly parallel structure — general sequential programs with unpredictable branches and real data dependencies between nearby instructions. Graphics rendering does not need that machinery for extracting hidden parallelism, because the parallelism is not hidden — it is explicit and massive from the start.
+That is a different shape than Phase 3 was built for. A CPU extracts hidden parallelism from code that does *not* look like this. Graphics does not need that machinery: the parallelism is not hidden — it is explicit and massive from the start.
 
-## SIMD and SIMT: One Instruction, Many Data
+## SIMD / SIMT: One Instruction, Many Lanes
 
-SIMD (Single Instruction, Multiple Data) is the general concept: one instruction applied simultaneously across many data elements, rather than one instruction operating on one piece of data at a time. GPUs implement a closely related model called SIMT (Single Instruction, Multiple Thread) — many parallel "threads," each nominally executing the same instruction stream, but each operating on its own distinct data (its own pixel, its own vertex), with hardware executing groups of these threads in lockstep across many simple parallel execution lanes.
+SIMD applies one instruction across many data elements at once. GPUs implement a closely related model — SIMT: many parallel threads, each on its own data (its pixel, its vertex), hardware executing groups of them in lockstep across simple lanes.
 
-The architectural payoff is direct: since every lane in a group is executing the *same* instruction at the same moment, you don't need separate instruction-fetch, decode, and control logic duplicated per lane the way a CPU needs full pipeline machinery per core — one shared control unit can drive many parallel execution lanes at once. That is an enormous area and power efficiency win specifically *for* this class of embarrassingly parallel, same-operation-many-data workload — and correspondingly a poor fit for general sequential code with unpredictable branches, which is exactly why CPUs and GPUs aren't interchangeable, and why real systems typically have both.
+The payoff is direct: every lane in a group runs the *same* instruction at the same moment, so you do not duplicate fetch, decode, and control per lane the way a CPU duplicates pipeline machinery per core. One shared control unit drives many lanes — an area and power win *for* embarrassingly parallel, same-operation-many-data work, and a poor fit for unpredictable sequential code. That is why CPUs and GPUs are not interchangeable, and why real systems typically have both.
 
-## From Graphics to General-Purpose Compute
+## From Graphics to General Compute
 
-The realization that reshaped the industry: this same SIMT execution model — many simple parallel lanes, same instruction, different data — is an excellent fit for a much broader class of problems than graphics alone, as long as the underlying math has that same embarrassingly parallel structure. Neural network training and inference, as it turns out, is built almost entirely from this kind of massively parallel, regular matrix and vector math — which is why GPUs, originally built for rendering triangles, became the dominant hardware for AI compute, and why the rest of this phase is about programming and optimizing that same parallel architecture, not graphics rendering specifically.
+The industry-reshaping realization: the same SIMT shape fits a much broader class than triangles, whenever the math is massively parallel and regular. Neural-network training and inference are built almost entirely from that kind of matrix and vector work — which is why hardware born for rendering became the dominant AI compute substrate, and why the rest of this phase is about programming and feeding that parallel architecture, not about graphics specifically.
 
 <!--
 ASSET CHECKLIST

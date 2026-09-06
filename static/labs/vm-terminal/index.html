@@ -20,9 +20,19 @@
   button.primary:hover { background: #2ea043; }
   #status { font-size: 12px; color: #8b949e; }
   #status.ready { color: var(--green); }
+  .first-cmd {
+    background: var(--panel); border: 1px solid var(--accent);
+    border-radius: 6px; padding: 12px 14px; margin-bottom: 10px;
+  }
+  .first-cmd h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
+    color: var(--accent); margin: 0 0 8px; }
+  .first-cmd p { margin: 0 0 8px; font-size: 13px; line-height: 1.55; color: var(--text); }
+  .first-cmd code { color: var(--accent); background: #010409; padding: 2px 6px; border-radius: 3px; }
+  .first-cmd .cmds { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .first-cmd .cmds code { font-size: 13px; }
   #screen_container {
     background: #000; border: 1px solid var(--border); border-radius: 6px;
-    padding: 4px; width: 100%; max-width: 100%; overflow: auto;
+    padding: 4px; width: 100%; max-width: 100%; overflow: auto; min-height: 200px;
   }
   #screen_container canvas, #screen_container div { max-width: 100%; }
   .note { font-size: 11px; color: #8b949e; margin-top: 10px; line-height: 1.6; }
@@ -37,7 +47,18 @@
 <div class="toolbar">
   <button class="primary" onclick="startVM()">Boot VM</button>
   <button onclick="restartVM()">Restart</button>
-  <span id="status">Not started</span>
+  <span id="status">Not started — press Boot VM</span>
+</div>
+
+<div class="first-cmd" id="firstCmd">
+  <h2>First commands</h2>
+  <p>Press <strong>Boot VM</strong>, wait for the login/shell prompt, then <strong>click the black screen</strong> so the keyboard focuses the VM. Try these:</p>
+  <div class="cmds">
+    <code>whoami</code>
+    <code>uname</code>
+    <code>ls</code>
+  </div>
+  <p style="margin-top:8px;margin-bottom:0;color:#8b949e;font-size:12px;">Type each command and press Enter. Restart returns you to a fresh boot if the session gets stuck.</p>
 </div>
 
 <div id="screen_container">
@@ -46,17 +67,11 @@
 </div>
 
 <div class="note">
-  Powered by <strong>v86</strong> (github.com/copy/v86) — a full x86 emulator compiled to WebAssembly, running entirely
-  client-side. Nothing is sent to a server; the VM state lives only in your browser tab. Boots a small Linux distro —
-  full shell access for OS/real-time-systems/networking posts (e.g. try <code>ps</code>, <code>free</code>, <code>ping</code>,
-  or writing a tiny C program with the bundled toolchain if the image includes one).
-  <br><br>
-  This loads v86's runtime and disk image live from their public CDN (<code>copy.sh/v86</code>) rather than bundling
-  ~20MB+ of binaries into this repo. For an offline/self-hosted version, download the same files from
-  <code>github.com/copy/v86</code> releases into <code>static/labs/vm-terminal/assets/</code> and update the paths below.
+  Powered by <strong>v86</strong> — a full x86 emulator in WebAssembly. Runtime, BIOS, and Linux image are
+  vendored under <code>assets/</code> next to this page (no live CDN required for first boot).
 </div>
 
-<script src="https://copy.sh/v86/build/libv86.js"></script>
+<script src="assets/libv86.js"></script>
 <script>
 let emulator = null;
 
@@ -67,28 +82,28 @@ function setStatus(msg, ready) {
 }
 
 function startVM() {
-  if (emulator) { setStatus('Already running'); return; }
-  setStatus('Downloading VM image + booting…');
+  if (emulator) { setStatus('Already running — click the screen for keyboard', true); return; }
+  setStatus('Loading local VM image + booting…');
 
   emulator = new V86({
-    wasm_path: "https://copy.sh/v86/build/v86.wasm",
+    wasm_path: "assets/v86.wasm",
     screen_container: document.getElementById("screen_container"),
-    bios: { url: "https://copy.sh/v86/bios/seabios.bin" },
-    vga_bios: { url: "https://copy.sh/v86/bios/vgabios.bin" },
-    cdrom: { url: "https://copy.sh/v86/images/linux4.iso" },
+    bios: { url: "assets/seabios.bin" },
+    vga_bios: { url: "assets/vgabios.bin" },
+    cdrom: { url: "assets/linux4.iso" },
     memory_size: 128 * 1024 * 1024,
     vga_memory_size: 8 * 1024 * 1024,
     autostart: true,
   });
 
   emulator.add_listener("emulator-ready", () => setStatus('Booting kernel…'));
-  emulator.add_listener("emulator-started", () => setStatus('Running — click the screen and use the keyboard', true));
+  emulator.add_listener("emulator-started", () => setStatus('Running — click the screen, then try whoami / uname / ls', true));
 }
 
 function restartVM() {
   if (emulator) {
     emulator.restart();
-    setStatus('Restarted', true);
+    setStatus('Restarted — click the screen when the prompt returns', true);
   } else {
     startVM();
   }

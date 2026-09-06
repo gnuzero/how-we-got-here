@@ -1,40 +1,40 @@
 ---
 title: "Branch Prediction"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "3 — Building a CPU & Its Architectures"
 series_index: 14
 tags: []
-summary: "Why it matters, how it works"
+summary: "Pipeline flushes are expensive — prediction exists to make them rare"
 image_prompt: "Diagram of a 2-bit saturating counter branch predictor state machine, clean state-machine diagram style"
 video_prompt: "20-second animation: branch predictor transitioning between states, pipeline flush on misprediction, clean technical animation"
 labs: ["mini-cpu"]
 schematics: "Diagram: 2-bit saturating counter FSM + branch target buffer block diagram"
 ---
 
-A pipeline flush from a mispredicted branch is expensive — every instruction fetched down the wrong path must be discarded, and the pipeline must restart from the correct target. On a deep pipeline, that can cost ten or more wasted cycles per misprediction. Branch prediction exists to make that rare rather than routine.
+A mispredicted branch flushes everything fetched down the wrong path. On a deep pipeline that can cost well over ten cycles. Post 13 left that cost on the table; this post is the answer: guess direction (and target) early enough that flushes become rare.
 
-## Static vs Dynamic Prediction
+## Static Guessing Is Not Enough
 
-The simplest approach is static: always predict "not taken," or use a heuristic such as "backward branches (loops) are usually taken; forward branches usually are not." This costs nothing in hardware but is fairly inaccurate for real code, where branch behavior often depends on program history in ways a fixed rule cannot capture.
+Static rules — always not-taken, or "backward branches (loops) are taken" — cost no hardware and miss a lot of real code. Branch behavior depends on history a fixed rule cannot see.
 
-Dynamic prediction tracks *actual* branch outcomes at runtime and uses recent history to predict future behavior. It is far more accurate, because real branches are often correlated with their own past. A loop that runs 100 times takes its backward branch 99 times and falls through once; a dynamic predictor that remembers "this branch was taken last time" gets that loop right on almost every iteration.
+Dynamic predictors track outcomes at runtime. A loop that runs 100 times takes its backward branch 99 times; a predictor that remembers "taken last time" gets almost every iteration right.
 
 ## The 2-Bit Saturating Counter
 
-The classic building block is a small state machine per branch: a 2-bit counter with four states — strongly not taken, weakly not taken, weakly taken, strongly taken. Each time the branch resolves, the counter moves one step toward the direction that actually happened (saturating at the extremes rather than wrapping). Prediction is simply the top bit of the counter.
+The classic building block: four states — strongly/weakly not-taken, weakly/strongly taken. Each resolved outcome nudges the counter one step toward what actually happened (saturating at the ends). Prediction is the top bit.
 
-Why this beats a plain 1-bit "last outcome" predictor: a 1-bit predictor flips after a *single* anomalous outcome, even if the branch is normally consistent — costing a misprediction on the next normal iteration as well. The 2-bit version needs *two consecutive* anomalous outcomes before it flips, which absorbs one-off exceptions (such as a loop's final, not-taken iteration) without destabilizing an otherwise consistent prediction.
+Why not one bit? A 1-bit "last outcome" flips after a single anomaly — then mispredicts the next *normal* iteration too. Two bits need two consecutive anomalies before flipping, so a loop's final not-taken exit does not poison the next run of the loop.
 
-## The Branch Target Buffer
+## Where to Fetch Next
 
-Predicting *direction* (taken / not taken) is only half the problem. For a taken branch, the pipeline also needs to know *where* to fetch next, before the branch has been fully decoded. A Branch Target Buffer (BTB) is a small cache, indexed by instruction address, that remembers the target a given branch resolved to last time. On a BTB hit, fetch can jump speculatively to the predicted target on the next cycle, rather than waiting for the branch to be decoded and its target computed the slow way.
+Direction is only half. For a taken branch, fetch also needs a *target* before the branch is fully decoded. A Branch Target Buffer (BTB) is a small cache, indexed by instruction address, remembering the last resolved target. On a hit, fetch can jump speculatively next cycle.
 
-## Where the State Machine Lives (and a Lab)
-
-Real predictors combine both structures — a table of 2-bit counters indexed by branch address (sometimes combined with global branch history for still better accuracy) plus a BTB for target prediction — and modern high-end CPUs push further with neural-inspired predictors trained on long histories. The 2-bit counter remains the conceptual core, and it is directly implementable as a tiny state machine: the kind of thing worth tracing by hand in the mini-CPU lab attached to this post. Step through a small loop's branch instruction and watch prediction state update on each iteration.
+Real predictors combine counter tables (often with global history) and a BTB; high-end chips go further. The 2-bit counter is still the conceptual core — and small enough to watch by hand in the mini-CPU lab: step a loop's branch and see the prediction state update each iteration.
 
 {{< lab type="mini-cpu" >}}
+
+**Door out:** James E. Smith, "A Study of Branch Prediction Strategies" (ISCA 1981) — early systematic treatment of dynamic branch prediction, including saturating-counter ideas that became textbook.
 
 <!--
 ASSET CHECKLIST

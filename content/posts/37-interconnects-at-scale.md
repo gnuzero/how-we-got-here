@@ -1,37 +1,33 @@
 ---
 title: "Interconnects at Scale"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "5 — The Bus & System Architecture"
 series_index: 37
 tags: []
-summary: "NVLink, CXL, and why GPUDirect RDMA exists"
+summary: "Once compute is many chips, the path between them is the next wall — dedicated links, fewer copies"
 image_prompt: "System diagram comparing PCIe-connected GPUs vs NVLink direct GPU-to-GPU mesh, clean datacenter architecture diagram style"
 video_prompt: "25-second animation: data moving GPU-to-CPU-to-GPU over PCIe vs directly over NVLink, clean technical animation — ties to BridgeStack fabric work"
 schematics: "Diagram: NVLink mesh topology + CXL memory pooling + GPUDirect RDMA data path"
 ---
 
-Everything so far in this phase has covered connecting components *within* a single machine — CPU to memory, CPU to expansion devices. Once a workload needs multiple GPUs, or multiple machines, working together, a new question arises: how do those independent compute units talk to *each other* fast enough that the communication overhead does not erase the benefit of having more of them?
+This phase so far connected parts *inside* one machine — CPU to memory, CPU to devices. Once a workload needs several GPUs, or several machines, the question changes: can those units talk to *each other* fast enough that the extra communication does not eat the extra compute?
 
-## The Baseline: Routing Through the CPU Over PCIe
+## The Default Path Is the Tax
 
-Without a peer path, the naive answer is to let everything talk over the same PCIe fabric covered in Posts 32–33: GPU A stages through system memory, and GPU B reads it back — extra hops, latency, and PCIe bandwidth burned on copies. Even on PCIe alone, though, GPUDirect P2P can DMA GPU↔GPU without host staging (still at PCIe bandwidth). NVLink is what adds much higher dedicated bandwidth and better multi-GPU topology on top of that.
+Without a peer path, GPU A writes through system memory and GPU B reads it back — extra hops, extra latency, PCIe bandwidth spent on copies. Even on PCIe alone, GPUDirect P2P can DMA GPU↔GPU without host staging (still at PCIe rates). The remaining constraint is bandwidth and topology: a shared expansion fabric was never designed as a many-GPU mesh.
 
-## NVLink: Direct GPU-to-GPU Paths
+## Dedicated Links, Coherent Memory, Fewer Copies
 
-NVIDIA's NVLink is a purpose-built interconnect specifically for direct, high-bandwidth GPU-to-GPU communication — bypassing the CPU and system memory entirely for transfers between GPUs that both support it. Multiple GPUs can be connected through an NVSwitch, giving an all-to-all topology where every GPU in a node can reach every other GPU directly, at bandwidth substantially higher than routing the same transfer through PCIe and the CPU would allow. For workloads that need frequent, large data exchange between GPUs — exactly what large-scale ML training requires (a subject the series returns to in Phase 7 and Phase 10) — this direct path is a first-order performance factor, not a minor optimization.
+NVIDIA's NVLink is a purpose-built GPU-to-GPU interconnect — CPU and system memory out of the transfer. An NVSwitch can make every GPU in a node reachable from every other, at bandwidth well above the PCIe-and-CPU path. For frequent, large exchanges — the pattern large-scale training returns to in Phases 7 and 10 — that direct path is first-order, not a tweak.
 
-## CXL: Extending Coherent Memory Beyond One Die
+CXL (Compute Express Link) answers a neighboring constraint: cache-coherent access beyond one die, and, further out, pooled memory that is not soldered to a single socket. Capacity can move among compute nodes instead of being frozen to whichever DIMM slot it landed in — a flexibility neither DDR (Post 34) nor raw PCIe gives you.
 
-CXL (Compute Express Link) tackles an adjacent but distinct problem: rather than optimizing device-to-device data transfer specifically, CXL extends cache-coherent memory access across multiple devices and, in more advanced deployments, across pooled memory that is not physically attached to any single CPU. This opens up architectures where memory capacity can be shared and dynamically allocated across multiple compute nodes rather than being rigidly bound to whichever CPU socket it happens to be plugged into — a different flexibility than either traditional DDR (Post 34) or PCIe alone provide.
+GPUDirect RDMA lets a NIC read or write GPU memory directly. Without it, a GPU-to-GPU transfer across a network is GPU → system memory → NIC → far system memory → far GPU — copies that cost latency and memory bandwidth. Collapse that to GPU → network → GPU, for the same reason RDMA (Post 42) wins in storage and messaging: fewer copies, less CPU babysitting the move.
 
-## GPUDirect RDMA: Why It Exists
+## The Same Problem, Open Hardware
 
-GPUDirect RDMA lets a network adapter read directly from, or write directly into, GPU memory — without that data needing to be staged through CPU/system memory as an intermediate hop first. Without it, a GPU-to-GPU transfer across a network would require: GPU memory → system memory (one copy) → network adapter → destination system memory → destination GPU memory (another copy) — multiple unnecessary copies, each adding both latency and consumed memory bandwidth that could otherwise be doing useful work. GPUDirect RDMA collapses that path down to essentially GPU memory → network → GPU memory directly, which is a substantial win for exactly the same reason RDMA in general (Post 42) is a win for networked storage and messaging: fewer copies, lower latency, and CPU cycles freed up for actual computation instead of babysitting a data transfer.
-
-## The Direct Line to This Series's Own Hardware Work
-
-This entire post is the conceptual foundation underneath the custom GPU memory fabric project this series periodically references: making remote GPU memory appear directly addressable, without routing every transfer through a general-purpose CPU-mediated path, is precisely the same problem NVLink and GPUDirect RDMA solve within NVIDIA's own ecosystem — just pursued here as an open, PCIe-based alternative rather than a proprietary NVIDIA-only interconnect. Understanding *why* NVLink and GPUDirect exist, and what specific inefficiency they remove, is the clearest way to understand what an open, custom-hardware alternative to them would need to accomplish.
+This is the conceptual base under the custom GPU memory fabric the series keeps pointing at: make remote GPU memory addressable without a general-purpose CPU in the path. NVLink and GPUDirect solve that inside one vendor's stack. An open, PCIe-based alternative has to remove the same inefficiency — which is why Posts 32–33's TLP-level peer path, and this post's "why the dedicated link exists," are the same story.
 
 <!--
 ASSET CHECKLIST

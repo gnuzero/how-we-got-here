@@ -1,36 +1,38 @@
 ---
 title: "The x86 vs RISC Split"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "3 — Building a CPU & Its Architectures"
 series_index: 19
 tags: []
-summary: "CISC legacy vs the RISC rebellion — MIPS, SPARC, PowerPC, and why x86 kept winning anyway"
+summary: "RISC was cleaner on paper — software lock-in and µop translation kept x86 on top"
 image_prompt: "Family-tree infographic branching CISC/RISC research into x86, MIPS, SPARC, PowerPC lineages, clean genealogy diagram style"
 video_prompt: "20-second animation: a decision-tree splitting into CISC and RISC branches, clean motion graphics"
 labs: ["mini-cpu"]
 schematics: "Diagram: ISA family tree + instruction complexity comparison table"
 ---
 
-Post 11 introduced CISC and RISC as two design philosophies. This post is about what actually happened when those philosophies competed commercially — and why the "cleaner" architecture did not simply win outright.
+Post 11 named CISC and RISC as philosophies. This post is what happened when they competed commercially — and why the "cleaner" ISA did not simply win.
 
-## The RISC Rebellion
+## The RISC Argument
 
-RISC emerged in the early 1980s as an explicit reaction to CISC complexity, driven by research at Berkeley (leading to the SPARC lineage) and Stanford (leading to MIPS), alongside IBM's earlier work that eventually influenced POWER/PowerPC. The core argument was empirical: studies of real compiled code showed that CISC processors' complex instructions were often barely used, while the decoding hardware needed to support them cost silicon area and added complexity to exactly the pipelining techniques covered earlier in this phase. Strip the ISA down to simple, uniform, fixed-length instructions, the argument went, and you free that silicon for things that actually help performance — more registers, simpler and faster pipelines, better caches.
+Early 1980s: RISC as a reaction to CISC complexity — Berkeley work toward SPARC, Stanford toward MIPS, IBM work that fed POWER/PowerPC. The claim was empirical: complex CISC ops were often barely used in compiled code, while the decode hardware they needed burned silicon and complicated the pipelines this phase already covered. Strip the ISA to simple, fixed-length, uniform instructions; spend the silicon on registers, faster pipelines, better caches instead.
 
-MIPS, SPARC, and PowerPC all shipped commercially through the 1980s and 90s, and for a period genuinely outperformed x86 chips on pure computational benchmarks, particularly in workstation and server markets.
+MIPS, SPARC, and PowerPC all shipped. For a stretch they beat x86 on pure compute benchmarks, especially workstations and servers.
 
-## Why x86 Kept Winning Anyway
+## Why x86 Kept the Floor
 
-x86's advantage was never architectural elegance — it was the accumulated software ecosystem sitting on top of it. Once IBM PC compatibility became the dominant desktop standard, an enormous installed base of software existed that only ran on x86. Backward compatibility became a self-reinforcing moat: new x86 chips had to keep running old x86 software, which meant the ISA itself could not be cleanly redesigned RISC-style — it could only be extended, wart by wart, while Intel and later AMD threw increasingly aggressive engineering at making the *underlying implementation* fast despite the ISA's complexity.
+x86's edge was never elegance — it was the software already sitting on IBM PC compatibility. Once that became the desktop standard, an enormous installed base only ran on x86. Backward compatibility became a moat: new chips had to run old binaries, so the ISA could not be cleanly redesigned RISC-style — only extended, wart by wart, while Intel and later AMD made the *implementation* fast despite the surface.
 
-That engineering response is the actual resolution to this debate: modern x86 chips do not execute x86 instructions directly in their core out-of-order machinery. Instead, a decoder translates each CISC x86 instruction into one or more simpler, fixed-format internal micro-operations (µops) — essentially RISC-like instructions — and it is *those* that flow through the reservation stations, reorder buffer, and execution units covered in Post 16. Externally, the chip is CISC-compatible; internally, it runs something closer to a RISC pipeline underneath a translation layer.
+The real resolution: modern x86 does not execute CISC ops directly in the out-of-order core. A decoder translates each x86 instruction into one or more fixed-format internal micro-operations (µops) — RISC-like — and *those* flow through the reservation stations, ROB, and execution units from Post 16. Outside: CISC-compatible. Inside: a RISC-style pipeline under a translation layer.
 
-## The Real Lesson
+## The Pattern to Keep
 
-This is a recurring pattern worth internalizing for the rest of this series: winning ISAs are rarely won purely on technical merit. Software compatibility, ecosystem lock-in, and manufacturing and economic scale routinely beat cleaner architecture on paper. The same dynamic shows up again in the next post with ARM's licensing model versus RISC-V's fully open approach — the *business model* around an ISA can matter as much as the instruction encoding itself.
+Winning ISAs are rarely won on technical merit alone. Compatibility, ecosystem lock-in, and manufacturing scale routinely beat cleaner paper architecture. The same dynamic shows up next with ARM's licensing model versus RISC-V's open ISA — the *business model* around an instruction set can matter as much as the encoding.
 
 {{< lab type="mini-cpu" >}}
+
+**Door out:** David A. Patterson and David R. Ditzel, "The Case for the Reduced Instruction Set Computer" (*Computer Architecture News*, 1980) — the manifesto of the RISC side of this commercial fight.
 
 <!--
 ASSET CHECKLIST

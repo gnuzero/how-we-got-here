@@ -2,31 +2,22 @@
 title: "Interactive Labs"
 ---
 
-Three hands-on labs, embedded directly in relevant posts (or usable standalone below). All run client-side — nothing is sent to a server.
+This book is a journey you operate, not a shelf of articles. Three labs sit on the spine where the constraint changes: gates become composable, instructions become a contract, and a machine becomes a place you can type.
 
-## 🔧 Mini-CPU Lab
-A custom 8-bit toy ISA — 4-bit opcode / 4-bit operand, 16 bytes of RAM, A/B registers, carry/zero flags. Write assembly, step through execution cycle by cycle, watch memory and registers change in real time. Built from scratch for this series — same instruction-set shape used in the "Building a CPU" and "Instruction Sets" posts, so what you assemble here maps directly to what those posts explain.
+Each lab opens with a guided beat — something to do in one screen, without a separate manual. All run in your browser. Breadboard and the VM need the network (CDN); the mini-CPU does not.
 
-→ [Open Mini-CPU Lab](/labs/mini-cpu/)
+## On the spine
 
-## 🍞 Virtual Breadboard
-An in-browser circuit simulator (Falstad CircuitJS) for building logic gates, CMOS stages, and small digital circuits without touching real hardware. A link to Wokwi is included for posts that need a real physical-breadboard layout with actual microcontroller firmware instead of a schematic-level simulation.
+**Gates → breadboard.** When the story reaches transistors and CMOS (around posts 07–08), you meet a real AND gate in CircuitJS. Toggle the inputs. Watch the output. That is the same boolean world Phase 3 will stack into adders and ALUs.
 
-→ [Open Breadboard Lab](/labs/breadboard/)
+→ [Open the breadboard](/labs/breadboard/)
 
-## 💻 VM Terminal
-A full x86 machine running client-side via WebAssembly (powered by [v86](https://github.com/copy/v86)) — boots a real Linux, gives you a real shell. Used in OS, real-time systems, and networking posts where reading about `ps`, scheduling, or `ping` isn't as useful as running them.
+**Instructions → mini-CPU.** When the story reaches the ISA (post 11 and the CPU-building phase), you get an 8-instruction guided program on a tiny 8-bit machine. Step once: fetch, decode, execute — watch register A and memory change. Flagship experience for Phase 3.
 
-→ [Open VM Terminal Lab](/labs/vm-terminal/)
+→ [Open the mini-CPU](/labs/mini-cpu/)
 
----
+**A running machine → VM terminal.** Later, when the story is OS, shell, and networks, you boot a real Linux client-side (v86). Click the screen, then try `whoami`, `uname`, and `ls` — operate the system the posts are about.
 
-## Embedding a lab in a post
+→ [Open the VM terminal](/labs/vm-terminal/)
 
-```markdown
-{{</* lab type="mini-cpu" */>}}
-{{</* lab type="breadboard" height="700" */>}}
-{{</* lab type="vm-terminal" height="600" */>}}
-```
-
-See `TRACKER.md` / individual post frontmatter (`labs:` field) for which posts already have a lab assigned.
+These are not three toys in a drawer. They are the moments where reading stops being enough.

@@ -1,37 +1,33 @@
 ---
 title: "Memory Buses"
 date: 2026-01-01
-draft: true
+draft: false
 phase: "5 — The Bus & System Architecture"
 series_index: 34
 tags: []
-summary: "DDR evolution — bandwidth vs latency"
+summary: "DDR bought bandwidth; latency barely moved — banks and channels hide the wait"
 image_prompt: "Comparison chart of DDR generations, clean technical infographic style, alongside a DIMM pinout diagram"
 video_prompt: "20-second animation: DRAM burst transfer, comparing burst length across DDR generations, clean technical animation"
 schematics: "Diagram: DDR generation comparison table + memory channel/rank/bank organization diagram"
 ---
 
-PCIe (Posts 32–33) connects the CPU to expansion devices — GPUs, network cards, storage. The memory bus is a different, and in some ways even more performance-critical, connection: the path between the CPU and main memory (DRAM, covered back in Post 10), and its evolution through successive DDR generations is a direct, ongoing negotiation between bandwidth, latency, and power.
+PCIe (Posts 32–33) is the path to expansion devices. The memory bus is the path that actually feeds the CPU — DRAM from Post 10 — and its evolution is a running negotiation among bandwidth, latency, and power. The generation names are not the story. The split between those three is.
 
-## What DDR Actually Stands For, and Why It Matters
+## Both Edges, Not a Faster Clock
 
-DDR — Double Data Rate — transfers data on both the rising *and* falling edge of the clock signal, effectively doubling throughput relative to a hypothetical single-data-rate design running at the same clock frequency, without needing to double the actual clock speed itself. This is a clever way to get more bandwidth without pushing clock frequency (and the associated signal-integrity challenges) as hard as would otherwise be required.
+DDR — Double Data Rate — transfers on the rising *and* falling edge. Roughly twice the throughput of a single-data-rate design at the same clock, without doubling frequency (and the signal-integrity problems that come with it). Bandwidth without paying the clock wall first.
 
-## Generational Evolution: More Bandwidth, Similar Latency
+## Bandwidth Climbed; First-Bit Latency Did Not
 
-Each DDR generation (DDR3, DDR4, DDR5) has delivered substantially higher peak bandwidth than its predecessor — driven mainly by higher I/O rates. Prefetch stayed 8n from DDR3 through DDR4; DDR5 doubles it to 16n and splits each module into two independent 32-bit subchannels for improved parallelism.
+Each DDR generation raised peak bandwidth, mostly by faster I/O. Prefetch and, in DDR5, a split into two independent 32-bit subchannels buy more parallelism on the module. What the headline numbers hide: raw access *latency* — request to first bit — moved far more slowly than bandwidth. DRAM got much better at a stream once it starts, and only a little better at the wait before it does. That is the setup for Post 35. Different metric, different physics (charge sensing, capacitor cells).
 
-What is easy to miss if you only look at the bandwidth headline numbers: raw access *latency* — the time from issuing a request to the first bit of data becoming available — has improved far more slowly across these same generations than bandwidth has. This is exactly the setup for Post 35's Memory Wall discussion: DRAM has gotten dramatically better at sustained *throughput* (once a stream of data starts flowing, it flows fast) without a correspondingly dramatic improvement in the *latency* of the very first access in that stream — a fundamentally different metric with different physical bottlenecks (charge sensing, capacitor physics) behind it.
+## Parallelism to Hide a Slow Access
 
-## Channels, Ranks, Banks: How Parallelism Is Structured
+A *channel* is an independent controller path — concurrent requests need not queue behind each other. Within a channel, *ranks* and *banks* let one bank finish (or refresh — Post 10) while another takes a new request. Overlap enough independent accesses and *aggregate* throughput stays high even though no single access got faster. That is why the organization exists: not a catalog of DIMM features, a way to hide the latency the next post names as a wall.
 
-A memory *channel* is an independent path from the memory controller to a set of DRAM devices — multiple channels let independent requests proceed in parallel rather than queuing behind each other, directly increasing effective throughput for workloads issuing many concurrent memory requests. Within a channel, memory is organized into *ranks* (independent sets of DRAM chips that can be selected and accessed somewhat independently) and, within a rank, into *banks* (further subdivisions that allow one bank to be busy completing a previous access — including that mandatory refresh cycle from Post 10 — while another bank services a completely new request). This banked structure is what lets DRAM sustain reasonably high throughput despite each individual bank access having real, non-negligible latency — overlap enough independent bank accesses and the *aggregate* throughput can stay high even though no single access got individually faster.
+A DIMM is the physical package — chips on a board with a standard edge connector — so capacity is "how many slots, what size," not a redesign of the bus.
 
-## The DIMM as a Physical Package
-
-A DIMM (Dual In-line Memory Module) packages multiple DRAM chips onto a single circuit board with a standardized pinout and edge connector, letting a system's memory capacity be configured and upgraded by swapping physical modules — a practical packaging convenience layered on top of everything above, and the reason "how much RAM does this system have" is usually answerable by counting populated DIMM slots and their individual capacities.
-
-This entire evolution — more bandwidth, banked parallelism, and DDR5's wider prefetch plus dual subchannels — has been DRAM's ongoing attempt to keep pace with ever-faster CPUs. The next two posts examine what happens when that attempt falls short: the memory wall, and its close cousin, the clock speed wall.
+The next two posts are what happens when this negotiation falls short: the memory wall, and its cousin on the compute side, the clock-speed wall.
 
 <!--
 ASSET CHECKLIST
