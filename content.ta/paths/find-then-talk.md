@@ -4,10 +4,10 @@ draft: false
 weight: 3
 ---
 
-தகவல் மீட்டெடுப்பு மற்றும் peer தொடர்பு ஒரே வளைவாக — பிறகு இரண்டின் நுகர்வோர் பேக்கேஜிங். மெல்லிய அட்டவணை.
+தகவல் மீட்டெடுப்பும் peer தொடர்பும் ஒரே வளைவாக — பிறகு இரண்டின் நுகர்வோர் தொகுப்பு. மெல்லிய அட்டவணை.
 
-1. [TCP/IP மற்றும் நவீன இணைய அடுக்கு](/posts/41-tcp-ip-and-the-modern-internet-stack/) — பயன்பாடுகள் சவாரி செய்த transport
-2. [Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்](/posts/43-usenet-archie-gopher-and-the-pre-web-internet/) — கண்டுபிடி + பேசு → IRC → portals (Yahoo விதையாக)
-3. [Google-இன் Big Data உள்கட்டமைப்பு](/posts/44-google-s-big-data-infrastructure-why-they-won/) — crawler அளவில் அதே *கண்டுபிடிப்பு வகை*
+1. [TCP/IP மற்றும் நவீன இணைய Stack](/posts/41-tcp-ip-and-the-modern-internet-stack/) — apps சவாரி செய்த போக்குவரத்து
+2. [Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்](/posts/43-usenet-archie-gopher-and-the-pre-web-internet/) — find + talk → IRC → portals (விதையாக Yahoo)
+3. [Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்](/posts/44-google-s-big-data-infrastructure-why-they-won/) — crawler அளவில் அதே *வகை* find
 
-[எல்லாப் பாதைகளுக்கும்](/paths/) திரும்புங்கள்.
+[அனைத்துப் பாதைகளுக்கும்](/paths/) திரும்புங்கள்.
