@@ -98,49 +98,26 @@
 - 98-timeline: no single Thai timeline source — อ่านเพิ่ม omitted on purpose
 - (53–62 still each have at least one verified named Thai work)
 
+### Vision widen + close (2026-09-06 evening, Mira)
+
+- 64-who-decides-the-wire.md — already done (prior); not redone
+- 66-wartime-crypto.md — already done (prior); not redone
+- 67-privacy-consent-identity-cyber.md — translated from EN; draft:false; อ่านเพิ่ม: วรเศรษฐ สุวรรณิก *วิทยาการรหัสลับ*; ผศ.ดร. ชาญศักดิ์ ศรีสวัสดิ์สกุล *วิทยาการเข้ารหัสลับและเทคโนโลยีบล็อกเชน*; ปริญญา หอมเอนก *Strategy to Cybersecurity 4.0* (Chula OPAC); ผศ.ดร. จรวย สาวิถี *ความมั่นคงของเครือข่ายคอมพิวเตอร์* (MSU ebook)
+- 68-visions-that-shipped.md — translated from EN; draft:false; อ่านเพิ่ม omitted (no verified Thai Cisco/Gates/Jobs/Bezos/Musk seed literature; GNU+Linus already credited in 23)
+- 69-platform-synthesis.md — translated from EN; draft:false; อ่านเพิ่ม: ณัฐโชติ พรหมฤทธิ์; อาณัติ รัตนถิรกุล; โอภาส เอี่ยมสิริวงศ์; สุพจน์ เฮงพระพรหม (layer books already verified in project)
+
+### Optional learning paths (content.th/paths/)
+
+- _index.md, crypto-wartime.md, who-runs-the-internet.md, find-then-talk.md, privacy-identity-consent.md, visions-that-shipped.md — full Thai thin indexes from EN content/paths/; draft:false
+
+### Phase 1 + 63 distill
+
+- 01–04, 63 — already draft:false and match EN distill (spot-checked; not rewritten this pass)
+
 ## In progress
 
 (none)
 
 ## Remaining
 
-(none — remaining complete)
-
-### Catch-up widen-the-lens + Phase 1 VISION distill (2026-09-06 ~17:00 Asia/Bangkok)
-
-Desk: Mira. Prior run did not land cleanly — re-did from scratch. Vision lock: connective tissue, doors out, verified refs only; not encyclopedia.
-
-#### TASK 1 — New Thai widen-the-lens (draft:false)
-
-- **64-who-decides-the-wire.md** — landed; Crocker, Postel, Clark, Reynolds, Mockapetris, Dyson, Becker, Davis, Berners-Lee, Nayana (ARIN seed) credited in English; RFC/IANA/ICANN/Unicode/IETF/IEEE/W3C/WHATWG doors kept. อ่านเพิ่ม: โอภาส เอี่ยมสิริวงศ์, *เครือข่ายคอมพิวเตอร์และการสื่อสาร*; ภัทรสินี ภัทรโกศล, *เครือข่ายคอมพิวเตอร์*; สุวัฒน์ ปุณณชัยยะ และคณะ, *เปิดโลก TCP/IP และโปรโตคอลของอินเตอร์เน็ต* (verified network/TCP-IP trio; no dedicated Thai internet-governance monograph found).
-- **66-wartime-crypto.md** — landed; Rejewski, Różycki, Zygalski, Turing, Welchman, Newman, Flowers, Copeland credited in English; TNMOC / Bletchley doors kept. อ่านเพิ่ม: วรเศรษฐ สุวรรณิก, *วิทยาการรหัสลับ* (verified Chula OPAC). No named Thai wartime Enigma–Colossus history textbook verified → not invented.
-- **67-privacy-consent-identity-cyber.md** — **created**; Saltzer, Schroeder, Diffie, Hellman, Rivest, Shamir, Adleman, Needham, Miller, Neuman, Denning credited in English; RFC 8446 / 6749 doors kept. อ่านเพิ่ม: วรเศรษฐ สุวรรณิก, *วิทยาการรหัสลับ*; ชาญศักดิ์ ศรีสวัสดิ์สกุล, *วิทยาการเข้ารหัสลับและเทคโนโลยีบล็อกเชน*; ปริญญา หอมเอนก, *Strategy to Cybersecurity 4.0*; จรวย สาวิถี, *ความมั่นคงของเครือข่ายคอมพิวเตอร์* (all WebSearch-verified named works).
-- **68-visions-that-shipped.md** — **created**; Bosack, Lerner, Gates, Jobs, Wozniak, Stallman, Torvalds, Bezos, Musk credited in English; forward-link seeds only. อ่านเพิ่ม: **omitted** (no verified named Thai monograph on Cisco/Gates/Jobs/visions-as-seeds matching this connective beat; company bios / MBA texts not used).
-- **69-platform-synthesis.md** — **created**; synthesis-only composition of prior chapters. อ่านเพิ่ม: ณัฐโชติ พรหมฤทธิ์, *Practical DevOps and Cloud Engineering*; อาณัติ รัตนถิรกุล, *Docker พื้นฐานสู่การใช้งานจริง*; โอภาส เอี่ยมสิริวงศ์, *เครือข่ายคอมพิวเตอร์และการสื่อสาร*; สุพจน์ เฮงพระพรหม, *การเรียนรู้ของเครื่อง MACHINE LEARNING* (verified — platform composition doors).
-
-#### TASK 2 — Phase 1 + 63 distill to current English Jules voice
-
-Rewrote Thai to English distill shape (shorter connective, ประตูออก, constraint→next architecture); updated summaries; draft:false all five.
-
-- **01-mechanical-electromechanical-computing.md** — distilled; summary → "เฟืองบังคับแนวคิดโปรแกรม; แรงเสียดทานบังคับไฟฟ้า"; Babbage, Jacquard, Lovelace, Menabrea; ประตูออก Lovelace *Notes*. อ่านเพิ่ม: **omitted** (no verified named Thai Babbage/history-of-computing textbook).
-- **02-relays-and-electromechanical-logic.md** — distilled; summary → "รีเลย์พิสูจน์ว่าตรรกะไบนารีใช้ได้ — และว่าโลหะที่เคลื่อนตามไม่ทัน"; Zuse, Rojas; ประตูออก Rojas 1998. อ่านเพิ่ม: **omitted** (none verified for relay/Z3 history in Thai).
-- **03-the-vacuum-tube-era.md** — distilled; summary → "หลอดเอาชิ้นส่วนที่เคลื่อนที่ออก — และแลกความเร็วนั้นด้วยความร้อน พลังงาน และความล้มเหลว"; Goldstine + ประตูออก. อ่านเพิ่ม: **omitted** (no verified named Thai ENIAC/tube-history textbook).
-- **04-why-the-transistor-had-to-happen.md** — distilled; summary → "ขนาด พลังงาน ความเชื่อถือได้ — สามเพดานของหลอด…"; Bardeen, Brattain, Shockley / Bell Labs; ประตูออก Bell Labs papers. อ่านเพิ่ม: ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ* (verified).
-- **63-attention-is-all-you-need.md** — distilled; summary → "Self-attention ปิดแกน — การจำลองลำดับแบบขนานที่แมปเข้าฮาร์ดแวร์คูณเมทริกซ์…"; full Vaswani et al. author list in ประตูออก. อ่านเพิ่ม: สุพจน์ เฮงพระพรหม; นวลวรรณ สุนทรภิษัช; รศ.ดร.วฤษาย์ ร่มสายหยุด (verified ML trio).
-
-#### None-verified (this batch)
-
-- 01, 02, 03 — no named Thai computing-history textbooks for Babbage / relays / ENIAC → อ่านเพิ่ม omitted
-- 66 — no named Thai *wartime* crypto/computing history; only general crypto (วรเศรษฐ)
-- 64 — no dedicated Thai ICANN/IANA governance monograph; network/TCP-IP authors as closest verified doors
-- 68 — no verified Thai "visions that shipped" / founder-as-seed monograph → อ่านเพิ่ม omitted
-
-#### Untouched (per task)
-
-- content.si / content.ta — not touched
-- content.th posts 05–62 — not rewritten
-- No git
-
-#### SUCCESS check
-
-All 5 new Thai files (64, 66, 67, 68, 69) + 5 Phase 1 distilled (01–04, 63) exist with `draft: false`.
+(none — 67–69 + content.th/paths/ complete 2026-09-06)
