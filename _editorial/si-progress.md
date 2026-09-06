@@ -2,7 +2,7 @@
 
 - Desk: Sena
 - Started: 2026-09-06 (Asia/Bangkok)
-- Scope: full bodies for 05–66 (05–12 prior; 13–20 prior; 21–30 prior; 31–37 prior; 38–43 prior; 44–51 prior; 52–63 + 64 + 66 this slice; **65 absent** — no EN/SI source)
+- Scope: full bodies for 05–69 (05–12 prior; 13–20 prior; 21–30 prior; 31–37 prior; 38–43 prior; 44–51 prior; 52–63 + 64 + 66 prior; **65 absent**; **67–69 this slice**)
 - Skip (MVP done / leave alone): _index, 00, 01–04, 99 (63 refreshed this slice from Jules EN — no longer stale MVP draft)
 - Rules: draft:false; no invented SI sources; no Wikipedia pad; no อ่านเพิ่ม/further-reading SI blocks unless a real verified Sinhala named work exists (almost never — skip); no git; no content.ta/th; titles/attribution from TRANSLATIONS.md; keep frontmatter; tech terms in English where SI MVP already does; preserve labs/ASSET CHECKLIST
 
@@ -89,6 +89,13 @@
 - 66-wartime-crypto.md — Done; Cass/VISION wartime crypto thread; Enigma/Bletchley/Colossus; named people Latin; Door outs to TNMOC + English/primary histories; honesty note no SI primary source; phase Crypto සහ යුද්ධකාලීන පරිගණකකරණය
 - Note: **65 absent** (no EN post) — skipped
 
+## Done (67–69)
+
+- 67-privacy-consent-identity-cyber.md — Done; translated from English; no SI primary source claimed; engineering evolution (isolation → crypto → identity → consent → adversarial ops), not policy pamphlet; Door outs Saltzer & Schroeder 1975; Diffie–Hellman + RSA + RFC 8446; Kerberos/MIT + RFC 6749; CVE / classical security-engineering; phase රහස්‍යතාව / අනන්‍යතාව / එකඟතාව; named people Latin; tags []
+- 68-visions-that-shipped.md — Done; translated from English; no SI primary source claimed; forward-link seeds of kinds (Cisco, Gates/Microsoft, Jobs/Apple, GNU+Linus, Bezos/Amazon, Elon Musk) — derive kin and stop; not biographies; phase නැව්ගත වූ දැක්මන්; no door (matches EN); tags []
+- 69-platform-synthesis.md — Done; translated from English; no SI primary source claimed; synthesis only (distributed systems + networking + AI infra + privacy engineering + software engineering); no textbook dump; phase එක් යන්ත්‍රයකින් Platform එකකට; no door (matches EN); tags []
+- Note: **65 absent** (no EN post) — still skipped
+
 ## Wrap chrome (2026-09-06)
 
 - 98-timeline.md — Done; translated from EN; phase යොමුව; title කාලරේඛාව; named people Latin; tech terms English where prior SI does
@@ -96,4 +103,4 @@
 - _index.md — Credits only refreshed: Sena bullet under ආරෝපණය; signature `— Grok, Lucas, Benjamin, Harper සහ Sena`; attribution paragraph mentions Sena desks SI edition. Posts 00–04 left alone.
 - TRANSLATIONS.md — Added `Sinhala edition (named desk): Sena`; Sinhala attribution paragraph mentions Sena; Last updated 2026-09-06
 
-**Scope note:** Sinhala wrap chrome complete (timeline + about + credits). Standing by — no more chapter bodies.
+**Scope note:** Sinhala wrap chrome complete (timeline + about + credits). Chapter bodies through 69 (65 absent). Standing by — no more chapter bodies.
