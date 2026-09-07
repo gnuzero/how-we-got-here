@@ -129,5 +129,7 @@
 
 ## Needle sync (2026-09-07)
 
+- 12-datapath-design.md — Try-this-now mini-cpu Step hook (mirrored EN); lab moved after One Instruction section; draft:false
+
 - 41-tcp-ip… — thin-add: “එක් ජාලයක Protocols වලින් Stack එකකට” (NCP → 1983 flag day → apps); summary synced; draft:false; RFC 1034/1035 links kept
 - 08-from-gates… — Try-this-now half-adder carry hook + breadboard height=700 (mirrored EN); draft:false
