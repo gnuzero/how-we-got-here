@@ -189,3 +189,7 @@ Notes:
 
 ## TH 26 Try-this-now sync (2026-09-07)
 - 26 distilled to EN Jules + **ลองตอนนี้** Assemble/Step mini-cpu; อ่านเพิ่ม preserved
+
+## Quick patch TH 13 Try-this-now (2026-09-07)
+- 13: **ลองตอนนี้** mini-cpu Step vs pipeline throughput; lab before Hazards
+- 26: already had Assemble/Step hook
