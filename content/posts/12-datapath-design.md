@@ -20,13 +20,15 @@ The pieces: a **program counter** (Post 9's flip-flops) holding the next instruc
 
 Take ADD. The PC indexes instruction memory. The control unit sees a register-register ADD. Two source registers feed the ALU; the ALU result writes the destination; the PC advances. Fetch, decode, register read, ALU, write-back, PC update — all inside *one* clock period.
 
+**Try this now.** Step the mini-CPU below through its guided program. Each Step is one of those pieces in slow motion — fetch into IR, decode the opcode, execute into A and memory — the same path this post just named, small enough to watch.
+
+{{< lab type="mini-cpu" >}}
+
 ## The Constraint That Forces Pipelining
 
 That clock period must be long enough for the *slowest* instruction's full path — even instructions that never touch data memory. Every ADD therefore runs at the speed of the worst case. Throughput sits on the floor.
 
 Pipelining answers that constraint: cut the long path into stages, clock each stage for *its* worst case, and let different instructions occupy different stages at once. Same ISA. Far more work finished per second. That is the next post — and the central idea of classical microarchitecture.
-
-{{< lab type="mini-cpu" >}}
 
 <!--
 ASSET CHECKLIST

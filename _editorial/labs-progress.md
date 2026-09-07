@@ -198,3 +198,11 @@ Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mi
 - **Try this now** ties the green AND-gate lab to the half-adder carry before ripple-carry is explained.
 - No fourth lab; mini-cpu untouched; SI/TA untouched; no git.
 - Breadboard still GREEN from pass 5 (`cct=` AND). CDN note for Falstad UI unchanged.
+
+## Needle move — post 12 try-this-now (pass 8) — 2026-09-07
+
+**Shipped:** Post **12** (`12-datapath-design.md`) — mini-cpu was dumped at bottom with no try-this-now.
+
+- Moved embed after “One Instruction, One Clock” (ADD walkthrough).
+- **Try this now** ties guided mini-CPU Step (fetch/decode/execute) to the single-cycle datapath path before the pipelining constraint section.
+- Mini-cpu lab HTML untouched (still GREEN). No fourth lab; no SI/TA; no git.

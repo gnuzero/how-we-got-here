@@ -5,7 +5,7 @@ draft: false
 phase: "6 — வலையமைப்பு பரிணாமம்"
 series_index: 41
 tags: []
-summary: "பன்முக நம்பகமற்ற இணைப்புகள் அடுக்கு உத்தரவாதங்களைக் கட்டாயப்படுத்தின — IP route செய்கிறது; TCP நம்பக stream-ஐ மீண்டும் கட்டுகிறது"
+summary: "இணைய நெறிமுறைகள் எப்படி அடுக்கியன, ஏன் — அடுக்குகள், flag day, நம்பகமற்ற substrate மீது apps — ஒரு பட்டியல் அல்ல"
 image_prompt: "Layered protocol stack diagram with a packet gaining headers at each layer, clean networking textbook diagram style"
 video_prompt: "25-second animation: data flowing down through TCP/IP layers gaining headers, then unwrapped at destination, clean technical animation"
 labs: ["vm-terminal"]
@@ -27,6 +27,12 @@ TCP/IP கவலைகளை PCIe-இன் stack பிரிக்கும்
 IP வெளிப்படையாக best-effort — வழங்கல் வாக்குறுதி இல்லை, வரிசை வாக்குறுதி இல்லை, drops அனுமதிக்கப்பட்டவை. TCP sequence numbers மற்றும் acknowledgments (மற்றும் ACK-கள் வராதபோது retransmission) மூலம் மீது ஒரு நம்பக வரிசைப்படுத்தப்பட்ட byte stream கட்டுகிறது — பதிவு 33-இன் PCIe data-link அடுக்கின் அதே நம்பகத்தன்மை *வகை*, ஒரே அர்ப்பணிக்கப்பட்ட இணைப்புக்குப் பதிலாக முழு நம்பகமற்ற internetwork குறுக்கே நீட்டப்பட்டது.
 
 ஒரு connection மூன்று-வழி handshake-ஆல் தொடங்குகிறது: SYN (client ஒரு sequence number முன்மொழிகிறது), SYN-ACK (server ஒப்புக்கொண்டு தன் சொந்தத்தை முன்மொழிகிறது), இறுதி ACK. அதற்குப் பிறகுதான் application தரவு ஓடும் — இரு பக்கங்களும் முதலில் ஒத்திசைக்கப்பட்ட நிலையைப் பகிரும் சிறிய வேண்டுமென்ற செலவு.
+
+## ஒரு வலையமைப்பின் நெறிமுறைகளிலிருந்து ஒரு Stack-க்கு
+
+ARPANET முதலில் தன் சொந்த host-to-host நெறிமுறையை (NCP) பேசியது, TCP/IP அல்ல. Cerf மற்றும் Kahn-இன் பந்தயம் பெரியது: *பல* packet வலையமைப்புகளை internet செய்யக்கூடிய ஒரு *protocol stack* — எனவே transport மற்றும் உள்ளூர் கம்பி தனித்தனியாக பரிணமிக்க முடியும். ARPANET-இல் நடைமுறை மாற்றம் ஜனவரி 1, 1983 "flag day" — NCP அணைக்கப்பட்டு TCP/IP கட்டாயமானது — அடுக்குக் கதையை கட்டமைப்பு மட்டும் அல்லாமல் செயல்பாட்டுக்குக் கொண்டுவந்த அரிதான கடின வெட்டு.
+
+Application நெறிமுறைகள் பிறகு அடுக்கியது அந்த substrate இருந்ததால். DNS (பதிவு 64-இன் கதவுகள்: [RFC 1034](https://www.rfc-editor.org/rfc/rfc1034) / [RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)) பெயர்களை அளவில் பயன்படுத்தக்கூடியதாக்கியது; mail மற்றும் வலை (SMTP, HTTP மற்றும் உறவினர்கள்) முகவரி மற்றும் retransmission-ஐ மீண்டும் கண்டுபிடிக்காமல் நம்பக stream-இன் clients ஆக TCP மீது ஏறின. முறைதான் பொருள்: ஒவ்வொரு அடுக்கும் ஒரு கட்டுப்பாட்டை வாங்கி மேலே உள்ளது அதைக் கருத அனுமதிக்கிறது. அது அடுக்குதல் பற்றிய கதை, ஒவ்வொரு RFC-இன் பட்டியல் அல்ல.
 
 ## இந்த வடிவமைப்பு ஏன் வென்றது
 
