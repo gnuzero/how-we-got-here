@@ -91,9 +91,9 @@
 
 ## Done (67–69)
 
-- 67-privacy-consent-identity-cyber.md — Done; translated from English; no SI primary source claimed; engineering evolution (isolation → crypto → identity → consent → adversarial ops), not policy pamphlet; Door outs Saltzer & Schroeder 1975; Diffie–Hellman + RSA + RFC 8446; Kerberos/MIT + RFC 6749; CVE / classical security-engineering; phase රහස්‍යතාව / අනන්‍යතාව / එකඟතාව; named people Latin; tags []
-- 68-visions-that-shipped.md — Done; translated from English; no SI primary source claimed; forward-link seeds of kinds (Cisco, Gates/Microsoft, Jobs/Apple, GNU+Linus, Bezos/Amazon, Elon Musk) — derive kin and stop; not biographies; phase නැව්ගත වූ දැක්මන්; no door (matches EN); tags []
-- 69-platform-synthesis.md — Done; translated from English; no SI primary source claimed; synthesis only (distributed systems + networking + AI infra + privacy engineering + software engineering); no textbook dump; phase එක් යන්ත්‍රයකින් Platform එකකට; no door (matches EN); tags []
+- 67-privacy-consent-identity-cyber.md — Done earlier (prior slice); **left untouched** this turn; draft:false; date 2026-01-01; phase රහස්‍යතාව / අනන්‍යතාව / එකඟතාව; පිටවීමේ දොර to English primaries; no invented SI sources
+- 68-visions-that-shipped.md — **Done this turn**; forward links/seeds (not biographies); phase නැව්ගත වූ දැක්මන්; Cisco/Gates/Jobs/GNU+Linus/Bezos/Musk Latin; ASSET CHECKLIST; draft:false; date 2026-01-01; series_index 68; no door (matches EN); tags []
+- 69-platform-synthesis.md — **Done this turn**; synthesis only; title Platform සංස්ලේෂණය; phase එක් යන්ත්‍රයකින් Platform එකකට; draft:false; date 2026-01-01; series_index 69; ASSET CHECKLIST; no door (matches EN); tags []
 - Note: **65 absent** (no EN post) — still skipped
 
 ## Wrap chrome (2026-09-06)
@@ -103,15 +103,16 @@
 - _index.md — Credits only refreshed: Sena bullet under ආරෝපණය; signature `— Grok, Lucas, Benjamin, Harper සහ Sena`; attribution paragraph mentions Sena desks SI edition. Posts 00–04 left alone.
 - TRANSLATIONS.md — Added `Sinhala edition (named desk): Sena`; Sinhala attribution paragraph mentions Sena; Last updated 2026-09-06
 
-**Scope note:** Sinhala wrap chrome complete (timeline + about + credits). Chapter bodies through 69 (65 absent). Paths chrome in content.si/paths/. Standing by.
+**Scope note:** Sinhala wrap chrome complete (timeline + about + credits). Chapter bodies through 69 (65 absent).
 
-## Done (content.si/paths/)
+## Done content.si/paths/
 
-- _index.md — Done; thin indexes intro; draft:false
-- crypto-wartime.md — Done; weight 1
-- who-runs-the-internet.md — Done; weight 2
-- find-then-talk.md — Done; weight 3
-- privacy-identity-consent.md — Done; weight 4
-- visions-that-shipped.md — Done; weight 5
-- URL slugs kept English (`/posts/...`, `/paths/`, `/labs/`); no invented SI sources; no git
+- _index.md — විකල්ප ඉගෙනුම් මාර්ග; thin index intro; draft:false
+- crypto-wartime.md — Crypto සහ යුද්ධකාලීන පරිගණකකරණය; weight 1
+- who-runs-the-internet.md — අන්තර්ජාලය ධාවනය කරන්නේ කවුද; weight 2
+- find-then-talk.md — සොයන්න, ඉන්පසු කතා කරන්න; weight 3
+- privacy-identity-consent.md — රහස්‍යතාව / අනන්‍යතාව / එකඟතාව; weight 4
+- visions-that-shipped.md — නැව්ගත වූ දැක්මන්; weight 5
+- URL slugs kept English (`/posts/...`, `/paths/`, `/labs/`); SI link titles; named people/orgs Latin; no invented SI sources; UTF-8 clean; no git; no content.ta/th touched
 
+**Closing (2026-09-06):** Posts 68–69 + full content.si/paths/ (6 files) completed this turn; 67 already done earlier.
