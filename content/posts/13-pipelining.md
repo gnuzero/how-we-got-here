@@ -20,6 +20,10 @@ A classic RISC pipeline: **IF** (fetch), **ID** (decode / register read), **EX**
 
 While instruction N is in EX, N+1 can be in ID and N+2 in IF. In steady state a new instruction *completes* every cycle — even though each one still takes five cycles start to finish. Latency stays; throughput rises. That distinction shows up everywhere after this.
 
+**Try this now.** Step the mini-CPU below once per instruction — that is the single-cycle habit Post 12 made visible. Pipelining’s claim is throughput: the same fetch / decode / execute pieces overlapping across instructions, not one whole instruction per tick. Feel the sequential Step, then read the hazard section knowing why real pipelines cannot stay that simple.
+
+{{< lab type="mini-cpu" >}}
+
 ## Hazards: Where Independence Breaks
 
 Instructions are rarely independent.
@@ -31,8 +35,6 @@ Instructions are rarely independent.
 ## What Those Costs Force Next
 
 Misprediction flushes are expensive — which is why branch prediction (Post 14) exists: guess early and accurately enough that flushes become rare. The load-use stall is why out-of-order execution (Post 16) exists: stall only the waiting instruction, not the whole pipeline, and let independent work behind it run.
-
-{{< lab type="mini-cpu" >}}
 
 <!--
 ASSET CHECKLIST

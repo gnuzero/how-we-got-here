@@ -230,3 +230,11 @@ Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mi
 - Added **Try this now** before the existing embed: Assemble + Step; mnemonics one-to-one onto opcodes.
 - Mini-cpu lab HTML untouched (GREEN). No fourth lab; no SI/TA; no git.
 - Standing by after this beat per Lucas.
+
+## Needle move — post 13 try-this-now (pass 12) — 2026-09-07
+
+**Shipped:** Post **13** (`13-pipelining.md`) — high-leverage miss after post 12’s datapath hook.
+
+- Moved embed after “Five Stages, Overlapped.”
+- **Try this now** contrasts mini-CPU’s one-Step-per-instruction with pipeline overlap/throughput (honest: lab is not a pipeline).
+- Mini-cpu lab untouched. No fourth lab; no SI/TA; no git. Standing by after this.

@@ -226,6 +226,11 @@
 
 - `content.ta/posts/21-batch-processing-and-the-birth-of-the-operating-system.md` — thin **இப்போது முயல்க.** (batch deck vs interactive VM `whoami`/`uname`/`ls`); lab moved next to hook (`height="600"`); draft:false; no git.
 
+
+## Needle — TA 26 Try-this (2026-09-07 — Arun)
+
+- `content.ta/posts/26-from-machine-code-to-assembly.md` — **இப்போது முயல்க.** Assemble/Step ↔ mnemonic one-to-one opcode bits; lab kept beside hook; draft:false; no git.
+
 ## In progress
 
 (none — Phase 1 01–04 unblock done; standby)

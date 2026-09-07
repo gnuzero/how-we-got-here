@@ -182,3 +182,7 @@ Notes:
 
 ## Quick patch TH 09 Try-this-now (2026-09-07)
 - 09: **ลองตอนนี้** combinational AND lab vs sequential hold; lab before D Flip-Flop height=700
+
+## TH 21 Try-this-now sync (2026-09-07)
+- 21 distilled to EN Jules + **ลองตอนนี้** batch vs VM shell (`whoami`/`uname`/`ls`); lab height=600; อ่านเพิ่ม preserved if present
+- 09 already had Try-this-now
