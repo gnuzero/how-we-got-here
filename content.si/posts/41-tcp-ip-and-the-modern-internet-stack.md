@@ -5,7 +5,7 @@ draft: false
 phase: "6 — ජාලකරණය: ශ්‍රේණි සබැඳි සිට දත්ත මධ්‍යස්ථාන RDMA දක්වා"
 series_index: 41
 tags: []
-summary: "විවිධාකාර විශ්වාසනීය නොවන සබැඳි ස්ථරීය සහතික බල කළේය — IP route කරයි; TCP විශ්වාසනීය stream එකක් නැවත ගොඩනගයි"
+summary: "අන්තර්ජාල protocols stack වූ ආකාරය සහ ඇයි — ස්ථර, flag day, විශ්වාසනීය නොවන substrate එකක් මත apps — catalog එකක් නොවේ"
 image_prompt: "Layered protocol stack diagram with a packet gaining headers at each layer, clean networking textbook diagram style"
 video_prompt: "25-second animation: data flowing down through TCP/IP layers gaining headers, then unwrapped at destination, clean technical animation"
 labs: ["vm-terminal"]
@@ -27,6 +27,12 @@ TCP/IP කනස්සල්ල බෙදන්නේ PCIe හි stack එක �
 IP පැහැදිලිව best-effort ය — ලබා දීමේ පොරොන්දුවක් නැත, අනුපිළිවෙල පොරොන්දුවක් නැත, drops අවසර ඇත. TCP sequence numbers සහ acknowledgments සමඟ (සහ ACKs නොපැමිණෙන විට retransmission) මත විශ්වාසනීය අනුපිළිවෙලින් byte stream එකක් ගොඩනගයි — PCIe හි data-link ස්ථරයේ එකම විශ්වාසනීයතා *වර්ගය* (Post 33), එක් කැප වූ සබැඳියක් වෙනුවට සම්පූර්ණ විශ්වාසනීය නොවන අන්තර්ජාලයක් හරහා දිගු කරන ලද.
 
 සම්බන්ධතාවයක් ආරම්භ වන්නේ three-way handshake එකකින්: SYN (client sequence number එකක් යෝජනා කරයි), SYN-ACK (server පිළිගෙන තමන්ගේම යෝජනා කරයි), අවසාන ACK. ඉන් පසුව පමණක් application දත්ත ගලා යයි — දෙපැත්තම පළමුව සමමුහුර්ත තත්ත්වය බෙදා ගන්නා සුළු හිතාමතා පිරිවැයක්.
+
+## එක් ජාලයක Protocols වලින් Stack එකකට
+
+ARPANET මුලින් කතා කළේ තමන්ගේම host-to-host protocol එකක් (NCP), TCP/IP නොවේ. Cerf සහ Kahn ගේ ඔට්ටුව විශාල විය: *බොහෝ* packet ජාල අන්තර්ජාල කළ හැකි *protocol stack* එකක්, එසේ නම් transport සහ දේශීය වයර් එක වෙන වෙනම පරිණාමය විය හැක. ARPANET මතම ප්‍රායෝගික cutover එක වූයේ 1983 ජනවාරි 1 "flag day" ය — NCP නිවා දමා TCP/IP අනිවාර්ය වූ විට — ස්ථරීය කතාව ගෘහ නිර්මාණාත්මක පමණක් නොව මෙහෙයුම්මය කළ දුර්ලභ දැඩි කැපීමක්.
+
+Application protocols එවිට එම substrate එක පැවති නිසා *stack* විය. DNS (Post 64 හි දොරවල්: [RFC 1034](https://www.rfc-editor.org/rfc/rfc1034) / [RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)) නම් පරිමාණයෙන් භාවිතා කළ හැකි කළේය; mail සහ web (SMTP, HTTP සහ kin) addressing සහ retransmission නැවත නිර්මාණය කරනවා වෙනුවට විශ්වාසනීය stream එකක clients ලෙස TCP මත ධාවනය විය. රටාවම අරමුණයි: එක් එක් ස්ථරය එක් සීමාවක් මිලදී ගනී එසේ නම් ඉහළ ස්ථරයට එය උපකල්පනය කළ හැක. එය stacking පිළිබඳ කතාවකි, සෑම RFC එකකම catalog එකක් නොවේ.
 
 ## මෙම නිර්මාණය ජය ගත්තේ ඇයි
 

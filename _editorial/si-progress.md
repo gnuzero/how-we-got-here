@@ -126,3 +126,8 @@
 - URL slugs kept English (`/posts/...`, `/paths/`, `/labs/`); SI link titles; named people/orgs Latin; no invented SI sources; UTF-8 clean; no git; no content.ta/th touched
 
 **Closing (2026-09-06):** Posts 68–69 + full content.si/paths/ (6 files) completed this turn; 67 already done earlier.
+
+## Needle sync (2026-09-07)
+
+- 41-tcp-ip… — thin-add: “එක් ජාලයක Protocols වලින් Stack එකකට” (NCP → 1983 flag day → apps); summary synced; draft:false; RFC 1034/1035 links kept
+- 08-from-gates… — Try-this-now half-adder carry hook + breadboard height=700 (mirrored EN); draft:false
