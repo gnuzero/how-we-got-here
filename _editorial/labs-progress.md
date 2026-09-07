@@ -206,3 +206,11 @@ Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mi
 - Moved embed after “One Instruction, One Clock” (ADD walkthrough).
 - **Try this now** ties guided mini-CPU Step (fetch/decode/execute) to the single-cycle datapath path before the pipelining constraint section.
 - Mini-cpu lab HTML untouched (still GREEN). No fourth lab; no SI/TA; no git.
+
+## Needle move — post 09 try-this-now (pass 9) — 2026-09-07
+
+**Shipped:** Post **09** (`09-sequential-logic.md`) — breadboard dumped at bottom, no try-this-now. (07/22/23 already hooked; 09 was Lucas’s preferred open target.)
+
+- Moved embed after “Memory From Feedback.”
+- **Try this now** contrasts combinational instant response (AND lab) with the feedback/hold story of this post — honest (does not pretend the default AND is a flip-flop).
+- Breadboard lab unchanged (GREEN). No fourth lab; no SI/TA; no git.

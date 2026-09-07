@@ -211,6 +211,11 @@
 - `content.ta/posts/41-tcp-ip-and-the-modern-internet-stack.md` — added EN connective section *ஒரு வலையமைப்பின் நெறிமுறைகளிலிருந்து ஒரு Stack-க்கு* (NCP → 1983 flag day → apps on substrate + RFC 1034/1035 doors); summary synced; draft:false; no new Tamil sources invented.
 - `content.ta/posts/08-from-gates-to-combinational-logic.md` — breadboard shortcode had no Try-this; added **இப்போது முயல்க.** half-adder carry AND-gate hook + `height="700"` to match EN; draft:false.
 
+
+## Needle — TA 12 mini-cpu Try-this (2026-09-07 — Arun)
+
+- `content.ta/posts/12-datapath-design.md` — added **இப்போது முயல்க.** (Step ↔ single-cycle datapath); moved `{{< lab type="mini-cpu" >}}` next to hook (before single-cycle constraint section); draft:false; no full rewrite; no git.
+
 ## In progress
 
 (none — Phase 1 01–04 unblock done; standby)
