@@ -214,3 +214,11 @@ Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mi
 - Moved embed after “Memory From Feedback.”
 - **Try this now** contrasts combinational instant response (AND lab) with the feedback/hold story of this post — honest (does not pretend the default AND is a flip-flop).
 - Breadboard lab unchanged (GREEN). No fourth lab; no SI/TA; no git.
+
+## Needle move — post 21 try-this-now (pass 10) — 2026-09-07
+
+**Shipped:** Post **21** (`21-batch-processing-and-the-birth-of-the-operating-system.md`).
+
+- Lucas suggested 07/22/23 — those already had try-this-now; picked **21** instead (OS birth → interactive shell contrast before time-sharing).
+- Embed moved before the time-sharing tease; **Try this now** (`whoami` / `uname` / `ls`) contrasts batch’s no-intervene constraint with a live prompt.
+- VM lab untouched (GREEN, vendored assets). No fourth lab; no SI/TA; no git.

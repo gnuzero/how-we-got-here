@@ -28,9 +28,11 @@ As batch systems matured, job control languages let a submitted job name resourc
 
 No interactivity. A job ran start to finish with no chance to intervene, inspect intermediate state, or redirect. A bug often surfaced only after the full run — sometimes hours later, after burning an expensive allocation. For exploratory work, that turnaround was a hard productivity ceiling.
 
-Solving it required something batch architecture could not provide: multiple users active *at the same time*, each with the illusion of a dedicated session. That is time-sharing — not just automating job sequencing, but interleaving simultaneously active programs until the switching is invisible. The next post picks up there.
+**Try this now.** Boot the VM below, click the screen, then run `whoami`, `uname`, and `ls`. That prompt is the opposite of a batch deck — you intervene *now*, inspect state, and redirect. Time-sharing (next post) is what made this illusion shareable.
 
-{{< lab type="vm-terminal" >}}
+{{< lab type="vm-terminal" height="600" >}}
+
+Solving it required something batch architecture could not provide: multiple users active *at the same time*, each with the illusion of a dedicated session. That is time-sharing — not just automating job sequencing, but interleaving simultaneously active programs until the switching is invisible. The next post picks up there.
 
 <!--
 ASSET CHECKLIST

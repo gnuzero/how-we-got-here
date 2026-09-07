@@ -216,6 +216,11 @@
 
 - `content.ta/posts/12-datapath-design.md` — added **இப்போது முயல்க.** (Step ↔ single-cycle datapath); moved `{{< lab type="mini-cpu" >}}` next to hook (before single-cycle constraint section); draft:false; no full rewrite; no git.
 
+
+## Needle — TA 09 Try-this (2026-09-07 — Arun)
+
+- `content.ta/posts/09-sequential-logic.md` — thin insert **இப்போது முயல்க.** (combinational live AND vs sequential feedback/hold); moved breadboard lab next to hook; draft:false; no git.
+
 ## In progress
 
 (none — Phase 1 01–04 unblock done; standby)

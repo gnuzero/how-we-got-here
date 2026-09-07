@@ -20,6 +20,10 @@ schematics: "Diagram: SR latch + D flip-flop schematic + timing diagram with set
 
 Ungated SR latch එකක් සැමවිටම එහි Set/Reset ආදානවලට සංවේදී වන අතර, තහනම් ආදාන සංයෝජනයක් ඇත. Synchronous නිර්මාණය සඳහා වඩා වැදගත් අතරමැදි පියවර වන්නේ gated (level-sensitive) latch එකකි: එහි enable ඉහළ ඇති අතර latch එක *transparent* වේ — ප්‍රතිදානය දත්ත ආදානය අනුගමනය කරයි — සහ enable අඩු වූ විට පමණක් එය රඳවා ගනී. එම transparency කවුළුව සමහර භාවිතයන්ට හොඳ නමුත් බොහෝ තත්ත්ව මූලද්‍රව්‍ය සම්බන්ධීකරණයෙන් යාවත්කාලීන විය යුතු විට අපහසුය.
 
+**දැන් මෙය උත්සාහ කරන්න.** පහත lab එක තවමත් සජීවී ද්වාරයකි — ආදාන toggle කර ප්‍රතිදානය *ක්ෂණිකව* වෙනස් වන බව බලන්න. එම ක්ෂණික ප්‍රතිචාරය සංයෝජන ය. මෙම පෝස්ට් එක ආදානය ඉවත් වූ පසු ප්‍රතිදානය *රඳවා ගත* හැකි වන පරිදි ද්වාර නැවත තමන් වෙතම රැහැන් කළ විට සිදු වන දෙයයි.
+
+{{< lab type="breadboard" height="700" >}}
+
 ## D Flip-Flop එක: Edges සමඟ Transparency විසඳීම
 
 D (Data) flip-flop එකක් මෙය විසඳන්නේ master-slave වින්‍යාසයේ latch දෙකක් භාවිතා කර, clock සංඥාවකින් පාලනය කරමිනි. තීරණාත්මක ගුණය: ප්‍රතිදානය වෙනස් වන්නේ clock *edge* එකකදී පමණි (උදාහරණයක් ලෙස rising edge), clock ඉහළ ඇති අතර අඛණ්ඩව නොවේ. Edges අතර, flip-flop එක එහි ආදානයෙන් සම්පූර්ණයෙන්ම වසා ඇත — D ආදානය කුමක් කළත් එය අගය රඳවා ගනී.
@@ -35,8 +39,6 @@ Edge-triggering ක්ෂණික නොවන අතර සීමා රහි
 ## මෙය අගුළු හරින දේ
 
 Edge-triggered flip-flops අතේ ඇති විට, ඔබට registers (බහු-bit අගයක් රඳවන flip-flop අරා), counters, state machines, සහ — Phase 3 සඳහා තීරණාත්මක ලෙස — program counter සහ pipeline registers ගොඩනැගිය හැකි අතර ඒවා CPU එකක් ස්ථිර සංයෝජන ශ්‍රිතයක් වෙනුවට *අනුක්‍රමික* යන්ත්‍රයක් කරයි. ඊළඟ පෝස්ට් එක මෙමම bistable-ගබඩා අදහස ගෙන එක් අරමුණක් සඳහා විශේෂීකරණය කරයි: විශාල දත්ත ප්‍රමාණයක් කාර්යක්ෂමව රඳවා ගැනීම, එහිදී SRAM සහ DRAM වෙන් වේ.
-
-{{< lab type="breadboard" >}}
 
 <!--
 ASSET CHECKLIST
