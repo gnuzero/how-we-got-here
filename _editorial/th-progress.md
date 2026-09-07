@@ -175,3 +175,7 @@ Notes:
 ## Remaining
 
 (none for VISION distill / widen-lens / paths; Distill waves 05–12 and 13–20 done 2026-09-07)
+
+## Quick patch TH 08 + 12 Try-this-now (2026-09-07)
+- 08: **ลองตอนนี้** breadboard AND=carry; lab before Ripple-Carry height=700
+- 12: **ลองตอนนี้** mini-cpu Step=datapath; lab after single-cycle section
