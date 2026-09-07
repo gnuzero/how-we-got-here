@@ -146,10 +146,32 @@ Notes:
 - Chapters with none (อ่านเพิ่ม): **none in this wave** — all eight already had verified Thai citations from earlier retrofit; preserved, no new inventions.
 - 01–03, 68 remain the intentional-omit set from prior pass (outside this wave).
 
+
+### Distill wave 13–20 (2026-09-07 Mira)
+
+Rewrote content.th/posts/13–20 to match CURRENT English Jules distill (content/posts/). Style model: TH 01 + 05. draft:false throughout. Did not touch 01–12, 21+, paths, content.si/ta, git.
+
+| slug | EN lines | TH lines | อ่านเพิ่ม |
+|------|----------|----------|-----------|
+| 13-pipelining | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+| 14-branch-prediction | 45 | 50 | kept (จันทนา; ปัทมา; เกริก) |
+| 15-caches | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+| 16-out-of-order-execution | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+| 17-superscalar-multicore | 39 | 44 | kept (จันทนา; ปัทมา; เกริก) |
+| 18-mainframes-to-minicomputers-to-microprocessors | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+| 19-the-x86-vs-risc-split | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+| 20-arm-and-risc-v-the-architecture-landscape-today | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+
+Notes:
+- Summaries translated from current EN distill; phase/title Thai-localized kept; image/video/schematics/labs + {{< lab >}} + ASSET CHECKLIST English kept.
+- Named people / doors from EN: James E. Smith (14); M. V. Wilkes (15); Robert Tomasulo / R. M. Tomasulo (16); Kunle Olukotun, Basem A. Nayfeh, Lance Hammond, Ken Wilson, Kunyung Chang (17); Gene Amdahl, Gerrit Blaauw, Fred Brooks / G. M. Amdahl, G. A. Blaauw, F. P. Brooks Jr. (18); David A. Patterson, David R. Ditzel (19); Krste Asanović, David Patterson (20). Post 13: no named door in EN.
+- Chapters with none (อ่านเพิ่ม): **none in this wave** — all eight already had verified Thai citations; preserved, no new inventions.
+- 01–03, 68 remain the intentional-omit set from prior pass (outside this wave).
+
 ## In progress
 
 (none)
 
 ## Remaining
 
-(none for VISION distill / widen-lens / paths; Distill wave 05–12 done 2026-09-07)
+(none for VISION distill / widen-lens / paths; Distill waves 05–12 and 13–20 done 2026-09-07)
