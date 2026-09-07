@@ -3,8 +3,18 @@
 - Desk: Sena
 - Started: 2026-09-06 (Asia/Bangkok)
 - Scope: full bodies for 05–69 (05–12 prior; 13–20 prior; 21–30 prior; 31–37 prior; 38–43 prior; 44–51 prior; 52–63 + 64 + 66 prior; **65 absent**; **67–69 this slice**)
-- Skip (MVP done / leave alone): _index, 00, 01–04, 99 (63 refreshed this slice from Jules EN — no longer stale MVP draft)
+- Skip (MVP done / leave alone): _index, 00, 99 (63 refreshed earlier from Jules EN). **01–04 NO LONGER leave-alone** — refreshed 2026-09-07 from current EN distill; draft:false
 - Rules: draft:false; no invented SI sources; no Wikipedia pad; no อ่านเพิ่ม/further-reading SI blocks unless a real verified Sinhala named work exists (almost never — skip); no git; no content.ta/th; titles/attribution from TRANSLATIONS.md; keep frontmatter; tech terms in English where SI MVP already does; preserve labs/ASSET CHECKLIST
+
+## Done (01–04) — Phase 1 unblock (2026-09-07)
+
+- **Phase 1 unblock:** posts 01–04 refreshed from *current* English distill (not light edit of stale MVP SI); **draft:false** shipped
+- Standing note overridden: do **not** “leave MVP 01–04 alone” for drafts anymore — they match EN structure/facts + door-outs
+- 01-mechanical-electromechanical-computing.md — Done; Babbage/Jacquard/Lovelace; පිටවීමේ දොර Lovelace *Notes*; summary matches EN gears/friction distill
+- 02-relays-and-electromechanical-logic.md — Done; Zuse Z3 + Rojas Turing-completeness caveat; පිටවීමේ දොර Rojas 1998
+- 03-the-vacuum-tube-era.md — Done; ENIAC + Goldstine; 1948 limited stored-program note; පිටවීමේ දොර Goldstine
+- 04-why-the-transistor-had-to-happen.md — Done; three tube ceilings; Bardeen/Brattain/Shockley 1947; Phase 8 scaling pointer; පිටවීමේ දොර Bell Labs papers
+- Named people Latin; image/video/schematics prompts EN; ASSET CHECKLIST kept; no invented SI sources; UTF-8; U+FFFD=0; no git; no content.ta/th; 00-foreword untouched
 
 ## Done (05–12)
 
@@ -100,7 +110,7 @@
 
 - 98-timeline.md — Done; translated from EN; phase යොමුව; title කාලරේඛාව; named people Latin; tech terms English where prior SI does
 - about.md — Done; vision-aware framing (not encyclopedia; labs; optional widen-the-lens); **Sena** named in attribution table + paragraph; BTS link names Lucas, Benjamin, Harper, Sena; **no portrait** invented (no `![Sena](/bts/...)`)
-- _index.md — Credits only refreshed: Sena bullet under ආරෝපණය; signature `— Grok, Lucas, Benjamin, Harper සහ Sena`; attribution paragraph mentions Sena desks SI edition. Posts 00–04 left alone.
+- _index.md — Credits only refreshed: Sena bullet under ආරෝපණය; signature `— Grok, Lucas, Benjamin, Harper සහ Sena`; attribution paragraph mentions Sena desks SI edition. (Posts 01–04 bodies later refreshed 2026-09-07; 00 still leave-alone.)
 - TRANSLATIONS.md — Added `Sinhala edition (named desk): Sena`; Sinhala attribution paragraph mentions Sena; Last updated 2026-09-06
 
 **Scope note:** Sinhala wrap chrome complete (timeline + about + credits). Chapter bodies through 69 (65 absent).
