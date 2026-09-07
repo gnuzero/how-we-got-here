@@ -3,7 +3,7 @@
 - Desk: Arun
 - Started: 2026-09-06 (Asia/Bangkok)
 - Scope: full bodies for 05–12 (done); 13–20 (done); 21–30 (done); 31–37 (done); 38–43 (done); 44–51 (done); 52–63 + 64/66 (done); 67–69 + paths (done this pass)
-- Skip (MVP done; do not touch unless a real error): _index, 00-foreword, 01–04, 99-glossary (63 refreshed this pass from current Jules EN — no longer stale MVP)
+- Skip (MVP done; do not touch unless a real error): _index, 00-foreword, 99-glossary (01–04 refreshed 2026-09-07 from current Jules EN — draft:false; 63 already refreshed prior pass)
 - Rules: draft:false; titles/attribution from TRANSLATIONS.md; keep frontmatter date/series_index/tags/image_prompt/video_prompt/schematics in English; tech terms in English where MVP Tamil does (transistor, MOSFET, BJT, silicon/சிலிகான், doping, P-N, cache, CPU, CMOS, SRAM, DRAM, ISA, ALU, pipeline, branch prediction, x86, RISC, ARM, RISC-V, superscalar, out-of-order); named historical people stay English (Bell Labs, Tomasulo, IBM, DEC, Intel, ARM, etc.); மேலும் படிக்க only with verified named Tamil works; Wikipedia / untitled notes / language-unverified bookstore listings omitted; no git; no content.si/th; no MVP overwrite
 
 ## Done
@@ -188,17 +188,27 @@
 - `TRANSLATIONS.md` — added Tamil named-desk bullet (**Arun**) + one sentence in Tamil attribution paragraph (clear slot next to Mira)
 - 05–10: **light summary sync only** (EN Jules distill summaries were more specific than TA). Bodies already covered the distill beats + மேலும் படிக்க; no body rewrite. Decision: summary polish only.
 
+## Phase 1 unblock (2026-09-07 Asia/Bangkok — Arun)
+
+- `content.ta/posts/01`–`04` **refreshed** from current Jules-distilled English (`content/posts/01`–`04`); old TA was draft:true MVP encyclopedia tone (Jacquard Napoleon/patent padding, etc.).
+- All four now **draft: false**; phase string kept: `1 — அடித்தளங்கள்: இயந்திரத்திலிருந்து வெற்றிடக் குழாய் கணினி வரை`.
+- Summaries synced to EN constraint→architecture intent; bodies match distill voice (not encyclopedia dump).
+- **Door out** kept as English primaries (Lovelace Notes; Rojas 1998; Goldstine; Bardeen/Brattain/Shockley Bell Labs papers) with Tamil gloss — same pattern as post 63. **மேலும் படிக்க omitted** (no verified named Tamil works for these doors; do not invent).
+- ASSET CHECKLIST + image_prompt / video_prompt / schematics preserved; named people English; tech terms English where prior TA does.
+- `00-foreword.md` left alone (already draft:false).
+- content.si / content.th / paths / other chapters: not touched. No git.
+
 ## Confirmed untouched
 
 - content.si / content.th — not touched
-- MVP 00–04 and 99-glossary — not touched
+- 00-foreword and 99-glossary — not touched this pass (00 already draft:false)
 - No git
-- content.ta/paths/ created this pass (EN paths existed on disk)
+- content.ta/paths/ created prior pass (EN paths existed on disk)
 
 ## In progress
 
-(none — paths done; standby)
+(none — Phase 1 01–04 unblock done; standby)
 
 ## Remaining
 
-(none — close-of-book Tamil posts + paths landed; standby)
+(none — Phase 1 TA 01–04 unblocked; standby)

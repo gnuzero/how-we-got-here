@@ -124,10 +124,32 @@
 - 01–03, 68: อ่านเพิ่ม omitted on purpose (no verified named Thai work for those doors)
 - (53–62 still each have at least one verified named Thai work)
 
+
+### Distill wave 05–12 (2026-09-07 Mira)
+
+Rewrote content.th/posts/05–12 to match CURRENT English Jules distill (content/posts/). Style model: TH 01 + 04. draft:false throughout. Did not touch 01–04, 13+, 63–69, paths, content.si/ta, git.
+
+| slug | EN lines | TH lines | อ่านเพิ่ม |
+|------|----------|----------|-----------|
+| 05-semiconductors-from-first-principles | 36 | 39 | kept (ทรงพล กาญจนชูชัย) |
+| 06-the-transistor-bjt-to-mosfet | 40 | 44 | kept (ทรงพล; เพื่อชาติ สุขเรือน) |
+| 07-logic-gates-from-transistors | 43 | 48 | kept (ทรงยศ; ศิริพร; ธีรวัฒน์) |
+| 08-from-gates-to-combinational-logic | 41 | 44 | kept (ทรงยศ; ศิริพร; ธีรวัฒน์) |
+| 09-sequential-logic | 43 | 47 | kept (ทรงยศ; ศิริพร) |
+| 10-the-memory-hierarchy-begins | 39 | 43 | kept (จันทนา; ปัทมา) |
+| 11-instruction-sets | 45 | 50 | kept (จันทนา; ปัทมา; เกริก) |
+| 12-datapath-design | 37 | 42 | kept (จันทนา; ปัทมา; เกริก) |
+
+Notes:
+- Summaries translated from current EN distill; phase/title Thai-localized kept; image/video/schematics/labs + {{< lab >}} + ASSET CHECKLIST English kept.
+- Named people / doors from EN: Bardeen/Brattain/Shockley (05); Kahng/Atalla door (06); Dennard door (10); Patterson/Ditzel door (11); Try-this-now lab cues (07, 11).
+- Chapters with none (อ่านเพิ่ม): **none in this wave** — all eight already had verified Thai citations from earlier retrofit; preserved, no new inventions.
+- 01–03, 68 remain the intentional-omit set from prior pass (outside this wave).
+
 ## In progress
 
 (none)
 
 ## Remaining
 
-(none for this VISION distill / widen-lens / paths pass)
+(none for VISION distill / widen-lens / paths; Distill wave 05–12 done 2026-09-07)
