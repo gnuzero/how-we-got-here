@@ -221,6 +221,11 @@
 
 - `content.ta/posts/09-sequential-logic.md` — thin insert **இப்போது முயல்க.** (combinational live AND vs sequential feedback/hold); moved breadboard lab next to hook; draft:false; no git.
 
+
+## Needle — TA 21 Try-this (2026-09-07 — Arun)
+
+- `content.ta/posts/21-batch-processing-and-the-birth-of-the-operating-system.md` — thin **இப்போது முயல்க.** (batch deck vs interactive VM `whoami`/`uname`/`ls`); lab moved next to hook (`height="600"`); draft:false; no git.
+
 ## In progress
 
 (none — Phase 1 01–04 unblock done; standby)

@@ -129,6 +129,8 @@
 
 ## Needle sync (2026-09-07)
 
+- 21-batch-processing… — Try-this-now batch vs interactive VM shell (whoami/uname/ls); vm-terminal height=600; draft:false
+
 - 09-sequential-logic.md — Try-this-now combinational AND lab vs sequential hold (mirrored EN); breadboard height=700; draft:false
 
 - 12-datapath-design.md — Try-this-now mini-cpu Step hook (mirrored EN); lab moved after One Instruction section; draft:false

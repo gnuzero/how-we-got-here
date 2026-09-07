@@ -30,7 +30,7 @@ Before assembly, programming meant entering binary or, at best, raw hex or octal
 
 Modern software is overwhelmingly written in higher-level languages and compiled through the pipeline in Post 28. Assembly has not disappeared. Engineers still drop to it to reason about exactly what a compiler produced (hot loops, security review, reverse engineering), or to write the lowest layers — boot code, interrupt handlers, parts of a kernel — where instruction-level control is required and higher abstractions would obscure or prevent it.
 
-The mini-CPU lab below is the most direct hands-on connection in the series: its assembler works exactly as described — mnemonics one-to-one onto opcode bits, nothing more abstract than that.
+**Try this now.** The mini-CPU lab below is the most direct hands-on connection in the series: Assemble the guided program, then Step — each mnemonic (`LDI`, `ADD`, `STA`, `OUT`) maps one-to-one onto opcode bits, exactly as this post describes. Nothing more abstract than that.
 
 {{< lab type="mini-cpu" >}}
 

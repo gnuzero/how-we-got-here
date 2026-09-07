@@ -222,3 +222,11 @@ Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mi
 - Lucas suggested 07/22/23 — those already had try-this-now; picked **21** instead (OS birth → interactive shell contrast before time-sharing).
 - Embed moved before the time-sharing tease; **Try this now** (`whoami` / `uname` / `ls`) contrasts batch’s no-intervene constraint with a live prompt.
 - VM lab untouched (GREEN, vendored assets). No fourth lab; no SI/TA; no git.
+
+## Needle move — post 26 try-this-now (pass 11) — 2026-09-07
+
+**Shipped:** Post **26** (`26-from-machine-code-to-assembly.md`) — mini-cpu at bottom with soft mention, no **Try this now**.
+
+- Added **Try this now** before the existing embed: Assemble + Step; mnemonics one-to-one onto opcodes.
+- Mini-cpu lab HTML untouched (GREEN). No fourth lab; no SI/TA; no git.
+- Standing by after this beat per Lucas.
