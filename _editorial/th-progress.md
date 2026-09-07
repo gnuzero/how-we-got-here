@@ -168,13 +168,38 @@ Notes:
 - Chapters with none (อ่านเพิ่ม): **none in this wave** — all eight already had verified Thai citations; preserved, no new inventions.
 - 01–03, 68 remain the intentional-omit set from prior pass (outside this wave).
 
+
+
+### Distill wave 41–50 (2026-09-07 Mira)
+
+Rewrote content.th/posts/41–50 to match CURRENT English Jules distill (content/posts/). Style model: TH 40 + 41. draft:false throughout. Did not touch 01–40, 51+, paths, content.si/ta, git. Post 41 was already fresh Jules from parallel parent write (flag-day/stack + doors); typo อยู๋→อยู่ fixed; mtime touched.
+
+| slug | EN lines | TH lines | อ่านเพิ่ม |
+|------|----------|----------|-----------|
+| 41-tcp-ip-and-the-modern-internet-stack | 51 | 56 | kept (โอภาส; สุวัฒน์ ปุณณชัยยะ และคณะ; ภัทรสินี) |
+| 42-datacenter-networking-and-rdma | 41 | 46 | kept (โอภาส; จตุชัย/อนุโชต; ภัทรสินี) |
+| 43-usenet-archie-gopher-and-the-pre-web-internet | 61 | 66 | kept (โอภาส; จตุชัย/อนุโชต; ภัทรสินี) |
+| 44-google-s-big-data-infrastructure-why-they-won | 46 | 50 | kept (อสมา; โอภาส) |
+| 45-kubernetes-and-container-orchestration-at-scale | 42 | 46 | kept (อาณัติ; ณัฐโชติ) |
+| 46-the-machine-learning-software-stack | 42 | 47 | kept (สุพจน์; นวลวรรณ; วฤษาย์) |
+| 47-what-7nm-actually-means | 38 | 41 | kept (ทรงพล กาญจนชูชัย) |
+| 48-photolithography | 36 | 39 | kept (ทรงพล กาญจนชูชัย) |
+| 49-finfet-to-gaa | 40 | 43 | kept (ทรงพล กาญจนชูชัย) |
+| 50-moore-s-law | 44 | 49 | kept (ทรงพล; จันทนา; เกริก) |
+
+Notes:
+- Summaries translated from current EN distill; phase/title Thai-localized kept; image/video/schematics/labs + {{< lab >}} + ASSET CHECKLIST English kept.
+- Named people / doors from EN: Vint Cerf, Bob Kahn, Postel + RFC 791/793/1034/1035 (41); Tom Truscott, Jim Ellis, Alan Emtage, Bill Heelan, Peter Deutsch, Mark McCahill, Jarkko Oikarinen, Jyrki Kuoppala, Jukka Pihl, Darren Reed, Jerry Yang, David Filo + RFC 1459 (43); Ghemawat/Gobioff/Leung, Dean/Ghemawat, Fay Chang et al. (44); Abhishek Verma et al., Brendan Burns et al. (45); Gordon E. Moore (50). Post 42, 46–49: no separate named door block in EN beyond in-body credits.
+- **ลองตอนนี้ / Try-this-now:** none in EN 41–50 → none added in TH (41 stack beat has flag-day section + lab, no Try-this-now cue).
+- Chapters with none (อ่านเพิ่ม): **none in this wave** — all ten already had verified Thai citations; preserved, no new inventions.
+
 ## In progress
 
 (none)
 
 ## Remaining
 
-(none for VISION distill / widen-lens / paths; Distill waves 05–12 and 13–20 done 2026-09-07)
+(none for VISION distill / widen-lens / paths; Distill waves 05–12, 13–20, and 41–50 done 2026-09-07)
 
 ## Quick patch TH 08 + 12 Try-this-now (2026-09-07)
 - 08: **ลองตอนนี้** breadboard AND=carry; lab before Ripple-Carry height=700
