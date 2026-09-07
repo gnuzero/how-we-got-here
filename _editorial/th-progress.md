@@ -186,3 +186,6 @@ Notes:
 ## TH 21 Try-this-now sync (2026-09-07)
 - 21 distilled to EN Jules + **ลองตอนนี้** batch vs VM shell (`whoami`/`uname`/`ls`); lab height=600; อ่านเพิ่ม preserved if present
 - 09 already had Try-this-now
+
+## TH 26 Try-this-now sync (2026-09-07)
+- 26 distilled to EN Jules + **ลองตอนนี้** Assemble/Step mini-cpu; อ่านเพิ่ม preserved

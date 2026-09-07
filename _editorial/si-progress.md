@@ -129,6 +129,8 @@
 
 ## Needle sync (2026-09-07)
 
+- 13-pipelining.md — Try-this-now Step vs pipelined throughput (mirrored EN); draft:false
+
 - 26-from-machine-code-to-assembly.md — Try-this-now Assemble/Step one-to-one mnemonics (mirrored EN); draft:false
 
 - 21-batch-processing… — Try-this-now batch vs interactive VM shell (whoami/uname/ls); vm-terminal height=600; draft:false

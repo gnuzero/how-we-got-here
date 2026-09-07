@@ -20,6 +20,10 @@ schematics: "Diagram: 5-stage pipeline timing chart + forwarding paths + hazard 
 
 උපදෙස් N EX හි ඇති අතරතුර, N+1 ID හිත් N+2 IF හිත් රැඳිය හැක. Steady state එකේදී නව උපදෙස් එකක් *සම්පූර්ණ වන්නේ* සෑම චක්‍රයකම — එක් එක් එක ආරම්භයේ සිට අවසානය දක්වා තවමත් චක්‍ර පහක් ගත කළද. Latency රැඳෙයි; throughput ඉහළ යයි. එම වෙන්කිරීම මෙයින් පසු සෑම තැනකම දිස් වේ.
 
+**දැන් මෙය උත්සාහ කරන්න.** පහත mini-CPU එක උපදෙස් එකකට වරක් Step කරන්න — එය Post 12 දෘශ්‍යමාන කළ තනි-චක්‍ර පුරුද්දයි. Pipelining ගේ ඔට්ටුව throughput ය: එකම fetch / decode / execute කොටස් උපදෙස් හරහා අතිච්ඡාදනය වීම, ටික් එකකට සම්පූර්ණ උපදෙස් එකක් නොවේ. අනුක්‍රමික Step එක දැනෙන්න, පසුව සැබෑ pipelines එතරම් සරලව රැඳිය නොහැකි වන්නේ ඇයි යන්න දැනගෙන hazard කොටස කියවන්න.
+
+{{< lab type="mini-cpu" >}}
+
 ## Hazards: ස්වාධීනත්වය බිඳෙන තැන්
 
 උපදෙස් කලාතුරකින් ස්වාධීන වේ.
@@ -31,8 +35,6 @@ schematics: "Diagram: 5-stage pipeline timing chart + forwarding paths + hazard 
 ## එම වියදම් ඊළඟට බල කරන දේ
 
 Misprediction flush මිල අධිකය — එබැවින්ම branch prediction (Post 14) පවතී: මුලින්ම සහ ප්‍රමාණවත් නිරවද්‍යතාවයකින් අනුමාන කරන්න, flush දුර්ලභ වන තරමට. Load-use stall එක නිසාම out-of-order execution (Post 16) පවතී: රැඳෙන උපදෙස් එක පමණක් stall කරන්න, සම්පූර්ණ pipeline එක නොවේ, සහ ඊට පසු ස්වාධීන වැඩ ධාවනය වන්නට ඉඩ දෙන්න.
-
-{{< lab type="mini-cpu" >}}
 
 <!--
 ASSET CHECKLIST

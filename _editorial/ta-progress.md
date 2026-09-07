@@ -231,6 +231,11 @@
 
 - `content.ta/posts/26-from-machine-code-to-assembly.md` — **இப்போது முயல்க.** Assemble/Step ↔ mnemonic one-to-one opcode bits; lab kept beside hook; draft:false; no git.
 
+
+## Needle — TA 13 Try-this (2026-09-07 — Arun)
+
+- `content.ta/posts/13-pipelining.md` — **இப்போது முயல்க.** single-cycle Step vs pipeline throughput; lab moved next to hook; draft:false; no git.
+
 ## In progress
 
 (none — Phase 1 01–04 unblock done; standby)
