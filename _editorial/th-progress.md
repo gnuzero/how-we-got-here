@@ -179,3 +179,6 @@ Notes:
 ## Quick patch TH 08 + 12 Try-this-now (2026-09-07)
 - 08: **ลองตอนนี้** breadboard AND=carry; lab before Ripple-Carry height=700
 - 12: **ลองตอนนี้** mini-cpu Step=datapath; lab after single-cycle section
+
+## Quick patch TH 09 Try-this-now (2026-09-07)
+- 09: **ลองตอนนี้** combinational AND lab vs sequential hold; lab before D Flip-Flop height=700
