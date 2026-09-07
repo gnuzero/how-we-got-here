@@ -221,3 +221,7 @@ Notes:
 
 ## Priority TH 41 rewrite (2026-09-07)
 - 41 matched EN Jules: layered model, encapsulation, TCP, **จากโปรโตคอลของเครือข่ายเดียวสู่สแตก** (NCP→TCP/IP flag day 1983), why it won, ประตูออก RFC 791/793, Cerf/Kahn/Postel; อ่านเพิ่ม preserved; mtime refreshed
+
+## Distill wave 51–60 start (2026-09-07)
+- 51 written first to confirm (EN Jules match; อ่านเพิ่ม ทรงพล kept)
+- 52–60 in flight
