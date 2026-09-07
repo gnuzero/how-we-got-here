@@ -189,3 +189,12 @@ Booted to usable `~%` shell; `whoami` → `root`. Shots: `lab-shots/vm-terminal-
 | vm-terminal | **GREEN** | Local v86 assets; shell + `whoami`. |
 
 Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mini-cpu not churned.
+
+## Needle move — post 08 try-this-now (pass 7) — 2026-09-07
+
+**Shipped:** One spine hook on **08** (`08-from-gates-to-combinational-logic.md`) — breadboard already in frontmatter but dumped at bottom with no try-this-now.
+
+- Moved embed after “Half Adder to Full Adder” (where carry = AND).
+- **Try this now** ties the green AND-gate lab to the half-adder carry before ripple-carry is explained.
+- No fourth lab; mini-cpu untouched; SI/TA untouched; no git.
+- Breadboard still GREEN from pass 5 (`cct=` AND). CDN note for Falstad UI unchanged.
