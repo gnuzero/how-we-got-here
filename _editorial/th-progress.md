@@ -193,3 +193,6 @@ Notes:
 ## Quick patch TH 13 Try-this-now (2026-09-07)
 - 13: **ลองตอนนี้** mini-cpu Step vs pipeline throughput; lab before Hazards
 - 26: already had Assemble/Step hook
+
+## Priority TH 41 rewrite (2026-09-07)
+- 41 matched EN Jules: layered model, encapsulation, TCP, **จากโปรโตคอลของเครือข่ายเดียวสู่สแตก** (NCP→TCP/IP flag day 1983), why it won, ประตูออก RFC 791/793, Cerf/Kahn/Postel; อ่านเพิ่ม preserved; mtime refreshed
