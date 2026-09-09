@@ -1,4 +1,4 @@
-baseURL = "https://read.relays-to-attention.org/"
+baseURL = "https://gnuzero.github.io/how-we-got-here/"
 title = "From Relays to Attention: How We Got Here"
 theme = "hugo-book"
 

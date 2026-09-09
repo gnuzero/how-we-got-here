@@ -37,5 +37,6 @@ Last updated: 2026-08-23
 
 ## Custom domain
 
-Production URL: `https://read.relays-to-attention.org/`
-GitHub Pages source: **GitHub Actions**. SSL for a new custom domain can take up to ~60 minutes after DNS.
+Deferred until DNS is ready: `read.relays-to-attention.org`.
+Until then production is `https://gnuzero.github.io/how-we-got-here/`.
+Pages source: **GitHub Actions**.
