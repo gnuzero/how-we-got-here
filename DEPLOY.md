@@ -34,3 +34,8 @@ hugo --minify    # production build (drafts excluded)
 Actions tab → "Deploy Hugo site to Pages" should go green. Site URL matches `baseURL` in `hugo.toml`.
 
 Last updated: 2026-08-23
+
+## Custom domain
+
+Production URL: `https://read.relays-to-attention.org/`
+GitHub Pages source: **GitHub Actions**. SSL for a new custom domain can take up to ~60 minutes after DNS.
