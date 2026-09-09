@@ -1,5 +1,6 @@
 ---
 title: "Foreword"
+weight: 0
 date: 2026-01-01
 draft: false
 phase: "0 — Foreword"

@@ -1,5 +1,6 @@
 ---
 title: "சொற்களஞ்சியம்"
+weight: 99
 date: 2026-01-01
 draft: false
 phase: "குறிப்பு"

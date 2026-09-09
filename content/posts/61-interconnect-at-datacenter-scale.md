@@ -1,5 +1,6 @@
 ---
 title: "Interconnect at Datacenter Scale"
+weight: 61
 date: 2026-01-01
 draft: false
 phase: "10 — Modern AI Hardware"

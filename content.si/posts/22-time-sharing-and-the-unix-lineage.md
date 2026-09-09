@@ -1,5 +1,6 @@
 ---
 title: "Time-Sharing සහ Unix පෙළපත"
+weight: 22
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"

@@ -1,5 +1,6 @@
 ---
 title: "GNU ව්‍යාපාරය සහ Linux"
+weight: 23
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"

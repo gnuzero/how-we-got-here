@@ -1,5 +1,6 @@
 ---
 title: "Superscalar සහ Multicore"
+weight: 17
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"

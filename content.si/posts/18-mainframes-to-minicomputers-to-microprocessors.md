@@ -1,5 +1,6 @@
 ---
 title: "Mainframes සිට Minicomputers සිට Microprocessors දක්වා"
+weight: 18
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"

@@ -1,5 +1,6 @@
 ---
 title: "High-Level Languages: FORTRAN, COBOL, Lisp, C"
+weight: 27
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"

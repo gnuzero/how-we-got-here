@@ -1,5 +1,6 @@
 ---
 title: "Wartime Crypto"
+weight: 66
 date: 2026-09-06
 draft: false
 phase: "Crypto & Wartime Computing"

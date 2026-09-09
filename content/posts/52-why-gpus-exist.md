@@ -1,5 +1,6 @@
 ---
 title: "Why GPUs Exist"
+weight: 52
 date: 2026-01-01
 draft: false
 phase: "9 — GPUs & Parallel Compute"

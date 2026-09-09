@@ -1,5 +1,6 @@
 ---
 title: "x86 vs RISC பிளவு"
+weight: 19
 date: 2026-01-01
 draft: false
 phase: "3 — CPU மற்றும் அதன் கட்டமைப்புகளைக் கட்டுதல்"

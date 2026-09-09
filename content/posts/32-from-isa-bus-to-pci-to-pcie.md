@@ -1,5 +1,6 @@
 ---
 title: "From ISA Bus to PCI to PCIe"
+weight: 32
 date: 2026-01-01
 draft: false
 phase: "5 — The Bus & System Architecture"

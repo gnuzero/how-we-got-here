@@ -1,5 +1,6 @@
 ---
 title: "Kubernetes and Container Orchestration at Scale"
+weight: 45
 date: 2026-01-01
 draft: false
 phase: "7 — Distributed Systems, Big Data & Orchestration"

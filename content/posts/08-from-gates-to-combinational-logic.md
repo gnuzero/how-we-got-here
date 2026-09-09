@@ -1,5 +1,6 @@
 ---
 title: "From Gates to Combinational Logic"
+weight: 8
 date: 2026-01-01
 draft: false
 phase: "2 — Physics & Devices"

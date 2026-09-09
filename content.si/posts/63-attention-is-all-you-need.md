@@ -1,5 +1,6 @@
 ---
 title: "අවධානය පමණක් ප්‍රමාණවත්ය"
+weight: 63
 date: 2026-01-01
 draft: false
 phase: "10 — නවීන AI දෘඪාංග"

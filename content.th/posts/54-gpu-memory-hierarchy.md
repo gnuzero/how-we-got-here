@@ -1,5 +1,6 @@
 ---
 title: "ลำดับชั้นหน่วยความจำ GPU"
+weight: 54
 date: 2026-01-01
 draft: false
 phase: "9 — GPU และการคำนวณขนาน"

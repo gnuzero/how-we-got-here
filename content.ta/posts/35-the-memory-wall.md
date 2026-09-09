@@ -1,5 +1,6 @@
 ---
 title: "The Memory Wall"
+weight: 35
 date: 2026-01-01
 draft: false
 phase: "5 — பஸ் மற்றும் அமைப்புக் கட்டமைப்பு"

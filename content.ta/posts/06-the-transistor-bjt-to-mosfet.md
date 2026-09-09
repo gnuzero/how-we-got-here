@@ -1,5 +1,6 @@
 ---
 title: "டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை"
+weight: 6
 date: 2026-01-01
 draft: false
 phase: "2 — இயற்பியல் மற்றும் சாதனங்கள்"

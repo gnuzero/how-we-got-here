@@ -1,5 +1,6 @@
 ---
 title: "போர்க்கால Crypto"
+weight: 66
 date: 2026-09-06
 draft: false
 phase: "Crypto மற்றும் போர்க்கால கணினி"

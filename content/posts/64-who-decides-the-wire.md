@@ -1,5 +1,6 @@
 ---
 title: "Who Decides the Wire"
+weight: 64
 date: 2026-09-06
 draft: false
 phase: "Governance / Internet Civics"

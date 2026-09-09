@@ -1,5 +1,6 @@
 ---
 title: "ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C"
+weight: 27
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"

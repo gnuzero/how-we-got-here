@@ -1,5 +1,6 @@
 ---
 title: "Usenet, Archie, Gopher, and the Pre-Web Internet"
+weight: 43
 date: 2026-01-01
 draft: false
 phase: "7 — Distributed Systems, Big Data & Orchestration"

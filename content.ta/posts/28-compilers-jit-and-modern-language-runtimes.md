@@ -1,5 +1,6 @@
 ---
 title: "Compilers, JIT, மற்றும் நவீன மொழி Runtimes"
+weight: 28
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"

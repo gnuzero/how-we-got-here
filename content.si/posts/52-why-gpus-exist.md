@@ -1,5 +1,6 @@
 ---
 title: "GPU පවතින්නේ ඇයි"
+weight: 52
 date: 2026-01-01
 draft: false
 phase: "9 — GPU සහ Parallel Compute"

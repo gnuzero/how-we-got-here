@@ -1,5 +1,6 @@
 ---
 title: "Semiconductors from First Principles"
+weight: 5
 date: 2026-01-01
 draft: false
 phase: "2 — Physics & Devices"

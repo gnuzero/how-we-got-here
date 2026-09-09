@@ -1,5 +1,6 @@
 ---
 title: "Sequential Logic"
+weight: 9
 date: 2026-01-01
 draft: false
 phase: "2 — Physics & Devices"

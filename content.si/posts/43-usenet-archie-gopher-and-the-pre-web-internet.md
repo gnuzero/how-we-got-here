@@ -1,5 +1,6 @@
 ---
 title: "Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය"
+weight: 43
 date: 2026-01-01
 draft: false
 phase: "7 — බෙදාහැරුණු පද්ධති, Big Data සහ Orchestration"

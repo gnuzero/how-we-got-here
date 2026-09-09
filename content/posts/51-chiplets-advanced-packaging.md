@@ -1,5 +1,6 @@
 ---
 title: "Chiplets & Advanced Packaging"
+weight: 51
 date: 2026-01-01
 draft: false
 phase: "8 — Process Nodes & Fabrication"

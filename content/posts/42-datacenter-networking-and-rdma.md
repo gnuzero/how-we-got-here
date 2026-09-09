@@ -1,5 +1,6 @@
 ---
 title: "Datacenter Networking and RDMA"
+weight: 42
 date: 2026-01-01
 draft: false
 phase: "6 — Networking Evolution"

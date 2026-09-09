@@ -1,5 +1,6 @@
 ---
 title: "Privacy, Consent, Identity, Cyber"
+weight: 67
 date: 2026-09-06
 draft: false
 phase: "Privacy / Identity / Consent"

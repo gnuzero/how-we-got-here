@@ -1,5 +1,6 @@
 ---
 title: "உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C"
+weight: 27
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"

@@ -1,5 +1,6 @@
 ---
 title: "Multi-GPU Scaling"
+weight: 56
 date: 2026-01-01
 draft: false
 phase: "9 — GPUs & Parallel Compute"

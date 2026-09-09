@@ -1,5 +1,6 @@
 ---
 title: "නැව්ගත වූ දැක්මන්"
+weight: 68
 date: 2026-01-01
 draft: false
 phase: "නැව්ගත වූ දැක්මන්"

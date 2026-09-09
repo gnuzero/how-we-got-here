@@ -1,5 +1,6 @@
 ---
 title: "ไปป์ไลน์"
+weight: 13
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"

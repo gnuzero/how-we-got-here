@@ -1,5 +1,6 @@
 ---
 title: "Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்"
+weight: 43
 date: 2026-01-01
 draft: false
 phase: "7 — விநியோகிக்கப்பட்ட அமைப்புகள், Big Data மற்றும் Orchestration"

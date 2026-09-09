@@ -1,5 +1,6 @@
 ---
 title: "Kubernetes மற்றும் Container Orchestration அளவில்"
+weight: 45
 date: 2026-01-01
 draft: false
 phase: "7 — விநியோகிக்கப்பட்ட அமைப்புகள், Big Data மற்றும் Orchestration"

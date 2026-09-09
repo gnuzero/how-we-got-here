@@ -1,5 +1,6 @@
 ---
 title: "Quantization மற்றும் Mixed Precision"
+weight: 59
 date: 2026-01-01
 draft: false
 phase: "10 — நவீன AI வன்பொருள்"

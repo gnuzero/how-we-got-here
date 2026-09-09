@@ -1,5 +1,6 @@
 ---
 title: "Serial Links and the First Machine-to-Machine Connections"
+weight: 38
 date: 2026-01-01
 draft: false
 phase: "6 — Networking Evolution"

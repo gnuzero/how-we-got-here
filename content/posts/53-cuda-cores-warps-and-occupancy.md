@@ -1,5 +1,6 @@
 ---
 title: "CUDA Cores, Warps, and Occupancy"
+weight: 53
 date: 2026-01-01
 draft: false
 phase: "9 — GPUs & Parallel Compute"

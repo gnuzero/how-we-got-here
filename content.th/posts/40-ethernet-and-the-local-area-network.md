@@ -1,5 +1,6 @@
 ---
 title: "Ethernet และเครือข่ายท้องถิ่น"
+weight: 40
 date: 2026-01-01
 draft: false
 phase: "6 — วิวัฒนาการเครือข่าย"

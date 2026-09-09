@@ -1,5 +1,6 @@
 ---
 title: "Platform தொகுப்பு"
+weight: 69
 date: 2026-09-06
 draft: false
 phase: "ஒரு இயந்திரத்திலிருந்து ஒரு Platform வரை"
