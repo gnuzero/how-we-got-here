@@ -1,6 +1,6 @@
 ---
 title: "Virtual Memory மற்றும் Multitasking"
-weight: 24
+weight: 25
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"

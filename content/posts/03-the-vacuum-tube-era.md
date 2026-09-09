@@ -1,6 +1,6 @@
 ---
 title: "The Vacuum Tube Era"
-weight: 3
+weight: 4
 date: 2026-01-01
 draft: false
 phase: "1 — Foundations: Mechanical to Vacuum-Tube Computing"

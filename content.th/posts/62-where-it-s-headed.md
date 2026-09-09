@@ -1,6 +1,6 @@
 ---
 title: "ทิศทางข้างหน้า"
-weight: 62
+weight: 63
 date: 2026-01-01
 draft: false
 phase: "10 — ฮาร์ดแวร์ AI สมัยใหม่"

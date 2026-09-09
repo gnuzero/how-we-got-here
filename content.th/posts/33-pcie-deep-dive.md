@@ -1,6 +1,6 @@
 ---
 title: "เจาะลึก PCIe"
-weight: 33
+weight: 34
 date: 2026-01-01
 draft: false
 phase: "5 — บัสและสถาปัตยกรรมระบบ"

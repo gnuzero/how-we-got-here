@@ -1,6 +1,6 @@
 ---
 title: "From Machine Code to Assembly"
-weight: 26
+weight: 27
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"

@@ -1,6 +1,6 @@
 ---
 title: "Batch Processing and the Birth of the Operating System"
-weight: 21
+weight: 22
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"

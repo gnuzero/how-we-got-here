@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning மென்பொருள் Stack"
-weight: 46
+weight: 47
 date: 2026-01-01
 draft: false
 phase: "7 — விநியோகிக்கப்பட்ட அமைப்புகள், Big Data மற்றும் Orchestration"

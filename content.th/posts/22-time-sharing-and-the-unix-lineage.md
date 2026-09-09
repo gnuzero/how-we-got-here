@@ -1,6 +1,6 @@
 ---
 title: "Time-Sharing และสายเลือด Unix"
-weight: 22
+weight: 23
 date: 2026-01-01
 draft: false
 phase: "4 — รากฐานซอฟต์แวร์: OS, ภาษา และระบบเรียลไทม์"

@@ -1,6 +1,6 @@
 ---
 title: "Quantization และ Mixed Precision"
-weight: 59
+weight: 60
 date: 2026-01-01
 draft: false
 phase: "10 — ฮาร์ดแวร์ AI สมัยใหม่"

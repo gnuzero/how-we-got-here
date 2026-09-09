@@ -1,6 +1,6 @@
 ---
 title: "Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது"
-weight: 57
+weight: 58
 date: 2026-01-01
 draft: false
 phase: "10 — நவீன AI வன்பொருள்"

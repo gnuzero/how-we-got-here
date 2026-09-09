@@ -1,6 +1,6 @@
 ---
 title: "GPU Memory Hierarchy"
-weight: 54
+weight: 55
 date: 2026-01-01
 draft: false
 phase: "9 — GPU-கள் மற்றும் Parallel Compute"

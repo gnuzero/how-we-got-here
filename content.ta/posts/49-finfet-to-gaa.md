@@ -1,6 +1,6 @@
 ---
 title: "FinFET முதல் GAA வரை"
-weight: 49
+weight: 50
 date: 2026-01-01
 draft: false
 phase: "8 — செயல்முறை நோட்கள் மற்றும் உற்பத்தி"

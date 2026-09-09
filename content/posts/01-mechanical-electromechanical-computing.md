@@ -1,6 +1,6 @@
 ---
 title: "Mechanical & Electromechanical Computing"
-weight: 1
+weight: 2
 date: 2026-01-01
 draft: false
 phase: "1 — Foundations: Mechanical to Vacuum-Tube Computing"

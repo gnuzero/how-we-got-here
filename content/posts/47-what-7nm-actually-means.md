@@ -1,6 +1,6 @@
 ---
 title: "What '7nm' Actually Means"
-weight: 47
+weight: 48
 date: 2026-01-01
 draft: false
 phase: "8 — Process Nodes & Fabrication"

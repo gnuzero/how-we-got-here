@@ -1,6 +1,6 @@
 ---
 title: "Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்"
-weight: 44
+weight: 45
 date: 2026-01-01
 draft: false
 phase: "7 — விநியோகிக்கப்பட்ட அமைப்புகள், Big Data மற்றும் Orchestration"

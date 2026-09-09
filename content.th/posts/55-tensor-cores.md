@@ -1,6 +1,6 @@
 ---
 title: "Tensor Core"
-weight: 55
+weight: 56
 date: 2026-01-01
 draft: false
 phase: "9 — GPU และการคำนวณขนาน"

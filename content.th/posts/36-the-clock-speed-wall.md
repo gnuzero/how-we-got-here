@@ -1,6 +1,6 @@
 ---
 title: "กำแพงความเร็วคล็อก"
-weight: 36
+weight: 37
 date: 2026-01-01
 draft: false
 phase: "5 — บัสและสถาปัตยกรรมระบบ"

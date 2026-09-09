@@ -1,6 +1,6 @@
 ---
 title: "'7nm' යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද"
-weight: 47
+weight: 48
 date: 2026-01-01
 draft: false
 phase: "8 — ක්‍රියාවලි නෝඩ් සහ Fabrication"

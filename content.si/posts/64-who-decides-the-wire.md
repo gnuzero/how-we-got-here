@@ -1,6 +1,6 @@
 ---
 title: "වයර් එක තීරණය කරන්නේ කවුද"
-weight: 64
+weight: 65
 date: 2026-01-01
 draft: false
 phase: "Governance / අන්තර්ජාල පුරවැසිභාවය"

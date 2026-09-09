@@ -1,6 +1,6 @@
 ---
 title: "FinFET සිට GAA දක්වා"
-weight: 49
+weight: 50
 date: 2026-01-01
 draft: false
 phase: "8 — ක්‍රියාවලි නෝඩ් සහ Fabrication"

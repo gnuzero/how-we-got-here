@@ -1,6 +1,6 @@
 ---
 title: "Sparsity in Hardware"
-weight: 60
+weight: 61
 date: 2026-01-01
 draft: false
 phase: "10 — Modern AI Hardware"

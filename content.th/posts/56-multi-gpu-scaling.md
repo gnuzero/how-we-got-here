@@ -1,6 +1,6 @@
 ---
 title: "การขยายหลาย GPU"
-weight: 56
+weight: 57
 date: 2026-01-01
 draft: false
 phase: "9 — GPU และการคำนวณขนาน"

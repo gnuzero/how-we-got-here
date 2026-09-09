@@ -1,6 +1,6 @@
 ---
 title: "x86 එදිරිව RISC බෙදීම"
-weight: 19
+weight: 20
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"

@@ -1,6 +1,6 @@
 ---
 title: "Branch Prediction"
-weight: 14
+weight: 15
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"

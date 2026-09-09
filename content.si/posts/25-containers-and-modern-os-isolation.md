@@ -1,6 +1,6 @@
 ---
 title: "Containers සහ නවීන OS හුදකලාව"
-weight: 25
+weight: 26
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"

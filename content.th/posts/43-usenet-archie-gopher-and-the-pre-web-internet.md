@@ -1,6 +1,6 @@
 ---
 title: "Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ"
-weight: 43
+weight: 44
 date: 2026-01-01
 draft: false
 phase: "7 — ระบบกระจาย บิ๊กดาต้า และออร์เคสตรา"

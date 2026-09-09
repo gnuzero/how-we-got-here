@@ -1,6 +1,6 @@
 ---
 title: "TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่"
-weight: 41
+weight: 42
 date: 2026-01-01
 draft: false
 phase: "6 — วิวัฒนาการเครือข่าย"

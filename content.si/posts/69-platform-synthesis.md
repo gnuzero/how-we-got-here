@@ -1,6 +1,6 @@
 ---
 title: "Platform සංස්ලේෂණය"
-weight: 69
+weight: 70
 date: 2026-01-01
 draft: false
 phase: "එක් යන්ත්‍රයකින් Platform එකකට"

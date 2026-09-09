@@ -1,6 +1,6 @@
 ---
 title: "ISA Bus සිට PCI දක්වා PCIe දක්වා"
-weight: 32
+weight: 33
 date: 2026-01-01
 draft: false
 phase: "5 — බස් සහ පද්ධති ගෘහ නිර්මාණය"

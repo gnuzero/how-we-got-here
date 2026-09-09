@@ -1,6 +1,6 @@
 ---
 title: "Real-Time Systems and Deterministic Scheduling"
-weight: 29
+weight: 30
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"

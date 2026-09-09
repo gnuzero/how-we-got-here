@@ -1,6 +1,6 @@
 ---
 title: "สแตกซอฟต์แวร์ Machine Learning"
-weight: 46
+weight: 47
 date: 2026-01-01
 draft: false
 phase: "7 — ระบบกระจาย บิ๊กดาต้า และออร์เคสตรา"

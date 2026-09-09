@@ -1,6 +1,6 @@
 ---
 title: "Glossary"
-weight: 99
+weight: 100
 date: 2026-01-01
 draft: false
 phase: "Reference"

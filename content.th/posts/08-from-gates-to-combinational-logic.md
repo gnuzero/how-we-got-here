@@ -1,6 +1,6 @@
 ---
 title: "จากเกตสู่ตรรกะเชิงผสม"
-weight: 8
+weight: 9
 date: 2026-01-01
 draft: false
 phase: "2 — ฟิสิกส์และอุปกรณ์"

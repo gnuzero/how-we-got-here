@@ -1,6 +1,6 @@
 ---
 title: "บัสหน่วยความจำ"
-weight: 34
+weight: 35
 date: 2026-01-01
 draft: false
 phase: "5 — บัสและสถาปัตยกรรมระบบ"

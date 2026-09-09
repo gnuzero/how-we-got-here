@@ -1,6 +1,6 @@
 ---
 title: "Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි"
-weight: 57
+weight: 58
 date: 2026-01-01
 draft: false
 phase: "10 — නවීන AI දෘඪාංග"

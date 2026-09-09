@@ -1,6 +1,6 @@
 ---
 title: "TCP/IP සහ නවීන අන්තර්ජාල Stack එක"
-weight: 41
+weight: 42
 date: 2026-01-01
 draft: false
 phase: "6 — ජාලකරණය: ශ්‍රේණි සබැඳි සිට දත්ත මධ්‍යස්ථාන RDMA දක්වා"

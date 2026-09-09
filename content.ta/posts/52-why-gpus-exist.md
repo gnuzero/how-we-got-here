@@ -1,6 +1,6 @@
 ---
 title: "GPU-கள் ஏன் உள்ளன"
-weight: 52
+weight: 53
 date: 2026-01-01
 draft: false
 phase: "9 — GPU-கள் மற்றும் Parallel Compute"

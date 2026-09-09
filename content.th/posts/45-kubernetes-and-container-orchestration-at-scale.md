@@ -1,6 +1,6 @@
 ---
 title: "Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล"
-weight: 45
+weight: 46
 date: 2026-01-01
 draft: false
 phase: "7 — ระบบกระจาย บิ๊กดาต้า และออร์เคสตรา"

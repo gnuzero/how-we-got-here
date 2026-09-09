@@ -1,6 +1,6 @@
 ---
 title: "ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้"
-weight: 20
+weight: 21
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"

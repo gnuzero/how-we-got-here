@@ -1,6 +1,6 @@
 ---
 title: "යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක"
-weight: 46
+weight: 47
 date: 2026-01-01
 draft: false
 phase: "7 — බෙදාහැරුණු පද්ධති, Big Data සහ Orchestration"

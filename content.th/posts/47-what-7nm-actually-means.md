@@ -1,6 +1,6 @@
 ---
 title: "'7nm' หมายถึงอะไรจริง ๆ"
-weight: 47
+weight: 48
 date: 2026-01-01
 draft: false
 phase: "8 — โหนดกระบวนการและการผลิต"

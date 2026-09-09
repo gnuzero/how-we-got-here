@@ -1,6 +1,6 @@
 ---
 title: "ARPANET and Packet Switching"
-weight: 39
+weight: 40
 date: 2026-01-01
 draft: false
 phase: "6 — Networking Evolution"

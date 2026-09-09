@@ -1,6 +1,6 @@
 ---
 title: "The Transistor: BJT to MOSFET"
-weight: 6
+weight: 7
 date: 2026-01-01
 draft: false
 phase: "2 — Physics & Devices"

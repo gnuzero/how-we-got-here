@@ -1,6 +1,6 @@
 ---
 title: "ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා"
-weight: 6
+weight: 7
 date: 2026-01-01
 draft: false
 phase: "2 — භෞතික විද්‍යාව සහ උපාංග"

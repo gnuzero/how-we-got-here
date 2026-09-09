@@ -1,6 +1,6 @@
 ---
 title: "Ethernet සහ Local Area Network"
-weight: 40
+weight: 41
 date: 2026-01-01
 draft: false
 phase: "6 — ජාලකරණය: ශ්‍රේණි සබැඳි සිට දත්ත මධ්‍යස්ථාන RDMA දක්වා"

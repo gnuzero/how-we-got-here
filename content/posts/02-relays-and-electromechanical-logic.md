@@ -1,6 +1,6 @@
 ---
 title: "Relays and Electromechanical Logic"
-weight: 2
+weight: 3
 date: 2026-01-01
 draft: false
 phase: "1 — Foundations: Mechanical to Vacuum-Tube Computing"

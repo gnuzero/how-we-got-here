@@ -1,6 +1,6 @@
 ---
 title: "Quantization & Mixed Precision"
-weight: 59
+weight: 60
 date: 2026-01-01
 draft: false
 phase: "10 — Modern AI Hardware"

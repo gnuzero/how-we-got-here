@@ -1,6 +1,6 @@
 ---
 title: "Batch Processing மற்றும் Operating System-இன் பிறப்பு"
-weight: 21
+weight: 22
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"

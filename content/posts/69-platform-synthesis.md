@@ -1,6 +1,6 @@
 ---
 title: "Platform Synthesis"
-weight: 69
+weight: 70
 date: 2026-09-06
 draft: false
 phase: "From One Machine to a Platform"

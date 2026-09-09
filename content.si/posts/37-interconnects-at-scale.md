@@ -1,6 +1,6 @@
 ---
 title: "පරිමාණයේ Interconnects"
-weight: 37
+weight: 38
 date: 2026-01-01
 draft: false
 phase: "5 — බස් සහ පද්ධති ගෘහ නිර්මාණය"

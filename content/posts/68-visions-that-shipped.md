@@ -1,6 +1,6 @@
 ---
 title: "Visions That Shipped"
-weight: 68
+weight: 69
 date: 2026-09-06
 draft: false
 phase: "Visions That Shipped"

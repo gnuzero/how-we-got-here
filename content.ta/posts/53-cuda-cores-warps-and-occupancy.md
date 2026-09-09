@@ -1,6 +1,6 @@
 ---
 title: "CUDA Cores, Warps மற்றும் Occupancy"
-weight: 53
+weight: 54
 date: 2026-01-01
 draft: false
 phase: "9 — GPU-கள் மற்றும் Parallel Compute"

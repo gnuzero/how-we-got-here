@@ -1,6 +1,6 @@
 ---
 title: "Virtual Memory and Multitasking"
-weight: 24
+weight: 25
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
