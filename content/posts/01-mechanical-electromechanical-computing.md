@@ -16,6 +16,11 @@ Computing didn't start with electricity. It started with gears.
 
 ## Babbage's Engines
 
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/London_Science_Museum_by_Marcin_Wichary_-_Difference_Engine_No._2%2C_pt._1_%282290036668%29.jpg" alt="Charles Babbage's Difference Engine No. 2 at the Science Museum, London" loading="lazy" width="1280">
+<figcaption>Difference Engine No. 2 (Science Museum, London). Photo: <a href="https://commons.wikimedia.org/wiki/File:London_Science_Museum_by_Marcin_Wichary_-_Difference_Engine_No._2,_pt._1_(2290036668).jpg">Marcin Wichary</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
+</figure>
+
 In 1822, Charles Babbage proposed the Difference Engine — a mechanical calculator for polynomial functions, using the method of finite differences, entirely through interlocking gears and column wheels. No electricity. Each column was a digit; carrying a "1" was a physical event: a gear tooth catching and turning its neighbor.
 
 He never finished a full-scale Difference Engine — funding and manufacturing tolerances both fought him — but his follow-up, the Analytical Engine, is the real ancestor. It had a "store" (memory) and a "mill" (arithmetic unit), and it was programmable. Instructions came from punched cards, borrowed from industrial machinery already on the factory floor.
@@ -36,7 +41,7 @@ What mechanical computing *could not* do was scale. Gear trains have friction, b
 
 <!--
 ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
+[x] Hero: CC BY 2.0 Commons hotlink (Marcin Wichary / Difference Engine No. 2) — not hosted
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
 

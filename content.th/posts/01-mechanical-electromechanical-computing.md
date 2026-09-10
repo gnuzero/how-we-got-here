@@ -16,6 +16,11 @@ schematics: "Diagram: Jacquard loom punch card mechanism + Babbage difference en
 
 ## เครื่องของ Babbage
 
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/London_Science_Museum_by_Marcin_Wichary_-_Difference_Engine_No._2%2C_pt._1_%282290036668%29.jpg" alt="Difference Engine No. 2 ของ Charles Babbage ที่ Science Museum ลอนดอน" loading="lazy" width="1280">
+<figcaption>Difference Engine No. 2 (Science Museum, London). ภาพ: <a href="https://commons.wikimedia.org/wiki/File:London_Science_Museum_by_Marcin_Wichary_-_Difference_Engine_No._2,_pt._1_(2290036668).jpg">Marcin Wichary</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
+</figure>
+
 ในปี 1822 Charles Babbage เสนอ Difference Engine — เครื่องคำนวณเชิงกลไกสำหรับฟังก์ชันพหุนาม ใช้วิธีผลต่างอันดับจำกัด ทั้งหมดผ่านเฟืองที่เกี่ยวกันและล้อคอลัมน์ ไม่มีไฟฟ้า แต่ละคอลัมน์คือหนึ่งหลัก; การทด "1" เป็นเหตุการณ์ทางกายภาพ: ฟันเฟืองเกี่ยวแล้วหมุนเพื่อนบ้าน
 
 เขาไม่เคยสร้าง Difference Engine ขนาดเต็มจนเสร็จ — ทั้งเงินทุนและความคลาดเคลื่อนในการผลิตต่างขัดขวาง — แต่ผลงานตามมาอย่าง Analytical Engine คือบรรพบุรุษที่แท้จริง มันมี "store" (หน่วยความจำ) และ "mill" (หน่วยเลขคณิต) และโปรแกรมได้ คำสั่งมาจากบัตรเจาะ ยืมจากเครื่องจักรอุตสาหกรรมที่มีอยู่แล้วบนพื้นโรงงาน
@@ -36,7 +41,7 @@ schematics: "Diagram: Jacquard loom punch card mechanism + Babbage difference en
 
 <!--
 ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
+[x] Hero: CC BY 2.0 Commons hotlink (Marcin Wichary / Difference Engine No. 2) — not hosted
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
 

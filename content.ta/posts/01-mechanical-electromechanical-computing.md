@@ -16,6 +16,11 @@ schematics: "Diagram: Jacquard loom punch card mechanism + Babbage difference en
 
 ## Babbage இன் இயந்திரங்கள்
 
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/London_Science_Museum_by_Marcin_Wichary_-_Difference_Engine_No._2%2C_pt._1_%282290036668%29.jpg" alt="லண்டன் Science Museum-இல் Charles Babbage-இன் Difference Engine No. 2" loading="lazy" width="1280">
+<figcaption>Difference Engine No. 2 (Science Museum, London). புகைப்படம்: <a href="https://commons.wikimedia.org/wiki/File:London_Science_Museum_by_Marcin_Wichary_-_Difference_Engine_No._2,_pt._1_(2290036668).jpg">Marcin Wichary</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
+</figure>
+
 1822இல், Charles Babbage Difference Engine-ஐ முன்மொழிந்தார் — முடிவுள்ள வேறுபாடுகள் முறையைப் பயன்படுத்தி பல்லுறுப்புச் சமன்பாடுகளை முழுவதும் இணைந்த கியர்களும் நெடுவரிசை சக்கரங்களும் மூலம் கணிக்கும் ஒரு இயந்திர கணிப்பான். மின்சாரம் இல்லை. ஒவ்வொரு நெடுவரிசையும் ஒரு இலக்கம்; "1"-ஐ கொண்டு செல்வது ஒரு இயற்பியல் நிகழ்வு: ஒரு கியர் பல் அதன் அண்டையைப் பிடித்துத் திருப்புவது.
 
 அவர் முழு அளவிலான Difference Engine-ஐ ஒருபோதும் முடிக்கவில்லை — நிதியும் உற்பத்திப் பொறுதிகளும் இருபுறமும் அவருக்கு எதிராக இருந்தன — ஆனால் அவரது அடுத்த படி, Analytical Engine, உண்மையான முன்னோடி. அதற்கு ஒரு "store" (நினைவகம்) மற்றும் ஒரு "mill" (கணித அலகு) இருந்தன, மேலும் அது நிரலாக்கக்கூடியதாக இருந்தது. அறிவுறுத்தல்கள் பஞ்ச் கார்டுகளிலிருந்து வந்தன — ஏற்கனவே தொழிற்சாலைத் தரையில் இருந்த தொழில்துறை இயந்திரத்திலிருந்து கடன் வாங்கியவை.
@@ -36,7 +41,7 @@ schematics: "Diagram: Jacquard loom punch card mechanism + Babbage difference en
 
 <!--
 ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
+[x] Hero: CC BY 2.0 Commons hotlink (Marcin Wichary / Difference Engine No. 2) — not hosted
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
 
