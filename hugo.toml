@@ -39,8 +39,7 @@ defaultContentLanguageInSubdir = false
 [params]
   BookSection = "posts"
   BookRepo = "https://github.com/gnuzero/how-we-got-here"
-  # Footer: open the page source on GitHub (PR / issue from the file)
-  BookEditLink = "{{ .Site.Params.BookRepo }}/edit/main/{{ .Path }}"
+  # Footer "Open an issue" is in layouts/_partials/docs/footer.html
   BookLastChangeLink = "{{ .Site.Params.BookRepo }}/commit/{{ .GitInfo.Hash }}"
 
 [markup.goldmark.renderer]
