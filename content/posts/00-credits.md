@@ -97,14 +97,8 @@ Verified Sri Lankan computing publications. Sinhala-language books sit beside th
 
 **Sinhala-language books**
 
-- අරුණි � papers. No invented textbook names.
-
-**Sinhala-language books**
-
 - අරුණි ගුණතිලක (Aruni Gunathilaka) — *පරිගණකයට සිංහල සහ දෙමළ*, LK Domain Registry / ICTA, 2021, ISBN 978-624-5622-01-6, CC — [PDF](https://www.ict-history.lk/wp-content/uploads/2021/05/LLBook-Sinhla.pdf); [listing](https://www.ict-history.lk/en/language-technology-docs/)
-- ආචාර්ය කසුන් �history.lk/en/language-technology-docs/)
 - ආචාර්ය කසුන් ද සොයිසා (Dr. Kasun De Zoysa, UCSC) — *Introduction to Programming in Java* (Sinhala), CC 2016 — [javabook.scorelab.org](http://javabook.scorelab.org/)
-- ආචාර්ය කසුන් ද සොයිසා (Dr. Kasun De Zoysa, UCSC) — *�/)
 - ආචාර්ය කසුන් ද සොයිසා (Dr. Kasun De Zoysa, UCSC) — *ආයුබෝවන් පයිතන්* (Ayubowan Python), 2016 — [pythonbook.scorelab.org](http://pythonbook.scorelab.org/)
 
 **Encoding and interchange**
