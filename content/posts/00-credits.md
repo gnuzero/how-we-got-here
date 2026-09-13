@@ -89,11 +89,15 @@ Already cited by name in the Thai edition (อ่านเพิ่ม). Titles 
 - ผศ.ดร. จรวย สาวิถี — *ความมั่นคงของเครือข่ายคอมพิวเตอร์*
 - ณัฐโชติ พรหมฤทธิ์ — *Practical DevOps and Cloud Engineering*
 
-Institutional doors (terminology and curriculum, not chapter authors): [ราชบัณฑิตยสภา](https://www.orst.go.th/) (Royal Society of Thailand); [สสวท. / IPST](https://www.ipst.ac.th/).
+Institutional doors (terminology and curriculum, not chapter authors): [ราชบัณฑิตยสภา](https://coined-word.orst.go.th/about.php) (Royal Society coined-word system, คอมพิวเตอร์และเทคโนโลยีสารสนเทศ); [สสวท. / IPST](https://oho.ipst.ac.th/ipst-cs-books/) วิทยาการคำนวณ textbooks; [NECTEC](https://www.nectec.or.th/about/about-history.html) institutional history.
 
 ## Sinhala published sources
 
-Sinhala computing literature that we can verify by title, year, and a live URL is thin. We will not invent names to match the English list. This section stays honest until a published Sinhala source is confirmed.
+Verified Sri Lankan / Sinhala computing publications — encoding and interchange, not invented textbook names.
+
+- V. K. Samaranayake, S. T. Nandasara, J. B. Dissanayake, A. R. Weerasinghe, and H. Wijayawardhana (UCSC) — *An Introduction to UNICODE for Sinhala Characters*, 2003 — [PDF](https://www.nsrc.org/ASIA/LK/03-Jan-2003_UCSC-Paper-on-Unicode.pdf)
+- Sri Lanka Standards Institution — **SLS 1134**, *Sinhala Character Code for Information Interchange* (rev. 2, 2004, as WG2 N2737) — [unicode.org/wg2/docs/n2737.pdf](https://unicode.org/wg2/docs/n2737.pdf)
+- Gihan Dias (ICTA / SLSI) — draft ICT Sinhala standard work leading to SLS 1134:2004 — [ict-history.lk](https://www.ict-history.lk/en/gihan-dias-prof/)
 
 Orientation map: [Wikipedia සිංහල](https://si.wikipedia.org/).
 
@@ -105,7 +109,8 @@ Named Tamil publications and official Tamil-medium curricula we could verify wit
 - மு. சிவலிங்கம் (M. Sivalingam) — *நெட்வொர்க் தொழில்நுட்பம்*, பாரதி பகத் பதிப்பகம், 2012 — [author site](https://www.sivalingam.in/mybooks/mybooksindex.htm)
 - மு. சிவலிங்கம் (M. Sivalingam) — *கம்ப்யூட்டர் இயக்க முறைகள்*, பழனியப்பா பிரதர்ஸ் — [noolulagam](https://www.noolulagam.com/books/4942)
 - தமிழ்நாடு அரசு / Tamil Nadu Textbook and Educational Services Corporation — Samacheer Kalvi 11th Computer Science and 12th Physics / Computer Applications (Tamil medium) — [textbooksonline.tn.nic.in](http://www.textbooksonline.tn.nic.in/)
-- தமிழ் இணையக் கல்விக்கழகம் (Tamil Virtual Academy) — course lesson 5.4, கணினிமொழி மென்பொருள் — [tamilvu.org](https://www.tamilvu.org/)
+- தமிழ் இணையக் கல்விக்கழகம் (Tamil Virtual Academy) — Unicode / Tamil computing tools — [tamilvu.org/en/unicode](https://www.tamilvu.org/en/unicode); course lesson 5.4, கணினிமொழி மென்பொருள்
+- [INFITT](https://www.infitt.org/) (உத்தமம்) — International Forum for Information Technology in Tamil
 
 ## Existing interactive media
 
