@@ -69,25 +69,27 @@ Historians and canonical textbooks this spine stands on. Title, year, publisher 
 
 ## Thai published sources
 
-Already cited by name in the Thai edition (อ่านเพิ่ม). Titles as published; the Thai desk is confirming publisher URLs so this list stays honest.
+Already cited by name in the Thai edition (อ่านเพิ่ม). Years and publisher URLs below are catalog-confirmed. Names without a locked year stay named, not dated.
 
-- ทรงพล กาญจนชูชัย — *อุปกรณ์สารกึ่งตัวนำ*
-- ทรงยศ นาคอริยกุล — *การวิเคราะห์และออกแบบวงจรดิจิทัล*
-- จันทนา จันทราพรชัย — *สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ*
-- ยรรยง เต็งอำนวย — *ระบบปฏิบัติการ*
-- ธีรวัฒน์ ประกอบผล — *ภาษาแอสเซมบลีสำหรับ MCS-51*
-- อรพิน ประวัติบริสุทธิ์ — *คู่มือเขียนโปรแกรมด้วยภาษา C ฉบับสมบูรณ์*
-- จารุโลจน์ จงสถิตย์วัฒนา — *หลักการและการประมวลผลภาษาโปรแกรม*
-- วโรดม ตู้จินดา — *ระบบควบคุมฝังตัว*
-- โอภาส เอี่ยมสิริวงศ์ — *เครือข่ายคอมพิวเตอร์และการสื่อสาร*
-- อสมา กุลวานิชไชยนันท์ — *Big Data Series I*
-- อาณัติ รัตนถิรกุล — *Docker พื้นฐานสู่การใช้งานจริง*
-- สุพจน์ เฮงพระพรหม — *การเรียนรู้ของเครื่อง MACHINE LEARNING*
-- วรเศรษฐ สุวรรณิก — *วิทยาการรหัสลับ*
-- ผศ.ดร. ชาญศักดิ์ ศรีสวัสดิ์สกุล — *วิทยาการเข้ารหัสลับและเทคโนโลยีบล็อกเชน*
-- ปริญญา หอมเอนก — *Strategy to Cybersecurity 4.0*
-- ผศ.ดร. จรวย สาวิถี — *ความมั่นคงของเครือข่ายคอมพิวเตอร์*
-- ณัฐโชติ พรหมฤทธิ์ — *Practical DevOps and Cloud Engineering*
+- ทรงพล กาญจนชูชัย — *อุปกรณ์สารกึ่งตัวนำ* — Chula Press, 2556/2013 (2nd 2559), ISBN 9789740334941 — [chulabook](https://www.chulabook.com/engineering-book/25536)
+- ทรงยศ นาคอริยกุล — *การวิเคราะห์และออกแบบวงจรดิจิทัล* — 1/2560 — [chulabook](https://www.chulabook.com/engineering-book/180064)
+- จันทนา จันทราพรชัย — *สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ* — 1/2555, ISBN 9786162820090 — [chulabook](https://www.chulabook.com/computer/54282)
+- ยรรยง เต็งอำนวย — *ระบบปฏิบัติการ* — ซีเอ็ด, 2533/1990 — [syllabus](https://www.cp.eng.chula.ac.th/~fyta/631/Outline.htm)
+- ธีรวัฒน์ ประกอบผล — *ภาษาแอสเซมบลีสำหรับ MCS-51* — ส.ส.ท., 5/2555 — [chulabook](https://www.chulabook.com/other/101772)
+- อรพิน ประวัติบริสุทธิ์ — *คู่มือเขียนโปรแกรมด้วยภาษา C ฉบับสมบูรณ์* — Provision, 1/2562, ISBN 978-616-204-725-1 — [provision.co.th](https://www.provision.co.th/2019/c2019)
+- จารุโลจน์ จงสถิตย์วัฒนา — *หลักการและการประมวลผลภาษาโปรแกรม* — 2023 lecture notes, not a press book — [bookstore.htm](https://www.cp.eng.chula.ac.th/~prabhas/book/bookstore.htm)
+- วโรดม ตู้จินดา — *ระบบควบคุมฝังตัว* — KU Press, 1/2559, ISBN 978-616-556-181-5 — [ku-press](https://ku-press.ku.ac.th/newweb/index.php?Itemid=24&id=906&option=com_content&view=article)
+- โอภาส เอี่ยมสิริวงศ์ — *เครือข่ายคอมพิวเตอร์และการสื่อสาร* — SE-ED, 2559, ISBN 9786160846085 — [Chula OPAC](https://www.car.chula.ac.th/display7.php?bib=2130961)
+- อสมา กุลวานิชไชยนันท์ — *Big Data Series I* — คอราไลน์, 1/2561, ISBN 9786169310808 — [Museum Siam](https://knowledge-center.museumsiam.org/book/69c0d93f9f6c8)
+- อาณัติ รัตนถิรกุล — *Docker พื้นฐานสู่การใช้งานจริง* — title confirmed; imprint year not locked — [sysadmin.in.th](https://sysadmin.in.th/bookstore/)
+- สุพจน์ เฮงพระพรหม — *การเรียนรู้ของเครื่อง MACHINE LEARNING* — 1/2566, ISBN 9786166083989 — [chulabook](https://www.chulabook.com/computer/193021)
+- วรเศรษฐ สุวรรณิก — *วิทยาการรหัสลับ* — วรรณิก, 2553/2010, ISBN 978-616-90224-2-8 — [Chula OPAC](https://www.car.chula.ac.th/display7.php?bib=1858617)
+- ผศ.ดร. ชาญศักดิ์ ศรีสวัสดิ์สกุล — *วิทยาการเข้ารหัสลับและเทคโนโลยีบล็อกเชน* — year not locked on the author page — [charnsak.com](https://www.charnsak.com/cryptoandblockchainbook/)
+- ปริญญา หอมเอนก — *Strategy to Cybersecurity 4.0* — ACIS, 1/2560 (2/2561), ISBN 9786169299202 — [Chula catalog](http://library.car.chula.ac.th/record=b2260743)
+- ผศ.ดร. จรวย สาวิถี — *ความมั่นคงของเครือข่ายคอมพิวเตอร์* — MSU ebook; year not locked on an OPAC imprint — [MSU ebook](http://ebook.msu.ac.th/ebook/index/%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%AD%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84/636.html)
+- ณัฐโชติ พรหมฤทธิ์ — *Practical DevOps and Cloud Engineering* — Infopress/IDC, 1 Dec 2563, ISBN 978-616-487-174-8 — [SE-ED](https://www.se-ed.com/physical/Practical-DevOps-and-Cloud-Engineering-ie8kx0ciswot5v2ptfh2)
+
+Also verified, not only อ่านเพิ่ม: ราชบัณฑิตยสถาน — *ศัพท์คอมพิวเตอร์ ฉบับราชบัณฑิตยสถาน*, 2533/1990, ISBN 9748122352 — [botlc](https://www.botlc.or.th/item/book/01000011958); ดร. ทวีศักดิ์ กออนันตกูล และคณะ — *คอมพิวเตอร์กับภาษาไทย*, 2534/1991 — [NECTEC](https://www.nectec.or.th/news/news-article/wtt20-io-system-for-th.html).
 
 Institutional doors (terminology and curriculum, not chapter authors): [ราชบัณฑิตยสภา](https://coined-word.orst.go.th/about.php) (Royal Society coined-word system, คอมพิวเตอร์และเทคโนโลยีสารสนเทศ); [สสวท. / IPST](https://oho.ipst.ac.th/ipst-cs-books/) วิทยาการคำนวณ textbooks; [NECTEC](https://www.nectec.or.th/about/about-history.html) institutional history.
 
