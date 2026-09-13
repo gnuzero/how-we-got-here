@@ -1,10 +1,10 @@
 ---
 title: "Sparsity in Hardware"
-weight: 61
+weight: 63
 date: 2026-01-01
 draft: false
 phase: "10 — Modern AI Hardware"
-series_index: 60
+series_index: 62
 tags: []
 summary: "Skip known-zero MACs — but only structured patterns are cheap for dense MAC hardware to exploit"
 image_prompt: "Diagram of a dense weight matrix vs a 2:4 structured-sparse weight matrix, clean AI accelerator diagram style"

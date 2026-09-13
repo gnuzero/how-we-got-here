@@ -1,10 +1,10 @@
 ---
 title: "Why Matrix Multiply Reshaped Chip Design"
-weight: 58
+weight: 60
 date: 2026-01-01
 draft: false
 phase: "10 — Modern AI Hardware"
-series_index: 57
+series_index: 59
 tags: []
 summary: "AI compute reduces to matmul at scale — specialize silicon for that shape"
 image_prompt: "Infographic showing a neural network layer's forward pass as a matrix multiply mapped onto specialized hardware, clean AI hardware explainer style"

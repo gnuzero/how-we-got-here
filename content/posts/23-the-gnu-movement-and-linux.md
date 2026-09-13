@@ -1,10 +1,10 @@
 ---
 title: "The GNU Movement and Linux"
-weight: 24
+weight: 26
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
-series_index: 23
+series_index: 25
 tags: []
 summary: "Unix closed; Stallman built free userland; Torvalds filled the kernel gap — GPL kept the combination open"
 image_prompt: "Illustration of the GNU logo alongside Tux the penguin, with a layered diagram showing GNU userland tools sitting atop the Linux kernel, clean open-source movement infographic style"

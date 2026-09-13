@@ -1,10 +1,10 @@
 ---
 title: "From Machine Code to Assembly"
-weight: 27
+weight: 29
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
-series_index: 26
+series_index: 28
 tags: []
 summary: "Raw binary is what the CPU runs — assembly is the first readability layer, still one instruction per mnemonic"
 image_prompt: "Side-by-side comparison of raw binary machine code and its assembly mnemonic equivalent, clean textbook diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "The Machine Learning Software Stack"
-weight: 47
+weight: 49
 date: 2026-01-01
 draft: false
 phase: "7 — Distributed Systems, Big Data & Orchestration"
-series_index: 46
+series_index: 48
 tags: []
 summary: "Between a model and silicon sits a stack that turns tensors into distributed training — and hits the interconnect wall"
 image_prompt: "Layered infographic showing the ML software stack from Python/NumPy up through frameworks (PyTorch/TensorFlow) to distributed training orchestration to hardware, clean AI-software diagram style"

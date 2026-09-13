@@ -1,10 +1,10 @@
 ---
 title: "Timeline"
-weight: 99
+weight: 101
 date: 2026-01-01
 draft: false
 phase: "Reference"
-series_index: 98
+series_index: 100
 tags: ["timeline", "reference", "history"]
 summary: "A condensed chronology from mechanical calculation to modern attention mechanisms"
 ---

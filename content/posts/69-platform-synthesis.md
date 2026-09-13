@@ -1,10 +1,10 @@
 ---
 title: "Platform Synthesis"
-weight: 70
+weight: 72
 date: 2026-09-06
 draft: false
 phase: "From One Machine to a Platform"
-series_index: 69
+series_index: 71
 tags: []
 summary: "One high-level stop — a large platform is distributed systems, networking, AI infra, privacy engineering, and software engineering composed"
 image_prompt: "Single clean stack diagram composing distributed systems, networking, AI accelerators, privacy/identity controls, and software delivery into one platform silhouette, modern systems-architecture style"

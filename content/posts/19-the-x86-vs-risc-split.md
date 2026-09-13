@@ -1,10 +1,10 @@
 ---
 title: "The x86 vs RISC Split"
-weight: 20
+weight: 22
 date: 2026-01-01
 draft: false
 phase: "3 — Building a CPU & Its Architectures"
-series_index: 19
+series_index: 21
 tags: []
 summary: "RISC was cleaner on paper — software lock-in and µop translation kept x86 on top"
 image_prompt: "Family-tree infographic branching CISC/RISC research into x86, MIPS, SPARC, PowerPC lineages, clean genealogy diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Containers and Modern OS Isolation"
-weight: 26
+weight: 28
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
-series_index: 25
+series_index: 27
 tags: []
 summary: "Full VMs buy strong isolation at heavy cost — namespaces and cgroups share one kernel and isolate almost everything else"
 image_prompt: "Layered diagram comparing full virtualization vs container isolation, clean modern infrastructure diagram style"

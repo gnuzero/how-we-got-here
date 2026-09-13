@@ -1,10 +1,10 @@
 ---
 title: "The Memory Hierarchy Begins"
-weight: 11
+weight: 13
 date: 2026-01-01
 draft: false
 phase: "2 — Physics & Devices"
-series_index: 10
+series_index: 12
 tags: []
 summary: "Flip-flops are too expensive per bit — SRAM buys speed, DRAM buys density, and the hierarchy is the tradeoff repeated"
 image_prompt: "Side-by-side cell diagrams: 6T SRAM vs 1T1C DRAM, labeled, clean semiconductor memory textbook style"

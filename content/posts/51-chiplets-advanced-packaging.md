@@ -1,10 +1,10 @@
 ---
 title: "Chiplets & Advanced Packaging"
-weight: 52
+weight: 54
 date: 2026-01-01
 draft: false
 phase: "8 — Process Nodes & Fabrication"
-series_index: 51
+series_index: 53
 tags: []
 summary: "Yield falls with die area — split into chiplets and buy back bandwidth with advanced packaging"
 image_prompt: "Cutaway diagram comparing a monolithic die vs a chiplet package with interposer, clean semiconductor packaging illustration style"

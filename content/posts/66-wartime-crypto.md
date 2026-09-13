@@ -1,10 +1,10 @@
 ---
 title: "Wartime Crypto"
-weight: 67
+weight: 69
 date: 2026-09-06
 draft: false
 phase: "Crypto & Wartime Computing"
-series_index: 66
+series_index: 68
 tags: []
 summary: "Enigma, Bletchley, and Colossus — why breaking ciphers forced electronic computing"
 image_prompt: "Clean historical-technical diagram: Enigma rotors beside a Colossus rack of vacuum tubes at Bletchley, connective arrows from cipher traffic to electronic counting, muted wartime-engineering style"

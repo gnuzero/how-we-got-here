@@ -1,10 +1,10 @@
 ---
 title: "From Gates to Combinational Logic"
-weight: 9
+weight: 11
 date: 2026-01-01
 draft: false
 phase: "2 — Physics & Devices"
-series_index: 8
+series_index: 10
 tags: []
 summary: "Compose gates into adders and an ALU — then hit the carry-ripple delay that forces better structures"
 image_prompt: "Block diagram of a 1-bit full adder with truth table, clean digital logic textbook style"

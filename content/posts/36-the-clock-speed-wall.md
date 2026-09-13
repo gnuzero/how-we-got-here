@@ -1,10 +1,10 @@
 ---
 title: "The Clock Speed Wall"
-weight: 37
+weight: 39
 date: 2026-01-01
 draft: false
 phase: "5 — The Bus & System Architecture"
-series_index: 36
+series_index: 38
 tags: []
 summary: "Frequency hit heat — so the industry went wide (cores, then fabrics) instead of faster clocks"
 image_prompt: "Graph infographic: CPU clock frequency climbing then flattening around 2005, power density curve rising toward a thermal ceiling, clean data-visualization diagram style"

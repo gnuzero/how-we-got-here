@@ -1,10 +1,10 @@
 ---
 title: "Superscalar & Multicore"
-weight: 18
+weight: 20
 date: 2026-01-01
 draft: false
 phase: "3 — Building a CPU & Its Architectures"
-series_index: 17
+series_index: 19
 tags: []
 summary: "ILP and power hit walls — so the industry went wide instead of faster per thread"
 image_prompt: "Comparison infographic: single-core deep pipeline vs multicore chip layout, clean technical style"

@@ -1,10 +1,10 @@
 ---
 title: "Glossary"
-weight: 100
+weight: 102
 date: 2026-01-01
 draft: false
 phase: "Reference"
-series_index: 99
+series_index: 101
 tags: ["glossary", "reference"]
 summary: "Key terms used throughout the series, defined precisely"
 ---

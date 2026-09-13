@@ -1,10 +1,10 @@
 ---
 title: "Out-of-Order Execution"
-weight: 17
+weight: 19
 date: 2026-01-01
 draft: false
 phase: "3 — Building a CPU & Its Architectures"
-series_index: 16
+series_index: 18
 tags: []
 summary: "Stall only what must wait — Tomasulo's idea: execute when ready, commit in order"
 image_prompt: "Block diagram of an out-of-order pipeline with reservation stations and reorder buffer, clean superscalar diagram style"

@@ -1,0 +1,619 @@
+
+        Naval Gunnery Ballistics
+        
+A set decimal places to 10
+A write numbers with decimal point
+
+N108 0                  . Set to 1 to print integration steps
+N155 −1                 . Drag / no drag: 1 for just drag, −1 for both
+
+    The following specifications are those of the British
+    BL 15 inch Mark I gun, used on capital ships from 1915
+    until 1959.
+      https://en.wikipedia.org/wiki/BL_15_inch_Mk_I_naval_gun
+
+    Properties of the gun
+
+N100 15.0               . Calibre in inches
+N101 30.0               . Muzzle elevation in degrees
+
+    Properties of the projectile
+    
+N102 1938.0             . Projectile mass (m) in pounds
+N103 2458.0             . Muzzle velocity, ft/sec
+N104 0.25               . Coefficient of drag (C_d) (dimensionless)
+
+    Properties of the Earth and atmosphere
+    
+N105 32.174             . Acceleration of gravity (g), ft/sec²
+N106 0.0765             . Atmospheric density (ISA) (ρ), lb/ft³
+N109 1373003.7          . Energy of one pound of TNT in foot lbf
+
+    Calculation parameters
+    
+N107 2.0                . Time step (s), seconds
+
+    Constants
+    
+N110 3.1415926535897932 . π
+N111 180.0              . Degrees in π radians
+N112 2.0                . Constant 2.0
+N113 12.0               . Inches per foot
+N114 0                  . Constant 0
+N115 3.0                . Feet per yard
+N116 0.5                . Constant 0.5
+N117 1                  . Constant 1
+N118 0.05               . Constant 0.05 to round to one decimal place
+N119 1000000000.0       . Constant to scale from computational to display
+
+    Derived quantities
+    
+ N120                   . Muzzle elevation in radians
+ N121                   . Projectile frontal area (a), ft²
+ 
+    Working storage
+    
+ N130 – N131            . Calculation temporaries
+ 
+ N140                   . v (instantaneous velocity)
+ N141                   . θ (instaneous angle)
+ N142                   . v_x (x component of velocity)
+ N143                   . v_y (y component of velocity)
+ N144                   . x (instantaneous range)
+ N145                   . y (instantaneous altitude)
+ N146                   . d (instantaneous drag)
+ N147                   . p (instantaneous momentum)
+ N148                   . v_d (drag-adjusted velocity)
+ N149                   . x_y (range in yards)
+ N150                   . y_y (altitude in yards)
+ N151                   . t (current time)
+ N152                   . x_l (last x printed/plotted)
+ N153                   . y_l (last y printed/plotted)
+ N154                   . t_l (last time printed)
+ N156                   . y_max (maximum altitude)
+ 
+    Curve Drawing parameters
+    
+N160 1000000000000000   . Scale factor from computation to plot
+                        . Because the Curve Drawing Apparatus has
+                        . axes of ± (length 2), the following scale
+                        . factors are half the maximum value to be
+                        . plotted.
+N161 27000.00           . X axis scale factor (xscale)
+N162 14000.00           . Y axis scale factor (yscale)
+N163 1.0                . Constant 1.0
+
+
+    Compute derived quantities from supplied parameters
+    
+×                       . Muzzle elevation in radians
+L101
+L110
+>
+S130
+
+÷
+L130
+<
+L111
+S120'
+
+L100                    . Frontal area of projectile
+<
+L112
+S130'
+
+L130
+<
+L113
+S130'
+
+×
+L130
+L130
+>
+S130
+
+L130
+L110
+>
+S121
+
+    Start of the big loop on drag/no drag computation
+
+(?
+
+    Set state variables to initial conditions
+
++
+L114                        
+L114
+S151                        . t = 0
+S144                        . x = 0
+S145                        . y = 0
+S149                        . x_y = 0
+S150                        . y_y = 0
+S156                        . y_max = 0
+
+L103                        . v = muzzle velocity
+L114
+S140
+
+L120                        . θ = muzzle elevation, radians
+L114
+S141
+
+    Main calculation loop
+
+(?
+
+×                           . d = 0.5 ρ v² C_d a
+L116
+L106
+>
+S130
+
+L130
+L140
+>
+S130
+
+L130
+L140
+>
+S130
+
+L130
+L104
+>
+S130
+
+L130
+L121
+>
+S146
+
+L140                        . p = v m − d s
+L102
+>
+S130
+
+L146
+L107
+>
+S131
+
+−
+L130
+L131
+S147
+
+÷
+L147                        . v_d = p / m
+<
+L102
+S148'
+
++
+L141                        . v_x = v_d cos 0
+L114
+S000
+
+A include from library cards for cosine
+
+×
+L000
+L148
+>
+S142
+
++
+L141                        . v_y = v_d sin 0
+L114
+S000
+
+A include from library cards for sine
+
+×
+L000
+L148
+>
+S143
+
+÷
+L144                        . x_y = x / 3
+<
+L115
+S149'
+
+L145                        . y_y = y / 3
+<
+L115
+S150'
+
++
+L114                        . y_max = max(y_y, y_max)
+L150                        . Note that we have to be careful since
+CF?8                        . y_y may be negative after impact.
+−
+L150
+L156
+CF?4
++
+L150
+L114
+S156
+
++
+L144                        . x_l = x
+L114
+S152
+
+L145                        . y_l = y + epsilon
+L117
+S153
+
+L151                        . t_l = t
+L114
+S154
+
+−
+L108                        . Print integration steps?
+L117
+{?
+
+    Print state at this point in the calculation
+    
+A write in columns
+
++
+L151
+P
+A write annotation : 
++
+L140
+P
+A write annotation  
++
+L141
+P
+A write annotation  
++
+L142
+P
+A write annotation  
++
+L143
+P
+A write annotation  
++
+L144
+P
+A write annotation  
++
+L145
+P
+A write annotation  
++
+L146
+P
+A write annotation  
++
+L147
+P
+A write annotation  
++
+L148
+P
+A write annotation  
++
+L149
+P
+A write annotation  
++
+L150
+P
+A write new line
+A write in rows
+}
+
+    Plot the current position on the Curve Drawing Apparatus
+    Note when setting scaling factors that we plot the
+    range and elevation figures in yards (x_y, y_y).
+
+÷
+L149                        . P_x = (x_y / xscale) − 1
+<
+L161
+S130'
+
+−
+L130
+L163
+S130
+
+×
+L130
+L160
+DX
+
+÷
+L150                        . P_y = (y_y / yscale) − 1
+<
+L162
+S130'
+
+−
+L130
+L163
+S130
+
+×
+L130
+L160
+DY
+
+D+
+
+    Set state variables for next iteration
+
+×
+L142                        . v = sqrt(v_x² + (v_y − g s)²)
+L142
+>
+S130
+
+L105
+L107
+>
+S131
+
+−
+L143
+L131
+S131
+
+×
+L131
+L131
+>
+S131
+
++
+L130
+L131
+S000
+
+A include from library cards for sqrt
+
++
+L000
+L114
+S140
+
+×
+L105                     . θ = atan((v_y − g s) / v_x)
+L107
+>
+S130
+
+−
+L143
+L130
+S130
+
+÷
+L130
+<
+L142
+S000'
+
+A include from library cards for arctan
+
++
+L000
+L114
+S141
+
+×
+L142                        . x = x + v_x s
+L107
+>
+S130
+
++
+L144
+L130
+S144
+
+×
+L105                        . y = y + (v_y − g s) s
+L107
+>
+S130
+
+−
+L143
+L130
+S130
+
+×
+L130
+L107
+>
+S130
+
++
+L145
+L130
+S145
+
+L151                        . t = t + s
+L107
+S151
+
+−
+L114                        . Quit when altitude goes negative
+L153
+)
+
+D−                          . Raise the pen
+
+    Print summary of trajectory.  Values are rounded and
+    printed with one decimal place of precision.
+    
+A set decimal places to 1
+A write numbers with decimal point
+
+−
+L155
+L117
+
+{?
+A write annotation      Computation with atmospheric drag
+}{
+A write annotation      Computation without atmospheric drag
+}
+A write new line
+
+A write in columns
+
+A write annotation Time of flight: 
+
++
+L154
+L118
+S130
+÷
+L130
+<10
+L119
+S130'
+P
+
+A write annotation  seconds
+A write new line
+
+A write annotation Range: 
+
++
+L149
+L118
+S130
+÷
+L130
+<10
+L119
+S130'
+P
+
+A write annotation  yards
+A write new line
+
+A write annotation Max altitude: 
+
++
+L156
+L118
+S130
+÷
+L130
+<10
+L119
+S130'
+P
+
+A write annotation  yards
+A write new line
+
+A write annotation Velocity at impact: 
+
++
+L140
+L118
+S130
+÷
+L130
+<10
+L119
+S130'
+P
+
+A write annotation  ft/sec
+A write new line
+
+A write annotation Impact kinetic energy: 
+
+×
+L140                    . temp = ½ m v²
+L140                    . To express energy in quaint "foot pounds"
+>10                     . (actually foot lbf), we must divide the
+S130                    . result by g, the acceleration of gravity
+                        . at the Earth's surface, to convert mass to
+L130                    . force, which are confused in sloppy Imperial
+L116                    . units.
+>10
+S130
+
+L130
+L102
+>10
+S130
+
+÷
+L130
+<10
+L105
+S130'
+
++
+L130
+L118
+S130
+÷
+L130
+<10
+L119
+S000'
+P
+
+A write annotation  foot pounds (
+
+L130                    . Express energy in pounds of TNT
+<10
+L109
+S130'
+
++
+L130
+L118
+S130
+÷
+L130
+<10
+L119
+S130'
+P
+
+A write annotation  pounds of TNT)
+A write new line
+A write new line
+A write in rows
+A set decimal places to 10
+A write numbers with decimal point
++                       . Increment drag/no drag loop counter
+L155
+L117
+S155
+
+L114                    . C_d = 0 for second pass with no drag
+L114
+S104
+
+DC DeepSkyBlue
+
+−
+L155
+L117
+
+)

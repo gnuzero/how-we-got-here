@@ -1,10 +1,10 @@
 ---
 title: "Real-Time Systems in Practice"
-weight: 31
+weight: 33
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
-series_index: 30
+series_index: 32
 tags: []
 summary: "Sense–compute–actuate on a fixed budget — avionics and industrial control where Phase 3's speed tricks become timing enemies"
 image_prompt: "Illustration of a real-time control loop in an industrial/avionics context, clean industrial-engineering diagram style"

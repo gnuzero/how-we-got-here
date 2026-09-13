@@ -1,10 +1,10 @@
 ---
 title: "Sequential Logic"
-weight: 10
+weight: 12
 date: 2026-01-01
 draft: false
 phase: "2 — Physics & Devices"
-series_index: 9
+series_index: 11
 tags: []
 summary: "Feedback makes bistable memory; edge-triggered flip-flops make synchronous design tractable — until setup/hold caps the clock"
 image_prompt: "Timing diagram showing clock, data, output for a D flip-flop, clean waveform diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Why the Transistor Had to Happen"
-weight: 5
+weight: 7
 date: 2026-01-01
 draft: false
 phase: "1 — Foundations: Mechanical to Vacuum-Tube Computing"
-series_index: 4
+series_index: 6
 tags: []
 summary: "Size, power, reliability — three tube ceilings that made solid-state switching inevitable"
 image_prompt: "Split comparison illustration: vacuum tube vs point-contact transistor at same scale, size and heat dissipation visually contrasted, minimalist technical infographic style, clean typography"

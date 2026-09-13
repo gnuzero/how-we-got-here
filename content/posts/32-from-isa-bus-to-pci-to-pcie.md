@@ -1,10 +1,10 @@
 ---
 title: "From ISA Bus to PCI to PCIe"
-weight: 33
+weight: 35
 date: 2026-01-01
 draft: false
 phase: "5 — The Bus & System Architecture"
-series_index: 32
+series_index: 34
 tags: []
 summary: "Skew killed the wide parallel bus; point-to-point serial is how we escaped"
 image_prompt: "Timeline infographic: ISA → PCI → PCIe evolution with bandwidth numbers, clean historical technical infographic style"

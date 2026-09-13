@@ -1,10 +1,10 @@
 ---
 title: "CUDA Cores, Warps, and Occupancy"
-weight: 54
+weight: 56
 date: 2026-01-01
 draft: false
 phase: "9 — GPUs & Parallel Compute"
-series_index: 53
+series_index: 55
 tags: []
 summary: "SIMT maps onto SMs and warps — lockstep wins until divergence, occupancy hides memory stalls"
 image_prompt: "Block diagram of a GPU Streaming Multiprocessor showing CUDA cores, warp scheduler, register file, clean GPU microarchitecture diagram style"

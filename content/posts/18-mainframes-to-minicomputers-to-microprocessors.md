@@ -1,10 +1,10 @@
 ---
 title: "Mainframes to Minicomputers to Microprocessors"
-weight: 19
+weight: 21
 date: 2026-01-01
 draft: false
 phase: "3 — Building a CPU & Its Architectures"
-series_index: 18
+series_index: 20
 tags: []
 summary: "Three eras of who gets a computer — institutional, departmental, then one chip for everyone"
 image_prompt: "Timeline infographic showing mainframe, minicomputer, and microprocessor at matching scale, clean historical infographic style"

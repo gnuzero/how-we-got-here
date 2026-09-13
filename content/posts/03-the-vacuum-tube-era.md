@@ -1,10 +1,10 @@
 ---
 title: "The Vacuum Tube Era"
-weight: 4
+weight: 6
 date: 2026-01-01
 draft: false
 phase: "1 — Foundations: Mechanical to Vacuum-Tube Computing"
-series_index: 3
+series_index: 5
 tags: []
 summary: "Tubes removed moving parts — and traded that speed for heat, power, and failure"
 image_prompt: "Cross-section technical diagram of a triode vacuum tube showing cathode, grid, and anode with electron flow arrows, labeled, vintage engineering textbook illustration style, amber glow accent"

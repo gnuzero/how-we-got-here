@@ -1,10 +1,10 @@
 ---
 title: "What '7nm' Actually Means"
-weight: 48
+weight: 50
 date: 2026-01-01
 draft: false
 phase: "8 — Process Nodes & Fabrication"
-series_index: 47
+series_index: 49
 tags: []
 summary: "Node names stopped tracking one physical length — density and pitch are the physics; the label is a generation"
 image_prompt: "Infographic debunking the '7nm = physical measurement' myth, showing fin pitch/gate pitch numbers vs marketing node names, clean technical infographic style"

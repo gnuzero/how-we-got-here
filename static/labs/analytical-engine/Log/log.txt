@@ -1,0 +1,540 @@
+
+    	    	    	  The Analytical Engine
+    	    	   JavaScript Emulator Development Log
+
+2017 February 15
+
+BigInteger.js package:
+    https://github.com/peterolson/BigInteger.js
+    
+2017 February 24
+
+Moved all of the JavaScript embedded in .../aem/index.html into a
+new webpage.js file.  The intent is that all of the interface between
+the Web page and the other JavaScript modules will be confined to
+this file.
+
+Added an initial implementation of the Run and Animate modes.  Fixed
+numerous bugs associated with stopping and starting the engine and
+switching back and forth between Run and Step modes.
+
+Fixed a number of bugs where resetting the engine left modes in the
+wrong state, for example not re-sensing whether the "Trace" box was
+checked.
+
+Fixed a bug in the OP_ADD handler in Mill.crank where a run_up
+failed due to a spurious "this." on a reference to "result".  These
+can be devilishly difficult to find since they cause no error or
+warning until you blunder into them and they don't jump out at the
+eye even when you're looking at them.
+
+Added a new fibonacci.ae to Examples.  I'll let you guess what it
+does.
+
+Added a new pseudorandom.ae to Examples.  It implements a L'Ecuyer-like
+dual linear congruential generator producing fixed point numbers
+>= 0 and < 1.  It will eventually be used in the graphical Monte Carlo
+evaluation of Pi example.
+
+Since we still don't have library inclusion working, I made an
+Examples/Inverses.ae by manually including the text of the includes
+in inverses.ae.  I ran this as an all-up test and as a timing
+benchmark.  It found the OP_ADD bug noted above.  Running under the
+profiler indicated we're spending most of our time in the timeout
+wait in the animation loop.  I'll deal with this tomorrow.
+
+2017 February 25
+
+Swept through all of the .js files with jshint and eslint.  Found and
+fixed a number of omitted and nugatory this. qualifications which would
+have bitten us, as well as several obsolete variables set and never
+used.
+
+Rewrote the main execution loop in function reAnimator in webpage.js.
+Now, if we're free-running as opposed to stepping or animating,
+we execute cardsPerStep per animation interval instead of a
+single card.  This drastically speeds up execution, as previously
+we spent most of our time in the idle loop.  I set cardsPerStep to 100
+to start with; it will be tuned later based upon profiling.
+
+Fixed some logic about starting and stopping the engine.  When the
+engine ran off the end of the card chain, the annunciator panel was
+set to indicate stopped, but the engine was not halted, which left
+the animation loop running.  If you then submitted a new program,
+it would run immediately without pressing start.  The engine is now
+correctly halted in this case.
+
+Submitting a new program or restarting the engine after the end of
+a program is reached did not reset the attendant write down/across
+mode and number picture to the defaults at program start.  I added
+a new attendant.restart() to do this and called in these circumstances.
+
+In engine.js processCard() would not strip a comment from a card if
+the period was followed by a tab instead of a space character.  I
+changed it to accept any kind of white space after the period.
+
+Submitting a new program did not clear the store.  While programs should
+not make assumptions about the contents of uninitialised columns in
+the store, displaying data left over from a previous program would be
+confusing when running in animation mode, so I added a call to
+Store.reset() in Program.submit().
+
+Added Level 1 and Level 2 display of the Store contents during
+stepping or an animation.  Level 1 simply logs changes sequentially,
+as in the Attendant's Log.  Level 2 refreshes the contents of the
+textarea with a display of the store in order, formatted, with a
+check in front of the most recently changed item.  In Level 2,
+the textarea is dynamically resized in height as the number of
+occupied store columns increases.  Unused store columns are not
+displayed.  This will certainly do for a while, as we sort out
+how updating the panel interacts with various run/step/animate
+modes.  (Level 3 would use innerHTML with fancy formatting or a
+canvas.)
+
+Implemented the Level 1 card reader display.  This shows five cards
+(in the format of Card.toString()) in a textarea with a right arrow
+highlighting the next card to be executed.  This seems to work OK,
+but the as with the store display, the interaction with run modes
+need to be sorted out (for example, if you load a new set of cards
+while trace is not set, it doesn't display the cards on the reader
+until you step or start animating--should it?).
+
+Started the campaign to support loading libraries.  Thanks to
+crapweasel security constraints, we can only load libraries from
+URLs on the same site we're running (which means users cannot
+load their own libraries unless we host them, or they port the
+emulator to their own site).  The loading is, of course,
+asynchronous, which means we have to deal with call-backs for
+each library reference.  This means turning the control structure
+inside-out to no gain whatsoever (compared to, say, a wait for load
+call with a maximum timeout, which returned success or an error code).
+Consequently, we'll have to completely rewrite the expansion of
+attendant includes to cope with this crap.  I shall defer this until
+the morrow.
+
+Installed the Examples and Library directories of *.ae files on aws
+under:
+    /home/kelvin/web/babbage/aem
+This will permit testing once we get the involuted download code sorted
+out.  The "aem" directory is protected with an .htaccess restricting
+access to Fourmilab and the validators.  It would be an excellent
+idea to remove this before we go into production.
+
+2017 February 26
+
+Copied the entire:
+    /files/kelvin/webdev/babbage_2017/html
+into a new:
+    aws:/home/kelvin/web/0babbage
+directory for testing example and library loading.  Installed an
+.htaccess file in the directory to restrict access to Fourmilab
+and the validators.  Note that in the age of IPv6, IP restriction
+.htaccess files are more irritating.  You have to supply an IPv6
+address, which may change any time Swisscom twiddles the tunnelling
+of my UPC IPv4 block.  Hence, when the .htaccess breaks, you have to
+look at the current IPv6 address in ifconfig (it's the first one
+shown), then update to .htaccess to specify it.
+
+Deleted the /home/kelvin/web/babbage/aem directory, as its function
+has been supplanted by the 0babbage test tree.
+
+Created a files/kelvin/webdev/babbage_2017/Tools/awsync script
+to synchronise the local development directory with 0babbage on
+AWS.  This allows local editing and fast sync when testing example
+and script access.
+
+Implemented pre-loading cards into the program box for examples
+in the documents.  A query string appended to a URL like:
+    ?load=Library/cosine
+will load the file "Library/cosine.ae" into the Program box.
+The URL is forced to be relative to the "aem" subdirectory
+(leading slash or period not permitted), and the ".ae" extension
+is forced, preventing user fishing expeditions in the server
+file system.  If the load fails, a message is posted in the
+Attendant's Log including the URL and HTTP status.
+
+Cleaned up Examples/pseudorandom.ae.  I had forgotten when
+writing it that loading the first axis of the Mill clears the
+primed axis to zero, and included explicit clears.  I removed
+them and the now-unused constant zero in the Store.
+
+If an error was detected by the attended whilst examining and
+processing the cards submitted, no card chain would be produced
+which would cause displayCardReader() in webpage.js and
+CardReader.mountCards() in program.js to fail with a reference
+to a null object.  I added tests to both to ignore attempts
+to display or mount the void card chain resulting from an error.
+
+Well, after a evening's hair-pulling, I think I have library inclusions
+working.  This is a completely straightforward process which is
+turned into a plate full of tangled spaghetti by JavaScript's
+callbacks and inversion of control structure, which transforms what
+would be five or ten lines of code with proper co-operating processes
+into snowdrifts of kludges, timers, global status variables, etc.
+
+What was once a simple Program.submit() method is now split into
+submit0(), which places the user's program on the card chain, and
+submit1(), which does all of the transformations.  Submit1, in
+turn, first calls Atttendant.expandLibraryRequests(), which scans
+the card chain looking for library inclusions.  If it finds one, it
+launches the asynchronous process to load it, and returns a "pending"
+status.  When submit1 receives this status, it skips the subsequent
+processing steps and kicks back the pending status to its caller.
+
+The caller is submitProgram1() in webpage.js, which is called from
+submitProgram() which, in turn, is called from the "Submit" button
+in the Web page.  SubmitProgram1(), upon receiving a pending status,
+starts a timeout process to call itself every 20 milliseconds, retrying
+the Program.submit1() operation until it returns a 0 for success or
+2 for failure.  (It's OK to call expandLibraryRequests() when a
+request is still pending: it does nothing and returns the pending
+status.)  When all of the includes have been processed, Program.submit1()
+proceeds to do the rest of the processing (fixed point expansion,
+loop and conditional translation), mounts the card chain, and returns
+a 0 for normal completion or 2 for error.  Upon receiving this,
+submitProgram1 allows its timeout loop to expire and returns.
+
+This is still not airtight.  We should disable the Submit button when this
+circus comes to town and only enable it once again when the timeout
+process (if it has been started due to an include) has come to an
+end.
+
+All of this is made even more ugly by the fact that the call-backs
+from the document retrieval process do not run in the context of
+the object from which they were scheduled.  This calls into existence
+nasty global variables to pass in the context as a hidden argument.
+
+When a [program is loaded from the URL with the ?load= query, I added
+code to automatically submit it.  It will be doubtless confusing for
+people running examples if they have to submit the program before
+running it.
+
+Modified loadWebDoc() in definitions.js to take a context argument
+from the caller which is passed to each of its callbacks.  This allows
+objects calling it to recover their identity in the callback without
+saving it in a static variable.  There's still, of course, a static
+variable in loadWebDoc(), but it's hidden from those who call it.
+
+2017 February 27
+
+Updated cards.html in the main html directory to invoke the Web emulator
+for examples instead of the Java emulator.  Cleaned up the image
+references to use CSS for formatting and added missing clears of
+floated images.
+
+Updated library.html to run its examples in the Web emulator.
+
+Created a Makefile in the scripts subdirectory to minify all of the
+individual JavaScript modules (except BigInteger.min.js, which is
+already minifies and we wish to use in stock form as distributed)
+into an aem.min.js file.  I created a windex.html file in the parent
+directory to test this file; it simply includes it instead of all of
+the individual JavaScript programs.  I won't keep windex.html in sync
+as index.html evolves; it will be re-created as needed for testing.
+
+Added a new "override" status in annunciator.js and a function st
+set it, setOverride().  Setting override causes the functions which
+update status in the annunciator panel to always show changes
+even when trace or animate modes are not set.  This will allow
+showing the complete state of the engine when it halts, for
+whatever reason, after having been running.
+
+Cleaned up the logic in webpage.js that manages the "Running/Stopped"
+indicator in the annunciator panel.  It should now reflect the actual
+state of the engine, change when the user moves between run and step
+modes, and indicate a halt of the engine by an H card or due to running
+off the end of the card chain.
+
+Added a showState() function to webpage.js, which displays the
+complete state of the engine in the annunciator panel.  This is
+called whenever the engine halts or is reset.
+
+Tested the trace (T0, T1) cards--OK.
+
+Implemented the Curve Drawing Apparatus in curvedrawing.js.  The
+apparatus maintains a display list which is filled by the "D"
+cards and paints it in the D_plot canvas in the main window.  The
+Curve Drawing Apparatus division is initially hidden when the
+emulator is displayed, and only appear the first time a line is drawn
+to it.  Beneath the canvas are "Erase" and "Hide" buttons.  The latter
+hides the Apparatus, but it will appear again if anything is drawn
+on it.  If the user's browser does not support canvas, all of the
+curve drawing card will be silently ignored.
+
+The Curve Drawing Apparatus is cleared when a new program is submitted
+or the engine is reset.
+
+Added two new curve drawing cards, contemplated in the original
+Java design, but never implemented.
+    DP
+    	Changes the paper.  (Clears the display panel and the
+	display list.)
+    DC <colour>
+    	Changes the pen.  Subsequent drawing uses the newly specified
+	colour, which can be any valid JavaScript canvas colour (name,
+	#hex, rgb(r, g, b), etc.).
+Note that these two new cards are not yet documented in the "Programming
+Cards" document.
+
+2017 February 28
+
+Used Google Fonts to display headings in the emulator in a suitable
+Victorian copperplate script.  To avoid creating a dependency on
+Google Fonts, these will be replaced by images in the production version,
+but I've left them as is so we can tweak them as the format converges
+upon release.
+
+Fixed Annunciator.changeOperation() to display a Unicode minus sign
+"\u2212" as the current mill operation when it's set to subtract.  Many
+more such fixes are needed.
+
+Implemented a Limacon of Pascal in Examples/limacon.ae.  This will
+need some tweaks.
+
+Fixed point decimal expansion in attendant.js method
+Attendant.translateFixedPoint() did not handle numbers with a
+leading sign.  Fixed.
+
+String to bigInt conversion does not understand numbers with a leading
+plus sign.  Modified parsing of number cards in engine.js to
+remove a leading plus sign if present.
+
+Implemented the first cut of timing and statistics.  Methods in
+timing.js will be called for mill, store, and card reader operations,
+accumulate statistics by type of operation, and a run time estimate
+is updated.  Run times are based upon the only statement I have been
+able to find by Babbage on the speed of the engine: from the
+chapter in his autobiography:
+    http://www.fourmilab.ch/babbage/lpae.html
+which states that the moving parts of the Engine move no faster
+than forty feet per minute and that:
+    Sixty additions or subtractions may be completed and printed in
+    	one minute.
+    One multiplication of two numbers, each of fifty figures, in one
+    	minute.
+    One division of a number having 100 places of figures by another
+    	of 50 in one minute.
+Further, from the discussion in Henry P. Babbage's 1888 paper:
+    http://www.fourmilab.ch/babbage/hpb.html
+it is claimed that addition and subtraction times are independent of
+the arguments.  I have set one second as the time for these
+operations.  In items 40-41, 51 it is explicitly stated that multiplication
+detects the smaller of the two arguments.  I have made multiplication
+have a set-up time of 10 seconds and be proportional to the size of
+the smaller argument.  I base division times on my (poor) understanding
+of how Friden electromechanical calculators do it.  I have a set-up
+time of 10 seconds, plus a time proportional to the difference in the
+number of digits in the dividend and divisor.  All of this will doubtless
+be a matter of controversy and disputation, but the goal is just to provide
+some order of magnitude estimate of how long the Engine would have taken
+to perform a calculation.  I assume the Store is circular, and that
+it takes no longer to slew from column 0 to column 999 than from column 0
+to column 1.  You can change this to timings for a linear store by
+setting StoreCircular = false in timing.js.
+
+Statistics and timing are printed in the Attendant's Log with the new
+    A write timing
+attendant request card.  The statistics and timing counters are reset
+when a new program is loaded or the Engine is reset from the control
+panel.
+
+Made images of all of the Google fonts I temporarily used in the
+emulator HTML page and dispatched the fonts back to the foul pit
+whence they spawned.  Fixed a laughable placement of the apostrophe
+in one of the section titles.
+
+2017 March 1
+
+Rewrote the formatting of the Mill within the Annunciator panel in
+index.html to use a table to properly left justify the labels for the
+Mill axes and right justify their contents.
+
+2017 March 2
+
+Trace messages for the "+" and "-" Mill operations in mill.js
+failed to call toString() when editing the message, causing large
+numbers to be rendered as JavaScript numbers, losing precision.
+Fixed.
+
+Broke up the pseudorandom.ae program into two library routines:
+prand_init.ae and prand_next.ae.  Prand_init.ae initialises the
+generator based upon a seed specified in V000.  You can then call
+prand_next.ae to produce successive pseudorandom numbers, which are
+scaled to the number of decimal places specified to the attendant.
+The pseudorandom values are returned in V000.  The generator uses
+store columns V210 through V255 for its working storage.
+
+Added a new montepi.ae example.  This estimates the value of pi
+by plotting points within a random square of (-1, 1) in each
+dimension with a circle with radius 0.5 inscribed.  The value of
+pi is estimated by the measured number of hits within the circle
+divided by the total number of points.  To avoid slowing down
+due to growth of the display list, every 2500 points the display
+is cleared and restarted.  You can suppress the plotting of points
+by setting V150 to 0 at the top of the program.
+
+A number card was accepted even if missing a number, for example:
+    N121
+It's a fairly common error to accidentally write a number card when
+a load from the Store was intended, and this caused such goofs to go
+undetected.  I modified the parsing code in engine.js so they will
+now receive a "Bad number card" error.
+
+2017 March 9
+
+A Unicode minus sign ("\u2212") was not accepted on an operation
+card.  I added code in engine.js and mill.js to recognise the
+minus sign character.  I also modified currentOperationString()
+in mill.js to return the Unicode minus sign when the current
+Mill operation is queried.
+
+Number cards with a Unicode minus sign in the value field were not
+accepted.  I added code to mill.js to convert Unicode minus signs to
+ASCII before passing the bigInt constructor.
+
+When the Engine was halted by an "H" program card, the reason for
+the halt (if included as a message on the "H" card) was shown
+only on the card reader display of the Annunciator panel.  I added
+a message to the Attendant's Log containing the reason for the
+halt.  If no message is included, nothing will be printed in the
+Log when the Engine halts.
+
+2017 March 10
+
+The "D-" curve drawing card did not accept a Unicode minus sign
+as the second character--fixed.
+
+2017 March 14
+
+Shifting up and down ("<" and ">") cards which contained trailing
+spaces and/or comments ran into trouble.  First of all, the code in
+attendant.js translateFixedPoint() which appends shift counts to
+cards on which it has been omitted failed to recognise cards containing
+comments.  I added code to strip the user's comment, append the
+count, and add the attendant's comment (if comments is set).
+
+Second, processCard() in engine.js didn't like stepping up and
+down cards with trailing space; fixed.
+
+Number cards which use a Unicode minus sign ("\2212") instead of
+an ASCII hyphen ran afoul of translateFixedPoint() in attendant.js,
+which only checked for the ASCII hyphen when parsing the number
+card for decimal point expansion.  Fixed.  (Upon reaching engine.js,
+such cards worked fine, that having been fixed on March 9.)
+
+2017 March 15
+
+Submitting a program after editing it in the program box did not
+reset the engine.  If the user forgot to press the Reset button,
+this could lead to all kinds of confusion.  I made the Submit
+button reset the engine by calling its reset() and commence()
+methods.  Ths allowed eliminating some initialisation calls to
+other parts of the Engine in Program.submit1(), as they are
+invoked by the methods called in engine.js.
+
+Completed a first cut of the ballistics.ae numerical integration
+sample program.  There is still quite a bit of commented-out
+debug code which should be removed before it staggers out into
+the light of day.
+
+2017 March 16
+
+Added the first cut of a distribution generator for the Web emulator
+source code.  To use it, cd to: html/aem/Tools and:
+    make dist
+This will copy the files to be released into a dist subdirectory
+of Tools, then package them into an:
+    aemsource.zip
+file also in the Tools directory.  You can "make clean" to get rid
+of this directory and archive, which are also cleaned out by the
+dist target.  The contents of the distribution need to be reviewed
+to make sure nothing is missing or included which shouldn't be.
+
+The white background of the main title, figures/aetitlew.png,
+interacted infelicitously with the subtle background used in
+index.html and contents.html.  I created a figures/aetitlewt.png
+which is identical but has a transparent background.  We should be
+able to use this everywhere, but I'm not going to make that leap
+until I have the time to review every document to be sure.
+
+Converted glossary.html to use aetitlewt.png.  It looks better
+against the parchment background.  I also made the reference to
+the background image relative instead of the hard coded https:
+URL previously used.
+
+Made a pass through all of the documents and fixed absolute URL
+references to style sheets and JavaScript programs.  This makes
+all of the documents automatically retrieve these components over
+the same protocol (http/https) with which the parent document
+was accessed.
+
+Replaced all references to "aetitlew.png" with "aetitlewt.png", its
+transparent background variant.  This doesn't really make any
+difference for white background documents, but it allows getting
+rid of a redundant image.
+
+Updated all Amazon book links to use the new format with
+"?tag=" and replaced some references to out of print editions with
+newer editions currently available.
+
+The process used to convert the "hole" and "none" images used
+in lpae.html failed to preserve transparency, obscuring them
+when used against a white background.  Fixed.
+
+2017 March 17
+
+Added a "Timing" button below the Attendant's Log.  This calls
+the Timing.report() method and adds the output to the log, allowing
+the user to obtain timing for any program (even while it's running)
+without adding an "A write timing" card to the chain.
+
+Modified the html/aem/Tools/Makefile to include this log in a
+Log subdirectory of the distribution archive.
+
+A common, and frustrating, goof is to edit the program in the
+Program box and then forget to submit it before starting the
+Engine.  I added code so that when the program is modified
+the legend in the "Submit" button turns red to remind the user
+the program hasn't been submitted.  When it is submitted, the
+legend turns back to black.
+
+Installed the Library and Examples directories for the command line
+and Java applet emulators in the main HTML directory, adding
+README files to each to indicate they shouldn't be used with the
+Web Emulator and directing the reader to aem/Examples and
+aem/Library instead.
+
+The websim/ae.html had embedded program cards in a multi-line
+<param> declaration which doesn't work with current browsers.
+I replaced it with a void parameters to leave a blank slate for
+the user to write a program.
+
+Edited all of the HTML files in the websim directory (Java applet
+wrappers) to use "aetitlewt.png" as their title.
+
+Added a link at the bottom of applet.html to run the Java Applet
+Emulator.  There wasn't any other way left to run it unless you
+happened to know the URL to one of the HTML files in the websim
+directory.
+
+Modified the no-<applet> code in all of the websim/*.html files to
+direct the user to the Web Emulator.
+
+Added a link at the bottom of the emulator.html file to run the
+Web emulator.
+
+2017 March 18
+
+The "Table of Contents" link at the bottom of aem/index.html went to
+the Introduction, not contents.html; fixed.
+
+Added URL query parameters:
+    animate=x
+    trace=x
+If the argument is "y", the corresponding check box will be set in the
+control panel.  This allows examples in cards.html to preset these
+modes where appropriate.  The parameter name and argument are case
+sensitive.
+
+Added the "animate=y" query parameter to the examples in cards.html
+where it was set for the Java applet examples (ex1-ex5).

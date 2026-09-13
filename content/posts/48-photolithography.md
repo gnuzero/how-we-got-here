@@ -1,10 +1,10 @@
 ---
 title: "Photolithography"
-weight: 49
+weight: 51
 date: 2026-01-01
 draft: false
 phase: "8 — Process Nodes & Fabrication"
-series_index: 48
+series_index: 50
 tags: []
 summary: "Diffraction forces shorter wavelengths — EUV's mirrors and tin plasma are what kept feature sizes moving"
 image_prompt: "Cutaway diagram of an EUV lithography system showing plasma source, mirrors, mask, wafer, clean fab equipment illustration style"

@@ -1,10 +1,10 @@
 ---
 title: "Instruction Sets"
-weight: 12
+weight: 14
 date: 2026-01-01
 draft: false
 phase: "3 — Building a CPU & Its Architectures"
-series_index: 11
+series_index: 13
 tags: []
 summary: "The ISA is the software–hardware contract; CISC and RISC are two answers to what that contract should look like"
 image_prompt: "Infographic comparing CISC vs RISC instruction encoding, clean technical diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Semiconductors from First Principles"
-weight: 6
+weight: 8
 date: 2026-01-01
 draft: false
 phase: "2 — Physics & Devices"
-series_index: 5
+series_index: 7
 tags: []
 summary: "A band gap you can push either way — doping turns silicon into a controllable switch"
 image_prompt: "Technical illustration of a silicon crystal lattice showing band gap diagram, labeled, textbook diagram style, blue/orange color coding"

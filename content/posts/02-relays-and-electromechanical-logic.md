@@ -1,10 +1,10 @@
 ---
 title: "Relays and Electromechanical Logic"
-weight: 3
+weight: 5
 date: 2026-01-01
 draft: false
 phase: "1 — Foundations: Mechanical to Vacuum-Tube Computing"
-series_index: 2
+series_index: 4
 tags: []
 summary: "Relays proved binary logic works — and that moving metal cannot keep up"
 image_prompt: "Technical cutaway of an electromagnetic relay showing coil, armature, and contacts in both open and closed states side by side, labeled diagram style, clean line art on white background"

@@ -1,0 +1,150 @@
+
+    Plot the limaçon of Pascal
+    
+    The limaçon is a fourth-order curve defined by
+    the parametric equations:
+    
+        x = (b + a cos t) cos t
+        y = (b + a cos t) sin t
+        
+    The parameters a and b control the shape of the
+    curve and whether it has a cusp or inner loop.
+        
+    References:
+        http://mathworld.wolfram.com/Limacon.html
+        https://en.wikipedia.org/wiki/Lima%C3%A7on
+
+A set decimal places to 25
+A write numbers with decimal point
+
+N100 2.0        . Parameter a
+N101 1.0        . Parameter b
+N110 0.25       . Global scale factor
+
+N102 0.0        . t
+. N103          . cos t
+N104 0          . Constant 0
+. N105          . sin t
+. N106          . temp1
+N107 0.03       . t increment
+N108 6.33       . t limit
+. N109          . temp2
+. N111          . temp3
+
+.   Draw x and y axes
+
+DC SkyBlue
+N106 -0.85      . x axis
++
+L106
+DX
++
+L104
+DY
+D+
+N106 0.85
++
+L106
+DX
++
+L104
+DY
+D+
+D-
+
++               . y axis
+L104
+DX
++
+L106
+DY
+D+
++
+L104
+DX
+N106 -0.85
++
+L106
+DY
+D+
+D-
+
+DC black
+
+(?
+
++
+L102            . Transfer t to argument of cosine
+L104
+S000
+
+A include from library cards for cosine
+
++       . Store cos t in S103
+L000
+L104
+S103
+
++
+L102    . Transfer t to argument of sine
+L104
+S000
+
+A include from library cards for sine
+
++       . Store sin t in S105
+L000
+L104
+S105
+
+.   Compute x
+
+×
+L100    . temp1 = a cos t
+L103
+>
+S106
++
+L106    . temp2 = temp1 + b
+L101
+S109
+×
+L109    . temp3 = temp2 × cos t
+L103
+>
+S111
+
+L111    . x = temp3 × scale
+L110
+>
+DX      . Transfer x to curve drawing apparatus
+
+.   Compute y
+
+×
+L109    . temp3 = temp2 × sin t
+L105
+>
+S111
+
+L111    . y = temp3 × scale
+L110
+>
+DY      . Transfer x to curve drawing apparatus
+
+D+      . Draw a line to (x, y)
+
++
+L102    . t = t + increment
+L107
+S102
+
+.   Test for end of iteration
+
+-
+L102    . t - limit
+L108
+
+)
+
+A write timing

@@ -1,10 +1,10 @@
 ---
 title: "Interconnects at Scale"
-weight: 38
+weight: 40
 date: 2026-01-01
 draft: false
 phase: "5 — The Bus & System Architecture"
-series_index: 37
+series_index: 39
 tags: []
 summary: "Once compute is many chips, the path between them is the next wall — dedicated links, fewer copies"
 image_prompt: "System diagram comparing PCIe-connected GPUs vs NVLink direct GPU-to-GPU mesh, clean datacenter architecture diagram style"

@@ -1,0 +1,321 @@
+
+    Approximation of π by Monte Carlo method
+
+    Analysis:
+        A circle with radius r is inscribed within a
+        square with edges of length 2.  The area of the
+        square is thus 4, while the area of the circle
+        is a=πr².  The probability a random point will
+        fall within the circle is thus:
+                p = a/4 = πr²/4
+        Given an empirical measure of the probability,
+        we can compute an estimate of π as:
+                π ≅ 4p / r²
+
+N150 1      . Set to 1 to plot points, 0 to suppress                
+
+A set decimal places to 25
+N116 0.01   . Constant plot tick mark size
+
+A write in columns
+
+A set decimal places to 10
+N100 3.1415926535897932384626434
+N101 1      . Constant 1
+N102 6.4    . Circle iteration limit
+N103 0      . t   Iteration variable to draw circle
+N104 0      . Constant 0
+N105 0.1    . Circle drawing increment
+N106 0.5    . r  Circle radius
+. N107      . r²
+. N108      . x
+. N109      . y
+
+N110 0      . Points generated
+N111 0      . Points within the circle
+N112 2      . Constant 2
+N113 1.0    . Constant 1.0
+. N114      . d²  Distance of point from centre
+. N115      . temp
+N117 4.0    . Constant 4.0
+. N118      . Estimated value of π
+N119 10000.0  . Constant 10000.0
+
+N120 100    . How often to display estimates
+N121 0      . Estimate display counter
+N122 2500   . How often to clear the display
+N123 2500   . Display clear counter
+
+N125 1000000000000000 . Plot scale factor (10^15)
+
+*                   . Compute r²
+L106
+L106
+>
+S107
+
+N000 28151657       . Seed for pseudorandom generator
+
+A include from library cards for prand_init
+
+DC Blue
+
+(
+
+A include from library cards for prand_next
+
+*                   . Store first random value in x
+L000
+L112
+S108
+-
+L108
+L113
+S108
+
+A include from library cards for prand_next
+
+*                   . Store second random value in y
+L000
+L112
+S109
+-
+L109
+L113
+S109
+
++                   . Increment points generated
+L110
+L113
+S110
+
+    Compute square of distance of point from centre
+    
+*
+L108
+L108
+>
+S114
+
+L109
+L109
+>
+S115
+
++
+L114
+L115
+S114
+
+-                       . Are we plotting points ?
+L150
+L101
+{?
+
+    Increment clear display list counter
+    
++
+L123
+L101
+S123
+
+-
+L123
+L122
+{?
++
+L104
+L104
+S123
+S103
+
+DP
+
+    Draw the boundary circle
+
+DC Red
+
+(?
+
++
+L103
+L104
+S000
+
+A include from library cards for sine
+
+*
+L000
+L106
+>
+S000
+
+L000
+L125
+DY
+
++
+L103
+L104
+S000
+
+A include from library cards for cosine
+
+*
+L000
+L106
+>
+S000
+
+L000
+L125
+DX
+
+D+
+
++
+L103
+L105
+S103
+
+-
+L103
+L102
+
+)
+D-                  . Circle done: raise the pen
+}
+}
+
+    Test whether point is within circle
+  
+DC Blue
+    
+-
+L107
+L114
+{?
+
++                       . Increment points in circle
+L111
+L113
+S111
+
+DC Green
+
+}
+
+-                       . Are we plotting points ?
+L150
+L101
+{?
+
+    Draw tick mark at point's location
+
+*
+L108
+L125
+DX
+
+L109
+L125
+S109
+DY    
+D+
++
+L109
+L116
+DY
+D+
+D-
+}
+
++                       . Increment display counter
+L121
+L101
+S121
+
+-                       . Time to display estimate ?
+L121
+L120
+
+{?
+
++                       . Reset display counter
+L104
+L104
+S121
+
+A write numbers as 9
++
+L110
+L104
+>
+P
+
+A write annotation :  
+
+A write numbers with decimal point
+
+    Estimate π
+    
+*                       . Points within circle / 4
+L117
+L111
+>
+S115
+
+/                       . Divide by total points
+L115
+<
+L110
+S118'
+
+L118                    . Divide by r²
+<
+L107
+S118'
+
++
+L118
+P
+
+    Compute error percentage
+ 
+-                       . Compute error
+L118
+L100
+S115
+
+L104
+L115
+{?                      . Take absolute value of error
+-
+L104
+L115
+S115
+}
+
+/                       . Divide error by correct value
+L115
+<
+L100
+S115'
+
+*                       . Multiply error by 10000
+L115
+L119
+>
+>
+S115
+
+A write annotation  
+A write numbers as 9.99
+P
+A write annotation %
+
+A write new line
+
+}
+
+)

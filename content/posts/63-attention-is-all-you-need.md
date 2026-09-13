@@ -1,10 +1,10 @@
 ---
 title: "Attention Is All You Need"
-weight: 64
+weight: 66
 date: 2026-01-01
 draft: false
 phase: "10 — Modern AI Hardware"
-series_index: 63
+series_index: 65
 tags: ["attention", "transformers", "neural networks"]
 summary: "Self-attention closed the spine — parallel sequence modeling that maps onto the matmul hardware the journey built"
 image_prompt: "Clean technical diagram of multi-head self-attention: queries, keys, values flowing into scaled dot-product attention, multiple heads, residual connections, modern AI architecture illustration style, white background"

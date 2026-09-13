@@ -1,10 +1,10 @@
 ---
 title: "Visions That Shipped"
-weight: 69
+weight: 71
 date: 2026-09-06
 draft: false
 phase: "Visions That Shipped"
-series_index: 68
+series_index: 70
 tags: []
 summary: "Forward links out of the journey — Cisco, Gates, Jobs, GNU+Linus, Elon, Bezos as seeds of kinds that turned stack into lived platforms"
 image_prompt: "Clean forward-looking diagram: protocol stack arrows pointing into product seeds — router, PC software, integrated personal machine, open OS, logistics/cloud/space — not corporate logos as heroes, modern technical infographic"

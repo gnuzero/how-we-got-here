@@ -1,10 +1,10 @@
 ---
 title: "Time-Sharing and the Unix Lineage"
-weight: 23
+weight: 25
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
-series_index: 22
+series_index: 24
 tags: []
 summary: "Batch kept the CPU busy; time-sharing gave many users the illusion of owning it — Multics ambition, then Unix simplicity"
 image_prompt: "Family-tree infographic: Multics branching into Unix, then BSD/System V leading to Linux/macOS, clean genealogy diagram style"
