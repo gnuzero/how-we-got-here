@@ -1,17 +1,17 @@
 ---
-title: "เครดิตและประตูออก"
+title: "กิตติกรรมประกาศและแหล่งข้อมูล"
 weight: -1
 date: 2026-09-13
 draft: false
-phase: "0 — เครดิต"
+phase: "0 — กิตติกรรมประกาศ"
 series_index: -1
 tags: ["credits", "sources", "attribution"]
-summary: "เครดิตมาก่อน — แหล่งที่ตีพิมพ์แล้ว แล็บที่มีอยู่ และภาพที่การเดินทางนี้ยืนอยู่"
+summary: "มาก่อนคำนำ — แหล่งที่ตีพิมพ์แล้ว แล็บที่มีอยู่ และภาพที่การเดินทางนี้ยืนอยู่"
 ---
 
-# เครดิตและประตูออก
+# กิตติกรรมประกาศและแหล่งข้อมูล
 
-การเดินทางนี้ตั้งชื่อข้อจำกัดและคนในบทต่าง ๆ เมื่อหัวข้อมีต้นทางที่แข็งอยู่แล้ว เราชี้ไปที่นั่น Wikipedia เป็นแผนที่ ไม่ใช่ปลายทาง โต๊ะไทย สิงหล และทมิฬให้เครดิตวรรณกรรมท้องถิ่นที่ตีพิมพ์แล้วเท่านั้น — ไม่เคยประดิษฐ์ชื่อเพื่อเติมช่องว่าง
+การเดินทางนี้ตั้งชื่อข้อจำกัดและคนในบทต่าง ๆ เมื่อหัวข้อมีต้นทางที่แข็งอยู่แล้ว เราชี้ไปที่นั่น Wikipedia เป็นแผนที่ ไม่ใช่ปลายทาง โต๊ะไทย สิงหล และทมิฬออกชื่อวรรณกรรมท้องถิ่นที่ตีพิมพ์แล้วเท่านั้น — ไม่เคยประดิษฐ์ชื่อเพื่อเติมช่องว่าง
 
 บทบาททีม (แนวคิด การเขียน โต๊ะภาษา) อยู่ที่ [เกี่ยวกับ](/about/) หน้านี้คือบันทึกวิชาชีพ *ก่อน* คำนำ เพื่อจะได้ไม่ต้องเดาว่าใครตีพิมพ์เนื้อหานี้ไปแล้ว
 
@@ -69,25 +69,27 @@ Wikimedia Commons คือประตูภาพ (ดูด้านล่า
 
 ## แหล่งที่ตีพิมพ์เป็นภาษาไทย
 
-ชื่อที่อยู่ในฉบับไทยอยู่แล้ว (อ่านเพิ่ม) ชื่อเรื่องตามที่ตีพิมพ์ ปีและ URL สำนักพิมพ์เฉพาะที่ตรวจกับระเบียนจริง — ไม่เติมปีถ้าหาไม่เจอ
+ชื่อที่อยู่ในฉบับไทยอยู่แล้ว (อ่านเพิ่ม) ปีและ URL สำนักพิมพ์ด้านล่างตรวจกับระเบียนแล้ว ชื่อที่ยังไม่ล็อกปี คงชื่อไว้ ไม่ใส่วันที่
 
-- ทรงพล กาญจนชูชัย — *อุปกรณ์สารกึ่งตัวนำ*, สำนักพิมพ์จุฬาลงกรณ์มหาวิทยาลัย, พิมพ์ครั้งที่ 2 พ.ศ. 2559 — [ศูนย์หนังสือจุฬาฯ](https://www.chulabook.com/engineering-book/25536)
-- ทรงยศ นาคอริยกุล — *การวิเคราะห์และออกแบบวงจรดิจิทัล*, พิมพ์ครั้งที่ 1 พ.ศ. 2560 — [ศูนย์หนังสือจุฬาฯ](https://www.chulabook.com/engineering-book/180064)
-- จันทนา จันทราพรชัย — *สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ*, TOP Publishing, พิมพ์ครั้งที่ 1 พ.ศ. 2555 — [ศูนย์หนังสือจุฬาฯ](https://www.chulabook.com/computer/54282)
-- ยรรยง เต็งอำนวย — *ระบบปฏิบัติการ*, ซีเอ็ดยูเคชั่น, พ.ศ. 2533 — [ประมวลรายวิชาของผู้เขียน จุฬาฯ](https://www.cp.eng.chula.ac.th/~fyta/631/Outline.htm)
-- ธีรวัฒน์ ประกอบผล — *ภาษาแอสเซมบลีสำหรับ MCS-51*, สมาคมส่งเสริมเทคโนโลยี (ไทย-ญี่ปุ่น), พิมพ์ครั้งที่ 5 พ.ศ. 2555 — [ศูนย์หนังสือจุฬาฯ](https://www.chulabook.com/other/101772)
-- อรพิน ประวัติบริสุทธิ์ — *คู่มือเขียนโปรแกรมด้วยภาษา C ฉบับสมบูรณ์*, โปรวิชั่น, พิมพ์ครั้งที่ 1 พ.ศ. 2562 — [provision.co.th](https://www.provision.co.th/2019/c2019)
-- จารุโลจน์ จงสถิตย์วัฒนา — *หลักการและการประมวลผลภาษาโปรแกรม*, เอกสารคำสอน (draft) 2023 — [คลังตำรา จุฬาฯ](https://www.cp.eng.chula.ac.th/~prabhas/book/bookstore.htm)
-- วโรดม ตู้จินดา — *ระบบควบคุมฝังตัว*, สำนักพิมพ์มหาวิทยาลัยเกษตรศาสตร์, พิมพ์ครั้งที่ 1 พ.ศ. 2559 — [KU Press](https://ku-press.ku.ac.th/newweb/index.php?Itemid=24&id=906&option=com_content&view=article)
-- โอภาส เอี่ยมสิริวงศ์ — *เครือข่ายคอมพิวเตอร์และการสื่อสาร* (ฉบับปรับปรุงเพิ่มเติม), ซีเอ็ดยูเคชั่น, พ.ศ. 2559 — [หอสมุดจุฬาฯ](https://www.car.chula.ac.th/display7.php?bib=2130961)
-- อสมา กุลวานิชไชยนันท์ — *Big Data Series I*, คอราไลน์, พิมพ์ครั้งที่ 1 พ.ศ. 2561 — [คลังความรู้มิวเซียมสยาม](https://knowledge-center.museumsiam.org/book/69c0d93f9f6c8)
-- อาณัติ รัตนถิรกุล — *Docker พื้นฐานสู่การใช้งานจริง* — [SYSADMIN BOOK STORE](https://sysadmin.in.th/bookstore/) (มีชื่อเรื่องและผู้แต่ง; ยังไม่พบปีพิมพ์ในระเบียน)
-- สุพจน์ เฮงพระพรหม — *การเรียนรู้ของเครื่อง MACHINE LEARNING*, พิมพ์ครั้งที่ 1 พ.ศ. 2566 — [ศูนย์หนังสือจุฬาฯ](https://www.chulabook.com/computer/193021)
-- วรเศรษฐ สุวรรณิก — *วิทยาการรหัสลับ*, วรรณิก, พิมพ์ครั้งที่ 1 พ.ศ. 2553 — [หอสมุดจุฬาฯ](https://www.car.chula.ac.th/display7.php?bib=1858617)
-- ผศ.ดร. ชาญศักดิ์ ศรีสวัสดิ์สกุล — *วิทยาการเข้ารหัสลับและเทคโนโลยีบล็อกเชน* — [หน้าตำราของผู้เขียน](https://www.charnsak.com/cryptoandblockchainbook/) (มีชื่อเรื่องและผู้แต่ง; หน้านี้ไม่ลงปีพิมพ์)
-- ปริญญา หอมเอนก — *Strategy to Cybersecurity 4.0*, เอซิส โปรเฟสชั่นนัล เซ็นเตอร์, พิมพ์ครั้งที่ 2 พ.ศ. 2561 — [หอสมุดจุฬาฯ](http://library.car.chula.ac.th/record=b2260743)
-- ผศ.ดร. จรวย สาวิถี — *ความมั่นคงของเครือข่ายคอมพิวเตอร์* — [MSU e-book](http://ebook.msu.ac.th/ebook/index/%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%AD%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84/636.html) (มีชื่อเรื่องและผู้แต่ง; ยังไม่พบปีพิมพ์ในระเบียนห้องสมุด)
-- ณัฐโชติ พรหมฤทธิ์ — *Practical DevOps and Cloud Engineering*, อินโฟเพรส / ไอดีซี, พิมพ์ครั้งที่ 1 ธันวาคม พ.ศ. 2563 — [SE-ED](https://www.se-ed.com/physical/Practical-DevOps-and-Cloud-Engineering-ie8kx0ciswot5v2ptfh2)
+- ทรงพล กาญจนชูชัย — *อุปกรณ์สารกึ่งตัวนำ* — สำนักพิมพ์จุฬาลงกรณ์มหาวิทยาลัย, 2556/2013 (พิมพ์ครั้งที่ 2 พ.ศ. 2559), ISBN 9789740334941 — [ศูนย์หนังสือจุฬาฯ](https://www.chulabook.com/engineering-book/25536)
+- ทรงยศ นาคอริยกุล — *การวิเคราะห์และออกแบบวงจรดิจิทัล* — พิมพ์ครั้งที่ 1 พ.ศ. 2560 — [ศูนย์หนังสือจุฬาฯ](https://www.chulabook.com/engineering-book/180064)
+- จันทนา จันทราพรชัย — *สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ* — พิมพ์ครั้งที่ 1 พ.ศ. 2555, ISBN 9786162820090 — [ศูนย์หนังสือจุฬาฯ](https://www.chulabook.com/computer/54282)
+- ยรรยง เต็งอำนวย — *ระบบปฏิบัติการ* — ซีเอ็ด, 2533/1990 — [ประมวลรายวิชา](https://www.cp.eng.chula.ac.th/~fyta/631/Outline.htm)
+- ธีรวัฒน์ ประกอบผล — *ภาษาแอสเซมบลีสำหรับ MCS-51* — ส.ส.ท., พิมพ์ครั้งที่ 5 พ.ศ. 2555 — [ศูนย์หนังสือจุฬาฯ](https://www.chulabook.com/other/101772)
+- อรพิน ประวัติบริสุทธิ์ — *คู่มือเขียนโปรแกรมด้วยภาษา C ฉบับสมบูรณ์* — โปรวิชั่น, พิมพ์ครั้งที่ 1 พ.ศ. 2562, ISBN 978-616-204-725-1 — [provision.co.th](https://www.provision.co.th/2019/c2019)
+- จารุโลจน์ จงสถิตย์วัฒนา — *หลักการและการประมวลผลภาษาโปรแกรม* — เอกสารคำสอน 2023 ไม่ใช่หนังสือสำนักพิมพ์ — [bookstore.htm](https://www.cp.eng.chula.ac.th/~prabhas/book/bookstore.htm)
+- วโรดม ตู้จินดา — *ระบบควบคุมฝังตัว* — สำนักพิมพ์มหาวิทยาลัยเกษตรศาสตร์, พิมพ์ครั้งที่ 1 พ.ศ. 2559, ISBN 978-616-556-181-5 — [KU Press](https://ku-press.ku.ac.th/newweb/index.php?Itemid=24&id=906&option=com_content&view=article)
+- โอภาส เอี่ยมสิริวงศ์ — *เครือข่ายคอมพิวเตอร์และการสื่อสาร* — ซีเอ็ด, พ.ศ. 2559, ISBN 9786160846085 — [หอสมุดจุฬาฯ](https://www.car.chula.ac.th/display7.php?bib=2130961)
+- อสมา กุลวานิชไชยนันท์ — *Big Data Series I* — คอราไลน์, พิมพ์ครั้งที่ 1 พ.ศ. 2561, ISBN 9786169310808 — [มิวเซียมสยาม](https://knowledge-center.museumsiam.org/book/69c0d93f9f6c8)
+- อาณัติ รัตนถิรกุล — *Docker พื้นฐานสู่การใช้งานจริง* — ยืนยันชื่อเรื่องแล้ว ปีพิมพ์ยังไม่ล็อก — [sysadmin.in.th](https://sysadmin.in.th/bookstore/)
+- สุพจน์ เฮงพระพรหม — *การเรียนรู้ของเครื่อง MACHINE LEARNING* — พิมพ์ครั้งที่ 1 พ.ศ. 2566, ISBN 9786166083989 — [ศูนย์หนังสือจุฬาฯ](https://www.chulabook.com/computer/193021)
+- วรเศรษฐ สุวรรณิก — *วิทยาการรหัสลับ* — วรรณิก, 2553/2010, ISBN 978-616-90224-2-8 — [หอสมุดจุฬาฯ](https://www.car.chula.ac.th/display7.php?bib=1858617)
+- ผศ.ดร. ชาญศักดิ์ ศรีสวัสดิ์สกุล — *วิทยาการเข้ารหัสลับและเทคโนโลยีบล็อกเชน* — ปียังไม่ล็อกบนหน้าผู้เขียน — [charnsak.com](https://www.charnsak.com/cryptoandblockchainbook/)
+- ปริญญา หอมเอนก — *Strategy to Cybersecurity 4.0* — เอซิส, พิมพ์ครั้งที่ 1 พ.ศ. 2560 (ครั้งที่ 2 พ.ศ. 2561), ISBN 9786169299202 — [หอสมุดจุฬาฯ](http://library.car.chula.ac.th/record=b2260743)
+- ผศ.ดร. จรวย สาวิถี — *ความมั่นคงของเครือข่ายคอมพิวเตอร์* — e-book มหาวิทยาลัยมหาสารคาม ปียังไม่ล็อกบนระเบียน OPAC — [MSU e-book](http://ebook.msu.ac.th/ebook/index/%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%AD%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84/636.html)
+- ณัฐโชติ พรหมฤทธิ์ — *Practical DevOps and Cloud Engineering* — อินโฟเพรส/ไอดีซี, พิมพ์ครั้งที่ 1 ธันวาคม พ.ศ. 2563, ISBN 978-616-487-174-8 — [SE-ED](https://www.se-ed.com/physical/Practical-DevOps-and-Cloud-Engineering-ie8kx0ciswot5v2ptfh2)
+
+ตรวจแล้ว นอกจากอ่านเพิ่ม: ราชบัณฑิตยสถาน — *ศัพท์คอมพิวเตอร์ ฉบับราชบัณฑิตยสถาน*, 2533/1990, ISBN 9748122352 — [botlc](https://www.botlc.or.th/item/book/01000011958); ดร. ทวีศักดิ์ กออนันตกูล และคณะ — *คอมพิวเตอร์กับภาษาไทย*, 2534/1991 — [NECTEC](https://www.nectec.or.th/news/news-article/wtt20-io-system-for-th.html)
 
 ประตูสถาบัน (ศัพท์และหลักสูตร ไม่ใช่ผู้แต่งบท): [ราชบัณฑิตยสภา](https://coined-word.orst.go.th/about.php) (ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา — คอมพิวเตอร์และเทคโนโลยีสารสนเทศ); [สสวท. / IPST](https://oho.ipst.ac.th/ipst-cs-books/) หนังสือเรียนวิทยาการคำนวณ; [NECTEC](https://www.nectec.or.th/about/about-history.html) ประวัติสถาบัน
 
@@ -118,8 +120,8 @@ Wikimedia Commons คือประตูภาพ (ดูด้านล่า
 - ச. சம்பத்து (S. Sampath) — *அடிப்படைத் திண்மநிலை இயற்பியல்* / *Fundamentals of Solid State Physics* (ทมิฬ), தமிழ்நாடு பாடநூல் மற்றும் கல்வியியல் பணிகள் கழகம், 2019 — [รายการแคตตาล็อก](https://www.exoticindiaart.com/book/details/fundamentals-of-solid-state-physics-tamil-uau378/)
 - மு. சிவலிங்கம் (M. Sivalingam) — *நெட்வொர்க் தொழில்நுட்பம்*, பாரதி பகத் பதிப்பகம், 2012 — [เว็บผู้เขียน](https://www.sivalingam.in/mybooks/mybooksindex.htm)
 - மு. சிவலிங்கம் (M. Sivalingam) — *கம்ப்யூட்டர் இயக்க முறைகள்*, பழனியப்பா பிரதர்ஸ் — [noolulagam](https://www.noolulagam.com/books/4942)
-- தமிழ்நாடு அரசு / Tamil Nadu Textbook and Educational Services Corporation — Samacheer Kalvi 11th Computer Science และ 12th Physics / Computer Applications (สื่อทมิฬ) — [textbooksonline.tn.nic.in](http://www.textbooksonline.tn.nic.in/)
-- தமிழ் இணையக் கல்விக்கழகம் (Tamil Virtual Academy) — เครื่องมือ Unicode / การคำนวณทมิฬ — [tamilvu.org/en/unicode](https://www.tamilvu.org/en/unicode); บทเรียน 5.4, கணினிமொழி மென்பொருள்
+- தமிழ்நாடு அரசு / Tamil Nadu Textbook and Educational Services Corporation — Samacheer Kalvi 11th Computer Science and 12th Physics / Computer Applications (สื่อทมิฬ) — [textbooksonline.tn.nic.in](http://www.textbooksonline.tn.nic.in/)
+- தமிழ் இணையக் கல்விக்கழகம் (Tamil Virtual Academy) — Unicode / Tamil computing tools — [tamilvu.org/en/unicode](https://www.tamilvu.org/en/unicode); course lesson 5.4, கணினிமொழி மென்பொருள்
 - [INFITT](https://www.infitt.org/) (உத்தமம்) — International Forum for Information Technology in Tamil
 
 ## สื่อโต้ตอบที่มีอยู่แล้ว
@@ -150,6 +152,6 @@ Wokwi เป็นลิงก์ออกจากหน้า breadboard ไ�
 
 ## สัญญาอนุญาตของหนังสือนี้เอง
 
-ข้อความการเดินทางเป็น [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) แล็บที่ฝังคงสัญญาอนุญาต *ของมัน* ด้านบน ให้เครดิตทั้งสอง
+ข้อความการเดินทางเป็น [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) แล็บที่ฝังคงสัญญาอนุญาต *ของมัน* ด้านบน ระบุทั้งสอง
 
 ถ้าชื่อที่ตีพิมพ์แล้วหายไปจากหน้านี้ นั่นคือช่องว่างที่ต้องแก้ — ไม่ใช่ข้ออ้างว่างานนั้นเป็นของเรา
