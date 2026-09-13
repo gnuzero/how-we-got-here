@@ -93,6 +93,21 @@ Also verified, not only อ่านเพิ่ม: ราชบัณฑิต
 
 Institutional doors (terminology and curriculum, not chapter authors): [ราชบัณฑิตยสภา](https://coined-word.orst.go.th/about.php) (Royal Society coined-word system, คอมพิวเตอร์และเทคโนโลยีสารสนเทศ); [สสวท. / IPST](https://oho.ipst.ac.th/ipst-cs-books/) วิทยาการคำนวณ textbooks; [NECTEC](https://www.nectec.or.th/about/about-history.html) institutional history.
 
+## Thai computing and encoding
+
+The textbooks above are chapter อ่านเพิ่ม. This is the localization shelf that was missing — who made Thai *work* on computers.
+
+- ศาสตราจารย์ บัญฑิต กัณตะบุตร (Bundhit Kantabutra) — Thailand's first digital computer, an IBM 1620, at Chulalongkorn Statistics, 9 August 1963. Numbers and Latin only; Thai script came later. — [Chula archive](https://web.archive.org/web/20171222051550/http:/bundhit.acc.chula.ac.th/IBM1620.html)
+- IBM Thai on card-punch and line printers from the late 1960s used 8-bit EBCDIC (later remembered as CP838). Individual code-page designers are not publicly credited. — Koanantakool, Karoonboonyanan, and Wutiwiwatchai, *Computers and the Thai Language*, *IEEE Annals of the History of Computing* 31(1):46–61, 2009, citing Hensch 2005 — [DOI](https://doi.org/10.1109/MAHC.2009.5)
+- ยืน ภู่วรวรรณ (Yuen Poovarawan, Kasetsart; IEEE spelling Poovorawan) — first interactive Thai microcomputer text editor (1981); Thai Easy Writer (1982); Thai Kernel System. — IEEE Annals 2009; [NECTEC MLIT97 timeline](https://www.nectec.or.th/it-standards/mlit97/keynote.html). Widely reported as TIS 620 vice-chair; we do not have a TISI roster in hand.
+- TISI — **TIS 620-2529** (1986) Thai character codes; **TIS 620-2533** (1990) same code points, clearer text; **TIS 820-2531** (1988) keyboard (Ketmanee, one change). Unicode Thai (U+0E00–U+0E7F) and ISO/IEC 8859-11 follow TIS 620 in visual/typing order. — IEEE Annals 2009 Table 1; [TIS 620](https://nectec.or.th/it-standards/std620/std620.html)
+- ดร. ทวีศักดิ์ กออนันตกูล และคณะ / TAPIC — *คอมพิวเตอร์กับภาษาไทย*, NECTEC, 10 Oct 2534/1991 (WTT 2.0). Later **TIS 1566-2541** (1998). — [NECTEC](https://www.nectec.or.th/news/news-article/wtt20-io-system-for-th.html)
+- Hugh Thaweesak Koanantakool, Theppitak Karoonboonyanan, and Chai Wutiwiwatchai — *Computers and the Thai Language*, *IEEE Annals* 31(1):46–61, 2009 — [DOI](https://doi.org/10.1109/MAHC.2009.5)
+- เทพพิทักษ์ การุณบุญญานันท์ (Theppitak Karoonboonyanan) — Thai locale, collation, libthai / [linux.thai.net](https://linux.thai.net/). Named as 2009 co-author and in the NECTEC WTT note.
+- Trin Tantsetthi — IANA `TIS-620` charset registration, 25 Aug 1998; IEEE 2009 credits him for ISO-IR-166 and keeping visual order in the Unicode Thai block. — [IANA request](https://data.iana.org/archive/ietf-charsets/msg00615.html)
+- Ketmanee vs Pattajoti: inherited typewriter layouts. IEEE 2009 names Pattajoti (1966; official, then abandoned 1971) and says Ketmanee is "named after its inventor" without a locked personal identity. We do **not** credit สุวรรณประเสริฐ เกษมณี as fact.
+
+
 ## Sinhala published sources
 
 Verified Sri Lankan computing publications. Sinhala-language books sit beside the English encoding papers. No invented textbook names.
