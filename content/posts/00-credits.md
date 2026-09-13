@@ -37,16 +37,28 @@ Chapter door-outs (Baran, Tomasulo, Kung/Leiserson, and the rest) stay *in* thos
 
 Wikimedia Commons is the image door (see below). Language editions (ไทย, සිංහල, தமிழ்) are the same *kind* of map for those readers.
 
-## Named professional authors (English)
+## Named professional authors
 
-Historians and canonical textbooks this spine stands on. Title, year, publisher home — not a reading list of everything ever written.
+Historians and canonical textbooks this spine stands on. Title, year, publisher home — not a reading list of everything ever written. More nationalities than a US/UK shelf.
 
 **Historians**
 
 - Paul E. Ceruzzi — *A History of Modern Computing*, 2nd ed., MIT Press, 2003 — [mitpress.mit.edu](https://mitpress.mit.edu/9780262532037/a-history-of-modern-computing/)
-- William Aspray — *John von Neumann and the Origins of Modern Computing*, MIT Press, 1990 — [MIT Press](https://mitpressbookstore.mit.edu/book/9780262518857)
+- Thomas Haigh and Paul E. Ceruzzi — *A New History of Modern Computing*, MIT Press, 2021 — [mitpress.mit.edu](https://mitpress.mit.edu/9780262542906/a-new-history-of-modern-computing/)
+- William Aspray — *John von Neumann and the Origins of Modern Computing*, MIT Press, 1990 — [MIT Press](https://mitpress.mit.edu/9780262518857/john-von-neumann-and-the-origins-of-modern-computing/)
 - Martin Campbell-Kelly, William F. Aspray, Jeffrey R. Yost, Honghong Tinn, and Gerardo Con Díaz — *Computer: A History of the Information Machine*, 4th ed., Routledge, 2023 — [routledge.com](https://www.routledge.com/Computer-A-History-of-the-Information-Machine/Campbell-Kelly-Aspray-Yost-Tinn-ConDiaz/p/book/9781032203430)
 - Herman H. Goldstine — *The Computer from Pascal to von Neumann*, Princeton University Press, 1972 — [press.princeton.edu](https://press.princeton.edu/books/paperback/9780691023670/the-computer-from-pascal-to-von-neumann)
+- Doron Swade (UK) — *The Difference Engine*, 2001 — [Internet Archive](https://archive.org/details/differenceengine0000swad)
+- Lars Heide (Denmark) — *Punched-Card Systems and the Early Information Explosion, 1880–1945*, Johns Hopkins, 2009 — [press.jhu.edu](https://www.press.jhu.edu/books/title/9671/punched-card-systems-and-early-information-explosion-1880-1945)
+- Raúl Rojas (Mexico) — *Konrad Zuse's Early Computers*, Springer, 2023 — [Springer](https://link.springer.com/book/10.1007/978-3-031-39876-6)
+- B. Jack Copeland, ed. (New Zealand) — *Colossus*, Oxford University Press, 2006 — [OUP](https://academic.oup.com/book/40641)
+- Thomas Haigh, Mark Priestley, and Crispin Rope — *ENIAC in Action*, MIT Press, 2016 — [mitpress.mit.edu](https://mitpress.mit.edu/9780262535175/eniac-in-action/)
+- Christophe Lécuyer (France) — *Making Silicon Valley*, MIT Press, 2005 — [mitpress.mit.edu](https://mitpress.mit.edu/9780262622110/making-silicon-valley/)
+- V. Rajaraman (India) — *History of Computing in India, 1955–2010*, IEEE Computer Society, 2012 — [PDF](https://history.computer.org/pubs/2012-12-rajaraman-india-computing-history.pdf)
+- Eden Medina (Chile / USA) — *Cybernetic Revolutionaries*, MIT Press, 2011 — [mitpress.mit.edu](https://mitpress.mit.edu/9780262016490/cybernetic-revolutionaries/)
+- Slava Gerovitch — *From Newspeak to Cyberspeak*, MIT Press, 2002 — [mitpress.mit.edu](https://mitpress.mit.edu/9780262572255/from-newspeak-to-cyberspeak/)
+- Janet Abbate — *Inventing the Internet*, MIT Press, 1999 — [mitpress.mit.edu](https://mitpress.mit.edu/9780262011723/inventing-the-internet/)
+- Jon Peddie — *The History of the GPU*, Springer, 2022 — [Springer](https://link.springer.com/book/10.1007/978-3-031-10968-3)
 
 **Textbooks**
 
@@ -100,10 +112,10 @@ Named Tamil publications and official Tamil-medium curricula we could verify wit
 Labs we already ship. We did not write the simulators.
 
 - **Breadboard** — [CircuitJS](https://www.falstad.com/circuit/) by Paul Falstad, JavaScript port by Iain Sharp. License: [GNU GPL v2 or later](https://github.com/pfalstad/circuitjs1). Embedded from falstad.com.
-- **VM terminal** — [v86](https://github.com/copy/v86) by Fabian (@copy) and contributors. License: [BSD 2-Clause](https://github.com/copy/v86/blob/master/LICENSE). Runtime and disk image from the project's public files.
-- **Mini-CPU** — original 8-bit toy ISA for this book (Grok team). No third-party core.
+- **VM terminal** — [v86](https://github.com/copy/v86) by Fabian (@copy) and contributors. License: [BSD 2-Clause](https://github.com/copy/v86/blob/master/LICENSE). Firmware (`seabios.bin` / `vgabios.bin`) and the Linux disk image are upstream with [v86 images](https://github.com/copy/images) — not this book's CC BY text. SeaBIOS is typically LGPL ([seabios.org](https://www.seabios.org/)).
+- **Mini-CPU** — original 8-bit toy ISA for this book (Grok team). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), same as the journey text.
 
-Wokwi is a link-out from the breadboard page, not an embed we ship.
+Wokwi is a link-out from the breadboard page, not an embed we ship. Third-party Difference Engine *simulators* exist; licenses are unverified, so none are embedded here.
 
 ## Images and reconstructions
 
