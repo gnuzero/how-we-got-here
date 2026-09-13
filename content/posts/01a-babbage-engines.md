@@ -26,11 +26,17 @@ In 1822, Charles Babbage proposed the Difference Engine — a mechanical calcula
 <figcaption>Carry arms between digit columns on Difference Engine No. 2, Serial #2 (Computer History Museum). Photo: <a href="https://commons.wikimedia.org/wiki/File:Babbage_Difference_Engine_(Counter_detail_-_rear_side).jpg">Jitze Couperus</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
 </figure>
 
+**Try this now.** Step the lab from Y=9, Δ₁=7. The ones wheel rolls past 9; a tooth catches tens. 9+7 becomes 16. That is finite differences doing x² — the method the engine was built for.
+
+{{< lab type="difference-engine" height="720" >}}
+
+Original for this book, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). A pedagogical column model, not a full No. 2 reconstruction.
+
 He never finished a full-scale Difference Engine. Funding fought him; so did the manufacturing tolerances of the era. Every extra digit of precision meant another chance for friction, backlash, and stack-up to ruin the result.
 
 His follow-up, the Analytical Engine, is the real ancestor of the modern computer. It had a "store" (memory) and a "mill" (the arithmetic unit), and it was programmable. Instructions came from punched cards — an idea borrowed from industrial machinery already on the factory floor.
 
-The hosted emulator below is John Walker's Fourmilab Analytical Engine. Step the cards and watch the mill and store columns change. That is the design the photograph cannot show. Public domain; we host a copy and keep the origin link.
+The hosted emulator below is John Walker's Fourmilab Analytical Engine. Step the cards and watch the mill and store columns change. Public domain; we host a copy and keep the origin link.
 
 {{< lab type="analytical-engine" height="780" >}}
 
@@ -42,6 +48,7 @@ That borrowing is the next stop: the Jacquard loom, and the separation of progra
 ASSET CHECKLIST
 [x] Hero: CC BY 2.0 Commons hotlink (Marcin Wichary / Difference Engine No. 2) — not hosted
 [x] Carry close-up: CC BY 2.0 Commons hotlink (Jitze Couperus)
+[x] Lab: original difference-engine carry (CC BY 4.0)
 [x] Lab: hosted Fourmilab Analytical Engine (public domain) — static/labs/analytical-engine/
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)

@@ -3,8 +3,10 @@
     {{< lab type="mini-cpu" >}}
     {{< lab type="breadboard" height="700" >}}
     {{< lab type="vm-terminal" height="600" >}}
+    {{< lab type="analytical-engine" height="780" >}}
+    {{< lab type="difference-engine" height="640" >}}
 
-  type: mini-cpu | breadboard | vm-terminal | analytical-engine  (maps to static/labs/<type>/index.html)
+  type: mini-cpu | breadboard | vm-terminal | analytical-engine | difference-engine
   height: optional, defaults to 560px
 */}}
 {{ $type := .Get "type" }}

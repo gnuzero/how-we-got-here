@@ -131,6 +131,7 @@ Wikimedia Commons คือประตูภาพ (ดูด้านล่า
 - **Breadboard** — [CircuitJS](https://www.falstad.com/circuit/) โดย Paul Falstad พอร์ต JavaScript โดย Iain Sharp สัญญาอนุญาต: [GNU GPL v2 or later](https://github.com/pfalstad/circuitjs1) ฝังจาก falstad.com
 - **VM terminal** — [v86](https://github.com/copy/v86) โดย Fabian (@copy) และผู้ร่วมพัฒนา สัญญาอนุญาต: [BSD 2-Clause](https://github.com/copy/v86/blob/master/LICENSE) เฟิร์มแวร์ (`seabios.bin` / `vgabios.bin`) และอิมเมจดิสก์ Linux มาจากต้นน้ำกับ [v86 images](https://github.com/copy/images) — ไม่ใช่ข้อความ CC BY ของหนังสือนี้ SeaBIOS โดยทั่วไปเป็น LGPL ([seabios.org](https://www.seabios.org/))
 - **Mini-CPU** — ISA ของเล่น 8 บิตต้นฉบับของหนังสือนี้ (ทีม Grok) [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) เดียวกับข้อความการเดินทาง
+- **Difference Engine** — แล็บ carry ต้นฉบับของหนังสือนี้ (ทีม Grok / Reed) [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) ไม่ใช่ซิมของบุคคลที่สาม
 - **Analytical Engine** — [John Walker / Fourmilab](https://www.fourmilab.ch/babbage/) สาธารณสมบัติ โฮสต์สำเนาจาก [aemsource.zip](https://www.fourmilab.ch/babbage/release/aemsource.zip) พร้อมลิงก์กลับต้นทาง
 
 Wokwi เป็นลิงก์ออกจากหน้า breadboard ไม่ใช่ของฝังที่เราส่ง ตัวจำลอง Difference Engine ของบุคคลที่สามมีอยู่ สัญญาอนุญาตยังไม่ตรวจ จึงไม่มีตัวใดถูกฝังที่นี่

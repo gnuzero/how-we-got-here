@@ -131,6 +131,7 @@ Wikimedia Commons රූප දොරයි (පහත බලන්න). භා�
 - **Breadboard** — [CircuitJS](https://www.falstad.com/circuit/) by Paul Falstad, JavaScript port by Iain Sharp. බලපත්‍රය: [GNU GPL v2 or later](https://github.com/pfalstad/circuitjs1). falstad.com වෙතින් එබ්බවා ඇත.
 - **VM terminal** — [v86](https://github.com/copy/v86) by Fabian (@copy) සහ දායකයන්. බලපත්‍රය: [BSD 2-Clause](https://github.com/copy/v86/blob/master/LICENSE). Firmware (`seabios.bin` / `vgabios.bin`) සහ Linux තැටි රූපය upstream [v86 images](https://github.com/copy/images) සමඟයි — මෙම පොතේ CC BY පෙළ නොවේ. SeaBIOS සාමාන්‍යයෙන් LGPL ([seabios.org](https://www.seabios.org/)).
 - **Mini-CPU** — මෙම පොත සඳහා මුල් 8-bit toy ISA (Grok කණ්ඩායම). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), ගමනේ පෙළට සමානයි.
+- **Difference Engine** — මෙම පොතේ මුල් figure-wheel carry රසායනාගාරය (Grok / Reed). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). තෙවන පාර්ශ්ව sim එකක් නොවේ.
 - **Analytical Engine** — [John Walker / Fourmilab](https://www.fourmilab.ch/babbage/). Public domain. [aemsource.zip](https://www.fourmilab.ch/babbage/release/aemsource.zip) පිටපතක් මෙහි ධාරණය කර මුල් සබැඳිය තබමු.
 
 Wokwi යනු breadboard පිටුවෙන් පිටතට යන සබැඳියකි, අප නැව්ගත කරන embed එකක් නොවේ. තෙවන පාර්ශ්ව Difference Engine *අනුකාරක* තිබේ; බලපත්‍ර තහවුරු නොවූ බැවින් මෙහි කිසිවක් එබ්බවා නැත.

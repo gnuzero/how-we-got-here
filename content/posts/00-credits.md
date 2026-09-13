@@ -126,14 +126,15 @@ Named Tamil publications and official Tamil-medium curricula we could verify wit
 
 ## Existing interactive media
 
-Labs we already ship. We did not write the simulators.
+Labs we already ship. Third-party sims keep their licenses; originals are this book's CC BY 4.0.
 
 - **Breadboard** — [CircuitJS](https://www.falstad.com/circuit/) by Paul Falstad, JavaScript port by Iain Sharp. License: [GNU GPL v2 or later](https://github.com/pfalstad/circuitjs1). Embedded from falstad.com.
 - **VM terminal** — [v86](https://github.com/copy/v86) by Fabian (@copy) and contributors. License: [BSD 2-Clause](https://github.com/copy/v86/blob/master/LICENSE). Firmware (`seabios.bin` / `vgabios.bin`) and the Linux disk image are upstream with [v86 images](https://github.com/copy/images) — not this book's CC BY text. SeaBIOS is typically LGPL ([seabios.org](https://www.seabios.org/)).
 - **Mini-CPU** — original 8-bit toy ISA for this book (Grok team). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), same as the journey text.
+- **Difference Engine** — original figure-wheel carry lab for this book (Grok team / Reed). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Not a full No. 2 reconstruction; not a third-party sim.
 - **Analytical Engine** — [John Walker's Fourmilab emulator](https://www.fourmilab.ch/babbage/). Public domain. We host a copy from [aemsource.zip](https://www.fourmilab.ch/babbage/release/aemsource.zip) and keep the origin link. `BigInteger.min.js` is Peter Olson's, also public domain.
 
-Wokwi is a link-out from the breadboard page, not an embed we ship. Third-party Difference Engine *simulators* exist; licenses are unverified, so none of those are embedded here. The hosted lab is the Analytical Engine, not a gear-carry Difference Engine sim.
+Wokwi is a link-out from the breadboard page, not an embed we ship. Third-party Difference Engine *simulators* exist; licenses are unverified, so none of those are embedded. The carry lab above is original. Fourmilab is the hosted Analytical Engine.
 
 ## Images and reconstructions
 

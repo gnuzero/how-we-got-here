@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Difference Engine Lab — Finite Differences &amp; Carry</title>
+<style>
+  :root {
+    --bg:#0d1117; --panel:#161b22; --border:#30363d;
+    --text:#c9d1d9; --muted:#8b949e; --accent:#58a6ff;
+    --green:#3fb950; --amber:#d29922; --brass:#c9a227; --brass-dim:#8a7018;
+    --mono: ui-monospace, "SF Mono", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 16px; background: var(--bg); color: var(--text);
+    font-family: var(--mono); font-size: 13px; line-height: 1.45;
+  }
+  h1 { font-size: 15px; color: var(--accent); margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 11px; margin-bottom: 12px; }
+  .guide {
+    background: var(--panel); border: 1px solid var(--accent);
+    border-radius: 6px; padding: 12px 14px; margin-bottom: 12px;
+  }
+  .guide h2 {
+    margin: 0 0 6px; font-size: 11px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  .guide .phase { color: var(--amber); font-size: 12px; margin-bottom: 4px; }
+  .guide .body { font-size: 13px; }
+  .guide .hint { color: var(--muted); font-size: 11px; margin-top: 8px; }
+  .layout { display: grid; grid-template-columns: 1.55fr 1fr; gap: 12px; }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 6px; padding: 12px;
+  }
+  .panel h2 {
+    margin: 0 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border);
+    font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+  }
+  .banks { display: flex; flex-direction: column; gap: 14px; }
+  .bank { border: 1px solid var(--border); border-radius: 6px; padding: 10px; background: #0d1117; }
+  .bank-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 8px; gap: 8px;
+  }
+  .bank-name { color: var(--brass); font-size: 12px; }
+  .bank-meta { color: var(--muted); font-size: 11px; }
+  .wheels {
+    display: flex; gap: 22px; justify-content: center; align-items: flex-end;
+    min-height: 88px; padding: 6px 4px 2px;
+  }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .col-label { font-size: 10px; color: var(--muted); }
+  .wheel-wrap { position: relative; width: 48px; height: 48px; }
+  .teeth {
+    position: absolute; inset: -3px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, var(--brass-dim) 0 7deg, transparent 7deg 36deg);
+    opacity: .32; pointer-events: none;
+  }
+  .wheel {
+    position: relative; z-index: 1;
+    width: 48px; height: 48px; border-radius: 50%;
+    border: 3px solid var(--brass);
+    background: radial-gradient(circle at 35% 30%, #3a3420, #1a1810);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700; color: var(--brass);
+    box-shadow: inset 0 0 10px rgba(0,0,0,.55);
+    transition: transform .28s ease, border-color .15s, color .15s;
+  }
+  .wheel.spin { transform: rotate(36deg); }
+  .wheel.carry-src { border-color: var(--amber); color: var(--amber); }
+  .wheel.carry-dst { border-color: var(--green); color: var(--green); }
+  .carry-arm {
+    position: absolute; top: 22px; right: calc(100% - 1px);
+    width: 20px; height: 3px; border-radius: 2px;
+    background: var(--brass-dim); opacity: .3; z-index: 2;
+    transform-origin: right center;
+    transition: opacity .12s, background .12s, box-shadow .12s;
+  }
+  .carry-arm.active {
+    opacity: 1; background: var(--amber);
+    box-shadow: 0 0 8px var(--amber);
+    animation: catch .48s ease;
+  }
+  @keyframes catch {
+    0% { transform: rotate(0deg) scaleX(.45); }
+    40% { transform: rotate(-20deg) scaleX(1.12); }
+    100% { transform: rotate(0deg) scaleX(1); }
+  }
+  .const-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 48px; height: 48px; border-radius: 8px;
+    border: 2px dashed var(--brass-dim); color: var(--brass);
+    font-size: 20px; font-weight: 700;
+  }
+  .btnrow { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  button {
+    font-family: inherit; font-size: 12px; cursor: pointer;
+    background: #21262d; color: var(--text);
+    border: 1px solid var(--border); border-radius: 4px; padding: 6px 12px;
+  }
+  button:hover:not(:disabled) { background: #30363d; }
+  button:disabled { opacity: .45; cursor: default; }
+  button.primary { background: #238636; border-color: #2ea043; }
+  button.primary:hover:not(:disabled) { background: #2ea043; }
+  .readout { margin-top: 10px; color: var(--muted); font-size: 12px; }
+  .readout strong { color: var(--text); }
+  .log {
+    height: 220px; overflow-y: auto; margin-top: 8px; padding: 8px;
+    background: #010409; border: 1px solid var(--border); border-radius: 4px;
+    font-size: 11px; color: var(--muted);
+  }
+  .log .carry { color: var(--amber); }
+  .log .cycle { color: var(--accent); }
+  .note { margin-top: 12px; font-size: 11px; color: var(--muted); line-height: 1.55; }
+  .note a { color: var(--accent); }
+</style>
+</head>
+<body>
+  <h1>Difference Engine Lab — Carry</h1>
+  <div class="sub">Original for this book · CC BY 4.0 · Finite differences for f(x)=x² · figure wheels + tooth catching neighbor</div>
+
+  <div class="guide" id="guide">
+    <h2>Guided beat</h2>
+    <div class="phase" id="guidePhase">Ready</div>
+    <div class="body" id="guideBody">Press Step. One finite-difference cycle: add Δ₁ into Y, then add Δ₂ into Δ₁. When a wheel rolls past 9, watch the arm catch the next column.</div>
+    <div class="hint" id="guideHint">Start at x=3 (Y=9, Δ₁=7, Δ₂=2) so the first Step produces a carry into tens.</div>
+  </div>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>Columns (method of differences)</h2>
+      <div class="banks">
+        <div class="bank" id="bank-y">
+          <div class="bank-head">
+            <span class="bank-name">Y — result</span>
+            <span class="bank-meta">should track x²</span>
+          </div>
+          <div class="wheels" id="wheels-y"></div>
+        </div>
+        <div class="bank" id="bank-d1">
+          <div class="bank-head">
+            <span class="bank-name">Δ₁ — first difference</span>
+            <span class="bank-meta">grows by Δ₂ each cycle</span>
+          </div>
+          <div class="wheels" id="wheels-d1"></div>
+        </div>
+        <div class="bank" id="bank-d2">
+          <div class="bank-head">
+            <span class="bank-name">Δ₂ — second difference</span>
+            <span class="bank-meta">constant for quadratics</span>
+          </div>
+          <div class="wheels" id="wheels-d2"></div>
+        </div>
+      </div>
+      <div class="btnrow">
+        <button class="primary" id="btnStep" onclick="stepCycle()">Step</button>
+        <button id="btnReset" onclick="resetDemo()">Reset (carry ready)</button>
+        <button id="btnClassic" onclick="resetClassic()">Reset (x=0 classic)</button>
+      </div>
+      <div class="readout">
+        x=<strong id="xOut">3</strong> ·
+        Y=<strong id="yOut">09</strong> ·
+        Δ₁=<strong id="d1Out">07</strong> ·
+        Δ₂=<strong id="d2Out">2</strong> ·
+        cycles=<strong id="cOut">0</strong>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>What just happened</h2>
+      <div class="log" id="log"></div>
+      <div class="note">
+        Pedagogical figure-wheel model of decimal carry inside one Difference Engine–style difference cycle — not a full No.&nbsp;2 reconstruction.
+        Analytical Engine (store/mill/cards): see the Fourmilab lab on this chapter.
+        Door-outs:
+        <a href="https://www.sciencemuseum.org.uk/objects-and-stories/charles-babbages-difference-engines-and-science-museum" target="_blank" rel="noopener">Science Museum</a>,
+        <a href="https://www.computerhistory.org/babbage/overview/" target="_blank" rel="noopener">Computer History Museum</a>,
+        <a href="https://plan28.org/" target="_blank" rel="noopener">Plan 28</a>.
+      </div>
+    </div>
+  </div>
+
+<script>
+// Original lab — CC BY 4.0 (Grok Team / Reed). No third-party Difference Engine simulator code.
+const WIDTH = { y: 2, d1: 2, d2: 1 }; // digit counts
+let Y = 9, D1 = 7, D2 = 2, x = 3, cycles = 0, busy = false;
+
+function padDigits(n, w) {
+  const s = String(Math.max(0, n)).padStart(w, '0');
+  return s.slice(-w).split('').map(ch => Number(ch));
+}
+function fromDigits(digits) {
+  return digits.reduce((acc, d) => acc * 10 + d, 0);
+}
+function setGuide(phase, body, hint) {
+  document.getElementById('guidePhase').textContent = phase;
+  document.getElementById('guideBody').textContent = body;
+  document.getElementById('guideHint').textContent = hint || '';
+}
+function logLine(msg, cls) {
+  const log = document.getElementById('log');
+  const div = document.createElement('div');
+  if (cls) div.className = cls;
+  div.textContent = msg;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+}
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function renderBank(id, value, width, highlight) {
+  const root = document.getElementById(id);
+  root.innerHTML = '';
+  const digits = padDigits(value, width);
+  // LTR high place → ones
+  for (let place = width - 1; place >= 0; place--) {
+    const col = document.createElement('div');
+    col.className = 'col';
+    const lab = document.createElement('div');
+    lab.className = 'col-label';
+    lab.textContent = place === 0 ? 'ones' : (place === 1 ? 'tens' : 'p' + place);
+    const wrap = document.createElement('div');
+    wrap.className = 'wheel-wrap';
+    if (place < width - 1) {
+      const arm = document.createElement('div');
+      arm.className = 'carry-arm';
+      arm.id = id + '-arm-' + place;
+      wrap.appendChild(arm);
+    }
+    const teeth = document.createElement('div');
+    teeth.className = 'teeth';
+    const wheel = document.createElement('div');
+    wheel.className = 'wheel';
+    wheel.id = id + '-w-' + place;
+    wheel.textContent = String(digits[width - 1 - place]);
+    // digits array is high→low visually: index 0 is highest place
+    // Fix digit mapping: digits[0] is MSD when padDigits left-pads.
+    // place runs from width-1 (MSD visual left) down to 0 (ones).
+    // digit for place p is digits[width-1-p]
+    wrap.appendChild(teeth);
+    wrap.appendChild(wheel);
+    col.appendChild(lab);
+    col.appendChild(wrap);
+    root.appendChild(col);
+  }
+  // rewrite digit text correctly after loop (clean)
+  for (let place = 0; place < width; place++) {
+    const wheel = document.getElementById(id + '-w-' + place);
+    if (wheel) wheel.textContent = String(digits[width - 1 - place]);
+  }
+  if (highlight && highlight.bank === id) {
+    if (highlight.src != null) {
+      document.getElementById(id + '-w-' + highlight.src)?.classList.add('carry-src');
+    }
+    if (highlight.dst != null) {
+      document.getElementById(id + '-w-' + highlight.dst)?.classList.add('carry-dst');
+    }
+    if (highlight.arm != null) {
+      document.getElementById(id + '-arm-' + highlight.arm)?.classList.add('active');
+    }
+  }
+}
+
+function renderAll(highlight) {
+  renderBank('wheels-y', Y, WIDTH.y, highlight);
+  renderBank('wheels-d1', D1, WIDTH.d1, highlight);
+  // Δ2 constant single digit — still a wheel for visual consistency
+  renderBank('wheels-d2', D2, WIDTH.d2, highlight);
+  document.getElementById('xOut').textContent = String(x);
+  document.getElementById('yOut').textContent = String(Y).padStart(WIDTH.y, '0');
+  document.getElementById('d1Out').textContent = String(D1).padStart(WIDTH.d1, '0');
+  document.getElementById('d2Out').textContent = String(D2);
+  document.getElementById('cOut').textContent = String(cycles);
+}
+
+async function addInto(bankId, targetRef, addend, width, label) {
+  // Digit-wise add addend into targetRef.value with animated carry.
+  // targetRef = { get, set } for Y or D1
+  let digits = padDigits(targetRef.get(), width).reverse(); // index 0 = ones
+  let add = padDigits(addend, width).reverse();
+  let carry = 0;
+  for (let i = 0; i < width; i++) {
+    const before = digits[i];
+    const sum = before + add[i] + carry;
+    const w = document.getElementById(bankId + '-w-' + i);
+    if (w) { w.classList.add('spin'); await sleep(260); w.classList.remove('spin'); }
+    if (sum >= 10) {
+      digits[i] = sum - 10;
+      const dst = i + 1 < width ? i + 1 : null;
+      targetRef.set(fromDigits([...digits].reverse()));
+      renderAll({ bank: bankId, src: i, arm: i, dst });
+      const dstName = dst != null ? (dst === 1 ? 'tens' : 'next') : 'overflow';
+      setGuide(
+        'CARRY',
+        label + ': wheel rolled past 9→' + digits[i] + '. A tooth catches the next column toward ' + dstName + '.',
+        'That catch is the physical event Babbage’s columns enforced.'
+      );
+      logLine(label + ' carry @ ' + (i === 0 ? 'ones' : 'tens') + ': ' + before + '+' + add[i] + (carry ? '+1' : '') + ' → ' + digits[i] + ' · tooth catches ' + dstName, 'carry');
+      await sleep(520);
+      carry = 1;
+      if (dst == null) {
+        logLine(label + ' overflow past column width — widen in a real engine.', 'carry');
+        break;
+      }
+    } else {
+      digits[i] = sum;
+      carry = 0;
+      targetRef.set(fromDigits([...digits].reverse()));
+      renderAll({ bank: bankId, src: i });
+      if (add[i] || before !== digits[i]) {
+        logLine(label + ' ' + (i === 0 ? 'ones' : 'tens') + ': ' + before + '+' + add[i] + ' → ' + digits[i]);
+      }
+    }
+  }
+  targetRef.set(fromDigits([...digits].reverse()));
+  renderAll();
+}
+
+async function stepCycle() {
+  if (busy) return;
+  busy = true;
+  document.getElementById('btnStep').disabled = true;
+  document.getElementById('btnReset').disabled = true;
+  document.getElementById('btnClassic').disabled = true;
+
+  cycles++;
+  const yBefore = Y, d1Before = D1;
+  logLine('—— Cycle ' + cycles + ' (x=' + x + ' → x=' + (x + 1) + ') ——', 'cycle');
+  setGuide('STEP — add Δ₁ into Y', 'First half of the difference cycle: add the first-difference column into the result.', 'Watch for a rollover past 9 on Y.');
+
+  await addInto('wheels-y', { get: () => Y, set: v => { Y = v; } }, D1, WIDTH.y, 'Y');
+
+  setGuide('STEP — add Δ₂ into Δ₁', 'Second half: the constant second difference advances Δ₁ for the next cycle.', 'Carry can happen here too on later steps.');
+  await addInto('wheels-d1', { get: () => D1, set: v => { D1 = v; } }, D2, WIDTH.d1, 'Δ₁');
+
+  x += 1;
+  renderAll();
+  const expect = x * x;
+  const ok = Y === expect;
+  logLine('Settled: Y=' + Y + ' (expect x²=' + expect + ')' + (ok ? ' ✓' : ' ✗'), ok ? 'cycle' : 'carry');
+  setGuide(
+    'SETTLE',
+    'Cycle done. Y is now ' + Y + (ok ? ' (= ' + x + '²).' : '.') + ' Step again to continue the table.',
+    'Reset (carry ready) jumps back to Y=9 so the carry is obvious on the first Step.'
+  );
+
+  busy = false;
+  document.getElementById('btnStep').disabled = false;
+  document.getElementById('btnReset').disabled = false;
+  document.getElementById('btnClassic').disabled = false;
+}
+
+function resetDemo() {
+  if (busy) return;
+  // x=3, Y=9, D1=7, D2=2 — next cycle → Y=16 (carry), D1=9
+  Y = 9; D1 = 7; D2 = 2; x = 3; cycles = 0;
+  document.getElementById('log').innerHTML = '';
+  logLine('Reset at x=3 (Y=9, Δ₁=7, Δ₂=2). First Step should carry on Y: 9+7 → 16.');
+  setGuide(
+    'Ready',
+    'Press Step. One finite-difference cycle: add Δ₁ into Y, then add Δ₂ into Δ₁. When a wheel rolls past 9, watch the arm catch the next column.',
+    'Start at x=3 (Y=9, Δ₁=7, Δ₂=2) so the first Step produces a carry into tens.'
+  );
+  renderAll();
+}
+
+function resetClassic() {
+  if (busy) return;
+  // classic table start: x=0, Y=0, D1=1, D2=2
+  Y = 0; D1 = 1; D2 = 2; x = 0; cycles = 0;
+  document.getElementById('log').innerHTML = '';
+  logLine('Classic start x=0 (Y=0, Δ₁=1, Δ₂=2). Carry appears when Y reaches 9+7.');
+  setGuide(
+    'Ready (classic)',
+    'Same engine, blank table. Step repeatedly; carry shows once Y approaches 9.',
+    'Or use Reset (carry ready) to jump straight to the tooth-catch moment.'
+  );
+  renderAll();
+}
+
+resetDemo();
+</script>
+</body>
+</html>

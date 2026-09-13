@@ -119,6 +119,7 @@ Wikimedia Commons படக் கதவு (கீழே பார்க்க�
 - **Breadboard** — [CircuitJS](https://www.falstad.com/circuit/) by Paul Falstad, JavaScript port by Iain Sharp. உரிமம்: [GNU GPL v2 or later](https://github.com/pfalstad/circuitjs1). falstad.com இலிருந்து உட்பொதிக்கப்பட்டது.
 - **VM terminal** — [v86](https://github.com/copy/v86) by Fabian (@copy) மற்றும் பங்களிப்பாளர்கள். உரிமம்: [BSD 2-Clause](https://github.com/copy/v86/blob/master/LICENSE). Firmware (`seabios.bin` / `vgabios.bin`) மற்றும் Linux வட்டுப் படம் மேல்நிலை [v86 images](https://github.com/copy/images) உடன் — இந்தப் புத்தகத்தின் CC BY உரை அல்ல. SeaBIOS பொதுவாக LGPL ([seabios.org](https://www.seabios.org/)).
 - **Mini-CPU** — இந்தப் புத்தகத்திற்கான அசல் 8-bit toy ISA (Grok குழு). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), பயண உரையைப் போலவே.
+- **Difference Engine** — இந்தப் புத்தகத்தின் அசல் figure-wheel carry ஆய்வகம் (Grok / Reed). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). மூன்றாம் தரப்பு sim அல்ல.
 - **Analytical Engine** — [John Walker / Fourmilab](https://www.fourmilab.ch/babbage/). பொது உரிமை. [aemsource.zip](https://www.fourmilab.ch/babbage/release/aemsource.zip) நகலை இங்கே வைத்து மூல இணைப்பை வைத்திருக்கிறோம்.
 
 Wokwi என்பது breadboard பக்கத்திலிருந்து ஒரு வெளியேறும் இணைப்பு; நாங்கள் அனுப்பும் உட்பொதிப்பு அல்ல. மூன்றாம் தரப்பு Difference Engine *உருவகப்படுத்திகள்* உள்ளன; உரிமங்கள் உறுதிப்படுத்தப்படவில்லை, எனவே இங்கே எதுவும் உட்பொதிக்கப்படவில்லை.
