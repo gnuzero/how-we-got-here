@@ -1,10 +1,10 @@
 ---
 title: "Why Mechanical Computing Matters"
-weight: 4
+weight: 5
 date: 2026-01-01
 draft: false
 phase: "1 — Foundations: Mechanical to Vacuum-Tube Computing"
-series_index: 3
+series_index: 4
 tags: []
 summary: "The logical shape arrived in brass; friction forced electricity"
 image_prompt: "Minimal diagram: store + mill + instruction sequence as three boxes, then an arrow to electrical switching, clean technical infographic, white background"

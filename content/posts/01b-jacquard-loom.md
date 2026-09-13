@@ -1,10 +1,10 @@
 ---
 title: "The Jacquard Loom"
-weight: 3
+weight: 4
 date: 2026-01-01
 draft: false
 phase: "1 — Foundations: Mechanical to Vacuum-Tube Computing"
-series_index: 2
+series_index: 3
 tags: []
 summary: "Punched cards made a program separate from the machine that runs it"
 image_prompt: "Technical illustration of Jacquard loom punched-card mechanism controlling thread lift, engineering-diagram style, labeled hooks and cards, 19th century industrial drawing aesthetic, white background"

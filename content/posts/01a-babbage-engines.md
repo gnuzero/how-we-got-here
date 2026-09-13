@@ -1,10 +1,10 @@
 ---
 title: "Babbage's Engines"
-weight: 2
+weight: 3
 date: 2026-01-01
 draft: false
 phase: "1 — Foundations: Mechanical to Vacuum-Tube Computing"
-series_index: 1
+series_index: 2
 tags: []
 summary: "Difference Engine and Analytical Engine — store, mill, and a program on cards"
 image_prompt: "Cutaway technical illustration of Babbage's Analytical Engine, brass gears and column wheels, engineering-diagram style, labeled parts, cross-hatched shading, 19th century technical drawing aesthetic, white background"
