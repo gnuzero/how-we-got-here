@@ -1,0 +1,18 @@
+{{/*
+  Official Spotify embed only. Pass a track id — never a raw iframe.
+  {{< spotify track="3G538vBZ7ldslS4lqGyD6P" >}}
+*/}}
+{{ $id := .Get "track" | default (.Get 0) }}
+{{ if not (findRE `^[A-Za-z0-9]+$` $id) }}
+{{ errorf "spotify shortcode: track id must be alphanumeric, got %q" $id }}
+{{ else }}
+<div class="spotify-embed" style="margin: 1.5em 0;">
+  <iframe
+    style="border-radius:12px; width:100%; height:352px; border:0"
+    src="https://open.spotify.com/embed/track/{{ $id }}"
+    allowfullscreen
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy"
+    title="Spotify embed"></iframe>
+</div>
+{{ end }}

@@ -167,6 +167,28 @@ Institutions behind the object, separate from the photographer:
 
 Science Museum Group archive drawings are often CC BY-NC-SA — fine to link, not treated as free commercial art. Visitor photos under CC BY / CC BY-SA are the image door.
 
+
+## A voice you can hear and still cannot credit
+
+On 10 September 2026, Raz & Upgrade released *[Zunara](https://open.spotify.com/track/3G538vBZ7ldslS4lqGyD6P)* on Regroup Records. You can hear a woman singing in Sinhala. The store page names the producer and the label. It does not name the singer.
+
+That is the gap this page is for. Hearing someone is not a license to use their voice, and it is not a name you can put on the line.
+
+{{< spotify track="3G538vBZ7ldslS4lqGyD6P" >}}
+
+What we can write:
+
+- Track: *Zunara* — Raz & Upgrade (Raz Kfir), © 2026 [Regroup Records](https://www.regrouprecords.com/). Official player above — Spotify's license with the label, not a file we host.
+- Language of the refrain: Sinhala. A gloss, not a lyric reprint: someone hiding among the stars, hiding in a dream, left alone, asking when they will come.
+
+What we cannot write:
+
+- The vocalist's name. None is published. We do not invent one to fill the gap.
+- A Creative Commons mark on the recording. It is not CC.
+- A hosted stem or rip. An isolated vocal is a derivative of a © 2026 master. Putting it in a CC BY 4.0 book would lie about that file.
+
+If the singer or the label later publishes a credit or a sample license, that line gets a name. Until then the honest credit is the missing one.
+
 ## This book's own license
 
 The journey text is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Embedded labs keep *their* licenses above. Credit both.
