@@ -93,11 +93,27 @@ Institutional doors (terminology and curriculum, not chapter authors): [รา�
 
 ## Sinhala published sources
 
-Verified Sri Lankan / Sinhala computing publications — encoding and interchange, not invented textbook names.
+Verified Sri Lankan computing publications. Sinhala-language books sit beside the English encoding papers. No invented textbook names.
+
+**Sinhala-language books**
+
+- අරුණි � papers. No invented textbook names.
+
+**Sinhala-language books**
+
+- අරුණි ගුණතිලක (Aruni Gunathilaka) — *පරිගණකයට සිංහල සහ දෙමළ*, LK Domain Registry / ICTA, 2021, ISBN 978-624-5622-01-6, CC — [PDF](https://www.ict-history.lk/wp-content/uploads/2021/05/LLBook-Sinhla.pdf); [listing](https://www.ict-history.lk/en/language-technology-docs/)
+- ආචාර්ය කසුන් �history.lk/en/language-technology-docs/)
+- ආචාර්ය කසුන් ද සොයිසා (Dr. Kasun De Zoysa, UCSC) — *Introduction to Programming in Java* (Sinhala), CC 2016 — [javabook.scorelab.org](http://javabook.scorelab.org/)
+- ආචාර්ය කසුන් ද සොයිසා (Dr. Kasun De Zoysa, UCSC) — *�/)
+- ආචාර්ය කසුන් ද සොයිසා (Dr. Kasun De Zoysa, UCSC) — *ආයුබෝවන් පයිතන්* (Ayubowan Python), 2016 — [pythonbook.scorelab.org](http://pythonbook.scorelab.org/)
+
+**Encoding and interchange**
 
 - V. K. Samaranayake, S. T. Nandasara, J. B. Dissanayake, A. R. Weerasinghe, and H. Wijayawardhana (UCSC) — *An Introduction to UNICODE for Sinhala Characters*, 2003 — [PDF](https://www.nsrc.org/ASIA/LK/03-Jan-2003_UCSC-Paper-on-Unicode.pdf)
 - Sri Lanka Standards Institution — **SLS 1134**, *Sinhala Character Code for Information Interchange* (rev. 2, 2004, as WG2 N2737) — [unicode.org/wg2/docs/n2737.pdf](https://unicode.org/wg2/docs/n2737.pdf)
 - Gihan Dias (ICTA / SLSI) — draft ICT Sinhala standard work leading to SLS 1134:2004 — [ict-history.lk](https://www.ict-history.lk/en/gihan-dias-prof/)
+
+Institutional doors: [ICTA](https://www.ict-history.lk/en/language-technology-docs/) Local Languages Initiative; [UCSC LTRL](https://ucsc.cmb.ac.lk/language-technology-research-laboratory/); [Educational Publications Department](http://www.edupub.gov.lk/BooksDownload.php) Sinhala-medium school ICT textbooks.
 
 Orientation map: [Wikipedia සිංහල](https://si.wikipedia.org/).
 
