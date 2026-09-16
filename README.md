@@ -2,6 +2,12 @@
 
 Educational series at 3 posts/week — electronics fundamentals through modern AI hardware, plus the software and networking layers built on top. 63 technical chapters + Foreword + Glossary, ~45,000 words of draft text.
 
+## Read the book
+
+**Live site (canonical):** https://how-we-got-here.org/
+
+Private GitHub Pages — sign in with a `gnuzero` account that has repo access (e.g. `ranjithproofread`), then you land on the single published version. Prefer this URL over any `github.io` mirror.
+
 ## Attribution
 
 - **Concept and inspiration**: Nayana Hettiarachchi  
@@ -48,12 +54,9 @@ hugo server -D
 3. Check it off in `TRACKER.md`
 4. Commit + push to `main` — GitHub Actions builds and deploys automatically
 
-## GitHub Pages setup (one-time)
+## GitHub Pages
 
-1. Create repo `devzer01/how-computers-work` on GitHub, push this directory
-2. Repo Settings → Pages → Source: **GitHub Actions** (not "Deploy from branch")
-3. First push to `main` triggers `.github/workflows/deploy.yml`
-4. Site goes live at `https://devzer01.github.io/how-computers-work/`
+Live at **https://how-we-got-here.org/** (private Pages, GitHub login). Deploy via `.github/workflows/deploy.yml` on push to `main`.
 
 ## Structure
 
