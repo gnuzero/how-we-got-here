@@ -37,7 +37,7 @@ Coherence නොමිලේ නොවේ, සහ එහි වියදම core
 ## ගැඹුරින්: tag, index, offset ගණනය, conflict misses සහ MESI පියවරෙන් පියවර
 
 > **සිංහල මූලාශ්‍ර පිළිබඳ සටහන:** Cache ගැන සිංහලෙන් පාසල් මට්ටමේ ද්‍රව්‍ය තිබේ.
-> - NIE ශ්‍රේණිය 12 ICT ගුරු මාර්ගෝපදේශයේ PDF p.90 (මුද්‍රිත p.77) මතක ධූරාවලි පිරමීඩය පෙන්වයි. එහි cache "වාරක මතකය" ලෙස හැඳින්වේ. L1, L2, L3 ගුණාත්මකව විස්තර කෙරේ: L1 වේගවත්ම සහ කුඩාම වන අතර CPU තුළ ඇත; L3 අනෙක් දෙකට වඩා මන්දගාමී නමුත් RAM ට වඩා වේගවත්ය.
+> - NIE ශ්‍රේණිය 12 ICT ගුරු මාර්ගෝපදේශයේ PDF p.90 (මුද්‍රිත p.77) මතක ධූරාවලි පිරමීඩය පෙන්වයි. එහි cache "වාරක මතකය" ලෙස හැඳින්වේ. L1, L2, L3 ගුණාත්මකව විස්තර කෙරේ: L1 හි වේගය වැඩි අතර එය CPU තුළ ඇත; L2 හි ධාරිතාව L1 ට වඩා වැඩිය; L3 අනෙක් දෙකට වඩා මන්දගාමී නමුත් ධාරිතාවෙන් වැඩි අතර RAM හි වේගය "දෙගුණයකින්" වැඩි කරන බව කියයි (එම "දෙගුණය" සඳහා මූලාශ්‍රයක් හෝ ගණනයක් නොදෙයි). L1 පිළිබඳ වාක්‍යය වචනාර්ථයෙන් L1 හි ධාරිතාව "අනෙකුත් මට්ටම්වලට වඩා වැඩි" බව කියයි. එය එම පිටුවේම L2 වාක්‍යයට සහ පිරමීඩයට පටහැනි බැවින් දෝෂයක් විය හැකිය. ඇත්තටම L1 කුඩාම මට්ටමයි (පහත M1 වගුව බලන්න).
 > - "cache memory" ගැන සිංහල වීඩියෝ කිහිපයක් ද ඇත ([YT Y0tdLysqtEQ](https://www.youtube.com/watch?v=Y0tdLysqtEQ), [YT Ss0TU1MfGJQ](https://www.youtube.com/watch?v=Ss0TU1MfGJQ)). ඒවා හඳුනා ගත්තේ මාතෘකාවෙන් පමණි.
 >
 > ඒ කිසිවක් පහත දේ නොකරයි: ලිපිනයක් bits ලෙස කැඩීම, set/way ගණනය, conflict miss එකක් ඇති වන්නේ කෙසේද යන්න, write-back හෝ MESI තත්ත්ව සංක්‍රමණ. සාමාන්‍ය මතක ප්‍රවේශ කාලය (AMAT) සහ 64-byte line locality උදාහරණය Post 35 හි ඇත. මෙම කොටස UC Berkeley CS 61C සටහන්, Intel හි Software Developer's Manual සහ MIT 6.823 දේශන භාවිතා කර ඉතිරි කොටස ගණනයෙන් පෙන්වයි.
@@ -58,9 +58,9 @@ Coherence නොමිලේ නොවේ, සහ එහි වියදම core
 - index bits = log₂(sets)
 - tag bits = ලිපින bits − index − offset
 
-**සැබෑ උදාහරණය (CS 61C සටහන් Apple M1 ගැන උපුටා දක්වන අගයන්):**
+**සැබෑ උදාහරණය: Apple M1 හි performance (Firestorm) core එකක L1 data cache සහ පොදු L2 (CS 61C සටහන් උපුටා දක්වන අගයන්):**
 
-| | L1 | L2 |
+| | L1D (එක් Firestorm core එකකට) | L2 (Firestorm cores 4 ට පොදු) |
 |---|---|---|
 | ප්‍රමාණය | 128 KiB | 12 MiB |
 | Ways | 8 | 12 |
@@ -69,6 +69,8 @@ Coherence නොමිලේ නොවේ, සහ එහි වියදම core
 | Sets | 2048 / 8 = **256** | 98304 / 12 = **8192** |
 | Offset bits | **6** | **7** |
 | Index bits | **8** | **13** |
+
+> **මෙම අගයන් පිළිබඳ සටහන:** Apple මෙම associativity හෝ line ප්‍රමාණ නිල වශයෙන් ප්‍රකාශ කර නැත. CS 61C සටහන් ඒවා GoFetch පත්‍රිකාවෙන් (USENIX Security 2024) උපුටා ගනී. එය Firestorm core එකක L1 data cache එක 128 KB, 8-way, 64 B lines ලෙසත්, Firestorm cores 4 ට පොදු L2 එක 12 MB, 12-way, 128 B lines ලෙසත් දක්වයි. Augury පත්‍රිකාව (IEEE S&P 2022) ද මිනුම් මගින් L1 lines 64 B සහ L2 lines 128 B බව සොයා ගත්තේය. නමුත් එය L2 16-way යැයි "විශ්වාස" කළේය; එබැවින් L2 associativity ගැන මූලාශ්‍ර එකඟ නොවේ. (12-way නම් sets 8192 = 2¹³ ලැබේ; 16-way නම් 6144 ලැබේ, එය 2 හි බලයක් නොවේ. මෙය අපේ නිරීක්ෂණයක් මිස සාක්ෂියක් නොවේ.) M1 හි line එක 128 B යැයි සමහර තැන්වල දැක්වේ; ඉහත පත්‍රිකා දෙකටම අනුව එය L2 හි line ප්‍රමාණයයි. L1 lines ද 128 B වූයේ නම්, 128 KiB 8-way cache එකකට sets 128, offset bits 7, index bits 7 වනු ඇත. ඉහත 256 / 6 / 8 ලැබෙන්නේ 64 B L1 lines නිසාය.
 
 Fully associative cache එකකට index එකක් නැත. සම්පූර්ණ block ලිපිනයම tag එකයි.
 
@@ -160,12 +162,14 @@ MIT 6.823 (L14, slide 24) E තත්ත්වය එකතු කිරීම�
 
 **මෙම කොටසේ මූලාශ්‍ර:**
 - UC Berkeley CS 61C, *Course Notes* (Spring 2026):
-  - "Cache Terminology" (Apple M1 L1 128 KiB 8-way 64 B; L2 12 MiB 12-way 128 B): <https://notes.cs61c.org/content/caches-ii/>
+  - "Cache Terminology" (Apple M1 L1 128 KiB 8-way 64 B; L2 12 MiB 12-way 128 B; මූලාශ්‍රය ලෙස GoFetch දක්වයි): <https://notes.cs61c.org/content/caches-ii/>
   - "Set-Associative Cache" (tag/index/offset; 32 B 2-way walkthrough, "Load byte @ 0xFE2"): <https://notes.cs61c.org/content/caches-ii/set-associative/>
   - "Fully Associative Cache" (LRU; write-through එදිරිව write-back; dirty bit): <https://notes.cs61c.org/content/caches-ii/fully-associative/>
   - "Cache Misses" (compulsory / capacity / conflict): <https://notes.cs61c.org/content/caches-iii/>
 - Intel, *Intel® 64 and IA-32 Architectures Software Developer's Manual, Volume 3 (3A–3D)*, Order No. 325384-093US, September 2026, §14.3.2 (p.14-8), §14.4 සහ Table 14-4 "MESI Cache Line States" (Vol. 3A p.14-9): <https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html>
 - MIT 6.823 *Computer System Architecture*, Spring 2020, Lecture 14 "Cache Coherence" (slide 24 E තත්ත්වය; slide 31 false sharing): <https://csg.csail.mit.edu/6.823S20/Lectures/L14.pdf>
+- B. Chen et al., "GoFetch: Breaking Constant-Time Cryptographic Implementations Using Data Memory-Dependent Prefetchers", USENIX Security 2024, §2 (M1 Firestorm L1D සහ L2 ජ්‍යාමිතිය): <https://www.usenix.org/system/files/usenixsecurity24-chen-boru.pdf>
+- J. R. S. Vicarte et al., "Augury: Using Data Memory-Dependent Prefetchers to Leak Data at Rest", IEEE S&P 2022, §II-E (මනින ලද line ප්‍රමාණ; L2 16-way යැයි අනුමානය): <https://www.cs.tau.ac.il/~mad/publications/sp2022-augury.pdf>
 - NIE, *ශ්‍රේණිය 12 තොරතුරු හා සන්නිවේදන තාක්ෂණය ගුරු මාර්ගෝපදේශය*, PDF p.90: <https://nie.lk/pdffiles/tg/sGr12TG%20ICT.pdf>
 
 32 KiB/8-way cache එක, ලිපින 0x12345678, 16 B trace, counter-100 loop, සහ අභ්‍යාසවල cache පරාමිති ආදර්ශ අගයන් වේ. MESI අනුපිළිවෙල Intel වගුවෙන් සහ MIT slide වලින් අප ව්‍යුත්පන්න කළ ආදර්ශයකි.
