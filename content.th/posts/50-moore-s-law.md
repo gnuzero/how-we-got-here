@@ -32,7 +32,7 @@ schematics: "Diagram: three-panel graph — transistor count, clock frequency, c
 - "ภายในปี 1975" จำนวนส่วนประกอบต่อวงจรรวมที่ต้นทุนต่ำสุด "จะเป็น 65,000"
 - ส่วนประกอบ 65,000 ตัวใช้พื้นที่ราวหนึ่งในสี่ตารางนิ้ว (ที่ 500 ส่วนประกอบต่อนิ้วเชิงเส้น)
 
-**ตัวเลขที่ได้จากการอ่านกราฟ (เป็นการอ่านและตีความกราฟ ไม่ใช่ตัวเลขที่ Moore เขียนไว้):** กราฟในบทความมีแกนตั้งเป็น log₂ ของจำนวนส่วนประกอบต่อฟังก์ชัน (0–16) และแกนนอนเป็นปี 1959–1975 ผู้เขียนอ่านจากภาพในฉบับพิมพ์ซ้ำปี 1998 ได้ราว ๆ ว่า จุดปี 1959 อยู่ที่ 0, ปี 1962 ราว 2.8, ปี 1963 ราว 4.2, ปี 1964 ราว 4.9 และปี 1965 ราว 6 (2⁶ = 64 ส่วนประกอบ) เส้นประลากต่อไปถึงราว 16 ในปี 1975 ความชันที่อ่านได้จึงเป็นราว 1 หน่วย log₂ ต่อปี หรือสองเท่าต่อปี ตัวเลข 65,000 ในข้อความตรงกับปลายเส้นประนี้ เพราะ 2¹⁶ = 65,536 ภาพที่ Intel วาดใหม่ในสำเนาปี 2005 อ่านได้ต่างออกไป (จุดเริ่มราว 1 และจุดปี 1962–1965 ราว 3.6, 5.0, 5.6, 6.6) และป้ายแกนพิมพ์ผิดเป็น "Log²" ค่าที่อ่านได้จึงขึ้นกับฉบับที่เปิด ผู้เขียนไม่ได้เปิดภาพสแกนจากนิตยสาร *Electronics* ต้นฉบับ
+**ตัวเลขที่ได้จากการอ่านกราฟ (เป็นการอ่านและตีความกราฟ ไม่ใช่ตัวเลขที่ Moore เขียนไว้):** กราฟในบทความมีแกนตั้งเป็น log₂ ของจำนวนส่วนประกอบต่อฟังก์ชัน (0–16) และแกนนอนเป็นปี 1959–1975 ผู้เขียนอ่านจากภาพในฉบับพิมพ์ซ้ำปี 1998 ได้ราว ๆ ว่า จุดปี 1959 อยู่ที่ 0, ปี 1962 ราว 2.8, ปี 1963 ราว 4.2, ปี 1964 ราว 4.9 และปี 1965 ราว 6 (2⁶ = 64 ส่วนประกอบ) เส้นประลากต่อไปถึงราว 16 ในปี 1975 ความชันที่อ่านได้จึงเป็นราว 1 หน่วย log₂ ต่อปี หรือสองเท่าต่อปี ตัวเลข 65,000 ในข้อความตรงกับปลายเส้นประนี้ เพราะ 2¹⁶ = 65,536 ภาพที่ Intel วาดใหม่ในสำเนาบทความที่ Intel เผยแพร่อ่านได้ต่างออกไป (จุดเริ่มราว 1 และจุดปี 1962–1965 ราว 3.6, 5.0, 5.6, 6.6) และป้ายแกนพิมพ์ผิดเป็น "Log²" ค่าที่อ่านได้จึงขึ้นกับฉบับที่เปิด ผู้เขียนไม่ได้เปิดภาพสแกนจากนิตยสาร *Electronics* ต้นฉบับ
 
 **ตรวจความคงเส้นคงวาด้วยสูตรเวลาเพิ่มเป็นสองเท่า** T = Δt / log₂(N₂/N₁):
 
@@ -44,7 +44,7 @@ schematics: "Diagram: three-panel graph — transistor count, clock frequency, c
 
 ตัวเลขในข้อความจึงสอดคล้องกับ "ประมาณสองเท่าต่อปี" แต่ไม่ได้เป็นเส้นตรงเป๊ะ กรณีขอบของสูตร: ถ้า N₂ = N₁ ตัวหารเป็นศูนย์ T เป็นอนันต์ (ไม่มีการเพิ่ม) และถ้า N₂ < N₁ T ติดลบ (ลดลงครึ่งหนึ่งทุก |T| ปี) ข้อมูลจริงข้างล่างมีทั้งสองกรณี
 
-**Moore เล่าย้อนหลัง.** ในบทสัมภาษณ์ที่ Intel พิมพ์รวมไว้กับสำเนาบทความ Moore เล่าว่าเขาเอาจุดแรก ๆ "จนถึง 60 ส่วนประกอบบนชิปในปี 1965" แล้ว "ลากต่อไปแบบไม่ลืมหูลืมตา (blindly extrapolated) ราว 10 ปี" ได้ "ราว 60,000" ในปี 1975 และว่า "แทนที่จะเพิ่มสองเท่าสิบครั้ง เราได้ 9 ครั้ง" ตรวจได้ว่า 60 × 2¹⁰ = 61,440 สอดคล้องกับ "ราว 60,000" ส่วนชื่อ "Moore's Law" เขาเล่าว่า Carver Mead แห่ง Caltech เป็นผู้ตั้ง
+**Moore เล่าย้อนหลัง.** ในบทสัมภาษณ์ปี 2005 ที่ Intel เผยแพร่เป็นเอกสารแยก ("Excerpts from A Conversation with Gordon Moore: Moore's Law") Moore เล่าว่าเขาเอาจุดแรก ๆ "จนถึง 60 ส่วนประกอบบนชิปในปี 1965" แล้ว "ลากต่อไปแบบไม่ลืมหูลืมตา (blindly extrapolated) ราว 10 ปี" ได้ "ราว 60,000" ในปี 1975 และว่า "แทนที่จะเพิ่มสองเท่าสิบครั้ง เราได้ 9 ครั้ง" ตรวจได้ว่า 60 × 2¹⁰ = 61,440 สอดคล้องกับ "ราว 60,000" ส่วนชื่อ "Moore's Law" เขาเล่าว่า Carver Mead แห่ง Caltech เป็นผู้ตั้ง
 
 ### การแก้ไขปี 1975: แยกตัวประกอบของการเติบโต
 
@@ -133,8 +133,9 @@ schematics: "Diagram: three-panel graph — transistor count, clock frequency, c
 - ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*
 - จันทนา จันทราพรชัย, *สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ*
 - รศ.ดร.เกริก ภิรมย์โสภา, *สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์*
-- Gordon E. Moore, "Cramming more components onto integrated circuits", *Electronics* 38(8), 19 April 1965 (สำเนาของ Intel พร้อมบทสัมภาษณ์ปี 2005 และฉบับพิมพ์ซ้ำใน *Proceedings of the IEEE* 86(1), January 1998)
-- Gordon E. Moore, "Progress in Digital Integrated Electronics", IEEE IEDM 1975 (สำเนาของ Intel)
+- Gordon E. Moore, "Cramming more components onto integrated circuits", *Electronics* 38(8), 19 April 1965 (สำเนาของ Intel: https://download.intel.com/newsroom/2023/manufacturing/moores-law-electronics.pdf และฉบับพิมพ์ซ้ำใน *Proceedings of the IEEE* 86(1), January 1998)
+- Intel, "Excerpts from A Conversation with Gordon Moore: Moore's Law" (2005): https://download.intel.com/sites/channel/museum/Moores_Law/Video-Transcripts/Excepts_A_Conversation_with_Gordon_Moore.pdf
+- Gordon E. Moore, "Progress in Digital Integrated Electronics", IEEE IEDM 1975 (สำเนาของ Intel): https://download.intel.com/sites/channel/museum/Moores_Law/Articles-Press_Releases/Gordon_Moore_1975_Speech.pdf
 - Intel, "Intel Chips" timeline poster (2012, 327635-001US): https://www.intel.com/content/dam/www/public/us/en/documents/corporate-information/history-intel-chips-timeline-poster.pdf
 - NVIDIA, "NVIDIA Blackwell Platform Arrives to Power a New Era of Computing" (ข่าวประชาสัมพันธ์ 18 March 2024): https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing
 

@@ -64,13 +64,13 @@ Chiplets ตัดสิ่งที่จะเป็นไดใหญ่ห�
 | --- | --- | --- | --- | --- |
 | 800 | 28.3 | 69 | 84.9 | 81% |
 | 600 | 24.5 | 93 | 113.1 | 82% |
-| 300 | 17.3 | 197 | 226.3 | 87% |
+| 300 | 17.3 | 198 | 226.3 | 87% |
 | 165 | 12.8 | 376 | 411.4 | 91% |
-| 150 | 12.2 | 409 | 452.6 | 90% |
+| 150 | 12.2 | 411 | 452.6 | 91% |
 
-ไดเล็กเสียพื้นที่ที่ขอบวงกลมน้อยกว่า ไดเล็กสี่ชิ้นจึงได้ซิลิคอนใช้งานมากกว่าไดใหญ่หนึ่งชิ้นอยู่แล้วก่อนคิดเรื่องตำหนิ (409 ชิ้นขนาด 150 mm² เทียบกับ 93 × 4 = 372) กรณีขอบ: ไดที่ใหญ่กว่าพื้นที่ใช้งานวางไม่ได้เลย (ศูนย์ชิ้น)
+ไดเล็กเสียพื้นที่ที่ขอบวงกลมน้อยกว่า ไดเล็กสี่ชิ้นจึงได้ซิลิคอนใช้งานมากกว่าไดใหญ่หนึ่งชิ้นอยู่แล้วก่อนคิดเรื่องตำหนิ (411 ชิ้นขนาด 150 mm² เทียบกับ 93 × 4 = 372; ค่าสูงสุดของไดเล็กไวต่อตำแหน่งตารางมาก ที่ 411 ชิ้นมุมของไดห่างขอบไม่ถึง 0.01 mm เลื่อนตารางนิดเดียวก็ได้ 409–410) กรณีขอบ: ไดที่ใหญ่กว่าพื้นที่ใช้งานวางไม่ได้เลย (ศูนย์ชิ้น)
 
-**ขั้นที่ 2: ไดดีต่อแว่น.** ใช้ปัวซองที่ D₀ = 0.1 ต่อ cm²: ได 600 mm² ได้ 93 × 0.549 ≈ 51 ชิ้นดีต่อแว่น ได 150 mm² ได้ 409 × 0.861 ≈ 352 ชิ้นดี พอทำชิปสี่ชิ้นได้ราว 88 ชุด
+**ขั้นที่ 2: ไดดีต่อแว่น.** ใช้ปัวซองที่ D₀ = 0.1 ต่อ cm²: ได 600 mm² ได้ 93 × 0.549 ≈ 51 ชิ้นดีต่อแว่น ได 150 mm² ได้ 411 × 0.861 ≈ 354 ชิ้นดี พอทำชิปสี่ชิ้นได้ราว 88 ชุด
 
 **ขั้นที่ 3: ต้นทุนซิลิคอนต่อผลิตภัณฑ์ดีหนึ่งชิ้น** (หน่วยเป็นต้นทุนแว่นผลึก ไม่รวมค่าการบรรจุ):
 
@@ -131,7 +131,7 @@ UCIe (Universal Chiplet Interconnect Express) เป็นมาตรฐาน�
 ## อ่านเพิ่ม / อ้างอิง
 - ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*
 - Robert C. Leachman, "Yield Modeling and Analysis", IEOR 130 lecture notes, UC Berkeley, Spring 2014 (สำเนาในหน้าวิชาที่ fog.misty.com): https://fog.misty.com/perry/cod/references/yield_models.pdf
-- UCIe Consortium (D. Das Sharma), "Building an open ecosystem of chiplets for on-package innovations" (2023) สไลด์ 23 "UCIe 1.0: Characteristics and Key Metrics": https://www.uciexpress.org/_files/ugd/0c1418_064d8c3247284b8da8a09674714a2c78.pdf
+- UCIe Consortium (D. Das Sharma), "Building an open ecosystem of chiplets for on-package innovations" (2023) สไลด์ 24 "UCIe 1.0: Characteristics and Key Metrics": https://www.uciexpress.org/_files/ugd/0c1418_064d8c3247284b8da8a09674714a2c78.pdf
 - NVIDIA, "NVIDIA Blackwell Platform Arrives to Power a New Era of Computing" (18 March 2024): https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing
 
 <!--
