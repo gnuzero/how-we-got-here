@@ -107,7 +107,7 @@ HLT</textarea>
       <code>STA a</code> <code>LDI n</code> <code>JMP a</code> <code>JC a</code> <code>JZ a</code>
       <code>OUT</code> <code>HLT</code> — addresses/immediates 0–15, written in decimal (<code>13</code>) or hex (<code>0xD</code>)
       <ul class="notes">
-        <li>Operands must be whole numbers 0–15. Anything else (<code>0xZZ</code>, <code>300</code>, a missing address) stops Assemble with an error naming the line — it is never quietly read as 0.</li>
+        <li>Operands must be whole numbers 0–15. Anything else (<code>0xZZ</code>, <code>300</code>, a missing address) stops Assemble with an error naming the line — it is never quietly read as 0. <code>NOP</code>, <code>OUT</code> and <code>HLT</code> ignore an operand when they run, so <code>NOP 7</code> is a way to put the value 7 in memory.</li>
         <li>ZERO lights when A ends up 0 after <code>LDI</code>, <code>LDA</code>, <code>ADD</code> or <code>SUB</code>. <code>STA</code>, <code>OUT</code> and jumps leave it alone. Reset clears it, so a <code>JZ</code> before any of those falls through.</li>
         <li>Registers are 8-bit: 0 − 1 wraps to 255 (and sets CARRY). A countdown from n=0 runs 256 loops, not zero.</li>
         <li>Program and values share the same 16 words. A <code>STA</code> can overwrite an instruction — even your final <code>HLT</code>, and then the CPU runs on past it.</li>
@@ -198,7 +198,9 @@ function logMsg(msg, isErr) {
   log.scrollTop = log.scrollHeight;
 }
 
-// Instructions that take no operand; every other mnemonic needs one.
+// Instructions whose operand is optional and ignored when they run. The
+// assembler still stores it in the low 4 bits (as it always has), so
+// `NOP 7` plants the data word 7. Every other mnemonic needs an operand.
 const NO_OPERAND = new Set(['NOP', 'OUT', 'HLT']);
 
 // Read an operand token: decimal (13) or hex (0xD / 0X0d). Returns NaN for
@@ -222,16 +224,17 @@ function assemble(src) {
     if (op === undefined) throw new Error(`Line ${lineNo}: unknown mnemonic '${mnem}'`);
     if (count >= 16) throw new Error(`Line ${lineNo}: program exceeds 16 words`);
     let arg = 0;
-    if (NO_OPERAND.has(name)) {
-      if (argStr !== undefined) throw new Error(`Line ${lineNo}: ${name} takes no operand, but found '${argStr}'`);
+    const optional = NO_OPERAND.has(name);
+    if (optional && argStr === undefined) {
+      // NOP / OUT / HLT on their own: operand 0.
     } else {
-      const what = name === 'LDI' ? 'value' : 'address';
+      const what = optional ? 'operand' : name === 'LDI' ? 'value' : 'address';
       if (argStr === undefined) throw new Error(`Line ${lineNo}: ${name} needs an ${what} (0–15)`);
       if (extra.length) throw new Error(`Line ${lineNo}: unexpected '${extra[0]}' after '${mnem} ${argStr}'`);
       arg = parseOperand(argStr);
       if (isNaN(arg)) throw new Error(`Line ${lineNo}: bad ${what} '${argStr}' — write a number 0–15 in decimal (13) or hex (0xD)`);
-      if (arg > 15) throw new Error(name === 'LDI'
-        ? `Line ${lineNo}: value '${argStr}' is out of range — LDI takes 0–15 (the operand is 4 bits)`
+      if (arg > 15) throw new Error(name === 'LDI' || optional
+        ? `Line ${lineNo}: ${what} '${argStr}' is out of range — ${name} takes 0–15 (the operand is 4 bits)`
         : `Line ${lineNo}: address '${argStr}' is past the end of memory — addresses are 0–15`);
     }
     bytes[count++] = (op << 4) | arg;
