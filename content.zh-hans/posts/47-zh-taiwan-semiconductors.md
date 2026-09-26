@@ -9,7 +9,7 @@ tags: ["台湾", "积体电路", "工研院", "RCA", "联电", "新竹科学园�
 summary: "1974 年 2 月 7 日的一顿豆浆早餐、一次公开招标和一个政府提出的请求，决定了台湾半导体的路，也催生了专业晶圆代工这种模式。"
 image_prompt: "1970s Taipei breakfast shop on Nanyang Street at dawn: seven men in suits around a small table with bowls of soy milk and youtiao, papers spread out; through the window, a faint overlay of a modern wafer fab cleanroom; warm documentary illustration style"
 video_prompt: "25-second animation: a breakfast table in 1974 Taipei; a handwritten plan stamped with an approval; a map arrow to RCA in the US and 19 engineers flying out; a small demonstration fab lights up in 1977; a science park opens in 1980; a foundry logo appears in 1987 as wafers multiply"
-schematics: "Diagram 1: timeline 1974-02-07 breakfast → 1976-03-05 RCA contract → 1977 demo fab → 1980 UMC + Hsinchu Science Park → 1987 TSMC. Diagram 2: TSMC founding cap table (Development Fund 48.3%, Philips 27.6% or 27.5%, private and party-owned investors)."
+schematics: "Diagram 1: timeline 1974-02-07 breakfast → 1976-03-05 RCA contract → 1977 demo fab → 1980 UMC + Hsinchu Science Park → 1987 TSMC. Diagram 2: TSMC founding cap table (Development Fund 48.3%, Philips 27.6%, private investors)."
 # Status: not final. Needs a native-reader proofread before it is marked final.
 ---
 
@@ -19,9 +19,9 @@ schematics: "Diagram 1: timeline 1974-02-07 breakfast → 1976-03-05 RCA contrac
 
 ## 1974 年 2 月 7 日，南阳街
 
-那天早上，台北南阳街的小欣欣豆浆店里坐着七个人：孙运璿、高玉树、费骅、方贤齐、王兆振、康宝煌，以及在美国 RCA 工作的潘文渊。他们在早餐桌上决定发展积体电路。2 月 11 日计划提出，批复是：“同意积极办理”。潘文渊文教基金会与工研院的年表、中央社的报道，三方记载一致。
+那天早上，台北南阳街的小欣欣豆浆店里坐着七个人：孙运璿、高玉树、费骅、方贤齐、王兆振、康宝煌，以及在美国 RCA 工作的潘文渊。他们在早餐桌上提出了发展积体电路的建议。2 月 11 日计划提出，批复是：“同意积极办理”。
 
-英文资料通常只说“1974 年的一次早餐”。中文资料给出了日期、全部与会者和批复原文。
+日期、七位与会者和批复原文见潘文渊文教基金会的年表；工研院的 50 周年资料和中央社 2019 年的报道也都提到 1974 年这顿七人早餐。
 
 ## 先招标，再授权
 
@@ -29,7 +29,7 @@ schematics: "Diagram 1: timeline 1974-02-07 breakfast → 1976-03-05 RCA contrac
 
 注意顺序：先比较，再选定。技术不是送上门的，是买来的，价钱和训练人次都写进了合同。
 
-1976 年 4 月 22 日，孙运璿对即将赴 RCA 受训的人员说：“只许成功，不许失败”。胡定华是积体电路计划的第一位成员，主持 RCA CMOS 技术移转。19 名受训工程师由杨丁元、史钦泰、章青驹、许健分组带领，其中有曹兴诚、曾繁城、蔡明介。示范工厂 1977 年 10 月 29 日落成，12 月 16 日产出第一批 IC；据工研院记载，六个月内良率达到 70%，高于 RCA 自己的 50%。1978 年，这里生产的电子表 IC 让台湾成为全球第三大电子表出口地。
+1976 年 4 月 22 日，孙运璿对即将赴 RCA 受训的人员说：“只许成功，不许失败”。胡定华是积体电路计划的第一位成员，主持 RCA CMOS 技术移转。19 名受训工程师由杨丁元、史钦泰、章青驹、许健分组带领，其中有曹兴诚、曾繁城、蔡明介。示范工厂 1977 年 10 月 29 日落成，12 月 16 日制成第一片积体电路；据工研院记载，营运第六个月良率达七成，高于 RCA 自己的五成。1978 年，这里生产的电子表 IC 让台湾成为全球第三大电子表出口地。
 
 **出处：**潘文渊文教基金会／工研院年表；工研院 50 周年《半导体篇》。
 
@@ -39,13 +39,13 @@ schematics: "Diagram 1: timeline 1974-02-07 breakfast → 1976-03-05 RCA contrac
 
 ## 专业代工：来自一个政府请求
 
-工研院随后推动超大型积体电路（VLSI）计划（年份有 1983、1984 两说），1985 年张忠谋出任工研院院长。英文世界流传的说法是，他在德州仪器时就想好了晶圆代工。他本人的中文叙述却是：1985 年 9 月到任约两三周后，李国鼎请他为三家 IC 设计公司的需求规划一家公司，专业代工的想法由此而来。行政院长俞国华成立五人小组（李达海、钱纯、赵耀东、陈履安、张忠谋）；他们致函 Sony、松下、王安、德州仪器、英特尔等公司，英特尔执行长听完简报后拒绝，飞利浦最积极。1985 年 12 月李国鼎亲自陪同前往飞利浦总部，飞利浦在 1986 年 6—7 月同意；台塑的王永庆起初拒绝，后被俞国华说服。
+工研院随后推动超大型积体电路（VLSI）计划（起始年份有三种写法：潘文渊的年表说 1982 年开始研究；工研院 50 周年资料的年表说 1983 年执行，其正文则说 1984 年开始），1985 年张忠谋出任工研院院长。据他本人的中文叙述，1985 年 9 月到任约两三周后，李国鼎请他为三家 IC 设计公司的需求规划一家公司，专业代工的想法由此而来。行政院长俞国华成立五人小组（李达海、钱纯、赵耀东、陈履安、张忠谋）；他们致函 Sony、松下、王安、德州仪器、英特尔等公司，英特尔执行长听完简报后拒绝，飞利浦最积极。1985 年 12 月李国鼎亲自陪同前往飞利浦总部，飞利浦在 1986 年 6—7 月同意；台塑的王永庆起初表示不投资，俞国华亲自打电话后，台塑最终认购 5%。
 
 1987 年 2 月 21 日，台积电成立，从工研院衍生，员工 98 人。工研院称之为“首创全球积体电路代工制造之营运模式”；台积电年报的自我定义是“全球第一家也是规模最大的专业积体电路制造服务公司”，不设计、不生产自有品牌产品。
 
 ## 谁出的钱
 
-台湾事实查核中心引述《张忠谋自传》与国发基金资料：总资本 1.45 亿美元，行政院开发基金出资 7000 万美元，占 48.3%；飞利浦占 27.6%（常见说法是 27.5%，两个数字并存）；其余为台塑 5%、中美和 5%、华夏 3%、台聚 2%、耀华 2%、联成 1%、台元 1%、诚州 1%，以及国民党党营的中央投资 4.1%。飞利浦 1992 年增持到 40%，政府持股到 2005 年降至 6.39%。
+台湾事实查核中心引述《张忠谋自传》与国发基金资料：总资本 1.45 亿美元，行政院开发基金出资 7000 万美元，占 48.3%；飞利浦占 27.6%；其余为台塑 5%、中美和 5%、华夏 3%、台聚 2%、耀华 2%、联成 1%、台元 1%、诚州 1%，以及中央投资 4.1%。飞利浦 1992 年增持到 40%，政府持股到 2005 年降至 6.39%。
 
 所以，台积电不是一个人的灵光一现，而是一家政府研究院的衍生公司：人来自 RCA 受训班和 VLSI 计划，近一半的钱来自政府基金，主意来自一项产业政策的请求。
 
@@ -56,7 +56,7 @@ schematics: "Diagram 1: timeline 1974-02-07 breakfast → 1976-03-05 RCA contrac
 - 潘文渊文教基金会、工业技术研究院，年表（English: Pan Wen-Yuan Foundation / ITRI chronology of the IC program），工研院。[链接](https://pan.itri.org.tw/datadetail?MmmID=1310651427173376245&SiteID=1)
 - 工业技术研究院，《工研院 50 周年·半导体篇 1》（English: ITRI at 50: semiconductors, part 1），工研院。[链接](https://50th.itri.org.tw/history/semiconductors/1/)
 - 工业技术研究院，《工研院 50 周年·半导体篇 2》（English: ITRI at 50: semiconductors, part 2），工研院。[链接](https://50th.itri.org.tw/history/semiconductors/2/)
-- 中央社，国研院半导体中心展览报道（English: CNA report on the Taiwan Semiconductor Research Institute exhibition, naming the seven at the breakfast），中央通讯社，2019-11-05。[链接](https://www.cna.com.tw/news/afe/201911050222.aspx)
+- 中央社，国研院半导体中心展览报道（English: CNA report on the Taiwan Semiconductor Research Institute exhibition, mentioning the seven-person breakfast in 1974），中央通讯社，2019-11-05。[链接](https://www.cna.com.tw/news/afe/201911050222.aspx)
 - 工业技术研究院，胡定华介绍（English: ITRI profile of Hu Ding-hua），工研院。[链接](https://www.itri.org.tw/ListStyle.aspx?DisplayStyle=01_content&MGID=620614436512674333&MmmID=1036234671167627651&SiteID=1)
 - 科学工业园区管理局，《新竹科学园区 20 周年大事记》（English: Hsinchu Science Park 20th-anniversary chronicle），科学园区管理局。[链接](https://www.sipa.gov.tw/home.jsp?contlink=content%2F20years_7.jsp&menudata=CHINESEMENU&mserno=201001210118&serno=201003210005)
 - 台湾积体电路制造公司，《2007 年年报》（English: TSMC 2007 annual report, Chinese edition），台积电。[链接](https://investor.tsmc.com/static/annualReports/2007/C/c_2_2.pdf)

@@ -41,9 +41,9 @@ Transformer 的原始任務是機器翻譯。沿著中文這條線往回走，�
 
 ## 寫進 Transformer 的兩塊零件
 
-2015 年，微軟亞洲研究院以 152 層的“深度殘差網絡”（ResNet）贏得 ImageNet 挑戰賽，錯誤率 3.57%。四位作者孫劍、何愷明、張祥雨、任少卿都是中國人，其中張祥雨（西安交通大學）和任少卿（中國科學技術大學）是聯合培養的博士生。《Attention Is All You Need》描述編碼器時寫道：“We employ a residual connection [11]”，文獻 [11] 就是這篇 ResNet 論文。每個 Transformer 層裡的殘差連接，都明確記在這項工作名下。
+2015 年，微軟亞洲研究院以 152 層的“深度殘差網絡”（ResNet）贏得 ImageNet 挑戰賽，錯誤率 3.57%。論文的四位作者何愷明、張祥雨、任少卿、孫劍當時都在北京的微軟亞洲研究院：據該院報導，孫劍與何愷明來自視覺計算組，張祥雨（西安交通大學）和任少卿（中國科學技術大學）是該院聯合培養的博士生。《Attention Is All You Need》描述編碼器時寫道：“We employ a residual connection [11]”，文獻 [11] 就是這篇 ResNet 論文。每個 Transformer 層裡的殘差連接，都明確記在這項工作名下。
 
-第二塊是位置編碼。2021 年 3 月 23 日，蘇劍林在自己的中文部落格“科學空間”發表《Transformer升級之路：2、博採眾長的旋轉式位置編碼》，系統介紹了旋轉式位置編碼（RoPE），並開源了追一科技的 RoFormer 模型。思路是：按位置把查詢向量和鍵向量各旋轉一個角度，它們的內積就只取決於相對位置。4 月 20 日，論文才提交到 arXiv。後來 Meta 的 LLaMA 論文寫明採用“rotary positional embeddings (RoPE), introduced by Su et al. (2021)”。英文世界引用的是 arXiv 論文，很少有人注意到它首先是用中文發表在個人部落格上的。
+第二塊是位置編碼。2021 年 3 月 23 日，蘇劍林在自己的中文部落格“科學空間”發表《Transformer升級之路：2、博採眾長的旋轉式位置編碼》，系統介紹了旋轉式位置編碼（RoPE），並開源了追一科技的 RoFormer 模型。思路是：按位置把查詢向量和鍵向量各旋轉一個角度，它們的內積就只取決於相對位置。4 月 20 日，論文才提交到 arXiv。後來 Meta 的 LLaMA 論文寫明採用“rotary positional embeddings (RoPE), introduced by Su et al. (2021)”。LLaMA 引用的是這篇 arXiv 論文；而 RoPE 最早的系統介紹，是比它早約四週的一篇中文部落格文章。
 
 ## 在西方
 

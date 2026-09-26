@@ -59,7 +59,7 @@ labs: ["pebble-trays"]
 ## 延伸阅读
 
 - 《孙子算经·卷上》（English: *Sunzi Suanjing*, vol. 1），中國哲學書電子化計劃，传世文献。[链接](https://ctext.org/sunzi-suan-jing/juan-shang/zhs)
-- 《孫子算經·卷上》（English: *Sunzi Suanjing*, vol. 1, with editorial notes），维基文库。[链接](https://zh.wikisource.org/wiki/孫子算經/卷上)
+- 《孫子算經·卷上》（English: *Sunzi Suanjing*, vol. 1, with editorial notes），维基文库。[链接](https://zh.wikisource.org/wiki/孫子算經)
 - 班固，《汉书·律历志上》（English: *Book of Han*, Treatise on Pitch-pipes and the Calendar, part 1），中國哲學書電子化計劃。[链接](https://ctext.org/han-shu/lv-li-zhi-shang/zhs)
 - 中国科普博览，算筹虚拟博物馆页面（English: Counting rods, virtual museum page），中国科学院，2014-04-29。[链接](http://www.kepu.net.cn/vmuseum/overview/201404/t20140429_458093.html)
 - 中国国家博物馆，《如果国宝会说话》第 45 集“算筹”（English: *If National Treasures Could Speak*, episode 45: Counting rods），中国国家博物馆。[链接](https://www.chnmuseum.cn/Portals/0/web/zt/20180101rggbhsh/detail.html?id=45)

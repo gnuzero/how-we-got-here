@@ -53,7 +53,7 @@ schematics: "Diagram 1: Laoguanshan single-hook multi-heddle loom as program sto
 
 据中国丝绸博物馆介绍，贾卡织机约在清末民初经日本传入：1910 年，经日本改进、装有贾卡装置的提花机运到江浙，苏州人叫它“铁机”；1915 年，上海肇新绸厂引进了 9 台瑞士电力丝织机。在工业里，卡片渐渐取代了丝线花本。
 
-在西方，法国人雅卡尔（Jacquard）用穿孔卡片控制提花，通常记作 1804 年。有意思的是，同一份中国丝绸博物馆展览文字对贾卡的发明年份既写 1817 年又写 1799 年，自相矛盾。
+在西方，法国人雅卡尔（Jacquard）用穿孔卡片控制提花。据《不列颠百科全书》，他 1801 年展示了改良的提花机，1804—1805 年推出用一串可更换的穿孔卡片控制提花的装置，1806 年这种织机被宣布为公共财产。有意思的是，同一份中国丝绸博物馆展览文字对贾卡的发明年份既写 1817 年又写 1799 年，自相矛盾。
 
 ## 延伸阅读
 
@@ -67,6 +67,7 @@ schematics: "Diagram 1: Laoguanshan single-hook multi-heddle loom as program sto
 - 江西服装学院古丝绸研究院，《南京云锦》（English: Nanjing yunjin brocade），2022-10-31。[链接](https://gscyjy.jift.edu.cn/info/1072/1005.htm)
 - 中国非物质文化遗产网，《南京云锦织造技艺》（English: Craftsmanship of Nanjing yunjin brocade: national record）。[链接](https://www.ihchina.cn/yunjinzhizao.html)
 - UNESCO，“Craftsmanship of Nanjing Yunjin brocade”（中文：南京云锦织造技艺），人类非物质文化遗产代表作名录，2009。[链接](https://ich.unesco.org/en/RL/craftsmanship-of-nanjing-yunjin-brocade-00200)
+- Encyclopaedia Britannica，“Joseph-Marie Jacquard”（中文：《不列颠百科全书》雅卡尔词条），britannica.com。[链接](https://www.britannica.com/biography/Joseph-Marie-Jacquard)
 
 <!--
 ASSET CHECKLIST

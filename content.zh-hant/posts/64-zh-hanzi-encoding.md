@@ -19,7 +19,7 @@ schematics: "Diagram 1: telegraph code book page layout (10x10 = 100 characters 
 
 ## 四個數字一個字
 
-最早的答案是一本碼本。大北電報公司總裁 C.F. Tietgen 發起，丹麥人謝勒俄普（Hans Schjellerup）、法國人威基謁（S.A. Viguier）與中國官商一起編成《電報新書》。他們試過三位到六位的碼，最後定為四位：0001 是“一”，0002 是“丁”，0003 是“七”。威基謁從《康熙字典》選了 6391 字，按 214 個部首排列。刊行年份，張文洋 2018 年在《近代史研究》上的文章寫 1872 年，常見說法（包括不少英文資料）是 1873 年；選字數也有六千八九百字的說法，都有待核對。
+最早的答案是一本碼本。大北電報公司總裁 C.F. Tietgen 發起，丹麥人謝勒俄普（Hans Schjellerup）、法國人威基謁（S.A. Viguier）與中國官商一起編成《電報新書》。他們試過三位到六位的碼，最後定為四位：0001 是“一”，0002 是“丁”，0003 是“七”。威基謁從《康熙字典》選了 6391 字，按 214 個部首排列。刊行年份說法不一：張文洋 2018 年在《近代史研究》上的文章寫 1872 年；中文維基百科等資料寫 1873 年，並說挑選了“常用漢字6800多個”。年份和字數都有待核對原書。
 
 碼本自帶密碼，叫“鎖匙加減變法”：雙方約定一個金鑰，逐位相加、捨去進位。比如“米”是 4149，加上 5555，發出去的是 9694。
 
@@ -37,11 +37,11 @@ schematics: "Diagram 1: telegraph code book page layout (10x10 = 100 characters 
 
 GB 2312-1980《信息交換用漢字編碼字符集 基本集》收漢字 6763 個。官方記錄為 1980 年 3 月 9 日發布、1981 年 5 月 1 日實施；另據《中文信息處理技術大事記》，它 1980 年 12 月批准、1981 年 3 月見報公布。中國中文信息學會稱它是“第一個漢字信息技術標準”。2017 年，它轉為推薦性標準。
 
-GB 18030 則是強制性的。2000 年版收 27484 字，採用單、雙、四位元組編碼，2001 年 9 月 1 日起對 PC 作業系統強制檢測，嵌入式裝置、PDA 和手機除外；當時的說法是“凡不符合該標準的產品，視為不合格產品”。英文報導常把它說成專門對付外國廠商的規定，但據起草單位副所長林寧介紹，起草組由電子四所、北大計算機所、方正、中科院軟件所、金山、聯想等國內單位組成，並徵求了微軟、HP、Sun、IBM 的意見。2022 年版收字 87887 個，覆蓋《通用規範漢字表》全部漢字，由國家標準委、工信部、國家語委聯合宣貫。
+GB 18030 則是強制性的。2000 年版收 27484 字，採用單、雙、四位元組編碼，2001 年 9 月 1 日起對 PC 作業系統強制檢測，嵌入式裝置、PDA 和手機除外；當時的說法是“凡不符合該標準的產品，視為不合格產品”。至於由誰起草，據起草單位副所長林寧介紹，起草組由電子四所、北大計算機所、方正、中科院軟件所、金山、聯想等國內單位組成，並徵求了微軟、HP、Sun、IBM 的意見。2022 年版收字 87887 個，覆蓋《通用規範漢字表》全部漢字，國家標準委、工信部、國家語委聯合召開了發布會。
 
 ## 台灣：五個軟體，不是五家公司
 
-1983 年，IBM 日本的 IBM5550 在台灣掀起中文 PC 熱潮。資策會在經濟部資助下推動“五大軟體專案”：據 1984 年 3 月 30 日的華視新聞，7 家硬體廠商和 6 家軟體公司簽約，開發中英文文書處理、檔案管理、電子表格、圖形與通訊軟體。1984 年公布的、供這些軟體共用的內碼，就是 Big5（大五碼）。專案本身失敗了，中研院的資料甚至說“幾乎無人知道所謂的『五大』究竟指的是哪五種軟體”。英文資料常說 Big5 得名於“五家公司”，這是錯的。
+1983 年，日本 IBM 推出能處理漢字的日文個人電腦 IBM 5550，引發台灣自行開發中文 PC 的熱潮。資策會在經濟部資助下推動“五大軟體專案”：據 1984 年 3 月 30 日的華視新聞，7 家硬體廠商和 6 家軟體公司簽約，開發中英文文書處理、檔案管理、電子表格、圖形與通訊軟體。1984 年公布的、供這些軟體共用的內碼，就是 Big5（大五碼）。專案本身失敗了，中研院的資料甚至說“幾乎無人知道所謂的『五大』究竟指的是哪五種軟體”。英文維基百科等資料說 Big5 得名於“五家公司”，這是錯的。
 
 Big5 收 13053 字（去掉兩個重複字後為 13051），字集取自 1983 年的“通用漢字標準交換碼”草案，所以它和官方的 CNS 11643 同出一源。CNS 11643 於 1986 年成為國家標準，1992 年擴充為 7 個字面、48027 字，用於戶政系統。謝清俊的評價卻很乾脆：“今日用的是big5”。
 
@@ -60,6 +60,7 @@ Big5 收 13053 字（去掉兩個重複字後為 13051），字集取自 1983 �
 ## 延伸閱讀
 
 - 張文洋，《晚清電報的語法：漢字電碼本的設計與應用》（English: The grammar of late-Qing telegraphy: design and use of Chinese code books），原載《近代史研究》2018，搜狐轉載，2018-10-22。[連結](https://www.sohu.com/a/270424338_494916)
+- 維基百科，《中文電碼》（English: Chinese Wikipedia article “Chinese telegraph code”, giving 1873 and 6800+ characters, citing 《通信信息報》2004）。[連結](https://zh.wikipedia.org/wiki/中文电码)
 - 香港入境事務處，ROP133 表格（English: Hong Kong Immigration Department form ROP133），2025-10 版。[連結](https://www.immd.gov.hk/pdforms/rop133.pdf)
 - 龔濱良，《中文信息處理技術大事記》（English: Chronicle of Chinese information-processing technology），原載《中國科技史料》1985 年第 2 期。[連結](https://nmlr.muc.edu.cn/info/1106/2042.htm)
 - 中研院資訊所，《謝清俊訪談》（English: Interview with 謝清俊, for the Institute of Information Science's 20th anniversary），2001-07-26。[連結](https://www.iis.sinica.edu.tw/file/20thAnniversary/i05.html)
@@ -67,7 +68,7 @@ Big5 收 13053 字（去掉兩個重複字後為 13051），字集取自 1983 �
 - 國家標準全文公開系統，GB 2312-1980 記錄（English: GB 2312-1980 official record），openstd.samr.gov.cn。[連結](https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=5664A728BD9D523DE3B99BC37AC7A2CC)
 - 全國標準信息公共服務平台，GB 18030-2000 記錄（English: GB 18030-2000 official record），std.samr.gov.cn。[連結](https://std.samr.gov.cn/gb/search/gbDetailed?id=71F772D79585D3A7E05397BE0A0AB82A)
 - 林寧，《關於GB18030漢字編碼標準集》（English: On the GB 18030 Chinese character set standard），中國計算機報，新浪科技轉載，2001-07-26。[連結](http://tech.sina.com.cn/s/2001-07-26/1850.html)
-- 教育部，GB 18030-2022 宣貫新聞（English: Ministry of Education news on the GB 18030-2022 launch），2022-07-29。[連結](http://www.moe.gov.cn/jyb_xwfb/gzdt_gzdt/moe_1485/202207/t20220729_649675.html)
+- 教育部，GB 18030-2022 發布會新聞（English: Ministry of Education news on the GB 18030-2022 launch），2022-07-29。[連結](http://www.moe.gov.cn/jyb_xwfb/gzdt_gzdt/moe_1485/202207/t20220729_649675.html)
 - 中央研究院，《認識中文字元碼》第 9 節（English: Understanding Chinese character codes, section 9: Big5），idv.sinica.edu.tw。[連結](https://idv.sinica.edu.tw/bear/charcodes/Section09.htm)
 - 華視新聞，1984-03-30 關於五大軟體專案簽約的報導（English: CTS television news report on the signing of the Big Five software project）。[連結](https://news.cts.com.tw/cts/politics/198403/198403301730592.html)
 - 香港特區政府共通語言資訊基建，香港增補字符集介紹頁面（English: Hong Kong government Common Chinese Language Interface: what HKSCS is），ccli.gov.hk。[連結](https://www.ccli.gov.hk/tc/hkscs/what_is_hkscs.html)
