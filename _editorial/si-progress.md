@@ -141,3 +141,10 @@
 
 - 41-tcp-ip… — thin-add: “එක් ජාලයක Protocols වලින් Stack එකකට” (NCP → 1983 flag day → apps); summary synced; draft:false; RFC 1034/1035 links kept
 - 08-from-gates… — Try-this-now half-adder carry hook + breadboard height=700 (mirrored EN); draft:false
+
+## si-fixes-1: "shipped" translated as released, not ship-loaded (2026-09-26, Asia/Bangkok)
+
+Branch `si-fixes-1` from `origin/main` `85f3ae0`; not pushed. Every "ship"/"shipped" rendered as නැව්ගත (loaded onto a ship) in content.si/ now uses නිකුත් කළ / නිකුත් කරන / නිකුත් වී / නිකුත් කිරීම (released), or වෙළඳපොළට නිකුත් විය on 19. Title for "visions that shipped": **ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්** (singular ප්‍රායෝගික භාවිතයට පැමිණි දැක්ම on 68 line 31), used for the 68 title and phase, the paths/visions-that-shipped title, and the link text in paths/_index.md and paths/visions-that-shipped.md. Slugs, filenames, URLs and link targets unchanged. One commit per file.
+
+- Files: posts/00-credits.md (lines 129, 137), 19-the-x86-vs-risc-split.md (22), 45-kubernetes-and-container-orchestration-at-scale.md (29), 58-systolic-arrays.md (15), 64-who-decides-the-wire.md (21, 45), 68-visions-that-shipped.md (2, 6, 19, 31), 69-platform-synthesis.md (39), paths/_index.md (16), paths/visions-that-shipped.md (2, 10)
+- The older entries above (lines 105 and 125) still say නැව්ගත වූ දැක්මන්; they are kept as history.
