@@ -66,7 +66,7 @@ Intel හි 2017 ඉදිරිපත් කිරීම (Kaizad Mistry, slide
 
 **"10 nm" node එකේ කිසිදු pitch එකක් 10 nm නොවේ** — කුඩාම එක 34 nm. "10" සංඛ්‍යාව නමකි.
 
-**සෛල වර්ගඵලය ගණනය කරමු:** සම්මත සෛලයක වර්ගඵලය ≈ (cell height) × (gate pitch ගණනක්). එබැවින් වර්ගඵල අනුපාතය ≈ 0.68 × 0.78 = **0.53** — slide 22 හි "සාම්ප්‍රදායික ~0.5x" වර්ගඵල අඩු වීම. Intel එයට තවත් උපක්‍රම දෙකක් එකතු කළේය (සක්‍රිය gate එක මත contact — COAG, සහ තනි dummy gate), එමගින් logic වර්ගඵලය **0.37x** දක්වා අඩු විය (slide 22). ඝනත්වය = 1 ÷ 0.37 ≈ **2.7 ගුණයක්** (slide 23 හි "~2.7x").
+**සෛල වර්ගඵලය ගණනය කරමු:** සම්මත සෛලයක වර්ගඵලය ≈ (cell height) × (gate pitch ගණනක්). එබැවින් වර්ගඵල අනුපාතය ≈ 0.68 × 0.78 = **0.53** — slide 20 හි "සාම්ප්‍රදායික ~0.5x" වර්ගඵල අඩු වීම. Intel එයට තවත් උපක්‍රම දෙකක් එකතු කළේය (සක්‍රිය gate එක මත contact — COAG, සහ තනි dummy gate), එමගින් logic වර්ගඵලය **0.37x** දක්වා අඩු විය (slide 22). ඝනත්වය = 1 ÷ 0.37 ≈ **2.7 ගුණයක්** (slide 23 හි "~2.7x").
 
 ### 4. Intel ඝනත්ව පෙළ — node පහක්
 
@@ -129,7 +129,7 @@ NVIDIA A100 whitepaper (පිටුව 37 හි සංසන්දන වග�
 
 (පිළිතුරු: 1 → 32 × 0.7 = 22.4 ("22"), 22 × 0.7 = 15.4 (Intel එය "14" ලෙස නම් කළේය); සෑම පියවරකම ≈ **2×**. 2 → (272 ÷ 399) × (54 ÷ 70) = 0.682 × 0.771 ≈ **0.53**. 3 → **මිලියන 100.8**; 0.25 mm² × 100.8 = **මිලියන 25.2**. 4 → 4 ÷ (0.05 × 10⁻⁶) = **80 MTr/mm²**. 5 → 54.2 ÷ 21.1 ≈ **2.57×**; 826 ÷ 815 ≈ **1.01×** — වර්ධනය සම්පූර්ණයෙන්ම පාහේ ඝනත්වයෙනි.)
 
-**මෙම කොටසේ මූලාශ්‍ර:** Kaizad Mistry, "10 nm Technology Leadership", Intel Technology and Manufacturing Day, 2017 මාර්තු 28 (PDF: <https://faculty-web.msoe.edu/johnsontimoj/EE4980/files4980/Kaizad-Mistry-2017-Manufacturing.pdf>) — slide 6 (pitch වගුව), slide 8 (MTr/mm² පෙළ), slide 22 (0.37x වර්ගඵලය), slide 23 (~2.7x). Mark Bohr, "Let's Clear Up the Node Naming Mess", Intel editorial, 2017 මාර්තු 28 (මුල් Intel Newsroom URL එක විවෘත නොවූ නිසා අප කියවූයේ මෙම පිටපතයි: <https://webdomino.net/index.php/intel/lets-clear-up-the-node-naming-mess-2/>). Intel Corporation, "Intel Accelerates Process and Packaging Innovations", 2021 ජූලි 26 (SEC Form 8-K, Exhibit 99.1: <https://www.intc.com/filings-reports/all-sec-filings/content/0001193125-21-224438/d199788dex991.htm>). NVIDIA, *NVIDIA A100 Tensor Core GPU Architecture* whitepaper, පිටුව 37 (P100/V100/A100 සංසන්දන වගුව). සෛල වර්ගඵල ආදර්ශ පමණි.
+**මෙම කොටසේ මූලාශ්‍ර:** Kaizad Mistry, "10 nm Technology Leadership", Intel Technology and Manufacturing Day, 2017 මාර්තු 28 (PDF: <https://faculty-web.msoe.edu/johnsontimoj/EE4980/files4980/Kaizad-Mistry-2017-Manufacturing.pdf>) — slide 6 (pitch වගුව), slide 8 (MTr/mm² පෙළ), slide 20 (~0.5x), slide 22 (0.37x වර්ගඵලය), slide 23 (~2.7x). Mark Bohr, "Let's Clear Up the Node Naming Mess", Intel editorial, 2017 මාර්තු 28 (මුල් Intel Newsroom URL එක දැන් විවෘත නොවේ; Internet Archive හි නිල පිටුවේ පිටපත: <https://web.archive.org/web/20170407072933/https://newsroom.intel.com/editorials/lets-clear-up-node-naming-mess/>). Intel Corporation, "Intel Accelerates Process and Packaging Innovations", 2021 ජූලි 26 (SEC Form 8-K, Exhibit 99.1: <https://www.intc.com/filings-reports/all-sec-filings/content/0001193125-21-224438/d199788dex991.htm>). NVIDIA, *NVIDIA A100 Tensor Core GPU Architecture* whitepaper, පිටුව 37 (P100/V100/A100 සංසන්දන වගුව). සෛල වර්ගඵල ආදර්ශ පමණි.
 
 <!--
 ASSET CHECKLIST

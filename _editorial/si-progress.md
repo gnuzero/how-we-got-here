@@ -163,7 +163,7 @@
 
 ## si-gaps-2: deep Sinhala explainers (2026-09-26, Asia/Bangkok)
 
-Branch `si-gaps-2` from `origin/main` `85f3ae0`; not pushed. One "ගැඹුරින්: …" section per page, each with a Sinhala-sources honesty note, worked examples, pencil exercises with answers, and a sources list. Existing text, labs and Try-this-now hooks kept; no new lab embeds; draft:false; UTF-8 clean.
+Branch `si-gaps-2` from `origin/main` `85f3ae0`, with si-gaps-1 merged in so this entry stacks after #16's (merge after #16). One "ගැඹුරින්: …" section per page, each with a Sinhala-sources honesty note, worked examples, pencil exercises with answers, and a sources list. Existing text, labs and Try-this-now hooks kept; no new lab embeds; draft:false; UTF-8 clean.
 
 - 02-relays-and-electromechanical-logic.md — relay contacts → AND/OR/NOT; Shannon 1938 hindrance algebra; relay half adder (before the asset checklist; the door-out is mid-page)
 - 50-moore-s-law.md — Moore 1965 minimum-cost curve and doubling; Moore 1975 revision; 4004 → GA100 doubling check
@@ -178,3 +178,4 @@ Branch `si-gaps-2` from `origin/main` `85f3ae0`; not pushed. One "ගැඹු�
 - 55-tensor-cores.md — MMA shapes; TFLOPS arithmetic; FP32 accumulation
 - ch31 school-material check: the NIE Gr12 ICT TG (PDF p. 86, printed p. 73, "4. පථය") defines only the data bus and control bus; the Gr13 TG, resource book and EPD G10/G11 textbooks have syllabus, glossary or topology mentions only; e-thaksalawa links to a si.wiki bullet list. So 31 was re-rated none → thin, and the section recaps the NIE terms and goes deeper on the rest. 34 and 48 were also re-rated to thin (consumer-level videos only). Details are in the desk's gaps.md, which lives outside the repo.
 - Flags: sections on 31, 34, 47, 48, 53, 54, 55 sit before the asset checklist because those pages have no door-out. Illustrative and model numbers are labelled as such. Some sources were read via mirrors (Bohr editorial, Micron datasheets, the Intel 8086 datasheet). The pre-existing lab shortcode inside the asset-checklist HTML comments was left alone.
+- **Fixed in fact-check:** the asset-checklist comments in 19 and 22 no longer contain a live lab shortcode. In 47, the "~0.5x" traditional area scaling is on Mistry slide 20, not 22; the Bohr editorial now points to the Internet Archive copy of the official Intel Newsroom page, not a third-party repost. In 53, added a note that the occupancy maths ignores the 256-register-per-warp allocation unit and the 1 KB per-block shared-memory reservation. Neither changes the page's results.
