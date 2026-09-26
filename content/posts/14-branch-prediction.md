@@ -31,7 +31,7 @@ Why not one bit? A 1-bit "last outcome" flips after a single anomaly — then mi
 
 Direction is only half. For a taken branch, fetch also needs a *target* before the branch is fully decoded. A Branch Target Buffer (BTB) is a small cache, indexed by instruction address, remembering the last resolved target. On a hit, fetch can jump speculatively next cycle.
 
-Real predictors combine counter tables (often with global history) and a BTB; high-end chips go further. The 2-bit counter is still the conceptual core — and small enough to watch by hand in the mini-CPU lab: step a loop's branch and see the prediction state update each iteration.
+Real predictors combine counter tables (often with global history) and a BTB; high-end chips go further. The 2-bit counter is still the conceptual core — and small enough to trace by hand. The mini-CPU lab below has no predictor, pipeline or cache, but you can step a loop's `JZ` and, on paper, move a 2-bit counter for that branch each iteration.
 
 {{< lab type="mini-cpu" >}}
 

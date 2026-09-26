@@ -33,7 +33,7 @@ Managed languages (Java, C#, and to varying degrees JavaScript and Python) pair 
 
 ## See It Live
 
-The VM terminal below is a real place to compile: try `gcc` on a small C program and inspect assembly with `-S` — abstractions from this post becoming concrete machine instructions.
+The VM terminal below is a real Linux system, but a minimal BusyBox one: it has no C compiler (`gcc` answers `gcc: not found`). It can still show both sides of this post. Run `hexdump -C /bin/busybox | head -2`: the file starts `7f 45 4c 46` — `0x7f` then "ELF", the executable format a compiler and linker produce, built ahead of time on another machine long before you booted the VM. Then give an interpreter the same work: `echo 'BEGIN{s=0; for(i=1;i<=1000000;i++) s+=i; print s}' > /tmp/sum.awk`, then `time awk -f /tmp/sum.awk`. It prints `500000500000` after several seconds (about 6 s in our runs; your browser will differ), because awk executes every iteration at run time — a loop an optimizing compiler can reduce to a constant before the program ever runs.
 
 {{< lab type="vm-terminal" >}}
 

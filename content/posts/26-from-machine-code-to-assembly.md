@@ -17,7 +17,7 @@ Every instruction in Phase 3 — datapath, pipeline, ISA — ultimately exists a
 
 ## What Assembly Actually Is
 
-Assembly gives every instruction a human-readable mnemonic — `ADD`, `LDA`, `JMP` — corresponding one-to-one with a machine-code bit pattern. It is not "higher-level" the way Post 27's languages are; there is no abstraction over the underlying hardware ops. Every assembly instruction maps to exactly one machine instruction. What you get is *readability* and *symbolic reference*: write `LDI` instead of remembering opcode `0101`; write a label and let the assembler compute the jump offset instead of recalculating byte addresses by hand.
+Assembly gives every instruction a human-readable mnemonic — `ADD`, `LDA`, `JMP` — corresponding one-to-one with a machine-code bit pattern. It is not "higher-level" the way Post 27's languages are; there is no abstraction over the underlying hardware ops. Every assembly instruction maps to exactly one machine instruction. What you get is *readability* and *symbolic reference*: write `LDI` instead of remembering opcode `0101`; in a full assembler, write a label and let it compute the jump target instead of recalculating byte addresses by hand. (The mini-CPU lab's tiny assembler has no labels; there you write the addresses yourself.)
 
 ## The Assembler's Job
 
