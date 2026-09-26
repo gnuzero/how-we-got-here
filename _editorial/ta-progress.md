@@ -243,3 +243,20 @@
 ## Remaining
 
 (none — Phase 1 TA 01–04 unblocked; standby)
+
+## Tamil-gap pass 1 (2026-09-26 Asia/Bangkok — Arun, branch `ta-gaps-1`)
+
+Direction (Nayana via Lucas, corrected): the *Tamil gap* = spine topics missing or thin **in Tamil online**; fill them with elaborate first-principles Tamil explanations (not translation, not local history).
+
+- Coverage audit: `/workspace/freebook/ta-desk/research/gaps.md` (outside repo; raw evidence in `research/raw/`). 163 topics across chapters 01–69 checked against ta.wikipedia (interlanguage links + plain-text length + ~120 full-text searches), Tamil YouTube (one query per topic, top ~20 parsed), TN Samacheer 11th CS Tamil-medium Vol 1 (full text), and Tamil web searches. Overall: none 41 / thin 107 / adequate 15.
+- Pages expanded (frontmatter, spine, existing labs and Try-this hooks kept; draft:false; named people in English; English term in brackets on first use; சொற்கள் glossary table added to each):
+  - `14-branch-prediction.md` — branch vocabulary via mini-CPU `JMP/JZ/JC`; CPI penalty arithmetic (stall / not-taken / 90–99% predictors, 2 vs 15-cycle penalty); static rules (BTFN); 1-bit vs 2-bit counter step traces on T T T N ×2; global history / two-level / gshare; BTB + return stack; speculation recovery; new **இப்போது முயல்க** countdown-loop program for the mini-CPU (verified by simulation: JZ = N, N, T; OUT 2, 1, 0).
+  - `16-out-of-order-execution.md` — RAW/WAR/WAW on one 4-instruction example; RAT + free-list renaming table; reservation stations + CDB; ROB, precise exceptions, mispredict recovery; cycle-by-cycle OoO vs in-order trace; Tomasulo (1967) vs ROB (Smith & Pleszkun 1985); Try-this: dependency and renaming exercise on the default mini-CPU program (single accumulator A).
+  - `09-sequential-logic.md` — SR latch truth table; clock period/frequency (3 GHz = 333 ps); D flip-flop rule + trace; setup/hold/clk-to-Q with f_max worked numbers and critical path; hold independent of clock period; clock skew; metastability, two-flip-flop synchronizer, MTBF formula (illustrative numbers labelled); second Try-this building a D flip-flop in the Falstad breadboard lab (menu names verified in circuitjs1 source).
+  - `13-pipelining.md` — five stages defined; 5×9 timing diagram; speedup arithmetic (3.69× not 5×); structural (mini-CPU single memory), data (forwarding, load-use), control hazards with cycle reasoning; CPI roll-up (1.365); Try-this steps on the mini-CPU program.
+  - `15-caches.md` — hit/miss, AMAT arithmetic; tag/index/offset split of 0x1234 in a 1 KiB direct-mapped cache; A/B conflict trace direct-mapped vs 2-way; 3 C's; LRU; write-through vs write-back; MESI step table, E-state rationale, false sharing; paper exercises with answers (no lab on this page).
+  - `17-superscalar-multicore.md` — issue width, IPC; chain vs independent code; tree reduction; why width costs (branches, ~N² dependency checks, memory latency); CV²f two-core arithmetic (1.024× power, 1.6× throughput); Amdahl worked examples; paper exercises.
+- மேலும் படிக்க: unchanged where already verified (09, 15); none added (no new verified named Tamil works for these topics). No local-history edits were made in this pass.
+- Build: `hugo --quiet -d /tmp/ta-gaps-build --themesDir /workspace/freebook/from-relays-to-attention/themes` → exit 0 (the worktree has no `themes/hugo-book` submodule checkout, so the shared checkout's theme dir was used read-only).
+- Not touched: content/, content.si/, content.th/, 00-credits, other desks' files. No push, no PR.
+- Next candidates from the ranked list: 24 virtual memory (text-thin, vm-terminal), 10 SRAM/DRAM cells, 29 priority inversion, 25 cgroups/namespaces, 35/36 memory wall + Dennard scaling, 20 RISC-V.
