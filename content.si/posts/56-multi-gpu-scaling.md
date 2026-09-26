@@ -32,7 +32,7 @@ Post 37 NVLink හඳුන්වා දුන්නේ CPU-මධ්‍යස�
 
 ## ගැඹුරින්: Amdahl, Gustafson සහ gradient සමමුහුර්තකරණයේ කාල ගණිතය
 
-> **සිංහල මූලාශ්‍ර පිළිබඳ සටහන:** "multi GPU sinhala" සහ "SLI crossfire sinhala" සෙවුම්වලට ලැබුණේ ක්‍රීඩා පරිගණක සඳහා graphics card තෝරා ගැනීම ගැන සිංහල වීඩියෝ පමණි (උදා. "Practically everything" නාලිකාව). AI training සඳහා GPU කිහිපයක් පරිමාණය කිරීම, all-reduce හෝ Amdahl නියමය ගැන සිංහල පාඩමක් අපට හමු නොවීය. එබැවින් මෙම කොටස John Gustafson ගේ 1988 ලිපිය, NVIDIA හි nccl-tests ලේඛනය සහ A100 whitepaper භාවිතා කර, ගණනය මුල සිට ගොඩනඟයි.
+> **සිංහල මූලාශ්‍ර පිළිබඳ සටහන:** "multi GPU sinhala" සහ "SLI crossfire sinhala" සෙවුම්වලට ලැබුණේ ක්‍රීඩා පරිගණක සඳහා graphics card තෝරා ගැනීම ගැන සිංහල වීඩියෝ පමණි (උදා. "Practically everything" නාලිකාව; අප හඳුනාගත්තේ මාතෘකාවෙන් පමණි, නැරඹුවේ නැත). AI training සඳහා GPU කිහිපයක් පරිමාණය කිරීම, all-reduce හෝ Amdahl නියමය ගැන සිංහල පාඩමක් අපට හමු නොවීය. එබැවින් මෙම කොටස John Gustafson ගේ 1988 ලිපිය, NVIDIA හි nccl-tests ලේඛනය සහ A100 whitepaper භාවිතා කර, ගණනය මුල සිට ගොඩනඟයි.
 
 ### 1. මූලික පද
 
@@ -52,6 +52,8 @@ Gustafson ගේ "Reevaluating Amdahl's Law" (Communications of the ACM, 1988) �
 - **Gustafson–Barsis (පරිමාණිත):** Scaled speedup = N + (1 − N)·s′
 
 Gustafson වාර්තා කළේ, s = 0.4–0.8% වූ Sandia යෙදුම් තුනක් සඳහා processors **1024** ක hypercube එකක **1021**, **1020** සහ **1016** වේගවත් වීම් ලබා ගත් බවයි. ඔහුගේ තර්කය මෙයයි: "in practice, the problem size scales with the number of processors" (ප්‍රායෝගිකව, ගැටලුවේ ප්‍රමාණය processors ගණන සමඟ වර්ධනය වේ).
+
+**අපේ පරීක්ෂාව:** Gustafson සූත්‍රයෙන් s′ = 0.4% → 1024 − 1023 × 0.004 ≈ **1020**, s′ = 0.8% → 1024 − 1023 × 0.008 ≈ **1016**. එහෙත් Amdahl සූත්‍රයෙන් s = 0.4% → 1 / (0.004 + 0.996/1024) ≈ **201** පමණි. එබැවින් 1021/1020/1016 යනු පරිමාණිත (scaled) වේගවත් වීම් මිස ස්ථාවර ප්‍රමාණයේ වේගවත් වීම් නොවේ. (1021 ගැළපෙන්නේ s′ ≈ 3/1023 ≈ 0.3% ට ය. එබැවින් ලිපියේ 0.4–0.8% පරාසය ආසන්න අගයක් ලෙස සැලකිය යුතුය.)
 
 **වැඩ කළ උදාහරණය (s = 0.05 ආදර්ශ අගයකි):**
 

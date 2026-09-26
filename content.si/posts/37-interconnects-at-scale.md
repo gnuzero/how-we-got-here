@@ -48,12 +48,12 @@ GPUDirect RDMA ට NIC එකකට GPU මතකය සෘජුව කිය�
 | GPU | යුගලයක වේගය | එක් දිශාවකට යුගල | සබැඳියක් එක් දිශාවකට | සබැඳි ගණන | GPU එකකට මුළු (දෙදිශාවම) |
 |---|---|---|---|---|---|
 | P100 (NVLink 1) | 20 Gb/s | 8 | 8 × 20 ÷ 8 = **20 GB/s** | 4 | 4 × 40 = **160 GB/s** |
-| V100 (NVLink 2) | 25.78 Gb/s | 8 | ≈ **25 GB/s** | 6 | **300 GB/s** |
+| V100 (NVLink 2) | 25 Gb/s (නිවැරදිව 25.78) | 8 | ≈ **25 GB/s** | 6 | **300 GB/s** |
 | A100 (NVLink 3) | 50 Gb/s | 4 | 4 × 50 ÷ 8 = **25 GB/s** | 12 | **600 GB/s** |
 
 **මූලාශ්‍ර:**
 - P100: Pascal white paper, පිටුව 20.
-- V100: Volta white paper, මුද්‍රිත පිටුව 3.
+- V100: Volta white paper, මුද්‍රිත පිටුව 3 (සබැඳි 6, 300 GB/s) සහ මුද්‍රිත පිටුව 19 ("from 20 to 25 Gigabits/second", සබැඳියකට දිශාවකට 25 GB/s). 25.78 Gb/s යන නිවැරදි අගය Volta white paper එකේ නැත. එය A100 white paper එකේ (පිටුව 52) V100 සමඟ සංසන්දනයේදී සඳහන් වේ. 8 × 25.78 ÷ 8 = 25.78 GB/s. NVIDIA එය 25 GB/s ලෙස වටයයි.
 - A100: A100 white paper, පිටුව 52.
 
 **නිරීක්ෂණය:** A100 හි සබැඳියක් V100 හි සබැඳියක් තරම්ම bandwidth ලබා දෙයි (දිශාවකට 25 GB/s). එහෙත් එය භාවිතා කරන්නේ සංඥා **භාගයක්** පමණි (දිශාවකට යුගල 4, 8 වෙනුවට). යුගලයක වේගය දෙගුණ වූ නිසා, එම සංඥා ගණනින්ම සබැඳි දෙගුණයක් (6 → 12) ලබා දිය හැකි විය. Post 32 හි "pin එකකට bandwidth" තර්කයම මෙහිද වලංගු වේ.
@@ -88,7 +88,7 @@ GPUDirect RDMA ට NIC එකකට GPU මතකය සෘජුව කිය�
 
 ### 5. CXL: PCIe රැහැන් මත සහසම්බන්ධ මතකය
 
-CXL Consortium හි white paper එකේ (Debendra Das Sharma, CXL 1.0 සමයේ) කරුණු:
+CXL Consortium හි white paper එකේ (Debendra Das Sharma, CXL 1.0 සමයේ) කරුණු. **මෙම white paper එකේ දිනයක් මුද්‍රණය කර නැත.** PDF metadata අනුව එය 2019 මාර්තුවේ සාදා ඇත. පෙළ CXL 2.0 සංවර්ධනය "early Q2 2019" ආරම්භ වන බව කියන නිසා එය 2019 මුල් භාගයට අයත් බව පෙනේ:
 
 - CXL ක්‍රියා කරන්නේ **PCIe 5.0 භෞතික ස්ථරය** මතය. CXL 1.0 **32 GT/s** දී දිශාවකට **64 GB/s** ලබා දෙයි (x16).
   - ගණනය: 32 × 16 × 128/130 ÷ 8 ≈ 63 GB/s ≈ 64.
@@ -133,14 +133,14 @@ CXL 2.0 white paper එකට (Das Sharma සහ Tavallaei, 2020 නොවැම
 - *NVIDIA Tesla P100* (Pascal GP100), WP-08019-001_v01.1, පිටුව 20 (NVHS, 20 Gb/s, සබැඳි 4, 160 GB/s): <https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper.pdf>
 - *NVIDIA Tesla V100 GPU Architecture*, WP-08608-001_v1.1: <https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf>
   - මුද්‍රිත පිටුව 3: සබැඳි 6, 300 GB/s
-  - මුද්‍රිත පිටුව 19–20: NVLink 2, Figure 12
+  - මුද්‍රිත පිටුව 19–20: NVLink 2 (25 Gb/s, සබැඳියකට දිශාවකට 25 GB/s), Figure 12
 - *NVIDIA A100 Tensor Core GPU Architecture*: <https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf>
   - පිටුව 17: PCIe Gen 4, 31.5 GB/s
-  - පිටුව 52: 50 Gbit/s, යුගල 4, සබැඳි 12, 600 GB/s
+  - පිටුව 52: 50 Gbit/s, යුගල 4, සබැඳි 12, 600 GB/s; V100 හි 25.78 Gbit/s
   - පිටුව 70: DGX A100, NVSwitch 6, 4.8 TB/s
 
 CXL Consortium (computeexpresslink.org):
-- D. Das Sharma, "Compute Express Link" white paper (CXL 1.0): <https://computeexpresslink.org/wp-content/uploads/2023/12/0c1418_d9878707bbb7427786b70c3c91d5fbd1.pdf>
+- D. Das Sharma, "Compute Express Link" white paper (CXL 1.0; දිනයක් නැත, PDF metadata 2019 මාර්තු): <https://computeexpresslink.org/wp-content/uploads/2023/12/0c1418_d9878707bbb7427786b70c3c91d5fbd1.pdf>
 - D. Das Sharma සහ S. Tavallaei, "Compute Express Link 2.0 White Paper", 2020 නොවැම්බර්: <https://computeexpresslink.org/wp-content/uploads/2023/12/CXL2.0_White_Paper_November-2020_FINAL.pdf>
 
 පිටපත් කාල වගුව සහ pooling ඉතිරිය ආදර්ශ ගණනය කිරීම් වේ.

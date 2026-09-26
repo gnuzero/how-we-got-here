@@ -48,7 +48,7 @@ Data-parallel training (Post 46) සෑම පියවරකදීම සහභ
 
 ### 2. Ring all-reduce: GPU 4 ක් සමඟ අතින්
 
-Patarasuk සහ Yuan, *Bandwidth Optimal All-reduce Algorithms for Clusters of Workstations* (Florida State University), §4 හි ඇල්ගොරිතමය:
+Patarasuk සහ Yuan, *Bandwidth Optimal All-reduce Algorithms for Clusters of Workstations* (Florida State University; *J. Parallel Distrib. Comput.*, 2009), §4 හි ඇල්ගොරිතමය:
 1. දත්ත කොටස් N කට බෙදනු ලැබේ.
 2. **Reduce-scatter** වටයේ N − 1 පුනරාවර්තනවලදී, p_i යන rank එක SEG_(i−j) mod N කොටස p_(i+1) වෙත යවයි. ලබන්නා එය තමාගේ කොටසට එකතු කරයි.
 3. ඉන්පසු **all-gather** වටයේ තවත් N − 1 පුනරාවර්තනවලදී අවසන් කොටස් ring එක වටා බෙදා හරිනු ලැබේ.
@@ -101,7 +101,7 @@ Patarasuk–Yuan ලිපිය T(m) = β·m රේඛීය ආකෘතිය
 NVIDIA හි NCCL 2.4 බ්ලොගයට (Sylvain Jeaugey, 2019) අනුව:
 - double binary trees "full bandwidth and a logarithmic latency" (සම්පූර්ණ bandwidth සහ ලඝුගණක ප්‍රමාදය) ලබා දෙයි.
 - rings වල "latency scales linearly with the number of GPUs" (ප්‍රමාදය GPU ගණන සමඟ රේඛීයව වැඩි වේ).
-- Summit supercomputer එකේ GPUs **24,576** දී trees මගින් ප්‍රමාදය **180×** දක්වා අඩු විය.
+- NVIDIA එය Summit supercomputer ඇතුළු විශාල යන්ත්‍ර කිහිපයක GPUs **24,576** දක්වා පරීක්ෂා කළේය. ring හා සසඳන විට trees මගින් ප්‍රමාදය (latency) වැඩි දියුණු වූ අතර, එම වෙනස පරිමාණය සමඟ වැඩි වී GPUs 24k දී **180× දක්වා** විය ("up to 180x improvement at 24k GPUs").
 
 **ආදර්ශ ගණනය** (α = 5 µs සහ B = 50 GB/s ආදර්ශ අගයන් වේ):
 
@@ -125,13 +125,14 @@ NVIDIA DGX SuperPOD (DGX H100) reference architecture:
 - **වගුව 4:**
   - SU 1 = nodes 31, GPUs 248, leaf switches 8, spine switches 4.
   - SU 4 = nodes 127, GPUs 1016, leaf switches 32, spine switches 16.
-- DGX H100 හි NVLink bandwidth එක GPU එකකට **900 GBps** වේ.
+- DGX H100 හි NVLink bandwidth එක GPU එකකට **900 GBps** වේ. NVIDIA හි Hopper Architecture In-Depth බ්ලොගයට අනුව එය NVLink සබැඳි 18 × දිශාවකට 25 GB/s = දිශාවකට 450 GB/s, දෙදිශාවේ **එකතුව** 900 GB/s වේ.
+- වගුව 4 හි පාද සටහනට අනුව SU එකක nodes 31 ක් (32 නොවේ) ඇත්තේ UFM (Unified Fabric Manager) සඳහා DGX පද්ධතියක් ඉවත් කළ නිසාය. එලෙසම SU 4 = 4 × 32 − 1 = 127.
 
-**වැඩ කළ උදාහරණය: hierarchical all-reduce** (NCCL බ්ලොගය විස්තර කරන "2D ring" ක්‍රමය: node තුළ reduce-scatter → nodes අතර all-reduce → node තුළ all-gather).
+**වැඩ කළ උදාහරණය: hierarchical all-reduce** (NCCL බ්ලොගය "hierarchical, 2D ring" ක්‍රමයක් **නම් කරයි** පමණි, එහි පියවර විස්තර නොකරයි. පහත පියවර තුන, එනම් node තුළ reduce-scatter → nodes අතර all-reduce → node තුළ all-gather, සම්මත hierarchical ක්‍රමය පිළිබඳ **අපේ විස්තරයයි**).
 
 **ආදර්ශ උපකල්පන:**
 - gradient S = 2 GB, nodes 16, node එකකට GPU 8 යි.
-- NVLink දිශාවකට **450 GB/s** (900 GBps දෙදිශාවේ එකතුව යැයි අපි උපකල්පනය කරමු).
+- NVLink දිශාවකට **450 GB/s** (900 GBps යනු දෙදිශාවේ එකතුවයි; Hopper බ්ලොගය, ඉහත බලන්න). ගණනයේදී අපි සම්පූර්ණ 450 GB/s ලැබේ යැයි උපකල්පනය කරමු.
 - NDR400 = **50 GB/s** (දිශාවකට).
 
 **පියවර:**
@@ -161,13 +162,14 @@ post එකේ "topology spec sheets ට වඩා ජය ගත හැක" ය�
 4. 7/8 × 4 ÷ 450 ≈ 7.8 ms (දෙවරක් = 15.6 ms). කොටස 0.5 GB නිසා 2 × 31/32 × 0.5 ÷ 50 ≈ 19.4 ms. මුළු කාලය ≈ **35 ms**.)
 
 **මෙම කොටසේ මූලාශ්‍ර:**
-- Pitch Patarasuk සහ Xin Yuan, *Bandwidth Optimal All-reduce Algorithms for Clusters of Workstations*, Florida State University. කතුවරයාගේ ආයතනික පිටපත. §1, §2.2, §3 (Lemmas 3–5), §4 (Fig. 1, Theorem 1) භාවිත කළෙමු: <https://www.cs.fsu.edu/~xyuan/paper/09jpdc.pdf>
+- Pitch Patarasuk සහ Xin Yuan, "Bandwidth Optimal All-reduce Algorithms for Clusters of Workstations", *Journal of Parallel and Distributed Computing* 69(2):117–124, 2009 පෙබරවාරි, DOI 10.1016/j.jpdc.2008.09.002. Florida State University හි කතුවරයාගේ ආයතනික පිටපත. §1, §2.2, §3 (Lemmas 3–5), §4 (Fig. 1, Theorem 1) භාවිත කළෙමු: <https://www.cs.fsu.edu/~xyuan/paper/09jpdc.pdf>
 - Sylvain Jeaugey (NVIDIA), "Massively Scale Your Deep Learning Training with NCCL 2.4", NVIDIA Technical Blog, 2019 පෙබරවාරි 4: <https://developer.nvidia.com/blog/massively-scale-deep-learning-training-nccl-2-4/>
 - NVIDIA, *DGX SuperPOD Reference Architecture (DGX H100)*, "Key Components" සහ "Network Fabrics" (වගුව 4) කොටස්:
   - <https://docs.nvidia.com/dgx-superpod/reference-architecture-scalable-infrastructure-h100/latest/dgx-superpod-components.html>
   - <https://docs.nvidia.com/dgx-superpod/reference-architecture-scalable-infrastructure-h100/latest/network-fabrics.html>
+- NVIDIA, "NVIDIA Hopper Architecture In-Depth", NVIDIA Technical Blog, 2022 මාර්තු 22 (NVLink සබැඳි 18, දිශාවකට 25 GB/s, මුළු 900 GB/s): <https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/>
 
-α, gradient ප්‍රමාණ, node ගණන, 2:1 oversubscription සහ 900 GBps දෙදිශාවේ එකතුවක් යන උපකල්පනය ආදර්ශ අගයන් වේ.
+α, B, gradient ප්‍රමාණ, node ගණන සහ 2:1 oversubscription ආදර්ශ අගයන් වේ. 900 GBps දෙදිශාවේ එකතුවක් බව දැන් NVIDIA මූලාශ්‍රයකින් තහවුරුය.
 
 <!--
 ASSET CHECKLIST

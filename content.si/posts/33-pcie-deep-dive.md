@@ -128,8 +128,8 @@ MPS 4 ගුණයක් කළත් throughput වැඩි වූයේ 13% �
 |---|---|---|---|
 | 1.x / 2.x | 2.5 / 5.0 GT/s | 8b/10b | PCI-SIG 3.0 FAQ |
 | 3.0 | 8.0 GT/s | 128b/130b | PCI-SIG 3.0 FAQ |
-| 4.0 | 16.0 GT/s | 128b/130b | PCI-SIG 4.0 FAQ |
-| 5.0 | 32.0 GT/s; x16 එකක් 128 GB/s | 128b/130b | PCI-SIG 6.0 FAQ |
+| 4.0 | 16.0 GT/s | 128b/130b | PCI-SIG 4.0 FAQ (වේගය); කේතනය: PCI-SIG webinar, slide 4 |
+| 5.0 | 32.0 GT/s; x16 එකක් 128 GB/s | 128b/130b | PCI-SIG 6.0 FAQ (වේගය); කේතනය: PCI-SIG webinar, slide 4 සහ Das Sharma blog |
 | 6.0 | 64.0 GT/s; x16 එකක් 256 GB/s (දෙදිශාවම) | PAM4 + FEC + Flit | PCI-SIG 6.0 පිටුව සහ FAQ |
 
 **PAM4 (Pulse Amplitude Modulation, මට්ටම් 4):** PCI-SIG බ්ලොග් ලිපියට (Debendra Das Sharma, 2022 ජනවාරි 11) අනුව, PAM4 එක් symbol එකකට voltage මට්ටම් 4 ක් භාවිතා කර **bits 2** ක් යවයි. එහි clock එක PCIe 5.0 හි "16G Nyquist" සංඛ්‍යාතයේම පවතී. එහෙත් bit දෝෂ අනුපාතය ඉහළ යන නිසා දෝෂ නිවැරදි කිරීමක් (Forward Error Correction, FEC) අවශ්‍ය වේ.
@@ -167,7 +167,8 @@ TLP බයිට් වල කොටස 236 ÷ 256 = **92.2%**. x16, 64 GT/s: 64
 
 PCI-SIG නිල පිටු:
 - FAQ "How does the PCIe 3.0 8.0 GT/s 'double' the PCIe 2.0 5.0 GT/s bit rate?": <https://pcisig.com/how-does-pcie-30-8gts-double-pcie-20-5gts-bit-rate>
-- PCIe 4.0 FAQ: <https://pcisig.com/faq?field_category_value%5B%5D=pci_express_4.0>
+- PCIe 4.0 FAQ: <https://pcisig.com/faq?field_category_value%5B%5D=pci_express_4.0> (16 GT/s. මෙම FAQ කේතනය නම් නොකරයි.)
+- S. Kocsis සහ M. Mazumder, "The Journey to CopprLink™ and Beyond: An Exploration of PCIe® Cabling Solutions", PCI-SIG Educational Webinar Series (PDF, 2024), slide 4: 1.0–5.0 කේතනය, NRZ සහ Nyquist සංඛ්‍යාත වගුව (4.0 සහ 5.0 = 128b/130b): <https://pcisig.com/sites/default/files/2026-01/PCI-SIG%20Cabling%20Webinar_FINAL.pdf>
 - PCIe 6.0 FAQ: <https://pcisig.com/faq?field_category_value%5B%5D=pci_express_6.0>
 - "PCI Express 6.0 Specification": <https://pcisig.com/pci-express-6.0-specification>
 - D. Das Sharma, "The Evolution of the PCI Express Specification: On its Sixth Generation, Third Decade and Still Going Strong", PCI-SIG blog, 2022 ජනවාරි 11: <https://pcisig.com/blog/evolution-pci-express-specification-its-sixth-generation-third-decade-and-still-going-strong>

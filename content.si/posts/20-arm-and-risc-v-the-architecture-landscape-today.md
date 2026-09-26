@@ -61,7 +61,7 @@ RISC-V හි නිර්මාපකයන් දෙදෙනා වන Krste 
 | 10,000,000 | $0.10 | $1 |
 | 1,000,000,000 | $0.001 | $0.01 |
 
-එම වාර්තාවම IoT ප්‍රොසෙසරයක මිල **ඩොලර් 1** තරම් අඩු විය හැකි බව කියයි. එසේ නම්, චිප 100,000 ක් නිපදවන කුඩා සමාගමකට $1M ගාස්තුව චිපයේ මිල මෙන් 10 ගුණයකි. බිලියනයක් නිපදවන දුරකථන සමාගමකට එය ශත භාගයකි. එබැවින් license ආකෘතිය විශාල පරිමාවකට ගැළපෙන අතර, විවෘත ISA එකක් කුඩා පරිමාවකට ගැළපේ. පෝස්ට් එකේ "ආර්ථිකය ගැළපෙන එක ජය ගනී" යන තර්කය අංකවලින් පෙනෙන්නේ එලෙසිනි.
+එම වාර්තාවම IoT උපාංගයක (device) මිල **ඩොලර් 1** තරම් අඩු විය හැකි බව කියයි ("could cost as little as $1"). ප්‍රොසෙසරය ඊටත් ලාභ විය යුතුය. එසේ නම්, චිප 100,000 ක් නිපදවන කුඩා සමාගමකට $1M ගාස්තුව චිපයේ මිල මෙන් 10 ගුණයකි. බිලියනයක් නිපදවන දුරකථන සමාගමකට එය ශත භාගයකි. එබැවින් license ආකෘතිය විශාල පරිමාවකට ගැළපෙන අතර, විවෘත ISA එකක් කුඩා පරිමාවකට ගැළපේ. පෝස්ට් එකේ "ආර්ථිකය ගැළපෙන එක ජය ගනී" යන තර්කය අංකවලින් පෙනෙන්නේ එලෙසිනි.
 
 ### 3. RV32I: bits 32 ක උපදෙසක ඇතුළත
 
@@ -152,5 +152,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

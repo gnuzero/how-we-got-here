@@ -89,7 +89,7 @@ RFC 1036 ("Standard for Interchange of USENET Messages", 1987 දෙසැම්
 RFC 977 ("Network News Transfer Protocol", 1986 පෙබරවාරි) Usenet සඳහා TCP මත ප්‍රශ්න-පිළිතුරු සංවාදයක් අර්ථ දක්වයි. සෑම පිළිතුරක්ම **ඉලක්කම් 3 ක කේතයකින්** ආරම්භ වේ.
 
 - **GROUP** විධානයට පිළිතුර `211 n f l s` වේ (§3.2.2, පිටුව 11). n = ලිපි ගණනේ ඇස්තමේන්තුව, f = පළමු ලිපි අංකය, l = අවසාන ලිපි අංකය, s = කණ්ඩායමේ නම.
-- **IHAVE** (§3.4, පිටු 11–12) හි පිළිතුරු:
+- **IHAVE** (§3.4, පිටු 12–13) හි පිළිතුරු:
   - 335: "ලිපිය එවන්න"
   - 235: "ලිපිය හොඳින් ලැබුණි"
   - 435: "ලිපිය අවශ්‍ය නැත, එවන්න එපා"
@@ -173,7 +173,7 @@ printf 'Prices/\r\n' | wc -c
 
 **මෙම කොටසේ මූලාශ්‍ර (සියල්ල rfc-editor.org හි නිල පිටපත්):**
 - M. Horton සහ R. Adams, *Standard for Interchange of USENET Messages*, RFC 1036, 1987 දෙසැම්බර්: පිටුව 5 (Message-ID), පිටු 6–7 (Path), පිටු 12–13 (ihave/sendme). <https://www.rfc-editor.org/rfc/rfc1036.txt>
-- B. Kantor සහ P. Lapsley, *Network News Transfer Protocol*, RFC 977, 1986 පෙබරවාරි: §3.2.2 (පිටුව 11), §3.4 (පිටු 11–12), §4.6 උදාහරණය (පිටු 23–24). <https://www.rfc-editor.org/rfc/rfc977.txt>
+- B. Kantor සහ P. Lapsley, *Network News Transfer Protocol*, RFC 977, 1986 පෙබරවාරි: §3.2.2 (පිටුව 11), §3.4 (පිටු 12–13), §4.6 උදාහරණය (පිටු 23–24). <https://www.rfc-editor.org/rfc/rfc977.txt>
 - F. Anklesaria සහ සගයන් (University of Minnesota), *The Internet Gopher Protocol*, RFC 1436, 1993 මාර්තු: පිටුව 1 (port 70), පිටුව 4 (උදාහරණ සංවාදය), §3.8 පිටුව 10 (වර්ග අක්ෂර). <https://www.rfc-editor.org/rfc/rfc1436.txt>
 
 printf, tr, od සහ wc විධාන lab එකේ BusyBox v1.28.4 image එකේ ඇති බව පරීක්ෂා කරන ලදී. mesh සහ bytes ගණනය, සහ GROUP අංක ආදර්ශ වේ.
@@ -183,5 +183,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

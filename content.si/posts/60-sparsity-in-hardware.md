@@ -34,7 +34,7 @@ Sparsity සහ අඩු කළ precision විකල්ප නොවේ. න�
 
 ## ගැඹුරින්: 2:4 රටාව බිට් මට්ටමෙන් — metadata, ගබඩා ගණිතය සහ 2× සීමාව
 
-> **සිංහල මූලාශ්‍ර පිළිබඳ සටහන:** "sparsity neural network sinhala" සහ "pruning neural network sinhala" සෙවුම්වලට ලැබුණේ පොදු neural network හැඳින්වීම් පමණි (උදා. CodePRO LK නාලිකාවේ වීඩියෝ). ඒවා pruning, sparse matrix ගබඩා කිරීම හෝ 2:4 structured sparsity ආවරණය නොකරයි. එබැවින් මෙම කොටස NVIDIA A100 whitepaper සහ NVIDIA පර්යේෂකයන්ගේ arXiv ලිපිය භාවිතා කර, ගණනය බිට් මට්ටමෙන් ගොඩනඟයි.
+> **සිංහල මූලාශ්‍ර පිළිබඳ සටහන:** "sparsity neural network sinhala" සහ "pruning neural network sinhala" සෙවුම්වලට ලැබුණේ පොදු neural network හැඳින්වීම් පමණි (උදා. CodePRO LK නාලිකාවේ වීඩියෝ; අප හඳුනාගත්තේ මාතෘකාවෙන් පමණි, නැරඹුවේ නැත). ඒවායේ මාතෘකාවල pruning, sparse matrix ගබඩා කිරීම හෝ 2:4 structured sparsity සඳහන් නොවේ. එබැවින් මෙම කොටස NVIDIA A100 whitepaper සහ NVIDIA පර්යේෂකයන්ගේ arXiv ලිපිය භාවිතා කර, ගණනය බිට් මට්ටමෙන් ගොඩනඟයි.
 
 ### 1. මූලික පද
 
