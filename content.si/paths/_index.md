@@ -9,9 +9,9 @@ draft: false
 
 ## මාර්ග
 
-- [Crypto සහ යුද්ධකාලීන පරිගණකකරණය](/paths/crypto-wartime/) — ඉලෙක්ට්‍රොනිකය බල කළ workload එකක් ලෙස රහස්‍යභාවය
-- [අන්තර්ජාලය ධාවනය කරන්නේ කවුද](/paths/who-runs-the-internet/) — අංක, නම්, encodings, සහ යටතේ ඇති protocols
-- [සොයන්න, ඉන්පසු කතා කරන්න](/paths/find-then-talk/) — විවෘත web එකට පෙර (සහ අසල) සෙවීම සහ peer සන්නිවේදනය
+- [Crypto සහ යුද්ධකාලීන පරිගණකකරණය](/si/paths/crypto-wartime/) — ඉලෙක්ට්‍රොනිකය බල කළ workload එකක් ලෙස රහස්‍යභාවය
+- [අන්තර්ජාලය ධාවනය කරන්නේ කවුද](/si/paths/who-runs-the-internet/) — අංක, නම්, encodings, සහ යටතේ ඇති protocols
+- [සොයන්න, ඉන්පසු කතා කරන්න](/si/paths/find-then-talk/) — විවෘත web එකට පෙර (සහ අසල) සෙවීම සහ peer සන්නිවේදනය
 - [රහස්‍යතාව / අනන්‍යතාව / එකඟතාව](/paths/privacy-identity-consent/) — protection, crypto, auth, සහ විරුද්ධකාරී ඉංජිනේරුකරණය
 - [නැව්ගත වූ දැක්මන්](/paths/visions-that-shipped/) — stack එකේ සිට ජීවත් වන platforms වෙත forward links
 

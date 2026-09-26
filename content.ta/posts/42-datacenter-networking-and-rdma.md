@@ -8,7 +8,7 @@ series_index: 42
 tags: []
 summary: "ஒரு கட்டுப்படுத்தப்பட்ட fabric-க்குள், kernel நகல்கள் வரியாகும் — RDMA மற்றும் topology கம்பியை மீண்டும் வாங்கும்"
 image_prompt: "System diagram comparing a traditional TCP/IP data path against an RDMA kernel-bypass data path, clean datacenter architecture diagram style"
-video_prompt: "25-second animation: data copied multiple times through the kernel vs a direct RDMA transfer bypassing the CPU, clean comparative animation — ties to BridgeStack GPU memory fabric"
+video_prompt: "25-second animation: data copied multiple times through the kernel vs a direct RDMA transfer bypassing the CPU, clean comparative animation"
 labs: ["vm-terminal"]
 schematics: "Diagram: TCP/IP kernel-bypass comparison + RDMA verbs data path + fat-tree datacenter topology"
 ---

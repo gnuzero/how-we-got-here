@@ -10,4 +10,4 @@ weight: 5
 2. [கப்பலுக்குச் சென்ற பார்வைகள்](/posts/68-visions-that-shipped/) — Cisco, Gates, Jobs, GNU+Linus, Bezos, Musk விதைகளாக; உறவினர்களைத் தருவித்து நிறுத்துங்கள்
 3. [Platform தொகுப்பு](/posts/69-platform-synthesis/) — ஒரு உயர்-நிலை நிறுத்தம்: விநியோகிக்கப்பட்ட அமைப்புகள் + networking + AI infra + தனியுரிமை + software engineering
 
-[அனைத்துப் பாதைகளுக்கும்](/paths/) திரும்புங்கள்.
+[அனைத்துப் பாதைகளுக்கும்](/ta/paths/) திரும்புங்கள்.

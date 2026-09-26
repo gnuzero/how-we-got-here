@@ -8,7 +8,7 @@ series_index: 56
 tags: []
 summary: "ஒரு GPU வரையறுக்கப்பட்டது — GPU-களுக்கு இடையேயான interconnect அடுத்த சுவர் ஆகிறது"
 image_prompt: "System diagram of an 8-GPU NVLink-connected node with NVSwitch, clean datacenter GPU cluster diagram style"
-video_prompt: "25-second animation: data moving between 8 GPUs through an NVSwitch mesh vs a PCIe-only bottleneck, clean animation — direct tie-in to BridgeStack GPU memory fabric"
+video_prompt: "25-second animation: data moving between 8 GPUs through an NVSwitch mesh vs a PCIe-only bottleneck, clean technical animation"
 schematics: "Diagram: NVSwitch all-to-all topology + PCIe tree topology bottleneck comparison"
 ---
 

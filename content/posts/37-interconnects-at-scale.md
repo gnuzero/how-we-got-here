@@ -8,7 +8,7 @@ series_index: 39
 tags: []
 summary: "Once compute is many chips, the path between them is the next wall — dedicated links, fewer copies"
 image_prompt: "System diagram comparing PCIe-connected GPUs vs NVLink direct GPU-to-GPU mesh, clean datacenter architecture diagram style"
-video_prompt: "25-second animation: data moving GPU-to-CPU-to-GPU over PCIe vs directly over NVLink, clean technical animation — ties to BridgeStack fabric work"
+video_prompt: "25-second animation: data moving GPU-to-CPU-to-GPU over PCIe vs directly over NVLink, clean technical animation"
 schematics: "Diagram: NVLink mesh topology + CXL memory pooling + GPUDirect RDMA data path"
 ---
 

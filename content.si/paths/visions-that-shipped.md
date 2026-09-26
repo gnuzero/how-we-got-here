@@ -10,4 +10,4 @@ weight: 5
 2. [නැව්ගත වූ දැක්මන්](/posts/68-visions-that-shipped/) — Cisco, Gates, Jobs, GNU+Linus, Bezos, Musk බීජ ලෙස; ඥාතීන් ව්‍යුත්පන්න කරන්න; නවත්වන්න
 3. [Platform සංස්ලේෂණය](/posts/69-platform-synthesis/) — එක් ඉහළ-මට්ටමේ නැවතුමක්: බෙදාහැරුණු පද්ධති + networking + AI infra + privacy + software engineering
 
-[සියලු මාර්ග](/paths/) වෙත ආපසු.
+[සියලු මාර්ග](/si/paths/) වෙත ආපසු.

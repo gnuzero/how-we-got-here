@@ -1,4 +1,4 @@
-baseURL = "https://gnuzero.github.io/how-we-got-here/"
+baseURL = "https://how-we-got-here.org/"
 title = "From Relays to Attention: How We Got Here"
 theme = "hugo-book"
 enableGitInfo = true
