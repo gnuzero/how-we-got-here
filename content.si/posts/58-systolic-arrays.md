@@ -12,7 +12,7 @@ video_prompt: "25-second animation: data and weight values flowing through a sys
 schematics: "Diagram: systolic array data flow + TPU MXU block diagram"
 ---
 
-Post 55 ආවරණය කළේ tensor cores — තවමත් සාමාන්‍ය GPU එකක් ඇතුළත විශේෂිත matmul දෘඪාංගය. Systolic arrays විශේෂීකරණය තව දුරටත් තල්ලු කරයි: matrix multiplication සඳහා සරල processing elements ජාලයක් හරහා දත්ත ප්‍රවාහය කිරීම වටා සංවිධානය වූ ගෘහ නිර්මාණයක්. Google ගේ TPU (Tensor Processing Unit) වඩාත්ම කැපී පෙනෙන නැව්ගත උදාහරණයයි. අදහසම පැරණි ය: **H. T. Kung** සහ **Charles E. Leiserson** 1970 ගණන්වල අගභාගයේ VLSI සඳහා systolic arrays නම් කර විධිමත් කළහ.
+Post 55 ආවරණය කළේ tensor cores — තවමත් සාමාන්‍ය GPU එකක් ඇතුළත විශේෂිත matmul දෘඪාංගය. Systolic arrays විශේෂීකරණය තව දුරටත් තල්ලු කරයි: matrix multiplication සඳහා සරල processing elements ජාලයක් හරහා දත්ත ප්‍රවාහය කිරීම වටා සංවිධානය වූ ගෘහ නිර්මාණයක්. Google ගේ TPU (Tensor Processing Unit) වඩාත්ම කැපී පෙනෙන නිකුත් කළ උදාහරණයයි. අදහසම පැරණි ය: **H. T. Kung** සහ **Charles E. Leiserson** 1970 ගණන්වල අගභාගයේ VLSI සඳහා systolic arrays නම් කර විධිමත් කළහ.
 
 ## දත්ත ගලයි; ගණනය කිරීම මඟ දිගේ සිදු වේ
 
