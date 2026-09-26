@@ -21,7 +21,7 @@ ENIAC (Phase 1) වර්ග අඩි 1,800 ක් පමණ අල්ලාග
 
 ## Minicomputers: දෙපාර්තමේන්තුවකට එකක් මිලදී ගත හැක
 
-1970 ගණන්: DEC ගේ PDP-11 (1970) සහ ආශ්‍රිතයන් යන්ත්‍රය සම්පූර්ණ ආයතනයකට නොව දෙපාර්තමේන්තුවකට මිලදී ගෙන, මධ්‍යම කාර්යාංශයක් නොමැතිව ධාවනය කළ හැකි තරමට කුඩා කළේය. දිගු ආයු කාලයක් හරහා PDP-11s ආසන්න වශයෙන් 600,000 ක් අලෙවි විය. ISA එකේ orthogonal addressing සහ පිරිසිදු කේතනය පසුකාලීන නිර්මාණයට හැඩගැස්වූ අතර, C (Post 27) හි පුරුදු ඇතුළුව — එය Unix (Post 22) සමඟ බොහෝ දුරට PDP-11 දෘඪාංගය මත වැඩුණේය.
+1970 ගණන්: DEC ගේ PDP-11 (1970) සහ ආශ්‍රිතයන් යන්ත්‍රය සම්පූර්ණ ආයතනයකට නොව දෙපාර්තමේන්තුවකට මිලදී ගෙන, මධ්‍යම කාර්යාංශයක් නොමැතිව ධාවනය කළ හැකි තරමට කුඩා කළේය. DEC ගේම [timeline එකට](http://archive.computerhistory.org/resources/text/DEC/dec.digital_%28DEC%29_timeline_1957-1997.102630354/timelinetext.htm) අනුව 1990 මැයි වන විට PDP-11 **600,000 කට වඩා** ස්ථාපනය කර තිබුණි. ISA එකේ orthogonal addressing සහ පිරිසිදු කේතනය පසුකාලීන නිර්මාණයට හැඩගැස්වූ අතර, C (Post 27) හි පුරුදු ඇතුළුව — එය Unix (Post 22) සමඟ බොහෝ දුරට PDP-11 දෘඪාංගය මත වැඩුණේය.
 
 ## Microprocessors: එක් Die එකක CPU එක
 
@@ -138,9 +138,9 @@ Assemble කළ විට මතකය: `1C 2D 3E 79 4F 51 E0 1F 6A 2E E0 F0 07 
 
 **මෙම කොටසේ මූලාශ්‍ර:**
 - IBM, "The IBM System/360" (IBM Heritage, නිල පිටුව): https://www.ibm.com/history/system-360 (1964 අප්‍රේල් 7, ආකෘති 6, පනස් ගුණ පරාසය, පර්යන්ත 54, අක්ෂර 8,000–524,000, නිෂ්පාදන පෙළ පහ, ඩොලර් බිලියන 5).
-- Digital Equipment Corporation, "DIGITAL Computing Timeline — Text Version" (DEC Information Research Services, යාවත්කාලීන කළේ 1998 පෙබරවාරි 2; Computer History Museum ලේඛනාගාරයේ පිටපත): http://archive.computerhistory.org/resources/text/DEC/dec.digital_%28DEC%29_timeline_1957-1997.102630354/timelinetext.htm (1965 අප්‍රේල් PDP-8: bit 12, 1.5 µs, 4K, 780 W, $18,000; 1970 අප්‍රේල් PDP-11/20).
+- Digital Equipment Corporation, "DIGITAL Computing Timeline — Text Version" (DEC Information Research Services, යාවත්කාලීන කළේ 1998 පෙබරවාරි 2; Computer History Museum ලේඛනාගාරයේ පිටපත): http://archive.computerhistory.org/resources/text/DEC/dec.digital_%28DEC%29_timeline_1957-1997.102630354/timelinetext.htm (1965 අප්‍රේල් PDP-8: bit 12, 1.5 µs, 4K, 780 W, $18,000; 1970 අප්‍රේල් PDP-11/20; 1990 මැයි: PDP-11 600,000 කට වඩා ස්ථාපනය කර තිබුණි).
 - Intel, "Announcing a New Era of Integrated Electronics: The Intel 4004" (Intel නිල ඉතිහාස පිටුව): https://www.intel.com/content/www/us/en/history/virtual-vault/articles/the-intel-4004.html (Busicom, 1971).
-- Intel 4004 දත්ත පත්‍රිකාව, "Single Chip 4-Bit P-Channel Microprocessor" (Intel දත්ත පොතක කොටසක්: පළමු පිටුවේ අංකය නොපෙනේ, ඉතිරි පිටු 8-15 සිට 8-23; clock කාල සහ DAA පිටු 8-17–8-18 පමණ. Internet Archive පිටපත, Intel නිල පිටපතක් නොවේ): https://archive.org/details/intel-4004 (4-bit, උපදෙස් 46, 10.8 µs, clock කාල 8/16, DAA = FB).
+- Intel 4004 දත්ත පත්‍රිකාව, "Single Chip 4-Bit P-Channel Microprocessor" (Intel දත්ත පොතක කොටසක්, පිටු 8-15 සිට 8-23: උපදෙස් 46 සහ 10.8 µs p.8-15, clock කාල p.8-17, DAA p.8-18. chipdb.org හි scan පිටපත, Intel නිල පිටපතක් නොවේ): https://datasheets.chipdb.org/Intel/MCS-4/datashts/intel-4004.pdf (4-bit, උපදෙස් 46, 10.8 µs, clock කාල 8/16, DAA = FB).
 - Computer History Museum, "DEC's Blockbuster: The PDP-8" (Revolution ප්‍රදර්ශනය): https://www.computerhistory.org/revolution/minicomputers/11/331 (1970 PDP-8/e, $6,500).
 - අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුව, 10 ශ්‍රේණිය තොරතුරු හා සන්නිවේදන තාක්ෂණය (සිංහල මාධ්‍ය) PDF: http://www.edupub.gov.lk/Administrator/Sinhala/10/ict%20g10%20S/ict%20g10%20S.pdf (§2.2.1, මුද්‍රිත පිටු 34–36).
 

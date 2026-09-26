@@ -33,7 +33,7 @@ Managed භාෂා (Java, C#, සහ විවිධ මට්ටම්වල�
 
 ## එය ජීවමානව බලන්න
 
-පහත VM terminal එක compile කිරීමට සැබෑ ස්ථානයකි: කුඩා C වැඩසටහනක් මත `gcc` උත්සාහ කර `-S` සමඟ assembly පරීක්ෂා කරන්න — මෙම පෝස්ට් එකේ abstractions නිශ්චිත යන්ත්‍ර උපදෙස් බවට පත් වේ.
+පහත VM terminal එක සැබෑ Linux පද්ධතියකි, නමුත් අවම BusyBox පද්ධතියකි: එහි C compiler එකක් නැත (`gcc` ට ලැබෙන්නේ `gcc: not found`). එහෙත් එයට මෙම පෝස්ට් එකේ පැති දෙකම පෙන්විය හැක. `hexdump -C /bin/busybox | head -2` ධාවනය කරන්න: ගොනුව `7f 45 4c 46` න් ආරම්භ වේ — `0x7f` සහ "ELF", compiler එකක් සහ linker එකක් නිපදවන ක්‍රියාත්මක කළ හැකි ආකෘතියයි. එය ඔබ VM එක ආරම්භ කිරීමට බොහෝ කලකට පෙර වෙනත් යන්ත්‍රයක කලින්ම (ahead of time) ගොඩනැගූවකි. ඉන්පසු එම වැඩයම interpreter එකකට දෙන්න: `echo 'BEGIN{s=0; for(i=1;i<=1000000;i++) s+=i; print s}' > /tmp/sum.awk`, ඉන්පසු `time awk -f /tmp/sum.awk`. එය තත්පර කිහිපයකට පසු `500000500000` මුද්‍රණය කරයි (අපේ ධාවනවල තත්පර 6–7 පමණ; ඔබේ බ්‍රව්සරය අනුව වෙනස් වේ). awk සෑම පුනරාවර්තනයක්ම ධාවන වේලාවේදී ක්‍රියාත්මක කරන නිසාය — optimizing compiler එකකට වැඩසටහන ධාවනය වීමටත් පෙර නියතයකට අඩු කළ හැකි ලූපයකි.
 
 {{< lab type="vm-terminal" >}}
 
@@ -113,7 +113,7 @@ JIT එකක් "hot" කේතය එනතුරු බලා සිටින
 
 ### 4. දැන්ම උත්සාහ කරන්න: කුඩා bytecode interpreter එකක් (මෙම පිටුවේ vm-terminal lab එක)
 
-සටහන: ඉහත "එය ජීවමානව බලන්න" කොටසේ `gcc` යෝජනා කළත්, මෙම lab එකේ VM image එකේ (BusyBox v1.28.4) **gcc හෝ වෙනත් C compiler එකක් නැත**. අපි `command -v gcc cc tcc` පරීක්ෂා කළෙමු. Python ද නැත. එහෙත් `awk` ඇත. එබැවින් §2 හි stack bytecode එක ධාවනය කරන කුඩා interpreter එකක් awk වලින් ලියමු. පහත පේළි VM shell එකට ටයිප් කරන්න (හෝ පිටපත් කරන්න):
+සටහන: ඉහත "එය ජීවමානව බලන්න" කොටසේ කී පරිදි, මෙම lab එකේ VM image එකේ (BusyBox v1.28.4) **gcc හෝ වෙනත් C compiler එකක් නැත**. අපි `command -v gcc cc tcc` පරීක්ෂා කළෙමු. Python ද නැත. එහෙත් `awk` ඇත. එබැවින් §2 හි stack bytecode එක ධාවනය කරන කුඩා interpreter එකක් awk වලින් ලියමු. පහත පේළි VM shell එකට ටයිප් කරන්න (හෝ පිටපත් කරන්න):
 
 ```sh
 awk 'BEGIN{p="PUSH 2 PUSH 3 MUL LOAD x ADD STORE y"; x=4; n=split(p,c," "); sp=0; d=0; i=1
