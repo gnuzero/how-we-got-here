@@ -141,3 +141,21 @@
 
 - 41-tcp-ip… — thin-add: “එක් ජාලයක Protocols වලින් Stack එකකට” (NCP → 1983 flag day → apps); summary synced; draft:false; RFC 1034/1035 links kept
 - 08-from-gates… — Try-this-now half-adder carry hook + breadboard height=700 (mirrored EN); draft:false
+
+## si-gaps-2: deep Sinhala explainers (2026-09-26, Asia/Bangkok)
+
+Branch `si-gaps-2` from `origin/main` `85f3ae0`; not pushed. One "ගැඹුරින්: …" section per page, each with a Sinhala-sources honesty note, worked examples, pencil exercises with answers, and a sources list. Existing text, labs and Try-this-now hooks kept; no new lab embeds; draft:false; UTF-8 clean.
+
+- 02-relays-and-electromechanical-logic.md — relay contacts → AND/OR/NOT; Shannon 1938 hindrance algebra; relay half adder (before the asset checklist; the door-out is mid-page)
+- 50-moore-s-law.md — Moore 1965 minimum-cost curve and doubling; Moore 1975 revision; 4004 → GA100 doubling check
+- 19-the-x86-vs-risc-split.md — CPU time = IC × CPI × T; Patterson & Ditzel 1980 evidence
+- 22-time-sharing-and-the-unix-lineage.md — 1974 UNIX paper statistics; round-robin arithmetic; i-nodes, links, permissions, pipes; vm-terminal exercises
+- 31-buses-101.md — address/data/control buses; 2ⁿ addressing; 8086 bus cycle, wait states, bandwidth; HOLD/HLDA; tri-state
+- 34-memory-buses.md — DDR4 latency in ns; channel bandwidth; row hit/idle/conflict; banks; refresh
+- 47-what-7nm-actually-means.md — node names vs pitches; density metric; Intel 2021 renaming
+- 48-photolithography.md — Rayleigh CD = k1·λ/NA; DUV/EUV/High-NA k1; multi-patterning
+- 53-cuda-cores-warps-and-occupancy.md — warps, divergence, occupancy on A100
+- 54-gpu-memory-hierarchy.md — HBM bandwidth; ridge point; coalescing; shared-memory banks
+- 55-tensor-cores.md — MMA shapes; TFLOPS arithmetic; FP32 accumulation
+- ch31 school-material check: the NIE Gr12 ICT TG (PDF p. 86, printed p. 73, "4. පථය") defines only the data bus and control bus; the Gr13 TG, resource book and EPD G10/G11 textbooks have syllabus, glossary or topology mentions only; e-thaksalawa links to a si.wiki bullet list. So 31 was re-rated none → thin, and the section recaps the NIE terms and goes deeper on the rest. 34 and 48 were also re-rated to thin (consumer-level videos only). Details are in the desk's gaps.md, which lives outside the repo.
+- Flags: sections on 31, 34, 47, 48, 53, 54, 55 sit before the asset checklist because those pages have no door-out. Illustrative and model numbers are labelled as such. Some sources were read via mirrors (Bohr editorial, Micron datasheets, the Intel 8086 datasheet). The pre-existing lab shortcode inside the asset-checklist HTML comments was left alone.
