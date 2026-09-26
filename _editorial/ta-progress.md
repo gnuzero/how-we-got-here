@@ -243,3 +243,29 @@
 ## Remaining
 
 (none — Phase 1 TA 01–04 unblocked; standby)
+
+## Tamil-gap pass 4 (2026-09-26 Asia/Bangkok — Arun, branch `ta-gaps-4`)
+
+Cleared by Lucas. Same standard as pass 3 (branch `ta-gaps-3`; passes 1–2 on `ta-gaps-1` / PR #14 and `ta-gaps-2`; none touched here). Branch `ta-gaps-4` from `origin/main` 85f3ae0 (unchanged since pass 3; no pass-4 page was already expanded on main, so nothing skipped); worktree `/workspace/freebook/ta-gaps-4`. All edits are insertions into existing `content.ta` pages (frontmatter incl. `draft: false`, spine, lab embeds, shortcodes, existing try-this hooks and மேலும் படிக்க entries unchanged; `git diff --numstat` shows 0 deletions). Each page gained a Tamil coverage-gap note (YouTube-only evidence labelled "YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை"), a முதலில் சொற்கள் term list, worked examples with labelled example values (எடுத்துக்காட்டு மதிப்பு), and a சொற்கள் (தமிழ் | English) glossary.
+
+- `4dcdf1f` — lab chapters 19, 23, 28:
+  - `19-the-x86-vs-risc-split.md` — real instruction mix from `objdump -d /bin/ls` (x86-64, 22,874 instructions; mov 25.9%, data movement ≈37%, jumps/calls ≈20%; length distribution, mean ≈4.08 bytes), illustrative µop split of `add [rbx], eax`, REX encodings checked with capstone, compatibility-cost example; mini-CPU Try-this (macro expansion → output 13, 10 steps, 7 data-movement) run in the simulator.
+  - `23-the-gnu-movement-and-linux.md` — GPL-2 obligations table from the GPL v2 text (s.0 running not restricted, s.2(b) whole work under GPL, s.3(a)/(b) source or ≥3-year written offer at cost, mere aggregation), written-offer and propagation arithmetic, timeline with GPL-2 (June 1991) / GPL-3 (29 June 2007) dates from the licence texts and Linux `COPYING` ("GPL-2.0 WITH Linux-syscall-note"); second vm-terminal Try-this (kernel Linux 4.16.13 built with GCC 7.3.0, userland BusyBox v1.28.4 GPLv2, 73 /bin entries all busybox, no bash) run in the VM; existing hook kept.
+  - `28-compilers-jit-and-modern-language-runtimes.md` — `s += i;` through the pipeline, real GCC 14.2 output (-O0 13 instructions / 5 per iteration vs -O2 `movabs rax, 500000500000`), JIT break-even example (≈210,526 iterations), v86 JIT fact from its README; Try-this rewritten around the fact that the VM has **no gcc** (`gcc: not found`): ELF header of /bin/busybox (7f 45 4c 46, 32-bit, i386) and interpreted awk sum (500000500000, ≈6 s) run in the VM.
+- `531ea73` — 30, 38, 39:
+  - `30-real-time-systems-in-practice.md` — 1 kHz loop budget (WCET 700 µs, 30% margin, +400 µs → miss), cache vs no-cache WCET table, watchdog timeout arithmetic; Try-this: mini-CPU countdown (steps = 4n+3; 15/23/39 for n = 3/5/9, simulator-verified) and VM jitter (five awk runs 0.60–0.73 s, SCHED_OTHER).
+  - `38-serial-links-and-the-first-machine-to-machine-connections.md` — 8N1 frame of `A` (LSB first), 9600-baud bit/frame/byte arithmetic, parity, modem 1 KB transfer table, n(n−1)/2 links table; Try-this: 16550A at 0x3f8, base_baud 115200, `stty` 9600 8N1 (divisor 12), tx counter +10, run in the VM.
+  - `39-arpanet-and-packet-switching.md` — circuit vs packet multiplexing (10 vs 35 users, binomial P ≈ 0.0004), packetisation overhead, store-and-forward pipelining (1.92 s vs 4.8 s); Try-this: loopback ping packet/byte counters (6 packets, 2,560 bytes = 6×84 + 2×1,028), empty route table, run in the VM.
+- `8f3a53f` — 42, 43:
+  - `42-datacenter-networking-and-rdma.md` — copy-cost example (20% of a core), fat-tree k³/4 derivation and table, 1.25:1 oversubscription; Try-this: dd 64 MB at 1M/4k/512/64-byte blocks (0.05→5.45 s, ≈2.6 µs per syscall), run in the VM.
+  - `43-usenet-archie-gopher-and-the-pre-web-internet.md` — NNTP IHAVE/335/435/235 flooding table (RFC 977), Archie index arithmetic, Gopher menu-line fields (RFC 1436), IRC 512/510/9/200 limits and PRIVMSG arithmetic (RFC 1459); Try-this: a BusyBox Gopher server via inetd + telnet on port 70 (menu and `/about` selector), run in the VM.
+- `0bdaa03` — 31–34 (no lab; paper exercises with answers):
+  - `31-buses-101.md` — address-width table (2ⁿ, 32 → 4 GB), data-width bandwidth, fixed-priority vs round-robin arbitration, contention table.
+  - `32-from-isa-bus-to-pci-to-pcie.md` — skew vs period table, PCIe 1.x/2.x/3.0 rates and encodings from the PCI-SIG FAQ (2.5/5/8 GT/s, ~250/500/1000 MB/s per lane per direction), lane/wire arithmetic.
+  - `33-pcie-deep-dive.md` — Gen 2 TLP field sizes from Xilinx WP350 v1.2 (24-byte overhead with 64-bit header, efficiency by payload), replay/ACK example, Gen 3 vs Gen 5 x16 from the English chapter.
+  - `34-memory-buses.md` — SDR vs DDR arithmetic, CAS-latency-to-ns example (bandwidth ×2, latency −9%), concurrency-hides-latency table; all DDR numbers labelled example values.
+- Real figures only from the English chapters or sources checked this pass (GPL v2/v3 texts; Linux `COPYING`; v86 README; RFC 977/1436/1459; PCI-SIG FAQ; Xilinx WP350; objdump/capstone/GCC on the box; lab sources; VM and simulator runs); everything else labelled as example values. No Wikipedia citations; no மேலும் படிக்க entries added.
+- Flags for fact-check: page 28 English/Tamil "See It Live" tells readers to run `gcc` in the VM, but the image has no gcc; page 38 Tamil body renders "tens of kilobits" as "பல்லாயிரக்கணக்கான kilobits" (tens of thousands). Not edited (insertions only).
+- Build: `hugo --quiet --themesDir /workspace/freebook/from-relays-to-attention/themes -d /tmp/ta-gaps-4-public` → exit 0; table counts match on every page (28 renders one extra `<table>` from the highlighted C code block). `.hugo_build.lock` removed.
+- Not touched: `ta-gaps-1`, `ta-gaps-2`, `ta-gaps-3` or their worktrees, the shared checkout, content/, content.si/, content.th/. No push, no PR; upstream unset on `ta-gaps-4`.
+- Left (thin rows, by centrality): 05 semiconductors, 06 MOSFET, 27 languages, 44–48, 63–64, 01–03.
