@@ -291,7 +291,7 @@ Weights 12–23 are unique, equal `series_index`, and follow batch 1's 1–11. E
 ### 21. 67-zh-privacy-law (weight 21)
 
 - Files: `content.zh-hans/posts/67-zh-privacy-law.md`, `content.zh-hant/posts/67-zh-privacy-law.md`
-- Title: 从电脑处理到自动化决策：两岸三地的个人信息保护法 / 從電腦處理到自動化決策：兩岸三地的個人資料保護法制 (zh-Hant title changed in the PR #35 follow-up)
+- Title: 从电脑处理到自动化决策：两岸三地的个人信息保护法制 / 從電腦處理到自動化決策：兩岸三地的個人資料保護法制 (both titles end in 法制 after the PR #35 follow-up, so the zh-Hans title is not read as the PIPL short name)
 - Feeds English: 67 Privacy, Consent, Identity, Cyber
 - Sources: F28-01…F28-04.
 - Main primary sources:
