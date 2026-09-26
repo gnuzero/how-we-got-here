@@ -12,7 +12,7 @@ video_prompt: "20-second animation: a shared wire gaining encryption, then authe
 schematics: "Diagram: isolation (OS) → crypto on the wire → identity/auth → consent scopes → adversarial ops as one engineering arc"
 ---
 
-போர்க்கால crypto (பதிவு 66) அர்ப்பணிக்கப்பட்ட machine room கொண்ட அரசு எதிரிக்கு எதிரான இரகசியம். திறந்த இணையம் வேறு பொறியியல் பிரச்சினையை எழுப்புகிறது: *பல* தரப்பினர் கம்பி, hosts மற்றும் platforms-ஐப் பகிர்கின்றனர் — அவர்களில் சிலர் விரோதமானவர்கள், ஆர்வலர்கள், அல்லது பயனரை விடப் பெரியவர்கள். தனியுரிமை, ஒப்புதல், அடையாளம் மற்றும் cybersecurity அந்தப் பிரச்சினை code மற்றும் நெறிமுறைகளில் பரிணமித்ததற்கான பெயர்கள். இது கொள்கைப் பிரசுரம் அல்ல.
+போர்க்கால crypto (பதிவு 66) அர்ப்பணிக்கப்பட்ட machine room கொண்ட அரசு எதிரிக்கு எதிரான இரகசியம். திறந்த இணையம் வேறு பொறியியல் பிரச்சினையை எழுப்புகிறது: *பல* தரப்பினர் கம்பி, hosts மற்றும் platforms-ஐப் பகிர்கின்றனர் — அவர்களில் சிலர் விரோதமானவர்கள், துருவிப் பார்ப்பவர்கள், அல்லது பயனரை விடப் பெரியவர்கள். தனியுரிமை, ஒப்புதல், அடையாளம் மற்றும் cybersecurity அந்தப் பிரச்சினை code மற்றும் நெறிமுறைகளில் பரிணமித்ததற்கான பெயர்கள். இது கொள்கைப் பிரசுரம் அல்ல.
 
 > **தமிழ் இடைவெளிக் குறிப்பு:** gaps.md மதிப்பீடு: public-key crypto — தமிழ் எழுத்து இல்லை, காணொளி போதுமானது; தகவல் தனியுரிமை — எழுத்து இல்லை, காணொளி குறைவு; digital identity / authentication — எழுத்து குறைவு, காணொளி குறைவு (காணொளித் தேடல்: YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை). அதனால் இந்தச் சேர்க்கை public-key கணிதத்தைச் சிறிய எண்களில், கையால் சரிபார்க்கக்கூடிய படிகளாகக் காட்டுகிறது. சரிபார்த்த மூலங்கள் (அனைத்தும் இந்தப் பதிவே இணைக்கும் முதன்மை ஆவணங்கள்): Saltzer & Schroeder (1975, MIT பக்கம்), Diffie & Hellman, "New Directions in Cryptography" (1976, Stanford PDF), Rivest, Shamir & Adleman, "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems" (MIT PDF, அதன் "A Small Example" பகுதி), RFC 6749 (OAuth 2.0). எல்லாக் கணக்குகளும் Python-இல் சரிபார்க்கப்பட்டன; கடவுச்சொல் ஊக வேகம் போன்றவை "எடுத்துக்காட்டு மதிப்புகள்". இந்தச் சிறிய எண்கள் கற்பிக்க மட்டுமே — உண்மையான பாதுகாப்புக்கு அல்ல. இந்தப் பதிவுக்கு lab இல்லை; காகிதப் பயிற்சிகள் கீழே.
 
@@ -28,7 +28,7 @@ schematics: "Diagram: isolation (OS) → crypto on the wire → identity/auth �
 
 ## Isolation முதலில் வந்தது
 
-"தனியுரிமைப் பொருள்"க்கு முன், **பாதுகாப்பு** இருந்தது. Jerome Saltzer மற்றும் Michael Schroeder-இன் 1975 கணக்கெடுப்பு, [*The Protection of Information in Computer Systems*](https://web.mit.edu/Saltzer/www/publications/protection/), இன்றும் பொறியியல் சட்டமாகப் படிக்கும் வடிவமைப்புக் கொள்கைகளை வரைந்தது: least privilege, complete mediation, fail-safe defaults, economy of mechanism. Virtual memory (பதிவு 24) மற்றும் containers (பதிவு 25) அதே பந்தயத்தின் பிந்தைய நிகழ்வுகள் — வன்பொருளும் kernel-உம் அமல்படுத்தும் எல்லையை வரையுங்கள், அதனால் ஒரு நிரல் மற்றொன்றை எளிதாகப் படிக்க முடியாது.
+"தனியுரிமைப் பொருள்"க்கு முன், **பாதுகாப்பு** இருந்தது. Jerome Saltzer மற்றும் Michael Schroeder-இன் 1975 மதிப்பாய்வுக் கட்டுரை, [*The Protection of Information in Computer Systems*](https://web.mit.edu/Saltzer/www/publications/protection/), இன்றும் பொறியியல் சட்டமாகப் படிக்கும் வடிவமைப்புக் கொள்கைகளை வரைந்தது: least privilege, complete mediation, fail-safe defaults, economy of mechanism. Virtual memory (பதிவு 24) மற்றும் containers (பதிவு 25) அதே பந்தயத்தின் பிந்தைய நிகழ்வுகள் — வன்பொருளும் kernel-உம் அமல்படுத்தும் எல்லையை வரையுங்கள், அதனால் ஒரு நிரல் மற்றொன்றை எளிதாகப் படிக்க முடியாது.
 
 Saltzer & Schroeder தரும் எட்டு வடிவமைப்புக் கொள்கைகள் (அவர்களின் சொற்களின் சுருக்கம்):
 
@@ -49,7 +49,7 @@ Door out: Saltzer & Schroeder (1975).
 
 ## பொது வலையமைப்பில் Crypto
 
-பகிரப்பட்ட வலையமைப்புகள் பழைய courier-key மாதிரியைச் சரிவிழ்த்தன. Whitfield Diffie மற்றும் Martin Hellman-இன் 1976 கட்டுரை [*New Directions in Cryptography*](https://ee.stanford.edu/~hellman/publications/24.pdf) public-key உடன்படிக்கையை ஆராய்ச்சிப் பொருளாக்கியது: eavesdroppers பரிமாற்றத்தைக் கேட்கும்போதும் இரு தரப்பினர் பகிரப்பட்ட இரகசியத்தை நிறுவ முடியும். Ronald Rivest, Adi Shamir மற்றும் Leonard Adleman RSA-வை (1977/78) தொடர்ந்தனர் — செய்தியுடன் பயணிக்கக்கூடிய பொது encryption மற்றும் signatures. இன்றைய வலையில் TLS அந்த வரியின் deployed வழித்தோன்றல் (நெறிமுறை திருத்தங்களின் நீண்ட தடத்துடன்), தனி ஒழுக்க வகை அல்ல.
+பகிரப்பட்ட வலையமைப்புகள் பழைய courier-key மாதிரியை வீழ்த்தின. Whitfield Diffie மற்றும் Martin Hellman-இன் 1976 கட்டுரை [*New Directions in Cryptography*](https://ee.stanford.edu/~hellman/publications/24.pdf) public-key உடன்படிக்கையை ஆராய்ச்சிப் பொருளாக்கியது: eavesdroppers பரிமாற்றத்தைக் கேட்கும்போதும் இரு தரப்பினர் பகிரப்பட்ட இரகசியத்தை நிறுவ முடியும். Ronald Rivest, Adi Shamir மற்றும் Leonard Adleman RSA-வை (1977/78) தொடர்ந்தனர் — செய்தியுடன் பயணிக்கக்கூடிய பொது encryption மற்றும் signatures. இன்றைய வலையில் TLS அந்த வரியின் deployed வழித்தோன்றல் (நெறிமுறை திருத்தங்களின் நீண்ட தடத்துடன்), தனி ஒழுக்க வகை அல்ல.
 
 ## Diffie–Hellman — சிறிய எண்களில்
 
@@ -126,7 +126,7 @@ Door out: Diffie–Hellman (1976); RSA கட்டுரை; நவீன க�
 
 ## அதிகாரத்திற்கான இடைமுகமாக ஒப்புதல்
 
-ஒரு அமைப்பு எல்லையைக் கடந்து செயல்பட அனுமதி தேவைப்படும் இடமெல்லாம் stack-இல் ஒப்புதல் தோன்றும்: browsers-இல் cookie jars மற்றும் same-origin policy (web platform-இன் isolation கதை), சாதனங்களில் அனுமதி prompts, மற்றும் platforms-இல் scoped API tokens. பொறியியல் கேள்வி எப்போதும் ஒன்றுதான் — *எந்தத் திறன் வழங்கப்பட்டது, யாருக்கு, எவ்வளவு காலம், மற்றும் அதை திரும்பப் பெற முடியுமா?* — UI நகல் "Accept" என்றாலும் header `Authorization` என்றாலும். பதிவு 64-இன் ஆளுமை அடுக்கு பெயர்களும் எண்களும் முடிவெடுக்கிறது; இந்த அடுக்கு *உங்கள் சார்பாக அவற்றை யார் பயன்படுத்தலாம்* என முடிவெடுக்கிறது.
+ஒரு அமைப்பு எல்லையைக் கடந்து செயல்பட அனுமதி தேவைப்படும் இடமெல்லாம் stack-இல் ஒப்புதல் தோன்றும்: browsers-இல் cookie jars மற்றும் same-origin policy (web platform-இன் isolation கதை), சாதனங்களில் அனுமதி prompts, மற்றும் platforms-இல் scoped API tokens. பொறியியல் கேள்வி எப்போதும் ஒன்றுதான் — *எந்தத் திறன் வழங்கப்பட்டது, யாருக்கு, எவ்வளவு காலம், மற்றும் அதை திரும்பப் பெற முடியுமா?* — UI உரை "Accept" என்றாலும் header `Authorization` என்றாலும். பதிவு 64-இன் ஆளுமை அடுக்கு பெயர்களும் எண்களும் முடிவெடுக்கிறது; இந்த அடுக்கு *உங்கள் சார்பாக அவற்றை யார் பயன்படுத்தலாம்* என முடிவெடுக்கிறது.
 
 ## Cybersecurity: விரோத அமைப்புகள் பொறியியல்
 
