@@ -77,7 +77,7 @@ PFC เองก็มีราคา: เฟรมหยุดแพร่ย�
 
 **ลองตอนนี้.** เครื่องจำลองในแล็บด้านล่างไม่มีการ์ดเครือข่ายหรือการ์ด RDMA แต่ใช้ดูฝั่ง "เคอร์เนลเป็นเจ้าของเครือข่าย" ได้ ผู้เขียนลองในอิมเมจนี้แล้ว:
 
-- `grep Tcp: /proc/net/snmp` — ตัวนับของสแตก TCP ในเคอร์เนล เช่น `InSegs`, `OutSegs` และ `RetransSegs` (จำนวน segment ที่ส่งซ้ำ) ในเครื่องจำลองนี้ทุกค่าเป็น 0 เพราะไม่มีเครือข่าย แต่บนเซิร์ฟเวอร์จริง ตัวนับเหล่านี้คือร่องรอยว่าทุก segment ผ่านมือเคอร์เนล
+- `grep Tcp: /proc/net/snmp` — ตัวนับของสแตก TCP ในเคอร์เนล เช่น `InSegs`, `OutSegs` และ `RetransSegs` (จำนวน segment ที่ส่งซ้ำ) ในเครื่องจำลองนี้ตัวนับทราฟฟิกทุกตัวเป็น 0 เพราะไม่มีเครือข่าย (สี่ค่าแรกของแถว เช่น RtoMin = 200 เป็นค่าตั้ง ไม่ใช่ตัวนับ) แต่บนเซิร์ฟเวอร์จริง ตัวนับเหล่านี้คือร่องรอยว่าทุก segment ผ่านมือเคอร์เนล
 - `cat /proc/interrupts` — รายการสัญญาณขัดจังหวะที่ CPU รับ ในเครื่องนี้มีแต่ตัวจับเวลา แป้นพิมพ์ พอร์ตอนุกรม และดิสก์ บนเครื่องที่มีการ์ดเครือข่ายจะมีแถวของการ์ดด้วย นั่นคือค่าใช้จ่ายที่ RDMA หลีกเลี่ยงด้วยการให้โปรแกรมหยั่งสัญญาณ CQ เอง
 
 {{< lab type="vm-terminal" >}}
@@ -94,5 +94,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

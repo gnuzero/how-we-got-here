@@ -76,7 +76,7 @@ High Bandwidth Memory ซ้อนได DRAM ในแนวตั้ง เช
 - Tensor Core FP16: 312 × 10¹² ÷ 1,555 × 10⁹ ≈ **201 FLOP ต่อไบต์**
 - FP32 แบบธรรมดา (ไม่ใช้ Tensor Core): 19.5 × 10¹² ÷ 1,555 × 10⁹ ≈ **12.5 FLOP ต่อไบต์**
 
-อ่านว่า: ถ้าจะใช้ Tensor Core ให้เต็ม ทุกไบต์ที่ดึงจาก HBM ต้องถูกใช้ในการคำนวณราว 200 ครั้ง เทียบกับตัวอย่างในบทความของ Williams และคณะ ที่เครื่อง Opteron X2 มีค่ายอด 17.6 GFLOP/s กับแบนด์วิดท์ที่วัดได้ 15 GB/s จุดสันอยู่ราว 17.6/15 ≈ 1.2 (เป็นค่าจุดลอยตัวความแม่นยำสองเท่า จึงเทียบกับ FP16 ตรง ๆ ไม่ได้ แต่แม้เทียบกับ FP32 ธรรมดาของ A100 ที่ 12.5 จุดสันก็ยังเลื่อนไปทางขวาราว 10 เท่าในเวลาสิบกว่าปี) — นี่คือกำแพงหน่วยความจำของบทที่ 35 ในรูปตัวเลขเดียว
+อ่านว่า: ถ้าจะใช้ Tensor Core ให้เต็ม ทุกไบต์ที่ดึงจาก HBM ต้องถูกใช้ในการคำนวณราว 200 ครั้ง เทียบกับตัวอย่างในบทความของ Williams และคณะ ที่เครื่อง Opteron X2 มีค่ายอด 17.6 GFLOP/s กับแบนด์วิดท์ที่วัดได้ 15 GB/s จุดสันคำนวณได้ราว 17.6/15 ≈ 1.2 (ตัวบทความเองระบุไว้ว่า 1.0; เป็นค่าจุดลอยตัวความแม่นยำสองเท่า จึงเทียบกับ FP16 ตรง ๆ ไม่ได้ แต่แม้เทียบกับ FP32 ธรรมดาของ A100 ที่ 12.5 จุดสันก็ยังเลื่อนไปทางขวาราว 10 เท่าขึ้นไปในเวลาสิบกว่าปี) — นี่คือกำแพงหน่วยความจำของบทที่ 35 ในรูปตัวเลขเดียว
 
 ### ตัวอย่างที่ 1: บวกเวกเตอร์
 
@@ -127,7 +127,7 @@ roofline เป็น *ขอบบน* ไม่ใช่การทำนา�
 - จันทนา จันทราพรชัย, *สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ*
 - ผศ.ดร. ปัทมา ลงกานี, *สถาปัตยกรรมคอมพิวเตอร์*
 - รศ.ดร.เกริก ภิรมย์โสภา, *สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์*
-- Samuel Williams, Andrew Waterman, David Patterson, "Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures" (ฉบับร่างที่แก้ไขปี 2008 ก่อนตีพิมพ์ใน *Communications of the ACM*) — สมการ min(P, B × I), นิยาม operational intensity, จุดสัน และตัวอย่าง Opteron: https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf
+- Samuel Williams, Andrew Waterman, David Patterson, "Roofline: An Insightful Visual Performance Model for Multicore Architectures", *Communications of the ACM* 52(4): 65–76, เมษายน 2009, doi:10.1145/1498765.1498785 (https://doi.org/10.1145/1498765.1498785) — สมการ min(P, B × I), นิยาม operational intensity, จุดสัน และตัวอย่าง Opteron; คำพูดที่ยกมาในบทนี้ตรวจกับฉบับร่างที่เปิดอ่านได้ฟรี ชื่อ "Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures" (แก้ไขเดือนสิงหาคมและตุลาคม 2008; ถ้อยคำอาจต่างจากฉบับตีพิมพ์เล็กน้อย): https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf
 - NVIDIA, *NVIDIA A100 Tensor Core GPU Architecture* (whitepaper, 2020) — HBM2 5 กอง × 8 ได, ตัวควบคุม 512 บิต 10 ตัว, 1,215 MHz DDR, 1,555 GB/s, L2 40 MB, L1/shared 192 KB ต่อ SM, แฟ้มเรจิสเตอร์ 256 KB ต่อ SM, 108 SM, ค่ายอด FP16/FP32: https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf
 
 <!--

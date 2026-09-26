@@ -114,7 +114,7 @@ ARPANET เดิมพูดโปรโตคอล host-to-host ของต�
 - `cat /proc/sys/net/ipv4/tcp_congestion_control` — ได้ `cubic` คืออัลกอริทึมที่ใช้อยู่
 - `cat /proc/sys/net/ipv4/tcp_available_congestion_control` — ได้ `reno cubic` คือสองอัลกอริทึมที่เคอร์เนลนี้มี
 - `sysctl -w net.ipv4.tcp_congestion_control=reno` — เปลี่ยนเป็น AIMD แบบเดิม แล้ว `cat` ซ้ำเพื่อยืนยัน (การเปลี่ยนมีผลในเครื่องจำลองเท่านั้น กด Restart เพื่อกลับสภาพเดิม)
-- `cat /proc/sys/net/ipv4/tcp_rmem` — ได้ `4096 87380 908384` คือขนาดที่พักข้อมูลขารับ ต่ำสุด ตั้งต้น และสูงสุด เป็นไบต์ ลองคิด: ถ้าหน้าต่างขารับถูกจำกัดที่ราว 908 KB บนเส้นทาง RTT 40 ms ปริมาณงานสูงสุดคือ 908,384 / 0.040 ≈ 22.7 MB/s หรือราว 182 Mb/s — สูตร W / RTT เดียวกับข้างบน (เป็นขอบบนคร่าว ๆ ค่าที่ใช้ได้จริงขึ้นกับการตั้งค่าอื่นของเคอร์เนลด้วย)
+- `cat /proc/sys/net/ipv4/tcp_rmem` — ได้ค่าทำนอง `4096 87380 908384` คือขนาดที่พักข้อมูลขารับ ต่ำสุด ตั้งต้น และสูงสุด เป็นไบต์ (ค่าสูงสุดเปลี่ยนเล็กน้อยทุกครั้งที่บูต เพราะเคอร์เนลคำนวณจากหน่วยความจำว่างตอนบูต ผู้ตรวจบูตสามครั้งได้ 908,288 ถึง 908,544 ไบต์ แต่ราว 908 KB เสมอ) ลองคิด: ถ้าหน้าต่างขารับถูกจำกัดที่ราว 908 KB บนเส้นทาง RTT 40 ms ปริมาณงานสูงสุดคือ 908,384 / 0.040 ≈ 22.7 MB/s หรือราว 182 Mb/s — สูตร W / RTT เดียวกับข้างบน (เป็นขอบบนคร่าว ๆ ค่าที่ใช้ได้จริงขึ้นกับการตั้งค่าอื่นของเคอร์เนลด้วย)
 
 {{< lab type="vm-terminal" >}}
 
@@ -132,5 +132,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->
