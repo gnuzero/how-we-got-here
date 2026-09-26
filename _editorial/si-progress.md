@@ -141,3 +141,20 @@
 
 - 41-tcp-ip… — thin-add: “එක් ජාලයක Protocols වලින් Stack එකකට” (NCP → 1983 flag day → apps); summary synced; draft:false; RFC 1034/1035 links kept
 - 08-from-gates… — Try-this-now half-adder carry hook + breadboard height=700 (mirrored EN); draft:false
+
+## si-gaps-3: deep explainers for the remaining "none" topics (2026-09-26, Asia/Bangkok)
+
+Branch `si-gaps-3` from `origin/main` `85f3ae0`; not pushed. One "ගැඹුරින්: …" section per page, placed before the ASSET CHECKLIST (after any existing lab); existing text, labs and Try-this-now hooks untouched; draft:false; UTF-8 clean. Sources are official copies (publisher/vendor/institution/RFC Editor/arXiv, or archive.org of the official URL); illustrative numbers are labelled.
+
+- 20-arm-and-risc-v… — RV32I encoding by hand (add/sub/addi), extensions and RVC, licensing arithmetic (RISC-V ISA spec 20191213; UCB/EECS-2014-146)
+- 32-from-isa-bus-to-pci-to-pcie — skew budget, 8b/10b vs 128b/130b, bandwidth per pin (Bhatt 2002 via archive.org of Intel URL; PCI-SIG FAQ)
+- 33-pcie-deep-dive — TLP overhead, payload efficiency, WP350 throughput examples, PCIe 6.0 flit (AMD/Xilinx WP350; PCI-SIG)
+- 37-interconnects-at-scale — NVLink per-link arithmetic, copy paths, NVSwitch, CXL (NVIDIA whitepapers; CXL Consortium)
+- 42-datacenter-networking-and-rdma — RFC 4297 copy overhead, RFC 5040 operations, fat-tree counts (Al-Fares et al. 2008)
+- 43-usenet-archie-gopher… — RFC 1036 / 977 / 1436 worked exchanges; portals section and vm-terminal lab preserved exactly
+- 49-finfet-to-gaa — fin W_eff, nanosheet width, sub-threshold slope (Intel 22 nm 2011; Intel 2017 via archive.org; Samsung 2022; IBM 2021)
+- 51-chiplets-advanced-packaging — yield models, AMD EPYC 0.59×, known-good-die, UCIe 1.0 KPIs (KIT; AMD Hot Chips 29; UCIe)
+- 56-multi-gpu-scaling — Amdahl/Gustafson, all-reduce lower bound, NVLink vs PCIe step time, GPUDirect RDMA (Gustafson 1988; NVIDIA)
+- 60-sparsity-in-hardware — 2:4 pruning and metadata, storage vs CSR, A100 peaks (NVIDIA A100 WP; arXiv:2104.08378)
+- 61-interconnect-at-datacenter-scale — ring all-reduce traced, α–β ring vs tree, DGX SuperPOD rails (Patarasuk & Yuan; NVIDIA NCCL blog; DGX SuperPOD RA)
+- Audit: 32 and 33 re-rated none → thin (consumer slot/lane videos); others stay none. Details in the desk's gaps.md "si-gaps-3 record".
