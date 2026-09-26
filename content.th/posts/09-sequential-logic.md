@@ -85,7 +85,7 @@ T ≥ 50 + 400 + 30 = 480 ps → f ≤ 1/480 ps ≈ **2.08 GHz**
 
 **t_cq,min + t_cd ≥ t_h**
 
-ตัวอย่าง: t_cq,min = 40 ps, t_cd = 10 ps (เส้นทางตรงผ่านเกตเดียว), t_h = 60 ps → 40 + 10 = 50 ps ซึ่งน้อยกว่า 60 ps ขาดไป **10 ps** ค่าใหม่วิ่งมาทับค่าเก่าก่อนที่ FF2 จะจับเสร็จ
+ตัวอย่าง (ตัวเลขสมมติเช่นกัน): t_cq,min = 40 ps, t_cd = 10 ps (เส้นทางตรงผ่านเกตเดียว), t_h = 60 ps → 40 + 10 = 50 ps ซึ่งน้อยกว่า 60 ps ขาดไป **10 ps** ค่าใหม่วิ่งมาทับค่าเก่าก่อนที่ FF2 จะจับเสร็จ
 
 สิ่งที่ต้องเข้าใจให้ชัด: **T ไม่อยู่ในสมการ hold เลย** การลดความถี่คล็อกแก้ setup ได้เสมอ แต่แก้ hold ไม่ได้แม้แต่นิดเดียว ชิปที่ละเมิด hold จะผิดพลาดที่ทุกความถี่ วิธีแก้คือทำให้เส้นทางเร็วสุดช้าลง เช่น แทรกบัฟเฟอร์ (เกตที่ส่งค่าผ่านเฉย ๆ) ลงในเส้นทางนั้น ถ้าบัฟเฟอร์หนึ่งตัวหน่วง 15 ps เส้นทางเร็วสุดจะเป็น 50 + 15 = 65 ps ≥ 60 ps ผ่าน และถ้าบัฟเฟอร์นั้นบังเอิญอยู่บนเส้นทางช้าสุดด้วย คาบต่ำสุดจะกลายเป็น 495 ps ซึ่งยังผ่านที่ 2 GHz (500 ps)
 
@@ -142,5 +142,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->
