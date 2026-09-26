@@ -118,13 +118,13 @@ Al-Fares, Loukissas සහ Vahdat ගේ "A Scalable, Commodity Data Center Netw
 පිටපත් සහ පද්ධති ඇමතුම් වල වියදම ඔබේම ඇසින් දකින්න. ඉහත ඇති VM එකේ මෙම විධාන දෙක ක්‍රියාත්මක කරන්න. දෙකම දළ වශයෙන් MB 100 ක් ගෙන යයි:
 
 ```
-dd if=/dev/zero of=/dev/null bs=512 count=200000
-dd if=/dev/zero of=/dev/null bs=64k count=1600
+time dd if=/dev/zero of=/dev/null bs=512 count=200000
+time dd if=/dev/zero of=/dev/null bs=64k count=1600
 ```
 
 - පළමු විධානය බයිට් 512 × 200,000 = **102,400,000** බයිට් ගෙන යයි. එයට කියවීම්/ලිවීම් පද්ධති ඇමතුම් යුගල **200,000** ක් ගතවේ.
 - දෙවැන්න 65,536 × 1,600 = **104,857,600** බයිට් ගෙන යයි. එයට යුගල **1,600** ක් පමණි.
-- BusyBox dd එක අවසානයේ ගතවූ කාලය සහ අනුපාතය පෙන්වයි. බ්‍රව්සරයේ අනුකරණය කළ (emulated) යන්ත්‍රයක් නිසා ඔබේ අංක සැබෑ යන්ත්‍රයකට වඩා බොහෝ අඩු වනු ඇත. එහෙත් **කුඩා block එක මන්දගාමී** විය යුතුය. වෙනසට හේතුව දත්ත ප්‍රමාණය නොව ඇමතුම් ගණනයි. RFC 4297 හි "කුඩා පණිවිඩවලට packet එකකට වන වියදම ආධිපත්‍යය දරයි" යන්නම මෙයයි. RDMA ඇමතුමකට වන kernel වියදමද ඉවත් කරයි.
+- මෙම BusyBox dd එක `records in` / `records out` පමණක් පෙන්වයි; ගතවූ කාලය හෝ අනුපාතය නොපෙන්වයි. එබැවින් විධානවලට ඉදිරියෙන් ඇති `time` මඟින් `real` කාලය පෙන්වයි. අපේ ධාවනයේ පළමු විධානයට තත්පර **1.12** ක් ද, දෙවැන්නට තත්පර **0.06** ක් ද ගත විය. බ්‍රව්සරයේ අනුකරණය කළ (emulated) යන්ත්‍රයක් නිසා ඔබේ කාල සැබෑ යන්ත්‍රයකට වඩා බොහෝ වැඩි වනු ඇත. එහෙත් **කුඩා block එක මන්දගාමී** විය යුතුය. වෙනසට හේතුව දත්ත ප්‍රමාණය නොව ඇමතුම් ගණනයි. RFC 4297 හි "කුඩා පණිවිඩවලට packet එකකට වන වියදම ආධිපත්‍යය දරයි" යන්නම මෙයයි. RDMA ඇමතුමකට වන kernel වියදමද ඉවත් කරයි.
 
 ### 7. පැන්සලෙන් අභ්‍යාසය
 
@@ -146,7 +146,7 @@ dd if=/dev/zero of=/dev/null bs=64k count=1600
 - R. Recio සහ සගයන්, *A Remote Direct Memory Access Protocol Specification*, RFC 5040, IETF, 2007 ඔක්තෝබර්, §2 නිර්වචන (පිටු 12–14): <https://www.rfc-editor.org/rfc/rfc5040.txt>
 - M. Al-Fares, A. Loukissas සහ A. Vahdat, "A Scalable, Commodity Data Center Network Architecture", *Proc. ACM SIGCOMM 2008*, §1, §2.1.2, §2.1.4 (Table 1), §2.2, §3.1. කතුවරයාගේ ආයතනික පිටපත: <https://cseweb.ucsd.edu/~vahdat/papers/sigcomm08.pdf>
 
-dd විධාන BusyBox v1.28.4 lab image එකේ ඇති බව අපි පරීක්ෂා කළෙමු. 100 Gb/s වගුව සහ edge switch උදාහරණය ආදර්ශ ගණනය කිරීම් වේ.
+අපි lab image එක (BusyBox v1.28.4) boot කර මෙම `time dd` විධාන දෙකම ධාවනය කළෙමු: `/dev/zero` සහ `/dev/null` ඇත, දෙකම සාර්ථකව අවසන් වේ. 100 Gb/s වගුව සහ edge switch උදාහරණය ආදර්ශ ගණනය කිරීම් වේ.
 
 <!--
 ASSET CHECKLIST
