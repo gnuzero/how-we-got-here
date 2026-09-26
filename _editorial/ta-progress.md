@@ -243,3 +243,76 @@
 ## Remaining
 
 (none — Phase 1 TA 01–04 unblocked; standby)
+
+## Tamil-gap pass 6 (2026-09-26 Asia/Bangkok — Arun, branch `ta-gaps-6`)
+
+Cleared by Lucas; this is the last pass on the gap list. Same standard as pass 5 (branch `ta-gaps-5`; passes 1–4 on `ta-gaps-1` / PR #14, `ta-gaps-2` / PR #18, `ta-gaps-3`, `ta-gaps-4`; none of them touched here). Branch `ta-gaps-6` from `origin/main` 85f3ae0. That base is unchanged after `git fetch origin`, so no earlier pass has merged yet. Worktree: `/workspace/freebook/ta-gaps-6`. The two expansion commits only insert lines into existing `content.ta` pages, with 0 deletions per commit. Frontmatter (including `draft: false`), spine, shortcodes, existing hooks, Door outs and links are unchanged. None of these pages has a lab. Each one gained:
+- a Tamil coverage-gap note (YouTube-only evidence labelled "YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை");
+- a முதலில் சொற்கள் term list;
+- worked examples with example values labelled எடுத்துக்காட்டு மதிப்பு;
+- காகிதப் பயிற்சிகள் (விடைகளுடன்);
+- a சொற்கள் (தமிழ் | English) glossary.
+
+All arithmetic was checked in Python.
+
+- `57f61c3`: 37, 04, 68
+  - `37-interconnects-at-scale.md`
+    - Host-staged vs GPUDirect RDMA traffic in system memory: 4 GB vs 0 per GB (simple model).
+    - GPUDirect RDMA facts from NVIDIA's CUDA GPUDirect RDMA docs: Kepler / CUDA 5.0, shared upstream root complex, PCIe-switch vs CPU/IOH vs QPI/HT path quality, `nvidia-peermem` with InfiniBand and RoCE, lazy unpinning and registration cache.
+    - Kepler BAR arithmetic: 256 − 32 = 224 MB → 3,584 × 64 KB pages.
+    - NVIDIA NVLink page figures, checked: 900 / 1,800 / 3,000 GB/s per GPU; 8 × 900 = 7.2 TB/s, 72 × 1,800 ≈ 130 TB/s, 72 × 3,000 = 216 TB/s; 3,000 ÷ 12 = 250 GB/s for PCIe Gen6.
+    - Full mesh n(n−1)/2: 28 and 2,556.
+    - All-reduce times with the nccl-tests formula: 450 vs 64 GB/s per direction, 0.054 vs 0.383 s for 14 GB (example values).
+    - CXL Consortium "About CXL": cache-coherent; CXL 4.0 raises 64 → 128 GT/s. Pooling example: 2,048 vs 1,024 GB.
+    - InfiniBand comes in only through the NVIDIA doc; the English chapter does not name it.
+  - `04-why-the-transistor-had-to-happen.md`
+    - Per-tube watts from the chapter's own ENIAC figures: 150–174 kW ÷ 18,000 ≈ 8.3–9.7 W, an upper bound.
+    - M ÷ N reliability example (example values).
+    - Point-contact timeline from CHM's Silicon Engine page: 16 and 23 Dec 1947; patent filed 17 Jun 1948; announced 30 Jun 1948; Phys. Rev. 74 paper; Pierce named it; "Type A".
+    - 1956 Nobel citation (nobelprize.org).
+    - From Bardeen's Nobel lecture: 0.005 cm = 50 µm contact spacing; emitter/collector operation; power gain "20 db. or more" = 100×, which matches CHM's "up to 100 times"; minority-carrier lesson.
+    - Impedance-ratio gain table (example values).
+  - `68-visions-that-shipped.md`
+    - Longest-prefix-match table, checked with Python `ipaddress`; rule quoted from RFC 4632.
+    - Ports needed with and without a common API: A × H vs A + H (example values).
+    - GNU four freedoms, from gnu.org.
+    - The Linux v0.12 release-notes copyleft paragraph (kernel.org historic archive).
+    - Cloud pooling utilization: 30% vs 67% (example values).
+    - The coverage note records that gaps.md's Memex and Engelbart rows are not covered in the English chapter (or anywhere in the book), so they were not added.
+- `e9ca2e6`: 66, 67, 69
+  - `66-wartime-crypto.md`
+    - Enigma I rotor I/II/III and UKW-B wiring and turnovers from Crypto Museum.
+    - Worked encipherment of A at AAB → B; AAAAA → BDZGO and back, checked with a Python simulator.
+    - Reflector has no fixed points, so no letter ever encrypts to itself.
+    - Double stepping ADU → ADV → AEW → BFX.
+    - Key space: 60 × 17,576 × 150,738,274,937,250 (10 cables) ≈ 1.59 × 10²⁰; 60 orders and the 10-cable practice per Crypto Museum.
+    - Tunny from Copeland (Rutherford Journal): teleprinter "addition" = XOR, checked C + W = X and O + Z = D against his COLOSSUS example; chi wheel sizes 41/31/29/26/23 → period 22,041,682.
+    - Tutte's 1+2: 70% / 60% / 55%, with 1,271 candidates.
+    - Speed table with a 10,000-character example tape: 1,000 (Heath Robinson, Crypto Museum), 5,000 and 25,000 chars/s (Copeland).
+    - TNMOC Colossus page: eleven months, Mk 1 delivery and working dates, 550 people, 10 Colossi, 63 million characters.
+  - `67-privacy-consent-identity-cyber.md`
+    - Saltzer & Schroeder's eight principles, from the MIT page.
+    - Toy Diffie–Hellman (q = 23, α = 5, X = 6 and 15 → Y = 8 and 19, K = 2), following the 1976 paper's notation.
+    - The paper's b = 200 figures: 400 multiplications vs 2¹⁰⁰ ≈ 10³⁰.
+    - RSA paper's own Section VIII example: p = 47, q = 59, n = 2773, φ = 2668, d = 157, e = 17; square-and-multiply 920 → 948; decryption and all ten blocks checked; signature 920¹⁵⁷ mod 2773 = 192 and back.
+    - Password search times (example values).
+    - OAuth access-token and scope definitions quoted from RFC 6749.
+  - `69-platform-synthesis.md`
+    - Pure composition math, no external source: nines table; series 0.999⁵ ≈ 99.50%; three replicas 1 − 0.01³; fan-out 1 − 0.99¹⁰⁰ ≈ 63.4%.
+    - 200 ms latency budget and staged-rollout example (example values).
+- `ea342b6`: separate word-level mistranslation fixes in existing body text (frontmatter untouched):
+  - 04: "rounding error" (was literal முழுமையாக்கல் பிழை) and "குழாயின்வை".
+  - 66: "breaking one message did not buy you the next day for free".
+  - 67: "survey" (was கணக்கெடுப்பு), "curious" (was ஆர்வலர்கள்), "UI copy" (was நகல்), சரிவிழ்த்தன.
+  - 68: "ship the glue" and "the vision that shipped" (was literal கப்பல்).
+  - 69: "ships a slice" (கப்பல்) and "partition data" (was பகிர்ந்திடுங்கள்).
+- **Sources:** real figures come only from the English chapters or from sources checked this pass: NVIDIA NVLink page and GPUDirect RDMA docs; nccl-tests PERFORMANCE.md; CXL Consortium; CHM Silicon Engine; Bardeen's Nobel lecture and nobelprize.org; RFC 4632; RFC 6749; Linux v0.12 RELNOTES; gnu.org; Crypto Museum (Enigma wiring, Enigma I, Lorenz SZ-40/42); TNMOC; Copeland in the Rutherford Journal; Saltzer & Schroeder; Diffie–Hellman 1976; RSA paper. Everything else is labelled as example values. No Wikipedia citations and no மேலும் படிக்க entries added. No new Tamil-language sources found.
+- **Flags for fact-check (not edited):**
+  - English 66 says Colossus was "first machine operational December 1943". TNMOC says it was delivered late Dec 1943 / Jan 1944 and working in early Feb 1944; Crypto Museum says delivered 18 Jan 1944, first message 5 Feb 1944. The Tamil mirrors the English.
+  - Valve counts vary by source: Copeland ~1,600 / ~2,400, Crypto Museum >1,700 / 2,400, TNMOC 2,500. The Tamil insert quotes Copeland and notes TNMOC.
+  - The Tamil 68 frontmatter `title` and `phase` use கப்பலுக்குச் சென்ற ("went to the ship") for "shipped" (frontmatter, so not edited).
+  - Tamil 19 line 22 has the same literal கப்பல் ஏறின ("shipped"). Page 19 is in pass-4 scope, so it was not edited.
+  - gaps.md lists Memex and Engelbart under 68, but no English chapter covers them. That needs an English-content decision.
+- **Build:** `hugo --quiet --themesDir /workspace/freebook/from-relays-to-attention/themes -d /tmp/ta-gaps-6-public` → exit 0. Markdown and rendered table counts match on all 6 pages. `.hugo_build.lock` removed.
+- **Not touched:** `ta-gaps-1` to `ta-gaps-5` or their worktrees, the shared checkout, content/, content.si/, content.th/. No push, no PR. Upstream is unset on `ta-gaps-6`.
+- **Left:** none. All 68 pages with gaps.md thin/none rows (01–64 and 66–69; there is no page 65) now have an expanded page on exactly one of `ta-gaps-1` … `ta-gaps-6`. The one exception by content: 68's Memex and Engelbart rows are acknowledged in the note but have no Tamil text, because the chapter does not cover them. gaps.md ratings are unchanged, since they rate available Tamil literature, not our pages.
