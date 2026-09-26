@@ -141,3 +141,13 @@
 
 - 41-tcp-ip… — thin-add: “එක් ජාලයක Protocols වලින් Stack එකකට” (NCP → 1983 flag day → apps); summary synced; draft:false; RFC 1034/1035 links kept
 - 08-from-gates… — Try-this-now half-adder carry hook + breadboard height=700 (mirrored EN); draft:false
+
+## si-gaps-4: final pass on thin core-architecture pages and the Sinhala encoding explainer (2026-09-26, Asia/Bangkok)
+
+Branch `si-gaps-4` from `origin/main` `85f3ae0`; not pushed. One "ගැඹුරින්: …" section per page, placed before the final bold door where one exists (15, 17) or else before the ASSET CHECKLIST (13 after its mini-CPU lab, 64); existing text, labs and Try-this-now hooks untouched; draft:false; UTF-8 clean (no U+FFFD). Each section opens with the Sinhala material that already exists (NIE A/L ICT guides, si.wikipedia, YouTube lessons by title) and spends the depth on what it leaves out. Branch prediction and out-of-order execution (14/16) and AMAT/memory wall (35) are referred to, not repeated. Illustrative numbers are labelled.
+
+- 13-pipelining — laundry timing 800 ps vs 200 ps and the ≈4× (not 5×) speed-up for 10⁶ instructions, latch overhead, forwarding vs the load-use bubble (9 cycles instead of 8), code scheduling 13 → 11 cycles, CPI with stalls (UC Berkeley CS 61C course notes)
+- 15-caches — tag/index/offset split (Apple M1 L1/L2 geometry from CS 61C; 0xFE2 example), direct-mapped vs 2-way conflict traces, write-through vs write-back, MESI trace and false sharing (Intel SDM Vol 3 Table 14-4; MIT 6.823 S20 L14)
+- 17-superscalar-and-multicore — Flynn bottleneck, N-wide CPI with branches (1.3 / 0.8 / 0.55), N² stall and bypass logic (UPenn CIS 501 Unit 7), Hill–Marty symmetric/asymmetric/dynamic multicore Amdahl with perf(r)=√r and an n=16, f=0.9 table (Hill & Marty 2008, authors' group copy)
+- 64-who-decides-the-wire — the only chapter (EN and SI) with an encodings section, so it carries the Sinhala encoding explainer: Sinhala block U+0D80–U+0DFF (91 assigned in UCD 18.0), UTF-8 by hand (RFC 3629) with verified byte counts (අ = e0 b6 85; ශ්‍රී 5 code points / 15 bytes; මූලාශ්‍ර 8 / 24), logical vs visual order (IndicPositionalCategory), al-lakuna + ZWJ conjuncts (Unicode 18.0 §13.2), normalization and collation, Wijesekara and phonetic input, SLASCII → SLS 1134 → Unicode history (WG2 N2737; UCSC TR 2003; Gunathilaka 2021), legacy ASCII-overlay fonts with a real Kaputa example (කෙ stored as "@k"), converter mechanism, vm-terminal Try-this with `od`/`xxd` (verified in the lab image, BusyBox 1.28.4)
+- Audit: no re-ratings; 13, 15, 17 and 64 stay thin in the desk's gaps.md, which has the "si-gaps-4 record". Non-official copy used: UCSC TR 03/01 via the Wayback Machine capture of the dead language.lk URL.
