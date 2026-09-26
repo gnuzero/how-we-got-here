@@ -152,7 +152,7 @@ loop: addi x5, x5, -1    # x5 ← x5 − 1
 | 2 | 1 | 1 ≠ 0 → தாவு |
 | 3 | 0 | 0 = 0 → கீழே தொடர் |
 
-Mini-CPU-இல் இதே வேலைக்கு SUB ஒரு zero கொடியை அமைக்க, JZ அதைப் படிக்க வேண்டும் — அறிவுறுத்தல்களுக்கு இடையே மறைமுகத் தொடர்பு. RISC-V-இல் ஒப்பீடு branch-க்குள்ளேயே உள்ளது; out-of-order core-களில் (பதிவு 17) கொடிகளின் சார்புநிலையைக் கண்காணிக்கும் சிக்கல் குறைகிறது.
+Mini-CPU-இல் இதே வேலைக்கு SUB ஒரு zero கொடியை அமைக்க, JZ அதைப் படிக்க வேண்டும் — அறிவுறுத்தல்களுக்கு இடையே மறைமுகத் தொடர்பு. RISC-V-இல் ஒப்பீடு branch-க்குள்ளேயே உள்ளது; out-of-order core-களில் (பதிவு 16) கொடிகளின் சார்புநிலையைக் கண்காணிக்கும் சிக்கல் குறைகிறது.
 
 **இப்போது முயல்க.**
 
@@ -193,5 +193,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

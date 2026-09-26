@@ -58,7 +58,7 @@ Containers மற்ற வர்த்தகத்தை எடுக்கி�
 - வரம்புகள் = அதே அடைவில் உள்ள கோப்புகளில் எண்களை எழுதுவது (`cpu.weight`, `cpu.max`, `memory.max`, `pids.max`).
 - அளவீடுகள் = கோப்புகளைப் படிப்பது (`cpu.stat`, `memory.current`).
 
-**CPU பங்கு: weight கணக்கு.** `cpu.weight` ஒப்பீட்டு எடை (இயல்பு 100). CPU-க்குப் போட்டி இருக்கும்போது, ஒவ்வொரு குழுவும் பெறுவது = தன் எடை / போட்டியிடும் குழுக்களின் மொத்த எடை.
+**CPU பங்கு: weight கணக்கு.** `cpu.weight` ஒப்பீட்டு எடை (இயல்பு 100). கீழே உள்ள எடைகள், quota-கள், வரம்புகள் எடுத்துக்காட்டு மதிப்புகள். CPU-க்குப் போட்டி இருக்கும்போது, ஒவ்வொரு குழுவும் பெறுவது = தன் எடை / போட்டியிடும் குழுக்களின் மொத்த எடை.
 
 - A = 100, B = 400, இரண்டும் முழு வேலையில்: A = 100 / 500 = **20%**, B = 400 / 500 = **80%**.
 - A = 100, B = 100, C = 200: 25%, 25%, 50%.
@@ -149,5 +149,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

@@ -45,7 +45,7 @@ Ethernet தரவை frames-இல் சுமக்கும்: மூலம
 
 ## ஆய்வுக்கூட Ethernet-இலிருந்து 10 Mb/s தரநிலை வரை
 
-Metcalfe மற்றும் Boggs 1976 கட்டுரையில் விவரித்த Xerox PARC-இன் சோதனை Ethernet விநாடிக்கு 2.94 Mb/s வேகத்தில், சுமார் 1 km கம்பியில், **8-bit** முகவரிகளுடன் இயங்கியது. பின்னர் Xerox, DEC, Intel ஆகியவை சேர்ந்து வெளியிட்ட 10 Mb/s விவரக்குறிப்பு வேகத்தை 10 Mb/s ஆகவும், அதிகபட்ச நீட்டிப்பை சுமார் 2.5 km ஆகவும் (repeater-களுடன்), முகவரிகளை **48-bit** ஆகவும் உயர்த்தியது. 8 bit = 256 முகவரிகள் மட்டுமே — ஒரு ஆய்வுக்கூடத்துக்குப் போதும். 48 bit = 2⁴⁸ ≈ 281 டிரில்லியன் — உலகின் ஒவ்வொரு network card-க்கும் தனி முகவரி தரப் போதும். கீழே உள்ள எண்கள் அந்த 10 Mb/s தரநிலையிலிருந்து.
+Metcalfe மற்றும் Boggs 1976 கட்டுரையில் விவரித்த Xerox PARC-இன் சோதனை Ethernet சுமார் 1 km கம்பியில், **8-bit** முகவரிகளுடன் இயங்கியது; கட்டுரை அதன் வேகத்தை "3 megabits per second" என்று குறிப்பிடுகிறது — துல்லியமான வீதம் 2.94 Mb/s (Shoch மற்றும் சகாக்களின் "Evolution of the Ethernet Local Computer Network" ஒப்பீட்டு அட்டவணையின்படி). பின்னர் Xerox, DEC, Intel ஆகியவை சேர்ந்து வெளியிட்ட 10 Mb/s விவரக்குறிப்பு வேகத்தை 10 Mb/s ஆகவும், அதிகபட்ச நீட்டிப்பை சுமார் 2.5 km ஆகவும் (repeater-களுடன்), முகவரிகளை **48-bit** ஆகவும் உயர்த்தியது. 8 bit = 256 முகவரிகள் மட்டுமே — ஒரு ஆய்வுக்கூடத்துக்குப் போதும். 48 bit = 2⁴⁸ ≈ 281 டிரில்லியன் — உலகின் ஒவ்வொரு network card-க்கும் தனி முகவரி தரப் போதும். கீழே உள்ள எண்கள் அந்த 10 Mb/s தரநிலையிலிருந்து.
 
 ## Frame-இன் அமைப்பு, byte அளவில்
 
@@ -117,8 +117,8 @@ Preamble/SFD-ஐத் தவிர்த்து எண்ணினால்: 
 | 3 | 3 | 0 – 7 | 7 × 51.2 = 358.4 µs |
 | 4 | 4 | 0 – 15 | 768 µs |
 | 10 | 10 | 0 – 1023 | 1023 × 51.2 ≈ 52.4 ms |
-| 11 – 16 | 10 | 0 – 1023 | ≈ 52.4 ms ("truncated" — இனி வளராது) |
-| 16-க்குப் பின் | — | — | கைவிடு |
+| 11 – 15 | 10 | 0 – 1023 | ≈ 52.4 ms ("truncated" — இனி வளராது) |
+| 16 | — | — | கைவிடு (16 முயற்சிகளும் தோல்வி; மீண்டும் காத்திருப்பு இல்லை) |
 
 **இரண்டு station-கள், கணக்கு:** A, B முதல் முறை மோதின.
 
@@ -188,5 +188,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->
