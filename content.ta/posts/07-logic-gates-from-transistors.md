@@ -107,7 +107,7 @@ NAND மற்றும் NOR செயலியல் ரீதியாக �
 
 **இப்போது முயல்க: static மின்னோட்டத்தைக் கண்ணால் பாருங்கள்.** Lab-இன் "Open AND gate in new tab ↗" பொத்தானால் Falstad simulator-ஐ முழுத் திரையில் திறங்கள். அதன் **Circuits** மெனுவில் உள்ளமைந்த எடுத்துக்காட்டுகள் உள்ளன (பெயர்கள் simulator-இன் மூலக் குறியீட்டிலிருந்து சரிபார்க்கப்பட்டவை; பதிப்புக்கேற்பச் சற்று மாறலாம்).
 1. **Circuits → Logic Families → NMOS → NMOS Inverter.** இடப்பக்க உள்ளீட்டைக் கிளிக் செய்து 1 ஆக்குங்கள். 5 kΩ மின்தடை வழியாக மின்னோட்டப் புள்ளிகள் ஓடிக்கொண்டே இருக்கும் — வெளியீடு 0-இல் *நிற்கும்போதே*. Mouse சுட்டியை மின்தடை மேல் வைத்தால் simulator அதன் மின்னோட்டத்தைக் காட்டும் — மேலே கணக்கிட்ட சுமார் 1 mA அளவில்.
-2. **Circuits → Logic Families → CMOS → CMOS Inverter.** உள்ளீட்டை 0, 1 என மாற்றுங்கள். இரண்டு நிலைகளிலும் நிலைபெற்ற பிறகு மின்னோட்டப் புள்ளிகள் நின்றுவிடும். சுட்டியை ஒரு MOSFET மேல் வைத்தால் "Ids = …" மின்னோட்டம் காட்டப்படும் — ஏறக்குறைய பூஜ்ஜியம்.
+2. **Circuits → Logic Families → CMOS → CMOS Inverter.** உள்ளீட்டை 0, 1 என மாற்றுங்கள். இரண்டு நிலைகளிலும் நிலைபெற்ற பிறகு மின்னோட்டப் புள்ளிகள் நின்றுவிடும். சுட்டியை NMOS மேல் வைத்தால் "Ids = …", PMOS மேல் வைத்தால் "Isd = …" என மின்னோட்டம் காட்டப்படும் — ஏறக்குறைய பூஜ்ஜியம்.
 3. **Circuits → Logic Families → CMOS → CMOS NAND.** இரண்டு உள்ளீடுகளையும் நான்கு சேர்க்கைகளிலும் மாற்றி, மேலே உள்ள NAND அட்டவணையோடு ஒப்பிடுங்கள்: மேலே இணையாக இரண்டு PMOS, கீழே தொடராக இரண்டு NMOS. இரண்டு உள்ளீடுகளும் 1 ஆக இருக்கும்போது மட்டும் வெளியீடு 0.
 
 {{< lab type="breadboard" height="700" >}}
@@ -143,5 +143,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

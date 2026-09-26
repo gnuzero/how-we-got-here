@@ -98,7 +98,7 @@ RISC-V-இன் பதிவேடு-பதிவேடு (R-type) வடி�
 
 **`addi x5, x6, 10`** (I-type: 12-பிட் immediate, rs1, funct3, rd, opcode 0010011) → **0x00A30293**. இங்கேயும் rs1 (19–15), rd (11–7) அதே இடங்களில். அதனால் decoder instruction வகை தெரியும் முன்பே பதிவேட்டுக் கோப்பிலிருந்து rs1-ஐப் படிக்கத் தொடங்கலாம் — pipeline-க்கு (பதிவு 13) இது நேரடி வேக ஆதாயம்.
 
-(மேலே உள்ள நான்கு குறியாக்கங்களும் capstone disassembler மூலம் சரிபார்க்கப்பட்டன: அவை முறையே `add t0, t1, t2`, `sub t0, t1, t2`, `addi t0, t1, 0xa` எனத் திரும்பப் படிக்கப்படுகின்றன; t0, t1, t2 என்பவை x5, x6, x7-இன் மென்பொருள் பெயர்கள்.)
+(மேலே உள்ள மூன்று குறியாக்கங்களும் capstone disassembler மூலம் சரிபார்க்கப்பட்டன: அவை முறையே `add t0, t1, t2`, `sub t0, t1, t2`, `addi t0, t1, 0xa` எனத் திரும்பப் படிக்கப்படுகின்றன; t0, t1, t2 என்பவை x5, x6, x7-இன் மென்பொருள் பெயர்கள்.)
 
 ## உண்மையான CISC குறியாக்கம்: x86-64
 
@@ -183,5 +183,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

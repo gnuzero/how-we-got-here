@@ -76,7 +76,7 @@ Portability முக்கியம். Unix பல சமகாலத்தவ
 1. `grep ctxt /proc/stat` — boot முதல் kernel செய்த மொத்த context switch-கள். `sleep 1` பிறகு மீண்டும் ஓட்டுங்கள்: எங்கள் ஓட்டத்தில் 4643 → 4701, சும்மா இருக்கும்போதே ஒரு விநாடியில் சுமார் 58.
 2. இரண்டு "பயனர்கள்" — முடிவில்லாமல் கணக்கிடும் இரண்டு loop-கள்: `(while true; do :; done) &` பிறகு `A=$!`; மீண்டும் `(while true; do :; done) &` பிறகு `B=$!`
 3. சில விநாடிகள் கழித்து `top -b -n 1 | head -12` — இரண்டு `-/bin/sh` வரிகள், ஒவ்வொன்றும் சுமார் 38% CPU (எங்கள் ஓட்டத்தில்; மீதியை `top` தானே எடுத்தது). ஒரே ஒரு CPU; இரண்டும் "ஒரே நேரத்தில்" ஓடுவதுபோல் தெரிகிறது.
-4. `grep ctxt /proc/$A/status` → `voluntary_ctxt_switches: 0`, `nonvoluntary_ctxt_switches: 952` (எங்கள் ஓட்டம்; B-க்கு 988). Voluntary 0 — loop ஒருபோதும் தானாக CPU-வை விடவில்லை; ஒவ்வொரு மாற்றமும் scheduler பறித்தது. சுமார் 5 விநாடிகளில் சுமார் 950 என்றால் விநாடிக்கு ≈ 190 — ஒவ்வொரு முறையும் தோராயமாக 5 ms துண்டு.
+4. `grep ctxt /proc/$A/status` → `voluntary_ctxt_switches: 0`, `nonvoluntary_ctxt_switches: 952` (எங்கள் ஓட்டம்; B-க்கு 988). Voluntary 0 — loop ஒருபோதும் தானாக CPU-வை விடவில்லை; ஒவ்வொரு மாற்றமும் scheduler பறித்தது. சுமார் 5 விநாடிகளில் சுமார் 950 என்றால் விநாடிக்கு ≈ 190 — அதாவது A ஒவ்வொரு ≈ 5 ms-க்கும் ஒருமுறை பறிக்கப்படுகிறது. அந்த 5 ms சுற்றில் B-யும் `top`-உம் ஓடுகின்றன; A-க்குக் கிடைப்பது சுமார் 38% மட்டுமே, எனவே A-வின் ஒவ்வொரு துண்டும் தோராயமாக 0.38 × 5 ≈ 2 ms.
 5. `kill $A $B` — மறக்காமல் நிறுத்துங்கள்.
 
 Unix-இன் "சிறு நிரல்களை குழாய்களால் இணை" கருத்தையும் முயலுங்கள்: `ls /bin | wc -l` — `ls` பட்டியலிடுகிறது, `wc` எண்ணுகிறது, இரண்டும் ஒரே நேரத்தில் இரண்டு process-களாக ஓடுகின்றன (எங்கள் ஓட்டத்தில் விடை 73).
@@ -119,5 +119,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

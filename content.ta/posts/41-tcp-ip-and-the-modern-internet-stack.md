@@ -112,7 +112,7 @@ Application நெறிமுறைகள் பிறகு அடுக்க
 1. Loopback-ஐ இயக்குங்கள்: `ifconfig lo 127.0.0.1 up`
 2. ஒரு echo server: `echo "5000 stream tcp nowait root /bin/cat cat" > /tmp/inetd.conf` பிறகு `inetd /tmp/inetd.conf`. இப்போது port 5000-க்கு வரும் ஒவ்வொரு இணைப்பும் `cat` நிரலுடன் இணைக்கப்படும் — அனுப்பியதைத் திருப்பி அனுப்பும்.
 3. `netstat -tln` → `0.0.0.0:5000 … LISTEN`
-4. `grep Tcp: /proc/net/snmp` — இரண்டு வரிகள்: பெயர்கள், எண்கள். எங்கள் ஓட்டத்தில் எல்லா எண்ணிகளும் 0.
+4. `grep Tcp: /proc/net/snmp` — இரண்டு வரிகள்: பெயர்கள், எண்கள். முதல் நான்கு (RtoAlgorithm 1, RtoMin 200, RtoMax 120000, MaxConn -1) அமைப்பு மதிப்புகள், எண்ணிகள் அல்ல; ActiveOpens முதல் மீதி எல்லா எண்ணிகளும் 0 — இன்னும் எந்த TCP இணைப்பும் இல்லை.
 5. இணையுங்கள்: `(echo hello-tcp; sleep 4) | telnet 127.0.0.1 5000 &` → `hello-tcp` திரும்பி வரும் (server-இன் echo).
 6. உடனே `netstat -tn` → **இரண்டு** ESTABLISHED வரிகள்: `127.0.0.1:45324 → 127.0.0.1:5000`, `127.0.0.1:5000 → 127.0.0.1:45324`. ஒரே இணைப்பின் இரண்டு முனைகள், இரண்டும் இந்தக் கணினியில்.
 7. மீண்டும் `grep Tcp: /proc/net/snmp` → எங்கள் ஓட்டத்தில் ActiveOpens 1 (client பக்கம் SYN அனுப்பியது), PassiveOpens 1 (server பக்கம் SYN ஏற்றது), CurrEstab 2, InSegs 7, OutSegs 7.
@@ -153,5 +153,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->
