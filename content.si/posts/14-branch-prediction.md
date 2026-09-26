@@ -31,7 +31,7 @@ Dynamic predictors runtime හි ප්‍රතිඵල ලුහුබඳි
 
 දිශාව අඩක් පමණි. Taken branch එකකට, branch සම්පූර්ණයෙන් decode වීමට පෙර fetch එකට *ඉලක්කයක්*ද අවශ්‍යය. Branch Target Buffer (BTB) යනු කුඩා cache එකකි, උපදෙස් ලිපිනයෙන් සුචිගත, අවසාන විසඳුණු ඉලක්කය මතක තබා ගනී. Hit එකකදී, fetch ඊළඟ චක්‍රයේ speculative ලෙස පැනිය හැක.
 
-සැබෑ predictors counter tables (බොහෝ විට global history සමඟ) සහ BTB එකතු කරයි; ඉහළ-පෙළ චිප ඊටත් ඔබ්බට යයි. 2-bit counter එක තවමත් සංකල්පීය හරයයි — සහ mini-CPU lab එකේ අතින් නිරීක්ෂණය කිරීමට කුඩා තරම්: loop එකක branch පියවරෙන් පියවර කර සෑම පුනරාවර්තනයකදීම prediction තත්ත්වය යාවත්කාලීන වන ආකාරය බලන්න.
+සැබෑ predictors counter tables (බොහෝ විට global history සමඟ) සහ BTB එකතු කරයි; ඉහළ-පෙළ චිප ඊටත් ඔබ්බට යයි. 2-bit counter එක තවමත් සංකල්පීය හරයයි — සහ කඩදාසියක් මත අතින් ලුහුබැඳීමට තරම් කුඩාය. පහත mini-CPU lab එකේ predictor එකක්, pipeline එකක් හෝ cache එකක් නැත; එබැවින් loop එකක branch එක පියවරෙන් පියවර ධාවනය කරමින්, සෑම පුනරාවර්තනයකදීම ගණකයේ තත්ත්වය ඔබම කඩදාසියේ යාවත්කාලීන කරන්න (පහත "ගැඹුරින්" කොටසේ 6 වන කොටස බලන්න).
 
 {{< lab type="mini-cpu" >}}
 
@@ -41,7 +41,7 @@ Dynamic predictors runtime හි ප්‍රතිඵල ලුහුබඳි
 
 ### 1. Branch එකක් යනු කුමක්ද?
 
-**වැඩසටහනක් (program)** යනු මතකයේ අනුපිළිවෙළින් තබා ඇති **උපදෙස් (instructions)** පෙළකි. CPU එක ඊළඟට ක්‍රියාත්මක කළ යුතු උපදෙසේ **ලිපිනය (address)** තබා ගන්නේ **වැඩසටහන් ගණකය (program counter, PC)** නම් විශේෂ රෙජිස්ටරයේය. සාමාන්‍යයෙන් එක් උපදෙසක් අවසන් වූ පසු PC එක එකකින් වැඩි වේ — එනම් CPU එක ඊළඟ පේළියට යයි.
+**වැඩසටහනක් (program)** යනු මතකයේ අනුපිළිවෙළින් තබා ඇති **උපදෙස් (instructions)** පෙළකි. CPU එක ඊළඟට ක්‍රියාත්මක කළ යුතු උපදෙසේ **ලිපිනය (address)** තබා ගන්නේ **වැඩසටහන් ගණකය (program counter, PC)** නම් විශේෂ රෙජිස්ටරයේය. සාමාන්‍යයෙන් එක් උපදෙසක් අවසන් වූ පසු PC එක ඊළඟ උපදෙසේ ලිපිනයට යයි — එනම් CPU එක ඊළඟ පේළියට යයි. (මෙම පිටුවේ Mini-CPU එකේ සෑම උපදෙසක්ම byte එකක් නිසා PC එක 1කින් වැඩි වේ; උපදෙස් bytes 4ක් වන RISC-V වැනි ISA එකක 4කින් වැඩි වේ.)
 
 **ශාඛා උපදෙසක් (branch instruction)** යනු PC එකට වෙනත් ලිපිනයක් දමා එම අනුපිළිවෙළ කඩන උපදෙසකි. ප්‍රධාන වර්ග දෙකකි:
 
@@ -170,5 +170,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

@@ -102,7 +102,7 @@ P_ගතික ≈ α · C · V² · f
 - V²: (1/1.4)² ≈ **0.510**
 - සංඛ්‍යාතය: **1.4**
 - ට්‍රාන්සිස්ටරයකට බලය: 0.714 × 0.510 × 1.4 ≈ **0.510** (= 1/κ²)
-- ට්‍රාන්සිස්ටරයක වර්ගඵලය: 0.7 × 0.7 ≈ **0.510** (= 1/κ²)
+- ට්‍රාන්සිස්ටරයක වර්ගඵලය: (1/1.4)² ≈ 0.714 × 0.714 ≈ **0.510** (= 1/κ²; මානය ×0.7 ලෙස වටකළහොත් 0.7 × 0.7 = 0.49)
 - **බල ඝනත්වය:** 0.510 ÷ 0.510 = **1.0**
 
 එනම් සෑම පරම්පරාවකම එකම chip ප්‍රමාණයට ආසන්න වශයෙන් දෙගුණයක ට්‍රාන්සිස්ටර, 40% වේගවත්, *එකම තාපයකින්*. දශක ගණනක් clock එක නැගුණේ මේ නිසාය.
@@ -131,7 +131,7 @@ Voltage **ස්ථිරව** තබා, මාන සහ සංඛ්‍යා
 
 (පිළිතුරු: 1 → ≈ 171.9 W; 2 → එක් core එකක් 34.3 W, core 2ක් (68.6 W) — තුනක් 102.9 W නිසා අයවැය ඉක්මවයි; throughput 1.4×; 3 → 1 සහ 4.)
 
-**මෙම කොටසේ මූලාශ්‍රය:** R. H. Dennard, F. H. Gaensslen, H.-N. Yu, V. L. Rideout, E. Bassous, A. R. LeBlanc, "Design of Ion-Implanted MOSFET's with Very Small Physical Dimensions", *IEEE Journal of Solid-State Circuits*, වෙළුම 9, අංක 5, 1974 ඔක්තෝබර්, පිටු 256–268; Table I (පිටුව 265). විවෘත PDF පිටපත: <https://stanford.edu/class/cs114/readings/dennard.pdf>. (60 mV/දශකය යන්න kT/q × ln 10 ≈ 59.6 mV (300 K) යන සම්මත අර්ධ සන්නායක භෞතික ප්‍රතිඵලයයි.)
+**මෙම කොටසේ මූලාශ්‍රය:** R. H. Dennard, F. H. Gaensslen, H.-N. Yu, V. L. Rideout, E. Bassous, A. R. LeBlanc, "Design of Ion-Implanted MOSFET's with Very Small Physical Dimensions", *IEEE Journal of Solid-State Circuits*, වෙළුම 9, අංක 5, 1974 ඔක්තෝබර්, පිටු 256–268; Table I (පිටුව 265). විවෘත PDF පිටපත: <https://stanford.edu/class/cs114/readings/dennard.pdf>. (60 mV/දශකය යන්න kT/q × ln 10 ≈ 59.5 mV (300 K) යන සම්මත අර්ධ සන්නායක භෞතික ප්‍රතිඵලයයි.)
 
 <!--
 ASSET CHECKLIST

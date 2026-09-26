@@ -35,7 +35,7 @@ Rename කළ උපදෙස් සැබෑ operands පැමිණෙන ත
 
 ## ගැඹුරින්: අනුපිළිවෙළින් තොර ක්‍රියාත්මක කිරීම (out-of-order execution) පියවරෙන් පියවර
 
-> **සිංහල මූලාශ්‍ර පිළිබඳ සටහන:** 2026 සැප්තැම්බරයේ සමීක්ෂණයේදී out-of-order execution, register renaming හෝ reorder buffer ගැන සිංහල පැහැදිලි කිරීමක් (ලිඛිත හෝ වීඩියෝ) අපට හමු නොවීය; සිංහල විකිපීඩියාවේ CPU ලිපියේ ඒවායේ නම් පමණක් සඳහන් වේ. එබැවින් මෙහි සෑම පදයක්ම නිර්වචනය කර, කුඩා උදාහරණයකින් ගණනය කර පෙන්වමු.
+> **සිංහල මූලාශ්‍ර පිළිබඳ සටහන:** 2026 සැප්තැම්බරයේ සමීක්ෂණයේදී out-of-order execution, register renaming හෝ reorder buffer ගැන සිංහල පැහැදිලි කිරීමක් (ලිඛිත හෝ වීඩියෝ) අපට හමු නොවීය; සිංහල විකිපීඩියාවේ CPU ලිපියේ සඳහන් වන්නේ out-of-order execution යන නම පමණි ("ක්‍රියා විරහිත සම්පාදනය" ලෙස); register renaming සහ reorder buffer කිසිසේත් සඳහන් නොවේ. එබැවින් මෙහි සෑම පදයක්ම නිර්වචනය කර, කුඩා උදාහරණයකින් ගණනය කර පෙන්වමු.
 
 ### 1. පරායත්තතා (dependencies) වර්ග තුන
 
@@ -138,5 +138,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

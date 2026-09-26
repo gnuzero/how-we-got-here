@@ -158,5 +158,5 @@
   - 57-why-matrix-multiply-reshaped-chip-design.md: matmul step by step, n³ MACs, neuron layer example with ReLU, arithmetic intensity (≈341 vs 0.167 FLOP/byte), multiply-by-addition mini-cpu exercise. **Added the `labs: ["mini-cpu"]` frontmatter field and a mini-cpu lab embed.**
   - 58-systolic-arrays.md: weight-stationary 2×2 trace cycle by cycle (4 cycles, 8 MACs, 1-3-3-1), reuse and utilisation, TPU v1 256×256 MXU (Jouppi 2017, pp. 3–4), pencil exercise
   - 63-attention-is-all-you-need.md: softmax by hand, 3-token self-attention with invented teaching numbers, matrix form and O(n²·d) cost, why √d_k (footnote 4), multi-head (h = 8, d_k = 64), causal −∞ mask, pencil exercise
-- **Flag (left as is):** the pre-existing 14 text says the mini-cpu lab lets you watch predictor state. The lab has no predictor, and the new section says so honestly.
+- **Fixed in fact-check:** the pre-existing 14 text said the mini-cpu lab lets you watch predictor state. The lab has no predictor, pipeline or cache; the sentence now says to track the counter on paper. The asset-checklist comment in 14 and 16 no longer contains a live lab shortcode (it rendered a hidden iframe inside the HTML comment).
 - Hugo build clean (with `--themesDir` pointing at the main checkout's theme). No lock file or build output was committed.
