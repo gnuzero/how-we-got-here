@@ -86,4 +86,5 @@ ASSET CHECKLIST
 [x] Cross-link (desk decision 2026-09-26): relref to 18-zh-hong-kong-computing added at the end of the VTech section (that page's 1980s section covers IBM Hong Kong's procurement office for the mainland, 1983, and the IBM 5550, 1984).
 [ ] Native-reader proofread (zh-Hans) before final
 [x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/68-zh-computer-craze.md); Taiwan-reader proofread still pending
+[x] zh-Hant name form (PR #35 follow-up): 王頌贊, not OpenCC's 王頌讚; his own Traditional-script profile prints 王頌贊, and the only 王頌讚 hits are OpenCC-converted content farms. zh-Hant keeps the contest name 首屆少年兒童計算機程序設計競賽 as printed (Xinmin 2014).
 -->

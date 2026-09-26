@@ -19,7 +19,7 @@ schematics: "Diagram 1: the 做起 / 抓起 wording by source and year (2004 Xin
 
 ## 1984 年 2 月 16 日
 
-據《新民晚報》2014 年的報導（人民網轉載），中福會少年宮教師王頌贊那天帶著兩個在首屆少年兒童計算機程式設計競賽中獲獎的學生來到上海展覽中心，按計畫，“叢霖先用單板微型計算機做了團體操隊形變換表演。接著，李勁操作一台連接了14英寸彩色電視機顯示屏的蘋果電腦”。螢幕先打出中英文的“熱烈歡迎”，接著一個方頭方腦的機器人唱起了歌。新華網 2004 年的報導也記下了同樣的日期、地點、中英文“熱烈歡迎”和唱歌的機器人。表演結束後，鄧小平對在場的人講了那句話。
+據《新民晚報》2014 年的報導（人民網轉載），中福會少年宮教師王頌贊那天帶著兩個在首屆少年兒童計算機程序設計競賽中獲獎的學生來到上海展覽中心，按計畫，“叢霖先用單板微型計算機做了團體操隊形變換表演。接著，李勁操作一台連接了14英寸彩色電視機顯示屏的蘋果電腦”。螢幕先打出中英文的“熱烈歡迎”，接著一個方頭方腦的機器人唱起了歌。新華網 2004 年的報導也記下了同樣的日期、地點、中英文“熱烈歡迎”和唱歌的機器人。表演結束後，鄧小平對在場的人講了那句話。
 
 ## 做起，還是抓起
 
@@ -86,4 +86,5 @@ ASSET CHECKLIST
 [x] Cross-link (desk decision 2026-09-26): relref to 18-zh-hong-kong-computing added at the end of the VTech section (that page's 1980s section covers IBM Hong Kong's procurement office for the mainland, 1983, and the IBM 5550, 1984).
 [ ] Native-reader proofread (zh-Hans) before final
 [x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/68-zh-computer-craze.md); Taiwan-reader proofread still pending
+[x] zh-Hant name form (PR #35 follow-up): 王頌贊, not OpenCC's 王頌讚; his own Traditional-script profile prints 王頌贊, and the only 王頌讚 hits are OpenCC-converted content farms. zh-Hant keeps the contest name 首屆少年兒童計算機程序設計競賽 as printed (Xinmin 2014).
 -->

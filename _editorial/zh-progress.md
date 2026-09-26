@@ -76,9 +76,9 @@ Four labels are new, with no canonical rendering yet: 物理与器件, 分布式
   - 可程式設計序 → 可編程序 (18).
   - 組織機構程式碼 → 組織機構代碼 (66).
   - 物件 → 對象 (58, 67).
-- Names, checked: 董韞美, 林蘭英, 楊芙清, 孫玉芳, 王守武, 王守覺, 夏鍾瑞, 呂述望, 朱邦復, 張汝京, 余承東, 胡偉武. **夏钟瑞 / 夏鍾瑞** is the spelling in the source (上观新闻 oral history) and on the page; the brief's "夏忠瑞" does not match the source. 王頌贊 (王颂赞) uses 贊, not OpenCC's 讚; flagged for the proofreader.
+- Names, checked: 董韞美, 林蘭英, 楊芙清, 孫玉芳, 王守武, 王守覺, 夏鍾瑞, 呂述望, 朱邦復, 張汝京, 余承東, 胡偉武. **夏钟瑞 / 夏鍾瑞** is the spelling in the source (上观新闻 oral history) and on the page; the brief's "夏忠瑞" does not match the source. 王頌贊 (王颂赞) uses 贊, not OpenCC's 讚; decided in the PR #35 follow-up (see that section).
 - **Perspective fix:** 23-zh's "海峡对岸的起点" (i.e. Taiwan, seen from the mainland) becomes "台灣的起點" in zh-Hant.
-- **Generic vs statute terms (67):** the zh-Hant title uses the generic Taiwan term 個人資料保護法. Statute names and close paraphrases of PIPL keep 個人信息.
+- **Generic vs statute terms (67):** the zh-Hant title uses the generic Taiwan term 個人資料保護法制 (changed from 個人資料保護法, the name of Taiwan's own statute, in the PR #35 follow-up). Statute names and close paraphrases of PIPL keep 個人信息.
 
 ### VERIFY terms (batch 2)
 
@@ -286,12 +286,12 @@ Weights 12–23 are unique, equal `series_index`, and follow batch 1's 1–11. E
 - Omitted / unverified: SM4 in ISO/IEC 18033-3 AMD1 (2021); the exact NPC adoption date (the page says only 日前); the reasons for the 2004 WAPI deferral; ZUC in 3GPP.
 - Image: none. Lab: none (idea below).
 - VERIFY: none.
-- zh-Hant hand edits: 9 (發布 ×4; 用戶; 組織機構代碼; 數位憑證 / 電子簽章; 個人資料; link text 《…個人資料保護法》).
+- zh-Hant hand edits: 9 (發布 ×4; 用戶; 組織機構代碼; 數位憑證 / 電子簽章; 個人資料; link text 《…個人資料保護法》, now 《…個人資料保護法制》 after the PR #35 follow-up).
 
 ### 21. 67-zh-privacy-law (weight 21)
 
 - Files: `content.zh-hans/posts/67-zh-privacy-law.md`, `content.zh-hant/posts/67-zh-privacy-law.md`
-- Title: 从电脑处理到自动化决策：两岸三地的个人信息保护法 / 從電腦處理到自動化決策：兩岸三地的個人資料保護法
+- Title: 从电脑处理到自动化决策：两岸三地的个人信息保护法 / 從電腦處理到自動化決策：兩岸三地的個人資料保護法制 (zh-Hant title changed in the PR #35 follow-up)
 - Feeds English: 67 Privacy, Consent, Identity, Cyber
 - Sources: F28-01…F28-04.
 - Main primary sources:
@@ -304,7 +304,7 @@ Weights 12–23 are unique, equal `series_index`, and follow batch 1's 1–11. E
 - Omitted: the "Asia's first data-privacy law" label; the 2012 NPC decision and 2016 Cybersecurity Law as precursors; the 2022 Constitutional Court NHI ruling; any GDPR comparison.
 - Image: none. Lab: none (idea below).
 - VERIFY: none.
-- zh-Hant hand edits: 8 (title 個人資料保護法; 制定 ×2; 個人信息 ×4 in close statute paraphrases; 對象).
+- zh-Hant hand edits: 8 (title 個人資料保護法, now 個人資料保護法制; 制定 ×2; 個人信息 ×4 in close statute paraphrases; 對象).
 
 ### 22. 64-zh-mobile-standards (weight 22)
 
@@ -453,6 +453,33 @@ The standard is the same as the batch-1 gate (PR #23): quotation marks only on v
   - Checked and correct: 复/複 (復旦, 朱邦復, 分步重複), 里/裡 (馬里蘭, 里程碑), 干 (干涉, 干擾), 范克廉樓, 餘杭.
 - **Still open:** native proofreading (mainland reader for zh-Hans, Taiwan reader for zh-Hant) of all 24 pages.
 
+## Follow-up to the gate (PR #35), 2026-09-26
+
+These are the three calls Lucas left open, decided in one commit on top of dd94409.
+
+1. **王頌贊, not 王頌讚 (zh-Hant, 68).**
+   - Who he is: 王颂赞, 特级教师 at 中国福利会少年宫 and director of its 儿童计算机活动中心 in Shanghai (《新民晚报》 2014 via people.com.cn; the CWI pages on gov.eastday.com).
+   - He is a mainland teacher. No Taiwan or Hong Kong institution page, obituary or news item for him was found.
+   - The only Traditional-script form he uses himself is on his LinkedIn profile: 王頌贊 (Shanghai; teacher at CWI Children's Palace; the URL slug is 頌贊-王). This profile is self-published, not an institutional record.
+   - The only 王頌讚 hits are machine-converted content farms (jendow.com.tw, newton.com.tw, mingyanjiaju.org). They also show other OpenCC artifacts: 套用 for 应用, 國小員 for 小学员.
+   - zh-Hant keeps 王頌贊 at all four places. The Taiwan proofreader should still confirm.
+   - Also on 68 zh-Hant: the contest name as printed in the Xinmin article, 首屆少年兒童計算機程序設計競賽, is restored (OpenCC had written 程式設計競賽). This is the same slip as 全國青少年程序設計競賽 at the gate.
+2. **67 zh-Hant title: 從電腦處理到自動化決策：兩岸三地的個人資料保護法制.**
+   - The page covers mainland PIPL, the Hong Kong PDPO and Taiwan's PDPA together.
+   - 個人資料保護法 on its own is the name of Taiwan's statute, so the title read as if the page were about Taiwan's law only.
+   - 個人資料保護法制 is Taiwan's generic term for the body of personal-data law. For example, the NDC release of 2018-07-04 (ndc.gov.tw/nc_27_29899) uses 個人資料保護法制架構 and 個人資料保護法制之主政機關.
+   - The title stays parallel to the zh-Hans title, whose 个人信息保护法 is also generic (not in 《》).
+   - The one echo, the link text on 66-zh zh-Hant, was updated. Statute names in 《》 and the tags are unchanged.
+3. **Chapter 64: both pages stay, no rename.**
+   - English 64, "Who Decides the Wire" (phase Governance / Internet Civics), asks who sets the shared numbers, names and encodings that let networks interoperate.
+   - Its encodings section is twinned by 64-zh-hanzi-encoding (#23). Its IEEE 802 / Wi-Fi line, and the governance question itself, are twinned by 64-zh-mobile-standards: who assigns spectrum, who picks the cellular standard, a mandatory WLAN national standard (WAPI), and the patent inside that standard.
+   - No other English chapter fits this page better. 40 (Ethernet) and 41 (TCP/IP) are engineering chapters, and there is no English chapter 65.
+   - The phase 治理 / 互联网公民 matches English 64.
+   - The two pages do not overlap. Several English chapters already have more than one zh page (three for 01 in #23).
+   - Nothing on zh-desk-1 has to change. Once both PRs are in, the "本章另一篇中文页" pointer here can become a relref (already listed under TODO cross-links). A reciprocal pointer from 64-zh-hanzi-encoding back to this page is optional.
+- **Leftover from the 44 gate fix:** the body still had one 中国最早的搜索引擎研究 (end of the first section) after the gate. It now reads 按这篇回顾的说法，中国大陆第一批搜索引擎的研究… (zh-Hant: 按這篇回顧的說法，中國大陸第一批搜尋引擎的研究…), in line with the title and intro and credited in the same sentence.
+- Tools (desk workspace, not in the repo): `zh_hant.py` now auto-fixes 餘承東 → 余承東, 王頌讚 → 王頌贊 and 併發布/併發表 → 並發布/並發表, and turns 光刻機 into 曝光機 in prose. It also keeps as names 工业和信息化部, 最高人民法院知识产权法庭, the two CCF contest names, 少年儿童计算机程序设计竞赛 and 中国福利会, and it leaves Commons File:/Template: names verbatim. New REVIEW flags cover 併發, 個人資料保護法 (statute vs generic), 程式設計競賽, 部/局…訊息 (消息 → 訊息), and localized PRC institution names.
+
 ## Image licence notes (batch 2)
 
 - **05-zh, File:Huangkun.png** (Huang Kun with Gan Zizhao, 《人民画报》 1963 no. 1): Commons {{PD-CN}} → Template:PD-China (a photo published 1963; 50-year term). **Removed at the fact-check gate:** PD in China only; US copyright restored under the URAA (see the gate section). The caption is kept as prose. Rejected: File:黄昆.JPG (indoor bust with background photo; China's freedom of panorama covers outdoor places only).
@@ -499,9 +526,9 @@ Batch-1 pages are not on this branch, so these links are plain text or absent fo
 2. **New phase labels** (accepted at the gate; the theme does not render `phase`): 物理与器件 / 物理與元件, 分布式系统、大数据与编排 (zh-Hant 大數據 or 巨量資料?), 密码与战时计算, 落地的愿景. Confirm, or set canonical renderings in i18n.
 3. **光刻机 → 微影 / 曝光機** in zh-Hant prose: checked against Taiwan usage at the gate (TSMC, CNA, UDN). The other Taiwan-term choices listed above still need the Taiwan proofread.
 4. **夏钟瑞** (source spelling) vs "夏忠瑞" (spelling in the brief and in writer C's report). The page follows the source; confirm.
-5. **王頌贊 vs 王頌讚** (zh-Hant form of 王颂赞).
-6. **67-zh zh-Hant title:** generic 個人資料保護法 (chosen) vs the literal 個人信息保護法.
-7. **Scope:** 64-zh is a second zh page for chapter 64 (after batch-1's 64-zh-hanzi-encoding). Confirm that both stay, or move one elsewhere.
+5. ~~王頌贊 vs 王頌讚~~: resolved in the PR #35 follow-up (王頌贊).
+6. ~~67-zh zh-Hant title~~: resolved in the PR #35 follow-up (兩岸三地的個人資料保護法制).
+7. ~~Scope of 64-zh~~: resolved in the PR #35 follow-up (both chapter-64 pages stay; no rename).
 8. ~~SPC judgment quotations~~: resolved at the gate (checked against ipc.court.gov.cn).
 9. ~~HK CDMA date~~: resolved at the gate (both credited; kept).
 10. **CU40 quotation (43-zh):** verified live, but no local copy could be saved (captcha). Re-check at proofreading time.
@@ -512,6 +539,8 @@ Batch-1 pages are not on this branch, so these links are plain text or absent fo
 2026-09-26: a copy of the worktree outside the repo (no `.git`; theme hugo-book 45cbd2d; `HUGO_ENABLEGITINFO=false`) built with **Hugo v0.158.0 extended**: exit 0, no errors or warnings. zh-Hans and zh-Hant each rendered 228 pages, including all 12 posts. 53,182 internal links and assets across the zh-Hans and zh-Hant output were checked, with 0 broken; every relref between batch-2 pages resolves. No `.hugo_build.lock` was left in the repo.
 
 After the fact-check gate fixes (2026-09-26), the worktree was rebuilt with **Hugo v0.158.0 extended**: no errors or warnings, and 228 pages each for zh-Hans and zh-Hant. A link check over 930 HTML files found 0 broken internal links or assets. The only exception is the `labs/.../` placeholder on the en/th/si/ta ch19 page, which predates this branch.
+
+After the PR #35 follow-up (2026-09-26), a copy outside the repo was rebuilt with **Hugo v0.158.0 extended** (`--enableGitInfo=false`, theme hugo-book 45cbd2d). The build exited 0 with no errors or warnings, and zh-Hans and zh-Hant rendered 228 pages each. A link check over 930 HTML files (53,182 internal links and assets in zh-hans and zh-hant) found 0 broken in zh-hans or zh-hant, and every relref resolves. The only broken targets are the same pre-existing `labs/.../` placeholder on en/th/si/ta pages.
 
 ## Ready for native-reader proofreading
 
