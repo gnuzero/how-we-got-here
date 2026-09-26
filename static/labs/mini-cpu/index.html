@@ -108,6 +108,9 @@ HLT</textarea>
       <code>OUT</code> <code>HLT</code> — addresses/immediates 0–15, written in decimal (<code>13</code>) or hex (<code>0xD</code>)
       <ul class="notes">
         <li>Operands must be whole numbers 0–15. Anything else (<code>0xZZ</code>, <code>300</code>, a missing address) stops Assemble with an error naming the line — it is never quietly read as 0.</li>
+        <li>ZERO lights when A ends up 0 after <code>LDI</code>, <code>LDA</code>, <code>ADD</code> or <code>SUB</code>. <code>STA</code>, <code>OUT</code> and jumps leave it alone. Reset clears it, so a <code>JZ</code> before any of those falls through.</li>
+        <li>Registers are 8-bit: 0 − 1 wraps to 255 (and sets CARRY). A countdown from n=0 runs 256 loops, not zero.</li>
+        <li>Program and values share the same 16 words. A <code>STA</code> can overwrite an instruction — even your final <code>HLT</code>, and then the CPU runs on past it.</li>
       </ul>
     </div>
     <div id="log" class="log"></div>
@@ -143,7 +146,7 @@ const OPS = {NOP:0x0, LDA:0x1, ADD:0x2, SUB:0x3, STA:0x4, LDI:0x5, JMP:0x6, JC:0
 const OPNAMES = Object.fromEntries(Object.entries(OPS).map(([k,v])=>[v,k]));
 
 let mem = new Uint8Array(16);
-let A=0, B=0, PC=0, IR=0, carry=0, zero=1, halted=false, outReg=0, running=false, timer=null;
+let A=0, B=0, PC=0, IR=0, carry=0, zero=0, halted=false, outReg=0, running=false, timer=null;
 let stepCount = 0;
 
 const INTRO_PHASE = 'Fetch → Decode → Execute';
@@ -162,7 +165,7 @@ function explainExecute(op, arg, prevA, prevMem) {
     case OPS.NOP:
       return 'NOP does nothing. PC already advanced.';
     case OPS.LDA:
-      return 'LDA ' + arg + ': A ← mem[' + arg + '] (was ' + prevA + ', now ' + A + '). Watch A.';
+      return 'LDA ' + arg + ': A ← mem[' + arg + '] (was ' + prevA + ', now ' + A + '; zero=' + zero + '). Watch A.';
     case OPS.ADD:
       return 'ADD ' + arg + ': A ← A + mem[' + arg + '] → ' + A + ' (carry=' + carry + ', zero=' + zero + '). Watch A.';
     case OPS.SUB:
@@ -170,7 +173,7 @@ function explainExecute(op, arg, prevA, prevMem) {
     case OPS.STA:
       return 'STA ' + arg + ': mem[' + arg + '] ← A (' + A + '). Was ' + prevMem + '; watch that memory cell.';
     case OPS.LDI:
-      return 'LDI ' + arg + ': A ← immediate ' + arg + ' (was ' + prevA + '). Watch A.';
+      return 'LDI ' + arg + ': A ← immediate ' + arg + ' (was ' + prevA + '; zero=' + zero + '). Watch A.';
     case OPS.JMP:
       return 'JMP ' + arg + ': PC ← ' + arg + ' (unconditional). Watch PC on the memory grid.';
     case OPS.JC:
@@ -252,7 +255,7 @@ function assembleAndLoad() {
 }
 
 function reset(doLog=true) {
-  A=0; B=0; PC=0; IR=0; carry=0; zero=1; halted=false; outReg=0;
+  A=0; B=0; PC=0; IR=0; carry=0; zero=0; halted=false; outReg=0;
   stepCount = 0;
   stop();
   if (doLog) {
@@ -284,7 +287,7 @@ function step() {
   // EXECUTE (decode is the op/arg split above)
   switch (op) {
     case OPS.NOP: break;
-    case OPS.LDA: A = mem[arg]; break;
+    case OPS.LDA: A = mem[arg]; zero = A===0?1:0; break;
     case OPS.ADD: { const r = A + mem[arg]; carry = r > 255 ? 1 : 0; A = r & 0xFF; zero = A===0?1:0; break; }
     case OPS.SUB: { const r = A - mem[arg]; carry = r < 0 ? 1 : 0; A = (r + 256) & 0xFF; zero = A===0?1:0; break; }
     case OPS.STA: mem[arg] = A; break;
