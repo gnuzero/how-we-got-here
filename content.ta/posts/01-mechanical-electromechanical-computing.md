@@ -33,7 +33,7 @@ schematics: "Diagram: Jacquard loom punch card mechanism + Babbage difference en
 <figcaption>Difference Engine No. 2 (Science Museum, London). புகைப்படம்: <a href="https://commons.wikimedia.org/wiki/File:London_Science_Museum_by_Marcin_Wichary_-_Difference_Engine_No._2,_pt._1_(2290036668).jpg">Marcin Wichary</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
 </figure>
 
-1822இல், Charles Babbage Difference Engine-ஐ முன்மொழிந்தார் — முடிவுள்ள வேறுபாடுகள் முறையைப் பயன்படுத்தி பல்லுறுப்புச் சமன்பாடுகளை முழுவதும் இணைந்த கியர்களும் நெடுவரிசை சக்கரங்களும் மூலம் கணிக்கும் ஒரு இயந்திர கணிப்பான். மின்சாரம் இல்லை. ஒவ்வொரு நெடுவரிசையும் ஒரு இலக்கம்; "1"-ஐ கொண்டு செல்வது ஒரு இயற்பியல் நிகழ்வு: ஒரு கியர் பல் அதன் அண்டையைப் பிடித்துத் திருப்புவது.
+1822இல், Charles Babbage Difference Engine-ஐ முன்மொழிந்தார் — முடிவுள்ள வேறுபாடுகள் முறையைப் பயன்படுத்தி பல்லுறுப்புச் சார்புகளை முழுவதும் இணைந்த கியர்களும் நெடுவரிசை சக்கரங்களும் மூலம் கணிக்கும் ஒரு இயந்திர கணிப்பான். மின்சாரம் இல்லை. ஒவ்வொரு நெடுவரிசையும் ஒரு இலக்கம்; "1"-ஐ கொண்டு செல்வது ஒரு இயற்பியல் நிகழ்வு: ஒரு கியர் பல் அதன் அண்டையைப் பிடித்துத் திருப்புவது.
 
 ## வேறுபாடுகள் முறை — கூட்டல் மட்டும்
 
@@ -101,7 +101,7 @@ Computer History Museum-இன் "The Engines" பக்கத்திலி�
 - **Note A:** "it might act upon other things besides number" — எண்கள் அல்லாத பிறவற்றின் மீதும் அது செயல்படக்கூடும்; அவற்றின் அடிப்படை உறவுகளைச் செயல்களின் சுருக்க அறிவியலால் வெளிப்படுத்த முடிந்தால். இதுதான் பதிவு சொல்லும் "எந்தக் குறியீடுகளும்" வாதம்.
 - **Note G:** Bernoulli எண்களை இயந்திரம் எப்படிக் கணிக்கும் என்பதைப் படிப்படியாக விவரித்து Notes முடிகின்றன. அதே Note-இல் ஒரு எச்சரிக்கையும்: "The Analytical Engine has no pretensions whatever to originate anything. It can do whatever we know how to order it to perform." — அது எதையும் சுயமாக உருவாக்குவதாகப் பாசாங்கு செய்வதில்லை; அதற்கு எப்படிக் கட்டளையிடுவது என்று நமக்குத் தெரிந்ததைச் செய்யும்.
 
-**Door out:** Ada Lovelace இன் Analytical Engine மீதான *Notes* (Menabrea இன் மொழிபெயர்ப்பின் மீது) — Bernoulli-எண்கள் ஓவியத்திற்கும் "எந்த குறியீடுகளும்" வாதத்திற்கும் முதன்மை உரை.
+**Door out:** Ada Lovelace இன் Analytical Engine மீதான *Notes* (Menabrea இன் மொழிபெயர்ப்பின் மீது) — Bernoulli-எண்கள் வரைவுக்கும் "எந்த குறியீடுகளும்" வாதத்திற்கும் முதன்மை உரை.
 
 ## இதற்குப் பிறகு எல்லாவற்றிற்கும் இது ஏன் முக்கியம்
 

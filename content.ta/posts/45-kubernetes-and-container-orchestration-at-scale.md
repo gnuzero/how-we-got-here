@@ -119,7 +119,7 @@ Borg கட்டுரை: Google-இன் median cell சுமார் **10
 5. **ஒரு ML training job 64 GPU இயந்திரங்களில். ஒவ்வொரு இயந்திரமும் சராசரியாக 1,000 நாட்களுக்கு ஒருமுறை தோல்வியுறுகிறது (எடுத்துக்காட்டு மதிப்பு). 30 நாள் பயிற்சியில் எத்தனை இயந்திரத் தோல்விகள் எதிர்பார்க்கலாம்?**
    விடை: 64 × 30 ÷ 1,000 = **1.92** — சுமார் இரண்டு. அதனால்தான் training fleet-க்கும் தானியங்கி மீட்பு தேவை.
 
-**Door out:** Abhishek Verma et al., "Large-scale cluster management at Google with Borg" (EuroSys 2015) — Kubernetes இறங்கும் உள் அமைப்பின் முதன்மை கணக்கு; Brendan Burns et al., "Borg, Omega, and Kubernetes" (*ACM Queue*, 2016) — Borg, Omega, மற்றும் திறந்த control plane-ஐ இணைக்கும் குறுகிய lineage paper.
+**Door out:** Abhishek Verma et al., "Large-scale cluster management at Google with Borg" (EuroSys 2015) — Kubernetes தோன்றிய உள் அமைப்பின் முதன்மை கணக்கு; Brendan Burns et al., "Borg, Omega, and Kubernetes" (*ACM Queue*, 2016) — Borg, Omega, மற்றும் திறந்த control plane-ஐ இணைக்கும் குறுகிய lineage paper.
 
 ## சொற்கள்
 

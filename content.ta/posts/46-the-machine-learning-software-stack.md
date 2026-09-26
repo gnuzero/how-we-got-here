@@ -47,7 +47,7 @@ Loop-இலிருந்து `(a*a).sum()` சுமார் 10 மடங�
 
 ## Frameworks: Gradients மற்றும் வன்பொருள் ஒரே ஒப்பந்தமாக
 
-Deep-learning frameworks (ஆதிக்க உதாரணங்களாக PyTorch மற்றும் TensorFlow) arrays மீது training தேவைப்படுவதைச் சேர்க்கின்றன. **Automatic differentiation** ஒரு computation graph கட்டி, ஒவ்வொரு architecture-க்கும் மனிதன் calculus மீண்டும் பெறாமல் gradients உருவாக்குகிறது — gradient descent-ஐ ஆராய்ச்சி வேகத்தில் நடைமுறைப்படுத்தும் கட்டுப்பாடு. ஒரு **வன்பொருள் abstraction** அதே model code CPU, CUDA வழியாக NVIDIA GPU (Phase 9), அல்லது பிற accelerators-ஐ இலக்காக வைக்க அனுமதிக்கிறது — tensor ops-ஐ optimized kernels-க்குத் தாழ்த்தி — பதிவு 11-இன் ISA/microarchitecture பிரிவின் அதே *வகை* ஒப்பந்தம், ஒரு மென்பொருள் அடுக்கு உயர்வில்.
+Deep-learning frameworks (ஆதிக்க உதாரணங்களாக PyTorch மற்றும் TensorFlow) arrays மீது training தேவைப்படுவதைச் சேர்க்கின்றன. **Automatic differentiation** ஒரு computation graph கட்டி, ஒவ்வொரு architecture-க்கும் மனிதன் calculus மீண்டும் வருவிக்காமல் gradients உருவாக்குகிறது — gradient descent-ஐ ஆராய்ச்சி வேகத்தில் நடைமுறைப்படுத்தும் கட்டுப்பாடு. ஒரு **வன்பொருள் abstraction** அதே model code CPU, CUDA வழியாக NVIDIA GPU (Phase 9), அல்லது பிற accelerators-ஐ இலக்காக வைக்க அனுமதிக்கிறது — tensor ops-ஐ optimized kernels-க்குத் தாழ்த்தி — பதிவு 11-இன் ISA/microarchitecture பிரிவின் அதே *வகை* ஒப்பந்தம், ஒரு மென்பொருள் அடுக்கு உயர்வில்.
 
 ## Autograd கையால் — ஒரு parameter, ஒரு படி
 
