@@ -95,7 +95,7 @@ HLT
 
 Step-ஐ அழுத்தி எண்ணுங்கள்: Output 3, 2, 1 என்று மாறும்; வழிகாட்டிப் பலகை கடைசியில் `Step 15` காட்டும் (அப்போது வரும் "Output should be 13" குறிப்பு இயல்பு நிரலுக்கானது — இங்கே பொருந்தாது; log-இல் `HLT — program finished. Output = 1`). கணக்கு: அமைப்பு 3 படிகள் (LDI, STA, LDI); கடைசி அல்லாத ஒவ்வொரு சுற்றும் 4 படிகள் (OUT, SUB, JZ, JMP); கடைசிச் சுற்று 3 (OUT, SUB, JZ) + HLT 1. தொடக்க மதிப்பு n என்றால் படிகள் = 3 + 4(n − 1) + 3 + 1 = **4n + 3**. `LDI 3`-ஐ `LDI 5` ஆக்கினால் 23, `LDI 9` ஆக்கினால் 39 — simulator-இல் சரியாக இவையே வந்தன. Run அழுத்தினால் 250 ms-க்கு ஒரு படி: n = 3-க்கு 15 × 250 ms = 3.75 s, ஒவ்வொரு முறையும் அதே. ஓடுவதற்கு முன்பே WCET-ஐ ஒரு வரிக் கணக்கில் சொல்ல முடிகிறது — அதுதான் சான்றளிப்புக்கு எளிமை தரும் பலம்.
 
-*VM-இல்:* `echo 'BEGIN{for(i=0;i<100000;i++) s+=i; print s}' > /tmp/l.awk` பிறகு `time awk -f /tmp/l.awk` ஐந்து முறை. எங்கள் ஓட்டத்தில் `real`: 0.73, 0.63, 0.64, 0.62, 0.60 s — அதே நிரல், அதே உள்ளீடு, ஐந்து வெவ்வேறு நேரங்கள். சராசரி 3.22 ÷ 5 ≈ 0.64 s; வீச்சு 0.73 − 0.60 = 0.13 s, அதாவது குறைந்த நேரத்தைவிட சுமார் 22% அதிகம்; முதல் ஓட்டமே மெதுவானது (warm-up). `chrt -p $$` → `SCHED_OTHER` — பொது நோக்க scheduling கொள்கை, real-time கொள்கை அல்ல. மேலே உள்ள 30% இருப்பை இந்த 22% நடுக்கம் எவ்வளவு எளிதாகத் தின்றுவிடும் என்று கணக்கிட்டுப் பாருங்கள்.
+*VM-இல்:* `echo 'BEGIN{for(i=0;i<100000;i++) s+=i; print s}' > /tmp/l.awk` பிறகு `time awk -f /tmp/l.awk` ஐந்து முறை. எங்கள் ஓட்டத்தில் `real`: 0.73, 0.63, 0.64, 0.62, 0.60 s — அதே நிரல், அதே உள்ளீடு, ஐந்து வெவ்வேறு நேரங்கள். சராசரி 3.22 ÷ 5 ≈ 0.64 s; வீச்சு 0.73 − 0.60 = 0.13 s, அதாவது குறைந்த நேரத்தைவிட சுமார் 22% அதிகம்; முதல் ஓட்டமே மெதுவானது (warm-up காரணமாக இருக்கலாம் — இது எங்கள் ஊகம், அளக்கவில்லை). `chrt -p $$` → `SCHED_OTHER` — பொது நோக்க scheduling கொள்கை, real-time கொள்கை அல்ல. மேலே உள்ள 30% இருப்பை இந்த 22% நடுக்கம் எவ்வளவு எளிதாகத் தின்றுவிடும் என்று கணக்கிட்டுப் பாருங்கள்.
 
 {{< lab type="mini-cpu" >}}
 
@@ -125,5 +125,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

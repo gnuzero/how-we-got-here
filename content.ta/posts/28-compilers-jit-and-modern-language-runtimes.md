@@ -77,7 +77,7 @@ long sum(void) {
     ret
 ```
 
-கணக்கு: 1 + 2 + … + n = n(n+1)/2 = 1,000,000 × 1,000,001 / 2 = **500,000,500,000** — optimizer loop-ஐ compile நேரத்திலேயே ஓட்டி முடிவை மட்டும் வைத்துவிட்டது (constant folding). ஓடும் நேர வேலை:
+கணக்கு: 1 + 2 + … + n = n(n+1)/2 = 1,000,000 × 1,000,001 / 2 = **500,000,500,000** — optimizer loop-இன் இறுதி மதிப்பை compile நேரத்திலேயே கணக்கிட்டு, loop-ஐ நீக்கி முடிவை மட்டும் மாறிலியாக வைத்துவிட்டது (constant folding). ஓடும் நேர வேலை:
 
 | பதிப்பு | loop-இல் ஓடும் instruction-கள் |
 |---|---|
@@ -113,9 +113,9 @@ Managed மொழிகள் (Java, C#, மற்றும் பல்வே�
 
 ## நேரடியாகப் பாருங்கள்
 
-கீழே உள்ள VM terminal தொகுக்க உண்மையான இடம்: சிறிய C நிரலில் `gcc` முயன்று `-S`-உடன் assembly ஆய்வு செய்யுங்கள் — இந்தப் பதிவின் abstractions உறுதியான machine அறிவுறுத்தல்களாக மாறுவது.
+கீழே உள்ள VM terminal ஒரு உண்மையான Linux அமைப்பு, ஆனால் அதில் C compiler இல்லை — `gcc` ஓட்டினால் `gcc: not found` என்று வரும். எனவே அங்கே C நிரலை compile செய்ய முடியாது. மேலே உள்ள உண்மையான GCC `-O0` / `-O2` வெளியீடுகள் இந்தப் பதிவின் abstractions உறுதியான machine அறிவுறுத்தல்களாக மாறுவதைக் காட்டுகின்றன; VM-இல் என்ன முயலலாம் என்பதற்குக் கீழே உள்ள "இப்போது முயல்க" பகுதியைப் பாருங்கள் — அங்கே ஏற்கனவே compile ஆன ஒரு binary-ஐயும் interpret ஆகும் ஒரு நிரலையும் ஒப்பிடுகிறோம்.
 
-**இப்போது முயல்க: compile ஆன ஒன்றும் interpret ஆகும் ஒன்றும்.** மேலே உள்ள பத்தி `gcc` முயலச் சொல்கிறது, ஆனால் இந்த VM-இல் `gcc` இல்லை (`gcc: not found`). அதற்குப் பதிலாக, இவற்றை ஓட்டுங்கள் (எல்லாம் ஓட்டிச் சரிபார்த்தவை):
+**இப்போது முயல்க: compile ஆன ஒன்றும் interpret ஆகும் ஒன்றும்.** இந்த VM-இல் `gcc` இல்லை (`gcc: not found`). அதனால் இவற்றை ஓட்டுங்கள் (எல்லாம் ஓட்டிச் சரிபார்த்தவை):
 1. `gcc` → `-/bin/sh: gcc: not found`. இங்கே compiler இல்லை — ஆனால் compile ஆன வெளியீடுகள் இருக்கின்றன.
 2. `hexdump -C /bin/busybox | head -2` → முதல் byte-கள் `7f 45 4c 46 01 01 01 …`: `7f` + "ELF" = compiler/linker உருவாக்கும் இயக்கக்கூடிய கோப்பு வடிவம்; அடுத்த `01` = 32-பிட், அதற்கடுத்த `01` = little-endian. இரண்டாம் வரியில் `03 00` = x86 (i386) இலக்கு. இது AOT: நிரல் ஓடுவதற்கு முன்பே — 2018-இல், வேறொரு கணினியில் — compile செய்யப்பட்டது.
 3. `echo 'BEGIN{s=0; for(i=1;i<=1000000;i++) s+=i; print s}' > /tmp/sum.awk` பிறகு `time awk -f /tmp/sum.awk` → `500000500000`, எங்கள் ஓட்டங்களில் `real` சுமார் 6 விநாடி (6.06 s, 6.45 s; உங்கள் உலாவியில் வேறுபடும்). awk ஒரு interpreter: மேலே GCC `-O2` ஒரே constant ஆக்கிய அதே கூட்டலை, இங்கே ஒவ்வொரு சுற்றையும் ஓடும்போது படித்துச் செய்கிறது — ஒரு சுற்றுக்குச் சுமார் 6 s ÷ 1,000,000 ≈ 6 µs.
@@ -149,5 +149,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->

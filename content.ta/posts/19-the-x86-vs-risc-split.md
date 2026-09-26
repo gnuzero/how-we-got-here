@@ -35,7 +35,7 @@ MIPS, SPARC, மற்றும் PowerPC அனைத்தும் கப்
 
 ## அனுபவச் சோதனை: ஒரு உண்மையான நிரலில் எந்த instruction-கள்?
 
-RISC தரப்பின் கூற்று: compiler உருவாக்கும் குறியீட்டில் சிக்கலான CISC செயல்கள் அரிதாகவே வருகின்றன. சோதிப்போம். `objdump -d /bin/ls` — எங்கள் பணிக் கணினியில் (Linux, x86-64) உள்ள 158,632 byte x86-64 நிரல் — **22,874** instruction-கள். அதிகம் வரும் mnemonic-கள் (objdump-இன் AT&T பெயர்களில்):
+RISC தரப்பின் கூற்று: compiler உருவாக்கும் குறியீட்டில் சிக்கலான CISC செயல்கள் அரிதாகவே வருகின்றன. சோதிப்போம். `objdump -d /bin/ls` — எங்கள் பணிக் கணினியில் (Linux, x86-64) உள்ள 158,632 byte x86-64 நிரல் — **22,874** instruction-கள். அதிகம் வரும் mnemonic-கள் (objdump-இன் AT&T பெயர்களில்; `jmp` எண்ணிக்கையில் 11 `notrack jmp`-உம் அடங்கும்):
 
 | Mnemonic | எண்ணிக்கை | பங்கு | வகை |
 |---|---|---|---|
@@ -48,6 +48,7 @@ RISC தரப்பின் கூற்று: compiler உருவாக்
 | lea | 954 | 4.2% | முகவரிக் கணக்கு |
 | jne | 822 | 3.6% | நிபந்தனைத் தாவல் |
 | pop / push | 813 / 742 | 3.6% / 3.2% | stack நகர்த்தல் |
+| xor | 754 | 3.3% | பதிவேட்டைப் பூஜ்ஜியமாக்கல் (754-இல் 720, `xor %eax,%eax` போல ஒரு பதிவேட்டைத் தன்னுடனேயே) |
 | add / sub | 658 / 587 | 2.9% / 2.6% | கணக்கு |
 
 **கூட்டிப் பார்ப்போம்:**
@@ -138,5 +139,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->
