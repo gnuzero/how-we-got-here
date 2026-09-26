@@ -37,7 +37,7 @@ schematics: "Diagram 1: step-and-repeat vs scanning exposure (stepper exposes on
 
 ## 2000 年以後：代工廠與國產掃描機
 
-2000 年 4 月 3 日，中芯國際依開曼群島公司法註冊成立，同年 5 月發行的首批 10,000 股普通股由張汝京持有。它與台積電的官司以 2009 年的和解收場：據中芯國際 2009 年 11 月 10 日的公告，加州陪審團 11 月 4 日判中芯國際敗訴，雙方 11 月 9 日訂立和解協議，中芯國際向台積電支付合共 2 億美元（分四年付清），並授出約佔已發行股本 8% 的股份。
+據中芯國際科創板上市的法律意見書，2000 年 4 月 3 日，中芯國際依開曼群島公司法註冊成立，同年 5 月發行的首批 10,000 股普通股由張汝京持有。它與台積電的官司以 2009 年的和解收場：據中芯國際 2009 年 11 月 10 日的公告，加州陪審團 11 月 4 日判中芯國際敗訴，雙方 11 月 9 日訂立和解協議，中芯國際向台積電支付合共 2 億美元（分四年付清），並授出約佔已發行股本 8% 的股份。
 
 曝光機本身呢？上海微電子 2002 年 3 月在張江成立。據公司的發展歷程，2016 年 6 月，“我司首台暨國內首台前道掃描光刻機交付用戶”；其 SSX600 系列產品頁標稱可滿足 90 奈米、110 奈米、280 奈米關鍵層和非關鍵層的微影需求。這和清華 1980 年的“國內第一台”並不矛盾：那是分步投影式，一次曝光一整格；這是掃描式，用一道光縫掃過整格。
 
@@ -69,5 +69,5 @@ ASSET CHECKLIST
 [x] SMIC legal opinion link: the dossier gave no URL; the SSE PDF 000497_20200622_RC98.pdf was found and checked 2026-09-26 (contains both quoted passages of F16-06).
 [ ] TODO after PR #23 merges: add a relref to 47-zh-taiwan-semiconductors.md at the SMIC-TSMC paragraph.
 [ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/48-zh-lithography-fabs.md); Taiwan-reader proofread still pending (微影 → 微影 / 曝光機 per glossary OVERRIDE; 流片 not used)
+[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/48-zh-lithography-fabs.md); Taiwan-reader proofread still pending (光刻 → 微影 / 曝光機 per glossary OVERRIDE; 流片 not used)
 -->

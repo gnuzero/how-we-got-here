@@ -1,12 +1,12 @@
 ---
-title: "一台服务器装不下：中国最早的校园搜索引擎"
+title: "一台服务器装不下：中国大陆第一批搜索引擎"
 weight: 19
 date: 2026-09-26
 draft: false
 phase: "7 — 分布式系统、大数据与编排"
 series_index: 19
 tags: ["搜索引擎", "网络指南针", "天网", "木棉", "CERNET", "中文切词", "九五攻关", "集中式与分布式"]
-summary: "中国最早的搜索引擎诞生在三所大学的实验室里；它们先撞上中文没有空格这堵墙，再撞上网页多到一台机器装不下这堵墙。"
+summary: "据赛尔网络的回顾，中国大陆第一批搜索引擎诞生在三所大学的实验室里；它们先撞上中文没有空格这堵墙，再撞上网页多到一台机器装不下这堵墙。"
 image_prompt: "1997 university network lab in Beijing: one beige tower server and one PC on a desk, cables to a wall socket labelled CERNET, a whiteboard with a sentence of Chinese characters split by vertical strokes; later-era racks faintly overlaid behind them to suggest growth; documentary illustration, no readable text"
 video_prompt: "20-second animation: a line of Chinese characters with no spaces; candidate word boundaries flicker until a query matches; then a page counter climbs from 200,000 (1997) to tens of millions (2000) while a single server strains and splits into several parallel machines; end on the words centralised vs distributed"
 schematics: "Diagram 1: the 1996 national project -> CERNET task 'network information discovery' -> three university engines (Tsinghua Net Compass, PKU Tianwang, SCUT Kapok). Diagram 2: why segmentation matters: character-by-character indexing vs word-based indexing, with the Honglou Meng example '邸报看真'. Diagram 3: one server + one PC (Tianwang 1997) vs parallelised system (2000s), set against Li Xing's 'centralised, not distributed' remark."
@@ -15,7 +15,7 @@ schematics: "Diagram 1: the 1996 national project -> CERNET task 'network inform
 
 <!-- sources: F29-01, F29-02, F29-03, F29-06, F29-07 -->
 
-1997 年，中文网络上的第一批搜索引擎，是在大学实验室里、用国家攻关项目的经费做起来的。它们先撞上一堵英文搜索没有的墙：中文词与词之间没有空格。接着又撞上第二堵墙：网页多到一台机器装不下。
+1997 年，中国大陆的第一批搜索引擎（赛尔网络的回顾这样称呼它们），是在大学实验室里、用国家攻关项目的经费做起来的。它们先撞上一堵英文搜索没有的墙：中文词与词之间没有空格。接着又撞上第二堵墙：网页多到一台机器装不下。
 
 ## 一个攻关项目，三所大学
 
@@ -31,7 +31,7 @@ schematics: "Diagram 1: the 1996 national project -> CERNET task 'network inform
 
 ## 第二堵墙：一台服务器
 
-北大天网 1997 年 10 月 29 日起在 CERNET 上提供服务（它和百度的渊源，另见本书中文版《从中文信息处理到注意力机制》一页）。据《中国教育网络》2014 年的文章，在技术负责人刘建国看来，当时的天网只是搜索技术的一个实验性产品，“只有一台服务器、一台PC、抓网页，建索引、提供搜索服务，虽然简陋但却实用”。
+据赛尔网络的回顾，北大天网 1997 年 10 月 29 日起在 CERNET 上提供服务（它和百度的渊源，另见本书中文版《从中文信息处理到注意力机制》一页）。《中国教育网络》2014 年的文章这样转述技术负责人刘建国的看法：当时的天网只是搜索技术的一个实验性产品，“只有一台服务器、一台PC、抓网页，建索引、提供搜索服务，虽然简陋但却实用”。
 
 网页的数量很快涨了上去。据赛尔网络的回顾，天网团队认为，搜索的核心问题可以归结为“一要准，二要快”；到 2000 年李晓明带领新课题组时，网上的网页已达千万级，闫宏飞和彭波开发了一套技术，实现系统的并行化。《中国教育网络》的文章则记下了随后的规模：到 2002 年，天网 FTP 搜索已有上千万个文件，每天点击 60 多万次；到 2005 年底，天网 Maze 有 340 万注册用户、30 万活跃用户，同时在线人数最高突破 10 万。再往后，据赛尔网络的回顾，北大网络实验室 2002 年开发建设了中国Web信息博物馆，到 2015 年收藏了 70 多亿网页文本数据。
 

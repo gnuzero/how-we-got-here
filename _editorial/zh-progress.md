@@ -396,9 +396,66 @@ Weights 12–23 are unique, equal `series_index`, and follow batch 1's 1–11. E
 - **Figures:** every number on the pages was searched in the saved texts and dossier. The two not found as written (PTT 105403, 177734) appear as "105,403" and "177,734" in the saved PTT page.
 - **Reading copies** in the desk workspace were updated to match every change above.
 
+## Fact-check gate (batch 2), 2026-09-26
+
+The standard is the same as the batch-1 gate (PR #23): quotation marks only on verbatim text; every detail credited to its own source; no claims about what English-language sources say; no unsourced figures. Quotes were spot-checked against the **live** sources, not only the saved copies.
+
+- **URLs:** all 103 reading-list and source URLs were re-fetched. All resolve. Some are slow or block bots, but none is broken:
+  - oscca.gov.cn is very slow from the checker's box; the 密码法 page was read via a second fetcher.
+  - cusp.hk (CU40) returns 429 to curl; wetoasthk serves a bot challenge. Both were read via a second fetcher.
+  - vtech.com needs a cookie (307 loop without one).
+  - upload.wikimedia.org returns 429 to curl; the files were confirmed through the Commons API.
+  - The Cambricon SSE prospectus is a large PDF; it was downloaded and searched.
+- **Quotes:** all 129 quotations on the zh-Hans pages match their live sources, with no misquotes. The one quotation added at the gate (64, Xinhua) was also checked live. Most were matched automatically against the live-fetched corpus with OpenCC variants. The rest were checked by hand:
+  - 18: headline (wetoasthk).
+  - 23: ZDNet Taiwan (big5 archive).
+  - 43: CU40.
+  - 58: TPU paper (arXiv PDF).
+  - 64: SPC judgment (ipc.court.gov.cn).
+  - 66: 密码法 ×5 (oscca).
+- **Figures:** the Cambricon prospectus figures (100.00% / 97.94% / 92.56%, −41.23%, 自研终端智能芯片, 超过1亿台, founded 2016-03-15) were found verbatim in the SSE PDF. The other pages' figures were checked against their cited sources.
+- **Fixes (both locales):**
+  - 05: Huangkun.png removed (see flags); the caption kept as prose.
+  - 23:
+    - 据论文摘要 → 据论文摘要页. 八五 is in the 基金项目 line, not in the abstract.
+    - The Red Flag paragraph is now attributed to 《南方都市报》 2005 from its first sentence. 孙玉芳's title is given as at her death in 2005.
+    - The Kylin paragraph is attributed to 中国教育和科研计算机网 from its first sentence.
+    - The HarmonyOS quote is attributed to 余承东, as quoted in Huawei Hong Kong's release.
+    - zh-Hant only: the nickname stays 小虫, as printed in ZDNet Taiwan.
+  - 27: 仓颉 is now "据南京大学的新闻稿 … 介绍 … 并发布了开发者预览版". Before, the page said "首次公开发布", which the cited source does not say.
+  - 43: cuhk.forum started in Sep 1992 as cuhk.campus and was renamed in Sep 1993 (CU40 table).
+  - 44: "中文网络上的第一批 / 中国最早的校园搜索引擎" → "中国大陆第一批搜索引擎 (as the 赛尔网络 retrospective calls them)", in the title, summary and body. Taiwan's Yam (1995) predates them. Also added "据赛尔网络的回顾" for 天网's 1997-10-29 date, and marked the 刘建国 view as 《中国教育网络》's paraphrase.
+  - 48: the SMIC incorporation details are now credited to SMIC's STAR-market legal opinion.
+  - 58: the founding date is credited to the prospectus; "计算所和风险投资机构的支持" is credited to the CAS feature.
+  - 64:
+    - The GSM Jiaxing and analogue-close dates are credited to 中国电信博物馆's chronology; the 3G licences to gov.cn/MIIT.
+    - The 110号 transition clause is now exact: "2003 年 12 月 1 日前已进口、生产或已签订有效合同…进口、生产和销售".
+    - SM4/WAPI is credited to 吕述望.
+    - 小灵通 is rewritten (see flags); Xinhua and 吕述望 were added to the reading list.
+  - 68:
+    - NOI: from 1989 the CCF picked the IOI team from the youth programming contest and renamed it NOI (noi.cn).
+    - The English ch68 pointer now lists what that chapter actually covers (Cisco, Microsoft, Apple, GNU/Linux, Amazon…).
+- **Wen's flags:**
+  1. **Huangkun.png: removed.** Commons has only {{PD-CN}}, with no US tag. Under the URAA, a 1963 Chinese publication was still protected in China on 1996-01-01, so US copyright was restored (to end-2058). The repo is US-hosted.
+  2. **SPC WAPI judgment:** checked against the authoritative copy on the SPC IP Tribunal site (ipc.court.gov.cn/zh-cn/news/view-2906.html, 精品裁判, 2024-03-25). Both quotes and the XG1-2006 detail match. That copy is now the primary link; WIPO Lex is kept as a secondary link.
+  3. **小灵通 / 1900–1920 MHz:** 工信部无〔2009〕11号 does not name 小灵通. The page now says so and links the band to 小灵通 via Xinhua (2009-02-14, via chinanews.com.cn; 记者刘菊花、冯晓芳), where an MIIT official answers questions on "涉及小灵通使用频段清频问题".
+  4. **HK CDMA:** both dates are credited (CTM Sep 1995; OFCA Oct 1995). Kept.
+  5. **Tsinghua 0.8 µm:** labelled as the developer's own recollection. Kept.
+  6. **BCY:** CAS (119) and CCF ("从1971年起配置于109，111等国产机上") are cited exactly. Kept.
+  7. **孙玉方 / 孙玉芳:** the paper byline (李军、孙玉方) is cited as printed; the page does not identify the two. Kept.
+  8. **夏钟瑞:** as printed. zh-Hant 夏鍾瑞 is a best guess and needs Taiwan proofreading.
+  9. **Phase labels:** the theme and layouts do not render `phase`, and i18n has no phase keys. #23 uses "N — 中文". Wen's renderings are kept: 物理与器件 / 物理與元件; 分布式系统、大数据与编排 / 分散式系統、大數據與編排; 密码与战时计算; 落地的愿景.
+  10. **zh-Hant 光刻机:** Taiwan usage is 微影 for the technique and 曝光機 or 微影設備 for the tool. TSMC's Chinese annual report uses 微影技術 and 極紫外光曝光機; CNA and UDN (2026-09) use 微影技術, EUV曝光機 and 微影設備. The zh-Hant pages already follow this. Quotes and titles keep 光刻机/光刻機 verbatim.
+- **zh-Hant scan (OpenCC errors):** no leaked Simplified characters in prose. The OpenCC error candidates were checked and fixed:
+  - 余承东 (not 餘), 並發布 (not 併), and the PRC names 工业和信息化部 and 最高人民法院知识产权法庭 were fixed in the new text.
+  - 68: 全國青少年程序設計競賽 restored as the proper name.
+  - 05 checklist: File:黄昆.JPG restored (a Commons file name).
+  - Checked and correct: 复/複 (復旦, 朱邦復, 分步重複), 里/裡 (馬里蘭, 里程碑), 干 (干涉, 干擾), 范克廉樓, 餘杭.
+- **Still open:** native proofreading (mainland reader for zh-Hans, Taiwan reader for zh-Hant) of all 24 pages.
+
 ## Image licence notes (batch 2)
 
-- **05-zh, File:Huangkun.png** (Huang Kun with Gan Zizhao, 《人民画报》 1963 no. 1): Commons {{PD-CN}} → Template:PD-China (a photo published 1963; 50-year term). **Flag: PD in China; US (URAA) status not assessed.** The page relies on Commons' acceptance of PD-China. Lucas / licensing to decide before final. Rejected: File:黄昆.JPG (indoor bust with background photo; China's freedom of panorama covers outdoor places only).
+- **05-zh, File:Huangkun.png** (Huang Kun with Gan Zizhao, 《人民画报》 1963 no. 1): Commons {{PD-CN}} → Template:PD-China (a photo published 1963; 50-year term). **Removed at the fact-check gate:** PD in China only; US copyright restored under the URAA (see the gate section). The caption is kept as prose. Rejected: File:黄昆.JPG (indoor bust with background photo; China's freedom of panorama covers outdoor places only).
 - **64-zh, File:3G_Mobile_Phones_fot_China_Mobile.jpg:** Yoshi Canopus, own work, 2010-02-02; {{self|GFDL|cc-by-sa-3.0,2.5,2.0,1.0}}; credited as **CC BY-SA 3.0** with an author link and a licence link in the caption.
 - **68-zh, File:VTech_Laser_310_Color_Computer_and_cassette_deck.jpg:** Thomas Conté (Flickr tomconte/9368418675, 2013-07-24); **CC BY-SA 2.0** (FlickreviewR passed 2016-06-17); attribution and licence link in the caption.
 - **68-zh, File:小霸王学习机_SB-486D_正面.jpg:** 七个点, own work, 2022-02-25; **CC BY-SA 4.0**; attribution and licence link in the caption.
@@ -438,21 +495,23 @@ Batch-1 pages are not on this branch, so these links are plain text or absent fo
 
 ## Open decisions
 
-1. **Huangkun.png:** accept PD-China without a URAA assessment, or replace/remove it (05-zh).
-2. **New phase labels:** 物理与器件 / 物理與元件, 分布式系统、大数据与编排 (zh-Hant 大數據 or 巨量資料?), 密码与战时计算, 落地的愿景. Confirm, or set canonical renderings in i18n.
-3. **光刻机 → 曝光機** in zh-Hant prose (new VERIFY term), and the other Taiwan-term choices listed above.
+1. ~~Huangkun.png~~: resolved at the gate (removed).
+2. **New phase labels** (accepted at the gate; the theme does not render `phase`): 物理与器件 / 物理與元件, 分布式系统、大数据与编排 (zh-Hant 大數據 or 巨量資料?), 密码与战时计算, 落地的愿景. Confirm, or set canonical renderings in i18n.
+3. **光刻机 → 微影 / 曝光機** in zh-Hant prose: checked against Taiwan usage at the gate (TSMC, CNA, UDN). The other Taiwan-term choices listed above still need the Taiwan proofread.
 4. **夏钟瑞** (source spelling) vs "夏忠瑞" (spelling in the brief and in writer C's report). The page follows the source; confirm.
 5. **王頌贊 vs 王頌讚** (zh-Hant form of 王颂赞).
 6. **67-zh zh-Hant title:** generic 個人資料保護法 (chosen) vs the literal 個人信息保護法.
 7. **Scope:** 64-zh is a second zh page for chapter 64 (after batch-1's 64-zh-hanzi-encoding). Confirm that both stay, or move one elsewhere.
-8. **SPC judgment quotations (64-zh):** taken from WIPO Lex's machine-converted copy (stray spaces removed). Check them against the official 裁判文书网 copy if the gate requires it.
-9. **HK CDMA date (64-zh):** CTM September 1995 vs OFCA October 1995. The dossier calls it a conflict; the page shows both without a label. Decide whether to mark it as disputed.
+8. ~~SPC judgment quotations~~: resolved at the gate (checked against ipc.court.gov.cn).
+9. ~~HK CDMA date~~: resolved at the gate (both credited; kept).
 10. **CU40 quotation (43-zh):** verified live, but no local copy could be saved (captcha). Re-check at proofreading time.
 11. **Traditional-script TW/HK quotations inside zh-Hans pages:** the same house style as batch 1; proofreaders should confirm.
 
 ## Build check
 
 2026-09-26: a copy of the worktree outside the repo (no `.git`; theme hugo-book 45cbd2d; `HUGO_ENABLEGITINFO=false`) built with **Hugo v0.158.0 extended**: exit 0, no errors or warnings. zh-Hans and zh-Hant each rendered 228 pages, including all 12 posts. 53,182 internal links and assets across the zh-Hans and zh-Hant output were checked, with 0 broken; every relref between batch-2 pages resolves. No `.hugo_build.lock` was left in the repo.
+
+After the fact-check gate fixes (2026-09-26), the worktree was rebuilt with **Hugo v0.158.0 extended**: no errors or warnings, and 228 pages each for zh-Hans and zh-Hant. A link check over 930 HTML files found 0 broken internal links or assets. The only exception is the `labs/.../` placeholder on the en/th/si/ta ch19 page, which predates this branch.
 
 ## Ready for native-reader proofreading
 

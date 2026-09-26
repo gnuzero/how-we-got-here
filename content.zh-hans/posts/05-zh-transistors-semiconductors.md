@@ -21,7 +21,7 @@ schematics: "Timeline 1955-1967, two lanes. Mainland: 1955 first semiconductor-p
 
 1955 年，黄昆邀请王守武、洪朝生、汤定元三位先生，在北京大学物理系为固体物理专门化半导体方向的学生首次开设《半导体物理》课程。第二年，教育部决定从暑假起，把北大、复旦、南大、厦大和东北人民大学（今吉林大学）的有关教师和部分优秀的四年级本科生、研究生集中到北大，创办五校联合半导体专门化。黄昆任主任，谢希德任副主任，两年间培养出半导体方向毕业生 200 多名。黄昆的学生朱邦芬回忆，集中到一起的教师近 30 人，他把这批学生称为我国半导体事业的“黄埔一期”。据上海技术物理研究所的纪念文章，黄昆与谢希德合著的《半导体物理学》是“我国第一部关于半导体的著作”。
 
-<figure><img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Huangkun.png" alt="黄昆与学生甘子钊在书架前一起看笔记" loading="lazy" width="573"><figcaption>黄昆（左）与学生甘子钊，刊于《人民画报》1963 年第 1 期。图片：<a href="https://commons.wikimedia.org/wiki/File:Huangkun.png">China Pictorial（《人民画报》）</a> / Wikimedia Commons，<a href="https://commons.wikimedia.org/wiki/Template:PD-China">公有领域（中国）</a>。</figcaption></figure>
+《人民画报》1963 年第 1 期刊登过一张黄昆与学生甘子钊在书架前一起看笔记的照片。
 
 ## 1956—1958：铟球、锗和没有氩气的硅
 
@@ -66,7 +66,7 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[x] Figure: File:Huangkun.png (Huang Kun with student Gan Zizhao, People's Pictorial 1963 no. 1), Wikimedia Commons, {{PD-CN}} (redirects to Template:PD-China). Licence, source line and upload URL checked on the Commons file page / API 2026-09-26. Identity of the left figure confirmed by Commons' own crop File:Huang Kun (1963).png. Flag for Lucas: PD in China (photo published 1963, 50-year term); US status rests on Commons' acceptance of PD-China (URAA not assessed).
+[ ] Figure removed at the fact-check gate (2026-09-26): File:Huangkun.png (Huang Kun with student Gan Zizhao, People's Pictorial 1963 no. 1) carries only {{PD-CN}} on Commons, no US licence tag. URAA: first published in China in 1963, still in copyright in China on 1 Jan 1996 (50-year term ran to end-2013), so US copyright was restored (95 years from publication, to end-2058). The repo is US-hosted, so the image was dropped and the caption kept as prose. Replacement only with a US-PD or freely licensed photo (e.g. a pre-1931 image, or a licensed PKU photo).
 [ ] Rejected: File:黄昆.JPG (CC BY-SA 3.0, Gisling 2008) shows the bronze bust of Huang Kun INSIDE the PKU physics building, with a portrait photo and text panels behind it. China's freedom of panorama covers outdoor public places only, and the background photo's rights are unknown, so it was not used.
 [ ] No lab. Idea for Reed: a breadboard (Falstad) preset of a DTL NAND gate (diodes + one transistor), the circuit type of the 1965 GT31, so readers can see the first Chinese practical IC was a single NAND gate.
 [ ] TODO after PR #23 merges: turn the plain-text mention of the 109C page into a relref to 03-zh-first-electronic-computers.md; consider a relref to 47-zh-taiwan-semiconductors.md at the end of the Hsinchu section (NCTU is the pre-history of ITRI/TSMC).

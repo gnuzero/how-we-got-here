@@ -1,12 +1,12 @@
 ---
-title: "一台伺服器裝不下：中國最早的校園搜尋引擎"
+title: "一台伺服器裝不下：中國大陸第一批搜尋引擎"
 weight: 19
 date: 2026-09-26
 draft: false
 phase: "7 — 分散式系統、大數據與編排"
 series_index: 19
 tags: ["搜尋引擎", "網絡指南針", "天網", "木棉", "CERNET", "中文斷詞", "九五攻關", "集中式與分散式"]
-summary: "中國最早的搜尋引擎誕生在三所大學的實驗室裡；它們先撞上中文沒有空格這堵牆，再撞上網頁多到一台機器裝不下這堵牆。"
+summary: "據賽爾網絡的回顧，中國大陸第一批搜尋引擎誕生在三所大學的實驗室裡；它們先撞上中文沒有空格這堵牆，再撞上網頁多到一台機器裝不下這堵牆。"
 image_prompt: "1997 university network lab in Beijing: one beige tower server and one PC on a desk, cables to a wall socket labelled CERNET, a whiteboard with a sentence of Chinese characters split by vertical strokes; later-era racks faintly overlaid behind them to suggest growth; documentary illustration, no readable text"
 video_prompt: "20-second animation: a line of Chinese characters with no spaces; candidate word boundaries flicker until a query matches; then a page counter climbs from 200,000 (1997) to tens of millions (2000) while a single server strains and splits into several parallel machines; end on the words centralised vs distributed"
 schematics: "Diagram 1: the 1996 national project -> CERNET task 'network information discovery' -> three university engines (Tsinghua Net Compass, PKU Tianwang, SCUT Kapok). Diagram 2: why segmentation matters: character-by-character indexing vs word-based indexing, with the Honglou Meng example '邸报看真'. Diagram 3: one server + one PC (Tianwang 1997) vs parallelised system (2000s), set against Li Xing's 'centralised, not distributed' remark."
@@ -15,7 +15,7 @@ schematics: "Diagram 1: the 1996 national project -> CERNET task 'network inform
 
 <!-- sources: F29-01, F29-02, F29-03, F29-06, F29-07 -->
 
-1997 年，中文網路上的第一批搜尋引擎，是在大學實驗室裡、用國家攻關計畫的經費做起來的。它們先撞上一堵英文搜尋沒有的牆：中文詞與詞之間沒有空格。接著又撞上第二堵牆：網頁多到一台機器裝不下。
+1997 年，中國大陸的第一批搜尋引擎（賽爾網絡的回顧這樣稱呼它們），是在大學實驗室裡、用國家攻關計畫的經費做起來的。它們先撞上一堵英文搜尋沒有的牆：中文詞與詞之間沒有空格。接著又撞上第二堵牆：網頁多到一台機器裝不下。
 
 ## 一個攻關計畫，三所大學
 
@@ -31,7 +31,7 @@ schematics: "Diagram 1: the 1996 national project -> CERNET task 'network inform
 
 ## 第二堵牆：一台伺服器
 
-北大天網 1997 年 10 月 29 日起在 CERNET 上提供服務（它和百度的淵源，另見本書中文版《從中文信息處理到注意力機制》一頁）。據《中國教育網絡》2014 年的文章，在技術負責人劉建國看來，當時的天網只是搜尋技術的一個實驗性產品，“只有一台服務器、一台PC、抓網頁，建索引、提供搜索服務，雖然簡陋但卻實用”。
+據賽爾網絡的回顧，北大天網 1997 年 10 月 29 日起在 CERNET 上提供服務（它和百度的淵源，另見本書中文版《從中文信息處理到注意力機制》一頁）。《中國教育網絡》2014 年的文章這樣轉述技術負責人劉建國的看法：當時的天網只是搜尋技術的一個實驗性產品，“只有一台服務器、一台PC、抓網頁，建索引、提供搜索服務，雖然簡陋但卻實用”。
 
 網頁的數量很快漲了上去。據賽爾網絡的回顧，天網團隊認為，搜尋的核心問題可以歸結為“一要準，二要快”；到 2000 年李曉明帶領新課題組時，網上的網頁已達千萬級，閆宏飛和彭波開發了一套技術，實現系統的平行化。《中國教育網絡》的文章則記下了隨後的規模：到 2002 年，天網 FTP 搜尋已有上千萬個檔案，每天點擊 60 多萬次；到 2005 年底，天網 Maze 有 340 萬註冊使用者、30 萬活躍使用者，同時線上人數最高突破 10 萬。再往後，據賽爾網絡的回顧，北大網絡實驗室 2002 年開發建設了中國Web信息博物館，到 2015 年收藏了 70 多億網頁文本資料。
 

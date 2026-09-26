@@ -25,7 +25,7 @@ schematics: "Diagram 1: who decides on the air: regulator assigns spectrum (1900
 
 ## 换成数字
 
-1993 年 9 月 19 日，我国第一个 GSM 数字移动电话网在浙江嘉兴开通。2001 年 12 月 31 日，模拟移动电话网关闭，中国电信博物馆的大事记写道：“我们关闭模拟移动电话网”。香港的 CDMA 也来得早：中国电信博物馆的大事记写“1995年9月，世界上第一个商用CDMA移动通信网在香港开通”；通讯办的里程碑记和记电话在 1995 年 6 月和 10 月分别推出 GSM 和 CDMA 服务。
+据中国电信博物馆的大事记，1993 年 9 月 19 日，我国第一个 GSM 数字移动电话网在浙江嘉兴开通；2001 年 12 月 31 日，模拟移动电话网关闭，大事记写道：“我们关闭模拟移动电话网”。香港的 CDMA 也来得早：中国电信博物馆的大事记写“1995年9月，世界上第一个商用CDMA移动通信网在香港开通”；通讯办的里程碑记和记电话在 1995 年 6 月和 10 月分别推出 GSM 和 CDMA 服务。
 
 ## 1998 年 6 月 30 日：截稿前几个小时
 
@@ -33,17 +33,17 @@ schematics: "Diagram 1: who decides on the air: regulator assigns spectrum (1900
 
 ## 2009：一家一制式，小灵通让路
 
-2009 年 1 月 7 日，工业和信息化部发放 3G 牌照：中国移动获得 TD-SCDMA，中国电信获得 CDMA2000，中国联通获得 WCDMA。
+据中国政府网转发的工信部消息，2009 年 1 月 7 日，工业和信息化部发放 3G 牌照：中国移动获得 TD-SCDMA，中国电信获得 CDMA2000，中国联通获得 WCDMA。
 
-两天后，工信部无〔2009〕11 号通知指出，1900—1920 MHz 是我国第三代公众移动通信系统（TDD 方式）的主要工作频段，为“支持具有我国自主知识产权的TD-SCDMA技术的发展和应用”，“1900-1920MHz频段无线接入系统应在2011年底前完成清频退网工作，其所用频率无条件收回”；自发文之日起，这些系统停止扩容和发展新用户。这个频段上的无线接入系统，就是许多人用过的小灵通；据中国电信博物馆的大事记，1998 年 1 月，浙江余杭电信局正式开通小灵通业务。
+两天后，工信部无〔2009〕11 号通知指出，1900—1920 MHz 是我国第三代公众移动通信系统（TDD 方式）的主要工作频段，为“支持具有我国自主知识产权的TD-SCDMA技术的发展和应用”，“1900-1920MHz频段无线接入系统应在2011年底前完成清频退网工作，其所用频率无条件收回”；自发文之日起，这些系统停止扩容和发展新用户。通知本身没有点小灵通的名。据新华社 2009 年 2 月 14 日的报道，工业和信息化部相关司局负责人 13 日就社会关注的“涉及小灵通使用频段清频问题”接受了新华社记者采访，谈的正是这份通知部署的 1900—1920 MHz 清频工作；据中国电信博物馆的大事记，1998 年 1 月，浙江余杭电信局正式开通小灵通业务。
 
 <figure><img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/3G_Mobile_Phones_fot_China_Mobile.jpg" alt="中国移动的 TD-SCDMA 3G 手机，2010 年摄于大连" loading="lazy" width="640"><figcaption>2010 年 2 月，大连，中国移动的 TD-SCDMA 3G 手机。图片：<a href="https://commons.wikimedia.org/wiki/File:3G_Mobile_Phones_fot_China_Mobile.jpg">Yoshi Canopus</a> / Wikimedia Commons，<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>。</figcaption></figure>
 
 ## WAPI：一项强制性的无线局域网国标
 
-同样的争夺也发生在无线局域网上。2003 年 5 月 12 日发布的 GB 15629.11-2003 等两项无线局域网国家标准，按国家质检总局、国家标准委 2003 年第 110 号公告，自 2003 年 12 月 1 日起实施，“即日起禁止进口、生产和销售不符合强制性国家标准的无线局域网产品”；此前已进口、生产或已签合同的产品，允许在 2004 年 6 月 1 日之前销售；来料加工用于出口的产品不受约束。
+同样的争夺也发生在无线局域网上。2003 年 5 月 12 日发布的 GB 15629.11-2003 等两项无线局域网国家标准，按国家质检总局、国家标准委 2003 年第 110 号公告，自 2003 年 12 月 1 日起实施，“即日起禁止进口、生产和销售不符合强制性国家标准的无线局域网产品”；2003 年 12 月 1 日前已进口、生产或已签订有效合同的产品，允许在 2004 年 6 月 1 日之前进口、生产和销售；来料加工用于出口的产品不受约束。
 
-据最高人民法院后来的判决书回顾，2004 年 4 月 29 日的公告宣布“2004年6月1日将延期强制实施上述标准”；2006 年 1 月 27 日，国家质检总局、国家标准委发布了修改单 GB15629.11-2003/XG1-2006。2006 年公开发布的 SM4 分组密码算法，就是为配合 WAPI 的推广应用而发布的，见[《从“属于国家秘密”到国际标准：中国商用密码的二十年》]({{< relref "66-zh-commercial-crypto.md" >}})。
+据最高人民法院 2022 年的判决书回顾，2004 年 4 月 29 日的公告宣布“2004年6月1日将延期强制实施上述标准”；2006 年 1 月 27 日，国家质检总局、国家标准委发布了修改单 GB15629.11-2003/XG1-2006。据吕述望的综述，2006 年公开发布的 SM4 分组密码算法，是为配合 WAPI 的推广应用而发布的，见[《从“属于国家秘密”到国际标准：中国商用密码的二十年》]({{< relref "66-zh-commercial-crypto.md" >}})。
 
 2022 年，最高人民法院在（2022）最高法知民终 817 号判决中认为，涉案的 WAPI 专利“不仅是标准必要专利，而且是实施强制性标准所无法避开的必要专利”，因此具有更多社会公共利益的因素，是否判令停止侵害，要综合考虑当事人的过错等因素。
 
@@ -51,7 +51,7 @@ schematics: "Diagram 1: who decides on the air: regulator assigns spectrum (1900
 
 在台湾，争的也是频率。据 iThome 2014 年 3 月 31 日的报道，台湾通讯传播委员会（NCC）与交通部在说明会上宣布，要把 WiMAX 正在使用的 2600 MHz 频段拿出来公开竞标，释出 190 MHz 给 4G LTE 使用，其中 FDD-LTE 占 140 MHz、TDD-LTE 占 50 MHz。WiMAX 业者当场批评：“政府頻譜政策制定程序不當，忽視WiMAX產業努力及現況，政府偏向支持FDD-LTE”。
 
-**出处：**科普中国，2016；中国电信博物馆大事记；香港通讯办《电讯发展里程碑》；曹煦，中国工程院网站；工信部无〔2009〕11 号；国家质检总局、国家标准委 2003 年第 110 号公告；最高人民法院（2022）最高法知民终 817 号；iThome，2014。
+**出处：**科普中国，2016；中国电信博物馆大事记；香港通讯办《电讯发展里程碑》；曹煦，中国工程院网站；工信部无〔2009〕11 号；国家质检总局、国家标准委 2003 年第 110 号公告；最高人民法院（2022）最高法知民终 817 号（最高人民法院知识产权法庭网站）；新华网，2009；吕述望，2016；iThome，2014。
 
 ## 谁决定空中的规则
 
@@ -70,7 +70,9 @@ schematics: "Diagram 1: who decides on the air: regulator assigns spectrum (1900
 - 工业和信息化部，《关于1900—1920MHz频段无线接入系统相关事宜的通知》（工信部无〔2009〕11号）（English: MIIT notice on wireless access systems in the 1900–1920 MHz band），维基文库全文，2009-01-09。[链接](https://zh.wikisource.org/wiki/关于1900—1920MHz频段无线接入系统相关事宜的通知)
 - 国家质检总局、国家标准委，《关于无线局域网强制性国家标准实施的公告》（2003年第110号）（English: AQSIQ/SAC announcement on implementing the mandatory WLAN national standards），维基文库全文。[链接](https://zh.wikisource.org/wiki/关于无线局域网强制性国家标准实施的公告)
 - 国家标准全文公开系统，GB 15629.11-2003 记录（English: GB 15629.11-2003 official record），openstd.samr.gov.cn。[链接](https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=74B9DD11287E72408C19C4D3A360D1BD)
-- 最高人民法院，（2022）最高法知民终817号民事判决书（English: Supreme People's Court civil judgment (2022) Zui Gao Fa Zhi Min Zhong No. 817, WIPO Lex copy）。[链接](https://www.wipo.int/wipolex/ar/text/594162)
+- 最高人民法院知识产权法庭，（2022）最高法知民终817号民事判决书（English: Supreme People's Court civil judgment (2022) Zui Gao Fa Zhi Min Zhong No. 817, published by the SPC IP Tribunal），2024-03-25 刊于法庭网站“精品裁判”栏目。[链接](https://ipc.court.gov.cn/zh-cn/news/view-2906.html)（另有 WIPO Lex 转录本：[链接](https://www.wipo.int/wipolex/ar/text/594162)）
+- 吕述望，《SM4分组密码算法综述》（English: A survey of the SM4 block cipher），《信息安全研究》2016 年第 2 卷第 11 期（摘要）。[链接](http://www.sicris.cn/CN/Y2016/V2/I11/995)
+- 新华网（中新网转载），刘菊花、冯晓芳，《工信部要求运营商做好小灵通使用频段清频工作》（English: MIIT asks operators to clear the band used by PHS (Xiaolingtong)），2009-02-14。[链接](http://www.chinanews.com.cn/it/txxw/news/2009/02-14/1563128.shtml)
 - 蘇文彬，《政府將把2600MHz 釋放給4G LTE，政策規劃WiMAX業者反彈》（English: Government to release 2600 MHz for 4G LTE; WiMAX operators push back），iThome，2014-03-31。[链接](https://www.ithome.com.tw/news/86298)
 
 <!--
@@ -82,7 +84,8 @@ ASSET CHECKLIST
 [ ] No lab: none fits. Idea for Reed: a spectrum-allocation toy: a band strip where the player assigns 1900-1920 MHz, 1880-1900 MHz and 2600 MHz to competing systems and sees interference / users stranded (PHS clearance, WiMAX re-auction).
 [ ] Distinct from the batch-1 chapter-64 page (encoding): this page is only about the air interface and wireless standards.
 [ ] Medium finding attributed: F17-06 (the IP-fees remark; speaker unnamed). The source describes him as a 华裔 member of the US delegation; per the no-ethnicity rule the page says only "a member of the US delegation".
-[ ] WIPO Lex text is machine-converted with stray spaces (上述标 准; 而 且); the two court quotes are given without those spaces. Check against the official 裁判文书网 copy if the gate requires it.
+[x] SPC judgment quotes checked 2026-09-26 against the authoritative copy on the SPC IP Tribunal site (ipc.court.gov.cn/zh-cn/news/view-2906.html, 精品裁判, 2024-03-25, party names anonymised); both quotes and the 2006-01-27 XG1-2006 detail match. WIPO Lex's machine-converted copy is kept only as a secondary link.
+[x] 小灵通 / 1900-1920 MHz: 工信部无〔2009〕11号 does not name 小灵通; the link is sourced to Xinhua 2009-02-14 (via chinanews.com.cn), where an MIIT official discusses the notice as 涉及小灵通使用频段清频问题.
 [ ] Not called a conflict: CTM "Sep 1995" vs OFCA "Oct 1995" for Hong Kong CDMA may be successive steps (network opening vs service launch); both are shown, attributed, without calling them a conflict.
 [ ] Source details beyond the dossier finding summaries (same sources; saved texts in /workspace/tmp/*.txt): the notice's 停止扩容和发展新用户 clause and its "main 3G TDD band" wording (ws_phs); the 190 MHz / 140 FDD / 50 TDD split (ithome_wimax); 1989-06 PRD roaming (ctm_gsm, kepu_dageda).
 [ ] Left out as unverified: origin of the nickname 大哥大; why TACS was chosen over AMPS; PHS peak subscriber numbers and UTStarcom; reasons for the 2004 WAPI deferral (e.g. trade talks); Taiwan's earlier WiMAX promotion and licences; TD-SCDMA's commercial outcome; the 155 MHz TDD plan (in F17-05 but dated 2002 in the source, not needed here); CTM's 1999-11 "ITU recognised" line vs CAE's 2000-05-05 adoption (not in the findings; probably successive steps).
