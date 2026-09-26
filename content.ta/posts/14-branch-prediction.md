@@ -19,7 +19,7 @@ schematics: "Diagram: 2-bit saturating counter FSM + branch target buffer block 
 
 ## முதலில் சொற்கள்: கிளை என்றால் என்ன?
 
-ஒரு நிரல் பொதுவாக அடுத்தடுத்த முகவரிகளில் உள்ள அறிவுறுத்தல்களை வரிசையாக ஓட்டுகிறது: நிரல் கவுண்டர் (program counter, PC) ஒவ்வொரு முறையும் ஒன்று கூடுகிறது. **கிளை அறிவுறுத்தல்** (branch instruction) அந்த வரிசையை உடைக்கிறது — PC-ஐ வேறொரு முகவரிக்கு மாற்றுகிறது.
+ஒரு நிரல் பொதுவாக அடுத்தடுத்த முகவரிகளில் உள்ள அறிவுறுத்தல்களை வரிசையாக ஓட்டுகிறது: நிரல் கவுண்டர் (program counter, PC) ஒவ்வொரு முறையும் அடுத்த அறிவுறுத்தலின் முகவரிக்கு நகர்கிறது (mini-CPU-இல் ஒன்று கூடுகிறது; 4-பைட் அறிவுறுத்தல்கள் கொண்ட RISC-V-இல் நான்கு). **கிளை அறிவுறுத்தல்** (branch instruction) அந்த வரிசையை உடைக்கிறது — PC-ஐ வேறொரு முகவரிக்கு மாற்றுகிறது.
 
 - **நிபந்தனையற்ற கிளை** (unconditional branch / jump) — எப்போதும் தாவும். Mini-CPU lab-இல் `JMP a`: PC ← a.
 - **நிபந்தனைக் கிளை** (conditional branch) — ஒரு நிபந்தனை உண்மையானால் மட்டும் தாவும். Mini-CPU-இல் `JZ a` (Zero கொடி அமைந்திருந்தால் தாவு) மற்றும் `JC a` (Carry கொடி அமைந்திருந்தால் தாவு).
@@ -160,5 +160,5 @@ ASSET CHECKLIST
 [ ] Hero image generated from image_prompt above
 [ ] Schematic(s) drawn/rendered per schematics field
 [ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
+[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
 -->
