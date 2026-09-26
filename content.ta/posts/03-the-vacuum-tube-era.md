@@ -6,7 +6,7 @@ draft: false
 phase: "1 — அடித்தளங்கள்: இயந்திரத்திலிருந்து வெற்றிடக் குழாய் கணினி வரை"
 series_index: 3
 tags: []
-summary: "குழாய்கள் நகரும் பாகங்களை அகற்றின — அந்த வேகத்தை வெப்பம், மின்சாரம் மற்றும் தோல்விக்கு வர்த்தகம் செய்தன"
+summary: "குழாய்கள் நகரும் பாகங்களை அகற்றின — அந்த வேகத்தை வெப்பம், மின்சாரம் மற்றும் தோல்விக்குப் பரிமாற்றம் செய்தன"
 image_prompt: "Cross-section technical diagram of a triode vacuum tube showing cathode, grid, and anode with electron flow arrows, labeled, vintage engineering textbook illustration style, amber glow accent"
 video_prompt: "25-second animation: electron flow inside a triode vacuum tube visualized as glowing particles moving from heated cathode through control grid to anode, showing grid voltage modulating current, dark background with warm tube glow"
 schematics: "Diagram: triode internal structure + basic vacuum tube amplifier/switch circuit"
