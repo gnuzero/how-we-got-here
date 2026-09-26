@@ -10,7 +10,7 @@ Overrides anything below, in `TRANSLATIONS.md`, or in `TRANSLATION_PLAN.md` that
 
 1. **Two source languages.** English and Chinese are co-authoritative. Chinese is the authoritative Eastern source language, held to the same evidence bar as English. Chinese covers mainland, Taiwan and Hong Kong sources.
 2. **English does not flow into Chinese. Chinese flows into English.** English work is not brought into Chinese. Chinese findings do surface in the English edition: on an English page they sit at the top of the topic, and Western inventors are cited at the bottom.
-3. **Every other locale fills its language's gap.** Sinhala, Tamil, Thai, and any future locale. The job: the technical topics this book covers that are missing or thin on that language's internet, explained elaborately, in that language, from first principles. Local sources and local history are welcome where they exist. The core job is thorough coverage of what that language's internet lacks.
+3. **Every other locale fills its language's gap.** Priority order: **Sinhala first** (Nayana singled it out), then Tamil, then Thai, then any future locale. The job: the technical topics this book covers that are missing or thin on that language's internet, explained elaborately, in that language, from first principles. Local sources and local history are welcome where they exist. The core job is thorough coverage of what that language's internet lacks.
 4. **Depth is the goal there.** For those locales, depth and completeness *are* the goal. This is an explicit exception to "not an encyclopedia" and "length is not a goal", which still hold for English and Chinese. Same spine. Same interactive labs.
 5. **No locale is a translation of another.** Findings from both source languages flow independently into the other locales, which re-tell them in their own voice.
 6. **Two Chinese scripts.** BCP 47 `zh-Hans` and `zh-Hant`. Simplified is the master text. Traditional is derived with OpenCC `s2twp`, then gets a mandatory terminology review (软件/軟體, 网络/網路, 内存/記憶體, 程序/程式, …).
@@ -73,6 +73,8 @@ A path is a thin index + a few experience beats. It is not a parallel book.
 ## Languages
 
 Authority and flow: **Language authority lock, 2026-09-26** (top of this file).
+
+Gap-filling priority: **Sinhala first** (Nayana singled it out), then Tamil, then Thai, then any future locale.
 
 - **English** — co-authoritative source. Distill toward this vision. Chinese findings lead a topic; Western inventors are cited at the bottom.
 - **Chinese (zh-Hans / zh-Hant)** — co-authoritative source; the authoritative Eastern source language. Written from Chinese primary sources (mainland, Taiwan, Hong Kong), same evidence bar as English. Not a translation of English. Simplified is the master; Traditional via OpenCC `s2twp` + terminology review. Native-reader proofread before final. Written by the Chinese desk.
