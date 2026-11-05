@@ -1,5 +1,6 @@
 ---
 title: "Optional Learning Paths"
+aliases: []
 draft: false
 ---
 

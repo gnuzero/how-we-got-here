@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "7 — 分布式系统、大数据与编排"
 series_index: 18
+aliases: []
 tags: ["BBS", "水木清华", "批踢踢", "PTT", "小百合", "北大未名", "香港中文大学", "telnet", "校园网络"]
 summary: "在门户网站和社交媒体之前，人们先在校园 BBS 上找到彼此，再开始交谈；一台服务器能同时容纳多少人，决定了这个广场有多大。"
 image_prompt: "Late-1990s university computer room at night: a student at a beige PC with a black telnet window full of Chinese text menus and board lists; on a shelf behind, a humming tower server with a handwritten label; a clock showing past midnight; warm documentary photo style, no readable text"

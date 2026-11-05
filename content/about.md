@@ -1,5 +1,6 @@
 ---
 title: "About & Attribution"
+aliases: []
 type: docs
 ---
 

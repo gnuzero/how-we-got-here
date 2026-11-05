@@ -5,6 +5,7 @@ date: 2026-01-01
 draft: false
 phase: "0 — Credite"
 series_index: -1
+aliases: []
 tags: ["credits", "sources", "attribution"]
 summary: "Întâi creditele — surse publicate, laboratoare existente și imagini pe care stă această călătorie"
 ---

@@ -86,8 +86,8 @@ HTML sanity: no broken `<script>` / unclosed tags in the three lab pages (valida
 
 ### Changes
 - Rewrote `content/labs/_index.md` in VISION voice: journey beats (gates → breadboard, ISA → mini-CPU, running machine → VM), not a catalog of toys. Points at the guided beats from pass 1. Removed author-facing embed cookbook from the public index.
-- Post **07** (`07-logic-gates-from-transistors.md`): breadboard was already embedded (frontmatter `labs: ["breadboard"]`); moved it after “Building NAND and NOR” with a short **Try this now** sentence before the shortcode (AND gate default). Kept post **08** breadboard embed unchanged.
-- Post **11** (`11-instruction-sets.md`): mini-cpu embed confirmed; relocated after “Encoding, Concretely” with a short **Try this now** sentence before the shortcode (not dumped at the bottom after the x86 aside).
+- Post **07** (`12-logic-gates-from-transistors.md`): breadboard was already embedded (frontmatter `labs: ["breadboard"]`); moved it after “Building NAND and NOR” with a short **Try this now** sentence before the shortcode (AND gate default). Kept post **08** breadboard embed unchanged.
+- Post **11** (`16-instruction-sets.md`): mini-cpu embed confirmed; relocated after “Encoding, Concretely” with a short **Try this now** sentence before the shortcode (not dumped at the bottom after the x86 aside).
 
 ### Explicit non-goals (this pass)
 - No fourth lab.
@@ -106,8 +106,8 @@ Still real; still only documented here and in the lab pages’ honest status, no
 **Goal:** VM try-this-now on the Unix/Linux spine (posts 22–23). Still no fourth lab.
 
 ### Changes
-- Post **22** (`22-time-sharing-and-the-unix-lineage.md`): `vm-terminal` was already in frontmatter + bottom dump; moved after “From Multics to Unix” with **Try this now** (`uname` / `whoami` / `ls`) before the shortcode. Prose otherwise untouched.
-- Post **23** (`23-the-gnu-movement-and-linux.md`): same — moved after “Linux Fills the Gap” with **Try this now** before the shortcode. Prose otherwise untouched (no Jules distill rewrite).
+- Post **22** (`27-time-sharing-and-the-unix-lineage.md`): `vm-terminal` was already in frontmatter + bottom dump; moved after “From Multics to Unix” with **Try this now** (`uname` / `whoami` / `ls`) before the shortcode. Prose otherwise untouched.
+- Post **23** (`28-the-gnu-movement-and-linux.md`): same — moved after “Linux Fills the Gap” with **Try this now** before the shortcode. Prose otherwise untouched (no Jules distill rewrite).
 
 ### Explicit non-goals
 - No fourth lab; no `content.si` / `content.ta`; no git; no encyclopedia rewrite of body prose.
@@ -192,7 +192,7 @@ Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mi
 
 ## Needle move — post 08 try-this-now (pass 7) — 2026-09-07
 
-**Shipped:** One spine hook on **08** (`08-from-gates-to-combinational-logic.md`) — breadboard already in frontmatter but dumped at bottom with no try-this-now.
+**Shipped:** One spine hook on **08** (`13-from-gates-to-combinational-logic.md`) — breadboard already in frontmatter but dumped at bottom with no try-this-now.
 
 - Moved embed after “Half Adder to Full Adder” (where carry = AND).
 - **Try this now** ties the green AND-gate lab to the half-adder carry before ripple-carry is explained.
@@ -201,7 +201,7 @@ Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mi
 
 ## Needle move — post 12 try-this-now (pass 8) — 2026-09-07
 
-**Shipped:** Post **12** (`12-datapath-design.md`) — mini-cpu was dumped at bottom with no try-this-now.
+**Shipped:** Post **12** (`17-datapath-design.md`) — mini-cpu was dumped at bottom with no try-this-now.
 
 - Moved embed after “One Instruction, One Clock” (ADD walkthrough).
 - **Try this now** ties guided mini-CPU Step (fetch/decode/execute) to the single-cycle datapath path before the pipelining constraint section.
@@ -209,7 +209,7 @@ Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mi
 
 ## Needle move — post 09 try-this-now (pass 9) — 2026-09-07
 
-**Shipped:** Post **09** (`09-sequential-logic.md`) — breadboard dumped at bottom, no try-this-now. (07/22/23 already hooked; 09 was Lucas’s preferred open target.)
+**Shipped:** Post **09** (`14-sequential-logic.md`) — breadboard dumped at bottom, no try-this-now. (07/22/23 already hooked; 09 was Lucas’s preferred open target.)
 
 - Moved embed after “Memory From Feedback.”
 - **Try this now** contrasts combinational instant response (AND lab) with the feedback/hold story of this post — honest (does not pretend the default AND is a flip-flop).
@@ -217,7 +217,7 @@ Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mi
 
 ## Needle move — post 21 try-this-now (pass 10) — 2026-09-07
 
-**Shipped:** Post **21** (`21-batch-processing-and-the-birth-of-the-operating-system.md`).
+**Shipped:** Post **21** (`26-batch-processing-and-the-birth-of-the-operating-system.md`).
 
 - Lucas suggested 07/22/23 — those already had try-this-now; picked **21** instead (OS birth → interactive shell contrast before time-sharing).
 - Embed moved before the time-sharing tease; **Try this now** (`whoami` / `uname` / `ls`) contrasts batch’s no-intervene constraint with a live prompt.
@@ -225,7 +225,7 @@ Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mi
 
 ## Needle move — post 26 try-this-now (pass 11) — 2026-09-07
 
-**Shipped:** Post **26** (`26-from-machine-code-to-assembly.md`) — mini-cpu at bottom with soft mention, no **Try this now**.
+**Shipped:** Post **26** (`31-from-machine-code-to-assembly.md`) — mini-cpu at bottom with soft mention, no **Try this now**.
 
 - Added **Try this now** before the existing embed: Assemble + Step; mnemonics one-to-one onto opcodes.
 - Mini-cpu lab HTML untouched (GREEN). No fourth lab; no SI/TA; no git.
@@ -233,7 +233,7 @@ Constraints honored: no fourth lab, no SI/TA, no git, no Jules Phase 1 prose, mi
 
 ## Needle move — post 13 try-this-now (pass 12) — 2026-09-07
 
-**Shipped:** Post **13** (`13-pipelining.md`) — high-leverage miss after post 12’s datapath hook.
+**Shipped:** Post **13** (`18-pipelining.md`) — high-leverage miss after post 12’s datapath hook.
 
 - Moved embed after “Five Stages, Overlapped.”
 - **Try this now** contrasts mini-CPU’s one-Step-per-instruction with pipeline overlap/throughput (honest: lab is not a pipeline).

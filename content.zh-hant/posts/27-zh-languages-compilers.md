@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "4 — 軟體基礎：作業系統、程式語言與即時系統"
 series_index: 16
+aliases: []
 tags: ["編譯器", "董韞美", "徐家福", "104機", "BCY", "ALGOL 60", "國家標準", "LCCD", "倉頡"]
 summary: "1960 年，兩位程式設計師花三四個月讀懂一個設計者已離開、資料殘缺的編譯程式；此後幾家單位的說法裡都有“第一”或“最早”，各自說的並不是同一件事。"
 image_prompt: "Early-1960s Beijing computing institute: two young programmers at a desk covered with long printouts and hand-drawn flowcharts, pencils and a flowchart template, a large vacuum-tube computer cabinet in the background; black-and-white documentary photo style, no text"

@@ -1,5 +1,6 @@
 ---
 title: "我们如何走到那里"
+aliases: []
 type: docs
 # Placeholder landing. Simplified is the master text (VISION.md, Language authority lock 2026-09-26).
 # Status: not final. Needs a native-reader proofread before it is marked final.

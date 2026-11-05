@@ -1,5 +1,6 @@
 ---
 title: "Interactive Labs"
+aliases: []
 ---
 
 This book is a journey you operate, not a shelf of articles. Three labs sit on the spine where the constraint changes: gates become composable, instructions become a contract, and a machine becomes a place you can type.

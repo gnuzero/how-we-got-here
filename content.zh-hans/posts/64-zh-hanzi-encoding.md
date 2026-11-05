@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "治理 / 互联网公民"
 series_index: 6
+aliases: []
 tags: ["中文电码", "汉字编码", "CCCII", "GB 2312", "Big5", "CNS 11643", "GB 18030", "HKSCS", "标准"]
 summary: "电线只认得点和划：从 1870 年代的四位电报码到今天强制执行的 GB 18030，每一种把汉字送上线的办法，背后都有人在决定规则。"
 image_prompt: "Split composition: on the left a late-Qing telegraph clerk at a desk with a thick code book open to a 10x10 grid of characters with four-digit numbers; on the right a 1980s CRT screen showing Chinese characters and a hexadecimal code table; linking them a single telegraph wire; historically accurate, muted palette, no readable text"

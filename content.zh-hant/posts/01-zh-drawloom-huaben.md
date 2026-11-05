@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "1 — 基礎：從機械計算到真空管計算"
 series_index: 2
+aliases: []
 tags: ["花樓機", "花本", "挑花結本", "提花機", "天工開物", "雲錦", "程式"]
 summary: "從老官山漢墓的多綜提花機到《天工開物》的結花本：織出什麼花，記在一束絲線裡，而不在織工腦子裡。"
 image_prompt: "A Ming-dynasty drawloom in a dim workshop: a drawboy seated high on the draw tower pulling cords from a hanging knotted-string pattern record (huaben), a weaver below throwing the shuttle, silk brocade emerging, warm historical lighting, accurate costume, no text"

@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "1 — 基础：从机械计算到电子管计算"
 series_index: 4
+aliases: []
 tags: ["继电器", "电话交换", "旋转制", "纵横制", "记发器", "七国八制", "HJD04", "上海"]
 summary: "从 1882 年外滩的人工交换所到 1991 年的 HJD04：上海的继电器交换机一用几十年，改线就是改程序。"
 image_prompt: "Interior of a mid-20th-century Shanghai telephone exchange: long rows of grey relay racks and rotary switch frames, cable-laced wiring looms, a technician in a work coat checking a rack with a test set, period-accurate, muted documentary photography style, no text"

@@ -1,5 +1,6 @@
 ---
 title: "Behind the Scenes"
+aliases: []
 type: docs
 draft: false
 ---

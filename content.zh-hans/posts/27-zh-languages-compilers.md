@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "4 — 软件基础：操作系统、编程语言与实时系统"
 series_index: 16
+aliases: []
 tags: ["编译器", "董韫美", "徐家福", "104机", "BCY", "ALGOL 60", "国家标准", "LCCD", "仓颉"]
 summary: "1960 年，两位程序员花三四个月读懂一个设计者已离开、资料残缺的编译程序；此后几家单位的说法里都有“第一”或“最早”，各自说的并不是同一件事。"
 image_prompt: "Early-1960s Beijing computing institute: two young programmers at a desk covered with long printouts and hand-drawn flowcharts, pencils and a flowchart template, a large vacuum-tube computer cabinet in the background; black-and-white documentary photo style, no text"

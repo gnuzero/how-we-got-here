@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "隐私 / 身份 / 同意"
 series_index: 21
+aliases: []
 tags: ["个人信息保护法", "个人资料保护法", "个人资料（私隐）条例", "同意", "敏感个人信息", "自动化决策", "跨境提供", "起底"]
 summary: "1995 年 8 月，香港和台湾相隔八天立下个人资料保护的法律，台湾那部的名字里还写着电脑处理；2021 年，大陆的《个人信息保护法》把同意、敏感信息和算法推送都写进了条文。"
 image_prompt: "Three official gazette pages side by side on a table, from 1995 Taipei, 1995 Hong Kong and 2021 Beijing, each with a highlighted clause; above them a faint recommendation feed on a phone screen with a toggle labelled in pictograms only; neutral editorial photography, no readable text"

@@ -1,5 +1,6 @@
 ---
 title: "விருப்பக் கற்றல் பாதைகள்"
+aliases: []
 draft: false
 ---
 

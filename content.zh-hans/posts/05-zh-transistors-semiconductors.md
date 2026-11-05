@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "2 — 物理与器件"
 series_index: 12
+aliases: []
 tags: ["半导体", "晶体管", "集成电路", "黄昆", "王守武", "林兰英", "GT31", "交通大学"]
 summary: "1955 年北大开出第一门半导体物理课，十年后北京做出了可实用的硅集成电路，新竹的交大也做出了第一批电晶体：先有人，再有晶体，最后才有芯片。"
 image_prompt: "1956 Beijing laboratory bench: a young researcher in a padded jacket holding tweezers over tiny indium beads under a desk lamp, a germanium crystal ingot on a stand, a hand-written notebook, period-accurate black-and-white documentary photo style, no text"

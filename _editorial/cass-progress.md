@@ -7,26 +7,26 @@
 
 ## Done
 
-### 64-who-decides-the-wire.md (2026-09-06)
+### 70-who-decides-the-wire.md (2026-09-06)
 - Governance / numbers-names-encodings seeds
 
 ### 43 find-then-talk extend-in-place (2026-09-06)
 - IRC → portals added; lab kept
 
-### 66-wartime-crypto.md (2026-09-06)
+### 72-wartime-crypto.md (2026-09-06)
 - Enigma / Bletchley / Colossus → Posts 02–04
 
-### 67-privacy-consent-identity-cyber.md (2026-09-06 night)
+### 73-privacy-consent-identity-cyber.md (2026-09-06 night)
 - Engineering evolution: Saltzer/Schroeder → Diffie–Hellman/RSA → Kerberos/OAuth → consent as scoped capability → adversarial ops
 - Phase `Privacy / Identity / Consent`, series_index 67, date 2026-09-06, draft false
 - Not a policy pamphlet
 
-### 68-visions-that-shipped.md (2026-09-06 night)
+### 74-visions-that-shipped.md (2026-09-06 night)
 - Close-of-book forward links: Cisco (Bosack/Lerner), Gates/Microsoft, Jobs/Apple (+ Wozniak), GNU+Linus (→23), Bezos/Amazon + Musk as present-tense scale seeds; derive kin, stop
 - Phase `Visions That Shipped`, series_index 68, date 2026-09-06, draft false
 - Not biographies / not MBA
 
-### 69-platform-synthesis.md (2026-09-06 night)
+### 75-platform-synthesis.md (2026-09-06 night)
 - One high-level stop: distributed systems + networking + AI infra + privacy engineering + software engineering
 - Phase `From One Machine to a Platform`, series_index 69, date 2026-09-06, draft false
 
@@ -45,7 +45,7 @@
 ### Protocols-as-story needle (2026-09-07)
 
 - Assessed 39 / 41 / 64: 39 = packets bet; 64 = who decides; 41 = stack but thin on growth story
-- Extended `content/posts/41-tcp-ip-and-the-modern-internet-stack.md` in place — short section *From One Network's Protocols to a Stack* (NCP → flag day 1983 → apps as consequence; DNS/SMTP/HTTP as kin not catalog; doors to RFC 1034/1035)
+- Extended `content/posts/46-tcp-ip-and-the-modern-internet-stack.md` in place — short section *From One Network's Protocols to a Stack* (NCP → flag day 1983 → apps as consequence; DNS/SMTP/HTTP as kin not catalog; doors to RFC 1034/1035)
 - No new post; no SI/TA; no git
 
 ## Status (updated)

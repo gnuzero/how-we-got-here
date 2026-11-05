@@ -1,5 +1,7 @@
 # How We Got There
 
+> **Provisional spine numbering.** Filenames follow public chapter numbers (`weight`). See [`_editorial/chapter-map.md`](_editorial/chapter-map.md) and re-run with `python3 scripts/renumber.py` if Nayana adjusts the map. Old URLs resolve via accumulating Hugo aliases.
+
 Educational series at 3 posts/week — electronics fundamentals through modern AI hardware, plus the software and networking layers built on top. 63 technical chapters + Foreword + Glossary, ~45,000 words of draft text.
 
 ## Read the book

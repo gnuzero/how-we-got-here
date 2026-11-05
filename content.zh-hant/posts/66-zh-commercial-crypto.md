@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "密碼與戰時計算"
 series_index: 20
+aliases: []
 tags: ["商用密碼", "商用密碼管理條例", "密碼法", "SM2", "SM3", "SM4", "SM9", "國家密碼管理局", "ISO/IEC"]
 summary: "1999 年的條例寫明商用密碼技術屬於國家秘密，2006 年起演算法陸續公開，2018 年進入 ISO/IEC 國際標準，2019 年的《密碼法》把密碼分成三類：誰可以造、賣、用密碼，二十年裡被改寫了好幾次。"
 image_prompt: "Editorial still life on a desk: a 1999 printed regulation booklet, a 2010s smart card and USB security token, and a printed ISO standard cover, arranged along a timeline ruler; cool neutral light, documentary style, no readable text"

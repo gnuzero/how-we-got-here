@@ -1,5 +1,6 @@
 ---
 title: "เบื้องหลัง"
+aliases: []
 type: docs
 draft: false
 ---

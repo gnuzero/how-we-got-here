@@ -1,5 +1,6 @@
 ---
 title: "Despre și credite"
+aliases: []
 type: docs
 ---
 

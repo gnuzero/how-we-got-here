@@ -2,13 +2,14 @@
 title: "Crypto සහ යුද්ධකාලීන පරිගණකකරණය"
 draft: false
 weight: 1
+aliases: []
 ---
 
 Workload එකක් ලෙස රහස්‍යභාවය — සයිෆර් කඩා දැමීම ගියර් සහ relays ඉක්මවා ගොස් පරිගණකකරණය ඉලෙක්ට්‍රොනිකයට ඇද ගත්තේ ඇයි. සිහින් index; දොර posts තුළ ජීවත් වේ.
 
-1. [රිලේ සහ විද්‍යුත් යාන්ත්‍රික තර්කය](/si/posts/02-relays-and-electromechanical-logic/) — චලනය වන ලෝහයේ ද්විමය තර්කය, සහ ලෝහය මන්දගාමී වන්නේ ඇයි
-2. [යුද්ධකාලීන Crypto](/si/posts/66-wartime-crypto/) — Enigma, Bletchley, Colossus; නම් කළ මිනිසුන්; හදිසි බව
-3. [රික්තක නල යුගය](/si/posts/03-the-vacuum-tube-era/) — යාන්ත්‍රික සම්බන්ධතා නොමැතිව ඉලෙක්ට්‍රොනික ස්විචය
-4. [ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි](/si/posts/04-why-the-transistor-had-to-happen/) — නල වේගය ජය ගනී, ඉන්පසු තාපය/බලය/අසාර්ථකත්වයට ගැටේ
+1. [රිලේ සහ විද්‍යුත් යාන්ත්‍රික තර්කය](/si/posts/07-relays-and-electromechanical-logic/) — චලනය වන ලෝහයේ ද්විමය තර්කය, සහ ලෝහය මන්දගාමී වන්නේ ඇයි
+2. [යුද්ධකාලීන Crypto](/si/posts/72-wartime-crypto/) — Enigma, Bletchley, Colossus; නම් කළ මිනිසුන්; හදිසි බව
+3. [රික්තක නල යුගය](/si/posts/08-the-vacuum-tube-era/) — යාන්ත්‍රික සම්බන්ධතා නොමැතිව ඉලෙක්ට්‍රොනික ස්විචය
+4. [ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි](/si/posts/09-why-the-transistor-had-to-happen/) — නල වේගය ජය ගනී, ඉන්පසු තාපය/බලය/අසාර්ථකත්වයට ගැටේ
 
 [සියලු මාර්ග](/si/paths/) වෙත ආපසු.

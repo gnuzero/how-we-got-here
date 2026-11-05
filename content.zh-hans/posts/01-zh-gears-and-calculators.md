@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "1 — 基础：从机械计算到电子管计算"
 series_index: 3
+aliases: []
 tags: ["记里鼓车", "指南车", "水运仪象台", "苏颂", "手摇计算机", "数理精蕴", "六合丛谈", "巴贝奇"]
 summary: "宋代的齿轮已经会十进制计数，苏颂想把人手从仪器里拿走，清宫造出了自己的手摇计算机，1858 年（一说 1859 年）的上海杂志用中文介绍了巴贝奇的差分机。"
 image_prompt: "Cutaway reconstruction drawing of a Song-dynasty odometer cart: road wheel, vertical and horizontal wooden gear wheels with visible teeth, two carved wooden figures with drum and bell on upper decks, parchment-toned technical illustration style, no text"

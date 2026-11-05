@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "10 — 现代 AI 硬件"
 series_index: 11
+aliases: []
 tags: ["机器翻译", "分词", "吴文俊", "天网", "百度", "ResNet", "RoPE", "注意力机制"]
 summary: "从一台只能输出电报码的翻译机，到首发在中文博客上的旋转位置编码，中文这条线给今天的 Transformer 留下了两块实实在在的零件。"
 image_prompt: "Visual timeline in one frame: a 1959 vacuum-tube computer printing rows of four-digit telegraph codes; a mathematician at a 1970s paper-tape machine; a 1997 search page; a modern diagram of a Transformer block with its residual connection and rotating query/key vectors highlighted; clean editorial illustration, white background"

@@ -1,5 +1,6 @@
 ---
 title: "பற்றி மற்றும் பண்புரை"
+aliases: []
 type: docs
 ---
 

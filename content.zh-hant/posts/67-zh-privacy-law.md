@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "隱私 / 身份 / 同意"
 series_index: 21
+aliases: []
 tags: ["個人信息保護法", "個人資料保護法", "個人資料（私隱）條例", "同意", "敏感個人信息", "自動化決策", "跨境提供", "起底"]
 summary: "1995 年 8 月，香港和台灣相隔八天立下個人資料保護的法律，台灣那部的名字裡還寫著電腦處理；2021 年，大陸的《個人信息保護法》把同意、敏感資訊和演算法推送都寫進了條文。"
 image_prompt: "Three official gazette pages side by side on a table, from 1995 Taipei, 1995 Hong Kong and 2021 Beijing, each with a highlighted clause; above them a faint recommendation feed on a phone screen with a toggle labelled in pictograms only; neutral editorial photography, no readable text"

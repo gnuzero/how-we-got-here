@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "落地的愿景"
 series_index: 23
+aliases: []
 tags: ["邓小平", "计算机普及", "中华学习机", "CEC-I", "小霸王", "伟易达", "Laser 310", "Apple II", "信息学竞赛"]
 summary: "1984 年元宵节，一台接着彩电的苹果电脑让一句话流传开来，只是那句话的最后两个字至今有两种写法；随后的十年里，这个愿景变成了中华学习机、伟易达的 Laser 310 和插着学习卡的小霸王。"
 image_prompt: "1984 Shanghai exhibition hall: two children seated at a small home computer wired to a 14-inch colour television, the screen showing a blocky singing robot; adults in winter coats watching from behind; warm period photo style; then, in an inset, a 1990s living room with a keyboard-shaped learning machine plugged into a TV; no readable text, no identifiable real persons"

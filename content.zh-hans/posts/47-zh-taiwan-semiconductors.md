@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "8 — 工艺节点与制造"
 series_index: 9
+aliases: []
 tags: ["台湾", "积体电路", "工研院", "RCA", "联电", "新竹科学园区", "台积电", "晶圆代工"]
 summary: "1974 年 2 月 7 日的一顿豆浆早餐、一次公开招标和一个政府提出的请求，决定了台湾半导体的路，也催生了专业晶圆代工这种模式。"
 image_prompt: "1970s Taipei breakfast shop on Nanyang Street at dawn: seven men in suits around a small table with bowls of soy milk and youtiao, papers spread out; through the window, a faint overlay of a modern wafer fab cleanroom; warm documentary illustration style"

@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "7 — 分布式系统、大数据与编排"
 series_index: 19
+aliases: []
 tags: ["搜索引擎", "网络指南针", "天网", "木棉", "CERNET", "中文切词", "九五攻关", "集中式与分布式"]
 summary: "据赛尔网络的回顾，中国大陆第一批搜索引擎诞生在三所大学的实验室里；它们先撞上中文没有空格这堵墙，再撞上网页多到一台机器装不下这堵墙。"
 image_prompt: "1997 university network lab in Beijing: one beige tower server and one PC on a desk, cables to a wall socket labelled CERNET, a whiteboard with a sentence of Chinese characters split by vertical strokes; later-era racks faintly overlaid behind them to suggest growth; documentary illustration, no readable text"

@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "落地的願景"
 series_index: 23
+aliases: []
 tags: ["鄧小平", "計算機普及", "中華學習機", "CEC-I", "小霸王", "偉易達", "Laser 310", "Apple II", "資訊學競賽"]
 summary: "1984 年元宵節，一台接著彩色電視的蘋果電腦讓一句話流傳開來，只是那句話的最後兩個字至今有兩種寫法；隨後的十年裡，這個願景變成了中華學習機、偉易達的 Laser 310 和插著學習卡的小霸王。"
 image_prompt: "1984 Shanghai exhibition hall: two children seated at a small home computer wired to a 14-inch colour television, the screen showing a blocky singing robot; adults in winter coats watching from behind; warm period photo style; then, in an inset, a 1990s living room with a keyboard-shaped learning machine plugged into a TV; no readable text, no identifiable real persons"

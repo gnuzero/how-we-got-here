@@ -1,5 +1,6 @@
 ---
 title: "เส้นทางเรียนทางเลือก"
+aliases: []
 draft: false
 ---
 

@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "4 — 軟體基礎：作業系統、程式語言與即時系統"
 series_index: 7
+aliases: []
 tags: ["漢字輸入", "中文打字機", "倉頡", "五筆字型", "漢卡", "聯想", "雷射照排", "王選"]
 summary: "英文鍵盤一鍵一個字母，漢字卻有幾千上萬個；從打字機字盤到輸入法、漢卡和王選的字形壓縮，每一步都在繞過同一個瓶頸。"
 image_prompt: "Split composition: left, a 1920s Chinese typewriter with a large flat tray of metal character slugs and a selector arm; right, a 1980s beige PC with a Chinese-character expansion card and a laser-typeset newspaper page coming out of a phototypesetter; warm archival lighting, clean editorial illustration style"

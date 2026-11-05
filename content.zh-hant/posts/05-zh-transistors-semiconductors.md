@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "2 — 物理與元件"
 series_index: 12
+aliases: []
 tags: ["半導體", "電晶體", "積體電路", "黃昆", "王守武", "林蘭英", "GT31", "交通大學"]
 summary: "1955 年北大開出第一門半導體物理課，十年後北京做出了可實用的矽積體電路，新竹的交大也做出了第一批電晶體：先有人，再有晶體，最後才有晶片。"
 image_prompt: "1956 Beijing laboratory bench: a young researcher in a padded jacket holding tweezers over tiny indium beads under a desk lamp, a germanium crystal ingot on a stand, a hand-written notebook, period-accurate black-and-white documentary photo style, no text"

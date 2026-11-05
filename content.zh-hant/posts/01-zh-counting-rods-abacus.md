@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "1 — 基礎：從機械計算到真空管計算"
 series_index: 1
+aliases: []
 tags: ["算籌", "算盤", "珠算", "位值制", "口訣", "程大位", "孫子算經"]
 summary: "從《孫子算經》的縱橫擺籌到程大位的珠算口訣：數存在籌和珠裡，演算法存在口訣裡，執行它的是人。"
 image_prompt: "Overhead view of a dark wooden table: bamboo counting rods laid out in alternating vertical and horizontal groups to show a four-digit number, beside a Ming-style abacus and an open woodblock-printed arithmetic book, soft museum lighting, historically accurate, no text"

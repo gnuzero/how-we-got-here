@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "治理 / 網際網路公民"
 series_index: 22
+aliases: []
 tags: ["行動通訊", "TACS", "大哥大", "GSM", "TD-SCDMA", "小靈通", "WAPI", "WiMAX", "頻率", "標準必要專利"]
 summary: "頻率只有一份，制式卻有好幾種：從 1987 年廣州的第一個類比網，到截稿前幾個小時送出的 TD-SCDMA、為它讓路的小靈通和一項強制性的無線區域網國標，空中的規則同樣有人在決定。"
 image_prompt: "Split composition: on the left a 1987 Guangzhou street with a man holding a brick-sized analogue mobile phone; on the right a 2009 phone-shop counter with slim 3G handsets; a thin frequency spectrum bar runs across the image with one band being handed from one side to the other; documentary illustration, no readable text"

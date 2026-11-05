@@ -5,6 +5,7 @@ date: 2026-09-13
 draft: false
 phase: "0 — Credits"
 series_index: -1
+aliases: []
 tags: ["credits", "sources", "attribution"]
 summary: "முதலில் நன்றியுரை — இந்தப் பயணம் நிற்கும் வெளியிடப்பட்ட மூலாதாரங்கள், ஏற்கனவே உள்ள ஊடாடும் ஊடகம், மற்றும் படங்கள்"
 ---

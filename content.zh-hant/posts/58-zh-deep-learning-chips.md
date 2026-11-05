@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "10 — 現代 AI 硬體"
 series_index: 14
+aliases: []
 tags: ["深度學習處理器", "DianNao", "寒武紀", "計算所", "TPU", "NPU", "麒麟970", "昇騰"]
 summary: "2014 年，計算所與法國 Inria 合作的 DianNao 拿下 ASPLOS 最佳論文；三年後，這條路線進了手機，而華為的新聞稿裡沒有提到寒武紀。"
 image_prompt: "A cramped glass-walled lab room at night, under 30 square metres, two researchers leaning over a debug host whose screen shows a test passing, a bare prototype chip on a small board connected by a serial cable, whiteboard with a grid of multiply-accumulate units; warm documentary illustration style, no text"

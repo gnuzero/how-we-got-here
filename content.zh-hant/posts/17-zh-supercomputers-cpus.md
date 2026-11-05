@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "3 — 構建 CPU 及其架構"
 series_index: 10
+aliases: []
 tags: ["超級電腦", "DJS-130", "銀河-I", "曙光", "龍芯", "神威·太湖之光", "天河", "指令集"]
 summary: "相容別人、手工自造、用商品晶片拼、再自己設計晶片：中國的大型電腦四十年裡換了幾條路，每一次轉向都被一個具體的約束逼出來。"
 image_prompt: "Triptych: left, 1983 technicians hand-soldering a huge backplane of wires for the Yinhe-I; centre, a 1993 rack of VME boards with Motorola chips; right, rows of modern supercomputer cabinets glowing blue in a hall; clean technical illustration style"
