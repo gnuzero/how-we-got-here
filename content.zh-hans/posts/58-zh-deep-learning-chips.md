@@ -50,7 +50,7 @@ schematics: "Diagram 1: the DianNao family 2014-2016 (DianNao ASPLOS'14, DaDianN
 - 中国科学院，《开创“寒武纪”》（English: Founding "Cambricon", CAS feature on self-reliance in science and technology），2024-09-19。[链接](https://www.cas.cn/zt/kjzt/kjzlzqzl/kjzlzq/202409/t20240919_5032328.shtml)
 - Norman P. Jouppi et al.，“In-Datacenter Performance Analysis of a Tensor Processing Unit”（中文：数据中心内张量处理单元的性能分析），ISCA 2017，arXiv:1704.04760。[链接](https://arxiv.org/abs/1704.04760)
 - 华为，麒麟 970 IFA 2017 发布新闻（English: Huawei press release on the Kirin 970 launch at IFA 2017），2017-09。[链接](https://www.huawei.com/cn/news/2017/9/mobile-ai-ifa-2017)
-- 驱动中国，《中科院贺信柔中有刚，强调Kirin NPU并非华为所有》（English: CAS congratulatory letter stresses that the Kirin NPU is not Huawei's own），2017-09-08。[链接](https://mobile.qudong.com/article/433829.shtml)
+- 驱动中国，《中科院贺信柔中有刚，强调Kirin NPU并非华为所有》（English: CAS congratulatory letter stresses that the Kirin NPU is not Huawei's own），2017-09-08。[链接](https://www.qudong.com/article/301101.html)
 - 中科寒武纪科技股份有限公司，《首次公开发行股票并在科创板上市招股说明书（注册稿）》（English: Cambricon STAR Market IPO prospectus, registration draft），上海证券交易所披露，2020-06-22。[链接](https://static.sse.com.cn/stock/disclosure/announcement/c/202006/000354_20200622_AWSW.pdf)
 - IT之家，《华为深度解读达芬奇架构：3D Cube计算引擎加速运算》（English: Huawei explains the Da Vinci architecture and its 3D Cube engine），2019-08-22。[链接](https://www.ithome.com/0/440/590.htm)
 - 央视网，《华为正式发布最新AI处理器昇腾910及全场景AI计算框架MindSpore》（English: Huawei launches the Ascend 910 AI processor and the MindSpore framework），2019-08-23。[链接](http://news.cctv.com/2019/08/23/ARTI2cqgeaCmXn6WauhnfNyy190823.shtml)

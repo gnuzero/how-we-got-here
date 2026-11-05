@@ -51,7 +51,7 @@ schematics: "Diagram 1: four strategies and their constraint (compatibility with
 
 - 呂文超，《100系列計算機聯合設計成功的啟示》（English: Lessons from the successful joint design of the 100-series computers），清華大學計算機系“60週年系慶”，2018-07-24。[連結](https://www.cs.tsinghua.edu.cn/info/1169/4071.htm)
 - 林行良，《DJS100系列機系統軟件聯合設計》（English: Joint design of the DJS-100 series system software），清華大學計算機系“60週年系慶”，2018-07-24。[連結](https://www.cs.tsinghua.edu.cn/info/1169/4069.htm)
-- 國防科技大學，《“銀河－I”計算機橫空出世！》（English: The Yinhe-I computer bursts onto the scene），國防科技大學官網，2019-12-06。[連結](https://www.nudt.edu.cn/zjkd/kdgs/f510ef9ef03c49ebac9350a302c80290.htm)
+- 國防科技大學，《“銀河－I”計算機橫空出世！》（English: The Yinhe-I computer bursts onto the scene），國防科技大學官網，2019-12-06。[連結（存檔）](https://web.archive.org/web/20260811113811/https://www.nudt.edu.cn/zjkd/kdgs/f510ef9ef03c49ebac9350a302c80290.htm)
 - 中國計算機學會，《“銀河-1”億次計算機》（English: The Yinhe-1 100-million-ops computer），中國計算機歷史記憶，2018-09-12。[連結](https://www.ccf.org.cn/Computing_history/Full_List/2017/First_class/2018-09-12/652326.shtml)
 - 中國計算機學會，《曙光1號並行計算機》（English: The Dawning-1 parallel computer），中國計算機歷史記憶，2020-03-24。[連結](https://www.ccf.org.cn/Computing_history/Full_List/2019/First_class/2020-03-24/697778.shtml)
 - 中國科學院計算技術研究所，《歷史沿革》（English: ICT history），計算所官網。[連結](https://www.ict.ac.cn/jssgk/lsyg/)

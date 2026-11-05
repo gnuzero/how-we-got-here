@@ -65,7 +65,7 @@ labs: ["difference-engine"]
 - 《宋史》卷一百四十九《輿服一》（English: *History of Song*, ch. 149, Carriages and Robes 1），维基文库。[链接](https://zh.wikisource.org/wiki/宋史/卷149)
 - 张柏春，《指南车》（English: The south-pointing chariot），据中国科学院自然科学史研究所编著《中国古代重要科技发明创造》，中国机械工程数字博物馆。[链接](https://museum.cmes.org/machinery/search/detail/69906c097da64f599f809905945aa6ba)
 - 蘇頌，《新儀象法要》卷上、卷下（English: *New Design for an Armillary Clock*, vols. 1 and 3, Siku edition），维基文库。[链接：卷上](https://zh.wikisource.org/wiki/新儀象法要_(四庫全書本)/卷上)；[链接：卷下](https://zh.wikisource.org/wiki/新儀象法要_(四庫全書本)/卷下)
-- 清华大学科学博物馆，《“水运仪象台学术研讨会”成功举办》（English: Symposium on the water-driven astronomical clock tower held），2021-11-26。[链接](https://tsm.tsinghua.edu.cn/?p=9500)
+- 清华大学科学博物馆，《“水运仪象台学术研讨会”成功举办》（English: Symposium on the water-driven astronomical clock tower held），2021-11-26。[链接（存档）](https://web.archive.org/web/20260316000604/https://tsm.tsinghua.edu.cn/?p=9500)
 - 國立自然科學博物館，《水運儀象臺》展品页（English: The water-powered astronomical clock tower, exhibit page）。[链接](https://www.nmns.edu.tw/ch/exhibitions/galleries/human-cultures-hall/chinese-science-and-technology/water-powered-clock/index.html)
 - 故宫博物院，《铜镀金盘式手摇计算机》藏品记录（English: Gilt-brass disk-type hand calculator, collection record）。[链接](https://www.dpm.org.cn/collection/clock/234581.html)
 - 故宫博物院，《铜镀金纳白尔筹式手摇计算机》藏品记录（English: Gilt-brass Napier-rod hand calculator, collection record），撰稿人付超。[链接](https://www.dpm.org.cn/collection/clock/231172.html)
