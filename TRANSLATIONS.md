@@ -1,5 +1,7 @@
 # Translations — From Relays to Attention
 
+> **Language authority lock, 2026-09-26 (Nayana)** — see `VISION.md`. This file holds shared chrome only: series titles, key page titles, attribution. Locale pages are **not** translations of each other. English and Chinese are co-authoritative source languages. Sinhala, Tamil, Thai, and any future locale fill their language's information gap, explained from first principles in that language. A title listed here is a label, not a mandate to translate the page behind it.
+
 ## Series Title
 
 | Language | Title |
@@ -8,6 +10,8 @@
 | **Thai** | จากรีเลย์สู่ Attention: เรามาถึงจุดนี้อย่างไร |
 | **Sinhala** | රිලේ සිට අවධානය දක්වා: අප මෙතැනට පැමිණි ආකාරය |
 | **Tamil** | ரிலேயிலிருந்து Attention வரை: நாம் இங்கு எப்படி வந்தோம் |
+| **Chinese (Simplified, zh-Hans)** | 从继电器到注意力机制：我们如何走到今天 |
+| **Chinese (Traditional, zh-Hant)** | 從繼電器到注意力機制：我們如何走到今天 |
 
 ## Short Series Description
 
@@ -31,6 +35,7 @@ An educational series tracing the complete arc of digital computing — from ele
 | **Thai** | คำนำ |
 | **Sinhala** | පෙරවදන |
 | **Tamil** | முன்னுரை |
+| **Chinese (zh-Hans / zh-Hant)** | 前言 |
 
 ## Post 63 Title
 
@@ -79,7 +84,8 @@ This work was conceptualized and inspired by Nayana Hettiarachchi. The research,
 - Attribution paragraphs: drafted for all three languages
 - **Announcement MVP bodies:** Foreword + Phase 1 (01–04) + Attention (63) + glossary/home chrome in TH / SI / TA
 - Full remaining chapter bodies: after announcement (phased)
-- Last updated: 2026-09-06
+- **Chinese (zh-Hans / zh-Hant), 2026-09-26:** locales wired; placeholder landing only. Pages come from the Chinese desk, written from Chinese primary sources. Not translated from English. Native-reader proofread before final.
+- Last updated: 2026-09-26
 
 ## Fact-check notes (ongoing)
 
