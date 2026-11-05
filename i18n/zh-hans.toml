@@ -55,3 +55,10 @@ other = """
   }
 }
 """
+
+# Lab embed chrome (layouts/shortcodes/lab.html).
+[labIframeTitle]
+other = "交互实验：{{ .Type }}"
+
+[labOpenNewTab]
+other = "在新标签页打开实验 ↗"
