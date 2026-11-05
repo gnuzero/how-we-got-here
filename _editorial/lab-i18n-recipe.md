@@ -8,8 +8,8 @@ Mechanism and desk instructions: `static/labs/_shared/README.md`.
 2. pebble-trays — done (44 keys); vm-terminal — done (15 keys; guest Linux output stays English).
 3. mini-cpu — done (72 keys; assembler error messages are JS-generated).
 4. breadboard — done (wrapper chrome only, 7 keys; circuitjs1 / Falstad UI stays English, GPL).
-5. analytical-engine frame text last (our wrapper chrome only; Walker's scripts/*.js and its
-   alert() calls stay as upstream).
+5. analytical-engine — done (36 keys; HTML chrome + image alts + footer; Walker's scripts/*.js,
+   alert() calls, and Set/Not set/Running/Stopped stay English).
 
 ## Steps per lab
 1. Fresh branch from origin/main. Record a baseline: serve `static/` (`python3 -m http.server`),
