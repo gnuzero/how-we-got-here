@@ -71,6 +71,8 @@ Wikimedia Commons படக் கதவு (கீழே பார்க்க�
 
 சீனப் பதிப்பில் (延伸阅读) ஏற்கனவே பெயரால் குறிப்பிடப்பட்டவை. சீன மேசை (Wen) இந்தப் பக்கங்களை எளிய சீனத்தில் (Simplified) மூலப் படைப்புகளாக எழுதியது — ஆங்கிலத்துடன் இணை-அதிகாரம் கொண்டவை; மரபுச் சீனம் (Traditional) எளிய சீனத்திலிருந்து மாற்றப்பட்டு, பிறகு மீளாய்வு செய்யப்படுகிறது. அங்கு குறிப்பிடப்பட்டபடி, பெயரிடப்பட்ட ஆசிரியர்கள், படைப்புகளின் ஒரு மாதிரி — முழுப் பட்டியல்கள் ஒவ்வோர் அத்தியாயத்திலும் உள்ளன.
 
+<!-- TODO(zh-desk): sample only, copied from content.zh-hans/posts/*/延伸阅读. Desk to confirm the selection and add any named Chinese-language books it wants on this page. -->
+
 - 宋應星 (Song Yingxing) — 《天工開物》 (*Tiangong Kaiwu*), 1637 — [维基文库](https://zh.wikisource.org/wiki/天工開物/結花本)
 - 蘇頌 (Su Song) — 《新儀象法要》 (*New Design for an Armillary Clock*), Siku edition — [维基文库](https://zh.wikisource.org/wiki/新儀象法要_(四庫全書本)/卷上)
 - 徐祖哲、司宏伟 (Xu Zuzhe, Si Hongwei) — 《中国计算机：从核物理到卫星测控》, 《中国科学院院刊》 2025, 40(Z2): 109–118 — [CAS Bulletin](http://old2022.bulletin.cas.cn/publish_article/2025/Z2/zgkxyyk-40-Z2-109.htm)
