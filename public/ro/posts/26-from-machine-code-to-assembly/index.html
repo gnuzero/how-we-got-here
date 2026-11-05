@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Un simbol scurt pentru fiecare cuvânt binar: ce face un asamblor și de ce a contat">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/26-from-machine-code-to-assembly/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="De la codul mașină la limbajul de asamblare">
+	<meta property="og:description" content="Un simbol scurt pentru fiecare cuvânt binar: ce face un asamblor și de ce a contat">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:25:24+05:30">
+
+
+	<meta itemprop="name" content="De la codul mașină la limbajul de asamblare">
+	<meta itemprop="description" content="Un simbol scurt pentru fiecare cuvânt binar: ce face un asamblor și de ce a contat">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:25:24+05:30">
+	<meta itemprop="wordCount" content="622">
+
+<title>De la codul mașină la limbajul de asamblare • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/26-from-machine-code-to-assembly/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/26-from-machine-code-to-assembly/" title="From Machine Code to Assembly">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/26-from-machine-code-to-assembly/" title="จากรหัสเครื่องสู่ Assembly">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/26-from-machine-code-to-assembly/" title="යන්ත්‍ර කේතයේ සිට Assembly දක්වා">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/26-from-machine-code-to-assembly/" title="Machine Code-இலிருந்து Assembly வரை">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="active">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>De la codul mașină la limbajul de asamblare</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#două-nume-pentru-aceeași-instrucțiune">Două nume pentru aceeași instrucțiune</a></li>
+    <li><a href="#ce-face-un-asamblor">Ce face un asamblor</a></li>
+    <li><a href="#de-ce-a-contat">De ce a contat</a></li>
+    <li><a href="#unde-mai-contează">Unde mai contează</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    De la codul mașină la limbajul de asamblare
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Un procesor execută numere. Primele capitole ale cărții au arătat cum un cuvânt binar poate fi o dată sau o instrucțiune; acest capitol arată pasul următor: limbajul de asamblare, primul strat de text pe care oamenii l-au pus peste aceste numere.</p>
+<h2 id="două-nume-pentru-aceeași-instrucțiune">Două nume pentru aceeași instrucțiune<a class="anchor" href="#dou%c4%83-nume-pentru-aceea%c8%99i-instruc%c8%9biune">#</a></h2>
+<p>Distincția apare deja în <em>First Draft of a Report on the EDVAC</em>. Când formulează codul mașinii, von Neumann propune să dea pentru fiecare tip de ciclu minor (cuvântul de 32 de unități al mașinii) atât un „short symbol”, folosit în discuțiile verbale sau scrise despre cod și la pregătirea problemelor, cât și un „code symbol”, adică cele 32 de cifre binare care corespund ciclului (von Neumann, J., <em>First Draft of a Report on the EDVAC</em>, 1945, ediția M. D. Godfrey, §15.6, p. 42; <a href="https://people.csail.mit.edu/brooks/idocs/JvN.pdf">people.csail.mit.edu/brooks/idocs/JvN.pdf</a>, accesat 2026-11-05). Simbolul scurt este, în esență, ceea ce numim astăzi mnemonic; codul binar este ceea ce execută mașina.</p>
+<h2 id="ce-face-un-asamblor">Ce face un asamblor<a class="anchor" href="#ce-face-un-asamblor">#</a></h2>
+<p>Asamblorul traduce mnemonicele în cuvinte binare după reguli fixe. Specificația RISC-V oferă un exemplu clar, pentru că formatul instrucțiunilor e documentat bit cu bit. Instrucțiunile de tip I au câmpurile, de la bitul cel mai semnificativ, <code>imm[11:0] | rs1 | funct3 | rd | opcode</code>, iar ADDI adună valoarea imediată de 12 biți, extinsă cu semn, la registrul rs1 (RISC-V International, <em>The RISC-V Instruction Set Manual, Volume I: Unprivileged Architecture</em>, versiunea 20240411, §2.4.1, p. 26). Listarea instrucțiunilor RV32/64G dă pentru ADDI exact acest format, cu <code>funct3 = 000</code> și opcode-ul <code>0010011</code> (ibid., cap. 34, „RV32/64G Instruction Set Listings”, p. 554).</p>
+<p><strong>Exemplu (calculul nostru, verificat cu un mic script Python, <code>(5&lt;&lt;20)|(0&lt;&lt;15)|(0&lt;&lt;12)|(1&lt;&lt;7)|0b0010011</code> = <code>0x00500093</code>; nu am rulat un asamblor RISC-V):</strong> instrucțiunea <code>addi x1, x0, 5</code> pune valoarea 5 în registrul x1.</p>
+<table>
+	<thead>
+			<tr>
+					<th>câmp</th>
+					<th>valoare</th>
+					<th>biți</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>imm[11:0]</td>
+					<td>5</td>
+					<td><code>000000000101</code></td>
+			</tr>
+			<tr>
+					<td>rs1</td>
+					<td>x0</td>
+					<td><code>00000</code></td>
+			</tr>
+			<tr>
+					<td>funct3</td>
+					<td>ADDI</td>
+					<td><code>000</code></td>
+			</tr>
+			<tr>
+					<td>rd</td>
+					<td>x1</td>
+					<td><code>00001</code></td>
+			</tr>
+			<tr>
+					<td>opcode</td>
+					<td>OP-IMM</td>
+					<td><code>0010011</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>Puse una după alta, cele 32 de cifre dau cuvântul hexazecimal <code>0x00500093</code>.</p>
+<p>Asamblorul face și traduceri care nu există în hardware. Specificația spune că <code>ADDI rd, rs1, 0</code> implementează pseudo-instrucțiunea de asamblor <code>MV rd, rs1</code> (ibid., §2.4.1, p. 26), iar instrucțiunea NOP este codificată ca <code>ADDI x0, x0, 0</code> (ibid., §2.4.3, p. 27). Programatorul scrie <code>mv</code> sau <code>nop</code>; procesorul primește un ADDI.</p>
+<h2 id="de-ce-a-contat">De ce a contat<a class="anchor" href="#de-ce-a-contat">#</a></h2>
+<p>În sistemul CTSS din 1962, asamblorul era o comandă ca oricare alta: comanda <code>fap</code> traducea un fișier cu translatorul FAP („assembler”) și adăuga pe banda utilizatorului tabela de simboluri și programul binar (Corbató, F. J. et al., „An Experimental Time-Sharing System”, <em>Proc. AFIPS 1962 SJCC</em>, vol. 21, pp. 338–339, lista de comenzi; <a href="https://cseweb.ucsd.edu/classes/wi19/cse221-a/papers/corbato62.pdf">cseweb.ucsd.edu/classes/wi19/cse221-a/papers/corbato62.pdf</a>, accesat 2026-11-05).</p>
+<p>Primul Unix arată cât de departe se putea merge doar cu asamblare. Ritchie scrie că fiecare program pentru sistemul Unix original de pe PDP-7 a fost scris în limbaj de asamblare, „bare assembly language”, fără macrouri și fără editor de legături, deci fiecare program trebuia să fie complet în sine (Ritchie, D. M., „The Evolution of the Unix Time-sharing System”, 1984, „High-level languages”; <a href="https://www.nokia.com/bell-labs/about/dennis-m-ritchie/hist.html">nokia.com/bell-labs/about/dennis-m-ritchie/hist.html</a>, accesat 2026-11-05). Până la terminarea unui asamblor pe PDP-7, programele erau scrise sub GECOS și aduse pe bandă perforată; după aceea, sistemul s-a putut întreține singur (ibid., „Origins”).</p>
+<h2 id="unde-mai-contează">Unde mai contează<a class="anchor" href="#unde-mai-conteaz%c4%83">#</a></h2>
+<p>Același text al lui Ritchie notează că, la momentul scrierii, „the only important Unix program still written in assembler is the assembler itself” (ibid., „High-level languages”). Ironia are și o variantă timpurie: pe PDP-7, când a apărut B, „Even the assembler was rewritten in assembler” (ibid.). Asamblarea nu a dispărut, dar s-a retras în locurile unde hardware-ul trebuie atins direct; capitolul 27 urmărește limbajele care au preluat restul.</p>
+<!-- NEVERIFICAT: exemplele EN cu x86 (cod de pornire, rutine de întrerupere) nu au sursă deschisă (Intel SDM 403); omise. -->
+<p><strong>Încearcă acum.</strong> Laboratorul mini-CPU de mai jos permite asamblarea programului ghidat și rularea lui pas cu pas: fiecare mnemonic corespunde unor biți de opcode, exact ca în exemplul RISC-V de mai sus.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=ro"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=ro" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9b17a0270323d6e8d6f80d4dde73cb1f8612bcaa" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;De&#43;la&#43;codul&#43;ma%C8%99in%C4%83&#43;la&#43;limbajul&#43;de&#43;asamblare&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F26-from-machine-code-to-assembly%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F26-from-machine-code-to-assembly.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F26-from-machine-code-to-assembly.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Containerele și izolarea în sistemele de operare moderne</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex align-center">
+        <span>Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#două-nume-pentru-aceeași-instrucțiune">Două nume pentru aceeași instrucțiune</a></li>
+    <li><a href="#ce-face-un-asamblor">Ce face un asamblor</a></li>
+    <li><a href="#de-ce-a-contat">De ce a contat</a></li>
+    <li><a href="#unde-mai-contează">Unde mai contează</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

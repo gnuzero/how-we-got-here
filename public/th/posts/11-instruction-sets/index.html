@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ISA คือสัญญาระหว่างซอฟต์แวร์กับฮาร์ดแวร์; CISC กับ RISC คือสองคำตอบว่าสัญญานั้นควรหน้าตาอย่างไร">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/11-instruction-sets/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="ชุดคำสั่ง">
+	<meta property="og:description" content="ISA คือสัญญาระหว่างซอฟต์แวร์กับฮาร์ดแวร์; CISC กับ RISC คือสองคำตอบว่าสัญญานั้นควรหน้าตาอย่างไร">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="ชุดคำสั่ง">
+	<meta itemprop="description" content="ISA คือสัญญาระหว่างซอฟต์แวร์กับฮาร์ดแวร์; CISC กับ RISC คือสองคำตอบว่าสัญญานั้นควรหน้าตาอย่างไร">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1771">
+
+<title>ชุดคำสั่ง • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/11-instruction-sets/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/11-instruction-sets/" title="Instruction Sets">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/11-instruction-sets/" title="උපදෙස් කට්ටල">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/11-instruction-sets/" title="அறிவுறுத்தல் தொகுப்புகள்">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/11-instruction-sets/" title="Seturi de instrucțiuni">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/11-instruction-sets/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/11-instruction-sets/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/11-instruction-sets/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/11-instruction-sets/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="active">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>ชุดคำสั่ง</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#สองปรชญา-cisc-กบ-risc">สองปรัชญา: CISC กับ RISC</a>
+      <ul>
+        <li><a href="#risc-v-ทละบต-ฟลดคงทและกบดกของคาคงท">RISC-V ทีละบิต: ฟิลด์คงที่และกับดักของค่าคงที่</a></li>
+        <li><a href="#x86-ทละไบต-หลายทางสความหมายเดยว">x86 ทีละไบต์: หลายทางสู่ความหมายเดียว</a></li>
+      </ul>
+    </li>
+    <li><a href="#อานสญญาของ-mini-cpu-จากซอรสจรง">อ่านสัญญาของ mini-CPU จากซอร์สจริง</a></li>
+    <li><a href="#ขอโตแยงของ-patterson-และ-ditzel-1980-เปนตวเลข">ข้อโต้แย้งของ Patterson และ Ditzel (1980) เป็นตัวเลข</a></li>
+    <li><a href="#เหตใด-x86-จงยงอยตอไป">เหตุใด x86 จึงยังอยู่ต่อไป</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    ชุดคำสั่ง
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Instruction Set Architecture (ISA) คือสัญญาระหว่างซอฟต์แวร์กับฮาร์ดแวร์: การดำเนินการใดที่มี การเข้ารหัสเป็นบิตอย่างไร และบิตเหล่านั้นหมายความว่าอะไร มันคือ <em>สเปก</em> ไม่ใช่ชิป x86, ARM และ RISC-V เป็น ISA — ชิปต่างกันหลายตัวสามารถ implement ตัวเดียวกันแล้วยังรันไบนารีชุดเดียวกันได้</p>
+<p>คำศัพท์ก่อนเริ่ม (ศัพท์บัญญัติราชบัณฑิตยสภา สาขาคอมพิวเตอร์และเทคโนโลยีสารสนเทศ): <strong>ชุดของคำสั่งเครื่อง</strong> (instruction set) และ <strong>สถาปัตยกรรมคอมพิวเตอร์</strong> (computer architecture); <strong>รหัสเครื่อง</strong> (machine code — บิตที่ CPU อ่านจริง); <strong>คำ</strong> (word — หน่วยข้อมูลที่เครื่องหยิบทีละชิ้น); <strong>รหัสดำเนินการ</strong> (operation code หรือ opcode — ส่วนของคำสั่งที่บอกว่าให้ทำอะไร); <strong>ตัวถูกดำเนินการ</strong> (operand — ข้อมูลหรือที่อยู่ที่คำสั่งทำงานด้วย); <strong>รอบคำสั่งเครื่อง</strong> (instruction cycle — วงจรไปนำมา ถอดรหัส ทำงาน); <strong>เข้ารหัส</strong> และ <strong>ถอดรหัส</strong> (encode, decode); <strong>ไปนำมา</strong> (fetch — ขั้นดึงคำสั่งจากหน่วยความจำ); <strong>ตัวนับระบุตำแหน่งคำสั่ง</strong> (program counter, PC); <strong>เรจิสเตอร์</strong> (register) และ <strong>ตัวสะสม</strong> (accumulator — เรจิสเตอร์หลักที่ผลคำนวณสะสมอยู่ เช่น A ใน mini-CPU); <strong>ตัวบ่งชี้</strong> (flag); <strong>ตัวทด</strong> (carry); <strong>การล้น</strong> (overflow); <strong>หยุด</strong> (halt); <strong>ไมโครโปรแกรม</strong> (microprogram); <strong>การทำงานแบบสายท่อ</strong> (pipeline); <strong>ตัวแปลโปรแกรม</strong> (compiler); <strong>แอสเซมเบลอร์</strong> (assembler); <strong>เติมหน้า</strong> (prefix); และ <strong>ความเข้ากันได้</strong> (compatibility) คำต่อไปนี้ยังไม่พบศัพท์บัญญัติ จึงใช้คำอธิบายหรือทับศัพท์: microarchitecture (ไมโครสถาปัตยกรรม), immediate (ค่าคงที่ที่ฝังในตัวคำสั่ง), sign extension (การขยายบิตเครื่องหมาย), addressing mode (โหมดระบุที่อยู่), control store (หน่วยความจำเก็บไมโครโปรแกรม) และ wraparound (การวนกลับ)</p>
+<p>การแยกนั้น — สถาปัตยกรรม (สิ่งที่ซอฟต์แวร์เห็น) กับไมโครสถาปัตยกรรม (ซิลิคอนสร้างอย่างไร) — คือกระดูกสันหลังของเฟสนี้ ไปป์ไลน์ แคช และคอร์นอกลำดับทั้งหมดอยู่ <em>ใต้</em> ISA ซอฟต์แวร์ไม่จำเป็นต้องรู้</p>
+<h2 id="สองปรชญา-cisc-กบ-risc">สองปรัชญา: CISC กับ RISC<a class="anchor" href="#%e0%b8%aa%e0%b8%ad%e0%b8%87%e0%b8%9b%e0%b8%a3%e0%b8%8a%e0%b8%8d%e0%b8%b2-cisc-%e0%b8%81%e0%b8%9a-risc">#</a></h2>
+<p>CISC (Complex Instruction Set Computing) — สายเลือดหลัง x86 — อัดมากเข้าไปในแต่ละคำสั่ง: ความยาวแปรได้ โหมดระบุที่อยู่หลากหลาย เลขคณิตที่แตะหน่วยความจำโดยตรงได้ คำสั่งน้อยลงต่อโปรแกรม; ดีโค้ดเดอร์ยากขึ้น</p>
+<p>RISC (Reduced Instruction Set Computing) ไปอีกทาง: คำสั่งความยาวคงที่ แบบจำลอง load/store เข้มงวด (การดำเนินการ ALU บนรีจิสเตอร์เท่านั้น) ฟิลด์สม่ำเสมอ คำสั่งมากขึ้นต่อโปรแกรม; แต่ละคำสั่งเรียบง่ายพอที่จะดึงและดีโค้ดแบบคาดเดาได้ ทีละขั้น ความสม่ำเสมอนั้นคือเหตุผลที่ไปป์ไลน์ (บทที่ 13) จัดการได้บน RISC ก่อน — คำสั่งความกว้างคงที่ง่ายกว่ามากที่จะแบ่งขั้นกว่าคำสั่ง CISC ที่ความยาวยังไม่รู้จนกว่าจะเริ่มดีโค้ดไปแล้ว</p>
+<p>เชิงรูปธรรม: คำสั่ง RISC โดยทั่วไปยาว 32 บิตพร้อมฟิลด์ในตำแหน่งคงที่ คำสั่ง x86 ยาวได้ตั้งแต่ 1 ไบต์ถึง 15 ไบต์ พร้อมพรีฟิกซ์ที่เป็นทางเลือก — หนาแน่นและทรงพลัง แพงที่จะดีโค้ดที่ปริมาณงานสูง</p>
+<h3 id="risc-v-ทละบต-ฟลดคงทและกบดกของคาคงท">RISC-V ทีละบิต: ฟิลด์คงที่และกับดักของค่าคงที่<a class="anchor" href="#risc-v-%e0%b8%97%e0%b8%a5%e0%b8%b0%e0%b8%9a%e0%b8%95-%e0%b8%9f%e0%b8%a5%e0%b8%94%e0%b8%84%e0%b8%87%e0%b8%97%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%81%e0%b8%9a%e0%b8%94%e0%b8%81%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b8%84%e0%b8%b2%e0%b8%84%e0%b8%87%e0%b8%97">#</a></h3>
+<p>คู่มือชุดคำสั่ง RISC-V (Volume I, ฉบับ 20240411) ระบุว่าชุดคำสั่งพื้นฐานมีคำสั่งยาว 32 บิตคงที่ ต้องวางตรงขอบ 4 ไบต์ มีรูปแบบหลักสี่แบบ (R/I/S/U) และ &ldquo;เก็บเรจิสเตอร์ต้นทาง (rs1, rs2) และปลายทาง (rd) ไว้ในตำแหน่งเดียวกันในทุกรูปแบบเพื่อให้ถอดรหัสง่าย&rdquo; บิตเครื่องหมายของค่าคงที่ทุกแบบอยู่ที่บิต 31 เสมอ เพื่อให้ขยายบิตเครื่องหมายไปพร้อมกับการถอดรหัสได้ ผู้เขียนเข้ารหัสคำสั่ง <code>add x3, x1, x2</code> (x3 ← x1 + x2) ด้วยมือจากตารางในคู่มือ:</p>
+<table>
+	<thead>
+			<tr>
+					<th>ฟิลด์</th>
+					<th>funct7 (บิต 31–25)</th>
+					<th>rs2 (24–20)</th>
+					<th>rs1 (19–15)</th>
+					<th>funct3 (14–12)</th>
+					<th>rd (11–7)</th>
+					<th>opcode (6–0)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ค่า</td>
+					<td>0000000</td>
+					<td>00010 (x2)</td>
+					<td>00001 (x1)</td>
+					<td>000</td>
+					<td>00011 (x3)</td>
+					<td>0110011</td>
+			</tr>
+	</tbody>
+</table>
+<p>ต่อกันได้ 0x002081B3 ส่วน <code>sub x3, x1, x2</code> ต่างเพียงบิต 30 (funct7 = 0100000) ได้ 0x402081B3 — ฮาร์ดแวร์แยก add กับ sub ด้วยบิตเดียว <code>addi x3, x1, 5</code> เป็นรูปแบบ I (ค่าคงที่ 12 บิตแทนที่ funct7 และ rs2) ได้ 0x00508193 คู่มือยังกำหนดว่าเรจิสเตอร์ x0 มีค่าศูนย์ตายตัว และคำสั่ง NOP เข้ารหัสเป็น <code>addi x0, x0, 0</code> = 0x00000013 — เขียนลง x0 แล้วผลหายไป ไม่ต้องมี opcode พิเศษสำหรับ &ldquo;ไม่ทำอะไร&rdquo;</p>
+<p><strong>กรณีขอบ: ค่าคงที่ 12 บิต</strong> ค่าคงที่ของ addi เป็นเลขมีเครื่องหมาย 12 บิต ใส่ได้ตั้งแต่ −2048 ถึง 2047 <code>addi x5, x0, 2047</code> เข้ารหัสได้ (0x7FF00293) แต่ 2048 ใส่ไม่ได้ ต้องใช้สองคำสั่ง: <code>lui</code> วางค่า 20 บิตบนแล้วเติมศูนย์ 12 บิตล่าง ตามด้วย <code>addi</code> เติมส่วนล่าง กับดักคือ addi <em>ขยายบิตเครื่องหมาย</em> ของค่าคงที่: ถ้าบิต 11 ของส่วนล่างเป็น 1 (ส่วนล่าง ≥ 0x800) addi จะบวกเลขติดลบ จึงต้องบวก 1 ให้ส่วนบนชดเชย ผู้เขียนเขียนโปรแกรมแยกค่าทั้งแบบถูกและแบบซื่อ ๆ (lui ด้วย 20 บิตบนตรง ๆ) แล้วจำลองเลขคณิต 32 บิต (RV32):</p>
+<table>
+	<thead>
+			<tr>
+					<th>ค่าที่ต้องการ</th>
+					<th>ลำดับที่ถูก</th>
+					<th>ผลของวิธีซื่อ ๆ</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0x000007FF (2047)</td>
+					<td>addi 2047</td>
+					<td>ถูก</td>
+			</tr>
+			<tr>
+					<td>0x00000800 (2048)</td>
+					<td>lui 0x1; addi −2048</td>
+					<td>0xFFFFF800 ผิด</td>
+			</tr>
+			<tr>
+					<td>0x00000FFF</td>
+					<td>lui 0x1; addi −1</td>
+					<td>0xFFFFFFFF ผิด</td>
+			</tr>
+			<tr>
+					<td>0x12345678</td>
+					<td>lui 0x12345; addi 1656</td>
+					<td>ถูก (บิต 11 เป็น 0)</td>
+			</tr>
+			<tr>
+					<td>0x12345FFF</td>
+					<td>lui 0x12346; addi −1</td>
+					<td>0x12344FFF ผิด</td>
+			</tr>
+			<tr>
+					<td>0x7FFFFFFF</td>
+					<td>lui 0x80000; addi −1</td>
+					<td>0x7FFFEFFF ผิด</td>
+			</tr>
+			<tr>
+					<td>0xFFFFFFFF (−1)</td>
+					<td>addi −1 (คำสั่งเดียว)</td>
+					<td>0xFFFFEFFF ผิด</td>
+			</tr>
+	</tbody>
+</table>
+<p>ค่าทุกแถวในคอลัมน์กลางผ่านการจำลองกลับเป็นค่าที่ต้องการ แถว 0x7FFFFFFF น่าสนใจ: ส่วนบนกลายเป็น 0x80000 แล้ว addi −1 วนกลับมาเป็นค่าบวกที่ใหญ่ที่สุดพอดี — ถูกต้องเพราะคู่มือระบุว่า addi &ldquo;ไม่สนใจการล้น&rdquo; เก็บเพียงบิตล่าง แอสเซมเบลอร์จัดการเรื่องนี้ให้ (pseudo-instruction <code>li</code>) แต่ใครเขียนตัวแปลโปรแกรมหรือ JIT ต้องทำเอง</p>
+<p><strong>RISC-V ไม่มีตัวบ่งชี้</strong> ADD ของ RISC-V ไม่สนใจการล้นเช่นกัน และไม่มีตัวทดหรือตัวบ่งชี้ใด ๆ คู่มืออธิบายว่าเลือกคำสั่งเปรียบเทียบแล้วกระโดดในคำสั่งเดียว แทน condition codes แบบ x86 และ ARM เพราะเข้ากับไปป์ไลน์ได้ดีกว่าและไม่ต้องมีสถานะเพิ่ม การตรวจการล้นแบบไม่มีเครื่องหมายใช้คำสั่งเดียวหลังการบวก: <code>add t0, t1, t2; bltu t0, t1, overflow</code> (ถ้าผลรวมน้อยกว่าตัวตั้ง แปลว่าวนกลับ) ผู้เขียนตรวจกฎนี้แบบครบทุกคู่ในเลข 8 บิต (256 × 256 คู่): &ldquo;ผลรวมที่ตัดเหลือ 8 บิตน้อยกว่าตัวตั้ง&rdquo; ตรงกับ &ldquo;ผลรวมจริงเกิน 255&rdquo; ทุกคู่ รวมกรณีขอบ t2 = 0 (ผลรวมเท่าตัวตั้ง ไม่น้อยกว่า จึงไม่ล้น) และ 0xFF + 1 (ได้ 0 น้อยกว่า 0xFF จึงล้น)</p>
+<h3 id="x86-ทละไบต-หลายทางสความหมายเดยว">x86 ทีละไบต์: หลายทางสู่ความหมายเดียว<a class="anchor" href="#x86-%e0%b8%97%e0%b8%a5%e0%b8%b0%e0%b9%84%e0%b8%9a%e0%b8%95-%e0%b8%ab%e0%b8%a5%e0%b8%b2%e0%b8%a2%e0%b8%97%e0%b8%b2%e0%b8%87%e0%b8%aa%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%ab%e0%b8%a1%e0%b8%b2%e0%b8%a2%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7">#</a></h3>
+<p>ผู้เขียนประกอบคำสั่งด้วย GNU as แล้วถอดกลับด้วย objdump (ความหมายของแต่ละ opcode ตรวจกับหน้า ADD ที่ถอดจากคู่มือ Intel):</p>
+<table>
+	<thead>
+			<tr>
+					<th>คำสั่ง</th>
+					<th>ไบต์</th>
+					<th>ความยาว</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>add eax, ebx</td>
+					<td>01 D8</td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td>add eax, ebx (อีกรูปแบบ)</td>
+					<td>03 C3</td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td>add eax, 5</td>
+					<td>83 C0 05</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td>add eax, 127</td>
+					<td>83 C0 7F</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td>add eax, 128</td>
+					<td>05 80 00 00 00</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>add eax, −128</td>
+					<td>83 C0 80</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td>add eax, [rbx+rcx*4+16]</td>
+					<td>03 44 8B 10</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>add dword [rbx+rcx*4+0x12345678], 0x12345678</td>
+					<td>81 84 8B 78 56 34 12 78 56 34 12</td>
+					<td>11</td>
+			</tr>
+			<tr>
+					<td>lock add dword fs:[…เดิม…], 0x12345678</td>
+					<td>64 F0 81 84 8B …</td>
+					<td>13</td>
+			</tr>
+			<tr>
+					<td>lock add qword fs:[r9+r10*4+0x12345678], 0x12345678</td>
+					<td>64 F0 4B 81 84 91 …</td>
+					<td>14</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>สองรหัส ความหมายเดียว:</strong> opcode 01 แปลว่า &ldquo;บวกเรจิสเตอร์เข้า r/m&rdquo; ส่วน 03 แปลว่า &ldquo;บวก r/m เข้าเรจิสเตอร์&rdquo; ไบต์ถัดมา (ModRM) แบ่งเป็น mod 2 บิต, reg 3 บิต, r/m 3 บิต สำหรับ 01 D8: D8 = 11 011 000 คือ mod = 11 (ทั้งคู่เป็นเรจิสเตอร์), reg = 011 (ebx), r/m = 000 (eax) สำหรับ 03 C3: C3 = 11 000 011 สลับบทบาท ผลลัพธ์เหมือนกันทุกบิต — ความซ้ำซ้อนที่ RISC-V ไม่มี</p>
+<p><strong>กรณีขอบ 127/128:</strong> opcode 83 ใช้ค่าคงที่ 8 บิตที่ &ldquo;ขยายบิตเครื่องหมาย&rdquo; (หน้า ADD ระบุไว้) ไบต์ 7F คือ 127 แต่ไบต์ 80 คือ −128 ไม่ใช่ 128 ดังนั้น <code>add eax, 128</code> ต้องกระโดดไปใช้รูปยาว 5 ไบต์ ขณะที่ <code>add eax, −128</code> ยังใช้รูปสั้น 3 ไบต์ได้ — ขอบแบบเดียวกับ 2047/2048 ของ RISC-V แต่เลื่อนมาที่ 127/128 และผลคือ <em>ความยาวคำสั่งเปลี่ยน</em> ไม่ใช่จำนวนคำสั่ง</p>
+<p><strong>กรณีขอบ 15 ไบต์:</strong> คู่มือ Intel (Volume 2, ฉบับกันยายน 2026) ระบุว่า &ldquo;ความยาวสูงสุดของคำสั่ง Intel 64 และ IA-32 ยังคงเป็น 15 ไบต์&rdquo; ผู้เขียนลองเติมพรีฟิกซ์ ds ที่ซ้ำซ้อนหน้าคำสั่ง 14 ไบต์ในตาราง: เติมหนึ่งตัว (15 ไบต์) objdump ยังถอดได้ เติมสองตัว (16 ไบต์) objdump รายงาน &ldquo;(bad)&rdquo; — ขอบอยู่ตรง 15 พอดี</p>
+<p><strong>ผลต่อดีโค้ดเดอร์:</strong> ใน RISC-V พื้นฐาน คำสั่งที่ k เริ่มที่ไบต์ 4k เสมอ ดีโค้ดเดอร์หลายตัวเริ่มพร้อมกันได้ทันที ใน x86 จะรู้ว่าคำสั่งถัดไปเริ่มตรงไหน ต้องอ่านพรีฟิกซ์ opcode ModRM และรู้ว่ามีไบต์ที่อยู่และค่าคงที่ตามมากี่ไบต์ก่อน — ความยาวของคำสั่งที่ 2 ขึ้นกับการถอดรหัสคำสั่งที่ 1 นี่คือราคาของ &ldquo;หนาแน่นและทรงพลัง&rdquo; ในย่อหน้าข้างบนเป็นตัวเลข</p>
+<p><strong>งานเดียว สามสัญญา:</strong> &ldquo;A ← A + ค่าในหน่วยความจำ&rdquo; ใน mini-CPU คือ <code>ADD 14</code> ไบต์เดียว (0x2E) ใน x86 คือ <code>add eax, [rbx+rcx*4+16]</code> คำสั่งเดียว 4 ไบต์ ใน RISC-V ต้องสองคำสั่งตามแบบ load/store: <code>lw x6, 16(x5)</code> (0x0102A303) แล้ว <code>add x10, x10, x6</code> (0x00650533) รวม 8 ไบต์ ข้อสังเกต: mini-CPU มีความยาวคงที่แบบ RISC แต่ให้ ALU แตะหน่วยความจำได้แบบ CISC — ตัวอย่างเล็ก ๆ ว่าป้ายกำกับสองขั้วไม่ได้แบ่งโลกสะอาด</p>
+<p><strong>ลองตอนนี้.</strong> mini-CPU ด้านล่างคือ ISA เล็ก ๆ: opcode 4 บิต ตัวถูกดำเนินการ 4 บิต หน่วยความจำสิบหกคำ ก้าวโปรแกรมนำทาง 8 คำสั่งแล้วดู fetch / decode / execute เคลื่อน A และหน่วยความจำ — สัญญาเดียวกับที่บทนี้เพิ่งตั้งชื่อ เล็กพอถือในหนึ่งจอ</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=th"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="แล็บเชิงโต้ตอบ: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=th" target="_blank" rel="noopener">เปิดแล็บในแท็บใหม่ ↗</a>
+  </div>
+</div>
+
+<h2 id="อานสญญาของ-mini-cpu-จากซอรสจรง">อ่านสัญญาของ mini-CPU จากซอร์สจริง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b8%aa%e0%b8%8d%e0%b8%8d%e0%b8%b2%e0%b8%82%e0%b8%ad%e0%b8%87-mini-cpu-%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%8b%e0%b8%ad%e0%b8%a3%e0%b8%aa%e0%b8%88%e0%b8%a3%e0%b8%87">#</a></h2>
+<p>สัญญาที่แท้จริงของ mini-CPU ไม่ได้อยู่ในคำอธิบาย แต่อยู่ในซอร์ส JavaScript ของแล็บข้างบน ผู้เขียนอ่านซอร์สนั้นและรันสคริปต์ของแล็บ <em>ตัวจริง</em> ใน Node.js (แทนหน้าจอด้วยออบเจ็กต์จำลอง) เพื่อตรวจทุกข้อด้านล่าง</p>
+<p><strong>การเข้ารหัส:</strong> แต่ละคำยาว 8 บิต = opcode × 16 + ตัวถูกดำเนินการ (ในซอร์ส: <code>(op &lt;&lt; 4) | (arg &amp; 0xF)</code>) โปรแกรมนำทางแปดคำสั่งจึงเป็นรหัสเครื่องแปดไบต์:</p>
+<table>
+	<thead>
+			<tr>
+					<th>ที่อยู่</th>
+					<th>คำสั่ง</th>
+					<th>รหัสเครื่อง</th>
+					<th>ความหมาย</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>LDI 5</td>
+					<td>0x55</td>
+					<td>A ← 5</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>STA 14</td>
+					<td>0x4E</td>
+					<td>mem[14] ← A</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>LDI 8</td>
+					<td>0x58</td>
+					<td>A ← 8</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>ADD 14</td>
+					<td>0x2E</td>
+					<td>A ← A + mem[14] = 13</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>STA 15</td>
+					<td>0x4F</td>
+					<td>mem[15] ← A</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>LDA 15</td>
+					<td>0x1F</td>
+					<td>A ← mem[15]</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>OUT</td>
+					<td>0xE0</td>
+					<td>เอาต์พุต ← A</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>HLT</td>
+					<td>0xF0</td>
+					<td>หยุด</td>
+			</tr>
+	</tbody>
+</table>
+<p>รันจริงได้เอาต์พุต 13 ใน 8 ก้าว opcode 4 บิตมีได้ 16 รหัส แล็บใช้ 11 รหัส (0–8, E, F) เหลือ 0x9–0xD ว่างห้ารหัส</p>
+<p><strong>กรณีขอบ 1 — รหัสที่ไม่ได้นิยาม:</strong> แอสเซมเบลอร์ไม่ยอมสร้างรหัส 0x9–0xD แต่โปรแกรมสร้างเองได้ขณะรัน: โปรแกรม <code>LDA 6, SUB 7, STA 5, JMP 5, HLT, NOP, HLT, ADD 0</code> อ่านคำ HLT ที่ที่อยู่ 6 (0xF0) มาเป็นข้อมูล ลบด้วยคำ <code>ADD 0</code> ที่ที่อยู่ 7 (0x20) ได้ 0xD0 เขียนทับ NOP ที่ที่อยู่ 5 แล้วกระโดดไปรัน — แล็บรายงาน &ldquo;Unknown opcode 0xd at PC 5&rdquo; แล้วหยุดที่ก้าวที่ 5 ISA จริงต้องตัดสินใจเรื่องนี้เช่นกัน: คู่มือ RISC-V ระบุว่าพฤติกรรมเมื่อถอดรหัสคำสั่งที่สงวนไว้ &ldquo;ไม่ได้กำหนด&rdquo; (UNSPECIFIED) บางแพลตฟอร์มบังคับให้เกิด exception บางแพลตฟอร์มปล่อยให้ใช้เป็นส่วนขยาย</p>
+<p><strong>กรณีขอบ 2 — ตัวสะสม 8 บิตวนกลับ:</strong> ADD คำนวณ r = A + mem[x] แล้วตั้งตัวทดเมื่อ r &gt; 255 และเก็บ A = r &amp; 0xFF; SUB ตั้งตัวทด (ทำหน้าที่ตัวยืม) เมื่อ r &lt; 0 ผู้เขียนรันในแล็บ:</p>
+<table>
+	<thead>
+			<tr>
+					<th>การคำนวณ</th>
+					<th>A ที่ได้</th>
+					<th>ตัวทด</th>
+					<th>zero</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>240 + 240 = 480</td>
+					<td>224</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>128 + 128 = 256 (ขอบพอดี)</td>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>0 − 1</td>
+					<td>255</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+	</tbody>
+</table>
+<p>LDI รับได้แค่ 0–15 และแอสเซมเบลอร์ไม่มีคำสั่งประกาศข้อมูล จะได้ 240 หรือ 128 มาบวกก็ต้อง <em>ใช้รหัสคำสั่งเป็นข้อมูล</em>: คำ HLT คือ 0xF0 = 240 และคำ <code>JZ 0</code> คือ 0x80 = 128 เพราะคำสั่งและข้อมูลอยู่ในหน่วยความจำสิบหกคำเดียวกัน</p>
+<p><strong>กรณีขอบ 3 — ลูปนับถอยหลังเมื่อ n = 0:</strong> โปรแกรม <code>LDI 1, STA 15, LDI n, SUB 15, JZ 6, JMP 3, HLT</code> ลบ 1 จนกว่าจะเป็นศูนย์ รันจริงได้จำนวนก้าว 6, 9, 18, 48 สำหรับ n = 1, 2, 5, 15 ตรงกับสูตร 3n + 3 แต่เมื่อ n = 0 การลบครั้งแรกให้ 0 − 1 = 255 ไม่ใช่ศูนย์ ลูปจึงวนต่ออีก 255 รอบ ได้ <strong>771 ก้าว</strong> = 3 × 256 + 3 — n = 0 ทำตัวเหมือน n = 256 ถ้าผู้เขียนโปรแกรมทดสอบแค่ n = 1 ถึง 15 จะไม่เห็นเลย</p>
+<p><strong>กรณีขอบ 4 — คำสั่งไหนตั้งตัวบ่งชี้ zero เป็นส่วนหนึ่งของสัญญา:</strong> ในซอร์ส ADD, SUB, LDI <em>และ LDA</em> ปรับ zero เมื่อ A เป็น 0 ส่วน <code>STA</code>, <code>OUT</code> และคำสั่งกระโดดไม่แตะธง โปรแกรม <code>LDI 0, STA 15, LDI 7, LDA 15, JZ 6, HLT, OUT, HLT</code> โหลดศูนย์เข้า A ด้วย LDA แล้ว zero ติดตามเป็น 1 JZ จึงกระโดดไป OUT — รวม <strong>7 ก้าว</strong> (ไม่ใช่ 6 ที่จะได้ถ้า LDA ไม่แตะธง) และเอาต์พุตเป็น 0 อีกข้อ: Reset <em>เคลียร์</em> zero เป็น 0 ดังนั้น <code>JZ</code> เป็นคำสั่งแรกจะ<em>ไม่</em>กระโดด (รัน <code>JZ 3, LDI 9, OUT, HLT</code> แล้วได้เอาต์พุต 9) ตัวแปลโปรแกรมที่สร้างรหัสให้ mini-CPU ต้องรู้รายละเอียดระดับนี้ — นี่คือความหมายของ &ldquo;บิตเหล่านั้นหมายความว่าอะไร&rdquo; ในนิยาม ISA ย่อหน้าแรก</p>
+<p><strong>กรณีขอบ 5 — PC วนกลับและขอบของขนาดโปรแกรม:</strong> ในซอร์ส PC = (PC + 1) &amp; 0xF ที่อยู่ 15 จึงตามด้วย 0 โปรแกรมที่ลืม HLT (เช่น <code>LDI 1, OUT</code> แล้วที่เหลือเป็นศูนย์ = NOP) วนไม่รู้จบ หลัง 17 ก้าว PC กลับมาอยู่ที่ 1 และปุ่ม Run จะวิ่งไปเรื่อย ๆ เพราะหยุดเฉพาะเมื่อเจอ HLT ที่แนบเนียนกว่า: ถ้าขยายโปรแกรมนำทางด้วย NOP จนเต็ม 16 คำโดยให้ HLT อยู่ที่ 15 คำสั่ง <code>STA 15</code> จะเขียนผลรวม 13 (0x0D = NOP 13) ทับ HLT ของตัวเอง ผู้เขียนรัน 200 ก้าวแล้วยังไม่หยุด เอาต์พุต 13 ถูกต้องแต่โปรแกรมไม่จบ — ข้อมูลกับคำสั่งชนกันเพราะใช้หน่วยความจำเดียวกัน</p>
+<p><strong>กรณีขอบ 6 — แอสเซมเบลอร์ไม่ใช่ ISA:</strong> แอสเซมเบลอร์ของแล็บรับตัวถูกดำเนินการเป็นทศนิยม (<code>13</code>) หรือเลขฐานสิบหก (<code>0xD</code>) และปฏิเสธสิ่งอื่น — <code>LDI 16</code>, <code>LDI -1</code>, <code>LDI 0xZZ</code> และ <code>LDI 5abc</code> ล้วนรายงานข้อผิดพลาดที่บอกเลขบรรทัดในตัวแก้ไข (นับบรรทัดว่างและบรรทัดหมายเหตุด้วย) <code>LDI 0x5</code> ประกอบถูกต้องเป็น <code>LDI 5</code> (0x55) ส่วน <code>HLT 3</code> ยังประกอบได้เป็น 0xF3 เพราะ <code>NOP</code>/<code>OUT</code>/<code>HLT</code> เก็บตัวถูกดำเนินการไว้ในบิตล่างแม้ตอนรันจะเมินมัน (<code>NOP n</code> คือวิธีปลูกคำข้อมูล n ตอนประกอบ) โปรแกรมเกิน 16 คำถูกปฏิเสธ ทั้งหมดนี้เป็นพฤติกรรมของ <em>เครื่องมือ</em> ไม่ใช่ของสัญญา — แยกให้ออกเหมือนแยกสถาปัตยกรรมออกจากไมโครสถาปัตยกรรม</p>
+<p><strong>ข้อสังเกตสุดท้าย:</strong> หน้าจอแสดงเรจิสเตอร์ B แต่ในซอร์ส B ถูกตั้งเป็นศูนย์ตอนเริ่มและตอน Reset เท่านั้น ไม่มีคำสั่งใดอ่านหรือเขียนมัน สถานะที่ไม่มีคำสั่งใดแตะต้องไม่ได้เป็นส่วนของ ISA จริง ๆ แม้จะมองเห็นได้</p>
+<p><strong>ลองเอง:</strong> พิมพ์ <code>LDA 4</code>, <code>ADD 4</code>, <code>OUT</code>, <code>HLT</code>, <code>JZ 0</code> ลงในแล็บ กด Assemble แล้ว Step: บรรทัดสุดท้ายไม่เคยถูกรันแต่เป็นข้อมูล 128 ดูว่า A กลายเป็น 00 และไฟ CARRY กับ ZERO ติดพร้อมกัน จากนั้นลองโปรแกรมนับถอยหลังข้างบนกับ n = 0 แล้วกด Run</p>
+<h2 id="ขอโตแยงของ-patterson-และ-ditzel-1980-เปนตวเลข">ข้อโต้แย้งของ Patterson และ Ditzel (1980) เป็นตัวเลข<a class="anchor" href="#%e0%b8%82%e0%b8%ad%e0%b9%82%e0%b8%95%e0%b9%81%e0%b8%a2%e0%b8%87%e0%b8%82%e0%b8%ad%e0%b8%87-patterson-%e0%b9%81%e0%b8%a5%e0%b8%b0-ditzel-1980-%e0%b9%80%e0%b8%9b%e0%b8%99%e0%b8%95%e0%b8%a7%e0%b9%80%e0%b8%a5%e0%b8%82">#</a></h2>
+<p>บทความที่ประตูออกของบทนี้ชี้ไว้ให้ตัวเลขที่ยังคำนวณตามได้:</p>
+<ul>
+<li><strong>ความซับซ้อนวัดจากขนาดหน่วยความจำเก็บไมโครโปรแกรม:</strong> PDP-11/40 มี 256 × 56 บิต VAX 11/780 มี 5120 × 96 บิต ผู้เขียนคูณได้ 14,336 กับ 491,520 บิต โตราว 34 เท่า</li>
+<li><strong>คำสั่งส่วนน้อยทำงานส่วนใหญ่:</strong> ตัวแปลโปรแกรมของ IBM 360 ตัวหนึ่ง: 10 คำสั่งคิดเป็น 80% ของคำสั่งที่รัน 16 คำสั่ง 90% 21 คำสั่ง 95% 30 คำสั่ง 99% โปรแกรม COBOL บน IBM 370 ใช้ 84 จาก 183 คำสั่ง แต่ 26 คำสั่งคิดเป็น 90.28% และ 48 คำสั่งคิดเป็น 99.08%</li>
+<li><strong>คำสั่ง &ldquo;ระดับสูง&rdquo; ไม่ได้เร็วกว่าเสมอ:</strong> บน VAX 11/780 การแทนคำสั่ง INDEX ด้วยคำสั่งง่าย ๆ หลายคำสั่ง (COMPARE, JUMP LESS UNSIGNED, ADD, MULTIPLY) เร็วขึ้น 45% และ 60% เมื่อตัวแปลโปรแกรมใช้ประโยชน์จากกรณีขอบล่างเป็นศูนย์ บน IBM 370 การ load ทีละตัวเร็วกว่า load multiple เมื่อน้อยกว่า 4 เรจิสเตอร์ ซึ่งคิดเป็น 40% ของการใช้งานจริง และบน VAX <code>PUSHL R0</code> ช้ากว่า <code>MOVL R0,-(SP)</code> ที่ทำงานเดียวกัน</li>
+<li><strong>กฎ 10%:</strong> ถ้าการตัดคำสั่งหรือโหมดระบุที่อยู่หนึ่งอย่างทำให้รอบสัญญาณเร็วขึ้น 10% การเพิ่มมันกลับเข้าไปต้องทำให้เครื่องเร็วขึ้นเกิน 10% จึงจะคุ้ม</li>
+<li><strong>ราคาของการแก้บั๊ก:</strong> VAX 11/780 มีหน่วยความจำไมโครโปรแกรมที่เขียนได้ 1024 คำไว้แก้ข้อผิดพลาด บทความระบุว่ามีการแก้แล้วกว่า 50 ครั้ง ใช้ 252 ไมโครคำสั่ง — ผู้เขียนคำนวณได้ราวหนึ่งในสี่ (24.6%) ของพื้นที่นั้น</li>
+</ul>
+<p>บทความยังชี้ว่าความเข้ากันได้แบบขึ้นไปข้างบน (upward compatibility) ทำให้ &ldquo;แทบไม่เคยมีการตัดคำสั่งหรือโหมดระบุที่อยู่ออก&rdquo; ชุดคำสั่งจึงโตขึ้นทางเดียว — เหตุผลเดียวกับที่หัวข้อถัดไปใช้อธิบายว่าทำไม x86 ยังอยู่</p>
+<h2 id="เหตใด-x86-จงยงอยตอไป">เหตุใด x86 จึงยังอยู่ต่อไป<a class="anchor" href="#%e0%b9%80%e0%b8%ab%e0%b8%95%e0%b9%83%e0%b8%94-x86-%e0%b8%88%e0%b8%87%e0%b8%a2%e0%b8%87%e0%b8%ad%e0%b8%a2%e0%b8%95%e0%b8%ad%e0%b9%84%e0%b8%9b">#</a></h2>
+<p>หาก RISC ไปป์ไลน์ง่ายกว่า เหตุใด x86 ยังครองเดสก์ท็อปและเซิร์ฟเวอร์? ความเข้ากันได้และการลงทุนทางวิศวกรรมหลายทศวรรษ — ไม่ใช่ความสง่างามดิบ ชิป x86 สมัยใหม่ <em>แปล</em> คำสั่ง CISC เป็นไมโคร-ออปภายในที่เรียบง่ายแบบ RISC แล้วรันพวกนั้นบนคอร์แบบ RISC หลังฟรอนต์เอนด์ CISC (บทที่ 19) การถกเถียงไม่ใช่ทวิภาคที่สะอาดเท่าป้ายกำกับบอก</p>
+<p>ต่อไป: สร้าง datapath จริง — โครงสร้างทางกายภาพที่ ISA ทำงานอยู่บน</p>
+<p><strong>ประตูออก:</strong> David A. Patterson และ David R. Ditzel, &ldquo;The Case for the Reduced Instruction Set Computer&rdquo; (<em>Computer Architecture News</em>, 1980) — ข้อโต้แย้งคลาสสิกที่เปิดด้าน RISC ของการแยกนี้</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>จันทนา จันทราพรชัย, <em>สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ</em></li>
+<li>ผศ.ดร. ปัทมา ลงกานี, <em>สถาปัตยกรรมคอมพิวเตอร์</em></li>
+<li>รศ.ดร.เกริก ภิรมย์โสภา, <em>สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์</em></li>
+<li>David A. Patterson, David R. Ditzel, &ldquo;The Case for the Reduced Instruction Set Computer&rdquo;, <em>ACM SIGARCH Computer Architecture News</em> 8(6), 1980 — ขนาดหน่วยความจำไมโครโปรแกรม PDP-11/40 กับ VAX 11/780, สถิติการใช้คำสั่ง IBM 360/370, INDEX บน VAX, กฎ 10%, การแก้ไมโครโค้ด (สำเนาที่มหาวิทยาลัยเท็กซัส): <a href="https://www.cs.utexas.edu/~fussell/courses/cs352h/papers/risc.pdf">https://www.cs.utexas.edu/~fussell/courses/cs352h/papers/risc.pdf</a></li>
+<li>RISC-V International, <em>The RISC-V Instruction Set Manual, Volume I: Unprivileged ISA</em> (ฉบับ 20240411) — คำสั่ง 32 บิตคงที่, รูปแบบ R/I/S/U, ตำแหน่ง rs1/rs2/rd คงที่, บิตเครื่องหมายที่บิต 31, x0, NOP, LUI/ADDI, การไม่สนใจการล้น, เหตุผลที่ไม่ใช้ condition codes, คำสั่งสงวน: <a href="https://github.com/riscv/riscv-isa-manual/releases/download/20240411/unpriv-isa-asciidoc.pdf">https://github.com/riscv/riscv-isa-manual/releases/download/20240411/unpriv-isa-asciidoc.pdf</a></li>
+<li>Intel, <em>Intel 64 and IA-32 Architectures Software Developer&rsquo;s Manual, Volume 2</em> (Order Number 325383-093US, กันยายน 2026) — ความยาวคำสั่งสูงสุด 15 ไบต์: <a href="https://cdrdv2.intel.com/v1/dl/getContent/671110">https://cdrdv2.intel.com/v1/dl/getContent/671110</a></li>
+<li>Félix Cloutier, หน้า ADD ที่ถอดจากคู่มือ Intel (ฉบับธันวาคม 2023; ไม่ใช่เอกสารทางการ) — รหัส 01/03/05/81/83 และการขยายบิตเครื่องหมายของค่าคงที่: <a href="https://www.felixcloutier.com/x86/add">https://www.felixcloutier.com/x86/add</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B8%84%E0%B8%B3%E0%B8%AA%E0%B8%B1%E0%B9%88%E0%B8%87&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F11-instruction-sets%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F11-instruction-sets.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F11-instruction-sets.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/10-the-memory-hierarchy-begins/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>ลำดับชั้นหน่วยความจำเริ่มต้น</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/12-datapath-design/" class="flex align-center">
+        <span>การออกแบบ Datapath</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#สองปรชญา-cisc-กบ-risc">สองปรัชญา: CISC กับ RISC</a>
+      <ul>
+        <li><a href="#risc-v-ทละบต-ฟลดคงทและกบดกของคาคงท">RISC-V ทีละบิต: ฟิลด์คงที่และกับดักของค่าคงที่</a></li>
+        <li><a href="#x86-ทละไบต-หลายทางสความหมายเดยว">x86 ทีละไบต์: หลายทางสู่ความหมายเดียว</a></li>
+      </ul>
+    </li>
+    <li><a href="#อานสญญาของ-mini-cpu-จากซอรสจรง">อ่านสัญญาของ mini-CPU จากซอร์สจริง</a></li>
+    <li><a href="#ขอโตแยงของ-patterson-และ-ditzel-1980-เปนตวเลข">ข้อโต้แย้งของ Patterson และ Ditzel (1980) เป็นตัวเลข</a></li>
+    <li><a href="#เหตใด-x86-จงยงอยตอไป">เหตุใด x86 จึงยังอยู่ต่อไป</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

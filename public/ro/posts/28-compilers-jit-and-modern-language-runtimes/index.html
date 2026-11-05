@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Traducerea înainte de rulare, traducerea în timpul rulării și serviciile pe care mediul de rulare le oferă programului">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/28-compilers-jit-and-modern-language-runtimes/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Compilatoare, JIT și medii de rulare moderne">
+	<meta property="og:description" content="Traducerea înainte de rulare, traducerea în timpul rulării și serviciile pe care mediul de rulare le oferă programului">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:25:24+05:30">
+
+
+	<meta itemprop="name" content="Compilatoare, JIT și medii de rulare moderne">
+	<meta itemprop="description" content="Traducerea înainte de rulare, traducerea în timpul rulării și serviciile pe care mediul de rulare le oferă programului">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:25:24+05:30">
+	<meta itemprop="wordCount" content="934">
+
+<title>Compilatoare, JIT și medii de rulare moderne • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/28-compilers-jit-and-modern-language-runtimes/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilers, JIT, and Modern Language Runtimes">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/28-compilers-jit-and-modern-language-runtimes/" title="คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilers, JIT, සහ නවීන භාෂා Runtimes">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilers, JIT, மற்றும் நவீன மொழி Runtimes">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="active">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Compilatoare, JIT și medii de rulare moderne</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#traducerea-clasică-sursă-compilator-program-obiect">Traducerea clasică: sursă, compilator, program obiect</a></li>
+    <li><a href="#interpretare-compilare-înainte-de-rulare-compilare-la-rulare">Interpretare, compilare înainte de rulare, compilare la rulare</a></li>
+    <li><a href="#java-și-popularizarea-termenului">Java și popularizarea termenului</a></li>
+    <li><a href="#mediul-de-rulare">Mediul de rulare</a></li>
+    <li><a href="#încearcă-acum">Încearcă acum</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Compilatoare, JIT și medii de rulare moderne
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 27 a arătat de ce au apărut limbajele de nivel înalt. Acest capitol se uită la programul care le face utilizabile, compilatorul, și la cele două momente în care poate lucra: înainte ca programul să ruleze sau în timp ce rulează.</p>
+<h2 id="traducerea-clasică-sursă-compilator-program-obiect">Traducerea clasică: sursă, compilator, program obiect<a class="anchor" href="#traducerea-clasic%c4%83-surs%c4%83-compilator-program-obiect">#</a></h2>
+<p>Raportul COBOL din 1960 descrie deja schema pe care o folosim și azi: sistemul are două elemente, programul sursă scris în COBOL și compilatorul care îl traduce într-un program obiect capabil să ruleze pe un calculator (U.S. Department of Defense, <em>COBOL: Initial Specifications for a Common Business Oriented Language</em>, aprilie 1960, Partea II, §2, p. II-2; text OCR: <a href="https://archive.org/download/bitsavers_codasylCOB_6843924/COBOL_Report_Apr60_djvu.txt">archive.org/download/bitsavers_codasylCOB_6843924/COBOL_Report_Apr60_djvu.txt</a>, accesat 2026-11-05). Raportul precizează că descrie numai limbajul, nu compilatorul, deși specificația limbajului fixează în mare măsură limitele compilatorului (ibid.).</p>
+<p>Promisiunea compilatorului FORTRAN era mai ambițioasă: echipa voia ca, dintr-o descriere apropiată de matematică, să rezulte automat un program „eficient” pentru IBM 704 (Backus, J. W. et al., „The FORTRAN Automatic Coding System”, <em>Proc. Western Joint Computer Conference</em>, 1957, p. 188; <a href="https://www.softwarepreservation.org/projects/FORTRAN/paper/BackusEtAl-FortranAutomaticCodingSystem-1957.pdf">softwarepreservation.org</a>, accesat 2026-11-05). Pentru Ritchie, aceeași cerință a decis soarta lui C: trecerea de la B la C a coincis cu un compilator capabil să producă programe destul de rapide și de mici ca să concureze cu asamblarea (Ritchie, D. M., „The Development of the C Language”, 1993, „The Problems of B”; <a href="https://www.nokia.com/bell-labs/about/dennis-m-ritchie/chist.html">nokia.com/bell-labs/about/dennis-m-ritchie/chist.html</a>, accesat 2026-11-05).</p>
+<!-- NEVERIFICAT: descrierea etapelor interne ale unui compilator modern (analiză lexicală, sintactică, reprezentare intermediară, optimizare, generare de cod) din EN nu are încă o sursă primară deschisă în acest lot; o las ca descriere generală, fără cifre. -->
+<h2 id="interpretare-compilare-înainte-de-rulare-compilare-la-rulare">Interpretare, compilare înainte de rulare, compilare la rulare<a class="anchor" href="#interpretare-compilare-%c3%aenainte-de-rulare-compilare-la-rulare">#</a></h2>
+<p>Alternativa la compilare este interpretarea. Compilatorul B producea <em>threaded code</em>, o schemă interpretativă, iar Ritchie scrie că programele astfel obținute erau mult mai lente decât echivalentele lor în asamblare (Ritchie, 1993, „The Problems of B”).</p>
+<p>Între cele două se află compilarea „just-in-time” (JIT). John Aycock o definește larg, ca orice traducere făcută dinamic, după ce programul a început să ruleze, și notează că tehnica este folosită din anii 1960 (Aycock, J., „A Brief History of Just-In-Time”, <em>ACM Computing Surveys</em> 35(2), iunie 2003, pp. 97–113, aici p. 97; copie: <a href="https://www.cs.tufts.edu/comp/150IPL/papers/aycock03jit.pdf">cs.tufts.edu/comp/150IPL/papers/aycock03jit.pdf</a>, accesat 2026-11-05). El enumeră avantajele interpretării: programele interpretate sunt de obicei mai mici, mai portabile și au acces la informații cunoscute doar la rulare (ibid., p. 98).</p>
+<p>Istoria pe care o reconstituie Aycock:</p>
+<ul>
+<li><strong>McCarthy, 1960.</strong> Aycock bănuiește că prima lucrare publicată despre compilarea JIT este articolul despre LISP, care menționa compilarea funcțiilor în limbaj mașină, suficient de rapidă încât rezultatul să nu trebuiască salvat (ibid., §2.1, p. 98).</li>
+<li><strong>Michigan, 1966.</strong> Sistemul executiv al Universității Michigan pentru IBM 7090 nota explicit că asamblorul și încărcătorul pot traduce și încărca în timpul execuției (ibid., §2.1, p. 98).</li>
+<li><strong>Thompson, 1968.</strong> Ken Thompson a compilat expresii regulate în cod IBM 7094, executat apoi pentru căutare (ibid., §2.1, p. 98). Articolul original al lui Thompson nu a fost deschis; îl cităm doar prin Aycock.</li>
+<li><strong>Smalltalk, 1984.</strong> În sistemul Smalltalk al lui Deutsch și Schiffman, compilatorul era invocat dinamic, la apelul unei metode (ibid., §2.6–2.7, pp. 101–102).</li>
+<li><strong>Self.</strong> Pentru că limbajul Self e dinamic până la nivelul accesului la variabile locale, grupul Self a construit, după Aycock, cea mai agresivă compilare JIT de până atunci, în trei generații de compilator (ibid., §2.7, p. 102). A doua generație producea cod mai rapid, dar compila de 15 până la 35 de ori mai încet, încât mulți utilizatori au refuzat-o (ibid., §2.7.2). A treia a folosit optimizarea adaptivă: metodele erau compilate întâi de un compilator rapid, fără optimizări, iar contoare ale numărului de apeluri decideau când merită recompilarea (ibid., §2.7.3, pp. 102–103).</li>
+</ul>
+<h2 id="java-și-popularizarea-termenului">Java și popularizarea termenului<a class="anchor" href="#java-%c8%99i-popularizarea-termenului">#</a></h2>
+<p>Aycock scrie că Java a adus termenul <em>just-in-time</em> în uzul curent al literaturii de specialitate și că presiunea pentru implementări Java rapide a declanșat o renaștere a cercetării JIT (ibid., §2.14, p. 107). El citează observația inginerilor Sun (Cramer et al., 1997) că există o limită superioară a accelerării obținute prin JIT, pentru că interpretarea propriu-zisă reprezenta doar 68% din timpul de execuție într-un profil pe care l-au rulat (ibid., p. 107). Într-o notă, Aycock adaugă că James Gosling i-a spus că termenul a fost împrumutat din terminologia producției industriale („manufacturing terminology”) și că propria lui folosire a termenului datează din jurul anului 1993 (ibid., p. 107, nota 13; sursa lui Aycock este o comunicare privată din 2001).</p>
+<!-- NEVERIFICAT: JVM HotSpot, V8, .NET CLR și alte mașini virtuale moderne nu au surse primare deschise în acest lot; nu dau nume de produse, date sau cifre pentru ele. -->
+<h2 id="mediul-de-rulare">Mediul de rulare<a class="anchor" href="#mediul-de-rulare">#</a></h2>
+<p>Un limbaj nu se oprește la compilator. Lisp avea nevoie de un mecanism care să recupereze automat memoria abandonată de program: când lista de registre libere se golea, un ciclu de „reclamation” marca registrele accesibile și le readucea pe celelalte în listă (McCarthy, J., „Recursive Functions of Symbolic Expressions…”, <em>CACM</em>, 1960, §4c; <a href="https://www-formal.stanford.edu/jmc/recursive.pdf">www-formal.stanford.edu/jmc/recursive.pdf</a>, accesat 2026-11-05). Acest cod face parte din <em>mediul de rulare</em> (<em>runtime</em>), adică partea sistemului care rulează alături de program și îi oferă servicii pe care programul nu le scrie singur. Colectarea memoriei, compilatorul JIT din Self și interpretorul de bytecode Java sunt, fiecare, astfel de componente (Aycock, 2003, §2.7 și §2.14).</p>
+<h2 id="încearcă-acum">Încearcă acum<a class="anchor" href="#%c3%aencearc%c4%83-acum">#</a></h2>
+<p>Mașina virtuală de mai jos este un sistem Linux minimal, fără compilator C, dar poate arăta ambele fețe ale capitolului. Comanda <code>hexdump -C /bin/busybox | head -2</code> afișează începutul unui fișier executabil; pe mașina noastră de lucru, primii patru octeți ai unui executabil Linux (<code>/bin/ls</code>) sunt <code>7f 45 4c 46</code>, adică <code>0x7f</code> urmat de literele „ELF”, formatul produs de compilator și editorul de legături (verificare proprie, 2026-11-05; nu am rulat comanda în mașina virtuală a laboratorului). Apoi dă aceeași muncă unui interpretor: <code>echo 'BEGIN{s=0; for(i=1;i&lt;=1000000;i++) s+=i; print s}' &gt; /tmp/sum.awk</code>, urmat de <code>time awk -f /tmp/sum.awk</code>. Rezultatul trebuie să fie <code>500000500000</code>, adică 1.000.000 × 1.000.001 / 2 (calculul nostru, verificat și cu awk pe mașina noastră de lucru, 2026-11-05). Interpretorul execută fiecare iterație la rulare; timpul depinde de browser și nu îl dau aici.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=ro"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=ro" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9b17a0270323d6e8d6f80d4dde73cb1f8612bcaa" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Compilatoare%2C&#43;JIT&#43;%C8%99i&#43;medii&#43;de&#43;rulare&#43;moderne&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F28-compilers-jit-and-modern-language-runtimes%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F28-compilers-jit-and-modern-language-runtimes.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F28-compilers-jit-and-modern-language-runtimes.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex align-center">
+        <span>Sisteme în timp real și planificarea deterministă</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#traducerea-clasică-sursă-compilator-program-obiect">Traducerea clasică: sursă, compilator, program obiect</a></li>
+    <li><a href="#interpretare-compilare-înainte-de-rulare-compilare-la-rulare">Interpretare, compilare înainte de rulare, compilare la rulare</a></li>
+    <li><a href="#java-și-popularizarea-termenului">Java și popularizarea termenului</a></li>
+    <li><a href="#mediul-de-rulare">Mediul de rulare</a></li>
+    <li><a href="#încearcă-acum">Încearcă acum</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Enigma, Bletchley, සහ Colossus — සයිෆර් කඩා දැමීම ඉලෙක්ට්‍රොනික පරිගණකකරණය බල කළේ ඇයි">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/66-wartime-crypto/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="යුද්ධකාලීන Crypto">
+	<meta property="og:description" content="Enigma, Bletchley, සහ Colossus — සයිෆර් කඩා දැමීම ඉලෙක්ට්‍රොනික පරිගණකකරණය බල කළේ ඇයි">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="යුද්ධකාලීන Crypto">
+	<meta itemprop="description" content="Enigma, Bletchley, සහ Colossus — සයිෆර් කඩා දැමීම ඉලෙක්ට්‍රොනික පරිගණකකරණය බල කළේ ඇයි">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1851">
+
+<title>යුද්ධකාලීන Crypto • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/66-wartime-crypto/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/66-wartime-crypto/" title="Wartime Crypto">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/66-wartime-crypto/" title="รหัสลับยามสงคราม">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/66-wartime-crypto/" title="போர்க்கால Crypto">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/66-wartime-crypto/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/66-wartime-crypto/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/66-wartime-crypto/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="active">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>යුද්ධකාලීන Crypto</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#enigma-චලනය-වන-ඉලකකයක-වය">Enigma චලනය වන ඉලක්කයක් විය</a></li>
+    <li><a href="#colossus-workload-එක-ලහය-ඉකමව-ගය-වට">Colossus: Workload එක ලෝහය ඉක්මවා ගිය විට</a></li>
+    <li><a href="#ටරනසසටර-තරකයට-පර-මය-අයත-වනන-ඇය">ට්‍රාන්සිස්ටර තර්කයට පෙර මෙය අයත් වන්නේ ඇයි</a></li>
+    <li><a href="#ගඹරන-enigma-හ-යතර-අවකශය-crib-එකක-තබම-සහ-colossus-හ-ගණන-කරම">ගැඹුරින්: Enigma හි යතුරු අවකාශය, crib එකක් තැබීම සහ Colossus හි ගණන් කිරීම</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-enigma-හ-settings-ගණන-සමමත-හමදගවන-හමද-enigma">2. Enigma හි settings ගණන (සම්මත හමුදා/ගුවන් හමුදා Enigma)</a></li>
+        <li><a href="#3-දරවලතව-කසද-තමටම-නව">3. දුර්වලතාව: කිසිදා තමාටම නොවේ</a></li>
+        <li><a href="#4-lorenz-tunny-xor-සහ-depth">4. Lorenz (&ldquo;Tunny&rdquo;): XOR සහ depth</a></li>
+        <li><a href="#5-colossus-වගය-සහ-අක-මලශරය-අනව">5. Colossus: වේගය සහ අංක (මූලාශ්‍රය අනුව)</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    යුද්ධකාලීන Crypto
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Posts 01–02 ගියර් සහ relays ස්වයංක්‍රීය ගණනය කිරීම හැකි බව ඔප්පු කළ ආකාරය පෙන්වයි. යුද්ධය එම හැකියාව <em>හදිසි</em> කළේය: සයිෆර් ගමනාගමනය ඕනෑම මානව කාමරයකට කියවිය හැකිවාට වඩා වේගයෙන් පැමිණියේය, සහ ඉදිරියට යාමට හැකි යන්ත්‍ර පරිගණකකරණය විද්‍යුත් යාන්ත්‍රිකයෙන් ඉලෙක්ට්‍රොනිකයට ඇද ගත්තේය.</p>
+<p>මෙය Post 03 හි රික්තක-නල යන්ත්‍ර සහ <strong>රහස්‍යතාව workload එකක් ලෙස</strong> අතර සම්බන්ධක පටකයකි — යුද්ධයේ දෙවන ඉතිහාසයක් නොවේ.</p>
+<h2 id="enigma-චලනය-වන-ඉලකකයක-වය">Enigma චලනය වන ඉලක්කයක් විය<a class="anchor" href="#enigma-%e0%b6%a0%e0%b6%bd%e0%b6%b1%e0%b6%ba-%e0%b7%80%e0%b6%b1-%e0%b6%89%e0%b6%bd%e0%b6%9a%e0%b6%9a%e0%b6%ba%e0%b6%9a-%e0%b7%80%e0%b6%ba">#</a></h2>
+<p>ජර්මානු Enigma පවුල මෙහෙයුම් ගමනාගමනය ඔබ ටයිප් කරන විට පියවර ගන්නා rotors සමඟ සංකේතනය කළේය, එබැවින් එක් එක් අකුර සමඟ substitution වෙනස් විය. එක් පණිවිඩයක් කඩා දැමීම ඊළඟ දවස නොමිලේ මිලදී ගත්තේ නැත. යුද්ධයට පෙර, පෝලන්ත Cipher Bureau ගණිතඥයන් — Marian Rejewski, Jerzy Różycki සහ Henryk Zygalski සමඟ — සීමිත intercepts සහ ලේඛන වලින් Enigma හි අභ්‍යන්තර wiring ප්‍රතිනිර්මාණය කර, පසුව එම පදනම බ්‍රිතාන්‍ය සහ ප්‍රංශය සමඟ බෙදා ගත්හ. පිටවීමේ දොර: Rejewski ගේම ගිණුම් සහ කෞතුකාගාර හා සංරක්ෂණාගාර තබා ඇති පෝලන්ත–සහායක හුවමාරු ඉතිහාස — Wikipedia paraphrase එකක් නොවේ.</p>
+<p>Bletchley Park හි, Alan Turing (Hut 8) සහ සගයන් එම ගණිත කඩා දැමීම කාර්මික සෙවීමක් බවට පත් කළහ: බ්‍රිතාන්‍ය Bombe (ප්‍රධාන නිර්මාණ වැඩිදියුණු අතර Gordon Welchman ගේ diagonal board සමඟ) Enigma settings විද්‍යුත් යාන්ත්‍රික හැකියා-අවකාශ සෙවීමක් ලෙස ධාවනය කළේය. Relays සහ drums <em>දඩයම්</em> කළ හැකි විය. පසුකාලීන teleprinter සයිෆර් ඉල්ලූ වේගයෙන් ciphertext ගණන් කළ නොහැකි විය.</p>
+<h2 id="colossus-workload-එක-ලහය-ඉකමව-ගය-වට">Colossus: Workload එක ලෝහය ඉක්මවා ගිය විට<a class="anchor" href="#colossus-workload-%e0%b6%91%e0%b6%9a-%e0%b6%bd%e0%b7%84%e0%b6%ba-%e0%b6%89%e0%b6%9a%e0%b6%b8%e0%b7%80-%e0%b6%9c%e0%b6%ba-%e0%b7%80%e0%b6%a7">#</a></h2>
+<p>Lorenz teleprinter සයිෆර් (&ldquo;Tunny&rdquo;) වෙනස් ගැටලුවක් නිපදවුවේය: ඉලෙක්ට්‍රොනික වේගයේ සංඛ්‍යාන ප්‍රහාරයක් අවශ්‍ය දිගු ප්‍රවාහ. Max Newman එම ප්‍රහාරය වටා Newmanry සංවිධානය කළේය. දැනටමත් දුරකථන මාරුවේ රික්තක නල විශ්වාස කළ Post Office ඉංජිනේරුවෙකු වූ Tommy Flowers <strong>Colossus</strong> ගොඩනැගුවේය (පළමු යන්ත්‍රය 1944 ජනවාරියේ Bletchley Park වෙත භාර දුන් අතර 1944 පෙබරවාරි 5 දින පළමු පණිවිඩයට පහර දුන්නේය; Mark II 1944 ජූනි සිට — පහත 5 වන කොටසේ දින වගුව බලන්න) — කඩදාසි පටි කියවමින් කඩා දැමිය හැකි settings වෙත ගණන් කරන නල රාක්ක.</p>
+<p>මිථ්‍යාව නොව සීමාව නම් කරන්න: Colossus විශේෂ-අරමුණු cryptanalytic ඉලෙක්ට්‍රොනිකයක් විය, සාමාන්‍ය stored-program පරිගණකයක් නොවේ. එය <em>බල කළ</em> දේ නම් විශාල නල ගණනක් එම workload එකේ ඕනෑම relay farm එකකට වඩා ජය ගන්නා ප්‍රමාණවත්-විශ්වසනීය යන්ත්‍රයකට වයර් කළ හැකි බවට ඔප්පුවයි. එය Post 03 විවෘත කරන එම භෞතික ඔට්ටුවම ය — ස්විචයේ චලනය වන සම්බන්ධතා නැත — සාමයකාලීන පර්යේෂණ විවේකය වෙනුවට යුද්ධකාලීන පීඩනය යටතේ.</p>
+<p>පිටවීමේ දොර: <a href="https://www.tnmoc.org/">The National Museum of Computing</a> (Colossus rebuild සහ ප්‍රාථමික ද්‍රව්‍ය); ශාස්ත්‍රීය Colossus සාහිත්‍යයේ Tommy Flowers සහ Max Newman (උදා. Copeland ගේ සංස්කරණය කළ ඉතිහාස); Enigma/Bombe සඳහා Bletchley Park ගේම සංරක්ෂණ මාර්ගෝපදේශ. සත්‍යවාදීතාව: මෙහි සත්‍යාපිත සිංහල ප්‍රාථමික මූලාශ්‍රයක් ඉදිරිපත් නොකෙරේ — ඉංග්‍රීසි/ප්‍රාථමික ඉතිහාසවලට ගෞරවය.</p>
+<h2 id="ටරනසසටර-තරකයට-පර-මය-අයත-වනන-ඇය">ට්‍රාන්සිස්ටර තර්කයට පෙර මෙය අයත් වන්නේ ඇයි<a class="anchor" href="#%e0%b6%a7%e0%b6%bb%e0%b6%b1%e0%b7%83%e0%b7%83%e0%b6%a7%e0%b6%bb-%e0%b6%ad%e0%b6%bb%e0%b6%9a%e0%b6%ba%e0%b6%a7-%e0%b6%b4%e0%b6%bb-%e0%b6%b8%e0%b6%ba-%e0%b6%85%e0%b6%ba%e0%b6%ad-%e0%b7%80%e0%b6%b1%e0%b6%b1-%e0%b6%87%e0%b6%ba">#</a></h2>
+<p>කශේරුකාව ඉදිරියට කියවන්න:</p>
+<ul>
+<li><strong>Post 02</strong> — relays ද්විමය තර්කය ඔප්පු කරන අතර චලනය වන ලෝහ ඉතා මන්දගාමී බවද ඔප්පු කරයි.</li>
+<li><strong>මෙම පෝස්ට් එක</strong> — සැබෑ workload එකක් (සයිෆර් සෙවීම සහ ප්‍රවාහ ගණන් කිරීම) &ldquo;ඉතා මන්දගාමී&rdquo; මෙහෙයුම්මය වශයෙන් පිළිගත නොහැකි කරයි.</li>
+<li><strong>Post 03</strong> — නල යාන්ත්‍රික චලනය ඉවත් කරයි; ENIAC-පරිමාණ යන්ත්‍ර විවිධ වැඩසටහන් යටතේ ඉලෙක්ට්‍රොනික ස්විචය උරුම කර ගනී.</li>
+<li><strong>Post 04</strong> — නල පසුව <em>තමන්ගේ</em> සීලිං එකට ගැටේ (තාපය, බලය, අසාර්ථකත්වය), එබැවින් ට්‍රාන්සිස්ටරය සිදු විය යුතු විය.</li>
+</ul>
+<p>යුද්ධකාලීන crypto පරිගණකකරණය සොයා ගත්තේ නැත. එය ශතවර්ෂයේ දුෂ්කරතම තොරතුරු ගැටලුවලින් එකක් සඳහා විද්‍යුත් යාන්ත්‍රිකයෙන් ඉලෙක්ට්‍රොනිකයට පනින්න <em>විකල්ප නොවන</em> කළේය — සහ වැඩ කළ නම් කළ මිනිසුන්ගේ මංපෙතක් ඉතිරි කළේය. විකල්ප පැත්ත මාර්ගයකි; ප්‍රධාන ගමන Post 03 හි දිගටම යයි.</p>
+<h2 id="ගඹරන-enigma-හ-යතර-අවකශය-crib-එකක-තබම-සහ-colossus-හ-ගණන-කරම">ගැඹුරින්: Enigma හි යතුරු අවකාශය, crib එකක් තැබීම සහ Colossus හි ගණන් කිරීම<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-enigma-%e0%b7%84-%e0%b6%ba%e0%b6%ad%e0%b6%bb-%e0%b6%85%e0%b7%80%e0%b6%9a%e0%b7%81%e0%b6%ba-crib-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%ad%e0%b6%b6%e0%b6%b8-%e0%b7%83%e0%b7%84-colossus-%e0%b7%84-%e0%b6%9c%e0%b6%ab%e0%b6%b1-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> මෙම මාතෘකාව ගැන සිංහලෙන් ඇති ද්‍රව්‍ය:</p>
+<ul>
+<li>si.wikipedia හි &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b6%87%e0%b6%bd%e0%b6%b1%e0%b7%8a_%e0%b6%a7%e0%b7%92%e0%b6%ba%e0%b7%94%e0%b6%bb%e0%b7%92%e0%b6%b1%e0%b7%8a">ඇලන් ටියුරින්</a>&rdquo; ලිපිය (අක්ෂර ~14.5k). එය Government Code and Cypher School, Enigma, පෝලන්ත &ldquo;bomba&rdquo; ක්‍රමය Turing වැඩිදියුණු කිරීම සහ Bletchley ගැන කෙටියෙන් කියයි. &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b6%b4%e0%b6%bb%e0%b7%92%e0%b6%9c%e0%b6%ab%e0%b6%9a_%e0%b7%80%e0%b7%92%e0%b6%af%e0%b7%8a%e2%80%8d%e0%b6%ba%e0%b7%8f%e0%b7%80">පරිගණක විද්‍යාව</a>&rdquo; ලිපියේ එනිග්මා ගැන එක් සඳහනක් ඇත. &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b7%83%e0%b7%93%e0%b7%83%e0%b6%bb%e0%b7%8a_%e0%b6%9a%e0%b7%9a%e0%b6%ad%e0%b7%8f%e0%b6%82%e0%b6%9a%e0%b6%ba">සීසර් කේතාංකය</a>&rdquo; සරල ආදේශක කේතාංකයක් පැහැදිලි කරයි.</li>
+<li>YouTube හි Enigma ගැන සිංහල වීඩියෝ දෙකක් (<a href="https://www.youtube.com/watch?v=_nx4MJcqiuo">_nx4MJcqiuo</a>, Science Vista Hub; <a href="https://www.youtube.com/watch?v=5J_DQE7uaKQ">5J_DQE7uaKQ</a>). මේවා හඳුනාගත්තේ මාතෘකාවෙන් පමණි.</li>
+<li>Colossus හෝ Lorenz (&ldquo;Tunny&rdquo;) ගැන සිංහල ද්‍රව්‍යයක් අපට හමු නොවීය.</li>
+</ul>
+<p>ඒවායේ නැති දේ: Enigma හි settings ගණන ගණනය කරන හැටි, &ldquo;අකුරක් කිසිදා තමාටම සංකේතනය නොවේ&rdquo; යන දුර්වලතාව crib එකක් තැබීමට උදව් කරන හැටි, Lorenz හි XOR ගණිතය, සහ Colossus හි වේගය අංකවලින්.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>කේතාංකය / සයිෆරය (cipher):</strong> පණිවිඩයක් අකුරෙන් අකුර වෙනස් කරන ක්‍රමය. <strong>Plaintext (plaintext)</strong> = මුල් පෙළ. <strong>Ciphertext (ciphertext)</strong> = සංකේතිත පෙළ.</li>
+<li><strong>Rotor (rotor, wheel):</strong> එක් එක් අකුර ඔබන විට කැරකෙන, ඇතුළත රැහැන් ඇති රෝදය.</li>
+<li><strong>Plugboard / Steckerbrett (plugboard):</strong> අකුරු යුගල කේබල් වලින් මාරු කරන පුවරුව.</li>
+<li><strong>Reflector / Umkehrwalze (reflector):</strong> ධාරාව rotors හරහා ආපසු යවන ස්ථිර රෝදය.</li>
+<li><strong>Crib (crib):</strong> ciphertext එකක ඇතැයි අනුමාන කරන plaintext කොටසක්.</li>
+<li><strong>XOR (exclusive or):</strong> bit දෙකක් වෙනස් නම් 1, සමාන නම් 0.</li>
+<li><strong>Depth (depth):</strong> එකම යතුරු ප්‍රවාහයෙන් (key stream) සංකේතනය කළ පණිවිඩ දෙකක්.</li>
+</ul>
+<h3 id="2-enigma-හ-settings-ගණන-සමමත-හමදගවන-හමද-enigma">2. Enigma හි settings ගණන (සම්මත හමුදා/ගුවන් හමුදා Enigma)<a class="anchor" href="#2-enigma-%e0%b7%84-settings-%e0%b6%9c%e0%b6%ab%e0%b6%b1-%e0%b7%83%e0%b6%b8%e0%b6%b8%e0%b6%ad-%e0%b7%84%e0%b6%b8%e0%b6%af%e0%b6%9c%e0%b7%80%e0%b6%b1-%e0%b7%84%e0%b6%b8%e0%b6%af-enigma">#</a></h3>
+<p>Alan Stripp ගේ NOVA ලිපිය (1999) සහ Bletchley Park දෙන අංක ගෙන අපි ගණනය කරමු:</p>
+<p><strong>(අ) රෝද අනුපිළිවෙළ:</strong> rotors 5 කින් 3 ක් තෝරා අනුපිළිවෙළට තැබීම: 5 × 4 × 3 = <strong>60</strong> (Stripp: &ldquo;60 possible wheel orders&rdquo;). Bletchley Park ට අනුව තෝරා ගැනීමට rotors 5 ක් ලැබුණේ 1938 දීය.</p>
+<p><strong>(ආ) Rotor ස්ථාන:</strong> එක් rotor එකකට ස්ථාන 26 → 26 × 26 × 26 = <strong>17,576</strong>. (Stripp මෙම අංකය &ldquo;ring-settings&rdquo; ලෙස හඳුන්වයි.)</p>
+<p><strong>(ඇ) Plugboard, කේබල් 10:</strong> Bletchley Park ට අනුව සම්මත ක්‍රියා පටිපාටිය කේබල් 10 කි. එවිට අකුරු 20 ක් යුගල 10 කට බැඳේ, 6 ක් නොබැඳී පවතී.</p>
+<ul>
+<li>අකුරු 26 පෙළට තැබිය හැකි ක්‍රම: 26!.</li>
+<li>නොබැඳුණු අකුරු 6 අතර අනුපිළිවෙළ වැදගත් නැත: ÷ 6!.</li>
+<li>යුගල 10 අතර අනුපිළිවෙළ වැදගත් නැත: ÷ 10!.</li>
+<li>එක් එක් යුගලය ඇතුළත (A–B = B–A): ÷ 2¹⁰.</li>
+<li><strong>26! ÷ (6! × 10! × 2¹⁰) = 150,738,274,937,250</strong> (අපේ ගණනය). Bletchley Park මෙය වට කර 150,738,274,900,000 ලෙස දක්වයි. Stripp: &ldquo;over 150 million million&rdquo;.</li>
+</ul>
+<p><strong>(ඈ) එකතුව:</strong> 60 × 17,576 × 150,738,274,937,250 = <strong>158,962,555,217,826,360,000 ≈ 1.59 × 10²⁰</strong>. Stripp: &ldquo;about 159 million million million&rdquo;.</p>
+<p>Bletchley Park Enigma I සඳහා <strong>103,325,660,891,587,134,000,000</strong> &ldquo;possible encryptions&rdquo; ලෙස දක්වයි. එය අපේ එකතුව මෙන් හරියටම <strong>650</strong> (= 26 × 25) ගුණයකි. Bletchley Park ව්‍යුත්පන්නය නොදක්වයි. එය rings ද ඇතුළත් කළ අගයක් බව පෙනුණත් අපි එය තහවුරු කළේ නැත.</p>
+<p><strong>ඇයි බලහත්කාරයෙන් (brute force) සෙවිය නොහැක්කේ (ආදර්ශ):</strong> තත්පරයකට settings මිලියනයක් පරීක්ෂා කළ හැකි යන්ත්‍රයකට වුවද 1.59 × 10²⁰ ÷ 10⁶ = 1.59 × 10¹⁴ s ≈ වසර මිලියන <strong>5</strong> කි. එබැවින් Bombe එකට තර්කනයෙන් plugboard කොටස කපා හැරීමට crib එකක් අවශ්‍ය විය. Plugboard ඉවත් කළ විට ඉතිරි වන්නේ 60 × 17,576 = <strong>1,054,560</strong> කි.</p>
+<h3 id="3-දරවලතව-කසද-තමටම-නව">3. දුර්වලතාව: කිසිදා තමාටම නොවේ<a class="anchor" href="#3-%e0%b6%af%e0%b6%bb%e0%b7%80%e0%b6%bd%e0%b6%ad%e0%b7%80-%e0%b6%9a%e0%b7%83%e0%b6%af-%e0%b6%ad%e0%b6%b8%e0%b6%a7%e0%b6%b8-%e0%b6%b1%e0%b7%80">#</a></h3>
+<p>Stripp ට අනුව ඕනෑම setting එකකදී B ඔබන විට T දැල්වේ නම් T ඔබන විට B දැල්වේ, සහ <strong>B ඔබන විට කිසිදා B නොදැල්වේ</strong>. ධාරාව reflector එකෙන් ආපසු හැරී වෙනත් මාර්ගයකින් එන නිසා මෙය සිදු වේ. එකම යන්ත්‍ර ස්ථානයට ආපසු එන්නේ ඔබීම් 16,900 (26 × 25 × 26) කට පසුව බැවින් පණිවිඩ අකුරු 250 කට සීමා කළ බවද Stripp කියයි.</p>
+<p><strong>Crib එකක් තැබීම (ආදර්ශ):</strong> ciphertext <code>QWERTZUWRTTQ</code> (අකුරු 12). එහි කොතැනක හෝ <code>WETTER</code> (ජර්මානු &ldquo;කාලගුණය&rdquo;) ඇතැයි අනුමාන කරමු. ස්ථාන 7 ක් (0–6) ඇත. crib අකුරක් එම ස්ථානයේම ciphertext අකුරට සමාන නම් එම ස්ථානය <strong>නොහැකිය</strong>:</p>
+<table>
+	<thead>
+			<tr>
+					<th>ආරම්භය</th>
+					<th>Ciphertext කොටස</th>
+					<th>ගැටුම</th>
+					<th>ප්‍රතිඵලය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>QWERTZ</td>
+					<td>නැත</td>
+					<td>හැකිය</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>WERTZU</td>
+					<td>W, E, T</td>
+					<td>නොහැකිය</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>ERTZUW</td>
+					<td>T</td>
+					<td>නොහැකිය</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>RTZUWR</td>
+					<td>R</td>
+					<td>නොහැකිය</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>TZUWRT</td>
+					<td>නැත</td>
+					<td>හැකිය</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>ZUWRTT</td>
+					<td>නැත</td>
+					<td>හැකිය</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>UWRTTQ</td>
+					<td>T</td>
+					<td>නොහැකිය</td>
+			</tr>
+	</tbody>
+</table>
+<p>ස්ථාන 7 න් 4 ක් ඉවත් විය. ඉතිරි <strong>0, 4, 5</strong> සඳහා පමණක් Bombe menu එකක් සකස් කිරීම වටී.</p>
+<h3 id="4-lorenz-tunny-xor-සහ-depth">4. Lorenz (&ldquo;Tunny&rdquo;): XOR සහ depth<a class="anchor" href="#4-lorenz-tunny-xor-%e0%b7%83%e0%b7%84-depth">#</a></h3>
+<p>Bletchley Park ට අනුව Lorenz SZ42 හි cipher රෝද <strong>12</strong> ක් ඇති අතර, එක් එක් රෝදයක සැකසිය හැකි pins <strong>23 සිට 61</strong> දක්වා ඇත. Teleprinter අකුරක් bits 5 කි. යන්ත්‍රය යතුරු අකුරක් (key) නිපදවා plaintext අකුර සමඟ XOR කරයි.</p>
+<p><strong>ආදර්ශ bits:</strong> P = 10110, K = 01100.</p>
+<ul>
+<li>C = P ⊕ K = <strong>11010</strong>.</li>
+<li>ආපසු: C ⊕ K = 11010 ⊕ 01100 = <strong>10110</strong> = P. එකම යන්ත්‍රය සංකේතනය සහ විකේතනය දෙකම කරයි.</li>
+</ul>
+<p><strong>Depth:</strong> දෙවන පණිවිඩයක් P₂ = 00111 එකම K සමඟ: C₂ = 01011.</p>
+<ul>
+<li>C₁ ⊕ C₂ = 11010 ⊕ 01011 = <strong>10001</strong>.</li>
+<li>P₁ ⊕ P₂ = 10110 ⊕ 00111 = <strong>10001</strong>. යතුර අවලංගු වී ගියේය (K ⊕ K = 0). එවිට යතුර නොදැන plaintext දෙක ගැන තර්ක කළ හැක.</li>
+</ul>
+<h3 id="5-colossus-වගය-සහ-අක-මලශරය-අනව">5. Colossus: වේගය සහ අංක (මූලාශ්‍රය අනුව)<a class="anchor" href="#5-colossus-%e0%b7%80%e0%b6%9c%e0%b6%ba-%e0%b7%83%e0%b7%84-%e0%b6%85%e0%b6%9a-%e0%b6%b8%e0%b6%bd%e0%b7%81%e0%b6%bb%e0%b6%ba-%e0%b6%85%e0%b6%b1%e0%b7%80">#</a></h3>
+<p><strong>දින (මූලාශ්‍රය අනුව):</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>සිදුවීම</th>
+					<th>දිනය</th>
+					<th>මූලාශ්‍රය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Mk 1 Bletchley Park වෙත පැමිණීම</td>
+					<td>1944 ජනවාරි 18</td>
+					<td>Bletchley Park</td>
+			</tr>
+			<tr>
+					<td>එම භාර දීම</td>
+					<td>&ldquo;1943 දෙසැම්බර් අග / 1944 ජනවාරි&rdquo;, 1944 පෙබරවාරි මුල වැඩ කරයි</td>
+					<td>TNMOC Colossus පිටුව</td>
+			</tr>
+			<tr>
+					<td>Mk 1 Bletchley හි මෙහෙයුම්</td>
+					<td>1944 පෙබරවාරි 5</td>
+					<td>TNMOC (2019 නිවේදනය)</td>
+			</tr>
+			<tr>
+					<td>Mk 2</td>
+					<td>මැයි මාසයේ පැමිණ, 1944 ජූනි 1 අර්ධ මෙහෙයුම්</td>
+					<td>TNMOC (2019 නිවේදනය)</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>නල (valves) ගණන මූලාශ්‍රයෙන් මූලාශ්‍රයට සහ Mark අනුව වෙනස් වේ:</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>මූලාශ්‍රය</th>
+					<th>Mk 1</th>
+					<th>Mk 2</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>TNMOC Colossus පිටුව</td>
+					<td>—</td>
+					<td>&ldquo;2500 valves&rdquo; (Mark සඳහන් නැත)</td>
+			</tr>
+			<tr>
+					<td>Centre for Computing History</td>
+					<td>1,500</td>
+					<td>2,500</td>
+			</tr>
+			<tr>
+					<td>BBC News (2014)</td>
+					<td>1,600 (&ldquo;first prototype&rdquo;)</td>
+					<td>2,400</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>කියවීමේ වේගය:</strong> Centre for Computing History ට අනුව Colossus කඩදාසි පටිය තත්පරයකට අකුරු <strong>5,000</strong> ක් කියවීය.</p>
+<p><strong>ආදර්ශ ගණනය:</strong> අකුරු 10,000 ක පණිවිඩ පටියක් (ආදර්ශ) එක් වරක් කියවීමට 10,000 ÷ 5,000 = <strong>තත්පර 2</strong>. රෝද settings 1,000 ක් (ආදර්ශ) සඳහා පටිය 1,000 වරක් කියවීම: 2,000 s ≈ <strong>මිනිත්තු 33</strong>. TNMOC ට අනුව යුද්ධය අවසන් වන විට Colossus යන්ත්‍ර 10 ක ආධාරයෙන් පුද්ගලයන් 550 ක් ඉහළ මට්ටමේ ජර්මානු සන්නිවේදන අකුරු මිලියන <strong>63</strong> ක් විකේතනය කර තිබුණි.</p>
+<h3 id="6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#6-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>Navy Enigma හි rotors <strong>8</strong> කින් 3 ක් තෝරයි. රෝද අනුපිළිවෙළ කීයද?</li>
+<li>කේබල් <strong>1</strong> ක් පමණක් ඇති plugboard එකක යුගල ගණන කීයද? සූත්‍රයෙන් සහ සරල ක්‍රමයෙන්.</li>
+<li>Ciphertext <code>XWETTAREQLMN</code> හි crib <code>WETTER</code> තැබිය හැකි ස්ථාන මොනවාද?</li>
+<li>P = 01011, K = 11001. C කුමක්ද? C ⊕ K පරීක්ෂා කරන්න.</li>
+<li>අකුරු 250 ක පණිවිඩයක් 16,900 ක කාල සීමාවෙන් කොපමණ ප්‍රතිශතයක්ද?</li>
+<li>අකුරු 20,000 ක පටියක් තත්පරයකට අකුරු 5,000 බැගින් settings 500 කට කියවීමට කොපමණ කාලයක් ගතවේද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>8 × 7 × 6 = <strong>336</strong>.</li>
+<li>26! ÷ (24! × 1! × 2¹) = 26 × 25 ÷ 2 = <strong>325</strong>. සරලව: අකුරු 26 න් 2 ක් තෝරන ක්‍රම = C(26, 2) = 325.</li>
+<li>ආරම්භ 0–6 පරීක්ෂා කරන්න: 0 (T), 1 (W, E, T, T, R), 2 (T), 3 (E), 6 (E) ගැටුම් ඇත. හැකි ස්ථාන <strong>4 සහ 5</strong> පමණි.</li>
+<li>C = 01011 ⊕ 11001 = <strong>10010</strong>. C ⊕ K = 10010 ⊕ 11001 = 01011 = P.</li>
+<li>250 ÷ 16,900 ≈ <strong>1.5%</strong>.</li>
+<li>20,000 ÷ 5,000 = 4 s. 4 × 500 = 2,000 s ≈ <strong>මිනිත්තු 33</strong>.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>Alan Stripp, &ldquo;How the Enigma Works&rdquo;, NOVA (PBS), 1999 නොවැම්බර් 9: <a href="https://www.pbs.org/wgbh/nova/article/how-enigma-works/">https://www.pbs.org/wgbh/nova/article/how-enigma-works/</a> (රෝද අනුපිළිවෙළ 60, 17,576, &ldquo;over 150 million million&rdquo;, &ldquo;about 159 million million million&rdquo;, 16,900 කාල සීමාව, අකුරු 250, &ldquo;keying B can never give B&rdquo;).</li>
+<li>Bletchley Park, &ldquo;Enigmas of Bletchley Park&rdquo;: <a href="https://www.bletchleypark.org.uk/our-story/enigmas-of-bletchley-park/">https://www.bletchleypark.org.uk/our-story/enigmas-of-bletchley-park/</a> (Enigma I: 103,325,660,891,587,134,000,000; කේබල් 10, 150,738,274,900,000; 1938 දී rotors 5; fixed reflector).</li>
+<li>Bletchley Park, &ldquo;75 years since Colossus arrived at Bletchley&rdquo;: <a href="https://www.bletchleypark.org.uk/our-story/75-years-since-colossus-arrived-at-bletchley/">https://www.bletchleypark.org.uk/our-story/75-years-since-colossus-arrived-at-bletchley/</a> (1944 ජනවාරි 18; SZ42 රෝද 12, pins 23–61).</li>
+<li>The National Museum of Computing, &ldquo;Colossus&rdquo;: <a href="https://www.tnmoc.org/colossus">https://www.tnmoc.org/colossus</a> (භාර දීම &ldquo;late December 1943 / January 1944&rdquo;, 1944 පෙබරවාරි මුල වැඩ; &ldquo;2500 valves&rdquo;; අකුරු මිලියන 63, පුද්ගලයන් 550, යන්ත්‍ර 10). TNMOC, &ldquo;Celebration of the 75th anniversary of Colossus&rdquo;, 2019 මැයි 29: <a href="https://www.tnmoc.org/news-releases/2019/5/29/celebration-of-the-75th-anniversary-of-colossus">https://www.tnmoc.org/news-releases/2019/5/29/celebration-of-the-75th-anniversary-of-colossus</a> (1944 පෙබරවාරි 5; Mk II 1944 ජූනි 1).</li>
+<li>Centre for Computing History, &ldquo;The Colossus Mark 1 computer is delivered to Bletchley Park&rdquo;: <a href="https://www.computinghistory.org.uk/det/6014/The-Colossus-Mark-1-computer-is-delivered-to-Bletchley-Park/">https://www.computinghistory.org.uk/det/6014/The-Colossus-Mark-1-computer-is-delivered-to-Bletchley-Park/</a> (Mk 1 නල 1,500; Mk 2 නල 2,500, 1944 ජූනි 1; අකුරු 5,000/s).</li>
+<li>BBC News, &ldquo;Veterans gather for Colossus 70th anniversary&rdquo;, 2014: <a href="https://www.bbc.co.uk/news/technology-26033681">https://www.bbc.co.uk/news/technology-26033681</a> (Mk 1 නල 1,600; Mk 2 නල 2,400; 1944 පෙබරවාරි 5 පළමු වරට පණිවිඩ බිඳීමට භාවිත කිරීම).</li>
+</ul>
+<p>Plugboard සූත්‍රය, 1.59 × 10²⁰ එකතුව සහ 650 අනුපාතය අපේ ගණනය කිරීම් වේ. වසර මිලියන 5, crib ciphertext, XOR bits, අකුරු 10,000 පටිය සහ settings 1,000 ආදර්ශ (illustrative) අංක වේ.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B6%BA%E0%B7%94%E0%B6%AF%E0%B7%8A%E0%B6%B0%E0%B6%9A%E0%B7%8F%E0%B6%BD%E0%B7%93%E0%B6%B1&#43;Crypto&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F66-wartime-crypto%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F66-wartime-crypto.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F66-wartime-crypto.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/64-who-decides-the-wire/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>වයර් එක තීරණය කරන්නේ කවුද</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/67-privacy-consent-identity-cyber/" class="flex align-center">
+        <span>රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#enigma-චලනය-වන-ඉලකකයක-වය">Enigma චලනය වන ඉලක්කයක් විය</a></li>
+    <li><a href="#colossus-workload-එක-ලහය-ඉකමව-ගය-වට">Colossus: Workload එක ලෝහය ඉක්මවා ගිය විට</a></li>
+    <li><a href="#ටරනසසටර-තරකයට-පර-මය-අයත-වනන-ඇය">ට්‍රාන්සිස්ටර තර්කයට පෙර මෙය අයත් වන්නේ ඇයි</a></li>
+    <li><a href="#ගඹරන-enigma-හ-යතර-අවකශය-crib-එකක-තබම-සහ-colossus-හ-ගණන-කරම">ගැඹුරින්: Enigma හි යතුරු අවකාශය, crib එකක් තැබීම සහ Colossus හි ගණන් කිරීම</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-enigma-හ-settings-ගණන-සමමත-හමදගවන-හමද-enigma">2. Enigma හි settings ගණන (සම්මත හමුදා/ගුවන් හමුදා Enigma)</a></li>
+        <li><a href="#3-දරවලතව-කසද-තමටම-නව">3. දුර්වලතාව: කිසිදා තමාටම නොවේ</a></li>
+        <li><a href="#4-lorenz-tunny-xor-සහ-depth">4. Lorenz (&ldquo;Tunny&rdquo;): XOR සහ depth</a></li>
+        <li><a href="#5-colossus-වගය-සහ-අක-මලශරය-අනව">5. Colossus: වේගය සහ අංක (මූලාශ්‍රය අනුව)</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AOT runtime உண்மைகள் இல்லாமல் ஒருமுறை தொகுக்கிறது; JIT hot paths-க்காகக் காத்திருக்கிறது — garbage collection செலவை runtime-க்குள் மாற்றுகிறது">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/28-compilers-jit-and-modern-language-runtimes/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Compilers, JIT, மற்றும் நவீன மொழி Runtimes">
+	<meta property="og:description" content="AOT runtime உண்மைகள் இல்லாமல் ஒருமுறை தொகுக்கிறது; JIT hot paths-க்காகக் காத்திருக்கிறது — garbage collection செலவை runtime-க்குள் மாற்றுகிறது">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Compilers, JIT, மற்றும் நவீன மொழி Runtimes">
+	<meta itemprop="description" content="AOT runtime உண்மைகள் இல்லாமல் ஒருமுறை தொகுக்கிறது; JIT hot paths-க்காகக் காத்திருக்கிறது — garbage collection செலவை runtime-க்குள் மாற்றுகிறது">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1107">
+
+<title>Compilers, JIT, மற்றும் நவீன மொழி Runtimes • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/28-compilers-jit-and-modern-language-runtimes/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilers, JIT, and Modern Language Runtimes">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/28-compilers-jit-and-modern-language-runtimes/" title="คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilers, JIT, සහ නවීන භාෂා Runtimes">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilatoare, JIT și medii de rulare moderne">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="active">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Compilers, JIT, மற்றும் நவீன மொழி Runtimes</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#சவவயல-pipeline-சரககம">செவ்வியல் Pipeline (சுருக்கம்)</a></li>
+    <li><a href="#ஒர-வர-pipeline-வழய">ஒரு வரி, pipeline வழியே</a></li>
+    <li><a href="#optimizer-வல-சயவதப-பரஙகள-உணமயன-gcc-வளயட">Optimizer வேலை செய்வதைப் பாருங்கள் (உண்மையான GCC வெளியீடு)</a></li>
+    <li><a href="#ahead-of-time-எதர-just-in-time">Ahead-of-Time எதிர் Just-in-Time</a></li>
+    <li><a href="#jit-warm-up-ஒர-கணககல">JIT warm-up, ஒரு கணக்கில்</a></li>
+    <li><a href="#runtimes-compilation-ஐ-வட-அதகம">Runtimes: Compilation-ஐ விட அதிகம்</a></li>
+    <li><a href="#நரடயகப-பரஙகள">நேரடியாகப் பாருங்கள்</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Compilers, JIT, மற்றும் நவீன மொழி Runtimes
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவு 27 உயர்நிலை மொழிகள் <em>ஏன்</em> உள்ளன என்பதை உள்ளடக்கியது. இந்தப் பதிவு அவற்றைப் பயன்படுத்தக்கூடியதாக்கும் இயந்திரம்: compiler, மூலத்தை உண்மையான CPU (Phase 3) இயக்கக்கூடிய ஒன்றாக மொழிபெயர்ப்பது.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> compiler, JIT, garbage collection பற்றித் தமிழ் எழுத்து விளக்கம் மெலிதானது (JIT-க்கு எதுவுமில்லை); காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. இங்குள்ள optimizer எடுத்துக்காட்டு எங்கள் பணிக் கணினியில் (Linux, x86-64) GCC 14.2 மூலம் உண்மையில் compile செய்து பெற்றது; VM பயிற்சியின் வெளியீடுகள் உண்மையில் ஓட்டிப் பெற்றவை. <strong>கவனிக்க:</strong> கீழே உள்ள VM-இல் <code>gcc</code> இல்லை (<code>gcc: not found</code> — ஓட்டிச் சரிபார்த்தது); அதற்கேற்ப இப்போது முயல்க பகுதி மாற்றி அமைக்கப்பட்டுள்ளது. &ldquo;எடுத்துக்காட்டு மதிப்பு&rdquo; என்று குறிக்கப்பட்டவை கணக்குக்காகத் தேர்ந்தெடுத்தவை.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Compiler (தொகுப்பி):</strong> மூல நிரலை இலக்கு இயந்திரக் குறியீடாக மொழிபெயர்க்கும் நிரல்.</li>
+<li><strong>Token (சொல்லலகு):</strong> lexer பிரிக்கும் சிறிய அர்த்த அலகு — பெயர், எண், செயற்குறி, நிறுத்தற்குறி.</li>
+<li><strong>AST (Abstract Syntax Tree, சுருக்கத் தொடரியல் மரம்):</strong> நிரலின் அமைப்பை மரமாகக் காட்டும் parser-இன் வெளியீடு.</li>
+<li><strong>IR (இடைநிலை வடிவம்):</strong> மூல மொழிக்கும் இலக்கு ISA-வுக்கும் இடையிலான சீரான உள் வடிவம்; optimizer இங்கே வேலை செய்கிறது.</li>
+<li><strong>Optimizer (உகப்பாக்கி):</strong> நடத்தையை மாற்றாமல் வேலையைக் குறைக்கும் மாற்றங்களின் தொகுப்பு.</li>
+<li><strong>AOT (முன்கூட்டியே தொகுத்தல்):</strong> நிரல் ஓடுவதற்கு முன் முழுமையாக compile செய்வது.</li>
+<li><strong>JIT (ஓடும்போது தொகுத்தல்):</strong> ஓடும்போதே அடிக்கடி ஓடும் பகுதிகளைக் கண்டு compile செய்வது.</li>
+<li><strong>Interpreter (விளக்கி):</strong> நிரலை இயந்திரக் குறியீடாக மாற்றாமல், ஒவ்வொரு படியையும் படித்து நேரடியாகச் செய்யும் நிரல்.</li>
+<li><strong>Garbage collection (நினைவகச் சுத்திகரிப்பு):</strong> இனிப் பயன்படாத நினைவகத்தை runtime தானாக மீட்பது.</li>
+</ul>
+<h2 id="சவவயல-pipeline-சரககம">செவ்வியல் Pipeline (சுருக்கம்)<a class="anchor" href="#%e0%ae%9a%e0%ae%b5%e0%ae%b5%e0%ae%af%e0%ae%b2-pipeline-%e0%ae%9a%e0%ae%b0%e0%ae%95%e0%ae%95%e0%ae%ae">#</a></h2>
+<p>Lexer → tokens. Parser → Abstract Syntax Tree. Semantic analysis இலக்கணம் மட்டும் பிடிக்க முடியாதவற்றைப் பிடிக்கிறது (types, அறிவிக்கப்படாத பெயர்கள்). பெரும்பாலான உண்மையான compilers பிறகு Intermediate Representation (IR)-க்குத் தாழ்த்துகின்றன — மூல தொடரியலை விட ஒரேமாதிரியானது, இன்னும் எந்த இலக்கு ISA-விலிருந்தும் சுயாதீனம் — அங்கு <strong>optimizer</strong> வேலை செய்கிறது: dead-code elimination, loop-invariant hoisting, inlining, மற்றும் நடத்தையைப் பாதுகாத்து வீணான வேலையை வெட்டும் டஜன் கணக்கான பிற மாற்றங்கள். <strong>Code generation</strong> இலக்கு அறிவுறுத்தல்களை வெளியிட்டு register allocation செய்கிறது (எந்த மதிப்புகள் குறைவான physical பதிவேடுகளில் வாழ்கின்றன எதிராக நினைவகத்திற்கு spilling).</p>
+<p>அதுதான் முதுகெலும்பு. ஒவ்வொரு pass-இன் கலைக்களஞ்சியம் புள்ளி அல்ல — கட்டுப்பாடு: மூல abstractions ஓடாது; ஏதோ ஒன்று அவற்றைத் தாழ்த்த வேண்டும், மற்றும் அது இயக்கத்திற்கு <em>முன்</em> அல்லது <em>போது</em> ஓடலாம்.</p>
+<h2 id="ஒர-வர-pipeline-வழய">ஒரு வரி, pipeline வழியே<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%b5%e0%ae%b0-pipeline-%e0%ae%b5%e0%ae%b4%e0%ae%af">#</a></h2>
+<p>C வரி <code>s += i;</code> எடுத்துக்கொள்வோம்.</p>
+<table>
+	<thead>
+			<tr>
+					<th>கட்டம்</th>
+					<th>வெளியீடு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Lexer</td>
+					<td>4 token-கள்: பெயர் <code>s</code>, செயற்குறி <code>+=</code>, பெயர் <code>i</code>, நிறுத்தற்குறி <code>;</code></td>
+			</tr>
+			<tr>
+					<td>Parser</td>
+					<td>AST: <code>+=</code> கணு, இடக்கிளை <code>s</code>, வலக்கிளை <code>i</code></td>
+			</tr>
+			<tr>
+					<td>Semantic analysis</td>
+					<td><code>s</code>, <code>i</code> இரண்டும் அறிவிக்கப்பட்டவையா? இரண்டும் <code>long</code> — கூட்டல் சரி</td>
+			</tr>
+			<tr>
+					<td>IR / optimizer</td>
+					<td>சுற்றுப்புறத்தைப் பார்த்து மாற்றலாம் (கீழே உண்மையான எடுத்துக்காட்டு)</td>
+			</tr>
+			<tr>
+					<td>Code generation</td>
+					<td>x86-64-இல் <code>add</code> instruction, <code>s</code>-ஐ ஒரு register-இல் அல்லது நினைவகத்தில் வைத்து</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="optimizer-வல-சயவதப-பரஙகள-உணமயன-gcc-வளயட">Optimizer வேலை செய்வதைப் பாருங்கள் (உண்மையான GCC வெளியீடு)<a class="anchor" href="#optimizer-%e0%ae%b5%e0%ae%b2-%e0%ae%9a%e0%ae%af%e0%ae%b5%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%b0%e0%ae%99%e0%ae%95%e0%ae%b3-%e0%ae%89%e0%ae%a3%e0%ae%ae%e0%ae%af%e0%ae%a9-gcc-%e0%ae%b5%e0%ae%b3%e0%ae%af%e0%ae%9f">#</a></h2>
+<p>இந்தச் சிறிய function 1 முதல் 1,000,000 வரை கூட்டுகிறது:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">long</span> <span style="color:#a6e22e">sum</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">long</span> s <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">long</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1000000</span>; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>        s <span style="color:#f92672">+=</span> i;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> s;
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></td></tr></table>
+</div>
+</div><p>எங்கள் பணிக் கணினியில் <code>gcc -O0 -S -masm=intel</code> (உகப்பாக்கம் இல்லை) தந்த assembly-இல் 13 instruction-கள்; loop-இன் உடல் ஒவ்வொரு சுற்றுக்கும் 5 instruction-கள் (<code>mov</code>, <code>add</code>, <code>add</code>, <code>cmp</code>, <code>jle</code>), <code>s</code>-உம் <code>i</code>-உம் stack நினைவகத்தில்:</p>
+<pre tabindex="0"><code>    mov  rax, QWORD PTR -16[rbp]      ; i-ஐ ஏற்று
+    add  QWORD PTR -8[rbp], rax       ; s += i
+    add  QWORD PTR -16[rbp], 1        ; i++
+    cmp  QWORD PTR -16[rbp], 1000000
+    jle  .L3                          ; i &lt;= 1000000 என்றால் மீண்டும்</code></pre><p>அதே மூலத்துக்கு <code>gcc -O2</code>:</p>
+<pre tabindex="0"><code>    movabs rax, 500000500000
+    ret</code></pre><p>கணக்கு: 1 + 2 + … + n = n(n+1)/2 = 1,000,000 × 1,000,001 / 2 = <strong>500,000,500,000</strong> — optimizer loop-இன் இறுதி மதிப்பை compile நேரத்திலேயே கணக்கிட்டு, loop-ஐ நீக்கி முடிவை மட்டும் மாறிலியாக வைத்துவிட்டது (constant folding). ஓடும் நேர வேலை:</p>
+<table>
+	<thead>
+			<tr>
+					<th>பதிப்பு</th>
+					<th>loop-இல் ஓடும் instruction-கள்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>-O0</code></td>
+					<td>5 × 1,000,000 = 5,000,000 (+ முன்பின் சில)</td>
+			</tr>
+			<tr>
+					<td><code>-O2</code></td>
+					<td>0 — மொத்தம் 2 instruction-கள்</td>
+			</tr>
+	</tbody>
+</table>
+<p>நடத்தை ஒன்றே (அதே மதிப்பு திரும்புகிறது); வேலை மட்டும் மறைந்தது. இதுதான் ஆங்கிலப் பதிவு சொல்லும் &ldquo;நடத்தையைப் பாதுகாத்து வீணான வேலையை வெட்டுதல்&rdquo;.</p>
+<h2 id="ahead-of-time-எதர-just-in-time">Ahead-of-Time எதிர் Just-in-Time<a class="anchor" href="#ahead-of-time-%e0%ae%8e%e0%ae%a4%e0%ae%b0-just-in-time">#</a></h2>
+<p>நிரல் எப்போதும் இயங்குவதற்கு முன் முழு pipeline-ஐ ஒருமுறை ஓட்டுங்கள்: Ahead-of-Time (AOT) — C மற்றும் பாரம்பரிய FORTRAN. Just-in-Time (JIT) — Java, JavaScript, மற்றும் உறவினர்கள் — interpreter அல்லது வேகமான baseline compiler-உடன் தொடங்கி, பிறகு <em>runtime-இல்</em> hot paths கண்டுபிடித்து கனமான optimization-உடன் மீண்டும் தொகுக்கிறது.</p>
+<p>JIT-இன் நன்மை AOT compiler-க்கு ஒருபோதும் இல்லாத தகவல்: கவனிக்கப்பட்ட branches, argument types, உண்மையான hot loops — அந்தத் தரவு இல்லாமல் கருத பாதுகாப்பற்ற optimizations. செலவு உண்மையானது: compilation இயக்கத்தின் போது சுழற்சிகளை எரிக்கிறது, மற்றும் முதல் வினாடிகள் அடிக்கடி steady state-ஐ விட மெதுவாக ஓடுகின்றன — செவ்வியல் warm-up.</p>
+<h2 id="jit-warm-up-ஒர-கணககல">JIT warm-up, ஒரு கணக்கில்<a class="anchor" href="#jit-warm-up-%e0%ae%92%e0%ae%b0-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95%e0%ae%b2">#</a></h2>
+<p>JIT எப்போது பலன் தரும்? எல்லாம் எடுத்துக்காட்டு மதிப்புகள்: ஒரு loop சுற்று interpreter-இல் 100 ns, JIT-compile செய்த பிறகு 5 ns; அந்த loop-ஐ compile செய்ய 20 ms (= 20,000,000 ns) ஆகிறது.</p>
+<ul>
+<li>ஒவ்வொரு சுற்றிலும் சேமிப்பு: 100 − 5 = 95 ns</li>
+<li>சமநிலைப் புள்ளி: 20,000,000 ÷ 95 ≈ <strong>210,526 சுற்றுகள்</strong></li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>சுற்றுகள்</th>
+					<th>interpreter மட்டும்</th>
+					<th>JIT (compile + ஓட்டம்)</th>
+					<th>எது வேகம்?</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>10,000</td>
+					<td>1 ms</td>
+					<td>20 + 0.05 = 20.05 ms</td>
+					<td>interpreter</td>
+			</tr>
+			<tr>
+					<td>210,526</td>
+					<td>≈ 21.05 ms</td>
+					<td>≈ 20 + 1.05 = 21.05 ms</td>
+					<td>சமம்</td>
+			</tr>
+			<tr>
+					<td>10,000,000</td>
+					<td>1,000 ms</td>
+					<td>20 + 50 = 70 ms</td>
+					<td>JIT (≈ 14 மடங்கு)</td>
+			</tr>
+	</tbody>
+</table>
+<p>அதனால்தான் JIT &ldquo;hot&rdquo; பகுதிகளை மட்டும் compile செய்கிறது, முதல் சில விநாடிகள் மெதுவாக இருக்கின்றன (warm-up). இன்னொரு உண்மை: கீழே உள்ள VM-ஐ ஓட்டும் v86 emulator-உம் ஒரு JIT — அதன் README சொல்வதுபடி, x86 இயந்திரக் குறியீடு ஓடும்போதே WebAssembly module-களாக மொழிபெயர்க்கப்படுகிறது.</p>
+<h2 id="runtimes-compilation-ஐ-வட-அதகம">Runtimes: Compilation-ஐ விட அதிகம்<a class="anchor" href="#runtimes-compilation-%e0%ae%90-%e0%ae%b5%e0%ae%9f-%e0%ae%85%e0%ae%a4%e0%ae%95%e0%ae%ae">#</a></h2>
+<p>Managed மொழிகள் (Java, C#, மற்றும் பல்வேறு அளவுகளில் JavaScript மற்றும் Python) compiler-ஐ பரந்த runtime-உடன் இணைக்கின்றன — மிக முக்கியமாக garbage collection வழியாகத் தானியங்கி நினைவக மேலாண்மை, நிரலாளர்களை ஒவ்வொரு allocation-இன் lifetime கண்காணிப்பிலிருந்து விடுவிக்கிறது (C-இல் முக்கிய பிழை மூலம்). சிக்கல் runtime-க்குள் மாறுகிறது: கையேடு முயற்சி overhead-க்கு மற்றும், வரலாற்றுரீதியாக, குறைந்த கணிக்கக்கூடிய இடைநிறுத்தங்களுக்கு வர்த்தகம். அந்தப் பதற்றம்தான் பதிவுகள் 29–30 &ldquo;real-time&rdquo; மற்றும் &ldquo;garbage-collected managed runtime&rdquo;-ஐ அடிக்கடி முரண்பாடாகக் கருதக் காரணம்.</p>
+<h2 id="நரடயகப-பரஙகள">நேரடியாகப் பாருங்கள்<a class="anchor" href="#%e0%ae%a8%e0%ae%b0%e0%ae%9f%e0%ae%af%e0%ae%95%e0%ae%aa-%e0%ae%aa%e0%ae%b0%e0%ae%99%e0%ae%95%e0%ae%b3">#</a></h2>
+<p>கீழே உள்ள VM terminal ஒரு உண்மையான Linux அமைப்பு, ஆனால் அதில் C compiler இல்லை — <code>gcc</code> ஓட்டினால் <code>gcc: not found</code> என்று வரும். எனவே அங்கே C நிரலை compile செய்ய முடியாது. மேலே உள்ள உண்மையான GCC <code>-O0</code> / <code>-O2</code> வெளியீடுகள் இந்தப் பதிவின் abstractions உறுதியான machine அறிவுறுத்தல்களாக மாறுவதைக் காட்டுகின்றன; VM-இல் என்ன முயலலாம் என்பதற்குக் கீழே உள்ள &ldquo;இப்போது முயல்க&rdquo; பகுதியைப் பாருங்கள் — அங்கே ஏற்கனவே compile ஆன ஒரு binary-ஐயும் interpret ஆகும் ஒரு நிரலையும் ஒப்பிடுகிறோம்.</p>
+<p><strong>இப்போது முயல்க: compile ஆன ஒன்றும் interpret ஆகும் ஒன்றும்.</strong> இந்த VM-இல் <code>gcc</code> இல்லை (<code>gcc: not found</code>). அதனால் இவற்றை ஓட்டுங்கள் (எல்லாம் ஓட்டிச் சரிபார்த்தவை):</p>
+<ol>
+<li><code>gcc</code> → <code>-/bin/sh: gcc: not found</code>. இங்கே compiler இல்லை — ஆனால் compile ஆன வெளியீடுகள் இருக்கின்றன.</li>
+<li><code>hexdump -C /bin/busybox | head -2</code> → முதல் byte-கள் <code>7f 45 4c 46 01 01 01 …</code>: <code>7f</code> + &ldquo;ELF&rdquo; = compiler/linker உருவாக்கும் இயக்கக்கூடிய கோப்பு வடிவம்; அடுத்த <code>01</code> = 32-பிட், அதற்கடுத்த <code>01</code> = little-endian. இரண்டாம் வரியில் <code>03 00</code> = x86 (i386) இலக்கு. இது AOT: நிரல் ஓடுவதற்கு முன்பே — 2018-இல், வேறொரு கணினியில் — compile செய்யப்பட்டது.</li>
+<li><code>echo 'BEGIN{s=0; for(i=1;i&lt;=1000000;i++) s+=i; print s}' &gt; /tmp/sum.awk</code> பிறகு <code>time awk -f /tmp/sum.awk</code> → <code>500000500000</code>, எங்கள் ஓட்டங்களில் <code>real</code> சுமார் 6 விநாடி (6.06 s, 6.45 s; உங்கள் உலாவியில் வேறுபடும்). awk ஒரு interpreter: மேலே GCC <code>-O2</code> ஒரே constant ஆக்கிய அதே கூட்டலை, இங்கே ஒவ்வொரு சுற்றையும் ஓடும்போது படித்துச் செய்கிறது — ஒரு சுற்றுக்குச் சுமார் 6 s ÷ 1,000,000 ≈ 6 µs.</li>
+</ol>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=ta"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>தொகுப்பி</td>
+					<td>compiler</td>
+			</tr>
+			<tr>
+					<td>சொல்லலகு</td>
+					<td>token</td>
+			</tr>
+			<tr>
+					<td>சுருக்கத் தொடரியல் மரம்</td>
+					<td>abstract syntax tree (AST)</td>
+			</tr>
+			<tr>
+					<td>இடைநிலை வடிவம்</td>
+					<td>intermediate representation (IR)</td>
+			</tr>
+			<tr>
+					<td>உகப்பாக்கி</td>
+					<td>optimizer</td>
+			</tr>
+			<tr>
+					<td>மாறிலி மடிப்பு</td>
+					<td>constant folding</td>
+			</tr>
+			<tr>
+					<td>பதிவேடு ஒதுக்கீடு</td>
+					<td>register allocation</td>
+			</tr>
+			<tr>
+					<td>முன்கூட்டியே தொகுத்தல்</td>
+					<td>ahead-of-time (AOT) compilation</td>
+			</tr>
+			<tr>
+					<td>ஓடும்போது தொகுத்தல்</td>
+					<td>just-in-time (JIT) compilation</td>
+			</tr>
+			<tr>
+					<td>விளக்கி</td>
+					<td>interpreter</td>
+			</tr>
+			<tr>
+					<td>சூடேறும் நேரம்</td>
+					<td>warm-up</td>
+			</tr>
+			<tr>
+					<td>நினைவகச் சுத்திகரிப்பு</td>
+					<td>garbage collection</td>
+			</tr>
+			<tr>
+					<td>இயக்க நேரச் சூழல்</td>
+					<td>runtime</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ் இணையக் கல்விக்கழகம் (Tamil Virtual Academy), பாடம் 5.4: கணினிமொழி மென்பொருள் (நிரல் பெயர்ப்பி / compiler, ஆணை பெயர்ப்பி / interpreter — JIT / GC ஆழமாக அல்ல)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Compilers%2C&#43;JIT%2C&#43;%E0%AE%AE%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AF%81%E0%AE%AE%E0%AF%8D&#43;%E0%AE%A8%E0%AE%B5%E0%AF%80%E0%AE%A9&#43;%E0%AE%AE%E0%AF%8A%E0%AE%B4%E0%AE%BF&#43;Runtimes&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F28-compilers-jit-and-modern-language-runtimes%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F28-compilers-jit-and-modern-language-runtimes.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F28-compilers-jit-and-modern-language-runtimes.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex align-center">
+        <span>Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#சவவயல-pipeline-சரககம">செவ்வியல் Pipeline (சுருக்கம்)</a></li>
+    <li><a href="#ஒர-வர-pipeline-வழய">ஒரு வரி, pipeline வழியே</a></li>
+    <li><a href="#optimizer-வல-சயவதப-பரஙகள-உணமயன-gcc-வளயட">Optimizer வேலை செய்வதைப் பாருங்கள் (உண்மையான GCC வெளியீடு)</a></li>
+    <li><a href="#ahead-of-time-எதர-just-in-time">Ahead-of-Time எதிர் Just-in-Time</a></li>
+    <li><a href="#jit-warm-up-ஒர-கணககல">JIT warm-up, ஒரு கணக்கில்</a></li>
+    <li><a href="#runtimes-compilation-ஐ-வட-அதகம">Runtimes: Compilation-ஐ விட அதிகம்</a></li>
+    <li><a href="#நரடயகப-பரஙகள">நேரடியாகப் பாருங்கள்</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

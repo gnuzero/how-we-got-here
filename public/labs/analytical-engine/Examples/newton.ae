@@ -1,0 +1,156 @@
+
+    Extract square root by Newton's method
+
+    x² = N
+
+    x[k+1] = (N ÷ x[k] + x[k]) ÷ 2
+
+    V0  N (Input), x (Output)
+    V1  0.5 (constant)
+    V2  x[k]
+    V3  scratch
+    V4  0 (constant)
+    V5  x[k−1]
+    V6  largest positive number (constant)
+    V7  iteration count
+    v8  1 (constant)
+
+    Since multiplication is much faster than division, we
+    substitute a multiplication by fixed point 0.5 for the
+    division by 2.
+
+A set decimal places to 25
+
+    Load V0 with the number whose root we wish to extract:
+
+N000 2.0
+
+    You shouldn't have to change anything below this line
+
+N001 0.5
+N004 0
+N006 9999999999999999999999999999999999999999
+N007 0
+N008 1
+
+A write numbers with decimal point
+
+    Make sure argument is non-negative
+
++
+L004
+L000
+CF?1
+CF+3
+P
+B
+H Cannot take square root of negative number (on printer)
+
+    Print argument
+    
+
+A write in columns
+A write annotation N    = 
++
+L000
+P
+A write new line
+
+    Calculate initial guess as N ÷ 2
+
+÷
+L000
+<
+L001
+S002'
+
+    Cycle here to perform iterations of Newton's
+    method until the result converges to the
+    square root.
+    
+(?
+
+A write annotation x[
+A write numbers as 9
+
+    Print iteration count and increment
+
++
+L007
+P
+L008
+S007
+
+A write annotation ] = 
+A write numbers with decimal point
+
+    Save current term for convergence test
+
++
+L002
+L004
+S005
+
+    Compute N ÷ x[k]
+
+÷
+L000
+<
+L002
+S003'
+
+    Add x[k] to yield N ÷ x[k] + x[k]
+
++
+L003
+L002
+S003
+
+    Divide by two (actually multiply by ½) to
+    obtain next x[k+1]
+
+×
+L003
+L001
+>
+S002
+
+    Print current iteration result
+
+P
+A write new line
+
+    Subtract x[k] to test for convergence
+
+−
+L002
+L005
+S005
+
+    Cause a run-up if the convergence difference is zero
+
++
+L004
+L005
+CF?2
+L006
+L005
+
+    Continue iterating if we haven't yet converged
+
+)
+
+    Store final result in V0
+
++
+L002
+L004
+S000
+
+    Print the result
+
+A write annotation √N   = 
+P
+A write new line
+
+A write timing

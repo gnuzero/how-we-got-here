@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>網絡指南針 on 我們如何走到那裡</title>
+		<link>http://localhost:1478/zh-hant/tags/%E7%B6%B2%E7%B5%A1%E6%8C%87%E5%8D%97%E9%87%9D/</link>
+		<description>Recent content in 網絡指南針 on 我們如何走到那裡</description>
+		<generator>Hugo</generator>
+		<language>zh-Hant</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hant/tags/%E7%B6%B2%E7%B5%A1%E6%8C%87%E5%8D%97%E9%87%9D/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>一台伺服器裝不下：中國大陸第一批搜尋引擎</title>
+				<link>http://localhost:1478/zh-hant/posts/44-zh-chinese-search/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/44-zh-chinese-search/</guid>
+				<description>據賽爾網絡的回顧，中國大陸第一批搜尋引擎誕生在三所大學的實驗室裡；它們先撞上中文沒有空格這堵牆，再撞上網頁多到一台機器裝不下這堵牆。</description>
+			</item>
+	</channel>
+</rss>

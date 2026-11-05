@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="රැඳිය යුතු දේ පමණක් stall කරන්න — Tomasulo ගේ අදහස: සූදානම් වූ විට ක්‍රියාත්මක කරන්න, අනුපිළිවෙලින් commit කරන්න">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/16-out-of-order-execution/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="Out-of-Order Execution">
+	<meta property="og:description" content="රැඳිය යුතු දේ පමණක් stall කරන්න — Tomasulo ගේ අදහස: සූදානම් වූ විට ක්‍රියාත්මක කරන්න, අනුපිළිවෙලින් commit කරන්න">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Out-of-Order Execution">
+	<meta itemprop="description" content="රැඳිය යුතු දේ පමණක් stall කරන්න — Tomasulo ගේ අදහස: සූදානම් වූ විට ක්‍රියාත්මක කරන්න, අනුපිළිවෙලින් commit කරන්න">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1479">
+
+<title>Out-of-Order Execution • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/16-out-of-order-execution/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/16-out-of-order-execution/" title="Out-of-Order Execution">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/16-out-of-order-execution/" title="การประมวลผลนอกลำดับ">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/16-out-of-order-execution/" title="Out-of-Order Execution">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/16-out-of-order-execution/" title="Execuția în afara ordinii">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/16-out-of-order-execution/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/16-out-of-order-execution/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/16-out-of-order-execution/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/16-out-of-order-execution/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="active">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Out-of-Order Execution</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#වයජ-dependencies-සහ-register-renaming">ව්‍යාජ Dependencies සහ Register Renaming</a></li>
+    <li><a href="#සදනම-ව-වට-issue-කරනන-අනපළවලන-commit-කරනන">සූදානම් වූ විට Issue කරන්න, අනුපිළිවෙලින් Commit කරන්න</a></li>
+    <li><a href="#tomasulo-ග-මධයම-අදහස">Tomasulo ගේ මධ්‍යම අදහස</a></li>
+    <li><a href="#ගඹරන-අනපළවළන-තර-කරයතමක-කරම-out-of-order-execution-පයවරන-පයවර">ගැඹුරින්: අනුපිළිවෙළින් තොර ක්‍රියාත්මක කිරීම (out-of-order execution) පියවරෙන් පියවර</a>
+      <ul>
+        <li><a href="#1-පරයතතත-dependencies-වරග-තන">1. පරායත්තතා (dependencies) වර්ග තුන</a></li>
+        <li><a href="#2-වඩ-කළ-උදහරණයක">2. වැඩ කළ උදාහරණයක්</a></li>
+        <li><a href="#3-i5-ට-කලන-ය-හකක-ඇය--register-renaming">3. I5 ට කලින් යා හැක්කේ ඇයි? — register renaming</a></li>
+        <li><a href="#4-රඳවම-සථන-සහ-නවත-පළවළ-කරම-බෆරය">4. රැඳවුම් ස්ථාන සහ නැවත පිළිවෙළ කිරීමේ බෆරය</a></li>
+        <li><a href="#5-දනම-උතසහ-කරනන-mini-cpu-වඩසටහනක-පරයතතත-සයනන">5. දැන්ම උත්සාහ කරන්න: Mini-CPU වැඩසටහනක පරායත්තතා සොයන්න</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Out-of-Order Execution
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Post 13 හි load-use hazard එක in-order pipeline එකක් රැඳෙන එක් උපදෙස් එකක් <em>පසුපසින්</em> stall කරයි — පසු උපදෙස් ස්වාධීන සහ සූදානම් වුවද. Out-of-order execution එම සීමාවට පිළිතුරු දෙයි: operands සූදානම් වූ සෑම විටම ස්වාධීන වැඩ ධාවනය කරන්න; වැඩසටහන් අනුපිළිවෙල බලාත්මක කරන්නේ ගෘහ නිර්මාණයට අවශ්‍ය තැන්වල පමණි.</p>
+<h2 id="වයජ-dependencies-සහ-register-renaming">ව්‍යාජ Dependencies සහ Register Renaming<a class="anchor" href="#%e0%b7%80%e0%b6%ba%e0%b6%a2-dependencies-%e0%b7%83%e0%b7%84-register-renaming">#</a></h2>
+<p>සෑම &ldquo;dependency&rdquo; එකක්ම සැබෑ නොවේ. උපදෙස් A R1 ලියයි සහ පසු උපදෙස් Bද අදාළ නොවන ප්‍රතිඵලයක් සඳහා R1 ලියයි නම්, ඒවා අතර අගයක් ගලන්නේ නැත — ISA එකට හුදෙක් අඩු ගෘහ නිර්මාණ register <em>නම්</em> ඇත, සහ සම්පාදකය එකක් නැවත භාවිතා කළේය. එය name (ව්‍යාජ) dependency එකකි, සැබෑ data dependency එකක් නොවේ.</p>
+<p>Register renaming CPU එකට ISA එක හෙළිදරව් කරනවාට වඩා බොහෝ <em>physical</em> registers ලබා දෙයි, සහ decode වේලාවේ සෑම ලිවීමක්ම නව physical register එකකට සිතියම් කරයි. A ගේ &ldquo;R1&rdquo; P17 වේ; B ගේ පසු &ldquo;R1&rdquo; P42 වේ. ව්‍යාජ ගැටුමක් නැත; දෙකම ඉදිරියට යා හැක.</p>
+<h2 id="සදනම-ව-වට-issue-කරනන-අනපළවලන-commit-කරනන">සූදානම් වූ විට Issue කරන්න, අනුපිළිවෙලින් Commit කරන්න<a class="anchor" href="#%e0%b7%83%e0%b6%af%e0%b6%b1%e0%b6%b8-%e0%b7%80-%e0%b7%80%e0%b6%a7-issue-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1-%e0%b6%85%e0%b6%b1%e0%b6%b4%e0%b7%85%e0%b7%80%e0%b6%bd%e0%b6%b1-commit-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1">#</a></h2>
+<p>Rename කළ උපදෙස් සැබෑ operands පැමිණෙන තුරු <strong>reservation stations</strong> වල රැඳෙයි (අගයෙන් හෝ තවමත් ගුවන්ගතව ඇති producer එකකින් tag එකකින්). Operands සූදානම් වූ මොහොතේ, උපදෙස් එකක් execution unit එකකට issue කළ හැක — මුල් වැඩසටහන් අනුපිළිවෙල නොසලකා. එය out-of-order කොටසයි.</p>
+<p>ගෘහ නිර්මාණ බලපෑම් තවමත් in-order ලෙස පෙනිය යුතුය: දෘශ්‍ය registers, මතකය, exceptions. <strong>Reorder buffer (ROB)</strong> සෑම ගුවන්ගත උපදෙස් එකක්ම වැඩසටහන් අනුපිළිවෙලින් ලුහුබඳියි සහ ප්‍රතිඵල <em>retire</em> කරන්නේ එම අනුපිළිවෙලින් පමණක් ගෘහ නිර්මාණ තත්ත්වයට — ක්‍රියාත්මක කිරීම විවිධ වේලාවල අවසන් වුවද.</p>
+<h2 id="tomasulo-ග-මධයම-අදහස">Tomasulo ගේ මධ්‍යම අදහස<a class="anchor" href="#tomasulo-%e0%b6%9c-%e0%b6%b8%e0%b6%b0%e0%b6%ba%e0%b6%b8-%e0%b6%85%e0%b6%af%e0%b7%84%e0%b7%83">#</a></h2>
+<p>&ldquo;සූදානම් වූ විට ක්‍රියාත්මක කරන්න, දැඩි ලෙස අනුපිළිවෙලින් commit කරන්න&rdquo; — බොහෝ විට Robert Tomasulo ගේ IBM System/360 Model 91 floating-point unit සඳහා වූ ඇල්ගොරිතමයට (1967 දී ප්‍රකාශිත) ආරෝපණය කෙරෙන රටාව — එතැන් සිට ප්‍රායෝගිකව සෑම ඉහළ-කාර්ය සාධන out-of-order CPU එකකම සංකල්පීය හරයයි. එය මිල අධිකද වේ: renaming tables, reservation stations, සහ ROB එකට ප්‍රදේශය සහ බලය වැය වේ. එම යන්ත්‍රෝපකරණ තවත් එකතු කිරීමට අඩුවන ප්‍රතිලාභ ඇත — ඊළඟ පෝස්ට් එක හිසෙන් හැපෙන බිත්තිය.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=si"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="අන්තර්ක්‍රියාකාරී lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=si" target="_blank" rel="noopener">Lab එක නව tab එකක විවෘත කරන්න ↗</a>
+  </div>
+</div>
+
+<h2 id="ගඹරන-අනපළවළන-තර-කරයතමක-කරම-out-of-order-execution-පයවරන-පයවර">ගැඹුරින්: අනුපිළිවෙළින් තොර ක්‍රියාත්මක කිරීම (out-of-order execution) පියවරෙන් පියවර<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-%e0%b6%85%e0%b6%b1%e0%b6%b4%e0%b7%85%e0%b7%80%e0%b7%85%e0%b6%b1-%e0%b6%ad%e0%b6%bb-%e0%b6%9a%e0%b6%bb%e0%b6%ba%e0%b6%ad%e0%b6%b8%e0%b6%9a-%e0%b6%9a%e0%b6%bb%e0%b6%b8-out-of-order-execution-%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb%e0%b6%b1-%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> 2026 සැප්තැම්බරයේ සමීක්ෂණයේදී out-of-order execution, register renaming හෝ reorder buffer ගැන සිංහල පැහැදිලි කිරීමක් (ලිඛිත හෝ වීඩියෝ) අපට හමු නොවීය; සිංහල විකිපීඩියාවේ CPU ලිපියේ සඳහන් වන්නේ out-of-order execution යන නම පමණි (&ldquo;ක්‍රියා විරහිත සම්පාදනය&rdquo; ලෙස); register renaming සහ reorder buffer කිසිසේත් සඳහන් නොවේ. එබැවින් මෙහි සෑම පදයක්ම නිර්වචනය කර, කුඩා උදාහරණයකින් ගණනය කර පෙන්වමු.</p>
+</blockquote><h3 id="1-පරයතතත-dependencies-වරග-තන">1. පරායත්තතා (dependencies) වර්ග තුන<a class="anchor" href="#1-%e0%b6%b4%e0%b6%bb%e0%b6%ba%e0%b6%ad%e0%b6%ad%e0%b6%ad-dependencies-%e0%b7%80%e0%b6%bb%e0%b6%9c-%e0%b6%ad%e0%b6%b1">#</a></h3>
+<p>උපදෙස් දෙකක් අතර <strong>පරායත්තතාවක් (dependency)</strong> ඇත්තේ එකක ප්‍රතිඵලය හෝ එක් රෙජිස්ටරයක් භාවිතය අනෙකට බලපාන විටය. රෙජිස්ටර් <code>R1</code>, <code>R2</code>… ලෙස නම් කර, වර්ග තුන බලමු:</p>
+<table>
+	<thead>
+			<tr>
+					<th>වර්ගය</th>
+					<th>ඉංග්‍රීසි නම</th>
+					<th>උදාහරණය</th>
+					<th>සැබෑද?</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>කියවීමට පෙර ලිවීම</td>
+					<td>RAW (read after write) — සැබෑ දත්ත පරායත්තතාව</td>
+					<td><code>R1 ← …</code> පසුව <code>… ← R1 + R3</code></td>
+					<td><strong>ඔව්</strong> — අගයක් එකකින් අනෙකට ගලයි</td>
+			</tr>
+			<tr>
+					<td>ලිවීමට පෙර කියවීම</td>
+					<td>WAR (write after read) — ප්‍රති-පරායත්තතාව</td>
+					<td><code>… ← R1 + R3</code> පසුව <code>R1 ← …</code></td>
+					<td>නැත — රෙජිස්ටර් <em>නම</em> පමණක් බෙදා ගනී</td>
+			</tr>
+			<tr>
+					<td>ලිවීමට පසු ලිවීම</td>
+					<td>WAW (write after write) — ප්‍රතිදාන පරායත්තතාව</td>
+					<td><code>R1 ← …</code> පසුව නැවත <code>R1 ← …</code></td>
+					<td>නැත — රෙජිස්ටර් <em>නම</em> පමණක් බෙදා ගනී</td>
+			</tr>
+	</tbody>
+</table>
+<p>RAW පමණක් සැබෑ දත්ත ගලායාමකි: දෙවන උපදෙසට පළමු උපදෙසේ ප්‍රතිඵලය නැතිව ආරම්භ කළ නොහැක. WAR සහ WAW <strong>නාම පරායත්තතා (name dependencies)</strong> ය — ISA එකට ඇත්තේ සීමිත රෙජිස්ටර් නම් ගණනක් නිසා සම්පාදකය එකම නම නැවත භාවිත කිරීමෙන් ඇති වන ඒවාය. මෙම පෝස්ට් එකේ ඉහත &ldquo;ව්‍යාජ dependencies&rdquo; කියන්නේ මේවාටයි.</p>
+<h3 id="2-වඩ-කළ-උදහරණයක">2. වැඩ කළ උදාහරණයක්<a class="anchor" href="#2-%e0%b7%80%e0%b6%a9-%e0%b6%9a%e0%b7%85-%e0%b6%8b%e0%b6%af%e0%b7%84%e0%b6%bb%e0%b6%ab%e0%b6%ba%e0%b6%9a">#</a></h3>
+<p>උපදෙස් පහක කුඩා වැඩසටහනක් ගනිමු:</p>
+<pre tabindex="0"><code>I1: LOAD R1 ← mem[A]     ; මතකයෙන් කියවීම — cache miss (පහත බලන්න)
+I2: ADD  R2 ← R1 + R3    ; I1 ගේ R1 අවශ්‍යයි (RAW)
+I3: MUL  R4 ← R5 × R6    ; ස්වාධීනයි
+I4: ADD  R7 ← R4 + R5    ; I3 ගේ R4 අවශ්‍යයි (RAW)
+I5: SUB  R1 ← R8 − R9    ; R1 නැවත ලියයි: I1 සමඟ WAW, I2 සමඟ WAR</code></pre><p>ඉගැන්වීම සඳහා සරල උපකල්පන (සැබෑ CPU එකක නිශ්චිත අගයන් නොවේ): චක්‍රයකට ක්‍රියාත්මක කිරීම ආරම්භ කළ හැක්කේ එක් උපදෙසකට පමණි; <code>ADD</code>/<code>SUB</code> චක්‍ර 1; <code>MUL</code> චක්‍ර 3; <code>LOAD</code> එක cache එකේ නැති නිසා (<strong>cache miss</strong>) චක්‍ර 10ක්; ප්‍රතිඵලයක් ඊළඟ චක්‍රයේ සිට භාවිත කළ හැක.</p>
+<p><strong>(අ) අනුපිළිවෙළින් (in-order):</strong> උපදෙසක් ආරම්භ කළ හැක්කේ ඊට පෙර ඇති සියල්ල ආරම්භ වූ පසුව පමණි; operands නොමැති නම් එතැනම නැවතී, පිටුපස ඇති සියල්ල ද රඳවා තබයි.</p>
+<table>
+	<thead>
+			<tr>
+					<th>උපදෙස</th>
+					<th>ක්‍රියාත්මක වන චක්‍ර</th>
+					<th>හේතුව</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>I1</td>
+					<td>1–10</td>
+					<td>cache miss</td>
+			</tr>
+			<tr>
+					<td>I2</td>
+					<td>11</td>
+					<td>R1 සූදානම් වන තුරු රැඳුණි</td>
+			</tr>
+			<tr>
+					<td>I3</td>
+					<td>12–14</td>
+					<td>ස්වාධීන වුවත් I2 පිටුපස හිරවී සිටියේය</td>
+			</tr>
+			<tr>
+					<td>I4</td>
+					<td>15</td>
+					<td>R4 සඳහා</td>
+			</tr>
+			<tr>
+					<td>I5</td>
+					<td>16</td>
+					<td>අනුපිළිවෙළ</td>
+			</tr>
+	</tbody>
+</table>
+<p>මුළු කාලය: <strong>චක්‍ර 16</strong>. 2 සිට 10 දක්වා චක්‍ර 9ක් පුරා කිසිදු නව උපදෙසක් ආරම්භ නොවීය — I3, I4, I5 සූදානම්ව තිබියදීත් (load එක මතකය එනතුරු රැඳී සිටියා පමණි).</p>
+<p><strong>(ආ) අනුපිළිවෙළින් තොරව (out-of-order), register renaming සමඟ:</strong> operands සූදානම් වූ ඕනෑම උපදෙසක් ආරම්භ කළ හැක.</p>
+<table>
+	<thead>
+			<tr>
+					<th>උපදෙස</th>
+					<th>ක්‍රියාත්මක වන චක්‍ර</th>
+					<th>හේතුව</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>I1</td>
+					<td>1–10</td>
+					<td>cache miss</td>
+			</tr>
+			<tr>
+					<td>I3</td>
+					<td>2–4</td>
+					<td>ස්වාධීනයි — කෙලින්ම යයි</td>
+			</tr>
+			<tr>
+					<td>I5</td>
+					<td>3</td>
+					<td>renaming නිසා R1 ගැටුමක් නැත (පහත බලන්න)</td>
+			</tr>
+			<tr>
+					<td>I4</td>
+					<td>5</td>
+					<td>R4 (I3 ගෙන්) දැන් සූදානම්</td>
+			</tr>
+			<tr>
+					<td>I2</td>
+					<td>11</td>
+					<td>R1 (I1 ගෙන්) දැන් සූදානම්</td>
+			</tr>
+	</tbody>
+</table>
+<p>මුළු කාලය: <strong>චක්‍ර 11</strong> — 16/11 ≈ 1.45 ගුණයක වේගයක්, කිසිදු උපදෙසක් වේගවත් නොකර. වැඩ ප්‍රමාණය එකමයි; වෙනස් වූයේ <strong>රැඳී සිටීම සමඟ වැඩ අතිච්ඡාදනය (overlap)</strong> කිරීම පමණි. Post 35 හි මතක බිත්තිය සඟවන්නේ මෙලෙසිනි.</p>
+<h3 id="3-i5-ට-කලන-ය-හකක-ඇය--register-renaming">3. I5 ට කලින් යා හැක්කේ ඇයි? — register renaming<a class="anchor" href="#3-i5-%e0%b6%a7-%e0%b6%9a%e0%b6%bd%e0%b6%b1-%e0%b6%ba-%e0%b7%84%e0%b6%9a%e0%b6%9a-%e0%b6%87%e0%b6%ba--register-renaming">#</a></h3>
+<p>Renaming නොමැතිව I5 කලින් ක්‍රියාත්මක කිරීම භයානකයි. I5 R1 ට ලියයි; I1 ද R1 ට ලියයි (WAW), නමුත් I1 අවසන් වන්නේ 10 වන චක්‍රයේය. I5 3 වන චක්‍රයේ R1 ලියා, පසුව I1 10 වන චක්‍රයේ R1 ලිව්වොත්, වැඩසටහන අවසානයේ R1 හි ඇත්තේ <strong>වැරදි</strong> අගයයි (I5 ගේ අගය තිබිය යුතුය). එමෙන්ම I2 ට අවශ්‍ය I1 ගේ R1 මිස I5 ගේ R1 නොවේ (WAR).</p>
+<p><strong>Register renaming</strong> මෙය විසඳයි. CPU එක ඇතුළත ISA එකේ නම්වලට වඩා බොහෝ <strong>භෞතික රෙජිස්ටර් (physical registers)</strong> — P1, P2, … — ඇත. Decode කරන විට <strong>නැවත නම් කිරීමේ වගුවක් (rename table)</strong> මඟින් සෑම <em>ලිවීමක්ම</em> නව භෞතික රෙජිස්ටරයකට යොමු කරයි:</p>
+<table>
+	<thead>
+			<tr>
+					<th>උපදෙස</th>
+					<th>ලියන්නේ</th>
+					<th>කියවන්නේ</th>
+					<th>නම් කිරීමෙන් පසු</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>I1</td>
+					<td>R1 → <strong>P1</strong></td>
+					<td>—</td>
+					<td><code>P1 ← mem[A]</code></td>
+			</tr>
+			<tr>
+					<td>I2</td>
+					<td>R2 → P2</td>
+					<td>R1 = P1, R3</td>
+					<td><code>P2 ← P1 + R3</code></td>
+			</tr>
+			<tr>
+					<td>I3</td>
+					<td>R4 → P3</td>
+					<td>R5, R6</td>
+					<td><code>P3 ← R5 × R6</code></td>
+			</tr>
+			<tr>
+					<td>I4</td>
+					<td>R7 → P4</td>
+					<td>R4 = P3, R5</td>
+					<td><code>P4 ← P3 + R5</code></td>
+			</tr>
+			<tr>
+					<td>I5</td>
+					<td>R1 → <strong>P5</strong></td>
+					<td>R8, R9</td>
+					<td><code>P5 ← R8 − R9</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>දැන් I1 P1 ට ද I5 P5 ට ද ලියයි — ගැටුමක් නැත. I2 P1 කියවයි, එබැවින් I5 කුමක් කළත් I2 ට නිවැරදි අගය ලැබේ. ඉතිරි වූයේ සැබෑ RAW පරායත්තතා දෙක පමණි (I1→I2, I3→I4). වැඩසටහන අවසානයේ, &ldquo;R1&rdquo; යන නමට අදාළ වන්නේ P5 බව වගුව මතක තබා ගනී.</p>
+<h3 id="4-රඳවම-සථන-සහ-නවත-පළවළ-කරම-බෆරය">4. රැඳවුම් ස්ථාන සහ නැවත පිළිවෙළ කිරීමේ බෆරය<a class="anchor" href="#4-%e0%b6%bb%e0%b6%b3%e0%b7%80%e0%b6%b8-%e0%b7%83%e0%b6%ae%e0%b6%b1-%e0%b7%83%e0%b7%84-%e0%b6%b1%e0%b7%80%e0%b6%ad-%e0%b6%b4%e0%b7%85%e0%b7%80%e0%b7%85-%e0%b6%9a%e0%b6%bb%e0%b6%b8-%e0%b6%b6%e0%b7%86%e0%b6%bb%e0%b6%ba">#</a></h3>
+<ul>
+<li><strong>රැඳවුම් ස්ථාන (reservation stations):</strong> Rename කළ උපදෙස් operands එනතුරු මෙහි රැඳේ. සෑම operand එකක්ම එක්කෝ අගයක්, නැතිනම් &ldquo;P1 එනතුරු රැඳී සිටින්න&rdquo; වැනි <strong>tag</strong> එකකි. ක්‍රියාත්මක කිරීමේ ඒකකයක් ප්‍රතිඵලයක් නිකුත් කළ විට (උදා. &ldquo;P1 = 42&rdquo;) එය බස් එකක් මඟින් සියලු රැඳවුම් ස්ථාන වෙත විකාශනය වේ; P1 බලාපොරොත්තුවෙන් සිටි I2 එය අල්ලා ගෙන සූදානම් වේ.</li>
+<li><strong>නැවත පිළිවෙළ කිරීමේ බෆරය (reorder buffer, ROB):</strong> සියලු උපදෙස් <em>මුල් වැඩසටහන් අනුපිළිවෙළින්</em> පෝලිමක තබයි. ක්‍රියාත්මක කිරීම අවසන් වන්නේ ඕනෑම අනුපිළිවෙළකින් වුවත්, ප්‍රතිඵල ගෘහ නිර්මාණ තත්ත්වයට <strong>commit (retire)</strong> වන්නේ පෝලිමේ හිසින් පමණි — එනම් අනුපිළිවෙළින්ම.</li>
+</ul>
+<p>අපේ උදාහරණයේ I3, I5, I4 කලින් අවසන් වුවද ඒවා ROB එකේ රැඳේ. I1 (චක්‍රය 10 අවසානයේ) commit වේ; ඉන්පසු I2 (චක්‍රය 11); ඉන්පසු I3, I4, I5 පිළිවෙළින් — ඒවා දැනටමත් අවසන් නිසා වහාම.</p>
+<p>ඇයි මෙතරම් කරදරයක්? <strong>නිවැරදි ව්‍යතිරේක (precise exceptions)</strong> සඳහායි. I1 ගේ මතක ලිපිනය වලංගු නැතැයි සිතමු (උදා. page fault — Post 24). ROB නොමැතිව, I3–I5 ගේ ප්‍රතිඵල දැනටමත් රෙජිස්ටරවලට ලියා තිබිය හැක — මෙහෙයුම් පද්ධතියට පෙනෙන්නේ &ldquo;I1 අසාර්ථක වූ නමුත් පසු උපදෙස් කොටසක් ක්‍රියාත්මක වූ&rdquo; අවුල් තත්ත්වයකි. ROB සමඟ, I1 හිසට ආ විට දෝෂය හඳුනාගෙන, ROB හි ඇති පසු සියලු ප්‍රතිඵල ඉවත දමයි. මෙහෙයුම් පද්ධතියට පෙනෙන්නේ වැඩසටහන හරියටම I1 හිදී නැවතුණු ලෙසයි. Post 14 හි වැරදි ශාඛා අනාවැකියකින් පසු අනුමාන උපදෙස් ඉවත් කරන්නේද මෙම යාන්ත්‍රණයෙනිමය.</p>
+<h3 id="5-දනම-උතසහ-කරනන-mini-cpu-වඩසටහනක-පරයතතත-සයනන">5. දැන්ම උත්සාහ කරන්න: Mini-CPU වැඩසටහනක පරායත්තතා සොයන්න<a class="anchor" href="#5-%e0%b6%af%e0%b6%b1%e0%b6%b8-%e0%b6%8b%e0%b6%ad%e0%b7%83%e0%b7%84-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1-mini-cpu-%e0%b7%80%e0%b6%a9%e0%b7%83%e0%b6%a7%e0%b7%84%e0%b6%b1%e0%b6%9a-%e0%b6%b4%e0%b6%bb%e0%b6%ba%e0%b6%ad%e0%b6%ad%e0%b6%ad-%e0%b7%83%e0%b6%ba%e0%b6%b1%e0%b6%b1">#</a></h3>
+<p>ඉහත Mini-CPU lab එකේ පෙරනිමියෙන් පූරණය වී ඇති වැඩසටහන බලන්න:</p>
+<pre tabindex="0"><code>0: LDI 5     ; A ← 5
+1: STA 14    ; mem[14] ← A
+2: LDI 8     ; A ← 8
+3: ADD 14    ; A ← A + mem[14]
+4: STA 15    ; mem[15] ← A
+5: LDA 15    ; A ← mem[15]
+6: OUT
+7: HLT</code></pre><p>Step ඔබමින් යමින්, සෑම උපදෙස් යුගලයක් අතරම ඇති පරායත්තතාව ලියන්න. උදාහරණ: 0→1 <strong>RAW</strong> (STA 14 ට LDI 5 ගේ A අවශ්‍යයි); 1→2 <strong>WAR</strong> (STA 14 A <em>කියවයි</em>, ඉන්පසු LDI 8 A <em>ලියයි</em>); 0→2 <strong>WAW</strong> (දෙකම A ලියයි); 1→3 මතකය හරහා <strong>RAW</strong> (ADD 14 ට STA 14 ලියූ mem[14] අවශ්‍යයි).</p>
+<p>මෙම යන්ත්‍රයේ රෙජිස්ටරය එකක් පමණි (A — &ldquo;accumulator&rdquo;). එබැවින් සෑම උපදෙසක්ම පාහේ අනෙක් සියල්ලට ගැට ගැසී ඇත — එයින් බොහොමයක් සැබෑ දත්ත ගලායාමක් නොව <em>නාම</em> ගැටුම් පමණි. LDI 8 ට 5 දැනගත යුතු නැත; එය ප්‍රමාද වන්නේ A යන නම බෙදා ගන්නා නිසා පමණි. නවීන ISA වල සාමාන්‍ය කාර්ය රෙජිස්ටර් 16–32ක් පමණ ඇත්තේත්, ඊටත් වඩා භෞතික රෙජිස්ටර් ඇතුළත සඟවා renaming කරන්නේත් එබැවිනි: සැබෑ පරායත්තතා පමණක් ඉතිරි කර, අනෙක් සියල්ල සමාන්තරව දුවවන්නට.</p>
+<p><strong>පිටවීමේ දොර:</strong> R. M. Tomasulo, &ldquo;An Efficient Algorithm for Exploiting Multiple Arithmetic Units&rdquo; (<em>IBM Journal of Research and Development</em>, 1967) — නවීන out-of-order issue සහ rename පිටුපස ප්‍රාථමික පත්‍රය.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Out-of-Order&#43;Execution&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F16-out-of-order-execution%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F16-out-of-order-execution.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F16-out-of-order-execution.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/15-caches/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Caches</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/17-superscalar-multicore/" class="flex align-center">
+        <span>Superscalar සහ Multicore</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#වයජ-dependencies-සහ-register-renaming">ව්‍යාජ Dependencies සහ Register Renaming</a></li>
+    <li><a href="#සදනම-ව-වට-issue-කරනන-අනපළවලන-commit-කරනන">සූදානම් වූ විට Issue කරන්න, අනුපිළිවෙලින් Commit කරන්න</a></li>
+    <li><a href="#tomasulo-ග-මධයම-අදහස">Tomasulo ගේ මධ්‍යම අදහස</a></li>
+    <li><a href="#ගඹරන-අනපළවළන-තර-කරයතමක-කරම-out-of-order-execution-පයවරන-පයවර">ගැඹුරින්: අනුපිළිවෙළින් තොර ක්‍රියාත්මක කිරීම (out-of-order execution) පියවරෙන් පියවර</a>
+      <ul>
+        <li><a href="#1-පරයතතත-dependencies-වරග-තන">1. පරායත්තතා (dependencies) වර්ග තුන</a></li>
+        <li><a href="#2-වඩ-කළ-උදහරණයක">2. වැඩ කළ උදාහරණයක්</a></li>
+        <li><a href="#3-i5-ට-කලන-ය-හකක-ඇය--register-renaming">3. I5 ට කලින් යා හැක්කේ ඇයි? — register renaming</a></li>
+        <li><a href="#4-රඳවම-සථන-සහ-නවත-පළවළ-කරම-බෆරය">4. රැඳවුම් ස්ථාන සහ නැවත පිළිවෙළ කිරීමේ බෆරය</a></li>
+        <li><a href="#5-දනම-උතසහ-කරනන-mini-cpu-වඩසටහනක-පරයතතත-සයනන">5. දැන්ම උත්සාහ කරන්න: Mini-CPU වැඩසටහනක පරායත්තතා සොයන්න</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

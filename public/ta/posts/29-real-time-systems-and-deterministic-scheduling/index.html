@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Throughput மற்றும் நியாயம் காலக்கெடு அல்ல — hard real-time-க்கு சராசரி வேகம் அல்ல, வரம்புடைய மோசமான-வழக்கு நேரம் தேவை">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/29-real-time-systems-and-deterministic-scheduling/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling">
+	<meta property="og:description" content="Throughput மற்றும் நியாயம் காலக்கெடு அல்ல — hard real-time-க்கு சராசரி வேகம் அல்ல, வரம்புடைய மோசமான-வழக்கு நேரம் தேவை">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling">
+	<meta itemprop="description" content="Throughput மற்றும் நியாயம் காலக்கெடு அல்ல — hard real-time-க்கு சராசரி வேகம் அல்ல, வரம்புடைய மோசமான-வழக்கு நேரம் தேவை">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1880">
+
+<title>Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/29-real-time-systems-and-deterministic-scheduling/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/29-real-time-systems-and-deterministic-scheduling/" title="Real-Time Systems and Deterministic Scheduling">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/29-real-time-systems-and-deterministic-scheduling/" title="ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/29-real-time-systems-and-deterministic-scheduling/" title="තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/29-real-time-systems-and-deterministic-scheduling/" title="Sisteme în timp real și planificarea deterministă">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="active">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#வகமனத-deterministic-அலல">வேகமானது Deterministic அல்ல</a></li>
+    <li><a href="#hard-எதர-soft">Hard எதிர் Soft</a></li>
+    <li><a href="#rate-monotonic-scheduling">Rate-Monotonic Scheduling</a></li>
+    <li><a href="#rate-monotonic-ஒர-மழக-கணகக">Rate-Monotonic: ஒரு முழுக் கணக்கு</a></li>
+    <li><a href="#ஏன-வற-வகயன-os">ஏன் வேறு வகையான OS</a></li>
+    <li><a href="#priority-inversion-படபபடயக">Priority Inversion: படிப்படியாக</a></li>
+    <li><a href="#சவவயக-கரகததல-நடநதத-mars-pathfinder">செவ்வாய்க் கிரகத்தில் நடந்தது: Mars Pathfinder</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Phase 4-இல் இதுவரை உள்ள எல்லாம் — batch, time-sharing, virtual memory, containers — throughput, நியாயம், அல்லது திறமையான பகிர்வுக்கு optimize செய்கிறது. கொடுக்கப்பட்ட வேலை <em>எப்போது</em> முடிகிறது என்பதற்கு எதுவும் கடின உத்தரவாதம் கொடுக்கவில்லை. Real-time அமைப்புகள் அந்த உத்தரவாதத்தைக் கவனிக்கின்றன. &ldquo;வேகமானது&rdquo; &ldquo;real-time&rdquo;-இலிருந்து வேறு பண்பு — மக்களைத் தொடர்ந்து தவறாக வழிநடத்தும் வேறுபாடு.</p>
+<p>தமிழில் &ldquo;real-time அமைப்பு&rdquo; என்பதற்குப் பொது அறிமுகங்கள் அங்குமிங்கும் உள்ளன; ஆனால் rate-monotonic schedulability கணக்கு, priority inversion எப்படி நிகழ்கிறது, priority inheritance அதை எப்படி வரம்புக்குள் கொண்டுவருகிறது — இவற்றுக்குத் தமிழில் எழுத்து விளக்கமோ காணொளியோ இந்தத் தணிக்கையில் கிடைக்கவில்லை. இந்தப் பக்கம் அவற்றை நேரக்கோடுகளோடும் கணக்குகளோடும் விளக்குகிறது.</p>
+<h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Task</strong> (பணி) — ஒரு வேலையை மீண்டும் மீண்டும் செய்யும் நிரல் பகுதி; எடுத்துக்காட்டாக &ldquo;ஒவ்வொரு 10 ms-க்கும் சென்சாரைப் படி&rdquo;.</li>
+<li><strong>காலம்</strong> (period, T) — ஒரு காலமுறை task எத்தனை இடைவெளிக்கு ஒருமுறை விழிக்கிறது.</li>
+<li><strong>ஓட்ட நேரம்</strong> (execution time, C) — ஒரு முறை ஓட எடுக்கும் CPU நேரம். Real-time கணக்கில் சராசரி அல்ல, <strong>மோசமான-வழக்கு ஓட்ட நேரம்</strong> (worst-case execution time, WCET) பயன்படுகிறது.</li>
+<li><strong>காலக்கெடு</strong> (deadline, D) — அந்த ஓட்டம் முடிந்தாக வேண்டிய நேரம். இங்கே D = T (அடுத்த முறை விழிப்பதற்குள் முடி).</li>
+<li><strong>முன்னுரிமை</strong> (priority) மற்றும் <strong>முன்கைப்பற்றல்</strong> (preemption) — உயர் முன்னுரிமை task தயாரானவுடன், ஓடிக்கொண்டிருக்கும் குறைந்த முன்னுரிமை task நிறுத்தப்பட்டு CPU அதற்குக் கொடுக்கப்படுகிறது.</li>
+<li><strong>பயன்பாட்டு விகிதம்</strong> (utilization, U) — ஒரு task CPU-வின் எவ்வளவு பங்கை எடுக்கிறது: U = C / T. எல்லா task-களின் U-வையும் கூட்டினால் மொத்தச் சுமை.</li>
+</ul>
+<h2 id="வகமனத-deterministic-அலல">வேகமானது Deterministic அல்ல<a class="anchor" href="#%e0%ae%b5%e0%ae%95%e0%ae%ae%e0%ae%a9%e0%ae%a4-deterministic-%e0%ae%85%e0%ae%b2%e0%ae%b2">#</a></h2>
+<p>பொது நோக்க scheduler (பதிவுகள் 21–25) நல்ல <em>சராசரி-வழக்கு</em> பதிலளிப்புத்திறன் மற்றும் நியாயமான பகிர்வுக்கு optimize செய்கிறது — பொதுவான வழக்கில் வழக்கமாக மிக வேகமானது. &ldquo;வழக்கமாக வேகமானது&rdquo; &ldquo;குறிப்பிட்ட காலக்கெடுவுக்குள் எப்போதும் முடிகிறது, விதிவிலக்கு இல்லை&rdquo; அல்ல. Cache விளைவுகள், interrupt கையாளல், அல்லது garbage-collection இடைநிறுத்தங்கள் (பதிவு 28) தாமதத்தை நீட்டிக்கலாம். பெரும்பாலான பயன்பாடுகளுக்கு அவ்வப்போதைய மாறுபாடு முக்கியமல்ல. Real-time அமைப்புக்கு, அது முழு விளையாட்டாக இருக்கலாம்.</p>
+<h2 id="hard-எதர-soft">Hard எதிர் Soft<a class="anchor" href="#hard-%e0%ae%8e%e0%ae%a4%e0%ae%b0-soft">#</a></h2>
+<p><strong>Hard</strong> காலக்கெடு: தவறுவது முழு அமைப்புத் தோல்வி — தரங்குறைந்த செயல்திறன் அல்ல. விமானக் கட்டுப்பாட்டு நிலைப்படுத்தல், airbag வெளிப்பாடு — ஒவ்வொரு முறையும், சாளரத்திற்குள், அல்லது தோல்வி பேரழிவாக இருக்கலாம்.</p>
+<p><strong>Soft</strong> காலக்கெடு: தவறுவது தரத்தைக் குறைக்கிறது ஆனால் வெளிப்படையான தோல்வி அல்ல — சுமையின் கீழ் விடப்பட்ட வீடியோ frame விரும்பத்தகாதது, சான்றிதழ் நெருக்கடி அல்ல. காலக்கெடுவைத் தாக்க வலுவான நடைமுறைப் போக்கு; வன்பொருள்-அமல்படுத்தப்பட்ட உத்தரவாதம் அல்ல.</p>
+<h2 id="rate-monotonic-scheduling">Rate-Monotonic Scheduling<a class="anchor" href="#rate-monotonic-scheduling">#</a></h2>
+<p>Hard real-time-க்கு ஒரு செவ்வியல் அணுகுமுறை: rate-monotonic scheduling — ஒவ்வொரு காலமுறை task-க்கும் அது எவ்வளவு அடிக்கடி ஓட வேண்டும் என்பதிலிருந்து நிலையான முன்னுரிமை ஒதுக்குங்கள்; குறுகிய காலம் → உயர் முன்னுரிமை. காலமுறை task தொகுப்புகளின் நன்கு வரையறுக்கப்பட்ட வகுப்பிற்கு நிலையான-முன்னுரிமை வழிமுறைகளிடையே நிரூபிக்கப்பட்டபடி உகந்தது: அந்த workload-க்கு <em>ஏதேனும்</em> நிலையான-முன்னுரிமை ஒதுக்கீடு ஒவ்வொரு காலக்கெடுவையும் தாக்க முடிந்தால், rate-monotonic-ம் தாக்கும். கணித schedulability வரம்பு — hard real-time அமைப்புகள் சான்றளிக்கத் தேவையான சரியான வகையான முறையான பண்பு.</p>
+<h2 id="rate-monotonic-ஒர-மழக-கணகக">Rate-Monotonic: ஒரு முழுக் கணக்கு<a class="anchor" href="#rate-monotonic-%e0%ae%92%e0%ae%b0-%e0%ae%ae%e0%ae%b4%e0%ae%95-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95">#</a></h2>
+<p>Liu மற்றும் Layland (1973) நிரூபித்த <strong>schedulability வரம்பு</strong>: n task-கள், rate-monotonic முன்னுரிமைகள், D = T என்றால், மொத்தப் பயன்பாடு</p>
+<blockquote class='book-hint '>
+<p>U = Σ Cᵢ / Tᵢ ≤ n × (2^(1/n) − 1)</p>
+</blockquote><p>ஆக இருந்தால் எல்லாக் காலக்கெடுகளும் உறுதியாகச் சந்திக்கப்படும்.</p>
+<table>
+	<thead>
+			<tr>
+					<th>n</th>
+					<th>n(2^(1/n) − 1)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>1.000</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>2 × (1.4142 − 1) = 0.828</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>3 × (1.2599 − 1) = 0.780</td>
+			</tr>
+			<tr>
+					<td>மிகப் பெரியது</td>
+					<td>ln 2 ≈ 0.693</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>எடுத்துக்காட்டு task தொகுப்பு</strong> (எடுத்துக்காட்டு மதிப்புகள், நேரம் &ldquo;அலகு&quot;களில்):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Task</th>
+					<th>C</th>
+					<th>T</th>
+					<th>U = C/T</th>
+					<th>RM முன்னுரிமை</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>τ1</td>
+					<td>1</td>
+					<td>4</td>
+					<td>0.250</td>
+					<td>உயர் (குறுகிய காலம்)</td>
+			</tr>
+			<tr>
+					<td>τ2</td>
+					<td>2</td>
+					<td>6</td>
+					<td>0.333</td>
+					<td>நடு</td>
+			</tr>
+			<tr>
+					<td>τ3</td>
+					<td>1</td>
+					<td>10</td>
+					<td>0.100</td>
+					<td>குறைவு</td>
+			</tr>
+			<tr>
+					<td>மொத்தம்</td>
+					<td></td>
+					<td></td>
+					<td><strong>0.683</strong></td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<p>0.683 ≤ 0.780 → வரம்புச் சோதனை வெற்றி; இந்தத் தொகுப்பு பாதுகாப்பானது. முதல் 12 அலகுகளின் நேரக்கோடு (அனைத்தும் t = 0-இல் ஒரே நேரத்தில் விழிக்கின்றன — மிக மோசமான தொடக்கம்):</p>
+<table>
+	<thead>
+			<tr>
+					<th>அலகு</th>
+					<th>0</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+					<th>8</th>
+					<th>9</th>
+					<th>10</th>
+					<th>11</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ஓடுவது</td>
+					<td>τ1</td>
+					<td>τ2</td>
+					<td>τ2</td>
+					<td>τ3</td>
+					<td>τ1</td>
+					<td>–</td>
+					<td>τ2</td>
+					<td>τ2</td>
+					<td>τ1</td>
+					<td>–</td>
+					<td>τ3</td>
+					<td>–</td>
+			</tr>
+	</tbody>
+</table>
+<p>τ3 தன் முதல் ஓட்டத்தை அலகு 4-க்குள் முடிக்கிறது (காலக்கெடு 10); t = 10-இல் மீண்டும் விழித்து அலகு 10-இலேயே ஓடுகிறது. &ldquo;–&rdquo; = CPU சும்மா இருக்கிறது.</p>
+<p><strong>வரம்பு போதுமானது, அவசியமானது அல்ல.</strong> வரம்பைத் தாண்டும் தொகுப்புகளும் சில நேரம் சரியாக ஓடும். அதைச் சரியாகச் சோதிக்க <strong>response-time analysis</strong>: task i-இன் மோசமான பதில் நேரம் Rᵢ, தன் ஓட்ட நேரமும், அதற்குள் விழிக்கும் ஒவ்வொரு உயர் முன்னுரிமை task-இன் குறுக்கீடும்:</p>
+<blockquote class='book-hint '>
+<p>Rᵢ = Cᵢ + Σ (உயர் முன்னுரிமை j) ⌈Rᵢ / Tⱼ⌉ × Cⱼ</p>
+</blockquote><p>(⌈x⌉ = x-ஐ மேல் முழு எண்ணுக்கு உயர்த்து.) இரு பக்கமும் Rᵢ இருப்பதால் மீண்டும் மீண்டும் கணக்கிட்டு நிலைக்கும் வரை செல்கிறோம். எடுத்துக்காட்டு (எடுத்துக்காட்டு மதிப்புகள்): τA: C = 2, T = 4; τB: C = 4, T = 8. U = 0.5 + 0.5 = <strong>1.0</strong> &gt; 0.828 — வரம்புச் சோதனை தோல்வி. ஆனால் τB-க்கு:</p>
+<ul>
+<li>தொடக்கம் R = 4 + 2 = 6</li>
+<li>R = 4 + ⌈6/4⌉ × 2 = 4 + 2 × 2 = 8</li>
+<li>R = 4 + ⌈8/4⌉ × 2 = 4 + 2 × 2 = 8 → நிலைத்தது. R_B = 8 ≤ T_B = 8 ✓</li>
+</ul>
+<p>காலங்கள் ஒன்றையொன்று சரியாக வகுப்பதால் (4 | 8) இது 100% சுமையிலும் வேலை செய்கிறது. சான்றிதழ் பெற வேண்டிய அமைப்புகளுக்கு இத்தகைய கணக்கே &ldquo;எப்போதும் சரியான நேரத்தில்&rdquo; என்பதன் நிரூபணம்.</p>
+<h2 id="ஏன-வற-வகயன-os">ஏன் வேறு வகையான OS<a class="anchor" href="#%e0%ae%8f%e0%ae%a9-%e0%ae%b5%e0%ae%b1-%e0%ae%b5%e0%ae%95%e0%ae%af%e0%ae%a9-os">#</a></h2>
+<p>இந்த உத்தரவாதங்களைச் சந்திக்க வரம்புடைய மோசமான-வழக்கு நேரத்தைச் சுற்றி வடிவமைக்கப்பட்ட OS தேவை — Real-Time Operating System (RTOS) — பதிவுகள் 21–25-இன் throughput/நியாய வம்சாவளி அல்ல. Interrupt latency வரம்புடையதும் அறியப்பட்டதும் இருக்க வேண்டும். நினைவக ஒதுக்கீடு பொதுவாக பொது நோக்க GC போன்ற கணிக்க முடியாத-latency பொறிமுறைகளை நம்ப முடியாது. Mutex கூட கவனமாக வடிவமைக்கப்பட வேண்டும் (priority inheritance) குறைந்த-முன்னுரிமை task உயர்-முன்னுரிமை ஒன்றை வரம்பில்லாத நேரம் தடுக்காதபடி — priority inversion, செவ்வியல் real-time ஆபத்து.</p>
+<h2 id="priority-inversion-படபபடயக">Priority Inversion: படிப்படியாக<a class="anchor" href="#priority-inversion-%e0%ae%aa%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%af%e0%ae%95">#</a></h2>
+<p>முதலில் இரண்டு சொற்கள். <strong>Mutex</strong> (mutual exclusion lock, பரஸ்பர விலக்குப் பூட்டு) — ஒரே நேரத்தில் ஒரு task மட்டும் ஒரு பகிரப்பட்ட வளத்தை (ஒரு buffer, ஒரு சாதனம்) தொட அனுமதிக்கும் பூட்டு. பூட்டைப் பிடித்துக்கொண்டு செய்யும் குறியீடு <strong>critical section</strong> (முக்கியப் பகுதி). பூட்டு ஏற்கனவே பிடிக்கப்பட்டிருந்தால், கேட்கும் task <strong>தடுக்கப்படுகிறது</strong> (blocked) — விடுவிக்கப்படும் வரை காத்திருக்கிறது.</p>
+<p>மூன்று task-கள்: H (உயர்), M (நடு), L (குறைவு). H-உம் L-உம் ஒரே mutex-ஐப் பயன்படுத்துகின்றன; M அதைத் தொடுவதே இல்லை. எடுத்துக்காட்டு மதிப்புகள்: L t = 0-இல் தொடங்கி t = 1-இல் பூட்டைப் பிடிக்கிறது, அதன் critical section 3 அலகுகள். H t = 2-இல் வருகிறது: 1 அலகு வேலை, பிறகு பூட்டு தேவை, பூட்டுக்குள் 1 அலகு. M t = 4-இல் வருகிறது, 5 அலகுகள் வேலை, பூட்டு தேவையில்லை.</p>
+<p><strong>பாதுகாப்பு இல்லாமல்:</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>நேரம்</th>
+					<th>ஓடுவது</th>
+					<th>நடப்பது</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0–1</td>
+					<td>L</td>
+					<td>சாதாரண வேலை</td>
+			</tr>
+			<tr>
+					<td>1–2</td>
+					<td>L</td>
+					<td>பூட்டைப் பிடித்தது; critical section 1/3</td>
+			</tr>
+			<tr>
+					<td>2–3</td>
+					<td>H</td>
+					<td>H வந்தது, L-ஐ முன்கைப்பற்றியது</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>—</td>
+					<td>H பூட்டைக் கேட்கிறது → தடுக்கப்பட்டது; L மீண்டும் ஓடுகிறது</td>
+			</tr>
+			<tr>
+					<td>3–4</td>
+					<td>L</td>
+					<td>critical section 2/3</td>
+			</tr>
+			<tr>
+					<td>4–9</td>
+					<td><strong>M</strong></td>
+					<td>M வந்தது; M &gt; L, எனவே L-ஐ முன்கைப்பற்றி 5 அலகுகள் ஓடுகிறது</td>
+			</tr>
+			<tr>
+					<td>9–10</td>
+					<td>L</td>
+					<td>critical section 3/3; பூட்டை விடுவிக்கிறது</td>
+			</tr>
+			<tr>
+					<td>10–11</td>
+					<td>H</td>
+					<td>கடைசியாகப் பூட்டைப் பெற்று முடிக்கிறது</td>
+			</tr>
+	</tbody>
+</table>
+<p>H t = 3 முதல் t = 10 வரை — 7 அலகுகள் — காத்திருந்தது. அதில் 5 அலகுகள் H-க்குச் சம்பந்தமே இல்லாத M-இன் வேலை. இதுவே <strong>priority inversion</strong> (முன்னுரிமைத் தலைகீழாக்கம்): நடைமுறையில் M, H-ஐ விட உயர்ந்த முன்னுரிமையோடு ஓடியது. மோசம் என்னவென்றால் இது <strong>வரம்பற்றது</strong> (unbounded): இன்னும் பல நடு-முன்னுரிமை task-கள் வந்தால் H-இன் காத்திருப்பு எவ்வளவு வேண்டுமானாலும் நீளும். Hard real-time அமைப்பில் வரம்பில்லாத காத்திருப்பு = நிரூபிக்க முடியாத காலக்கெடு.</p>
+<p><strong>Priority inheritance-உடன்</strong> (முன்னுரிமை மரபுரிமை): ஒரு உயர் task தடுக்கப்பட்டவுடன், பூட்டை வைத்திருக்கும் task <em>தற்காலிகமாக</em> அதன் முன்னுரிமையைப் பெறுகிறது; பூட்டை விடுவித்ததும் பழைய முன்னுரிமைக்குத் திரும்புகிறது.</p>
+<table>
+	<thead>
+			<tr>
+					<th>நேரம்</th>
+					<th>ஓடுவது</th>
+					<th>நடப்பது</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0–1</td>
+					<td>L</td>
+					<td>சாதாரண வேலை</td>
+			</tr>
+			<tr>
+					<td>1–2</td>
+					<td>L</td>
+					<td>பூட்டைப் பிடித்தது; critical section 1/3</td>
+			</tr>
+			<tr>
+					<td>2–3</td>
+					<td>H</td>
+					<td>H வந்தது</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>—</td>
+					<td>H தடுக்கப்பட்டது → <strong>L H-இன் முன்னுரிமையைப் பெறுகிறது</strong></td>
+			</tr>
+			<tr>
+					<td>3–5</td>
+					<td>L (H முன்னுரிமையில்)</td>
+					<td>critical section 2/3, 3/3. t = 4-இல் M வந்தாலும் L-ஐ முன்கைப்பற்ற முடியாது</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>—</td>
+					<td>L பூட்டை விடுவித்து தன் குறைந்த முன்னுரிமைக்குத் திரும்புகிறது</td>
+			</tr>
+			<tr>
+					<td>5–6</td>
+					<td>H</td>
+					<td>பூட்டைப் பெற்று முடிக்கிறது</td>
+			</tr>
+			<tr>
+					<td>6–11</td>
+					<td>M</td>
+					<td>M தன் 5 அலகுகள்</td>
+			</tr>
+	</tbody>
+</table>
+<p>இப்போது H காத்திருந்தது t = 3–5, 2 அலகுகள் மட்டுமே — L-இன் critical section-இல் மீதமிருந்த பகுதி. காத்திருப்பு <strong>வரம்புக்குள்</strong> வந்துவிட்டது: மோசமான நிலையில் அது கீழ் task-இன் ஒரு critical section-இன் நீளம். H-இன் பதில் நேரம் 9-இலிருந்து 4 அலகுகளுக்கு (t = 2 → 6) குறைந்தது. M-க்கு இழப்பு இல்லை — அது H-ஐ விடக் குறைந்த முன்னுரிமை கொண்டது, எனவே காத்திருப்பது சரியே.</p>
+<p><strong>Priority ceiling protocol</strong> இன்னும் ஒரு படி: ஒவ்வொரு mutex-க்கும் ஒரு &ldquo;கூரை&rdquo; — அதைப் பயன்படுத்தக்கூடிய task-களில் மிக உயர்ந்த முன்னுரிமை. பூட்டைப் பிடிப்பவர் <em>உடனே</em> அந்தக் கூரை முன்னுரிமையில் ஓடுகிறார். Lui Sha, Ragunathan Rajkumar, John P. Lehoczky ஆகியோரின் 1990 ஆய்வுக்கட்டுரை இந்த நெறிமுறை deadlock-ஐத் தடுக்கிறது என்றும், ஒரு task-இன் தடுப்பு அதிகபட்சம் ஒரு கீழ்-முன்னுரிமை critical section-க்குள் அடங்கும் என்றும் காட்டியது.</p>
+<p><strong>கணக்கில் சேர்த்தல்.</strong> Response-time சமன்பாட்டில் ஒரு <strong>தடுப்பு நேரம்</strong> Bᵢ சேர்கிறது: Rᵢ = Cᵢ + Bᵢ + Σ ⌈Rᵢ / Tⱼ⌉ × Cⱼ. மேலே உள்ள எடுத்துக்காட்டில் H-க்கு மேலே யாரும் இல்லை, C = 2, B = L-இன் critical section = 3, எனவே R_H ≤ 2 + 3 = <strong>5 அலகுகள்</strong> — பாதுகாப்பு இல்லாதபோது எந்த எண்ணையும் எழுத முடியாது.</p>
+<h2 id="சவவயக-கரகததல-நடநதத-mars-pathfinder">செவ்வாய்க் கிரகத்தில் நடந்தது: Mars Pathfinder<a class="anchor" href="#%e0%ae%9a%e0%ae%b5%e0%ae%b5%e0%ae%af%e0%ae%95-%e0%ae%95%e0%ae%b0%e0%ae%95%e0%ae%a4%e0%ae%a4%e0%ae%b2-%e0%ae%a8%e0%ae%9f%e0%ae%a8%e0%ae%a4%e0%ae%a4-mars-pathfinder">#</a></h2>
+<p>1997-இல் செவ்வாயில் இறங்கிய NASA/JPL-இன் Mars Pathfinder விண்கலத்தின் கணினி தரையிறங்கிய பிறகு மீண்டும் மீண்டும் தன்னைத் தானே reset செய்துகொண்டது. விண்கலத்தின் flight software குழுவை வழிநடத்திய Glenn Reeves எழுதிய விளக்கத்தின்படி நடந்தது இதுதான்:</p>
+<ul>
+<li>விண்கலம் VxWorks என்ற RTOS-இல் ஓடியது. <code>bc_sched</code> (அமைப்பிலேயே மிக உயர் முன்னுரிமை task-களில் ஒன்று) ஒவ்வொரு 0.125 விநாடிக்கும் (8 Hz) ஒரு bus சுழற்சியை அமைத்தது; <code>bc_dist</code> (மூன்றாவது உயர் முன்னுரிமை) அந்தச் சுழற்சியின் தரவை விநியோகித்தது. ஒவ்வொரு சுழற்சியிலும் bc_dist முடிந்திருக்க வேண்டும் — ஒரு hard காலக்கெடு.</li>
+<li>வானிலை அறிவியல் கருவியின் (ASI/MET) task அறிவியல் பணிகளுக்கான குறைந்த முன்னுரிமையில் இருந்தது. அது <code>select()</code> பொறிமுறைக்குள் ஒரு mutex-ஐப் பிடித்திருந்தபோது, பல நடு-முன்னுரிமை task-கள் அதை முன்கைப்பற்றின.</li>
+<li>bc_dist அதே mutex-க்காகத் தடுக்கப்பட்டது. அடுத்த சுழற்சியில் bc_sched, bc_dist முடியவில்லை என்று கண்டு, பிழை என அறிவித்து கணினியை reset செய்தது.</li>
+</ul>
+<p>மேலே உள்ள H/M/L அட்டவணை அப்படியே: H = bc_dist, L = ASI/MET, M = நடு-முன்னுரிமை task-கள். குழு பூமியில் அதே செயல்பாடுகளை ஓட்டி, 18 மணி நேரத்துக்குள் பிழையை மீண்டும் உருவாக்கியது; flight மென்பொருளிலேயே வடிவமைப்பாக வைத்திருந்த trace/log கருவியை lab-இல் இயக்கியபோது priority inversion தெளிவாகத் தெரிந்தது. தீர்வு: அந்த select semaphore-களுக்கு <strong>priority inheritance</strong> விருப்பத்தை இயக்குவது — விண்கலத்துக்கு மென்பொருள் வேறுபாடுகளை அனுப்பி patch செய்யப்பட்டது. Reeves-இன் பாடம்: வாங்கிய மென்பொருளைப் பயன்படுத்தும்போது அது உள்ளே எப்படி வேலை செய்கிறது என்பதை உறுதியாக அறிந்துகொள்ளுங்கள்.</p>
+<p>இந்த லென்ஸ் வழியாக mini-CPU lab-ஐ மீண்டும் பாருங்கள்: எளிய வன்பொருளில், ஒவ்வொரு அறிவுறுத்தலின் நேரமும் deterministic மற்றும் எண்ணக்கூடியது — அமைப்புகள் சிக்கலாக வளரும்போது RTOS வடிவமைப்பு பாதுகாக்கப் போராடும் கணிக்கக்கூடிய தன்மை. அடுத்த பதிவு இந்தக் கொள்கைகளை avionics, தொழில்துறை கட்டுப்பாடு, மற்றும் உத்தரவாதங்கள் சுமைதாங்கும் embedded deployments-க்குள் கொண்டு செல்கிறது.</p>
+<p><strong>இப்போது முயல்க: ஒரு critical section-ஐ எண்ணுங்கள்.</strong> Priority inheritance-இன் வாக்குறுதி &ldquo;H-இன் காத்திருப்பு ≤ L-இன் critical section நீளம்&rdquo;. அந்த நீளத்தை <em>எண்ண</em> முடிந்தால் மட்டுமே அது உத்தரவாதம். கீழே உள்ள mini-CPU-இல் cache இல்லை, ஊகம் இல்லை — ஒவ்வொரு <strong>Step</strong>-உம் சரியாக ஒரு அறிவுறுத்தல், மற்றும் guide பலகையின் தலைப்பு <code>Step N · Fetch / Decode / Execute</code> என்று எத்தனையாவது step என்று காட்டுகிறது. இதை L-இன் critical section என்று பாவியுங்கள். Assembly பெட்டியை அழித்து இதை ஒட்டி <strong>Assemble</strong> அழுத்துங்கள்:</p>
+<pre tabindex="0"><code>LDI 3      ; 0: A ← n (சுழற்சி எண்ணிக்கை)
+STA 15     ; 1: mem[15] ← n
+LDI 1      ; 2
+STA 14     ; 3: mem[14] ← 1
+LDA 15     ; 4: loop: A ← எண்ணி
+SUB 14     ; 5: A ← A − 1
+STA 15     ; 6: எண்ணி ← A
+JZ 9       ; 7: பூஜ்யமானால் வெளியேறு
+JMP 4      ; 8: மீண்டும்
+OUT        ; 9
+HLT        ; 10</code></pre><ol>
+<li><strong>முன்கணிப்பு:</strong> அமைப்பு 4 அறிவுறுத்தல்கள்; கடைசியல்லாத ஒவ்வொரு சுழற்சியும் 5 (LDA, SUB, STA, JZ, JMP); கடைசிச் சுழற்சி 4 (JZ தாவுகிறது, JMP இல்லை); பிறகு OUT, HLT = 2. மொத்தம் = 4 + 5(n − 1) + 4 + 2 = <strong>5n + 5</strong>. n = 3 → 20.</li>
+<li><strong>Step</strong>-ஐ HLT வரை அழுத்துங்கள் (அல்லது <strong>Run</strong>). Guide தலைப்பு <code>Step 20</code> என்று முடிய வேண்டும்; log-இல் <code>HLT — program finished. Output = 0</code>. (Guide-இன் கீழ் வரும் &ldquo;Output should be 13 (5+8)&rdquo; குறிப்பு lab-இன் இயல்புநிலை நிரலுக்கானது; இங்கே அதைப் புறக்கணியுங்கள்.)</li>
+<li>முதல் வரியை <code>LDI 9</code> என மாற்றி, Assemble செய்து மீண்டும் ஓட்டுங்கள்: 5 × 9 + 5 = <strong>50</strong>. <code>LDI 15</code> (இந்த ISA-வில் மிகப் பெரிய உடனடி மதிப்பு) → <strong>80</strong>. ஒவ்வொரு முறையும், ஒவ்வொரு ஓட்டத்திலும், அதே எண் — இதுவே deterministic நேரம்.</li>
+<li><strong>WCET-ஆக மாற்றுங்கள்.</strong> ஒரு Step = 1 µs என்று வைத்துக்கொள்வோம் (எடுத்துக்காட்டு மதிப்பு). n = 15 critical section = 80 µs. அதுவே H-இன் தடுப்பு B_H. H-இன் சொந்த C = 200 µs (எடுத்துக்காட்டு), அதற்கு மேல் யாரும் இல்லை என்றால் R_H ≤ 200 + 80 = 280 µs; H-இன் காலக்கெடு 1 ms என்றால் பாதுகாப்பு விளிம்பு தெளிவாக உள்ளது.</li>
+<li><strong>ஏன் இது நவீன CPU-இல் கடினம்?</strong> அதே loop ஒரு cache miss (பதிவு 15), ஒரு branch mispredict (பதிவு 14), அல்லது ஒரு interrupt-ஆல் நீளலாம். RTOS-களும் சான்றிதழ் பெறும் அமைப்புகளும் cache-ஐப் பூட்டுவது, interrupt-களை வரம்பிடுவது, அல்லது அளவீடுகளுக்கு மேல் பாதுகாப்பு விளிம்பு சேர்ப்பது போன்றவற்றைச் செய்வதற்குக் காரணம், இந்த mini-CPU இயல்பாகத் தரும் எண்ணக்கூடிய தன்மையை மீட்டெடுப்பதே.</li>
+</ol>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=ta"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<p><strong>Door out:</strong> C. L. Liu and James W. Layland, &ldquo;Scheduling Algorithms for Multiprogramming in a Hard-Real-Time Environment&rdquo; (<em>Journal of the ACM</em>, 1973) — rate-monotonic scheduling மற்றும் செவ்வியல் hard-real-time schedulability பின்னால் உள்ள முதன்மைக் கட்டுரை.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>பணி</td>
+					<td>task</td>
+			</tr>
+			<tr>
+					<td>காலம் / காலக்கெடு</td>
+					<td>period / deadline</td>
+			</tr>
+			<tr>
+					<td>மோசமான-வழக்கு ஓட்ட நேரம்</td>
+					<td>worst-case execution time (WCET)</td>
+			</tr>
+			<tr>
+					<td>முன்கைப்பற்றல்</td>
+					<td>preemption</td>
+			</tr>
+			<tr>
+					<td>பயன்பாட்டு விகிதம்</td>
+					<td>utilization</td>
+			</tr>
+			<tr>
+					<td>பதில் நேரப் பகுப்பாய்வு</td>
+					<td>response-time analysis</td>
+			</tr>
+			<tr>
+					<td>பரஸ்பர விலக்குப் பூட்டு</td>
+					<td>mutex</td>
+			</tr>
+			<tr>
+					<td>முக்கியப் பகுதி</td>
+					<td>critical section</td>
+			</tr>
+			<tr>
+					<td>தடுப்பு நேரம்</td>
+					<td>blocking time</td>
+			</tr>
+			<tr>
+					<td>முன்னுரிமைத் தலைகீழாக்கம்</td>
+					<td>priority inversion</td>
+			</tr>
+			<tr>
+					<td>முன்னுரிமை மரபுரிமை</td>
+					<td>priority inheritance</td>
+			</tr>
+			<tr>
+					<td>முன்னுரிமைக் கூரை நெறிமுறை</td>
+					<td>priority ceiling protocol</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Real-Time&#43;%E0%AE%85%E0%AE%AE%E0%AF%88%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%B3%E0%AF%8D&#43;%E0%AE%AE%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AF%81%E0%AE%AE%E0%AF%8D&#43;Deterministic&#43;Scheduling&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F29-real-time-systems-and-deterministic-scheduling%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F29-real-time-systems-and-deterministic-scheduling.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F29-real-time-systems-and-deterministic-scheduling.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Compilers, JIT, மற்றும் நவீன மொழி Runtimes</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/30-real-time-systems-in-practice/" class="flex align-center">
+        <span>நடைமுறையில் Real-Time அமைப்புகள்</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#வகமனத-deterministic-அலல">வேகமானது Deterministic அல்ல</a></li>
+    <li><a href="#hard-எதர-soft">Hard எதிர் Soft</a></li>
+    <li><a href="#rate-monotonic-scheduling">Rate-Monotonic Scheduling</a></li>
+    <li><a href="#rate-monotonic-ஒர-மழக-கணகக">Rate-Monotonic: ஒரு முழுக் கணக்கு</a></li>
+    <li><a href="#ஏன-வற-வகயன-os">ஏன் வேறு வகையான OS</a></li>
+    <li><a href="#priority-inversion-படபபடயக">Priority Inversion: படிப்படியாக</a></li>
+    <li><a href="#சவவயக-கரகததல-நடநதத-mars-pathfinder">செவ்வாய்க் கிரகத்தில் நடந்தது: Mars Pathfinder</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

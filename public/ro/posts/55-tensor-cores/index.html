@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Multiply-accumulate pe matrice a devenit operația dominantă în AI — așa că hardware-ul a făcut din ea o primitivă de prim rang">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/55-tensor-cores/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Tensor Cores">
+	<meta property="og:description" content="Multiply-accumulate pe matrice a devenit operația dominantă în AI — așa că hardware-ul a făcut din ea o primitivă de prim rang">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Tensor Cores">
+	<meta itemprop="description" content="Multiply-accumulate pe matrice a devenit operația dominantă în AI — așa că hardware-ul a făcut din ea o primitivă de prim rang">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="2628">
+
+<title>Tensor Cores • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/55-tensor-cores/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/55-tensor-cores/" title="Tensor Cores">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/55-tensor-cores/" title="Tensor Core">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/55-tensor-cores/" title="Tensor Cores">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/55-tensor-cores/" title="Tensor Cores">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/55-tensor-cores/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/55-tensor-cores/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/55-tensor-cores/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/55-tensor-cores/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="active">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Tensor Cores</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-de-ce-o-unitate-dedicată">1. De ce o unitate dedicată</a></li>
+    <li><a href="#2-volta-2017-primul-tensor-core">2. Volta (2017): primul Tensor Core</a>
+      <ul>
+        <li><a href="#operația">Operația</a></li>
+        <li><a href="#debitul-și-cum-se-obține-cifra-de-125-tflops">Debitul și cum se obține cifra de 125 TFLOPS</a></li>
+        <li><a href="#cum-vede-programatorul-tensor-core-ul-warp-ul-întreg">Cum vede programatorul Tensor Core-ul: warp-ul întreg</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-formatele-ce-acceptă-wmma-conform-ghidului-135">3. Formatele: ce acceptă WMMA, conform ghidului 13.5</a></li>
+    <li><a href="#4-ampere-a100-2020-tensor-cores-de-generația-a-treia">4. Ampere A100 (2020): Tensor Cores de generația a treia</a>
+      <ul>
+        <li><a href="#un-tensor-core-mai-mare-mai-puține-pe-sm">Un Tensor Core mai mare, mai puține pe SM</a></li>
+        <li><a href="#tabelul-de-vârfuri-dens-vs-sparse">Tabelul de vârfuri: dens vs. sparse</a></li>
+        <li><a href="#tf32-și-bf16">TF32 și BF16</a></li>
+        <li><a href="#sparsity-structurată-24">Sparsity structurată 2:4</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-ce-nu-am-inclus-hopper-și-mai-departe">5. Ce nu am inclus: Hopper și mai departe</a></li>
+    <li><a href="#6-de-la-tensor-core-la-atenție">6. De la Tensor Core la atenție</a></li>
+    <li><a href="#7-nu-singurul-răspuns">7. Nu singurul răspuns</a></li>
+    <li><a href="#rezumat">Rezumat</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Tensor Cores
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>În capitolul 53 am văzut nucleele CUDA ca benzi SIMT de uz general, comandate de planificatorul de warp-uri. <strong>Tensor Core</strong> e opusul filozofic: o unitate care face <em>o singură</em> operație — înmulțire de matrice cu acumulare — dar o face pe un bloc întreg de numere deodată. Am păstrat termenul englezesc în titlu: inginerii români spun „Tensor Cores”, nu „nuclee tensoriale”, iar NVIDIA îl folosește ca nume propriu de produs.</p>
+<p>Toate cifrele de mai jos provin din documente deschise integral: whitepaper-ul Volta (NVIDIA, <em>NVIDIA Tesla V100 GPU Architecture</em>, WP-08608-001_v1.1, august 2017, <a href="https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf">PDF</a>), whitepaper-ul Ampere (NVIDIA, <em>NVIDIA A100 Tensor Core GPU Architecture</em>, V1.0, 2020, <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">PDF</a>), ghidul de programare (NVIDIA, <em>CUDA Programming Guide</em>, Release 13.5, 31 octombrie 2026, <a href="https://docs.nvidia.com/cuda/cuda-programming-guide/pdf/cuda-programming-guide.pdf">PDF</a>, descărcat și accesat la 2026-11-05) și specificația PTX (NVIDIA, <em>PTX ISA 9.5</em>, <a href="https://docs.nvidia.com/cuda/parallel-thread-execution/index.html">HTML</a>). Paginile sunt cele tipărite în subsol. <strong>Nu am reușit să descarc whitepaper-ul Hopper (H100)</strong>, așa că acest capitol nu dă nicio cifră pentru Hopper sau generații ulterioare.</p>
+<p><strong>Ce nu acoperă această pagină:</strong> arhitectura Hopper (H100) nu este tratată aici. Pagina se oprește la Volta (V100) și Ampere (A100) și nu conține nicio cifră Hopper, pentru că nu am deschis whitepaper-ul Hopper.</p>
+<h2 id="1-de-ce-o-unitate-dedicată">1. De ce o unitate dedicată<a class="anchor" href="#1-de-ce-o-unitate-dedicat%c4%83">#</a></h2>
+<p>Whitepaper-ul Volta pune problema direct: operațiile GEMM (înmulțiri matrice–matrice) sunt nucleul antrenării și inferenței rețelelor neuronale, fiind folosite pentru a înmulți matrice mari de date de intrare și ponderi în straturile conectate (NVIDIA, V100 whitepaper, 2017, secțiunea „Tensor Cores”, p. 14). Capitolul 57 al cărții a arătat de ce: convoluțiile se pot rescrie ca produs de matrice (Chellapilla, Puri &amp; Simard, IWFHR 2006, §2), iar atenția este, la bază, tot înmulțire de matrice (Vaswani et al., NeurIPS 2017, Ec. 1).</p>
+<p>Într-un nucleu CUDA obișnuit, fiecare operație <em>fused multiply-add</em> (FMA) cere propria instrucțiune: aducere, decodare, citire de operanzi din registre, scriere înapoi. O unitate care primește blocuri întregi de matrice plătește acest cost de control o dată pentru zeci de FMA-uri. Raționamentul acesta e al meu, nu un citat; cifra verificabilă vine imediat mai jos, din comparația de debit.</p>
+<h2 id="2-volta-2017-primul-tensor-core">2. Volta (2017): primul Tensor Core<a class="anchor" href="#2-volta-2017-primul-tensor-core">#</a></h2>
+<h3 id="operația">Operația<a class="anchor" href="#opera%c8%9bia">#</a></h3>
+<p>Whitepaper-ul V100 definește operația: fiecare Tensor Core lucrează pe matrice 4×4 și calculează</p>
+<pre tabindex="0"><code>D = A × B + C</code></pre><p>unde A, B, C, D sunt matrice 4×4; intrările A și B sunt FP16, iar matricele de acumulare C și D pot fi FP16 sau FP32 (V100 whitepaper, Figura 8, p. 15). Mai precis, Tensor Cores primesc date FP16 și acumulează în FP32: înmulțirea FP16 dă un produs la precizie completă, care este apoi acumulat prin adunare FP32 cu celelalte produse intermediare, pentru o înmulțire de matrice 4×4×4 (același whitepaper, Figura 9, p. 15–16). Figura 10 arată că o astfel de înmulțire 4×4 cere 64 de operații — câte una pentru fiecare cub elementar al produsului 4×4×4 (p. 16).</p>
+<p>Aici e un punct fin care contează: „mixed precision” în sensul Volta nu înseamnă că rezultatul e de calitate FP16. Produsele sunt exacte, iar suma se acumulează în FP32 — de aici stabilitatea numerică suficientă pentru antrenare (interpretarea mea; whitepaper-ul spune doar „full precision product” și „FP32 addition”, p. 15).</p>
+<h3 id="debitul-și-cum-se-obține-cifra-de-125-tflops">Debitul și cum se obține cifra de 125 TFLOPS<a class="anchor" href="#debitul-%c8%99i-cum-se-ob%c8%9bine-cifra-de-125-tflops">#</a></h3>
+<p>Whitepaper-ul dă lanțul complet:</p>
+<ul>
+<li>Tesla V100 are <strong>640 de Tensor Cores</strong>: 8 pe SM, 2 pe fiecare partiție a SM-ului (V100 whitepaper, p. 14).</li>
+<li>Fiecare Tensor Core execută <strong>64 de FMA în virgulă mobilă pe ciclu</strong>; cele 8 dintr-un SM fac 512 FMA, adică 1024 de operații individuale în virgulă mobilă pe ciclu (p. 14).</li>
+<li>Frecvența <em>GPU Boost</em> a Tesla V100 este <strong>1530 MHz</strong> (Tabelul 1, p. 10).</li>
+<li>Vârful: <strong>125 Tensor TFLOPS</strong>, cu nota că ratele de vârf sunt calculate la frecvența GPU Boost (Tabelul 1 și nota 1, p. 10; lista de la p. 5).</li>
+</ul>
+<p>Verificare aritmetică proprie: 640 × 64 FMA × 2 operații/FMA × 1,53·10⁹ Hz ≈ 125,3·10¹² operații/s, ceea ce coincide cu cifra rotunjită de 125 TFLOPS din whitepaper. Pentru comparație, același tabel dă <strong>15,7 TFLOPS</strong> FP32 pe nucleele CUDA obișnuite ale V100 (Tabelul 1, p. 10) — Tensor Cores aduc deci cam de 8 ori mai mult debit de vârf decât FP32 pe același cip (raport calculat de mine: 125 / 15,7 ≈ 8). Whitepaper-ul formulează altfel comparația, față de generația anterioară: până la 12× mai multe TFLOPS de vârf pentru antrenare față de operațiile FP32 standard pe P100 și până la 6× pentru inferență față de FP16 standard pe P100 (p. 14).</p>
+<p><strong>Atenție la ce fel de cifră e:</strong> 125 TFLOPS este o cifră de <strong>vârf teoretic</strong>, în whitepaper, la frecvența boost, pentru operații <em>dense</em> (Volta nu avea suport de <em>sparsity</em>; acesta apare abia la A100, vezi mai jos). Nu este o măsurătoare pe o aplicație. Whitepaper-ul pe care l-am deschis e pentru Tesla V100 din era SXM2 (boost 1530 MHz, Tabelul 1, p. 10); <strong>nu</strong> am deschis pagina de produs și <strong>nu</strong> dau aici cifre pentru variantele PCIe / V100S, care pot diferi.</p>
+<h3 id="cum-vede-programatorul-tensor-core-ul-warp-ul-întreg">Cum vede programatorul Tensor Core-ul: warp-ul întreg<a class="anchor" href="#cum-vede-programatorul-tensor-core-ul-warp-ul-%c3%aentreg">#</a></h3>
+<p>Detaliul arhitectural cel mai important pentru legătura cu capitolul 53: un Tensor Core nu e programat de un thread. Whitepaper-ul Volta spune că Tensor Cores sunt expuse în CUDA ca <strong>Warp-Level Matrix Operations</strong>, iar la nivel CUDA interfața presupune matrice de 16×16 care se întind pe <strong>toate cele 32 de thread-uri ale warp-ului</strong> (V100 whitepaper, p. 16).</p>
+<p>Ghidul CUDA actual păstrează modelul: operațiile C++ <em>warp matrix</em> folosesc Tensor Cores pentru probleme de forma D = A·B + C, sunt suportate pe dispozitive cu <em>compute capability</em> 7.0 sau mai mare, cer cooperarea tuturor thread-urilor dintr-un warp și sunt permise în cod condițional doar dacă condiția are aceeași valoare pe tot warp-ul — altfel execuția riscă să se blocheze (<em>CUDA PG</em>, Release 13.5, §5.4.11 „Warp Matrix Functions”, p. 663, accesat 2026-11-05). Iată de ce divergența din capitolul 53 nu e doar o problemă de performanță: aici devine o problemă de corectitudine.</p>
+<p>Exemplul canonic din ghid face un produs 16×16×16 într-un singur warp (<em>CUDA PG</em>, Release 13.5, §5.4.11.7, p. 669, accesat 2026-11-05):</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;mma.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> nvcuda;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>__global__ <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">wmma_ker</span>(half <span style="color:#f92672">*</span>a, half <span style="color:#f92672">*</span>b, <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>c) {
+</span></span><span style="display:flex;"><span>   wmma<span style="color:#f92672">::</span>fragment<span style="color:#f92672">&lt;</span>wmma<span style="color:#f92672">::</span>matrix_a, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, half, wmma<span style="color:#f92672">::</span>col_major<span style="color:#f92672">&gt;</span> a_frag;
+</span></span><span style="display:flex;"><span>   wmma<span style="color:#f92672">::</span>fragment<span style="color:#f92672">&lt;</span>wmma<span style="color:#f92672">::</span>matrix_b, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, half, wmma<span style="color:#f92672">::</span>row_major<span style="color:#f92672">&gt;</span> b_frag;
+</span></span><span style="display:flex;"><span>   wmma<span style="color:#f92672">::</span>fragment<span style="color:#f92672">&lt;</span>wmma<span style="color:#f92672">::</span>accumulator, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span> c_frag;
+</span></span><span style="display:flex;"><span>   wmma<span style="color:#f92672">::</span>fill_fragment(c_frag, <span style="color:#ae81ff">0.0f</span>);
+</span></span><span style="display:flex;"><span>   wmma<span style="color:#f92672">::</span>load_matrix_sync(a_frag, a, <span style="color:#ae81ff">16</span>);
+</span></span><span style="display:flex;"><span>   wmma<span style="color:#f92672">::</span>load_matrix_sync(b_frag, b, <span style="color:#ae81ff">16</span>);
+</span></span><span style="display:flex;"><span>   wmma<span style="color:#f92672">::</span>mma_sync(c_frag, a_frag, b_frag, c_frag);
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// urmează wmma::store_matrix_sync(...) în exemplul din ghid
+</span></span></span><span style="display:flex;"><span>}</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Un <strong>fragment</strong> (<em>fragment</em>) este bucata dintr-o matrice pe care o ține fiecare thread al warp-ului în registrele sale; ghidul spune explicit că maparea elementelor matricei în stocarea internă a fragmentului „is unspecified and subject to change” în arhitecturi viitoare, de aceea încărcarea și stocarea se fac prin funcțiile <code>load_matrix_sync</code> și <code>store_matrix_sync</code> (<em>CUDA PG</em>, Release 13.5, §5.4.11.1, p. 664, accesat 2026-11-05). Observați legătura cu ocuparea: fragmentele stau în registre, deci un kernel cu Tensor Cores consumă registre multe pe thread (raționament propriu, pe baza capitolului 53).</p>
+<p>Diferența de formă merită subliniată: hardware-ul Volta lucrează pe 4×4×4 pe ciclu și pe Tensor Core (whitepaper, p. 15–16), iar interfața CUDA expune 16×16×16 pe warp (whitepaper, p. 16; <em>CUDA PG</em>, Release 13.5, §5.4.11, p. 668, accesat 2026-11-05). Cum se descompune operația de warp în operații hardware nu e descris în documentele deschise, iar ghidul descurajează explicit dependența de maparea hardware (<em>CUDA PG</em>, Release 13.5, §1.2.2.2, p. 9, accesat 2026-11-05).</p>
+<h2 id="3-formatele-ce-acceptă-wmma-conform-ghidului-135">3. Formatele: ce acceptă WMMA, conform ghidului 13.5<a class="anchor" href="#3-formatele-ce-accept%c4%83-wmma-conform-ghidului-135">#</a></h2>
+<p>Tabelul de combinații din ghid (<em>CUDA PG</em>, Release 13.5, §5.4.11, p. 668–669, accesat 2026-11-05) listează, printre altele:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Matrice A / B</th>
+					<th>Acumulator</th>
+					<th>Forme (m-n-k)</th>
+					<th>Notă</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>__half</code> (FP16)</td>
+					<td><code>float</code> sau <code>__half</code></td>
+					<td>16×16×16, 32×8×16, 8×32×16</td>
+					<td>de la cc 7.0</td>
+			</tr>
+			<tr>
+					<td><code>unsigned char</code> / <code>signed char</code> (INT8)</td>
+					<td><code>int</code></td>
+					<td>16×16×16, 32×8×16, 8×32×16</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>__nv_bfloat16</code> (BF16)</td>
+					<td><code>float</code></td>
+					<td>16×16×16, 32×8×16, 8×32×16</td>
+					<td>cc 8.0+</td>
+			</tr>
+			<tr>
+					<td><code>precision::tf32</code></td>
+					<td><code>float</code></td>
+					<td>16×16×8</td>
+					<td>cc 8.0+</td>
+			</tr>
+			<tr>
+					<td><code>double</code> (FP64)</td>
+					<td><code>double</code></td>
+					<td>8×8×4</td>
+					<td>cc 8.0+</td>
+			</tr>
+			<tr>
+					<td><code>u4</code> / <code>s4</code> / <code>b1</code></td>
+					<td><code>int</code></td>
+					<td>8×8×32 / 8×8×128</td>
+					<td>experimental</td>
+			</tr>
+	</tbody>
+</table>
+<p>Despre BF16, ghidul spune că are același domeniu ca FP32, dar precizie redusă (7 biți), și că fragmentele BF16 trebuie combinate cu acumulatori <code>float</code> (<em>CUDA PG</em>, Release 13.5, §5.4.11.2, p. 665–666, accesat 2026-11-05). Despre TF32: format special suportat de Tensor Cores, cu același domeniu ca FP32 și precizie redusă (≥10 biți), cu dispunere internă definită de implementare; matricele de intrare trebuie convertite manual, prin intrinsecul <code>__float_to_tf32</code>, iar singura dimensiune suportată în WMMA este 16×16×8 (<em>CUDA PG</em>, Release 13.5, §5.4.11.2, p. 666, accesat 2026-11-05). Operațiile <em>sub-byte</em> sunt marcate drept <em>preview</em>, cu API-uri care se pot schimba (<em>CUDA PG</em>, Release 13.5, §5.4.11.1 și §5.4.11.4, p. 664–666, accesat 2026-11-05). Tensor Cores suportă FP64 de la cc 8.0, cu rotunjire la cel mai apropiat par (<code>.rn</code>) (<em>CUDA PG</em>, Release 13.5, §5.4.11.3, p. 666, accesat 2026-11-05).</p>
+<p><strong>FP8.</strong> În afara WMMA, nivelul PTX expune instrucțiunea <code>mma</code> cu tipurile FP8 <code>.e4m3</code> și <code>.e5m2</code> (de exemplu forma <code>mma.sync.aligned.m16n8k32.row.col.f32.e4m3.e5m2.f32</code>), cu cerința „<code>.e4m3</code> and <code>.e5m2</code> alternate floating point type <code>mma</code> operation requires <code>sm_89</code> or higher” (NVIDIA, <em>PTX ISA 9.5</em>, §9.7.16.5 „Matrix multiply-accumulate operation using <code>mma</code> instruction”, <a href="https://docs.nvidia.com/cuda/parallel-thread-execution/index.html">HTML</a>). Nu dau nicio cifră de debit FP8: whitepaper-ul Hopper, care ar documenta-o pe H100, nu a putut fi descărcat ca PDF (vezi §5).</p>
+<h2 id="4-ampere-a100-2020-tensor-cores-de-generația-a-treia">4. Ampere A100 (2020): Tensor Cores de generația a treia<a class="anchor" href="#4-ampere-a100-2020-tensor-cores-de-genera%c8%9bia-a-treia">#</a></h2>
+<h3 id="un-tensor-core-mai-mare-mai-puține-pe-sm">Un Tensor Core mai mare, mai puține pe SM<a class="anchor" href="#un-tensor-core-mai-mare-mai-pu%c8%9bine-pe-sm">#</a></h3>
+<p>Whitepaper-ul A100 descrie schimbarea: la Volta și Turing, un SM are 8 Tensor Cores, fiecare cu 64 FMA FP16/FP32 pe ciclu; SM-ul A100 are <strong>4 Tensor Cores de generația a treia</strong>, fiecare cu <strong>256 FMA FP16/FP32 pe ciclu</strong>, deci 1024 de FMA dense pe ciclu și pe SM — dublu față de Volta și Turing (A100 whitepaper, p. 20). La nivel de formă, whitepaper-ul spune că un Tensor Core Volta calculează o înmulțire mixtă 4×4×4 pe ciclu, iar unul A100 una de <strong>8×4×8</strong> pe ciclu (p. 24). Verificare proprie: 4·4·4 = 64 și 8·4·8 = 256, exact numerele de FMA pe ciclu de mai sus.</p>
+<p>A100 are 108 SM-uri și deci 432 de Tensor Cores, care dau până la <strong>312 TFLOPS</strong> de performanță <em>densă</em> mixtă FP16/FP32 — de 2,5 ori Tensor Core-ul V100 și de 20 de ori FP32-ul standard al V100, spune whitepaper-ul (p. 24). Frecvența boost folosită în whitepaper este 1410 MHz (Tabelul 8 îl numește „GPU boost clock (1410 MHz)”, p. 56). Verificare proprie: 432 × 256 × 2 × 1,41·10⁹ ≈ 311,9·10¹², adică 312 TFLOPS rotunjit.</p>
+<h3 id="tabelul-de-vârfuri-dens-vs-sparse">Tabelul de vârfuri: dens vs. sparse<a class="anchor" href="#tabelul-de-v%c3%a2rfuri-dens-vs-sparse">#</a></h3>
+<p>Tabelul 1 al whitepaper-ului A100 (p. 15 tipărită; TOC: „Table 1 … 15”) dă ratele de vârf la GPU Boost Clock; a doua valoare din fiecare pereche este „Effective TFLOPS / TOPS using the new Sparsity feature” (nota 2):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Format</th>
+					<th>Dens</th>
+					<th>Cu sparsity (efectiv)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>FP64 Tensor Core</td>
+					<td>19,5 TFLOPS</td>
+					<td>—</td>
+			</tr>
+			<tr>
+					<td>TF32 Tensor Core</td>
+					<td>156 TFLOPS</td>
+					<td>312 TFLOPS</td>
+			</tr>
+			<tr>
+					<td>FP16 Tensor Core</td>
+					<td>312 TFLOPS</td>
+					<td>624 TFLOPS</td>
+			</tr>
+			<tr>
+					<td>BF16 Tensor Core</td>
+					<td>312 TFLOPS</td>
+					<td>624 TFLOPS</td>
+			</tr>
+			<tr>
+					<td>INT8 Tensor Core</td>
+					<td>624 TOPS</td>
+					<td>1 248 TOPS</td>
+			</tr>
+			<tr>
+					<td>INT4 Tensor Core</td>
+					<td>1 248 TOPS</td>
+					<td>2 496 TOPS</td>
+			</tr>
+	</tbody>
+</table>
+<p>Pentru context, același tabel dă FP32 standard 19,5 TFLOPS, FP64 standard 9,7 TFLOPS, FP16 (fără Tensor Cores) 78 TFLOPS și BF16 (fără Tensor Cores) 39 TFLOPS (A100 whitepaper, Tabelul 1, p. 15).</p>
+<p><strong>Regula de citire:</strong> când cineva spune „A100 face 624 TFLOPS FP16”, folosește cifra cu sparsity. Cifra densă din whitepaper este 312. Cifrele cu sparsity sunt <em>efective</em>: presupun că una dintre matrice respectă tiparul 2:4 de mai jos. Toate cifrele din tabelul de mai sus sunt din Tabelul 1 al whitepaper-ului A100 (V1.0, p. 15 tipărită); <strong>nu</strong> am deschis pagina de produs și <strong>nu</strong> includ aici valori pentru varianta de 80 GB sau diferențe SXM vs. PCIe.</p>
+<h3 id="tf32-și-bf16">TF32 și BF16<a class="anchor" href="#tf32-%c8%99i-bf16">#</a></h3>
+<p>Whitepaper-ul A100 spune că arhitectura Ampere adaugă Tensor Cores-urilor trei formate noi — BF16, TF32 și FP64 (p. 26). BF16 are 8 biți de exponent, 7 biți de mantisă și 1 bit de semn (p. 26). TF32 are 8 biți de exponent (ca FP32), 10 biți de mantisă (aceeași precizie ca FP16) și 1 bit de semn; Tensor Cores TF32 citesc date FP32, folosesc același domeniu ca FP32 cu precizie internă redusă și produc o ieșire FP32 IEEE standard (p. 26). Ideea de produs: antrenarea poate folosi implicit Tensor Cores, fără modificări din partea utilizatorului (p. 26), iar operațiile BF16/FP32 rulează la aceeași rată ca FP16/FP32 (p. 21).</p>
+<p>Observați simetria: TF32 = domeniul lui FP32 + precizia lui FP16; BF16 = domeniul lui FP32 + o precizie și mai mică. Domeniul larg contează pentru antrenare (gradienții mici nu se pierd în zero), precizia mică contează pentru siliciu — capitolul 59 al cărții revine la această legătură între format și eficiența MAC-ului.</p>
+<h3 id="sparsity-structurată-24">Sparsity structurată 2:4<a class="anchor" href="#sparsity-structurat%c4%83-24">#</a></h3>
+<p>Whitepaper-ul A100 introduce <em>Fine-Grained Structured Sparsity</em>: structura e impusă printr-o definiție de matrice rară 2:4, care permite două valori nenule în fiecare vector de patru elemente; A100 suportă sparsity 2:4 pe rânduri, iar matricea poate fi comprimată eficient, reducând memoria și lățimea de bandă necesare cu aproape 2× (A100 whitepaper, p. 31). Tot acolo: constrângerea de structură, în general, nu afectează acuratețea rețelei antrenate pentru inferență, pe când pentru accelerarea antrenării metodele fără pierdere de acuratețe sunt încă un domeniu activ de cercetare (p. 31). Capitolul 60 al cărții tratează subiectul pe larg.</p>
+<h2 id="5-ce-nu-am-inclus-hopper-și-mai-departe">5. Ce nu am inclus: Hopper și mai departe<a class="anchor" href="#5-ce-nu-am-inclus-hopper-%c8%99i-mai-departe">#</a></h2>
+<p>Spus direct: <strong>această pagină nu acoperă Hopper (H100).</strong> Am încercat din nou să descarc whitepaper-ul Hopper / datasheet-ul H100 (resources.nvidia.com, images.nvidia.com, developer.download.nvidia.com, nvdam.widen.net): răspunsurile au fost HTML de vizualizator, redirect de locație sau 404, <strong>nu</strong> un PDF verificabil. Așa că aici nu apare nicio cifră Hopper și nu adaug o secțiune Hopper. Cititorul care vrea cifrele H100 le găsește în capitolul 35, unde au fost verificate de editor, cu sursa lor. Singurul fapt despre FP8 din <em>acest</em> capitol rămâne cel din PTX ISA 9.5 (§9.7.16.5, sm_89 sau mai nou).</p>
+<h2 id="6-de-la-tensor-core-la-atenție">6. De la Tensor Core la atenție<a class="anchor" href="#6-de-la-tensor-core-la-aten%c8%9bie">#</a></h2>
+<p>Atenția din capitolul 63 se scrie Attention(Q, K, V) = softmax(QKᵀ/√d_k)V (Vaswani et al., „Attention Is All You Need”, NeurIPS 2017, Ec. 1, §3.2.1, <a href="https://arxiv.org/abs/1706.03762">arXiv:1706.03762</a>). Ambele produse — QKᵀ și înmulțirea cu V — sunt exact forma D = A·B + C pe care o accelerează Tensor Cores, după ce sunt tăiate în plăci (<em>tiles</em>) de forma acceptată de hardware (raționament propriu; formele vin din tabelul din secțiunea 3).</p>
+<p>Dar Tensor Core-ul rezolvă doar jumătate din problemă. Vârful dens de 312 TFLOPS al A100 trebuie hrănit cu date; whitepaper-ul dă pentru A100 o lățime de bandă HBM2 de 1555 GB/s (A100 whitepaper, p. 16). Raportul — calculat de mine — este de circa 200 de operații FP16 pe fiecare octet adus din HBM (312·10¹² / 1,555·10¹² ≈ 200,6) pentru ca Tensor Cores să nu aștepte memoria. Softmax-ul dintre cele două produse nu e o înmulțire de matrice și nu rulează pe Tensor Cores. FlashAttention pornește exact de aici: argumentează că algoritmii de atenție trebuie să fie <em>IO-aware</em>, adică să țină cont de citirile și scrierile între HBM și SRAM-ul de pe cip, și folosește <em>tiling</em> pentru a nu scrie în HBM matricea de atenție N×N (Dao et al., „FlashAttention”, NeurIPS 2022, Abstract și §1, <a href="https://arxiv.org/abs/2205.14135">arXiv:2205.14135</a>). Asta e subiectul capitolului 54: ierarhia de memorie a GPU-ului.</p>
+<h2 id="7-nu-singurul-răspuns">7. Nu singurul răspuns<a class="anchor" href="#7-nu-singurul-r%c4%83spuns">#</a></h2>
+<p>Tensor Cores sunt răspunsul NVIDIA <em>în interiorul</em> unui GPU general. Capitolul 58 a arătat matricea sistolică a TPU-ului Google: 65 536 de MAC-uri pe 8 biți, organizate weight-stationary (Jouppi et al., ISCA 2017, Abstract și §2). Aceeași constrângere — înmulțirea de matrice domină — și două organizări diferite ale siliciului.</p>
+<h2 id="rezumat">Rezumat<a class="anchor" href="#rezumat">#</a></h2>
+<ul>
+<li>Volta: Tensor Core 4×4×4, FP16 cu acumulare FP16/FP32, 64 FMA/ciclu; V100: 640 de unități, 125 Tensor TFLOPS vârf, dens, la boost 1530 MHz (V100 whitepaper, p. 10, 14–16).</li>
+<li>Programare: la nivel de warp (WMMA, 16×16×16 FP16), toate cele 32 de thread-uri cooperează, condițiile trebuie uniforme pe warp (<em>CUDA PG</em>, Release 13.5, §5.4.11, p. 663–669, accesat 2026-11-05).</li>
+<li>A100: 256 FMA/ciclu pe Tensor Core (8×4×8), 432 de unități, FP16/BF16 312 TFLOPS dens / 624 cu sparsity, TF32 156/312 (A100 whitepaper, Tabelul 1, p. 15, 20–26).</li>
+<li>TF32: 1+8+10 biți; BF16: 1+8+7 biți (A100 whitepaper, p. 26).</li>
+<li>Hopper: fără cifre în acest capitol (whitepaper nedeschis).</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Tensor&#43;Cores&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F55-tensor-cores%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F55-tensor-cores.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F55-tensor-cores.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/54-gpu-memory-hierarchy/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Ierarhia de memorie a GPU-ului</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="flex align-center">
+        <span>De ce înmulțirea de matrice a remodelat proiectarea cipurilor</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-de-ce-o-unitate-dedicată">1. De ce o unitate dedicată</a></li>
+    <li><a href="#2-volta-2017-primul-tensor-core">2. Volta (2017): primul Tensor Core</a>
+      <ul>
+        <li><a href="#operația">Operația</a></li>
+        <li><a href="#debitul-și-cum-se-obține-cifra-de-125-tflops">Debitul și cum se obține cifra de 125 TFLOPS</a></li>
+        <li><a href="#cum-vede-programatorul-tensor-core-ul-warp-ul-întreg">Cum vede programatorul Tensor Core-ul: warp-ul întreg</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-formatele-ce-acceptă-wmma-conform-ghidului-135">3. Formatele: ce acceptă WMMA, conform ghidului 13.5</a></li>
+    <li><a href="#4-ampere-a100-2020-tensor-cores-de-generația-a-treia">4. Ampere A100 (2020): Tensor Cores de generația a treia</a>
+      <ul>
+        <li><a href="#un-tensor-core-mai-mare-mai-puține-pe-sm">Un Tensor Core mai mare, mai puține pe SM</a></li>
+        <li><a href="#tabelul-de-vârfuri-dens-vs-sparse">Tabelul de vârfuri: dens vs. sparse</a></li>
+        <li><a href="#tf32-și-bf16">TF32 și BF16</a></li>
+        <li><a href="#sparsity-structurată-24">Sparsity structurată 2:4</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-ce-nu-am-inclus-hopper-și-mai-departe">5. Ce nu am inclus: Hopper și mai departe</a></li>
+    <li><a href="#6-de-la-tensor-core-la-atenție">6. De la Tensor Core la atenție</a></li>
+    <li><a href="#7-nu-singurul-răspuns">7. Nu singurul răspuns</a></li>
+    <li><a href="#rezumat">Rezumat</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Prelucrarea pe loturi ținea procesorul ocupat; partajarea timpului le-a dat mai multor utilizatori impresia că îl au fiecare: ambiția Multics, apoi simplitatea Unix">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/22-time-sharing-and-the-unix-lineage/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Partajarea timpului și descendența Unix">
+	<meta property="og:description" content="Prelucrarea pe loturi ținea procesorul ocupat; partajarea timpului le-a dat mai multor utilizatori impresia că îl au fiecare: ambiția Multics, apoi simplitatea Unix">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:25:24+05:30">
+
+
+	<meta itemprop="name" content="Partajarea timpului și descendența Unix">
+	<meta itemprop="description" content="Prelucrarea pe loturi ținea procesorul ocupat; partajarea timpului le-a dat mai multor utilizatori impresia că îl au fiecare: ambiția Multics, apoi simplitatea Unix">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:25:24+05:30">
+	<meta itemprop="wordCount" content="1800">
+
+<title>Partajarea timpului și descendența Unix • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/22-time-sharing-and-the-unix-lineage/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/22-time-sharing-and-the-unix-lineage/" title="Time-Sharing and the Unix Lineage">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/22-time-sharing-and-the-unix-lineage/" title="Time-Sharing และสายเลือด Unix">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/22-time-sharing-and-the-unix-lineage/" title="Time-Sharing සහ Unix පෙළපත">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/22-time-sharing-and-the-unix-lineage/" title="Time-Sharing மற்றும் Unix வம்சாவளி">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/22-time-sharing-and-the-unix-lineage/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="active">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Partajarea timpului și descendența Unix</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#problema-ore-de-așteptare-pentru-o-greșeală-mică">Problema: ore de așteptare pentru o greșeală mică</a></li>
+    <li><a href="#trucul-de-bază-felii-scurte-de-timp-pe-rând">Trucul de bază: felii scurte de timp, pe rând</a></li>
+    <li><a href="#ctss-patru-utilizatori-pe-un-ibm-7090">CTSS: patru utilizatori pe un IBM 7090</a></li>
+    <li><a href="#multics-ambiția-utilității-informatice">Multics: ambiția „utilității informatice”</a></li>
+    <li><a href="#unix-ce-a-rămas-după-retragerea-din-multics">Unix: ce a rămas după retragerea din Multics</a>
+      <ul>
+        <li><a href="#pdp-11-și-departamentul-de-brevete">PDP-11 și departamentul de brevete</a></li>
+        <li><a href="#fork-pipe-uri-și-c">fork, pipe-uri și C</a></li>
+        <li><a href="#ieftin-mic-scris-în-limbaj-de-nivel-înalt">Ieftin, mic, scris în limbaj de nivel înalt</a></li>
+      </ul>
+    </li>
+    <li><a href="#ce-urmează">Ce urmează</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Partajarea timpului și descendența Unix
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Un monitor de loturi (capitolul 21) ține procesorul ocupat, dar programatorul așteaptă ore între două încercări. Time-sharing-ul (partajarea timpului) răspunde la altă întrebare: cum lași mai mulți oameni să lucreze <em>interactiv</em> pe aceeași mașină scumpă, fiecare cu impresia că o are doar pentru el.</p>
+<h2 id="problema-ore-de-așteptare-pentru-o-greșeală-mică">Problema: ore de așteptare pentru o greșeală mică<a class="anchor" href="#problema-ore-de-a%c8%99teptare-pentru-o-gre%c8%99eal%c4%83-mic%c4%83">#</a></h2>
+<p>Corbató, Merwin-Daggett și Daley scriau în 1962 că, cu tehnicile de monitor de loturi folosite pe majoritatea calculatoarelor mari, fiecare greșeală de program cerea de obicei câteva ore pentru eliminare, dacă nu o zi întreagă (Corbató, F. J., Merwin-Daggett, M., Daley, R. C., „An Experimental Time-Sharing System”, <em>Proc. AFIPS 1962 Spring Joint Computer Conference</em>, vol. 21, pp. 335–344, aici p. 335; copie: <a href="https://cseweb.ucsd.edu/classes/wi19/cse221-a/papers/corbato62.pdf">cseweb.ucsd.edu/classes/wi19/cse221-a/papers/corbato62.pdf</a>, accesat 2026-11-05). Alternativa, depanarea direct la consolă, era după ei „grossly wasteful of computer time” (ibid., p. 335). Autorii disting două sensuri ale termenului: unul orientat spre eficiența hardware-ului și cel pe care îl urmăresc ei, orientat spre eficiența <em>oamenilor</em> care folosesc calculatorul (ibid., p. 335).</p>
+<h2 id="trucul-de-bază-felii-scurte-de-timp-pe-rând">Trucul de bază: felii scurte de timp, pe rând<a class="anchor" href="#trucul-de-baz%c4%83-felii-scurte-de-timp-pe-r%c3%a2nd">#</a></h2>
+<p>Tehnica de bază descrisă în articol: mai multe persoane folosesc simultan calculatorul prin console de tip mașină de scris, iar un program supervizor rulează pe rând fiecare program de utilizator pentru o rafală scurtă, un <em>quantum</em> de calcul, în cazul cel mai simplu într-un <em>round-robin</em> (ciclu circular) (Corbató et al., 1962, p. 336). Ciclul trebuie să revină destul de des încât fiecare program din memoria rapidă să primească cel puțin un quantum în fiecare interval aproximativ de reacție umană (ibid., p. 336). Autorii notează limita evidentă: cu <em>n</em> utilizatori care cer serviciu în același timp, fiecare vede în medie 1/<em>n</em> din viteza efectivă a calculatorului (ibid., p. 336).</p>
+<p>Același articol enumeră ce trebuie să ofere hardware-ul pentru ca ideea să funcționeze (ibid., p. 336, „Hardware Problems”):</p>
+<ul>
+<li>un mod de <strong>protecție a memoriei</strong>, pentru că programele mai multor utilizatori aflate simultan în memorie se pot strica reciproc sau pot strica supervizorul;</li>
+<li><strong>relocare dinamică</strong> a tuturor accesărilor la memorie, ca supervizorul să poată rula un program din locuri diferite;</li>
+<li><strong>capturarea</strong> (<em>trapping</em>) instrucțiunilor de intrare-ieșire date de un program de utilizator, ca un utilizator să nu citească date în programul altuia;</li>
+<li>un <strong>ceas care generează o întrerupere</strong> după un interval fix, ca supervizorul să poată opri un program la sfârșitul quantumului.</li>
+</ul>
+<p>Aceste patru cerințe sunt, în mic, aceleași pe care le va formaliza memoria virtuală (capitolul 24).</p>
+<h2 id="ctss-patru-utilizatori-pe-un-ibm-7090">CTSS: patru utilizatori pe un IBM 7090<a class="anchor" href="#ctss-patru-utilizatori-pe-un-ibm-7090">#</a></h2>
+<p>Sistemul experimental din articol rula pe IBM 7090-ul centrului de calcul MIT, cu trei mașini de scris Flexowriter atașate și cu două modificări speciale: un ceas contabil cu întreruperi și un mod care permitea protecția memoriei, relocarea dinamică și capturarea instrucțiunilor de I/O (Corbató et al., 1962, p. 337). Partajarea se făcea între patru utilizatori: trei la mașini de scris, în prim-plan, și un al patrulea, pasiv, care rula în fundal un sistem de loturi (ibid., p. 337). Memoria principală era de 32.000 de cuvinte, iar autorii propun un algoritm de planificare pe mai multe niveluri pentru situația în care programele active nu mai încap toate în memorie (ibid., p. 340).</p>
+<p>Pagina multicians.org despre CTSS dă o cronologie puțin diferită: o versiune care muta patru utilizatori pe bandă a fost demonstrată pe IBM 709 al MIT în noiembrie 1961, iar la conferința din 1962 software-ul „wasn&rsquo;t quite working on the IBM 7090” (Van Vleck, T., „The IBM 7094 and CTSS”, <a href="https://multicians.org/thvv/7094.html">multicians.org/thvv/7094.html</a>, accesat 2026-11-05). Aceeași pagină spune că dezvoltarea CTSS a început în 1961, condusă de Corbató, Bob Daley și Marjorie Merwin-Daggett, și că centrul de calcul a primit 7090-ul în primăvara lui 1962, înlocuind un 709 (ibid.). Cele două surse nu se contrazic direct, dar diferă ca accent: articolul descrie sistemul pe 7090, pagina retrospectivă plasează prima demonstrație pe 709.</p>
+<p>Pagina de istorie Multics adaugă că, până în 1963, CTSS rula pe un IBM 7094 modificat, cu un al doilea banc de memorie de 32K cuvinte, cu două tamburi IBM 2301 pentru <em>swapping</em> (mutarea programelor între memorie și tambur) și cu acces de la distanță pentru până la 30 de utilizatori (Multicians, „Multics History”, §2.1.1 „CTSS”, <a href="https://multicians.org/history.html">multicians.org/history.html</a>, accesat 2026-11-05).</p>
+<p>Ideea nu era a unui singur grup. Aceeași pagină atribuie propunerea de time-sharing lui Christopher Strachey, într-o lucrare la un congres UNESCO din 1959, și, independent, lui John McCarthy, într-un memoriu intern MIT din 1959 (ibid., §2.0.1 „Predecessors”).</p>
+<h2 id="multics-ambiția-utilității-informatice">Multics: ambiția „utilității informatice”<a class="anchor" href="#multics-ambi%c8%9bia-utilit%c4%83%c8%9bii-informatice">#</a></h2>
+<p>Multics (<em>Multiplexed Information and Computing Service</em>) a fost un sistem de operare time-sharing pentru mainframe, început în 1965 și folosit până în 2000 (Multicians, „Multics History”, introducere). Proiectul a pornit ca efort comun al Project MAC de la MIT, al Bell Telephone Laboratories și al diviziei de calculatoare mari a General Electric, condus de profesorul Corbató (ibid., §1 „Summary of Multics”). Sistemul a fost prezentat într-o serie de lucrări la Fall Joint Computer Conference din 1965 (ibid., §1).</p>
+<p>Printre cele nouă obiective enumerate de Corbató și Vyssotsky în 1965, după aceeași pagină: folosire comodă de la terminale aflate la distanță, funcționare continuă „analogous to power &amp; telephone services”, un sistem de fișiere intern foarte fiabil și partajare selectivă a informației (ibid., §1.1 „Goals”). Hardware-ul oferea memorie virtuală segmentată, paginată și organizată pe inele (<em>rings</em>) de protecție, iar sistemul de operare era scris în PL/I (ibid., §1). Instalația GE-645 pe care a fost implementat Multics ocupa cam cât o casă obișnuită, costa milioane de dolari și rula la 435 KIPS (mii de instrucțiuni pe secundă) (ibid., §1.2.10 „Hardware”).</p>
+<p>MIT a început să ofere serviciu time-sharing pe Multics în toamna lui 1969 (ibid., §1). Bell Labs s-a retras din dezvoltare în 1969, iar în 1970 GE și-a vândut divizia de calculatoare către Honeywell (ibid., §1). Ultimul sistem Multics în funcțiune, la apărarea națională canadiană din Halifax, a fost oprit la sfârșitul lui octombrie 2000 (ibid., §1).</p>
+<h2 id="unix-ce-a-rămas-după-retragerea-din-multics">Unix: ce a rămas după retragerea din Multics<a class="anchor" href="#unix-ce-a-r%c4%83mas-dup%c4%83-retragerea-din-multics">#</a></h2>
+<p>Dennis Ritchie descrie perioada 1968–1969 la Bell Labs ca una „somewhat unsettled”, din cauza retragerii lente a laboratoarelor din proiectul Multics și a faptului tot mai evident că Multics nu livra repede un sistem utilizabil (Ritchie, D. M., „The Evolution of the Unix Time-sharing System”, prezentat în 1979, retipărit în <em>AT&amp;T Bell Laboratories Technical Journal</em> 63(6), partea 2, octombrie 1984, pp. 1577–1593; <a href="https://www.nokia.com/bell-labs/about/dennis-m-ritchie/hist.html">nokia.com/bell-labs/about/dennis-m-ritchie/hist.html</a>, secțiunea „Origins”, accesat 2026-11-05). Grupul cel mai implicat în începuturile Unix, după Ritchie: K. Thompson, Ritchie, M. D. McIlroy și J. F. Ossanna, printre ultimii de la Bell Labs care mai lucrau efectiv pe Multics (ibid., „Origins”).</p>
+<p>În 1969, Thompson, R. H. Canaday și Ritchie au proiectat pe hârtie un sistem de fișiere; cea mai mare parte a proiectului era a lui Thompson (ibid., „Origins”). Thompson a găsit apoi un PDP-7 puțin folosit, a implementat acel sistem de fișiere, a adăugat noțiunea de proces, câteva utilitare și un interpretor de comenzi simplu (<em>shell</em>); după ce asamblorul a fost gata, sistemul se putea întreține singur (ibid., „Origins”). Numele „Unix”, un joc de cuvinte pe „Multics”, a fost sugerat de Brian Kernighan abia „well into 1970” (ibid., „Origins”).</p>
+<p>Ritchie notează că primul articol publicat despre sistem e din 1974, dar că Unix „was born in 1969 not 1974” (ibid., „Introduction”). Articolul din 1974 al lui Ritchie și Thompson numără trei versiuni: cea mai veche, în jur de 1969–70, pe PDP-7 și PDP-9; a doua, pe PDP-11/20 fără protecție a memoriei; și cea descrisă în articol, pentru PDP-11/40 și /45 (Ritchie, D. M., Thompson, K., „The UNIX Time-Sharing System”, <em>Communications of the ACM</em> 17(7), iulie 1974, pp. 365–375, §1; copie recreată de E. A. Brewer: <a href="https://people.eecs.berkeley.edu/~brewer/cs262/unix.pdf">people.eecs.berkeley.edu/~brewer/cs262/unix.pdf</a>, accesat 2026-11-05).</p>
+<p>Copia recreată de Brewer păstrează numerotarea originală a paginilor, de la 365 la 375, și antetul „Communications of the ACM, July 1974, Volume 17, Number 7” (ibid.).</p>
+<h3 id="pdp-11-și-departamentul-de-brevete">PDP-11 și departamentul de brevete<a class="anchor" href="#pdp-11-%c8%99i-departamentul-de-brevete">#</a></h3>
+<p>La începutul lui 1970, grupul a propus cumpărarea unui PDP-11, cu o sumă (aproximativ 65.000 de dolari) cu un ordin de mărime mai mică decât ceruse înainte, și cu un scop concret: un sistem de editare și formatare a textului (Ritchie, 1984, „The advent of the PDP-11”). Comanda a fost plasată în mai; procesorul a sosit la sfârșitul verii, dar discul abia în decembrie (ibid.). În a doua jumătate a lui 1971, sistemul a deservit trei dactilografe de la departamentul de brevete, pe o mașină fără protecție a memoriei și cu un singur disc de 0,5 MB (ibid., „The first PDP-11 system”). Articolul din 1974 dă ca dată februarie 1971 pentru momentul în care Unix pe PDP-11 a devenit operațional și numără de atunci aproximativ 40 de instalații (Ritchie și Thompson, 1974, §1).</p>
+<h3 id="fork-pipe-uri-și-c">fork, pipe-uri și C<a class="anchor" href="#fork-pipe-uri-%c8%99i-c">#</a></h3>
+<p>Ritchie scrie că separarea dintre <code>fork</code> (crearea unui proces copie) și <code>exec</code> (înlocuirea programului rulat) nu era unică pentru Unix: exista deja în sistemul time-sharing de la Berkeley, cunoscut de Thompson (Ritchie, 1984, „Process control”). Prima implementare a apelului <code>fork</code> pe PDP-7 a cerut „precisely 27 lines of assembly code” (ibid., „Process control”).</p>
+<p>Pipe-urile (<em>pipes</em>, canale care leagă ieșirea unei comenzi de intrarea alteia) au apărut în Unix în 1972, la sugestia, „or perhaps insistence”, lui M. D. McIlroy (ibid., „Pipes”). Ritchie respinge ideea că modulele de I/O înlănțuibile din Multics ar fi fost precursorul direct: acelea trebuiau scrise special, pe când „the genius of the Unix pipeline” este că se construiește din aceleași comenzi folosite zilnic (ibid., „Pipes”).</p>
+<p>Toate programele de pe Unix-ul original pentru PDP-7 erau scrise în limbaj de asamblare, fără macrouri (ibid., „High-level languages”). Lucrul la ce avea să devină limbajul C a început în 1971, iar în 1973 nucleul a fost rescris în C; Ritchie numește acest moment „the most important watershed” și spune că atunci a fost introdusă și multiprogramarea (ibid., „High-level languages”). Articolul din 1974 plasează rescrierea în C în vara lui 1973 (Ritchie și Thompson, 1974, §2).</p>
+<h3 id="ieftin-mic-scris-în-limbaj-de-nivel-înalt">Ieftin, mic, scris în limbaj de nivel înalt<a class="anchor" href="#ieftin-mic-scris-%c3%aen-limbaj-de-nivel-%c3%aenalt">#</a></h3>
+<p>Ritchie și Thompson rezumă rezultatul astfel: Unix poate rula pe hardware care costă doar 40.000 de dolari, iar pentru software-ul principal s-au cheltuit mai puțin de doi oameni-an de muncă (Ritchie și Thompson, 1974, §1). PDP-11/45 al lor avea 144K octeți de memorie cu ferite, din care Unix ocupa 42K (ibid., §2). Abstractul enumeră ce considerau autorii neobișnuit pentru un sistem atât de mic: un sistem de fișiere ierarhic cu volume demontabile, I/O compatibil pentru fișiere, dispozitive și comunicare între procese, procese asincrone, limbaj de comandă selectabil per utilizator și peste 100 de subsisteme, inclusiv o duzină de limbaje (ibid., abstract).</p>
+<h2 id="ce-urmează">Ce urmează<a class="anchor" href="#ce-urmeaz%c4%83">#</a></h2>
+<p>Cerințele din articolul CTSS, protecția memoriei și relocarea, devin în capitolul 24 o idee generală: fiecare proces primește propriul spațiu de adrese. Capitolul 23 urmărește GNU și Linux, două proiecte care au refăcut un sistem asemănător cu Unix sub o licență liberă.</p>
+<!-- NEVERIFICAT / omis: ramificarea BSD vs. System V din structura EN nu are încă o sursă primară deschisă; secțiunea a fost lăsată deoparte. -->
+<p><strong>Încearcă acum.</strong> Pornește mașina virtuală de mai jos, dă clic pe ecranul negru ca să primească tastatura, apoi rulează <code>uname</code>, <code>whoami</code> și <code>ls</code>: sunt comenzi dintr-un shell de tip Unix, nu o diagramă a unuia.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=ro"
+    style="width:100%; height:600px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=ro" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9b17a0270323d6e8d6f80d4dde73cb1f8612bcaa" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Partajarea&#43;timpului&#43;%C8%99i&#43;descenden%C8%9Ba&#43;Unix&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F22-time-sharing-and-the-unix-lineage%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F22-time-sharing-and-the-unix-lineage.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F22-time-sharing-and-the-unix-lineage.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Prelucrarea pe loturi și nașterea sistemului de operare</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="flex align-center">
+        <span>Mișcarea GNU și Linux</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#problema-ore-de-așteptare-pentru-o-greșeală-mică">Problema: ore de așteptare pentru o greșeală mică</a></li>
+    <li><a href="#trucul-de-bază-felii-scurte-de-timp-pe-rând">Trucul de bază: felii scurte de timp, pe rând</a></li>
+    <li><a href="#ctss-patru-utilizatori-pe-un-ibm-7090">CTSS: patru utilizatori pe un IBM 7090</a></li>
+    <li><a href="#multics-ambiția-utilității-informatice">Multics: ambiția „utilității informatice”</a></li>
+    <li><a href="#unix-ce-a-rămas-după-retragerea-din-multics">Unix: ce a rămas după retragerea din Multics</a>
+      <ul>
+        <li><a href="#pdp-11-și-departamentul-de-brevete">PDP-11 și departamentul de brevete</a></li>
+        <li><a href="#fork-pipe-uri-și-c">fork, pipe-uri și C</a></li>
+        <li><a href="#ieftin-mic-scris-în-limbaj-de-nivel-înalt">Ieftin, mic, scris în limbaj de nivel înalt</a></li>
+      </ul>
+    </li>
+    <li><a href="#ce-urmează">Ce urmează</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

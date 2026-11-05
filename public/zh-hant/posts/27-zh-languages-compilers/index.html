@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1960 年，兩位程式設計師花三四個月讀懂一個設計者已離開、資料殘缺的編譯程式；此後幾家單位的說法裡都有“第一”或“最早”，各自說的並不是同一件事。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hant/posts/27-zh-languages-compilers/">
+	<meta property="og:site_name" content="我們如何走到那裡">
+	<meta property="og:title" content="程式語言與編譯器：從 104 機到倉頡">
+	<meta property="og:description" content="1960 年，兩位程式設計師花三四個月讀懂一個設計者已離開、資料殘缺的編譯程式；此後幾家單位的說法裡都有“第一”或“最早”，各自說的並不是同一件事。">
+	<meta property="og:locale" content="zh_Hant">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+		<meta property="article:tag" content="編譯器">
+		<meta property="article:tag" content="董韞美">
+		<meta property="article:tag" content="徐家福">
+		<meta property="article:tag" content="104機">
+		<meta property="article:tag" content="BCY">
+		<meta property="article:tag" content="ALGOL 60">
+
+
+	<meta itemprop="name" content="程式語言與編譯器：從 104 機到倉頡">
+	<meta itemprop="description" content="1960 年，兩位程式設計師花三四個月讀懂一個設計者已離開、資料殘缺的編譯程式；此後幾家單位的說法裡都有“第一”或“最早”，各自說的並不是同一件事。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="299">
+	<meta itemprop="keywords" content="編譯器,董韞美,徐家福,104機,BCY,ALGOL 60,國家標準,LCCD,倉頡">
+
+<title>程式語言與編譯器：從 104 機到倉頡 • 我們如何走到那裡</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hant/posts/27-zh-languages-compilers/">
+  <link rel="alternate" hreflang="zh-hans" href="http://localhost:1478/zh-hans/posts/27-zh-languages-compilers/" title="编程语言与编译器：从 104 机到仓颉">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hant.search.min.fa14ded62159ba6cbd0e4fab41da826a3888ed10f3c3ce0e2671b6ad687c6ff9.js" integrity="sha256-&#43;hTe1iFZumy9Dk&#43;rQdqCajiI7RDzw84OJnG2rWh8b/k=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hant/"><span>我們如何走到那裡</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜尋"
+    aria-label="搜尋"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="語言" />
+        繁體中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展開" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hans/posts/27-zh-languages-compilers/" class="flex flex-auto">
+          简体中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/00-credits/" class="">
+      致謝與延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-counting-rods-abacus/" class="">
+      算籌與算盤：數放在手裡，演算法記在口訣裡</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-drawloom-huaben/" class="">
+      花本：程式第一次和機器分開</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-gears-and-calculators/" class="">
+      齒輪會數數：從記里鼓車到“較數器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/02-zh-relays-switching/" class="">
+      繼電器與交換機：上海電話局裡的“電腦”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/03-zh-first-electronic-computers/" class="">
+      真空管與電晶體：中國第一批電腦，和算盤的真實角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/64-zh-hanzi-encoding/" class="">
+      漢字上線：從四位電碼到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/26-zh-input-and-typesetting/" class="">
+      把漢字敲進機器：打字機、輸入法與雷射照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/39-zh-networks-1986-1994/" class="">
+      越過長城：中文世界接入網路（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/47-zh-taiwan-semiconductors/" class="">
+      從豆漿店到晶圓代工：台灣半導體之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/17-zh-supercomputers-cpus/" class="">
+      規模：從銀河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/63-zh-road-to-attention/" class="">
+      從中文信息處理到注意力機制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/05-zh-transistors-semiconductors/" class="">
+      從一門課到一塊晶片：中國半導體的頭十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/48-zh-lithography-fabs/" class="">
+      微影：從顯微鏡到掃描機</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/58-zh-deep-learning-chips/" class="">
+      從 DianNao 到昇騰：為矩陣乘法造的晶片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/23-zh-operating-systems/" class="">
+      作業系統：從大慶的“虛擬機”到開源歐拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/27-zh-languages-compilers/" class="active">
+      程式語言與編譯器：從 104 機到倉頡</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主機與天文台的電腦</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/43-zh-bbs/" class="">
+      擠不進去的廣場：兩岸三地的校園 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/44-zh-chinese-search/" class="">
+      一台伺服器裝不下：中國大陸第一批搜尋引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/66-zh-commercial-crypto/" class="">
+      從“屬於國家秘密”到國際標準：中國商用密碼的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/67-zh-privacy-law/" class="">
+      從電腦處理到自動化決策：兩岸三地的個人資料保護法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/64-zh-mobile-standards/" class="">
+      空中的標準之爭：從大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/68-zh-computer-craze/" class="">
+      娃娃與學習機：1984 年以後的電腦熱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="選單" />
+  </label>
+
+  <h3>程式語言與編譯器：從 104 機到倉頡</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目錄" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#104-機把別人的編譯程式讀懂">104 機：把別人的編譯程式讀懂</a></li>
+    <li><a href="#p語法與-bcy">P語法與 BCY</a></li>
+    <li><a href="#誰是第一">誰是“第一”</a></li>
+    <li><a href="#1970-年代系統語言與國家標準">1970 年代：系統語言與國家標準</a></li>
+    <li><a href="#漢字字形與中文程式設計">漢字字形與中文程式設計</a></li>
+    <li><a href="#延伸閱讀">延伸閱讀</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    程式語言與編譯器：從 104 機到倉頡
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日曆" />
+    <span>9月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hant/tags/%E7%B7%A8%E8%AD%AF%E5%99%A8/">編譯器</a>, 
+      <a href="/zh-hant/tags/%E8%91%A3%E9%9F%9E%E7%BE%8E/">董韞美</a>, 
+      <a href="/zh-hant/tags/%E5%BE%90%E5%AE%B6%E7%A6%8F/">徐家福</a>, 
+      <a href="/zh-hant/tags/104%E6%A9%9F/">104機</a>, 
+      <a href="/zh-hant/tags/bcy/">BCY</a>, 
+      <a href="/zh-hant/tags/algol-60/">ALGOL 60</a>, 
+      <a href="/zh-hant/tags/%E5%9C%8B%E5%AE%B6%E6%A8%99%E6%BA%96/">國家標準</a>, 
+      <a href="/zh-hant/tags/lccd/">LCCD</a>, 
+      <a href="/zh-hant/tags/%E5%80%89%E9%A0%A1/">倉頡</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F09-01, F09-02, F09-03, F09-04, F09-05, F09-06, F09-07, F09-08, F09-09, F09-10, F09-11, F03-02, F03-12 -->
+<p>編譯器把人寫的程式翻譯成機器能執行的指令。中國第一批編譯器的故事，是從一個設計者已經離開、資料殘缺的程式開始的。</p>
+<h2 id="104-機把別人的編譯程式讀懂">104 機：把別人的編譯程式讀懂<a class="anchor" href="#104-%e6%a9%9f%e6%8a%8a%e5%88%a5%e4%ba%ba%e7%9a%84%e7%b7%a8%e8%ad%af%e7%a8%8b%e5%bc%8f%e8%ae%80%e6%87%82">#</a></h2>
+<p>1960 年，中國科學院計算技術研究所的董韞美參加了 104 機編譯程式的總體設計。據中國科學院官網 2026 年的人物報導，104 機是“我國當時最大的計算機”。編譯程式進入聯調時，“原來的設計人員大多已經離開，留下的資料不僅殘缺，還有不少錯誤”。董韞美和同事李開德決定不放棄，“每天看幾十條程序，反覆推測、驗證、再推測，整整看了三四個月”，一點一點弄清這個程式接受什麼輸入、做什麼加工、產生什麼輸出。報導說，“104機編譯程序成為國內第一個能夠運行的編譯程序”。</p>
+<p>那個年代程式設計師用的工具，有一部分保存了下來。中國計算機學會 2019 年認定的歷史記憶裡，有張綺霞保存的流程圖板、程式紙和 104、109乙、111、119、655、013 機的指令集表。同一條目記載，《104電子計算機標準程序彙編》是“國內首個算法標準程序庫”，用浮動地址的機器語言寫成，共發行 2600 冊。</p>
+<p>下面的小 CPU 實驗，可以讓你體會手寫機器指令是什麼感覺：先組譯、載入程式，再單步執行，每條助記符都對應一串操作碼。編譯器做的，就是把一行高階語言自動變成許多條這樣的指令。（這台小 CPU 是教學模型，和 104 機的指令集無關。）</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=zh-hant"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="互動實驗：mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=zh-hant" target="_blank" rel="noopener">在新分頁開啟實驗 ↗</a>
+  </div>
+</div>
+
+<h2 id="p語法與-bcy">P語法與 BCY<a class="anchor" href="#p%e8%aa%9e%e6%b3%95%e8%88%87-bcy">#</a></h2>
+<p>1962 年，董韞美所在的程式組轉向研究 ALGOL 60。1963 年，他與李開德提出語法模型“P語法”，用數學方式精確描述程式語言的規則。BCY 的來歷有兩種記載。據中國科學院的人物報導，1964 至 1965 年，董韞美主持研製 BCY，在 119 機上成功執行，報導稱它是“國內最早的實用高級程序語言”。中國計算機學會“中國計算機歷史記憶”收錄的程式手稿條目則寫道，BCY 程式語言系統“是由中科院計算所三室姚偉民等自主研發”，“從1971年起配置於109，111等國產機上”。兩份記載給出的研製者和機器不同，這一頁把兩說並列，不作取捨。據中國科學院的報導，BCY 借鑑 ALGOL 的核心思想，刪繁就簡，更貼近中國電腦的硬體；報導還說它“開創性地支持漢字書寫”，但沒有說明漢字具體用在哪裡。同一篇報導寫到，BCY 後來用於 109丙機和 015 機：109丙機為“兩彈一星”研製工作了 15 年，015 機連續運轉 16 年。</p>
+<h2 id="誰是第一">誰是“第一”<a class="anchor" href="#%e8%aa%b0%e6%98%af%e7%ac%ac%e4%b8%80">#</a></h2>
+<p>幾乎同時，南京大學也在做 ALGOL。中國計算機學會的終身成就獎介紹說，1965 年徐家福領導南京大學與華東計算所的研製組，在國產 J-501 機上研製出“中國第一個ALGOL編譯系統”。《南京大學報》上一位組員的回憶更具體：1964 年 8 月開工，共 8 人，1965 年 6 月除錯完畢，是“國內第一個可用的Algol編譯系統”。北京大學這邊，據陳嘉庚科學獎基金會 1990 年的獲獎介紹，王選與北大另三位同志於 1967 年完成 DJS21 機 ALGOL 60 編譯系統，“是國內最早的幾個實用編譯系統之一”。1975 年起，王選轉向漢字激光照排系統的研製。</p>
+<p>把幾種說法放在一起看，用的標準並不相同：“第一個能夠運行的編譯程序”“最早的實用高級程序語言”“第一個ALGOL編譯系統”“第一個可用的”“最早的幾個實用編譯系統之一”。這一頁不替它們排座次。</p>
+<h2 id="1970-年代系統語言與國家標準">1970 年代：系統語言與國家標準<a class="anchor" href="#1970-%e5%b9%b4%e4%bb%a3%e7%b3%bb%e7%b5%b1%e8%aa%9e%e8%a8%80%e8%88%87%e5%9c%8b%e5%ae%b6%e6%a8%99%e6%ba%96">#</a></h2>
+<p>1977 年，徐家福在 655 機上設計實現了基於自編譯語言的軟體自動產生系統 NDHD；1979 年，他與仲萃豪、楊芙清合作研製通用系統程式設計語言 XCY（楊芙清的作業系統工作見<a href="/zh-hant/posts/23-zh-operating-systems/">《作業系統》</a>）。據中國計算機學會的記載，張綺霞第一次用 FORTRAN 程式設計計算，是 1976 年在華東計算所的 655 機上。</p>
+<p>語言也成了國家標準。據標準目錄，ALGOL 60 國家標準 GB 1500 首發於 1979 年 2 月 13 日，1987 年代替它的 GB/T 1500-1987 等同採用 ISO 1538-1984；FORTRAN 標準 GB 3057-1982 後來被 GB/T 3057-1996 全部代替；1984 年的最小 BASIC 標準 GB 4144-1984，是為了“在多種自動數據處理系統中促進BASIC程序的可互換性”。1979 至 1981 年，徐家福參加了 ALGOL、COBOL 國家標準的制定。</p>
+<h2 id="漢字字形與中文程式設計">漢字字形與中文程式設計<a class="anchor" href="#%e6%bc%a2%e5%ad%97%e5%ad%97%e5%bd%a2%e8%88%87%e4%b8%ad%e6%96%87%e7%a8%8b%e5%bc%8f%e8%a8%ad%e8%a8%88">#</a></h2>
+<p>1978 年 11 月，董韞美到史丹佛大學做訪問學者，合作導師是高德納。據中國科學院的報導，他用參數描述漢字筆畫，做成 LCCD 系統，1980 年在史丹佛人工智慧實驗室執行；1981 年《計算機程序設計藝術》第二卷新版問世，“索引中首次出現了漢字”。回國後，他研發出漢字字形設計系統 CCDS，並用它設計了 GB 2312-80 全部 6763 個漢字的宋體字形。</p>
+<p>進入 21 世紀，也有人專門做中文程式設計。易語言官網稱，“易語言漢語編程環境”2004 年 11 月獲得科學技術部高技術研究發展中心組織的技術經濟評議。據南京大學的新聞稿，2024 年 6 月 21 日，華為在開發者大會上向全球開發者介紹了自研程式語言倉頡，並發布了開發者預覽版。新聞稿說，“此前主流的通用編程語言均源於國外”；倉頡專案 2019 年啟動，南京大學馮新宇教授擔任首席架構師。</p>
+<p>英文版第 27 章講 FORTRAN、COBOL、Lisp 和 C，第 28 章講編譯器、JIT 和現代語言執行時；這一頁講的是同一批問題在中國由誰、在哪幾台機器上做出來。</p>
+<p>**出處：**樊曉麗《董韞美：在空白荒原拓出中國軟件之路》（中國科學院官網）；中國計算機學會“中國計算機歷史記憶”與終身成就獎介紹；《南京大學報》《鐵骨錚錚一鴻儒》。</p>
+<h2 id="延伸閱讀">延伸閱讀<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%96%b1%e8%ae%80">#</a></h2>
+<ul>
+<li>樊曉麗，《董韞美：在空白荒原拓出中國軟件之路》（English: Dong Yunmei: opening a road for Chinese software on blank ground），《中國科學報》，中國科學院官網，2026-08-27。<a href="https://www.cas.cn/zt/hyzt/ysdh22nd/fc/202608/t20260827_5119143.shtml">連結</a></li>
+<li>中國計算機學會，《2013年CCF終身成就獎 董韞美》（English: CCF Lifetime Achievement Award 2013: Dong Yunmei），2013。<a href="https://www.ccf.org.cn/Awards/Awards_Recipients/2013/Lifetime_Contribution/2013-02-16/578017.shtml">連結</a></li>
+<li>中國計算機學會，《2011年CCF終身成就獎 徐家福》（English: CCF Lifetime Achievement Award 2011: Xu Jiafu），2011。<a href="https://www.ccf.org.cn/Awards/Awards_Recipients/2011/Lifetime_Contribution/2011-02-16/578028.shtml">連結</a></li>
+<li>《南京大學報》，《鐵骨錚錚一鴻儒》（English: A scholar of iron integrity, a team member&rsquo;s memoir of Xu Jiafu），2020-05-20。<a href="https://xiaobao.nju.edu.cn/da/a0/c18185a318112/page.htm">連結</a></li>
+<li>中國計算機學會，《104、109乙、111、119、013、655等機器程序手稿》（English: Program manuscripts for the 104, 109B, 111, 119, 013, 655 and other machines, China Computing History Memory, 2019），2020-03-24。<a href="https://www.ccf.org.cn/Computing_history/Full_List/2019/Second_class/2020-03-24/697781.shtml">連結</a></li>
+<li>陳嘉庚科學獎基金會，《技術科學獎·1990·王選》（English: Tan Kah Kee Science Award in technological sciences, 1990: Wang Xuan），2009-04-02。<a href="https://tsaf.cas.cn/ljhjqk/cjgkxj/asj/1990/200904/t20090402_4954702.html">連結</a></li>
+<li>工標網，《GB/T 1500-1987 程序設計語言 ALGOL 60》（English: Catalogue record for the ALGOL 60 national standard）。<a href="http://doc.csres.com/detail/63390.html">連結</a></li>
+<li>國家標準信息公共服務平台，《GB/T 3057-1996 信息技術 程序設計語言 Fortran》（English: National standard record for Fortran）。<a href="https://std.samr.gov.cn/gb/search/gbDetailed?id=71F772D79D40D3A7E05397BE0A0AB82A">連結</a></li>
+<li>工標網，《GB 4144-1984 程序設計語言 最小BASIC》（English: Catalogue record for the Minimal BASIC national standard）。<a href="http://doc.csres.com/detail/65823.html">連結</a></li>
+<li>易語言官網，《易語言獲得〈科技項目技術經濟評議書〉》（English: EPL receives a technical-economic review certificate, vendor news），2004-11-18。<a href="http://epl.eyuyan.com/news/2004/111801.html">連結</a></li>
+<li>南京大學，《華為發布通用編程語言“倉頡”，南京大學計算機科學與技術系馮新宇教授作為首席架構師領導研發》（English: Huawei releases the general-purpose language Cangjie, with NJU&rsquo;s Feng Xinyu as chief architect），2024-06-21。<a href="https://www.nju.edu.cn/info/1067/369771.htm">連結</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='最後修改者 Nayana | 11月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日曆" />
+    <span>11月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E8%88%87%E7%B7%A8%E8%AD%AF%E5%99%A8%EF%BC%9A%E5%BE%9E&#43;104&#43;%E6%A9%9F%E5%88%B0%E5%80%89%E9%A0%A1&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hant%2Fposts%2F27-zh-languages-compilers%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hant%2Fposts%2F27-zh-languages-compilers.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hant%2Fposts%2F27-zh-languages-compilers.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hant/posts/23-zh-operating-systems/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一頁" />
+        <span>作業系統：從大慶的“虛擬機”到開源歐拉</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hant/posts/18-zh-hong-kong-computing/" class="flex align-center">
+        <span>香港：打孔卡、主機與天文台的電腦</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一頁" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#104-機把別人的編譯程式讀懂">104 機：把別人的編譯程式讀懂</a></li>
+    <li><a href="#p語法與-bcy">P語法與 BCY</a></li>
+    <li><a href="#誰是第一">誰是“第一”</a></li>
+    <li><a href="#1970-年代系統語言與國家標準">1970 年代：系統語言與國家標準</a></li>
+    <li><a href="#漢字字形與中文程式設計">漢字字形與中文程式設計</a></li>
+    <li><a href="#延伸閱讀">延伸閱讀</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

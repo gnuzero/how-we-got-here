@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Optional Learning Paths on How We Got There</title>
+		<link>http://localhost:1478/paths/</link>
+		<description>Recent content in Optional Learning Paths on How We Got There</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<atom:link href="http://localhost:1478/paths/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Crypto &amp; Wartime Computing</title>
+				<link>http://localhost:1478/paths/crypto-wartime/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/paths/crypto-wartime/</guid>
+				<description>&lt;p&gt;Secrecy as a workload — why breaking ciphers outran gears and relays and pulled computing into electronics. Thin index; doors live in the posts.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/02-relays-and-electromechanical-logic/&#34;&gt;Relays and Electromechanical Logic&lt;/a&gt; — binary logic in moving metal, and why metal is slow&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/66-wartime-crypto/&#34;&gt;Wartime Crypto&lt;/a&gt; — Enigma, Bletchley, Colossus; named people; the urgency&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/03-the-vacuum-tube-era/&#34;&gt;The Vacuum Tube Era&lt;/a&gt; — electronic switching without mechanical contacts&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/04-why-the-transistor-had-to-happen/&#34;&gt;Why the Transistor Had to Happen&lt;/a&gt; — tubes win speed, then hit heat/power/failure&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Back to &lt;a href=&#34;http://localhost:1478/paths/&#34;&gt;all paths&lt;/a&gt;.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Who Runs the Internet</title>
+				<link>http://localhost:1478/paths/who-runs-the-internet/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/paths/who-runs-the-internet/</guid>
+				<description>&lt;p&gt;Who names numbers, names, and encodings — and what protocol story those registries sit on. Thin index; not an org catalog.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/39-arpanet-and-packet-switching/&#34;&gt;ARPANET and Packet Switching&lt;/a&gt; — the research network that proved packets&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/40-ethernet-and-the-local-area-network/&#34;&gt;Ethernet and the Local Area Network&lt;/a&gt; — local link standardization (IEEE 802 kin)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/41-tcp-ip-and-the-modern-internet-stack/&#34;&gt;TCP/IP and the Modern Internet Stack&lt;/a&gt; — how heterogeneous nets become one internetwork&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/64-who-decides-the-wire/&#34;&gt;Who Decides the Wire&lt;/a&gt; — RFCs / IETF / IANA / ICANN / RIRs / Unicode as seeds of a kind&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Back to &lt;a href=&#34;http://localhost:1478/paths/&#34;&gt;all paths&lt;/a&gt;.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Find, Then Talk</title>
+				<link>http://localhost:1478/paths/find-then-talk/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/paths/find-then-talk/</guid>
+				<description>&lt;p&gt;Information retrieval and peer communication as one arc — then the consumer packaging of both. Thin index.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/41-tcp-ip-and-the-modern-internet-stack/&#34;&gt;TCP/IP and the Modern Internet Stack&lt;/a&gt; — the transport the apps rode&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/43-usenet-archie-gopher-and-the-pre-web-internet/&#34;&gt;Usenet, Archie, Gopher, and the Pre-Web Internet&lt;/a&gt; — find + talk → IRC → portals (Yahoo as seed)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/44-google-s-big-data-infrastructure-why-they-won/&#34;&gt;Google&amp;rsquo;s Big Data Infrastructure&lt;/a&gt; — the same &lt;em&gt;category&lt;/em&gt; of find, at crawler scale&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Back to &lt;a href=&#34;http://localhost:1478/paths/&#34;&gt;all paths&lt;/a&gt;.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Privacy / Identity / Consent</title>
+				<link>http://localhost:1478/paths/privacy-identity-consent/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/paths/privacy-identity-consent/</guid>
+				<description>&lt;p&gt;Protection, cryptography on a public network, identity protocols, and adversarial systems — engineering evolution, not a policy pamphlet. Thin index.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/24-virtual-memory-and-multitasking/&#34;&gt;Virtual Memory and Multitasking&lt;/a&gt; — isolation as a hardware/OS boundary&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/25-containers-and-modern-os-isolation/&#34;&gt;Containers and Modern OS Isolation&lt;/a&gt; — namespaces and cgroups as shared-kernel boundaries&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/66-wartime-crypto/&#34;&gt;Wartime Crypto&lt;/a&gt; — secrecy under a dedicated adversary (contrast with the open net)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/67-privacy-consent-identity-cyber/&#34;&gt;Privacy, Consent, Identity, Cyber&lt;/a&gt; — Saltzer/Schroeder → public-key → auth/consent → cyber as feedback&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/64-who-decides-the-wire/&#34;&gt;Who Decides the Wire&lt;/a&gt; — shared identifiers the privacy layer still depends on&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Back to &lt;a href=&#34;http://localhost:1478/paths/&#34;&gt;all paths&lt;/a&gt;.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Visions That Shipped</title>
+				<link>http://localhost:1478/paths/visions-that-shipped/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/paths/visions-that-shipped/</guid>
+				<description>&lt;p&gt;Forward links out of the journey — seeds of kinds that turned stack into lived platforms. Not biographies. Thin index.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/23-the-gnu-movement-and-linux/&#34;&gt;The GNU Movement and Linux&lt;/a&gt; — Stallman, Torvalds, and the commons under modern servers&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/68-visions-that-shipped/&#34;&gt;Visions That Shipped&lt;/a&gt; — Cisco, Gates, Jobs, GNU+Linus, Bezos, Musk as seeds; derive kin; stop&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/posts/69-platform-synthesis/&#34;&gt;Platform Synthesis&lt;/a&gt; — one high-level stop: distributed systems + networking + AI infra + privacy + software engineering&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Back to &lt;a href=&#34;http://localhost:1478/paths/&#34;&gt;all paths&lt;/a&gt;.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

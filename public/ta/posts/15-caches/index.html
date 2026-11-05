@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Locality நினைவகப் படிநிலையை வேலை செய்ய வைக்கிறது; associativity மற்றும் coherence அதை நேர்மையாக வைக்கும் செலவுகள்">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/15-caches/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Caches">
+	<meta property="og:description" content="Locality நினைவகப் படிநிலையை வேலை செய்ய வைக்கிறது; associativity மற்றும் coherence அதை நேர்மையாக வைக்கும் செலவுகள்">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Caches">
+	<meta itemprop="description" content="Locality நினைவகப் படிநிலையை வேலை செய்ய வைக்கிறது; associativity மற்றும் coherence அதை நேர்மையாக வைக்கும் செலவுகள்">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1338">
+
+<title>Caches • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/15-caches/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/15-caches/" title="Caches">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/15-caches/" title="แคช">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/15-caches/" title="Caches">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/15-caches/" title="Cache-uri">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/15-caches/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/15-caches/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/15-caches/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/15-caches/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="active">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Caches</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#cache-கள-ஏன-வல-சயகனறன">Cache-கள் ஏன் வேலை செய்கின்றன</a></li>
+    <li><a href="#சரசர-அணகல-நரம-ஏன-சல-சதவதஙகள-மககயம">சராசரி அணுகல் நேரம்: ஏன் சில சதவீதங்கள் முக்கியம்</a></li>
+    <li><a href="#ஒர-மகவரயப-பரததல-tag-index-offset">ஒரு முகவரியைப் பிரித்தல்: Tag, Index, Offset</a></li>
+    <li><a href="#ஒர-line-எஙக-வழ-மடயம">ஒரு Line எங்கே வாழ முடியும்</a></li>
+    <li><a href="#எழதமபத-write-through-எதர-write-back">எழுதும்போது: Write-through எதிர் Write-back</a></li>
+    <li><a href="#multicore-பதய-கடடபபடக-coherence">Multicore: புதிய கட்டுப்பாடாக Coherence</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Caches
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவு 10 நினைவகப் படிநிலையை அமைத்தது: பதிவேடுகள், SRAM cache, DRAM, வட்டு — ஒவ்வொரு படியிலும் கொள்ளளவு வேகத்திற்கு வர்த்தகம் செய்யப்படுகிறது. Cache-கள் அந்த வர்த்தகம் ஒவ்வொரு CPU-இன் செயல்திறனையும் சுமக்கும் இடம். முன்நிபந்தனை உண்மையான நிரல்களைப் பற்றிய ஒரு அனுபவ உண்மை: <strong>locality</strong>.</p>
+<p>தமிழில் cache பற்றிக் கிடைப்பது &ldquo;CPU-க்கும் RAM-க்கும் இடையிலான வேகமான சிறிய நினைவகம்; L1, L2, L3&rdquo; என்ற அறிமுக நிலை மட்டுமே (தமிழ் விக்கிப்பீடியாவின் இரண்டு சிறு கட்டுரைகள், பள்ளிப் பாடநூல், ஒரு வலைப்பதிவு). ஒரு முகவரி எப்படி tag / index / offset ஆகப் பிரிகிறது, associativity ஏன் miss-களைக் குறைக்கிறது, பல core-கள் ஒரே தரவை எப்படி ஒத்திசைவில் வைக்கின்றன (coherence) — இவற்றுக்குத் தமிழ் எழுத்து விளக்கம் இந்தத் தணிக்கையில் கிடைக்கவில்லை. இந்தப் பக்கம் அவற்றை எண்களோடு விளக்குகிறது.</p>
+<h2 id="cache-கள-ஏன-வல-சயகனறன">Cache-கள் ஏன் வேலை செய்கின்றன<a class="anchor" href="#cache-%e0%ae%95%e0%ae%b3-%e0%ae%8f%e0%ae%a9-%e0%ae%b5%e0%ae%b2-%e0%ae%9a%e0%ae%af%e0%ae%95%e0%ae%a9%e0%ae%b1%e0%ae%a9">#</a></h2>
+<p><strong>Temporal locality</strong> (காலஞ்சார் அண்மை) — சற்று முன் தொட்ட இடம் விரைவில் மீண்டும் தொடப்பட வாய்ப்பு (loop மாறிகள், hot குறியீடு). <strong>Spatial locality</strong> (இடஞ்சார் அண்மை) — அருகிலுள்ள இடங்கள் அடுத்ததாக வாய்ப்பு (arrays, sequential fetch). Cache-கள் சமீபத்தில் பயன்படுத்தப்பட்ட தரவை அருகில் வைக்கின்றன, மற்றும் miss-இல் முழு <strong>line</strong>-களையும் (cache line / block; அடிக்கடி 64 பைட்கள்) fetch செய்கின்றன, அண்டைகள் விரைவில் வரும் என்று பந்தயம் கட்டி.</p>
+<p>சொற்கள்: தேடிய தரவு cache-இல் இருந்தால் <strong>hit</strong>; இல்லாவிட்டால் <strong>miss</strong> — அப்போது கீழ் நிலையிலிருந்து (L2, DRAM) line கொண்டுவரப்படுகிறது. <strong>Hit rate</strong> = hit-களின் விகிதம்; <strong>miss rate</strong> = 1 − hit rate.</p>
+<h2 id="சரசர-அணகல-நரம-ஏன-சல-சதவதஙகள-மககயம">சராசரி அணுகல் நேரம்: ஏன் சில சதவீதங்கள் முக்கியம்<a class="anchor" href="#%e0%ae%9a%e0%ae%b0%e0%ae%9a%e0%ae%b0-%e0%ae%85%e0%ae%a3%e0%ae%95%e0%ae%b2-%e0%ae%a8%e0%ae%b0%e0%ae%ae-%e0%ae%8f%e0%ae%a9-%e0%ae%9a%e0%ae%b2-%e0%ae%9a%e0%ae%a4%e0%ae%b5%e0%ae%a4%e0%ae%99%e0%ae%95%e0%ae%b3-%e0%ae%ae%e0%ae%95%e0%ae%95%e0%ae%af%e0%ae%ae">#</a></h2>
+<blockquote class='book-hint '>
+<p>AMAT = hit நேரம் + miss rate × miss தண்டனை</p>
+</blockquote><p>(AMAT = average memory access time.) Hit நேரம் 1 ns, miss தண்டனை 100 ns (DRAM வரை சென்று வர) என்று வைத்தால்:</p>
+<ul>
+<li>miss rate 5% → AMAT = 1 + 0.05 × 100 = <strong>6 ns</strong></li>
+<li>miss rate 2% → AMAT = 1 + 0.02 × 100 = <strong>3 ns</strong></li>
+</ul>
+<p>Miss rate-இல் 3 சதவீதப் புள்ளி குறைவு சராசரி நினைவக நேரத்தைப் <em>பாதியாக்குகிறது</em>. Cache வடிவமைப்பு முழுவதும் அந்தச் சிறிய சதவீதங்களுக்கான போர்.</p>
+<h2 id="ஒர-மகவரயப-பரததல-tag-index-offset">ஒரு முகவரியைப் பிரித்தல்: Tag, Index, Offset<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%ae%e0%ae%95%e0%ae%b5%e0%ae%b0%e0%ae%af%e0%ae%aa-%e0%ae%aa%e0%ae%b0%e0%ae%a4%e0%ae%a4%e0%ae%b2-tag-index-offset">#</a></h2>
+<p>Lookup ஒரு முகவரியை மூன்று துண்டுகளாகப் பிரிக்கிறது:</p>
+<ul>
+<li><strong>Offset</strong> — line-க்குள் எந்த பைட். Line 64 பைட் = 2⁶ → கீழ் 6 பிட்கள்.</li>
+<li><strong>Index</strong> — cache-இல் எந்த இடம் (அல்லது எந்த set).</li>
+<li><strong>Tag</strong> — மீதமுள்ள மேல் பிட்கள்; அந்த இடத்தில் இருக்கும் line <em>நாம் விரும்புவதுதானா</em> என்று சரிபார்க்க, ஒவ்வொரு line-உடனும் சேமிக்கப்படுகிறது.</li>
+</ul>
+<p><strong>எடுத்துக்காட்டு.</strong> 16-பிட் முகவரிகள்; cache 1 KiB (1024 பைட்); line 64 பைட் → 1024 / 64 = 16 lines. <strong>Direct-mapped</strong> (ஒவ்வொரு முகவரிக்கும் ஒரே ஒரு சாத்தியமான இடம்): 16 lines → index 4 பிட்கள்; offset 6 பிட்கள்; tag = 16 − 4 − 6 = 6 பிட்கள்.</p>
+<p>முகவரி <strong>0x1234</strong>-ஐப் பிரிப்போம்:</p>
+<pre tabindex="0"><code>0x1234  =  0001 0010 0011 0100   (இருமம்)
+பிரிப்பு:  000100 | 1000 | 110100
+            tag     index  offset
+         =   4    |   8  |   52</code></pre><p>சரிபார்ப்பு: 4 × 1024 + 8 × 64 + 52 = 4096 + 512 + 52 = 4660 = 0x1234 ✓. ஆக இந்த பைட் line 8-இல், அந்த line-க்குள் 52-ஆவது பைட்; line 8-இல் சேமித்த tag 4 ஆக இருந்தால் hit.</p>
+<h2 id="ஒர-line-எஙக-வழ-மடயம">ஒரு Line எங்கே வாழ முடியும்<a class="anchor" href="#%e0%ae%92%e0%ae%b0-line-%e0%ae%8e%e0%ae%99%e0%ae%95-%e0%ae%b5%e0%ae%b4-%e0%ae%ae%e0%ae%9f%e0%ae%af%e0%ae%ae">#</a></h2>
+<p><strong>Direct-mapped</strong> — முகவரிக்கு ஒரு சாத்தியமான slot. வேகமான சரிபார்ப்பு (ஒரே ஒரு tag ஒப்பீடு); ஆனால் இரண்டு hot முகவரிகள் ஒரு index-ஐப் பகிர்ந்தால் ஒன்றையொன்று வெளியேற்றும் <strong>conflict miss</strong>-கள்.</p>
+<p><strong>Fully associative</strong> — எந்த line, எந்த slot. Conflict miss இல்லை; ஆனால் ஒவ்வொரு அணுகலும் ஒவ்வொரு tag-ஐயும் ஒப்பிடுகிறது. பெரிய cache-களுக்கு அளவிடாது.</p>
+<p><strong>Set-associative</strong> — நடைமுறை நடு: index ஒரு சிறிய <strong>set</strong>-ஐத் தேர்ந்தெடுக்கிறது (எடுத்துக்காட்டாக 8 <strong>ways</strong>); tag-கள் அங்கே மட்டும் சரிபார்க்கப்படுகின்றன. பெரும்பாலான நெகிழ்வுத்தன்மை, முழு scan-ஐ விட மிகக் குறைந்த வன்பொருள். கிட்டத்தட்ட ஒவ்வொரு உண்மையான cache-ம் இங்கே அமர்கிறது.</p>
+<p><strong>Conflict-ஐக் கண்ணால் பார்ப்போம்.</strong> A = 0x1234, B = 0x1634. B = 0x1634 = 5684 = 5 × 1024 + 8 × 64 + 52 → tag 5, index 8, offset 52. A-வும் B-யும் <em>ஒரே index 8</em>, வெவ்வேறு tag. ஒரு loop A, B, A, B, A, B என்று மாறி மாறி அணுகுகிறது:</p>
+<table>
+	<thead>
+			<tr>
+					<th>அணுகல்</th>
+					<th>Direct-mapped (line 8-இல் என்ன)</th>
+					<th>முடிவு</th>
+					<th>2-way (set 0-இல் என்ன)</th>
+					<th>முடிவு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>A</td>
+					<td>– → A</td>
+					<td>miss</td>
+					<td>– → {A}</td>
+					<td>miss</td>
+			</tr>
+			<tr>
+					<td>B</td>
+					<td>A → B (A வெளியேற்றம்)</td>
+					<td>miss</td>
+					<td>{A} → {A, B}</td>
+					<td>miss</td>
+			</tr>
+			<tr>
+					<td>A</td>
+					<td>B → A</td>
+					<td>miss</td>
+					<td>{A, B}</td>
+					<td>hit</td>
+			</tr>
+			<tr>
+					<td>B</td>
+					<td>A → B</td>
+					<td>miss</td>
+					<td>{A, B}</td>
+					<td>hit</td>
+			</tr>
+			<tr>
+					<td>A</td>
+					<td>B → A</td>
+					<td>miss</td>
+					<td>{A, B}</td>
+					<td>hit</td>
+			</tr>
+			<tr>
+					<td>B</td>
+					<td>A → B</td>
+					<td>miss</td>
+					<td>{A, B}</td>
+					<td>hit</td>
+			</tr>
+	</tbody>
+</table>
+<p>Direct-mapped: 6-இல் 6 miss — cache-இல் 15 lines காலியாக இருந்தும்! அதே 1 KiB-ஐ <strong>2-way set-associative</strong> ஆக்கினால்: 16 lines / 2 ways = 8 sets → index 3 பிட்கள், tag 7 பிட்கள். இப்போது A → tag 9, set 0; B → tag 11, set 0 (சரிபார்ப்பு: 9 × 512 + 52 = 4660 ✓; 11 × 512 + 52 = 5684 ✓). ஒரே set, ஆனால் இரண்டு ways — இரண்டும் சேர்ந்து வாழ்கின்றன: 2 miss, 4 hit.</p>
+<p><strong>Miss-களின் மூன்று வகைகள்</strong> (&ldquo;3 C&rdquo;): <strong>compulsory</strong> (முதல் முறை தொடுதல் — தவிர்க்க முடியாதது), <strong>capacity</strong> (cache-இல் அடங்காத அளவு தரவு), <strong>conflict</strong> (இடம் இருந்தும் ஒரே index-க்கான போட்டி). Associativity மூன்றாவதைக் குறைக்கிறது; பெரிய cache இரண்டாவதை; பெரிய line முதலாவதை (spatial locality வழியாக).</p>
+<p><strong>யாரை வெளியேற்றுவது?</strong> ஒரு set நிறைந்திருக்கும்போது புதிய line வந்தால், பழையவற்றில் ஒன்று போக வேண்டும். <strong>LRU</strong> (least recently used) — மிக நீண்ட காலமாகத் தொடப்படாததை வெளியேற்று; temporal locality-இன் நேரடிப் பயன். உண்மையான வன்பொருள் பெரும்பாலும் மலிவான தோராய-LRU பயன்படுத்துகிறது.</p>
+<h2 id="எழதமபத-write-through-எதர-write-back">எழுதும்போது: Write-through எதிர் Write-back<a class="anchor" href="#%e0%ae%8e%e0%ae%b4%e0%ae%a4%e0%ae%ae%e0%ae%aa%e0%ae%a4-write-through-%e0%ae%8e%e0%ae%a4%e0%ae%b0-write-back">#</a></h2>
+<p>படிப்பது எளிது; <em>எழுதுவது</em> கேள்வி எழுப்புகிறது: cache-இல் உள்ள நகலை மாற்றினால் கீழ் நிலை நினைவகத்தை எப்போது புதுப்பிப்பது?</p>
+<ul>
+<li><strong>Write-through</strong> — ஒவ்வொரு எழுத்தும் உடனே கீழ் நிலைக்கும் செல்கிறது. எளியது, நினைவகம் எப்போதும் புதியது; ஆனால் எழுத்துப் போக்குவரத்து அதிகம்.</li>
+<li><strong>Write-back</strong> — cache-இல் மட்டும் எழுது, line-இல் ஒரு <strong>dirty bit</strong> அமை; அந்த line வெளியேற்றப்படும்போது மட்டும் கீழே எழுது. ஒரே line-க்குப் பல எழுத்துகள் ஒரே ஒரு நினைவக எழுத்தாகின்றன. நவீன CPU cache-கள் பெரும்பாலும் இதுவே — ஆனால் இப்போது &ldquo;நினைவகத்தில் உள்ளது பழையதாக இருக்கலாம்&rdquo; என்ற உண்மை, கீழே வரும் coherence பிரச்சனையைக் கூர்மையாக்குகிறது.</li>
+</ul>
+<h2 id="multicore-பதய-கடடபபடக-coherence">Multicore: புதிய கட்டுப்பாடாக Coherence<a class="anchor" href="#multicore-%e0%ae%aa%e0%ae%a4%e0%ae%af-%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%95-coherence">#</a></h2>
+<p>ஒரு core, ஒரு தனியார் cache: நன்றாக. பல cores, ஒவ்வொன்றும் ஒரு cache: core A ஒரு line-ஐ எழுதும்போது core B இன்னும் பழைய நகலை வைத்திருக்கிறது — நெறிமுறை இல்லாமல், B என்றென்றும் stale (பழைய) மதிப்பைப் படிக்கும். <strong>Cache coherence</strong> (cache ஒத்திசைவு) = ஒரே முகவரிக்கு எல்லா core-களும் ஒத்துப்போகும் ஒரு மதிப்புக் கதையைப் பார்க்கும் உத்தரவாதம்.</p>
+<p><strong>MESI</strong> செவ்வியல் பதில்: ஒவ்வொரு cache-இலும் ஒவ்வொரு line-க்கும் நான்கில் ஒரு நிலை —</p>
+<ul>
+<li><strong>M</strong> (Modified) — இந்த cache-இல் மட்டும், மாற்றப்பட்டது (dirty); நினைவகம் பழையது.</li>
+<li><strong>E</strong> (Exclusive) — இந்த cache-இல் மட்டும், மாற்றப்படவில்லை (நினைவகத்துடன் ஒன்று).</li>
+<li><strong>S</strong> (Shared) — பல cache-களில் இருக்கலாம், அனைத்தும் சுத்தமான நகல்கள்.</li>
+<li><strong>I</strong> (Invalid) — செல்லாதது; பயன்படுத்த முடியாது.</li>
+</ul>
+<p>Core-கள் ஒருவர் செயலை மற்றவர் &ldquo;ஒட்டுக் கேட்கின்றன&rdquo; (<strong>snooping</strong>, பகிரப்பட்ட bus மீது) அல்லது ஒரு <strong>directory</strong> யார் எந்த line-ஐ வைத்திருக்கிறார் என்று பதிவு செய்கிறது. இரண்டு core-கள், ஒரு line X — படிப்படியாக:</p>
+<table>
+	<thead>
+			<tr>
+					<th>படி</th>
+					<th>நிகழ்வு</th>
+					<th>Core A-இல் X</th>
+					<th>Core B-இல் X</th>
+					<th>என்ன நடந்தது</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>தொடக்கம்</td>
+					<td>I</td>
+					<td>I</td>
+					<td>யாரிடமும் இல்லை</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>A X-ஐப் படிக்கிறது</td>
+					<td>E</td>
+					<td>I</td>
+					<td>நினைவகத்திலிருந்து; வேறு யாரிடமும் இல்லை → Exclusive</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>B X-ஐப் படிக்கிறது</td>
+					<td>S</td>
+					<td>S</td>
+					<td>A snoop செய்கிறது, இப்போது இருவரிடமும் → Shared</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>A X-இல் எழுதுகிறது</td>
+					<td>M</td>
+					<td>I</td>
+					<td>A &ldquo;invalidate&rdquo; செய்தி அனுப்புகிறது; B-இன் நகல் செல்லாதது</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>B X-ஐப் படிக்கிறது</td>
+					<td>S</td>
+					<td>S</td>
+					<td>B-க்கு miss; A-இடம் M நகல் → A தரவைத் தருகிறது / நினைவகத்துக்கு எழுதுகிறது</td>
+			</tr>
+	</tbody>
+</table>
+<p>E நிலை ஏன்? படி 1-க்குப் பின் A எழுதினால், வேறு யாரிடமும் நகல் இல்லை என்று அதற்குத் தெரியும் — bus-இல் எந்தச் செய்தியும் இல்லாமல் E → M ஆகலாம். தனியார் தரவுக்கு (பெரும்பாலான தரவு) இது பெரும் சேமிப்பு.</p>
+<p><strong>False sharing</strong> (போலிப் பகிர்வு) — ஒரு நடைமுறைப் பொறி: இரண்டு thread-கள் <em>வெவ்வேறு</em> மாறிகளை எழுதுகின்றன, ஆனால் அவை ஒரே 64-பைட் line-இல் அமர்ந்துள்ளன. ஒவ்வொரு எழுத்தும் மற்ற core-இன் நகலை invalidate செய்கிறது; line இரண்டு core-களுக்கும் இடையே பந்துபோல் அடிக்கப்படுகிறது — தர்க்கரீதியாகப் பகிர்வு இல்லாதபோதும். தீர்வு: அந்த மாறிகளை வெவ்வேறு line-களில் வைப்பது (padding).</p>
+<p>Coherence இலவசம் அல்ல, மற்றும் அதன் செலவு core எண்ணிக்கையுடன் வளர்கிறது — &ldquo;வெறும் cores சேர்க்குங்கள்&rdquo; (பதிவு 17) தன் சொந்தக் குறைந்துவரும் வருவாயைக் கொண்டதற்கு ஒரு காரணம், ILP வரம்புகளிலிருந்து தனியானது.</p>
+<p><strong>கையால் முயல்க.</strong> (இந்தப் பதிவுக்கு lab இல்லை; காகிதமும் பென்சிலும் போதும்.)</p>
+<ol>
+<li>மேலே உள்ள direct-mapped cache-இல் (16 lines, 64-பைட் line) முகவரி 0x0FC0-ஐப் பிரியுங்கள். (விடை: 0x0FC0 = 4032 = 3 × 1024 + 15 × 64 + 0 → tag 3, index 15, offset 0.)</li>
+<li>0x1234, 0x1238, 0x1270 — இவற்றில் எவை ஒரே line? (விடை: முதல் இரண்டும் line 8, offset 52 மற்றும் 56 — spatial locality-இன் பயன்; 0x1270 = 4720 = 4 × 1024 + 9 × 64 + 48 → line 9.)</li>
+<li>MESI அட்டவணையில் படி 4-க்குப் பின் B X-இல் எழுதினால் இரண்டு நிலைகளும் என்ன ஆகும்? (விடை: B → M, A → I.)</li>
+<li>உங்கள் சொந்த Linux கணினியில் <code>getconf LEVEL1_DCACHE_LINESIZE</code> ஓட்டிப் பாருங்கள் — பெரும்பாலான நவீன x86 கணினிகளில் 64 என்று வரும் (சில அமைப்புகளில் இந்த மதிப்பு கிடைக்காமல் 0 வரலாம்).</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>காலஞ்சார் / இடஞ்சார் அண்மை</td>
+					<td>temporal / spatial locality</td>
+			</tr>
+			<tr>
+					<td>இருத்தல் / தவறல்</td>
+					<td>hit / miss</td>
+			</tr>
+			<tr>
+					<td>சராசரி நினைவக அணுகல் நேரம்</td>
+					<td>AMAT</td>
+			</tr>
+			<tr>
+					<td>குறிச்சொல், சுட்டெண், இடப்பெயர்ச்சி</td>
+					<td>tag, index, offset</td>
+			</tr>
+			<tr>
+					<td>தொகுப்பு-இணை cache</td>
+					<td>set-associative cache</td>
+			</tr>
+			<tr>
+					<td>மோதல் தவறல்</td>
+					<td>conflict miss</td>
+			</tr>
+			<tr>
+					<td>அழுக்குப் பிட்</td>
+					<td>dirty bit</td>
+			</tr>
+			<tr>
+					<td>cache ஒத்திசைவு</td>
+					<td>cache coherence</td>
+			</tr>
+			<tr>
+					<td>போலிப் பகிர்வு</td>
+					<td>false sharing</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Door out:</strong> M. V. Wilkes, &ldquo;Slave Memories and Dynamic Storage Allocation&rdquo; (<em>IEEE Transactions on Electronic Computers</em>, 1965) — மெதுவான முதன்மை நினைவகத்திற்கு அருகில் வேகமான slave store-ஆக cache யோசனையின் ஆரம்பக் கூற்று.</p>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ்நாடு அரசு, <em>11ஆம் வகுப்பு கணினி அறிவியல்</em>, அலகு 3: கணினி அமைப்பு (கேச் நினைவகம் — அறிமுக வகைகள், associativity / MESI அல்ல)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Caches&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F15-caches%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F15-caches.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F15-caches.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/14-branch-prediction/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Branch Prediction</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/16-out-of-order-execution/" class="flex align-center">
+        <span>Out-of-Order Execution</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#cache-கள-ஏன-வல-சயகனறன">Cache-கள் ஏன் வேலை செய்கின்றன</a></li>
+    <li><a href="#சரசர-அணகல-நரம-ஏன-சல-சதவதஙகள-மககயம">சராசரி அணுகல் நேரம்: ஏன் சில சதவீதங்கள் முக்கியம்</a></li>
+    <li><a href="#ஒர-மகவரயப-பரததல-tag-index-offset">ஒரு முகவரியைப் பிரித்தல்: Tag, Index, Offset</a></li>
+    <li><a href="#ஒர-line-எஙக-வழ-மடயம">ஒரு Line எங்கே வாழ முடியும்</a></li>
+    <li><a href="#எழதமபத-write-through-எதர-write-back">எழுதும்போது: Write-through எதிர் Write-back</a></li>
+    <li><a href="#multicore-பதய-கடடபபடக-coherence">Multicore: புதிய கட்டுப்பாடாக Coherence</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

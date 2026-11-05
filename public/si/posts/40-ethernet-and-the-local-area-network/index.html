@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="හවුල් කේබලයක්, මධ්‍යම arbiter නැත — CSMA/CD LAN collision සීමාව විසඳුවේය; switches පසුව එය ඉවත් කළේය">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/40-ethernet-and-the-local-area-network/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="Ethernet සහ Local Area Network">
+	<meta property="og:description" content="හවුල් කේබලයක්, මධ්‍යම arbiter නැත — CSMA/CD LAN collision සීමාව විසඳුවේය; switches පසුව එය ඉවත් කළේය">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:56:56+05:30">
+
+
+	<meta itemprop="name" content="Ethernet සහ Local Area Network">
+	<meta itemprop="description" content="හවුල් කේබලයක්, මධ්‍යම arbiter නැත — CSMA/CD LAN collision සීමාව විසඳුවේය; switches පසුව එය ඉවත් කළේය">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:56:56+05:30">
+	<meta itemprop="wordCount" content="1734">
+
+<title>Ethernet සහ Local Area Network • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/40-ethernet-and-the-local-area-network/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/40-ethernet-and-the-local-area-network/" title="Ethernet and the Local Area Network">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/40-ethernet-and-the-local-area-network/" title="Ethernet และเครือข่ายท้องถิ่น">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/40-ethernet-and-the-local-area-network/" title="Ethernet மற்றும் Local Area Network">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/40-ethernet-and-the-local-area-network/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="active">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Ethernet සහ Local Area Network</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#හවල-මධය-ගටලව">හවුල්-මාධ්‍ය ගැටලුව</a></li>
+    <li><a href="#csmacd-listen-transmit-detect-back-off">CSMA/CD: Listen, Transmit, Detect, Back Off</a></li>
+    <li><a href="#frame-එක">Frame එක</a></li>
+    <li><a href="#හවල-bus-එක-සට-switched-star-දකව">හවුල් Bus එකේ සිට Switched Star දක්වා</a></li>
+    <li><a href="#මය-ගන-යනන-කහද">මෙය ගෙන යන්නේ කොහේද</a></li>
+    <li><a href="#ගඹරන-හවල-කබලයක-පරළය-අතන--backoff-metcalfe-සහ-boggs-ග-කරයකෂමත-ආකතය-frame-සම-සහ-crc">ගැඹුරින්: හවුල් කේබලයක පෙරළිය අතින් — backoff, Metcalfe සහ Boggs ගේ කාර්යක්ෂමතා ආකෘතිය, frame සීමා සහ CRC</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-මල-ethernet-csl-75-7-වරතවන-අක">2. මුල් Ethernet: CSL 75-7 වාර්තාවෙන් අංක</a></li>
+        <li><a href="#3-backoff-අතන-ආදරශ-ආකතය">3. Backoff අතින් (ආදර්ශ ආකෘතිය)</a></li>
+        <li><a href="#4-metcalfe-සහ-boggs-ග-කරයකෂමත-ආකතය">4. Metcalfe සහ Boggs ගේ කාර්යක්ෂමතා ආකෘතිය</a></li>
+        <li><a href="#5-පසකලන-ethernet-frame-එක-සම-rfc-894">5. පසුකාලීන Ethernet frame එකේ සීමා (RFC 894)</a></li>
+        <li><a href="#6-vm-terminal-ඔබ-ethernet-කඩපත">6. VM terminal: ඔබේ &ldquo;Ethernet කාඩ්පත&rdquo;</a></li>
+        <li><a href="#7-crc-අතන-3-bit-උදහරණයක">7. CRC අතින්: 3-bit උදාහරණයක්</a></li>
+        <li><a href="#8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Ethernet සහ Local Area Network
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>ARPANET (Post 39) දුරස්ථ අඩවි අතර wide-area packet switching විසඳුවේය. එක් ගොඩනැගිල්ලක් ඇතුළත, මීටර් දුසිම් කිහිපයක කේබලයක් සඳහා IMP-විලාස routing වැරදි මෙවලමයි. Ethernet, 1973 දී Xerox PARC හි Robert Metcalfe සහ David Boggs විසින් ආරම්භ කරන ලද, ප්‍රමුඛ දේශීය පිළිතුර බවට පත් විය.</p>
+<h2 id="හවල-මධය-ගටලව">හවුල්-මාධ්‍ය ගැටලුව<a class="anchor" href="#%e0%b7%84%e0%b7%80%e0%b6%bd-%e0%b6%b8%e0%b6%b0%e0%b6%ba-%e0%b6%9c%e0%b6%a7%e0%b6%bd%e0%b7%80">#</a></h2>
+<p>මුල් Ethernet එකම හවුල් කේබලයක් මත stations බොහෝ තැබුවේය — bus topology එකක්, Post 31 යන්ත්‍රයක් ඇතුළත මුහුණ දුන් එකම <em>වර්ගයේ</em> contention එක, දැන් LAN එකක. සෑම station එකකටම transmit කළ හැක; සෑම station එකක්ම සෑම transmission එකක්ම අසයි. එකවර transmitters දෙකක් දෙකම දූෂණය කරයි.</p>
+<h2 id="csmacd-listen-transmit-detect-back-off">CSMA/CD: Listen, Transmit, Detect, Back Off<a class="anchor" href="#csmacd-listen-transmit-detect-back-off">#</a></h2>
+<p>Ethernet හි පිළිතුර CSMA/CD ය. <strong>Carrier Sense:</strong> පළමුව අසන්න; මාධ්‍යය idle ලෙස පෙනේ නම් පමණක් transmit කරන්න. <strong>Multiple Access:</strong> ඕනෑම station එකකට උත්සාහ කළ හැක — මධ්‍යම grant එකක් නැත, පද්ධති buses මත request/grant මෙන් නොව (Post 31). <strong>Collision Detection:</strong> යවන අතරේ අසමින් සිටින්න; collision එකක් පෙනේ නම්, නවත්වන්න, <em>අහඹු</em> backoff එකක් රැඳී, නැවත උත්සාහ කරන්න.</p>
+<p>Randomization යනු බර උසුලන උපක්‍රමයයි. ස්ථිර සමාන backoffs සදහටම collide වනු ඇත. විවිධ අහඹු රැඳීම් එක් station එකකට අනෙක නැවත උත්සාහ කිරීමට පෙර සාර්ථක වීමට ඉඩ දෙයි — arbiter එකක් නොමැතිව විමධ්‍යගත contention.</p>
+<h2 id="frame-එක">Frame එක<a class="anchor" href="#frame-%e0%b6%91%e0%b6%9a">#</a></h2>
+<p>Ethernet දත්ත frames වලින් රැගෙන යයි: source සහ destination MAC addresses (දෘඪාංග addresses, Post 41 හි IP addresses ට පහළින්), ඉහළ protocol එක සඳහා type field එකක්, payload එකක්, සහ CRC එකක් — PCIe හි data-link පරීක්ෂා මෙන්ම එකම විශ්වාසනීයතා <em>වර්ගය</em> (Post 33), වෙනස් මාධ්‍යයක් මත.</p>
+<h2 id="හවල-bus-එක-සට-switched-star-දකව">හවුල් Bus එකේ සිට Switched Star දක්වා<a class="anchor" href="#%e0%b7%84%e0%b7%80%e0%b6%bd-bus-%e0%b6%91%e0%b6%9a-%e0%b7%83%e0%b6%a7-switched-star-%e0%b6%af%e0%b6%9a%e0%b7%80">#</a></h2>
+<p>නවීන wired Ethernet බොහෝමය හවුල් කේබලය අත්හැර, එක් එක් station එකට තමන්ගේම point-to-point සබැඳියක් දෙන switches වෙත ගියේය — පැරණි parallel buses ට සාපේක්ෂව PCIe කළ එකම shared-to-point-to-point පලා යාම (Post 32). නිවැරදි switch එකක, සම්භාව්‍ය CSMA/CD collisions බොහෝමය අතුරුදහන් වේ: එක් එක් සබැඳියට අග දෙකක් ඇත. අදහස් තවමත් ඓතිහාසිකව වැදගත්ය, සහ මුල් Wi-Fi — තවමත් හවුල් radio මාධ්‍යයක් — එකම collision සීමාව විසඳන්නට සිදු විය.</p>
+<h2 id="මය-ගන-යනන-කහද">මෙය ගෙන යන්නේ කොහේද<a class="anchor" href="#%e0%b6%b8%e0%b6%ba-%e0%b6%9c%e0%b6%b1-%e0%b6%ba%e0%b6%b1%e0%b6%b1-%e0%b6%9a%e0%b7%84%e0%b6%af">#</a></h2>
+<p>දේශීය Ethernet සහ wide-area packet routing තවමත් හිඩැසක් තබයි: විවිධ යටින් ඇති තාක්ෂණ එක අන්තර්ජාලයකට බැඳෙන <em>සාමාන්‍ය</em> addressing සහ routing ක්‍රමයක්. එය TCP/IP ය — ඊළඟ.</p>
+<h2 id="ගඹරන-හවල-කබලයක-පරළය-අතන--backoff-metcalfe-සහ-boggs-ග-කරයකෂමත-ආකතය-frame-සම-සහ-crc">ගැඹුරින්: හවුල් කේබලයක පෙරළිය අතින් — backoff, Metcalfe සහ Boggs ගේ කාර්යක්ෂමතා ආකෘතිය, frame සීමා සහ CRC<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-%e0%b7%84%e0%b7%80%e0%b6%bd-%e0%b6%9a%e0%b6%b6%e0%b6%bd%e0%b6%ba%e0%b6%9a-%e0%b6%b4%e0%b6%bb%e0%b7%85%e0%b6%ba-%e0%b6%85%e0%b6%ad%e0%b6%b1--backoff-metcalfe-%e0%b7%83%e0%b7%84-boggs-%e0%b6%9c-%e0%b6%9a%e0%b6%bb%e0%b6%ba%e0%b6%9a%e0%b7%82%e0%b6%b8%e0%b6%ad-%e0%b6%86%e0%b6%9a%e0%b6%ad%e0%b6%ba-frame-%e0%b7%83%e0%b6%b8-%e0%b7%83%e0%b7%84-crc">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> si.wikipedia හි &ldquo;පෙදෙසි ජාලවල දත්ත හුවමාරුව&rdquo; ලිපිය (අක්ෂර ~6.6k) switching සහ collision domain ගැන කතා කරයි. CSMA/CD backoff ගණනය, Ethernet කාර්යක්ෂමතාව, හෝ CRC අතින් ගණනය කිරීම එහි නැත. මෙම කොටස ඒවා මුල් ලේඛනවලින් ගණනය කරයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>හවුල් මාධ්‍යය (shared medium):</strong> සියලු ස්ථාන (stations) එකම කේබලයට සම්බන්ධ වී සිටීම. Metcalfe සහ Boggs එය &ldquo;Ether&rdquo; ලෙස හැඳින්වූහ.</li>
+<li><strong>ගැටුම (collision):</strong> ස්ථාන දෙකක් එකවර යැවීම නිසා සංඥා මිශ්‍ර වීම.</li>
+<li><strong>CSMA/CD (carrier sense multiple access with collision detection):</strong> යැවීමට පෙර සවන් දීම, යවන අතර ගැටුම් හඳුනා ගැනීම, ගැටුමක් වූ විට නැවැත්වීම.</li>
+<li><strong>Slot (slot):</strong> ගැටුමක් හඳුනා ගැනීමට අවශ්‍ය අවම කාලය; කේබලයේ එක් කෙළවරක සිට අනෙක් කෙළවරට ගොස් ආපසු එන කාලය.</li>
+<li><strong>Binary exponential backoff (ද්විමය ඝාතීය පසුබැසීම):</strong> නැවත නැවත ගැටුම් වන විට, බලා සිටින කාලයේ මධ්‍යන්‍යය දෙගුණ කිරීම.</li>
+<li><strong>CRC (cyclic redundancy check):</strong> frame එකේ අගට එකතු කරන, දෝෂ හඳුනා ගැනීමේ අංකය.</li>
+<li><strong>MAC ලිපිනය (MAC address):</strong> ජාල අතුරුමුහුණතක (network interface) ලිපිනය. මුල් කොටස නිෂ්පාදකයාගේ <strong>OUI (organizationally unique identifier)</strong> වේ.</li>
+</ul>
+<h3 id="2-මල-ethernet-csl-75-7-වරතවන-අක">2. මුල් Ethernet: CSL 75-7 වාර්තාවෙන් අංක<a class="anchor" href="#2-%e0%b6%b8%e0%b6%bd-ethernet-csl-75-7-%e0%b7%80%e0%b6%bb%e0%b6%ad%e0%b7%80%e0%b6%b1-%e0%b6%85%e0%b6%9a">#</a></h3>
+<p>Robert M. Metcalfe සහ David R. Boggs, &ldquo;Ethernet: Distributed Packet Switching for Local Computer Networks&rdquo; (Xerox PARC CSL 75-7, 1975 නොවැම්බර්; CACM 1976 ලෙස ප්‍රකාශිතයි). අප කියවූ CSL වාර්තාවේ:</p>
+<ul>
+<li>සාරාංශය: &ldquo;an operating Ethernet of 100 nodes along a kilometer of coaxial cable&rdquo;.</li>
+<li>§4 (මුද්‍රිත පිටුව 16): කිලෝමීටර 1, <strong>3 Mb/s</strong>, ස්ථාන 256 දක්වා. ගමනාන්ත (destination) සහ මූලාශ්‍ර (source) ලිපින bits <strong>8</strong> බැගින්.</li>
+<li>16-bit CRC (පිටුව 18).</li>
+<li>§4.4 (පිටුව 20): &ldquo;Binary Exponential Backoff&rdquo; — ගැටුම් සිදුවන විට නැවත යැවීමේ ප්‍රමාදයේ මධ්‍යන්‍යය දෙගුණ වේ. Slot එක Ether එකේ end-to-end round trip කාලයයි.</li>
+</ul>
+<p><strong>වැඩ කළ උදාහරණය (ආදර්ශ ප්‍රචාරණ වේගය):</strong> සංඥාව කේබලයේ 2 × 10⁸ m/s වලින් යයි යැයි සිතමු. කිලෝමීටර 1 → 1000 / (2 × 10⁸) = <strong>5 µs</strong> එක් පැත්තකට, round trip = <strong>10 µs</strong>. 3 Mb/s හි, 10 µs = bits <strong>30</strong>. එනම් කෙටිම packet එක bits 30 ට වඩා කෙටි නම්, යවන්නා යැවීම අවසන් කළ පසුව ගැටුම ආපසු පැමිණිය හැකිය. එවිට එය හඳුනා ගත නොහැකිය. CSMA/CD ට <strong>අවම frame ප්‍රමාණයක්</strong> අවශ්‍ය වන්නේ මේ නිසාය.</p>
+<h3 id="3-backoff-අතන-ආදරශ-ආකතය">3. Backoff අතින් (ආදර්ශ ආකෘතිය)<a class="anchor" href="#3-backoff-%e0%b6%85%e0%b6%ad%e0%b6%b1-%e0%b6%86%e0%b6%af%e0%b6%bb%e0%b7%81-%e0%b6%86%e0%b6%9a%e0%b6%ad%e0%b6%ba">#</a></h3>
+<p>සරල කළ ආදර්ශ (illustrative) ආකෘතියක්: k වන ගැටුමෙන් පසු, එක් එක් ස්ථානය 0 සිට 2^k − 1 දක්වා slots අතරින් අහඹු (random) එකක් තෝරා බලා සිටී. (මෙය මධ්‍යන්‍යය දෙගුණ වීමේ එක් ආකාරයකි. මුල් Ethernet හි නිශ්චිත නීතිය මෙයම යැයි අපි නොකියමු.)</p>
+<p>ස්ථාන <strong>දෙකක්</strong> පමණක් ගැටෙයි නම්, ඒවා යළි ගැටෙන්නේ එකම slot එක තෝරා ගත් විට පමණි:</p>
+<table>
+	<thead>
+			<tr>
+					<th>ගැටුම් k</th>
+					<th>තේරීම්</th>
+					<th>යළි ගැටීමේ සම්භාවිතාව 1 / 2^k</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>{0, 1}</td>
+					<td>1/2 = 0.5</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>{0, …, 3}</td>
+					<td>1/4 = 0.25</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>{0, …, 7}</td>
+					<td>1/8 = 0.125</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>{0, …, 15}</td>
+					<td>1/16 = 0.0625</td>
+			</tr>
+	</tbody>
+</table>
+<p>පළමු 4 වාරයේම ගැටීමේ සම්භාවිතාව = ½ × ¼ × ⅛ × 1/16 = 1/1024 ≈ <strong>0.001</strong>. ගැටුම් වැඩි වන විට, කාලය දෙගුණ වීමෙන් ගැටුම් ඉක්මනින් විසඳේ. කිසිදු මධ්‍යම පාලකයෙකු (central controller) අවශ්‍ය නැත.</p>
+<h3 id="4-metcalfe-සහ-boggs-ග-කරයකෂමත-ආකතය">4. Metcalfe සහ Boggs ගේ කාර්යක්ෂමතා ආකෘතිය<a class="anchor" href="#4-metcalfe-%e0%b7%83%e0%b7%84-boggs-%e0%b6%9c-%e0%b6%9a%e0%b6%bb%e0%b6%ba%e0%b6%9a%e0%b7%82%e0%b6%b8%e0%b6%ad-%e0%b6%86%e0%b6%9a%e0%b6%ad%e0%b6%ba">#</a></h3>
+<p>වාර්තාව (මුද්‍රිත පිටු 26–27) Q ස්ථාන සියල්ලම සැමවිටම යැවීමට සූදානම්ව සිටින &ldquo;heavy load&rdquo; අවස්ථාවක් ආකෘතිගත කරයි:</p>
+<ul>
+<li>A = (1 − 1/Q)^(Q−1) — එක් slot එකක හරියටම එක් ස්ථානයක් යැවීමේ සම්භාවිතාව</li>
+<li>W = (1 − A) / A — සාර්ථක වීමට පෙර නාස්ති වන සාමාන්‍ය slots ගණන</li>
+<li>E = (P/C) / ((P/C) + W·T) — කාර්යක්ෂමතාව; P = packet bits, C = bit අනුපාතය, T = slot කාලය</li>
+</ul>
+<p><strong>වැඩ කළ උදාහරණය:</strong> Q = 2 → A = ½, W = 1. P = 4096 bits, C = 3 Mb/s → P/C = 1365.3 µs.</p>
+<ul>
+<li>T = 16 µs නම්: E = 1365.3 / (1365.3 + 16) = <strong>0.9884</strong>.</li>
+</ul>
+<p>Q විශාල වන විට A → 1/e ≈ 0.3679, W → e − 1 ≈ 1.718. කෙටි packets (P = 48 bits, P/C = 16 µs) සමඟ, E = 16 / (16 + 1.718 × 16) ≈ <strong>0.37</strong>. <strong>පාඩම:</strong> විශාල packets සමඟ Ethernet කාර්යක්ෂම වේ (Q = 256, P = 4096: 0.9803); කුඩා packets සමඟ ගැටුම් කාලය ප්‍රමුඛ වේ.</p>
+<p><strong>මූලාශ්‍රයේ නොගැළපීමක්:</strong> පිටුව 28 හි පෙළ කියන්නේ &ldquo;we use a C of 3 megabits per second and an T of 8 microseconds&rdquo; ලෙසයි. නමුත් පිටුව 29 හි වගුවේ අගයන් (උදා. P = 4096, Q = 2 → 0.9884; P = 48, Q = 2 → 0.5000; P = 512, Q = 256 → 0.8616) ගැළපෙන්නේ <strong>T = 16 µs</strong> සමඟය. T = 8 µs නම් P = 48, Q = 2 → 0.6667 විය යුතුය. අපි වගුවේ අගයන් T = 16 µs සමඟ නැවත ගණනය කර තහවුරු කළෙමු.</p>
+<h3 id="5-පසකලන-ethernet-frame-එක-සම-rfc-894">5. පසුකාලීන Ethernet frame එකේ සීමා (RFC 894)<a class="anchor" href="#5-%e0%b6%b4%e0%b7%83%e0%b6%9a%e0%b6%bd%e0%b6%b1-ethernet-frame-%e0%b6%91%e0%b6%9a-%e0%b7%83%e0%b6%b8-rfc-894">#</a></h3>
+<p>RFC 894 (1984 අප්‍රේල්), &ldquo;A Standard for the Transmission of IP Datagrams over Ethernet Networks&rdquo;:</p>
+<ul>
+<li>10 Mb/s Ethernet, ලිපින bits <strong>48</strong>; IP සඳහා type field අගය <strong>0800</strong> (hex).</li>
+<li>&ldquo;The minimum length of the data field of a packet sent over an Ethernet is <strong>46 octets</strong>.&rdquo; අවශ්‍ය නම් බිංදු (zero octets) වලින් පුරවයි (padding).</li>
+<li>IP datagram එකක උපරිම දිග <strong>1500 octets</strong>.</li>
+</ul>
+<p><strong>මූලාශ්‍රයේ දෝෂයක්:</strong> RFC 894 හි එම ඡේදය &ldquo;The minimum length of the data field of a packet sent over an Ethernet is 1500 octets, thus the maximum length of an IP datagram … is 1500 octets&rdquo; ලෙස කියයි. සන්දර්භය අනුව එහි පළමු &ldquo;minimum&rdquo; යන්න &ldquo;maximum&rdquo; විය යුතුය.</p>
+<p>එසේම, RFC 894 සටහන් කරන්නේ පැරණි &ldquo;Experimental Ethernet&rdquo; (3 Mb/s, 8-bit ලිපින) වෙනස් බවයි. එය ඉහත §2 හි CSL 75-7 අංක සමඟ ගැළපේ.</p>
+<h3 id="6-vm-terminal-ඔබ-ethernet-කඩපත">6. VM terminal: ඔබේ &ldquo;Ethernet කාඩ්පත&rdquo;<a class="anchor" href="#6-vm-terminal-%e0%b6%94%e0%b6%b6-ethernet-%e0%b6%9a%e0%b6%a9%e0%b6%b4%e0%b6%ad">#</a></h3>
+<p>පිටුවේ VM image එකේ අපි ධාවනය කළ විධාන:</p>
+<pre tabindex="0"><code>ip link show eth0
+cat /sys/class/net/eth0/operstate
+ip link set eth0 up
+ip link show eth0</code></pre><p>අපට ලැබුණු දේ:</p>
+<ul>
+<li>අතුරුමුහුණත emulate කළ <strong>ne2k-pci</strong> (RealTek RTL-8029) කාඩ්පතකි (<code>dmesg</code>).</li>
+<li><code>mtu 1500</code> — ඉහත RFC 894 උපරිම අගයම.</li>
+<li>Boot වූ විට <code>operstate</code> = <strong>down</strong>. <code>ip link set eth0 up</code> පසු state එක <code>UP</code> / <code>LOWER_UP</code> වේ. <code>operstate</code> = <code>unknown</code>.</li>
+<li>MAC ලිපිනය boot එකින් boot එකට වෙනස් වුවද, අපට ලැබුණු සෑම වතාවකම එය <strong>00:22:15</strong> න් ආරම්භ විය. IEEE ලියාපදිංචි අධිකාරියේ (IEEE Registration Authority) OUI ලැයිස්තුව අනුව <code>00-22-15</code> = <strong>ASUSTek COMPUTER INC.</strong> එනම් එම පළමු bytes 3 &ldquo;නිෂ්පාදකයා&rdquo; හඳුනා ගනී; අවසාන bytes 3 කාඩ්පත හඳුනා ගනී.</li>
+</ul>
+<p>VM එකට ජාලයක් සම්බන්ධ කර නැත. ඔබට frames යැවිය නොහැකි නමුත් 48-bit ලිපිනය සහ MTU ඔබේම ඇසින් බැලිය හැකිය.</p>
+<h3 id="7-crc-අතන-3-bit-උදහරණයක">7. CRC අතින්: 3-bit උදාහරණයක්<a class="anchor" href="#7-crc-%e0%b6%85%e0%b6%ad%e0%b6%b1-3-bit-%e0%b6%8b%e0%b6%af%e0%b7%84%e0%b6%bb%e0%b6%ab%e0%b6%ba%e0%b6%9a">#</a></h3>
+<p>සැබෑ Ethernet 32-bit CRC එකක් භාවිත කරයි. ක්‍රමය කුඩා ආදර්ශ (illustrative) generator එකකින් අතින් බලමු: generator <strong>1011</strong> (x³ + x + 1), message <strong>1101</strong>.</p>
+<ol>
+<li>Message එකට බිංදු 3 ක් එකතු කරන්න: <code>1101000</code>.</li>
+<li>Generator එකෙන් XOR මගින් &ldquo;බෙදන්න&rdquo; (carry නැත):
+<ul>
+<li><code>1101000</code> XOR <code>1011000</code> → <code>0110000</code></li>
+<li><code>0110000</code> XOR <code>0101100</code> → <code>0011100</code></li>
+<li><code>0011100</code> XOR <code>0010110</code> → <code>0001010</code></li>
+<li><code>0001010</code> XOR <code>0001011</code> → <code>0000001</code></li>
+</ul>
+</li>
+<li>ඉතිරිය (remainder) = <strong>001</strong>. යවන frame එක = <code>1101</code> + <code>001</code> = <strong>1101001</strong>.</li>
+</ol>
+<p>ලබන්නා <code>1101001</code> එම generator එකෙන් බෙදූ විට ඉතිරිය <strong>000</strong> → දෝෂ නැත. Bit එකක් මාරු වී <code>1111001</code> ලැබුණොත් ඉතිරිය <strong>110</strong> → දෝෂය හඳුනා ගනී.</p>
+<h3 id="8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#8-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>කේබලය කිලෝමීටර 2.5 ක් නම් (ප්‍රචාරණය 2 × 10⁸ m/s, ආදර්ශ), 10 Mb/s හි round trip කාලය bits කීයකට සමානද?</li>
+<li>§3 ආකෘතියේ k = 5 ගැටුමකින් පසු ස්ථාන දෙක යළි ගැටීමේ සම්භාවිතාව කීයද?</li>
+<li>Q = 2, P = 1024 bits, C = 3 Mb/s, T = 16 µs සඳහා E ගණනය කර පිටුව 29 හි වගුව සමඟ සසඳන්න.</li>
+<li>IP datagram එකක් octets 20 ක් පමණි. Ethernet data field එකට padding octets කීයක් අවශ්‍යද?</li>
+<li>Message <code>1001</code>, generator <code>1011</code> සඳහා CRC-3 ඉතිරිය සොයන්න.</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>2 × 2500 / (2 × 10⁸) = 25 µs. 25 µs × 10⁷ bit/s = <strong>250 bits</strong>.</li>
+<li>1 / 2⁵ = <strong>1/32 ≈ 0.031</strong>.</li>
+<li>P/C = 341.3 µs. E = 341.3 / (341.3 + 16) = <strong>0.9552</strong> — වගුවේ P = 1024, Q = 2 අගයම.</li>
+<li>46 − 20 = <strong>26</strong> octets.</li>
+<li><code>1001000</code> → XOR <code>1011000</code> = <code>0010000</code> → XOR <code>0010110</code> = <code>0000110</code> → ඉතිරිය <strong>110</strong>.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>R. M. Metcalfe සහ D. R. Boggs, &ldquo;Ethernet: Distributed Packet Switching for Local Computer Networks&rdquo;, Xerox PARC CSL 75-7, 1975 නොවැම්බර්. අප කියවූයේ MIT පාඨමාලා පිටපත (නිල නොවන): <a href="https://web.mit.edu/6.1800/www/readings/papers/ethernet.pdf">https://web.mit.edu/6.1800/www/readings/papers/ethernet.pdf</a> (මුද්‍රිත පිටු 16, 18, 20, 26–29). CACM 19(7), 1976 ලෙස ප්‍රකාශිත අනුවාදය අපට විවෘත කළ නොහැකි විය (ACM Digital Library අවහිර විය).</li>
+<li>RFC 894, C. Hornig, 1984 අප්‍රේල්: <a href="https://www.rfc-editor.org/rfc/rfc894.txt">https://www.rfc-editor.org/rfc/rfc894.txt</a></li>
+<li>IEEE Registration Authority, OUI ලැයිස්තුව: <a href="https://standards-oui.ieee.org/oui/oui.txt">https://standards-oui.ieee.org/oui/oui.txt</a></li>
+<li>මෙම පොතේ VM terminal image එක: §6 හි ප්‍රතිදාන අපි ධාවනය කර ලබා ගත්තෙමු.</li>
+<li>§2 හි ප්‍රචාරණ වේගය, §3 හි backoff ආකෘතිය සහ §7 හි CRC generator ආදර්ශ (illustrative) වේ.</li>
+</ul>
+<p><strong>පිටවීමේ දොර:</strong> Robert M. Metcalfe and David R. Boggs, &ldquo;Ethernet: Distributed Packet Switching for Local Computer Networks&rdquo; (<em>Communications of the ACM</em>, 1976) — හවුල්-මාධ්‍ය LAN සහ CSMA/CD නිර්මාණය ප්‍රකාශ කළ ප්‍රාථමික පත්‍රිකාව.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=si"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="අන්තර්ක්‍රියාකාරී lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=si" target="_blank" rel="noopener">Lab එක නව tab එකක විවෘත කරන්න ↗</a>
+  </div>
+</div>
+
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/14919aecff7c939e38107a507fa15d6d7b853284" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Ethernet&#43;%E0%B7%83%E0%B7%84&#43;Local&#43;Area&#43;Network&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F40-ethernet-and-the-local-area-network%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F40-ethernet-and-the-local-area-network.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F40-ethernet-and-the-local-area-network.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/39-arpanet-and-packet-switching/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>ARPANET සහ Packet Switching</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="flex align-center">
+        <span>TCP/IP සහ නවීන අන්තර්ජාල Stack එක</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#හවල-මධය-ගටලව">හවුල්-මාධ්‍ය ගැටලුව</a></li>
+    <li><a href="#csmacd-listen-transmit-detect-back-off">CSMA/CD: Listen, Transmit, Detect, Back Off</a></li>
+    <li><a href="#frame-එක">Frame එක</a></li>
+    <li><a href="#හවල-bus-එක-සට-switched-star-දකව">හවුල් Bus එකේ සිට Switched Star දක්වා</a></li>
+    <li><a href="#මය-ගන-යනන-කහද">මෙය ගෙන යන්නේ කොහේද</a></li>
+    <li><a href="#ගඹරන-හවල-කබලයක-පරළය-අතන--backoff-metcalfe-සහ-boggs-ග-කරයකෂමත-ආකතය-frame-සම-සහ-crc">ගැඹුරින්: හවුල් කේබලයක පෙරළිය අතින් — backoff, Metcalfe සහ Boggs ගේ කාර්යක්ෂමතා ආකෘතිය, frame සීමා සහ CRC</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-මල-ethernet-csl-75-7-වරතවන-අක">2. මුල් Ethernet: CSL 75-7 වාර්තාවෙන් අංක</a></li>
+        <li><a href="#3-backoff-අතන-ආදරශ-ආකතය">3. Backoff අතින් (ආදර්ශ ආකෘතිය)</a></li>
+        <li><a href="#4-metcalfe-සහ-boggs-ග-කරයකෂමත-ආකතය">4. Metcalfe සහ Boggs ගේ කාර්යක්ෂමතා ආකෘතිය</a></li>
+        <li><a href="#5-පසකලන-ethernet-frame-එක-සම-rfc-894">5. පසුකාලීන Ethernet frame එකේ සීමා (RFC 894)</a></li>
+        <li><a href="#6-vm-terminal-ඔබ-ethernet-කඩපත">6. VM terminal: ඔබේ &ldquo;Ethernet කාඩ්පත&rdquo;</a></li>
+        <li><a href="#7-crc-අතන-3-bit-උදහරණයක">7. CRC අතින්: 3-bit උදාහරණයක්</a></li>
+        <li><a href="#8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

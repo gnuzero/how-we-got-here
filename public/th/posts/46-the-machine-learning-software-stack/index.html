@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ระหว่างโมเดลกับซิลิคอนมีสแตกที่เปลี่ยนเทนเซอร์เป็นการฝึกแบบกระจาย — แล้วชนกำแพงอินเตอร์คอนเนกต์">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/46-the-machine-learning-software-stack/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="สแตกซอฟต์แวร์ Machine Learning">
+	<meta property="og:description" content="ระหว่างโมเดลกับซิลิคอนมีสแตกที่เปลี่ยนเทนเซอร์เป็นการฝึกแบบกระจาย — แล้วชนกำแพงอินเตอร์คอนเนกต์">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="สแตกซอฟต์แวร์ Machine Learning">
+	<meta itemprop="description" content="ระหว่างโมเดลกับซิลิคอนมีสแตกที่เปลี่ยนเทนเซอร์เป็นการฝึกแบบกระจาย — แล้วชนกำแพงอินเตอร์คอนเนกต์">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1945">
+
+<title>สแตกซอฟต์แวร์ Machine Learning • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/46-the-machine-learning-software-stack/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/46-the-machine-learning-software-stack/" title="The Machine Learning Software Stack">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/46-the-machine-learning-software-stack/" title="යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/46-the-machine-learning-software-stack/" title="Machine Learning மென்பொருள் Stack">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/46-the-machine-learning-software-stack/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/46-the-machine-learning-software-stack/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/46-the-machine-learning-software-stack/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="active">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>สแตกซอฟต์แวร์ Machine Learning</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#อารเรยกอน">อาร์เรย์ก่อน</a></li>
+    <li><a href="#เฟรมเวรก-gradient-และฮารดแวรเปนสญญาเดยว">เฟรมเวิร์ก: Gradient และฮาร์ดแวร์เป็นสัญญาเดียว</a></li>
+    <li><a href="#การหาอนพนธอตโนมตจากหลกการพนฐาน">การหาอนุพันธ์อัตโนมัติจากหลักการพื้นฐาน</a>
+      <ul>
+        <li><a href="#ทำไมผลตางอนตะไมพอ-ตวอยางทรนจรง">ทำไมผลต่างอันตะไม่พอ: ตัวอย่างที่รันจริง</a></li>
+        <li><a href="#กราฟการคำนวณ-ตวอยางเดยวกบ-baydin">กราฟการคำนวณ: ตัวอย่างเดียวกับ Baydin</a></li>
+        <li><a href="#โหมดไปขางหนา-forward-mode">โหมดไปข้างหน้า (forward mode)</a></li>
+        <li><a href="#โหมดยอนกลบ-reverse-mode--สงทเรยกวา-backpropagation">โหมดย้อนกลับ (reverse mode) — สิ่งที่เรียกว่า backpropagation</a></li>
+        <li><a href="#กรณขอบ-จดทไมมอนพนธ-คาศนย-และคาทหายไป">กรณีขอบ: จุดที่ไม่มีอนุพันธ์ ค่าศูนย์ และค่าที่หายไป</a></li>
+        <li><a href="#จากเกรเดยนตถงการเรยนร-การลดตามเกรเดยนตและกรณขอบของอตราการเรยนร">จากเกรเดียนต์ถึงการเรียนรู้: การลดตามเกรเดียนต์และกรณีขอบของอัตราการเรียนรู้</a></li>
+        <li><a href="#ประวตสน-ๆ">ประวัติสั้น ๆ</a></li>
+      </ul>
+    </li>
+    <li><a href="#การลดกราฟ">การลดกราฟ</a></li>
+    <li><a href="#การกระจายชนสาย">การกระจายชนสาย</a>
+      <ul>
+        <li><a href="#ทำไมการแบงขอมลใหคำตอบเดยวกน--และเมอไรไม">ทำไมการแบ่งข้อมูลให้คำตอบเดียวกัน — และเมื่อไรไม่</a></li>
+      </ul>
+    </li>
+    <li><a href="#ปดลปของเฟสน">ปิดลูปของเฟสนี้</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    สแตกซอฟต์แวร์ Machine Learning
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>เฟส 9 และ 10 ครอบคลุมฮาร์ดแวร์ของการคำนวณ AI สมัยใหม่ — GPU, tensor core, อินเตอร์คอนเนกต์ วิศวกร ML ส่วนใหญ่ไม่โปรแกรมซิลิคอนนั้นตรง สแตกซอฟต์แวร์นั่งระหว่าง &ldquo;นี่คือสถาปัตยกรรมโครงข่าย&rdquo; กับ &ldquo;นี่คือการคูณเมทริกซ์บนอุปกรณ์จริง&rdquo; และสแตกนั้นคือวิธีที่เส้นระบบกระจายของชุดนี้ถูก <em>ใช้</em> จริง</p>
+<p>คำศัพท์ก่อนเริ่ม (ศัพท์บัญญัติราชบัณฑิตยสภา สาขาคณิตศาสตร์ เว้นแต่ระบุ): <strong>การเรียนรู้ของเครื่อง</strong> (machine learning, สาขาสถิติศาสตร์); <strong>เทนเซอร์</strong> (tensor — อาร์เรย์หลายมิติของตัวเลข); <strong>สเกลาร์</strong> (scalar — ตัวเลขตัวเดียว); <strong>การหาอนุพันธ์</strong> (differentiation) และ <strong>อนุพันธ์</strong> (derivative — อัตราที่ผลลัพธ์เปลี่ยนเมื่อตัวแปรต้นเปลี่ยนเล็กน้อย); <strong>อนุพันธ์ย่อย</strong> (partial derivative — อนุพันธ์เทียบตัวแปรหนึ่งตัวโดยตรึงตัวอื่นไว้); <strong>เกรเดียนต์</strong> (gradient — เวกเตอร์ของอนุพันธ์ย่อยทุกตัว บอกทิศที่ค่าเพิ่มเร็วที่สุด); <strong>กฎลูกโซ่</strong> หรือ <strong>หลักเกณฑ์ลูกโซ่</strong> (chain rule); <strong>จาโคเบียน</strong> (Jacobian — ตารางอนุพันธ์ย่อยของผลลัพธ์ทุกตัวเทียบตัวแปรต้นทุกตัว); <strong>กราฟระบุทิศทาง</strong> (directed graph); <strong>ฟังก์ชันการสูญเสีย</strong> (loss function, สาขาสถิติศาสตร์ — ตัวเลขที่บอกว่าโมเดลผิดมากเท่าใด); <strong>การหาค่าเหมาะที่สุด</strong> (optimization); <strong>การลู่เข้า</strong> และ <strong>การลู่ออก</strong> (convergence, divergence); <strong>ผลต่างอันตะ</strong> (finite difference); <strong>ค่าคลาดเคลื่อนการปัดเศษ</strong> (round-off error); ส่วนสาขาคอมพิวเตอร์และเทคโนโลยีสารสนเทศ: <strong>การล้น</strong> (overflow), <strong>น้อยเกินเก็บ</strong> (underflow — ค่าเล็กจนเก็บในรูปแบบตัวเลขไม่ได้) และ <strong>จุดตรวจสอบ</strong> (checkpoint) คำต่อไปนี้ยังไม่พบศัพท์บัญญัติ จึงใช้คำอธิบายหรือทับศัพท์: automatic differentiation (การหาอนุพันธ์อัตโนมัติ, AD), backpropagation (การแพร่ย้อนกลับ), gradient descent (การลดตามเกรเดียนต์), learning rate (อัตราการเรียนรู้), truncation error (ค่าคลาดเคลื่อนจากการตัดทอน), adjoint (ค่าสะสมย้อนกลับ), subgradient, directed acyclic graph (DAG — กราฟระบุทิศทางที่ไม่มีวง), neural network (โครงข่ายประสาท) และ floating point (จำนวนจุดลอยตัว)</p>
+<h2 id="อารเรยกอน">อาร์เรย์ก่อน<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%a3%e0%b9%80%e0%b8%a3%e0%b8%a2%e0%b8%81%e0%b8%ad%e0%b8%99">#</a></h2>
+<p>พื้นเชิงปฏิบัติคืออาร์เรย์หลายมิติ (เทนเซอร์) และ ops แบบ vectorized — การคำนวณเชิงตัวเลขระดับ NumPy ในโลก Python งานหนักรันในรูทีนที่ compile แล้วถูกเรียก <em>จาก</em> Python; ลูป interpreter ไม่ใช่คอขวดของคณิต</p>
+<h2 id="เฟรมเวรก-gradient-และฮารดแวรเปนสญญาเดยว">เฟรมเวิร์ก: Gradient และฮาร์ดแวร์เป็นสัญญาเดียว<a class="anchor" href="#%e0%b9%80%e0%b8%9f%e0%b8%a3%e0%b8%a1%e0%b9%80%e0%b8%a7%e0%b8%a3%e0%b8%81-gradient-%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%ae%e0%b8%b2%e0%b8%a3%e0%b8%94%e0%b9%81%e0%b8%a7%e0%b8%a3%e0%b9%80%e0%b8%9b%e0%b8%99%e0%b8%aa%e0%b8%8d%e0%b8%8d%e0%b8%b2%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7">#</a></h2>
+<p>เฟรมเวิร์ก deep learning (PyTorch และ TensorFlow เป็นตัวอย่างที่ครอง) เพิ่มสิ่งที่การฝึกต้องการทับอาร์เรย์ <strong>Automatic differentiation</strong> สร้างกราฟการคำนวณและผลิต gradient โดยไม่ต้องให้มนุษย์ derive แคลคูลัสใหม่ทุกสถาปัตยกรรม — ข้อจำกัดที่ทำให้ gradient descent ใช้ได้จริงที่จังหวะวิจัย <strong>Hardware abstraction</strong> ให้โค้ดโมเดลเดียวกันเล็ง CPU, GPU ของ NVIDIA ผ่าน CUDA (เฟส 9) หรือตัวเร่งอื่น โดยลด tensor ops เป็นเคอร์เนลที่ optimize — <em>ชนิด</em> สัญญาเดียวกับการแยก ISA/microarchitecture ในบทที่ 11 ชั้นซอฟต์แวร์สูงขึ้นหนึ่งขั้น</p>
+<h2 id="การหาอนพนธอตโนมตจากหลกการพนฐาน">การหาอนุพันธ์อัตโนมัติจากหลักการพื้นฐาน<a class="anchor" href="#%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%ab%e0%b8%b2%e0%b8%ad%e0%b8%99%e0%b8%9e%e0%b8%99%e0%b8%98%e0%b8%ad%e0%b8%95%e0%b9%82%e0%b8%99%e0%b8%a1%e0%b8%95%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%ab%e0%b8%a5%e0%b8%81%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%9e%e0%b8%99%e0%b8%90%e0%b8%b2%e0%b8%99">#</a></h2>
+<p>ประโยค &ldquo;สร้างกราฟการคำนวณและผลิต gradient&rdquo; ข้างบนคือหัวใจของการฝึกทั้งหมด จึงควรแกะดูว่าทำงานอย่างไรจริง การฝึกโมเดลคือการหาค่าเหมาะที่สุด: มีฟังก์ชันการสูญเสีย L ที่เป็นสเกลาร์ตัวเดียว ขึ้นกับพารามิเตอร์ n ตัว (ในโมเดลใหญ่ n อาจเป็นหลักพันล้าน) และต้องการเกรเดียนต์ ∇L = (∂L/∂w₁, …, ∂L/∂wₙ) เพื่อรู้ว่าควรขยับพารามิเตอร์แต่ละตัวไปทางไหน คอมพิวเตอร์หาอนุพันธ์ได้สามวิธี (Baydin และคณะ, <em>JMLR</em> 2018 ใช้การแบ่งนี้):</p>
+<ol>
+<li><strong>แบบสัญลักษณ์</strong> (symbolic) — จัดรูปสูตรตามกฎแคลคูลัสเหมือนทำด้วยมือ ได้ค่าแม่นยำ แต่ต้องมีสูตรปิด และสูตรอนุพันธ์อาจบวมยาวกว่าสูตรเดิมมาก (expression swell)</li>
+<li><strong>แบบตัวเลข</strong> ด้วยผลต่างอันตะ — ขยับตัวแปรนิดหนึ่งแล้ววัดว่าผลเปลี่ยนเท่าใด</li>
+<li><strong>แบบอัตโนมัติ</strong> (AD) — แยกโปรแกรมเป็นปฏิบัติการพื้นฐานที่รู้อนุพันธ์อยู่แล้ว (บวก คูณ ln sin …) แล้วประกอบด้วยกฎลูกโซ่ ได้ <em>ค่าตัวเลข</em> ของอนุพันธ์ที่แม่นเท่าแบบสัญลักษณ์ ด้วยต้นทุนเพิ่มเพียงค่าคงที่เท่า และใช้กับโค้ดที่มี if และลูปได้</li>
+</ol>
+<h3 id="ทำไมผลตางอนตะไมพอ-ตวอยางทรนจรง">ทำไมผลต่างอันตะไม่พอ: ตัวอย่างที่รันจริง<a class="anchor" href="#%e0%b8%97%e0%b8%b3%e0%b9%84%e0%b8%a1%e0%b8%9c%e0%b8%a5%e0%b8%95%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%99%e0%b8%95%e0%b8%b0%e0%b9%84%e0%b8%a1%e0%b8%9e%e0%b8%ad-%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b8%97%e0%b8%a3%e0%b8%99%e0%b8%88%e0%b8%a3%e0%b8%87">#</a></h3>
+<p>นิยามอนุพันธ์คือ f′(x) ≈ (f(x + h) − f(x)) / h เมื่อ h เล็ก ลองกับ f(x) = x² ที่ x = 1 ซึ่งคำตอบจริงคือ 2 ถ้าคำนวณด้วยเลขแม่นยำไม่จำกัด ((1 + h)² − 1) / h = 2 + h พอดี นั่นคือค่าคลาดเคลื่อนจากการตัดทอนเท่ากับ h ทุกค่า ยิ่ง h เล็กยิ่งแม่น — <em>บนกระดาษ</em> ผู้เขียนรันจริงด้วยจำนวนจุดลอยตัว 64 บิตและ 32 บิต (ค่าคลาดเคลื่อน = ค่าที่ได้ − 2):</p>
+<table>
+	<thead>
+			<tr>
+					<th>h</th>
+					<th>คลาดเคลื่อน (64 บิต)</th>
+					<th>คลาดเคลื่อน (32 บิต)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>10⁻¹</td>
+					<td>1.0 × 10⁻¹</td>
+					<td>1.0 × 10⁻¹</td>
+			</tr>
+			<tr>
+					<td>10⁻²</td>
+					<td>1.0 × 10⁻²</td>
+					<td>1.0 × 10⁻²</td>
+			</tr>
+			<tr>
+					<td>10⁻⁴</td>
+					<td>1.0 × 10⁻⁴</td>
+					<td>3.3 × 10⁻⁴</td>
+			</tr>
+			<tr>
+					<td>10⁻⁶</td>
+					<td>1.0 × 10⁻⁶</td>
+					<td>−9.3 × 10⁻²</td>
+			</tr>
+			<tr>
+					<td>10⁻⁸</td>
+					<td>−1.2 × 10⁻⁸</td>
+					<td><strong>−2 (ได้อนุพันธ์ = 0)</strong></td>
+			</tr>
+			<tr>
+					<td>10⁻¹⁰</td>
+					<td>1.7 × 10⁻⁷</td>
+					<td>−2</td>
+			</tr>
+			<tr>
+					<td>10⁻¹²</td>
+					<td>1.8 × 10⁻⁴</td>
+					<td>−2</td>
+			</tr>
+			<tr>
+					<td>10⁻¹⁶</td>
+					<td><strong>−2 (ได้อนุพันธ์ = 0)</strong></td>
+					<td>−2</td>
+			</tr>
+	</tbody>
+</table>
+<p>ครึ่งบนของตารางคือค่าคลาดเคลื่อนจากการตัดทอน (ลดตาม h) ครึ่งล่างคือค่าคลาดเคลื่อนการปัดเศษ: เมื่อ h เล็กลง f(x + h) กับ f(x) เกือบเท่ากัน การลบกันทิ้งหลักที่มีความหมายไปเกือบหมด แล้วหารด้วย h เล็ก ๆ ขยายเศษที่เหลือ Baydin และคณะเรียกว่าทำ &ldquo;บาปมหันต์&rdquo; ของการคำนวณเชิงตัวเลขทั้งสองข้อพร้อมกัน — บวกเลขเล็กกับเลขใหญ่ และลบเลขที่เกือบเท่ากัน <strong>กรณีขอบ</strong> ที่อันตรายที่สุดคือเมื่อ h เล็กกว่าความละเอียดของรูปแบบตัวเลข: ใน 64 บิต 1 + 10⁻¹⁶ ปัดกลับเป็น 1 พอดี ใน 32 บิต 1 + 10⁻⁸ ก็เป็น 1 พอดี ผลต่างจึงเป็นศูนย์และได้อนุพันธ์ = 0 ทั้งที่ค่าจริงคือ 2 — ไม่มีข้อความเตือนใด ๆ จุดที่ดีที่สุดอยู่ราวรากที่สองของความละเอียดเครื่อง (ประมาณ 1.5 × 10⁻⁸ สำหรับ 64 บิต และ 3.5 × 10⁻⁴ สำหรับ 32 บิต) ซึ่งตรงกับตารางที่ 64 บิตแม่นที่สุดแถว 10⁻⁸ และ 32 บิตดีที่สุดแถว 10⁻⁴</p>
+<p>ปัญหาใหญ่กว่าความแม่นคือต้นทุน: เกรเดียนต์ของ n ตัวแปรต้องเรียก f อย่างน้อย n + 1 ครั้ง (ขยับทีละตัว) สำหรับพารามิเตอร์พันล้านตัวคือการรันโมเดลทั้งโมเดลพันล้านครั้งต่อหนึ่งก้าวการฝึก ผลต่างอันตะจึงเหมาะเป็น <em>เครื่องมือตรวจ</em> (gradient check) กับโมเดลเล็ก ไม่ใช่วิธีฝึก</p>
+<h3 id="กราฟการคำนวณ-ตวอยางเดยวกบ-baydin">กราฟการคำนวณ: ตัวอย่างเดียวกับ Baydin<a class="anchor" href="#%e0%b8%81%e0%b8%a3%e0%b8%b2%e0%b8%9f%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%84%e0%b8%b3%e0%b8%99%e0%b8%a7%e0%b8%93-%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7%e0%b8%81%e0%b8%9a-baydin">#</a></h3>
+<p>ตัวอย่างมาตรฐานในบทสำรวจของ Baydin และคณะคือ y = f(x₁, x₂) = ln(x₁) + x₁x₂ − sin(x₂) ที่จุด (x₁, x₂) = (2, 5) ขั้นแรก AD เขียนการคำนวณเป็นลำดับปฏิบัติการพื้นฐาน (เรียกว่า Wengert list) ซึ่งก็คือกราฟระบุทิศทางที่ไม่มีวง — PyTorch อธิบายกราฟของตนแบบเดียวกันว่า &ldquo;ใบ&rdquo; (leaves) คือเทนเซอร์ขาเข้าและ &ldquo;ราก&rdquo; (roots) คือเทนเซอร์ผลลัพธ์ ผู้เขียนคำนวณค่าแต่ละขั้นซ้ำ:</p>
+<table>
+	<thead>
+			<tr>
+					<th>ตัวแปร</th>
+					<th>นิยาม</th>
+					<th>ค่าที่ (2, 5)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>v₋₁</td>
+					<td>x₁</td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td>v₀</td>
+					<td>x₂</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>v₁</td>
+					<td>ln v₋₁</td>
+					<td>0.693</td>
+			</tr>
+			<tr>
+					<td>v₂</td>
+					<td>v₋₁ × v₀</td>
+					<td>10</td>
+			</tr>
+			<tr>
+					<td>v₃</td>
+					<td>sin v₀</td>
+					<td>−0.959</td>
+			</tr>
+			<tr>
+					<td>v₄</td>
+					<td>v₁ + v₂</td>
+					<td>10.693</td>
+			</tr>
+			<tr>
+					<td>v₅ = y</td>
+					<td>v₄ − v₃</td>
+					<td>11.652</td>
+			</tr>
+	</tbody>
+</table>
+<p>สังเกตว่า x₁ (v₋₁) ถูกใช้ <strong>สองที่</strong> (ใน ln และในผลคูณ) และ x₂ ก็ถูกใช้สองที่ (ในผลคูณและใน sin) — รายละเอียดนี้จะกลายเป็นกรณีขอบสำคัญด้านล่าง</p>
+<h3 id="โหมดไปขางหนา-forward-mode">โหมดไปข้างหน้า (forward mode)<a class="anchor" href="#%e0%b9%82%e0%b8%ab%e0%b8%a1%e0%b8%94%e0%b9%84%e0%b8%9b%e0%b8%82%e0%b8%b2%e0%b8%87%e0%b8%ab%e0%b8%99%e0%b8%b2-forward-mode">#</a></h3>
+<p>แนบ &ldquo;อัตราการเปลี่ยน&rdquo; v̇ ไปกับทุกค่า แล้วคำนวณคู่กันไปตามกฎของแต่ละปฏิบัติการ: (a × b)˙ = ȧ·b + a·ḃ, (ln a)˙ = ȧ / a, (sin a)˙ = ȧ·cos a ตั้ง ẋ₁ = 1, ẋ₂ = 0 เพื่อถามว่า &ldquo;ถ้าขยับ x₁ ผลเปลี่ยนเท่าใด&rdquo;:</p>
+<ul>
+<li>v̇₁ = 1 / 2 = 0.5; v̇₂ = 1 × 5 + 0 × 2 = 5; v̇₃ = 0 × cos 5 = 0</li>
+<li>v̇₄ = 0.5 + 5 = 5.5; v̇₅ = 5.5 − 0 = <strong>5.5</strong> = ∂y/∂x₁</li>
+</ul>
+<p>ได้อนุพันธ์ย่อยหนึ่งตัวต่อการรันหนึ่งรอบ ต้องการ ∂y/∂x₂ ต้องรันใหม่โดยตั้ง ẋ₁ = 0, ẋ₂ = 1 (ผู้เขียนรันด้วยโปรแกรม dual number สั้น ๆ ได้ 1.716) ตัวแปรต้น n ตัวจึงต้อง n รอบ — ต้นทุนเท่าผลต่างอันตะในแง่จำนวนรอบ แต่ได้ค่าแม่นยำ</p>
+<h3 id="โหมดยอนกลบ-reverse-mode--สงทเรยกวา-backpropagation">โหมดย้อนกลับ (reverse mode) — สิ่งที่เรียกว่า backpropagation<a class="anchor" href="#%e0%b9%82%e0%b8%ab%e0%b8%a1%e0%b8%94%e0%b8%a2%e0%b8%ad%e0%b8%99%e0%b8%81%e0%b8%a5%e0%b8%9a-reverse-mode--%e0%b8%aa%e0%b8%87%e0%b8%97%e0%b9%80%e0%b8%a3%e0%b8%a2%e0%b8%81%e0%b8%a7%e0%b8%b2-backpropagation">#</a></h3>
+<p>รันไปข้างหน้าหนึ่งครั้งพร้อม <em>จดบันทึก</em> ค่าและความสัมพันธ์ (tape) แล้วเดินย้อนจากผลลัพธ์ พร้อมค่าสะสมย้อนกลับ v̄ᵢ = ∂y/∂vᵢ ซึ่งบอกว่า &ldquo;ถ้า vᵢ เปลี่ยน y เปลี่ยนเท่าใด&rdquo; เริ่มจาก v̄₅ = ∂y/∂y = 1 แล้วแต่ละปฏิบัติการส่งต่อ ค่าสะสมย้อนกลับของตัวแปรขาออก × อนุพันธ์เฉพาะที่ ไปยังตัวแปรขาเข้า ผู้เขียนไล่ตามลำดับย้อนเหมือนตาราง 3 ของ Baydin:</p>
+<table>
+	<thead>
+			<tr>
+					<th>ขั้น (ย้อนลำดับ)</th>
+					<th>การคำนวณ</th>
+					<th>ผล</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>เริ่ม</td>
+					<td>v̄₅ = 1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>จาก v₅ = v₄ − v₃</td>
+					<td>v̄₄ = v̄₅ × 1; v̄₃ = v̄₅ × (−1)</td>
+					<td>1; −1</td>
+			</tr>
+			<tr>
+					<td>จาก v₄ = v₁ + v₂</td>
+					<td>v̄₁ = v̄₄ × 1; v̄₂ = v̄₄ × 1</td>
+					<td>1; 1</td>
+			</tr>
+			<tr>
+					<td>จาก v₃ = sin v₀</td>
+					<td>v̄₀ = v̄₃ × cos 5</td>
+					<td>−0.284</td>
+			</tr>
+			<tr>
+					<td>จาก v₂ = v₋₁ × v₀</td>
+					<td>v̄₋₁ = v̄₂ × v₀; v̄₀ <strong>+=</strong> v̄₂ × v₋₁</td>
+					<td>5; −0.284 + 2 = 1.716</td>
+			</tr>
+			<tr>
+					<td>จาก v₁ = ln v₋₁</td>
+					<td>v̄₋₁ <strong>+=</strong> v̄₁ / v₋₁</td>
+					<td>5 + 0.5 = 5.5</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>การเดินย้อนครั้งเดียวได้ทั้ง ∂y/∂x₁ = 5.5 และ ∂y/∂x₂ = 1.716</strong> — ตรงกับตารางใน Baydin</p>
+<p><strong>ตรวจสามทาง:</strong> (1) แบบสัญลักษณ์: ∂y/∂x₁ = 1/x₁ + x₂ = 0.5 + 5 = 5.5 และ ∂y/∂x₂ = x₁ − cos x₂ = 2 − 0.28366 = 1.71634 (2) ผลต่างอันตะแบบกึ่งกลาง (f(x + h) − f(x − h)) / 2h ที่ h = 10⁻⁶: 5.5000000003 และ 1.7163378150 (3) โปรแกรม reverse mode จิ๋วที่ผู้เขียนเขียนเอง (ไม่กี่สิบบรรทัด Python): 5.5 และ 1.7163378145 ตรงกับแบบสัญลักษณ์ทุกหลัก</p>
+<p><strong>กรณีขอบ: ตัวแปรที่ใช้ซ้ำต้อง &ldquo;บวกสะสม&rdquo; ไม่ใช่ &ldquo;เขียนทับ&rdquo;</strong> สังเกตเครื่องหมาย += ในตาราง x₁ ส่งผลต่อ y ผ่านสองเส้นทาง (ln และผลคูณ) เกรเดียนต์ของมันคือ <em>ผลรวม</em> ของทั้งสองเส้นทาง ผู้เขียนลองแก้โปรแกรมให้เขียนทับแทนบวก (ข้อผิดพลาดที่พบบ่อยเมื่อเขียน AD เอง): ได้ ∂y/∂x₁ = 0.5 และ ∂y/∂x₂ = 2.0 — ผิดทั้งคู่ เพราะเหลือเพียงเส้นทางที่ประมวลผลทีหลัง กรณีที่เล็กที่สุดคือ y = x × x ที่ x = 3: คำตอบคือ 2x = 6 แต่โปรแกรมเขียนทับให้ 3 PyTorch จึงออกแบบให้ &ldquo;สะสม&rdquo; เกรเดียนต์ลงช่อง <code>.grad</code> ของเทนเซอร์ใบ (ตามเอกสาร autograd)</p>
+<p><strong>ต้นทุน:</strong> สำหรับฟังก์ชันจากตัวแปรต้น n ตัวไปผลลัพธ์ m ตัว Baydin และคณะ (อ้าง Griewank และ Walther 2008) ระบุว่าโหมดไปข้างหน้าใช้เวลา n·c·ops(f) โหมดย้อนกลับใช้ m·c·ops(f) โดย c &lt; 6 และโดยทั่วไปราว 2–3 การฝึกโมเดลคือกรณีสุดขั้ว m = 1 (ฟังก์ชันการสูญเสียตัวเดียว):</p>
+<table>
+	<thead>
+			<tr>
+					<th>จำนวนพารามิเตอร์ n</th>
+					<th>โหมดไปข้างหน้า (รอบ)</th>
+					<th>โหมดย้อนกลับ (รอบ)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>2 (ตัวอย่างข้างบน)</td>
+					<td>2</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1,000</td>
+					<td>1,000</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1,000,000</td>
+					<td>1,000,000</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1,000,000,000</td>
+					<td>1,000,000,000</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<p>&ldquo;หนึ่งรอบ&rdquo; ของโหมดย้อนกลับมีราคาราว 2–3 เท่าของการรันไปข้างหน้าเฉย ๆ แต่ไม่โตตาม n นี่คือเหตุที่ backpropagation — ซึ่งก็คือโหมดย้อนกลับของ AD — เป็นแกนของการเรียนรู้เชิงลึก <strong>กรณีขอบกลับด้าน:</strong> ถ้าตัวแปรต้นน้อยแต่ผลลัพธ์มาก (m ≫ n เช่น f จากตัวเลขตัวเดียวไปเวกเตอร์ยาว) โหมดไปข้างหน้าถูกกว่า ไม่มีโหมดไหนชนะทุกกรณี</p>
+<p><strong>ค่าที่ต้องจ่าย: หน่วยความจำ</strong> โหมดย้อนกลับต้องเก็บค่ากลางจากการรันไปข้างหน้าไว้ใช้ตอนเดินย้อน ในตัวอย่างข้างบน ขั้น v̄₀ ต้องใช้ cos 5 และขั้น v̄₋₁ ต้องใช้ v₀ = 5 เอกสาร PyTorch ยกตัวอย่างว่า x ↦ x² ต้องเก็บ x ไว้เพื่อคำนวณเกรเดียนต์ Baydin และคณะระบุว่าหน่วยความจำนี้โตตามจำนวนปฏิบัติการในกรณีเลวร้ายที่สุด ทางออกคือ checkpointing (จุดตรวจสอบ): เก็บค่ากลางเพียงบางจุดแล้วคำนวณส่วนที่เหลือใหม่ตอนเดินย้อน บทสำรวจยกตัวอย่างงานหนึ่ง (Gruslys และคณะ 2016) ที่ประหยัดหน่วยความจำได้ถึง 95% โดยใช้เวลาคำนวณเพิ่ม 33% — แลกเวลากับหน่วยความจำ ซึ่งสำคัญมากบน GPU ที่หน่วยความจำจำกัด (HBM ของเฟส 9)</p>
+<h3 id="กรณขอบ-จดทไมมอนพนธ-คาศนย-และคาทหายไป">กรณีขอบ: จุดที่ไม่มีอนุพันธ์ ค่าศูนย์ และค่าที่หายไป<a class="anchor" href="#%e0%b8%81%e0%b8%a3%e0%b8%93%e0%b8%82%e0%b8%ad%e0%b8%9a-%e0%b8%88%e0%b8%94%e0%b8%97%e0%b9%84%e0%b8%a1%e0%b8%a1%e0%b8%ad%e0%b8%99%e0%b8%9e%e0%b8%99%e0%b8%98-%e0%b8%84%e0%b8%b2%e0%b8%a8%e0%b8%99%e0%b8%a2-%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%84%e0%b8%b2%e0%b8%97%e0%b8%ab%e0%b8%b2%e0%b8%a2%e0%b9%84%e0%b8%9b">#</a></h3>
+<p>AD ถูกต้องเฉพาะเมื่อปฏิบัติการพื้นฐานทุกตัวหาอนุพันธ์ได้ แต่ฟังก์ชันที่ใช้จริงไม่เป็นเช่นนั้นเสมอ เอกสาร autograd ของ PyTorch ยก relu และ sqrt ที่ 0 เป็นตัวอย่าง และระบุกฎที่ใช้ตามลำดับ:</p>
+<ul>
+<li>ถ้ามีอนุพันธ์ ใช้ค่านั้น</li>
+<li>ถ้าฟังก์ชันนูน (อย่างน้อยเฉพาะที่) ใช้ subgradient ที่มีขนาดเล็กที่สุด — relu(x) = max(x, 0) ที่ x = 0 มีความชันได้ทุกค่าตั้งแต่ 0 ถึง 1 ค่าที่เล็กที่สุดคือ <strong>0</strong> ผลคือนิวรอน relu ที่ขาเข้าเป็น 0 พอดีได้เกรเดียนต์ 0 เหมือนขาเข้าติดลบ (ผู้เขียนตรวจในโปรแกรมจิ๋ว: relu(0) และ relu(−2) ให้เกรเดียนต์ 0 ทั้งคู่)</li>
+<li>ถ้าฟังก์ชันนิยามได้ ใช้ค่าตามความต่อเนื่อง ซึ่ง &ldquo;อาจเป็น inf ได้ เช่น sqrt(0)&rdquo; — ความชันของ √x ที่ 0 เป็นอนันต์</li>
+<li>ถ้าฟังก์ชันนิยามไม่ได้ (sqrt(−1), log(−1)) ค่าเกรเดียนต์เป็นค่าใดก็ได้ ส่วนใหญ่เป็น NaN</li>
+<li>เอกสารยังชี้ว่าคำตอบขึ้นกับรูปแบบฟังก์ชัน: max(x, c) ที่ c เป็นค่าคงที่ ณ จุดเท่ากันให้เกรเดียนต์ 0 แต่ max(x, y) ที่ทั้งคู่เป็นเทนเซอร์ให้ (1/2, 1/2)</li>
+</ul>
+<p><strong>กับดักการหารด้วยศูนย์:</strong> เอกสารเดียวกันแสดงว่าถ้าหาร [1, 1] ด้วย [0, 1] ได้ [inf, 1] แล้ว &ldquo;ปิดบัง&rdquo; ช่อง inf ทิ้งก่อนรวมเป็นฟังก์ชันการสูญเสีย เกรเดียนต์ที่ได้คือ [nan, 1] ไม่ใช่ [0, 1] เพราะการเดินย้อนยังผ่านการหารด้วยศูนย์อยู่ ทางแก้คือปิดบัง <em>ก่อน</em> หาร เพื่อไม่ให้ปฏิบัติการนั้นถูกบันทึกลงกราฟเลย</p>
+<p><strong>เกรเดียนต์ที่หายไป (vanishing gradient) และ &ldquo;น้อยเกินเก็บ&rdquo;:</strong> กฎลูกโซ่ <em>คูณ</em> อนุพันธ์เฉพาะที่ตามเส้นทาง ฟังก์ชัน sigmoid σ(x) = 1 / (1 + e⁻ˣ) มีอนุพันธ์ σ(x)(1 − σ(x)) ซึ่งมากที่สุดเมื่อ σ = 1/2 ได้ 1/4 พอดี (ผลคูณ s(1 − s) สูงสุดที่ s = 1/2) ดังนั้นผ่าน sigmoid L ชั้น ตัวคูณสูงสุดคือ (1/4)ᴸ (ขอบบนจากส่วน sigmoid อย่างเดียว น้ำหนักจริงอาจขยายหรือหดเพิ่ม):</p>
+<table>
+	<thead>
+			<tr>
+					<th>จำนวนชั้น L</th>
+					<th>(1/4)ᴸ</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>0.25</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>9.8 × 10⁻⁴</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td>9.5 × 10⁻⁷</td>
+			</tr>
+			<tr>
+					<td>20</td>
+					<td>9.1 × 10⁻¹³</td>
+			</tr>
+			<tr>
+					<td>50</td>
+					<td>7.9 × 10⁻³¹</td>
+			</tr>
+	</tbody>
+</table>
+<p>ผู้เขียนคูณ 0.25 ซ้ำใน 32 บิตจริง: ตั้งแต่ L = 64 ค่าต่ำกว่าจำนวนปกติที่เล็กที่สุด (ราว 1.18 × 10⁻³⁸) เข้าเขต subnormal ที่ความแม่นลดลง และที่ <strong>L = 75 ได้ 0 พอดี</strong> (0.25⁷⁵ = 2⁻¹⁵⁰ เล็กกว่าค่าบวกที่เล็กที่สุดที่ 32 บิตเก็บได้ 2⁻¹⁴⁹ จึงปัดเป็นศูนย์) — น้อยเกินเก็บ เกรเดียนต์เป็นศูนย์จริง ๆ และพารามิเตอร์ชั้นต้นหยุดเรียนรู้ นี่คือเหตุผลหนึ่งที่โครงข่ายลึกหันไปใช้ relu (อนุพันธ์ 1 ในช่วงบวก) และเหตุที่รูปแบบตัวเลขความละเอียดต่ำต้องระวังช่วงค่า (บทที่ 59)</p>
+<h3 id="จากเกรเดยนตถงการเรยนร-การลดตามเกรเดยนตและกรณขอบของอตราการเรยนร">จากเกรเดียนต์ถึงการเรียนรู้: การลดตามเกรเดียนต์และกรณีขอบของอัตราการเรียนรู้<a class="anchor" href="#%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b9%80%e0%b8%81%e0%b8%a3%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%99%e0%b8%95%e0%b8%96%e0%b8%87%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%80%e0%b8%a3%e0%b8%a2%e0%b8%99%e0%b8%a3-%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%a5%e0%b8%94%e0%b8%95%e0%b8%b2%e0%b8%a1%e0%b9%80%e0%b8%81%e0%b8%a3%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%99%e0%b8%95%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%81%e0%b8%a3%e0%b8%93%e0%b8%82%e0%b8%ad%e0%b8%9a%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b8%ad%e0%b8%95%e0%b8%a3%e0%b8%b2%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%80%e0%b8%a3%e0%b8%a2%e0%b8%99%e0%b8%a3">#</a></h3>
+<p>เกรเดียนต์บอกทิศที่ค่าการสูญเสีย <em>เพิ่ม</em> เร็วที่สุด การลดตามเกรเดียนต์จึงก้าวสวนทาง: w ← w − η·∂L/∂w โดย η คืออัตราการเรียนรู้ ตัวอย่างที่คำนวณได้ครบ (ข้อมูลประกอบการอธิบาย): ข้อมูล x = 1, 2, 3 กับคำตอบ y = 3x และโมเดล ŷ = w·x ฟังก์ชันการสูญเสียคือค่าเฉลี่ยของ (w·x − y)² อนุพันธ์คือค่าเฉลี่ยของ 2(w·x − y)·x = 2(w − 3)·mean(x²) = 2 × (14/3) × (w − 3) ≈ 9.333(w − 3)</p>
+<p>แทนในสูตรก้าว: (w − 3) ใหม่ = (1 − 9.333η) × (w − 3) เดิม ความคลาดเคลื่อนถูกคูณด้วยตัวประกอบ 1 − 9.333η ทุกก้าว จึงลู่เข้าก็ต่อเมื่อ |1 − 9.333η| &lt; 1 คือ 0 &lt; η &lt; 2/9.333 ≈ 0.2143 ผู้เขียนจำลองจาก w = 0 หกก้าว:</p>
+<table>
+	<thead>
+			<tr>
+					<th>η</th>
+					<th>ตัวประกอบ</th>
+					<th>w หลังก้าวที่ 1–6</th>
+					<th>ผล</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>+1</td>
+					<td>0, 0, 0, 0, 0, 0</td>
+					<td>ไม่ขยับเลย</td>
+			</tr>
+			<tr>
+					<td>0.05</td>
+					<td>+0.533</td>
+					<td>1.4, 2.147, 2.545, 2.757, 2.871, 2.931</td>
+					<td>ลู่เข้าช้า ๆ</td>
+			</tr>
+			<tr>
+					<td>0.1</td>
+					<td>+0.067</td>
+					<td>2.8, 2.987, 2.999, 3.000, 3.0, 3.0</td>
+					<td>ลู่เข้าเร็ว</td>
+			</tr>
+			<tr>
+					<td>0.1071 (= 1/9.333)</td>
+					<td>0</td>
+					<td>3, 3, 3, 3, 3, 3</td>
+					<td>ถึงคำตอบในก้าวเดียว</td>
+			</tr>
+			<tr>
+					<td>0.2143 (= 2/9.333)</td>
+					<td>−1</td>
+					<td>6, 0, 6, 0, 6, 0</td>
+					<td>แกว่งไม่รู้จบ (ขอบพอดี)</td>
+			</tr>
+			<tr>
+					<td>0.25</td>
+					<td>−1.333</td>
+					<td>7, −2.33, 10.11, −6.48, 15.64, −13.86</td>
+					<td>ลู่ออก</td>
+			</tr>
+	</tbody>
+</table>
+<p>แถวขอบบอกบทเรียนเชิงระบบ: η มากเกินขอบเพียงเล็กน้อยทำให้การฝึกระเบิด และ &ldquo;ความโค้ง&rdquo; 9.333 ขึ้นกับข้อมูล (mean(x²)) — ถ้าคูณ x ทุกตัวด้วย 10 ความโค้งเพิ่ม 100 เท่า η ที่เคยปลอดภัยกลายเป็นลู่ออก</p>
+<p><strong>กรณีขอบที่มาจากการสะสมเกรเดียนต์:</strong> เอกสาร PyTorch (recipe <em>Zeroing out gradients</em>) เตือนว่าโดยปริยายเกรเดียนต์ &ldquo;ถูกสะสมในบัฟเฟอร์ (ไม่ถูกเขียนทับ)&rdquo; ทุกครั้งที่เรียก <code>.backward()</code> จึงควรล้างให้เป็นศูนย์ในลูปการฝึก ผู้เขียนจำลองด้วยตัวอย่างเดิมที่ η = 0.15 (ตัวประกอบ −0.4 ลู่เข้าได้): ถ้าล้างทุกก้าว w = 4.2, 2.52, 3.192, 2.923, 3.031, 2.988 เข้าหา 3 ถ้าลืมล้าง เกรเดียนต์เก่าบวกทบไปเรื่อย ๆ w = 4.2, 6.72, 4.032, −0.101, 0.108, 4.365 … และหลัง 200 ก้าวยังแกว่งอยู่ระหว่างราว −0.72 ถึง 6.66 ไม่ลู่เข้าเลย อีกกรณีคือเผลอเรียก backward สองครั้งต่อก้าว เกรเดียนต์เป็นสองเท่า เท่ากับ η = 0.30 ตัวประกอบ −1.8 ลู่ออก (8.4, −6.72, 20.5, −28.5, 59.7, −99.0) — กฎ &ldquo;บวกสะสม&rdquo; ที่ทำให้ตัวแปรใช้ซ้ำถูกต้อง กลายเป็นบั๊กถ้าลืมว่ามันสะสมข้ามก้าวด้วย</p>
+<p><strong>กรณีขอบ: แบตช์ว่าง</strong> ค่าเฉลี่ยของรายการว่างคือ 0/0 = NaN และ NaN ที่เข้าไปในการอัปเดตหนึ่งครั้งจะทำให้พารามิเตอร์เป็น NaN ตลอดไป (ผู้เขียนตรวจด้วย NumPy: ค่าเฉลี่ยเกรเดียนต์ของแบตช์ว่างเป็น nan) โค้ดแบ่งแบตช์จึงต้องไม่สร้างแบตช์สุดท้ายที่ว่าง — ปัญหาเดียวกับ &ldquo;รอบเศษ&rdquo; ของการแบ่งงานบน GPU ในบทที่ 52</p>
+<h3 id="ประวตสน-ๆ">ประวัติสั้น ๆ<a class="anchor" href="#%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%a7%e0%b8%95%e0%b8%aa%e0%b8%99-%e0%b9%86">#</a></h3>
+<p>Baydin และคณะสรุปว่าแนวคิด AD ย้อนไปถึงทศวรรษ 1950 โหมดไปข้างหน้าถูกอธิบายเป็นวิธีทั่วไปโดย Wengert (1964) งานของ Linnainmaa (1970) มักถูกอ้างเป็นคำอธิบายโหมดย้อนกลับที่ตีพิมพ์ครั้งแรก Werbos (1974) เขียนในรูปตัวแปรเวลาไม่ต่อเนื่อง Speelpenning (1980) ทำให้เป็นอัตโนมัติจริงจากโค้ดภาษาทั่วไป และในวงการการเรียนรู้ของเครื่อง วิธีนี้ถูกค้นพบซ้ำหลายครั้งจนมีชื่อเสียงจากงานของ Rumelhart และคณะ (1986; อ้างผ่านบทสำรวจของ Baydin และคณะ) — สองชุมชนที่ทำเรื่องเดียวกันแต่แทบไม่รู้จักงานของกันและกัน</p>
+<h2 id="การลดกราฟ">การลดกราฟ<a class="anchor" href="#%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%a5%e0%b8%94%e0%b8%81%e0%b8%a3%e0%b8%b2%e0%b8%9f">#</a></h2>
+<p>ชั้นคอมไพเลอร์ยิ่งนั่งระหว่าง ops ของเฟรมเวิร์กกับเคอร์เนลอุปกรณ์: fuse operator ตัดทราฟฟิกหน่วยความจำ ลด intermediate representation ไปยังเป้าหมาย นั่นคือไอเดียคอมไพเลอร์ของบทที่ 28 นำไปใช้กับกราฟเทนเซอร์แทนโค้ด imperative อเนกประสงค์ — optimize และลด ไม่ต้อง lex ใหม่ทุกครั้ง</p>
+<p>กราฟที่ AD บันทึกไว้คือสิ่งเดียวกับที่ชั้นนี้ลด เอกสาร PyTorch ระบุว่ากราฟ &ldquo;ถูกสร้างใหม่ตั้งแต่ต้นทุกรอบ&rdquo; ซึ่งทำให้ใช้ if และลูปของ Python ได้อิสระ (&ldquo;what you run is what you differentiate&rdquo;) ข้อแลกเปลี่ยนคือคอมไพเลอร์เห็นกราฟทีละรอบ ไม่ได้เห็นทั้งโปรแกรมล่วงหน้า — ความตึงระหว่างความยืดหยุ่นกับการ optimize แบบเดียวกับ interpreter กับคอมไพเลอร์ในบทที่ 28</p>
+<h2 id="การกระจายชนสาย">การกระจายชนสาย<a class="anchor" href="#%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%81%e0%b8%a3%e0%b8%b0%e0%b8%88%e0%b8%b2%e0%b8%a2%e0%b8%8a%e0%b8%99%e0%b8%aa%e0%b8%b2%e0%b8%a2">#</a></h2>
+<p>หน่วยความจำของ GPU เดียว (HBM ของเฟส 9) มักถือโมเดลใหญ่สมัยใหม่ไม่พอ แล้วยังฝึกเพียงลำพัง <strong>Data parallelism</strong> replicate โมเดล แบ่งแบตช์ และซิงค์ gradient (all-reduce — เฟส 10 / บทที่ 37 และ 42) <strong>Model parallelism</strong> แบ่งโมเดลเองข้ามอุปกรณ์เมื่อพอดีที่ไหนก็ไม่ได้ การฝึกจริงผสมทั้งสอง Throughput แล้วมักถูกจำกัดโดยความเร็วที่ GPU แลก gradient และ activation — ไม่ใช่โดยความเร็วที่ GPU เดียวคูณแยกเดี่ยว กำแพงอินเตอร์คอนเนกต์จากบทก่อนกลับมาเป็นกำแพงการฝึก</p>
+<h3 id="ทำไมการแบงขอมลใหคำตอบเดยวกน--และเมอไรไม">ทำไมการแบ่งข้อมูลให้คำตอบเดียวกัน — และเมื่อไรไม่<a class="anchor" href="#%e0%b8%97%e0%b8%b3%e0%b9%84%e0%b8%a1%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%81%e0%b8%9a%e0%b8%87%e0%b8%82%e0%b8%ad%e0%b8%a1%e0%b8%a5%e0%b9%83%e0%b8%ab%e0%b8%84%e0%b8%b3%e0%b8%95%e0%b8%ad%e0%b8%9a%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7%e0%b8%81%e0%b8%99--%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b9%80%e0%b8%a1%e0%b8%ad%e0%b9%84%e0%b8%a3%e0%b9%84%e0%b8%a1">#</a></h3>
+<p>เกรเดียนต์ของค่าเฉลี่ยคือค่าเฉลี่ยของเกรเดียนต์รายตัวอย่าง (อนุพันธ์เป็นเชิงเส้น) data parallelism จึงให้คำตอบเท่ากับการฝึกบนเครื่องเดียว <em>ถ้ารวมถูกวิธี</em> ใช้ตัวอย่างข้างบนที่ w = 0: เกรเดียนต์รายตัวอย่าง 2(w·x − y)·x = −6, −24, −54 ค่าเฉลี่ยทั้งแบตช์คือ −28 แบ่งให้สองเครื่องไม่เท่ากัน: เครื่อง A ได้ {1, 2} ค่าเฉลี่ย −15 เครื่อง B ได้ {3} ค่าเฉลี่ย −54</p>
+<ul>
+<li>เฉลี่ยค่าเฉลี่ยของสองเครื่องตรง ๆ: (−15 + −54) / 2 = <strong>−34.5 ผิด</strong></li>
+<li>ถ่วงด้วยจำนวนตัวอย่าง (2 × −15 + 1 × −54) / 3 หรือรวม <em>ผลรวม</em> ก่อนแล้วหารด้วยจำนวนทั้งหมด: <strong>−28 ถูก</strong></li>
+</ul>
+<p><strong>กรณีขอบ:</strong> เมื่อทุกเครื่องได้ข้อมูลเท่ากันพอดี สองวิธีให้ผลเท่ากัน ปัญหาจึงซ่อนอยู่จนกว่าแบตช์สุดท้ายของรอบข้อมูลจะแบ่งไม่ลงตัว และถ้าเครื่องใดได้ส่วนแบ่ง <em>ว่าง</em> ค่าเฉลี่ยของมันเป็น NaN ซึ่งการ all-reduce จะกระจายไปทุกเครื่อง (NaN บวกอะไรก็เป็น NaN)</p>
+<p><strong>ปริมาณข้อมูลที่ต้องแลก</strong> (ผู้เขียนอนุมานจากหลักการ ตัวเลขประกอบการอธิบาย): ในการ all-reduce แบบวงแหวน K เครื่อง เกรเดียนต์ขนาด S ถูกหั่นเป็น K ชิ้น ขั้นรวม (reduce-scatter) ใช้ K − 1 ก้าว แต่ละก้าวส่งหนึ่งชิ้นขนาด S/K ขั้นกระจายคืน (all-gather) อีก K − 1 ก้าว แต่ละเครื่องจึงส่ง 2(K − 1)/K × S สมมุติโมเดล 7 พันล้านพารามิเตอร์ เกรเดียนต์ 16 บิต (S = 14 GB) และลิงก์ 100 GB/s ต่อเครื่อง:</p>
+<table>
+	<thead>
+			<tr>
+					<th>จำนวนเครื่อง K</th>
+					<th>ส่งต่อเครื่องต่อก้าว</th>
+					<th>เวลาสื่อสารขั้นต่ำ</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+					<td>0 (ไม่ต้องสื่อสาร)</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>14 GB</td>
+					<td>0.14 วินาที</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>24.5 GB</td>
+					<td>0.245 วินาที</td>
+			</tr>
+			<tr>
+					<td>64</td>
+					<td>27.6 GB</td>
+					<td>0.276 วินาที</td>
+			</tr>
+			<tr>
+					<td>1,024</td>
+					<td>28.0 GB</td>
+					<td>0.280 วินาที</td>
+			</tr>
+	</tbody>
+</table>
+<p>ปริมาณต่อเครื่องเข้าหา 2S เมื่อ K โต (ไม่โตตาม K ซึ่งเป็นข้อดีของแบบวงแหวน) แต่ไม่เคยต่ำกว่านั้น และจ่ายทุกก้าวการฝึก ขณะที่งานคำนวณต่อเครื่องหดลงเมื่อแบ่งแบตช์ให้เครื่องมากขึ้น — ถึงจุดหนึ่งเวลาสื่อสารเกินเวลาคำนวณ นั่นคือ &ldquo;กำแพงการฝึก&rdquo; ในรูปตัวเลข</p>
+<h2 id="ปดลปของเฟสน">ปิดลูปของเฟสนี้<a class="anchor" href="#%e0%b8%9b%e0%b8%94%e0%b8%a5%e0%b8%9b%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b9%80%e0%b8%9f%e0%b8%aa%e0%b8%99">#</a></h2>
+<p>การฝึก ML สมัยใหม่เป็นปัญหาระบบกระจายที่สวมชุดโครงข่ายประสาท: ประสานหน่วยคำนวณหลายหน่วย ดูดซับความล้มเหลวบางส่วน (GFS, Kubernetes) เคลื่อนข้อมูลกลางมหาศาลอย่างมีประสิทธิภาพ ฮาร์ดแวร์โดยไม่มีครึ่งซอฟต์แวร์นั้น — หรือซอฟต์แวร์โดยไม่มีซิลิคอนและผ้าใบ — เป็นเพียงครึ่งเรื่องที่เฟส 9 และ 10 ปิด</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>สุพจน์ เฮงพระพรหม, <em>การเรียนรู้ของเครื่อง MACHINE LEARNING</em></li>
+<li>นวลวรรณ สุนทรภิษัช, <em>การเรียนรู้ของเครื่อง Machine Learning</em></li>
+<li>รศ.ดร.วฤษาย์ ร่มสายหยุด, <em>การเรียนรู้ของเครื่องสำหรับการวิเคราะห์ข้อมูลเชิงทำนายและการประยุกต์</em></li>
+<li>Atılım Güneş Baydin, Barak A. Pearlmutter, Alexey Andreyevich Radul, Jeffrey Mark Siskind, &ldquo;Automatic Differentiation in Machine Learning: a Survey&rdquo;, <em>Journal of Machine Learning Research</em> 18 (2018) — สามวิธีหาอนุพันธ์, ปัญหาของผลต่างอันตะ, ตัวอย่าง ln(x₁) + x₁x₂ − sin(x₂) ที่ (2, 5) ทั้งสองโหมด, ต้นทุน n·c·ops(f) กับ m·c·ops(f) (c &lt; 6), หน่วยความจำและ checkpointing, ประวัติ: <a href="https://www.jmlr.org/papers/volume18/17-468/17-468.pdf">https://www.jmlr.org/papers/volume18/17-468/17-468.pdf</a></li>
+<li>PyTorch, <em>Autograd mechanics</em> (เอกสาร v2.14) — กราฟ DAG ใบ/ราก, กราฟสร้างใหม่ทุกรอบ, saved tensors, กฎเกรเดียนต์ของฟังก์ชันที่หาอนุพันธ์ไม่ได้ (relu, sqrt ที่ 0, max), การหารด้วยศูนย์กับ nan: <a href="https://docs.pytorch.org/docs/2.14/notes/autograd.html">https://docs.pytorch.org/docs/2.14/notes/autograd.html</a></li>
+<li>PyTorch Tutorials, <em>A Gentle Introduction to torch.autograd</em> — การสะสมเกรเดียนต์ใน <code>.grad</code>: <a href="https://docs.pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html">https://docs.pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html</a> ; <em>Zeroing out gradients in PyTorch</em> — เกรเดียนต์สะสมโดยปริยายและควรล้างในลูปการฝึก: <a href="https://docs.pytorch.org/tutorials/recipes/recipes/zeroing_out_gradients.html">https://docs.pytorch.org/tutorials/recipes/recipes/zeroing_out_gradients.html</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B8%AA%E0%B9%81%E0%B8%95%E0%B8%81%E0%B8%8B%E0%B8%AD%E0%B8%9F%E0%B8%95%E0%B9%8C%E0%B9%81%E0%B8%A7%E0%B8%A3%E0%B9%8C&#43;Machine&#43;Learning&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F46-the-machine-learning-software-stack%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F46-the-machine-learning-software-stack.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F46-the-machine-learning-software-stack.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/47-what-7nm-actually-means/" class="flex align-center">
+        <span>&#39;7nm&#39; หมายถึงอะไรจริง ๆ</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#อารเรยกอน">อาร์เรย์ก่อน</a></li>
+    <li><a href="#เฟรมเวรก-gradient-และฮารดแวรเปนสญญาเดยว">เฟรมเวิร์ก: Gradient และฮาร์ดแวร์เป็นสัญญาเดียว</a></li>
+    <li><a href="#การหาอนพนธอตโนมตจากหลกการพนฐาน">การหาอนุพันธ์อัตโนมัติจากหลักการพื้นฐาน</a>
+      <ul>
+        <li><a href="#ทำไมผลตางอนตะไมพอ-ตวอยางทรนจรง">ทำไมผลต่างอันตะไม่พอ: ตัวอย่างที่รันจริง</a></li>
+        <li><a href="#กราฟการคำนวณ-ตวอยางเดยวกบ-baydin">กราฟการคำนวณ: ตัวอย่างเดียวกับ Baydin</a></li>
+        <li><a href="#โหมดไปขางหนา-forward-mode">โหมดไปข้างหน้า (forward mode)</a></li>
+        <li><a href="#โหมดยอนกลบ-reverse-mode--สงทเรยกวา-backpropagation">โหมดย้อนกลับ (reverse mode) — สิ่งที่เรียกว่า backpropagation</a></li>
+        <li><a href="#กรณขอบ-จดทไมมอนพนธ-คาศนย-และคาทหายไป">กรณีขอบ: จุดที่ไม่มีอนุพันธ์ ค่าศูนย์ และค่าที่หายไป</a></li>
+        <li><a href="#จากเกรเดยนตถงการเรยนร-การลดตามเกรเดยนตและกรณขอบของอตราการเรยนร">จากเกรเดียนต์ถึงการเรียนรู้: การลดตามเกรเดียนต์และกรณีขอบของอัตราการเรียนรู้</a></li>
+        <li><a href="#ประวตสน-ๆ">ประวัติสั้น ๆ</a></li>
+      </ul>
+    </li>
+    <li><a href="#การลดกราฟ">การลดกราฟ</a></li>
+    <li><a href="#การกระจายชนสาย">การกระจายชนสาย</a>
+      <ul>
+        <li><a href="#ทำไมการแบงขอมลใหคำตอบเดยวกน--และเมอไรไม">ทำไมการแบ่งข้อมูลให้คำตอบเดียวกัน — และเมื่อไรไม่</a></li>
+      </ul>
+    </li>
+    <li><a href="#ปดลปของเฟสน">ปิดลูปของเฟสนี้</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

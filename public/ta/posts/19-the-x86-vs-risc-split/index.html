@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RISC காகிதத்தில் சுத்தமானது — மென்பொருள் lock-in மற்றும் µop மொழிபெயர்ப்பு x86-ஐ மேலே வைத்தன">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/19-the-x86-vs-risc-split/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="x86 vs RISC பிளவு">
+	<meta property="og:description" content="RISC காகிதத்தில் சுத்தமானது — மென்பொருள் lock-in மற்றும் µop மொழிபெயர்ப்பு x86-ஐ மேலே வைத்தன">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="x86 vs RISC பிளவு">
+	<meta itemprop="description" content="RISC காகிதத்தில் சுத்தமானது — மென்பொருள் lock-in மற்றும் µop மொழிபெயர்ப்பு x86-ஐ மேலே வைத்தன">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1084">
+
+<title>x86 vs RISC பிளவு • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/19-the-x86-vs-risc-split/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/19-the-x86-vs-risc-split/" title="The x86 vs RISC Split">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/19-the-x86-vs-risc-split/" title="การแยกทางของ x86 กับ RISC">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/19-the-x86-vs-risc-split/" title="x86 එදිරිව RISC බෙදීම">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/19-the-x86-vs-risc-split/" title="Ruptura x86 versus RISC">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/19-the-x86-vs-risc-split/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/19-the-x86-vs-risc-split/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/19-the-x86-vs-risc-split/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/19-the-x86-vs-risc-split/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="active">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>x86 vs RISC பிளவு</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#risc-வதம">RISC வாதம்</a></li>
+    <li><a href="#அனபவச-சதன-ஒர-உணமயன-நரலல-எநத-instruction-கள">அனுபவச் சோதனை: ஒரு உண்மையான நிரலில் எந்த instruction-கள்?</a></li>
+    <li><a href="#x86-ஏன-தரய-வததரநதத">x86 ஏன் தரையை வைத்திருந்தது</a></li>
+    <li><a href="#உளள-risc-ஒர-instruction-µop-களக">உள்ளே RISC: ஒரு instruction µop-களாக</a></li>
+    <li><a href="#இணககததன-பரளதரம-ஒர-கணககல">இணக்கத்தின் பொருளாதாரம், ஒரு கணக்கில்</a></li>
+    <li><a href="#வததரகக-வணடய-மற">வைத்திருக்க வேண்டிய முறை</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    x86 vs RISC பிளவு
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவு 11 CISC மற்றும் RISC-ஐ தத்துவங்களாகப் பெயரிட்டது. இந்தப் பதிவு அவை வணிகரீதியாகப் போட்டியிட்டபோது என்ன நடந்தது — மற்றும் ஏன் &ldquo;சுத்தமான&rdquo; ISA வெறுமனே வெல்லவில்லை.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> x86, RISC பற்றித் தமிழில் எழுத்து விளக்கம் கிடைக்கவில்லை; காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. RISC தரப்பின் வாதம் &ldquo;அனுபவ ரீதியானது&rdquo; என்று ஆங்கிலப் பதிவு சொல்கிறது; அதை இங்கே ஒரு உண்மையான நிரலின் instruction எண்ணிக்கையால் சோதிக்கிறோம்: எங்கள் பணிக் கணினியில் (Linux, x86-64) உள்ள <code>/bin/ls</code> (x86-64) நிரலை <code>objdump</code> மூலம் disassemble செய்து எண்ணியது. x86 குறியாக்கங்கள் capstone disassembler மூலம் சரிபார்க்கப்பட்டவை; mini-CPU நிரல் lab-இன் simulator-இல் ஓட்டப்பட்டது. &ldquo;எடுத்துக்காட்டு மதிப்பு&rdquo; என்று குறிக்கப்பட்டவை கணக்குக்காகத் தேர்ந்தெடுத்தவை.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>x86:</strong> Intel 8086-இலிருந்து வந்த CISC ISA குடும்பம்; இன்றைய 64-பிட் வடிவம் x86-64.</li>
+<li><strong>RISC வரிசை:</strong> MIPS, SPARC, PowerPC போன்ற நிலைத்த-நீள, load/store ISA-கள்.</li>
+<li><strong>Micro-operation, µop (நுண்செயல்):</strong> CPU-க்குள் decoder உருவாக்கும் எளிய, நிலைத்த-வடிவ உள் செயல்; ISA-வுக்குத் தெரியாதது.</li>
+<li><strong>Decoder (குறிவிலக்கி):</strong> x86 byte-களைப் படித்து µop-களாக மாற்றும் முன்முனை.</li>
+<li><strong>பின்னோக்கு இணக்கம் (backward compatibility):</strong> புதிய chip பழைய binary-களை மாற்றமின்றி ஓட்ட வேண்டும் என்ற கட்டுப்பாடு.</li>
+<li><strong>நிறுவப்பட்ட அடித்தளம் (installed base):</strong> ஏற்கனவே பயன்பாட்டில் உள்ள மென்பொருளும் கணினிகளும்.</li>
+<li><strong>Instruction கலவை (instruction mix):</strong> ஒரு நிரலில் எந்த வகை instruction-கள் எவ்வளவு பங்கு என்பது.</li>
+</ul>
+<h2 id="risc-வதம">RISC வாதம்<a class="anchor" href="#risc-%e0%ae%b5%e0%ae%a4%e0%ae%ae">#</a></h2>
+<p>1980களின் ஆரம்பம்: CISC சிக்கலுக்கு எதிர்வினையாக RISC — Berkeley வேலை SPARC நோக்கி, Stanford MIPS நோக்கி, POWER/PowerPC-க்கு உணவளித்த IBM வேலை. கூற்று அனுபவபூர்வமானது: சிக்கலான CISC ops தொகுக்கப்பட்ட குறியீட்டில் அடிக்கடி அரிதாகவே பயன்படுத்தப்பட்டன, அவை தேவைப்பட்ட decode வன்பொருள் சிலிகானை எரித்து இந்தக் கட்டம் ஏற்கனவே உள்ளடக்கிய pipeline-களைச் சிக்கலாக்கியது. ISA-ஐ எளிய, நிலைத்த-நீள, சீரான அறிவுறுத்தல்களுக்குச் சுருக்குங்கள்; சிலிகானைப் பதிவேடுகள், வேகமான pipeline-கள், சிறந்த cache-களுக்குச் செலவழிக்கவும்.</p>
+<p>MIPS, SPARC, மற்றும் PowerPC அனைத்தும் வெளியிடப்பட்டன. ஒரு காலத்திற்கு அவை தூய compute benchmark-களில் x86-ஐ வென்றன, குறிப்பாக workstations மற்றும் சேவையகங்களில்.</p>
+<h2 id="அனபவச-சதன-ஒர-உணமயன-நரலல-எநத-instruction-கள">அனுபவச் சோதனை: ஒரு உண்மையான நிரலில் எந்த instruction-கள்?<a class="anchor" href="#%e0%ae%85%e0%ae%a9%e0%ae%aa%e0%ae%b5%e0%ae%9a-%e0%ae%9a%e0%ae%a4%e0%ae%a9-%e0%ae%92%e0%ae%b0-%e0%ae%89%e0%ae%a3%e0%ae%ae%e0%ae%af%e0%ae%a9-%e0%ae%a8%e0%ae%b0%e0%ae%b2%e0%ae%b2-%e0%ae%8e%e0%ae%a8%e0%ae%a4-instruction-%e0%ae%95%e0%ae%b3">#</a></h2>
+<p>RISC தரப்பின் கூற்று: compiler உருவாக்கும் குறியீட்டில் சிக்கலான CISC செயல்கள் அரிதாகவே வருகின்றன. சோதிப்போம். <code>objdump -d /bin/ls</code> — எங்கள் பணிக் கணினியில் (Linux, x86-64) உள்ள 158,632 byte x86-64 நிரல் — <strong>22,874</strong> instruction-கள். அதிகம் வரும் mnemonic-கள் (objdump-இன் AT&amp;T பெயர்களில்; <code>jmp</code> எண்ணிக்கையில் 11 <code>notrack jmp</code>-உம் அடங்கும்):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Mnemonic</th>
+					<th>எண்ணிக்கை</th>
+					<th>பங்கு</th>
+					<th>வகை</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>mov</td>
+					<td>5,913</td>
+					<td>25.9%</td>
+					<td>தரவு நகர்த்தல்</td>
+			</tr>
+			<tr>
+					<td>jmp</td>
+					<td>1,286</td>
+					<td>5.6%</td>
+					<td>தாவல்</td>
+			</tr>
+			<tr>
+					<td>call</td>
+					<td>1,261</td>
+					<td>5.5%</td>
+					<td>அழைப்பு</td>
+			</tr>
+			<tr>
+					<td>cmp</td>
+					<td>1,199</td>
+					<td>5.2%</td>
+					<td>ஒப்பீடு</td>
+			</tr>
+			<tr>
+					<td>je</td>
+					<td>1,127</td>
+					<td>4.9%</td>
+					<td>நிபந்தனைத் தாவல்</td>
+			</tr>
+			<tr>
+					<td>test</td>
+					<td>1,051</td>
+					<td>4.6%</td>
+					<td>ஒப்பீடு</td>
+			</tr>
+			<tr>
+					<td>lea</td>
+					<td>954</td>
+					<td>4.2%</td>
+					<td>முகவரிக் கணக்கு</td>
+			</tr>
+			<tr>
+					<td>jne</td>
+					<td>822</td>
+					<td>3.6%</td>
+					<td>நிபந்தனைத் தாவல்</td>
+			</tr>
+			<tr>
+					<td>pop / push</td>
+					<td>813 / 742</td>
+					<td>3.6% / 3.2%</td>
+					<td>stack நகர்த்தல்</td>
+			</tr>
+			<tr>
+					<td>xor</td>
+					<td>754</td>
+					<td>3.3%</td>
+					<td>பதிவேட்டைப் பூஜ்ஜியமாக்கல் (754-இல் 720, <code>xor %eax,%eax</code> போல ஒரு பதிவேட்டைத் தன்னுடனேயே)</td>
+			</tr>
+			<tr>
+					<td>add / sub</td>
+					<td>658 / 587</td>
+					<td>2.9% / 2.6%</td>
+					<td>கணக்கு</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>கூட்டிப் பார்ப்போம்:</strong></p>
+<ul>
+<li>தரவு நகர்த்தல் (mov + push + pop + lea): 5,913 + 813 + 742 + 954 = 8,422 → 8,422 ÷ 22,874 ≈ <strong>37%</strong></li>
+<li>தாவல்/அழைப்பு (jmp + call + je + jne): 4,496 → ≈ <strong>20%</strong>; ஒப்பீடு (cmp + test): 2,250 → ≈ <strong>10%</strong></li>
+<li><code>rep</code> முன்னொட்டு கொண்ட string செயல் (ஒரே instruction நினைவகத் தொகுதியை நகர்த்தும் CISC பாணி): முழு நிரலில் <strong>1</strong> மட்டும்.</li>
+</ul>
+<p>ஒரு நிரல் ஒரு மாதிரி மட்டுமே, ஆனால் வடிவம் தெளிவு: பெரும்பகுதி எளிய நகர்த்தல், ஒப்பீடு, தாவல். அவற்றை வேகமாக்குவதில் silicon-ஐச் செலவிடு — 1980-இல் RISC தரப்பு வைத்த வாதம் இதுதான்.</p>
+<p><strong>நீளங்களும் அதே கதை சொல்கின்றன.</strong> அதே நிரலில் instruction நீளப் பரவல் (objdump வெளியீட்டிலிருந்து):</p>
+<table>
+	<thead>
+			<tr>
+					<th>நீளம் (byte)</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7 அல்லது அதிகம்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>பங்கு</td>
+					<td>5.2%</td>
+					<td>17.9%</td>
+					<td>22.7%</td>
+					<td>13.2%</td>
+					<td>20.0%</td>
+					<td>9.9%</td>
+					<td>11.1%</td>
+			</tr>
+	</tbody>
+</table>
+<p>சராசரி ≈ 4.08 byte (93,406 byte ÷ 22,874). அதாவது x86 குறியீடு சராசரியாக ஒரு RISC-V instruction-இன் 4 byte அளவுதான் — ஆனால் ஒவ்வொரு instruction-இன் எல்லையும் decode செய்த பிறகே தெரியும் (பதிவு 11).</p>
+<h2 id="x86-ஏன-தரய-வததரநதத">x86 ஏன் தரையை வைத்திருந்தது<a class="anchor" href="#x86-%e0%ae%8f%e0%ae%a9-%e0%ae%a4%e0%ae%b0%e0%ae%af-%e0%ae%b5%e0%ae%a4%e0%ae%a4%e0%ae%b0%e0%ae%a8%e0%ae%a4%e0%ae%a4">#</a></h2>
+<p>x86-இன் விளிம்பு ஒருபோதும் நேர்த்தி அல்ல — அது ஏற்கனவே IBM PC இணக்கத்தன்மையில் அமர்ந்திருந்த மென்பொருள். அது desktop தரநிலையாக மாறியதும், மிகப்பெரிய நிறுவப்பட்ட அடித்தளம் x86-இல் மட்டுமே ஓடியது. பின்னோக்கு இணக்கத்தன்மை ஒரு அகழி ஆனது: புதிய சிப்கள் பழைய binaries-ஐ ஓட்ட வேண்டும், எனவே ISA-வை RISC-பாணியில் சுத்தமாக மறுவடிவமைக்க முடியவில்லை — wart-க்கு wart நீட்டிக்க மட்டுமே, Intel மற்றும் பின்னர் AMD மேற்பரப்பு இருந்தாலும் <em>implementation</em>-ஐ வேகமாக்கியபோது.</p>
+<p>உண்மையான தீர்வு: நவீன x86 CISC ops-ஐ out-of-order core-இல் நேரடியாகச் செயல்படுத்துவதில்லை. ஒரு decoder ஒவ்வொரு x86 அறிவுறுத்தலையும் ஒன்று அல்லது அதற்கு மேற்பட்ட நிலைத்த-வடிவ உள் micro-operations (µops) ஆக மொழிபெயர்க்கிறது — RISC-போன்றவை — மற்றும் <em>அவை</em> பதிவு 16-இன் reservation stations, ROB, மற்றும் execution units வழியாக ஓடுகின்றன. வெளியே: CISC-இணக்கமானது. உள்ளே: மொழிபெயர்ப்பு அடுக்கின் கீழ் RISC-பாணி pipeline.</p>
+<h2 id="உளள-risc-ஒர-instruction-µop-களக">உள்ளே RISC: ஒரு instruction µop-களாக<a class="anchor" href="#%e0%ae%89%e0%ae%b3%e0%ae%b3-risc-%e0%ae%92%e0%ae%b0-instruction-%c2%b5op-%e0%ae%95%e0%ae%b3%e0%ae%95">#</a></h2>
+<p><code>add dword ptr [rbx], eax</code> (byte-கள் <code>01 03</code>, capstone சரிபார்த்தது) — நினைவகத்தில் உள்ள எண்ணுடன் eax-ஐக் கூட்டி அங்கேயே சேமி. ஒரு out-of-order core-க்குள் இது கருத்தளவில் மூன்று எளிய செயல்கள் (சரியான பிரிவும் எண்ணிக்கையும் ஒவ்வொரு CPU வடிவமைப்புக்கும் மாறும் — இது விளக்கத்துக்கான பிரிப்பு):</p>
+<table>
+	<thead>
+			<tr>
+					<th>µop</th>
+					<th>செயல்</th>
+					<th>RISC-V-இல் ஒத்தது</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>tmp ← நினைவகம்[rbx] (load)</td>
+					<td><code>lw</code></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>tmp ← tmp + eax (ALU)</td>
+					<td><code>add</code></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>நினைவகம்[rbx] ← tmp (store)</td>
+					<td><code>sw</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>பதிவு 11-இல் RISC-V-க்கு எழுதிய மூன்று instruction-கள் இவைதான். வித்தியாசம்: RISC-V-இல் compiler இந்த மூன்றையும் நிரலிலேயே எழுதுகிறது (12 byte); x86-இல் நிரலில் 2 byte, மூன்றாகப் பிரிப்பது decoder-இன் வேலை. பதிவு 16-இன் reservation station-களும் ROB-உம் பார்ப்பது µop-களை மட்டுமே.</p>
+<p><strong>பதிவேடுகள்:</strong> x86-64 16 பொதுப் பதிவேடுகள் (rax … r15). பழைய 8-க்கு மேல் உள்ளவற்றை அணுக ஒரு முன்னொட்டு byte (REX) தேவை: <code>add eax, ebx</code> = <code>01 D8</code> (2 byte), ஆனால் <code>add r8, r15</code> = <code>4D 01 F8</code> (3 byte) — பழைய குறியாக்கத்தை உடைக்காமல் நீட்டியதன் விலை (capstone சரிபார்த்தது). RISC-V 32 பதிவேடுகளையும் முதலிலிருந்தே 5-பிட் புலங்களில் வைத்தது (பதிவு 11). &ldquo;நீட்டப்பட்டது, மரு மருவாக&rdquo; என்று ஆங்கிலப் பதிவு சொல்வதன் ஒரு சிறு உதாரணம்.</p>
+<h2 id="இணககததன-பரளதரம-ஒர-கணககல">இணக்கத்தின் பொருளாதாரம், ஒரு கணக்கில்<a class="anchor" href="#%e0%ae%87%e0%ae%a3%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%a4%e0%ae%a9-%e0%ae%aa%e0%ae%b0%e0%ae%b3%e0%ae%a4%e0%ae%b0%e0%ae%ae-%e0%ae%92%e0%ae%b0-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95%e0%ae%b2">#</a></h2>
+<p>ஒரு நிறுவனத்திடம் x86-க்கு மட்டும் compile செய்த 200 நிரல்கள்; ஒவ்வொன்றையும் வேறு ISA-க்கு மாற்றிச் சோதிக்க சராசரி 3 வாரம் (எடுத்துக்காட்டு மதிப்புகள்). புதிய RISC கணினி 30% வேகம் என்றாலும், மாற்றச் செலவு 200 × 3 = 600 வார உழைப்பு. ஒரு x86 chip அடுத்த ஆண்டே 30% வேகமாக வந்தால் அந்தச் செலவு பூஜ்ஜியம். ஆயிரக்கணக்கான நிறுவனங்களில் இதே கணக்கு — அதுதான் &ldquo;moat&rdquo;.</p>
+<h2 id="வததரகக-வணடய-மற">வைத்திருக்க வேண்டிய முறை<a class="anchor" href="#%e0%ae%b5%e0%ae%a4%e0%ae%a4%e0%ae%b0%e0%ae%95%e0%ae%95-%e0%ae%b5%e0%ae%a3%e0%ae%9f%e0%ae%af-%e0%ae%ae%e0%ae%b1">#</a></h2>
+<p>வெல்லும் ISA-கள் அரிதாகவே தொழில்நுட்பத் தகுதியால் மட்டும் வெல்கின்றன. இணக்கத்தன்மை, ecosystem lock-in, மற்றும் உற்பத்தி அளவு வழக்கமாகச் சுத்தமான காகிதக் கட்டமைப்பை வெல்கின்றன. அதே இயக்கம் அடுத்து ARM-இன் licensing மாதிரிக்கு எதிராக RISC-V-இன் திறந்த ISA-வுடன் தோன்றுகிறது — ஒரு அறிவுறுத்தல் தொகுப்பைச் சுற்றிய <em>வணிக மாதிரி</em> குறியாக்கத்தைப் போலவே முக்கியமாக இருக்கலாம்.</p>
+<p><strong>இப்போது முயல்க: CISC instruction-ஐ RISC படிகளாக விரியுங்கள்.</strong> Mini-CPU-க்கு &ldquo;நினைவகம்[15] ← நினைவகம்[15] + நினைவகம்[14]&rdquo; போன்ற ஒரே CISC instruction இல்லை. ஒரு x86 decoder செய்வதுபோல அதை எளிய படிகளாக நீங்களே விரியுங்கள். மூல உரையை இப்படி மாற்றுங்கள்:</p>
+<pre tabindex="0"><code>LDI 5
+STA 14
+LDI 8
+STA 15
+LDA 15
+ADD 14
+STA 15
+LDA 15
+OUT
+HLT</code></pre><p>முதல் நான்கு வரிகள் தரவை அமைக்கின்றன (mem[14] = 5, mem[15] = 8). அடுத்த மூன்று (<code>LDA 15</code>, <code>ADD 14</code>, <code>STA 15</code>) தான் அந்த ஒரே &ldquo;CISC&rdquo; செயலின் load / ALU / store µop-கள். <strong>Assemble</strong>, பிறகு <strong>Run</strong>: பத்து படிகளில் HALT, Output <strong>13</strong>; Step செய்தால் IR வரிசை 55 4E 58 4F 1F 2E 4F 1F E0 F0 (simulator-இல் சரிபார்த்தது). பிறகு மேலே உள்ள <code>/bin/ls</code> அட்டவணையைப் போல எண்ணுங்கள்: பத்தில் எத்தனை தரவு நகர்த்தல் (LDI, LDA, STA)? (விடை: 7 — மீதி ADD, OUT, HLT.)</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=ta"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<p><strong>Door out:</strong> David A. Patterson and David R. Ditzel, &ldquo;The Case for the Reduced Instruction Set Computer&rdquo; (<em>Computer Architecture News</em>, 1980) — இந்த வணிகப் போராட்டத்தின் RISC பக்கத்தின் அறிக்கை.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>நுண்செயல்</td>
+					<td>micro-operation (µop)</td>
+			</tr>
+			<tr>
+					<td>குறிவிலக்கி</td>
+					<td>decoder</td>
+			</tr>
+			<tr>
+					<td>பின்னோக்கு இணக்கம்</td>
+					<td>backward compatibility</td>
+			</tr>
+			<tr>
+					<td>நிறுவப்பட்ட அடித்தளம்</td>
+					<td>installed base</td>
+			</tr>
+			<tr>
+					<td>instruction கலவை</td>
+					<td>instruction mix</td>
+			</tr>
+			<tr>
+					<td>எதிர்ப்பெயர்ப்பு</td>
+					<td>disassembly</td>
+			</tr>
+			<tr>
+					<td>முன்னொட்டு byte</td>
+					<td>prefix byte (REX)</td>
+			</tr>
+			<tr>
+					<td>மென்பொருள் சூழலமைப்பு</td>
+					<td>software ecosystem</td>
+			</tr>
+			<tr>
+					<td>பணிநிலையம்</td>
+					<td>workstation</td>
+			</tr>
+			<tr>
+					<td>அளவுகோல் சோதனை</td>
+					<td>benchmark</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ்நாடு அரசு, <em>11ஆம் வகுப்பு கணினி அறிவியல்</em>, அலகு 3: கணினி அமைப்பு (RISC / CISC அறிமுகம் — µop மொழிபெயர்ப்பு / வணிக வரலாறு அல்ல)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;x86&#43;vs&#43;RISC&#43;%E0%AE%AA%E0%AE%BF%E0%AE%B3%E0%AE%B5%E0%AF%81&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F19-the-x86-vs-risc-split%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F19-the-x86-vs-risc-split.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F19-the-x86-vs-risc-split.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Mainframes முதல் Minicomputers முதல் Microprocessors வரை</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="flex align-center">
+        <span>ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#risc-வதம">RISC வாதம்</a></li>
+    <li><a href="#அனபவச-சதன-ஒர-உணமயன-நரலல-எநத-instruction-கள">அனுபவச் சோதனை: ஒரு உண்மையான நிரலில் எந்த instruction-கள்?</a></li>
+    <li><a href="#x86-ஏன-தரய-வததரநதத">x86 ஏன் தரையை வைத்திருந்தது</a></li>
+    <li><a href="#உளள-risc-ஒர-instruction-µop-களக">உள்ளே RISC: ஒரு instruction µop-களாக</a></li>
+    <li><a href="#இணககததன-பரளதரம-ஒர-கணககல">இணக்கத்தின் பொருளாதாரம், ஒரு கணக்கில்</a></li>
+    <li><a href="#வததரகக-வணடய-மற">வைத்திருக்க வேண்டிய முறை</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

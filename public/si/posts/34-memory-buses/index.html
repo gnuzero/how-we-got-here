@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DDR bandwidth මිලදී ගත්තේය; latency කලාතුරකින් චලනය විය — banks සහ channels රැඳීම සඟවයි">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/34-memory-buses/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="මතක බස්">
+	<meta property="og:description" content="DDR bandwidth මිලදී ගත්තේය; latency කලාතුරකින් චලනය විය — banks සහ channels රැඳීම සඟවයි">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="මතක බස්">
+	<meta itemprop="description" content="DDR bandwidth මිලදී ගත්තේය; latency කලාතුරකින් චලනය විය — banks සහ channels රැඳීම සඟවයි">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1492">
+
+<title>මතක බස් • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/34-memory-buses/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/34-memory-buses/" title="Memory Buses">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/34-memory-buses/" title="บัสหน่วยความจำ">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/34-memory-buses/" title="Memory Buses">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/34-memory-buses/" title="Magistralele de memorie">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/34-memory-buses/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/34-memory-buses/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/34-memory-buses/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/34-memory-buses/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="active">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>මතක බස්</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#දකම-edges-වගවත-clock-එකක-නව">දෙකම Edges, වේගවත් Clock එකක් නොවේ</a></li>
+    <li><a href="#bandwidth-නගගය-first-bit-latency-නගයය">Bandwidth නැග්ගේය; First-Bit Latency නොගියේය</a></li>
+    <li><a href="#මනදගම-පරවශයක-සඟවමට-parallelism">මන්දගාමී ප්‍රවේශයක් සැඟවීමට Parallelism</a></li>
+    <li><a href="#ගඹරන-ddr4-datasheet-එකක-කයවම--mts-cl-ns-සහ-bandwidth-ගණනය">ගැඹුරින්: DDR4 datasheet එකක් කියවමු — MT/s, CL, ns සහ bandwidth ගණනය</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-ns-වලන-latency--cl-තනව-අරථ-වරහතය">2. ns වලින් latency — CL තනිව අර්ථ විරහිතයි</a></li>
+        <li><a href="#3-bandwidth--එක-channel-එකක-සඳහ">3. Bandwidth — එක් channel එකක් සඳහා</a></li>
+        <li><a href="#4-සබ-කයවමක-කල-රඛව--සහ-parallelism-අවශය-වනන-ඇය">4. සැබෑ කියවීමක කාල රේඛාව — සහ parallelism අවශ්‍ය වන්නේ ඇයි</a></li>
+        <li><a href="#5-chip-එකක-ධරතව-තහවර-කරම">5. chip එකක ධාරිතාව තහවුරු කරමු</a></li>
+        <li><a href="#6-දනම-උතසහ-කරනන-මම-පටව-lab-එකක-නත">6. දැන්ම උත්සාහ කරන්න (මෙම පිටුවේ lab එකක් නැත)</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    මතක බස්
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>PCIe (Posts 32–33) යනු විස්තීරණ උපාංග වෙත මාර්ගයයි. මතක බස් යනු ඇත්ත වශයෙන්ම CPU පෝෂණය කරන මාර්ගයයි — Post 10 හි DRAM — සහ එහි පරිණාමය bandwidth, latency, සහ බලය අතර ධාවන සාකච්ඡාවකි. Generation නාම නොව කතාව. එම තුන අතර බෙදීම ය.</p>
+<h2 id="දකම-edges-වගවත-clock-එකක-නව">දෙකම Edges, වේගවත් Clock එකක් නොවේ<a class="anchor" href="#%e0%b6%af%e0%b6%9a%e0%b6%b8-edges-%e0%b7%80%e0%b6%9c%e0%b7%80%e0%b6%ad-clock-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%b1%e0%b7%80">#</a></h2>
+<p>DDR — Double Data Rate — rising <em>සහ</em> falling edge මත transfer කරයි. එකම clock එකේදී single-data-rate නිර්මාණයකට දළ වශයෙන් දෙගුණ throughput, සංඛ්‍යාතය දෙගුණ කිරීමකින් තොරව (සහ එය සමඟ පැමිණෙන signal-integrity ගැටලු). පළමුව clock බිත්තිය ගෙවීමකින් තොරව bandwidth.</p>
+<h2 id="bandwidth-නගගය-first-bit-latency-නගයය">Bandwidth නැග්ගේය; First-Bit Latency නොගියේය<a class="anchor" href="#bandwidth-%e0%b6%b1%e0%b6%9c%e0%b6%9c%e0%b6%ba-first-bit-latency-%e0%b6%b1%e0%b6%9c%e0%b6%ba%e0%b6%ba">#</a></h2>
+<p>සෑම DDR generation එකක්ම උපරිම bandwidth ඉහළ දැමුවේය, බොහෝ විට වේගවත් I/O මගින්. Prefetch සහ, DDR5 හි, ස්වාධීන 32-bit subchannels දෙකකට බෙදීම මොඩියුලය මත වැඩි parallelism මිලදී ගනී. ශීර්ෂක අංක සඟවන දේ: අමු ප්‍රවේශ <em>latency</em> — ඉල්ලීමේ සිට පළමු bit දක්වා — bandwidth ට වඩා බොහෝ මන්දගාමීව චලනය විය. DRAM ආරම්භ වූ පසු stream එකකට බොහෝ හොඳ වූ අතර, එය කරන තෙක් රැඳීමට පමණක් ටිකක් හොඳ විය. එය Post 35 සඳහා සැකසුමයි. වෙනස් මිනුම, වෙනස් භෞතික විද්‍යාව (charge sensing, capacitor කෝෂ).</p>
+<h2 id="මනදගම-පරවශයක-සඟවමට-parallelism">මන්දගාමී ප්‍රවේශයක් සැඟවීමට Parallelism<a class="anchor" href="#%e0%b6%b8%e0%b6%b1%e0%b6%af%e0%b6%9c%e0%b6%b8-%e0%b6%b4%e0%b6%bb%e0%b7%80%e0%b7%81%e0%b6%ba%e0%b6%9a-%e0%b7%83%e0%b6%9f%e0%b7%80%e0%b6%b8%e0%b6%a7-parallelism">#</a></h2>
+<p><em>Channel</em> එකක් යනු ස්වාධීන controller මාර්ගයකි — සමගාමී ඉල්ලීම් එකිනෙකා පිටුපස queue විය යුතු නැත. Channel එකක් තුළ, <em>ranks</em> සහ <em>banks</em> එක් bank එකකට අවසන් කිරීමට (හෝ refresh — Post 10) ඉඩ දෙන අතර අනෙක නව ඉල්ලීමක් ගනී. ප්‍රමාණවත් ස්වාධීන ප්‍රවේශ overlap කරන්න සහ <em>සමස්ත</em> throughput ඉහළින් රැඳේ කිසිදු තනි ප්‍රවේශයක් වේගවත් නොවුණත්. එබැවින්ම සංවිධානය පවතී: DIMM විශේෂාංග නාමාවලියක් නොව, ඊළඟ පෝස්ට් එක බිත්තියක් ලෙස නම් කරන latency සැඟවීමේ ක්‍රමයකි.</p>
+<p>DIMM යනු භෞතික ඇසුරුමයි — සම්මත edge connector එකක් සහිත පුවරුවක chips — එබැවින් ධාරිතාව &ldquo;slots කීයක්ද, කුමන ප්‍රමාණයද&rdquo; වේ, බස් එකේ නැවත නිර්මාණයක් නොවේ.</p>
+<p>ඊළඟ පෝස්ට් දෙක මෙම සාකච්ඡාව අඩු වූ විට සිදුවන දේය: මතක බිත්තිය, සහ ගණනය පැත්තේ එහි ඥාතියා, clock-speed බිත්තිය.</p>
+<h2 id="ගඹරන-ddr4-datasheet-එකක-කයවම--mts-cl-ns-සහ-bandwidth-ගණනය">ගැඹුරින්: DDR4 datasheet එකක් කියවමු — MT/s, CL, ns සහ bandwidth ගණනය<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-ddr4-datasheet-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%9a%e0%b6%ba%e0%b7%80%e0%b6%b8--mts-cl-ns-%e0%b7%83%e0%b7%84-bandwidth-%e0%b6%9c%e0%b6%ab%e0%b6%b1%e0%b6%ba">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> NIE 12 ශ්‍රේණි ICT ගුරු මාර්ගෝපදේශය (මුද්‍රිත පිටුව 75, PDF පිටුව 88) RAM වර්ග ලෙස <strong>SRAM, DRAM, SDRAM</strong> නම් කර ප්‍රවේශ කාලය, පිරිවැය සහ ධාරිතාව අනුව මතක වර්ග සැසඳීමට කියයි; නමුත් DDR, CAS latency, channels හෝ bandwidth ගණනය එහි නැත. &ldquo;DDR4 සහ DDR5 අතර වෙනස&rdquo;, &ldquo;Memory Channels Explained | Sinhala&rdquo; වැනි පාරිභෝගික මට්ටමේ සිංහල YouTube වීඩියෝ ඇත (මාතෘකාවෙන් පමණක් හඳුනාගත්, අප නැරඹූ ඒවා නොවේ). මෙම කොටස ඊට වඩා ගැඹුරට යයි: සැබෑ Micron datasheet දෙකක අංක භාවිතයෙන්, ඉහත පෙළේ &ldquo;bandwidth නැග්ගේය, latency නොගියේය&rdquo; යන ප්‍රකාශය ඔබම ගණනය කර තහවුරු කරයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>SDRAM (synchronous DRAM):</strong> clock එකකට සමමුහුර්තව ක්‍රියා කරන DRAM — NIE විෂය නිර්දේශයේ නම් කළ වර්ගය. DDR SDRAM එහි පරම්පරාවකි.</li>
+<li><strong>DDR (double data rate):</strong> clock එකේ ඉහළ යන <em>සහ</em> පහළ යන දාර (edges) දෙකේම දත්ත යැවීම → clock චක්‍රයකට හුවමාරු 2ක්.</li>
+<li><strong>MT/s (megatransfers per second):</strong> තත්පරයකට මිලියන හුවමාරු. &ldquo;DDR4-3200&rdquo; = 3200 MT/s — <strong>3200 MHz clock නොවේ</strong>.</li>
+<li><strong>tCK:</strong> clock චක්‍ර කාලය.</li>
+<li><strong>CL (CAS latency):</strong> column කියවීමේ විධානයේ සිට පළමු දත්තය දක්වා clock චක්‍ර ගණන.</li>
+<li><strong>tRCD:</strong> row එකක් විවෘත කිරීමේ (activate) සිට column විධානය දක්වා අවම කාලය; <strong>tRP:</strong> විවෘත row එකක් වසා දැමීමට (precharge) කාලය.</li>
+<li><strong>Bank, bank group, row, column, page:</strong> DRAM chip එකක් ඇතුළත ස්වාධීන කොටස් (banks), ඒවා කණ්ඩායම් (bank groups), එක් bank එකක කෝෂ පේළි (rows) සහ තීරු (columns); විවෘත row එකක ප්‍රමාණය <em>page size</em> යි.</li>
+<li><strong>Burst length (BL8):</strong> එක් කියවීම් විධානයකින් අඛණ්ඩව යන හුවමාරු 8ක්.</li>
+<li><strong>Channel:</strong> CPU එකේ මතක controller එකේ සිට මොඩියුල වෙත යන ස්වාධීන මතක මාර්ගයක්; පහත උදාහරණ මොඩියුලයේ දත්ත පළල bits 64 කි.</li>
+</ul>
+<h3 id="2-ns-වලන-latency--cl-තනව-අරථ-වරහතය">2. ns වලින් latency — CL තනිව අර්ථ විරහිතයි<a class="anchor" href="#2-ns-%e0%b7%80%e0%b6%bd%e0%b6%b1-latency--cl-%e0%b6%ad%e0%b6%b1%e0%b7%80-%e0%b6%85%e0%b6%bb%e0%b6%ae-%e0%b7%80%e0%b6%bb%e0%b7%84%e0%b6%ad%e0%b6%ba">#</a></h3>
+<p>Micron 8Gb DDR4 component datasheet හි Table 1 (පිටු 1–2) වේග ශ්‍රේණි ලැයිස්තුගත කරයි. සූත්‍රය: <strong>latency (ns) = CL × tCK</strong>, සහ tCK = 2 ÷ (MT/s) මයික්‍රො-තත්පර (clock එකකට හුවමාරු 2 නිසා).</p>
+<table>
+	<thead>
+			<tr>
+					<th>වේග ශ්‍රේණිය</th>
+					<th>MT/s</th>
+					<th>tCK</th>
+					<th>CL</th>
+					<th>CL × tCK</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>DDR4-1600 (පසුගාමී අනුකූලතාව)</td>
+					<td>1600</td>
+					<td>1.25 ns</td>
+					<td>11</td>
+					<td><strong>13.75 ns</strong></td>
+			</tr>
+			<tr>
+					<td>DDR4-1866</td>
+					<td>1866</td>
+					<td>1.071 ns</td>
+					<td>13</td>
+					<td><strong>13.92 ns</strong></td>
+			</tr>
+			<tr>
+					<td>DDR4-2400</td>
+					<td>2400</td>
+					<td>0.833 ns</td>
+					<td>17</td>
+					<td><strong>14.16 ns</strong></td>
+			</tr>
+			<tr>
+					<td>DDR4-3200</td>
+					<td>3200</td>
+					<td>0.625 ns</td>
+					<td>22</td>
+					<td><strong>13.75 ns</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>DDR4-1600 සිට DDR4-3200 දක්වා <strong>දත්ත වේගය දෙගුණ වූ නමුත් පළමු දත්තය දක්වා කාලය හරියටම එකමයි (13.75 ns)</strong>. CL අංකය 11 සිට 22 දක්වා &ldquo;නරක&rdquo; වූ බව පෙනුණත්, සෑම චක්‍රයක්ම අඩකින් කෙටි නිසා නැනෝ තත්පර නොවෙනස්ව පවතී. ඉහත පෙළේ ප්‍රකාශයේ සාක්ෂිය මෙයයි: <em>bandwidth නැග්ගේය; first-bit latency නොගියේය</em>.</p>
+<h3 id="3-bandwidth--එක-channel-එකක-සඳහ">3. Bandwidth — එක් channel එකක් සඳහා<a class="anchor" href="#3-bandwidth--%e0%b6%91%e0%b6%9a-channel-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b7%83%e0%b6%b3%e0%b7%84">#</a></h3>
+<p>Micron 8GB DDR4 UDIMM datasheet (MTA8ATF1G64AZ, පිටුව 2) මොඩියුලය &ldquo;1 Gig x 64&rdquo; ලෙස විස්තර කරයි — දත්ත පළල <strong>bits 64 = බයිට් 8</strong>, සහ එහි මූලික උපාංගය x8 chip (MT40A1G8) නිසා 64 ÷ 8 = chips <strong>8ක්</strong> පැත්තෙන් පැත්තට.</p>
+<p><strong>Bandwidth = MT/s × බයිට් 8:</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>මොඩියුලය</th>
+					<th>ගණනය</th>
+					<th>datasheet හි අගය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>DDR4-2400</td>
+					<td>2400 × 10⁶ × 8 = 19.2 × 10⁹</td>
+					<td>19.2 GB/s</td>
+			</tr>
+			<tr>
+					<td>DDR4-2666</td>
+					<td>2666 × 10⁶ × 8 ≈ 21.3 × 10⁹</td>
+					<td>21.3 GB/s</td>
+			</tr>
+			<tr>
+					<td>DDR4-3200</td>
+					<td>3200 × 10⁶ × 8 = 25.6 × 10⁹</td>
+					<td>25.6 GB/s</td>
+			</tr>
+	</tbody>
+</table>
+<p>channels දෙකක් (dual channel) සමගාමීව භාවිතා කළොත් උපරිම අගය දෙගුණ වේ: DDR4-3200 × 2 = <strong>51.2 GB/s</strong> (අපේ ගණනය; channels ස්වාධීනව සමානව කාර්යබහුල නම් පමණි).</p>
+<h3 id="4-සබ-කයවමක-කල-රඛව--සහ-parallelism-අවශය-වනන-ඇය">4. සැබෑ කියවීමක කාල රේඛාව — සහ parallelism අවශ්‍ය වන්නේ ඇයි<a class="anchor" href="#4-%e0%b7%83%e0%b6%b6-%e0%b6%9a%e0%b6%ba%e0%b7%80%e0%b6%b8%e0%b6%9a-%e0%b6%9a%e0%b6%bd-%e0%b6%bb%e0%b6%9b%e0%b7%80--%e0%b7%83%e0%b7%84-parallelism-%e0%b6%85%e0%b7%80%e0%b7%81%e0%b6%ba-%e0%b7%80%e0%b6%b1%e0%b6%b1-%e0%b6%87%e0%b6%ba">#</a></h3>
+<p>DDR4-3200 හි (tRCD = CL = tRP = 13.75 ns) බයිට් 64 ක burst එකක් (BL8 × බයිට් 8) කියවීම. burst එකේ කාලය = හුවමාරු 8 × (1 ÷ 3200 MT/s) = 8 × 0.3125 ns = <strong>2.5 ns</strong>.</p>
+<table>
+	<thead>
+			<tr>
+					<th>අවස්ථාව</th>
+					<th>පියවර</th>
+					<th>මුළු කාලය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Row hit (අවශ්‍ය row එක දැනටමත් විවෘතයි)</td>
+					<td>CL + burst</td>
+					<td>13.75 + 2.5 = <strong>16.25 ns</strong></td>
+			</tr>
+			<tr>
+					<td>Bank idle (row වසා ඇත)</td>
+					<td>tRCD + CL + burst</td>
+					<td>13.75 + 13.75 + 2.5 = <strong>30 ns</strong></td>
+			</tr>
+			<tr>
+					<td>Row conflict (වෙනත් row එකක් විවෘතයි)</td>
+					<td>tRP + tRCD + CL + burst</td>
+					<td>13.75 × 3 + 2.5 = <strong>43.75 ns</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>වරකට එක් ඉල්ලීමක් පමණක්</strong> නම් (bank idle අවස්ථාව): බයිට් 64 ÷ 30 ns ≈ <strong>2.13 GB/s</strong> — උපරිම 25.6 GB/s හි <strong>8.3%</strong> පමණි! දත්ත බස් එක කාර්යබහුල වන්නේ 30 ns න් 2.5 ns ක් පමණි.</p>
+<p>බස් එක පිරවීමට එකවර ඉල්ලීම් කීයක් &ldquo;පියාසර කළ&rdquo; යුතුද? 30 ns ÷ 2.5 ns = <strong>12</strong> (Little&rsquo;s law හි සරල යෙදීමක්; tRRD, tFAW වැනි අමතර සීමා මෙහි නොසලකා හැර ඇත — ඒ නිසා මෙය පහළ සීමාවක් පමණි). මෙම ඉල්ලීම් වෙනස් <strong>banks</strong> වලට යා යුතුය; එක් bank එකකට එකවර එක් row එකක් පමණක් විවෘත කළ හැකි නිසා. component datasheet එක (පිටුව 1) x8 chip එකක <strong>banks 16ක් — bank groups 4 × banks 4</strong> ඇති බව කියයි. ඉහත පෙළේ &ldquo;banks සහ channels රැඳීම සඟවයි&rdquo; යන්නෙහි අංක මෙයයි.</p>
+<h3 id="5-chip-එකක-ධරතව-තහවර-කරම">5. chip එකක ධාරිතාව තහවුරු කරමු<a class="anchor" href="#5-chip-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%b0%e0%b6%bb%e0%b6%ad%e0%b7%80-%e0%b6%ad%e0%b7%84%e0%b7%80%e0%b6%bb-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h3>
+<p>component datasheet හි Table 2 (පිටුව 2) — x8 (1024 Meg x 8) සඳහා:</p>
+<ul>
+<li>bank groups 4 × banks 4 = banks <strong>16</strong></li>
+<li>rows 64K (A[15:0] → 2¹⁶ = 65,536)</li>
+<li>columns 1K (A[9:0] → 2¹⁰ = 1,024)</li>
+<li>column එකකට bits <strong>8</strong> (x8)</li>
+</ul>
+<p>16 × 65,536 × 1,024 × 8 = <strong>8,589,934,592 bits = 8 Gib</strong> — chip නාමයේ &ldquo;8Gb&rdquo; හරියටම. මොඩියුලයේ chips 8 × 8 Gb = 64 Gb = <strong>8 GB</strong> — මොඩියුල නාමයේ &ldquo;8GB&rdquo;. Page size = 2^(column bits) × (DQ bits ÷ 8) = 2¹⁰ × 1 = <strong>1 KB</strong> (datasheet සූත්‍රය; x8 සඳහා 1KB ලෙස වගුවේම ඇත). Post 31 හි &ldquo;ලිපින රැහැන් n → ස්ථාන 2ⁿ&rdquo; නීතිය මෙහි row සහ column ලිපින දෙකටම යෙදේ.</p>
+<p><strong>Refresh (Post 10):</strong> datasheet එක &ldquo;64ms, 8192-cycle refresh&rdquo; (85°C දක්වා) ලෙස දක්වයි → refresh විධාන අතර සාමාන්‍ය පරතරය 64 ms ÷ 8192 = <strong>7.8 µs</strong>. සෑම 7.8 µs කට වරක් banks කෙටි කාලයකට කාර්යබහුල වේ — latency අවිනිශ්චිත වීමට තවත් හේතුවක්.</p>
+<h3 id="6-දනම-උතසහ-කරනන-මම-පටව-lab-එකක-නත">6. දැන්ම උත්සාහ කරන්න (මෙම පිටුවේ lab එකක් නැත)<a class="anchor" href="#6-%e0%b6%af%e0%b6%b1%e0%b6%b8-%e0%b6%8b%e0%b6%ad%e0%b7%83%e0%b7%84-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1-%e0%b6%b8%e0%b6%b8-%e0%b6%b4%e0%b6%a7%e0%b7%80-lab-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%b1%e0%b6%ad">#</a></h3>
+<p>ඔබේ පරිගණකයේ RAM stick එකේ ලේබලය හෝ ගැනුම් බිල්පත බලන්න (උදා. &ldquo;DDR4-3200 CL22&rdquo;). ඉහත සූත්‍ර දෙකෙන් ගණනය කරන්න: (අ) latency = CL × 2000 ÷ MT/s ns; (ආ) එක් channel bandwidth = MT/s × 8 MB/s.</p>
+<h3 id="7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#7-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>DDR4-2666 CL19 සඳහා tCK සහ latency ns කීයද?</li>
+<li>DDR4-2400 CL16 (13.32 ns) සහ DDR4-3200 CL22 (13.75 ns): පළමු දත්තය වේගයෙන් ලැබෙන්නේ කුමකින්ද? එක් channel bandwidth අනුව කුමක් වඩා හොඳද?</li>
+<li>DDR4-2400 dual-channel පද්ධතියක උපරිම bandwidth කීයද?</li>
+<li>DDR4-3200 හි row conflict එකකදී, වරකට එක් ඉල්ලීමක් පමණක් නම් ලැබෙන bandwidth කීයද?</li>
+<li>85°C ට වැඩි උෂ්ණත්වයේදී datasheet එක &ldquo;32ms, 8192-cycle refresh&rdquo; කියයි. refresh පරතරය කීයද?</li>
+</ol>
+<p>(පිළිතුරු: 1 → tCK = 2000 ÷ 2666 ≈ <strong>0.75 ns</strong>; 19 × 0.75 = <strong>14.25 ns</strong> (datasheet Table 1 හි අගයම). 2 → latency අනුව <strong>DDR4-2400 CL16</strong> ටිකක් වේගවත් (0.43 ns); bandwidth අනුව <strong>DDR4-3200</strong> (25.6 vs 19.2 GB/s). 3 → 19.2 × 2 = <strong>38.4 GB/s</strong>. 4 → 64 ÷ 43.75 ns ≈ <strong>1.46 GB/s</strong> (උපරිමයේ 5.7%). 5 → 32 ms ÷ 8192 ≈ <strong>3.9 µs</strong>.)</p>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong> Micron, <em>8Gb: x4, x8, x16 DDR4 SDRAM</em> datasheet, Rev. M 10/17 (8gb_ddr4_dram.pdf; අප විවෘත කළ පිටපත: <a href="https://xonstorage.z8.web.core.windows.net/pdf/1665304_MT40A1G8WE083EB_link.pdf">https://xonstorage.z8.web.core.windows.net/pdf/1665304_MT40A1G8WE083EB_link.pdf</a>) — පිටුව 1 (විශේෂාංග: banks 16 = කණ්ඩායම් 4 × 4, 8n prefetch, 64ms/8192 refresh; Table 1: -062E DDR4-3200 22-22-22 = 13.75 ns), පිටුව 2 (Table 1 ඉතිරිය සහ පසුගාමී අනුකූලතා සටහන් — 1600 CL11; Table 2 ලිපිනකරණය සහ page size සූත්‍රය). Micron, <em>8GB (x64, SR) 288-Pin DDR4 UDIMM</em> (MTA8ATF1G64AZ) datasheet, Rev. G 3/21 (අප විවෘත කළ පිටපත: <a href="https://www.yic-electronics.com/datasheet/06/MTA8ATF1G64AZ-3G2E1.pdf">https://www.yic-electronics.com/datasheet/06/MTA8ATF1G64AZ-3G2E1.pdf</a>) — පිටුව 1 (BL8, PC4-3200), පිටුව 2 (Table 3: 1 Gig x 64, 25.6 / 21.3 / 19.2 GB/s, මූලික උපාංගය MT40A1G8). NIE 12 ශ්‍රේණි ICT ගුරු මාර්ගෝපදේශය, මුද්‍රිත පිටුව 75: <a href="https://nie.lk/pdffiles/tg/sGr12TG%20ICT.pdf">https://nie.lk/pdffiles/tg/sGr12TG%20ICT.pdf</a>. කාල රේඛා සහ &ldquo;ඉල්ලීම් 12&rdquo; ගණනය අපේ සරල ආදර්ශයයි.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B6%B8%E0%B6%AD%E0%B6%9A&#43;%E0%B6%B6%E0%B7%83%E0%B7%8A&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F34-memory-buses%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F34-memory-buses.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F34-memory-buses.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/33-pcie-deep-dive/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>PCIe ගැඹුරු ගවේෂණය</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/35-the-memory-wall/" class="flex align-center">
+        <span>මතක බිත්තිය</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#දකම-edges-වගවත-clock-එකක-නව">දෙකම Edges, වේගවත් Clock එකක් නොවේ</a></li>
+    <li><a href="#bandwidth-නගගය-first-bit-latency-නගයය">Bandwidth නැග්ගේය; First-Bit Latency නොගියේය</a></li>
+    <li><a href="#මනදගම-පරවශයක-සඟවමට-parallelism">මන්දගාමී ප්‍රවේශයක් සැඟවීමට Parallelism</a></li>
+    <li><a href="#ගඹරන-ddr4-datasheet-එකක-කයවම--mts-cl-ns-සහ-bandwidth-ගණනය">ගැඹුරින්: DDR4 datasheet එකක් කියවමු — MT/s, CL, ns සහ bandwidth ගණනය</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-ns-වලන-latency--cl-තනව-අරථ-වරහතය">2. ns වලින් latency — CL තනිව අර්ථ විරහිතයි</a></li>
+        <li><a href="#3-bandwidth--එක-channel-එකක-සඳහ">3. Bandwidth — එක් channel එකක් සඳහා</a></li>
+        <li><a href="#4-සබ-කයවමක-කල-රඛව--සහ-parallelism-අවශය-වනන-ඇය">4. සැබෑ කියවීමක කාල රේඛාව — සහ parallelism අවශ්‍ය වන්නේ ඇයි</a></li>
+        <li><a href="#5-chip-එකක-ධරතව-තහවර-කරම">5. chip එකක ධාරිතාව තහවුරු කරමු</a></li>
+        <li><a href="#6-දනම-උතසහ-කරනන-මම-පටව-lab-එකක-නත">6. දැන්ම උත්සාහ කරන්න (මෙම පිටුවේ lab එකක් නැත)</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

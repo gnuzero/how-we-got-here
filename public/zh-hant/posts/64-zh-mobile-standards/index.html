@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="頻率只有一份，制式卻有好幾種：從 1987 年廣州的第一個類比網，到截稿前幾個小時送出的 TD-SCDMA、為它讓路的小靈通和一項強制性的無線區域網國標，空中的規則同樣有人在決定。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hant/posts/64-zh-mobile-standards/">
+	<meta property="og:site_name" content="我們如何走到那裡">
+	<meta property="og:title" content="空中的標準之爭：從大哥大到 TD-SCDMA">
+	<meta property="og:description" content="頻率只有一份，制式卻有好幾種：從 1987 年廣州的第一個類比網，到截稿前幾個小時送出的 TD-SCDMA、為它讓路的小靈通和一項強制性的無線區域網國標，空中的規則同樣有人在決定。">
+	<meta property="og:locale" content="zh_Hant">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+		<meta property="article:tag" content="行動通訊">
+		<meta property="article:tag" content="TACS">
+		<meta property="article:tag" content="大哥大">
+		<meta property="article:tag" content="GSM">
+		<meta property="article:tag" content="TD-SCDMA">
+		<meta property="article:tag" content="小靈通">
+
+
+	<meta itemprop="name" content="空中的標準之爭：從大哥大到 TD-SCDMA">
+	<meta itemprop="description" content="頻率只有一份，制式卻有好幾種：從 1987 年廣州的第一個類比網，到截稿前幾個小時送出的 TD-SCDMA、為它讓路的小靈通和一項強制性的無線區域網國標，空中的規則同樣有人在決定。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="382">
+	<meta itemprop="keywords" content="行動通訊,TACS,大哥大,GSM,TD-SCDMA,小靈通,WAPI,WiMAX,頻率,標準必要專利">
+
+<title>空中的標準之爭：從大哥大到 TD-SCDMA • 我們如何走到那裡</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hant/posts/64-zh-mobile-standards/">
+  <link rel="alternate" hreflang="zh-hans" href="http://localhost:1478/zh-hans/posts/64-zh-mobile-standards/" title="空中的标准之争：从大哥大到 TD-SCDMA">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hant.search.min.fa14ded62159ba6cbd0e4fab41da826a3888ed10f3c3ce0e2671b6ad687c6ff9.js" integrity="sha256-&#43;hTe1iFZumy9Dk&#43;rQdqCajiI7RDzw84OJnG2rWh8b/k=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hant/"><span>我們如何走到那裡</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜尋"
+    aria-label="搜尋"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="語言" />
+        繁體中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展開" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hans/posts/64-zh-mobile-standards/" class="flex flex-auto">
+          简体中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/00-credits/" class="">
+      致謝與延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-counting-rods-abacus/" class="">
+      算籌與算盤：數放在手裡，演算法記在口訣裡</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-drawloom-huaben/" class="">
+      花本：程式第一次和機器分開</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-gears-and-calculators/" class="">
+      齒輪會數數：從記里鼓車到“較數器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/02-zh-relays-switching/" class="">
+      繼電器與交換機：上海電話局裡的“電腦”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/03-zh-first-electronic-computers/" class="">
+      真空管與電晶體：中國第一批電腦，和算盤的真實角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/64-zh-hanzi-encoding/" class="">
+      漢字上線：從四位電碼到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/26-zh-input-and-typesetting/" class="">
+      把漢字敲進機器：打字機、輸入法與雷射照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/39-zh-networks-1986-1994/" class="">
+      越過長城：中文世界接入網路（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/47-zh-taiwan-semiconductors/" class="">
+      從豆漿店到晶圓代工：台灣半導體之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/17-zh-supercomputers-cpus/" class="">
+      規模：從銀河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/63-zh-road-to-attention/" class="">
+      從中文信息處理到注意力機制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/05-zh-transistors-semiconductors/" class="">
+      從一門課到一塊晶片：中國半導體的頭十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/48-zh-lithography-fabs/" class="">
+      微影：從顯微鏡到掃描機</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/58-zh-deep-learning-chips/" class="">
+      從 DianNao 到昇騰：為矩陣乘法造的晶片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/23-zh-operating-systems/" class="">
+      作業系統：從大慶的“虛擬機”到開源歐拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/27-zh-languages-compilers/" class="">
+      程式語言與編譯器：從 104 機到倉頡</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主機與天文台的電腦</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/43-zh-bbs/" class="">
+      擠不進去的廣場：兩岸三地的校園 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/44-zh-chinese-search/" class="">
+      一台伺服器裝不下：中國大陸第一批搜尋引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/66-zh-commercial-crypto/" class="">
+      從“屬於國家秘密”到國際標準：中國商用密碼的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/67-zh-privacy-law/" class="">
+      從電腦處理到自動化決策：兩岸三地的個人資料保護法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/64-zh-mobile-standards/" class="active">
+      空中的標準之爭：從大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/68-zh-computer-craze/" class="">
+      娃娃與學習機：1984 年以後的電腦熱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="選單" />
+  </label>
+
+  <h3>空中的標準之爭：從大哥大到 TD-SCDMA</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目錄" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1987大哥大">1987：大哥大</a></li>
+    <li><a href="#換成數位">換成數位</a></li>
+    <li><a href="#1998-年-6-月-30-日截稿前幾個小時">1998 年 6 月 30 日：截稿前幾個小時</a></li>
+    <li><a href="#2009一家一制式小靈通讓路">2009：一家一制式，小靈通讓路</a></li>
+    <li><a href="#wapi一項強制性的無線區域網國標">WAPI：一項強制性的無線區域網國標</a></li>
+    <li><a href="#台灣2600-mhz-從-wimax-手裡拿走">台灣：2600 MHz 從 WiMAX 手裡拿走</a></li>
+    <li><a href="#誰決定空中的規則">誰決定空中的規則</a></li>
+    <li><a href="#延伸閱讀">延伸閱讀</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    空中的標準之爭：從大哥大到 TD-SCDMA
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日曆" />
+    <span>9月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hant/tags/%E8%A1%8C%E5%8B%95%E9%80%9A%E8%A8%8A/">行動通訊</a>, 
+      <a href="/zh-hant/tags/tacs/">TACS</a>, 
+      <a href="/zh-hant/tags/%E5%A4%A7%E5%93%A5%E5%A4%A7/">大哥大</a>, 
+      <a href="/zh-hant/tags/gsm/">GSM</a>, 
+      <a href="/zh-hant/tags/td-scdma/">TD-SCDMA</a>, 
+      <a href="/zh-hant/tags/%E5%B0%8F%E9%9D%88%E9%80%9A/">小靈通</a>, 
+      <a href="/zh-hant/tags/wapi/">WAPI</a>, 
+      <a href="/zh-hant/tags/wimax/">WiMAX</a>, 
+      <a href="/zh-hant/tags/%E9%A0%BB%E7%8E%87/">頻率</a>, 
+      <a href="/zh-hant/tags/%E6%A8%99%E6%BA%96%E5%BF%85%E8%A6%81%E5%B0%88%E5%88%A9/">標準必要專利</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F17-01, F17-02, F17-03, F17-04, F17-05, F17-06, F17-07, F17-08, F17-09, F17-10, F17-11, F17-12 -->
+<p>電線上的規則，是本章另一篇中文頁講的漢字編碼。空中也要有規則：頻率只有一份，制式卻有好幾種。誰來挑？挑中的是誰家的？</p>
+<h2 id="1987大哥大">1987：大哥大<a class="anchor" href="#1987%e5%a4%a7%e5%93%a5%e5%a4%a7">#</a></h2>
+<p>據科普中國，“1987年，我國確定了以TACS制式作為我國模擬制式蜂窩移動電話的標準”。同年 11 月 18 日，第六屆全運會召開前夕，廣州開通我國第一個 TACS 類比蜂巢式行動電話系統，首批用戶 700 個。據《廣州日報》，原郵電部部長楊泰芳在珠江三角洲行動電話網首期工程的開通儀式上，給遠在北京的同事撥通了電話。中國電信博物館的大事記記載，1987 年，摩托羅拉 3200 手機進入中國市場，俗稱“大哥大”；1989 年 6 月，珠三角首先實現行動電話自動漫遊。</p>
+<p>香港更早，而且同時跑著幾種制式。據香港通訊事務管理局辦公室的里程碑，1984 年香港電話公司的全資附屬公司 CSL 採用 NEC 的高級流動電話系統（NAMTS），推出首個公共流動無線電話服務；同年，和記電話獲發牌照經營 AMPS 網路；1987 年，CSL 又獲發牌照經營 TACS 網路，稱為 UNITACS。</p>
+<h2 id="換成數位">換成數位<a class="anchor" href="#%e6%8f%9b%e6%88%90%e6%95%b8%e4%bd%8d">#</a></h2>
+<p>據中國電信博物館的大事記，1993 年 9 月 19 日，我國第一個 GSM 數位行動電話網在浙江嘉興開通；2001 年 12 月 31 日，類比行動電話網關閉，大事記寫道：“我們關閉模擬移動電話網”。香港的 CDMA 也來得早：中國電信博物館的大事記寫“1995年9月，世界上第一個商用CDMA移動通信網在香港開通”；通訊辦的里程碑記和記電話在 1995 年 6 月和 10 月分別推出 GSM 和 CDMA 服務。</p>
+<h2 id="1998-年-6-月-30-日截稿前幾個小時">1998 年 6 月 30 日：截稿前幾個小時<a class="anchor" href="#1998-%e5%b9%b4-6-%e6%9c%88-30-%e6%97%a5%e6%88%aa%e7%a8%bf%e5%89%8d%e5%b9%be%e5%80%8b%e5%b0%8f%e6%99%82">#</a></h2>
+<p>國際電聯把第三代行動通訊（3G）提案的截止日定在 1998 年 6 月 30 日。據曹煦在中國工程院網站發表的回顧：「直到6月29日下午，時任信息產業部部長的吳基傳才在這份名為“TD-SCDMA第三代移動通信標準建議”的文件上簽名。6月30日下午，在截稿前的幾個小時，大唐將這份代表中國3G方案的標準發送到國際電聯」。各國一共提出了 15 個技術方案。2000 年 5 月 5 日，在土耳其舉行的國際電聯全會上，TD-SCDMA 被採納為國際 3G 標準之一。同一篇文章記下了一句話：美國代表團的一位成員握住大唐代表的手說，“中國終於有一家公司可以拿著口袋向全世界收知識產權費用了！”標準背後是專利費，這句話說得很直白。</p>
+<h2 id="2009一家一制式小靈通讓路">2009：一家一制式，小靈通讓路<a class="anchor" href="#2009%e4%b8%80%e5%ae%b6%e4%b8%80%e5%88%b6%e5%bc%8f%e5%b0%8f%e9%9d%88%e9%80%9a%e8%ae%93%e8%b7%af">#</a></h2>
+<p>據中國政府網轉發的工業和信息化部消息，2009 年 1 月 7 日，工業和信息化部發放 3G 牌照：中國移動獲得 TD-SCDMA，中國電信獲得 CDMA2000，中國聯通獲得 WCDMA。</p>
+<p>兩天後，工信部無〔2009〕11 號通知指出，1900—1920 MHz 是我國第三代公眾行動通訊系統（TDD 方式）的主要工作頻段，為“支持具有我國自主知識產權的TD-SCDMA技術的發展和應用”，“1900-1920MHz頻段無線接入系統應在2011年底前完成清頻退網工作，其所用頻率無條件收回”；自發文之日起，這些系統停止擴容和發展新用戶。通知本身沒有點小靈通的名。據新華社 2009 年 2 月 14 日的報導，工業和信息化部相關司局負責人 13 日就社會關注的“涉及小靈通使用頻段清頻問題”接受了新華社記者採訪，談的正是這份通知部署的 1900—1920 MHz 清頻工作；據中國電信博物館的大事記，1998 年 1 月，浙江餘杭電信局正式開通小靈通業務。</p>
+<figure><img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/3G_Mobile_Phones_fot_China_Mobile.jpg" alt="中國移動的 TD-SCDMA 3G 手機，2010 年攝於大連" loading="lazy" width="640"><figcaption>2010 年 2 月，大連，中國移動的 TD-SCDMA 3G 手機。圖片：<a href="https://commons.wikimedia.org/wiki/File:3G_Mobile_Phones_fot_China_Mobile.jpg">Yoshi Canopus</a> / Wikimedia Commons，<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>。</figcaption></figure>
+<h2 id="wapi一項強制性的無線區域網國標">WAPI：一項強制性的無線區域網國標<a class="anchor" href="#wapi%e4%b8%80%e9%a0%85%e5%bc%b7%e5%88%b6%e6%80%a7%e7%9a%84%e7%84%a1%e7%b7%9a%e5%8d%80%e5%9f%9f%e7%b6%b2%e5%9c%8b%e6%a8%99">#</a></h2>
+<p>同樣的爭奪也發生在無線區域網上。2003 年 5 月 12 日發布的 GB 15629.11-2003 等兩項無線區域網國家標準，按國家質檢總局、國家標準委 2003 年第 110 號公告，自 2003 年 12 月 1 日起實施，“即日起禁止進口、生產和銷售不符合強制性國家標準的無線局域網產品”；2003 年 12 月 1 日前已進口、生產或已簽訂有效合約的產品，允許在 2004 年 6 月 1 日之前進口、生產和銷售；來料加工用於出口的產品不受約束。</p>
+<p>據最高人民法院 2022 年的判決書回顧，2004 年 4 月 29 日的公告宣布“2004年6月1日將延期強制實施上述標準”；2006 年 1 月 27 日，國家質檢總局、國家標準委發布了修改單 GB15629.11-2003/XG1-2006。據呂述望的綜述，2006 年公開發布的 SM4 分組密碼演算法，是為配合 WAPI 的推廣應用而發布的，見<a href="/zh-hant/posts/66-zh-commercial-crypto/">《從“屬於國家秘密”到國際標準：中國商用密碼的二十年》</a>。</p>
+<p>2022 年，最高人民法院在（2022）最高法知民終 817 號判決中認為，涉案的 WAPI 專利“不僅是標準必要專利，而且是實施強制性標準所無法避開的必要專利”，因此具有更多社會公共利益的因素，是否判令停止侵害，要綜合考慮當事人的過錯等因素。</p>
+<h2 id="台灣2600-mhz-從-wimax-手裡拿走">台灣：2600 MHz 從 WiMAX 手裡拿走<a class="anchor" href="#%e5%8f%b0%e7%81%a32600-mhz-%e5%be%9e-wimax-%e6%89%8b%e8%a3%a1%e6%8b%bf%e8%b5%b0">#</a></h2>
+<p>在台灣，爭的也是頻率。據 iThome 2014 年 3 月 31 日的報導，台灣通訊傳播委員會（NCC）與交通部在說明會上宣布，要把 WiMAX 正在使用的 2600 MHz 頻段拿出來公開競標，釋出 190 MHz 給 4G LTE 使用，其中 FDD-LTE 佔 140 MHz、TDD-LTE 佔 50 MHz。WiMAX 業者當場批評：“政府頻譜政策制定程序不當，忽視WiMAX產業努力及現況，政府偏向支持FDD-LTE”。</p>
+<p>**出處：**科普中國，2016；中國電信博物館大事記；香港通訊辦《電訊發展里程碑》；曹煦，中國工程院網站；工信部無〔2009〕11 號；國家質檢總局、國家標準委 2003 年第 110 號公告；最高人民法院（2022）最高法知民終 817 號（最高人民法院知識產權法庭網站）；新華網，2009；呂述望，2016；iThome，2014。</p>
+<h2 id="誰決定空中的規則">誰決定空中的規則<a class="anchor" href="#%e8%aa%b0%e6%b1%ba%e5%ae%9a%e7%a9%ba%e4%b8%ad%e7%9a%84%e8%a6%8f%e5%89%87">#</a></h2>
+<p>一路看下來：頻率由政府分配和收回；制式可以由部委按電信業者逐家指定；國際標準由國際電聯在十幾個方案裡挑；國家標準可以是強制性的，而強制性標準裡的專利，到了法院又多了一層公共利益的分量。</p>
+<p>在西方，本書英文版第 64 章講的是誰來分配號碼、名字和編碼，好讓不同的網路彼此相通。空中的頻率和制式，是同一個問題的另一面。</p>
+<h2 id="延伸閱讀">延伸閱讀<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%96%b1%e8%ae%80">#</a></h2>
+<ul>
+<li>科普中國，《1987年11月18日 移動電話網“大哥大”開始使用》（English: 18 Nov 1987: the &ldquo;big brother&rdquo; mobile network goes into service），中國科協科普中國網，2016-11-18。<a href="https://www.kepuchina.cn/kpcs/lcb/lcb5/201611/t20161118_46104.shtml">連結</a></li>
+<li>《廣州日報》，2023-12-18 報導（English: Guangzhou Daily report recalling the 1987 inaugural mobile call），大洋網。<a href="https://gzdaily.dayoo.com/h5/html5/2023-12/18/content_633_844644.htm">連結</a></li>
+<li>中國電信博物館，行動通訊大事記（English: China Telecom Museum, chronology of mobile communications, reposted from C114），2019-10-12。<a href="http://museum.chinatelecom.com.cn/yj/txkp/202107/t20210715_63084.html">連結</a></li>
+<li>香港通訊事務管理局辦公室，《電訊發展里程碑（2012年前）》（English: OFCA, telecommunications milestones before 2012）。<a href="https://www.ofca.gov.hk/tc/news_info/milestones/telecommunications_milestones_before_2012/index.html">連結</a></li>
+<li>曹煦，《1998年：第一個中國3G標準》（English: 1998: the first Chinese 3G standard），中國工程院網站“院士自述·親歷改革開放30年”欄目，原文 2008-12-18。<a href="https://www.cae.cn/cae/html/main/col278/2012-02/27/20120227140259086585847_1.html">連結</a></li>
+<li>中國政府網，2009-01-07 3G 牌照發放報導（English: gov.cn report on the issue of 3G licences, Wayback Machine copy）。<a href="https://web.archive.org/web/20090114095316/http:/www.gov.cn/jrzg/2009-01/07/content_1198562.htm">連結</a></li>
+<li>工業和信息化部，《關於1900—1920MHz頻段無線接入系統相關事宜的通知》（工信部無〔2009〕11號）（English: MIIT notice on wireless access systems in the 1900–1920 MHz band），維基文庫全文，2009-01-09。<a href="https://zh.wikisource.org/wiki/%e5%85%b3%e4%ba%8e1900%e2%80%941920MHz%e9%a2%91%e6%ae%b5%e6%97%a0%e7%ba%bf%e6%8e%a5%e5%85%a5%e7%b3%bb%e7%bb%9f%e7%9b%b8%e5%85%b3%e4%ba%8b%e5%ae%9c%e7%9a%84%e9%80%9a%e7%9f%a5">連結</a></li>
+<li>國家質檢總局、國家標準委，《關於無線局域網強制性國家標準實施的公告》（2003年第110號）（English: AQSIQ/SAC announcement on implementing the mandatory WLAN national standards），維基文庫全文。<a href="https://zh.wikisource.org/wiki/%e5%85%b3%e4%ba%8e%e6%97%a0%e7%ba%bf%e5%b1%80%e5%9f%9f%e7%bd%91%e5%bc%ba%e5%88%b6%e6%80%a7%e5%9b%bd%e5%ae%b6%e6%a0%87%e5%87%86%e5%ae%9e%e6%96%bd%e7%9a%84%e5%85%ac%e5%91%8a">連結</a></li>
+<li>國家標準全文公開系統，GB 15629.11-2003 記錄（English: GB 15629.11-2003 official record），openstd.samr.gov.cn。<a href="https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=74B9DD11287E72408C19C4D3A360D1BD">連結</a></li>
+<li>最高人民法院知識產權法庭，（2022）最高法知民終817號民事判決書（English: Supreme People&rsquo;s Court civil judgment (2022) Zui Gao Fa Zhi Min Zhong No. 817, published by the SPC IP Tribunal），2024-03-25 刊於法庭網站“精品裁判”欄目。<a href="https://ipc.court.gov.cn/zh-cn/news/view-2906.html">連結</a>（另有 WIPO Lex 轉錄本：<a href="https://www.wipo.int/wipolex/ar/text/594162">連結</a>）</li>
+<li>呂述望，《SM4分組密碼算法綜述》（English: A survey of the SM4 block cipher），《信息安全研究》2016 年第 2 卷第 11 期（摘要）。<a href="http://www.sicris.cn/CN/Y2016/V2/I11/995">連結</a></li>
+<li>新華網（中新網轉載），劉菊花、馮曉芳，《工信部要求運營商做好小靈通使用頻段清頻工作》（English: MIIT asks operators to clear the band used by PHS (Xiaolingtong)），2009-02-14。<a href="http://www.chinanews.com.cn/it/txxw/news/2009/02-14/1563128.shtml">連結</a></li>
+<li>蘇文彬，《政府將把2600MHz 釋放給4G LTE，政策規劃WiMAX業者反彈》（English: Government to release 2600 MHz for 4G LTE; WiMAX operators push back），iThome，2014-03-31。<a href="https://www.ithome.com.tw/news/86298">連結</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='最後修改者 Nayana | 11月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日曆" />
+    <span>11月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E7%A9%BA%E4%B8%AD%E7%9A%84%E6%A8%99%E6%BA%96%E4%B9%8B%E7%88%AD%EF%BC%9A%E5%BE%9E%E5%A4%A7%E5%93%A5%E5%A4%A7%E5%88%B0&#43;TD-SCDMA&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hant%2Fposts%2F64-zh-mobile-standards%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hant%2Fposts%2F64-zh-mobile-standards.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hant%2Fposts%2F64-zh-mobile-standards.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hant/posts/67-zh-privacy-law/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一頁" />
+        <span>從電腦處理到自動化決策：兩岸三地的個人資料保護法制</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hant/posts/68-zh-computer-craze/" class="flex align-center">
+        <span>娃娃與學習機：1984 年以後的電腦熱</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一頁" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1987大哥大">1987：大哥大</a></li>
+    <li><a href="#換成數位">換成數位</a></li>
+    <li><a href="#1998-年-6-月-30-日截稿前幾個小時">1998 年 6 月 30 日：截稿前幾個小時</a></li>
+    <li><a href="#2009一家一制式小靈通讓路">2009：一家一制式，小靈通讓路</a></li>
+    <li><a href="#wapi一項強制性的無線區域網國標">WAPI：一項強制性的無線區域網國標</a></li>
+    <li><a href="#台灣2600-mhz-從-wimax-手裡拿走">台灣：2600 MHz 從 WiMAX 手裡拿走</a></li>
+    <li><a href="#誰決定空中的規則">誰決定空中的規則</a></li>
+    <li><a href="#延伸閱讀">延伸閱讀</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

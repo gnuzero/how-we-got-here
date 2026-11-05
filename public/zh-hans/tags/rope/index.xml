@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>RoPE on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/rope/</link>
+		<description>Recent content in RoPE on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/rope/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>从中文信息处理到注意力机制</title>
+				<link>http://localhost:1478/zh-hans/posts/63-zh-road-to-attention/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/63-zh-road-to-attention/</guid>
+				<description>从一台只能输出电报码的翻译机，到首发在中文博客上的旋转位置编码，中文这条线给今天的 Transformer 留下了两块实实在在的零件。</description>
+			</item>
+	</channel>
+</rss>

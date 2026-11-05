@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>商用密码管理条例 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/%E5%95%86%E7%94%A8%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E6%9D%A1%E4%BE%8B/</link>
+		<description>Recent content in 商用密码管理条例 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/%E5%95%86%E7%94%A8%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E6%9D%A1%E4%BE%8B/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>从“属于国家秘密”到国际标准：中国商用密码的二十年</title>
+				<link>http://localhost:1478/zh-hans/posts/66-zh-commercial-crypto/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/66-zh-commercial-crypto/</guid>
+				<description>1999 年的条例写明商用密码技术属于国家秘密，2006 年起算法陆续公开，2018 年进入 ISO/IEC 国际标准，2019 年的《密码法》把密码分成三类：谁可以造、卖、用密码，二十年里被改写了好几次。</description>
+			</item>
+	</channel>
+</rss>

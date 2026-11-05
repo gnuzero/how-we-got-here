@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- NOINDEX-PRELAUNCH: remove at announcement -->
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<script src="../_shared/i18n.js"></script>
+<title data-i18n="page.title">VM Terminal Lab</title>
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --border:#30363d; --text:#c9d1d9; --accent:#58a6ff; --green:#3fb950; }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'SF Mono', Consolas, monospace;
+    margin: 0; padding: 16px; }
+  h1 { font-size: 16px; color: var(--accent); margin: 0 0 4px; }
+  .sub { color: #8b949e; font-size: 12px; margin-bottom: 12px; }
+  .toolbar { display: flex; gap: 8px; margin-bottom: 10px; align-items: center; flex-wrap: wrap; }
+  button {
+    background: #21262d; color: var(--text); border: 1px solid var(--border);
+    padding: 6px 14px; border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 12px;
+  }
+  button:hover { background: #30363d; }
+  button.primary { background: #238636; border-color: #2ea043; }
+  button.primary:hover { background: #2ea043; }
+  #status { font-size: 12px; color: #8b949e; }
+  #status.ready { color: var(--green); }
+  .first-cmd {
+    background: var(--panel); border: 1px solid var(--accent);
+    border-radius: 6px; padding: 12px 14px; margin-bottom: 10px;
+  }
+  .first-cmd h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
+    color: var(--accent); margin: 0 0 8px; }
+  .first-cmd p { margin: 0 0 8px; font-size: 13px; line-height: 1.55; color: var(--text); }
+  .first-cmd code { color: var(--accent); background: #010409; padding: 2px 6px; border-radius: 3px; }
+  .first-cmd .cmds { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .first-cmd .cmds code { font-size: 13px; }
+  #screen_container {
+    background: #000; border: 1px solid var(--border); border-radius: 6px;
+    padding: 4px; width: 100%; max-width: 100%; overflow: auto; min-height: 200px;
+  }
+  #screen_container canvas, #screen_container div { max-width: 100%; }
+  .note { font-size: 11px; color: #8b949e; margin-top: 10px; line-height: 1.6; }
+  .note code { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<h1 data-i18n="page.heading">VM Terminal Lab</h1>
+<div class="sub" data-i18n="page.subtitle">Real x86 machine, running client-side in your browser via WASM — boots a real Linux, real shell, real commands</div>
+
+<div class="toolbar">
+  <button class="primary" onclick="startVM()" data-i18n="btn.boot">Boot VM</button>
+  <button onclick="restartVM()" data-i18n="btn.restart">Restart</button>
+  <span id="status" data-i18n="status.idle">Not started — press Boot VM</span>
+</div>
+
+<div class="first-cmd" id="firstCmd">
+  <h2 data-i18n="first.heading">First commands</h2>
+  <p data-i18n-html="first.body_html">Press <strong>Boot VM</strong>, wait for the login/shell prompt, then <strong>click the black screen</strong> so the keyboard focuses the VM. Try these:</p>
+  <div class="cmds">
+    <code>whoami</code>
+    <code>uname</code>
+    <code>ls</code>
+  </div>
+  <p style="margin-top:8px;margin-bottom:0;color:#8b949e;font-size:12px;" data-i18n="first.hint">Type each command and press Enter. Restart returns you to a fresh boot if the session gets stuck.</p>
+</div>
+
+<div id="screen_container">
+  <div id="screen"></div>
+  <canvas id="vga" style="display:none"></canvas>
+</div>
+
+<div class="note" data-i18n-html="note_html">
+  Powered by <strong>v86</strong> — a full x86 emulator in WebAssembly. Runtime, BIOS, and Linux image are
+  vendored under <code>assets/</code> next to this page (no live CDN required for first boot).
+  <a href="ORIGIN.md">source &amp; licences</a>
+</div>
+
+<script src="assets/libv86.js"></script>
+<script>
+let emulator = null;
+
+function setStatus(msg, ready) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = ready ? 'ready' : '';
+}
+
+function startVM() {
+  if (emulator) { setStatus(t('status.already'), true); return; }
+  setStatus(t('status.loading'));
+
+  emulator = new V86({
+    wasm_path: "assets/v86.wasm",
+    screen_container: document.getElementById("screen_container"),
+    bios: { url: "assets/seabios.bin" },
+    vga_bios: { url: "assets/vgabios.bin" },
+    cdrom: { url: "assets/linux4.iso" },
+    memory_size: 128 * 1024 * 1024,
+    vga_memory_size: 8 * 1024 * 1024,
+    autostart: true,
+  });
+
+  emulator.add_listener("emulator-ready", () => setStatus(t('status.booting')));
+  emulator.add_listener("emulator-started", () => setStatus(t('status.running'), true));
+}
+
+function restartVM() {
+  if (emulator) {
+    emulator.restart();
+    setStatus(t('status.restarted'), true);
+  } else {
+    startVM();
+  }
+}
+</script>
+
+</body>
+</html>

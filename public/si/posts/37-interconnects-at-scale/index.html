@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ගණනය chips බොහෝ වූ පසු, ඒවා අතර මාර්ගය ඊළඟ බිත්තියයි — කැප වූ සබැඳි, පිටපත් අඩු">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/37-interconnects-at-scale/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="පරිමාණයේ Interconnects">
+	<meta property="og:description" content="ගණනය chips බොහෝ වූ පසු, ඒවා අතර මාර්ගය ඊළඟ බිත්තියයි — කැප වූ සබැඳි, පිටපත් අඩු">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="පරිමාණයේ Interconnects">
+	<meta itemprop="description" content="ගණනය chips බොහෝ වූ පසු, ඒවා අතර මාර්ගය ඊළඟ බිත්තියයි — කැප වූ සබැඳි, පිටපත් අඩු">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1708">
+
+<title>පරිමාණයේ Interconnects • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/37-interconnects-at-scale/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/37-interconnects-at-scale/" title="Interconnects at Scale">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/37-interconnects-at-scale/" title="อินเตอร์คอนเนกต์ในระดับสเกล">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/37-interconnects-at-scale/" title="Interconnects at Scale">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/37-interconnects-at-scale/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/37-interconnects-at-scale/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/37-interconnects-at-scale/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="active">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>පරිමාණයේ Interconnects</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#පරනම-මරගය-බදදය">පෙරනිමි මාර්ගය බද්දයි</a></li>
+    <li><a href="#කප-ව-සබඳ-coherent-මතකය-පටපත-අඩ">කැප වූ සබැඳි, Coherent මතකය, පිටපත් අඩු</a></li>
+    <li><a href="#එකම-ගටලව-වවත-දඪගය">එකම ගැටලුව, විවෘත දෘඪාංගය</a></li>
+    <li><a href="#ගඹරන-gpu-අතර-මරගය-අකවලන--nvlink-සබඳ-පටපත-බදද-switch-සහ-cxl">ගැඹුරින්: GPU අතර මාර්ගය අංකවලින් — NVLink සබැඳි, පිටපත් බද්ද, switch සහ CXL</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-nvlink-සබඳයක-ඇතළත">2. NVLink සබැඳියක් ඇතුළත</a></li>
+        <li><a href="#3-පටපත-බදද-10-gb-එක-gpu-එකකන-තවත-එකකට">3. පිටපත් බද්ද: 10 GB එක් GPU එකකින් තවත් එකකට</a></li>
+        <li><a href="#4-gpu-8-ක-සමබනධ-කරම-සජ-mesh-එකක-එදරව-switch-එකක">4. GPU 8 ක් සම්බන්ධ කිරීම: සෘජු mesh එකක් එදිරිව switch එකක්</a></li>
+        <li><a href="#5-cxl-pcie-රහන-මත-සහසමබනධ-මතකය">5. CXL: PCIe රැහැන් මත සහසම්බන්ධ මතකය</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    පරිමාණයේ Interconnects
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>මෙතෙක් මෙම අදියර එක් යන්ත්‍රයක් <em>ඇතුළත</em> කොටස් සම්බන්ධ කළේය — CPU සිට මතකය දක්වා, CPU සිට උපාංග දක්වා. වැඩ බරකට GPUs කිහිපයක්, හෝ යන්ත්‍ර කිහිපයක් අවශ්‍ය වූ පසු, ප්‍රශ්නය වෙනස් වේ: එම ඒකකවලට <em>එකිනෙකා</em> සමඟ වේගවත්ව කතා කළ හැකිද එවිට අමතර සන්නිවේදනය අමතර ගණනය නොකනු ඇතිද?</p>
+<h2 id="පරනම-මරගය-බදදය">පෙරනිමි මාර්ගය බද්දයි<a class="anchor" href="#%e0%b6%b4%e0%b6%bb%e0%b6%b1%e0%b6%b8-%e0%b6%b8%e0%b6%bb%e0%b6%9c%e0%b6%ba-%e0%b6%b6%e0%b6%af%e0%b6%af%e0%b6%ba">#</a></h2>
+<p>Peer මාර්ගයක් නැතිව, GPU A පද්ධති මතකය හරහා ලියයි සහ GPU B එය නැවත කියවයි — අමතර hops, අමතර latency, පිටපත් මත වියදම් වන PCIe bandwidth. PCIe පමණක් මතවත්, GPUDirect P2P ට host staging නොමැතිව GPU↔GPU DMA කළ හැක (තවමත් PCIe අනුපාතවල). ඉතිරි සීමාව bandwidth සහ topology ය: හවුල් විස්තීරණ fabric එකක් කිසිදා many-GPU mesh එකක් ලෙස නිර්මාණය නොවීය.</p>
+<h2 id="කප-ව-සබඳ-coherent-මතකය-පටපත-අඩ">කැප වූ සබැඳි, Coherent මතකය, පිටපත් අඩු<a class="anchor" href="#%e0%b6%9a%e0%b6%b4-%e0%b7%80-%e0%b7%83%e0%b6%b6%e0%b6%b3-coherent-%e0%b6%b8%e0%b6%ad%e0%b6%9a%e0%b6%ba-%e0%b6%b4%e0%b6%a7%e0%b6%b4%e0%b6%ad-%e0%b6%85%e0%b6%a9">#</a></h2>
+<p>NVIDIA ගේ NVLink යනු අරමුණින්-ගොඩනැගූ GPU-to-GPU interconnect එකකි — transfer එකෙන් CPU සහ පද්ධති මතකය එළියට. NVSwitch එකකට node එකක සෑම GPU එකක්ම අනෙක් සෑම එකකින්ම ළඟා විය හැකි කළ හැක, PCIe-සහ-CPU මාර්ගයට බොහෝ ඉහළින් bandwidth එකක. නිතර, විශාල හුවමාරු සඳහා — Phases 7 සහ 10 හි විශාල-පරිමාණ training නැවත පැමිණෙන රටාව — එම සෘජු මාර්ගය ප්‍රථම-අනුපිළිවෙලයි, සීරුමාරුවක් නොවේ.</p>
+<p>CXL (Compute Express Link) අසල්වැසි සීමාවකට පිළිතුරු දෙයි: එක් die එකකට ඔබ්බෙන් cache-coherent ප්‍රවේශය, සහ, තවත් ඈතට, තනි socket එකකට solder නොකළ pooled මතකය. ධාරිතාව එය ගොඩබැසුණු DIMM slot එකට ශීත කරනවා වෙනුවට ගණනය nodes අතර ගමන් කළ හැක — DDR (Post 34) හෝ අමු PCIe ඔබට නොදෙන නම්‍යතාවයකි.</p>
+<p>GPUDirect RDMA ට NIC එකකට GPU මතකය සෘජුව කියවීමට හෝ ලිවීමට ඉඩ දෙයි. එය නැතිව, ජාලයක් හරහා GPU-to-GPU transfer එකක් යනු GPU → පද්ධති මතකය → NIC → ඈත පද්ධති මතකය → ඈත GPU — latency සහ මතක bandwidth වැය වන පිටපත්. එය GPU → ජාලය → GPU දක්වා හකුළන්න, RDMA (Post 42) ගබඩාවේ සහ පණිවිඩකරණයේ ජය ගන්නා එකම හේතුවට: පිටපත් අඩු, චලනය babysit කරන CPU අඩු.</p>
+<h2 id="එකම-ගටලව-වවත-දඪගය">එකම ගැටලුව, විවෘත දෘඪාංගය<a class="anchor" href="#%e0%b6%91%e0%b6%9a%e0%b6%b8-%e0%b6%9c%e0%b6%a7%e0%b6%bd%e0%b7%80-%e0%b7%80%e0%b7%80%e0%b6%ad-%e0%b6%af%e0%b6%aa%e0%b6%9c%e0%b6%ba">#</a></h2>
+<p>මෙය මාලාව නිතර පෙන්වන අභිරුචි GPU මතක fabric යටතේ සංකල්පීය පදනමයි: සාමාන්‍ය-අරමුණු CPU එකක් මාර්ගයේ නොමැතිව දුරස්ථ GPU මතකය ලිපිනගත කරන්න. NVLink සහ GPUDirect එය එක් vendor එකක stack එක ඇතුළත විසඳයි. විවෘත, PCIe-පාදක විකල්පයකට එම අකාර්යක්ෂමතාවම ඉවත් කළ යුතුය — එබැවින්ම Posts 32–33 හි TLP-මට්ටමේ peer මාර්ගය, සහ මෙම පෝස්ට් එකේ &ldquo;කැප වූ සබැඳිය පවතින්නේ ඇයි,&rdquo; එකම කතාවයි.</p>
+<h2 id="ගඹරන-gpu-අතර-මරගය-අකවලන--nvlink-සබඳ-පටපත-බදද-switch-සහ-cxl">ගැඹුරින්: GPU අතර මාර්ගය අංකවලින් — NVLink සබැඳි, පිටපත් බද්ද, switch සහ CXL<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-gpu-%e0%b6%85%e0%b6%ad%e0%b6%bb-%e0%b6%b8%e0%b6%bb%e0%b6%9c%e0%b6%ba-%e0%b6%85%e0%b6%9a%e0%b7%80%e0%b6%bd%e0%b6%b1--nvlink-%e0%b7%83%e0%b6%b6%e0%b6%b3-%e0%b6%b4%e0%b6%a7%e0%b6%b4%e0%b6%ad-%e0%b6%b6%e0%b6%af%e0%b6%af-switch-%e0%b7%83%e0%b7%84-cxl">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> NVLink, NVSwitch, GPUDirect හෝ CXL ගැන සිංහල විකිපීඩියා ලිපියක්, සිංහල පාඩමක් හෝ සිංහල වීඩියෝවක් අපට හමු නොවීය (&ldquo;NVLink sinhala&rdquo; සෙවුමට අදාළ ප්‍රතිඵල නොලැබුණි). &ldquo;multi GPU sinhala&rdquo; සෙවුමෙන් ලැබුණේ graphics card මිලදී ගැනීමේ වීඩියෝ පමණි. එබැවින් මෙම කොටස NVIDIA හි නිල GPU ගෘහ නිර්මාණ white papers සහ CXL Consortium හි නිල white papers වලින් අංක ගෙන මුල සිට ගණනය කරයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>Peer-to-peer (P2P):</strong> GPU එකක් අනෙක් GPU එකේ මතකයට CPU හෝ පද්ධති මතකය හරහා නොගොස් කෙලින්ම ලිවීම හෝ කියවීමයි.</li>
+<li><strong>සංඥා යුගලය (signal pair / differential pair):</strong> එක් bit ප්‍රවාහයක් රැගෙන යන රැහැන් දෙකයි. NVIDIA white papers වල එය &ldquo;lane&rdquo; ලෙසද හැඳින්වේ.</li>
+<li><strong>සබැඳිය (link):</strong> දිශා දෙකටම යුගල කට්ටල දෙකක් ඇති NVLink ඒකකයයි.</li>
+<li><strong>NVSwitch:</strong> බොහෝ GPU වල NVLink සබැඳි එකට සම්බන්ධ කරන switch චිපයකි.</li>
+<li><strong>Cache සහසම්බන්ධතාව (cache coherence):</strong> එකම මතක ලිපිනයේ පිටපත් කිහිපයක් විවිධ caches වල තිබුණත් සියල්ලන්ටම එකම අගය පෙනීමයි.</li>
+<li><strong>මතක එකතු කිරීම (memory pooling):</strong> මතකය එක් server එකකට ස්ථිරව සවි නොකර, අවශ්‍ය server එකට වෙන් කර දීමයි.</li>
+</ul>
+<h3 id="2-nvlink-සබඳයක-ඇතළත">2. NVLink සබැඳියක් ඇතුළත<a class="anchor" href="#2-nvlink-%e0%b7%83%e0%b6%b6%e0%b6%b3%e0%b6%ba%e0%b6%9a-%e0%b6%87%e0%b6%ad%e0%b7%85%e0%b6%ad">#</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>GPU</th>
+					<th>යුගලයක වේගය</th>
+					<th>එක් දිශාවකට යුගල</th>
+					<th>සබැඳියක් එක් දිශාවකට</th>
+					<th>සබැඳි ගණන</th>
+					<th>GPU එකකට මුළු (දෙදිශාවම)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P100 (NVLink 1)</td>
+					<td>20 Gb/s</td>
+					<td>8</td>
+					<td>8 × 20 ÷ 8 = <strong>20 GB/s</strong></td>
+					<td>4</td>
+					<td>4 × 40 = <strong>160 GB/s</strong></td>
+			</tr>
+			<tr>
+					<td>V100 (NVLink 2)</td>
+					<td>25 Gb/s (නිවැරදිව 25.78)</td>
+					<td>8</td>
+					<td>≈ <strong>25 GB/s</strong></td>
+					<td>6</td>
+					<td><strong>300 GB/s</strong></td>
+			</tr>
+			<tr>
+					<td>A100 (NVLink 3)</td>
+					<td>50 Gb/s</td>
+					<td>4</td>
+					<td>4 × 50 ÷ 8 = <strong>25 GB/s</strong></td>
+					<td>12</td>
+					<td><strong>600 GB/s</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>මූලාශ්‍ර:</strong></p>
+<ul>
+<li>P100: Pascal white paper, පිටුව 20.</li>
+<li>V100: Volta white paper, මුද්‍රිත පිටුව 3 (සබැඳි 6, 300 GB/s) සහ මුද්‍රිත පිටුව 19 (&ldquo;from 20 to 25 Gigabits/second&rdquo;, සබැඳියකට දිශාවකට 25 GB/s). 25.78 Gb/s යන නිවැරදි අගය Volta white paper එකේ නැත. එය A100 white paper එකේ (පිටුව 52) V100 සමඟ සංසන්දනයේදී සඳහන් වේ. 8 × 25.78 ÷ 8 = 25.78 GB/s. NVIDIA එය 25 GB/s ලෙස වටයයි.</li>
+<li>A100: A100 white paper, පිටුව 52.</li>
+</ul>
+<p><strong>නිරීක්ෂණය:</strong> A100 හි සබැඳියක් V100 හි සබැඳියක් තරම්ම bandwidth ලබා දෙයි (දිශාවකට 25 GB/s). එහෙත් එය භාවිතා කරන්නේ සංඥා <strong>භාගයක්</strong> පමණි (දිශාවකට යුගල 4, 8 වෙනුවට). යුගලයක වේගය දෙගුණ වූ නිසා, එම සංඥා ගණනින්ම සබැඳි දෙගුණයක් (6 → 12) ලබා දිය හැකි විය. Post 32 හි &ldquo;pin එකකට bandwidth&rdquo; තර්කයම මෙහිද වලංගු වේ.</p>
+<p><strong>සංසන්දනය:</strong> A100 white paper (පිටුව 17) අනුව PCIe Gen 4 x16 එකක් <strong>31.5 GB/s</strong> ලබා දෙයි (PCIe 3.0 හි 15.75 ට එරෙහිව). A100 හි NVLink සබැඳි 12 ම එක් දිශාවකට 12 × 25 = 300 GB/s ලබා දෙයි. එය PCIe Gen 4 x16 මෙන් 300 ÷ 31.5 ≈ <strong>9.5</strong> ගුණයකි.</p>
+<h3 id="3-පටපත-බදද-10-gb-එක-gpu-එකකන-තවත-එකකට">3. පිටපත් බද්ද: 10 GB එක් GPU එකකින් තවත් එකකට<a class="anchor" href="#3-%e0%b6%b4%e0%b6%a7%e0%b6%b4%e0%b6%ad-%e0%b6%b6%e0%b6%af%e0%b6%af-10-gb-%e0%b6%91%e0%b6%9a-gpu-%e0%b6%91%e0%b6%9a%e0%b6%9a%e0%b6%b1-%e0%b6%ad%e0%b7%80%e0%b6%ad-%e0%b6%91%e0%b6%9a%e0%b6%9a%e0%b6%a7">#</a></h3>
+<p><strong>ආදර්ශ ගණනය:</strong> ඉහත නිල අනුපාත භාවිතා කරමු. සියලු වියදම් (latency, software) නොසලකා හරින අතර, එක් දිශාවක උපරිම අනුපාතය ලැබේ යැයි උපකල්පනය කරමු.</p>
+<table>
+	<thead>
+			<tr>
+					<th>මාර්ගය</th>
+					<th>පියවර</th>
+					<th>කාලය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Host staging (PCIe Gen 4)</td>
+					<td>GPU A → පද්ධති මතකය, පසුව පද්ධති මතකය → GPU B</td>
+					<td>10 ÷ 31.5 × 2 ≈ <strong>0.63 s</strong></td>
+			</tr>
+			<tr>
+					<td>PCIe P2P (GPUDirect P2P)</td>
+					<td>GPU A → GPU B, PCIe හරහා එක් වරක්</td>
+					<td>10 ÷ 31.5 ≈ <strong>0.32 s</strong></td>
+			</tr>
+			<tr>
+					<td>NVLink (A100, සබැඳි 12)</td>
+					<td>GPU A → GPU B</td>
+					<td>10 ÷ 300 ≈ <strong>0.033 s</strong></td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>Staging මාර්ගය NVLink ට වඩා ≈ <strong>19</strong> ගුණයක් මන්දගාමී වේ.</li>
+<li>ඊට අමතරව එය පද්ධති මතකයේ bandwidth දෙවරක් (ලිවීමට සහ කියවීමට) වැය කරයි.</li>
+<li>පිටපත් කාලය අතරතුර CPU එකට DMA සැකසීමේ වැඩද පැවරේ.</li>
+</ul>
+<p>පෝස්ට් එකේ &ldquo;පෙරනිමි මාර්ගය බද්දයි&rdquo; යන්නෙහි අර්ථය මෙයයි.</p>
+<h3 id="4-gpu-8-ක-සමබනධ-කරම-සජ-mesh-එකක-එදරව-switch-එකක">4. GPU 8 ක් සම්බන්ධ කිරීම: සෘජු mesh එකක් එදිරිව switch එකක්<a class="anchor" href="#4-gpu-8-%e0%b6%9a-%e0%b7%83%e0%b6%b8%e0%b6%b6%e0%b6%b1%e0%b6%b0-%e0%b6%9a%e0%b6%bb%e0%b6%b8-%e0%b7%83%e0%b6%a2-mesh-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%91%e0%b6%af%e0%b6%bb%e0%b7%80-switch-%e0%b6%91%e0%b6%9a%e0%b6%9a">#</a></h3>
+<p>සෑම GPU යුගලයක්ම කෙලින්ම සම්බන්ධ කිරීමට සබැඳි n(n − 1) ÷ 2 ක් අවශ්‍ය වේ. n = 8 නම් එය <strong>28</strong> කි. සෑම GPU එකකටම අසල්වැසියන් 7 දෙනෙකු සිටී.</p>
+<ul>
+<li>A100 එකකට සබැඳි 12 ක් ඇත. 12 ÷ 7 පූර්ණ සංඛ්‍යාවක් නොවන නිසා, සමහර යුගලවලට සබැඳි 2 ක් ලැබෙන අතර අනෙක්වාට 1 ක් පමණි.</li>
+<li>එවිට GPU යුගල අතර bandwidth අසමාන වේ. හොඳම යුගලයට දිශාවකට 50 GB/s ලැබෙන අතර අනෙක්වාට 25 GB/s පමණි.</li>
+<li>Volta white paper එකේ (මුද්‍රිත පිටුව 20, Figure 12) DGX-1 with V100 සඳහා &ldquo;hybrid cube mesh&rdquo; සැකැස්මක් පෙන්වයි. එය සෘජු සබැඳි සීමිත වූ විට භාවිතා කළ ආකාරයකි.</li>
+</ul>
+<p><strong>Switch විසඳුම:</strong> A100 white paper එකේ (පිටුව 70) DGX A100 හි A100 GPU <strong>8</strong> ක් NVSwitch <strong>6</strong> ක් හරහා සම්බන්ධ වේ. මුළු bandwidth <strong>4.8 TB/s දෙදිශාවම</strong> (2.4 TB/s full-duplex) වේ. ගණනය කරමු: 8 × 600 GB/s = 4800 GB/s = 4.8 TB/s. එනම් සෑම GPU එකකටම තමන්ගේ සබැඳි 12 ම switch එකට යොදා, <strong>ඕනෑම</strong> අනෙක් GPU එකකට දිශාවකට 300 GB/s දක්වා යැවිය හැකිය. Topology එක සමමිතික වන නිසා වැඩ බෙදන විට කුමන GPU යුගලද යන්න ගැන සිතිය යුතු නැත.</p>
+<h3 id="5-cxl-pcie-රහන-මත-සහසමබනධ-මතකය">5. CXL: PCIe රැහැන් මත සහසම්බන්ධ මතකය<a class="anchor" href="#5-cxl-pcie-%e0%b6%bb%e0%b7%84%e0%b6%b1-%e0%b6%b8%e0%b6%ad-%e0%b7%83%e0%b7%84%e0%b7%83%e0%b6%b8%e0%b6%b6%e0%b6%b1%e0%b6%b0-%e0%b6%b8%e0%b6%ad%e0%b6%9a%e0%b6%ba">#</a></h3>
+<p>CXL Consortium හි white paper එකේ (Debendra Das Sharma, CXL 1.0 සමයේ) කරුණු. <strong>මෙම white paper එකේ දිනයක් මුද්‍රණය කර නැත.</strong> PDF metadata අනුව එය 2019 මාර්තුවේ සාදා ඇත. පෙළ CXL 2.0 සංවර්ධනය &ldquo;early Q2 2019&rdquo; ආරම්භ වන බව කියන නිසා එය 2019 මුල් භාගයට අයත් බව පෙනේ:</p>
+<ul>
+<li>CXL ක්‍රියා කරන්නේ <strong>PCIe 5.0 භෞතික ස්ථරය</strong> මතය. CXL 1.0 <strong>32 GT/s</strong> දී දිශාවකට <strong>64 GB/s</strong> ලබා දෙයි (x16).
+<ul>
+<li>ගණනය: 32 × 16 × 128/130 ÷ 8 ≈ 63 GB/s ≈ 64.</li>
+</ul>
+</li>
+<li>සබැඳිය PCIe Gen 1 වේගයෙන් පුහුණුව (link training) ආරම්භ කර, අනෙක් පාර්ශ්වයට හැකි නම් CXL ලෙස සාකච්ඡා කරයි.</li>
+<li>CXL ප්‍රොටෝකෝල තුනක් PHY මට්ටමේදී මිශ්‍ර (multiplex) කරයි:
+<ul>
+<li><strong>CXL.io:</strong> PCIe මත පදනම් වූවකි. උපාංග සොයා ගැනීම, වින්‍යාසය සහ DMA සඳහා භාවිතා වේ. <strong>සෑම උපාංගයකටම අනිවාර්ය</strong> වේ.</li>
+<li><strong>CXL.cache:</strong> උපාංගයකට host මතකය cache කිරීමට ඉඩ දෙයි. සහසම්බන්ධතාව host ප්‍රොසෙසරය snoop පණිවිඩ මගින් කළමනාකරණය කරයි.</li>
+<li><strong>CXL.memory:</strong> host එකට උපාංගයට සවි කළ මතකය සාමාන්‍ය load/store මගින් භාවිතා කිරීමට ඉඩ දෙයි.</li>
+</ul>
+</li>
+</ul>
+<p><strong>කුමන උපාංගයට කුමක්ද</strong> (white paper එකේ උදාහරණ):</p>
+<table>
+	<thead>
+			<tr>
+					<th>උපාංගය</th>
+					<th>ප්‍රොටෝකෝල</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>තමන්ගේ මතකයක් නැති accelerator</td>
+					<td>CXL.io + CXL.cache</td>
+			</tr>
+			<tr>
+					<td>මතකය සහිත accelerator</td>
+					<td>තුනම</td>
+			</tr>
+			<tr>
+					<td>මතක ප්‍රසාරණ උපාංගය</td>
+					<td>CXL.io + CXL.memory</td>
+			</tr>
+	</tbody>
+</table>
+<p>CXL 2.0 white paper එකට (Das Sharma සහ Tavallaei, 2020 නොවැම්බර්) අනුව CXL 2.0 switch එකක් හරහා <strong>pooling</strong> හැකි වේ. එක් &ldquo;Type-3&rdquo; multiple logical device එකකට domains (servers) <strong>16</strong> ක් දක්වා ළඟා විය හැකිය. එමගින් සෑම server එකකටම උපරිම අවශ්‍යතාවයට මතකය සවි කිරීමෙන් (overprovisioning) වැළකිය හැකිය.</p>
+<p><strong>ආදර්ශ ගණනය:</strong> servers 8 ක් ගනිමු. එක් එක් එකට සාමාන්‍යයෙන් 256 GB ක් අවශ්‍ය වන අතර, සමහර විට 512 GB දක්වා අවශ්‍ය වේ. එහෙත් එකවර උපරිමයේ සිටින්නේ servers <strong>2</strong> ක් පමණක් යැයි උපකල්පනය කරමු.</p>
+<ul>
+<li>Pooling නැතිව: 8 × 512 = <strong>4096 GB</strong> සවි කළ යුතුය.</li>
+<li>Pooling සමඟ: 8 × 256 + 2 × 256 (උපරිමය සඳහා හවුල් මතකය) = <strong>2560 GB</strong>.</li>
+<li>ඉතිරිය: (4096 − 2560) ÷ 4096 = <strong>37.5%</strong>.</li>
+</ul>
+<h3 id="6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#6-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>NVLink 1 සබැඳියක යුගලයක වේගය 20 Gb/s සහ දිශාවකට යුගල 8 නම්, සබැඳියක දෙදිශාවේම bandwidth කීයද? P100 හි සබැඳි 4 ම එකට කීයද?</li>
+<li>A100 සබැඳියක දිශාවකට යුගල 4 ක් තිබේ. සබැඳි 12 ක සංඥා රැහැන් (රැහැන් 2 = යුගලය 1) මුළු ගණන කීයද?</li>
+<li>GPU 4 ක් සෘජුව සම්පූර්ණ mesh එකකින් සම්බන්ධ කිරීමට සබැඳි කීයක් අවශ්‍යද? GPU 16 ක් සඳහා?</li>
+<li>40 GB දත්ත PCIe Gen 4 x16 host staging මගින් සහ A100 NVLink (දිශාවකට 300 GB/s) මගින් යැවීමට ගතවන කාලය ගණනය කරන්න (වියදම් නොසලකා).</li>
+<li>CXL x8 සබැඳියක් 32 GT/s (128b/130b) දී දිශාවකට ආසන්න වශයෙන් bandwidth කීයද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>දිශාවකට 8 × 20 ÷ 8 = 20 GB/s, දෙදිශාවම <strong>40 GB/s</strong>. සබැඳි 4 ක් <strong>160 GB/s</strong>. මෙය Pascal white paper එකට ගැළපේ.</li>
+<li>සබැඳියකට යුගල 4 × 2 දිශා = 8. × 12 = යුගල 96 = රැහැන් <strong>192</strong>.</li>
+<li>4 × 3 ÷ 2 = <strong>6</strong>. 16 × 15 ÷ 2 = <strong>120</strong>.</li>
+<li>Staging: 40 ÷ 31.5 × 2 ≈ <strong>2.54 s</strong>. NVLink: 40 ÷ 300 ≈ <strong>0.13 s</strong>.</li>
+<li>32 × 8 × 128/130 ÷ 8 ≈ <strong>31.5 GB/s</strong>.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong> NVIDIA නිල white papers (images.nvidia.com):</p>
+<ul>
+<li><em>NVIDIA Tesla P100</em> (Pascal GP100), WP-08019-001_v01.1, පිටුව 20 (NVHS, 20 Gb/s, සබැඳි 4, 160 GB/s): <a href="https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper.pdf">https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper.pdf</a></li>
+<li><em>NVIDIA Tesla V100 GPU Architecture</em>, WP-08608-001_v1.1: <a href="https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf">https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf</a>
+<ul>
+<li>මුද්‍රිත පිටුව 3: සබැඳි 6, 300 GB/s</li>
+<li>මුද්‍රිත පිටුව 19–20: NVLink 2 (25 Gb/s, සබැඳියකට දිශාවකට 25 GB/s), Figure 12</li>
+</ul>
+</li>
+<li><em>NVIDIA A100 Tensor Core GPU Architecture</em>: <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf</a>
+<ul>
+<li>පිටුව 17: PCIe Gen 4, 31.5 GB/s</li>
+<li>පිටුව 52: 50 Gbit/s, යුගල 4, සබැඳි 12, 600 GB/s; V100 හි 25.78 Gbit/s</li>
+<li>පිටුව 70: DGX A100, NVSwitch 6, 4.8 TB/s</li>
+</ul>
+</li>
+</ul>
+<p>CXL Consortium (computeexpresslink.org):</p>
+<ul>
+<li>D. Das Sharma, &ldquo;Compute Express Link&rdquo; white paper (CXL 1.0; දිනයක් නැත, PDF metadata 2019 මාර්තු): <a href="https://computeexpresslink.org/wp-content/uploads/2023/12/0c1418_d9878707bbb7427786b70c3c91d5fbd1.pdf">https://computeexpresslink.org/wp-content/uploads/2023/12/0c1418_d9878707bbb7427786b70c3c91d5fbd1.pdf</a></li>
+<li>D. Das Sharma සහ S. Tavallaei, &ldquo;Compute Express Link 2.0 White Paper&rdquo;, 2020 නොවැම්බර්: <a href="https://computeexpresslink.org/wp-content/uploads/2023/12/CXL2.0_White_Paper_November-2020_FINAL.pdf">https://computeexpresslink.org/wp-content/uploads/2023/12/CXL2.0_White_Paper_November-2020_FINAL.pdf</a></li>
+</ul>
+<p>පිටපත් කාල වගුව සහ pooling ඉතිරිය ආදර්ශ ගණනය කිරීම් වේ.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B6%B4%E0%B6%BB%E0%B7%92%E0%B6%B8%E0%B7%8F%E0%B6%AB%E0%B6%BA%E0%B7%9A&#43;Interconnects&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F37-interconnects-at-scale%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F37-interconnects-at-scale.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F37-interconnects-at-scale.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/36-the-clock-speed-wall/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Clock Speed බිත්තිය</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="flex align-center">
+        <span>ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#පරනම-මරගය-බදදය">පෙරනිමි මාර්ගය බද්දයි</a></li>
+    <li><a href="#කප-ව-සබඳ-coherent-මතකය-පටපත-අඩ">කැප වූ සබැඳි, Coherent මතකය, පිටපත් අඩු</a></li>
+    <li><a href="#එකම-ගටලව-වවත-දඪගය">එකම ගැටලුව, විවෘත දෘඪාංගය</a></li>
+    <li><a href="#ගඹරන-gpu-අතර-මරගය-අකවලන--nvlink-සබඳ-පටපත-බදද-switch-සහ-cxl">ගැඹුරින්: GPU අතර මාර්ගය අංකවලින් — NVLink සබැඳි, පිටපත් බද්ද, switch සහ CXL</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-nvlink-සබඳයක-ඇතළත">2. NVLink සබැඳියක් ඇතුළත</a></li>
+        <li><a href="#3-පටපත-බදද-10-gb-එක-gpu-එකකන-තවත-එකකට">3. පිටපත් බද්ද: 10 GB එක් GPU එකකින් තවත් එකකට</a></li>
+        <li><a href="#4-gpu-8-ක-සමබනධ-කරම-සජ-mesh-එකක-එදරව-switch-එකක">4. GPU 8 ක් සම්බන්ධ කිරීම: සෘජු mesh එකක් එදිරිව switch එකක්</a></li>
+        <li><a href="#5-cxl-pcie-රහන-මත-සහසමබනධ-මතකය">5. CXL: PCIe රැහැන් මත සහසම්බන්ධ මතකය</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

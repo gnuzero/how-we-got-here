@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>徐家福 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/%E5%BE%90%E5%AE%B6%E7%A6%8F/</link>
+		<description>Recent content in 徐家福 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/%E5%BE%90%E5%AE%B6%E7%A6%8F/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>编程语言与编译器：从 104 机到仓颉</title>
+				<link>http://localhost:1478/zh-hans/posts/27-zh-languages-compilers/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/27-zh-languages-compilers/</guid>
+				<description>1960 年，两位程序员花三四个月读懂一个设计者已离开、资料残缺的编译程序；此后几家单位的说法里都有“第一”或“最早”，各自说的并不是同一件事。</description>
+			</item>
+	</channel>
+</rss>

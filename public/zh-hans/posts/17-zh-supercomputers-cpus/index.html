@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="兼容别人、手工自造、用商品芯片拼、再自己设计芯片：中国的大型计算机四十年里换了几条路，每一次转向都被一个具体的约束逼出来。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hans/posts/17-zh-supercomputers-cpus/">
+	<meta property="og:site_name" content="我们如何走到那里">
+	<meta property="og:title" content="规模：从银河到太湖之光">
+	<meta property="og:description" content="兼容别人、手工自造、用商品芯片拼、再自己设计芯片：中国的大型计算机四十年里换了几条路，每一次转向都被一个具体的约束逼出来。">
+	<meta property="og:locale" content="zh_Hans">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:38:43+05:30">
+		<meta property="article:tag" content="超级计算机">
+		<meta property="article:tag" content="DJS-130">
+		<meta property="article:tag" content="银河-I">
+		<meta property="article:tag" content="曙光">
+		<meta property="article:tag" content="龙芯">
+		<meta property="article:tag" content="神威·太湖之光">
+
+
+	<meta itemprop="name" content="规模：从银河到太湖之光">
+	<meta itemprop="description" content="兼容别人、手工自造、用商品芯片拼、再自己设计芯片：中国的大型计算机四十年里换了几条路，每一次转向都被一个具体的约束逼出来。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:38:43+05:30">
+	<meta itemprop="wordCount" content="257">
+	<meta itemprop="keywords" content="超级计算机,DJS-130,银河-I,曙光,龙芯,神威·太湖之光,天河,指令系统">
+
+<title>规模：从银河到太湖之光 • 我们如何走到那里</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hans/posts/17-zh-supercomputers-cpus/">
+  <link rel="alternate" hreflang="zh-hant" href="http://localhost:1478/zh-hant/posts/17-zh-supercomputers-cpus/" title="規模：從銀河到太湖之光">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hans.search.min.d369906e95123348f130fcf51e745dc120f1a18f8009278172e975f6091f5a95.js" integrity="sha256-02mQbpUSM0jxMPz1HnRdwSDxoY&#43;ACSeBcul19gkfWpU=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hans/"><span>我们如何走到那里</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜索"
+    aria-label="搜索"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="语言" />
+        简体中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展开" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hant/posts/17-zh-supercomputers-cpus/" class="flex flex-auto">
+          繁體中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/00-credits/" class="">
+      致谢与延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-counting-rods-abacus/" class="">
+      算筹与算盘：数放在手里，算法记在口诀里</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-drawloom-huaben/" class="">
+      花本：程序第一次和机器分开</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-gears-and-calculators/" class="">
+      齿轮会数数：从记里鼓车到“较数器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/02-zh-relays-switching/" class="">
+      继电器与交换机：上海电话局里的“计算机”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/03-zh-first-electronic-computers/" class="">
+      电子管与晶体管：中国第一批计算机，和算盘的真实角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-hanzi-encoding/" class="">
+      汉字上线：从四位电码到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/26-zh-input-and-typesetting/" class="">
+      把汉字敲进机器：打字机、输入法与激光照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/39-zh-networks-1986-1994/" class="">
+      越过长城：中文世界接入网络（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/47-zh-taiwan-semiconductors/" class="">
+      从豆浆店到晶圆代工：台湾半导体之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/17-zh-supercomputers-cpus/" class="active">
+      规模：从银河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/63-zh-road-to-attention/" class="">
+      从中文信息处理到注意力机制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/05-zh-transistors-semiconductors/" class="">
+      从一门课到一块芯片：中国半导体的头十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/48-zh-lithography-fabs/" class="">
+      光刻：从显微镜到扫描机</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/58-zh-deep-learning-chips/" class="">
+      从 DianNao 到昇腾：为矩阵乘法造的芯片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/23-zh-operating-systems/" class="">
+      操作系统：从大庆的“虚拟机”到开源欧拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/27-zh-languages-compilers/" class="">
+      编程语言与编译器：从 104 机到仓颉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主机与天文台的电脑</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/43-zh-bbs/" class="">
+      挤不进去的广场：两岸三地的校园 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/44-zh-chinese-search/" class="">
+      一台服务器装不下：中国大陆第一批搜索引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/66-zh-commercial-crypto/" class="">
+      从“属于国家秘密”到国际标准：中国商用密码的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/67-zh-privacy-law/" class="">
+      从电脑处理到自动化决策：两岸三地的个人信息保护法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-mobile-standards/" class="">
+      空中的标准之争：从大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/68-zh-computer-craze/" class="">
+      娃娃与学习机：1984 年以后的电脑热</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="菜单" />
+  </label>
+
+  <h3>规模：从银河到太湖之光</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目录" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#先学会兼容djs-100-的一课">先学会兼容：DJS-100 的一课</a></li>
+    <li><a href="#银河-i二百五十多万个手工焊点">银河-I：二百五十多万个手工焊点</a></li>
+    <li><a href="#曙光换一条路用商品芯片">曙光：换一条路，用商品芯片</a></li>
+    <li><a href="#龙芯两个日期指两件事">龙芯：两个日期，指两件事</a></li>
+    <li><a href="#登顶只写榜单能核对的事">登顶：只写榜单能核对的事</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    规模：从银河到太湖之光
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>九月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hans/tags/%E8%B6%85%E7%BA%A7%E8%AE%A1%E7%AE%97%E6%9C%BA/">超级计算机</a>, 
+      <a href="/zh-hans/tags/djs-130/">DJS-130</a>, 
+      <a href="/zh-hans/tags/%E9%93%B6%E6%B2%B3-i/">银河-I</a>, 
+      <a href="/zh-hans/tags/%E6%9B%99%E5%85%89/">曙光</a>, 
+      <a href="/zh-hans/tags/%E9%BE%99%E8%8A%AF/">龙芯</a>, 
+      <a href="/zh-hans/tags/%E7%A5%9E%E5%A8%81%E5%A4%AA%E6%B9%96%E4%B9%8B%E5%85%89/">神威·太湖之光</a>, 
+      <a href="/zh-hans/tags/%E5%A4%A9%E6%B2%B3/">天河</a>, 
+      <a href="/zh-hans/tags/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F14-01, F14-02, F14-03, F14-04, F14-05, F04-01, F04-02, F04-03, F04-04, F04-05, F04-07, F04-08, F04-09, F04-10, F04-11, F04-12, F04-13, F04-14 -->
+<p>一台计算机怎样变“大”？中国在四十年里走过几条路：兼容别人、自己手工造、用商品芯片拼，最后回到自己设计芯片。每一次转向，都是被一个具体的约束逼出来的。</p>
+<h2 id="先学会兼容djs-100-的一课">先学会兼容：DJS-100 的一课<a class="anchor" href="#%e5%85%88%e5%ad%a6%e4%bc%9a%e5%85%bc%e5%ae%b9djs-100-%e7%9a%84%e4%b8%80%e8%af%be">#</a></h2>
+<p>1973 年 5 月，四机部在清华大学宣布成立 DJS-100 系列机联合设计组。参与者林行良回忆，这个系列的指令系统“与当时美国的NOVA计算机的指令系统是一致的”。中科院物理所进口了一台 NOVA，把系统软件的机器代码反汇编成汇编语言，交给 1976 年成立的系统软件联合设计组分析、移植、改进，三年做出全套系统软件。林行良称，这在当时国内是第一次尝试这样的逆向工程；清华组负责服务性程序、BASIC、汇编语言和外设管理程序，其中外设管理程序是自己写的，“原来NOVA的软件中是没有的”。DJS-130 后来由北京、上海、苏州、天津等地工厂生产了几千台；清华方面的负责人吕文超总结的经验是“标准化、规模化、通用化”。</p>
+<p>这一课很朴素：**指令系统兼容，就能继承软件。**后面每一代机器，都要在兼容与自主之间做选择。</p>
+<h2 id="银河-i二百五十多万个手工焊点">银河-I：二百五十多万个手工焊点<a class="anchor" href="#%e9%93%b6%e6%b2%b3-i%e4%ba%8c%e7%99%be%e4%ba%94%e5%8d%81%e5%a4%9a%e4%b8%87%e4%b8%aa%e6%89%8b%e5%b7%a5%e7%84%8a%e7%82%b9">#</a></h2>
+<p>1978 年 3 月，研制巨型机的任务交给国防科技大学，慈云桂任总指挥。1983 年 12 月 6 日，银河-I 在长沙通过国家鉴定，向量运算速度每秒一亿次以上，共生产安装 3 台。中国计算机学会的档案记录了鉴定方法：26 道考题，每题运行三遍，结果完全一致。据国防科大记载，这台机器有三十多万条线路、二百五十多万个焊点，全部手工焊接；系统设计组 15 个月画了 5000 多张逻辑图。国防科大和中国计算机学会都称，银河-I 使中国成为继美、日之后第三个能研制巨型机的国家；这个说法成立与否，取决于“巨型机”怎么定义。</p>
+<h2 id="曙光换一条路用商品芯片">曙光：换一条路，用商品芯片<a class="anchor" href="#%e6%9b%99%e5%85%89%e6%8d%a2%e4%b8%80%e6%9d%a1%e8%b7%af%e7%94%a8%e5%95%86%e5%93%81%e8%8a%af%e7%89%87">#</a></h2>
+<p>1990 年 3 月，国家智能计算机研究开发中心成立，李国杰任主任。1993 年的曙光一号不再从头造一切：它用 Motorola 88100 微处理器，最多 16 个 CPU（每板 4 个，4 块板经 VME 总线相连），跑 UNIX，峰值定点速度每秒 6.4 亿次。计算所称，这是国内首次采用商品化微处理器芯片和 UNIX 操作系统研制并行机。</p>
+<p>据中国计算机学会档案，曙光一号的攻坚阶段（1992.3—1993.10）以陈鸿安、樊建平、刘金水等人集中于美国硅谷“封闭式”攻关开始，技术路线还得到过伯克利的 David Patterson 和普林斯顿的李凯的建议。这只有一份来源，值得再用回忆录核实。2001 年初，曙光 3000 达到每秒 4000 亿次浮点运算，计算所称它“超出当时国外对我国禁运的高端计算机一个数量级”。出口管制，成了设计的驱动力。</p>
+<h2 id="龙芯两个日期指两件事">龙芯：两个日期，指两件事<a class="anchor" href="#%e9%be%99%e8%8a%af%e4%b8%a4%e4%b8%aa%e6%97%a5%e6%9c%9f%e6%8c%87%e4%b8%a4%e4%bb%b6%e4%ba%8b">#</a></h2>
+<p>《人民日报》2019 年报道：2001 年 8 月，龙芯 1 号成功启动操作系统；2002 年 8 月，我国首款通用 CPU 龙芯 1 号流片成功。计算所所史则记 2002 年 9 月在展览上发布，0.18 微米 CMOS。报道还引用了胡伟武的反思：团队一度“过度追求多核以及浮点峰值性能的单一指标”，2013 年 5 月调整路线。2020 年推出、2021 年 4 月正式发布的 LoongArch 有近 2000 条指令，“不包含MIPS指令系统”。兼容与自主之间，这次选了自主。</p>
+<h2 id="登顶只写榜单能核对的事">登顶：只写榜单能核对的事<a class="anchor" href="#%e7%99%bb%e9%a1%b6%e5%8f%aa%e5%86%99%e6%a6%9c%e5%8d%95%e8%83%bd%e6%a0%b8%e5%af%b9%e7%9a%84%e4%ba%8b">#</a></h2>
+<p>2010 年 11 月，国家超级计算天津中心的天河一号 A 以 2.57 PFlop/s 居 TOP500 第一。2013 年 6 月，国防科技大学的天河二号以 33.86 PFlop/s 登顶，16,000 个节点，每节点 2 颗 Intel Xeon 与 3 颗 Xeon Phi，共 3,120,000 核，此后连续六届居首。2016 年 6 月，神威·太湖之光以 93 PFlop/s 居第一：40,960 个节点、10,649,600 核，满载功耗 15.37MW，全部采用国产处理器。科技部说明，申威 26010 由国家高性能集成电路（上海）设计中心研制，单芯片 260 核，主频 1.5GHz。2018 年 6 月，美国的 Summit 以 122.3 PFlop/s 登顶，太湖之光在连续居首两年后降至第二。</p>
+<p>对比一下：天河二号的算力来自美国芯片，太湖之光全用国产众核处理器。四十年后，DJS-100 那道“兼容还是自主”的题，又出现了一次。</p>
+<p>**出处：**TOP500 榜单 2010-11、2013-06、2016-06、2018-06；科技部，2016。</p>
+<p>在西方，DJS-100 所兼容的 NOVA 出自美国 Data General 公司；曙光一号请教过的 David Patterson 来自加州大学伯克利分校。</p>
+<h2 id="延伸阅读">延伸阅读<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb">#</a></h2>
+<ul>
+<li>吕文超，《100系列计算机联合设计成功的启示》（English: Lessons from the successful joint design of the 100-series computers），清华大学计算机系“60周年系庆”，2018-07-24。<a href="https://www.cs.tsinghua.edu.cn/info/1169/4071.htm">链接</a></li>
+<li>林行良，《DJS100系列机系统软件联合设计》（English: Joint design of the DJS-100 series system software），清华大学计算机系“60周年系庆”，2018-07-24。<a href="https://www.cs.tsinghua.edu.cn/info/1169/4069.htm">链接</a></li>
+<li>国防科技大学，《“银河－I”计算机横空出世！》（English: The Yinhe-I computer bursts onto the scene），国防科技大学官网，2019-12-06。<a href="https://web.archive.org/web/20260811113811/https://www.nudt.edu.cn/zjkd/kdgs/f510ef9ef03c49ebac9350a302c80290.htm">链接（存档）</a></li>
+<li>中国计算机学会，《“银河-1”亿次计算机》（English: The Yinhe-1 100-million-ops computer），中国计算机历史记忆，2018-09-12。<a href="https://www.ccf.org.cn/Computing_history/Full_List/2017/First_class/2018-09-12/652326.shtml">链接</a></li>
+<li>中国计算机学会，《曙光1号并行计算机》（English: The Dawning-1 parallel computer），中国计算机历史记忆，2020-03-24。<a href="https://www.ccf.org.cn/Computing_history/Full_List/2019/First_class/2020-03-24/697778.shtml">链接</a></li>
+<li>中国科学院计算技术研究所，《历史沿革》（English: ICT history），计算所官网。<a href="https://www.ict.ac.cn/jssgk/lsyg/">链接</a></li>
+<li>《把“不可能”变为现实的龙芯团队》（English: The Loongson team that made the “impossible” real），《人民日报》2019-06-17 第 14 版，计算所官网转载。<a href="https://ict.cas.cn/xwgg/mtwz/202008/t20200804_5649556.html">链接</a></li>
+<li>《自主需要从根——龙芯中科正式发布完全自主指令集架构LoongArch》（English: Independence starts at the root: Loongson releases the LoongArch ISA），新华网（来源：中国网），2021-04-16。<a href="http://www.xinhuanet.com/tech/2021-04/16/c_1127339088.htm">链接</a></li>
+<li>科技部，《申威处理器 中国超算最强芯》（English: The Sunway processor, the strongest chip in Chinese supercomputing），科技部网站，2016-06-29。<a href="https://most.gov.cn/kjbgz/201606/t20160628_126168.html">链接</a></li>
+<li>TOP500, “November 2010”, “June 2013”, “June 2016”, “June 2018”（English: TOP500 list pages），top500.org。<a href="https://www.top500.org/lists/top500/2010/11/">2010-11</a> · <a href="https://www.top500.org/lists/top500/2013/06/">2013-06</a> · <a href="https://www.top500.org/lists/top500/2016/06/">2016-06</a> · <a href="https://www.top500.org/lists/top500/2018/06/">2018-06</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/b143baf811dd934626f3160e8260e5d48395b1f1" title='最后修改者 Nayana | 十一月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>十一月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E8%A7%84%E6%A8%A1%EF%BC%9A%E4%BB%8E%E9%93%B6%E6%B2%B3%E5%88%B0%E5%A4%AA%E6%B9%96%E4%B9%8B%E5%85%89&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hans%2Fposts%2F17-zh-supercomputers-cpus%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hans%2Fposts%2F17-zh-supercomputers-cpus.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hans%2Fposts%2F17-zh-supercomputers-cpus.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hans/posts/47-zh-taiwan-semiconductors/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一页" />
+        <span>从豆浆店到晶圆代工：台湾半导体之路</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hans/posts/63-zh-road-to-attention/" class="flex align-center">
+        <span>从中文信息处理到注意力机制</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一页" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#先学会兼容djs-100-的一课">先学会兼容：DJS-100 的一课</a></li>
+    <li><a href="#银河-i二百五十多万个手工焊点">银河-I：二百五十多万个手工焊点</a></li>
+    <li><a href="#曙光换一条路用商品芯片">曙光：换一条路，用商品芯片</a></li>
+    <li><a href="#龙芯两个日期指两件事">龙芯：两个日期，指两件事</a></li>
+    <li><a href="#登顶只写榜单能核对的事">登顶：只写榜单能核对的事</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

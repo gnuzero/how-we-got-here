@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="தரவு ஒரு MAC கட்டம் வழியாகத் துடிக்கும் — முழு chip-ஐயும் matmul-க்குச் சிறப்புப்படுத்துங்கள் (TPU-கள்)">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/58-systolic-arrays/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Systolic Arrays">
+	<meta property="og:description" content="தரவு ஒரு MAC கட்டம் வழியாகத் துடிக்கும் — முழு chip-ஐயும் matmul-க்குச் சிறப்புப்படுத்துங்கள் (TPU-கள்)">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Systolic Arrays">
+	<meta itemprop="description" content="தரவு ஒரு MAC கட்டம் வழியாகத் துடிக்கும் — முழு chip-ஐயும் matmul-க்குச் சிறப்புப்படுத்துங்கள் (TPU-கள்)">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1274">
+
+<title>Systolic Arrays • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/58-systolic-arrays/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/58-systolic-arrays/" title="Systolic Arrays">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/58-systolic-arrays/" title="Systolic Array">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/58-systolic-arrays/" title="Systolic Arrays">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/58-systolic-arrays/" title="Matrice sistolice">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/58-systolic-arrays/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/58-systolic-arrays/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/58-systolic-arrays/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/58-systolic-arrays/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="active">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Systolic Arrays</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#தரவ-ஓடம-கணன-வழயல-நடககம">தரவு ஓடும்; கணினி வழியில் நடக்கும்</a></li>
+    <li><a href="#weight-stationary-dataflow">Weight-Stationary Dataflow</a></li>
+    <li><a href="#gpu-tensor-cores-vs-ஒர-systolic-chip">GPU Tensor Cores vs ஒரு Systolic Chip</a></li>
+    <li><a href="#சறபப-இதயமக-mxu">சிறப்பு இதயமாக MXU</a></li>
+    <li><a href="#2--2-array-இல-ஒவவர-cycle-ஐயம-தடம-படபபம">2 × 2 array-இல் ஒவ்வொரு cycle-ஐயும் தடம் பிடிப்போம்</a></li>
+    <li><a href="#நரமபதல-கலயதல-பரய-array-களன-பயனபட">நிரம்புதல், காலியாதல்: பெரிய array-களின் பயன்பாடு</a></li>
+    <li><a href="#தரவ-நகரவ-ஏன-இத-மசசபபடததகறத">தரவு நகர்வு: ஏன் இது மிச்சப்படுத்துகிறது</a></li>
+    <li><a href="#மதல-tpu-எணகளல">முதல் TPU, எண்களில்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Systolic Arrays
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவு 55 tensor cores-ஐ உள்ளடக்கியது — இல்லையெனில் பொதுவான GPU-க்குள் சிறப்பு matmul வன்பொருள். Systolic arrays சிறப்புப்படுத்தலை மேலும் தள்ளும்: matrix multiplication-க்கு எளிய processing elements-இன் கட்டம் வழியாகத் தரவை ஓட அமைக்கப்பட்ட கட்டமைப்பு. Google-இன் TPU (Tensor Processing Unit) மிகத் தெளிவான shipping எடுத்துக்காட்டு. கருத்து தானே பழையது: <strong>H. T. Kung</strong> மற்றும் <strong>Charles E. Leiserson</strong> 1970-களின் பிற்பகுதியில் VLSI-க்கு systolic arrays-ஐப் பெயரிட்டு முறைப்படுத்தினர்.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> Systolic array பற்றித் தமிழில் விளக்கமோ காணொளியோ இல்லை; TPU பற்றியும் மிகக் குறைவு. இங்கே ஒரு 2 × 2 systolic array-இல் தரவு ஒவ்வொரு cycle-இலும் எப்படி நகர்கிறது என்பதை முழுமையாகத் தடம் பிடித்து (trace), பிறகு Google-இன் முதல் TPU-வின் எண்களுக்கு (Jouppi மற்றும் சகாக்களின் 2017 ISCA கட்டுரையின் சுருக்கத்திலிருந்து சரிபார்த்தவை) அளவிடுகிறோம். மற்ற எண்கள் &ldquo;எடுத்துக்காட்டு மதிப்பு&rdquo;.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>PE (Processing Element, செயலாக்க உறுப்பு):</strong> ஒரு பெருக்கி, ஒரு கூட்டி, சில register-கள் மட்டும் கொண்ட மிகச் சிறிய கணக்கு அலகு.</li>
+<li><strong>Systolic (இதயத்துடிப்பு போன்ற):</strong> இதயம் ஒவ்வொரு துடிப்பிலும் இரத்தத்தைத் தள்ளுவதுபோல, ஒவ்வொரு clock-இலும் எல்லா PE-களும் தரவை அண்டை PE-க்கு ஒரே தாளத்தில் தள்ளுகின்றன.</li>
+<li><strong>Dataflow (தரவு ஓட்டம்):</strong> எந்தத் தரவு நிலையாக நிற்கிறது, எது நகர்கிறது என்ற அமைப்பு.</li>
+<li><strong>Weight-stationary (எடை நிலைத்த):</strong> weight-கள் PE-களில் முன்பே ஏற்றப்பட்டு நிலையாக இருக்கின்றன; activation-களும் பகுதிக் கூட்டுத்தொகைகளும் (partial sums) நகர்கின்றன.</li>
+<li><strong>Partial sum (பகுதிக் கூட்டுத்தொகை):</strong> ஒரு dot product-இன் இதுவரை கணக்கிட்ட பகுதி.</li>
+<li><strong>Skew (சாய்வு / தாமத அடுக்கு):</strong> சரியான எண்கள் சரியான நேரத்தில் சந்திக்க, ஒவ்வொரு வரிசையின் உள்ளீட்டையும் ஒரு cycle கூடுதலாகத் தாமதப்படுத்துவது.</li>
+<li><strong>Utilization (பயன்பாட்டு விகிதம்):</strong> மொத்த PE-cycle-களில் உண்மையில் பயனுள்ள MAC செய்தவற்றின் பங்கு.</li>
+</ul>
+<h2 id="தரவ-ஓடம-கணன-வழயல-நடககம">தரவு ஓடும்; கணினி வழியில் நடக்கும்<a class="anchor" href="#%e0%ae%a4%e0%ae%b0%e0%ae%b5-%e0%ae%93%e0%ae%9f%e0%ae%ae-%e0%ae%95%e0%ae%a3%e0%ae%a9-%e0%ae%b5%e0%ae%b4%e0%ae%af%e0%ae%b2-%e0%ae%a8%e0%ae%9f%e0%ae%95%e0%ae%95%e0%ae%ae">#</a></h2>
+<p>ஒரு systolic array எளிய processing elements-இன் 2D கட்டம், ஒவ்வொன்றும் ஒரு multiply-accumulate, தரவு ஒருங்கிணைந்த தாளத்தில் நகரும்படி அமைக்கப்பட்டது. ஒவ்வொரு PE-உம் தரவு வரும்போது ஒரு MAC செய்யும். Weight-stationary வடிவமைப்பில் (Google-இன் TPU MXU போல), weights முன் ஏற்றப்பட்டு வைக்கப்படும்போது activations குறுக்கே ஓடி partial sums அண்டைகளுக்குப் பரவும் — systolic &ldquo;இதயத் துடிப்பு,&rdquo; இரு operands-உம் சுதந்திரமாக அலையாது. பெயர் வேண்டுமென்றே இதயத்தின் துடிப்பை எதிரொலிக்கிறது: தரவு மையப் பகிரப்பட்ட கட்டுப்பாட்டு பாதை வழியாக fetch செய்யப்படுவதற்குப் பதிலாக அலைகளாக நகரும்.</p>
+<h2 id="weight-stationary-dataflow">Weight-Stationary Dataflow<a class="anchor" href="#weight-stationary-dataflow">#</a></h2>
+<p>Weights-ஐ <em>stationary</em>-ஆக வைத்திருங்கள் — ஒவ்வொரு PE-இலும் ஒருமுறை ஏற்றி — activations கடந்து ஓடும்போது வைக்கப்பட்ட weight-க்கு எதிராக multiply செய்து, partial sums கட்டம் வழியாகக் குவியும். ஏற்றப்பட்டதும், weights ஒவ்வொரு MAC-க்கும் மீண்டும் fetch செய்யப்பட வேண்டாம். பதிவுகள் 35 மற்றும் 54-இன் memory-bandwidth அழுத்தம் கொடுக்கப்பட்டால், அது முக்கியம்: மீண்டும் பயன்படுத்தப்படும் மதிப்புகளை compute இடத்தில் வைத்து தரவு இயக்கத்தை வெட்டுங்கள் — systolic வடிவமைப்பு பதிலளிக்கக் கட்டப்பட்ட அதே கட்டுப்பாடு.</p>
+<h2 id="gpu-tensor-cores-vs-ஒர-systolic-chip">GPU Tensor Cores vs ஒரு Systolic Chip<a class="anchor" href="#gpu-tensor-cores-vs-%e0%ae%92%e0%ae%b0-systolic-chip">#</a></h2>
+<p>Tensor cores இன்னும் பொதுவான SIMT கட்டமைப்புக்குள் (பதிவுகள் 52–53) அமர்கின்றன, matmul-க்கு அப்பால் பல parallel workloads ஓட்டக்கூடியவை. TPU போன்ற systolic-array chip குறுகிய பந்தயம் கட்டும்: திறமையான matrix multiplication-ஐச் சுற்றி <em>முழு</em> chip-ஐயும் அமைக்கவும், அந்த வடிவத்திற்குப் பொருந்தாத வேலைக்குக் குறைந்த நெகிழ்வு. எதுவும் கண்டிப்பாகச் சிறந்ததல்ல — matmul-ஆதிக்க loads-இல் திறன் மற்றும் பரந்த parallel கலவையில் நெகிழ்வு.</p>
+<h2 id="சறபப-இதயமக-mxu">சிறப்பு இதயமாக MXU<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%aa%e0%ae%aa-%e0%ae%87%e0%ae%a4%e0%ae%af%e0%ae%ae%e0%ae%95-mxu">#</a></h2>
+<p>Google-இன் TPU-வில், Matrix Multiply Unit (MXU) matmul throughput-இன் பெரும்பகுதியைச் சுமக்கும் systolic array, non-matmul மீதிக்குக் கட்டுப்பாடு, memory இடைமுகங்கள் மற்றும் vector அலகுகளுக்கு அருகில். சிறப்பு மையம் மற்றும் ஆதரவு தர்க்கம் இந்த phase-இன் accelerators குறுக்கே மீண்டும் வரும் pattern.</p>
+<h2 id="2--2-array-இல-ஒவவர-cycle-ஐயம-தடம-படபபம">2 × 2 array-இல் ஒவ்வொரு cycle-ஐயும் தடம் பிடிப்போம்<a class="anchor" href="#2--2-array-%e0%ae%87%e0%ae%b2-%e0%ae%92%e0%ae%b5%e0%ae%b5%e0%ae%b0-cycle-%e0%ae%90%e0%ae%af%e0%ae%ae-%e0%ae%a4%e0%ae%9f%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%ae">#</a></h2>
+<p><strong>அமைப்பு (weight-stationary):</strong></p>
+<ul>
+<li>PE(i, j) — வரிசை i, நெடுவரிசை j — weight W[i][j]-ஐ வைத்திருக்கிறது.</li>
+<li>உள்ளீட்டு எண்கள் இடமிருந்து வலமாக நகர்கின்றன: உள்ளீட்டு வரிசை k-இன் i-ஆவது எண் x[k][i], array-இன் வரிசை i-க்குள் நுழைகிறது.</li>
+<li>பகுதிக் கூட்டுத்தொகைகள் மேலிருந்து கீழாக நகர்கின்றன (மேல் வரிசையில் 0-இலிருந்து தொடங்கி).</li>
+<li>ஒவ்வொரு PE-உம் ஒவ்வொரு cycle-இலும்: கீழே அனுப்பு ← மேலிருந்து வந்தது + இடமிருந்து வந்தது × தன் weight; இடமிருந்து வந்ததை வலப்பக்கம் அனுப்பு.</li>
+<li><strong>Skew:</strong> வரிசை i-இன் உள்ளீடு i cycle-கள் தாமதமாக நுழைகிறது — x[k][i] cycle k + i-இல்.</li>
+</ul>
+<p><strong>எடுத்துக்காட்டு மதிப்புகள்:</strong> W = [[1, 2], [3, 4]] (வரிசை 0 = [1, 2], வரிசை 1 = [3, 4]). இரண்டு உள்ளீட்டு வரிசைகள்: x₀ = [1, 2], x₁ = [3, 1]. எதிர்பார்க்கும் விடை y = x · W:</p>
+<ul>
+<li>y₀ = [1×1 + 2×3, 1×2 + 2×4] = [7, 10]</li>
+<li>y₁ = [3×1 + 1×3, 3×2 + 1×4] = [6, 10]</li>
+</ul>
+<p><strong>Cycle-வாரியான trace</strong> (ஒரு சிறிய Python simulator கொண்டு உருவாக்கிச் சரிபார்த்தது):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Cycle</th>
+					<th>PE(0,0) — W=1</th>
+					<th>PE(0,1) — W=2</th>
+					<th>PE(1,0) — W=3</th>
+					<th>PE(1,1) — W=4</th>
+					<th>கீழே வெளிவருவது</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0 + 1×1 = 1</td>
+					<td>—</td>
+					<td>—</td>
+					<td>—</td>
+					<td>—</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0 + 3×1 = 3</td>
+					<td>0 + 1×2 = 2</td>
+					<td>1 + 2×3 = <strong>7</strong></td>
+					<td>—</td>
+					<td>நெடுவரிசை 0: 7 (y₀[0])</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>—</td>
+					<td>0 + 3×2 = 6</td>
+					<td>3 + 1×3 = <strong>6</strong></td>
+					<td>2 + 2×4 = <strong>10</strong></td>
+					<td>நெ. 0: 6 (y₁[0]); நெ. 1: 10 (y₀[1])</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>—</td>
+					<td>—</td>
+					<td>—</td>
+					<td>6 + 1×4 = <strong>10</strong></td>
+					<td>நெ. 1: 10 (y₁[1])</td>
+			</tr>
+	</tbody>
+</table>
+<p>படித்துப் பாருங்கள்:</p>
+<ul>
+<li>Cycle 1-இல் PE(1,0) பெறும் &ldquo;1&rdquo; மேலிருந்து வந்த பகுதிக் கூட்டுத்தொகை (cycle 0-இல் PE(0,0) கணக்கிட்டது); &ldquo;2&rdquo; என்பது x₀[1] — skew காரணமாக ஒரு cycle தாமதமாக நுழைந்தது, அதனால்தான் சரியான நேரத்தில் சந்திக்கிறது.</li>
+<li>ஒவ்வொரு உள்ளீட்டு எண்ணும் ஒரு முறை மட்டுமே நினைவகத்திலிருந்து வருகிறது, ஆனால் அது வலமாக நகரும்போது வரிசையின் <strong>எல்லா</strong> PE-களிலும் பயன்படுகிறது.</li>
+<li>எந்த PE-உம் நினைவகத்தைத் தொடவில்லை; அண்டை PE-களுடன் மட்டுமே பேசுகின்றன. நீண்ட கம்பிகள் இல்லை, மையக் கட்டுப்பாடு இல்லை.</li>
+<li>மொத்தம் 4 cycle-கள், 8 MAC-கள் (2 வரிசைகள் × 4 PE-கள்). 4 PE × 4 cycle = 16 PE-cycle-களில் 8 பயனுள்ளவை → 50% பயன்பாடு. மீதி: தொடக்கத்தில் array &ldquo;நிரம்பும்&rdquo; நேரமும் இறுதியில் &ldquo;காலியாகும்&rdquo; நேரமும்.</li>
+</ul>
+<h2 id="நரமபதல-கலயதல-பரய-array-களன-பயனபட">நிரம்புதல், காலியாதல்: பெரிய array-களின் பயன்பாடு<a class="anchor" href="#%e0%ae%a8%e0%ae%b0%e0%ae%ae%e0%ae%aa%e0%ae%a4%e0%ae%b2-%e0%ae%95%e0%ae%b2%e0%ae%af%e0%ae%a4%e0%ae%b2-%e0%ae%aa%e0%ae%b0%e0%ae%af-array-%e0%ae%95%e0%ae%b3%e0%ae%a9-%e0%ae%aa%e0%ae%af%e0%ae%a9%e0%ae%aa%e0%ae%9f">#</a></h2>
+<p>n × n array-இல் K உள்ளீட்டு வரிசைகளுக்கு, மேலே உள்ள அமைப்பில் மொத்த cycle-கள் = K + 2n − 2 (2 × 2, K = 2: 2 + 4 − 2 = 4 ✓). பயனுள்ள MAC-கள் K × n². பயன்பாடு:</p>
+<p><strong>U = K ÷ (K + 2n − 2)</strong></p>
+<p>முதல் TPU-வின் அளவான n = 256-இல் (எளிய மாதிரி; weight ஏற்றுதலைப் புறக்கணித்து):</p>
+<ul>
+<li>K = 256: 256 ÷ (256 + 510) ≈ <strong>33%</strong></li>
+<li>K = 2,048: 2,048 ÷ 2,558 ≈ <strong>80%</strong></li>
+</ul>
+<p>பெரிய array-ஐ முழுமையாகப் பயன்படுத்த நீண்ட உள்ளீட்டு ஓட்டம் — பெரிய batch — தேவை. இது பதிவு 57-இன் batch/மறுபயன்பாட்டுக் கணக்கின் இன்னொரு வடிவம்.</p>
+<h2 id="தரவ-நகரவ-ஏன-இத-மசசபபடததகறத">தரவு நகர்வு: ஏன் இது மிச்சப்படுத்துகிறது<a class="anchor" href="#%e0%ae%a4%e0%ae%b0%e0%ae%b5-%e0%ae%a8%e0%ae%95%e0%ae%b0%e0%ae%b5-%e0%ae%8f%e0%ae%a9-%e0%ae%87%e0%ae%a4-%e0%ae%ae%e0%ae%9a%e0%ae%9a%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%a4%e0%ae%a4%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>n = 256, K = 256 என்றால்:</p>
+<ul>
+<li><strong>&ldquo;ஒவ்வொரு MAC-க்கும் இரண்டு operand-களையும் நினைவகத்திலிருந்து எடு&rdquo;</strong> என்ற அப்பாவி அணுகுமுறை: 2 × K × n² = 2 × 256³ = 33,554,432 படிப்புகள்</li>
+<li><strong>Weight-stationary systolic:</strong> weight-கள் ஒரு முறை (n² = 65,536), உள்ளீடுகள் ஒரு முறை (K × n = 65,536), வெளியீடுகள் ஒரு முறை (K × n = 65,536) → மொத்தம் 196,608</li>
+<li>விகிதம்: 33,554,432 ÷ 196,608 ≈ <strong>170 மடங்கு குறைவான நினைவக அணுகல்கள்</strong></li>
+</ul>
+<p>ஒவ்வொரு weight-உம் K முறை (ஒவ்வொரு உள்ளீட்டு வரிசைக்கும்), ஒவ்வொரு உள்ளீட்டு எண்ணும் n முறை (வரிசையின் ஒவ்வொரு PE-க்கும்) பயன்படுகிறது — நினைவகத்துக்குத் திரும்பிச் செல்லாமலே. பதிவுகள் 35, 54-இன் bandwidth அழுத்தத்துக்கு இதுதான் systolic வடிவமைப்பின் பதில்.</p>
+<h2 id="மதல-tpu-எணகளல">முதல் TPU, எண்களில்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2-tpu-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%b2">#</a></h2>
+<p>Jouppi மற்றும் சகாக்களின் 2017 ISCA கட்டுரை (&ldquo;In-Datacenter Performance Analysis of a Tensor Processing Unit&rdquo;) சுருக்கத்தின்படி: 2015 முதல் Google data center-களில் neural network <strong>inference</strong>-க்காக இயங்கிய இந்த ASIC-இன் இதயம் <strong>65,536 8-bit MAC-கள்</strong> கொண்ட matrix multiply unit (256 × 256 = 65,536); உச்ச வேகம் <strong>92 TOPS</strong>; 28 MiB மென்பொருள் கட்டுப்படுத்தும் on-chip நினைவகம். அதே data center-களில் இருந்த சமகால GPU, CPU-வை விட சராசரியாக 15–30 மடங்கு வேகம், TOPS/Watt-இல் 30–80 மடங்கு சிறப்பு என்று கட்டுரை அறிவிக்கிறது.</p>
+<p>இந்த எண்களிலிருந்து clock-ஐப் பின்னோக்கிக் கணக்கிடலாம்:</p>
+<ol>
+<li>ஒரு MAC = 2 செயல்கள் (பெருக்கல் + கூட்டல்)</li>
+<li>ஒரு cycle-க்கு 65,536 × 2 = 131,072 செயல்கள்</li>
+<li>92 × 10¹² ÷ 131,072 ≈ 702 × 10⁶ → சுமார் <strong>700 MHz</strong></li>
+</ol>
+<p>ஒப்பிட: பதிவு 55-இன் V100 (2017) 1.53 GHz-இல் இயங்கியது. TPU-வின் வேகம் அதிக clock-இலிருந்து அல்ல — அதிக PE-களிலிருந்தும், அவற்றுக்கு இடையிலான குறுகிய, ஒழுங்கான கம்பிகளிலிருந்தும், 8-bit எண்களிலிருந்தும் (பதிவு 59).</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<p>(பயிற்சிகளில் புதிதாக வரும் உள்ளீட்டு எண்கள், மூலத்துடன் குறிக்கப்பட்டவை தவிர, எடுத்துக்காட்டு மதிப்புகள்.)</p>
+<ol>
+<li>மேலே உள்ள 2 × 2 array-இல் W = [[2, 0], [1, 3]], x₀ = [1, 1]. y₀ என்ன? எந்த cycle-இல் y₀[1] வெளிவரும்?
+<em>விடை:</em> y₀ = [1×2 + 1×1, 1×0 + 1×3] = [3, 3]. y₀[1] நெடுவரிசை 1-இன் அடியில் cycle k + (n − 1) + j = 0 + 1 + 1 = 2-இல்.</li>
+<li>128 × 128 array, K = 512. பயன்பாடு (எளிய மாதிரி)?
+<em>விடை:</em> 512 ÷ (512 + 254) ≈ 66.8%.</li>
+<li>8-bit MAC-கள் 16,384 (128 × 128), 1 GHz. உச்ச TOPS?
+<em>விடை:</em> 16,384 × 2 × 10⁹ ≈ 32.8 × 10¹² = 32.8 TOPS.</li>
+</ol>
+<p><strong>Door out:</strong> H. T. Kung மற்றும் Charles E. Leiserson, &ldquo;Systolic Arrays (for VLSI)&rdquo; (<em>Sparse Matrix Proceedings 1978</em>, SIAM, 1979) — matrix கணினிக்கான தாள MAC arrays-இன் செவ்வியல் கூற்று; தொடர்புள்ள வடிவம் Mead மற்றும் Conway-இன் <em>Introduction to VLSI Systems</em> (1980)-இலும் தோன்றும்.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>இதயத்துடிப்பு அணி</td>
+					<td>systolic array</td>
+			</tr>
+			<tr>
+					<td>செயலாக்க உறுப்பு</td>
+					<td>processing element (PE)</td>
+			</tr>
+			<tr>
+					<td>தரவு ஓட்டம்</td>
+					<td>dataflow</td>
+			</tr>
+			<tr>
+					<td>எடை நிலைத்த</td>
+					<td>weight-stationary</td>
+			</tr>
+			<tr>
+					<td>பகுதிக் கூட்டுத்தொகை</td>
+					<td>partial sum</td>
+			</tr>
+			<tr>
+					<td>சாய்வு / தாமத அடுக்கு</td>
+					<td>skew</td>
+			</tr>
+			<tr>
+					<td>நிரம்புதல் / காலியாதல்</td>
+					<td>pipeline fill / drain</td>
+			</tr>
+			<tr>
+					<td>பயன்பாட்டு விகிதம்</td>
+					<td>utilization</td>
+			</tr>
+			<tr>
+					<td>அணிப் பெருக்கல் அலகு</td>
+					<td>Matrix Multiply Unit (MXU)</td>
+			</tr>
+			<tr>
+					<td>டென்சர் செயலாக்க அலகு</td>
+					<td>Tensor Processing Unit (TPU)</td>
+			</tr>
+			<tr>
+					<td>ஊகக் கணக்கு (பயிற்சி அல்லாத பயன்பாடு)</td>
+					<td>inference</td>
+			</tr>
+			<tr>
+					<td>குறிப்பிட்ட பயன்பாட்டுச் சுற்று</td>
+					<td>ASIC</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Systolic&#43;Arrays&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F58-systolic-arrays%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F58-systolic-arrays.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F58-systolic-arrays.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/59-quantization-mixed-precision/" class="flex align-center">
+        <span>Quantization மற்றும் Mixed Precision</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#தரவ-ஓடம-கணன-வழயல-நடககம">தரவு ஓடும்; கணினி வழியில் நடக்கும்</a></li>
+    <li><a href="#weight-stationary-dataflow">Weight-Stationary Dataflow</a></li>
+    <li><a href="#gpu-tensor-cores-vs-ஒர-systolic-chip">GPU Tensor Cores vs ஒரு Systolic Chip</a></li>
+    <li><a href="#சறபப-இதயமக-mxu">சிறப்பு இதயமாக MXU</a></li>
+    <li><a href="#2--2-array-இல-ஒவவர-cycle-ஐயம-தடம-படபபம">2 × 2 array-இல் ஒவ்வொரு cycle-ஐயும் தடம் பிடிப்போம்</a></li>
+    <li><a href="#நரமபதல-கலயதல-பரய-array-களன-பயனபட">நிரம்புதல், காலியாதல்: பெரிய array-களின் பயன்பாடு</a></li>
+    <li><a href="#தரவ-நகரவ-ஏன-இத-மசசபபடததகறத">தரவு நகர்வு: ஏன் இது மிச்சப்படுத்துகிறது</a></li>
+    <li><a href="#மதல-tpu-எணகளல">முதல் TPU, எண்களில்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

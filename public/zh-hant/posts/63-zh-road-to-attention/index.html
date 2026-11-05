@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="從一台只能輸出電報碼的翻譯機，到首發在中文部落格上的旋轉位置編碼，中文這條線給今天的 Transformer 留下了兩塊實實在在的零件。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hant/posts/63-zh-road-to-attention/">
+	<meta property="og:site_name" content="我們如何走到那裡">
+	<meta property="og:title" content="從中文信息處理到注意力機制">
+	<meta property="og:description" content="從一台只能輸出電報碼的翻譯機，到首發在中文部落格上的旋轉位置編碼，中文這條線給今天的 Transformer 留下了兩塊實實在在的零件。">
+	<meta property="og:locale" content="zh_Hant">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+		<meta property="article:tag" content="機器翻譯">
+		<meta property="article:tag" content="斷詞">
+		<meta property="article:tag" content="吳文俊">
+		<meta property="article:tag" content="天網">
+		<meta property="article:tag" content="百度">
+		<meta property="article:tag" content="ResNet">
+
+
+	<meta itemprop="name" content="從中文信息處理到注意力機制">
+	<meta itemprop="description" content="從一台只能輸出電報碼的翻譯機，到首發在中文部落格上的旋轉位置編碼，中文這條線給今天的 Transformer 留下了兩塊實實在在的零件。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="274">
+	<meta itemprop="keywords" content="機器翻譯,斷詞,吳文俊,天網,百度,ResNet,RoPE,注意力機制">
+
+<title>從中文信息處理到注意力機制 • 我們如何走到那裡</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hant/posts/63-zh-road-to-attention/">
+  <link rel="alternate" hreflang="zh-hans" href="http://localhost:1478/zh-hans/posts/63-zh-road-to-attention/" title="从中文信息处理到注意力机制">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hant.search.min.fa14ded62159ba6cbd0e4fab41da826a3888ed10f3c3ce0e2671b6ad687c6ff9.js" integrity="sha256-&#43;hTe1iFZumy9Dk&#43;rQdqCajiI7RDzw84OJnG2rWh8b/k=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hant/"><span>我們如何走到那裡</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜尋"
+    aria-label="搜尋"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="語言" />
+        繁體中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展開" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hans/posts/63-zh-road-to-attention/" class="flex flex-auto">
+          简体中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/00-credits/" class="">
+      致謝與延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-counting-rods-abacus/" class="">
+      算籌與算盤：數放在手裡，演算法記在口訣裡</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-drawloom-huaben/" class="">
+      花本：程式第一次和機器分開</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-gears-and-calculators/" class="">
+      齒輪會數數：從記里鼓車到“較數器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/02-zh-relays-switching/" class="">
+      繼電器與交換機：上海電話局裡的“電腦”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/03-zh-first-electronic-computers/" class="">
+      真空管與電晶體：中國第一批電腦，和算盤的真實角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/64-zh-hanzi-encoding/" class="">
+      漢字上線：從四位電碼到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/26-zh-input-and-typesetting/" class="">
+      把漢字敲進機器：打字機、輸入法與雷射照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/39-zh-networks-1986-1994/" class="">
+      越過長城：中文世界接入網路（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/47-zh-taiwan-semiconductors/" class="">
+      從豆漿店到晶圓代工：台灣半導體之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/17-zh-supercomputers-cpus/" class="">
+      規模：從銀河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/63-zh-road-to-attention/" class="active">
+      從中文信息處理到注意力機制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/05-zh-transistors-semiconductors/" class="">
+      從一門課到一塊晶片：中國半導體的頭十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/48-zh-lithography-fabs/" class="">
+      微影：從顯微鏡到掃描機</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/58-zh-deep-learning-chips/" class="">
+      從 DianNao 到昇騰：為矩陣乘法造的晶片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/23-zh-operating-systems/" class="">
+      作業系統：從大慶的“虛擬機”到開源歐拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/27-zh-languages-compilers/" class="">
+      程式語言與編譯器：從 104 機到倉頡</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主機與天文台的電腦</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/43-zh-bbs/" class="">
+      擠不進去的廣場：兩岸三地的校園 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/44-zh-chinese-search/" class="">
+      一台伺服器裝不下：中國大陸第一批搜尋引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/66-zh-commercial-crypto/" class="">
+      從“屬於國家秘密”到國際標準：中國商用密碼的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/67-zh-privacy-law/" class="">
+      從電腦處理到自動化決策：兩岸三地的個人資料保護法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/64-zh-mobile-standards/" class="">
+      空中的標準之爭：從大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/68-zh-computer-craze/" class="">
+      娃娃與學習機：1984 年以後的電腦熱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="選單" />
+  </label>
+
+  <h3>從中文信息處理到注意力機制</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目錄" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1959翻譯成功了卻打不出漢字">1959：翻譯成功了，卻打不出漢字</a></li>
+    <li><a href="#吳文俊58-歲學程式設計">吳文俊：58 歲學程式設計</a></li>
+    <li><a href="#天網從搜尋引擎到大型語言模型語料">天網：從搜尋引擎到大型語言模型語料</a></li>
+    <li><a href="#寫進-transformer-的兩塊零件">寫進 Transformer 的兩塊零件</a></li>
+    <li><a href="#在西方">在西方</a></li>
+    <li><a href="#延伸閱讀">延伸閱讀</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    從中文信息處理到注意力機制
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日曆" />
+    <span>9月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hant/tags/%E6%A9%9F%E5%99%A8%E7%BF%BB%E8%AD%AF/">機器翻譯</a>, 
+      <a href="/zh-hant/tags/%E6%96%B7%E8%A9%9E/">斷詞</a>, 
+      <a href="/zh-hant/tags/%E5%90%B3%E6%96%87%E4%BF%8A/">吳文俊</a>, 
+      <a href="/zh-hant/tags/%E5%A4%A9%E7%B6%B2/">天網</a>, 
+      <a href="/zh-hant/tags/%E7%99%BE%E5%BA%A6/">百度</a>, 
+      <a href="/zh-hant/tags/resnet/">ResNet</a>, 
+      <a href="/zh-hant/tags/rope/">RoPE</a>, 
+      <a href="/zh-hant/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6/">注意力機制</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F13-01, F13-02, F13-03, F13-06, F06-01, F06-02, F06-03, F29-02, F29-03, F29-04, F29-05, F29-06, F06-07, F06-08, F06-09 -->
+<p>Transformer 的原始任務是機器翻譯。沿著中文這條線往回走，你會碰到一連串被英文敘事略過的節點：一台打不出漢字的翻譯機，一位 58 歲學程式設計的數學家，一座後來變成大型語言模型語料的網頁博物館，還有兩塊直接寫進今天大型語言模型裡的零件。</p>
+<h2 id="1959翻譯成功了卻打不出漢字">1959：翻譯成功了，卻打不出漢字<a class="anchor" href="#1959%e7%bf%bb%e8%ad%af%e6%88%90%e5%8a%9f%e4%ba%86%e5%8d%bb%e6%89%93%e4%b8%8d%e5%87%ba%e6%bc%a2%e5%ad%97">#</a></h2>
+<p>1957 年，劉湧泉到蘇聯科學院精密儀器和計算技術研究所研究機器翻譯；1958 年 5 月，他在莫斯科的會議上發表了中國第一篇機器翻譯論文。1959 年國慶節前，他主持的俄漢機器翻譯在計算所 104 機上試驗成功，但“輸出的是電報碼”。直到 1978 年 ECMT-78 英漢機器翻譯系統試驗成功，“這次輸出的是漢字”。</p>
+<p>十九年裡，瓶頸不在語言，而在字元輸出。1978 年，正是劉湧泉以中國科技情報學會機器翻譯委員會主任委員的身份，組織了第一次漢字編碼學術交流會。</p>
+<p>中文還有一個英文沒有的難題：詞與詞之間沒有空格。中國中文信息學會稱，1992 年發布的《信息處理用現代漢語分詞規範》從工程需求出發，“解決了語言學界爭論了幾十年而未解決的漢語的詞的定義問題”。今天大型語言模型要做的斷詞，在中文世界早就是一個標準化問題。</p>
+<h2 id="吳文俊58-歲學程式設計">吳文俊：58 歲學程式設計<a class="anchor" href="#%e5%90%b3%e6%96%87%e4%bf%8a58-%e6%ad%b2%e5%ad%b8%e7%a8%8b%e5%bc%8f%e8%a8%ad%e8%a8%88">#</a></h2>
+<p>吳文俊在口述自傳裡說，研究中國古代數學讓他明白“不必照西方的道路走，而是走另外一條道路”。1971 年他在北京無線電一廠勞動時第一次接觸電腦；幾何定理機器證明的研究從 1976 年冬天開始，1977 年春節期間先用手算驗證了方法。他在紙帶輸入的長城 203 上證明了西姆松定理，58 歲從零學程式設計，先學組合語言，後來“用Basic編寫了四五千行的證明定理的程序”。學生周咸青把這個方法帶到國外。1997 年，他獲得自動推理領域的 Herbrand 獎。</p>
+<h2 id="天網從搜尋引擎到大型語言模型語料">天網：從搜尋引擎到大型語言模型語料<a class="anchor" href="#%e5%a4%a9%e7%b6%b2%e5%be%9e%e6%90%9c%e5%b0%8b%e5%bc%95%e6%93%8e%e5%88%b0%e5%a4%a7%e5%9e%8b%e8%aa%9e%e8%a8%80%e6%a8%a1%e5%9e%8b%e8%aa%9e%e6%96%99">#</a></h2>
+<p>1996 年，北大網絡實驗室陳葆珏教授帶領劉建國、周利民、雷鳴等研發“天網”，1997 年 10 月 29 日起在 CERNET 上提供服務，名字取自“天網恢恢，疏而不漏”。同期的清華“網絡指南針”（李星主持）面對的第一個關鍵問題，就是怎樣切分中文關鍵詞。</p>
+<p>百度初創時，劉建國、周利民、雷鳴加入了百度。CERNET 2024 年的文章說，1999 年李彥宏按天網上留的 Email 地址給劉建國寫信，劉建國“成為百度的第一名員工”；2014 年的另一篇文章則說他是 2000 年辭職加入的。百度官網記載，公司 2000 年 1 月 1 日創立於中關村。</p>
+<p>2002 年起，北大網絡實驗室建設“中國Web信息博物館”，到 2015 年收藏 70 多億網頁、超過 200TB，2016 年捐贈給中國計算機學會。據 CERNET 的回顧，這近 20 年的資料已被 30 多家機構用於訓練大型語言模型。</p>
+<p>**出處：**賽爾網絡，《中國第一批搜索引擎往事》，2024。</p>
+<h2 id="寫進-transformer-的兩塊零件">寫進 Transformer 的兩塊零件<a class="anchor" href="#%e5%af%ab%e9%80%b2-transformer-%e7%9a%84%e5%85%a9%e5%a1%8a%e9%9b%b6%e4%bb%b6">#</a></h2>
+<p>2015 年，微軟亞洲研究院以 152 層的“深度殘差網絡”（ResNet）贏得 ImageNet 挑戰賽，錯誤率 3.57%。論文的四位作者何愷明、張祥雨、任少卿、孫劍當時都在北京的微軟亞洲研究院：據該院報導，孫劍與何愷明來自視覺計算組，張祥雨（西安交通大學）和任少卿（中國科學技術大學）是該院聯合培養的博士生。《Attention Is All You Need》描述編碼器時寫道：“We employ a residual connection [11]”，文獻 [11] 就是這篇 ResNet 論文。每個 Transformer 層裡的殘差連接，都明確記在這項工作名下。</p>
+<p>第二塊是位置編碼。2021 年 3 月 23 日，蘇劍林在自己的中文部落格“科學空間”發表《Transformer升級之路：2、博採眾長的旋轉式位置編碼》，系統介紹了旋轉式位置編碼（RoPE），並開源了追一科技的 RoFormer 模型。思路是：按位置把查詢向量和鍵向量各旋轉一個角度，它們的內積就只取決於相對位置。4 月 20 日，論文才提交到 arXiv。後來 Meta 的 LLaMA 論文寫明採用“rotary positional embeddings (RoPE), introduced by Su et al. (2021)”。LLaMA 引用的是這篇 arXiv 論文；而 RoPE 最早的系統介紹，是比它早約四週的一篇中文部落格文章。</p>
+<h2 id="在西方">在西方<a class="anchor" href="#%e5%9c%a8%e8%a5%bf%e6%96%b9">#</a></h2>
+<p>注意力機制的 Transformer 由 Vaswani 等人在《Attention Is All You Need》中提出；英文機器翻譯史通常從 1954 年的喬治城—IBM 實驗講起。中文這條線補上的是：Transformer 的殘差連接，和後來被 LLaMA 採用的旋轉位置編碼，都有中文世界的來源。</p>
+<h2 id="延伸閱讀">延伸閱讀<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%96%b1%e8%ae%80">#</a></h2>
+<ul>
+<li>中國社會科學院語言研究所，《學者介紹：劉湧泉》（English: Scholar profile: Liu Yongquan），語言研究所網站，2021-10-29。<a href="http://ling.cass.cn/xueren/xzjs/202110/t20211029_5370412.html">連結</a></li>
+<li>中國中文信息學會，《中文信息處理大事記》（English: Chronology of Chinese information processing），中國中文信息學會（PDF）。<a href="http://bj.bcebos.com/cips-upload/cipsc30.pdf">連結</a></li>
+<li>吳文俊，《吳文俊：我的機器證明之路》（English: My road to machine proof; from his oral autobiography《走自己的路》, “Walking my own road”），中國科學院網站“院士風采”，2024-06-21。<a href="https://www.cas.cn/zt/hyzt/ysdh21st/ysfc/202406/t20240621_5022393.shtml">連結</a></li>
+<li>中國科學院，《深切緬懷吳文俊院士》專題“吳文俊簡介”（English: In memory of Academician Wu Wenjun: biography），中國科學院網站，2017-05-08。<a href="https://www.cas.cn/zt/rwzt/sqmhwwjys/yw/201705/t20170508_4599560.shtml">連結</a></li>
+<li>賽爾網絡，《中國第一批搜索引擎往事丨CERNET30週年》（English: Stories of China&rsquo;s first search engines: CERNET at 30），中國教育和科研計算機網，2024-10-14。<a href="https://www.cernet.com/hlw30/202410/4811.html">連結</a></li>
+<li>《中國教育網絡》，《百度與天網—你不知道的那些事》（English: Baidu and Tianwang: things you didn&rsquo;t know），中國教育網，2014-11-05。<a href="https://www.edu.cn/cxcy_12722/20141105/t20141105_1198967.shtml">連結</a></li>
+<li>百度，公司介紹（English: Baidu company profile），百度官網。<a href="https://home.baidu.com/about/about.html">連結</a></li>
+<li>微軟亞洲研究院，ImageNet 2015 獲勝報導（English: MSRA article on winning ImageNet 2015），微軟研究院網站，2015-12。<a href="https://www.microsoft.com/en-us/research/articles/imagenet-20151211/">連結</a></li>
+<li>He, Zhang, Ren, Sun，“Deep Residual Learning for Image Recognition”（English: original English title），arXiv:1512.03385，2015-12-10。<a href="https://arxiv.org/abs/1512.03385">連結</a></li>
+<li>蘇劍林，《Transformer升級之路：2、博採眾長的旋轉式位置編碼》（English: The road to upgrading the Transformer, part 2: rotary position embedding, drawing on the best of many），科學空間，2021-03-23。<a href="https://kexue.fm/archives/8265">連結</a></li>
+<li>Su et al.，“RoFormer: Enhanced Transformer with Rotary Position Embedding”（English: original English title），arXiv:2104.09864，2021-04-20。<a href="https://arxiv.org/abs/2104.09864">連結</a></li>
+<li>Touvron et al.，“LLaMA: Open and Efficient Foundation Language Models”（English: original English title），arXiv:2302.13971。<a href="https://arxiv.org/abs/2302.13971">連結</a></li>
+<li>Vaswani et al.，“Attention Is All You Need”（English: original English title），arXiv:1706.03762。<a href="https://arxiv.org/abs/1706.03762">連結</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='最後修改者 Nayana | 11月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日曆" />
+    <span>11月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E5%BE%9E%E4%B8%AD%E6%96%87%E4%BF%A1%E6%81%AF%E8%99%95%E7%90%86%E5%88%B0%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hant%2Fposts%2F63-zh-road-to-attention%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hant%2Fposts%2F63-zh-road-to-attention.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hant%2Fposts%2F63-zh-road-to-attention.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hant/posts/17-zh-supercomputers-cpus/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一頁" />
+        <span>規模：從銀河到太湖之光</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hant/posts/05-zh-transistors-semiconductors/" class="flex align-center">
+        <span>從一門課到一塊晶片：中國半導體的頭十年</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一頁" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1959翻譯成功了卻打不出漢字">1959：翻譯成功了，卻打不出漢字</a></li>
+    <li><a href="#吳文俊58-歲學程式設計">吳文俊：58 歲學程式設計</a></li>
+    <li><a href="#天網從搜尋引擎到大型語言模型語料">天網：從搜尋引擎到大型語言模型語料</a></li>
+    <li><a href="#寫進-transformer-的兩塊零件">寫進 Transformer 的兩塊零件</a></li>
+    <li><a href="#在西方">在西方</a></li>
+    <li><a href="#延伸閱讀">延伸閱讀</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

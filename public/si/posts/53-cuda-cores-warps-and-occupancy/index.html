@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SIMT, SM සහ warps මතට map වේ — lockstep ජය ගනී divergence දක්වා; occupancy මතක stalls සඟවයි">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/53-cuda-cores-warps-and-occupancy/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="CUDA Cores, Warps සහ Occupancy">
+	<meta property="og:description" content="SIMT, SM සහ warps මතට map වේ — lockstep ජය ගනී divergence දක්වා; occupancy මතක stalls සඟවයි">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="CUDA Cores, Warps සහ Occupancy">
+	<meta itemprop="description" content="SIMT, SM සහ warps මතට map වේ — lockstep ජය ගනී divergence දක්වා; occupancy මතක stalls සඟවයි">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1569">
+
+<title>CUDA Cores, Warps සහ Occupancy • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/53-cuda-cores-warps-and-occupancy/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/53-cuda-cores-warps-and-occupancy/" title="CUDA Cores, Warps, and Occupancy">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/53-cuda-cores-warps-and-occupancy/" title="CUDA Core, Warp และ Occupancy">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/53-cuda-cores-warps-and-occupancy/" title="CUDA Cores, Warps மற்றும் Occupancy">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/53-cuda-cores-warps-and-occupancy/" title="Nuclee CUDA, warp-uri și ocupare">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="active">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>CUDA Cores, Warps සහ Occupancy</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#streaming-multiprocessor-එක">Streaming Multiprocessor එක</a></li>
+    <li><a href="#warps-lockstep-ඒකකය-ලස">Warps: Lockstep ඒකකය ලෙස</a></li>
+    <li><a href="#branch-divergence-lockstep-මල-අය-කරන-තන">Branch Divergence: Lockstep මිල අය කරන තැන</a></li>
+    <li><a href="#occupancy-සදනම-වඩ-සමඟ-latency-සඟවම">Occupancy: සූදානම් වැඩ සමඟ Latency සැඟවීම</a></li>
+    <li><a href="#ගඹරන-warps-සහ-occupancy-ගණනය--a100-sm-එකක-සම-සමඟ">ගැඹුරින්: Warps සහ occupancy ගණනය — A100 SM එකක සීමා සමඟ</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-a100-sm-එකක-සම">2. A100 SM එකක සීමා</a></li>
+        <li><a href="#3-threads--warps-32-හ-ගණකර-භවත-කරනන">3. Threads → warps: 32 හි ගුණාකාර භාවිතා කරන්න</a></li>
+        <li><a href="#4-divergence-හ-මල-ආදරශ-අක">4. Divergence හි මිල (ආදර්ශ අංක)</a></li>
+        <li><a href="#5-occupancy-ගණනය--පයවරන-පයවර">5. Occupancy ගණනය — පියවරෙන් පියවර</a></li>
+        <li><a href="#6-latency-සඟවමට-warps-කයක-අවශයද-ආදරශ-අක">6. Latency සැඟවීමට warps කීයක් අවශ්‍යද? (ආදර්ශ අංක)</a></li>
+        <li><a href="#7-පනසලන-අභයසය-මම-පටව-lab-එකක-නත">7. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවේ lab එකක් නැත)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    CUDA Cores, Warps සහ Occupancy
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Post 52 ආවරණය කළේ GPU <em>ඇයි</em> විශාල පරිමාණ SIMT මත ඔට්ටු තබන්නේද යන්නයි. මෙම පෝස්ට් එක කොන්ක්‍රීට් සිතියමයි: Streaming Multiprocessors, warps, සහ occupancy — එම සමාන්තර දෘඪාංගය ඇත්තටම කෙතරම් සම්පූර්ණයෙන් භාවිතා වේද යන්න.</p>
+<h2 id="streaming-multiprocessor-එක">Streaming Multiprocessor එක<a class="anchor" href="#streaming-multiprocessor-%e0%b6%91%e0%b6%9a">#</a></h2>
+<p>GPU එකක් යනු බොහෝ Streaming Multiprocessors (SM) ය — එක එකක් බොහෝ දුරට ස්වයං-අන්තර්ගත සමාන්තර ඒකකයකි, බොහෝ සරල CUDA cores සමඟ (ALU-විලාස lanes, Phase 3 CPU core එකකට වඩා හිතාමතා බොහෝ අඩු සංකීර්ණ: out-of-order execution නැත, Post 14 වර්ගයේ සංකීර්ණ branch prediction නැත), warp scheduler එකක්, සහ resident threads අතර බෙදාගත් register file එකක්. බොහෝ දුරට ස්වාධීනව ධාවනය වන දස ගණනක් SM යනු CPU එකක සංකීර්ණ cores කිහිපයකට එරෙහිව GPU එකක aggregate parallelism හි මූලාශ්‍රයයි.</p>
+<h2 id="warps-lockstep-ඒකකය-ලස">Warps: Lockstep ඒකකය ලෙස<a class="anchor" href="#warps-lockstep-%e0%b6%92%e0%b6%9a%e0%b6%9a%e0%b6%ba-%e0%b6%bd%e0%b7%83">#</a></h2>
+<p>SM එකක threads warps වලට කාණ්ඩ කෙරේ — NVIDIA දෘඪාංගයේ, සැමවිටම threads 32 (AMD wavefronts ඓතිහාසිකව 64 භාවිතා කළේය). Warp එකක් යනු Post 52 හි SIMT බලාත්මක කෙරෙන granularity ය: සියලු 32 <em>එකම</em> උපදෙස <em>එකම</em> cycle එකේ ධාවනය කරයි, එක එකක් තමන්ගේ දත්ත මත. එය &ldquo;එක් බෙදාගත් control unit එකක්, බොහෝ lanes&rdquo; හි දෘඪාංග ස්වරූපයයි.</p>
+<h2 id="branch-divergence-lockstep-මල-අය-කරන-තන">Branch Divergence: Lockstep මිල අය කරන තැන<a class="anchor" href="#branch-divergence-lockstep-%e0%b6%b8%e0%b6%bd-%e0%b6%85%e0%b6%ba-%e0%b6%9a%e0%b6%bb%e0%b6%b1-%e0%b6%ad%e0%b6%b1">#</a></h2>
+<p><em>එක් warp එකක් ඇතුළත</em> threads විවිධ branches ගන්නා විට, දෘඪාංගය මාර්ග දෙකම අනුක්‍රමිකව ධාවනය කර inactive භාගය mask කරයි. එක් එක් thread ට එකක් පමණක් අවශ්‍ය වුවද warp එකට මාර්ග දෙකම තරම් කාලය ගනී — non-divergent අවස්ථාව ලාභ කරන එම lockstep එකේම සෘජු බද්දක්. එබැවින් warp එකක threads එකම මාර්ගයේ තබා ගැනීම සැබෑ optimization එකකි, විලාස මනාපයක් නොවේ.</p>
+<h2 id="occupancy-සදනම-වඩ-සමඟ-latency-සඟවම">Occupancy: සූදානම් වැඩ සමඟ Latency සැඟවීම<a class="anchor" href="#occupancy-%e0%b7%83%e0%b6%af%e0%b6%b1%e0%b6%b8-%e0%b7%80%e0%b6%a9-%e0%b7%83%e0%b6%b8%e0%b6%9f-latency-%e0%b7%83%e0%b6%9f%e0%b7%80%e0%b6%b8">#</a></h2>
+<p>SM එකකට සීමිත registers සහ shared memory ඇත; සෑම resident warp එකක්ම කොටසක් පරිභෝජනය කරයි. Occupancy යනු දෘඪාංගය සහාය විය හැකි දේට සාපේක්ෂව කොපමණ warps resident සහ eligible ද යන්නයි. ඉහළ occupancy මතක latency සැඟවීමට උපකාරී වේ (නැවතත් Post 35): එක් warp එකක් මන්දගාමී access එකක stall වන අතරතුර, scheduler එක සූදානම් warp එකකට මාරු වී lanes කාර්යබහුලව තබා ගනී.</p>
+<p>එය &ldquo;maximize කර නවත්වන්න&rdquo; නොවේ. Thread එකකට වැඩි registers හෝ shared memory භාවිතා කරන kernel එකක් අඩු warps ධාවනය කළත්, එම සම්පත් අනවශ්‍ය වැඩ හෝ මතක ගමනාගමනය කපනවා නම් තවමත් වේගයෙන් අවසන් විය හැක. Occupancy එදිරිව per-thread සම්පත් යනු සැබෑ tradeoff එකකි — kernels සැබෑ සිලිකන් හමු වන විට පෙනෙන එකක්, වියුක්තව පමණක් තර්ක කරන විට පමණක් නොවේ.</p>
+<h2 id="ගඹරන-warps-සහ-occupancy-ගණනය--a100-sm-එකක-සම-සමඟ">ගැඹුරින්: Warps සහ occupancy ගණනය — A100 SM එකක සීමා සමඟ<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-warps-%e0%b7%83%e0%b7%84-occupancy-%e0%b6%9c%e0%b6%ab%e0%b6%b1%e0%b6%ba--a100-sm-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b7%83%e0%b6%b8-%e0%b7%83%e0%b6%b8%e0%b6%9f">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> &ldquo;GPU architecture sinhala&rdquo;, &ldquo;CUDA warp sinhala&rdquo; සෙවුම්වලින් 2026 සැප්තැම්බරයේ ලැබුණේ ඉංග්‍රීසි වීඩියෝ සහ පාරිභෝගික මට්ටමේ &ldquo;CUDA cores&rdquo; වීඩියෝවක් පමණි; warps හෝ occupancy ගණනය සිංහලෙන් පැහැදිලි කළ මූලාශ්‍රයක් අපට හමු නොවීය. පහත සීමා NVIDIA හි CUDA Programming Guide (2026 සැප්තැම්බර් 10 යාවත්කාලීන කළ අනුවාදය) සහ A100 whitepaper එකෙනි. divergence සහ latency උදාහරණවල අංක ආදර්ශ පමණි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>Thread (නූල):</strong> kernel එකක එක් ක්‍රියාත්මක කිරීමක්; එක එකකට තමන්ගේ registers සහ දත්ත ඇත.</li>
+<li><strong>Thread block:</strong> එකම SM එකක එකට ධාවනය වන, shared memory බෙදා ගන්නා threads කණ්ඩායමක් (උපරිම threads 1024).</li>
+<li><strong>Grid:</strong> එක් kernel launch එකක සියලු blocks.</li>
+<li><strong>Warp:</strong> threads <strong>32</strong> ක lockstep කණ්ඩායම; lanes 0–31 ලෙස අංක කෙරේ.</li>
+<li><strong>SIMT (Single-Instruction Multiple-Threads):</strong> warp එකක සියලු threads එකම උපදෙස ක්‍රියාත්මක කරයි, එක එකක් තමන්ගේ දත්ත මත.</li>
+<li><strong>Warp divergence:</strong> warp එකක threads වෙනස් branches ගන්නා විට, එක් මාර්ගයක් ධාවනය වන අතරතුර අනෙක් threads &ldquo;mask&rdquo; කෙරේ.</li>
+<li><strong>Occupancy:</strong> CUDA Programming Guide ට අනුව — <strong>සක්‍රිය warps ගණන ÷ SM එකට සහාය දිය හැකි උපරිම සක්‍රිය warps ගණන</strong>.</li>
+</ul>
+<h3 id="2-a100-sm-එකක-සම">2. A100 SM එකක සීමා<a class="anchor" href="#2-a100-sm-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b7%83%e0%b6%b8">#</a></h3>
+<p>A100 whitepaper හි Table 5 (පිටුව 43 — compute capability 8.0) සහ CUDA Programming Guide හි compute capability වගු (Tables 30–31):</p>
+<table>
+	<thead>
+			<tr>
+					<th>සීමාව (SM එකකට)</th>
+					<th>අගය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Warp එකකට threads</td>
+					<td>32</td>
+			</tr>
+			<tr>
+					<td>උපරිම resident warps</td>
+					<td>64</td>
+			</tr>
+			<tr>
+					<td>උපරිම resident threads</td>
+					<td>2048 (= 64 × 32)</td>
+			</tr>
+			<tr>
+					<td>උපරිම resident thread blocks</td>
+					<td>32</td>
+			</tr>
+			<tr>
+					<td>32-bit registers</td>
+					<td>65,536 (64 K)</td>
+			</tr>
+			<tr>
+					<td>Thread එකකට උපරිම registers</td>
+					<td>255</td>
+			</tr>
+			<tr>
+					<td>Shared memory (වින්‍යාස කළ හැකි උපරිමය)</td>
+					<td>164 KB</td>
+			</tr>
+			<tr>
+					<td>FP32 CUDA cores</td>
+					<td>64</td>
+			</tr>
+	</tbody>
+</table>
+<p>A100 GPU එකේ SMs <strong>108</strong> ක් ඇත (whitepaper පිටුව 19): 108 × 64 = <strong>6,912</strong> FP32 CUDA cores. එහෙත් resident threads: 108 × 2,048 = <strong>221,184</strong> — එනම් core එකකට threads <strong>32</strong> ක් &ldquo;සූදානමින්&rdquo; සිටිය හැකිය. එතරම් threads තබා ගන්නේ ඇයි? එක් warp එකක් මතකය සඳහා රැඳී සිටින අතර අනෙක් ඒවාට වැඩ කිරීමට (ඉහත පෙළේ &ldquo;latency සැඟවීම&rdquo;).</p>
+<h3 id="3-threads--warps-32-හ-ගණකර-භවත-කරනන">3. Threads → warps: 32 හි ගුණාකාර භාවිතා කරන්න<a class="anchor" href="#3-threads--warps-32-%e0%b7%84-%e0%b6%9c%e0%b6%ab%e0%b6%9a%e0%b6%bb-%e0%b6%b7%e0%b7%80%e0%b6%ad-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1">#</a></h3>
+<p>Block එකක warps ගණන = ⌈threads ÷ 32⌉:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Block ප්‍රමාණය</th>
+					<th>Warps</th>
+					<th>භාවිතා වන lanes</th>
+					<th>භාවිතය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>256</td>
+					<td>8</td>
+					<td>256 / 256</td>
+					<td>100%</td>
+			</tr>
+			<tr>
+					<td>100</td>
+					<td>4</td>
+					<td>100 / 128</td>
+					<td><strong>78%</strong> (අවසන් warp එකේ lanes 4 ක් පමණක් සක්‍රියයි: 100 − 96 = 4)</td>
+			</tr>
+			<tr>
+					<td>33</td>
+					<td>2</td>
+					<td>33 / 64</td>
+					<td><strong>52%</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>CUDA Programming Guide ද මෙය කියයි: block එකක threads ගණන 32 හි ගුණාකාරයක් නොවේ නම්, අවසන් warp එකේ සමහර lanes මුළු ක්‍රියාත්මක කිරීම පුරාම භාවිතා නොවේ.</p>
+<h3 id="4-divergence-හ-මල-ආදරශ-අක">4. Divergence හි මිල (ආදර්ශ අංක)<a class="anchor" href="#4-divergence-%e0%b7%84-%e0%b6%b8%e0%b6%bd-%e0%b6%86%e0%b6%af%e0%b6%bb%e0%b7%81-%e0%b6%85%e0%b6%9a">#</a></h3>
+<p>කේතයේ <code>if (x &gt; 0) { A } else { B }</code> ඇත; A සහ B එක එකක් උපදෙස් 10 බැගිනි.</p>
+<ul>
+<li><strong>Warp එකේ සියලු 32 එකම මාර්ගය ගනී:</strong> උපදෙස් කාල පෙති <strong>10</strong> — කාර්යක්ෂමතාව 100%.</li>
+<li><strong>16 ක් A, 16 ක් B:</strong> warp එක A (B threads mask කර) සහ පසුව B (A threads mask කර) ධාවනය කරයි → කාල පෙති <strong>20</strong>, සෑම පෙත්තකම lanes අඩක් පමණක් → ප්‍රයෝජනවත් වැඩ 32 × 10 = 320 thread-උපදෙස්, වියදම 32 × 20 = 640 lane-පෙති → <strong>50%</strong>.</li>
+<li><strong>31 ක් A, 1 ක් B:</strong> එක් thread එකක් නිසා තවමත් කාල පෙති <strong>20</strong> — කාර්යක්ෂමතාව (31 × 10 + 1 × 10) ÷ 640 = <strong>50%</strong>.</li>
+</ul>
+<p>පාඩම: divergence හි මිල තීරණය වන්නේ <em>කී දෙනෙක්</em> වෙනස් මාර්ගයක ගියාද යන්නෙන් නොව, warp එක තුළ මාර්ග <em>කීයක්</em> ඇත්ද යන්නෙනි.</p>
+<h3 id="5-occupancy-ගණනය--පයවරන-පයවර">5. Occupancy ගණනය — පියවරෙන් පියවර<a class="anchor" href="#5-occupancy-%e0%b6%9c%e0%b6%ab%e0%b6%b1%e0%b6%ba--%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb%e0%b6%b1-%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb">#</a></h3>
+<p>සීමා හතරකින් <strong>කුඩාම</strong> එක ජය ගනී: (අ) threads, (ආ) blocks, (ඇ) registers, (ඈ) shared memory.</p>
+<p><strong>CUDA Programming Guide හි උදාහරණ දෙක (2048 threads / 32 blocks සීමා ඇති SM එකක්):</strong></p>
+<ol>
+<li>Block එකකට threads 768: 2048 ÷ 768 = 2.67 → blocks <strong>2</strong> → (768 × 2) ÷ 2048 = <strong>75%</strong>.</li>
+<li>Block එකකට threads 32: threads සීමාවට අනුව blocks 64 ක් විය හැකි වුවත් blocks සීමාව <strong>32</strong> → 32 × 32 = 1024 → 1024 ÷ 2048 = <strong>50%</strong>.</li>
+</ol>
+<p><strong>Registers සමඟ (A100 අගයන්; අපේ සරල කළ ගණනය):</strong> Block එකකට threads 256, thread එකකට registers 64.</p>
+<ol>
+<li>Block එකකට registers: 256 × 64 = <strong>16,384</strong></li>
+<li>Registers අනුව blocks: 65,536 ÷ 16,384 = <strong>4</strong></li>
+<li>Threads අනුව blocks: 2048 ÷ 256 = 8; blocks සීමාව 32</li>
+<li>කුඩාම = <strong>4</strong> → 4 × 256 = 1024 threads → <strong>50%</strong></li>
+</ol>
+<p>Registers 32 ට අඩු කළොත්: 256 × 32 = 8,192 → 65,536 ÷ 8,192 = 8 blocks → 2048 threads → <strong>100%</strong>. Guide එක සඳහන් කරන පරිදි <code>--maxrregcount</code> මගින් registers සීමා කළ හැකි නමුත් එවිට registers &ldquo;local memory&rdquo; වෙත spill වී කාර්ය සාධනය වෙනස් විය හැකිය — ඉහත පෙළේ &ldquo;occupancy එදිරිව per-thread සම්පත්&rdquo; වෙළඳාම අංකවලින්.</p>
+<p><strong>Shared memory සමඟ:</strong> Block එකක් 48 KB shared memory භාවිතා කරයි නම්, 164 KB ÷ 48 KB = 3.4 → blocks <strong>3</strong> → 3 × 256 = 768 threads → <strong>37.5%</strong>.</p>
+<p>(සරල කිරීම පිළිබඳ සටහන: මෙහි kernel අගයන් — threads 256, registers 64/32, shared memory 48 KB — උදාහරණ පමණි. සැබෑ A100 එක registers වෙන් කරන්නේ warp එකකට 256 බැගින් වූ ඒකකවලින් වන අතර, block එකකට shared memory 1 KB ක් පද්ධතිය සඳහා වෙන් කෙරේ (එබැවින් block එකකට උපරිමය 163 KB). ඉහත උදාහරණවල ප්‍රතිඵල මෙයින් වෙනස් නොවේ, නමුත් උදා. thread එකකට registers 33 ක් warp එකකට 1,056 සිට 1,280 දක්වා — එනම් thread එකකට 40 ක් ලෙස — වට වේ. සැබෑ kernel එකක් සඳහා CUDA occupancy API (<code>cudaOccupancyMaxActiveBlocksPerMultiprocessor</code>) හෝ Nsight Compute භාවිතා කරන්න.)</p>
+<h3 id="6-latency-සඟවමට-warps-කයක-අවශයද-ආදරශ-අක">6. Latency සැඟවීමට warps කීයක් අවශ්‍යද? (ආදර්ශ අංක)<a class="anchor" href="#6-latency-%e0%b7%83%e0%b6%9f%e0%b7%80%e0%b6%b8%e0%b6%a7-warps-%e0%b6%9a%e0%b6%ba%e0%b6%9a-%e0%b6%85%e0%b7%80%e0%b7%81%e0%b6%ba%e0%b6%af-%e0%b6%86%e0%b6%af%e0%b6%bb%e0%b7%81-%e0%b6%85%e0%b6%9a">#</a></h3>
+<p>(අංක <strong>ආදර්ශ පමණි</strong>.) මතක කියවීමකට clock චක්‍ර 400 ක් ගත වේ යැයි ද, සෑම warp එකකටම ඊළඟ කියවීමට පෙර ගණනය කිරීමට චක්‍ර 20 ක වැඩ ඇතැයි ද සිතමු. එක් warp එකක් රැඳී සිටින චක්‍ර 400 තුළ scheduler එක කාර්යබහුලව තබා ගැනීමට, වෙනත් warps 400 ÷ 20 = <strong>20</strong> ක් පමණ සූදානමින් සිටිය යුතුය. සීමාව 64 ක් නම්, එය 20 ÷ 64 ≈ <strong>31%</strong> occupancy කට ආසන්නයි — ඉහළ occupancy &ldquo;සැමවිටම වඩා හොඳයි&rdquo; නොවන්නේ ඇයිද යන්නට තවත් හේතුවක්: ප්‍රමාණවත් warps ඇති විට, ඊට වැඩි ගණනක් එකතු කිරීමෙන් ලැබෙන ලාභය අඩුය.</p>
+<h3 id="7-පනසලන-අභයසය-මම-පටව-lab-එකක-නත">7. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවේ lab එකක් නැත)<a class="anchor" href="#7-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba-%e0%b6%b8%e0%b6%b8-%e0%b6%b4%e0%b6%a7%e0%b7%80-lab-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%b1%e0%b6%ad">#</a></h3>
+<ol>
+<li>Threads 200 ක block එකක warps කීයද? අවසන් warp එකේ සක්‍රිය lanes කීයද?</li>
+<li>A100: block එකකට threads 512, thread එකකට registers 40. Occupancy කීයද?</li>
+<li>A100: block එකකට threads 128, registers/shared memory සීමා නැත. Occupancy?</li>
+<li>Warp එකක threads 8 ක් <code>if</code> මාර්ගයේ (උපදෙස් 6) සහ 24 ක් <code>else</code> මාර්ගයේ (උපදෙස් 6). Warp එකට කාල පෙති කීයද?</li>
+<li>SMs 108 ක් ඇති A100 එකක එකවර resident විය හැකි උපරිම warps කීයද?</li>
+</ol>
+<p>(පිළිතුරු: 1 → ⌈200 ÷ 32⌉ = <strong>7</strong>; 200 − 192 = <strong>8</strong>. 2 → registers/block = 512 × 40 = 20,480 → 65,536 ÷ 20,480 = 3.2 → 3 blocks; threads අනුව 2048 ÷ 512 = 4 → කුඩාම <strong>3</strong> → 1536 ÷ 2048 = <strong>75%</strong>. 3 → 2048 ÷ 128 = 16 blocks (≤ 32) → 2048 threads → <strong>100%</strong>. 4 → මාර්ග දෙකම ධාවනය වේ → 6 + 6 = <strong>12</strong>. 5 → 108 × 64 = <strong>6,912</strong> warps (= threads 221,184).)</p>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong> NVIDIA, <em>CUDA Programming Guide</em> (2026 සැප්තැම්බර් 10 යාවත්කාලීන කළ): §1.2.2.2 &ldquo;Warps and SIMT&rdquo; (<a href="https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html">https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html</a>) — warp = threads 32, lanes 0–31, divergence mask කිරීම, 32 හි ගුණාකාර; §2.3.7 &ldquo;Kernel Launch and Occupancy&rdquo; (<a href="https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html">https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html</a>) — occupancy අර්ථ දැක්වීම, 768-thread (75%) සහ 32-thread (50%) උදාහරණ, <code>--maxrregcount</code> සහ spilling; Compute Capabilities, Tables 30–31 (<a href="https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/compute-capabilities.html">https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/compute-capabilities.html</a>) — compute capability 8.0: threads 2048, warps 64, registers 64 K, thread එකකට 255, shared memory 164 KB. NVIDIA, <em>NVIDIA A100 Tensor Core GPU Architecture</em> whitepaper — පිටුව 19 (SMs 108, SM එකකට FP32 cores 64, 6912), පිටුව 43 (Table 5, compute capability 8.0 සීමා). registers/shared memory occupancy ගණනය සරල කළ ඒවාය; divergence සහ latency අංක ආදර්ශ පමණි.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;CUDA&#43;Cores%2C&#43;Warps&#43;%E0%B7%83%E0%B7%84&#43;Occupancy&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F53-cuda-cores-warps-and-occupancy%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F53-cuda-cores-warps-and-occupancy.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F53-cuda-cores-warps-and-occupancy.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/52-why-gpus-exist/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>GPU පවතින්නේ ඇයි</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/54-gpu-memory-hierarchy/" class="flex align-center">
+        <span>GPU මතක ධුරාවලිය</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#streaming-multiprocessor-එක">Streaming Multiprocessor එක</a></li>
+    <li><a href="#warps-lockstep-ඒකකය-ලස">Warps: Lockstep ඒකකය ලෙස</a></li>
+    <li><a href="#branch-divergence-lockstep-මල-අය-කරන-තන">Branch Divergence: Lockstep මිල අය කරන තැන</a></li>
+    <li><a href="#occupancy-සදනම-වඩ-සමඟ-latency-සඟවම">Occupancy: සූදානම් වැඩ සමඟ Latency සැඟවීම</a></li>
+    <li><a href="#ගඹරන-warps-සහ-occupancy-ගණනය--a100-sm-එකක-සම-සමඟ">ගැඹුරින්: Warps සහ occupancy ගණනය — A100 SM එකක සීමා සමඟ</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-a100-sm-එකක-සම">2. A100 SM එකක සීමා</a></li>
+        <li><a href="#3-threads--warps-32-හ-ගණකර-භවත-කරනන">3. Threads → warps: 32 හි ගුණාකාර භාවිතා කරන්න</a></li>
+        <li><a href="#4-divergence-හ-මල-ආදරශ-අක">4. Divergence හි මිල (ආදර්ශ අංක)</a></li>
+        <li><a href="#5-occupancy-ගණනය--පයවරන-පයවර">5. Occupancy ගණනය — පියවරෙන් පියවර</a></li>
+        <li><a href="#6-latency-සඟවමට-warps-කයක-අවශයද-ආදරශ-අක">6. Latency සැඟවීමට warps කීයක් අවශ්‍යද? (ආදර්ශ අංක)</a></li>
+        <li><a href="#7-පනසලන-අභයසය-මම-පටව-lab-එකක-නත">7. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවේ lab එකක් නැත)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

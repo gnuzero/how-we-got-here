@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Self-attention spine-ஐ மூடியது — பயணம் கட்டிய matmul வன்பொருள் மீது வரைபடமாகும் parallel வரிசை மாதிரியாக்கம்">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/63-attention-is-all-you-need/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Attention Is All You Need">
+	<meta property="og:description" content="Self-attention spine-ஐ மூடியது — பயணம் கட்டிய matmul வன்பொருள் மீது வரைபடமாகும் parallel வரிசை மாதிரியாக்கம்">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:48:08+05:30">
+		<meta property="article:tag" content="Attention">
+		<meta property="article:tag" content="Transformers">
+		<meta property="article:tag" content="Neural Networks">
+
+
+	<meta itemprop="name" content="Attention Is All You Need">
+	<meta itemprop="description" content="Self-attention spine-ஐ மூடியது — பயணம் கட்டிய matmul வன்பொருள் மீது வரைபடமாகும் parallel வரிசை மாதிரியாக்கம்">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:48:08+05:30">
+	<meta itemprop="wordCount" content="1353">
+	<meta itemprop="keywords" content="Attention,Transformers,Neural Networks">
+
+<title>Attention Is All You Need • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/63-attention-is-all-you-need/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/63-attention-is-all-you-need/" title="Attention Is All You Need">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/63-attention-is-all-you-need/" title="Attention Is All You Need">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/63-attention-is-all-you-need/" title="අවධානය පමණක් ප්‍රමාණවත්ය">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/63-attention-is-all-you-need/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/63-attention-is-all-you-need/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/63-attention-is-all-you-need/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="active">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Attention Is All You Need</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#self-attention-எனன-சயகறத">Self-Attention என்ன செய்கிறது</a></li>
+    <li><a href="#attention-கயல--ஒர-query-மனற-டககனகள">Attention கையால் — ஒரு query, மூன்று டோக்கன்கள்</a></li>
+    <li><a href="#multi-head-attention">Multi-Head Attention</a></li>
+    <li><a href="#அசல-transformer-இன-அளவகள-கடடர-table-3">அசல் Transformer-இன் அளவுகள் (கட்டுரை, Table 3)</a></li>
+    <li><a href="#அத-ஏன-மலதககமனத">அது ஏன் மேலாதிக்கமானது</a></li>
+    <li><a href="#இரபடச-சலவ-மறறம-இணசசயலககம-எணகளல">இருபடிச் செலவு மற்றும் இணைச்செயலாக்கம், எண்களில்</a></li>
+    <li><a href="#வளவ-மடதல">வளைவை மூடுதல்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Attention Is All You Need
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/ta/tags/attention/">Attention</a>, 
+      <a href="/ta/tags/transformers/">Transformers</a>, 
+      <a href="/ta/tags/neural-networks/">Neural Networks</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><p>இந்தத் தொடரின் தலைப்பு <em>ரிலேயிலிருந்து Attention வரை</em>. இதுவரை வந்த அனைத்தும், பெரிய அளவிலான matrix multiplication-ஐ நடைமுறைக்குக் கொண்டுவந்த நீண்ட இயற்பியல் மற்றும் கட்டமைப்புப் பாதை. இந்த அத்தியாயம் அந்தப் பாதை சாத்தியமாக்கிய அல்காரித இலக்கு.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> Transformer, attention, பெருமொழி மாதிரிகள் (LLM) பற்றித் தமிழ் எழுத்து விளக்கம் மெலிதானது; காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. கீழே உள்ள Transformer அளவுகள் (d_model 512, 8 heads, d_k 64, 6 அடுக்குகள், 65 M parameters; big: 16 heads, 213 M), √d_k காரணம், Table 1 சிக்கல்கள், பயிற்சி நேரங்கள், FLOPs மதிப்பீடு ஆகியவை ஆங்கிலப் பதிவின் &ldquo;Door out&rdquo; கட்டுரையிலிருந்து (Vaswani et al., arXiv 1706.03762v7) சரிபார்க்கப்பட்டவை. கையால் செய்த attention கணக்கை எங்கள் பணிக் கணினியில் NumPy, PyTorch-இன் <code>scaled_dot_product_attention</code> இரண்டாலும் சரிபார்த்தோம். Q, K, V எண்கள், வரிசை நீளங்கள் &ldquo;எடுத்துக்காட்டு மதிப்புகள்&rdquo;. இந்தப் பதிவுக்கு lab இல்லை; காகிதப் பயிற்சிகள் கீழே.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Token / embedding (டோக்கன் / உட்பொதிப்பு):</strong> உரையின் ஒரு துண்டு / அதைக் குறிக்கும் எண் vector.</li>
+<li><strong>Query, key, value (வினவல், திறவு, மதிப்பு):</strong> ஒவ்வொரு நிலையின் உள்ளீட்டிலிருந்து மூன்று கற்ற matrix-களால் பெறப்படும் மூன்று vector-கள்.</li>
+<li><strong>Dot product (புள்ளிப் பெருக்கம்):</strong> இரு vector-களின் உறுப்புவாரிப் பெருக்கங்களின் கூட்டுத்தொகை — ஒற்றுமையின் அளவு.</li>
+<li><strong>Softmax:</strong> எண்களை அடுக்குக்குறி (eˣ) மூலம் நேர்மமாக்கி, கூட்டுத்தொகை 1 ஆகும்படி வகுப்பது — எடைகளாக்குதல்.</li>
+<li><strong>d_k:</strong> ஒவ்வொரு key / query vector-இன் பரிமாணம்.</li>
+<li><strong>Head (தலை):</strong> தனி projection-களுடன் ஓடும் ஒரு attention கணக்கு; multi-head = பல இணையாக.</li>
+<li><strong>Recurrence (மீள்நிகழ்வு):</strong> RNN/LSTM போல, ஒரு நிலையைக் கணிக்க முந்தைய நிலையின் முடிவு தேவைப்படுவது — வரிசையாக மட்டுமே ஓடும்.</li>
+<li><strong>இருபடிச் செலவு (quadratic cost):</strong> வரிசை நீளம் n இருமடங்கானால் attention matrix n × n நான்கு மடங்காவது.</li>
+</ul>
+<p>2017இல், <strong>Vaswani et al.</strong> &ldquo;Attention Is All You Need&rdquo;-ஐ வெளியிட்டனர். அந்தக் கட்டுரை Transformer-ஐ அறிமுகப்படுத்தி <em>self-attention</em>-ஐ வரிசைகளை மாதிரியாக்குவதற்கான முதன்மைப் பொறிமுறையாக ஆக்கியது — RNN மற்றும் LSTM-இன் வரிசைமுறை மீள்நிகழ்வை, ஒவ்வொரு நிலையையும் ஒரே நேரத்தில் பார்க்கக்கூடிய முழுமையாக இணைச்செயலாக்கக்கூடிய செயல்பாட்டால் மாற்றியது.</p>
+<h2 id="self-attention-எனன-சயகறத">Self-Attention என்ன செய்கிறது<a class="anchor" href="#self-attention-%e0%ae%8e%e0%ae%a9%e0%ae%a9-%e0%ae%9a%e0%ae%af%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>டோக்கன் உட்பொதிப்புகள் கொடுக்கப்பட்டால், self-attention ஒவ்வொரு நிலைக்கும் எல்லா நிலைகளிலும் உள்ள மதிப்புகளின் எடையிடப்பட்ட சேர்க்கையைக் கணிக்கிறது. எடைகள் ஒரு <em>query</em> (தற்போதைய நிலை) மற்றும் <em>keys</em> (ஒவ்வொரு நிலை) இடையேயான ஒற்றுமையிலிருந்து வரும். மேட்ரிக்ஸ் வடிவில்:</p>
+<p>[
+\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
+]</p>
+<ul>
+<li>(Q), (K), மற்றும் (V) உள்ளீட்டின் நேரியல் projections (வீழ்ப்புகள்).</li>
+<li>(\sqrt{d_k}) ஆல் அளவிடுவது பரிமாணம் பெரியதாக இருக்கும்போது softmax நிறைவுறுவதைத் தடுக்கிறது.</li>
+<li>முடிவு அதே நீளத்தின் வரிசை; ஒவ்வொரு நிலையும் தரவு-சார்ந்த வழியில் மற்ற எல்லாவற்றிலிருந்தும் சேகரித்தது.</li>
+</ul>
+<h2 id="attention-கயல--ஒர-query-மனற-டககனகள">Attention கையால் — ஒரு query, மூன்று டோக்கன்கள்<a class="anchor" href="#attention-%e0%ae%95%e0%ae%af%e0%ae%b2--%e0%ae%92%e0%ae%b0-query-%e0%ae%ae%e0%ae%a9%e0%ae%b1-%e0%ae%9f%e0%ae%95%e0%ae%95%e0%ae%a9%e0%ae%95%e0%ae%b3">#</a></h2>
+<p>d_k = 2. ஒரு query q = [1, 0]. மூன்று நிலைகளின் keys, values (எடுத்துக்காட்டு மதிப்புகள்):</p>
+<table>
+	<thead>
+			<tr>
+					<th>நிலை</th>
+					<th>key k</th>
+					<th>value v</th>
+					<th>q · k</th>
+					<th>÷ √2</th>
+					<th>e^( )</th>
+					<th>softmax எடை</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>[1, 0]</td>
+					<td>[1, 0]</td>
+					<td>1</td>
+					<td>0.707</td>
+					<td>2.028</td>
+					<td>2.028 ÷ 5.056 ≈ 0.401</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>[0, 1]</td>
+					<td>[0, 1]</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1.000</td>
+					<td>1.000 ÷ 5.056 ≈ 0.198</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>[1, 1]</td>
+					<td>[0.5, 0.5]</td>
+					<td>1</td>
+					<td>0.707</td>
+					<td>2.028</td>
+					<td>2.028 ÷ 5.056 ≈ 0.401</td>
+			</tr>
+	</tbody>
+</table>
+<p>(2.028 + 1.000 + 2.028 = 5.056.) வெளியீடு = எடையிட்ட values-இன் கூட்டுத்தொகை:</p>
+<p>0.401 × [1, 0] + 0.198 × [0, 1] + 0.401 × [0.5, 0.5] = [0.401 + 0.2005, 0.198 + 0.2005] ≈ <strong>[0.602, 0.398]</strong>.</p>
+<p>NumPy [0.6017, 0.3983] என்றும், PyTorch-இன் <code>scaled_dot_product_attention</code> அதே [0.6017, 0.3983] என்றும் தந்தன (கையால் செய்ததில் சிறு வேறுபாடு rounding காரணம்). q-வுடன் ஒத்த key கொண்ட நிலைகள் 1, 3 அதிக எடை பெற்றன — &ldquo;தரவு சார்ந்த சேகரிப்பு&rdquo; இதுதான். முழு Q matrix-உடன் இது எல்லா நிலைகளுக்கும் ஒரே matmul-ஆக நடக்கிறது.</p>
+<p><strong>√d_k ஏன்?</strong> கட்டுரையின் விளக்கம்: q, k-இன் உறுப்புகள் சராசரி 0, variance 1 கொண்ட சார்பற்ற மாறிகள் என்றால், q · k-இன் variance = d_k. d_k = 64 என்றால் திட்ட விலக்கம் √64 = 8. எங்கள் கணினியில் 100,000 சீரற்ற 64-பரிமாண ஜோடிகளில் அளந்தது: திட்ட விலக்கம் ≈ 8.00; √64 = 8-ஆல் வகுத்த பிறகு ≈ 1.00.</p>
+<p>ஏன் முக்கியம்? இரண்டு மதிப்பெண்கள் [8, 0] என்றால் softmax [0.9997, 0.0003] — கிட்டத்தட்ட ஒன்றே வெல்கிறது, மற்றதன் gradient கிட்டத்தட்ட பூஜ்யம் (நிறைவுறுதல்). 8-ஆல் வகுத்த [1, 0]-க்கு softmax [0.731, 0.269] — கற்றலுக்கு இடம் இருக்கிறது.</p>
+<p>Op matmuls மற்றும் ஒரு softmax ஆதலால், முந்தைய அத்தியாயங்களின் வன்பொருள் மீது வரைபடமாகிறது: உயர்-throughput MAC அலகுகள், பெரிய on-chip நினைவகங்கள், activations மற்றும் weights நகர்த்தும் interconnects.</p>
+<h2 id="multi-head-attention">Multi-Head Attention<a class="anchor" href="#multi-head-attention">#</a></h2>
+<p>ஒரு head ஒரு வகையான உறவைக் கற்றுக்கொள்ளும் போக்குடையது. Multi-head attention பலவற்றை இணைச்செயலாக இயக்குகிறது (வேறுபட்ட கற்றுக்கொள்ளப்பட்ட projections) மற்றும் இணைக்கிறது — அதே அடுக்கில் தொடரியல், பொருண்மை, நிலைசார்ந்த, நீண்ட- மற்றும் குறுகிய-தூரம்.</p>
+<p>அசல் Transformer-இன் base model 8 heads பயன்படுத்தியது (big model 16). நவீன LLM-கள் பொதுவாக ஒரு அடுக்குக்குப் பத்து முதல் குறைந்த நூற்றுக்கணக்கான query heads (எ.கா. GPT-3: 96; Llama 3 405B: 128) பத்து முதல் ~100+ அடுக்குகள் வரை (Llama 3 405B: 126) — இருபக்கமும் வழக்கமாக &ldquo;நூற்றுக்கணக்கானவை&rdquo; அல்ல.</p>
+<h2 id="அசல-transformer-இன-அளவகள-கடடர-table-3">அசல் Transformer-இன் அளவுகள் (கட்டுரை, Table 3)<a class="anchor" href="#%e0%ae%85%e0%ae%9a%e0%ae%b2-transformer-%e0%ae%87%e0%ae%a9-%e0%ae%85%e0%ae%b3%e0%ae%b5%e0%ae%95%e0%ae%b3-%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%b0-table-3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>அடுக்குகள் N</th>
+					<th>d_model</th>
+					<th>heads h</th>
+					<th>d_k = d_model ÷ h</th>
+					<th>parameters</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>base</td>
+					<td>6</td>
+					<td>512</td>
+					<td>8</td>
+					<td>512 ÷ 8 = 64</td>
+					<td>65 M</td>
+			</tr>
+			<tr>
+					<td>big</td>
+					<td>6</td>
+					<td>1024</td>
+					<td>16</td>
+					<td>1024 ÷ 16 = 64</td>
+					<td>213 M</td>
+			</tr>
+	</tbody>
+</table>
+<p>ஒவ்வொரு head-இன் பரிமாணமும் குறைவு (64) என்பதால், 8 heads-இன் மொத்தக் கணக்குச் செலவு முழுப் பரிமாணத்தில் ஒரு head-இன் செலவுக்கு &ldquo;ஒத்தது&rdquo; என்கிறது கட்டுரை — heads கூடுதல் கணக்கு அல்ல, அதே கணக்கைப் பிரித்தல். (&ldquo;அசல் Transformer 8 heads&rdquo; என்பது base model-க்குப் பொருந்தும்; big model 16 heads பயன்படுத்தியது.)</p>
+<h2 id="அத-ஏன-மலதககமனத">அது ஏன் மேலாதிக்கமானது<a class="anchor" href="#%e0%ae%85%e0%ae%a4-%e0%ae%8f%e0%ae%a9-%e0%ae%ae%e0%ae%b2%e0%ae%a4%e0%ae%95%e0%ae%95%e0%ae%ae%e0%ae%a9%e0%ae%a4">#</a></h2>
+<ol>
+<li><strong>இணைச்செயலாக்கம்</strong> — RNN-களைப் போலல்லாமல், ஒவ்வொரு நிலையும் ஒரே நேரத்தில் ஓடலாம். பயிற்சி throughput வரிசை நீளம் மற்றும் வன்பொருள் matmul திறனுடன் சேர்ந்து வளர்கிறது, வரிசைமுறை படிகளால் கட்டுப்படுவதில்லை.</li>
+<li><strong>நீண்ட-தூர சார்பு</strong> — கொள்கையளவில் எந்த டோக்கனும் வேறு எதற்கும் நேரடியாகக் கவனம் செலுத்தலாம், இருபடி attention மேட்ரிக்ஸ் மற்றும் நடைமுறை context windows ஆல் வரம்பிடப்பட்டது.</li>
+<li><strong>வன்பொருள் இணக்கம்</strong> — மேலாதிக்க வேலை அடர்த்தியான matrix multiplication — tensor cores, systolic arrays மற்றும் நவீன GPU நினைவக படிநிலைகள் உகந்ததாக்கப்பட்டது சரியாக (பதிவுகள் 55–58).</li>
+</ol>
+<p>முழு attention-இன் இருபடிச் செலவு இன்னும் உண்மை — எனவே sparse, linear, sliding-window மற்றும் பிற தோராயங்கள். மைய உள்ளுணர்வு இன்னும் நிற்கிறது: எளிய, இணைச்செயலாக்கக்கூடிய attention பொறிமுறை மீள்நிகழ்வை மாற்ற முடியும்.</p>
+<h2 id="இரபடச-சலவ-மறறம-இணசசயலககம-எணகளல">இருபடிச் செலவு மற்றும் இணைச்செயலாக்கம், எண்களில்<a class="anchor" href="#%e0%ae%87%e0%ae%b0%e0%ae%aa%e0%ae%9f%e0%ae%9a-%e0%ae%9a%e0%ae%b2%e0%ae%b5-%e0%ae%ae%e0%ae%b1%e0%ae%b1%e0%ae%ae-%e0%ae%87%e0%ae%a3%e0%ae%9a%e0%ae%9a%e0%ae%af%e0%ae%b2%e0%ae%95%e0%ae%95%e0%ae%ae-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%b2">#</a></h2>
+<p>கட்டுரையின் Table 1 (n = வரிசை நீளம், d = பரிமாணம்):</p>
+<table>
+	<thead>
+			<tr>
+					<th>அடுக்கு வகை</th>
+					<th>ஒரு அடுக்கின் சிக்கல்</th>
+					<th>வரிசைமுறைச் செயல்கள்</th>
+					<th>அதிகபட்சப் பாதை நீளம்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Self-attention</td>
+					<td>O(n² · d)</td>
+					<td>O(1)</td>
+					<td>O(1)</td>
+			</tr>
+			<tr>
+					<td>Recurrent</td>
+					<td>O(n · d²)</td>
+					<td>O(n)</td>
+					<td>O(n)</td>
+			</tr>
+	</tbody>
+</table>
+<p>1,000 டோக்கன் வரிசைக்கு RNN குறைந்தது 1,000 படிகளை ஒன்றன்பின் ஒன்றாகச் செய்ய வேண்டும்; self-attention-க்கு வரிசைமுறைப் படிகள் நீளத்தைச் சாராதவை — அதுவே GPU-வுக்கு ஏற்ற இணைச்செயலாக்கம். விலை: n × n attention matrix.</p>
+<p>ஒரு head, ஒரு அடுக்குக்கான attention matrix (fp16 = 2 bytes; எடுத்துக்காட்டு மதிப்புகள்):</p>
+<table>
+	<thead>
+			<tr>
+					<th>n</th>
+					<th>n² உறுப்புகள்</th>
+					<th>× 2 bytes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1,024</td>
+					<td>1,048,576</td>
+					<td>≈ 2.1 MB</td>
+			</tr>
+			<tr>
+					<td>4,096</td>
+					<td>16,777,216</td>
+					<td>≈ 33.6 MB</td>
+			</tr>
+			<tr>
+					<td>8,192</td>
+					<td>67,108,864</td>
+					<td>≈ 134 MB</td>
+			</tr>
+	</tbody>
+</table>
+<p>n இருமடங்கு (4,096 → 8,192) → matrix 4 மடங்கு. அதனால்தான் sparse, sliding-window போன்ற தோராயங்கள்.</p>
+<p><strong>பயிற்சிச் செலவைச் சரிபார்த்தல்.</strong> கட்டுரை: ஒரு இயந்திரம், 8 NVIDIA P100 GPU-கள். Base: ஒரு படிக்கு ≈ 0.4 s, 100,000 படிகள் → 40,000 s ≈ 11.1 மணி (கட்டுரை &ldquo;12 மணி&rdquo;). Big: 1.0 s × 300,000 = 300,000 s ≈ 3.47 நாள் (கட்டுரை &ldquo;3.5 நாள்&rdquo;).</p>
+<p>FLOPs-ஐக் கட்டுரை மதிப்பிட்ட முறை: பயிற்சி நேரம் × GPU எண்ணிக்கை × ஒரு GPU-வின் நீடித்த திறன் (P100-க்கு 9.5 TFLOPS). Big: 3.5 × 86,400 s × 8 × 9.5 × 10¹² ≈ <strong>2.3 × 10¹⁹</strong> — Table 2-இல் உள்ள EN-DE எண்ணுடன் பொருந்துகிறது. Base: 12 × 3,600 × 8 × 9.5 × 10¹² ≈ <strong>3.3 × 10¹⁸</strong> — அதுவும் பொருந்துகிறது.</p>
+<h2 id="வளவ-மடதல">வளைவை மூடுதல்<a class="anchor" href="#%e0%ae%b5%e0%ae%b3%e0%ae%b5-%e0%ae%ae%e0%ae%9f%e0%ae%a4%e0%ae%b2">#</a></h2>
+<p>Boolean தர்க்கத்தைச் செயல்படுத்திய மின்காந்த ரிலேக்களிலிருந்து, குழாய்கள், டிரான்சிஸ்டர்கள், pipelines, caches, GPU-கள் மற்றும் tensor cores வழியாக, வன்பொருள் பாதை மாறுதல், சேமிப்பு மற்றும் கணிதத்தை வேகமாகவும், அடர்த்தியாகவும், திறமையாகவும் ஆக்கியது. Attention என்பது வரிசை மாதிரியாக்கத்திற்காக அந்த வன்பொருளிலிருந்து தற்போது அதிக மதிப்பைப் பிரித்தெடுக்கும் அல்காரித கட்டமைப்பு.</p>
+<p>இயற்பியல் கட்டுப்பாடுகள் தொடர்ந்து மாறுகின்றன (நினைவக bandwidth, ஒரு op-க்கு ஆற்றல், interconnect latency). பொறியியல் பதில் இந்தத் தொடரின் தொடக்கத்திலிருந்தே அதே pattern: பிணைப்புக் கட்டுப்பாட்டைத் துல்லியமாகப் பெயரிடுங்கள், பிறகு அதே சுவருக்கு எதிராகக் கடினமாகத் தள்ளுவது மட்டும் அல்லாமல் கட்டமைப்பை மாற்றுங்கள்.</p>
+<p>அதுவே ரிலேக்களிலிருந்து attention வரையிலான தொடர்ச்சியான நூல்.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<ol>
+<li>
+<p><strong>மதிப்பெண்கள் [2, 0, 0]-க்கு softmax?</strong>
+விடை: e² ≈ 7.389; கூட்டுத்தொகை 7.389 + 1 + 1 = 9.389. எடைகள் ≈ <strong>[0.787, 0.107, 0.107]</strong>.</p>
+</li>
+<li>
+<p><strong>d_k = 4, மூல மதிப்பெண்கள் q · k = [4, 2, 0]. அளவிட்ட மதிப்பெண்களும் softmax-உம்?</strong>
+விடை: √4 = 2; [2, 1, 0]. e² ≈ 7.389, e¹ ≈ 2.718, e⁰ = 1; கூட்டுத்தொகை ≈ 11.107. எடைகள் ≈ <strong>[0.665, 0.245, 0.090]</strong>.</p>
+</li>
+<li>
+<p><strong>d_model = 768, h = 12 (எடுத்துக்காட்டு மதிப்புகள்). d_k?</strong>
+விடை: 768 ÷ 12 = <strong>64</strong>.</p>
+</li>
+<li>
+<p><strong>n = 4,096-இல் attention matrix-இல் எத்தனை உறுப்புகள்? n = 16,384-இல் எத்தனை மடங்கு?</strong>
+விடை: 4,096² = <strong>16,777,216</strong>. நீளம் 4 மடங்கு → உறுப்புகள் 4² = <strong>16 மடங்கு</strong>.</p>
+</li>
+<li>
+<p><strong>8 GPU-கள், ஒவ்வொன்றும் நீடித்த 10 TFLOPS, 24 மணி பயிற்சி (எடுத்துக்காட்டு மதிப்புகள்). கட்டுரையின் முறையில் FLOPs?</strong>
+விடை: 24 × 3,600 × 8 × 10 × 10¹² = 86,400 × 8 × 10¹³ ≈ <strong>6.9 × 10¹⁸</strong>.</p>
+</li>
+<li>
+<p><strong>RNN-இல் 500 டோக்கன்களைச் செயலாக்க எத்தனை வரிசைமுறைப் படிகள்? Self-attention அடுக்கில்?</strong>
+விடை: RNN: <strong>500</strong> (O(n)); self-attention: நீளத்தைச் சாராத மாறா எண் (<strong>O(1)</strong>).</p>
+</li>
+</ol>
+<p><strong>Door out:</strong> Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, மற்றும் Illia Polosukhin, &ldquo;Attention Is All You Need&rdquo; (NeurIPS 2017) — Transformer-ஐ அறிமுகப்படுத்தி self-attention-ஐ மேலாதிக்க வரிசை-மாதிரியாக்கப் பொறிமுறையாக ஆக்கிய முதன்மைக் கட்டுரை.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>கவனம் / தன்-கவனம்</td>
+					<td>attention / self-attention</td>
+			</tr>
+			<tr>
+					<td>டோக்கன் உட்பொதிப்பு</td>
+					<td>token embedding</td>
+			</tr>
+			<tr>
+					<td>வினவல் / திறவு / மதிப்பு</td>
+					<td>query / key / value</td>
+			</tr>
+			<tr>
+					<td>புள்ளிப் பெருக்கம்</td>
+					<td>dot product</td>
+			</tr>
+			<tr>
+					<td>நிறைவுறுதல்</td>
+					<td>saturation</td>
+			</tr>
+			<tr>
+					<td>பல-தலை கவனம்</td>
+					<td>multi-head attention</td>
+			</tr>
+			<tr>
+					<td>மீள்நிகழ்வு</td>
+					<td>recurrence</td>
+			</tr>
+			<tr>
+					<td>வரிசைமுறைச் செயல்</td>
+					<td>sequential operation</td>
+			</tr>
+			<tr>
+					<td>இருபடிச் செலவு</td>
+					<td>quadratic cost</td>
+			</tr>
+			<tr>
+					<td>சூழல் சாளரம்</td>
+					<td>context window</td>
+			</tr>
+			<tr>
+					<td>பெருமொழி மாதிரி</td>
+					<td>large language model (LLM)</td>
+			</tr>
+			<tr>
+					<td>திட்ட விலக்கம் / மாறுபாடு</td>
+					<td>standard deviation / variance</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/91bfcb84741aa7b3bde9e54c3dadb5e799d4e597" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Attention&#43;Is&#43;All&#43;You&#43;Need&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F63-attention-is-all-you-need%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F63-attention-is-all-you-need.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F63-attention-is-all-you-need.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/62-where-it-s-headed/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>அது எங்கே போகிறது</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/64-who-decides-the-wire/" class="flex align-center">
+        <span>கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#self-attention-எனன-சயகறத">Self-Attention என்ன செய்கிறது</a></li>
+    <li><a href="#attention-கயல--ஒர-query-மனற-டககனகள">Attention கையால் — ஒரு query, மூன்று டோக்கன்கள்</a></li>
+    <li><a href="#multi-head-attention">Multi-Head Attention</a></li>
+    <li><a href="#அசல-transformer-இன-அளவகள-கடடர-table-3">அசல் Transformer-இன் அளவுகள் (கட்டுரை, Table 3)</a></li>
+    <li><a href="#அத-ஏன-மலதககமனத">அது ஏன் மேலாதிக்கமானது</a></li>
+    <li><a href="#இரபடச-சலவ-மறறம-இணசசயலககம-எணகளல">இருபடிச் செலவு மற்றும் இணைச்செயலாக்கம், எண்களில்</a></li>
+    <li><a href="#வளவ-மடதல">வளைவை மூடுதல்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

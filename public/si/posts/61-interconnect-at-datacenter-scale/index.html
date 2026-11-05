@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="දහස් ගණන් GPU — topology සහ all-reduce ඕනෑම චිපයක peak FLOPS තරම්ම වැදගත් ය">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/61-interconnect-at-datacenter-scale/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="Datacenter පරිමාණයේ Interconnect">
+	<meta property="og:description" content="දහස් ගණන් GPU — topology සහ all-reduce ඕනෑම චිපයක peak FLOPS තරම්ම වැදගත් ය">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Datacenter පරිමාණයේ Interconnect">
+	<meta itemprop="description" content="දහස් ගණන් GPU — topology සහ all-reduce ඕනෑම චිපයක peak FLOPS තරම්ම වැදගත් ය">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1917">
+
+<title>Datacenter පරිමාණයේ Interconnect • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/61-interconnect-at-datacenter-scale/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/61-interconnect-at-datacenter-scale/" title="Interconnect at Datacenter Scale">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/61-interconnect-at-datacenter-scale/" title="อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/61-interconnect-at-datacenter-scale/" title="Datacenter அளவில் Interconnect">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/61-interconnect-at-datacenter-scale/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="active">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Datacenter පරිමාණයේ Interconnect</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#naive-wiring-පරමණය-නව">Naive Wiring පරිමාණය නොවේ</a></li>
+    <li><a href="#fat-tree-training-සඳහ-සසර-කළ">Fat-Tree, Training සඳහා සුසර කළ</a></li>
+    <li><a href="#all-reduce-බඳන-රටවය">All-Reduce බඳින රටාවයි</a></li>
+    <li><a href="#topology-spec-sheets-ට-වඩ-ජය-ගත-හක">Topology Spec Sheets ට වඩා ජය ගත හැක</a></li>
+    <li><a href="#ගඹරන-ring-all-reduce-පයවරන-පයවර-αβ-ආකතය-සහ-rails">ගැඹුරින්: Ring all-reduce පියවරෙන් පියවර, α–β ආකෘතිය සහ rails</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-ring-all-reduce-gpu-4-ක-සමඟ-අතන">2. Ring all-reduce: GPU 4 ක් සමඟ අතින්</a></li>
+        <li><a href="#3-αβ-ආකතය-ring-එදරව-tree">3. α–β ආකෘතිය: ring එදිරිව tree</a></li>
+        <li><a href="#4-rails-dgx-superpod-හ-නල-නරමණය">4. Rails: DGX SuperPOD හි නිල නිර්මාණය</a></li>
+        <li><a href="#5-පනසලන-අභයසය">5. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Datacenter පරිමාණයේ Interconnect
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Post 56 servers කිහිපයක් ඇතුළත සහ හරහා multi-GPU scaling ආවරණය කළේය — NVLink, NVSwitch, GPUDirect RDMA. විශාල පරිමාණ training තවත් අනුපිළිවෙලකි: සිය ගණන් සිට දහස් ගණන් servers හරහා දහස් සිට දස දහස් ගණන් GPU. ඒවා වයර් කරන ආකාරය ඕනෑම තනි GPU එකක specs තරම්ම වැදගත් ය.</p>
+<h2 id="naive-wiring-පරමණය-නව">Naive Wiring පරිමාණය නොවේ<a class="anchor" href="#naive-wiring-%e0%b6%b4%e0%b6%bb%e0%b6%b8%e0%b6%ab%e0%b6%ba-%e0%b6%b1%e0%b7%80">#</a></h2>
+<p>සෑම server එකක්ම අනෙක් සෑම එකකටම සම්බන්ධ කිරීම සම්බන්ධතා quadratic වර්ධනය කරයි — දහස් ගණන් nodes වලට බොහෝ කලින්ම අසාධාරණ ය. සැබෑ clusters hierarchical switching භාවිතා කරයි; තෝරා ගත් ව්‍යුහය ලබා ගත හැකි bandwidth සහ බර training ගමනාගමනය යටතේ එම bandwidth <em>කෙතරම් සමානව</em> රැඳෙන්නේද යන්න දෙකම තීරණය කරයි.</p>
+<h2 id="fat-tree-training-සඳහ-සසර-කළ">Fat-Tree, Training සඳහා සුසර කළ<a class="anchor" href="#fat-tree-training-%e0%b7%83%e0%b6%b3%e0%b7%84-%e0%b7%83%e0%b7%83%e0%b6%bb-%e0%b6%9a%e0%b7%85">#</a></h2>
+<p>Fat-tree switches ස්ථර කරයි — servers හි leaf switches, leaves සම්බන්ධ කරන spine switches — ඉහළ (ආදර්ශයෙන් non-oversubscribed) bisection bandwidth ඉලක්ක කරමින්; සැබෑ AI clusters තවමත් oversubscribe කරනවා හෝ rail-optimized විචල්‍යයන් භාවිතා කරනවා විය හැක. මෙය Post 42 හි datacenter networking අදහස දහස්-ගණන්-GPU පාලනයේ ය.</p>
+<p>Rail-optimized නිර්මාණ තවදුරටත් විශාල training jobs ඇත්තටම ජනනය කරන සන්නිවේදන රටා වටා සුසර කරයි — සාමාන්‍ය datacenter ගමනාගමනය නොවේ. Training ගමනාගමනය වෙනස් ය; ඒ සඳහා ගොඩනැගූ topology එකක් සාමාන්‍ය එකකට වඩා ජය ගත හැක.</p>
+<h2 id="all-reduce-බඳන-රටවය">All-Reduce බඳින රටාවයි<a class="anchor" href="#all-reduce-%e0%b6%b6%e0%b6%b3%e0%b6%b1-%e0%b6%bb%e0%b6%a7%e0%b7%80%e0%b6%ba">#</a></h2>
+<p>Data-parallel training (Post 46) සෑම පියවරකදීම සහභාගී සෑම GPU එකක්ම හරහා gradients සමමුහුර්ත කළ යුතු ය — එක් එක් batch slice එකෙන් දේශීය gradients, පසුව ඊළඟ පියවරට පෙර ඒකාබද්ධ කිරීම (සාමාන්‍යයෙන් සාමාන්‍යය). එම all-reduce සම්පූර්ණ training ධාවනයක් මත නිරන්තරයෙන් ධාවනය වේ. එහි කාර්යක්ෂමතාව අමු bandwidth <em>සහ</em> topology මත රඳා පවතී: ring හෝ tree ඇල්ගොරිතම භෞතික wiring දැනේ, න්‍යායික aggregate peak පමණක් නොවේ.</p>
+<h2 id="topology-spec-sheets-ට-වඩ-ජය-ගත-හක">Topology Spec Sheets ට වඩා ජය ගත හැක<a class="anchor" href="#topology-spec-sheets-%e0%b6%a7-%e0%b7%80%e0%b6%a9-%e0%b6%a2%e0%b6%ba-%e0%b6%9c%e0%b6%ad-%e0%b7%84%e0%b6%9a">#</a></h2>
+<p>නරක ලෙස නිර්මාණය කළ හෝ oversubscribed fabric එකක් මත විශිෂ්ට GPU, සැලකිල්ලෙන් rail-optimized ජාලයක් මත මධ්‍යස්ථ GPU වලට පරාජය විය හැක — මක්නිසාද යත් all-reduce බාධකය බවට පත් වන නිසා, ඕනෑම චිපයක peak FLOPS නොවේ. නැවතත් මාලා තේමාව: සංරචක specs (ට්‍රාන්සිස්ටර ගණන, clock, peak FLOPS) කතාවේ කොටසක් පමණි. කොටස් සම්බන්ධ වන ආකාරය — චිපයක buses (Phase 5) සිට training cluster එකක topology දක්වා — බොහෝ විට සැබෑ ලබා ගත් කාර්ය සාධනය තීරණය කරයි.</p>
+<h2 id="ගඹරන-ring-all-reduce-පයවරන-පයවර-αβ-ආකතය-සහ-rails">ගැඹුරින්: Ring all-reduce පියවරෙන් පියවර, α–β ආකෘතිය සහ rails<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-ring-all-reduce-%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb%e0%b6%b1-%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb-%ce%b1%ce%b2-%e0%b6%86%e0%b6%9a%e0%b6%ad%e0%b6%ba-%e0%b7%83%e0%b7%84-rails">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> &ldquo;GPU cluster AI training sinhala&rdquo; සහ &ldquo;data center network sinhala&rdquo; සෙවුම්වලට අදාළ සිංහල පාඩමක් හමු නොවීය. all-reduce ඇල්ගොරිතම, rail-optimized ජාල හෝ GPU cluster topology ගැන සිංහල ලිපියක් හෝ වීඩියෝවක් අපට හමු නොවීය. එබැවින් මෙම කොටස Florida State University පර්යේෂකයන්ගේ ලිපියක්, NVIDIA හි NCCL බ්ලොගය සහ NVIDIA DGX SuperPOD reference architecture භාවිතා කර, ගණනය අතින් ගොඩනඟයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>Rank:</strong> සාමූහික මෙහෙයුමකට සහභාගී වන එක් GPU එකක් (හෝ ක්‍රියාවලියක්) වේ.</li>
+<li><strong>Reduce-scatter:</strong> සියලු ranks වල දත්ත එකතු කර, එකතුවේ වෙනස් කොටසක් (segment) එක් එක් rank එකට ලබා දීමයි.</li>
+<li><strong>All-gather:</strong> එක් එක් rank එකේ කොටස අනෙක් සියලු ranks වලට බෙදා හැරීමයි.</li>
+<li><strong>ප්‍රමාද පදය (latency term, α):</strong> පණිවිඩයක් යැවීමේ ස්ථාවර ආරම්භක පිරිවැයයි. එය ප්‍රමාණයෙන් ස්වාධීනය.</li>
+<li><strong>Bandwidth පදය (β):</strong> byte එකකට ගතවන කාලයයි. එය 1/B ට සමානය.</li>
+<li><strong>Rail:</strong> සෑම server එකකම &ldquo;k වන GPU&rdquo; (සහ එහි NIC එක) එකම leaf switch කාණ්ඩයකට සම්බන්ධ කරන පෙළයි.</li>
+<li><strong>Leaf / spine:</strong> fat-tree ජාලයේ පහළ සහ ඉහළ switch ස්ථරයි (Post 42 හි k-ary fat-tree බලන්න).</li>
+</ul>
+<h3 id="2-ring-all-reduce-gpu-4-ක-සමඟ-අතන">2. Ring all-reduce: GPU 4 ක් සමඟ අතින්<a class="anchor" href="#2-ring-all-reduce-gpu-4-%e0%b6%9a-%e0%b7%83%e0%b6%b8%e0%b6%9f-%e0%b6%85%e0%b6%ad%e0%b6%b1">#</a></h3>
+<p>Patarasuk සහ Yuan, <em>Bandwidth Optimal All-reduce Algorithms for Clusters of Workstations</em> (Florida State University; <em>J. Parallel Distrib. Comput.</em>, 2009), §4 හි ඇල්ගොරිතමය:</p>
+<ol>
+<li>දත්ත කොටස් N කට බෙදනු ලැබේ.</li>
+<li><strong>Reduce-scatter</strong> වටයේ N − 1 පුනරාවර්තනවලදී, p_i යන rank එක SEG_(i−j) mod N කොටස p_(i+1) වෙත යවයි. ලබන්නා එය තමාගේ කොටසට එකතු කරයි.</li>
+<li>ඉන්පසු <strong>all-gather</strong> වටයේ තවත් N − 1 පුනරාවර්තනවලදී අවසන් කොටස් ring එක වටා බෙදා හරිනු ලැබේ.</li>
+</ol>
+<p><strong>ආදර්ශ දත්ත</strong> (GPU එකකට කොටස් 4 ක්):</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>SEG0</th>
+					<th>SEG1</th>
+					<th>SEG2</th>
+					<th>SEG3</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>p0</td>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>p1</td>
+					<td>10</td>
+					<td>20</td>
+					<td>30</td>
+					<td>40</td>
+			</tr>
+			<tr>
+					<td>p2</td>
+					<td>100</td>
+					<td>200</td>
+					<td>300</td>
+					<td>400</td>
+			</tr>
+			<tr>
+					<td>p3</td>
+					<td>1000</td>
+					<td>2000</td>
+					<td>3000</td>
+					<td>4000</td>
+			</tr>
+	</tbody>
+</table>
+<p>අපේක්ෂිත එකතුව: <code>[1111, 2222, 3333, 4444]</code>.</p>
+<p><strong>Reduce-scatter</strong> (එක් එක් පුනරාවර්තනයේ යැවීම් 4 ම එකවර සිදු වේ):</p>
+<ul>
+<li><strong>පුනරාවර්තනය 1:</strong>
+<ul>
+<li>p0 → p1 : SEG3 = 4 යවයි (p1 හි SEG3 = 44)</li>
+<li>p1 → p2 : SEG0 = 10 යවයි (p2 හි SEG0 = 110)</li>
+<li>p2 → p3 : SEG1 = 200 යවයි (p3 හි SEG1 = 2200)</li>
+<li>p3 → p0 : SEG2 = 3000 යවයි (p0 හි SEG2 = 3003)</li>
+</ul>
+</li>
+<li><strong>පුනරාවර්තනය 2:</strong>
+<ul>
+<li>p0 → p1 : 3003 යවයි (p1 හි SEG2 = 3033)</li>
+<li>p1 → p2 : 44 යවයි (p2 හි SEG3 = 444)</li>
+<li>p2 → p3 : 110 යවයි (p3 හි SEG0 = 1110)</li>
+<li>p3 → p0 : 2200 යවයි (p0 හි SEG1 = 2202)</li>
+</ul>
+</li>
+<li><strong>පුනරාවර්තනය 3:</strong>
+<ul>
+<li>p0 → p1 : 2202 යවයි (p1 හි SEG1 = <strong>2222</strong>)</li>
+<li>p1 → p2 : 3033 යවයි (p2 හි SEG2 = <strong>3333</strong>)</li>
+<li>p2 → p3 : 444 යවයි (p3 හි SEG3 = <strong>4444</strong>)</li>
+<li>p3 → p0 : 1110 යවයි (p0 හි SEG0 = <strong>1111</strong>)</li>
+</ul>
+</li>
+</ul>
+<p>දැන් p_i සතුව සම්පූර්ණ SEG_i ඇත. ලිපියේ ප්‍රතිඵලය ද මෙයයි.</p>
+<p><strong>All-gather:</strong> තවත් පුනරාවර්තන 3 ක් සිදු වේ. පළමුව p0 1111 යවයි, p1 2222 යවයි, p2 3333 යවයි, p3 4444 යවයි. පුනරාවර්තන 3 න් පසු සියලු GPUs සතුව <code>[1111, 2222, 3333, 4444]</code> ඇත.</p>
+<p><strong>ගණනය:</strong></p>
+<ul>
+<li>එක් GPU එකක් යවන්නේ පුනරාවර්තන 2 × (N − 1) = 6 කදී S/N = S/4 බැගිනි. එනම් මුළු 6S/4 = <strong>1.5S</strong> කි.</li>
+<li>සාමාන්‍යයෙන් එය 2(N − 1)/N × S වේ. Post 56 හි nccl-tests සාධකය මෙයයි.</li>
+<li>ලිපියේ Lemma 3–5 ඔප්පු කරන්නේ ඕනෑම all-reduce ඇල්ගොරිතමයකදී අවම වශයෙන් එක් ක්‍රියාවලියක් මෙතරම් දත්ත යැවිය යුතු බවයි. එබැවින් ring එක bandwidth අතින් ප්‍රශස්ත (bandwidth optimal) වේ (Theorem 1).</li>
+<li>ලිපිය අඩුපාඩුවද පිළිගනී: &ldquo;the number of communication rounds is proportional to the number of processes&rdquo; (සන්නිවේදන වට ගණන ක්‍රියාවලි ගණනට සමානුපාතික වේ, §1).</li>
+</ul>
+<h3 id="3-αβ-ආකතය-ring-එදරව-tree">3. α–β ආකෘතිය: ring එදිරිව tree<a class="anchor" href="#3-%ce%b1%ce%b2-%e0%b6%86%e0%b6%9a%e0%b6%ad%e0%b6%ba-ring-%e0%b6%91%e0%b6%af%e0%b6%bb%e0%b7%80-tree">#</a></h3>
+<p>Patarasuk–Yuan ලිපිය T(m) = β·m රේඛීය ආකෘතිය භාවිතා කරන අතර, ආරම්භක පිරිවැය නොසලකයි (§2.2). α එකතු කළ විට අපේ <strong>සරල ආකෘතිය</strong> මෙසේය:</p>
+<ul>
+<li><strong>Ring:</strong> T ≈ 2(N − 1)·α + 2(N − 1)/N · S/B</li>
+<li><strong>Tree:</strong> T ≈ 2·⌈log₂N⌉·α + 2(N − 1)/N · S/B</li>
+</ul>
+<p>NVIDIA හි NCCL 2.4 බ්ලොගයට (Sylvain Jeaugey, 2019) අනුව:</p>
+<ul>
+<li>double binary trees &ldquo;full bandwidth and a logarithmic latency&rdquo; (සම්පූර්ණ bandwidth සහ ලඝුගණක ප්‍රමාදය) ලබා දෙයි.</li>
+<li>rings වල &ldquo;latency scales linearly with the number of GPUs&rdquo; (ප්‍රමාදය GPU ගණන සමඟ රේඛීයව වැඩි වේ).</li>
+<li>NVIDIA එය Summit supercomputer ඇතුළු විශාල යන්ත්‍ර කිහිපයක GPUs <strong>24,576</strong> දක්වා පරීක්ෂා කළේය. ring හා සසඳන විට trees මගින් ප්‍රමාදය (latency) වැඩි දියුණු වූ අතර, එම වෙනස පරිමාණය සමඟ වැඩි වී GPUs 24k දී <strong>180× දක්වා</strong> විය (&ldquo;up to 180x improvement at 24k GPUs&rdquo;).</li>
+</ul>
+<p><strong>ආදර්ශ ගණනය</strong> (α = 5 µs සහ B = 50 GB/s ආදර්ශ අගයන් වේ):</p>
+<table>
+	<thead>
+			<tr>
+					<th>N</th>
+					<th>S</th>
+					<th>Ring</th>
+					<th>Tree</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>8</td>
+					<td>1 MB</td>
+					<td>0.105 ms</td>
+					<td>0.065 ms</td>
+			</tr>
+			<tr>
+					<td>1024</td>
+					<td>1 MB</td>
+					<td><strong>10.27 ms</strong></td>
+					<td><strong>0.14 ms</strong></td>
+			</tr>
+			<tr>
+					<td>1024</td>
+					<td>1 GB</td>
+					<td>50.2 ms</td>
+					<td>40.1 ms</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>කුඩා පණිවිඩ සහ විශාල N සඳහා ring එකේ α පදය (2 × 1023 × 5 µs ≈ 10.2 ms) ආධිපත්‍යය දරයි.</li>
+<li>විශාල පණිවිඩ සඳහා දෙකම bandwidth පදයට (≈ 40 ms) ළඟා වේ.</li>
+<li>NCCL &ldquo;automatically switches back to rings&rdquo; (වැඩි bandwidth දෙන විට ස්වයංක්‍රීයව rings වෙත මාරු වන) බව බ්ලොගය කියයි.</li>
+</ul>
+<h3 id="4-rails-dgx-superpod-හ-නල-නරමණය">4. Rails: DGX SuperPOD හි නිල නිර්මාණය<a class="anchor" href="#4-rails-dgx-superpod-%e0%b7%84-%e0%b6%b1%e0%b6%bd-%e0%b6%b1%e0%b6%bb%e0%b6%b8%e0%b6%ab%e0%b6%ba">#</a></h3>
+<p>NVIDIA DGX SuperPOD (DGX H100) reference architecture:</p>
+<ul>
+<li><strong>Compute fabric:</strong> &ldquo;Rail-optimized, full fat-tree network with eight NDR400 connections per system&rdquo; (පද්ධතියකට NDR400 සම්බන්ධතා අටක් සහිත, rail-optimized, සම්පූර්ණ fat-tree ජාලයකි).</li>
+<li>එය &ldquo;balanced, full-fat tree&rdquo; (සමතුලිත, සම්පූර්ණ fat-tree) එකකි.</li>
+<li>NDR InfiniBand හි උපරිම වේගය දිශාවකට <strong>400 Gbps</strong> වේ.</li>
+<li><strong>SU (scalable unit):</strong> DGX H100 පද්ධති 32 කි. &ldquo;Traffic per rail … is always one hop away from the other 31 nodes in a SU&rdquo; (එක් rail එකක ගමනාගමනය, SU එකේ අනෙක් nodes 31 ට සැමවිටම එක් hop එකක් දුරින් පවතී). rails අතර ගමනාගමනය spine හරහා යයි.</li>
+<li><strong>වගුව 4:</strong>
+<ul>
+<li>SU 1 = nodes 31, GPUs 248, leaf switches 8, spine switches 4.</li>
+<li>SU 4 = nodes 127, GPUs 1016, leaf switches 32, spine switches 16.</li>
+</ul>
+</li>
+<li>DGX H100 හි NVLink bandwidth එක GPU එකකට <strong>900 GBps</strong> වේ. NVIDIA හි Hopper Architecture In-Depth බ්ලොගයට අනුව එය NVLink සබැඳි 18 × දිශාවකට 25 GB/s = දිශාවකට 450 GB/s, දෙදිශාවේ <strong>එකතුව</strong> 900 GB/s වේ.</li>
+<li>වගුව 4 හි පාද සටහනට අනුව SU එකක nodes 31 ක් (32 නොවේ) ඇත්තේ UFM (Unified Fabric Manager) සඳහා DGX පද්ධතියක් ඉවත් කළ නිසාය. එලෙසම SU 4 = 4 × 32 − 1 = 127.</li>
+</ul>
+<p><strong>වැඩ කළ උදාහරණය: hierarchical all-reduce</strong> (NCCL බ්ලොගය &ldquo;hierarchical, 2D ring&rdquo; ක්‍රමයක් <strong>නම් කරයි</strong> පමණි, එහි පියවර විස්තර නොකරයි. පහත පියවර තුන, එනම් node තුළ reduce-scatter → nodes අතර all-reduce → node තුළ all-gather, සම්මත hierarchical ක්‍රමය පිළිබඳ <strong>අපේ විස්තරයයි</strong>).</p>
+<p><strong>ආදර්ශ උපකල්පන:</strong></p>
+<ul>
+<li>gradient S = 2 GB, nodes 16, node එකකට GPU 8 යි.</li>
+<li>NVLink දිශාවකට <strong>450 GB/s</strong> (900 GBps යනු දෙදිශාවේ එකතුවයි; Hopper බ්ලොගය, ඉහත බලන්න). ගණනයේදී අපි සම්පූර්ණ 450 GB/s ලැබේ යැයි උපකල්පනය කරමු.</li>
+<li>NDR400 = <strong>50 GB/s</strong> (දිශාවකට).</li>
+</ul>
+<p><strong>පියවර:</strong></p>
+<ol>
+<li><strong>Node තුළ reduce-scatter:</strong> 7/8 × 2 GB ÷ 450 GB/s ≈ <strong>3.9 ms</strong>. දැන් සෑම GPU එකක් සතුව 250 MB කොටසක් ඇත.</li>
+<li><strong>Nodes අතර all-reduce (rail එකක් දිගේ):</strong> k වන GPU එක අනෙක් nodes වල k වන GPU සමඟ, තමාගේම NIC එක හරහා 2 × 15/16 × 0.25 GB ÷ 50 GB/s ≈ <strong>9.4 ms</strong> ගනී. rails 8 ම එකවර වැඩ කරයි.</li>
+<li><strong>Node තුළ all-gather:</strong> ≈ <strong>3.9 ms</strong>.</li>
+</ol>
+<p><strong>මුළු කාලය ≈ 17.2 ms.</strong></p>
+<ul>
+<li><strong>Node එකකට NIC එකක් පමණක් නම්:</strong> පියවර 2 හිදී සම්පූර්ණ 2 GB එකම 50 GB/s සබැඳියෙන් යා යුතුය. එවිට 2 × 15/16 × 2 ÷ 50 = <strong>75 ms</strong> ගත වේ. එනම් 8 ගුණයකින් මන්දගාමී වේ.</li>
+<li><strong>Spine හරහා 2:1 oversubscription එකක් නම් (ආදර්ශ):</strong> පියවර 2 හි bandwidth 25 GB/s දක්වා අඩු වී, එම පියවර <strong>18.75 ms</strong> දක්වා දෙගුණ වේ.</li>
+</ul>
+<p>post එකේ &ldquo;topology spec sheets ට වඩා ජය ගත හැක&rdquo; යන්නෙහි අංකමය තේරුම මෙයයි. rail එකකට NIC එකක් තිබීම, rail එක තුළ එක් hop එකක් සහ oversubscription නොමැති fabric එකක් යන තුනම එකතු වී ඉහත 17 ms සහ 75+ ms අතර වෙනස තීරණය කරයි.</p>
+<h3 id="5-පනසලන-අභයසය">5. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#5-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>N = 3, p0 = [1, 2, 3], p1 = [10, 20, 30], p2 = [100, 200, 300] සඳහා ring reduce-scatter හි පුනරාවර්තන 2 ලියන්න. අවසානයේ එක් එක් rank එක සතුව ඇත්තේ කුමන කොටසද?</li>
+<li>N = 8 දී S = 800 MB නම්, එක් GPU එකක් all-reduce එකකදී යවන මුළු දත්ත ප්‍රමාණය කීයද?</li>
+<li>α = 10 µs නම් N = 512 ring එකක ප්‍රමාද පදය කීයද? tree එකක (2⌈log₂N⌉α) කීයද?</li>
+<li>nodes 32 × GPU 8, S = 4 GB, NVLink 450 GB/s, NIC 50 GB/s (rail එකකට එකක්) සඳහා hierarchical all-reduce කාලය ගණනය කරන්න.</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>පුනරාවර්තනය 1: p0 → p1 SEG2 = 3 (p1: 33), p1 → p2 SEG0 = 10 (p2: 110), p2 → p0 SEG1 = 200 (p0: 202). පුනරාවර්තනය 2: p0 → p1 SEG1 = 202 (p1: <strong>222</strong>), p1 → p2 SEG2 = 33 (p2: <strong>333</strong>), p2 → p0 SEG0 = 110 (p0: <strong>111</strong>). p0 සතුව SEG0, p1 සතුව SEG1, p2 සතුව SEG2 වේ.</li>
+<li>2 × 7/8 × 800 = <strong>1,400 MB</strong>.</li>
+<li>2 × 511 × 10 µs = <strong>10.22 ms</strong>; 2 × 9 × 10 µs = <strong>0.18 ms</strong>.</li>
+<li>7/8 × 4 ÷ 450 ≈ 7.8 ms (දෙවරක් = 15.6 ms). කොටස 0.5 GB නිසා 2 × 31/32 × 0.5 ÷ 50 ≈ 19.4 ms. මුළු කාලය ≈ <strong>35 ms</strong>.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>Pitch Patarasuk සහ Xin Yuan, &ldquo;Bandwidth Optimal All-reduce Algorithms for Clusters of Workstations&rdquo;, <em>Journal of Parallel and Distributed Computing</em> 69(2):117–124, 2009 පෙබරවාරි, DOI 10.1016/j.jpdc.2008.09.002. Florida State University හි කතුවරයාගේ ආයතනික පිටපත. §1, §2.2, §3 (Lemmas 3–5), §4 (Fig. 1, Theorem 1) භාවිත කළෙමු: <a href="https://www.cs.fsu.edu/~xyuan/paper/09jpdc.pdf">https://www.cs.fsu.edu/~xyuan/paper/09jpdc.pdf</a></li>
+<li>Sylvain Jeaugey (NVIDIA), &ldquo;Massively Scale Your Deep Learning Training with NCCL 2.4&rdquo;, NVIDIA Technical Blog, 2019 පෙබරවාරි 4: <a href="https://developer.nvidia.com/blog/massively-scale-deep-learning-training-nccl-2-4/">https://developer.nvidia.com/blog/massively-scale-deep-learning-training-nccl-2-4/</a></li>
+<li>NVIDIA, <em>DGX SuperPOD Reference Architecture (DGX H100)</em>, &ldquo;Key Components&rdquo; සහ &ldquo;Network Fabrics&rdquo; (වගුව 4) කොටස්:
+<ul>
+<li><a href="https://docs.nvidia.com/dgx-superpod/reference-architecture-scalable-infrastructure-h100/latest/dgx-superpod-components.html">https://docs.nvidia.com/dgx-superpod/reference-architecture-scalable-infrastructure-h100/latest/dgx-superpod-components.html</a></li>
+<li><a href="https://docs.nvidia.com/dgx-superpod/reference-architecture-scalable-infrastructure-h100/latest/network-fabrics.html">https://docs.nvidia.com/dgx-superpod/reference-architecture-scalable-infrastructure-h100/latest/network-fabrics.html</a></li>
+</ul>
+</li>
+<li>NVIDIA, &ldquo;NVIDIA Hopper Architecture In-Depth&rdquo;, NVIDIA Technical Blog, 2022 මාර්තු 22 (NVLink සබැඳි 18, දිශාවකට 25 GB/s, මුළු 900 GB/s): <a href="https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/">https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/</a></li>
+</ul>
+<p>α, B, gradient ප්‍රමාණ, node ගණන සහ 2:1 oversubscription ආදර්ශ අගයන් වේ. 900 GBps දෙදිශාවේ එකතුවක් බව දැන් NVIDIA මූලාශ්‍රයකින් තහවුරුය.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Datacenter&#43;%E0%B6%B4%E0%B6%BB%E0%B7%92%E0%B6%B8%E0%B7%8F%E0%B6%AB%E0%B6%BA%E0%B7%9A&#43;Interconnect&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F61-interconnect-at-datacenter-scale%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F61-interconnect-at-datacenter-scale.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F61-interconnect-at-datacenter-scale.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/60-sparsity-in-hardware/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>දෘඪාංගයේ Sparsity</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/62-where-it-s-headed/" class="flex align-center">
+        <span>එය යන්නේ කොහේටද</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#naive-wiring-පරමණය-නව">Naive Wiring පරිමාණය නොවේ</a></li>
+    <li><a href="#fat-tree-training-සඳහ-සසර-කළ">Fat-Tree, Training සඳහා සුසර කළ</a></li>
+    <li><a href="#all-reduce-බඳන-රටවය">All-Reduce බඳින රටාවයි</a></li>
+    <li><a href="#topology-spec-sheets-ට-වඩ-ජය-ගත-හක">Topology Spec Sheets ට වඩා ජය ගත හැක</a></li>
+    <li><a href="#ගඹරන-ring-all-reduce-පයවරන-පයවර-αβ-ආකතය-සහ-rails">ගැඹුරින්: Ring all-reduce පියවරෙන් පියවර, α–β ආකෘතිය සහ rails</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-ring-all-reduce-gpu-4-ක-සමඟ-අතන">2. Ring all-reduce: GPU 4 ක් සමඟ අතින්</a></li>
+        <li><a href="#3-αβ-ආකතය-ring-එදරව-tree">3. α–β ආකෘතිය: ring එදිරිව tree</a></li>
+        <li><a href="#4-rails-dgx-superpod-හ-නල-නරමණය">4. Rails: DGX SuperPOD හි නිල නිර්මාණය</a></li>
+        <li><a href="#5-පනසලන-අභයසය">5. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

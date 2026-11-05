@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Telnet on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/telnet/</link>
+		<description>Recent content in Telnet on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/telnet/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>挤不进去的广场：两岸三地的校园 BBS</title>
+				<link>http://localhost:1478/zh-hans/posts/43-zh-bbs/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/43-zh-bbs/</guid>
+				<description>在门户网站和社交媒体之前，人们先在校园 BBS 上找到彼此，再开始交谈；一台服务器能同时容纳多少人，决定了这个广场有多大。</description>
+			</item>
+	</channel>
+</rss>

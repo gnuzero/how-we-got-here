@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="முன்னோக்கி அதே pattern — chiplets, package-க்கு அருகில் optics, நினைவகத்திற்கு அருகில் compute">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/62-where-it-s-headed/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="அது எங்கே போகிறது">
+	<meta property="og:description" content="முன்னோக்கி அதே pattern — chiplets, package-க்கு அருகில் optics, நினைவகத்திற்கு அருகில் compute">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="அது எங்கே போகிறது">
+	<meta itemprop="description" content="முன்னோக்கி அதே pattern — chiplets, package-க்கு அருகில் optics, நினைவகத்திற்கு அருகில் compute">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1035">
+
+<title>அது எங்கே போகிறது • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/62-where-it-s-headed/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/62-where-it-s-headed/" title="Where It&#39;s Headed">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/62-where-it-s-headed/" title="ทิศทางข้างหน้า">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/62-where-it-s-headed/" title="එය යන්නේ කොහේටද">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/62-where-it-s-headed/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/62-where-it-s-headed/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/62-where-it-s-headed/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="active">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>அது எங்கே போகிறது</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#chiplet-ai-accelerators">Chiplet AI Accelerators</a></li>
+    <li><a href="#package-கக-அரகல-optics">Package-க்கு அருகில் Optics</a></li>
+    <li><a href="#processing-in-memory">Processing-in-Memory</a></li>
+    <li><a href="#மனற-தசகள-மனற-கணகககள">மூன்று திசைகள், மூன்று கணக்குகள்</a>
+      <ul>
+        <li><a href="#1-chiplet-ai-accelerator-yield--bandwidth-ஒனறக">1. Chiplet AI accelerator: yield + bandwidth ஒன்றாக</a></li>
+        <li><a href="#2-optics-package-கக-அரகல-io-ஆறறல-கணகக">2. Optics package-க்கு அருகில்: I/O ஆற்றல் கணக்கு</a></li>
+        <li><a href="#3-processing-in-memory-நகரவன-ஆறறல-வடடவத">3. Processing-in-memory: நகர்வின் ஆற்றலை வெட்டுவது</a></li>
+        <li><a href="#மனறலம-ஒர-களவ">மூன்றிலும் ஒரே கேள்வி</a></li>
+      </ul>
+    </li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#தடரசசயன-நல">தொடர்ச்சியான நூல்</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    அது எங்கே போகிறது
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>இந்தத் தொடர் gears மற்றும் relays-உடன் திறந்தது — இயந்திர மற்றும் மின்னியந்திர கணினி, நவீன அளவீட்டில் பழமையானது, ஆனால் பின்னர் ஒவ்வொரு நிறுத்தமும் சுத்திகரித்த அதே தர்க்க வடிவம் (அறிவுறுத்தல்கள், செயல்படுத்தல், நிலை). அது முன்னோக்கிப் பார்த்து மூடுகிறது, பின்னோக்கி அல்ல: AI வன்பொருள் தீவிரமாக நகரும் மூன்று திசைகள், ஒவ்வொன்றும் இந்தத் தொடரில் ஏற்கனவே உள்ள கருத்துக்களின் நீட்டிப்பு. கண்டுபிடிக்கப்பட்ட roadmap இல்லை — spine ஏற்கனவே கற்பித்த <em>வகை</em> பதில் மட்டும்.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> Processing-in-memory (PIM), co-packaged optics, chiplet AI accelerator-கள் பற்றித் தமிழில் விளக்கம் இல்லை. இந்த மூன்று திசைகளும் இன்னும் வளர்ந்து வருபவை என்பதால், குறிப்பிட்ட பொருட்களின் எண்களைத் தவிர்த்து, முந்தைய பதிவுகளின் கணக்குகளை நீட்டிக்கும் <strong>எடுத்துக்காட்டு மதிப்புகள்</strong> கொண்ட கணக்குகளை மட்டும் சேர்த்துள்ளோம். எதிர்காலக் கணிப்புகள் எதுவும் இல்லை.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Processing-in-memory (PIM, நினைவகத்துக்குள் கணக்கு):</strong> சில கணக்குகளை நினைவக chip-க்குள்ளேயே, தரவு இருக்கும் இடத்துக்கு அருகில் செய்வது.</li>
+<li><strong>Bank (வங்கி):</strong> ஒரு DRAM chip-க்குள் சுயாதீனமாக இயங்கக்கூடிய cell-களின் தொகுதி; ஒவ்வொன்றுக்கும் தனி row buffer (பதிவு 10).</li>
+<li><strong>SerDes (Serializer/Deserializer):</strong> இணையான பல பிட்களை ஒரே அதிவேகக் கம்பியில் வரிசையாக அனுப்பி, மறுமுனையில் மீண்டும் இணையாக்கும் சுற்று.</li>
+<li><strong>E/O மாற்றம் (மின்-ஒளி மாற்றம்):</strong> மின் சமிக்ஞையை ஒளிச் சமிக்ஞையாக (optical fiber-க்காக) மாற்றுவதும் மறுதலையும்.</li>
+<li><strong>Silicon photonics (சிலிகான் ஒளியியல்):</strong> ஒளியை வழிநடத்தும், மாற்றும் கூறுகளை silicon chip-களிலேயே உருவாக்கும் தொழில்நுட்பம்.</li>
+<li><strong>Co-packaged optics (ஒரே பொதியுறை ஒளியியல்):</strong> optical மாற்றிகளை தனியான pluggable module-களாக அல்லாமல், switch அல்லது GPU package-க்குள்ளேயே வைப்பது.</li>
+</ul>
+<h2 id="chiplet-ai-accelerators">Chiplet AI Accelerators<a class="anchor" href="#chiplet-ai-accelerators">#</a></h2>
+<p>பதிவு 51 chiplets-ஐ yield பதிலாக உள்ளடக்கியது; பதிவு 54 compute அருகில் bandwidth-க்கு HBM packaging உள்ளடக்கியது. இயற்கை இணைப்பு இரண்டும்: பிரிக்கப்பட்ட compute chiplets — சில நேரங்களில் வேறுபட்ட சிறப்பு — மற்றும் அடுக்கப்பட்ட HBM, ஒரு package-க்குள் high-density interposer அல்லது advanced-substrate இணைப்புகளால் கட்டப்பட்டவை. Yield மற்றும் சிறப்புப்படுத்தலுக்குப் பிரிக்கவும்; பிரிவு புதிய interconnect சுவராகாமல் இருக்க packaging செலவிடவும். அதே pattern, AI சிலிகானுக்குப் பயன்படுத்தப்பட்டது.</p>
+<h2 id="package-கக-அரகல-optics">Package-க்கு அருகில் Optics<a class="anchor" href="#package-%e0%ae%95%e0%ae%95-%e0%ae%85%e0%ae%b0%e0%ae%95%e0%ae%b2-optics">#</a></h2>
+<p>குறுகிய in-rack இணைப்புகள் இன்னும் அடிக்கடி செம்பு. Rack-to-rack மற்றும் பல leaf–spine AI fabrics ஏற்கனவே pluggable transceivers-உடன் optical fiber பயன்படுத்தும். Electrical SerDes இன்னும் அடைவு, ஆற்றல் மற்றும் அடர்த்தி வரம்புகளை எதிர்கொள்ளும். Silicon photonics மற்றும் co-packaged optics E/O மாற்றத்தை switch அல்லது GPU package மீது தள்ளும் — நீண்ட மின் traces மற்றும் discrete pluggables-க்கு எதிராக SerDes/DSP ஆற்றல் மற்றும் அடைவு செலவுகளை வெட்டும். &ldquo;முதல் முறையாக ஒளியை அறிமுகப்படுத்துவது&rdquo; அல்ல, ஆனால் பதிவுகள் 56 மற்றும் 61 GPU-கள் மற்றும் racks இடையே bandwidth அதிகரித்துக் கட்டுப்படுத்துவதாகச் சொன்ன இடத்திற்கு மாற்றத்தை நகர்த்துவது.</p>
+<h2 id="processing-in-memory">Processing-in-Memory<a class="anchor" href="#processing-in-memory">#</a></h2>
+<p>பதிவு 35-இன் memory wall HBM (54) மற்றும் weight-stationary systolic dataflow (58) வழியாக எதிரொலித்தது — இயக்கத்தைக் குறைக்கவும், அல்லது அகலமாக்கவும். Processing-in-memory மேலும் செல்கிறது: சில compute-ஐ நினைவக அணி <em>க்குள்</em> செய்யுங்கள், இதனால் இயக்கத்தின் ஒரு பகுதி ஒருபோதும் நடக்காது. பரவலாகப் பயன்படுத்தப்படும் தொழில்நுட்பமாக ஆரம்பம்; இன்னும் சுவரை அதன் வேரில் தாக்கும் உண்மையான முயற்சி — அதைச் சுற்றி hierarchy-களை மட்டும் விரிவாக்காமல்.</p>
+<h2 id="மனற-தசகள-மனற-கணகககள">மூன்று திசைகள், மூன்று கணக்குகள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a9%e0%ae%b1-%e0%ae%a4%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%ae%e0%ae%a9%e0%ae%b1-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95%e0%ae%95%e0%ae%b3">#</a></h2>
+<h3 id="1-chiplet-ai-accelerator-yield--bandwidth-ஒனறக">1. Chiplet AI accelerator: yield + bandwidth ஒன்றாக<a class="anchor" href="#1-chiplet-ai-accelerator-yield--bandwidth-%e0%ae%92%e0%ae%a9%e0%ae%b1%e0%ae%95">#</a></h3>
+<p>பதிவு 51-இன் yield கணக்கும் பதிவு 54-இன் HBM கணக்கும் ஒரே package-இல் சேர்வதை எடுத்துக்காட்டு மதிப்புகளுடன் பார்ப்போம்: இரண்டு compute chiplet-கள் மற்றும் எட்டு HBM stack-கள், ஒவ்வொன்றும் 1024 பிட் அகலம், ஒரு pin-க்கு 6.4 Gb/s.</p>
+<ol>
+<li>மொத்த நினைவக இடைமுக அகலம் = 8 × 1,024 = <strong>8,192 பிட்</strong></li>
+<li>Bandwidth = 8,192 × 6.4 ÷ 8 ≈ <strong>6,554 GB/s</strong> (≈ 6.5 TB/s)</li>
+<li>பதிவு 51-இன் D = 0.1/cm² மாதிரியில், ஒரு 8 cm² die-க்குப் பதிலாக இரண்டு 4 cm² chiplet-கள்: yield e^(−0.8) ≈ 44.9%-இலிருந்து ஒவ்வொன்றும் e^(−0.4) ≈ 67.0%.</li>
+</ol>
+<p>8,192 கம்பிகள் — motherboard-இல் கற்பனை செய்ய முடியாதவை — interposer-இல் மட்டுமே சாத்தியம். மேலும் இரண்டு compute chiplet-களுக்கு இடையிலான இணைப்பு, ஒரே die-க்குள் இருப்பதுபோல வேகமாக இல்லாவிட்டால், பதிவு 51 எச்சரித்த &ldquo;புதிய interconnect சுவர்&rdquo; மீண்டும் தோன்றும்.</p>
+<h3 id="2-optics-package-கக-அரகல-io-ஆறறல-கணகக">2. Optics package-க்கு அருகில்: I/O ஆற்றல் கணக்கு<a class="anchor" href="#2-optics-package-%e0%ae%95%e0%ae%95-%e0%ae%85%e0%ae%b0%e0%ae%95%e0%ae%b2-io-%e0%ae%86%e0%ae%b1%e0%ae%b1%e0%ae%b2-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95">#</a></h3>
+<p>ஒரு பெரிய switch மொத்தம் 51.2 Tb/s தரவைக் கையாள்கிறது என்று கொள்வோம் (எடுத்துக்காட்டு மதிப்பு).</p>
+<ul>
+<li>ஒவ்வொரு பிட்டையும் chip-இலிருந்து board வழியாக முன்பக்க pluggable module வரை மின்சாரமாகக் கொண்டுசெல்ல 5 pJ/பிட் (எடுத்துக்காட்டு மதிப்பு): 51.2 × 10¹² × 5 × 10⁻¹² = <strong>256 W</strong> — கணக்கு அல்ல, வெறும் I/O.</li>
+<li>Optical மாற்றம் package-க்குள் நடந்து மின் பாதை மிகக் குறுகினால், அதே வேலை 2.5 pJ/பிட் என்று கொண்டால்: <strong>128 W</strong>.</li>
+</ul>
+<p>செம்புக் கம்பியில் அதிர்வெண் உயர உயர இழப்பும் உயர்கிறது; அதிவேக SerDes-கள் அந்த இழப்பை ஈடுசெய்ய அதிக ஆற்றலைச் செலவிடுகின்றன. மின் பாதையைக் குறுக்குவதுதான் co-packaged optics-இன் முழு யோசனை — ஆங்கிலப் பதிவு சொல்வதுபோல், &ldquo;ஒளியை முதல் முறையாக அறிமுகப்படுத்துவது அல்ல; மாற்றம் நடக்கும் இடத்தை நகர்த்துவது&rdquo;.</p>
+<h3 id="3-processing-in-memory-நகரவன-ஆறறல-வடடவத">3. Processing-in-memory: நகர்வின் ஆற்றலை வெட்டுவது<a class="anchor" href="#3-processing-in-memory-%e0%ae%a8%e0%ae%95%e0%ae%b0%e0%ae%b5%e0%ae%a9-%e0%ae%86%e0%ae%b1%e0%ae%b1%e0%ae%b2-%e0%ae%b5%e0%ae%9f%e0%ae%9f%e0%ae%b5%e0%ae%a4">#</a></h3>
+<p>பதிவு 57-இல் batch 1 உடன் ஒரு layer ஒவ்வொரு byte weight-க்கும் சுமார் 1 FLOP மட்டுமே செய்தது. ஆற்றலை ஒப்பீட்டு அலகுகளில் பார்ப்போம் (எடுத்துக்காட்டு மதிப்புகள்): ஒரு byte-க்கு ஒரு சிறிய கணக்கு = 1 அலகு; ஒரு byte-ஐ DRAM-இலிருந்து processor-க்கு நகர்த்துவது = 100 அலகுகள்.</p>
+<ul>
+<li><strong>வழக்கமான முறை:</strong> ஒரு byte-க்கு 100 (நகர்வு) + 1 (கணக்கு) = 101 அலகுகள் → ஆற்றலில் 99% நகர்வுக்கு.</li>
+<li><strong>PIM:</strong> கணக்கு DRAM bank-இன் அருகிலேயே; bank-இலிருந்து அருகிலுள்ள logic வரை நகர்வு 10 அலகுகள் என்று கொண்டால் → 10 + 1 = 11 அலகுகள்.</li>
+<li>விகிதம்: 101 ÷ 11 ≈ <strong>9 மடங்கு குறைவு</strong> — கணக்கு வேகமானதால் அல்ல, நகர்வு குறுகியதால்.</li>
+</ul>
+<p>இன்னொரு பக்கம்: DRAM-இல் ஒரு row-ஐத் திறக்கும்போது (பதிவு 10) ஆயிரக்கணக்கான பிட்கள் ஒரே நேரத்தில் row buffer-க்கு வருகின்றன, ஆனால் chip-இன் வெளிப் pin-கள் வழியாக ஒரு நேரத்தில் சில டஜன் பிட்கள் மட்டுமே வெளியேறுகின்றன. பல bank-கள் இணையாக இயங்குவதால், chip-க்குள் கிடைக்கும் மொத்த bandwidth வெளியே கிடைப்பதை விடப் பல மடங்கு. PIM அந்த உள் bandwidth-ஐ நேரடியாகப் பயன்படுத்த முயல்கிறது. சவால்: DRAM process logic-க்கு உகந்ததல்ல, அதனால் அங்கே வைக்கக்கூடிய கணக்கு எளிமையானதாகவே இருக்க வேண்டும் — அதனால்தான் ஆங்கிலப் பதிவு இதை &ldquo;பரவலான பயன்பாட்டில் இன்னும் ஆரம்ப நிலை&rdquo; என்கிறது.</p>
+<h3 id="மனறலம-ஒர-களவ">மூன்றிலும் ஒரே கேள்வி<a class="anchor" href="#%e0%ae%ae%e0%ae%a9%e0%ae%b1%e0%ae%b2%e0%ae%ae-%e0%ae%92%e0%ae%b0-%e0%ae%95%e0%ae%b3%e0%ae%b5">#</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>திசை</th>
+					<th>கட்டுப்படுத்தும் தடை</th>
+					<th>கட்டமைப்பு மாற்றம்</th>
+					<th>தொடர்புடைய முந்தைய பதிவுகள்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Chiplet AI accelerator</td>
+					<td>yield, reticle எல்லை, bandwidth</td>
+					<td>பிரி + HBM + interposer</td>
+					<td>51, 54</td>
+			</tr>
+			<tr>
+					<td>Package-அருகில் optics</td>
+					<td>I/O ஆற்றல், செம்பின் தூரம்</td>
+					<td>E/O மாற்றத்தை package-க்குள்</td>
+					<td>42, 56, 61</td>
+			</tr>
+			<tr>
+					<td>Processing-in-memory</td>
+					<td>தரவு நகர்வின் ஆற்றல், வெளி bandwidth</td>
+					<td>கணக்கை நினைவகத்துக்குள்</td>
+					<td>10, 35, 57, 58</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<p>(பயிற்சிகளில் புதிதாக வரும் உள்ளீட்டு எண்கள், மூலத்துடன் குறிக்கப்பட்டவை தவிர, எடுத்துக்காட்டு மதிப்புகள்.)</p>
+<ol>
+<li>12 HBM stack-கள், ஒவ்வொன்றும் 1024 பிட், ஒரு pin-க்கு 8 Gb/s (எடுத்துக்காட்டு மதிப்புகள்). மொத்த bandwidth?
+<em>விடை:</em> 12 × 1,024 × 8 ÷ 8 = 12,288 GB/s ≈ 12.3 TB/s.</li>
+<li>102.4 Tb/s switch, I/O 4 pJ/பிட். I/O ஆற்றல்?
+<em>விடை:</em> 102.4 × 10¹² × 4 × 10⁻¹² ≈ 410 W.</li>
+<li>மேலே உள்ள PIM மாதிரியில், நகர்வு 100 → 20 அலகுகள் ஆனால் கணக்கு 1 → 3 அலகுகள் (நினைவக process-இல் logic திறன் குறைவு) என்றால் விகிதம்?
+<em>விடை:</em> 101 ÷ 23 ≈ 4.4 மடங்கு — இன்னும் லாபம், ஆனால் பாதிக்கும் குறைவு.</li>
+</ol>
+<h2 id="தடரசசயன-நல">தொடர்ச்சியான நூல்<a class="anchor" href="#%e0%ae%a4%e0%ae%9f%e0%ae%b0%e0%ae%9a%e0%ae%9a%e0%ae%af%e0%ae%a9-%e0%ae%a8%e0%ae%b2">#</a></h2>
+<p>ஒவ்வொரு திசையும் தொடர் pattern மீண்டும்: பிணைப்புக் கட்டுப்பாட்டைத் துல்லியமாகப் பெயரிடுங்கள், பிறகு கடினமாகத் தள்ளுவது மட்டும் அல்லாமல் அமைப்பை மாற்றுங்கள். இயந்திர மாறுதல் கட்டுப்படுத்தியபோது relays குழாய்களுக்கு வழிவிட்டன; ஆற்றல் மற்றும் நம்பகத்தன்மை கட்டுப்படுத்தியபோது குழாய்கள் டிரான்சிஸ்டர்களுக்கு; clock சுவர் கட்டுப்படுத்தியபோது single-core scaling multicore-க்கு; yield கட்டுப்படுத்தியபோது monolithic dies chiplets-க்கு. நினைவக இயக்கம் — compute throughput மட்டும் அல்ல — மிகப் பெரிய AI workloads-க்குக் கட்டுப்படுத்துகிறது, அதனால்தான் packaging, package அருகில் optics மற்றும் நினைவகத்திற்கு அருகில் compute நேரடி பதில்கள்.</p>
+<p>ரிலேக்களிலிருந்து attention வரை: தொழில்நுட்பம் ஒவ்வொரு படியிலும் அங்கீகாரத்திற்கு அப்பால் மாறியது. பொறியியல் தர்க்கம் — உண்மையான கட்டுப்பாட்டை அடையாளம் காணுங்கள், பிறகு கட்டமைப்பை மாற்றுங்கள் — மாறவில்லை, மற்றும் அது மாறும் என எதிர்பார்க்க வலுவான காரணம் இல்லை.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>நினைவகத்துக்குள் கணக்கு</td>
+					<td>processing-in-memory (PIM)</td>
+			</tr>
+			<tr>
+					<td>நினைவக வங்கி</td>
+					<td>memory bank</td>
+			</tr>
+			<tr>
+					<td>உள் / வெளி அலைக்கற்றை</td>
+					<td>internal / external bandwidth</td>
+			</tr>
+			<tr>
+					<td>தொடராக்கி / இணையாக்கி</td>
+					<td>serializer / deserializer (SerDes)</td>
+			</tr>
+			<tr>
+					<td>மின்-ஒளி மாற்றம்</td>
+					<td>electrical-optical (E/O) conversion</td>
+			</tr>
+			<tr>
+					<td>சிலிகான் ஒளியியல்</td>
+					<td>silicon photonics</td>
+			</tr>
+			<tr>
+					<td>ஒரே பொதியுறை ஒளியியல்</td>
+					<td>co-packaged optics</td>
+			</tr>
+			<tr>
+					<td>செருகக்கூடிய ஒளி மாற்றி</td>
+					<td>pluggable transceiver</td>
+			</tr>
+			<tr>
+					<td>சிறு சில்லு முடுக்கி</td>
+					<td>chiplet accelerator</td>
+			</tr>
+			<tr>
+					<td>தரவு நகர்வு</td>
+					<td>data movement</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%AE%85%E0%AE%A4%E0%AF%81&#43;%E0%AE%8E%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AF%87&#43;%E0%AE%AA%E0%AF%8B%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AE%A4%E0%AF%81&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F62-where-it-s-headed%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F62-where-it-s-headed.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F62-where-it-s-headed.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Datacenter அளவில் Interconnect</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/63-attention-is-all-you-need/" class="flex align-center">
+        <span>Attention Is All You Need</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#chiplet-ai-accelerators">Chiplet AI Accelerators</a></li>
+    <li><a href="#package-கக-அரகல-optics">Package-க்கு அருகில் Optics</a></li>
+    <li><a href="#processing-in-memory">Processing-in-Memory</a></li>
+    <li><a href="#மனற-தசகள-மனற-கணகககள">மூன்று திசைகள், மூன்று கணக்குகள்</a>
+      <ul>
+        <li><a href="#1-chiplet-ai-accelerator-yield--bandwidth-ஒனறக">1. Chiplet AI accelerator: yield + bandwidth ஒன்றாக</a></li>
+        <li><a href="#2-optics-package-கக-அரகல-io-ஆறறல-கணகக">2. Optics package-க்கு அருகில்: I/O ஆற்றல் கணக்கு</a></li>
+        <li><a href="#3-processing-in-memory-நகரவன-ஆறறல-வடடவத">3. Processing-in-memory: நகர்வின் ஆற்றலை வெட்டுவது</a></li>
+        <li><a href="#மனறலம-ஒர-களவ">மூன்றிலும் ஒரே கேள்வி</a></li>
+      </ul>
+    </li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#தடரசசயன-நல">தொடர்ச்சியான நூல்</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

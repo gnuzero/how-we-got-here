@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Time-sharing-க்கு isolation தேவை — virtual memory ஒவ்வொரு process-க்கும் இயந்திரத்தைச் சொந்தமாக்கிய மாயையைக் கொடுக்கிறது">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/24-virtual-memory-and-multitasking/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Virtual Memory மற்றும் Multitasking">
+	<meta property="og:description" content="Time-sharing-க்கு isolation தேவை — virtual memory ஒவ்வொரு process-க்கும் இயந்திரத்தைச் சொந்தமாக்கிய மாயையைக் கொடுக்கிறது">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Virtual Memory மற்றும் Multitasking">
+	<meta itemprop="description" content="Time-sharing-க்கு isolation தேவை — virtual memory ஒவ்வொரு process-க்கும் இயந்திரத்தைச் சொந்தமாக்கிய மாயையைக் கொடுக்கிறது">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="2182">
+
+<title>Virtual Memory மற்றும் Multitasking • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/24-virtual-memory-and-multitasking/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/24-virtual-memory-and-multitasking/" title="Virtual Memory and Multitasking">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/24-virtual-memory-and-multitasking/" title="หน่วยความจำเสมือนและการมัลติทาสก์">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/24-virtual-memory-and-multitasking/" title="අතථ්‍ය මතකය සහ බහුකාර්යතාව">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/24-virtual-memory-and-multitasking/" title="Memoria virtuală și multitaskingul">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/24-virtual-memory-and-multitasking/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/24-virtual-memory-and-multitasking/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/24-virtual-memory-and-multitasking/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="active">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Virtual Memory மற்றும் Multitasking</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மய-மய">மைய மாயை</a></li>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#ஒர-மகவரய-மழபயரததல-படபபடயக">ஒரு முகவரியை மொழிபெயர்த்தல்: படிப்படியாக</a></li>
+    <li><a href="#page-table-எவவளவ-பரயத-பலநல-அடடவணகள">Page table எவ்வளவு பெரியது? பலநிலை அட்டவணைகள்</a></li>
+    <li><a href="#tlb-மழபயரபபககன-cache">TLB: மொழிபெயர்ப்புக்கான Cache</a></li>
+    <li><a href="#pte-ககள-எனன-இரககறத">PTE-க்குள் என்ன இருக்கிறது</a></li>
+    <li><a href="#pages-faults-swap">Pages, Faults, Swap</a></li>
+    <li><a href="#page-fault-ஒர-படபபடயன-சவட">Page Fault: ஒரு படிப்படியான சுவடு</a></li>
+    <li><a href="#multitasking-context-switch-எனன-சலவகறத">Multitasking: Context Switch என்ன செலவாகிறது</a></li>
+    <li><a href="#isolation-பதகபபக">Isolation பாதுகாப்பாக</a></li>
+    <li><a href="#இத-எஙக-பகறத">இது எங்கே போகிறது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Virtual Memory மற்றும் Multitasking
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Time-sharing (பதிவு 22) பல process-கள் ஒரே இயந்திரத்தில் — தோற்றத்தில் ஒரே நேரத்தில் — ஓட வேண்டும். உடனடி பிரச்சினை: ஒவ்வொரு process-ம் எந்த physical முகவரியையும் சுதந்திரமாகப் படித்து எழுத முடிந்தால், ஒரு பிழை அல்லது தீங்கிழைக்கும் நிரல் மற்றொன்றின் தரவை, அல்லது OS தன்னைக் கெடுக்கலாம். Virtual memory ஒவ்வொரு process-க்கும் முழு address space-ஐச் <em>சொந்தமாக்கிய</em> மாயையைக் கொடுத்து அதைத் தடுக்கிறது, OS கீழே உண்மையை நிர்வகிக்கும்போது.</p>
+<p>தமிழில் இந்தத் தலைப்புக்குக் கிடைப்பது பெரும்பாலும் &ldquo;நினைவக மேலாண்மை&rdquo;, &ldquo;page&rdquo; என்ற அறிமுக வரையறைகள் மட்டுமே (பள்ளிப் பாடநூலின் ஒரு பகுதி, தமிழ் விக்கிப்பீடியாவில் &ldquo;page&rdquo; பற்றிய ஒரு சிறு கட்டுரை). ஒரு முகவரி எப்படி மொழிபெயர்க்கப்படுகிறது, page table ஏன் பல நிலைகளாக அமைகிறது, TLB ஏன் தேவை, page fault-இன்போது உண்மையில் என்ன நடக்கிறது, context switch என்ன செலவாகிறது — இவற்றுக்கு எண்களோடு கூடிய தமிழ் எழுத்து விளக்கம் இந்தத் தணிக்கையில் கிடைக்கவில்லை. இந்தப் பக்கம் அவற்றை அடிப்படையிலிருந்து விளக்குகிறது.</p>
+<h2 id="மய-மய">மைய மாயை<a class="anchor" href="#%e0%ae%ae%e0%ae%af-%e0%ae%ae%e0%ae%af">#</a></h2>
+<p>ஒவ்வொரு process-ம் முழு virtual address space-ஐப் பார்க்கிறது — 64-பிட் அமைப்பில், physical RAM-ஐ விட மிகப் பெரியது. அது ஒரு virtual முகவரியைக் குறிப்பிடும்போது, வன்பொருள் (Memory Management Unit, அல்லது MMU) OS பராமரிக்கும் page table வழியாக physical முகவரிக்கு மொழிபெயர்க்கிறது. இரண்டு process-களும் &ldquo;virtual முகவரி 0x1000&rdquo;-ஐக் குறிப்பிட்டு இரண்டு வெவ்வேறு physical frame-களைத் தாக்கலாம் — ஒன்று மற்றொன்றின் நினைவகத்தைப் பார்க்க முடியாது, ஒவ்வொரு process-இன் உள்ளேயிருந்தும் சாதாரண, தனிப்பட்ட உரிமை போல் தெரிந்தாலும்.</p>
+<h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>முகவரி</strong> (address) — நினைவகத்தில் ஒரு பைட்டின் இடத்தைக் குறிக்கும் எண். 32-பிட் முகவரி 2³² = 4,294,967,296 வெவ்வேறு பைட்டுகளைக் குறிக்க முடியும் (4 GiB).</li>
+<li><strong>முகவரி வெளி</strong> (address space) — ஒரு process பயன்படுத்தக்கூடிய எல்லா முகவரிகளின் தொகுப்பு.</li>
+<li><strong>Virtual முகவரி</strong> (மெய்நிகர் முகவரி) — நிரல் தன் அறிவுறுத்தல்களில் பயன்படுத்தும் முகவரி. <strong>Physical முகவரி</strong> (இயல் முகவரி) — RAM சிப்களுக்கு உண்மையில் அனுப்பப்படும் முகவரி.</li>
+<li><strong>Page</strong> (பக்கம்) — virtual முகவரி வெளியின் நிலையான அளவுத் துண்டு; <strong>frame</strong> (சட்டகம்) — physical RAM-இன் அதே அளவுத் துண்டு. ஒரு page ஒரு frame-இல் &ldquo;அமர்கிறது&rdquo;.</li>
+<li><strong>Page table</strong> (பக்க அட்டவணை) — &ldquo;இந்த virtual page எந்த frame-இல் உள்ளது&rdquo; என்று சொல்லும், OS பராமரிக்கும் அட்டவணை. ஒவ்வொரு வரியும் ஒரு <strong>PTE</strong> (page table entry).</li>
+<li><strong>MMU</strong> (Memory Management Unit, நினைவக மேலாண்மை அலகு) — ஒவ்வொரு நினைவக அணுகலிலும் virtual முகவரியை physical முகவரியாக மாற்றும் CPU-க்குள் உள்ள வன்பொருள்.</li>
+</ul>
+<p>முக்கியமான பிரிவு: <em>கொள்கை</em> (எந்த page எந்த frame-இல், யாருக்கு அனுமதி) OS-இன் வேலை; <em>ஒவ்வொரு அணுகலுக்குமான மொழிபெயர்ப்பு</em> வன்பொருளின் வேலை. மென்பொருள் ஒவ்வொரு load/store-ஐயும் சரிபார்த்தால் இயந்திரம் நின்றுவிடும்; அதனால்தான் MMU.</p>
+<h2 id="ஒர-மகவரய-மழபயரததல-படபபடயக">ஒரு முகவரியை மொழிபெயர்த்தல்: படிப்படியாக<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%ae%e0%ae%95%e0%ae%b5%e0%ae%b0%e0%ae%af-%e0%ae%ae%e0%ae%b4%e0%ae%aa%e0%ae%af%e0%ae%b0%e0%ae%a4%e0%ae%a4%e0%ae%b2-%e0%ae%aa%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%af%e0%ae%95">#</a></h2>
+<p>32-பிட் virtual முகவரிகள், 4 KiB (4096 பைட்) pages என்று எடுத்துக்கொள்வோம். 4096 = 2¹², எனவே ஒரு page-க்குள் எந்த பைட் என்பதைச் சொல்ல <strong>கீழ் 12 பிட்கள்</strong> போதும் — அதுவே <strong>offset</strong> (இடப்பெயர்ச்சி). மீதமுள்ள <strong>மேல் 20 பிட்கள்</strong> எந்த page என்று சொல்லும் — <strong>VPN</strong> (virtual page number).</p>
+<p><strong>எடுத்துக்காட்டு</strong> (எண்கள் விளக்கத்துக்கான எடுத்துக்காட்டு மதிப்புகள்): virtual முகவரி <strong>0x00403A7C</strong>.</p>
+<pre tabindex="0"><code>0x00403A7C = 0000 0000 0100 0000 0011 | 1010 0111 1100
+             &lt;------ VPN (20 பிட்) ---&gt;  &lt;- offset (12) -&gt;
+VPN    = 0x00403 = 1027
+offset = 0xA7C   = 2684</code></pre><p>Page table-இல் வரி 1027-ஐப் பார்க்கிறோம். அங்கே &ldquo;frame 0x1F2&rdquo; (= 498) என்று இருக்கிறது என்று வைத்துக்கொள்வோம். Physical முகவரி = frame எண்ணை offset-க்கு முன் ஒட்டுவது:</p>
+<pre tabindex="0"><code>physical = 0x1F2 × 4096 + 0xA7C
+         = 498 × 4096 + 2684
+         = 2,039,808 + 2684 = 2,042,492 = 0x1F2A7C</code></pre><p>Offset மாறவே இல்லை என்பதைக் கவனியுங்கள் — மொழிபெயர்ப்பு page எண்ணை மட்டுமே மாற்றுகிறது. அதனால்தான் page அளவு 2-இன் அடுக்காக இருக்கிறது: பிரிப்பதும் ஒட்டுவதும் வெறும் பிட் வெட்டுதல், வகுத்தல் அல்ல.</p>
+<p>இப்போது இரண்டு process-கள். A-வின் page table-இல் VPN 1027 → frame 498; B-யின் page table-இல் VPN 1027 → frame 7301 (எடுத்துக்காட்டு மதிப்புகள்). இரண்டும் &ldquo;0x00403A7C&rdquo; என்று எழுதுகின்றன; A-வின் எழுத்து physical 0x1F2A7C-க்குச் செல்கிறது, B-யினுடையது முற்றிலும் வேறு இடத்துக்கு. இதுதான் மேலே சொன்ன &ldquo;மாயை&rdquo; — ஒவ்வொரு process-க்கும் சொந்த page table, எனவே சொந்த உலகம். Context switch-இன்போது OS செய்வது, MMU எந்த அட்டவணையைப் பார்க்க வேண்டும் என்று சொல்லும் ஒரு பதிவேட்டை (x86-இல் CR3) மாற்றுவது.</p>
+<h2 id="page-table-எவவளவ-பரயத-பலநல-அடடவணகள">Page table எவ்வளவு பெரியது? பலநிலை அட்டவணைகள்<a class="anchor" href="#page-table-%e0%ae%8e%e0%ae%b5%e0%ae%b5%e0%ae%b3%e0%ae%b5-%e0%ae%aa%e0%ae%b0%e0%ae%af%e0%ae%a4-%e0%ae%aa%e0%ae%b2%e0%ae%a8%e0%ae%b2-%e0%ae%85%e0%ae%9f%e0%ae%9f%e0%ae%b5%e0%ae%a3%e0%ae%95%e0%ae%b3">#</a></h2>
+<p>தட்டையான (flat) அட்டவணை: 20-பிட் VPN → 2²⁰ = 1,048,576 வரிகள்; ஒவ்வொரு PTE-யும் 4 பைட் என்றால் <strong>4 MiB ஒரு process-க்கு</strong> — நிரல் மூன்றே page-களைப் பயன்படுத்தினாலும். 100 process-கள் = 400 MiB வெறும் அட்டவணைகளுக்கு. ஏற்க முடியாது.</p>
+<p>தீர்வு: அட்டவணையையே pages-ஆக வெட்டி, பயன்படாத பகுதிகளை உருவாக்காமலே விடுவது. செவ்வியல் 32-பிட் x86 திட்டம் (PAE இல்லாமல்) 20-பிட் VPN-ஐ 10 + 10 ஆகப் பிரிக்கிறது:</p>
+<pre tabindex="0"><code>| 10 பிட்: directory index | 10 பிட்: table index | 12 பிட்: offset |</code></pre><p>மேல் நிலை <strong>page directory</strong> 1024 வரிகள் × 4 பைட் = 4 KiB; ஒவ்வொரு வரியும் ஒரு இரண்டாம் நிலை page table-ஐச் சுட்டுகிறது (அதுவும் 4 KiB, 1024 PTE-கள், மொத்தம் 1024 × 4 KiB = 4 MiB virtual வெளியை உள்ளடக்கும்). நம் VPN 0x00403 = <code>0000000001 0000000011</code> → directory index 1, table index 3 (சரிபார்ப்பு: 1 × 1024 + 3 = 1027 ✓).</p>
+<p>குறியீடு கீழ் முகவரிகளிலும், stack மேல் முகவரிகளிலும் உள்ள ஒரு சிறிய நிரலுக்கு: 1 directory + 2 page tables = 3 × 4 KiB = <strong>12 KiB</strong> — 4 MiB-க்குப் பதிலாக. பயன்படாத directory வரிகள் &ldquo;not present&rdquo; என்று இருக்கின்றன; அவற்றுக்கு அட்டவணையே இல்லை.</p>
+<p>64-பிட் x86 (x86-64) இதையே ஆழமாக்குகிறது: பொதுவான அமைப்பில் 48-பிட் virtual முகவரி = 9 + 9 + 9 + 9 + 12. ஒவ்வொரு நிலை அட்டவணையும் 512 வரிகள் × 8 பைட் = 4096 பைட் — சரியாக ஒரு page. 2⁴⁸ பைட் = 256 TiB virtual வெளி. விலை: ஒரு மொழிபெயர்ப்புக்கு நான்கு அட்டவணைகளைப் படிக்க வேண்டும் — <strong>page walk</strong> — அதாவது ஒரு load-க்கு நான்கு கூடுதல் நினைவக அணுகல்கள்.</p>
+<h2 id="tlb-மழபயரபபககன-cache">TLB: மொழிபெயர்ப்புக்கான Cache<a class="anchor" href="#tlb-%e0%ae%ae%e0%ae%b4%e0%ae%aa%e0%ae%af%e0%ae%b0%e0%ae%aa%e0%ae%aa%e0%ae%95%e0%ae%95%e0%ae%a9-cache">#</a></h2>
+<p>ஒவ்வொரு load-க்கும் நான்கு கூடுதல் அணுகல்கள் என்றால் நினைவகம் ஐந்து மடங்கு மெதுவாகும். பதில் பதிவு 15-இன் அதே யோசனை: அண்மையில் பயன்பட்ட மொழிபெயர்ப்புகளை ஒரு சிறிய, வேகமான cache-இல் வையுங்கள். அதன் பெயர் <strong>TLB</strong> (translation lookaside buffer). TLB hit ஆனால் page walk இல்லை.</p>
+<p><strong>கணக்கு</strong> (எடுத்துக்காட்டு மதிப்புகள்): ஒரு நினைவக அணுகல் 100 ns; TLB தேடல் நேரம் புறக்கணிக்கத்தக்கது; miss-இல் 4-நிலை walk (4 × 100 ns) பிறகு உண்மையான அணுகல் (100 ns).</p>
+<blockquote class='book-hint '>
+<p>சராசரி = hit விகிதம் × 100 + miss விகிதம் × (400 + 100)</p>
+</blockquote><ul>
+<li>TLB இல்லை: ஒவ்வொரு அணுகலும் 500 ns.</li>
+<li>99% hit: 0.99 × 100 + 0.01 × 500 = 99 + 5 = <strong>104 ns</strong> — walk-இன் செலவு கிட்டத்தட்ட மறைகிறது.</li>
+</ul>
+<p><strong>TLB reach</strong> (TLB ஒரே நேரத்தில் உள்ளடக்கும் நினைவகம்) = வரிகள் × page அளவு. 64 வரிகள் (எடுத்துக்காட்டு மதிப்பு) × 4 KiB = 256 KiB மட்டுமே. அதே 64 வரிகள் 2 MiB <strong>huge pages</strong>-உடன் = 128 MiB. பெரிய தரவுத்தளங்களும் அறிவியல் கணக்குகளும் huge pages கேட்பதற்கு இதுவே காரணம்.</p>
+<p>TLB-இல் ஒரு சிக்கல்: context switch-இல் page table மாறுகிறது, எனவே பழைய process-இன் மொழிபெயர்ப்புகள் தவறாகிவிடும். எளிய தீர்வு TLB-ஐ முழுவதும் அழிப்பது (flush) — புதிய process மீண்டும் miss-களிலிருந்து தொடங்குகிறது. நவீன CPU-கள் ஒவ்வொரு TLB வரியிலும் ஒரு process அடையாளக் குறியை (ASID; x86-இல் PCID) வைத்து அந்த flush-ஐத் தவிர்க்கின்றன.</p>
+<h2 id="pte-ககள-எனன-இரககறத">PTE-க்குள் என்ன இருக்கிறது<a class="anchor" href="#pte-%e0%ae%95%e0%ae%95%e0%ae%b3-%e0%ae%8e%e0%ae%a9%e0%ae%a9-%e0%ae%87%e0%ae%b0%e0%ae%95%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>ஒரு PTE frame எண்ணை மட்டுமல்ல, சில கொடிப் பிட்களையும் (flag bits) சுமக்கிறது. x86-இல் முக்கியமானவை:</p>
+<table>
+	<thead>
+			<tr>
+					<th>பிட்</th>
+					<th>பொருள்</th>
+					<th>யார் பயன்படுத்துகிறார்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Present</td>
+					<td>இந்த page இப்போது RAM-இல் உள்ளதா</td>
+					<td>0 என்றால் அணுகல் → page fault</td>
+			</tr>
+			<tr>
+					<td>Read/Write</td>
+					<td>எழுத அனுமதி உண்டா</td>
+					<td>குறியீட்டு pages-ஐப் படிக்க-மட்டும் ஆக்க</td>
+			</tr>
+			<tr>
+					<td>User/Supervisor</td>
+					<td>சாதாரண நிரல் அணுகலாமா</td>
+					<td>kernel நினைவகத்தைப் பாதுகாக்க</td>
+			</tr>
+			<tr>
+					<td>Accessed</td>
+					<td>அண்மையில் தொடப்பட்டதா</td>
+					<td>எந்த page-ஐ வெளியேற்றலாம் என OS தீர்மானிக்க</td>
+			</tr>
+			<tr>
+					<td>Dirty</td>
+					<td>எழுதப்பட்டதா</td>
+					<td>swap-க்கு எழுத வேண்டுமா என்று அறிய</td>
+			</tr>
+			<tr>
+					<td>NX (no-execute)</td>
+					<td>இதை அறிவுறுத்தலாக ஓட்டலாமா</td>
+					<td>தரவுப் பகுதியில் தீங்குக் குறியீடு ஓடுவதைத் தடுக்க</td>
+			</tr>
+	</tbody>
+</table>
+<p>கீழே உள்ள &ldquo;Isolation பாதுகாப்பாக&rdquo; பகுதி பேசும் வன்பொருள் சரிபார்ப்பு இதுதான்: அனுமதி இல்லாத ஒவ்வொரு அணுகலையும் MMU அதே கணத்தில் பிடித்து OS-க்கு trap செய்கிறது.</p>
+<h2 id="pages-faults-swap">Pages, Faults, Swap<a class="anchor" href="#pages-faults-swap">#</a></h2>
+<p>நினைவகம் நிலையான அளவு pages-ஆகப் பிரிக்கப்படுகிறது (பல கட்டமைப்புகளில் பொதுவாக 4 KB; பெரிய &ldquo;huge pages&rdquo; உள்ளன). Page table virtual pages-ஐ physical frames-க்கு வரைபடமாக்குகிறது. முக்கியமாக, ஒவ்வொரு virtual page-க்கும் <em>எல்லா நேரத்திலும்</em> frame தேவையில்லை — &ldquo;not present&rdquo; எனக் குறிக்கவும், குறிப்பு page fault ஆக OS-க்குள் trap ஆகும். OS பக்கத்தை disk-இலிருந்து ஏற்றலாம் (குறியீடு மற்றும் தரவின் lazy கொண்டுவருதல்), அல்லது உண்மையான பிழையாகக் கருதலாம் (ஒருபோதும் வழங்கப்படாத நினைவகத்தை அணுகுதல் — segmentation fault-க்கு ஒரு பொதுவான பாதை).</p>
+<p>அதே பொறிமுறை swapping-ஐ இயக்குகிறது: நினைவக அழுத்தத்தின் கீழ், குளிர்ந்த page-ஐ disk-இல் எழுதி, not-present எனக் குறித்து, frame-ஐ விடுவிக்கவும். அமைப்பு physically இருப்பதை விட அதிக RAM இருப்பது போல் நடந்துகொள்கிறது — அந்த page மீண்டும் தொடப்பட்டால் disk-வேகம் செலவில். ஏராளமான RAM கனமான swapping-ஐ முன்பு இருந்ததை விடக் குறைவாக ஆக்குகிறது; பொறிமுறை அடிப்படையாகவே இருக்கிறது.</p>
+<h2 id="page-fault-ஒர-படபபடயன-சவட">Page Fault: ஒரு படிப்படியான சுவடு<a class="anchor" href="#page-fault-%e0%ae%92%e0%ae%b0-%e0%ae%aa%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%af%e0%ae%a9-%e0%ae%9a%e0%ae%b5%e0%ae%9f">#</a></h2>
+<p>நிரல் ஒரு முகவரியைத் தொடுகிறது; அதன் PTE-இல் Present = 0. என்ன நடக்கிறது:</p>
+<table>
+	<thead>
+			<tr>
+					<th>படி</th>
+					<th>யார்</th>
+					<th>என்ன</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>CPU</td>
+					<td>அறிவுறுத்தல் virtual முகவரியை அணுக முயல்கிறது</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>MMU</td>
+					<td>TLB miss → page walk → PTE-இல் Present = 0</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>CPU</td>
+					<td>அறிவுறுத்தலை நடுவில் நிறுத்தி, <strong>page fault</strong> trap மூலம் kernel-க்குள் தாவுகிறது</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>Kernel</td>
+					<td>இந்த முகவரி process-க்கு ஒதுக்கப்பட்ட பகுதியா என்று தன் பதிவுகளில் சரிபார்க்கிறது</td>
+			</tr>
+			<tr>
+					<td>5a</td>
+					<td>Kernel (செல்லுபடி)</td>
+					<td>ஒரு frame-ஐ ஒதுக்கி, தேவைப்பட்டால் disk-இலிருந்து உள்ளடக்கத்தைப் படித்து, PTE-ஐ நிரப்பி Present = 1 ஆக்குகிறது</td>
+			</tr>
+			<tr>
+					<td>5b</td>
+					<td>Kernel (செல்லாதது)</td>
+					<td>process-க்கு segmentation fault சமிக்ஞை (Linux-இல் SIGSEGV) — பொதுவாக நிரல் முடிகிறது</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>CPU</td>
+					<td>அதே அறிவுறுத்தலை மீண்டும் ஓட்டுகிறது — இம்முறை வெற்றி</td>
+			</tr>
+	</tbody>
+</table>
+<p>படி 6 நுட்பமானது: fault-க்குப் பிறகு அறிவுறுத்தல் <em>எதுவும் நடக்காதது போல்</em> மீண்டும் தொடங்க வேண்டும். அதற்கு CPU துல்லியமான விதிவிலக்குகளை (precise exceptions, பதிவு 16) வழங்க வேண்டும்.</p>
+<p>Disk படிப்பு தேவைப்படும் fault <strong>major fault</strong>; frame மட்டும் ஒதுக்கினால் போதுமானது (எடுத்துக்காட்டாக முதன்முறை தொடப்படும் பூஜ்ய நினைவகம், அல்லது ஏற்கனவே RAM-இல் உள்ள பகிரப்பட்ட நூலகப் பக்கம்) <strong>minor fault</strong>.</p>
+<p><strong>Page fault எவ்வளவு விலை?</strong> (எடுத்துக்காட்டு மதிப்புகள்) நினைவக அணுகல் 100 ns; disk-இலிருந்து page கொண்டுவர 8 ms = 8,000,000 ns. ஒரு லட்சம் அணுகல்களுக்கு ஒருமுறை (p = 1/100,000) major fault என்றால்:</p>
+<blockquote class='book-hint '>
+<p>சராசரி = 100 + p × 8,000,000 = 100 + 80 = <strong>180 ns</strong></p>
+</blockquote><p>ஒரு லட்சத்தில் ஒன்று என்ற &ldquo;அரிய&rdquo; நிகழ்வே நினைவகத்தை 80% மெதுவாக்குகிறது. மந்தநிலையை 10%-க்குள் (110 ns) வைக்க: p × 8,000,000 ≤ 10 → p ≤ 1 / 800,000. அதனால்தான் RAM போதாதபோது இயந்திரம் திடீரென ஊர்ந்து செல்கிறது — <strong>thrashing</strong>: நேரம் முழுவதும் page-களை உள்ளும் வெளியும் நகர்த்துவதில் போகிறது.</p>
+<p><strong>Demand paging</strong> இதன் நல்ல பக்கம்: ஒரு நிரல் தொடங்கும்போது அதன் முழுக் குறியீடும் ஏற்றப்படுவதில்லை; முதன்முறை தொடப்படும் page மட்டும் fault வழியாக வருகிறது. <strong>Copy-on-write</strong> இன்னொரு பயன்: Unix <code>fork()</code> பெற்றோர் process-இன் pages-ஐ நகலெடுக்காமல், இரு process-களின் PTE-களையும் அதே frames-க்கு, படிக்க-மட்டும் என்று அமைக்கிறது; யாராவது எழுத முயலும்போது மட்டும் fault வந்து அந்த ஒரு page நகலெடுக்கப்படுகிறது.</p>
+<h2 id="multitasking-context-switch-எனன-சலவகறத">Multitasking: Context Switch என்ன செலவாகிறது<a class="anchor" href="#multitasking-context-switch-%e0%ae%8e%e0%ae%a9%e0%ae%a9-%e0%ae%9a%e0%ae%b2%e0%ae%b5%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p><strong>Process</strong> என்பது ஓடும் நிரல் + அதன் நிலை. அந்த நிலை — <strong>context</strong> — பதிவேடுகள், நிரல் கவுண்டர் (PC), stack pointer, மற்றும் page table-இன் அடிப்படை முகவரி. ஒரு CPU core ஒரு கணத்தில் ஒரு process-ஐ மட்டுமே ஓட்டுகிறது. <strong>Context switch</strong>: ஒரு process-இன் context-ஐச் சேமித்து மற்றொன்றினுடையதை ஏற்றுவது.</p>
+<p>யார் தூண்டுகிறார்கள்? ஒரு <strong>timer interrupt</strong> — வன்பொருள் கடிகாரம் சீரான இடைவெளியில் CPU-வை kernel-க்குள் இழுக்கிறது; kernel-இன் scheduler அடுத்து யார் என்று தீர்மானிக்கிறது. ஒரு process-க்கு ஒருமுறைக்குக் கிடைக்கும் நேரம் <strong>time slice</strong> (quantum).</p>
+<p><strong>Round-robin சுவடு</strong> (எடுத்துக்காட்டு மதிப்புகள்): P1-க்கு 3 slices வேலை, P2-க்கு 1, P3-க்கு 2.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Slice</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ஓடுவது</td>
+					<td>P1</td>
+					<td>P2</td>
+					<td>P3</td>
+					<td>P1</td>
+					<td>P3</td>
+					<td>P1</td>
+			</tr>
+			<tr>
+					<td>முடிந்தது</td>
+					<td>—</td>
+					<td>P2</td>
+					<td>—</td>
+					<td>—</td>
+					<td>P3</td>
+					<td>P1</td>
+			</tr>
+	</tbody>
+</table>
+<p>வெளியிலிருந்து பார்த்தால் மூன்றும் &ldquo;ஒரே நேரத்தில்&rdquo; முன்னேறுகின்றன — பதிவு 22-இன் time-sharing மாயை.</p>
+<p><strong>செலவுக் கணக்கு</strong> (எடுத்துக்காட்டு மதிப்புகள்): ஒரு switch = 5 µs (பதிவேடுகளைச் சேமித்தல், scheduler, page table மாற்றம், பிறகு குளிர்ந்த cache/TLB-இன் miss-கள்). Overhead = switch / (slice + switch):</p>
+<ul>
+<li>slice 10 ms: 5 / (10,000 + 5) ≈ <strong>0.05%</strong> — கண்ணுக்குத் தெரியாது.</li>
+<li>slice 50 µs: 5 / (50 + 5) ≈ <strong>9.1%</strong> — CPU நேரத்தில் பத்தில் ஒரு பங்கு வெறும் மாற்றங்களுக்கு.</li>
+</ul>
+<p>சிறிய slice = விரைவான பதிலளிப்பு (தட்டச்சு செய்தவுடன் எழுத்து தோன்றும்); பெரிய slice = குறைந்த வீணடிப்பு. ஒவ்வொரு scheduler-உம் இந்த இரண்டுக்கும் இடையே சமரசம் செய்கிறது. நேரடிச் செலவைவிட மறைமுகச் செலவு பெரும்பாலும் பெரியது: புதிய process-இன் தரவு cache-இலும் TLB-இலும் இல்லை, எனவே அது முதல் சில நூறு மைக்ரோவிநாடிகள் miss-களோடு தவழ்கிறது.</p>
+<h2 id="isolation-பதகபபக">Isolation பாதுகாப்பாக<a class="anchor" href="#isolation-%e0%ae%aa%e0%ae%a4%e0%ae%95%e0%ae%aa%e0%ae%aa%e0%ae%95">#</a></h2>
+<p>Multitasking-ஐ இயக்குவதற்கு அப்பால், மொழிபெயர்ப்பு ஒரு பாதுகாப்பு எல்லை. ஒரு process-க்கு மற்றொரு process-இன் physical நினைவகத்தை முகவரியிட <em>பொறிமுறை</em> இல்லை — அதன் page table-இல் அங்கே வரைபடமாகும் செல்லுபடியான virtual முகவரி இல்லை. நன்கு நடந்துகொள்ளும், sandboxed process ஒன்றில் நினைவகக் கெடுதல் (கொள்கையளவில்) தொடர்பில்லாத process-ஐப் படிக்கவோ கெடுக்கவோ விடாது; isolation வன்பொருள்-சரிபார்க்கப்பட்ட முகவரி மொழிபெயர்ப்பு, மரபு அல்ல.</p>
+<h2 id="இத-எஙக-பகறத">இது எங்கே போகிறது<a class="anchor" href="#%e0%ae%87%e0%ae%a4-%e0%ae%8e%e0%ae%99%e0%ae%95-%e0%ae%aa%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>Virtual memory ஒவ்வொரு process-க்கும் தனிப்பட்ட address space கொடுக்கிறது — வலுவான உத்தரவாதம், மற்றும் கனமான ஒன்று: சொந்த kernel கட்டமைப்புகள், சொந்த page tables, அவற்றுக்கிடையே முழு context-switch செலவு. Containers (அடுத்த பதிவு) கேட்கின்றன: ஒவ்வொரு tenant-க்கும் முழு தனி kernel செலுத்தாமல், process-களுக்குத் தேவையான <em>பெரும்பாலான</em> நடைமுறை isolation-ஐப் பெற முடியுமா?</p>
+<p><strong>இப்போது முயல்க.</strong> கீழே உள்ள lab உங்கள் browser-க்குள் ஒரு உண்மையான 32-பிட் x86 Linux-ஐ (<code>uname -m</code> → <code>i686</code>) ஓட்டுகிறது. <strong>Boot VM</strong> அழுத்தி, prompt (<code>~%</code>) வந்ததும் கருப்புத் திரையைக் கிளிக் செய்து தட்டச்சு செய்யுங்கள். கீழே காட்டப்படும் வெளியீடுகள் இந்த lab-இன் அதே image-ஐ ஓட்டிப் பெற்றவை; முகவரிகளும் எண்ணிக்கைகளும் ஒவ்வொரு boot-இலும் சற்று மாறலாம்.</p>
+<ol>
+<li><strong>ஒரு process-இன் முகவரி வெளியைப் பாருங்கள்:</strong> <code>cat /proc/self/maps</code>. ஒவ்வொரு வரியும் ஒரு virtual பகுதி: முகவரி வரம்பு, அனுமதிகள் (<code>r</code> படி, <code>w</code> எழுது, <code>x</code> ஓட்டு, <code>p</code> தனிப்பட்டது), பிறகு எந்தக் கோப்பிலிருந்து. முதல் வரி ஏறக்குறைய இப்படி இருக்கும்:
+<pre tabindex="0"><code>08048000-080d8000 r-xp 00000000 00:01 6450       /bin/busybox</code></pre>இது நிரலின் குறியீடு: படிக்கலாம், ஓட்டலாம், எழுத முடியாது (<code>w</code> இல்லை — மேலே உள்ள அட்டவணையின் Read/Write பிட்). அளவைக் கணக்கிடுங்கள்: 0x080d8000 − 0x08048000 = 0x90000 = 589,824 பைட் = 576 KiB = 144 pages. கடைசி வரிகளில் <code>[stack]</code> 0xbf… பகுதியில் இருக்கும் — 32-பிட் Linux-இல் பயனர் நினைவகம் 0xC0000000-க்குக் கீழே.</li>
+<li><strong>Page அளவை உறுதிசெய்யுங்கள்:</strong> <code>grep -i pagesize /proc/self/smaps</code> → <code>KernelPageSize: 4 kB</code> மற்றும் <code>MMUPageSize: 4 kB</code>. (<code>getconf PAGESIZE</code> → <code>4096</code>.)</li>
+<li><strong>Virtual எதிர் உண்மையில் RAM-இல் இருப்பது:</strong> <code>grep -E &quot;VmSize|VmRSS|VmExe&quot; /proc/self/status</code>. எங்கள் ஓட்டத்தில் <code>VmSize: 1348 kB</code> ஆனால் <code>VmRSS: 188 kB</code> — process-இன் virtual வெளி 1348 KiB, ஆனால் இப்போது RAM frame-களில் இருப்பது 188 KiB மட்டுமே. மீதி இன்னும் தொடப்படவில்லை: demand paging-இன் நேரடிச் சான்று. <code>VmExe: 576 kB</code> படி 1-இல் நீங்கள் கணக்கிட்ட அதே எண் என்பதைக் கவனியுங்கள்.</li>
+<li><strong>Page fault-களை எண்ணுங்கள்:</strong> <code>grep pgfault /proc/vmstat</code>, பிறகு <code>ls / &gt; /dev/null</code>, பிறகு மீண்டும் <code>grep pgfault /proc/vmstat</code>. எண்ணி ஏறும் (எங்கள் ஓட்டத்தில் 1190 → 1333). புதிதாகத் தொடங்கிய ஒவ்வொரு process-உம் (<code>ls</code>, <code>grep</code> கூட) தன் pages-ஐ fault வழியாகவே பெறுகிறது. <code>pgmajfault</code> 0-இலேயே இருக்கும்: இந்த VM-இன் கோப்புகள் ஏற்கனவே RAM-இல் உள்ளன, எனவே disk படிப்பு இல்லை — எல்லாம் minor faults.</li>
+<li><strong>இரண்டு process-கள், ஒரே virtual முகவரிகள்:</strong> <code>sleep 300 &amp;</code> (பின்னணியில் ஒரு process), பிறகு <code>head -3 /proc/$!/maps</code> மற்றும் <code>head -3 /proc/self/maps</code>. இரண்டிலும் <code>/bin/busybox</code> அதே 08048000-இல்! ஒவ்வொன்றுக்கும் சொந்த page table இருப்பதால் இது மோதல் அல்ல; படிக்க-மட்டும் குறியீட்டுப் pages-ஐ OS ஒரே physical frames-இல் பகிரலாம்.</li>
+<li><strong>முகவரி சீரற்றாக்கம் (ASLR):</strong> <code>cat /proc/sys/kernel/randomize_va_space</code> → <code>2</code> (இயக்கத்தில்). <code>grep stack /proc/self/maps</code>-ஐ மூன்று முறை ஓட்டுங்கள் — ஒவ்வொரு முறையும் <code>[stack]</code> வேறு முகவரியில் (எங்களுக்கு bfbf4000, bf80f000, bf91a000). தாக்குபவர் முகவரிகளை முன்கூட்டியே ஊகிக்க முடியாமல் செய்ய இது.</li>
+<li><strong>Swap:</strong> <code>free</code> → <code>Swap: 0 0 0</code>. இந்த VM-க்கு swap இல்லை; எனவே இங்கே page-களை disk-க்குத் தள்ளும் &ldquo;Pages, Faults, Swap&rdquo; பொறிமுறையைப் பார்க்க முடியாது — ஆனால் அதே PTE Present பிட்தான் அதை இயக்குகிறது.</li>
+</ol>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=ta"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>மெய்நிகர் முகவரி / இயல் முகவரி</td>
+					<td>virtual address / physical address</td>
+			</tr>
+			<tr>
+					<td>முகவரி வெளி</td>
+					<td>address space</td>
+			</tr>
+			<tr>
+					<td>பக்கம் / சட்டகம்</td>
+					<td>page / frame</td>
+			</tr>
+			<tr>
+					<td>பக்க அட்டவணை, அட்டவணை வரி</td>
+					<td>page table, page table entry (PTE)</td>
+			</tr>
+			<tr>
+					<td>நினைவக மேலாண்மை அலகு</td>
+					<td>memory management unit (MMU)</td>
+			</tr>
+			<tr>
+					<td>இடப்பெயர்ச்சி</td>
+					<td>offset</td>
+			</tr>
+			<tr>
+					<td>பலநிலை அட்டவணை, அட்டவணை நடை</td>
+					<td>multi-level page table, page walk</td>
+			</tr>
+			<tr>
+					<td>மொழிபெயர்ப்பு cache</td>
+					<td>translation lookaside buffer (TLB)</td>
+			</tr>
+			<tr>
+					<td>பக்கப் பிழை (சிறு / பெரு)</td>
+					<td>page fault (minor / major)</td>
+			</tr>
+			<tr>
+					<td>தேவைக்கேற்ப ஏற்றல்</td>
+					<td>demand paging</td>
+			</tr>
+			<tr>
+					<td>எழுதும்போது நகல்</td>
+					<td>copy-on-write</td>
+			</tr>
+			<tr>
+					<td>சூழல் மாற்றம்</td>
+					<td>context switch</td>
+			</tr>
+			<tr>
+					<td>நேரத் துண்டு</td>
+					<td>time slice (quantum)</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ்நாடு அரசு, <em>11ஆம் வகுப்பு கணினி அறிவியல்</em>, அலகு 4: இயக்க அமைப்பின் கோட்பாட்டு கருத்துக்கள் (நினைவக மேலாண்மை அறிமுகம் — page table / MMU / swap அல்ல)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Virtual&#43;Memory&#43;%E0%AE%AE%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AF%81%E0%AE%AE%E0%AF%8D&#43;Multitasking&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F24-virtual-memory-and-multitasking%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F24-virtual-memory-and-multitasking.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F24-virtual-memory-and-multitasking.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>GNU இயக்கம் மற்றும் Linux</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="flex align-center">
+        <span>Containers மற்றும் நவீன OS Isolation</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மய-மய">மைய மாயை</a></li>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#ஒர-மகவரய-மழபயரததல-படபபடயக">ஒரு முகவரியை மொழிபெயர்த்தல்: படிப்படியாக</a></li>
+    <li><a href="#page-table-எவவளவ-பரயத-பலநல-அடடவணகள">Page table எவ்வளவு பெரியது? பலநிலை அட்டவணைகள்</a></li>
+    <li><a href="#tlb-மழபயரபபககன-cache">TLB: மொழிபெயர்ப்புக்கான Cache</a></li>
+    <li><a href="#pte-ககள-எனன-இரககறத">PTE-க்குள் என்ன இருக்கிறது</a></li>
+    <li><a href="#pages-faults-swap">Pages, Faults, Swap</a></li>
+    <li><a href="#page-fault-ஒர-படபபடயன-சவட">Page Fault: ஒரு படிப்படியான சுவடு</a></li>
+    <li><a href="#multitasking-context-switch-எனன-சலவகறத">Multitasking: Context Switch என்ன செலவாகிறது</a></li>
+    <li><a href="#isolation-பதகபபக">Isolation பாதுகாப்பாக</a></li>
+    <li><a href="#இத-எஙக-பகறத">இது எங்கே போகிறது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

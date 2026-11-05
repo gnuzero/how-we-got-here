@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on අප එතැනට පැමිණි ආකාරය</title>
+		<link>http://localhost:1478/si/posts/</link>
+		<description>Recent content in Posts on අප එතැනට පැමිණි ආකාරය</description>
+		<generator>Hugo</generator>
+		<language>si</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 15:37:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/si/posts/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>ස්තුතිය සහ මූලාශ්‍ර</title>
+				<link>http://localhost:1478/si/posts/00-credits/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/00-credits/</guid>
+				<description>පළමුව ස්තුතිය — මෙම ගමන රැඳෙන ප්‍රකාශිත මූලාශ්‍ර, දැනටමත් ඇති අන්තර්ක්‍රියාකාරී මාධ්‍ය, සහ රූප</description>
+			</item>
+			<item>
+				<title>පෙරවදන</title>
+				<link>http://localhost:1478/si/posts/00-foreword/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/00-foreword/</guid>
+				<description>මෙම මාලාව පවතින්නේ ඇයි — විද්‍යුත් යාන්ත්‍රික රිලේ වල සිට නවීන අවධානය යාන්ත්‍රණ දක්වා</description>
+			</item>
+			<item>
+				<title>යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</title>
+				<link>http://localhost:1478/si/posts/01-mechanical-electromechanical-computing/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/01-mechanical-electromechanical-computing/</guid>
+				<description>ගියර් වැඩසටහනේ අදහස බල කළේය; ඝර්ෂණය විදුලිය බල කළේය</description>
+			</item>
+			<item>
+				<title>Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</title>
+				<link>http://localhost:1478/si/posts/02-relays-and-electromechanical-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/02-relays-and-electromechanical-logic/</guid>
+				<description>Relays ද්විමය තර්කය ක්‍රියා කරන බව ඔප්පු කළේය — සහ චලනය වන ලෝහට ඉදිරියට යා නොහැකි බවද</description>
+			</item>
+			<item>
+				<title>රික්තක නල යුගය</title>
+				<link>http://localhost:1478/si/posts/03-the-vacuum-tube-era/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/03-the-vacuum-tube-era/</guid>
+				<description>නල චලනය වන කොටස් ඉවත් කළේය — එම වේගය තාපය, බලය සහ අසාර්ථකත්වය සඳහා හුවමාරු කළේය</description>
+			</item>
+			<item>
+				<title>ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</title>
+				<link>http://localhost:1478/si/posts/04-why-the-transistor-had-to-happen/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/04-why-the-transistor-had-to-happen/</guid>
+				<description>ප්‍රමාණය, බලය, විශ්වාසනීයත්වය — solid-state මාරු කිරීම නොවැළැක්විය හැකි කළ නල උඩුකුරු සීමා තුනක්</description>
+			</item>
+			<item>
+				<title>පළමු මූලධර්මවලින් අර්ධසන්නායක</title>
+				<link>http://localhost:1478/si/posts/05-semiconductors-from-first-principles/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/05-semiconductors-from-first-principles/</guid>
+				<description>Band gaps, doping, සහ සිලිකන් ජයග්‍රහණය කළේ ඇයි</description>
+			</item>
+			<item>
+				<title>ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</title>
+				<link>http://localhost:1478/si/posts/06-the-transistor-bjt-to-mosfet/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/06-the-transistor-bjt-to-mosfet/</guid>
+				<description>MOSFET කර්මාන්ත ප්‍රමිතිය බවට පත් වූයේ ඇයි</description>
+			</item>
+			<item>
+				<title>ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</title>
+				<link>http://localhost:1478/si/posts/07-logic-gates-from-transistors/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/07-logic-gates-from-transistors/</guid>
+				<description>CMOS සහ බල/මාරු වෙළඳාම</description>
+			</item>
+			<item>
+				<title>ද්වාරවලින් සංයෝජන තර්කය දක්වා</title>
+				<link>http://localhost:1478/si/posts/08-from-gates-to-combinational-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/08-from-gates-to-combinational-logic/</guid>
+				<description>Adders, muxes, සහ ALUs</description>
+			</item>
+			<item>
+				<title>අනුක්‍රමික තර්කය</title>
+				<link>http://localhost:1478/si/posts/09-sequential-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/09-sequential-logic/</guid>
+				<description>Latches, flip-flops, clocking, setup/hold time</description>
+			</item>
+			<item>
+				<title>මතක ධූරාවලිය ආරම්භ වේ</title>
+				<link>http://localhost:1478/si/posts/10-the-memory-hierarchy-begins/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/10-the-memory-hierarchy-begins/</guid>
+				<description>SRAM එදිරිව DRAM කෝෂ නිර්මාණය</description>
+			</item>
+			<item>
+				<title>උපදෙස් කට්ටල</title>
+				<link>http://localhost:1478/si/posts/11-instruction-sets/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/11-instruction-sets/</guid>
+				<description>ISA යනු මෘදුකාංග–දෘඪාංග ගිවිසුමයි; CISC සහ RISC එම ගිවිසුම පෙනෙන්නට ඇති ආකාරයට පිළිතුරු දෙකකි</description>
+			</item>
+			<item>
+				<title>Datapath නිර්මාණය</title>
+				<link>http://localhost:1478/si/posts/12-datapath-design/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/12-datapath-design/</guid>
+				<description>තනි-චක්‍ර datapath එකක් කොටස් දෘශ්‍යමාන කරයි — සහ එහි clock එක අවම-නරකම අවස්ථාවට ප්‍රමාණය කරන්නේ ඇයි පෙන්වයි</description>
+			</item>
+			<item>
+				<title>Pipelining</title>
+				<link>http://localhost:1478/si/posts/13-pipelining/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/13-pipelining/</guid>
+				<description>Throughput සඳහා උපදෙස් අතිච්ඡාදනය කරන්න — පසුව hazards මගින් forwarding, stalls, සහ ඊට පසු සියල්ල බල කෙරේ</description>
+			</item>
+			<item>
+				<title>Branch Prediction</title>
+				<link>http://localhost:1478/si/posts/14-branch-prediction/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/14-branch-prediction/</guid>
+				<description>Pipeline flush මිල අධිකය — ඒවා දුර්ලභ කිරීමට prediction පවතී</description>
+			</item>
+			<item>
+				<title>Caches</title>
+				<link>http://localhost:1478/si/posts/15-caches/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/15-caches/</guid>
+				<description>Locality මතක ධූරාවලිය ක්‍රියාත්මක කරවයි; associativity සහ coherence එය අවංකව තබා ගැනීමේ වියදම් වේ</description>
+			</item>
+			<item>
+				<title>Out-of-Order Execution</title>
+				<link>http://localhost:1478/si/posts/16-out-of-order-execution/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/16-out-of-order-execution/</guid>
+				<description>රැඳිය යුතු දේ පමණක් stall කරන්න — Tomasulo ගේ අදහස: සූදානම් වූ විට ක්‍රියාත්මක කරන්න, අනුපිළිවෙලින් commit කරන්න</description>
+			</item>
+			<item>
+				<title>Superscalar සහ Multicore</title>
+				<link>http://localhost:1478/si/posts/17-superscalar-multicore/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/17-superscalar-multicore/</guid>
+				<description>ILP සහ බලය බිත්තිවලට හැපුණේය — එබැවින් කර්මාන්තය ත්‍රෙඩ් එකකට වේගවත් වීම වෙනුවට පුළුල් විය</description>
+			</item>
+			<item>
+				<title>Mainframes සිට Minicomputers සිට Microprocessors දක්වා</title>
+				<link>http://localhost:1478/si/posts/18-mainframes-to-minicomputers-to-microprocessors/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/18-mainframes-to-minicomputers-to-microprocessors/</guid>
+				<description>පරිගණකයක් ලැබෙන්නේ කාටද යන යුග තුනක් — ආයතනික, දෙපාර්තමේන්තු, පසුව සෑම කෙනෙකුටම එක් චිපයක්</description>
+			</item>
+			<item>
+				<title>x86 එදිරිව RISC බෙදීම</title>
+				<link>http://localhost:1478/si/posts/19-the-x86-vs-risc-split/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/19-the-x86-vs-risc-split/</guid>
+				<description>RISC කඩදාසියේ පිරිසිදු විය — software lock-in සහ µop පරිවර්තනය x86 ඉහළින් තබා ගත්තේය</description>
+			</item>
+			<item>
+				<title>ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</title>
+				<link>http://localhost:1478/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/</guid>
+				<description>Desktop x86 මත පදිංචි වූ පසු, සටන බලය සහ licensing වෙත ගියේය — ARM mobile ජයග්‍රහණය කළේය; RISC-V විවෘත බව මත ඔට්ටු අල්ලයි</description>
+			</item>
+			<item>
+				<title>කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</title>
+				<link>http://localhost:1478/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/</guid>
+				<description>පන්ච්-කාඩ් රැකියා අතර මිල අධික CPU idle වීම පළමු resident monitor එක බල කළේය — පරිශීලක වැඩසටහනක් නොව පද්ධති මෘදුකාංගයක්</description>
+			</item>
+			<item>
+				<title>Time-Sharing සහ Unix පෙළපත</title>
+				<link>http://localhost:1478/si/posts/22-time-sharing-and-the-unix-lineage/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/22-time-sharing-and-the-unix-lineage/</guid>
+				<description>Batch CPU කාර්යබහුලව තැබුවේය; time-sharing බහු පරිශීලකයන්ට එය අයිති කර ගත් මායාව දුන්නේය — Multics අභිලාෂය, පසුව Unix සරලත්වය</description>
+			</item>
+			<item>
+				<title>GNU ව්‍යාපාරය සහ Linux</title>
+				<link>http://localhost:1478/si/posts/23-the-gnu-movement-and-linux/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/23-the-gnu-movement-and-linux/</guid>
+				<description>Unix වසා දැමුණේය; Stallman නිදහස් userland ගොඩනැගුවේය; Torvalds kernel හිඩැස පිරවුවේය — GPL එකතුව විවෘතව තැබුවේය</description>
+			</item>
+			<item>
+				<title>අතථ්‍ය මතකය සහ බහුකාර්යතාව</title>
+				<link>http://localhost:1478/si/posts/24-virtual-memory-and-multitasking/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/24-virtual-memory-and-multitasking/</guid>
+				<description>Time-sharing හුදකලාව අවශ්‍ය කරයි — අතථ්‍ය මතකය සෑම process එකකටම යන්ත්‍රය අයිති කර ගත් මායාව දෙයි</description>
+			</item>
+			<item>
+				<title>Containers සහ නවීන OS හුදකලාව</title>
+				<link>http://localhost:1478/si/posts/25-containers-and-modern-os-isolation/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/25-containers-and-modern-os-isolation/</guid>
+				<description>පූර්ණ VMs බර පිරිවැයකින් ශක්තිමත් හුදකලාව මිලදී ගනී — namespaces සහ cgroups එක් kernel එකක් බෙදා ගෙන අනෙක් සියල්ල පාහේ හුදකලා කරයි</description>
+			</item>
+			<item>
+				<title>යන්ත්‍ර කේතයේ සිට Assembly දක්වා</title>
+				<link>http://localhost:1478/si/posts/26-from-machine-code-to-assembly/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/26-from-machine-code-to-assembly/</guid>
+				<description>අමු binary යනු CPU ධාවනය කරන දෙයයි — assembly පළමු කියවිය හැකි තට්ටුවයි, තවමත් mnemonic එකකට එක් උපදෙසක්</description>
+			</item>
+			<item>
+				<title>ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</title>
+				<link>http://localhost:1478/si/posts/27-high-level-languages-fortran-cobol-lisp-c/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/27-high-level-languages-fortran-cobol-lisp-c/</guid>
+				<description>වසම් හතරක් abstractions හතරක් බල කළේය — සූත්‍ර, ව්‍යාපාර ගද්‍ය, සංකේතාත්මක ලැයිස්තු, ලෝහයට සමීප පද්ධති</description>
+			</item>
+			<item>
+				<title>Compilers, JIT, සහ නවීන භාෂා Runtimes</title>
+				<link>http://localhost:1478/si/posts/28-compilers-jit-and-modern-language-runtimes/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/28-compilers-jit-and-modern-language-runtimes/</guid>
+				<description>AOT runtime කරුණු නොමැතිව එක් වරක් compile කරයි; JIT hot paths සඳහා බලා සිටී — සහ garbage collection පිරිවැය runtime වෙත මාරු කරයි</description>
+			</item>
+			<item>
+				<title>තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</title>
+				<link>http://localhost:1478/si/posts/29-real-time-systems-and-deterministic-scheduling/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/29-real-time-systems-and-deterministic-scheduling/</guid>
+				<description>Throughput සහ සාධාරණත්වය deadlines නොවේ — දැඩි තත්‍ය කාලයට සාමාන්‍ය වේගය නොව බැඳුණු නරකම-අවස්ථා කාලය අවශ්‍යය</description>
+			</item>
+			<item>
+				<title>ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</title>
+				<link>http://localhost:1478/si/posts/30-real-time-systems-in-practice/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/30-real-time-systems-in-practice/</guid>
+				<description>ස්ථිර අයවැයක් මත sense–compute–actuate — Phase 3 හි වේග උපක්‍රම කාල සතුරන් බවට පත් වන avionics සහ කාර්මික පාලනය</description>
+			</item>
+			<item>
+				<title>බස් 101</title>
+				<link>http://localhost:1478/si/posts/31-buses-101/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/31-buses-101/</guid>
+				<description>හවුල් බස් එකකට එකවර එක් transaction එකක් පමණක් කළ හැක — එම උඩුකුරු සීමාව ඊළඟ සියල්ල බල කරයි</description>
+			</item>
+			<item>
+				<title>ISA Bus සිට PCI දක්වා PCIe දක්වා</title>
+				<link>http://localhost:1478/si/posts/32-from-isa-bus-to-pci-to-pcie/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/32-from-isa-bus-to-pci-to-pcie/</guid>
+				<description>Skew පුළුල් parallel බස් එක මැරුවේය; point-to-point serial යනු අප පැන ගත් ආකාරයයි</description>
+			</item>
+			<item>
+				<title>PCIe ගැඹුරු ගවේෂණය</title>
+				<link>http://localhost:1478/si/posts/33-pcie-deep-dive/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/33-pcie-deep-dive/</guid>
+				<description>අභිප්‍රාය TLPs මත ගමන් කරයි; විශ්වාසනීයත්වය සහ signaling පහළින් — හවුල් බස් එක ප්‍රතිස්ථාපනය කළ stack එක</description>
+			</item>
+			<item>
+				<title>මතක බස්</title>
+				<link>http://localhost:1478/si/posts/34-memory-buses/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/34-memory-buses/</guid>
+				<description>DDR bandwidth මිලදී ගත්තේය; latency කලාතුරකින් චලනය විය — banks සහ channels රැඳීම සඟවයි</description>
+			</item>
+			<item>
+				<title>මතක බිත්තිය</title>
+				<link>http://localhost:1478/si/posts/35-the-memory-wall/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/35-the-memory-wall/</guid>
+				<description>CPU වේගය සහ DRAM latency දශක ගණනක් අපසරනය විය — caches පරතරය සඟවයි; ඒවා එය වසා නොදමයි</description>
+			</item>
+			<item>
+				<title>Clock Speed බිත්තිය</title>
+				<link>http://localhost:1478/si/posts/36-the-clock-speed-wall/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/36-the-clock-speed-wall/</guid>
+				<description>සංඛ්‍යාතය තාපයට ගැටුණේය — එබැවින් කර්මාන්තය වේගවත් clocks වෙනුවට පුළුල් විය (cores, පසුව fabrics)</description>
+			</item>
+			<item>
+				<title>පරිමාණයේ Interconnects</title>
+				<link>http://localhost:1478/si/posts/37-interconnects-at-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/37-interconnects-at-scale/</guid>
+				<description>ගණනය chips බොහෝ වූ පසු, ඒවා අතර මාර්ගය ඊළඟ බිත්තියයි — කැප වූ සබැඳි, පිටපත් අඩු</description>
+			</item>
+			<item>
+				<title>ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</title>
+				<link>http://localhost:1478/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/</guid>
+				<description>Point-to-point ශ්‍රේණි සබැඳි සම්බන්ධ කරන්නේ අග දෙකක් පමණයි — packet switching බල කළ සීමාව</description>
+			</item>
+			<item>
+				<title>ARPANET සහ Packet Switching</title>
+				<link>http://localhost:1478/si/posts/39-arpanet-and-packet-switching/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/39-arpanet-and-packet-switching/</guid>
+				<description>Bursty පරිගණක ගමනාගමනය circuit switching බිඳ දැමුවේය — ARPANET packets සහ හවුල් සබැඳි ක්‍රියා කළ හැකි බව ඔප්පු කළේය</description>
+			</item>
+			<item>
+				<title>Ethernet සහ Local Area Network</title>
+				<link>http://localhost:1478/si/posts/40-ethernet-and-the-local-area-network/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/40-ethernet-and-the-local-area-network/</guid>
+				<description>හවුල් කේබලයක්, මධ්‍යම arbiter නැත — CSMA/CD LAN collision සීමාව විසඳුවේය; switches පසුව එය ඉවත් කළේය</description>
+			</item>
+			<item>
+				<title>TCP/IP සහ නවීන අන්තර්ජාල Stack එක</title>
+				<link>http://localhost:1478/si/posts/41-tcp-ip-and-the-modern-internet-stack/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/41-tcp-ip-and-the-modern-internet-stack/</guid>
+				<description>අන්තර්ජාල protocols stack වූ ආකාරය සහ ඇයි — ස්ථර, flag day, විශ්වාසනීය නොවන substrate එකක් මත apps — catalog එකක් නොවේ</description>
+			</item>
+			<item>
+				<title>දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</title>
+				<link>http://localhost:1478/si/posts/42-datacenter-networking-and-rdma/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/42-datacenter-networking-and-rdma/</guid>
+				<description>එක් පාලිත fabric එකක් ඇතුළත, kernel පිටපත් බද්ද වේ — RDMA සහ topology වයර් එක ආපසු මිලදී ගනී</description>
+			</item>
+			<item>
+				<title>Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</title>
+				<link>http://localhost:1478/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/</guid>
+				<description>Find, පසුව talk — Usenet, Archie, Gopher, IRC, සහ දෙකම ඇසුරුම් කළ පාරිභෝගික portals</description>
+			</item>
+			<item>
+				<title>Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</title>
+				<link>http://localhost:1478/si/posts/44-google-s-big-data-infrastructure-why-they-won/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/44-google-s-big-data-infrastructure-why-they-won/</guid>
+				<description>Web-පරිමාණ දත්ත failure-as-normal ගබඩාව බල කළේය, පසුව cluster එක සඟවන ක්‍රමලේඛන ආකෘතියක් — GFS, MapReduce, Bigtable</description>
+			</item>
+			<item>
+				<title>Kubernetes සහ පරිමාණයේ Container Orchestration</title>
+				<link>http://localhost:1478/si/posts/45-kubernetes-and-container-orchestration-at-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/45-kubernetes-and-container-orchestration-at-scale/</guid>
+				<description>දහස් ගණනක් containers රුටීන ලෙස අසාර්ථක වීම declarative අපේක්ෂිත තත්ත්වයක් සහ අඛණ්ඩ reconciliation loop එකක් බල කරයි</description>
+			</item>
+			<item>
+				<title>යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</title>
+				<link>http://localhost:1478/si/posts/46-the-machine-learning-software-stack/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/46-the-machine-learning-software-stack/</guid>
+				<description>Model එකක් සහ සිලිකන් අතර tensors බෙදාහැරුණු training බවට පත් කරන stack එකක් වාඩි වේ — සහ interconnect බිත්තියට හැපේ</description>
+			</item>
+			<item>
+				<title>&#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</title>
+				<link>http://localhost:1478/si/posts/47-what-7nm-actually-means/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/47-what-7nm-actually-means/</guid>
+				<description>Node නම් එක් භෞතික දිගක් ලුහුබැඳීම නැවැත්තුවේය — density සහ pitch භෞතික විද්‍යාවයි; ලේබලය පරම්පරාවකි</description>
+			</item>
+			<item>
+				<title>Photolithography</title>
+				<link>http://localhost:1478/si/posts/48-photolithography/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/48-photolithography/</guid>
+				<description>Diffraction කෙටි තරංග ආයාම බල කරයි — EUV හි mirrors සහ tin plasma feature sizes චලනය කර තැබූ දේය</description>
+			</item>
+			<item>
+				<title>FinFET සිට GAA දක්වා</title>
+				<link>http://localhost:1478/si/posts/49-finfet-to-gaa/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/49-finfet-to-gaa/</guid>
+				<description>Short-channel leakage planar shrink මැරුවේය — gate එක ඔතන්න (FinFET), පසුව එය සියලු අතට ඔතන්න (GAA)</description>
+			</item>
+			<item>
+				<title>Moore&#39;s Law</title>
+				<link>http://localhost:1478/si/posts/50-moore-s-law/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/50-moore-s-law/</guid>
+				<description>Moore ගේ නිරීක්ෂණය ආර්ථික සංරචක ගණන විය — ට්‍රාන්සිස්ටර ගණන තවමත් නැගේ; clocks සහ cost-per-transistor වෙනස් කතා කියයි</description>
+			</item>
+			<item>
+				<title>Chiplets සහ Advanced Packaging</title>
+				<link>http://localhost:1478/si/posts/51-chiplets-advanced-packaging/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/51-chiplets-advanced-packaging/</guid>
+				<description>Yield die ප්‍රදේශය සමඟ පහළ යයි — chiplets වලට බෙදා advanced packaging සමඟ bandwidth ආපසු මිලදී ගන්න</description>
+			</item>
+			<item>
+				<title>GPU පවතින්නේ ඇයි</title>
+				<link>http://localhost:1478/si/posts/52-why-gpus-exist/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/52-why-gpus-exist/</guid>
+				<description>Graphics එකෙන් embarrassingly parallel workload එකක් ආවේය — SIMT දෘඪාංගය අනුගමනය කළේය, පසුව සාමාන්‍ය compute එකටත් එම හැඩය හමු විය</description>
+			</item>
+			<item>
+				<title>CUDA Cores, Warps සහ Occupancy</title>
+				<link>http://localhost:1478/si/posts/53-cuda-cores-warps-and-occupancy/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/53-cuda-cores-warps-and-occupancy/</guid>
+				<description>SIMT, SM සහ warps මතට map වේ — lockstep ජය ගනී divergence දක්වා; occupancy මතක stalls සඟවයි</description>
+			</item>
+			<item>
+				<title>GPU මතක ධුරාවලිය</title>
+				<link>http://localhost:1478/si/posts/54-gpu-memory-hierarchy/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/54-gpu-memory-hierarchy/</guid>
+				<description>දහස් ගණන් threads DDR ට වඩා bandwidth බල කරයි — HBM මතකය compute අසල stack කරයි</description>
+			</item>
+			<item>
+				<title>Tensor Cores</title>
+				<link>http://localhost:1478/si/posts/55-tensor-cores/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/55-tensor-cores/</guid>
+				<description>Matrix multiply-accumulate ප්‍රමුඛ AI op එක බවට පත් විය — එබැවින් දෘඪාංගය එය first-class primitive එකක් කළේය</description>
+			</item>
+			<item>
+				<title>Multi-GPU Scaling</title>
+				<link>http://localhost:1478/si/posts/56-multi-gpu-scaling/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/56-multi-gpu-scaling/</guid>
+				<description>එක් GPU එකක් සීමිත ය — GPU අතර interconnect ඊළඟ බිත්තිය බවට පත් වේ</description>
+			</item>
+			<item>
+				<title>Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</title>
+				<link>http://localhost:1478/si/posts/57-why-matrix-multiply-reshaped-chip-design/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/57-why-matrix-multiply-reshaped-chip-design/</guid>
+				<description>AI compute පරිමාණයේ matmul වෙත අඩු වේ — එම හැඩයට සිලිකන් විශේෂීකරණය කරන්න</description>
+			</item>
+			<item>
+				<title>Systolic Arrays</title>
+				<link>http://localhost:1478/si/posts/58-systolic-arrays/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/58-systolic-arrays/</guid>
+				<description>දත්ත MAC ජාලයක් හරහා ස්පන්දනය වේ — මුළු චිපයම matmul සඳහා විශේෂීකරණය කරන්න (TPU)</description>
+			</item>
+			<item>
+				<title>Quantization සහ Mixed Precision</title>
+				<link>http://localhost:1478/si/posts/59-quantization-mixed-precision/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/59-quantization-mixed-precision/</guid>
+				<description>MAC එකකට අඩු bits යනු එකම බල අයවැයේ වැඩි MAC — නිරවද්‍යතාවට තවමත් අවශ්‍ය තැන precision මිශ්‍ර කරන්න</description>
+			</item>
+			<item>
+				<title>දෘඪාංගයේ Sparsity</title>
+				<link>http://localhost:1478/si/posts/60-sparsity-in-hardware/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/60-sparsity-in-hardware/</guid>
+				<description>දන්නා-ශුන්‍ය MAC මඟහරින්න — නමුත් ඝන MAC දෘඪාංගයට ලාභ වන්නේ ව්‍යුහගත රටා පමණි</description>
+			</item>
+			<item>
+				<title>Datacenter පරිමාණයේ Interconnect</title>
+				<link>http://localhost:1478/si/posts/61-interconnect-at-datacenter-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/61-interconnect-at-datacenter-scale/</guid>
+				<description>දහස් ගණන් GPU — topology සහ all-reduce ඕනෑම චිපයක peak FLOPS තරම්ම වැදගත් ය</description>
+			</item>
+			<item>
+				<title>එය යන්නේ කොහේටද</title>
+				<link>http://localhost:1478/si/posts/62-where-it-s-headed/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/62-where-it-s-headed/</guid>
+				<description>එම රටාවම ඉදිරියට — chiplets, package එකට සමීප optics, මතකයට සමීප compute</description>
+			</item>
+			<item>
+				<title>අවධානය පමණක් ප්‍රමාණවත්ය</title>
+				<link>http://localhost:1478/si/posts/63-attention-is-all-you-need/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/63-attention-is-all-you-need/</guid>
+				<description>Self-attention කශේරුකාව වසා දැමුවේය — මාලාව ගොඩනැගූ matmul දෘඪාංගයට map වන සමාන්තර අනුක්‍රම ආකෘතිකරණය</description>
+			</item>
+			<item>
+				<title>වයර් එක තීරණය කරන්නේ කවුද</title>
+				<link>http://localhost:1478/si/posts/64-who-decides-the-wire/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/64-who-decides-the-wire/</guid>
+				<description>විවිධ ජාල අන්තර් ක්‍රියා කිරීමට අංක, නම්, සහ encodings නම් කරන්නේ කවුද</description>
+			</item>
+			<item>
+				<title>යුද්ධකාලීන Crypto</title>
+				<link>http://localhost:1478/si/posts/66-wartime-crypto/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/66-wartime-crypto/</guid>
+				<description>Enigma, Bletchley, සහ Colossus — සයිෆර් කඩා දැමීම ඉලෙක්ට්‍රොනික පරිගණකකරණය බල කළේ ඇයි</description>
+			</item>
+			<item>
+				<title>රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</title>
+				<link>http://localhost:1478/si/posts/67-privacy-consent-identity-cyber/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/67-privacy-consent-identity-cyber/</guid>
+				<description>විවෘත ජාලයක් මත ඉංජිනේරු පරිණාමයක් ලෙස රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, සහ cybersecurity — ප්‍රතිපත්ති පත්‍රිකාවක් නොවේ</description>
+			</item>
+			<item>
+				<title>ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</title>
+				<link>http://localhost:1478/si/posts/68-visions-that-shipped/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/68-visions-that-shipped/</guid>
+				<description>ගමනෙන් ඉදිරියට යන සබැඳි — Cisco, Gates, Jobs, GNU+Linus, Elon, Bezos stack එක ජීවත් වන platforms බවට පත් කළ වර්ගවල බීජ ලෙස</description>
+			</item>
+			<item>
+				<title>Platform සංස්ලේෂණය</title>
+				<link>http://localhost:1478/si/posts/69-platform-synthesis/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/69-platform-synthesis/</guid>
+				<description>එක් ඉහළ-මට්ටමේ නැවතුමක් — විශාල platform එකක් යනු බෙදාහැරුණු පද්ධති, networking, AI infra, privacy engineering, සහ software engineering සංයුක්තයකි</description>
+			</item>
+			<item>
+				<title>කාලරේඛාව</title>
+				<link>http://localhost:1478/si/posts/98-timeline/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/98-timeline/</guid>
+				<description>යාන්ත්‍රික ගණනයේ සිට නවීන අවධානය යාන්ත්‍රණ දක්වා සංක්ෂිප්ත කාලරේඛාවක්</description>
+			</item>
+			<item>
+				<title>පාරිභාෂික ශබ්දකෝෂය</title>
+				<link>http://localhost:1478/si/posts/99-glossary/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/99-glossary/</guid>
+				<description>මාලාව පුරා භාවිතා වන ප්‍රධාන පද, නිවැරදිව අර්ථ දක්වා ඇත</description>
+			</item>
+	</channel>
+</rss>

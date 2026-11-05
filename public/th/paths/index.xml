@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>เส้นทางเรียนทางเลือก on เราไปถึงจุดนั้นได้อย่างไร</title>
+		<link>http://localhost:1478/th/paths/</link>
+		<description>Recent content in เส้นทางเรียนทางเลือก on เราไปถึงจุดนั้นได้อย่างไร</description>
+		<generator>Hugo</generator>
+		<language>th</language>
+		
+		
+		
+		
+			<atom:link href="http://localhost:1478/th/paths/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>รหัสลับและการคำนวณยามสงคราม</title>
+				<link>http://localhost:1478/th/paths/crypto-wartime/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/paths/crypto-wartime/</guid>
+				<description>&lt;p&gt;ความลับในฐานะงานโหลด — เหตุใดการถอดรหัสจึงแซงเฟืองและรีเลย์ และลากการคำนวณเข้าสู่อิเล็กทรอนิกส์ ดัชนีบาง; ประตูอยู่ในบท&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/02-relays-and-electromechanical-logic/&#34;&gt;รีเลย์และตรรกะไฟฟ้ากลไก&lt;/a&gt; — ตรรกะไบนารีในโลหะที่เคลื่อน และเหตุใดโลหะจึงช้า&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/66-wartime-crypto/&#34;&gt;รหัสลับยามสงคราม&lt;/a&gt; — Enigma, Bletchley, Colossus; คนที่มีชื่อ; ความเร่งด่วน&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/03-the-vacuum-tube-era/&#34;&gt;ยุคหลอดสุญญากาศ&lt;/a&gt; — การสลับอิเล็กทรอนิกส์โดยไม่มีหน้าสัมผัสเชิงกลไก&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/04-why-the-transistor-had-to-happen/&#34;&gt;เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น&lt;/a&gt; — หลอดชนะความเร็ว แล้วเจอความร้อน/พลังงาน/ความล้มเหลว&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;กลับไป &lt;a href=&#34;http://localhost:1478/th/paths/&#34;&gt;ทุกเส้นทาง&lt;/a&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>ใครดูแลอินเทอร์เน็ต</title>
+				<link>http://localhost:1478/th/paths/who-runs-the-internet/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/paths/who-runs-the-internet/</guid>
+				<description>&lt;p&gt;ใครตั้งชื่อหมายเลข ชื่อ และการเข้ารหัส — และเรื่องโปรโตคอลใดที่ทะเบียนเหล่านั้นนั่งอยู่ ดัชนีบาง; ไม่ใช่แคตตาล็อกองค์กร&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/39-arpanet-and-packet-switching/&#34;&gt;ARPANET และการสลับแพ็กเก็ต&lt;/a&gt; — เครือข่ายวิจัยที่พิสูจน์แพ็กเก็ต&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/40-ethernet-and-the-local-area-network/&#34;&gt;Ethernet และเครือข่ายท้องถิ่น&lt;/a&gt; — การมาตรฐานลิงก์ท้องถิ่น (ญาติ IEEE 802)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/41-tcp-ip-and-the-modern-internet-stack/&#34;&gt;TCP/IP และสแต็กอินเทอร์เน็ตสมัยใหม่&lt;/a&gt; — เน็ตต่างชนิดกลายเป็นอินเทอร์เน็ตเวิร์กเดียวได้อย่างไร&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/64-who-decides-the-wire/&#34;&gt;ใครเป็นคนตัดสินสาย&lt;/a&gt; — RFC / IETF / IANA / ICANN / RIR / Unicode ในฐานะเมล็ดของชนิด&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;กลับไป &lt;a href=&#34;http://localhost:1478/th/paths/&#34;&gt;ทุกเส้นทาง&lt;/a&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>หา แล้วคุย</title>
+				<link>http://localhost:1478/th/paths/find-then-talk/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/paths/find-then-talk/</guid>
+				<description>&lt;p&gt;การค้นคืนสารสนเทศและการสื่อสารระหว่างเพื่อนเป็นเส้นโค้งเดียว — แล้วการห่อหุ้มแบบผู้บริโภคของทั้งสอง ดัชนีบาง&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/41-tcp-ip-and-the-modern-internet-stack/&#34;&gt;TCP/IP และสแต็กอินเทอร์เน็ตสมัยใหม่&lt;/a&gt; — ทรานสปอร์ตที่แอปขี่&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/&#34;&gt;Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ&lt;/a&gt; — หา + คุย → IRC → พอร์ทัล (Yahoo เป็นเมล็ด)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/44-google-s-big-data-infrastructure-why-they-won/&#34;&gt;โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ&lt;/a&gt; — &lt;em&gt;หมวด&lt;/em&gt; เดียวกันของการหา ที่สเกล crawler&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;กลับไป &lt;a href=&#34;http://localhost:1478/th/paths/&#34;&gt;เส้นทางทั้งหมด&lt;/a&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>ความเป็นส่วนตัว / อัตลักษณ์ / ความยินยอม</title>
+				<link>http://localhost:1478/th/paths/privacy-identity-consent/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/paths/privacy-identity-consent/</guid>
+				<description>&lt;p&gt;การป้องกัน คริปโตบนเครือข่ายสาธารณะ โปรโตคอลอัตลักษณ์ และระบบแบบมีคู่แข่ง — วิวัฒนาการทางวิศวกรรม ไม่ใช่แผ่นพับนโยบาย ดัชนีบาง&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/24-virtual-memory-and-multitasking/&#34;&gt;หน่วยความจำเสมือนและการมัลติทาสก์&lt;/a&gt; — การแยกในฐานะขอบเขตฮาร์ดแวร์/OS&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/25-containers-and-modern-os-isolation/&#34;&gt;คอนเทนเนอร์และการแยกของ OS สมัยใหม่&lt;/a&gt; — namespace และ cgroup ในฐานะขอบเขตเคอร์เนลแชร์&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/66-wartime-crypto/&#34;&gt;รหัสลับยามสงคราม&lt;/a&gt; — ความลับภายใต้คู่แข่งเฉพาะทาง (เทียบกับเน็ตเปิด)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/67-privacy-consent-identity-cyber/&#34;&gt;ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์&lt;/a&gt; — Saltzer/Schroeder → กุญแจสาธารณะ → auth/ความยินยอม → ไซเบอร์ในฐานะฟีดแบ็ก&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/64-who-decides-the-wire/&#34;&gt;ใครเป็นคนตัดสินสาย&lt;/a&gt; — ตัวระบุแชร์ที่ชั้นความเป็นส่วนตัวยังพึ่งพา&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;กลับไป &lt;a href=&#34;http://localhost:1478/th/paths/&#34;&gt;เส้นทางทั้งหมด&lt;/a&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>วิสัยทัศน์ที่เกิดขึ้นจริง</title>
+				<link>http://localhost:1478/th/paths/visions-that-shipped/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/paths/visions-that-shipped/</guid>
+				<description>&lt;p&gt;ลิงก์ไปข้างหน้าออกจากการเดินทาง — เมล็ดของชนิดที่เปลี่ยนสแตกเป็นแพลตฟอร์มที่คนอยู่จริง ไม่ใช่ชีวประวัติ ดัชนีบาง&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/23-the-gnu-movement-and-linux/&#34;&gt;ขบวนการ GNU และ Linux&lt;/a&gt; — Stallman, Torvalds และคอมมอนส์ใต้เซิร์ฟเวอร์สมัยใหม่&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/68-visions-that-shipped/&#34;&gt;วิสัยทัศน์ที่เกิดขึ้นจริง&lt;/a&gt; — Cisco, Gates, Jobs, GNU+Linus, Bezos, Musk ในฐานะเมล็ด; อนุมานญาติ; หยุด&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/th/posts/69-platform-synthesis/&#34;&gt;การสังเคราะห์แพลตฟอร์ม&lt;/a&gt; — จุดจอดระดับสูงจุดเดียว: ระบบกระจาย + เครือข่าย + โครงสร้างพื้นฐาน AI + ความเป็นส่วนตัว + วิศวกรรมซอฟต์แวร์&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;กลับไป &lt;a href=&#34;http://localhost:1478/th/paths/&#34;&gt;ทุกเส้นทาง&lt;/a&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

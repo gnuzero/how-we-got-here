@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DDR a cumpărat lățime de bandă; latența primului bit abia s-a mișcat — băncile și canalele ascund așteptarea">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/34-memory-buses/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Magistralele de memorie">
+	<meta property="og:description" content="DDR a cumpărat lățime de bandă; latența primului bit abia s-a mișcat — băncile și canalele ascund așteptarea">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:31:54+05:30">
+
+
+	<meta itemprop="name" content="Magistralele de memorie">
+	<meta itemprop="description" content="DDR a cumpărat lățime de bandă; latența primului bit abia s-a mișcat — băncile și canalele ascund așteptarea">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:31:54+05:30">
+	<meta itemprop="wordCount" content="733">
+
+<title>Magistralele de memorie • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/34-memory-buses/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/34-memory-buses/" title="Memory Buses">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/34-memory-buses/" title="บัสหน่วยความจำ">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/34-memory-buses/" title="මතක බස්">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/34-memory-buses/" title="Memory Buses">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/34-memory-buses/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/34-memory-buses/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/34-memory-buses/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/34-memory-buses/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="active">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Magistralele de memorie</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#double-data-rate-ambele-fronturi-nu-neapărat-un-ceas-dublu">Double Data Rate: ambele fronturi, nu neapărat un ceas dublu</a></li>
+    <li><a href="#bandwidth-ul-a-urcat-latența-primului-bit-mult-mai-puțin">Bandwidth-ul a urcat; latența primului bit, mult mai puțin</a>
+      <ul>
+        <li><a href="#ddr4-jesd79-4">DDR4 (JESD79-4)</a></li>
+        <li><a href="#ddr5-jesd79-5">DDR5 (JESD79-5)</a></li>
+        <li><a href="#ce-spun-modulele-de-pe-piață">Ce spun modulele de pe piață</a></li>
+      </ul>
+    </li>
+    <li><a href="#paralelism-ca-să-ascunzi-un-acces-lent">Paralelism ca să ascunzi un acces lent</a></li>
+    <li><a href="#legătura-cu-zidul-memoriei">Legătura cu zidul memoriei</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Magistralele de memorie
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>PCIe (capitolele 32–33) e calea către dispozitivele de extensie. Magistrala de memorie e calea care hrănește efectiv CPU-ul — DRAM-ul din capitolul 10 — iar evoluția ei e o negociere continuă între lățime de bandă, latență și putere. Numele generațiilor nu e povestea. Despicarea dintre cele trei, da. Decalajul care rămâne e subiectul din capitolul 35, „Zidul memoriei”.</p>
+<h2 id="double-data-rate-ambele-fronturi-nu-neapărat-un-ceas-dublu">Double Data Rate: ambele fronturi, nu neapărat un ceas dublu<a class="anchor" href="#double-data-rate-ambele-fronturi-nu-neap%c4%83rat-un-ceas-dublu">#</a></h2>
+<p>Numele standardelor JEDEC spune mecanismul: <em>Double Data Rate</em>. Comunicatul JEDEC din 25 septembrie 2012 anunță publicarea inițială a standardului sincron DDR4 (Double Data Rate 4), JESD79-4 (JEDEC, „JEDEC Announces Publication of DDR4 Standard”, 25 septembrie 2012; <a href="https://www.jedec.org/news/pressreleases/jedec-announces-publication-ddr4-standard">jedec.org/news/pressreleases/jedec-announces-publication-ddr4-standard</a>, accesat 2026-11-05). Standardul însuși, deschis în această sesiune, notează că semnalul de mască a datelor <code>DM_n</code> „is sampled on both edges of DQS” (JEDEC, <em>DDR4 SDRAM</em>, JESD79-4, septembrie 2012, descrierea pinului DM_n/DBI_n; <a href="https://www.jedec.org/sites/default/files/docs/JESD79-4.pdf">jedec.org/sites/default/files/docs/JESD79-4.pdf</a>, accesat 2026-11-05). Transferul pe ambele fronturi ale strobe-ului de date e deci în specificație, nu doar în nume.</p>
+<p>Pentru DDR4, standardul o spune direct: arhitectura 8n prefetch „is combined with an interface designed to transfer two data words per clock cycle at the I/O pins” (JEDEC, JESD79-4, §3.2 „Basic Functionality”, p. 9, ibid.). <!-- NEVERIFICAT: aceeași regulă pentru DDR1 (JESD79) nu este citată; JESD79 (DDR1) nu a fost deschis. --></p>
+<h2 id="bandwidth-ul-a-urcat-latența-primului-bit-mult-mai-puțin">Bandwidth-ul a urcat; latența primului bit, mult mai puțin<a class="anchor" href="#bandwidth-ul-a-urcat-laten%c8%9ba-primului-bit-mult-mai-pu%c8%9bin">#</a></h2>
+<h3 id="ddr4-jesd79-4">DDR4 (JESD79-4)<a class="anchor" href="#ddr4-jesd79-4">#</a></h3>
+<p>Comunicatul JEDEC din 2012 fixează rata pe pin pentru DDR4 între 1,6 giga-transferuri pe secundă și un obiectiv maxim inițial de 3,2 giga-transferuri pe secundă, și notează că DDR3 depășise deja ținta sa originală de 1,6 GT/s (JEDEC, comunicat DDR4, 25.09.2012, ibid.). Arhitectura e „8n prefetch with two or four selectable bank groups”, astfel încât activări, citiri, scrieri sau <em>refresh</em> pot fi în curs în grupuri de bănci distincte (ibid.). Standardul JESD79-4 confirmă: DDR4 e configurat intern ca șaisprezece bănci (4 bank groups × 4 bănci) pentru x4/x8, respectiv opt bănci (2 bank groups × 4) pentru x16, și folosește arhitectura 8n prefetch; alimentarea e (V_{DD} = V_{DDQ} = 1{,}2,\mathrm{V} \pm 0{,}06,\mathrm{V}) (JEDEC, JESD79-4, 2012, §3.2 „Basic Functionality”, p. 9, și descrierea pinilor VDD/VDDQ, ibid.).</p>
+<h3 id="ddr5-jesd79-5">DDR5 (JESD79-5)<a class="anchor" href="#ddr5-jesd79-5">#</a></h3>
+<p>Comunicatul JEDEC din 14 iulie 2020 anunță publicarea JESD79-5 DDR5 SDRAM. DDR5 „is expected to be launched at 4.8 Gbps (50% higher than DDR4’s end of life speed of 3.2 Gbps)” (JEDEC, „JEDEC Publishes New DDR5 Standard…”, 14 iulie 2020; <a href="https://www.jedec.org/news/pressreleases/jedec-publishes-new-ddr5-standard-advancing-next-generation-high-performance">jedec.org/news/pressreleases/jedec-publishes-new-ddr5-standard-advancing-next-generation-high-performance</a>, accesat 2026-11-05). Același text spune că standardul dublează <em>burst-length</em>-ul la BL16 și numărul de bănci la 32 (de la 16), și că DIMM-ul DDR5 are „two 40-bit fully independent sub-channels on the same module”; (V_{DD}) scade de la 1,2 V (DDR4) la 1,1 V (ibid.).</p>
+<p><strong>Atenție la cifra de lansare:</strong> 4,8 Gb/s este rata de <em>lansare</em> anunțată în comunicatul din 2020, nu o viteză maximă; pe această pagină este singura cifră DDR5 luată din JEDEC (ibid.). Modulele mai rapide de pe piață apar mai jos, din ghidul Micron.</p>
+<h3 id="ce-spun-modulele-de-pe-piață">Ce spun modulele de pe piață<a class="anchor" href="#ce-spun-modulele-de-pe-pia%c8%9b%c4%83">#</a></h3>
+<p>Ghidul Micron pentru module DRAM listează, între altele, module SODIMM DDR4/DDR5 între 3200 și 5600 MT/s, module UDIMM DDR5 la 5600 MT/s și CUDIMM DDR5 între 5600 și 8000 MT/s, la 1,1 V pentru liniile DDR5 din tabel (Micron, <em>DRAM Module Quick Reference Guide</em>, Rev. M 03/26; <a href="https://www.micron.com/content/dam/micron/global/public/products/memory/dram-modules/broad-product/dram-module-reference-guide.pdf">micron.com/&hellip;/dram-module-reference-guide.pdf</a>, accesat 2026-11-05). Acestea sunt oferte de produs, nu definiția standardului; le cităm ca ilustrare a gamei, nu ca înlocuitor al JESD79.</p>
+<h2 id="paralelism-ca-să-ascunzi-un-acces-lent">Paralelism ca să ascunzi un acces lent<a class="anchor" href="#paralelism-ca-s%c4%83-ascunzi-un-acces-lent">#</a></h2>
+<p>Un <strong>canal</strong> e o cale independentă de controler — cererile concurente nu trebuie să stea una în spatele celeilalte. Comunicatul DDR5 face explicit pasul următor pe modul: două subcanale de 40 de biți, pe același DIMM (JEDEC, 2020, ibid.). În interiorul unui canal, <strong>băncile</strong> și <em>bank groups</em> (JESD79-4, 2012; comunicatul DDR4, 2012) permit ca o bancă să termine (sau să facă <em>refresh</em>) în timp ce alta primește o cerere nouă. Același tipar, la altă scară, față de ierarhia din capitolul 10: agregatul rămâne mare chiar dacă un singur acces nu s-a făcut mai rapid.</p>
+<p>Un DIMM e pachetul fizic — cipuri pe o placă cu conector standard pe margine — deci capacitatea e „câte sloturi, ce densitate”, nu o reproiectare a magistralei (Micron, ghid module, form factor-ele UDIMM/SODIMM/RDIMM etc., ibid.).</p>
+<h2 id="legătura-cu-zidul-memoriei">Legătura cu zidul memoriei<a class="anchor" href="#leg%c4%83tura-cu-zidul-memoriei">#</a></h2>
+<p>Lățimea de bandă de vârf a urcat odată cu generațiile (1,6 → 3,2 GT/s ca obiectiv DDR4; lansare DDR5 la 4,8 Gb/s — JEDEC 2012 și 2020). Latența până la primul bit e altă fizică (citirea sarcinii din celula condensator, din capitolul 10) și e tema din capitolul 35. Magistrala de memorie ascunde așteptarea cu paralelism; nu o anulează.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/98c122906f82fe66d7520d499851b6a45004a5c4" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Magistralele&#43;de&#43;memorie&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F34-memory-buses%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F34-memory-buses.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F34-memory-buses.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/33-pcie-deep-dive/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>PCIe în detaliu</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/35-the-memory-wall/" class="flex align-center">
+        <span>Zidul memoriei</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#double-data-rate-ambele-fronturi-nu-neapărat-un-ceas-dublu">Double Data Rate: ambele fronturi, nu neapărat un ceas dublu</a></li>
+    <li><a href="#bandwidth-ul-a-urcat-latența-primului-bit-mult-mai-puțin">Bandwidth-ul a urcat; latența primului bit, mult mai puțin</a>
+      <ul>
+        <li><a href="#ddr4-jesd79-4">DDR4 (JESD79-4)</a></li>
+        <li><a href="#ddr5-jesd79-5">DDR5 (JESD79-5)</a></li>
+        <li><a href="#ce-spun-modulele-de-pe-piață">Ce spun modulele de pe piață</a></li>
+      </ul>
+    </li>
+    <li><a href="#paralelism-ca-să-ascunzi-un-acces-lent">Paralelism ca să ascunzi un acces lent</a></li>
+    <li><a href="#legătura-cu-zidul-memoriei">Legătura cu zidul memoriei</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

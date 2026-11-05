@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="電線只認得點和劃：從 1870 年代的四位電報碼到今天強制執行的 GB 18030，每一種把漢字送上線的辦法，背後都有人在決定規則。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hant/posts/64-zh-hanzi-encoding/">
+	<meta property="og:site_name" content="我們如何走到那裡">
+	<meta property="og:title" content="漢字上線：從四位電碼到 GB 18030">
+	<meta property="og:description" content="電線只認得點和劃：從 1870 年代的四位電報碼到今天強制執行的 GB 18030，每一種把漢字送上線的辦法，背後都有人在決定規則。">
+	<meta property="og:locale" content="zh_Hant">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:38:43+05:30">
+		<meta property="article:tag" content="中文電碼">
+		<meta property="article:tag" content="漢字編碼">
+		<meta property="article:tag" content="CCCII">
+		<meta property="article:tag" content="GB 2312">
+		<meta property="article:tag" content="Big5">
+		<meta property="article:tag" content="CNS 11643">
+
+
+	<meta itemprop="name" content="漢字上線：從四位電碼到 GB 18030">
+	<meta itemprop="description" content="電線只認得點和劃：從 1870 年代的四位電報碼到今天強制執行的 GB 18030，每一種把漢字送上線的辦法，背後都有人在決定規則。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:38:43+05:30">
+	<meta itemprop="wordCount" content="361">
+	<meta itemprop="keywords" content="中文電碼,漢字編碼,CCCII,GB 2312,Big5,CNS 11643,GB 18030,HKSCS,標準">
+
+<title>漢字上線：從四位電碼到 GB 18030 • 我們如何走到那裡</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hant/posts/64-zh-hanzi-encoding/">
+  <link rel="alternate" hreflang="zh-hans" href="http://localhost:1478/zh-hans/posts/64-zh-hanzi-encoding/" title="汉字上线：从四位电码到 GB 18030">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hant.search.min.fa14ded62159ba6cbd0e4fab41da826a3888ed10f3c3ce0e2671b6ad687c6ff9.js" integrity="sha256-&#43;hTe1iFZumy9Dk&#43;rQdqCajiI7RDzw84OJnG2rWh8b/k=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hant/"><span>我們如何走到那裡</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜尋"
+    aria-label="搜尋"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="語言" />
+        繁體中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展開" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hans/posts/64-zh-hanzi-encoding/" class="flex flex-auto">
+          简体中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/00-credits/" class="">
+      致謝與延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-counting-rods-abacus/" class="">
+      算籌與算盤：數放在手裡，演算法記在口訣裡</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-drawloom-huaben/" class="">
+      花本：程式第一次和機器分開</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-gears-and-calculators/" class="">
+      齒輪會數數：從記里鼓車到“較數器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/02-zh-relays-switching/" class="">
+      繼電器與交換機：上海電話局裡的“電腦”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/03-zh-first-electronic-computers/" class="">
+      真空管與電晶體：中國第一批電腦，和算盤的真實角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/64-zh-hanzi-encoding/" class="active">
+      漢字上線：從四位電碼到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/26-zh-input-and-typesetting/" class="">
+      把漢字敲進機器：打字機、輸入法與雷射照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/39-zh-networks-1986-1994/" class="">
+      越過長城：中文世界接入網路（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/47-zh-taiwan-semiconductors/" class="">
+      從豆漿店到晶圓代工：台灣半導體之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/17-zh-supercomputers-cpus/" class="">
+      規模：從銀河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/63-zh-road-to-attention/" class="">
+      從中文信息處理到注意力機制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/05-zh-transistors-semiconductors/" class="">
+      從一門課到一塊晶片：中國半導體的頭十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/48-zh-lithography-fabs/" class="">
+      微影：從顯微鏡到掃描機</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/58-zh-deep-learning-chips/" class="">
+      從 DianNao 到昇騰：為矩陣乘法造的晶片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/23-zh-operating-systems/" class="">
+      作業系統：從大慶的“虛擬機”到開源歐拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/27-zh-languages-compilers/" class="">
+      程式語言與編譯器：從 104 機到倉頡</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主機與天文台的電腦</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/43-zh-bbs/" class="">
+      擠不進去的廣場：兩岸三地的校園 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/44-zh-chinese-search/" class="">
+      一台伺服器裝不下：中國大陸第一批搜尋引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/66-zh-commercial-crypto/" class="">
+      從“屬於國家秘密”到國際標準：中國商用密碼的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/67-zh-privacy-law/" class="">
+      從電腦處理到自動化決策：兩岸三地的個人資料保護法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/64-zh-mobile-standards/" class="">
+      空中的標準之爭：從大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/68-zh-computer-craze/" class="">
+      娃娃與學習機：1984 年以後的電腦熱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="選單" />
+  </label>
+
+  <h3>漢字上線：從四位電碼到 GB 18030</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目錄" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#四個數字一個字">四個數字一個字</a></li>
+    <li><a href="#1979一場圖書館裡的搶跑">1979：一場圖書館裡的搶跑</a></li>
+    <li><a href="#大陸國家標準說了算">大陸：國家標準說了算</a></li>
+    <li><a href="#台灣五個軟體不是五家公司">台灣：五個軟體，不是五家公司</a></li>
+    <li><a href="#香港為名字補字">香港：為名字補字</a></li>
+    <li><a href="#誰來決定">誰來決定</a></li>
+    <li><a href="#延伸閱讀">延伸閱讀</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    漢字上線：從四位電碼到 GB 18030
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日曆" />
+    <span>9月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hant/tags/%E4%B8%AD%E6%96%87%E9%9B%BB%E7%A2%BC/">中文電碼</a>, 
+      <a href="/zh-hant/tags/%E6%BC%A2%E5%AD%97%E7%B7%A8%E7%A2%BC/">漢字編碼</a>, 
+      <a href="/zh-hant/tags/cccii/">CCCII</a>, 
+      <a href="/zh-hant/tags/gb-2312/">GB 2312</a>, 
+      <a href="/zh-hant/tags/big5/">Big5</a>, 
+      <a href="/zh-hant/tags/cns-11643/">CNS 11643</a>, 
+      <a href="/zh-hant/tags/gb-18030/">GB 18030</a>, 
+      <a href="/zh-hant/tags/hkscs/">HKSCS</a>, 
+      <a href="/zh-hant/tags/%E6%A8%99%E6%BA%96/">標準</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F20-01, F20-02, F20-03, F20-04, F20-05, F20-07, F20-08, F20-09, F21-01, F21-02, F21-04, F21-06, F21-08, F21-09, F21-10, F21-11, F21-12, F21-13, F21-14, F05-01, F05-02, F05-03, F05-09 -->
+<p>電線只認得點和劃，漢字卻有幾千個。怎麼把它們送上線？每一個答案，都同時回答了另一個問題：誰說了算。</p>
+<h2 id="四個數字一個字">四個數字一個字<a class="anchor" href="#%e5%9b%9b%e5%80%8b%e6%95%b8%e5%ad%97%e4%b8%80%e5%80%8b%e5%ad%97">#</a></h2>
+<p>最早的答案是一本碼本。大北電報公司總裁 C.F. Tietgen 發起，丹麥人謝勒俄普（Hans Schjellerup）、法國人威基謁（S.A. Viguier）與中國官商一起編成《電報新書》。他們試過三位到六位的碼，最後定為四位：0001 是“一”，0002 是“丁”，0003 是“七”。威基謁從《康熙字典》選了 6391 字，按 214 個部首排列。刊行年份說法不一：張文洋 2018 年在《近代史研究》上的文章寫 1872 年；中文維基百科等資料寫 1873 年，並說挑選了“常用漢字6800多個”。年份和字數都有待核對原書。</p>
+<p>碼本自帶密碼，叫“鎖匙加減變法”：雙方約定一個金鑰，逐位相加、捨去進位。比如“米”是 4149，加上 5555，發出去的是 9694。</p>
+<p>決定編碼的不只是技術，還有帳單。1879 年倫敦國際電報會議規定“以三碼算一字”，於是李鳳苞在 1881 年編了三字母碼，26³ = 17576 個碼位，好把更多內容塞進一個計費單位。同年，鄭觀應、經元善致函盛宣懷，主張編一本公用碼本：“每號一字，揀字典內通用字面湊成萬號”。</p>
+<p>保密的代價也很真實。總理衙門陸續編發密碼本，如 1890 年的“釐定”、1895 年的“紅字”；甲午戰爭期間，日本破譯了 1888、1890、1895 年的密碼本。自 1897 年起，密本大約每兩年一換。</p>
+<p>這套電碼活得比清朝久得多。1969 年 9 月 26 日，《人民日報》報導郵電部郵電研究院研製成功我國第一台電子式中文電報自動譯報快速收報機，《中文信息處理技術大事記》把它視為電腦處理漢字的開端。直到今天，香港入境事務處的表格上還有一欄：“中文姓名電碼（如有者）”。</p>
+<h2 id="1979一場圖書館裡的搶跑">1979：一場圖書館裡的搶跑<a class="anchor" href="#1979%e4%b8%80%e5%a0%b4%e5%9c%96%e6%9b%b8%e9%a4%a8%e8%a3%a1%e7%9a%84%e6%90%b6%e8%b7%91">#</a></h2>
+<p>據台灣學者謝清俊回憶，1979 年時唯一的漢字編碼標準仍是晚清的電報碼本，而且“編得很糟糕”。那年 11 月，美國的研究圖書館組織（RLG）在史丹佛開會，打算用日本的 JIS 來處理中文。他報告李國鼎，籌得新台幣 300 萬元；“國字整理小組”12 月 25 日成立，三個月編出 4808 字，1980 年 3 月赴美報告，被採用而非日本方案。這就是 CCCII。因為收了簡體字，他還被指“與匪認同”。CCCII 把這層關係直接寫進了編碼結構：簡體字在第一位元組上比對應的正體字大 6。</p>
+<h2 id="大陸國家標準說了算">大陸：國家標準說了算<a class="anchor" href="#%e5%a4%a7%e9%99%b8%e5%9c%8b%e5%ae%b6%e6%a8%99%e6%ba%96%e8%aa%aa%e4%ba%86%e7%ae%97">#</a></h2>
+<p>GB 2312-1980《信息交換用漢字編碼字符集 基本集》收漢字 6763 個。官方記錄為 1980 年 3 月 9 日發布、1981 年 5 月 1 日實施；另據《中文信息處理技術大事記》，它 1980 年 12 月批准、1981 年 3 月見報公布。中國中文信息學會稱它是“第一個漢字信息技術標準”。2017 年，它轉為推薦性標準。</p>
+<p>GB 18030 則是強制性的。2000 年版收 27484 字，採用單、雙、四位元組編碼，2001 年 9 月 1 日起對 PC 作業系統強制檢測，嵌入式裝置、PDA 和手機除外；當時的說法是“凡不符合該標準的產品，視為不合格產品”。至於由誰起草，據起草單位副所長林寧介紹，起草組由電子四所、北大計算機所、方正、中科院軟件所、金山、聯想等國內單位組成，並徵求了微軟、HP、Sun、IBM 的意見。2022 年版收字 87887 個，覆蓋《通用規範漢字表》全部漢字，國家標準委、工信部、國家語委聯合召開了發布會。</p>
+<h2 id="台灣五個軟體不是五家公司">台灣：五個軟體，不是五家公司<a class="anchor" href="#%e5%8f%b0%e7%81%a3%e4%ba%94%e5%80%8b%e8%bb%9f%e9%ab%94%e4%b8%8d%e6%98%af%e4%ba%94%e5%ae%b6%e5%85%ac%e5%8f%b8">#</a></h2>
+<p>1983 年，日本 IBM 推出能處理漢字的日文個人電腦 IBM 5550，引發台灣自行開發中文 PC 的熱潮。資策會在經濟部資助下推動“五大軟體專案”：據 1984 年 3 月 30 日的華視新聞，7 家硬體廠商和 6 家軟體公司簽約，開發中英文文書處理、檔案管理、電子表格、圖形與通訊軟體。1984 年公布的、供這些軟體共用的內碼，就是 Big5（大五碼）。專案本身失敗了，中研院的資料甚至說“幾乎無人知道所謂的『五大』究竟指的是哪五種軟體”。英文維基百科等資料說 Big5 得名於“五家公司”，這是錯的。</p>
+<p>Big5 收 13053 字（去掉兩個重複字後為 13051），字集取自 1983 年的“通用漢字標準交換碼”草案，所以它和官方的 CNS 11643 同出一源。CNS 11643 於 1986 年成為國家標準，1992 年擴充為 7 個字面、48027 字，用於戶政系統。謝清俊的評價卻很乾脆：“今日用的是big5”。</p>
+<h2 id="香港為名字補字">香港：為名字補字<a class="anchor" href="#%e9%a6%99%e6%b8%af%e7%82%ba%e5%90%8d%e5%ad%97%e8%a3%9c%e5%ad%97">#</a></h2>
+<p>香港在 Big5 之上補字。1995 年政府編成《政府通用字庫》，1999 年發布香港增補字符集（HKSCS），此後多次增訂；HKSCS-2016 共 5033 字，其中中文字 4591 個，主要是人名地名、粵語用字和科學用字。</p>
+<h2 id="誰來決定">誰來決定<a class="anchor" href="#%e8%aa%b0%e4%be%86%e6%b1%ba%e5%ae%9a">#</a></h2>
+<p>一路看下來：電報時代，決定漢字怎麼上線的是計費規則和碼本編者；在大陸，是國家標準，今天由國務院授權的國家標準化管理委員會統一管理，全國信息技術標準化技術委員會（TC28）對口 ISO/IEC JTC 1，它最早的分委會之一就是 1983 年的 SC2“字符集與編碼”；在台灣，市場選中了產業匆忙造出的 Big5；在香港，政府為居民的名字補字。</p>
+<p>在西方，ISO/IEC 10646（與 Unicode 同一字元集）試圖把各地字集收進同一張表。大陸在 1993 年以 GB 13000.1 等同採用 ISO/IEC 10646-1，收 CJK 漢字 20902 個。</p>
+<p>**出處：**張文洋《晚清電報的語法：漢字電碼本的設計與應用》（《近代史研究》2018）；全字庫 cns11643.gov.tw；全國標準信息公共服務平台 std.samr.gov.cn。</p>
+<h2 id="延伸閱讀">延伸閱讀<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%96%b1%e8%ae%80">#</a></h2>
+<ul>
+<li>張文洋，《晚清電報的語法：漢字電碼本的設計與應用》（English: The grammar of late-Qing telegraphy: design and use of Chinese code books），原載《近代史研究》2018，搜狐轉載，2018-10-22。<a href="https://www.sohu.com/a/270424338_494916">連結</a></li>
+<li>維基百科，《中文電碼》（English: Chinese Wikipedia article “Chinese telegraph code”, giving 1873 and 6800+ characters, citing 《通信信息報》2004）。<a href="https://zh.wikipedia.org/wiki/%e4%b8%ad%e6%96%87%e7%94%b5%e7%a0%81">連結</a></li>
+<li>香港入境事務處，ROP133 表格（English: Hong Kong Immigration Department form ROP133），2025-10 版。<a href="https://www.immd.gov.hk/pdforms/rop133.pdf">連結</a></li>
+<li>龔濱良，《中文信息處理技術大事記》（English: Chronicle of Chinese information-processing technology），原載《中國科技史料》1985 年第 2 期。<a href="https://nmlr.muc.edu.cn/info/1106/2042.htm">連結</a></li>
+<li>中研院資訊所，《謝清俊訪談》（English: Interview with 謝清俊, for the Institute of Information Science&rsquo;s 20th anniversary），2001-07-26。<a href="https://www.iis.sinica.edu.tw/file/20thAnniversary/i05.html">連結</a></li>
+<li>全字庫，編碼對照與各編碼介紹頁面（English: CNS11643 site pages comparing CCCII, CNS 11643, Big5 and other encodings），cns11643.gov.tw。<a href="https://www.cns11643.gov.tw/pageView.jsp?ID=9">連結</a></li>
+<li>國家標準全文公開系統，GB 2312-1980 記錄（English: GB 2312-1980 official record），openstd.samr.gov.cn。<a href="https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=5664A728BD9D523DE3B99BC37AC7A2CC">連結</a></li>
+<li>全國標準信息公共服務平台，GB 18030-2000 記錄（English: GB 18030-2000 official record），std.samr.gov.cn。<a href="https://std.samr.gov.cn/gb/search/gbDetailed?id=71F772D79585D3A7E05397BE0A0AB82A">連結</a></li>
+<li>林寧，《關於GB18030漢字編碼標準集》（English: On the GB 18030 Chinese character set standard），中國計算機報，新浪科技轉載，2001-07-26。<a href="http://tech.sina.com.cn/s/2001-07-26/1850.html">連結</a></li>
+<li>教育部，GB 18030-2022 發布會新聞（English: Ministry of Education news on the GB 18030-2022 launch），2022-07-29。<a href="http://www.moe.gov.cn/jyb_xwfb/gzdt_gzdt/moe_1485/202207/t20220729_649675.html">連結</a></li>
+<li>中央研究院，《認識中文字元碼》第 9 節（English: Understanding Chinese character codes, section 9: Big5），idv.sinica.edu.tw。<a href="https://web.archive.org/web/20251016233709/https://idv.sinica.edu.tw/bear/charcodes/Section09.htm">連結（存檔）</a></li>
+<li>華視新聞，1984-03-30 關於五大軟體專案簽約的報導（English: CTS television news report on the signing of the Big Five software project）。<a href="https://news.cts.com.tw/cts/politics/198403/198403301730592.html">連結</a></li>
+<li>香港特區政府共通語言資訊基建，香港增補字符集介紹頁面（English: Hong Kong government Common Chinese Language Interface: what HKSCS is），ccli.gov.hk。<a href="https://www.ccli.gov.hk/tc/hkscs/what_is_hkscs.html">連結</a></li>
+<li>全國標準信息公共服務平台，《TC28 全國信息技術標準化技術委員會》（English: TC28, National IT Standardization Technical Committee），std.samr.gov.cn。<a href="https://std.samr.gov.cn/search/orgDetailView?tcCode=TC28">連結</a></li>
+<li>國務院辦公廳，國辦發〔2001〕56 號通知（English: State Council General Office notice on the functions of AQSIQ, CNCA and SAC），國務院公報 2001 年第 27 號。<a href="https://www.gov.cn/gongbao/content/2001/content_61007.htm">連結</a></li>
+<li>中國中文信息學會，《中文信息處理大事記》（English: Chronicle of Chinese information processing），CIPS。<a href="http://bj.bcebos.com/cips-upload/cipsc30.pdf">連結</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/b143baf811dd934626f3160e8260e5d48395b1f1" title='最後修改者 Nayana | 11月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日曆" />
+    <span>11月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E6%BC%A2%E5%AD%97%E4%B8%8A%E7%B7%9A%EF%BC%9A%E5%BE%9E%E5%9B%9B%E4%BD%8D%E9%9B%BB%E7%A2%BC%E5%88%B0&#43;GB&#43;18030&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hant%2Fposts%2F64-zh-hanzi-encoding%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hant%2Fposts%2F64-zh-hanzi-encoding.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hant%2Fposts%2F64-zh-hanzi-encoding.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hant/posts/03-zh-first-electronic-computers/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一頁" />
+        <span>真空管與電晶體：中國第一批電腦，和算盤的真實角色</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hant/posts/26-zh-input-and-typesetting/" class="flex align-center">
+        <span>把漢字敲進機器：打字機、輸入法與雷射照排</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一頁" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#四個數字一個字">四個數字一個字</a></li>
+    <li><a href="#1979一場圖書館裡的搶跑">1979：一場圖書館裡的搶跑</a></li>
+    <li><a href="#大陸國家標準說了算">大陸：國家標準說了算</a></li>
+    <li><a href="#台灣五個軟體不是五家公司">台灣：五個軟體，不是五家公司</a></li>
+    <li><a href="#香港為名字補字">香港：為名字補字</a></li>
+    <li><a href="#誰來決定">誰來決定</a></li>
+    <li><a href="#延伸閱讀">延伸閱讀</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

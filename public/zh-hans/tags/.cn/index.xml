@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>.Cn on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/.cn/</link>
+		<description>Recent content in .Cn on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/.cn/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>越过长城：中文世界接入网络（1986—1995）</title>
+				<link>http://localhost:1478/zh-hans/posts/39-zh-networks-1986-1994/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/39-zh-networks-1986-1994/</guid>
+				<description>中国的第一封电子邮件比通常说的早一年，1987 年那封著名的邮件有两个日期，.cn 的注册则走了一个多月：两岸三地接入互联网的路，比英文世界记住的两个年份曲折得多。</description>
+			</item>
+	</channel>
+</rss>

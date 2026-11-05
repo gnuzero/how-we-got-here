@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="එක් GPU එකක් සීමිත ය — GPU අතර interconnect ඊළඟ බිත්තිය බවට පත් වේ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/56-multi-gpu-scaling/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="Multi-GPU Scaling">
+	<meta property="og:description" content="එක් GPU එකක් සීමිත ය — GPU අතර interconnect ඊළඟ බිත්තිය බවට පත් වේ">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Multi-GPU Scaling">
+	<meta itemprop="description" content="එක් GPU එකක් සීමිත ය — GPU අතර interconnect ඊළඟ බිත්තිය බවට පත් වේ">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1351">
+
+<title>Multi-GPU Scaling • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/56-multi-gpu-scaling/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/56-multi-gpu-scaling/" title="Multi-GPU Scaling">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/56-multi-gpu-scaling/" title="การขยายหลาย GPU">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/56-multi-gpu-scaling/" title="Multi-GPU Scaling">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/56-multi-gpu-scaling/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/56-multi-gpu-scaling/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/56-multi-gpu-scaling/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="active">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Multi-GPU Scaling</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#වඩ-බදම-නමල-නව">වැඩ බෙදීම නොමිලේ නොවේ</a></li>
+    <li><a href="#එක-server-එකක-ඇතළත-සජ-මරග">එක් Server එකක් ඇතුළත සෘජු මාර්ග</a></li>
+    <li><a href="#එක-පටටයක-ඉකමව">එක් පෙට්ටියක් ඉක්මවා</a></li>
+    <li><a href="#මම-මලව-නවත-නවත-නම-කරන-දරශනය">මෙම මාලාව නැවත නැවත නම් කරන දර්ශනය</a></li>
+    <li><a href="#ගඹරන-amdahl-gustafson-සහ-gradient-සමමහරතකරණය-කල-ගණතය">ගැඹුරින්: Amdahl, Gustafson සහ gradient සමමුහුර්තකරණයේ කාල ගණිතය</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-amdahl-සහ-gustafson">2. Amdahl සහ Gustafson</a></li>
+        <li><a href="#3-all-reduce-සඳහ-අවම-කලය">3. All-reduce සඳහා අවම කාලය</a></li>
+        <li><a href="#4-වඩ-කළ-උදහරණය-එකම-server-එක-nvlink-එදරව-pcie">4. වැඩ කළ උදාහරණය: එකම server එකේ NVLink එදිරිව PCIe</a></li>
+        <li><a href="#5-පටටයන-පටත-gpudirect-rdma">5. පෙට්ටියෙන් පිටත: GPUDirect RDMA</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Multi-GPU Scaling
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>එක් GPU එකකට සීමිත compute සහ සීමිත HBM (Post 54) ඇත. අද විශාලතම ආකෘතිවලට බොහෝ GPU අවශ්‍ය ය — එක් server එකක, පසුව cluster එකක් හරහා — සහ එම GPU එකිනෙකා සමඟ කතා කරන ආකාරය බොහෝ විට ඕනෑම තනි GPU එකක peak specs තරම්ම සැබෑ throughput තීරණය කරයි.</p>
+<h2 id="වඩ-බදම-නමල-නව">වැඩ බෙදීම නොමිලේ නොවේ<a class="anchor" href="#%e0%b7%80%e0%b6%a9-%e0%b6%b6%e0%b6%af%e0%b6%b8-%e0%b6%b1%e0%b6%b8%e0%b6%bd-%e0%b6%b1%e0%b7%80">#</a></h2>
+<p>Post 46 ආවරණය කළේ data-parallel සහ model-parallel බෙදීම් <em>ඇයි</em> බොහෝ විට අවශ්‍යද යන්නයි. කාර්යක්ෂමතාව රඳා පවතින්නේ GPU දත්ත හුවමාරු කරන වේගය මත ය. සන්නිවේදනය එක් එක් GPU හි compute ට සාපේක්ෂව මන්දගාමී නම්, peers එකිනෙකා බලා සිටිමින් stall වේ — නැවතත් මතක බිත්තිය (Post 35), දැන් CPU-to-DRAM වෙනුවට GPU-to-GPU සබැඳිවලට යොදන ලදී.</p>
+<h2 id="එක-server-එකක-ඇතළත-සජ-මරග">එක් Server එකක් ඇතුළත සෘජු මාර්ග<a class="anchor" href="#%e0%b6%91%e0%b6%9a-server-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%87%e0%b6%ad%e0%b7%85%e0%b6%ad-%e0%b7%83%e0%b6%a2-%e0%b6%b8%e0%b6%bb%e0%b6%9c">#</a></h2>
+<p>Post 37 NVLink හඳුන්වා දුන්නේ CPU-මධ්‍යස්ථ PCIe මාර්ගය මඟහරින ඉහළ-bandwidth GPU-to-GPU interconnect එකක් ලෙස. Server එකක් ඇතුළත, NVSwitch එය all-to-all බවට පත් කරයි: සෑම GPU එකක්ම අනෙක් සෑම එකකටම PCIe සහ host හරහා නොව NVLink bandwidth එකේ ළඟා වේ. නිරන්තරයෙන් විශාල gradients හුවමාරු කරන workloads සඳහා, එම සෘජු මාර්ගය බොහෝ විට ඕනෑම හුදකලා peak-FLOPS අංකයකට වඩා ලබා ගත් training throughput තීරණය කරයි.</p>
+<h2 id="එක-පටටයක-ඉකමව">එක් පෙට්ටියක් ඉක්මවා<a class="anchor" href="#%e0%b6%91%e0%b6%9a-%e0%b6%b4%e0%b6%a7%e0%b6%a7%e0%b6%ba%e0%b6%9a-%e0%b6%89%e0%b6%9a%e0%b6%b8%e0%b7%80">#</a></h2>
+<p>විශාල training බොහෝ servers හරහා විහිදේ. Post 42 හි RDMA අදහස් ආපසු එයි: GPUDirect RDMA ජාල adapter එකකට host DRAM හරහා අමතර copies නොමැතිව servers හරහා GPU මතකය කියවීමට හෝ ලිවීමට ඉඩ දෙයි — එම &ldquo;hops අවම කරන්න, සෘජු bandwidth උපරිම කරන්න&rdquo; ඔට්ටුවම, දැන් cluster පරිමාණයේ.</p>
+<h2 id="මම-මලව-නවත-නවත-නම-කරන-දරශනය">මෙම මාලාව නැවත නැවත නම් කරන දර්ශනය<a class="anchor" href="#%e0%b6%b8%e0%b6%b8-%e0%b6%b8%e0%b6%bd%e0%b7%80-%e0%b6%b1%e0%b7%80%e0%b6%ad-%e0%b6%b1%e0%b7%80%e0%b6%ad-%e0%b6%b1%e0%b6%b8-%e0%b6%9a%e0%b6%bb%e0%b6%b1-%e0%b6%af%e0%b6%bb%e0%b7%81%e0%b6%b1%e0%b6%ba">#</a></h2>
+<p>සෘජු GPU-to-GPU මාර්ග, අනවශ්‍ය hops අඩුව, interconnect first-class සීමාවක් ලෙස — මෙම මාලාව යොමු කර ඇති අභිරුචි GPU මතක fabric පිටුපස ඇති එම දර්ශනයම: එක් වෙළෙන්දෙකුගේ stack එකක් ඇතුළත proprietary GPU fabrics කරන දේට විවෘත, PCIe-පදනම් ප්‍රවේශයක්. Phase 10 නූල ඇත්තටම datacenter පරිමාණයේ නැවත ගනී — එක් පෙට්ටියක GPU කිහිපයක් නොව, training cluster එකක් හරහා දහස් ගණනක්, aggregate theoretical compute සම්බන්ධීකරණයට නැති නොවන පරිදි වයර් කරන ලද.</p>
+<h2 id="ගඹරන-amdahl-gustafson-සහ-gradient-සමමහරතකරණය-කල-ගණතය">ගැඹුරින්: Amdahl, Gustafson සහ gradient සමමුහුර්තකරණයේ කාල ගණිතය<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-amdahl-gustafson-%e0%b7%83%e0%b7%84-gradient-%e0%b7%83%e0%b6%b8%e0%b6%b8%e0%b7%84%e0%b6%bb%e0%b6%ad%e0%b6%9a%e0%b6%bb%e0%b6%ab%e0%b6%ba-%e0%b6%9a%e0%b6%bd-%e0%b6%9c%e0%b6%ab%e0%b6%ad%e0%b6%ba">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> &ldquo;multi GPU sinhala&rdquo; සහ &ldquo;SLI crossfire sinhala&rdquo; සෙවුම්වලට ලැබුණේ ක්‍රීඩා පරිගණක සඳහා graphics card තෝරා ගැනීම ගැන සිංහල වීඩියෝ පමණි (උදා. &ldquo;Practically everything&rdquo; නාලිකාව; අප හඳුනාගත්තේ මාතෘකාවෙන් පමණි, නැරඹුවේ නැත). AI training සඳහා GPU කිහිපයක් පරිමාණය කිරීම, all-reduce හෝ Amdahl නියමය ගැන සිංහල පාඩමක් අපට හමු නොවීය. එබැවින් මෙම කොටස John Gustafson ගේ 1988 ලිපිය, NVIDIA හි nccl-tests ලේඛනය සහ A100 whitepaper භාවිතා කර, ගණනය මුල සිට ගොඩනඟයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>දත්ත-සමාන්තර පුහුණුව (data-parallel training):</strong> සෑම GPU එකකම ආකෘතියේ සම්පූර්ණ පිටපතක් ඇත. එක් එක් GPU එක batch එකේ වෙනස් කොටසක් සකසයි.</li>
+<li><strong>Gradient:</strong> එක් පියවරකදී සෑම පරාමිතියක්ම (parameter) වෙනස් කළ යුතු දිශාවයි. පරාමිති ගණනට සමාන සංඛ්‍යා ප්‍රමාණයකි.</li>
+<li><strong>All-reduce:</strong> සෑම GPU එකකම ඇති gradients එකතු කර, එම එකතුව සෑම GPU එකකටම ලබා දෙන සාමූහික මෙහෙයුමයි (collective operation).</li>
+<li><strong>දැඩි පරිමාණය (strong scaling):</strong> ගැටලුවේ ප්‍රමාණය නියතව තබා GPU වැඩි කිරීමයි. මෙහිදී ඉලක්කය වේගවත් වීමයි.</li>
+<li><strong>දුර්වල/පරිමාණිත පරිමාණය (weak/scaled scaling):</strong> GPU එකකට වැඩ ප්‍රමාණය නියතව තබා GPU වැඩි කිරීමයි. මෙහිදී මුළු ගැටලුව විශාල වේ.</li>
+<li><strong>පරිමාණ කාර්යක්ෂමතාව (scaling efficiency):</strong> ලැබුණු වේගවත් වීම ÷ GPU ගණනයි.</li>
+<li><strong>අතිච්ඡාදනය (overlap):</strong> gradient සන්නිවේදනය, ඉතිරි ගණනය කිරීම් සමඟ එකවර සිදු කිරීමයි.</li>
+</ul>
+<h3 id="2-amdahl-සහ-gustafson">2. Amdahl සහ Gustafson<a class="anchor" href="#2-amdahl-%e0%b7%83%e0%b7%84-gustafson">#</a></h3>
+<p>Gustafson ගේ &ldquo;Reevaluating Amdahl&rsquo;s Law&rdquo; (Communications of the ACM, 1988) ලිපිය සූත්‍ර දෙකම දක්වයි. s = අනුක්‍රමික (serial) කොටස සහ N = සකසන ඒකක ගණන නම්:</p>
+<ul>
+<li><strong>Amdahl (ස්ථාවර ප්‍රමාණය):</strong> Speedup = 1 / (s + (1 − s)/N). N අනන්තය කරා යන විට උපරිමය 1/s වේ.</li>
+<li><strong>Gustafson–Barsis (පරිමාණිත):</strong> Scaled speedup = N + (1 − N)·s′</li>
+</ul>
+<p>Gustafson වාර්තා කළේ, s = 0.4–0.8% වූ Sandia යෙදුම් තුනක් සඳහා processors <strong>1024</strong> ක hypercube එකක <strong>1021</strong>, <strong>1020</strong> සහ <strong>1016</strong> වේගවත් වීම් ලබා ගත් බවයි. ඔහුගේ තර්කය මෙයයි: &ldquo;in practice, the problem size scales with the number of processors&rdquo; (ප්‍රායෝගිකව, ගැටලුවේ ප්‍රමාණය processors ගණන සමඟ වර්ධනය වේ).</p>
+<p><strong>අපේ පරීක්ෂාව:</strong> Gustafson සූත්‍රයෙන් s′ = 0.4% → 1024 − 1023 × 0.004 ≈ <strong>1020</strong>, s′ = 0.8% → 1024 − 1023 × 0.008 ≈ <strong>1016</strong>. එහෙත් Amdahl සූත්‍රයෙන් s = 0.4% → 1 / (0.004 + 0.996/1024) ≈ <strong>201</strong> පමණි. එබැවින් 1021/1020/1016 යනු පරිමාණිත (scaled) වේගවත් වීම් මිස ස්ථාවර ප්‍රමාණයේ වේගවත් වීම් නොවේ. (1021 ගැළපෙන්නේ s′ ≈ 3/1023 ≈ 0.3% ට ය. එබැවින් ලිපියේ 0.4–0.8% පරාසය ආසන්න අගයක් ලෙස සැලකිය යුතුය.)</p>
+<p><strong>වැඩ කළ උදාහරණය (s = 0.05 ආදර්ශ අගයකි):</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>N = 8</th>
+					<th>N = 1024</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Amdahl</td>
+					<td>1 / (0.05 + 0.95/8) ≈ <strong>5.93</strong></td>
+					<td>≈ <strong>19.6</strong> (උපරිමය 20)</td>
+			</tr>
+			<tr>
+					<td>Gustafson</td>
+					<td>8 − 7 × 0.05 = <strong>7.65</strong></td>
+					<td>1024 − 1023 × 0.05 ≈ <strong>973</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>Training භාෂාවෙන් කිවහොත්:</p>
+<ul>
+<li><strong>ස්ථාවර global batch</strong> එකක් GPU අතර බෙදීම Amdahl ලෝකයයි.</li>
+<li><strong>GPU එකකට ස්ථාවර batch</strong> එකක් තබා GPU එකතු කිරීම (global batch එක වර්ධනය වේ) Gustafson ලෝකයයි.</li>
+</ul>
+<p>එහෙත් training වල &ldquo;s&rdquo; ලෙස ප්‍රධාන වශයෙන් ක්‍රියා කරන්නේ gradient සමමුහුර්තකරණයයි. එය ගණනය කරමු.</p>
+<h3 id="3-all-reduce-සඳහ-අවම-කලය">3. All-reduce සඳහා අවම කාලය<a class="anchor" href="#3-all-reduce-%e0%b7%83%e0%b6%b3%e0%b7%84-%e0%b6%85%e0%b7%80%e0%b6%b8-%e0%b6%9a%e0%b6%bd%e0%b6%ba">#</a></h3>
+<p>NVIDIA හි nccl-tests <em>PERFORMANCE.md</em> ලේඛනයට අනුව, n GPUs (ranks) සහ සෑම GPU එකකටම පිටතට B bandwidth ඇත්නම්, S bytes all-reduce එකක් සඳහා හොඳම කාලය:</p>
+<p><strong>t = (S / B) × 2(n − 1)/n</strong></p>
+<ul>
+<li>එක් එක් මූලද්‍රව්‍යයට එකතු කිරීම් n − 1 ක් සහ පැවරුම් n ක් අවශ්‍ය වේ. එබැවින් දත්ත හුවමාරු 2(n − 1) ක් සිදු වේ.</li>
+<li>එය ring, tree හෝ වෙනත් ඕනෑම send/receive ඇල්ගොරිතමයකට පොදුය.</li>
+<li>මෙම 2(n − 1)/n සාධකය යොදා nccl-tests &ldquo;bus bandwidth&rdquo; (busbw) වාර්තා කරයි. එවිට මිනුම දෘඪාංගයේ උපරිමය සමඟ සෘජුව සැසඳිය හැකිය.</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>n</th>
+					<th>2(n − 1)/n</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>2</td>
+					<td>1.00</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>1.75</td>
+			</tr>
+			<tr>
+					<td>1024</td>
+					<td>≈ 2.00</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>වැදගත් නිරීක්ෂණය:</strong> GPU ගණන වැඩි කළත් එක් GPU එකක් යවන දත්ත ප්‍රමාණය ≈ 2S දක්වා පමණක් වර්ධනය වේ. ring ඇල්ගොරිතමය එය කරන්නේ කෙසේද යන්න Post 61 හි පියවරෙන් පියවර ව්‍යුත්පන්න කෙරේ.</p>
+<h3 id="4-වඩ-කළ-උදහරණය-එකම-server-එක-nvlink-එදරව-pcie">4. වැඩ කළ උදාහරණය: එකම server එකේ NVLink එදිරිව PCIe<a class="anchor" href="#4-%e0%b7%80%e0%b6%a9-%e0%b6%9a%e0%b7%85-%e0%b6%8b%e0%b6%af%e0%b7%84%e0%b6%bb%e0%b6%ab%e0%b6%ba-%e0%b6%91%e0%b6%9a%e0%b6%b8-server-%e0%b6%91%e0%b6%9a-nvlink-%e0%b6%91%e0%b6%af%e0%b6%bb%e0%b7%80-pcie">#</a></h3>
+<p>NVIDIA A100 whitepaper (p.17) අනුව:</p>
+<ul>
+<li>A100 හි NVLink මුළු bandwidth එක <strong>600 GB/s</strong> වේ (දිශාවකට 300 GB/s).</li>
+<li>PCIe Gen 4 x16 <strong>31.5 GB/s</strong> වේ (දිශාවකට).</li>
+</ul>
+<p><strong>ආදර්ශ ආකෘතිය:</strong></p>
+<ul>
+<li>පරාමිති බිලියන 1 යි. FP16 gradients (bytes 2) නිසා S = <strong>2 GB</strong>.</li>
+<li>GPU n = 8 යි.</li>
+<li>එක් පියවරක ගණනය කිරීම් <strong>100 ms</strong> වේ.</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>සබැඳිය</th>
+					<th>t = (2 GB / B) × 1.75</th>
+					<th>අතිච්ඡාදනය නැතිව කාර්යක්ෂමතාව</th>
+					<th>GPU 8 න් වේගවත් වීම</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>NVLink (300 GB/s)</td>
+					<td>≈ <strong>11.7 ms</strong></td>
+					<td>100 / 111.7 ≈ <strong>90%</strong></td>
+					<td>≈ <strong>7.2×</strong></td>
+			</tr>
+			<tr>
+					<td>PCIe Gen 4 (31.5 GB/s)</td>
+					<td>≈ <strong>111 ms</strong></td>
+					<td>100 / 211 ≈ <strong>47%</strong></td>
+					<td>≈ <strong>3.8×</strong></td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>මේවා <strong>න්‍යායික අවම</strong> අගයන් වේ. සැබෑ busbw මීට අඩුය. PCIe හිදී host/root complex හවුල් වීම නිසා තත්ත්වය වඩාත් නරක විය හැකිය.</li>
+<li><strong>සම්පූර්ණ අතිච්ඡාදනයක්</strong> ඇත්නම් පියවර කාලය = max(ගණනය, සන්නිවේදනය) වේ. NVLink හිදී 100 ms (≈100%) වන අතර, PCIe හිදී 111 ms (≈90%) වේ.</li>
+<li>post එක කියන &ldquo;GPU එකිනෙකා බලා සිටිමින් stall වේ&rdquo; යන්නෙහි සංඛ්‍යාත්මක තේරුම මෙයයි. PCIe මත, GPU 8 න් අඩක් පමණ කාලය සන්නිවේදනය බලා සිටී.</li>
+</ul>
+<h3 id="5-පටටයන-පටත-gpudirect-rdma">5. පෙට්ටියෙන් පිටත: GPUDirect RDMA<a class="anchor" href="#5-%e0%b6%b4%e0%b6%a7%e0%b6%a7%e0%b6%ba%e0%b6%b1-%e0%b6%b4%e0%b6%a7%e0%b6%ad-gpudirect-rdma">#</a></h3>
+<p>NVIDIA හි <em>GPUDirect RDMA</em> ලේඛනය (docs.nvidia.com, &ldquo;Overview&rdquo; සහ &ldquo;Supported Systems&rdquo;) මෙසේ කියයි:</p>
+<ul>
+<li>මෙම තාක්ෂණය Kepler-පන්තියේ GPUs සහ CUDA 5.0 සමඟ හඳුන්වා දෙන ලදී.</li>
+<li>එය &ldquo;standard features of PCI Express&rdquo; භාවිතා කර GPU එක සහ ජාල අතුරුමුහුණතක් (network interface) වැනි තෙවන-පාර්ශ්ව උපාංගයක් අතර සෘජු මාර්ගයක් සපයයි.</li>
+<li>උපාංග දෙකම එකම upstream PCIe root complex එක බෙදා ගත යුතුය.</li>
+<li>මාර්ගයේ PCIe switches පමණක් ඇති විට කාර්ය සාධනය හොඳම වේ. CPU/IOH එකක් හරහා යන විට මන්දගාමී වේ. QPI/HT සබැඳියක් හරහා යන විට &ldquo;extremely performance-limited&rdquo; විය හැකිය.</li>
+</ul>
+<p>එබැවින් GPU servers වල NIC එක GPU එකට ආසන්න PCIe switch එකක තැබීම සාමාන්‍ය නිර්මාණයකි. Post 42 හි RDMA &ldquo;copy මඟහැරීම&rdquo; මෙහිදී host DRAM මඟහැරීම බවට පත් වේ.</p>
+<h3 id="6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#6-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>s = 0.1 නම්, N = 4 සඳහා Amdahl speedup කීයද? N = 16 සඳහා Gustafson scaled speedup කීයද?</li>
+<li>පරාමිති මිලියන 500, FP32 gradients (bytes 4), n = 4, B = 50 GB/s නම් අවම all-reduce කාලය කීයද?</li>
+<li>ගණනය 90 ms, සන්නිවේදනය 30 ms නම්, අතිච්ඡාදනය නැතිව සහ සම්පූර්ණ අතිච්ඡාදනය සහිතව කාර්යක්ෂමතාව කීයද?</li>
+<li>n = 16 සඳහා 2(n − 1)/n සාධකය කීයද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>1 / (0.1 + 0.9/4) ≈ <strong>3.08</strong>; 16 − 15 × 0.1 = <strong>14.5</strong>.</li>
+<li>S = 2 GB → (2/50) × 1.5 = <strong>60 ms</strong>.</li>
+<li>90/120 = <strong>75%</strong>; max(90, 30) = 90 → <strong>100%</strong>.</li>
+<li>30/16 = <strong>1.875</strong>.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>John L. Gustafson, &ldquo;Reevaluating Amdahl&rsquo;s Law&rdquo;, <em>Communications of the ACM</em> 31(5), 1988. කතුවරයාගේ වෙබ් අඩවියේ පිටපත: <a href="http://www.johngustafson.net/pubs/pub13/amdahl.htm">http://www.johngustafson.net/pubs/pub13/amdahl.htm</a></li>
+<li>NVIDIA, <em>nccl-tests: Performance reported by NCCL tests</em> (doc/PERFORMANCE.md, &ldquo;AllReduce&rdquo; සහ &ldquo;Summary&rdquo; කොටස්): <a href="https://github.com/NVIDIA/nccl-tests/blob/master/doc/PERFORMANCE.md">https://github.com/NVIDIA/nccl-tests/blob/master/doc/PERFORMANCE.md</a></li>
+<li>NVIDIA, <em>NVIDIA A100 Tensor Core GPU Architecture</em> whitepaper, 2020, p.17 (NVLink 600 GB/s; PCIe Gen 4 31.5 GB/s): <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf</a></li>
+<li>NVIDIA, <em>GPUDirect RDMA</em> (CUDA ලේඛනය, §1 Overview, §3.4 Supported Systems): <a href="https://docs.nvidia.com/cuda/gpudirect-rdma/index.html">https://docs.nvidia.com/cuda/gpudirect-rdma/index.html</a></li>
+</ul>
+<p>s = 0.05, පරාමිති බිලියන 1, ගණනය 100 ms සහ අභ්‍යාසවල අගයන් ආදර්ශ අගයන් වේ.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Multi-GPU&#43;Scaling&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F56-multi-gpu-scaling%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F56-multi-gpu-scaling.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F56-multi-gpu-scaling.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/55-tensor-cores/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Tensor Cores</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="flex align-center">
+        <span>Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#වඩ-බදම-නමල-නව">වැඩ බෙදීම නොමිලේ නොවේ</a></li>
+    <li><a href="#එක-server-එකක-ඇතළත-සජ-මරග">එක් Server එකක් ඇතුළත සෘජු මාර්ග</a></li>
+    <li><a href="#එක-පටටයක-ඉකමව">එක් පෙට්ටියක් ඉක්මවා</a></li>
+    <li><a href="#මම-මලව-නවත-නවත-නම-කරන-දරශනය">මෙම මාලාව නැවත නැවත නම් කරන දර්ශනය</a></li>
+    <li><a href="#ගඹරන-amdahl-gustafson-සහ-gradient-සමමහරතකරණය-කල-ගණතය">ගැඹුරින්: Amdahl, Gustafson සහ gradient සමමුහුර්තකරණයේ කාල ගණිතය</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-amdahl-සහ-gustafson">2. Amdahl සහ Gustafson</a></li>
+        <li><a href="#3-all-reduce-සඳහ-අවම-කලය">3. All-reduce සඳහා අවම කාලය</a></li>
+        <li><a href="#4-වඩ-කළ-උදහරණය-එකම-server-එක-nvlink-එදරව-pcie">4. වැඩ කළ උදාහරණය: එකම server එකේ NVLink එදිරිව PCIe</a></li>
+        <li><a href="#5-පටටයන-පටත-gpudirect-rdma">5. පෙට්ටියෙන් පිටත: GPUDirect RDMA</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

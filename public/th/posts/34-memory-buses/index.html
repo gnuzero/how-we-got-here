@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DDR ซื้อแบนด์วิดท์; latency แทบไม่ขยับ — bank และ channel ซ่อนการรอ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/34-memory-buses/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="บัสหน่วยความจำ">
+	<meta property="og:description" content="DDR ซื้อแบนด์วิดท์; latency แทบไม่ขยับ — bank และ channel ซ่อนการรอ">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="บัสหน่วยความจำ">
+	<meta itemprop="description" content="DDR ซื้อแบนด์วิดท์; latency แทบไม่ขยับ — bank และ channel ซ่อนการรอ">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="852">
+
+<title>บัสหน่วยความจำ • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/34-memory-buses/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/34-memory-buses/" title="Memory Buses">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/34-memory-buses/" title="මතක බස්">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/34-memory-buses/" title="Memory Buses">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/34-memory-buses/" title="Magistralele de memorie">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/34-memory-buses/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/34-memory-buses/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/34-memory-buses/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/34-memory-buses/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="active">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>บัสหน่วยความจำ</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ทงสองขอบ-ไมใชคลอกเรวขน">ทั้งสองขอบ ไม่ใช่คล็อกเร็วขึ้น</a></li>
+    <li><a href="#แบนดวดทจากหลกการแรก">แบนด์วิดท์จากหลักการแรก</a></li>
+    <li><a href="#แบนดวดทปน-latency-ของบตแรกไม">แบนด์วิดท์ปีน; Latency ของบิตแรกไม่</a></li>
+    <li><a href="#เวลาแฝงทไมขยบ-อานจากตาราง-speed-bin">เวลาแฝงที่ไม่ขยับ: อ่านจากตาราง speed bin</a></li>
+    <li><a href="#parallelism-เพอซอนการเขาถงชา">Parallelism เพื่อซ่อนการเข้าถึงช้า</a></li>
+    <li><a href="#ทำไมตองม-bank-สามกรณของการอานหนงครง">ทำไมต้องมี bank: สามกรณีของการอ่านหนึ่งครั้ง</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    บัสหน่วยความจำ
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>PCIe (บทที่ 32–33) คือเส้นทางไปอุปกรณ์ขยาย บัสหน่วยความจำคือเส้นทางที่เลี้ยง CPU จริง — DRAM จากบทที่ 10 — และวิวัฒนาการของมันคือการเจรจาต่อเนื่องระหว่างแบนด์วิดท์ latency และพลังงาน ชื่อรุ่นไม่ใช่เรื่องราว การแยกสามอย่างนั้นต่างหาก</p>
+<p>คำศัพท์ก่อนเริ่ม (ศัพท์บัญญัติราชบัณฑิตยสภา สาขาคอมพิวเตอร์และเทคโนโลยีสารสนเทศ เว้นแต่ระบุ): <strong>หน่วยความจำ</strong> (memory); <strong>การเข้าถึงโดยสุ่ม</strong> (random access — ตัว RA ใน DRAM); <strong>พลวัต</strong> (dynamic — ตัว D); <strong>แถว</strong> และ <strong>สดมภ์</strong> (row, column); <strong>แบนด์วิดท์</strong> (bandwidth); <strong>เวลาแฝง</strong> (latency); <strong>ปริมาณงาน</strong> (throughput); <strong>หน่วยความจำแคช</strong> (cache memory); <strong>นาฬิกา</strong> (clock); <strong>บัส</strong> (bus) และ <strong>บัสข้อมูล</strong> (data bus); <strong>ช่องสัญญาณ</strong> (channel — ในบทนี้หมายถึงช่องหน่วยความจำ เส้นทางอิสระจากตัวควบคุม); <strong>ส่งเป็นชุดอย่างเร็ว</strong> (burst — การส่งต่อเนื่องหลายจังหวะจากคำสั่งเดียว); <strong>ตัวควบคุม</strong> (controller — ในที่นี้คือตัวควบคุมหน่วยความจำ); และ <strong>ตัวเก็บประจุ</strong> (capacitor) จากสาขาวิทยาศาสตร์: <strong>ความถี่</strong> (frequency) คำต่อไปนี้ยังไม่พบศัพท์บัญญัติในความหมายนี้ จึงใช้ทับศัพท์พร้อมคำอธิบาย: bank (แบงก์ — กลุ่มเซลล์ที่เปิดแถวได้อิสระ), bank group (กลุ่มของแบงก์), rank (ชุดชิปที่ทำงานพร้อมกันให้ได้ความกว้าง 64 บิต), prefetch (การดึงล่วงหน้าภายในชิป), MT/s (ล้านจังหวะการโอนต่อวินาที) และ CL (CAS latency — จำนวนรอบนาฬิการะหว่างคำสั่งอ่านกับข้อมูลชิ้นแรก)</p>
+<h2 id="ทงสองขอบ-ไมใชคลอกเรวขน">ทั้งสองขอบ ไม่ใช่คล็อกเร็วขึ้น<a class="anchor" href="#%e0%b8%97%e0%b8%87%e0%b8%aa%e0%b8%ad%e0%b8%87%e0%b8%82%e0%b8%ad%e0%b8%9a-%e0%b9%84%e0%b8%a1%e0%b9%83%e0%b8%8a%e0%b8%84%e0%b8%a5%e0%b8%ad%e0%b8%81%e0%b9%80%e0%b8%a3%e0%b8%a7%e0%b8%82%e0%b8%99">#</a></h2>
+<p>DDR — Double Data Rate — ถ่ายโอนทั้งขอบขาขึ้น <em>และ</em> ขาลง Throughput ประมาณสองเท่าของการออกแบบ single-data-rate ที่คล็อกเดียวกัน โดยไม่ต้องเพิ่มความถี่ (และความท้าทายความสมบูรณ์ของสัญญาณที่ตามมา) แบนด์วิดท์โดยไม่จ่ายกำแพงคล็อกก่อน</p>
+<h2 id="แบนดวดทจากหลกการแรก">แบนด์วิดท์จากหลักการแรก<a class="anchor" href="#%e0%b9%81%e0%b8%9a%e0%b8%99%e0%b8%94%e0%b8%a7%e0%b8%94%e0%b8%97%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%ab%e0%b8%a5%e0%b8%81%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%81%e0%b8%a3%e0%b8%81">#</a></h2>
+<p>ชื่อ &ldquo;DDR4-3200&rdquo; ไม่ใช่ความถี่นาฬิกา แต่เป็นอัตราการโอน 3200 MT/s เมื่อโอนสองครั้งต่อรอบ นาฬิกาจริงจึงอยู่ที่ 1600 MHz — เอกสารข้อมูลของ Micron ระบุรอบนาฬิกา tCK = 0.625 ns สำหรับ DDR4-3200 และผู้เขียนคำนวณตรวจได้ 1 / 0.625 ns = 1600 MHz ตรงกัน</p>
+<p>แบนด์วิดท์สูงสุดของช่องสัญญาณหน่วยความจำหนึ่งช่องที่กว้าง 64 บิต (8 ไบต์) คือ</p>
+<p>3200 × 10⁶ ครั้ง/วินาที × 8 ไบต์ = 25.6 GB/s</p>
+<p>ที่นาฬิกา 1600 MHz เท่ากัน การออกแบบที่โอนขอบเดียวจะได้ 12.8 GB/s — ส่วนต่างสองเท่านั้นคือทั้งหมดที่ย่อหน้าข้างบนพูดถึง ถ้ามีสองช่องสัญญาณที่ทำงานอิสระ เพดานรวมคือ 51.2 GB/s (ตัวเลขเพดาน ไม่ใช่ค่าที่วัดได้จริง)</p>
+<p><strong>Burst กับบรรทัดแคช:</strong> DDR4 ส่งข้อมูลเป็นชุด 8 จังหวะ (BL8) ต่อคำสั่งอ่านหนึ่งครั้ง 8 จังหวะ × 8 ไบต์ = 64 ไบต์ เท่ากับขนาดบรรทัดแคชที่พบบ่อยในซีพียูปัจจุบันพอดี และ 8 จังหวะใช้ 4 รอบนาฬิกา = 4 × 0.625 = 2.5 ns ที่ DDR4-3200 เอกสาร Micron ยังระบุว่าชิปใช้ &ldquo;8n-bit prefetch&rdquo;: แต่ละการเข้าถึงภายในอาร์เรย์ดึงข้อมูล 8 บิตต่อขาข้อมูลหนึ่งขามาพร้อมกัน แล้วเลื่อนออกทีละจังหวะ ผู้เขียนอนุมานว่าอาร์เรย์ภายในจึงต้องทำงานเพียง 3200 / 8 = 400 ล้านครั้งต่อวินาที — ขาภายนอกเร็วขึ้นได้โดยที่เซลล์ข้างในไม่ต้องเร็วขึ้นตาม</p>
+<p><strong>กรณีขอบของเพดาน:</strong> 25.6 GB/s เกิดขึ้นเมื่อ <em>ทุก</em> รอบนาฬิกามีข้อมูลวิ่ง ถ้าตัวควบคุมไม่มีคำขอ ปริมาณงานคือศูนย์ แม้เพดานยังเป็น 25.6 และถ้าคำขอแต่ละครั้งต้องรอเวลาแฝงเต็ม (หัวข้อถัดไป) ค่าที่ได้จริงต่ำกว่านั้นมาก</p>
+<h2 id="แบนดวดทปน-latency-ของบตแรกไม">แบนด์วิดท์ปีน; Latency ของบิตแรกไม่<a class="anchor" href="#%e0%b9%81%e0%b8%9a%e0%b8%99%e0%b8%94%e0%b8%a7%e0%b8%94%e0%b8%97%e0%b8%9b%e0%b8%99-latency-%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b8%9a%e0%b8%95%e0%b9%81%e0%b8%a3%e0%b8%81%e0%b9%84%e0%b8%a1">#</a></h2>
+<p>แต่ละรุ่น DDR ยกแบนด์วิดท์พีค ส่วนใหญ่ด้วย I/O ที่เร็วขึ้น Prefetch และใน DDR5 การแยกเป็นสอง subchannel 32 บิตอิสระ ซื้อ parallelism บนโมดูลมากขึ้น สิ่งที่ตัวเลขพาดหัวซ่อน: <em>latency</em> การเข้าถึงดิบ — จากคำขอถึงบิตแรก — เคลื่อนช้ากว่าแบนด์วิดท์มาก DRAM เก่งขึ้นมากที่กระแสเมื่อมันเริ่มแล้ว และดีขึ้นเพียงเล็กน้อยที่การรอก่อนเริ่ม นั่นคือฉากตั้งของบทที่ 35 เมตริกต่างกัน ฟิสิกส์ต่างกัน (การ sense ประจุ เซลล์ตัวเก็บประจุ)</p>
+<h2 id="เวลาแฝงทไมขยบ-อานจากตาราง-speed-bin">เวลาแฝงที่ไม่ขยับ: อ่านจากตาราง speed bin<a class="anchor" href="#%e0%b9%80%e0%b8%a7%e0%b8%a5%e0%b8%b2%e0%b9%81%e0%b8%9d%e0%b8%87%e0%b8%97%e0%b9%84%e0%b8%a1%e0%b8%82%e0%b8%a2%e0%b8%9a-%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%95%e0%b8%b2%e0%b8%a3%e0%b8%b2%e0%b8%87-speed-bin">#</a></h2>
+<p>เอกสารข้อมูลชิป DDR4 8 Gb ของ Micron ให้ค่าคู่ CL (หน่วยเป็นรอบนาฬิกา) กับ tCK (ความยาวรอบ) ของแต่ละรุ่นความเร็ว คูณกันจะได้เวลาจากคำสั่งอ่านถึงข้อมูลชิ้นแรกเป็นนาโนวินาที (ผู้เขียนคำนวณ และตรงกับคอลัมน์ tAA ในตารางของเอกสาร):</p>
+<table>
+	<thead>
+			<tr>
+					<th>รุ่นความเร็ว</th>
+					<th>CL (รอบ)</th>
+					<th>tCK (ns)</th>
+					<th>CL × tCK (ns)</th>
+					<th>เพดาน 64 บิต (GB/s)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>DDR4-1866</td>
+					<td>13</td>
+					<td>1.071</td>
+					<td>13.92</td>
+					<td>14.9</td>
+			</tr>
+			<tr>
+					<td>DDR4-2133</td>
+					<td>15</td>
+					<td>0.937</td>
+					<td>14.06</td>
+					<td>17.1</td>
+			</tr>
+			<tr>
+					<td>DDR4-2400</td>
+					<td>17</td>
+					<td>0.833</td>
+					<td>14.16</td>
+					<td>19.2</td>
+			</tr>
+			<tr>
+					<td>DDR4-2666</td>
+					<td>19</td>
+					<td>0.750</td>
+					<td>14.25</td>
+					<td>21.3</td>
+			</tr>
+			<tr>
+					<td>DDR4-2933</td>
+					<td>21</td>
+					<td>0.682</td>
+					<td>14.32</td>
+					<td>23.5</td>
+			</tr>
+			<tr>
+					<td>DDR4-3200</td>
+					<td>22</td>
+					<td>0.625</td>
+					<td>13.75</td>
+					<td>25.6</td>
+			</tr>
+	</tbody>
+</table>
+<p>จาก 1866 ไป 3200 เพดานแบนด์วิดท์โตราว 1.71 เท่า แต่เวลาแฝงอยู่ในช่วง 13.75–14.32 ns ตลอด — นี่คือหัวข้อ &ldquo;แบนด์วิดท์ปีน; Latency ของบิตแรกไม่&rdquo; เป็นตัวเลข กับดักที่พบบ่อย: CL ที่ <em>สูงขึ้น</em> (13 → 22) ไม่ได้แปลว่าช้าลง เพราะรอบนาฬิกาสั้นลงพร้อมกัน ต้องคูณเป็นนาโนวินาทีก่อนเปรียบเทียบ (ตารางเดียวกันยังมีรุ่นย่อยที่ CL ต่ำกว่า เช่น DDR4-2400 CL16 = 13.32 ns)</p>
+<p><strong>กรณีขอบของการปัดเศษ:</strong> tCK ของ DDR4-2400 ที่แท้จริงคือ 2 / 2400 MHz = 0.8333… ns เอกสารพิมพ์ 0.833 ถ้าใช้ค่าที่พิมพ์แปลงเวลา 5 ns เป็นจำนวนรอบ จะได้ 5 / 0.833 = 6.002 ซึ่งถ้าปัดขึ้นกลายเป็น 7 รอบ แต่ค่าจริง 5 / 0.8333… = 6.000 พอดี คือ 6 รอบ — ตัวควบคุมหน่วยความจำต้องแปลงเวลาเป็นรอบอย่างระวัง (ตัวอย่างนี้ใช้ในหัวข้อ bank group ด้านล่าง)</p>
+<p><strong>วัดจริงบนเครื่องหนึ่งเครื่อง:</strong> ผู้เขียนเขียนโปรแกรม C สั้น ๆ รันบนเครื่องเสมือนบนคลาวด์ (ซีพียู Xeon) วัดสองแบบบนอาร์เรย์ 1 GiB: แบบไล่ตัวชี้สุ่ม (การอ่านแต่ละครั้งต้องรอผลของครั้งก่อน ข้ามบรรทัดแคชทุกครั้ง) ได้ราว 250 ns ต่อการอ่านหนึ่งครั้ง ส่วนแบบอ่านเรียงได้ราว 7 GB/s หรือราว 9 ns ต่อบรรทัด 64 ไบต์ ต่างกันราว 27 เท่า บนอาร์เรย์ 1 MiB ที่อยู่ในแคช การไล่ตัวชี้ใช้เพียงราว 6 ns (วัดครั้งเดียว ค่า 250 ns รวมเวลาแปลที่อยู่เสมือน (TLB miss) และผลของเครื่องเสมือน จึงไม่ใช่เวลาแฝงของ DRAM ล้วน ๆ) ข้อสรุปเชิงคุณภาพคือ: เมื่อคำขอต่อกันเป็นโซ่ ไม่มีแบนด์วิดท์ใดช่วยได้</p>
+<h2 id="parallelism-เพอซอนการเขาถงชา">Parallelism เพื่อซ่อนการเข้าถึงช้า<a class="anchor" href="#parallelism-%e0%b9%80%e0%b8%9e%e0%b8%ad%e0%b8%8b%e0%b8%ad%e0%b8%99%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%80%e0%b8%82%e0%b8%b2%e0%b8%96%e0%b8%87%e0%b8%8a%e0%b8%b2">#</a></h2>
+<p><em>channel</em> คือเส้นทางคอนโทรลเลอร์อิสระ — คำขอพร้อมกันไม่ต้องต่อคิวหลังกัน ภายใน channel <em>rank</em> และ <em>bank</em> ให้ bank หนึ่งจบ (หรือ refresh — บทที่ 10) ขณะที่อีกอันรับคำขอใหม่ ทับซ้อนการเข้าถึงอิสระพอ และ <em>throughput รวม</em> คงสูงได้แม้ไม่มี access ใดเร็วขึ้น นั่นคือเหตุผลที่โครงสร้างนี้มีอยู่: ไม่ใช่แคตตาล็อกฟีเจอร์ DIMM แต่ทางซ่อน latency ที่บทถัดไปตั้งชื่อว่ากำแพง</p>
+<h2 id="ทำไมตองม-bank-สามกรณของการอานหนงครง">ทำไมต้องมี bank: สามกรณีของการอ่านหนึ่งครั้ง<a class="anchor" href="#%e0%b8%97%e0%b8%b3%e0%b9%84%e0%b8%a1%e0%b8%95%e0%b8%ad%e0%b8%87%e0%b8%a1-bank-%e0%b8%aa%e0%b8%b2%e0%b8%a1%e0%b8%81%e0%b8%a3%e0%b8%93%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b8%ab%e0%b8%99%e0%b8%87%e0%b8%84%e0%b8%a3%e0%b8%87">#</a></h2>
+<p>ใช้ค่าจากตาราง DDR4-3200 (รุ่น -062E) ของ Micron: tRCD = tRP = tAA = 13.75 ns, tRAS = 32 ns และ tRC = tRAS + tRP = 45.75 ns การอ่านหนึ่งครั้งเจอได้สามกรณี (ผู้เขียนรวมเวลาเอง ไม่รวมเวลาในตัวควบคุมหรือบนบัส):</p>
+<table>
+	<thead>
+			<tr>
+					<th>กรณี</th>
+					<th>ขั้นตอน</th>
+					<th>ถึงข้อมูลชิ้นแรก</th>
+					<th>จบ burst</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>แถวที่ต้องการเปิดอยู่แล้ว (row hit)</td>
+					<td>อ่านได้เลย</td>
+					<td>13.75 ns</td>
+					<td>16.25 ns</td>
+			</tr>
+			<tr>
+					<td>แบงก์ว่าง ไม่มีแถวเปิด</td>
+					<td>เปิดแถว (tRCD) แล้วอ่าน</td>
+					<td>27.5 ns</td>
+					<td>30.0 ns</td>
+			</tr>
+			<tr>
+					<td>มีแถวอื่นเปิดค้าง (row conflict)</td>
+					<td>ปิดแถวเก่า (tRP) เปิดแถวใหม่ แล้วอ่าน</td>
+					<td>41.25 ns</td>
+					<td>43.75 ns</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>กรณีขอบ — แบงก์เดียว คำขอสุ่มล้วน:</strong> แบงก์หนึ่งเปิดแถวใหม่ได้ไม่ถี่กว่าทุก tRC = 45.75 ns ถ้าทุกคำขอไปแถวใหม่ในแบงก์เดียวกัน จะได้ 64 ไบต์ต่อ 45.75 ns ≈ 1.4 GB/s — ราว 5.5% ของเพดาน 25.6 GB/s ชิปนี้จึงมี 16 แบงก์ (4 bank group × 4 แบงก์ สำหรับรุ่น x4 และ x8 ตามเอกสาร) ให้การเปิดแถวในแบงก์ต่าง ๆ ทับซ้อนกันได้</p>
+<p><strong>กฎของ Little:</strong> จำนวนงานที่ค้างอยู่ = อัตรา × เวลาแฝง ถ้าต้องการ 25.6 GB/s และแต่ละคำขอใช้ 30 ns (กรณีแบงก์ว่างข้างบน) ต้องมีข้อมูลค้างอยู่ระหว่างทาง 25.6 GB/s × 30 ns = 768 ไบต์ = คำขอ 12 บรรทัดพร้อมกัน ถ้าเป็นกรณี row conflict (43.75 ns) ต้อง 17.5 บรรทัด กรณีขอบ: ถ้ามีคำขอค้างได้ทีละหนึ่ง (เช่นการไล่ตัวชี้ข้างบน) ได้แค่ 64 ไบต์ / 30 ns ≈ 2.1 GB/s ไม่ว่าเพดานจะสูงเท่าใด — channel, rank และ bank มีไว้เพื่อให้ตัวเลข &ldquo;พร้อมกัน&rdquo; นี้มีที่อยู่</p>
+<p><strong>Bank group ก็เป็นขอบ:</strong> ตาราง 70 ในเอกสารให้ระยะห่างขั้นต่ำระหว่างคำสั่งอ่านสองคำสั่ง: ต่าง bank group ใช้ tCCD_S = 4 รอบ ส่วนใน bank group เดียวกันใช้ tCCD_L ซึ่งที่ DDR4-2400 คือค่าที่มากกว่าระหว่าง 4 รอบกับ 5 ns = 6 รอบ (ดูเรื่องการปัดเศษข้างบน) burst หนึ่งชุดใช้ 4 รอบ อ่านสลับ bank group จึงเต็มบัสได้ 100% แต่อ่านต่อกันใน bank group เดียวได้ 4 / 6 ≈ 67% — การกระจายที่อยู่ข้ามแบงก์จึงเป็นงานของตัวควบคุมหน่วยความจำ ไม่ใช่รายละเอียดที่ละเลยได้</p>
+<p>DIMM คือแพ็กเกจกายภาพ — ชิปบนแผงพร้อมตัวเชื่อมขอบมาตรฐาน — ดังนั้นความจุคือ &ldquo;กี่สล็อต ขนาดเท่าไร&rdquo; ไม่ใช่การออกแบบบัสใหม่</p>
+<p><strong>ตรวจความจุจากที่อยู่:</strong> ชิป 8 Gb แบบ x8 ในตารางการระบุที่อยู่ของ Micron (รายละเอียดโครงสร้างอยู่ในบทที่ 10) มี 4 bank group × 4 แบงก์ × 65,536 แถว × 1,024 สดมภ์ × 8 บิต = 8,589,934,592 บิต = 2³³ บิต = 8 Gb พอดี โมดูลที่ต้องการความกว้าง 64 บิตจึงใช้ชิป x8 แปดตัวทำงานพร้อมกันเป็นหนึ่ง rank ได้ 8 × 8 Gb = 8 GB ต่อ rank ความจุจึงเป็นเรื่อง &ldquo;กี่ชิป กี่ rank กี่สล็อต&rdquo; ตามที่ย่อหน้าข้างบนว่า</p>
+<p>สองบทถัดไปคือสิ่งที่เกิดเมื่อการเจรจานี้ไม่พอ: memory wall และลูกพี่ลูกน้องฝั่ง compute อย่าง clock-speed wall</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>จันทนา จันทราพรชัย, <em>สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ</em></li>
+<li>ผศ.ดร. ปัทมา ลงกานี, <em>สถาปัตยกรรมคอมพิวเตอร์</em></li>
+<li>รศ.ดร.เกริก ภิรมย์โสภา, <em>สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์</em></li>
+<li>Micron, <em>8Gb: x4, x8, x16 DDR4 SDRAM</em> data sheet (Rev. S 12/2020; สำเนาที่เปิดอ่านอยู่ในหน้าวิชา CE3101 ของ MSOE) — ตาราง 1 ค่า CL/tAA/tRCD/tRP ของแต่ละรุ่นความเร็ว, tCK, 8n-bit prefetch, 16 แบงก์ใน 4 bank group, ตาราง 2 การระบุที่อยู่, ตาราง 70 tCCD_S/tCCD_L, ตาราง 164 tRAS/tRC ของ DDR4-3200: <a href="https://faculty-web.msoe.edu/johnsontimoj/CE3101/files3101/dram_spec.pdf">https://faculty-web.msoe.edu/johnsontimoj/CE3101/files3101/dram_spec.pdf</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B8%9A%E0%B8%B1%E0%B8%AA%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%88%E0%B8%B3&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F34-memory-buses%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F34-memory-buses.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F34-memory-buses.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/33-pcie-deep-dive/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>เจาะลึก PCIe</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/35-the-memory-wall/" class="flex align-center">
+        <span>กำแพงหน่วยความจำ</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ทงสองขอบ-ไมใชคลอกเรวขน">ทั้งสองขอบ ไม่ใช่คล็อกเร็วขึ้น</a></li>
+    <li><a href="#แบนดวดทจากหลกการแรก">แบนด์วิดท์จากหลักการแรก</a></li>
+    <li><a href="#แบนดวดทปน-latency-ของบตแรกไม">แบนด์วิดท์ปีน; Latency ของบิตแรกไม่</a></li>
+    <li><a href="#เวลาแฝงทไมขยบ-อานจากตาราง-speed-bin">เวลาแฝงที่ไม่ขยับ: อ่านจากตาราง speed bin</a></li>
+    <li><a href="#parallelism-เพอซอนการเขาถงชา">Parallelism เพื่อซ่อนการเข้าถึงช้า</a></li>
+    <li><a href="#ทำไมตองม-bank-สามกรณของการอานหนงครง">ทำไมต้องมี bank: สามกรณีของการอ่านหนึ่งครั้ง</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

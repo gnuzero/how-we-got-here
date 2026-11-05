@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AOT คอมไพล์ครั้งเดียวโดยไม่มีข้อเท็จจริงรันไทม์; JIT รอ hot path — และ garbage collection ย้ายต้นทุนเข้าไปในรันไทม์">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/28-compilers-jit-and-modern-language-runtimes/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่">
+	<meta property="og:description" content="AOT คอมไพล์ครั้งเดียวโดยไม่มีข้อเท็จจริงรันไทม์; JIT รอ hot path — และ garbage collection ย้ายต้นทุนเข้าไปในรันไทม์">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่">
+	<meta itemprop="description" content="AOT คอมไพล์ครั้งเดียวโดยไม่มีข้อเท็จจริงรันไทม์; JIT รอ hot path — และ garbage collection ย้ายต้นทุนเข้าไปในรันไทม์">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1479">
+
+<title>คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่ • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/28-compilers-jit-and-modern-language-runtimes/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilers, JIT, and Modern Language Runtimes">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilers, JIT, සහ නවීන භාෂා Runtimes">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilers, JIT, மற்றும் நவீன மொழி Runtimes">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilatoare, JIT și medii de rulare moderne">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="active">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ไปปไลนคลาสสก-สน">ไปป์ไลน์คลาสสิก (สั้น)</a></li>
+    <li><a href="#ตวแปลโปรแกรมทำอะไรกบโคดจรง-สามกรณขอบ">ตัวแปลโปรแกรมทำอะไรกับโค้ดจริง: สามกรณีขอบ</a></li>
+    <li><a href="#ahead-of-time-เทยบ-just-in-time">Ahead-of-Time เทียบ Just-in-Time</a></li>
+    <li><a href="#jit-คมเมอไร-จดคมทนจากหลกการแรก">JIT คุ้มเมื่อไร: จุดคุ้มทุนจากหลักการแรก</a></li>
+    <li><a href="#ชนของ-jit-และการถอยกลบ-deoptimization">ชั้นของ JIT และการถอยกลับ (deoptimization)</a></li>
+    <li><a href="#รนไทม-มากกวาการคอมไพล">รันไทม์: มากกว่าการคอมไพล์</a></li>
+    <li><a href="#การเกบขยะจากหลกการแรก">การเก็บขยะจากหลักการแรก</a></li>
+    <li><a href="#เกบขยะแพงแคไหน-แบบจำลองงาน">เก็บขยะแพงแค่ไหน: แบบจำลองงาน</a></li>
+    <li><a href="#สมมตฐานเชงรน-generational-hypothesis">สมมุติฐานเชิงรุ่น (generational hypothesis)</a></li>
+    <li><a href="#ดสด">ดูสด</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>บทที่ 27 ครอบคลุม <em>เหตุใด</em> ภาษาระดับสูงจึงมีอยู่ บทนี้คือเครื่องจักรที่ทำให้ใช้ได้: คอมไพเลอร์ ที่แปลซอร์สเป็นสิ่งที่ CPU จริง (เฟส 3) รันได้</p>
+<p>คำศัพท์ก่อนเริ่ม (ศัพท์บัญญัติราชบัณฑิตยสภา สาขาคอมพิวเตอร์และเทคโนโลยีสารสนเทศ เว้นแต่ระบุ): <strong>ตัวแปลโปรแกรม</strong> (compiler — ทับศัพท์ว่าคอมไพเลอร์ก็ได้); <strong>ตัวแปลคำสั่ง</strong> (interpreter — โปรแกรมที่อ่านแล้วทำตามทีละคำสั่งโดยไม่สร้างรหัสเครื่องเก็บไว้); <strong>รหัสต้นฉบับ</strong> (source code); <strong>รหัสจุดหมาย</strong> (object code); <strong>รหัสเครื่อง</strong> (machine code); <strong>แอสเซมเบลอร์</strong> (assembler); <strong>การวิเคราะห์ศัพท์</strong> (lexical analysis — งานของ lexer); <strong>ตัวแจงส่วน</strong> (parser); <strong>ทำให้เหมาะที่สุด</strong> (optimize — งานของ optimizer); <strong>เรจิสเตอร์</strong> (register); <strong>จำนวนเต็ม</strong> (integer); <strong>การล้น</strong> (overflow); <strong>ตัวชี้</strong> (pointer); <strong>ฮีป</strong> (heap — พื้นที่หน่วยความจำที่จัดสรรตอนรัน); <strong>กองซ้อน</strong> (stack); <strong>การเก็บขยะ</strong> (garbage collection); <strong>การอัดแน่น</strong> (compaction — การย้ายออบเจ็กต์ที่ยังใช้อยู่มาชิดกัน); และ <strong>วง</strong> (cycle) คำว่า <strong>การจัดสรร</strong> (allocation) พบในสาขาเศรษฐศาสตร์ นิติศาสตร์ และศึกษาศาสตร์ ส่วน <strong>อนิยาม</strong> (undefined) พบในสาขาวิทยาศาสตร์ ผู้เขียนยืมมาใช้ คำต่อไปนี้ยังไม่พบศัพท์บัญญัติ จึงใช้คำอธิบายหรือทับศัพท์: just-in-time (JIT, คอมไพล์ตอนรัน), bytecode (ไบต์โค้ด — ชุดคำสั่งของเครื่องเสมือน), intermediate representation (รูปแทนกลาง), runtime (รันไทม์ — ระบบที่ทำงานร่วมกับโปรแกรมขณะรัน), reference count (ตัวนับการอ้างอิง), inlining, dead code (โค้ดตาย), reachable (เข้าถึงได้) และ tracing (การไล่ตามตัวชี้)</p>
+<h2 id="ไปปไลนคลาสสก-สน">ไปป์ไลน์คลาสสิก (สั้น)<a class="anchor" href="#%e0%b9%84%e0%b8%9b%e0%b8%9b%e0%b9%84%e0%b8%a5%e0%b8%99%e0%b8%84%e0%b8%a5%e0%b8%b2%e0%b8%aa%e0%b8%aa%e0%b8%81-%e0%b8%aa%e0%b8%99">#</a></h2>
+<p>Lexer → โทเคน Parser → Abstract Syntax Tree การวิเคราะห์เชิงความหมายจับสิ่งที่ไวยากรณ์อย่างเดียวจับไม่ได้ (ชนิด ชื่อที่ยังไม่ประกาศ) คอมไพเลอร์จริงส่วนใหญ่แล้วลดลงเป็น Intermediate Representation (IR) — สม่ำเสมอกว่าไวยากรณ์ซอร์ส ยังอิสระจาก ISA เป้าหมายใด — ที่ซึ่ง <strong>optimizer</strong> ทำงาน: กำจัดโค้ดตาย ยกสิ่งที่ไม่แปรในลูป inlining และการแปลงอื่นอีกหลายสิบที่รักษาพฤติกรรมขณะตัดงานเปล่า <strong>Code generation</strong> ปล่อยคำสั่งเป้าหมายและจัดสรรรีจิสเตอร์ (ค่าใดอยู่รีจิสเตอร์กายภาพที่หายาก เทียบกับการ spill ไปหน่วยความจำ)</p>
+<p>นั่นคือกระดูกสันหลัง สารานุกรมของทุก pass ไม่ใช่จุด — ข้อจำกัดคือ: abstraction ของซอร์สรันไม่ได้; ต้องมีอะไรลดพวกมัน และสิ่งนั้นรันได้ <em>ก่อน</em> การดำเนินการ หรือ <em>ระหว่าง</em> มัน</p>
+<h2 id="ตวแปลโปรแกรมทำอะไรกบโคดจรง-สามกรณขอบ">ตัวแปลโปรแกรมทำอะไรกับโค้ดจริง: สามกรณีขอบ<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b9%81%e0%b8%9b%e0%b8%a5%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%81%e0%b8%81%e0%b8%a3%e0%b8%a1%e0%b8%97%e0%b8%b3%e0%b8%ad%e0%b8%b0%e0%b9%84%e0%b8%a3%e0%b8%81%e0%b8%9a%e0%b9%82%e0%b8%84%e0%b8%94%e0%b8%88%e0%b8%a3%e0%b8%87-%e0%b8%aa%e0%b8%b2%e0%b8%a1%e0%b8%81%e0%b8%a3%e0%b8%93%e0%b8%82%e0%b8%ad%e0%b8%9a">#</a></h2>
+<p>&ldquo;รักษาพฤติกรรม&rdquo; ในย่อหน้าข้างบนฟังง่าย แต่พฤติกรรมของอะไร? ของ <em>ภาษา</em> ไม่ใช่ของความคาดหวังผู้เขียน ผู้เขียนคอมไพล์ฟังก์ชันสี่บรรทัดด้วย gcc 14.2.0 (Debian) บนเครื่อง x86-64 ด้วย <code>-O2 -S -masm=intel</code> (ไม่ได้ทำในแล็บ ดูเหตุผลที่หัวข้อ &ldquo;ดูสด&rdquo;) แล้วอ่าน assembly ที่ได้:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">div2</span>(<span style="color:#66d9ef">int</span> x){ <span style="color:#66d9ef">return</span> x<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#a6e22e">udiv2</span>(<span style="color:#66d9ef">unsigned</span> x){ <span style="color:#66d9ef">return</span> x<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">gt</span>(<span style="color:#66d9ef">int</span> x){ <span style="color:#66d9ef">return</span> x<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;</span> x; }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">long</span> <span style="color:#a6e22e">sum</span>(<span style="color:#66d9ef">int</span> n){ <span style="color:#66d9ef">long</span> s<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span>n;i<span style="color:#f92672">++</span>) s<span style="color:#f92672">+=</span>i; <span style="color:#66d9ef">return</span> s; }</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>กรณี 1 — หารด้วยสองไม่ใช่แค่เลื่อนบิต:</strong> <code>udiv2</code> กลายเป็นสองคำสั่ง <code>mov eax,edi / shr eax</code> (คัดลอกแล้วเลื่อนขวาหนึ่งบิต) แต่ <code>div2</code> กลายเป็นสี่คำสั่ง <code>mov eax,edi / shr eax,31 / add eax,edi / sar eax</code> เหตุผลอยู่ที่ค่าลบ: ภาษา C ปัดผลหารจำนวนเต็มเข้าหาศูนย์ −3/2 จึงต้องได้ −1 แต่การเลื่อนขวาแบบคงเครื่องหมาย (<code>sar</code>) ปัดลงเสมอ −3 &raquo; 1 ได้ −2 ตัวแปลโปรแกรมจึงบวกบิตเครื่องหมาย (1 เมื่อลบ 0 เมื่อไม่ลบ) เข้าไปก่อนเลื่อน: (−3 + 1) &raquo; 1 = −1 ผู้เขียนรันจริงได้ <code>div2(-3)=-1</code> และ <code>-3&gt;&gt;1 = -2</code> สำหรับ x = 0 และค่าบวก บิตที่บวกเป็น 0 คำตอบจึงตรงกับการเลื่อนธรรมดา</p>
+<p><strong>กรณี 2 — การล้นของจำนวนเต็มแบบมีเครื่องหมายเป็นอนิยาม:</strong> <code>gt</code> ถูกแปลเป็น <code>mov eax,1</code> คือ &ldquo;คืนค่าจริงเสมอ&rdquo; โดยไม่บวกหรือเปรียบเทียบเลย และเกิดขึ้นแม้ที่ <code>-O0</code> ผลคือ <code>gt(INT_MAX)</code> = 1 ทั้งที่ถ้าเครื่องบวกจริง INT_MAX + 1 จะวนกลับเป็นค่าลบที่สุด และคำตอบควรเป็น 0 มาตรฐาน C ถือว่าการล้นของ <code>int</code> ไม่เกิดขึ้นในโปรแกรมที่ถูกต้อง ตัวแปลโปรแกรมจึงเลือกคำตอบที่ถูกสำหรับทุก x ที่ไม่ล้น เมื่อสั่ง <code>-fwrapv</code> (บอกว่าให้วนกลับแบบเลขฐานสองจริง) ผู้เขียนได้ <code>gt(INT_MAX)=0</code> และ <code>gt(0)=1</code> ข้อสังเกตเพิ่ม: เมื่อคอมไพล์ด้วย <code>-fsanitize=undefined</code> ก็ยังได้ 1 และไม่มีคำเตือน เพราะการบวกถูกพับทิ้งไปก่อนจะมีโค้ดให้ตรวจ</p>
+<p><strong>กรณี 3 — ลูปที่รอบเป็นศูนย์หรือติดลบ:</strong> <code>sum</code> ขึ้นต้นด้วย <code>test edi,edi / jle</code> คือถ้า n ≤ 0 ข้ามลูปทั้งหมดแล้วคืน 0 จากนั้นลูปถูกคลี่ (unroll) ทำสองรอบต่อการกระโดดหนึ่งครั้ง พร้อมจัดการกรณี n เป็นเลขคี่แยก รันจริงได้ <code>sum(0)=0</code>, <code>sum(-5)=0</code>, <code>sum(5)=10</code> และ <code>sum(100000)=4999950000</code> ตรงกับสูตร n(n−1)/2 = 100000 × 99999 / 2 ค่านี้เกิน 2³¹ − 1 = 2,147,483,647 จึงต้องใช้ <code>long</code> เก็บผล ถ้าประกาศ <code>s</code> เป็น <code>int</code> ผลจะล้น</p>
+<p>บทเรียนจากสามกรณี: optimizer แปลงโค้ดได้เฉพาะเมื่อพิสูจน์ได้ว่าผลเท่าเดิม <em>ตามกติกาของภาษา</em> ซึ่งรวมกรณีขอบที่มนุษย์มักลืม (ค่าลบ ศูนย์ ค่าสูงสุด)</p>
+<h2 id="ahead-of-time-เทยบ-just-in-time">Ahead-of-Time เทียบ Just-in-Time<a class="anchor" href="#ahead-of-time-%e0%b9%80%e0%b8%97%e0%b8%a2%e0%b8%9a-just-in-time">#</a></h2>
+<p>รันไปป์ไลน์ทั้งก้อนครั้งเดียวก่อนโปรแกรมรันเลย: Ahead-of-Time (AOT) — C และ FORTRAN แบบดั้งเดิม Just-in-Time (JIT) — Java, JavaScript และเครือญาติ — เริ่มด้วย interpreter หรือคอมไพเลอร์ baseline เร็ว แล้ว <em>ตอนรันไทม์</em> หา hot path และคอมไพล์ใหม่ด้วยการ optimize หนักกว่า</p>
+<p>ข้อได้เปรียบของ JIT คือข้อมูลที่คอมไพเลอร์ AOT ไม่มี: branch ที่สังเกต ชนิดของอาร์กิวเมนต์ ลูปร้อนจริง — การ optimize ที่ไม่ปลอดภัยที่จะสมมติโดยไม่มีข้อมูลนั้น ต้นทุนจริง: การคอมไพล์เผารอบระหว่างการรัน และวินาทีแรกมักช้ากว่าสถานะคงที่ — warm-up แบบคลาสสิก</p>
+<h2 id="jit-คมเมอไร-จดคมทนจากหลกการแรก">JIT คุ้มเมื่อไร: จุดคุ้มทุนจากหลักการแรก<a class="anchor" href="#jit-%e0%b8%84%e0%b8%a1%e0%b9%80%e0%b8%a1%e0%b8%ad%e0%b9%84%e0%b8%a3-%e0%b8%88%e0%b8%94%e0%b8%84%e0%b8%a1%e0%b8%97%e0%b8%99%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%ab%e0%b8%a5%e0%b8%81%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%81%e0%b8%a3%e0%b8%81">#</a></h2>
+<p>สมมุติโค้ดส่วนหนึ่งถูกเรียก N ครั้ง ถ้าตีความ (interpret) ใช้เวลา c₁ ต่อครั้ง ถ้าคอมไพล์ต้องจ่ายค่าคอมไพล์ C หนึ่งครั้ง แล้วเหลือ c₂ ต่อครั้ง การคอมไพล์คุ้มเมื่อ C + N·c₂ &lt; N·c₁ หรือ</p>
+<p>N &gt; N* = C / (c₁ − c₂)</p>
+<p>กรณีขอบอ่านจากสูตรได้ทันที: ถ้า N = 0 (โค้ดไม่เคยถูกเรียก) การคอมไพล์เสียเปล่าทั้งหมด ถ้า c₁ ≤ c₂ (โค้ดคอมไพล์แล้วไม่เร็วขึ้น) N* เป็นอนันต์ ไม่มีวันคุ้ม และถ้า C = 0 คุ้มตั้งแต่ครั้งแรก นี่คือเหตุผลที่ JIT <em>นับ</em> ก่อนตัดสินใจ: มันไม่รู้ N ล่วงหน้า จึงคอมไพล์เฉพาะโค้ดที่ถูกเรียกบ่อยพอแล้ว (hot path) และพนันว่าจะถูกเรียกต่อ</p>
+<p><strong>วัดจริงบน V8:</strong> ผู้เขียนรันฟังก์ชัน <code>add(a,b){ return a+b; }</code> ใน Node.js v20.19.2 (เอนจิน V8) เรียกเป็นชุดละ 200,000 ครั้ง แปดชุด ด้วยแฟล็ก <code>--trace-opt --trace-deopt</code> เวลาต่อชุด (มิลลิวินาที วัดครั้งเดียวบนเครื่องของผู้เขียน ตัวเลขจะต่างไปตามเครื่อง) คือ 2.75, 2.15, 1.18, 2.19, 0.72, 0.05, 0.05, 0.05 — ช่วง warm-up ที่ย่อหน้าก่อนพูดถึง ชุดสุดท้ายเร็วกว่าชุดแรกราว 55 เท่า บันทึกของ V8 แสดงว่า <code>add</code> ถูกทำเครื่องหมายให้ TurboFan (ตัวแปลโปรแกรมชั้นบนสุดของ V8) ด้วยเหตุผล &ldquo;small function&rdquo; และการคอมไพล์ใช้เวลารวมราว 1.8 มิลลิวินาที (0.057 + 1.717 + 0.024) บนเธรดเบื้องหลังพร้อมกับที่โปรแกรมหลักยังรันต่อ ลูปเองก็ถูกคอมไพล์ขณะกำลังวน (on-stack replacement, OSR)</p>
+<p>แทนค่าเป็นตัวอย่าง (ค่าประมาณเชิงอนุมาน ไม่ใช่การวัดแยกชั้น): เวลาต่อรอบของชุดแรก 2.75 ms / 200,000 ≈ 13.75 ns ของชุดท้าย ≈ 0.25 ns ได้ N* ≈ 1.8 × 10⁶ ns / (13.75 − 0.25) ns ≈ 133,000 รอบ — น้อยกว่าจำนวนรอบในชุดแรกชุดเดียว และเนื่องจากงานคอมไพล์ทำบนเธรดอื่น ต้นทุนที่เธรดหลักต้องจ่ายจริงจึงต่ำกว่านี้อีก ส่วน 0.25 ns ต่อรอบสั้นกว่าหนึ่งรอบสัญญาณนาฬิกาของ CPU ทั่วไป จึงน่าจะสะท้อนว่า TurboFan inline <code>add</code> เข้าไปในลูปแล้ว ไม่ใช่เวลาเรียกฟังก์ชันจริง</p>
+<h2 id="ชนของ-jit-และการถอยกลบ-deoptimization">ชั้นของ JIT และการถอยกลับ (deoptimization)<a class="anchor" href="#%e0%b8%8a%e0%b8%99%e0%b8%82%e0%b8%ad%e0%b8%87-jit-%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%96%e0%b8%ad%e0%b8%a2%e0%b8%81%e0%b8%a5%e0%b8%9a-deoptimization">#</a></h2>
+<p>เอกสารของทีม V8 เล่าว่าจนถึงปี 2021 V8 มีสองชั้น: Ignition (ตัวแปลคำสั่งที่รันไบต์โค้ด) กับ TurboFan (ตัวแปลโปรแกรมที่ทำให้เหมาะที่สุด) จากนั้นเพิ่ม Sparkplug (คอมไพล์เร็วแบบไม่ optimize) และ Maglev (ชั้นกลาง เปิดใน Chrome M117) โค้ด JavaScript ทุกบรรทัดเริ่มจากไบต์โค้ดของ Ignition และระหว่างรัน V8 จดว่าออบเจ็กต์มีรูปร่าง (shape) และชนิดอะไร (feedback) ชั้นบนใช้ข้อมูลนั้นสร้างรหัสเครื่องที่ <em>สมมุติ</em> ว่าชนิดจะเหมือนเดิม และใส่การตรวจไว้ ถ้าการตรวจล้มเหลวก็ทิ้งรหัสนั้นแล้วถอยกลับไปชั้นล่าง</p>
+<p>ผู้เขียนทดลองทำให้สมมุติฐานพัง:</p>
+<ul>
+<li>หลัง warm-up ด้วยจำนวนเต็ม เรียก <code>add('a','b')</code> ครั้งเดียว V8 รายงาน <code>deopt-eager</code> ด้วยเหตุผล <code>not a Smi</code> (Smi คือจำนวนเต็มเล็กที่ V8 เก็บไว้ในตัวชี้โดยตรง) จากนั้น <code>add</code> ถูก optimize ใหม่ ชุดถัดไปใช้ 1.43 ms แทน 0.05 ms</li>
+<li><strong>กรณีขอบที่ขอบของ Smi:</strong> หลัง warm-up อีกครั้ง <code>add(2**30-1, 1)</code> และ <code>add(2**31-2, 1)</code> ไม่ทำให้ถอยกลับ แต่ <code>add(2**31-1, 1)</code> (ผลลัพธ์ 2³¹ เกินจำนวนเต็ม 32 บิตแบบมีเครื่องหมาย) และ <code>add(-(2**31), -1)</code> ทำให้ถอยกลับด้วยเหตุผล <code>overflow</code> ในบิลด์ Node นี้ <code>v8_enable_pointer_compression</code> = 0 ขอบของ Smi จึงอยู่ที่ 32 บิต ส่วนบทความ Maglev ของทีม V8 เขียนว่า V8 พยายามเก็บตัวเลขเป็นจำนวนเต็มติดป้าย 31 บิต (32 บิตเพราะการบีบตัวชี้) ผู้เขียนจึงอนุมานว่าใน Chrome ขอบจะอยู่ที่ 2³⁰ แทน 2³¹ (ไม่ได้ทดสอบ) — ขอบของการ optimize ขึ้นกับการสร้างเอนจิน ไม่ใช่ตัวภาษา</li>
+</ul>
+<p>เทียบกับกรณี 2 ของ gcc: ตัวแปลโปรแกรม AOT ของ C <em>สมมุติ</em> ว่าการล้นไม่เกิดแล้วไม่ตรวจ ส่วน JIT ของ JavaScript สมมุติเหมือนกันแต่ <em>ตรวจ</em> และถอยกลับเมื่อผิด เพราะภาษา JavaScript กำหนดให้ผลต้องถูกเสมอ (ผลบวกที่เกินจะกลายเป็นเลขทศนิยมลอยตัว)</p>
+<h2 id="รนไทม-มากกวาการคอมไพล">รันไทม์: มากกว่าการคอมไพล์<a class="anchor" href="#%e0%b8%a3%e0%b8%99%e0%b9%84%e0%b8%97%e0%b8%a1-%e0%b8%a1%e0%b8%b2%e0%b8%81%e0%b8%81%e0%b8%a7%e0%b8%b2%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%84%e0%b8%ad%e0%b8%a1%e0%b9%84%e0%b8%9e%e0%b8%a5">#</a></h2>
+<p>ภาษาที่จัดการ (Java, C# และ JavaScript กับ Python ในระดับต่างกัน) จับคู่คอมไพเลอร์กับรันไทม์กว้างกว่า — ที่สำคัญที่สุดคือการจัดการหน่วยความจำอัตโนมัติผ่าน garbage collection ปลดโปรแกรมเมอร์จากการติดตามอายุของทุกการจัดสรร (แหล่งบั๊กใหญ่ใน C) ความซับซ้อนย้ายเข้าไปในรันไทม์: ความพยายามด้วยมือแลกกับโอเวอร์เฮด และในประวัติ pause ที่คาดเดายากกว่า ความตึงเครียดนั้นพอดีคือเหตุผลที่บทที่ 29–30 ถือ &ldquo;เรียลไทม์&rdquo; กับ &ldquo;รันไทม์ที่จัดการพร้อม GC&rdquo; เป็นสิ่งที่มักขัดกัน</p>
+<h2 id="การเกบขยะจากหลกการแรก">การเก็บขยะจากหลักการแรก<a class="anchor" href="#%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%80%e0%b8%81%e0%b8%9a%e0%b8%82%e0%b8%a2%e0%b8%b0%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%ab%e0%b8%a5%e0%b8%81%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%81%e0%b8%a3%e0%b8%81">#</a></h2>
+<p>ออบเจ็กต์หนึ่งเป็น &ldquo;ขยะ&rdquo; เมื่อโปรแกรมไม่มีทางไปถึงมันอีก: ไม่มีตัวแปร ไม่มีเรจิสเตอร์ และไม่มีตัวชี้จากออบเจ็กต์อื่นที่ยังใช้อยู่ชี้มา มีสองวิธีหลักในการรู้เรื่องนี้</p>
+<p><strong>วิธีที่ 1 — นับการอ้างอิง:</strong> ทุกออบเจ็กต์เก็บจำนวนตัวชี้ที่ชี้มาหามัน เมื่อนับลงถึงศูนย์ก็คืนหน่วยความจำได้ทันที CPython ใช้วิธีนี้เป็นหลัก ผู้เขียนทดลองใน CPython 3.13.5:</p>
+<ul>
+<li>ออบเจ็กต์ A ที่ไม่มีวง: <code>sys.getrefcount(A)</code> ได้ 2 (ตัวแปร A หนึ่ง และอาร์กิวเมนต์ที่ส่งเข้า <code>getrefcount</code> ชั่วคราวอีกหนึ่ง ตรงกับที่เอกสาร Python ระบุว่าค่านี้ &ldquo;มักสูงกว่าที่คาดหนึ่ง&rdquo;) เมื่อ <code>del A</code> ออบเจ็กต์ถูกคืนทันที</li>
+<li><strong>กรณีขอบ — วง:</strong> B ชี้ไป C และ C ชี้กลับมา B เมื่อ <code>del B, C</code> ตัวนับของทั้งคู่ยังเหลือ 1 (จากกันและกัน) จึงไม่ถูกคืน ต้องรอ <code>gc.collect()</code> ซึ่งคืนค่า 11 แล้วทั้งคู่จึงหายไป (เอกสารระบุว่าค่านี้คือจำนวนออบเจ็กต์ที่เก็บได้บวกที่เก็บไม่ได้ จึงนับออบเจ็กต์ภายในอื่นที่ติดมากับสคริปต์ทดลองด้วย ไม่ใช่แค่ B กับ C)</li>
+<li>ถ้าปิดตัวเก็บวงด้วย <code>gc.disable()</code> ออบเจ็กต์ D ที่ชี้หาตัวเองจะค้างอยู่ตลอด จนกว่าจะ <code>gc.enable()</code> แล้ว <code>gc.collect()</code> — วงที่ไม่มีใครเก็บคือหน่วยความจำรั่ว</li>
+<li><strong>กรณีขอบ — ตัวนับที่ไม่ขยับ:</strong> <code>sys.getrefcount(None)</code> และ <code>sys.getrefcount(1)</code> ได้ 4294967295 = 0xFFFFFFFF เท่ากันทั้งคู่ นี่คือ &ldquo;ออบเจ็กต์อมตะ&rdquo; (immortal objects) ที่ PEP 683 เพิ่มใน Python 3.12: ตัวนับของออบเจ็กต์ที่ใช้ร่วมกันมาก ๆ ถูกตรึงไว้ที่ค่าพิเศษ การเพิ่มหรือลดไม่มีผล จึงไม่มีวันถึงศูนย์</li>
+</ul>
+<p>PEP 683 ยังพิจารณาเรื่อง &ldquo;อมตะโดยบังเอิญ&rdquo; (accidental immortality): ออบเจ็กต์ธรรมดาที่ถูกเพิ่มตัวนับซ้ำ ๆ โดยไม่มีการลด จนตัวนับไปถึงค่าพิเศษที่ใช้ระบุความเป็นอมตะเอง (ไม่ใช่เรื่องตัวนับล้น) บนเครื่อง 64 บิต PEP คำนวณว่าถ้าบิตอมตะอยู่ที่ 2⁶⁰ ต้องใช้ 2⁶⁰ รอบ ซึ่งที่ 5 GHz &ldquo;ยังต้องใช้เกือบ 250,000,000 วินาที (กว่า 2,500 วัน)&rdquo; ผู้เขียนคำนวณตาม 2⁶⁰ / (5 × 10⁹) ≈ 2.3 × 10⁸ วินาที ≈ 2,669 วัน ตรงกัน สำหรับเครื่อง 32 บิต PEP สมมุติให้ค่าพิเศษเป็น 2³⁰ และเขียนว่า &ldquo;ใช้สเปกเดียวกันข้างบน จะใช้เวลาราว 4 วินาที&rdquo; แต่ถ้าใช้สมมุติฐานเดียวกัน (เพิ่มหนึ่งครั้งต่อรอบที่ 5 GHz) ผู้เขียนคำนวณได้ 2³⁰ / (5 × 10⁹) ≈ 0.21 วินาที ผู้เขียนไม่ทราบที่มาของตัวเลข 4 วินาที ทั้งสองค่าชี้ไปทางเดียวกันคือเร็วมาก และ PEP เองก็สรุปว่าบน 32 บิต แม้เพิ่มค่าช้ากว่านี้มากก็ใช้เวลาไม่นาน แต่ยังถือว่า &ldquo;แทบเป็นไปไม่ได้&rdquo; ในสภาพปกติ เพราะต้องเข้าเงื่อนไขพร้อมกันหลายข้อ (ออบเจ็กต์ไม่ใช่อมตะ ส่วนขยายภาษา C เพิ่มตัวนับโดยไม่ลดคืน และไม่มีโค้ดอื่นลดตัวนับของออบเจ็กต์นั้น) ข้อเสนอจึงไม่ถือว่าอมตะโดยบังเอิญเป็นปัญหา</p>
+<p><strong>วิธีที่ 2 — ไล่ตามตัวชี้:</strong> เริ่มจาก &ldquo;ราก&rdquo; (ตัวแปร เรจิสเตอร์ กองซ้อน) แล้วตามตัวชี้ทุกเส้น อะไรที่ไปไม่ถึงคือขยะ วงไม่ใช่ปัญหา เพราะวงที่ไม่มีทางมาจากรากก็ไปไม่ถึงเช่นกัน John McCarthy บรรยายวิธีนี้ไว้ในบทความ LISP ปี 1960: ไม่ทำอะไรจนกว่าพื้นที่ว่างจะหมด แล้วทำเครื่องหมายทุกเซลล์ที่เข้าถึงได้จากเรจิสเตอร์ฐาน (โดยเปลี่ยนเครื่องหมายของเซลล์ให้เป็นลบ) ไล่ตามสาย car–cdr จากนั้นกวาดทุกเซลล์ที่ไม่มีเครื่องหมายกลับไปรายการพื้นที่ว่าง McCarthy เขียนว่าขั้นนี้ &ldquo;ใช้เวลาหลายวินาที&rdquo; จึงต้องคืนได้อย่างน้อยหลายพันเซลล์ต่อครั้ง ไม่เช่นนั้นโปรแกรมจะเสียเวลาส่วนใหญ่ไปกับการเก็บขยะ นี่คือต้นแบบของ <strong>mark-sweep</strong></p>
+<h2 id="เกบขยะแพงแคไหน-แบบจำลองงาน">เก็บขยะแพงแค่ไหน: แบบจำลองงาน<a class="anchor" href="#%e0%b9%80%e0%b8%81%e0%b8%9a%e0%b8%82%e0%b8%a2%e0%b8%b0%e0%b9%81%e0%b8%9e%e0%b8%87%e0%b9%81%e0%b8%84%e0%b9%84%e0%b8%ab%e0%b8%99-%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%88%e0%b8%b3%e0%b8%a5%e0%b8%ad%e0%b8%87%e0%b8%87%e0%b8%b2%e0%b8%99">#</a></h2>
+<p>ให้ฮีปมี H ออบเจ็กต์ ยังใช้อยู่ L ตัว (แบบจำลองอย่างง่าย ไม่นับจำนวนตัวชี้):</p>
+<ul>
+<li><strong>mark-sweep:</strong> ขั้นทำเครื่องหมายแตะเฉพาะ L ตัวที่ยังอยู่ ขั้นกวาดต้องเดินทั้งฮีป H งาน ≈ L + H</li>
+<li><strong>copying:</strong> ย้ายเฉพาะ L ตัวที่ยังอยู่ไปอีกครึ่งหนึ่งของหน่วยความจำ ขยะไม่ถูกแตะเลย งาน ≈ L แต่ต้องกันพื้นที่ไว้ 2H และได้การอัดแน่นมาฟรี</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>H</th>
+					<th>L</th>
+					<th>mark + sweep</th>
+					<th>copying</th>
+					<th>ได้คืน</th>
+					<th>งาน copying ต่อหนึ่งออบเจ็กต์ที่ได้คืน</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>0 + 0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>— (ฮีปว่าง ไม่มีอะไรทำ)</td>
+			</tr>
+			<tr>
+					<td>1000</td>
+					<td>0</td>
+					<td>0 + 1000</td>
+					<td>0</td>
+					<td>1000</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>1000</td>
+					<td>100</td>
+					<td>100 + 1000</td>
+					<td>100</td>
+					<td>900</td>
+					<td>0.11</td>
+			</tr>
+			<tr>
+					<td>1000</td>
+					<td>900</td>
+					<td>900 + 1000</td>
+					<td>900</td>
+					<td>100</td>
+					<td>9</td>
+			</tr>
+			<tr>
+					<td>1000</td>
+					<td>1000</td>
+					<td>1000 + 1000</td>
+					<td>1000</td>
+					<td>0</td>
+					<td>อนันต์ (ทำงานเต็มแต่ไม่ได้อะไรคืน)</td>
+			</tr>
+	</tbody>
+</table>
+<p>(ตัวเลขสมมุติเพื่ออธิบาย คำนวณด้วยสคริปต์ของผู้เขียน) แถวสุดท้ายคือกรณีขอบที่เจ็บที่สุด: เมื่อทุกอย่างยังใช้อยู่ การเก็บขยะคือเวลาที่เสียไปล้วน ๆ — ตรงกับคำเตือนของ McCarthy และแถวที่สามบอกว่า copying ถูกมากเมื่อออบเจ็กต์ส่วนใหญ่ตายไปแล้ว</p>
+<h2 id="สมมตฐานเชงรน-generational-hypothesis">สมมุติฐานเชิงรุ่น (generational hypothesis)<a class="anchor" href="#%e0%b8%aa%e0%b8%a1%e0%b8%a1%e0%b8%95%e0%b8%90%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%8a%e0%b8%87%e0%b8%a3%e0%b8%99-generational-hypothesis">#</a></h2>
+<p>ข้อสังเกตเชิงประจักษ์ที่ว่า &ldquo;ออบเจ็กต์ส่วนใหญ่ตายตั้งแต่ยังเด็ก&rdquo; ทำให้แถวที่สามเป็นกรณีปกติ บทความ &ldquo;Trash talk&rdquo; ของทีม V8 (2019) อธิบายว่าตัวเก็บขยะ Orinoco แบ่งฮีปเป็นรุ่น: รุ่นเยาว์เป็นแบบ semi-space ที่ครึ่งหนึ่งว่างเสมอ ออบเจ็กต์ที่รอดถูกคัดลอกจาก From-Space ไป To-Space (บทความยอมรับว่า &ldquo;ในกรณีเลวที่สุดทุกออบเจ็กต์อาจรอด&rdquo;) ส่วนรุ่นเก่าใช้ mark, sweep และ compact ตัวคัดลอกรุ่นเยาว์แบบขนานลดเวลาบนเธรดหลักลง 20–50% และ Orinoco เปลี่ยนตัวเก็บขยะแบบ &ldquo;หยุดทั้งโลก&rdquo; ที่ทำงานเป็นลำดับเดียว (sequential) ไปเป็นแบบที่ขนานและทำพร้อมกับโปรแกรมเกือบทั้งหมด โดยมีแบบทำทีละขั้น (incremental) เป็นทางสำรอง — ซึ่งคือการลด pause ที่หัวข้อก่อนพูดถึง</p>
+<p>CPython ก็ใช้รุ่นกับตัวเก็บวง: เอกสาร <code>gc</code> ของ Python 3.13 ระบุสามรุ่น และตัวเก็บเริ่มทำงานเมื่อจำนวนการจัดสรรลบการคืนเกิน threshold0 บนเครื่องของผู้เขียน <code>gc.get_threshold()</code> ได้ (2000, 10, 10) กรณีขอบจากเอกสาร: ตั้ง threshold0 เป็น 0 คือปิดการเก็บ</p>
+<h2 id="ดสด">ดูสด<a class="anchor" href="#%e0%b8%94%e0%b8%aa%e0%b8%94">#</a></h2>
+<p>เทอร์มินัล VM ด้านล่างคือที่คอมไพล์จริง: ลอง <code>gcc</code> กับโปรแกรม C เล็ก ๆ แล้วตรวจ assembly ด้วย <code>-S</code> — abstraction จากบทนี้กลายเป็นคำสั่งเครื่องที่จับต้องได้</p>
+<p><strong>หมายเหตุจากการตรวจแล็บ:</strong> ผู้เขียนบูตอิมเมจของเทอร์มินัล VM นี้แล้วตรวจพบว่า <em>ไม่มี</em> <code>gcc</code>, <code>cc</code>, <code>tcc</code> หรือ <code>as</code> (และไม่มี Python, Perl, Lua) ใน <code>/bin</code> กับ <code>/usr/bin</code> ซึ่งมีรวม 190 รายการ (73 + 117) ประโยคข้างบนจึงยังทำตามในแล็บไม่ได้ ตัวอย่าง gcc ในบทนี้รันบนเครื่องเดสก์ท็อปของผู้เขียน สิ่งที่มีในแล็บคือ <code>awk</code> ของ BusyBox ซึ่งเป็น <em>ตัวแปลคำสั่ง</em> ให้ลองเทียบกับกรณีขอบของ C ข้างบน:</p>
+<ul>
+<li><code>awk 'BEGIN{print 2147483647+1}'</code> ได้ 2147483648 ไม่วนกลับ เพราะ awk เก็บตัวเลขเป็นทศนิยมลอยตัว ไม่ใช่ <code>int</code> 32 บิต</li>
+<li><code>awk 'BEGIN{print 9007199254740992+1}'</code> ได้ 9007199254740992 — ขอบอีกแบบ: 2⁵³ + 1 เก็บในทศนิยมลอยตัว 64 บิตไม่ได้ การบวก 1 จึงหายไปเงียบ ๆ</li>
+<li><code>awk 'BEGIN{print -3/2, int(-3/2)}'</code> ได้ <code>-1.5 -1</code> คือ <code>int()</code> ตัดเข้าหาศูนย์ เหมือนการหารจำนวนเต็มของ C ในกรณี 1</li>
+<li><code>awk 'BEGIN{printf &quot;%d %d\n&quot;, 2147483648, -2147483649}'</code> ได้ <code>-2147483648 -2147483648</code> ทั้งคู่ เมื่อแปลงค่าที่เกินช่วงเป็นจำนวนเต็ม 32 บิต ค่าบวกไม่ได้กลายเป็นค่าบวกสูงสุด และค่าลบก็ไม่ได้วนกลับเป็นบวก (ผู้เขียนอนุมานว่าเป็นเพราะคำสั่งแปลงของ x86 คืนค่า 0x80000000 เมื่อเกินช่วง ภาษา C ถือว่าการแปลงแบบนี้เป็นอนิยาม)</li>
+<li><code>awk 'BEGIN{s=0; for(i=0;i&lt;0;i++) s+=i; print s}'</code> ได้ 0 (ลูปศูนย์รอบ) และลูปเดียวกันกับ 100000 ได้ 4999950000 เท่ากับ <code>sum(100000)</code> ของ gcc</li>
+<li><code>echo 'x=1+2*3' | awk '{n=split($0,a,&quot;&quot;); for(i=1;i&lt;=n;i++) printf &quot;[%s]&quot;, a[i]; print &quot;&quot;}'</code> ได้ <code>[x][=][1][+][2][*][3]</code> — การแยกทีละตัวอักษรแบบหยาบที่สุด ซึ่งเป็นก้าวแรกของการวิเคราะห์ศัพท์ (lexer จริงจะรวม <code>12</code> เป็นโทเคนเดียว)</li>
+</ul>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=th"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="แล็บเชิงโต้ตอบ: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=th" target="_blank" rel="noopener">เปิดแล็บในแท็บใหม่ ↗</a>
+  </div>
+</div>
+
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>จารุโลจน์ จงสถิตย์วัฒนา, <em>หลักการและการประมวลผลภาษาโปรแกรม</em></li>
+<li>เกียรติกูล เจียรนัยธนะกิจ, <em>ทฤษฎีการคำนวณ</em></li>
+<li>อรพิน ประวัติบริสุทธิ์, <em>คู่มือเขียนโปรแกรมด้วยภาษา C ฉบับสมบูรณ์</em></li>
+<li>ทีม V8, &ldquo;Trash talk: the Orinoco garbage collector&rdquo; (3 มกราคม 2019) — สมมุติฐานเชิงรุ่น, semi-space, mark-sweep-compact, ตัวคัดลอกแบบขนานลดเวลา 20–50%: <a href="https://v8.dev/blog/trash-talk">https://v8.dev/blog/trash-talk</a></li>
+<li>ทีม V8, &ldquo;Maglev - V8’s Fastest Optimizing JIT&rdquo; (5 ธันวาคม 2023) — Ignition, Sparkplug (2021), Maglev (Chrome M117), TurboFan, feedback, Smi 31 บิต และการถอยกลับ: <a href="https://v8.dev/blog/maglev">https://v8.dev/blog/maglev</a></li>
+<li>Python Software Foundation, เอกสาร <code>gc</code> ของ Python 3.13 — สามรุ่น, threshold, ค่าคืนของ <code>collect()</code>: <a href="https://docs.python.org/3.13/library/gc.html">https://docs.python.org/3.13/library/gc.html</a></li>
+<li>Python Software Foundation, เอกสาร <code>sys</code> ของ Python 3.13 — <code>getrefcount</code> สูงกว่าที่คาดหนึ่ง และออบเจ็กต์อมตะ: <a href="https://docs.python.org/3.13/library/sys.html">https://docs.python.org/3.13/library/sys.html</a></li>
+<li>Eric Snow, Eddie Elizondo, &ldquo;PEP 683 – Immortal Objects, Using a Fixed Refcount&rdquo; (Final, Python 3.12) — อมตะโดยบังเอิญบน 64 บิตกับ 32 บิต (หัวข้อ Accidental Immortality): <a href="https://peps.python.org/pep-0683/">https://peps.python.org/pep-0683/</a></li>
+<li>John McCarthy, &ldquo;Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I&rdquo;, <em>Communications of the ACM</em> 3(4), 1960 — รายการพื้นที่ว่างและการทำเครื่องหมายแล้วกวาด: <a href="http://jmc.stanford.edu/articles/recursive/recursive.pdf">http://jmc.stanford.edu/articles/recursive/recursive.pdf</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B9%84%E0%B8%9E%E0%B9%80%E0%B8%A5%E0%B8%AD%E0%B8%A3%E0%B9%8C%2C&#43;JIT&#43;%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%A3%E0%B8%B1%E0%B8%99%E0%B9%84%E0%B8%97%E0%B8%A1%E0%B9%8C%E0%B8%A0%E0%B8%B2%E0%B8%A9%E0%B8%B2%E0%B8%AA%E0%B8%A1%E0%B8%B1%E0%B8%A2%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F28-compilers-jit-and-modern-language-runtimes%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F28-compilers-jit-and-modern-language-runtimes.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F28-compilers-jit-and-modern-language-runtimes.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex align-center">
+        <span>ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ไปปไลนคลาสสก-สน">ไปป์ไลน์คลาสสิก (สั้น)</a></li>
+    <li><a href="#ตวแปลโปรแกรมทำอะไรกบโคดจรง-สามกรณขอบ">ตัวแปลโปรแกรมทำอะไรกับโค้ดจริง: สามกรณีขอบ</a></li>
+    <li><a href="#ahead-of-time-เทยบ-just-in-time">Ahead-of-Time เทียบ Just-in-Time</a></li>
+    <li><a href="#jit-คมเมอไร-จดคมทนจากหลกการแรก">JIT คุ้มเมื่อไร: จุดคุ้มทุนจากหลักการแรก</a></li>
+    <li><a href="#ชนของ-jit-และการถอยกลบ-deoptimization">ชั้นของ JIT และการถอยกลับ (deoptimization)</a></li>
+    <li><a href="#รนไทม-มากกวาการคอมไพล">รันไทม์: มากกว่าการคอมไพล์</a></li>
+    <li><a href="#การเกบขยะจากหลกการแรก">การเก็บขยะจากหลักการแรก</a></li>
+    <li><a href="#เกบขยะแพงแคไหน-แบบจำลองงาน">เก็บขยะแพงแค่ไหน: แบบจำลองงาน</a></li>
+    <li><a href="#สมมตฐานเชงรน-generational-hypothesis">สมมุติฐานเชิงรุ่น (generational hypothesis)</a></li>
+    <li><a href="#ดสด">ดูสด</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

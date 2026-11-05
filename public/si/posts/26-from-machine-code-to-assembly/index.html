@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="අමු binary යනු CPU ධාවනය කරන දෙයයි — assembly පළමු කියවිය හැකි තට්ටුවයි, තවමත් mnemonic එකකට එක් උපදෙසක්">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/26-from-machine-code-to-assembly/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="යන්ත්‍ර කේතයේ සිට Assembly දක්වා">
+	<meta property="og:description" content="අමු binary යනු CPU ධාවනය කරන දෙයයි — assembly පළමු කියවිය හැකි තට්ටුවයි, තවමත් mnemonic එකකට එක් උපදෙසක්">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="යන්ත්‍ර කේතයේ සිට Assembly දක්වා">
+	<meta itemprop="description" content="අමු binary යනු CPU ධාවනය කරන දෙයයි — assembly පළමු කියවිය හැකි තට්ටුවයි, තවමත් mnemonic එකකට එක් උපදෙසක්">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1955">
+
+<title>යන්ත්‍ර කේතයේ සිට Assembly දක්වා • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/26-from-machine-code-to-assembly/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/26-from-machine-code-to-assembly/" title="From Machine Code to Assembly">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/26-from-machine-code-to-assembly/" title="จากรหัสเครื่องสู่ Assembly">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/26-from-machine-code-to-assembly/" title="Machine Code-இலிருந்து Assembly வரை">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/26-from-machine-code-to-assembly/" title="De la codul mașină la limbajul de asamblare">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="active">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>යන්ත්‍ර කේතයේ සිට Assembly දක්වා</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#assembly-සබවනම-කමකද">Assembly සැබවින්ම කුමක්ද</a></li>
+    <li><a href="#assembler-එක-රකයව">Assembler එකේ රැකියාව</a></li>
+    <li><a href="#එය-සද-වය-යත-වය-ඇය">එය සිදු විය යුතු වූයේ ඇයි</a></li>
+    <li><a href="#assembly-තවමත-වදගත-වනන-කහද">Assembly තවමත් වැදගත් වන්නේ කොහේද</a></li>
+    <li><a href="#ගඹරන-assembler-එකක-ඇතළත--ලපන-ලබල-සහ-passes-දක">ගැඹුරින්: assembler එකක් ඇතුළත — ලිපින, ලේබල සහ passes දෙක</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-අතන-assemble-කරම-mini-cpu-ගණන-කරම">2. අතින් assemble කිරීම: mini-CPU ගණන් කිරීම</a></li>
+        <li><a href="#3-ලබල-නත-වට-එක-උපදසක-ඇතළ-කරම">3. ලේබල නැති විට: එක් උපදෙසක් ඇතුළු කිරීම</a></li>
+        <li><a href="#4-passes-දක-assembler-එකක-මය-සවයකරයව-කරන-හට">4. passes දෙකේ assembler එකක් මෙය ස්වයංක්‍රීයව කරන හැටි</a></li>
+        <li><a href="#5-x86-හ-ලබලයක-bytes-බවට-සපකෂ-jump">5. x86 හි ලේබලයක් bytes බවට: සාපේක්ෂ jump</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    යන්ත්‍ර කේතයේ සිට Assembly දක්වා
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Phase 3 හි සෑම උපදෙසක්ම — datapath, pipeline, ISA — අවසානයේ අමු binary ලෙස පවතී: දෘඪාංගය සෘජුව decode කරන bit රටා. කිසිවෙකු පරිමාණයෙන් එසේ වැඩසටහන් ලියන්නේ නැත. Assembly යනු එම binary උඩ ඇති පළමු abstraction එකයි. එය මිලදී ගන්නා දේ — සහ එය <em>වෙනස් නොකරන</em> දේ — තේරුම් ගැනීම මෘදුකාංග ඉතිහාසයේ පහළට යන සියල්ලටම වැදගත්ය.</p>
+<h2 id="assembly-සබවනම-කමකද">Assembly සැබවින්ම කුමක්ද<a class="anchor" href="#assembly-%e0%b7%83%e0%b6%b6%e0%b7%80%e0%b6%b1%e0%b6%b8-%e0%b6%9a%e0%b6%b8%e0%b6%9a%e0%b6%af">#</a></h2>
+<p>Assembly සෑම උපදෙසකටම මිනිසාට කියවිය හැකි mnemonic එකක් දෙයි — <code>ADD</code>, <code>LDA</code>, <code>JMP</code> — යන්ත්‍ර-කේත bit රටාවකට එකට-එක අනුරූප වේ. එය Post 27 හි භාෂා මෙන් &ldquo;ඉහළ-මට්ටමේ&rdquo; නොවේ; යටින් ඇති දෘඪාංග ops උඩ abstraction එකක් නැත. සෑම assembly උපදෙසක්ම හරියටම එක් යන්ත්‍ර උපදෙසකට map වේ. ඔබට ලැබෙන්නේ <em>කියවිය හැකි බව</em> සහ <em>සංකේතාත්මක යොමුව</em>යි: opcode <code>0101</code> මතක තබා ගැනීමට වඩා <code>LDI</code> ලියන්න; ලේබලයක් ලියා assembler එකට jump offset ගණනය කිරීමට ඉඩ දෙන්න, byte ලිපින අතින් නැවත ගණනය කිරීමට වඩා.</p>
+<h2 id="assembler-එක-රකයව">Assembler එකේ රැකියාව<a class="anchor" href="#assembler-%e0%b6%91%e0%b6%9a-%e0%b6%bb%e0%b6%9a%e0%b6%ba%e0%b7%80">#</a></h2>
+<p>Assembler එකක් assembly පෙළ යන්ත්‍ර කේතයට පරිවර්තනය කරයි — ලේබල ලිපින වෙත විසඳා, mnemonics opcode bits වෙත, operands ISA හි කේතන ක්ෂේත්‍රවලට ඇසුරුම් කර (Post 11). යාන්ත්‍රික, බොහෝ දුරට එකට-එක. ගැඹුරු අර්ථයකින් කිසිවක් ප්‍රශස්තකරණය හෝ නැවත ව්‍යුහගත නොවේ — පූර්ණ compiler එකක් (Post 28) ඉහළ-මට්ටමේ භාෂාවක් සමඟ කරන දෙයට වඩා වෙනස්ය.</p>
+<h2 id="එය-සද-වය-යත-වය-ඇය">එය සිදු විය යුතු වූයේ ඇයි<a class="anchor" href="#%e0%b6%91%e0%b6%ba-%e0%b7%83%e0%b6%af-%e0%b7%80%e0%b6%ba-%e0%b6%ba%e0%b6%ad-%e0%b7%80%e0%b6%ba-%e0%b6%87%e0%b6%ba">#</a></h2>
+<p>Assembly ට පෙර, ක්‍රමලේඛනය යනු binary ඇතුළත් කිරීම, හෝ හොඳම අවස්ථාවේ අමු hex හෝ octal opcodes — සුළු වැඩසටහන්වලට ඔබ්බෙන් කළමනාකරණය කළ නොහැකි, පරිමාණයෙන් debug කිරීමට හෝ වෙනස් කිරීමට පාහේ අසම්භව්‍ය. සංකේතාත්මක ලේබල පමණක්ම පරිවර්තනීය විය: උපදෙසක් ඇතුළත් කරන්න හෝ ඉවත් කරන්න, සහ ඔබ තවදුරටත් සෑම jump එකක්ම අතින් නැවත ගණනය නොකරයි — assembler එක ගණිතය කරයි.</p>
+<h2 id="assembly-තවමත-වදගත-වනන-කහද">Assembly තවමත් වැදගත් වන්නේ කොහේද<a class="anchor" href="#assembly-%e0%b6%ad%e0%b7%80%e0%b6%b8%e0%b6%ad-%e0%b7%80%e0%b6%af%e0%b6%9c%e0%b6%ad-%e0%b7%80%e0%b6%b1%e0%b6%b1-%e0%b6%9a%e0%b7%84%e0%b6%af">#</a></h2>
+<p>නවීන මෘදුකාංග අතිමහත් ලෙස ඉහළ-මට්ටමේ භාෂාවලින් ලියා Post 28 හි pipeline හරහා compile කෙරේ. Assembly අතුරුදහන් වී නැත. ඉංජිනේරුවන් තවමත් compiler එකක් නිෂ්පාදනය කළ දේ හරියටම තර්ක කිරීමට එයට බැස යයි (hot loops, ආරක්ෂක සමාලෝචනය, reverse engineering), හෝ පහළම තට්ටු ලිවීමට — boot කේතය, interrupt handlers, kernel එකක කොටස් — උපදෙස්-මට්ටමේ පාලනය අවශ්‍ය වන අතර ඉහළ abstractions එය සැඟවීමට හෝ වැළැක්වීමට ඉඩ ඇති තැන්වල.</p>
+<p><strong>දැන් මෙය උත්සාහ කරන්න.</strong> පහත mini-CPU lab එක මාලාවේ වඩාත්ම සෘජු අත්දැකීම් සම්බන්ධතාවයයි: මඟ පෙන්වන වැඩසටහන Assemble කරන්න, පසුව Step — එක් එක් mnemonic (<code>LDI</code>, <code>ADD</code>, <code>STA</code>, <code>OUT</code>) opcode bits මතට එකට-එක map වේ, හරියටම මෙම පෝස්ට් එක විස්තර කරන පරිදි. ඊට වඩා abstract කිසිවක් නැත.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=si"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="අන්තර්ක්‍රියාකාරී lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=si" target="_blank" rel="noopener">Lab එක නව tab එකක විවෘත කරන්න ↗</a>
+  </div>
+</div>
+
+<h2 id="ගඹරන-assembler-එකක-ඇතළත--ලපන-ලබල-සහ-passes-දක">ගැඹුරින්: assembler එකක් ඇතුළත — ලිපින, ලේබල සහ passes දෙක<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-assembler-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%87%e0%b6%ad%e0%b7%85%e0%b6%ad--%e0%b6%bd%e0%b6%b4%e0%b6%b1-%e0%b6%bd%e0%b6%b6%e0%b6%bd-%e0%b7%83%e0%b7%84-passes-%e0%b6%af%e0%b6%9a">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> මෙම මාතෘකාව ගැන සිංහලෙන් ඇති ද්‍රව්‍ය:</p>
+<ul>
+<li>අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුවේ ශ්‍රේණිය 11 තොරතුරු හා සන්නිවේදන තාක්ෂණය පෙළපොත, §1.11.2 &ldquo;පහළ මට්ටමේ භාෂා&rdquo; (මුද්‍රිත පිටුව 45, PDF p.55). එය යන්ත්‍ර භාෂාව සහ ඇසෙම්බ්ලි භාෂාව, ඒවායේ ලක්ෂණ සහ &ldquo;ඇසෙම්බ්ලි වැඩසටහන → ඇසෙම්බ්ලර් → යන්ත්‍ර භාෂා විධාන&rdquo; රූප සටහන දෙයි. §1.11.5 (මුද්‍රිත පිටුව 52) භාෂා පරිවර්තක ගැන කියයි.</li>
+<li>si.wikipedia හි &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b6%87%e0%b7%83%e0%b7%99%e0%b6%b8%e0%b7%8a%e0%b6%b6%e0%b7%8a%e0%b6%bd%e0%b7%92_%e0%b6%b7%e0%b7%8f%e0%b7%82%e0%b7%8f%e0%b7%80">ඇසෙම්බ්ලි භාෂාව</a>&rdquo; ලිපිය (අක්ෂර ~1.1k).</li>
+<li>YouTube හි assembly ගැන සිංහල වීඩියෝ දෙකක් (<a href="https://www.youtube.com/watch?v=U8WQO_kxWl4">U8WQO_kxWl4</a>, <a href="https://www.youtube.com/watch?v=AJAyoyEv6lk">AJAyoyEv6lk</a>). මේවා හඳුනාගත්තේ මාතෘකාවෙන් පමණි.</li>
+</ul>
+<p>ඒවායේ නැති දේ: assembler එකක් ලේබලයක් ලිපිනයක් බවට හරවන්නේ කෙසේද, passes දෙකක් අවශ්‍ය ඇයි, ඉදිරි යොමු (forward references) විසඳන හැටි සහ jump එකක bytes ගණනය කරන හැටි. මෙම කොටස ඒවා අතින් ගණනය කරයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>යන්ත්‍ර කේතය (machine code):</strong> CPU එක කෙලින්ම decode කරන bit රටා.</li>
+<li><strong>Mnemonic (mnemonic):</strong> opcode එකකට දෙන කෙටි නම (<code>LDI</code>, <code>JZ</code>).</li>
+<li><strong>Assembler (assembler):</strong> assembly පෙළ යන්ත්‍ර කේතයට හරවන වැඩසටහන.</li>
+<li><strong>ස්ථාන ගණකය (location counter, LC):</strong> assemble කරන විට &ldquo;ඊළඟ උපදෙස කුමන ලිපිනයට යයිද&rdquo; යන්න assembler එක තබා ගන්නා ගණකය.</li>
+<li><strong>ලේබලය (label):</strong> ලිපිනයකට දෙන නමකි. Salomon ට අනුව ලේබල පළමුව යෝජනා කළේ Maurice Wilkes ය. ඔහු ඒවා &ldquo;floating addresses&rdquo; ලෙස හැඳින්වීය (පොතේ මුද්‍රිත පිටුව 7).</li>
+<li><strong>සංකේත වගුව (symbol table):</strong> ලේබල නම් සහ ඒවායේ ලිපින ඇති වගුව.</li>
+<li><strong>ඉදිරි යොමුව (forward reference):</strong> තවම අර්ථ දක්වා නැති (පහළින් ඇති) ලේබලයක් භාවිත කිරීම.</li>
+<li><strong>සාපේක්ෂ විස්ථාපනය (relative displacement):</strong> jump එකේ ඉලක්කය සම්පූර්ණ ලිපිනයක් ලෙස නොව &ldquo;මෙතැන් සිට කොපමණ දුරද&rdquo; ලෙස ලිවීම.</li>
+</ul>
+<p><strong>වැදගත්:</strong> මෙම පිටුවේ mini-CPU lab එකේ assembler එකට <strong>ලේබල නැත</strong>. Operand එක 0–15 අතර අංකයක් විය යුතුය (lab එකේ මූලාශ්‍ර කේතය). එබැවින් පහත lab වැඩසටහන්වල ඇත්තේ අංකිත ලිපින පමණි. නම් (<code>top</code>, <code>done</code>) ඇත්තේ <code>;</code> ට පසු විස්තර (comments) තුළ පමණි.</p>
+<h3 id="2-අතන-assemble-කරම-mini-cpu-ගණන-කරම">2. අතින් assemble කිරීම: mini-CPU ගණන් කිරීම<a class="anchor" href="#2-%e0%b6%85%e0%b6%ad%e0%b6%b1-assemble-%e0%b6%9a%e0%b6%bb%e0%b6%b8-mini-cpu-%e0%b6%9c%e0%b6%ab%e0%b6%b1-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h3>
+<p>Lab එකේ එක් උපදෙසක් bits 8 කි: byte = opcode × 16 + operand. Opcodes: LDI = 5, STA = 4, SUB = 3, JZ = 8, JMP = 6, OUT = 14 (E), HLT = 15 (F). (Opcode වගුව සම්පූර්ණයෙන් Post 11 හි ඇත.)</p>
+<p>3 සිට 0 දක්වා ගණන් කරන වැඩසටහනක්:</p>
+<pre tabindex="0"><code>LDI 1     ; 0: A = 1
+STA 15    ; 1: mem[15] = 1 (අඩු කරන නියතය)
+LDI 3     ; 2: A = 3
+OUT       ; 3: A පෙන්වන්න   &lt;- &#34;top&#34;
+SUB 15    ; 4: A = A - 1 (A 0 වූ විට Zero flag = 1)
+JZ 7      ; 5: Zero නම් 7 ට (&#34;done&#34;)
+JMP 3     ; 6: නැතිනම් 3 ට (&#34;top&#34;)
+OUT       ; 7: 0 පෙන්වන්න   &lt;- &#34;done&#34;
+HLT       ; 8: නවතින්න</code></pre><table>
+	<thead>
+			<tr>
+					<th>ලිපිනය</th>
+					<th>උපදෙස</th>
+					<th>ගණනය</th>
+					<th>Hex</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>LDI 1</td>
+					<td>5×16 + 1 = 81</td>
+					<td>51</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>STA 15</td>
+					<td>4×16 + 15 = 79</td>
+					<td>4F</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>LDI 3</td>
+					<td>5×16 + 3 = 83</td>
+					<td>53</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>OUT</td>
+					<td>14×16 + 0 = 224</td>
+					<td>E0</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>SUB 15</td>
+					<td>3×16 + 15 = 63</td>
+					<td>3F</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>JZ 7</td>
+					<td>8×16 + 7 = 135</td>
+					<td>87</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>JMP 3</td>
+					<td>6×16 + 3 = 99</td>
+					<td>63</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>OUT</td>
+					<td>224</td>
+					<td>E0</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>HLT</td>
+					<td>15×16 + 0 = 240</td>
+					<td>F0</td>
+			</tr>
+	</tbody>
+</table>
+<p>ඉහත lab එකේ Assembly කොටුවට මෙය පිටපත් කර <strong>Assemble</strong> කළ විට මතකයේ පෙනිය යුත්තේ <code>51 4F 53 E0 3F 87 63 E0 F0</code> ය. <strong>Step</strong> ඔබමින් ගියොත් Output 3, 2, 1, 0 ලෙස වෙනස් වී, steps <strong>16</strong> කින් (HLT ද ඇතුළුව) නවතී. (අපි මෙය lab එකේ මූලාශ්‍ර කේතයම ධාවනය කර පරීක්ෂා කළෙමු.)</p>
+<h3 id="3-ලබල-නත-වට-එක-උපදසක-ඇතළ-කරම">3. ලේබල නැති විට: එක් උපදෙසක් ඇතුළු කිරීම<a class="anchor" href="#3-%e0%b6%bd%e0%b6%b6%e0%b6%bd-%e0%b6%b1%e0%b6%ad-%e0%b7%80%e0%b6%a7-%e0%b6%91%e0%b6%9a-%e0%b6%8b%e0%b6%b4%e0%b6%af%e0%b7%83%e0%b6%9a-%e0%b6%87%e0%b6%ad%e0%b7%85-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h3>
+<p>දැන් ගණන් කරන අගය mem[14] හි ද තබා ගැනීමට, ලිපිනය 3 හි <code>OUT</code> ට පසු <code>STA 14</code> ඇතුළු කරමු. එතැන් සිට සෑම උපදෙසක්ම එක් ලිපිනයක් පහළට යයි:</p>
+<table>
+	<thead>
+			<tr>
+					<th>පැරණි ලිපිනය</th>
+					<th>නව ලිපිනය</th>
+					<th>උපදෙස</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0–3</td>
+					<td>0–3</td>
+					<td>නොවෙනස්</td>
+			</tr>
+			<tr>
+					<td>—</td>
+					<td>4</td>
+					<td><strong>STA 14</strong> (නව)</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>5</td>
+					<td>SUB 15</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>6</td>
+					<td>JZ ?</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>7</td>
+					<td>JMP ?</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>8</td>
+					<td>OUT (&ldquo;done&rdquo;)</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>9</td>
+					<td>HLT</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>&ldquo;done&rdquo; 7 සිට <strong>8</strong> ට ගියේය. එබැවින් <code>JZ 7</code> → <strong><code>JZ 8</code></strong> (byte 87 → <strong>88</strong>) ලෙස අතින් වෙනස් කළ යුතුය.</li>
+<li>&ldquo;top&rdquo; (3) ඇතුළු කළ ස්ථානයට <em>ඉහළින්</em> ඇති නිසා <code>JMP 3</code> නොවෙනස්ව පවතී.</li>
+<li>නීතිය: ඉලක්කය ඇතුළු කළ ලිපිනයට සමාන හෝ ඊට පසු නම් operand එක +1 කරන්න. ඊට පෙර නම් නොවෙනස්.</li>
+</ul>
+<p>නිවැරදි කළ bytes: <code>51 4F 53 E0 4E 3F 88 63 E0 F0</code>. Output 3, 2, 1, 0, steps <strong>19</strong>.</p>
+<p><strong>අමතක කළොත් කුමක් වේද?</strong> <code>JZ 7</code> එලෙසම තැබුවොත්, A = 0 වූ විට CPU එක 7 ට, එනම් <code>JMP 3</code> වෙත පනී. එවිට 0 − 1 = 255 (bits 8 වට වීම) වී ගණන් කිරීම 255, 254, … ලෙස දිගටම යයි. වැඩසටහන කිසිදා නොනවතී. (අපේ පරීක්ෂාවේදී steps 2000 කට පසුවද HLT නොවීය.) ඇතුළු කිරීමක් එක් operand එකක් අමතක කිරීමෙන් වැඩසටහනේ හැසිරීම මුළුමනින්ම වෙනස් විය හැකිය. ලේබල විසඳන්නේ මෙම ගැටලුවයි.</p>
+<h3 id="4-passes-දක-assembler-එකක-මය-සවයකරයව-කරන-හට">4. passes දෙකේ assembler එකක් මෙය ස්වයංක්‍රීයව කරන හැටි<a class="anchor" href="#4-passes-%e0%b6%af%e0%b6%9a-assembler-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%b8%e0%b6%ba-%e0%b7%83%e0%b7%80%e0%b6%ba%e0%b6%9a%e0%b6%bb%e0%b6%ba%e0%b7%80-%e0%b6%9a%e0%b6%bb%e0%b6%b1-%e0%b7%84%e0%b6%a7">#</a></h3>
+<p>David Salomon ගේ <em>Assemblers and Loaders</em> (§1.2, මුද්‍රිත පිටුව 20) passes දෙකේ assembler එක මෙසේ විස්තර කරයි: පළමු pass එකේදී එය මුළු මූලාශ්‍රයම කියවන්නේ ලේබල අර්ථ දැක්වීම් සොයා පමණි. ලේබලවලට අගයන් දී සංකේත වගුවට දමයි. දෙවන pass එකේදී එම වගුව භාවිතයෙන් උපදෙස් assemble කරයි. ලේබලවලට අගය දීමට පළමු pass එකේදීම LC එක තබා ගත යුතුය. එනම් සෑම උපදෙසකම <em>ප්‍රමාණය</em> දැනගත යුතුය.</p>
+<p>ඉහත වැඩසටහන <code>top</code> සහ <code>done</code> ලේබල ඇති assembler එකකට ලියූවා නම් (lab එක සඳහා නොවේ):</p>
+<ul>
+<li><strong>Pass 1 (මුල් වැඩසටහන):</strong> LC 0, 1, 2 → <code>top</code> = <strong>3</strong> … <code>done</code> = <strong>7</strong>. වගුව: {top: 3, done: 7}.</li>
+<li><strong>Pass 1 (STA 14 ඇතුළු කළ පසු):</strong> {top: 3, done: <strong>8</strong>}. මිනිසා කිසිවක් ගණනය නොකරයි.</li>
+<li><strong>Pass 2:</strong> <code>JZ done</code> → 8×16 + 8 = 0x88. <code>JMP top</code> → 0x63.</li>
+</ul>
+<p><strong>එක් pass එකක් පමණක් නම්?</strong> Salomon (§1.3, මුද්‍රිත පිටු 24–25): ඉදිරි යොමුවක් හමු වූ විට assembler එක උපදෙස අර්ධ වශයෙන් assemble කර ලිපින ක්ෂේත්‍රය හිස්ව තබයි. ලේබලය &ldquo;U&rdquo; (undefined) ලෙස වගුවට දමයි. එම ලේබලය භාවිත කරන උපදෙස් සියල්ල linked list එකකින් බැඳේ. ලේබලය අර්ථ දක්වන තැනට පැමිණි විට list එක දිගේ ගොස් එක් එක් හිස් ක්ෂේත්‍රය පුරවයි. Pass එක අවසානයේ තවම &ldquo;U&rdquo; ඇති සංකේත දෝෂ ලෙස වාර්තා කරයි. GNU <code>as</code> අත්පොත (<code>.org</code> කොටස) ද පවසන්නේ <code>as</code> වැඩසටහන් එක් pass එකකින් assemble කිරීමට උත්සාහ කරන බවයි.</p>
+<h3 id="5-x86-හ-ලබලයක-bytes-බවට-සපකෂ-jump">5. x86 හි ලේබලයක් bytes බවට: සාපේක්ෂ jump<a class="anchor" href="#5-x86-%e0%b7%84-%e0%b6%bd%e0%b6%b6%e0%b6%bd%e0%b6%ba%e0%b6%9a-bytes-%e0%b6%b6%e0%b7%80%e0%b6%a7-%e0%b7%83%e0%b6%b4%e0%b6%9a%e0%b7%82-jump">#</a></h3>
+<p>සැබෑ CPU වල jump බොහෝවිට සාපේක්ෂ වේ. අපි මෙම කේතය box එකේ GNU <code>as</code> (x86-64) මගින් assemble කර <code>objdump</code> මගින් බැලුවෙමු:</p>
+<pre tabindex="0"><code>0:  eb 04     jmp done
+2:  01 d8     add eax, ebx
+4:  ff c0     inc eax
+6:  c3        ret          &lt;- done
+7:  ff c9     dec ecx      &lt;- top
+9:  75 fc     jne top</code></pre><p>Intel SDM Vol. 2A: <code>EB cb</code> = &ldquo;JMP rel8 … RIP = RIP + 8-bit displacement sign extended&rdquo; (JMP පිටුව, 3-504). <code>75 cb</code> = &ldquo;JNE rel8, Jump short if not equal (ZF=0)&rdquo; (Jcc පිටුව, 3-499). Jump ක්‍රියාත්මක වන විට RIP දැනටමත් <em>ඊළඟ</em> උපදෙස පෙන්වයි. එබැවින්:</p>
+<ul>
+<li><strong>විස්ථාපනය = ඉලක්කය − ඊළඟ උපදෙසේ ලිපිනය.</strong></li>
+<li><code>jmp done</code>: 6 − 2 = <strong>4</strong> → <code>04</code>.</li>
+<li><code>jne top</code>: 7 − 11 = <strong>−4</strong> → bits 8 two&rsquo;s complement: 256 − 4 = 252 = <strong><code>fc</code></strong>.</li>
+</ul>
+<p>rel8 හට −128 සිට +127 දක්වා පමණක් යා හැක. ඉලක්කය ඊට වඩා දුර නම් bytes 5 ක <code>E9 cd</code> (JMP rel32) ආකාරය අවශ්‍ය වේ. අපේ පරීක්ෂාවේදී bytes 200 ක් ඉදිරියට ඇති ලේබලයකට <code>as</code> විසින් <code>e9 c8 00 00 00</code> නිපදවීය: ලිපිනය 0x12 හි ඇති උපදෙස bytes 5 කි. ඊළඟ ලිපිනය 0x17, ඉලක්කය 0xDF, 0xDF − 0x17 = 0xC8 = <strong>200</strong> (little-endian නිසා <code>c8</code> පළමුව). මෙයින් පෙනෙන්නේ Salomon කියන දෙයයි: උපදෙසක ප්‍රමාණය (2 ද 5 ද) ඉලක්කය කොපමණ දුරද යන්න මත රඳා පවතී. LC එක නිවැරදිව තබා ගැනීමට assembler එකට වැඩි වෙහෙසක් දැරීමට සිදු වේ.</p>
+<h3 id="6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#6-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>Mini-CPU bytes ලියන්න: <code>LDI 9</code>, <code>ADD 14</code>, <code>JZ 12</code> (ADD = 2).</li>
+<li>විකේතනය කරන්න: <code>63</code>, <code>3F</code>, <code>4E</code>.</li>
+<li>§2 හි මුල් වැඩසටහනේ <em>මුලටම</em> (ලිපිනය 0) <code>OUT</code> එකක් ඇතුළු කරයි. නව <code>JZ</code> සහ <code>JMP</code> operands මොනවාද? පළමු Output අගය කුමක්ද?</li>
+<li>අභ්‍යාසය 3 හි පළමු pass එකෙන් පසු සංකේත වගුව ලියන්න.</li>
+<li>x86: bytes 2 ක <code>jmp</code> එකක් ලිපිනය 0x10 හි ඇත. ඉලක්කය 0x08. විස්ථාපන byte එක කුමක්ද?</li>
+<li>ලිපිනය 0x40 හි ඇති bytes 2 ක <code>jmp</code> එකකට (rel8) යා හැකි ඉහළම ලිපිනය කුමක්ද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>5×16 + 9 = <strong>0x59</strong>. 2×16 + 14 = <strong>0x2E</strong>. 8×16 + 12 = <strong>0x8C</strong>.</li>
+<li>0x63 = 6, 3 → <strong>JMP 3</strong>. 0x3F = 3, 15 → <strong>SUB 15</strong>. 0x4E = 4, 14 → <strong>STA 14</strong>.</li>
+<li>සියලු ලිපින +1: top = 4, done = 8. එබැවින් <strong><code>JZ 8</code></strong>, <strong><code>JMP 4</code></strong>. පළමු <code>OUT</code> ධාවනය වන විට A = 0 (ආරම්භයේ). එබැවින් Output <strong>0, 3, 2, 1, 0</strong>. (Lab මූලාශ්‍රය මත පරීක්ෂා කළා: bytes <code>E0 51 4F 53 E0 3F 88 64 E0 F0</code>, steps 17.)</li>
+<li>{top: <strong>4</strong>, done: <strong>8</strong>}.</li>
+<li>ඊළඟ ලිපිනය 0x12. 0x08 − 0x12 = −10 → 256 − 10 = 246 = <strong>0xF6</strong> (bytes <code>eb f6</code>; <code>as</code> මගින් පරීක්ෂා කළා).</li>
+<li>ඊළඟ ලිපිනය 0x42. 0x42 + 127 = <strong>0xC1</strong>.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>මෙම පිටුවේ mini-CPU lab එකේ මූලාශ්‍ර කේතය (<code>static/labs/mini-cpu/index.html</code>): opcode වගුව, byte = opcode×16 + operand, operand 0–15, ලේබල නැත. §2, §3 සහ අභ්‍යාසය 3 හි වැඩසටහන් එම කේතයම ධාවනය කර පරීක්ෂා කළෙමු.</li>
+<li>David Salomon, <em>Assemblers and Loaders</em>, Ellis Horwood, 1993. කතුවරයාගේ නොමිලේ PDF පිටපත: <a href="https://www.davidsalomon.name/assem.advertis/asl.pdf">https://www.davidsalomon.name/assem.advertis/asl.pdf</a>. &ldquo;A Short History of Assemblers and Loaders&rdquo; (මුද්‍රිත පිටුව 7: EDSAC Initial Orders, Wilkes සහ floating addresses); §1.2 The Two-Pass Assembler (පිටුව 20); §1.3 The One-Pass Assembler (පිටු 24–25).</li>
+<li>GNU Binutils, <em>Using as</em>: <a href="https://sourceware.org/binutils/docs/as/Labels.html">Labels</a> (§5.1) සහ <a href="https://sourceware.org/binutils/docs/as/Org.html"><code>.org</code></a> (&ldquo;Because as tries to assemble programs in one pass&rdquo;).</li>
+<li>Intel, <em>Intel 64 and IA-32 Architectures Software Developer&rsquo;s Manual</em>, Vol. 2A (order 325383-093): JMP (පිටුව 3-504, <code>EB cb</code>, <code>E9 cd</code>), Jcc (පිටුව 3-499, <code>75 cb</code>). <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html">https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html</a></li>
+<li>අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුව, <em>තොරතුරු හා සන්නිවේදන තාක්ෂණය, ශ්‍රේණිය 11</em>, §1.11.2 (මුද්‍රිත පිටුව 45) සහ §1.11.5 (මුද්‍රිත පිටුව 52).</li>
+</ul>
+<p>x86 bytes සහ අභ්‍යාසය 5 හි <code>eb f6</code> අප GNU as 2.44 සහ objdump මගින් නිපදවා පරීක්ෂා කළ ඒවාය. §3 හි &ldquo;STA 14&rdquo; ඇතුළු කිරීම සහ ගණන් කරන වැඩසටහන අප නිර්මාණය කළ ආදර්ශ (illustrative) උදාහරණ වේ.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B6%BA%E0%B6%B1%E0%B7%8A%E0%B6%AD%E0%B7%8A%E2%80%8D%E0%B6%BB&#43;%E0%B6%9A%E0%B7%9A%E0%B6%AD%E0%B6%BA%E0%B7%9A&#43;%E0%B7%83%E0%B7%92%E0%B6%A7&#43;Assembly&#43;%E0%B6%AF%E0%B6%9A%E0%B7%8A%E0%B7%80%E0%B7%8F&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F26-from-machine-code-to-assembly%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F26-from-machine-code-to-assembly.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F26-from-machine-code-to-assembly.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/25-containers-and-modern-os-isolation/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Containers සහ නවීන OS හුදකලාව</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex align-center">
+        <span>ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#assembly-සබවනම-කමකද">Assembly සැබවින්ම කුමක්ද</a></li>
+    <li><a href="#assembler-එක-රකයව">Assembler එකේ රැකියාව</a></li>
+    <li><a href="#එය-සද-වය-යත-වය-ඇය">එය සිදු විය යුතු වූයේ ඇයි</a></li>
+    <li><a href="#assembly-තවමත-වදගත-වනන-කහද">Assembly තවමත් වැදගත් වන්නේ කොහේද</a></li>
+    <li><a href="#ගඹරන-assembler-එකක-ඇතළත--ලපන-ලබල-සහ-passes-දක">ගැඹුරින්: assembler එකක් ඇතුළත — ලිපින, ලේබල සහ passes දෙක</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-අතන-assemble-කරම-mini-cpu-ගණන-කරම">2. අතින් assemble කිරීම: mini-CPU ගණන් කිරීම</a></li>
+        <li><a href="#3-ලබල-නත-වට-එක-උපදසක-ඇතළ-කරම">3. ලේබල නැති විට: එක් උපදෙසක් ඇතුළු කිරීම</a></li>
+        <li><a href="#4-passes-දක-assembler-එකක-මය-සවයකරයව-කරන-හට">4. passes දෙකේ assembler එකක් මෙය ස්වයංක්‍රීයව කරන හැටි</a></li>
+        <li><a href="#5-x86-හ-ලබලයක-bytes-බවට-සපකෂ-jump">5. x86 හි ලේබලයක් bytes බවට: සාපේක්ෂ jump</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

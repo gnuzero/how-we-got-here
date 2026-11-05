@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AOT runtime කරුණු නොමැතිව එක් වරක් compile කරයි; JIT hot paths සඳහා බලා සිටී — සහ garbage collection පිරිවැය runtime වෙත මාරු කරයි">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/28-compilers-jit-and-modern-language-runtimes/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="Compilers, JIT, සහ නවීන භාෂා Runtimes">
+	<meta property="og:description" content="AOT runtime කරුණු නොමැතිව එක් වරක් compile කරයි; JIT hot paths සඳහා බලා සිටී — සහ garbage collection පිරිවැය runtime වෙත මාරු කරයි">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Compilers, JIT, සහ නවීන භාෂා Runtimes">
+	<meta itemprop="description" content="AOT runtime කරුණු නොමැතිව එක් වරක් compile කරයි; JIT hot paths සඳහා බලා සිටී — සහ garbage collection පිරිවැය runtime වෙත මාරු කරයි">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1775">
+
+<title>Compilers, JIT, සහ නවීන භාෂා Runtimes • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/28-compilers-jit-and-modern-language-runtimes/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilers, JIT, and Modern Language Runtimes">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/28-compilers-jit-and-modern-language-runtimes/" title="คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilers, JIT, மற்றும் நவீன மொழி Runtimes">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/28-compilers-jit-and-modern-language-runtimes/" title="Compilatoare, JIT și medii de rulare moderne">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="active">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Compilers, JIT, සහ නවීන භාෂා Runtimes</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#සමභවය-pipeline-එක-කටයන">සම්භාව්‍ය Pipeline එක (කෙටියෙන්)</a></li>
+    <li><a href="#ahead-of-time-එදරව-just-in-time">Ahead-of-Time එදිරිව Just-in-Time</a></li>
+    <li><a href="#runtimes-compilation-ට-වඩ-වඩ-දයක">Runtimes: Compilation ට වඩා වැඩි දෙයක්</a></li>
+    <li><a href="#එය-ජවමනව-බලනන">එය ජීවමානව බලන්න</a></li>
+    <li><a href="#ගඹරන-පළ-සට-bytecode-දකව-සහ-jit-එකක-වසදයක-වනන-කවදද">ගැඹුරින්: පෙළේ සිට bytecode දක්වා, සහ JIT එකක් වාසිදායක වන්නේ කවදාද</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-එක-පළයක-compiler-එක-හරහ">2. එක් පේළියක් compiler එක හරහා</a></li>
+        <li><a href="#3-interpreter-එකක-ඇය-මනදගමද-සහ-jit-එකක-එය-මඟ-හරන-හට">3. Interpreter එකක් ඇයි මන්දගාමීද, සහ JIT එකක් එය මඟ හරින හැටි</a></li>
+        <li><a href="#4-දනම-උතසහ-කරනන-කඩ-bytecode-interpreter-එකක-මම-පටව-vm-terminal-lab-එක">4. දැන්ම උත්සාහ කරන්න: කුඩා bytecode interpreter එකක් (මෙම පිටුවේ vm-terminal lab එක)</a></li>
+        <li><a href="#5-පනසලන-අභයසය">5. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Compilers, JIT, සහ නවීන භාෂා Runtimes
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Post 27 ඉහළ-මට්ටමේ භාෂා <em>ඇයි</em> පවතීද යන්න ආවරණය කළේය. මෙම පෝස්ට් එක ඒවා භාවිතා කළ හැකි කරන යන්ත්‍රයයි: compiler එක, මූලාශ්‍රය සැබෑ CPU එකකට (Phase 3) ක්‍රියාත්මක කළ හැකි දෙයකට පරිවර්තනය කරයි.</p>
+<h2 id="සමභවය-pipeline-එක-කටයන">සම්භාව්‍ය Pipeline එක (කෙටියෙන්)<a class="anchor" href="#%e0%b7%83%e0%b6%b8%e0%b6%b7%e0%b7%80%e0%b6%ba-pipeline-%e0%b6%91%e0%b6%9a-%e0%b6%9a%e0%b6%a7%e0%b6%ba%e0%b6%b1">#</a></h2>
+<p>Lexer → tokens. Parser → Abstract Syntax Tree. Semantic analysis ව්‍යාකරණයට පමණක් හඳුනා ගත නොහැකි දේ අල්ලා ගනී (types, නොප්‍රකාශිත නම්). බොහෝ සැබෑ compilers පසුව Intermediate Representation (IR) එකකට පහත් කරයි — මූලාශ්‍ර syntax ට වඩා ඒකාකාර, තවමත් ඕනෑම ඉලක්ක ISA එකකින් ස්වාධීන — <strong>optimizer</strong> එක ක්‍රියා කරන තැන: dead-code elimination, loop-invariant hoisting, inlining, සහ හැසිරීම සුරකිමින් නාස්ති වැඩ කපන තවත් දුසිම් ගණනක පරිවර්තන. <strong>Code generation</strong> ඉලක්ක උපදෙස් නිකුත් කර register allocation කරයි (කුමන අගයන් දුර්ලභ භෞතික registers වල ජීවත් වේද එදිරිව මතකයට spilling).</p>
+<p>එය කොඳු නාරටියයි. සෑම pass එකකම විශ්වකෝෂය අරමුණ නොවේ — සීමාව මෙයයි: මූලාශ්‍ර abstractions ධාවනය නොවේ; යමක් ඒවා පහත් කළ යුතුය, සහ එම යම ක්‍රියාත්මක වීමට <em>පෙර</em> හෝ <em>අතරතුර</em> ධාවනය විය හැක.</p>
+<h2 id="ahead-of-time-එදරව-just-in-time">Ahead-of-Time එදිරිව Just-in-Time<a class="anchor" href="#ahead-of-time-%e0%b6%91%e0%b6%af%e0%b6%bb%e0%b7%80-just-in-time">#</a></h2>
+<p>වැඩසටහන කිසිදා ක්‍රියාත්මක වීමට පෙර සම්පූර්ණ pipeline එක එක් වරක් ධාවනය කරන්න: Ahead-of-Time (AOT) — C සහ සාම්ප්‍රදායික FORTRAN. Just-in-Time (JIT) — Java, JavaScript, සහ ඥාතීන් — interpreter එකකින් හෝ වේගවත් baseline compiler එකකින් පටන් ගනී, පසුව <em>runtime දී</em> hot paths සොයා බර ප්‍රශස්තකරණය සමඟ ඒවා නැවත compile කරයි.</p>
+<p>JIT හි වාසිය AOT compiler එකකට කිසිදා නොතිබූ තොරතුරුය: නිරීක්ෂිත branches, argument types, සැබෑ hot loops — එම දත්ත නොමැතිව උපකල්පනය කිරීමට අනාරක්ෂිත ප්‍රශස්තකරණ. පිරිවැය සැබෑය: compilation ක්‍රියාත්මක වීමේදී cycles පුළුස්සයි, සහ පළමු තත්පර බොහෝ විට steady state ට වඩා මන්දගාමීව ධාවනය වේ — සම්භාව්‍ය warm-up.</p>
+<h2 id="runtimes-compilation-ට-වඩ-වඩ-දයක">Runtimes: Compilation ට වඩා වැඩි දෙයක්<a class="anchor" href="#runtimes-compilation-%e0%b6%a7-%e0%b7%80%e0%b6%a9-%e0%b7%80%e0%b6%a9-%e0%b6%af%e0%b6%ba%e0%b6%9a">#</a></h2>
+<p>Managed භාෂා (Java, C#, සහ විවිධ මට්ටම්වලට JavaScript සහ Python) compiler එක පුළුල් runtime එකක් සමඟ යුගල කරයි — වඩාත්ම ප්‍රතිවිපාක සහිතව garbage collection හරහා ස්වයංක්‍රීය මතක කළමනාකරණය, ක්‍රමලේඛකයන්ට සෑම allocation එකක ජීවිත කාලය නිරීක්ෂණයෙන් නිදහස් කරයි (C හි ප්‍රධාන දෝෂ මූලාශ්‍රයක්). සංකීර්ණත්වය runtime වෙත මාරු වේ: අතින් උත්සාහය overhead සහ, ඓතිහාසිකව, අඩු පුරෝකථනය කළ හැකි pauses සඳහා හුවමාරු කෙරේ. එම ආතතිය හරියටම Posts 29–30 &ldquo;තත්‍ය කාල&rdquo; සහ &ldquo;garbage-collected managed runtime&rdquo; නිතර විරුද්ධ ලෙස සලකන්නේ ඇයි.</p>
+<h2 id="එය-ජවමනව-බලනන">එය ජීවමානව බලන්න<a class="anchor" href="#%e0%b6%91%e0%b6%ba-%e0%b6%a2%e0%b7%80%e0%b6%b8%e0%b6%b1%e0%b7%80-%e0%b6%b6%e0%b6%bd%e0%b6%b1%e0%b6%b1">#</a></h2>
+<p>පහත VM terminal එක සැබෑ Linux පද්ධතියකි, නමුත් අවම BusyBox පද්ධතියකි: එහි C compiler එකක් නැත (<code>gcc</code> ට ලැබෙන්නේ <code>gcc: not found</code>). එහෙත් එයට මෙම පෝස්ට් එකේ පැති දෙකම පෙන්විය හැක. <code>hexdump -C /bin/busybox | head -2</code> ධාවනය කරන්න: ගොනුව <code>7f 45 4c 46</code> න් ආරම්භ වේ — <code>0x7f</code> සහ &ldquo;ELF&rdquo;, compiler එකක් සහ linker එකක් නිපදවන ක්‍රියාත්මක කළ හැකි ආකෘතියයි. එය ඔබ VM එක ආරම්භ කිරීමට බොහෝ කලකට පෙර වෙනත් යන්ත්‍රයක කලින්ම (ahead of time) ගොඩනැගූවකි. ඉන්පසු එම වැඩයම interpreter එකකට දෙන්න: <code>echo 'BEGIN{s=0; for(i=1;i&lt;=1000000;i++) s+=i; print s}' &gt; /tmp/sum.awk</code>, ඉන්පසු <code>time awk -f /tmp/sum.awk</code>. එය තත්පර කිහිපයකට පසු <code>500000500000</code> මුද්‍රණය කරයි (අපේ ධාවනවල තත්පර 6–7 පමණ; ඔබේ බ්‍රව්සරය අනුව වෙනස් වේ). awk සෑම පුනරාවර්තනයක්ම ධාවන වේලාවේදී ක්‍රියාත්මක කරන නිසාය — optimizing compiler එකකට වැඩසටහන ධාවනය වීමටත් පෙර නියතයකට අඩු කළ හැකි ලූපයකි.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=si"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="අන්තර්ක්‍රියාකාරී lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=si" target="_blank" rel="noopener">Lab එක නව tab එකක විවෘත කරන්න ↗</a>
+  </div>
+</div>
+
+<h2 id="ගඹරන-පළ-සට-bytecode-දකව-සහ-jit-එකක-වසදයක-වනන-කවදද">ගැඹුරින්: පෙළේ සිට bytecode දක්වා, සහ JIT එකක් වාසිදායක වන්නේ කවදාද<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-%e0%b6%b4%e0%b7%85-%e0%b7%83%e0%b6%a7-bytecode-%e0%b6%af%e0%b6%9a%e0%b7%80-%e0%b7%83%e0%b7%84-jit-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b7%80%e0%b7%83%e0%b6%af%e0%b6%ba%e0%b6%9a-%e0%b7%80%e0%b6%b1%e0%b6%b1-%e0%b6%9a%e0%b7%80%e0%b6%af%e0%b6%af">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> මෙම මාතෘකාව ගැන සිංහලෙන් ඇති ද්‍රව්‍ය:</p>
+<ul>
+<li>අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුවේ ශ්‍රේණිය 11 තොරතුරු හා සන්නිවේදන තාක්ෂණය පෙළපොත, §1.11.5 &ldquo;භාෂා පරිවර්තක වැඩසටහන්&rdquo; (මුද්‍රිත පිටු 52–53, PDF p.62–63). එය අර්ථ වින්‍යාසකය (interpreter) සහ සම්පාදකය (compiler) වෙන්කර දක්වයි: interpreter එක ප්‍රකාශයෙන් ප්‍රකාශය පරිවර්තනය කර ධාවනය කරයි, compiler එක මුළු වැඩසටහනම එක් වරක් පරිවර්තනය කරයි.</li>
+<li>ජාතික අධ්‍යාපන ආයතනයේ 13 ශ්‍රේණිය ICT ගුරු මාර්ගෝපදේශය (PDF p.83) &ldquo;ක්‍රමලේඛ පරිවර්තක&rdquo; යටතේ interpreters, compilers, මිශ්‍ර ප්‍රවේශය (hybrid approach) සහ linkers ලැයිස්තුගත කරයි.</li>
+<li>si.wikipedia හි &ldquo;ඉන්ටප්‍රිට&rsquo;&rdquo; කෙටි ලිපිය (අක්ෂර ~0.8k).</li>
+<li>YouTube හි compiler එදිරිව interpreter ගැන සිංහල වීඩියෝ (<a href="https://www.youtube.com/watch?v=6O3jzwPkmQ4">6O3jzwPkmQ4</a>, <a href="https://www.youtube.com/watch?v=wh23KXVDPkY">wh23KXVDPkY</a>, CodePRO LK). මේවා හඳුනාගත්තේ මාතෘකාවෙන් පමණි.</li>
+</ul>
+<p>ඒවායේ නැති දේ: compiler එකක් ඇතුළත පියවර (tokens, ගස, optimization), bytecode, JIT, සහ JIT එකක් වාසිදායක වන්නේ කවදාද යන්න. මෙම කොටස ඒවා අංකවලින් පෙන්වයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>ස්කෑන් කිරීම / lexing (scanning, lexical analysis):</strong> අක්ෂර පේළිය &ldquo;වචන&rdquo; වලට, එනම් <strong>tokens (tokens)</strong> වලට කැඩීම.</li>
+<li><strong>Parse කිරීම (parsing):</strong> tokens වලින් <strong>වියුක්ත වාක්‍ය ගස (abstract syntax tree, AST)</strong> සෑදීම.</li>
+<li><strong>අතරමැදි නිරූපණය (intermediate representation, IR):</strong> මූලාශ්‍ර භාෂාවටවත් ඉලක්ක CPU එකටවත් තදින් බැඳී නැති අතරමැදි ආකාරය.</li>
+<li><strong>නියත නැමීම (constant folding):</strong> සැමවිටම එකම අගය දෙන ප්‍රකාශනයක් compile කරන විටම ගණනය කර ප්‍රතිඵලය තැබීම.</li>
+<li><strong>Bytecode (bytecode):</strong> සැබෑ CPU එකක් නොව කල්පිත යන්ත්‍රයක් සඳහා වන උපදෙස්. එයට එම නම ලැබුණේ බොහෝවිට එක් උපදෙසක් byte එකක් වන නිසාය (Nystrom, §2.1.6).</li>
+<li><strong>Dispatch (dispatch):</strong> interpreter එක ඊළඟ bytecode උපදෙස කියවා ඊට අදාළ කේතයට පැනීම.</li>
+<li><strong>JIT (just-in-time compilation):</strong> වැඩසටහන ධාවනය වන අතරතුර, පරිශීලකයාගේ යන්ත්‍රයේදීම, native කේතයට compile කිරීම.</li>
+</ul>
+<h3 id="2-එක-පළයක-compiler-එක-හරහ">2. එක් පේළියක් compiler එක හරහා<a class="anchor" href="#2-%e0%b6%91%e0%b6%9a-%e0%b6%b4%e0%b7%85%e0%b6%ba%e0%b6%9a-compiler-%e0%b6%91%e0%b6%9a-%e0%b7%84%e0%b6%bb%e0%b7%84">#</a></h3>
+<p>Robert Nystrom ගේ <em>Crafting Interpreters</em> (පරිච්ඡේදය 2, &ldquo;A Map of the Territory&rdquo;) පියවර මෙසේ දක්වයි: scanning → parsing → static analysis → IR → optimization → code generation. <code>y = 2 * 3 + x</code> පේළිය ගනිමු:</p>
+<p><strong>පියවර 1, tokens:</strong> <code>y</code> <code>=</code> <code>2</code> <code>*</code> <code>3</code> <code>+</code> <code>x</code> → tokens <strong>7</strong>. හිස්තැන් tokens නොවේ. Scanner එක ඒවා ඉවත් කරයි (§2.1.1).</p>
+<p><strong>පියවර 2, ගස:</strong> <code>*</code> ට <code>+</code> ට වඩා ඉහළ ප්‍රමුඛතාවක් ඇත. එබැවින් ගස: <code>y = ((2 * 3) + x)</code>.</p>
+<p><strong>පියවර 3, stack bytecode (optimization නැතිව):</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>උපදෙස</th>
+					<th>Stack එක පසුව (x = 4)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>PUSH 2</td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>PUSH 3</td>
+					<td>2, 3</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>MUL</td>
+					<td>6</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>LOAD x</td>
+					<td>6, 4</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>ADD</td>
+					<td>10</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>STORE y</td>
+					<td>(හිස්), y = 10</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>පියවර 4, constant folding:</strong> <code>2 * 3</code> සැමවිටම 6 කි. Compiler එකට එය කලින්ම ගණනය කළ හැක (Nystrom §2.1.5 හි උදාහරණය <code>pennyArea</code> ය): <code>PUSH 6, LOAD x, ADD, STORE y</code>, එනම් උපදෙස් <strong>4</strong> කි.</p>
+<ul>
+<li>මෙම පේළිය ලූපයක් තුළ වාර 1,000,000 ක් ධාවනය වේ නම්, interpreter එකට dispatches 6,000,000 වෙනුවට <strong>4,000,000</strong> ක් පමණි. ඉතිරි වන්නේ <strong>2,000,000</strong> කි (ආදර්ශ ගණනය).</li>
+</ul>
+<p><strong>සැබෑ compiler එකක් මෙය කරයිද?</strong> අපි box එකේ CPython 3.13.5 හි <code>dis</code> මොඩියුලයෙන් <code>y = 2*3 + x</code> බැලුවෙමු:</p>
+<pre tabindex="0"><code>LOAD_CONST   1 (6)
+LOAD_FAST    0 (x)
+BINARY_OP    0 (+)
+STORE_FAST   1 (y)</code></pre><p>CPython දැනටමත් <code>2*3</code> → <code>6</code> ලෙස නමා ඇත. එහි ඇත්තේ අපේ නැමූ අනුවාදයේ ආකාරයේම උපදෙස් හතරකි. (Python ලේඛනය අනතුරු අඟවන පරිදි bytecode යනු CPython හි ක්‍රියාත්මක කිරීමේ විස්තරයකි. Python අනුවාදයෙන් අනුවාදයට එය වෙනස් විය හැක.)</p>
+<h3 id="3-interpreter-එකක-ඇය-මනදගමද-සහ-jit-එකක-එය-මඟ-හරන-හට">3. Interpreter එකක් ඇයි මන්දගාමීද, සහ JIT එකක් එය මඟ හරින හැටි<a class="anchor" href="#3-interpreter-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%87%e0%b6%ba-%e0%b6%b8%e0%b6%b1%e0%b6%af%e0%b6%9c%e0%b6%b8%e0%b6%af-%e0%b7%83%e0%b7%84-jit-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%91%e0%b6%ba-%e0%b6%b8%e0%b6%9f-%e0%b7%84%e0%b6%bb%e0%b6%b1-%e0%b7%84%e0%b6%a7">#</a></h3>
+<p>V8 කණ්ඩායමේ Sparkplug ලිපිය (2021) මෙසේ කියයි: interpreters වලට ඉවත් කළ නොහැකි වියදම් ඇත, උදාහරණ ලෙස bytecode decode කිරීම සහ ඊළඟ bytecode එකට dispatch කිරීම. Dispatch වේගවත් වීමට CPU එකේ branch prediction (Post 14) සාර්ථක විය යුතුය. Sparkplug මෙම වියදම් &ldquo;පෙර-compile&rdquo; කරයි. V8 හි අදියර (tiers):</p>
+<table>
+	<thead>
+			<tr>
+					<th>අදියර</th>
+					<th>කුමක්ද</th>
+					<th>සටහන (V8 බ්ලොග්)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Ignition</td>
+					<td>bytecode interpreter</td>
+					<td>register-based interpreter</td>
+			</tr>
+			<tr>
+					<td>Sparkplug</td>
+					<td>optimize නොකරන compiler</td>
+					<td>bytecode වලින් compile කරයි (JS මූලාශ්‍රයෙන් නොවේ), IR නැත, bytecode මත එක් රේඛීය pass එකක්. V8 v9.1 / Chrome 91 සමඟ නිකුත් කළේය</td>
+			</tr>
+			<tr>
+					<td>TurboFan</td>
+					<td>optimize කරන compiler</td>
+					<td>ප්‍රශස්ත කේතය. එහෙත් object shape feedback ස්ථාවර වන තුරු පටන් ගත නොහැක</td>
+			</tr>
+	</tbody>
+</table>
+<p>ලිපිය වාර්තා කරන ප්‍රතිඵල: Speedometer ලකුණු <strong>5–10%</strong> කින් සහ බ්‍රව්සින් benchmarks වල V8 main-thread කාලය <strong>5–15%</strong> පමණ කින් වැඩිදියුණු විය.</p>
+<p><strong>JIT එක වාසිදායක වන්නේ කවදාද (ආදර්ශ අංක):</strong> function එකක් interpreter එකේ ඇමතුමකට 100 ns ගනී. Compile කළ පසු 10 ns. Compile කිරීමට 1 ms (= 1,000,000 ns) වැය වේ. ඇමතුම් n කට පසු:</p>
+<ul>
+<li>ඉතිරිය = n × (100 − 10) = 90n ns.</li>
+<li>90n &gt; 1,000,000 → <strong>n &gt; 11,111</strong> (දළ වශයෙන්).</li>
+<li>ඇමතුම් 5,000 ක් පමණක් නම්: ඉතිරිය 5,000 × 90 = 450,000 ns = 0.45 ms. එය compile වියදම (1 ms) ට අඩුය. JIT කිරීමෙන් <strong>0.55 ms</strong> ක අලාභයක්.</li>
+</ul>
+<p>JIT එකක් &ldquo;hot&rdquo; කේතය එනතුරු බලා සිටින්නේ එබැවිනි. Oracle හි Java SE 8 <code>java</code> විධාන ලේඛනය කියන්නේ: <code>-XX:CompileThreshold</code> හි පෙරනිමිය server JVM හි interpreted ඇමතුම් <strong>10,000</strong> ක් (කාර්යක්ෂම compilation සඳහා තොරතුරු රැස් කිරීමට), client JVM හි <strong>1,500</strong> කි. එහෙත් tiered compilation සක්‍රිය විට (එය පෙරනිමියෙන් සක්‍රියයි) මෙම විකල්පය නොසලකා හරිනු ලැබේ. අපේ 11,111 ආදර්ශ අංකයක් පමණි. එය HotSpot අංකය නොවේ.</p>
+<h3 id="4-දනම-උතසහ-කරනන-කඩ-bytecode-interpreter-එකක-මම-පටව-vm-terminal-lab-එක">4. දැන්ම උත්සාහ කරන්න: කුඩා bytecode interpreter එකක් (මෙම පිටුවේ vm-terminal lab එක)<a class="anchor" href="#4-%e0%b6%af%e0%b6%b1%e0%b6%b8-%e0%b6%8b%e0%b6%ad%e0%b7%83%e0%b7%84-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1-%e0%b6%9a%e0%b6%a9-bytecode-interpreter-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%b8%e0%b6%b8-%e0%b6%b4%e0%b6%a7%e0%b7%80-vm-terminal-lab-%e0%b6%91%e0%b6%9a">#</a></h3>
+<p>සටහන: ඉහත &ldquo;එය ජීවමානව බලන්න&rdquo; කොටසේ කී පරිදි, මෙම lab එකේ VM image එකේ (BusyBox v1.28.4) <strong>gcc හෝ වෙනත් C compiler එකක් නැත</strong>. අපි <code>command -v gcc cc tcc</code> පරීක්ෂා කළෙමු. Python ද නැත. එහෙත් <code>awk</code> ඇත. එබැවින් §2 හි stack bytecode එක ධාවනය කරන කුඩා interpreter එකක් awk වලින් ලියමු. පහත පේළි VM shell එකට ටයිප් කරන්න (හෝ පිටපත් කරන්න):</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;BEGIN{p=&#34;PUSH 2 PUSH 3 MUL LOAD x ADD STORE y&#34;; x=4; n=split(p,c,&#34; &#34;); sp=0; d=0; i=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">while(i&lt;=n){op=c[i]; d++
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> if(op==&#34;PUSH&#34;){s[++sp]=c[i+1]; i+=2}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> else if(op==&#34;LOAD&#34;){s[++sp]=x; i+=2}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> else if(op==&#34;MUL&#34;){s[sp-1]=s[sp-1]*s[sp]; sp--; i++}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> else if(op==&#34;ADD&#34;){s[sp-1]=s[sp-1]+s[sp]; sp--; i++}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> else if(op==&#34;STORE&#34;){y=s[sp--]; i+=2}}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">print &#34;y =&#34;, y, &#34; dispatches =&#34;, d}&#39;</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>ප්‍රතිදානය: <code>y = 10  dispatches = 6</code>. දැන් <code>PUSH 2 PUSH 3 MUL</code> වෙනුවට <code>PUSH 6</code> දමා නැවත ධාවනය කරන්න: <code>y = 10  dispatches = 4</code>. <code>while</code> ලූපය සහ <code>if … else if</code> දාමය interpreter එකේ &ldquo;dispatch&rdquo; එකයි. සෑම උපදෙසක් සඳහාම එය නැවත නැවත ධාවනය වේ. JIT එකක් ඉවත් කරන්නේ මෙම කොටසයි. (අපි මෙම විධාන දෙකම lab image එකේ BusyBox awk මත පරීක්ෂා කළෙමු.)</p>
+<h3 id="5-පනසලන-අභයසය">5. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#5-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li><code>z = (a + 4) * 2</code> හි tokens කීයද?</li>
+<li>එම පේළියට optimize නොකළ stack bytecode ලියන්න. Constant folding මෙහි උදව් වේද?</li>
+<li><code>w = 60 * 60 * 24</code> නමන්න. නැමීමට පෙර සහ පසු bytecode උපදෙස් ගණන කීයද?</li>
+<li>Interpreter එකේ ඇමතුමකට 50 ns, compile කළ පසු 5 ns, compile වියදම 0.9 ms (ආදර්ශ). JIT එක වාසිදායක වීමට අවම ඇමතුම් ගණන කීයද?</li>
+<li>Sparkplug මෙතරම් වේගයෙන් compile කරන හේතු දෙකක් දෙන්න.</li>
+<li>Java SE 8 ලේඛනයට අනුව tiered compilation සක්‍රිය විට <code>-XX:CompileThreshold=5000</code> ට කුමක් වේද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li><code>z</code> <code>=</code> <code>(</code> <code>a</code> <code>+</code> <code>4</code> <code>)</code> <code>*</code> <code>2</code> → <strong>9</strong>.</li>
+<li><code>LOAD a, PUSH 4, ADD, PUSH 2, MUL, STORE z</code> (උපදෙස් 6). <code>a</code> නොදන්නා නිසා නැමිය හැකි නියත උප-ප්‍රකාශනයක් <strong>නැත</strong>.</li>
+<li>60 × 60 × 24 = <strong>86,400</strong>. පෙර: <code>PUSH 60, PUSH 60, MUL, PUSH 24, MUL, STORE w</code> = <strong>6</strong>. පසු: <code>PUSH 86400, STORE w</code> = <strong>2</strong>.</li>
+<li>0.9 ms = 900,000 ns. 900,000 ÷ (50 − 5) = <strong>20,000</strong> ඇමතුම්.</li>
+<li>එය JS මූලාශ්‍රයෙන් නොව දැනටමත් සකස් කළ bytecode වලින් compile කරයි. IR එකක් නොසාදා bytecode මත එක් රේඛීය pass එකකින් කෙලින්ම machine code නිකුත් කරයි. (ලිපිය තවත් හේතුවක් ද දෙයි: බොහෝ වැඩ &ldquo;builtins&rdquo; වෙත යොමු කරයි.)</li>
+<li>එය <strong>නොසලකා හරිනු ලැබේ</strong>.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>Robert Nystrom, <em>Crafting Interpreters</em>, පරිච්ඡේදය 2 &ldquo;A Map of the Territory&rdquo; (කතුවරයාගේ නොමිලේ වෙබ් සංස්කරණය): <a href="https://craftinginterpreters.com/a-map-of-the-territory.html">https://craftinginterpreters.com/a-map-of-the-territory.html</a>. §2.1.1 Scanning, §2.1.2 Parsing, §2.1.4 IR, §2.1.5 Optimization (constant folding), §2.1.6 Code generation (bytecode), §2.2.4 Just-in-time compilation, §2.3 Compilers and Interpreters.</li>
+<li>Leszek Swirski, &ldquo;Sparkplug — a non-optimizing JavaScript compiler&rdquo;, V8 බ්ලොග්, 2021 මැයි 27: <a href="https://v8.dev/blog/sparkplug">https://v8.dev/blog/sparkplug</a> (&ldquo;A fast compiler&rdquo;, &ldquo;Defer to builtins&rdquo;, &ldquo;Performance&rdquo; කොටස්).</li>
+<li>Oracle, <em>Java Platform, Standard Edition Tools Reference</em>, <code>java</code> (Java SE 8), <code>-XX:CompileThreshold</code> සහ <code>-XX:-TieredCompilation</code> ඇතුළත් කිරීම්: <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html">https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html</a></li>
+<li>Python 3.13 ලේඛනය, &ldquo;dis — Disassembler for Python bytecode&rdquo; (CPython implementation detail සටහන): <a href="https://docs.python.org/3.13/library/dis.html">https://docs.python.org/3.13/library/dis.html</a></li>
+<li>අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුව, <em>තොරතුරු හා සන්නිවේදන තාක්ෂණය, ශ්‍රේණිය 11</em>, §1.11.5 (මුද්‍රිත පිටු 52–53). ජාතික අධ්‍යාපන ආයතනය, <em>13 ශ්‍රේණිය ICT ගුරු මාර්ගෝපදේශය</em> (PDF p.83).</li>
+</ul>
+<p>Dispatches 6,000,000 / 4,000,000 සහ JIT break-even ගණනය (100 ns, 10 ns, 1 ms) ආදර්ශ (illustrative) අංක වේ. CPython <code>dis</code> ප්‍රතිදානය සහ awk ප්‍රතිදානය අප ධාවනය කර ලබාගත් ඒවාය.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Compilers%2C&#43;JIT%2C&#43;%E0%B7%83%E0%B7%84&#43;%E0%B6%B1%E0%B7%80%E0%B7%93%E0%B6%B1&#43;%E0%B6%B7%E0%B7%8F%E0%B7%82%E0%B7%8F&#43;Runtimes&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F28-compilers-jit-and-modern-language-runtimes%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F28-compilers-jit-and-modern-language-runtimes.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F28-compilers-jit-and-modern-language-runtimes.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex align-center">
+        <span>තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#සමභවය-pipeline-එක-කටයන">සම්භාව්‍ය Pipeline එක (කෙටියෙන්)</a></li>
+    <li><a href="#ahead-of-time-එදරව-just-in-time">Ahead-of-Time එදිරිව Just-in-Time</a></li>
+    <li><a href="#runtimes-compilation-ට-වඩ-වඩ-දයක">Runtimes: Compilation ට වඩා වැඩි දෙයක්</a></li>
+    <li><a href="#එය-ජවමනව-බලනන">එය ජීවමානව බලන්න</a></li>
+    <li><a href="#ගඹරන-පළ-සට-bytecode-දකව-සහ-jit-එකක-වසදයක-වනන-කවදද">ගැඹුරින්: පෙළේ සිට bytecode දක්වා, සහ JIT එකක් වාසිදායක වන්නේ කවදාද</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-එක-පළයක-compiler-එක-හරහ">2. එක් පේළියක් compiler එක හරහා</a></li>
+        <li><a href="#3-interpreter-එකක-ඇය-මනදගමද-සහ-jit-එකක-එය-මඟ-හරන-හට">3. Interpreter එකක් ඇයි මන්දගාමීද, සහ JIT එකක් එය මඟ හරින හැටි</a></li>
+        <li><a href="#4-දනම-උතසහ-කරනන-කඩ-bytecode-interpreter-එකක-මම-පටව-vm-terminal-lab-එක">4. දැන්ම උත්සාහ කරන්න: කුඩා bytecode interpreter එකක් (මෙම පිටුවේ vm-terminal lab එක)</a></li>
+        <li><a href="#5-පනසලන-අභයසය">5. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

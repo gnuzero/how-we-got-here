@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MAC එකකට අඩු bits යනු එකම බල අයවැයේ වැඩි MAC — නිරවද්‍යතාවට තවමත් අවශ්‍ය තැන precision මිශ්‍ර කරන්න">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/59-quantization-mixed-precision/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="Quantization සහ Mixed Precision">
+	<meta property="og:description" content="MAC එකකට අඩු bits යනු එකම බල අයවැයේ වැඩි MAC — නිරවද්‍යතාවට තවමත් අවශ්‍ය තැන precision මිශ්‍ර කරන්න">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Quantization සහ Mixed Precision">
+	<meta itemprop="description" content="MAC එකකට අඩු bits යනු එකම බල අයවැයේ වැඩි MAC — නිරවද්‍යතාවට තවමත් අවශ්‍ය තැන precision මිශ්‍ර කරන්න">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1547">
+
+<title>Quantization සහ Mixed Precision • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/59-quantization-mixed-precision/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/59-quantization-mixed-precision/" title="Quantization &amp; Mixed Precision">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/59-quantization-mixed-precision/" title="Quantization และ Mixed Precision">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/59-quantization-mixed-precision/" title="Quantization மற்றும் Mixed Precision">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/59-quantization-mixed-precision/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/59-quantization-mixed-precision/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/59-quantization-mixed-precision/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="active">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Quantization සහ Mixed Precision</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#මහ-precision-අදහස-කරනන-කමකද">මෙහි Precision අදහස් කරන්නේ කුමක්ද</a></li>
+    <li><a href="#අඩ-bits-වඩ-throughput">අඩු Bits, වැඩි Throughput</a></li>
+    <li><a href="#හවමර-කරන-ද">හුවමාරු කරන දේ</a></li>
+    <li><a href="#මශර-blanket-low-නව">මිශ්‍ර, Blanket Low නොවේ</a></li>
+    <li><a href="#ඊළඟ-ලවරය">ඊළඟ ලීවරය</a></li>
+    <li><a href="#ගඹරන-fp16-bf16-සහ-int8-bits-මටටමන">ගැඹුරින්: FP16, BF16 සහ INT8 bits මට්ටමින්</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-ආකත-තන-එකට">2. ආකෘති තුන එකට</a></li>
+        <li><a href="#3-අතන-encode-කරම-65-fp16-ලස">3. අතින් encode කිරීම: −6.5 FP16 ලෙස</a></li>
+        <li><a href="#4-fp16-සහ-bf16-හ-වනස-අකවලන">4. FP16 සහ BF16 හි වෙනස අංකවලින්</a></li>
+        <li><a href="#5-loss-scaling-ශනය-වන-gradient-එකක-බර-ගනම">5. Loss scaling: ශුන්‍ය වන gradient එකක් බේරා ගැනීම</a></li>
+        <li><a href="#6-int8-quantization-scale-සහ-zero-point">6. INT8 quantization: scale සහ zero-point</a></li>
+        <li><a href="#7-මතකය-සහ-ගණක-පරමණය">7. මතකය සහ ගුණක ප්‍රමාණය</a></li>
+        <li><a href="#8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Quantization සහ Mixed Precision
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Post 55 සම්බන්ධතාව ධජය ඔසවා තැබුවේය: tensor-core සහ systolic-array කාර්යක්ෂමතාව ඒවා ධාවනය වන සංඛ්‍යාත්මක precision මත රඳා පවතී. මෙම පෝස්ට් එක පහළ precision මධ්‍යම ලීවරයක් බවට පත් වූයේ ඇයිද — සහ එය ලබා ගැනීමට හුවමාරු කරන දේ කුමක්ද යන්නයි.</p>
+<h2 id="මහ-precision-අදහස-කරනන-කමකද">මෙහි Precision අදහස් කරන්නේ කුමක්ද<a class="anchor" href="#%e0%b6%b8%e0%b7%84-precision-%e0%b6%85%e0%b6%af%e0%b7%84%e0%b7%83-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1-%e0%b6%9a%e0%b6%b8%e0%b6%9a%e0%b6%af">#</a></h2>
+<p>ආකෘති ස්ථිර bit අයවැයක් සමඟ range එදිරිව precision හුවමාරු කරයි. FP32 (sign, exponent bits 8, mantissa 23) සාම්ප්‍රදායික විද්‍යාත්මක පෙරනිමියයි. FP16 සහ BF16 භාගයක් bits භාවිතා කරයි — BF16 FP32 ගේ exponent range තබා ගෙන mantissa මත අඩුවෙන් වියදම් කරයි, සියුම් ධාන්‍යයට වඩා dynamic range වෙනුවෙන්. FP8 තව දුරටත් යයි; INT8 floating point අත්හැර ස්ථිර integers එකතුව අවශ්‍ය range වෙත ආපසු scale factor එකක් භාවිතා කරයි.</p>
+<h2 id="අඩ-bits-වඩ-throughput">අඩු Bits, වැඩි Throughput<a class="anchor" href="#%e0%b6%85%e0%b6%a9-bits-%e0%b7%80%e0%b6%a9-throughput">#</a></h2>
+<p>Posts 6–7 ස්ථාපිත කළේ පරිපථ ප්‍රදේශය ඔබ ගණනය කරන දේ සමඟ පරිමාණය වන බවයි. FP32 MAC එකකට FP16 හෝ INT8 ට වඩා වැඩි ට්‍රාන්සිස්ටර සහ බලය අවශ්‍ය ය. ස්ථිර ප්‍රදේශය සහ බල අයවැයක් ලබා දුන් විට (Post 36 හි බිත්තිය තවමත් accelerators බඳියි), පහළ precision එම envelope එකටම වැඩි සමාන්තර MAC throughput ඇසුරුම් කරයි. එය භෞතික හේතුවකි — ඇල්ගොරිතමික තේරීමක් පමණක් නොවේ — ටෙන්සර් cores සහ systolic arrays බොහෝ විට නිශ්චිත පහළ-precision ආකෘති වටා නිර්මාණය වන්නේ ඇයිද යන්න.</p>
+<h2 id="හවමර-කරන-ද">හුවමාරු කරන දේ<a class="anchor" href="#%e0%b7%84%e0%b7%80%e0%b6%b8%e0%b6%bb-%e0%b6%9a%e0%b6%bb%e0%b6%b1-%e0%b6%af">#</a></h2>
+<p>අඩු කළ precision යනු රළු අගයන් සහ දිගු දාම හරහා වැඩි rounding දෝෂයයි. අනුභවිකව, බොහෝ neural networks එය හොඳින් ඉවසයි — විශේෂයෙන් inference සඳහා, සහ training හි විශාල කොටස් සඳහා සැලකිල්ලෙන් — එය කලින් පැහැදිලි නොවීය; එය පෙන්විය යුතු විය.</p>
+<h2 id="මශර-blanket-low-නව">මිශ්‍ර, Blanket Low නොවේ<a class="anchor" href="#%e0%b6%b8%e0%b7%81%e0%b6%bb-blanket-low-%e0%b6%b1%e0%b7%80">#</a></h2>
+<p>Mixed-precision training සහ inference බර matmuls සඳහා පහළ precision (බොහෝ විට FP16 හෝ BF16) භාවිතා කරයි — දෘඪාංග throughput ලාභ ලැබෙන තැන — සහ සංඛ්‍යාත්මකව සංවේදී වැඩ සඳහා ඉහළ precision (බොහෝ විට FP32) තබා ගනී — rounding සංයුක්ත වන accumulations වැනි. සම්පූර්ණ precision එය තබා ගැනීම උපයන තැනට පමණි: එබැවින් යෙදුම <em>mixed</em> ය, හුදෙක් <em>low</em> නොවේ.</p>
+<h2 id="ඊළඟ-ලවරය">ඊළඟ ලීවරය<a class="anchor" href="#%e0%b6%8a%e0%b7%85%e0%b6%9f-%e0%b6%bd%e0%b7%80%e0%b6%bb%e0%b6%ba">#</a></h2>
+<p>Precision එක් එක් මෙහෙයුම ලාභ කරයි. ඊළඟ පෝස්ට් එකේ sparsity අරමුණු කරන්නේ දන්නා ශුන්‍යයක් කිසිවක් දායක නොවන විට සමහර මෙහෙයුම් සම්පූර්ණයෙන්ම මඟහැරීමයි.</p>
+<h2 id="ගඹරන-fp16-bf16-සහ-int8-bits-මටටමන">ගැඹුරින්: FP16, BF16 සහ INT8 bits මට්ටමින්<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-fp16-bf16-%e0%b7%83%e0%b7%84-int8-bits-%e0%b6%b8%e0%b6%a7%e0%b6%a7%e0%b6%b8%e0%b6%b1">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> මෙම මාතෘකාව ගැන සිංහලෙන් ඇති ද්‍රව්‍ය:</p>
+<ul>
+<li>YouTube හි IEEE 754 සහ floating point නිරූපණය ගැන සිංහල වීඩියෝ (<a href="https://www.youtube.com/watch?v=-Noe0-nmS3U">-Noe0-nmS3U</a>, <a href="https://www.youtube.com/watch?v=ufd6bHkZC9I">ufd6bHkZC9I</a>) සහ LoRA/QLoRA ගැන එකක් (<a href="https://www.youtube.com/watch?v=aQ_-GN9pw78">aQ_-GN9pw78</a>, Adomic). මේවා හඳුනාගත්තේ මාතෘකාවෙන් පමණි.</li>
+<li>ජාතික අධ්‍යාපන ආයතනයේ 12 ශ්‍රේණිය ICT ගුරු මාර්ගෝපදේශය නිඛිල නිරූපණ (sign-magnitude, අනුපූරක) දක්වයි (PDF p.102–104). එහෙත් අප පරීක්ෂා කළ පාසල් පොත්වල floating point කොටසක් අපට හමු නොවීය.</li>
+</ul>
+<p>ඒවායේ නැති දේ: FP16 සහ BF16 හි සීමා, loss scaling, INT8 quantization හි scale සහ zero-point, සහ මේ සියල්ල මතකයට හා දෘඪාංගයට බලපාන හැටි. මෙම කොටස ඒවා අංකවලින් ගණනය කරයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>චල ලක්ෂ්‍ය සංඛ්‍යාව (floating-point number):</strong> ලකුණ (sign) × 1.mantissa × 2^(exponent − bias).</li>
+<li><strong>Exponent (exponent):</strong> පරාසය (range) තීරණය කරයි. <strong>Mantissa / භාගය (mantissa, fraction):</strong> නිරවද්‍යතාව (precision) තීරණය කරයි.</li>
+<li><strong>Subnormal (subnormal, denormal):</strong> ඉතා කුඩා අගයන් සඳහා සැඟවුණු 1 නැතිව ලියන විශේෂ ආකාරය.</li>
+<li><strong>Loss scaling (loss scaling):</strong> FP16 හි කුඩා gradients ශුන්‍ය නොවීමට loss අගය නියතයකින් ගුණ කිරීම.</li>
+<li><strong>ප්‍රමාණකරණය (quantization):</strong> තාත්වික අගයන් කුඩා නිඛිල කට්ටලයකට සිතියම්ගත කිරීම.</li>
+<li><strong>Scale (S) සහ zero-point (Z):</strong> r = S × (q − Z) සූත්‍රයේ නියත දෙක (Jacob et al., §2.1).</li>
+</ul>
+<h3 id="2-ආකත-තන-එකට">2. ආකෘති තුන එකට<a class="anchor" href="#2-%e0%b6%86%e0%b6%9a%e0%b6%ad-%e0%b6%ad%e0%b6%b1-%e0%b6%91%e0%b6%9a%e0%b6%a7">#</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>ආකෘතිය</th>
+					<th>ලකුණ</th>
+					<th>Exponent</th>
+					<th>Mantissa</th>
+					<th>උපරිම අගය</th>
+					<th>1 අසල පරතරය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>FP32</td>
+					<td>1</td>
+					<td>8</td>
+					<td>23</td>
+					<td>≈ 3.40 × 10³⁸</td>
+					<td>2⁻²³ ≈ 1.2 × 10⁻⁷</td>
+			</tr>
+			<tr>
+					<td>FP16</td>
+					<td>1</td>
+					<td>5</td>
+					<td>10</td>
+					<td><strong>65,504</strong></td>
+					<td>2⁻¹⁰ ≈ 0.000977</td>
+			</tr>
+			<tr>
+					<td>BF16</td>
+					<td>1</td>
+					<td>8</td>
+					<td>7</td>
+					<td>≈ 3.39 × 10³⁸</td>
+					<td>2⁻⁷ ≈ 0.0078</td>
+			</tr>
+	</tbody>
+</table>
+<p>(BF16 bits: Google Cloud බ්ලොග් ලිපිය. FP16 උපරිමය 65,504: Micikevicius et al., §3.2. අනෙක් අගයන් අපි numpy වලින් ගණනය කළෙමු.)</p>
+<p><strong>FP16 උපරිමය ව්‍යුත්පන්න කිරීම:</strong> exponent bits 5, bias 15. විශාලතම සාමාන්‍ය exponent = 30 − 15 = 15. Mantissa සියල්ල 1 → 1 + (1 − 2⁻¹⁰). එබැවින් (2 − 2⁻¹⁰) × 2¹⁵ = 65,536 − 32 = <strong>65,504</strong>.</p>
+<p><strong>FP16 කුඩාම අගයන්:</strong> කුඩාම සාමාන්‍ය අගය 2⁻¹⁴ ≈ 6.10 × 10⁻⁵. කුඩාම subnormal 2⁻²⁴ ≈ 5.96 × 10⁻⁸.</p>
+<h3 id="3-අතන-encode-කරම-65-fp16-ලස">3. අතින් encode කිරීම: −6.5 FP16 ලෙස<a class="anchor" href="#3-%e0%b6%85%e0%b6%ad%e0%b6%b1-encode-%e0%b6%9a%e0%b6%bb%e0%b6%b8-65-fp16-%e0%b6%bd%e0%b7%83">#</a></h3>
+<ol>
+<li>6.5 = 110.1 (ද්විමය) = 1.101 × 2².</li>
+<li>ලකුණ = 1 (සෘණ).</li>
+<li>Exponent = 2 + 15 = 17 = <strong>10001</strong>.</li>
+<li>Mantissa = දශම ලක්ෂ්‍යයට පසු bits: 101, ඉතිරිය 0 → <strong>1010000000</strong>.</li>
+<li>1 10001 1010000000 = 1100 0110 1000 0000 = <strong>0xC680</strong>. (numpy මගින් පරීක්ෂා කළා.)</li>
+</ol>
+<h3 id="4-fp16-සහ-bf16-හ-වනස-අකවලන">4. FP16 සහ BF16 හි වෙනස අංකවලින්<a class="anchor" href="#4-fp16-%e0%b7%83%e0%b7%84-bf16-%e0%b7%84-%e0%b7%80%e0%b6%b1%e0%b7%83-%e0%b6%85%e0%b6%9a%e0%b7%80%e0%b6%bd%e0%b6%b1">#</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>අගය</th>
+					<th>FP16</th>
+					<th>BF16</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0.1</td>
+					<td>0.0999755859375 (0x2E66)</td>
+					<td>0.10009765625 (0x3DCD)</td>
+			</tr>
+			<tr>
+					<td>100,000</td>
+					<td><strong>inf</strong> (65,504 ඉක්මවයි)</td>
+					<td>99,840 (0x47C3)</td>
+			</tr>
+	</tbody>
+</table>
+<p>FP16 නිරවද්‍යයි, නමුත් පරාසය කුඩාය. BF16 නිරවද්‍යතාව අඩුය, නමුත් FP32 හා සමාන පරාසයක් ඇත. Google ලිපිය කියන්නේ neural networks mantissa ප්‍රමාණයට වඩා exponent ප්‍රමාණයට බොහෝ සංවේදී බවත්, BF16 FP32 සඳහා &ldquo;drop-in replacement&rdquo; එකකට ආසන්න බවත්ය.</p>
+<p><strong>FP32 accumulation අවශ්‍ය ඇයි:</strong> FP16 හි 2048 අසල පරතරය 2 කි. එබැවින් FP16 හි <strong>2048 + 1 = 2048</strong>. 1 අහිමි වේ (numpy මගින් පරීක්ෂා කළා). දිගු එකතුවක කුඩා අගයන් දහස් ගණනක් මෙසේ නැති විය හැක. Micikevicius et al. (§3.3) FP16 ගුණ කිරීම් FP32 එකතුවකට එකතු කිරීම නිර්දේශ කරයි. Google ලිපිය පවසන්නේ TPU MXU එකේද ගුණ කිරීම BF16 වලින් සහ එකතු කිරීම FP32 වලින් කරන බවයි.</p>
+<h3 id="5-loss-scaling-ශනය-වන-gradient-එකක-බර-ගනම">5. Loss scaling: ශුන්‍ය වන gradient එකක් බේරා ගැනීම<a class="anchor" href="#5-loss-scaling-%e0%b7%81%e0%b6%b1%e0%b6%ba-%e0%b7%80%e0%b6%b1-gradient-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%b6%e0%b6%bb-%e0%b6%9c%e0%b6%b1%e0%b6%b8">#</a></h3>
+<p>Micikevicius et al. (§3.1): FP16 හි විශාලත්වය 2⁻²⁴ ට අඩු ඕනෑම අගයක් ශුන්‍ය වේ. ඔවුන්ගේ Mandarin කථන හඳුනාගැනීමේ ආකෘතියේ weight gradients වලින් <strong>~5%</strong> ක පමණ exponent −24 ට අඩු විය (Figure 2b). §3.2 මෙයට විසඳුම ලෙස loss scaling ඉදිරිපත් කරයි.</p>
+<p><strong>ආදර්ශ ගණනය:</strong> gradient එකක් 1 × 10⁻⁸ යැයි සිතමු.</p>
+<ul>
+<li>FP16 ට හරවූ විට: 1 × 10⁻⁸ &lt; 2⁻²⁵ ≈ 2.98 × 10⁻⁸ (කුඩාම subnormal එකෙන් අඩක්) → <strong>0</strong>. තොරතුරු නැති විය.</li>
+<li>Loss එක 1024 න් ගුණ කළ විට (chain rule නිසා gradient එකද 1024 න් ගුණ වේ): 1.024 × 10⁻⁵ → FP16 හි <strong>1.0252 × 10⁻⁵</strong> (subnormal, නමුත් ශුන්‍ය නොවේ).</li>
+<li>Weight update එකට පෙර FP32 හි 1024 න් බෙදූ විට: ≈ <strong>1.0012 × 10⁻⁸</strong>. දෝෂය ~0.1%.</li>
+</ul>
+<p>ලිපියට අනුව ඔවුන් 8 සිට 32K දක්වා scaling factors භාවිත කළහ (බොහෝ ජාලවලට කිසිවක් අවශ්‍ය නොවීය). Factor එකක් වැඩි වුවත් හානියක් නැත්තේ overflow නොවන තාක් පමණි: උපරිම gradient × factor අගය 65,504 ට අඩු විය යුතුය.</p>
+<h3 id="6-int8-quantization-scale-සහ-zero-point">6. INT8 quantization: scale සහ zero-point<a class="anchor" href="#6-int8-quantization-scale-%e0%b7%83%e0%b7%84-zero-point">#</a></h3>
+<p>Jacob et al. (CVPR 2018, §2.1, සමීකරණය 1): <strong>r = S (q − Z)</strong>. S ධන තාත්වික අගයකි. Z, q හි වර්ගයේම (උදා. uint8) නිඛිලයකි. මෙම සැලසුම නිසා r = 0 හරියටම නිරූපණය කළ හැක (q = Z).</p>
+<p><strong>ආදර්ශ උදාහරණය:</strong> බර (weights) −1.0 සිට 1.5 දක්වා. uint8 = 0 සිට 255.</p>
+<ul>
+<li>S = (1.5 − (−1.0)) ÷ 255 = 2.5 ÷ 255 ≈ <strong>0.0098039</strong>.</li>
+<li>Z = round(1.0 ÷ S) = round(102.0) = <strong>102</strong>. පරීක්ෂාව: −1.0 → 0, 1.5 → 255.</li>
+<li>r = 0.73 quantize කිරීම: q = round(0.73 ÷ S) + Z = round(74.46) + 102 = <strong>176</strong>.</li>
+<li>ආපසු: S × (176 − 102) = 74 × 0.0098039 ≈ <strong>0.72549</strong>. දෝෂය ≈ 0.0045. එය S/2 ≈ 0.0049 ට අඩුය (වටැකීමේ උපරිම දෝෂය).</li>
+</ul>
+<h3 id="7-මතකය-සහ-ගණක-පරමණය">7. මතකය සහ ගුණක ප්‍රමාණය<a class="anchor" href="#7-%e0%b6%b8%e0%b6%ad%e0%b6%9a%e0%b6%ba-%e0%b7%83%e0%b7%84-%e0%b6%9c%e0%b6%ab%e0%b6%9a-%e0%b6%b4%e0%b6%bb%e0%b6%b8%e0%b6%ab%e0%b6%ba">#</a></h3>
+<p><strong>බර පමණක් (ආදර්ශ, පරාමිති බිලියන 7, GB = 10⁹ bytes):</strong> FP32: 7 × 4 = <strong>28 GB</strong>. FP16/BF16: <strong>14 GB</strong>. INT8: <strong>7 GB</strong>. 4-bit: <strong>3.5 GB</strong>.</p>
+<p><strong>ගුණකයේ ප්‍රමාණය:</strong> Google ලිපිය කියන්නේ දෘඪාංග ගුණකයක භෞතික ප්‍රමාණය mantissa පළලේ වර්ගය සමඟ පරිමාණය වන බවයි. එම නිසා BF16 ගුණක FP16 ගුණකයකින් අඩක් පමණ ද, FP32 ගුණකයකට වඩා අට ගුණයකින් කුඩා ද වේ. සැඟවුණු 1 ද ගණන් කර අපේ වර්ග ගණනය: FP32 24² = 576, FP16 11² = 121, BF16 8² = 64. 64/121 ≈ <strong>0.53</strong> (අඩක් පමණ). 576/64 = <strong>9</strong> (ලිපිය &ldquo;අට ගුණයක්&rdquo; ලෙස වට කර කියයි).</p>
+<h3 id="8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#8-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>+0.75 FP16 bits වලින් ලියන්න (hex).</li>
+<li>FP16 හි 1024 අසල පරතරය කීයද? 1024 + 0.5 FP16 හි කුමක් වේද?</li>
+<li>Gradient 2 × 10⁻⁸ ක් FP16 හි ඍජුවම තැබූ විට කුමක් වේද? 4096 න් scale කළ පසු?</li>
+<li>පරාසය 0.0 සිට 6.0 (ReLU6 වැනි), uint8. S සහ Z කීයද? r = 2.0 හි q කීයද?</li>
+<li>පරාමිති බිලියන 70 ක ආකෘතියක 4-bit බර සඳහා GB කීයද?</li>
+<li>FP16 වෙනුවට BF16 තෝරා ගැනීමෙන් loss scaling අවශ්‍ය නොවන්නේ ඇයි?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>0.75 = 1.1 × 2⁻¹. Exponent −1 + 15 = 14 = 01110. Mantissa 1000000000. 0 01110 1000000000 = <strong>0x3A00</strong>.</li>
+<li>1024 = 2¹⁰. පරතරය = 2¹⁰ × 2⁻¹⁰ = <strong>1</strong>. 1024.5 හරියටම 1024 සහ 1025 අතර මැදයි. round-to-nearest-even නිසා <strong>1024</strong> (mantissa ඉරට්ටේ).</li>
+<li>2 × 10⁻⁸ &lt; 2.98 × 10⁻⁸ → <strong>0</strong>. × 4096 = 8.19 × 10⁻⁵ → 2⁻¹⁴ ≈ 6.10 × 10⁻⁵ ට වඩා විශාල නිසා සාමාන්‍ය FP16 අගයකි. <strong>ශුන්‍ය නොවේ</strong>.</li>
+<li>S = 6.0 ÷ 255 ≈ <strong>0.02353</strong>. Z = round(0 ÷ S) = <strong>0</strong>. q = round(2.0 ÷ 0.02353) = round(85.0) = <strong>85</strong>.</li>
+<li>70 × 10⁹ × 0.5 byte = <strong>35 GB</strong>.</li>
+<li>BF16 හි exponent bits 8 ක් ඇත, FP32 හි මෙන්. එබැවින් කුඩා gradients (උදා. 10⁻⁸) සාමාන්‍ය අගයන් ලෙසම නිරූපණය වේ. Google ලිපිය කියන්නේ FP16 ට සාමාන්‍යයෙන් loss scaling වැනි විශේෂ ප්‍රතිකාර අවශ්‍ය වන බවත් BF16 ට ඒවා අවශ්‍ය නොවන බවත්ය.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>Paulius Micikevicius et al., &ldquo;Mixed Precision Training&rdquo;, ICLR 2018. arXiv කතුවරුන්ගේ පිටපත: <a href="https://arxiv.org/abs/1710.03740">https://arxiv.org/abs/1710.03740</a>. §3.1 (FP32 master copy; 2⁻²⁴; Mandarin ආකෘතියේ ~5% gradients, Figure 2b), §3.2 (loss scaling; factors 8–32K; 65,504), §3.3 (FP32 accumulation).</li>
+<li>Benoit Jacob et al., &ldquo;Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference&rdquo;, CVPR 2018. CVF open access (නිල): <a href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Jacob_Quantization_and_Training_CVPR_2018_paper.pdf">https://openaccess.thecvf.com/content_cvpr_2018/papers/Jacob_Quantization_and_Training_CVPR_2018_paper.pdf</a>. §2.1, සමීකරණය (1), &ldquo;zero-point&rdquo;, r = 0 හරියටම නිරූපණය.</li>
+<li>Shibo Wang සහ Pankaj Kanwar, &ldquo;BFloat16: The secret to high performance on Cloud TPUs&rdquo;, Google Cloud බ්ලොග්, 2019 අගෝස්තු 23: <a href="https://cloud.google.com/blog/products/ai-machine-learning/bfloat16-the-secret-to-high-performance-on-cloud-tpus">https://cloud.google.com/blog/products/ai-machine-learning/bfloat16-the-secret-to-high-performance-on-cloud-tpus</a> (&ldquo;Bfloat16 semantics&rdquo;, &ldquo;Choosing bfloat16&rdquo;).</li>
+<li>ජාතික අධ්‍යාපන ආයතනය, <em>12 ශ්‍රේණිය ICT ගුරු මාර්ගෝපදේශය</em>, PDF p.102–104 (නිඛිල නිරූපණ).</li>
+</ul>
+<p>FP16/BF16 අගයන් (0.1, 100,000, 2048 + 1, −6.5 = 0xC680, 1.0252 × 10⁻⁵) අපි numpy 2.2 වලින් ගණනය කළ ඒවාය. පරාමිති බිලියන 7, gradient 10⁻⁸, −1.0…1.5 පරාසය සහ ගුණක වර්ග ගණනය ආදර්ශ (illustrative) අංක වේ.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Quantization&#43;%E0%B7%83%E0%B7%84&#43;Mixed&#43;Precision&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F59-quantization-mixed-precision%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F59-quantization-mixed-precision.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F59-quantization-mixed-precision.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/58-systolic-arrays/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Systolic Arrays</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/60-sparsity-in-hardware/" class="flex align-center">
+        <span>දෘඪාංගයේ Sparsity</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#මහ-precision-අදහස-කරනන-කමකද">මෙහි Precision අදහස් කරන්නේ කුමක්ද</a></li>
+    <li><a href="#අඩ-bits-වඩ-throughput">අඩු Bits, වැඩි Throughput</a></li>
+    <li><a href="#හවමර-කරන-ද">හුවමාරු කරන දේ</a></li>
+    <li><a href="#මශර-blanket-low-නව">මිශ්‍ර, Blanket Low නොවේ</a></li>
+    <li><a href="#ඊළඟ-ලවරය">ඊළඟ ලීවරය</a></li>
+    <li><a href="#ගඹරන-fp16-bf16-සහ-int8-bits-මටටමන">ගැඹුරින්: FP16, BF16 සහ INT8 bits මට්ටමින්</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-ආකත-තන-එකට">2. ආකෘති තුන එකට</a></li>
+        <li><a href="#3-අතන-encode-කරම-65-fp16-ලස">3. අතින් encode කිරීම: −6.5 FP16 ලෙස</a></li>
+        <li><a href="#4-fp16-සහ-bf16-හ-වනස-අකවලන">4. FP16 සහ BF16 හි වෙනස අංකවලින්</a></li>
+        <li><a href="#5-loss-scaling-ශනය-වන-gradient-එකක-බර-ගනම">5. Loss scaling: ශුන්‍ය වන gradient එකක් බේරා ගැනීම</a></li>
+        <li><a href="#6-int8-quantization-scale-සහ-zero-point">6. INT8 quantization: scale සහ zero-point</a></li>
+        <li><a href="#7-මතකය-සහ-ගණක-පරමණය">7. මතකය සහ ගුණක ප්‍රමාණය</a></li>
+        <li><a href="#8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

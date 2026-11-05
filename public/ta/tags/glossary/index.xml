@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Glossary on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+		<link>http://localhost:1478/ta/tags/glossary/</link>
+		<description>Recent content in Glossary on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</description>
+		<generator>Hugo</generator>
+		<language>ta</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 15:06:51 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/ta/tags/glossary/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>சொற்களஞ்சியம்</title>
+				<link>http://localhost:1478/ta/posts/99-glossary/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/99-glossary/</guid>
+				<description>தொடர் முழுவதும் பயன்படுத்தப்படும் முக்கியச் சொற்கள், துல்லியமாக வரையறுக்கப்பட்டவை</description>
+			</item>
+	</channel>
+</rss>

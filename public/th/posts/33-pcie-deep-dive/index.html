@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="เจตนานั่งบน TLP; ความเชื่อถือได้และการส่งสัญญาณอยู่ข้างล่าง — สแต็กที่แทนบัสร่วม">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/33-pcie-deep-dive/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="เจาะลึก PCIe">
+	<meta property="og:description" content="เจตนานั่งบน TLP; ความเชื่อถือได้และการส่งสัญญาณอยู่ข้างล่าง — สแต็กที่แทนบัสร่วม">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="เจาะลึก PCIe">
+	<meta itemprop="description" content="เจตนานั่งบน TLP; ความเชื่อถือได้และการส่งสัญญาณอยู่ข้างล่าง — สแต็กที่แทนบัสร่วม">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="765">
+
+<title>เจาะลึก PCIe • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/33-pcie-deep-dive/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/33-pcie-deep-dive/" title="PCIe Deep Dive">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/33-pcie-deep-dive/" title="PCIe ගැඹුරු ගවේෂණය">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/33-pcie-deep-dive/" title="PCIe Deep Dive">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/33-pcie-deep-dive/" title="PCIe în detaliu">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/33-pcie-deep-dive/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/33-pcie-deep-dive/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/33-pcie-deep-dive/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/33-pcie-deep-dive/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="active">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>เจาะลึก PCIe</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#เจตนา-ความเชอถอได-อเลกตรอน">เจตนา ความเชื่อถือได้ อิเล็กตรอน</a></li>
+    <li><a href="#แพกเกตคอสญญา">แพ็กเก็ตคือสัญญา</a>
+      <ul>
+        <li><a href="#กายวภาคของ-tlp">กายวิภาคของ TLP</a></li>
+        <li><a href="#ประสทธภาพของการหอ-คำนวณเอง">ประสิทธิภาพของการห่อ: คำนวณเอง</a></li>
+        <li><a href="#เขยนแบบสงแลวจบ-อานแบบตองรอคำตอบ">เขียนแบบส่งแล้วจบ อ่านแบบต้องรอคำตอบ</a></li>
+      </ul>
+    </li>
+    <li><a href="#ความเชอถอได-ack-nak-และบฟเฟอรสงซำ">ความเชื่อถือได้: ACK, NAK และบัฟเฟอร์ส่งซ้ำ</a></li>
+    <li><a href="#การควบคมการไหลดวยเครดต">การควบคุมการไหลด้วยเครดิต</a></li>
+    <li><a href="#lane-สเกลความกวาง-รนสเกลอตรา">Lane สเกลความกว้าง; รุ่นสเกลอัตรา</a>
+      <ul>
+        <li><a href="#ตวเลข-gbs-มาจากไหน">ตัวเลข GB/s มาจากไหน</a></li>
+      </ul>
+    </li>
+    <li><a href="#เหตใด-fabric-กำหนดเองจงสนใจ">เหตุใด fabric กำหนดเองจึงสนใจ</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    เจาะลึก PCIe
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>บทที่ 32 ครอบคลุม <em>เหตุใด</em> PCIe จึงไปอนุกรมและจุดต่อจุด บทนี้คือ <em>ว่า</em> การถ่ายโอนถูกจัดโครงสร้างบนลิงก์เหล่านั้นอย่างไร — ชั้นที่สำคัญหากคุณสร้างฮาร์ดแวร์ที่ต้องพูด fabric รวมถึงงาน GPU memory บน Nitefury ที่ชุดบทความนี้กลับมาหา</p>
+<p>แหล่งภาษาไทยส่วนใหญ่พูดถึง PCIe ในระดับ &ldquo;สล็อตไหนเร็วกว่า&rdquo; บทนี้จะลงไปถึงว่าข้อมูลหนึ่งก้อนถูกห่อ ส่ง ตรวจ และตอบรับอย่างไร และคำนวณให้ดูว่าตัวเลข &ldquo;GB/s&rdquo; บนสเปกมาจากไหน</p>
+<p>ศัพท์ที่ใช้: <strong>ลิงก์</strong> (link, ศัพท์บัญญัติ <em>เชื่อมโยง</em>) คือการเชื่อมต่อจุดต่อจุดระหว่างอุปกรณ์สองตัว <strong>เลน</strong> (lane) คือสายคู่ดิฟเฟอเรนเชียลหนึ่งคู่ต่อทิศทาง ลิงก์หนึ่งประกอบด้วย 1 ถึง 16 เลน <strong>root complex</strong> คือฝั่ง CPU ที่เป็นรากของต้นไม้ PCIe <strong>endpoint</strong> คืออุปกรณ์ปลายทาง เช่น การ์ดจอ SSD หรือการ์ด FPGA <strong>กลุ่มข้อมูล</strong> (packet, ศัพท์บัญญัติ; ในบทนี้ใช้ว่า <em>แพ็กเก็ต</em>) คือหน่วยข้อมูลที่ส่งเป็นก้อน</p>
+<h2 id="เจตนา-ความเชอถอได-อเลกตรอน">เจตนา ความเชื่อถือได้ อิเล็กตรอน<a class="anchor" href="#%e0%b9%80%e0%b8%88%e0%b8%95%e0%b8%99%e0%b8%b2-%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b9%80%e0%b8%8a%e0%b8%ad%e0%b8%96%e0%b8%ad%e0%b9%84%e0%b8%94-%e0%b8%ad%e0%b9%80%e0%b8%a5%e0%b8%81%e0%b8%95%e0%b8%a3%e0%b8%ad%e0%b8%99">#</a></h2>
+<p>สามชั้น สามงาน <strong>Transaction Layer</strong> คือที่ที่การอ่าน การเขียน หรือ completion เกิดและจบ — ชั้นที่ซอฟต์แวร์คิด <strong>Data Link Layer</strong> ทำให้การส่งมอบเชื่อถือได้: หมายเลขลำดับ CRC การส่งซ้ำหากแพ็กเก็ตเสีย <strong>Physical Layer</strong> คือสาย: คู่ดิฟเฟอเรนเชียล การเข้ารหัสให้กระแสกู้คืนได้ การ serialize ลงทองแดง แยกแบบนั้นเพื่อให้ออกแบบกำหนดเองแสดง <em>เจตนา</em> โดยไม่ต้องประดิษฐ์อิเล็กตรอนใหม่</p>
+<p>ถ้าเคยเรียนแบบจำลองเครือข่ายเป็นชั้น (บทที่ 41) จะเห็นว่าหลักเดียวกัน ชั้นบนไม่ต้องรู้ว่าชั้นล่างทำงานอย่างไร แต่ละชั้นเติมหัวหรือท้ายของตัวเองเข้าไปเวลาส่ง และแกะออกเวลารับ</p>
+<h2 id="แพกเกตคอสญญา">แพ็กเก็ตคือสัญญา<a class="anchor" href="#%e0%b9%81%e0%b8%9e%e0%b8%81%e0%b9%80%e0%b8%81%e0%b8%95%e0%b8%84%e0%b8%ad%e0%b8%aa%e0%b8%8d%e0%b8%8d%e0%b8%b2">#</a></h2>
+<p>หน่วยคือ Transaction Layer Packet TLP ตั้งชื่อประเภท (อ่าน/เขียนหน่วยความจำ I/O การตั้งค่า) ที่อยู่ ความยาว และ — ในการเขียน — payload Link layer ห่อด้วยลำดับและ CRC; ฝั่งไกลตรวจและ retry หากจำเป็น จากข้างบน มันดูเหมือนการอ่านหรือเขียนที่เชื่อถือได้ ความเชื่อถือได้ไม่ใช่เวทมนตร์ มันคือการห่อนั้น</p>
+<h3 id="กายวภาคของ-tlp">กายวิภาคของ TLP<a class="anchor" href="#%e0%b8%81%e0%b8%b2%e0%b8%a2%e0%b8%a7%e0%b8%a0%e0%b8%b2%e0%b8%84%e0%b8%82%e0%b8%ad%e0%b8%87-tlp">#</a></h3>
+<p>หน่วยนับในสเปกคือ <strong>DW</strong> (double word) = 4 ไบต์</p>
+<ul>
+<li><strong>ส่วนหัว</strong> (header) ยาว 3 DW (12 ไบต์) สำหรับแอดเดรส 32 บิต หรือ 4 DW (16 ไบต์) สำหรับแอดเดรส 64 บิต บอกประเภทของธุรกรรม ความยาว แอดเดรส และหมายเลขผู้ร้องขอ</li>
+<li><strong>ข้อมูล</strong> (payload) มีได้ตั้งแต่ 0 ถึงสูงสุด 1,024 DW (4 KiB) แต่ในทางปฏิบัติถูกจำกัดด้วย <strong>Max Payload Size</strong> (MPS) ที่ทั้งสองฝั่งตกลงกันตอนเริ่มระบบ ค่าที่พบบ่อยคือ 128 หรือ 256 ไบต์</li>
+<li>ชั้น Data Link เติม <strong>หมายเลขลำดับ</strong> (sequence number) 2 ไบต์ข้างหน้า และ <strong>LCRC</strong> (link CRC) 4 ไบต์ข้างหลัง</li>
+<li>ชั้น Physical เติมสัญลักษณ์บอกจุดเริ่มและจุดจบของเฟรมอีกเล็กน้อย รูปแบบต่างกันไปตามรุ่น</li>
+</ul>
+<h3 id="ประสทธภาพของการหอ-คำนวณเอง">ประสิทธิภาพของการห่อ: คำนวณเอง<a class="anchor" href="#%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%aa%e0%b8%97%e0%b8%98%e0%b8%a0%e0%b8%b2%e0%b8%9e%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%ab%e0%b8%ad-%e0%b8%84%e0%b8%b3%e0%b8%99%e0%b8%a7%e0%b8%93%e0%b9%80%e0%b8%ad%e0%b8%87">#</a></h3>
+<p>สมมติเขียนหน่วยความจำด้วยแอดเดรส 64 บิต ส่วนหัว 16 ไบต์ บวกลำดับ 2 ไบต์ บวก LCRC 4 ไบต์ = <strong>22 ไบต์ต่อ TLP</strong> (ตัวเลขนี้ไม่นับสัญลักษณ์เฟรมของชั้น Physical และ ECRC ที่เป็นตัวเลือก จึงเป็นค่าประมาณที่มองโลกแง่ดีเล็กน้อย)</p>
+<ul>
+<li>payload 256 ไบต์: 256 ÷ (256 + 22) = <strong>92.1%</strong> ของแบนด์วิดท์เป็นข้อมูลจริง</li>
+<li>payload 64 ไบต์: 64 ÷ (64 + 22) = <strong>74.4%</strong></li>
+</ul>
+<p>เขียนข้อมูล 4 KiB ด้วย MPS = 256 ไบต์ ต้องแบ่งเป็น 4,096 ÷ 256 = <strong>16 TLP</strong> ส่วนหัวรวม 16 × 22 = 352 ไบต์ ส่งจริงทั้งหมด 4,448 ไบต์ ข้อสรุปเชิงปฏิบัติ: การส่งทีละก้อนเล็ก ๆ เปลืองแบนด์วิดท์ไปกับหัวแพ็กเก็ต ไดรเวอร์และ DMA engine ที่ดีจึงพยายามรวมการถ่ายโอนเป็นก้อนใหญ่</p>
+<h3 id="เขยนแบบสงแลวจบ-อานแบบตองรอคำตอบ">เขียนแบบส่งแล้วจบ อ่านแบบต้องรอคำตอบ<a class="anchor" href="#%e0%b9%80%e0%b8%82%e0%b8%a2%e0%b8%99%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%aa%e0%b8%87%e0%b9%81%e0%b8%a5%e0%b8%a7%e0%b8%88%e0%b8%9a-%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%95%e0%b8%ad%e0%b8%87%e0%b8%a3%e0%b8%ad%e0%b8%84%e0%b8%b3%e0%b8%95%e0%b8%ad%e0%b8%9a">#</a></h3>
+<p>TLP ของการเขียนหน่วยความจำ (Memory Write, MWr) เป็นแบบ <strong>posted</strong> คือผู้ส่งยิงไปแล้วถือว่าจบ ไม่ต้องรอคำตอบจากปลายทาง ส่วนการอ่าน (Memory Read, MRd) เป็นแบบ <strong>non-posted</strong> ผู้อ่านส่ง MRd ที่มีแต่ส่วนหัว บอกแอดเดรสและความยาว แล้วต้องรอ ปลายทางตอบกลับด้วย <strong>Completion with Data</strong> (CplD) หนึ่งหรือหลายแพ็กเก็ตที่มีข้อมูลอยู่ข้างใน</p>
+<p>ผลที่ตามมาคือการอ่านข้ามลิงก์มีเวลาแฝง (latency) ของการเดินทางไปกลับเสมอ ส่วนการเขียนไม่มี นี่คือเหตุผลที่การออกแบบประสิทธิภาพสูงมักให้อุปกรณ์ <em>เขียน</em> ผลลงหน่วยความจำของโฮสต์ (เช่น NIC เขียนแพ็กเก็ตที่รับมาลง RAM ด้วย DMA) แทนที่จะให้ CPU ไป <em>อ่าน</em> จากอุปกรณ์ และเป็นเหตุผลที่อุปกรณ์ที่อยากอ่านเร็วต้องปล่อย MRd ออกไปหลายตัวพร้อมกันโดยไม่รอกัน</p>
+<h2 id="ความเชอถอได-ack-nak-และบฟเฟอรสงซำ">ความเชื่อถือได้: ACK, NAK และบัฟเฟอร์ส่งซ้ำ<a class="anchor" href="#%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b9%80%e0%b8%8a%e0%b8%ad%e0%b8%96%e0%b8%ad%e0%b9%84%e0%b8%94-ack-nak-%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%9a%e0%b8%9f%e0%b9%80%e0%b8%9f%e0%b8%ad%e0%b8%a3%e0%b8%aa%e0%b8%87%e0%b8%8b%e0%b8%b3">#</a></h2>
+<p>ชั้น Data Link ทำงานคล้าย TCP ขนาดจิ๋ว (บทที่ 41) แต่เป็นฮาร์ดแวร์ล้วนและทำงานเฉพาะบนลิงก์เดียว</p>
+<ol>
+<li>ผู้ส่งแปะหมายเลขลำดับให้ทุก TLP แล้วเก็บสำเนาไว้ใน <strong>บัฟเฟอร์ส่งซ้ำ</strong> (replay buffer)</li>
+<li>ผู้รับตรวจ LCRC ถ้าถูกต้องและลำดับถูก ส่ง <strong>ACK</strong> (การตอบรับ) กลับไปในแพ็กเก็ตควบคุมเล็ก ๆ ชื่อ DLLP ACK หนึ่งครั้งยืนยันได้ทุกแพ็กเก็ตจนถึงหมายเลขนั้น</li>
+<li>ผู้ส่งได้ ACK แล้วจึงลบสำเนาออกจากบัฟเฟอร์</li>
+<li>ถ้า LCRC ผิด ผู้รับส่ง <strong>NAK</strong> ผู้ส่งจะส่ง TLP ทั้งหมดตั้งแต่ตัวที่เสียเป็นต้นไปใหม่จากบัฟเฟอร์ ถ้าไม่ได้รับ ACK หรือ NAK ภายในเวลาที่กำหนด ก็ส่งซ้ำเช่นกัน</li>
+</ol>
+<p>ซอฟต์แวร์ด้านบนไม่เคยเห็นกระบวนการนี้ เห็นแค่ว่าการเขียนถึงปลายทางเสมอ ความผิดพลาดของบิตบนทองแดงที่วิ่งหลายสิบกิกะทรานสเฟอร์ต่อวินาทีเกิดได้เป็นปกติ แต่ถูกซ่อนไว้ในชั้นนี้</p>
+<h2 id="การควบคมการไหลดวยเครดต">การควบคุมการไหลด้วยเครดิต<a class="anchor" href="#%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%84%e0%b8%a7%e0%b8%9a%e0%b8%84%e0%b8%a1%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%84%e0%b8%ab%e0%b8%a5%e0%b8%94%e0%b8%a7%e0%b8%a2%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%94%e0%b8%95">#</a></h2>
+<p>ผู้ส่งต้องไม่ส่งเร็วเกินกว่าที่ผู้รับมีที่พักข้อมูล (บัฟเฟอร์) รองรับ ถ้าส่งเกินแล้วผู้รับต้องทิ้ง ก็ต้องส่งซ้ำ เสียเวลาเปล่า PCIe จึงใช้ <strong>การควบคุมสายงาน</strong> (flow control, ศัพท์บัญญัติ) แบบ <strong>เครดิต</strong> (credit) ตอนเริ่มลิงก์ ผู้รับประกาศว่าตัวเองมีเครดิตเท่าไรในแต่ละประเภท (posted, non-posted, completion แยกเครดิตส่วนหัวกับเครดิตข้อมูล) ผู้ส่งหักเครดิตทุกครั้งที่ส่ง ถ้าเครดิตหมดต้องหยุดรอ เมื่อผู้รับประมวลผลแพ็กเก็ตและเคลียร์บัฟเฟอร์แล้ว ก็คืนเครดิตกลับไปด้วย DLLP</p>
+<p>เครดิตข้อมูลหนึ่งหน่วย = 4 DW = <strong>16 ไบต์</strong> ตัวอย่าง: ผู้รับประกาศเครดิตข้อมูลแบบ posted 64 หน่วย = 1,024 ไบต์ ด้วย payload 256 ไบต์ ผู้ส่งยิง TLP ได้ <strong>4 ตัว</strong> ก่อนต้องรอเครดิตคืน ถ้าเวลาไปกลับของลิงก์นานกว่าเวลาที่ใช้ส่ง 4 ตัวนั้น ลิงก์จะว่างเป็นช่วง ๆ ขนาดบัฟเฟอร์ของผู้รับจึงเป็นตัวกำหนดความเร็วจริงได้พอ ๆ กับจำนวนเลน</p>
+<h2 id="lane-สเกลความกวาง-รนสเกลอตรา">Lane สเกลความกว้าง; รุ่นสเกลอัตรา<a class="anchor" href="#lane-%e0%b8%aa%e0%b9%80%e0%b8%81%e0%b8%a5%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%81%e0%b8%a7%e0%b8%b2%e0%b8%87-%e0%b8%a3%e0%b8%99%e0%b8%aa%e0%b9%80%e0%b8%81%e0%b8%a5%e0%b8%ad%e0%b8%95%e0%b8%a3%e0%b8%b2">#</a></h2>
+<p>Lane คือคู่ดิฟเฟอเรนเชียลหนึ่งคู่ต่อทาง — ลิงก์ขั้นต่ำ รวม lane (x1…x16) เพื่อคูณแบนด์วิดท์ แต่ละรุ่นประมาณสองเท่าอัตราต่อ lane (ส่งสัญญาณสูงขึ้น การเข้ารหัสแน่นขึ้น) สล็อต x16 เดียวกัน Gen 5 เทียบ Gen 3: แบนด์วิดท์ทิศทางเดียวประมาณ 4× (~64 GB/s เทียบ ~16 GB/s) โดยไม่เพิ่มสาย การเดิมพันอนุกรมจากบทที่ 32 คือสิ่งที่ทำให้การปีนนั้นเป็นไปได้</p>
+<h3 id="ตวเลข-gbs-มาจากไหน">ตัวเลข GB/s มาจากไหน<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b9%80%e0%b8%a5%e0%b8%82-gbs-%e0%b8%a1%e0%b8%b2%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b9%84%e0%b8%ab%e0%b8%99">#</a></h3>
+<p>อัตราของเลนระบุเป็น <strong>GT/s</strong> (gigatransfers ต่อวินาที) คือจำนวนบิตดิบบนสายต่อวินาที ไม่ใช่บิตข้อมูล เพราะชั้น Physical ต้องใช้ <strong>การเข้ารหัส</strong> (encoding, ศัพท์บัญญัติ) เพื่อให้ผู้รับกู้สัญญาณนาฬิกาจากกระแสบิตได้ และให้สัญญาณมีจำนวน 0 กับ 1 สมดุล</p>
+<ul>
+<li><strong>Gen1 และ Gen2</strong> ใช้ <strong>8b/10b</strong> ข้อมูล 8 บิตกลายเป็น 10 บิตบนสาย เสียไป <strong>20%</strong></li>
+<li><strong>Gen3 ถึง Gen5</strong> ใช้ <strong>128b/130b</strong> ข้อมูล 128 บิตบวกหัวบล็อก 2 บิต เสียไปแค่ 2 ÷ 130 ≈ <strong>1.54%</strong></li>
+</ul>
+<p>แบนด์วิดท์ต่อเลนต่อทิศทาง = อัตรา GT/s × ประสิทธิภาพการเข้ารหัส ÷ 8 บิตต่อไบต์</p>
+<table>
+	<thead>
+			<tr>
+					<th>รุ่น</th>
+					<th>อัตรา</th>
+					<th>การเข้ารหัส</th>
+					<th>ต่อเลน</th>
+					<th>x16</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Gen1</td>
+					<td>2.5 GT/s</td>
+					<td>8b/10b</td>
+					<td>2.5 × 0.8 ÷ 8 = 0.25 GB/s</td>
+					<td>4.0 GB/s</td>
+			</tr>
+			<tr>
+					<td>Gen2</td>
+					<td>5 GT/s</td>
+					<td>8b/10b</td>
+					<td>0.5 GB/s</td>
+					<td>8.0 GB/s</td>
+			</tr>
+			<tr>
+					<td>Gen3</td>
+					<td>8 GT/s</td>
+					<td>128b/130b</td>
+					<td>8 × 128/130 ÷ 8 ≈ 0.985 GB/s</td>
+					<td>≈ 15.75 GB/s</td>
+			</tr>
+			<tr>
+					<td>Gen4</td>
+					<td>16 GT/s</td>
+					<td>128b/130b</td>
+					<td>≈ 1.97 GB/s</td>
+					<td>≈ 31.5 GB/s</td>
+			</tr>
+			<tr>
+					<td>Gen5</td>
+					<td>32 GT/s</td>
+					<td>128b/130b</td>
+					<td>≈ 3.94 GB/s</td>
+					<td>≈ 63.0 GB/s</td>
+			</tr>
+	</tbody>
+</table>
+<p>สังเกต Gen2 → Gen3: อัตราบนสายเพิ่มแค่ 1.6 เท่า (5 → 8 GT/s) แต่แบนด์วิดท์ข้อมูลเพิ่มเกือบ 2 เท่า (0.5 → 0.985 GB/s) ส่วนต่างมาจากการเปลี่ยนการเข้ารหัสล้วน ๆ นี่คือความหมายของ &ldquo;การเข้ารหัสแน่นขึ้น&rdquo; ในย่อหน้าข้างบน และอย่าลืมว่าตัวเลขในตารางเป็นแบนด์วิดท์ <em>ก่อน</em> หักหัวแพ็กเก็ต ถ้า payload 256 ไบต์ ลิงก์ Gen4 x16 จะส่งข้อมูลจริงได้ราว 31.5 × 0.921 ≈ <strong>29 GB/s</strong> ต่อทิศทาง (และน้อยกว่านี้อีกเมื่อนับ DLLP และสัญลักษณ์เฟรม)</p>
+<p>PCIe 6.0 เปลี่ยนวิธีการส่งสัญญาณเป็น <strong>PAM4</strong> (สัญญาณสี่ระดับ ส่งได้ 2 บิตต่อสัญลักษณ์) ที่ 64 GT/s และเปลี่ยนการห่อข้อมูลเป็นหน่วยขนาดคงที่ที่เรียกว่า <strong>FLIT</strong> พร้อมการแก้ความผิดพลาดล่วงหน้า (FEC) หลักการสามชั้นยังเหมือนเดิม แต่รายละเอียดของการเข้ารหัสและการห่อในตารางข้างบนใช้ไม่ได้กับรุ่นนั้นตรง ๆ</p>
+<h2 id="เหตใด-fabric-กำหนดเองจงสนใจ">เหตุใด fabric กำหนดเองจึงสนใจ<a class="anchor" href="#%e0%b9%80%e0%b8%ab%e0%b8%95%e0%b9%83%e0%b8%94-fabric-%e0%b8%81%e0%b8%b3%e0%b8%ab%e0%b8%99%e0%b8%94%e0%b9%80%e0%b8%ad%e0%b8%87%e0%b8%88%e0%b8%87%e0%b8%aa%e0%b8%99%e0%b9%83%e0%b8%88">#</a></h2>
+<p>การ์ด memory fabric บน FPGA ต้องอยู่บนสแต็กนี้: สร้าง TLP ที่ root complex และ endpoint อื่นยอมรับ และให้ IP ที่เป็นที่ยอมรับจัดการความเชื่อถือได้ของลิงก์กับ physical layer Peer-to-peer แบบ GPUDirect (บทที่ 37) คือไอเดียเดียวกันที่พาไปต่อ — TLP ที่ระบุที่อยู่ระหว่างสอง endpoint โดย CPU อยู่นอกเส้นทางข้อมูล</p>
+<p>ในทางปฏิบัติ ผู้ออกแบบการ์ด FPGA แทบไม่ต้องเขียนชั้น Data Link และ Physical เอง ผู้ผลิต FPGA ให้ hard IP ที่จัดการ ACK/NAK เครดิต และการเข้ารหัสมาให้ งานของผู้ออกแบบอยู่ที่ชั้น Transaction คือสร้างและแกะ TLP ให้ถูก ซึ่งต้องเข้าใจเรื่อง posted กับ non-posted, MPS และเครดิตในบทนี้ ถึงจะได้แบนด์วิดท์ใกล้ตัวเลขในตาราง</p>
+<p><strong>ประตูออก:</strong> The PCI Express Base Specification (PCI-SIG) — เอกสารปฐมภูมิที่มีชีวิตสำหรับ lane, TLP และสแต็กชั้นที่บทนี้ตั้งชื่อ; มีรุ่น (Base Spec ไม่ใช่เปเปอร์แช่แข็ง)</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>จันทนา จันทราพรชัย, <em>สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ</em></li>
+<li>ผศ.ดร. ปัทมา ลงกานี, <em>สถาปัตยกรรมคอมพิวเตอร์</em></li>
+<li>รศ.ดร.เกริก ภิรมย์โสภา, <em>สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์</em></li>
+<li>ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, <a href="https://coined-word.orst.go.th/">coined-word.orst.go.th</a> — <em>กลุ่มข้อมูล</em> (packet), <em>การเข้ารหัส</em> (encoding), <em>การตอบรับ</em> (acknowledgement), <em>การควบคุมสายงาน</em> (flow control), <em>เชื่อมโยง</em> (link)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B9%80%E0%B8%88%E0%B8%B2%E0%B8%B0%E0%B8%A5%E0%B8%B6%E0%B8%81&#43;PCIe&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F33-pcie-deep-dive%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F33-pcie-deep-dive.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F33-pcie-deep-dive.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>จาก ISA Bus ถึง PCI ถึง PCIe</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/34-memory-buses/" class="flex align-center">
+        <span>บัสหน่วยความจำ</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#เจตนา-ความเชอถอได-อเลกตรอน">เจตนา ความเชื่อถือได้ อิเล็กตรอน</a></li>
+    <li><a href="#แพกเกตคอสญญา">แพ็กเก็ตคือสัญญา</a>
+      <ul>
+        <li><a href="#กายวภาคของ-tlp">กายวิภาคของ TLP</a></li>
+        <li><a href="#ประสทธภาพของการหอ-คำนวณเอง">ประสิทธิภาพของการห่อ: คำนวณเอง</a></li>
+        <li><a href="#เขยนแบบสงแลวจบ-อานแบบตองรอคำตอบ">เขียนแบบส่งแล้วจบ อ่านแบบต้องรอคำตอบ</a></li>
+      </ul>
+    </li>
+    <li><a href="#ความเชอถอได-ack-nak-และบฟเฟอรสงซำ">ความเชื่อถือได้: ACK, NAK และบัฟเฟอร์ส่งซ้ำ</a></li>
+    <li><a href="#การควบคมการไหลดวยเครดต">การควบคุมการไหลด้วยเครดิต</a></li>
+    <li><a href="#lane-สเกลความกวาง-รนสเกลอตรา">Lane สเกลความกว้าง; รุ่นสเกลอัตรา</a>
+      <ul>
+        <li><a href="#ตวเลข-gbs-มาจากไหน">ตัวเลข GB/s มาจากไหน</a></li>
+      </ul>
+    </li>
+    <li><a href="#เหตใด-fabric-กำหนดเองจงสนใจ">เหตุใด fabric กำหนดเองจึงสนใจ</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

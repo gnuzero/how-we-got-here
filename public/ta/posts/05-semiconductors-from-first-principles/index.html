@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="இரு வழியிலும் தள்ளக்கூடிய band gap — doping சிலிகானைக் கட்டுப்படுத்தக்கூடிய மாறியாக மாற்றுகிறது">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/05-semiconductors-from-first-principles/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்">
+	<meta property="og:description" content="இரு வழியிலும் தள்ளக்கூடிய band gap — doping சிலிகானைக் கட்டுப்படுத்தக்கூடிய மாறியாக மாற்றுகிறது">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்">
+	<meta itemprop="description" content="இரு வழியிலும் தள்ளக்கூடிய band gap — doping சிலிகானைக் கட்டுப்படுத்தக்கூடிய மாறியாக மாற்றுகிறது">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1275">
+
+<title>முதல் கொள்கைகளிலிருந்து குறைகடத்திகள் • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/05-semiconductors-from-first-principles/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/05-semiconductors-from-first-principles/" title="Semiconductors from First Principles">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/05-semiconductors-from-first-principles/" title="เซมิคอนดักเตอร์จากหลักการพื้นฐาน">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/05-semiconductors-from-first-principles/" title="පළමු මූලධර්මවලින් අර්ධසන්නායක">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/05-semiconductors-from-first-principles/" title="Semiconductori de la primele principii">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/05-semiconductors-from-first-principles/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/05-semiconductors-from-first-principles/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/05-semiconductors-from-first-principles/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/05-semiconductors-from-first-principles/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="active">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#band-gaps-நரடயக">Band Gaps, நேரடியாக</a></li>
+    <li><a href="#மதமன-இடவள-எணகளல">&ldquo;மிதமான&rdquo; இடைவெளி, எண்களில்</a></li>
+    <li><a href="#ஏன-சலகன-கறபபக">ஏன் சிலிகான், குறிப்பாக</a></li>
+    <li><a href="#சலகன-எதர-ஜரமனயம-ioffe-தரவ-300-k">சிலிகான் எதிர் ஜெர்மானியம்: Ioffe தரவு (300 K)</a></li>
+    <li><a href="#doping-கறகடததயப-பயனளளதககதல">Doping: குறைகடத்தியைப் பயனுள்ளதாக்குதல்</a></li>
+    <li><a href="#doping-இன-சகத-ஒர-கணககல">Doping-இன் சக்தி, ஒரு கணக்கில்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>சிலிகான் மாயம் என்பதால் சிறப்பானது அல்ல — அது சிறப்பானது ஏனெனில் அதன் band அமைப்பு <em>கட்டுப்படுத்தக்கூடியதாக</em> இருக்க சரியாக அமர்ந்துள்ளது.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> குறைகடத்தி பற்றித் தமிழில் போதுமான எழுத்து விளக்கம் உண்டு; doping, P-N junction இரண்டுக்கும் மெலிதானது (தமிழ்நாடு 12ஆம் வகுப்பு இயற்பியல் பாடநூலின் குறைகடத்தி அலகு உண்டு); காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. சிலிகான், ஜெர்மானியம் பற்றிய அளவுகள் (band gap, அணு அடர்த்தி, intrinsic ஊர்தி செறிவு, தடைத்திறன்) Ioffe Institute-இன் &ldquo;NSM Archive — Physical Properties of Semiconductors&rdquo; தரவுப் பக்கங்களிலிருந்து (300 K) சரிபார்க்கப்பட்டவை; ஆங்கிலப் பதிவு சுருக்கமாகச் சொல்லும் 1.1 eV, ~0.67 eV இவற்றுடன் ஒத்துப்போகின்றன. Boltzmann மாறிலி SI வரையறையிலிருந்து. வெப்பநிலை ஒப்பீடு ஒரு எளிமைப்படுத்திய மாதிரி; doping அளவுகள் &ldquo;எடுத்துக்காட்டு மதிப்புகள்&rdquo;. இந்தப் பதிவுக்கு lab இல்லை; காகிதப் பயிற்சிகள் கீழே.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>ஆற்றல் பட்டை (energy band):</strong> திண்மத்தில் எலக்ட்ரான்கள் இருக்கக்கூடிய ஆற்றல் வரம்பு; இணைதிறன் பட்டை (valence band), கடத்துப் பட்டை (conduction band).</li>
+<li><strong>Band gap (பட்டை இடைவெளி):</strong> இரு பட்டைகளுக்கிடையிலான விலக்கப்பட்ட ஆற்றல் இடைவெளி; eV அலகில்.</li>
+<li><strong>eV (எலக்ட்ரான்-வோல்ட்):</strong> ஒரு எலக்ட்ரான் 1 வோல்ட் மின்னழுத்த வேறுபாட்டைக் கடக்கும்போது பெறும் ஆற்றல்.</li>
+<li><strong>kT (வெப்ப ஆற்றல் அளவு):</strong> Boltzmann மாறிலி × முழுமை வெப்பநிலை; 300 K-இல் சுமார் 0.0259 eV.</li>
+<li><strong>ஊர்தி (carrier):</strong> மின்னோட்டத்தைச் சுமக்கும் நகரும் மின்னூட்டம் — எலக்ட்ரான் (எதிர்) அல்லது துளை (hole, நேர்).</li>
+<li><strong>Intrinsic (தூய) / extrinsic (மாசூட்டிய):</strong> அசுத்தம் சேர்க்காத / doping செய்த குறைகடத்தி.</li>
+<li><strong>Donor / acceptor (கொடையாளி / ஏற்பி):</strong> கூடுதல் எலக்ட்ரான் தரும் (பாஸ்பரஸ்) / துளை உருவாக்கும் (போரான்) அசுத்த அணு.</li>
+<li><strong>P-N junction (P-N சந்தி):</strong> P-type, N-type பகுதிகள் சந்திக்கும் எல்லை; டையோடு, டிரான்சிஸ்டரின் அடிப்படை.</li>
+</ul>
+<h2 id="band-gaps-நரடயக">Band Gaps, நேரடியாக<a class="anchor" href="#band-gaps-%e0%ae%a8%e0%ae%b0%e0%ae%9f%e0%ae%af%e0%ae%95">#</a></h2>
+<p>திண்மத்தில் எலக்ட்ரான்கள் ஆற்றல் பட்டைகளை ஆக்கிரமிக்கின்றன. ஒரு கடத்தியில் (எடுத்துக்காட்டாக, செம்பு), இணைதிறன் பட்டையும் கடத்துப் பட்டையும் மேலெழுகின்றன — சிறிய தள்ளுதலிலேயே எலக்ட்ரான்கள் நகரக் கூடியவை, அதனால்தான் உலோகங்கள் நன்றாகக் கடத்துகின்றன மற்றும் அவற்றை அணைப்பது கடினம். ஒரு காப்பானில், இரு பட்டைகளுக்கும் இடையே பெரிய விலக்கப்பட்ட இடைவெளி உள்ளது — அறை வெப்பநிலையில் எலக்ட்ரான்களுக்கு அதைத் தாண்ட போதிய வெப்ப ஆற்றல் இல்லை, எனவே மின்னோட்டம் கிட்டத்தட்ட பாயாது. ஒரு குறைகடத்தி நடுவில் அமர்கிறது: இடைவெளி உள்ளது (சிலிகானுக்கு சுமார் 1.1 eV) ஆனால் அது <em>மிதமான</em> ஆற்றல் — அறை வெப்பநிலை வெப்ப ஆற்றல், அல்லது ஒளியியல் கிளர்ச்சி — எலக்ட்ரான்களைக் கடத்துப் பட்டைக்கு உயர்த்தப் போதுமான அளவு சிறியது. தனியாக, பிரயோகிக்கப்படும் மின் புலம் பட்டைகளை வளைத்து ஊர்திகளை நகர்த்தும்; field-effect சாதனங்கள் இடைவெளியை வெப்பத்தால் &ldquo;தாவாமல்&rdquo; கடத்தலைக் கட்டுப்படுத்துவது இப்படித்தான்.</p>
+<p>அந்த &ldquo;மிதமானதும் கட்டுப்படுத்தக்கூடியதும்&rdquo; தன்மையே முழுப் புள்ளி. ஒரு கடத்தியை நியாயமான மின்னழுத்தங்களால் அணைக்க முடியாது. ஒரு காப்பானை இயக்க முடியாது. ஒரு குறைகடத்தியை இரு ஆட்சிகளுக்கும் தள்ளலாம் — டிரான்சிஸ்டர் செய்ய வேண்டியது அதுவே.</p>
+<h2 id="மதமன-இடவள-எணகளல">&ldquo;மிதமான&rdquo; இடைவெளி, எண்களில்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%ae%e0%ae%a9-%e0%ae%87%e0%ae%9f%e0%ae%b5%e0%ae%b3-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%b2">#</a></h2>
+<p>அறை வெப்பநிலையில் (300 K) ஒரு எலக்ட்ரானின் வழக்கமான வெப்ப ஆற்றல் அளவு kT. SI வரையறைப்படி k = 1.380649 × 10⁻²³ J/K, 1 eV = 1.602176634 × 10⁻¹⁹ J → k ≈ 8.617 × 10⁻⁵ eV/K.</p>
+<ul>
+<li>kT (300 K) = 8.617 × 10⁻⁵ × 300 ≈ <strong>0.0259 eV</strong></li>
+<li>சிலிகான்: 1.12 ÷ 0.0259 ≈ <strong>43</strong> மடங்கு kT</li>
+<li>ஜெர்மானியம்: 0.661 ÷ 0.0259 ≈ <strong>26</strong> மடங்கு kT</li>
+</ul>
+<p>இடைவெளி kT-இன் பல மடங்கு என்பதால் சில எலக்ட்ரான்கள் மட்டுமே வெப்பத்தால் தாண்டுகின்றன — &ldquo;வெள்ளம்&rdquo; இல்லை. ஆனால் இடைவெளி ஒரு உலோகத்தின் பூஜ்யமும் அல்ல; doping, மின்புலம் மூலம் ஊர்திகளைக் கட்டுப்படுத்த இடம் உண்டு.</p>
+<h2 id="ஏன-சலகன-கறபபக">ஏன் சிலிகான், குறிப்பாக<a class="anchor" href="#%e0%ae%8f%e0%ae%a9-%e0%ae%9a%e0%ae%b2%e0%ae%95%e0%ae%a9-%e0%ae%95%e0%ae%b1%e0%ae%aa%e0%ae%aa%e0%ae%95">#</a></h2>
+<p>ஜெர்மானியமே உண்மையில் டிரான்சிஸ்டர்களில் பயன்படுத்தப்பட்ட முதல் நடைமுறை குறைகடத்தி (Bell Labs, 1947) — ஆனால் சிலிகான் நீண்ட ஆட்டத்தைச் சில உறுதியான காரணங்களுக்காக வென்றது. சிலிகானின் band gap (1.1 eV) ஜெர்மானியத்தை விட (0.67 eV) அகலம்; அதாவது வெப்பத்தால் உருவாகும் ஊர்திகள் உத்தேசித்த சமிக்ஞையை மூழ்கடிப்பதற்கு முன் சிலிகான் சாதனங்கள் உயர் வெப்பநிலையில் சரியாக வேலை செய்கின்றன — சூடாகும் எதற்கும் ஜெர்மானியத்திற்கு உண்மையான பிரச்சனை, அதாவது கிட்டத்தட்ட ஒவ்வொரு உண்மையான சுற்றுக்கும். சிலிகான் வெப்ப ஆக்சிஜனேற்றத்தில் உயர்தர சிலிகான் டைஆக்சைடு (SiO₂) அடுக்கையும் உருவாக்குகிறது — ஜெர்மானியத்தின் ஆக்சைடுகளை விட Si/SiO₂ இடைமுகத்தில் மிகவும் நிலைத்ததும் மின்சாரமாக அமைதியானதும். அந்த வெப்பமாக வளர்க்கப்பட்ட ஆக்சைடு MOSFET-இன் காப்பு gate dielectric ஆனது (பதிவு 6 இதை நேரடியாக உள்ளடக்குகிறது). மேலும் சிலிகான், நடைமுறையில், மணல் — பூமியின் மேலோட்டில் இரண்டாவது அதிகமாக உள்ள தனிமம்; உண்மையான அளவில் உற்பத்தி செய்ய முயலும்போது அது மிகப் பெரிதாக முக்கியம்.</p>
+<h2 id="சலகன-எதர-ஜரமனயம-ioffe-தரவ-300-k">சிலிகான் எதிர் ஜெர்மானியம்: Ioffe தரவு (300 K)<a class="anchor" href="#%e0%ae%9a%e0%ae%b2%e0%ae%95%e0%ae%a9-%e0%ae%8e%e0%ae%a4%e0%ae%b0-%e0%ae%9c%e0%ae%b0%e0%ae%ae%e0%ae%a9%e0%ae%af%e0%ae%ae-ioffe-%e0%ae%a4%e0%ae%b0%e0%ae%b5-300-k">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>அளவு</th>
+					<th>சிலிகான் (Si)</th>
+					<th>ஜெர்மானியம் (Ge)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Band gap</td>
+					<td>1.12 eV</td>
+					<td>0.661 eV</td>
+			</tr>
+			<tr>
+					<td>1 cm³-இல் அணுக்கள்</td>
+					<td>5 × 10²²</td>
+					<td>4.4 × 10²²</td>
+			</tr>
+			<tr>
+					<td>Intrinsic ஊர்தி செறிவு</td>
+					<td>1 × 10¹⁰ cm⁻³</td>
+					<td>2.0 × 10¹³ cm⁻³</td>
+			</tr>
+			<tr>
+					<td>Intrinsic தடைத்திறன்</td>
+					<td>3.2 × 10⁵ Ω·cm</td>
+					<td>46 Ω·cm</td>
+			</tr>
+	</tbody>
+</table>
+<p>கணக்குகள்:</p>
+<ul>
+<li>தூய சிலிகானில் எத்தனை அணுக்களுக்கு ஒரு வெப்ப ஊர்தி? 5 × 10²² ÷ 1 × 10¹⁰ = <strong>5 × 10¹²</strong> — ஐந்து டிரில்லியன் அணுக்களுக்கு ஒன்று.</li>
+<li>ஜெர்மானியத்தில் அதே அறை வெப்பநிலையில் 2.0 × 10¹³ ÷ 1 × 10¹⁰ = <strong>2,000 மடங்கு</strong> அதிக வெப்ப ஊர்திகள்.</li>
+<li>தடைத்திறன்: 3.2 × 10⁵ ÷ 46 ≈ <strong>7,000 மடங்கு</strong> — தூய சிலிகான் தூய ஜெர்மானியத்தை விட சுமார் 7,000 மடங்கு மோசமான கடத்தி. சுற்றுக்கு இது நல்லது: வெப்பம் தானாக உருவாக்கும் &ldquo;பின்னணி&rdquo; மின்னோட்டம் குறைவு.</li>
+</ul>
+<p>வெப்பம் ஏறினால் (எளிமைப்படுத்திய மாதிரி: intrinsic செறிவு ∝ e^(−Eg/2kT), T^(3/2) காரணியைப் புறக்கணித்து): 300 K-இலிருந்து 373 K (100 °C) செல்லும்போது kT 0.0259 → 0.0321 eV. சிலிகானில் செறிவு சுமார் 69 மடங்கு, ஜெர்மானியத்தில் சுமார் 12 மடங்கு ஏறும். தொடக்க எண்களால் பெருக்கினால்: Si ≈ 1 × 10¹⁰ × 69 ≈ 7 × 10¹¹ cm⁻³; Ge ≈ 2 × 10¹³ × 12 ≈ 2.4 × 10¹⁴ cm⁻³. Doping 1 × 10¹⁵ cm⁻³ (எடுத்துக்காட்டு மதிப்பு) என்றால், 100 °C-இல் ஜெர்மானியத்தின் வெப்ப ஊர்திகள் doping-இன் சுமார் 24%; சிலிகானில் 0.07%. &ldquo;வெப்ப ஊர்திகள் சமிக்ஞையை மூழ்கடித்தல்&rdquo; என்பதன் கணக்கு இதுதான்.</p>
+<h2 id="doping-கறகடததயப-பயனளளதககதல">Doping: குறைகடத்தியைப் பயனுள்ளதாக்குதல்<a class="anchor" href="#doping-%e0%ae%95%e0%ae%b1%e0%ae%95%e0%ae%9f%e0%ae%a4%e0%ae%a4%e0%ae%af%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%a9%e0%ae%b3%e0%ae%b3%e0%ae%a4%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%b2">#</a></h2>
+<p>தூய (&ldquo;intrinsic&rdquo;) சிலிகான் தனியாக மிகவும் பயனுள்ளதல்ல — அது மோசமாகவும் சீராகவும் கடத்துகிறது. தந்திரம் doping: ஊர்தி செறிவையும் வகையையும் கட்டுப்படுத்த படிக அணுக்கூட்டில் வேண்டுமென்றே சுவடு அசுத்தங்களை அறிமுகப்படுத்துதல்.</p>
+<p>ஒரு பாஸ்பரஸ் அணுவை (5 இணைதிறன் எலக்ட்ரான்கள்) சிலிகான் அணுக்கூட்டில் (அணுவுக்கு 4 இணைதிறன் எலக்ட்ரான்கள்) சேர்த்தால், ஒவ்வொரு பாஸ்பரஸ் அணுவுக்கும் ஒரு கூடுதல், தளர்வாகப் பிணைந்த எலக்ட்ரான் கிடைக்கும் — ஒரு கட்டுறா எதிர் ஊர்தி. இது N-type சிலிகான்; பாஸ்பரஸ் ஒரு &ldquo;donor.&rdquo; அதற்குப் பதிலாக போரான் சேர்த்தால் (3 இணைதிறன் எலக்ட்ரான்கள்) ஒரு காணாமல் போன பிணைப்பு கிடைக்கும் — ஒரு &ldquo;துளை&rdquo; — இது நகரும் நேர் ஊர்தியைப் போல் நடந்துகொள்ளும். இது P-type சிலிகான்; போரான் ஒரு &ldquo;acceptor.&rdquo;</p>
+<h2 id="doping-இன-சகத-ஒர-கணககல">Doping-இன் சக்தி, ஒரு கணக்கில்<a class="anchor" href="#doping-%e0%ae%87%e0%ae%a9-%e0%ae%9a%e0%ae%95%e0%ae%a4-%e0%ae%92%e0%ae%b0-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95%e0%ae%b2">#</a></h2>
+<p>எடுத்துக்காட்டு மதிப்பு: ஒவ்வொரு ஒரு மில்லியன் சிலிகான் அணுக்களுக்கும் ஒரு பாஸ்பரஸ் அணு (10⁻⁶ விகிதம்). ஒவ்வொரு பாஸ்பரஸும் ஒரு எலக்ட்ரான் தருகிறது என்று வைத்துக்கொள்வோம்.</p>
+<ul>
+<li>Donor-கள் = 5 × 10²² × 10⁻⁶ = <strong>5 × 10¹⁶ cm⁻³</strong> → கட்டுறா எலக்ட்ரான்கள் ≈ 5 × 10¹⁶ cm⁻³</li>
+<li>தூய சிலிகானோடு ஒப்பிட: 5 × 10¹⁶ ÷ 1 × 10¹⁰ = <strong>5,000,000 மடங்கு</strong> அதிக ஊர்திகள் — மில்லியனில் ஒரு அசுத்த அணுவால்.</li>
+<li>துளைகள் என்ன ஆகின்றன? சமநிலையில் n × p = nᵢ² (நிறை-செயல் விதி): p = (1 × 10¹⁰)² ÷ 5 × 10¹⁶ = 10²⁰ ÷ 5 × 10¹⁶ = <strong>2,000 cm⁻³</strong>. எலக்ட்ரான்கள் &ldquo;பெரும்பான்மை ஊர்திகள்&rdquo;, துளைகள் &ldquo;சிறுபான்மை ஊர்திகள்&rdquo;.</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>பொருள்</th>
+					<th>எலக்ட்ரான்கள் (cm⁻³)</th>
+					<th>துளைகள் (cm⁻³)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>தூய Si</td>
+					<td>1 × 10¹⁰</td>
+					<td>1 × 10¹⁰</td>
+			</tr>
+			<tr>
+					<td>N-type Si (P, 10⁻⁶)</td>
+					<td>5 × 10¹⁶</td>
+					<td>2 × 10³</td>
+			</tr>
+			<tr>
+					<td>P-type Si (B, 10⁻⁶)</td>
+					<td>2 × 10³</td>
+					<td>5 × 10¹⁶</td>
+			</tr>
+	</tbody>
+</table>
+<p>வகையும் செறிவும் இரண்டையும் doping தீர்மானிக்கிறது — ஆங்கிலப் பதிவு சொல்வதுபோல.</p>
+<p>N-type அல்லது P-type தனியாக ஒரு மாறி அல்ல. மாறி அவற்றை <em>ஒன்றாக</em> வைப்பதிலிருந்து வருகிறது — ஒரு P-N junction — அடுத்து வரும் ஒவ்வொரு டையோடு மற்றும் டிரான்சிஸ்டரின் அடிப்படைக் கட்டுமானத் தொகுதி. பதிவு 6 அங்கேயே தொடர்கிறது: ஒரு junction (அல்லது MOSFET-இல் gate-கட்டுப்படுத்தப்பட்ட channel) doping செய்யப்பட்ட சிலிகானை வெளிச் சமிக்ஞையால் இயக்கவும் அணைக்கவும் முடியும் ஒன்றாக எப்படி மாற்றுகிறது.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<ol>
+<li>
+<p><strong>350 K-இல் kT எவ்வளவு eV? சிலிகானின் 1.12 eV இடைவெளி அதன் எத்தனை மடங்கு?</strong>
+விடை: 8.617 × 10⁻⁵ × 350 ≈ 0.0302 eV; 1.12 ÷ 0.0302 ≈ <strong>37 மடங்கு</strong>.</p>
+</li>
+<li>
+<p><strong>ஒவ்வொரு 10 மில்லியன் சிலிகான் அணுக்களுக்கும் ஒரு போரான் அணு (எடுத்துக்காட்டு மதிப்பு). துளை செறிவு? எலக்ட்ரான் செறிவு?</strong>
+விடை: 5 × 10²² × 10⁻⁷ = <strong>5 × 10¹⁵ cm⁻³</strong> துளைகள்; எலக்ட்ரான்கள் = 10²⁰ ÷ 5 × 10¹⁵ = <strong>2 × 10⁴ cm⁻³</strong>. இது P-type.</p>
+</li>
+<li>
+<p><strong>தூய ஜெர்மானியத்தில் எத்தனை அணுக்களுக்கு ஒரு வெப்ப ஊர்தி (Ioffe தரவு)?</strong>
+விடை: 4.4 × 10²² ÷ 2.0 × 10¹³ = <strong>2.2 × 10⁹</strong> — சுமார் 2.2 பில்லியன் அணுக்களுக்கு ஒன்று; சிலிகானின் 5 × 10¹² உடன் ஒப்பிட, சுமார் 2,300 மடங்கு அடர்த்தி.</p>
+</li>
+<li>
+<p><strong>பாஸ்பரஸுக்கு 5 இணைதிறன் எலக்ட்ரான்கள், போரானுக்கு 3. ஆர்செனிக்கில் (5) doping செய்தால் N-type-ஆ, P-type-ஆ? ஏன்?</strong>
+விடை: <strong>N-type</strong> — சிலிகானின் 4 பிணைப்புகளுக்குப் பின் ஒரு கூடுதல் எலக்ட்ரான் மீதம்; ஆர்செனிக் ஒரு donor.</p>
+</li>
+<li>
+<p><strong>&ldquo;ஜெர்மானியம் சிறந்த கடத்தி, எனவே டிரான்சிஸ்டருக்கு அது சிறந்தது.&rdquo; இதில் உள்ள பிழை என்ன?</strong>
+விடை: டிரான்சிஸ்டருக்குத் தேவை <em>கட்டுப்படுத்தக்கூடிய</em> கடத்தல், அதிக கடத்தல் அல்ல. ஜெர்மானியத்தின் சிறிய இடைவெளியால் வெப்ப ஊர்திகள் அதிகம், வெப்பத்துடன் doping-ஐ நெருங்குகின்றன (மேலே 100 °C-இல் 24%); &ldquo;அணைப்பு&rdquo; நிலை நன்றாக அணைவதில்லை. சிலிகானின் பெரிய இடைவெளியும் SiO₂ அடுக்கும் அதனால்தான் வென்றன.</p>
+</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>குறைகடத்தி</td>
+					<td>semiconductor</td>
+			</tr>
+			<tr>
+					<td>கடத்தி / காப்பான்</td>
+					<td>conductor / insulator</td>
+			</tr>
+			<tr>
+					<td>இணைதிறன் பட்டை</td>
+					<td>valence band</td>
+			</tr>
+			<tr>
+					<td>கடத்துப் பட்டை</td>
+					<td>conduction band</td>
+			</tr>
+			<tr>
+					<td>பட்டை இடைவெளி</td>
+					<td>band gap</td>
+			</tr>
+			<tr>
+					<td>எலக்ட்ரான்-வோல்ட்</td>
+					<td>electron-volt (eV)</td>
+			</tr>
+			<tr>
+					<td>ஊர்தி</td>
+					<td>charge carrier</td>
+			</tr>
+			<tr>
+					<td>துளை</td>
+					<td>hole</td>
+			</tr>
+			<tr>
+					<td>தூய / மாசூட்டிய குறைகடத்தி</td>
+					<td>intrinsic / extrinsic semiconductor</td>
+			</tr>
+			<tr>
+					<td>மாசூட்டல்</td>
+					<td>doping</td>
+			</tr>
+			<tr>
+					<td>கொடையாளி / ஏற்பி</td>
+					<td>donor / acceptor</td>
+			</tr>
+			<tr>
+					<td>பெரும்பான்மை / சிறுபான்மை ஊர்தி</td>
+					<td>majority / minority carrier</td>
+			</tr>
+			<tr>
+					<td>தடைத்திறன்</td>
+					<td>resistivity</td>
+			</tr>
+			<tr>
+					<td>P-N சந்தி</td>
+					<td>P-N junction</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>ச. சம்பத்து, <em>அடிப்படைத் திண்மநிலை இயற்பியல்</em> (தமிழ்நாடு பாடநூல் மற்றும் கல்வியியல் பணிகள் கழகம்)</li>
+<li>தமிழ்நாடு அரசு, <em>12ஆம் வகுப்பு இயற்பியல் தொகுதி 2</em>, அலகு 10a: குறைகடத்தி எலக்ட்ரானியல்</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%AE%AE%E0%AF%81%E0%AE%A4%E0%AE%B2%E0%AF%8D&#43;%E0%AE%95%E0%AF%8A%E0%AE%B3%E0%AF%8D%E0%AE%95%E0%AF%88%E0%AE%95%E0%AE%B3%E0%AE%BF%E0%AE%B2%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%A8%E0%AF%8D%E0%AE%A4%E0%AF%81&#43;%E0%AE%95%E0%AF%81%E0%AE%B1%E0%AF%88%E0%AE%95%E0%AE%9F%E0%AE%A4%E0%AF%8D%E0%AE%A4%E0%AE%BF%E0%AE%95%E0%AE%B3%E0%AF%8D&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F05-semiconductors-from-first-principles%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F05-semiconductors-from-first-principles.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F05-semiconductors-from-first-principles.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="flex align-center">
+        <span>டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#band-gaps-நரடயக">Band Gaps, நேரடியாக</a></li>
+    <li><a href="#மதமன-இடவள-எணகளல">&ldquo;மிதமான&rdquo; இடைவெளி, எண்களில்</a></li>
+    <li><a href="#ஏன-சலகன-கறபபக">ஏன் சிலிகான், குறிப்பாக</a></li>
+    <li><a href="#சலகன-எதர-ஜரமனயம-ioffe-தரவ-300-k">சிலிகான் எதிர் ஜெர்மானியம்: Ioffe தரவு (300 K)</a></li>
+    <li><a href="#doping-கறகடததயப-பயனளளதககதல">Doping: குறைகடத்தியைப் பயனுள்ளதாக்குதல்</a></li>
+    <li><a href="#doping-இன-சகத-ஒர-கணககல">Doping-இன் சக்தி, ஒரு கணக்கில்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

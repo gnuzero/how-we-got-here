@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Debitul și echitatea nu sunt termene: timpul real dur cere o limită pe cazul cel mai rău, nu o medie bună">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/29-real-time-systems-and-deterministic-scheduling/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Sisteme în timp real și planificarea deterministă">
+	<meta property="og:description" content="Debitul și echitatea nu sunt termene: timpul real dur cere o limită pe cazul cel mai rău, nu o medie bună">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:31:54+05:30">
+
+
+	<meta itemprop="name" content="Sisteme în timp real și planificarea deterministă">
+	<meta itemprop="description" content="Debitul și echitatea nu sunt termene: timpul real dur cere o limită pe cazul cel mai rău, nu o medie bună">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:31:54+05:30">
+	<meta itemprop="wordCount" content="1360">
+
+<title>Sisteme în timp real și planificarea deterministă • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/29-real-time-systems-and-deterministic-scheduling/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/29-real-time-systems-and-deterministic-scheduling/" title="Real-Time Systems and Deterministic Scheduling">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/29-real-time-systems-and-deterministic-scheduling/" title="ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/29-real-time-systems-and-deterministic-scheduling/" title="තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/29-real-time-systems-and-deterministic-scheduling/" title="Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="active">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Sisteme în timp real și planificarea deterministă</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#rapid-nu-înseamnă-determinist">Rapid nu înseamnă determinist</a></li>
+    <li><a href="#termen-dur-și-termen-blând">Termen dur și termen blând</a></li>
+    <li><a href="#planificarea-pe-priorități-fixe-și-rate-monotonic">Planificarea pe priorități fixe și rate-monotonic</a></li>
+    <li><a href="#instantul-critic">Instantul critic</a></li>
+    <li><a href="#limita-de-utilizare-n21n-1">Limita de utilizare: (n(2^{1/n}-1))</a>
+      <ul>
+        <li><a href="#exemplu-ilustrativ-verificat-pe-mână">Exemplu ilustrativ, verificat pe mână</a></li>
+      </ul>
+    </li>
+    <li><a href="#deadline-driven-edf-utilizare-până-la-1">Deadline-driven (EDF): utilizare până la 1</a></li>
+    <li><a href="#costul-comutării-și-combinațiile">Costul comutării și combinațiile</a></li>
+    <li><a href="#de-ce-un-alt-fel-de-sistem-de-operare">De ce un alt fel de sistem de operare</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Sisteme în timp real și planificarea deterministă
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolele 21–25 din această fază optimizează pentru debit, echitate sau partajare eficientă. Niciuna nu garantează <em>când</em> se termină o anume unitate de lucru. Sistemele în timp real (<em>real-time</em>) cer exact această garanție. „Rapid” și „în timp real” sunt proprietăți diferite.</p>
+<h2 id="rapid-nu-înseamnă-determinist">Rapid nu înseamnă determinist<a class="anchor" href="#rapid-nu-%c3%aenseamn%c4%83-determinist">#</a></h2>
+<p>Un planificator de uz general (capitolele 21–25) urmărește un timp de răspuns bun <em>în medie</em> și o împărțire corectă a procesorului. „De obicei rapid” nu este „termină întotdeauna înainte de un termen fix, fără excepții”. Efectele de cache, tratarea întreruperilor sau pauzele de colectare a memoriei (capitolul 28) pot lungi o întârziere. Pentru multe aplicații, variația ocazională nu contează. Pentru un sistem în timp real, ea poate fi tot jocul.</p>
+<h2 id="termen-dur-și-termen-blând">Termen dur și termen blând<a class="anchor" href="#termen-dur-%c8%99i-termen-bl%c3%a2nd">#</a></h2>
+<p>Articolul clasic al lui Liu și Layland definește mediul pe care îl analizează prin cinci ipoteze. Între ele: cererile sarcinilor cu termene dure (<em>hard deadlines</em>) sunt periodice, cu interval constant; termenul unei cereri este constrângerea de a termina înainte de următoarea cerere pentru aceeași sarcină; sarcinile sunt independente; timpul de rulare al fiecărei sarcini e constant; sarcinile neperiodice sunt speciale (inițializare sau recuperare) și nu au termene dure critice (Liu, C. L., Layland, J. W., „Scheduling Algorithms for Multiprogramming in a Hard-Real-Time Environment”, <em>Journal of the ACM</em> 20(1), ianuarie 1973, pp. 46–61, aici §3 „The Environment”, ipotezele (A1)–(A5); copie: <a href="https://www.cis.upenn.edu/~lee/07cis505/Lec/liu73scheduling.pdf">cis.upenn.edu/~lee/07cis505/Lec/liu73scheduling.pdf</a>, accesat 2026-11-05).</p>
+<p>În acest cadru, un <strong>termen dur</strong> înseamnă că nerespectarea lui face ca sistemul să eșueze în sensul analizei: cererea trebuie îndeplinită înainte de următoarea apariție (ibid., (A2)). Un <strong>termen blând</strong> (<em>soft</em>) nu e modelat de articol: în practică, nerespectarea lui degradează calitatea (un cadru video pierdut), fără a fi tratată ca eșec de certificare. Distincția de pe această pagină urmează limba engleză a cărții; cifrele și teoremele vin din Liu &amp; Layland 1973.</p>
+<h2 id="planificarea-pe-priorități-fixe-și-rate-monotonic">Planificarea pe priorități fixe și rate-monotonic<a class="anchor" href="#planificarea-pe-priorit%c4%83%c8%9bi-fixe-%c8%99i-rate-monotonic">#</a></h2>
+<p>Algoritmii studiați sunt preemptivi și conduși de priorități: când apare o cerere de prioritate mai mare decât sarcina curentă, aceasta e întreruptă imediat (ibid., §3). Un algoritm e <em>static</em> (priorități fixe) dacă prioritățile se atribuie o dată pentru totdeauna; e <em>dinamic</em> dacă se schimbă în timp (ibid., §3).</p>
+<p>Regula <em>rate-monotonic</em> atribuie priorități inverse proporțional cu perioada: sarcina cu perioada cea mai scurtă (deci cu rata cea mai mare) primește prioritatea cea mai mare (ibid., §4, după Teorema 1). Teorema 2 spune că, dacă există vreo atribuire fezabilă de priorități fixe pentru un set de sarcini, atunci și atribuirea rate-monotonic e fezabilă: „no other fixed priority assignment rule can schedule a task set which cannot be scheduled by the rate-monotonic priority assignment” (ibid., §4, textul care introduce Teorema 2; copia UPenn este retipografiată și nu păstrează paginația JACM).</p>
+<h2 id="instantul-critic">Instantul critic<a class="anchor" href="#instantul-critic">#</a></h2>
+<p>Înainte de limita de utilizare, Liu și Layland introduc noțiunea de <em>critical instant</em> al unei sarcini: momentul în care o cerere pentru acea sarcină duce la cel mai mare timp de răspuns. Ei arată că acesta e momentul în care cererea coincide cu cereri pentru toate sarcinile de prioritate mai mare (Liu &amp; Layland, 1973, §4, în jurul Teoremei 1). Consecința practică: dacă toate cererile lansate la instantele critice își respectă termenele, atunci atribuirea de priorități e fezabilă pentru acel set (ibid., §4). Exemplul numeric de mai jos verifică exact acest scenariu — toate cererile la (t = 0).</p>
+<p>Teorema 1 din articol e lema care face legătura: timpul maxim de răspuns al unei sarcini apare când ea e cerută simultan cu toate sarcinile mai prioritare (ibid., Teorema 1). De aici vine și argumentul de optimalitate al rate-monotonic: orice atribuire fezabilă poate fi transformată, prin schimburi de priorități pe perechi adiacente, într-o atribuire rate-monotonic tot fezabilă (ibid., Teorema 2).</p>
+<h2 id="limita-de-utilizare-n21n-1">Limita de utilizare: (n(2^{1/n}-1))<a class="anchor" href="#limita-de-utilizare-n21n-1">#</a></h2>
+<p>Factorul de utilizare al procesorului e (U = \sum_{i=1}^{m} C_i/T_i), unde (C_i) e timpul de rulare și (T_i) perioada sarcinii (i) (ibid., §5). Pentru un algoritm cu priorități fixe, <em>cea mai mică limită superioară</em> a lui (U) e minimul lui (U) peste toate seturile care „utilizează pe deplin” procesorul (fezabile, dar orice creștere a unui (C_i) le face nefezabile) (ibid., §5).</p>
+<p>Teorema 3: pentru două sarcini cu priorități fixe, această limită e (U = 2(2^{1/2}-1) \approx 0{,}83) (ibid., Teorema 3). Teorema 5 (care înlătură restricția din Teorema 4 asupra raportului perioadelor) generalizează: pentru (m) sarcini cu priorități fixe, limita e</p>
+<p>[
+U = m\bigl(2^{1/m} - 1\bigr)
+]</p>
+<p>(ibid., Teorema 5). Pentru (m) mare, (U) tinde la (\ln 2 \approx 0{,}693) (ibid., după Teorema 4: „for large (m), (U \approx \ln 2)”).</p>
+<p><strong>Verificare numerică (calculul nostru):</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>(m)</th>
+					<th>(m(2^{1/m}-1))</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>1,0000</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>0,8284</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>0,7798</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>0,7568</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>0,7435</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td>0,7177</td>
+			</tr>
+			<tr>
+					<td>(\infty)</td>
+					<td>(\ln 2 \approx 0{,}6931)</td>
+			</tr>
+	</tbody>
+</table>
+<p>Valorile pentru (m=2) și (m=3) coincid cu aproximațiile din articol ((\approx 0{,}83) și (\approx 0{,}78)) (ibid., demonstrația Teoremei 3: „U = 2(2^{1/2} − 1) ≃ 0.83”, și textul de după Teorema 4: „For m = 3 … ≃ 0.78”).</p>
+<h3 id="exemplu-ilustrativ-verificat-pe-mână">Exemplu ilustrativ, verificat pe mână<a class="anchor" href="#exemplu-ilustrativ-verificat-pe-m%c3%a2n%c4%83">#</a></h3>
+<p>Trei sarcini periodice, cu priorități rate-monotonic (perioada mai scurtă → prioritate mai mare):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Sarcină</th>
+					<th>(T)</th>
+					<th>(C)</th>
+					<th>(C/T)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>(\tau_1)</td>
+					<td>2</td>
+					<td>0,5</td>
+					<td>0,25</td>
+			</tr>
+			<tr>
+					<td>(\tau_2)</td>
+					<td>4</td>
+					<td>1</td>
+					<td>0,25</td>
+			</tr>
+			<tr>
+					<td>(\tau_3)</td>
+					<td>8</td>
+					<td>2</td>
+					<td>0,25</td>
+			</tr>
+	</tbody>
+</table>
+<p>Utilizarea totală: (U = 0{,}75). Limita pentru (m=3): (3(2^{1/3}-1) \approx 0{,}7798). Cum (0{,}75 &lt; 0{,}7798), testul suficient al limitei e trecut (calculul nostru; limita din Teorema 5).</p>
+<p>Verificarea la <em>instantul critic</em> al lui (\tau_3) (toate cererile la (t=0)), pe intervalul ([0,8]):</p>
+<ul>
+<li>(\tau_1) cere la 0, 2, 4, 6 → (4 \times 0{,}5 = 2);</li>
+<li>(\tau_2) cere la 0, 4 → (2 \times 1 = 2);</li>
+<li>(\tau_3) cere (C_3 = 2);</li>
+</ul>
+<p>cererea totală (2+2+2 = 6 \le 8). Deci, pe acest interval, timpul disponibil acoperă cererea (calculul nostru, pe modelul „critical time zone” din ibid., §4–§5). Exemplul e ilustrativ: perioadele și duratele nu apar în articol.</p>
+<p><strong>Cazul-limită pentru două sarcini (tot calculul nostru, după demonstrația Teoremei 3):</strong> la (T_1 = 2), (T_2 = 2\sqrt{2} \approx 2{,}828) (raportul (\sqrt{2}), adică (f = \sqrt{2}-1)), pe frontiera dintre cele două cazuri din demonstrație obținem (C_1 = T_2 - T_1 \approx 0{,}828), (C_2 = T_2 - 2C_1 \approx 1{,}172), deci (U = C_1/T_1 + C_2/T_2 = 2(\sqrt{2}-1) \approx 0{,}8284), exact limita din Teorema 3.</p>
+<h2 id="deadline-driven-edf-utilizare-până-la-1">Deadline-driven (EDF): utilizare până la 1<a class="anchor" href="#deadline-driven-edf-utilizare-p%c3%a2n%c4%83-la-1">#</a></h2>
+<p>Secțiunea 7 introduce algoritmul <em>deadline driven</em>: prioritatea unei sarcini e dată de termenul cererii ei curente — cea cu termenul cel mai apropiat e cea mai prioritară (ibid., §7). Este un algoritm dinamic. Teorema 7: pentru un set de (m) sarcini, algoritmul e fezabil dacă și numai dacă</p>
+<p>[
+\sum_{i=1}^{m} \frac{C_i}{T_i} \le 1
+]</p>
+<p>(ibid., Teorema 7). Deci, sub ipotezele articolului, planificarea după termenele curente (azi numită de obicei EDF, <em>Earliest Deadline First</em>) poate folosi procesorul pe deplin; prioritățile fixe rate-monotonic, nu (limita (\ln 2) la (m) mare).</p>
+<h2 id="costul-comutării-și-combinațiile">Costul comutării și combinațiile<a class="anchor" href="#costul-comut%c4%83rii-%c8%99i-combina%c8%9biile">#</a></h2>
+<p>Articolul notează că limita (\ln 2) e nedorită în practică, pentru că la ea se mai adaugă costul comutării între sarcini, care tot trebuie numărat (Liu &amp; Layland, 1973, §6 „Relaxing the Utilization Bound”). Una dintre căile simple de a aduce limita la 1 e să faci perioadele armonice ((T_m/T_i) întreg); alta e să pui în buffer sarcinile de prioritate joasă și să le relaxezi termenele dure; „a better solution” e atribuirea dinamică de priorități — exact algoritmul deadline-driven din §7 (ibid., §6). Secțiunea 8 a articolului discută și o combinație între priorități fixe și deadline-driven; pe această pagină rămânem la cele două extreme, care acoperă legătura cu capitolul 30 (inversiunea de prioritate apare la sincronizare, în afara modelului (A3) de independență).</p>
+<h2 id="de-ce-un-alt-fel-de-sistem-de-operare">De ce un alt fel de sistem de operare<a class="anchor" href="#de-ce-un-alt-fel-de-sistem-de-operare">#</a></h2>
+<p>Garantarea acestor proprietăți cere un sistem de operare construit în jurul cazului cel mai rău — un RTOS (<em>Real-Time Operating System</em>) — nu linia de debit/echitate din capitolele 21–25. Liu &amp; Layland lucrează pe un singur procesor, cu preempțiune și fără dependențe între sarcini (ibid., §3). În practică apar și mutex-uri, moștenirea priorității și inversiunea de prioritate; capitolul 30 le arată pe Pathfinder.</p>
+<p>Laboratorul mini-CPU e locul în care timpul fiecărei instrucțiuni e numărabil pe hardware simplu — predictibilitatea pe care proiectarea RTOS încearcă să o păstreze când sistemele se complică.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=ro"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=ro" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<p><strong>Ieșire:</strong> C. L. Liu și James W. Layland, „Scheduling Algorithms for Multiprogramming in a Hard-Real-Time Environment” (<em>Journal of the ACM</em>, 1973) — articolul primar din spatele planificării rate-monotonic și al analizabilității clasice în timp real dur.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/98c122906f82fe66d7520d499851b6a45004a5c4" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Sisteme&#43;%C3%AEn&#43;timp&#43;real&#43;%C8%99i&#43;planificarea&#43;determinist%C4%83&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F29-real-time-systems-and-deterministic-scheduling%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F29-real-time-systems-and-deterministic-scheduling.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F29-real-time-systems-and-deterministic-scheduling.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Compilatoare, JIT și medii de rulare moderne</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/30-real-time-systems-in-practice/" class="flex align-center">
+        <span>Sisteme în timp real în practică</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#rapid-nu-înseamnă-determinist">Rapid nu înseamnă determinist</a></li>
+    <li><a href="#termen-dur-și-termen-blând">Termen dur și termen blând</a></li>
+    <li><a href="#planificarea-pe-priorități-fixe-și-rate-monotonic">Planificarea pe priorități fixe și rate-monotonic</a></li>
+    <li><a href="#instantul-critic">Instantul critic</a></li>
+    <li><a href="#limita-de-utilizare-n21n-1">Limita de utilizare: (n(2^{1/n}-1))</a>
+      <ul>
+        <li><a href="#exemplu-ilustrativ-verificat-pe-mână">Exemplu ilustrativ, verificat pe mână</a></li>
+      </ul>
+    </li>
+    <li><a href="#deadline-driven-edf-utilizare-până-la-1">Deadline-driven (EDF): utilizare până la 1</a></li>
+    <li><a href="#costul-comutării-și-combinațiile">Costul comutării și combinațiile</a></li>
+    <li><a href="#de-ce-un-alt-fel-de-sistem-de-operare">De ce un alt fel de sistem de operare</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

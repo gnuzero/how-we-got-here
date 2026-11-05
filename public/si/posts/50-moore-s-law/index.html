@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Moore ගේ නිරීක්ෂණය ආර්ථික සංරචක ගණන විය — ට්‍රාන්සිස්ටර ගණන තවමත් නැගේ; clocks සහ cost-per-transistor වෙනස් කතා කියයි">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/50-moore-s-law/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="Moore&#39;s Law">
+	<meta property="og:description" content="Moore ගේ නිරීක්ෂණය ආර්ථික සංරචක ගණන විය — ට්‍රාන්සිස්ටර ගණන තවමත් නැගේ; clocks සහ cost-per-transistor වෙනස් කතා කියයි">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Moore&#39;s Law">
+	<meta itemprop="description" content="Moore ගේ නිරීක්ෂණය ආර්ථික සංරචක ගණන විය — ට්‍රාන්සිස්ටර ගණන තවමත් නැගේ; clocks සහ cost-per-transistor වෙනස් කතා කියයි">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1570">
+
+<title>Moore&#39;s Law • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/50-moore-s-law/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/50-moore-s-law/" title="Moore&#39;s Law">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/50-moore-s-law/" title="กฎของมัวร์">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/50-moore-s-law/" title="Moore&#39;s Law">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/50-moore-s-law/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/50-moore-s-law/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/50-moore-s-law/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="active">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Moore&#39;s Law</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#moore-ඇතතටම-ලවව-කමකද">Moore ඇත්තටම ලිව්වේ කුමක්ද</a></li>
+    <li><a href="#ටරනසසටර-ගණන-තවමත-නග">ට්‍රාන්සිස්ටර ගණන: තවමත් නැගේ</a></li>
+    <li><a href="#clock-speed-වනස-බතතයක">Clock Speed: වෙනස් බිත්තියක්</a></li>
+    <li><a href="#cost-per-transistor-ඝරෂණය-පනන-තන">Cost Per Transistor: ඝර්ෂණය පෙනෙන තැන</a></li>
+    <li><a href="#මටරක-තනක-slogan-එකක">මෙට්‍රික තුනක්, slogan එකක්</a></li>
+    <li><a href="#ගඹරන-moore-ග-නතය-අකවලන--දගණ-වම-අවම-පරවය-සහ-සධක-තන">ගැඹුරින්: Moore ගේ නීතිය අංකවලින් — දෙගුණ වීම, &ldquo;අවම පිරිවැය&rdquo; සහ සාධක තුන</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-moore-ග-1965-ලපය-ඇතතටම-කව-කමකද">2. Moore ගේ 1965 ලිපිය ඇත්තටම කීවේ කුමක්ද?</a></li>
+        <li><a href="#3-අවම-පරවය-වකරය--සරල-ආදරශයක">3. &ldquo;අවම පිරිවැය&rdquo; වක්‍රය — සරල ආදර්ශයක්</a></li>
+        <li><a href="#4-1975-සශධනය-සධක-තනක-වසර-දකක">4. 1975 සංශෝධනය: සාධක තුනක්, වසර දෙකක්</a></li>
+        <li><a href="#5-දගණ-වම-ගණතය">5. දෙගුණ වීමේ ගණිතය</a></li>
+        <li><a href="#6-පඩම-එක-slogan-එකක-යනතරණ-තනක">6. පාඩම: එක් slogan එකක්, යාන්ත්‍රණ තුනක්</a></li>
+        <li><a href="#7-පනසලන-අභයසය-මම-පටවට-lab-එකක-නත">7. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවට lab එකක් නැත)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Moore&#39;s Law
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>&ldquo;Moore&rsquo;s Law&rdquo; නිරන්තරයෙන් මළ යැයි ප්‍රකාශ කෙරේ, නැවත ජීවිතයට ගෙන එනු ලැබේ, සහ කථිකයාට අවශ්‍ය ඕනෑම දෙයක් අදහස් කිරීමට දිගු කෙරේ. පසුගිය පෝස්ට්වල fabrication දුෂ්කර වී ඇති ආකාරය දුටු පසු, Gordon Moore නිරීක්ෂණය කළේ කුමක්ද — සහ ඇසුරුම් කළ ප්‍රවණතා කුමන ඒවා සැබවින්ම වෙනස් සීමාවන්ද — නිශ්චිතව කීම වටී.</p>
+<h2 id="moore-ඇතතටම-ලවව-කමකද">Moore ඇත්තටම ලිව්වේ කුමක්ද<a class="anchor" href="#moore-%e0%b6%87%e0%b6%ad%e0%b6%ad%e0%b6%a7%e0%b6%b8-%e0%b6%bd%e0%b7%80%e0%b7%80-%e0%b6%9a%e0%b6%b8%e0%b6%9a%e0%b6%af">#</a></h2>
+<p>Gordon Moore ගේ 1965 <em>Electronics</em> ලිපිය නිරීක්ෂණය කළේ සංරචක <em>ගණන</em> ය: එක් integrated circuit එකක ආර්ථිකව තැබිය හැකි සංරචක ගණන දළ වශයෙන් වාර්ෂික වේගයකින් දෙගුණ වෙමින් තිබුණි (1975 පමණ දළ වශයෙන් සෑම වසර දෙකකට වරක් ලෙස සංශෝධනය විය). එම හිමිකම්පත <em>නොවන</em> දේ සලකන්න: එය clock speed නීතියක් නොවේ, තනි-ත්‍රෙඩ් කාර්ය සාධනය පිළිබඳ පොරොන්දුවක් නොවේ, සහ &ldquo;ආර්ථිකව&rdquo; යන වචනය ඉක්මවා cost per transistor පිළිබඳ වෙනම ප්‍රමේයයක් නොවේ. ජනප්‍රිය භාවිතය බොහෝ විට එම මෙට්‍රික එක් slogan එකක් යටතේ ඇසුරුම් කරයි; යටින් ඇති ධාවක වෙනස් ය.</p>
+<h2 id="ටරනසසටර-ගණන-තවමත-නග">ට්‍රාන්සිස්ටර ගණන: තවමත් නැගේ<a class="anchor" href="#%e0%b6%a7%e0%b6%bb%e0%b6%b1%e0%b7%83%e0%b7%83%e0%b6%a7%e0%b6%bb-%e0%b6%9c%e0%b6%ab%e0%b6%b1-%e0%b6%ad%e0%b7%80%e0%b6%b8%e0%b6%ad-%e0%b6%b1%e0%b6%9c">#</a></h2>
+<p>Moore රාමු කළ ආකාරයෙන් මනින ලද — චිපයකට සංරචක (අද: ට්‍රාන්සිස්ටර) — ප්‍රවණතාව දශක ගණනක් රැඳුණේය සහ තවමත් නැගේ, Posts 48 සහ 49 හි lithography සහ ට්‍රාන්සිස්ටර-ව්‍යුහ ප්‍රගති මගින් ධාවනය වෙමින්. නවීන ඉහළ-අන්ත චිප ට්‍රාන්සිස්ටර බිලියන ගණනක් රඳවා ගනී — පසුගිය දශක පහකට පෙර Intel හි 4004 (Post 18) හි දළ වශයෙන් 2,300 ට එරෙහිව.</p>
+<h2 id="clock-speed-වනස-බතතයක">Clock Speed: වෙනස් බිත්තියක්<a class="anchor" href="#clock-speed-%e0%b7%80%e0%b6%b1%e0%b7%83-%e0%b6%b6%e0%b6%ad%e0%b6%ad%e0%b6%ba%e0%b6%9a">#</a></h2>
+<p>Clock සංඛ්‍යාතය දශක ගණනක් ට්‍රාන්සිස්ටර ගණන සමඟ නැග්ගේය, පසුව 2005 පමණ සමතලා විය — ට්‍රාන්සිස්ටර scaling නැවතුණු නිසා නොව, Post 36 හි බල/තාප බිත්තිය නිසා. එය &ldquo;Moore&rsquo;s Law හි මරණය&rdquo; ලෙස හැඳින්වීම මෙට්‍රික දෙකක් එකට මිශ්‍ර කරයි. Clock සමතලය හරහා ගණන නැගීම දිගටම ගියේය; කර්මාන්තය නව ට්‍රාන්සිස්ටර වැඩි cores සහ විශේෂිත on-chip ක්‍රියාකාරිත්වය (Post 17) සඳහා වියදම් කළේය, එක් core එකක සංඛ්‍යාතය තවදුරටත් තල්ලු කිරීමට නොවේ.</p>
+<h2 id="cost-per-transistor-ඝරෂණය-පනන-තන">Cost Per Transistor: ඝර්ෂණය පෙනෙන තැන<a class="anchor" href="#cost-per-transistor-%e0%b6%9d%e0%b6%bb%e0%b7%82%e0%b6%ab%e0%b6%ba-%e0%b6%b4%e0%b6%b1%e0%b6%b1-%e0%b6%ad%e0%b6%b1">#</a></h2>
+<p>Moore ගේ රාමුවේ ආර්ථික භාගය — ඝනත්වය නැගුණු විට ලාභ සංරචක — මෑත leading-edge ඝර්ෂණය පැහැදිලිතම තැනයි. EUV මෙවලම් (Post 48) අසාමාන්‍ය ලෙස මිල අධිකයි; එක් එක් node පරම්පරාවට වඩා සංකීර්ණ process පියවර අවශ්‍ය වේ. දශක ගණනක්, wafer එකකට වැඩි ට්‍රාන්සිස්ටර absolute චිප පිරිවැය රැඳුණත් හෝ මධ්‍යස්ථව නැගුණත් cost per transistor පහළට ගෙන ගියේය. නවතම nodes වලදී එම සම්බන්ධතාව දුර්වල වී ඇත: ඝනත්වය තවමත් නැගේ; cost-per-transistor වැඩිදියුණුව ඓතිහාසික අනුපාතවල ස්වයංක්‍රීය නොවේ.</p>
+<h2 id="මටරක-තනක-slogan-එකක">මෙට්‍රික තුනක්, slogan එකක්<a class="anchor" href="#%e0%b6%b8%e0%b6%a7%e0%b6%bb%e0%b6%9a-%e0%b6%ad%e0%b6%b1%e0%b6%9a-slogan-%e0%b6%91%e0%b6%9a%e0%b6%9a">#</a></h2>
+<p>ට්‍රාන්සිස්ටර ගණන: තවමත් පරිමාණය වේ. Clock speed: දන්නා තාප හේතු නිසා 2000 ගණන්වල මැද සිට සමතලයි. Cost per transistor: බොහෝ nodes වල absolute වශයෙන් තවමත් වැඩිදියුණු වෙමින්, leading edge හි ලේඛනගත ඝර්ෂණය සමඟ. ඒවා එක් &ldquo;නීතියක්&rdquo; ලෙස සැලකීම කුමන සීමාව තවමත් අස්වැන්න දෙයිද සහ කුමන එක මෙම අදියර නම් කරමින් සිටින ගෘහ නිර්මාණ හැරීම් බල කළේද යන්න සඟවයි.</p>
+<h2 id="ගඹරන-moore-ග-නතය-අකවලන--දගණ-වම-අවම-පරවය-සහ-සධක-තන">ගැඹුරින්: Moore ගේ නීතිය අංකවලින් — දෙගුණ වීම, &ldquo;අවම පිරිවැය&rdquo; සහ සාධක තුන<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-moore-%e0%b6%9c-%e0%b6%b1%e0%b6%ad%e0%b6%ba-%e0%b6%85%e0%b6%9a%e0%b7%80%e0%b6%bd%e0%b6%b1--%e0%b6%af%e0%b6%9c%e0%b6%ab-%e0%b7%80%e0%b6%b8-%e0%b6%85%e0%b7%80%e0%b6%b8-%e0%b6%b4%e0%b6%bb%e0%b7%80%e0%b6%ba-%e0%b7%83%e0%b7%84-%e0%b7%83%e0%b6%b0%e0%b6%9a-%e0%b6%ad%e0%b6%b1">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> &ldquo;Moore&rsquo;s law&rdquo; සඳහා සිංහල විකිපීඩියා ලිපියක් නැත. 2026 සැප්තැම්බර් සමීක්ෂණයේදී සිංහල සහ ඉංග්‍රීසි-&ldquo;sinhala&rdquo; සෙවුම් පද දෙකෙන්ම YouTube හි ලැබුණේ ඉංග්‍රීසි වීඩියෝ පමණි; Moore ගේ මුල් ලිපි දෙක සහ ඝාතීය වර්ධනයේ ගණිතය සිංහලෙන් පැහැදිලි කළ මූලාශ්‍රයක් අපට හමු නොවීය. පහත උපුටා දැක්වීම් Moore ගේ ලිපිවලින්මය; &ldquo;ආදර්ශ&rdquo; (model) ගණනය කිරීම් ඉගැන්වීම සඳහා අප සාදාගත් ඒවා බව එතැනම සඳහන් කර ඇත.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>සංරචකය (component):</strong> චිපයක් මත ඇති ට්‍රාන්සිස්ටරයක්, ප්‍රතිරෝධකයක්, ධාරිත්‍රකයක් වැනි තනි මූලද්‍රව්‍යයක්. Moore 1965 දී ගණන් කළේ මේවායි; අද සාමාන්‍යයෙන් ට්‍රාන්සිස්ටර ගණනයි.</li>
+<li><strong>සංගෘහිත පරිපථය (integrated circuit, IC):</strong> සංරචක බොහොමයක් එකම සිලිකන් කැබැල්ලක් මත නිපදවා ඇති පරිපථය.</li>
+<li><strong>Die (ඩයි):</strong> wafer එකකින් කපා ගත් එක් චිප කැබැල්ල; එහි වර්ගඵලය mm² වලින් මනී.</li>
+<li><strong>අස්වැන්න (yield):</strong> නිපදවූ චිප අතරින් නිවැරදිව ක්‍රියා කරන ප්‍රතිශතය.</li>
+<li><strong>ඝාතීය වර්ධනය (exponential growth):</strong> ස්ථිර කාල පරතරයකින් එකම <em>ගුණයකින්</em> වැඩි වීම (උදා. සෑම වසර දෙකකට වරක් ×2) — එකම <em>ප්‍රමාණයකින්</em> (උදා. සෑම වසරකම +100) නොවේ.</li>
+<li><strong>දෙගුණ වීමේ කාලය (doubling time, T):</strong> ප්‍රමාණයක් දෙගුණ වීමට ගත වන කාලය.</li>
+</ul>
+<h3 id="2-moore-ග-1965-ලපය-ඇතතටම-කව-කමකද">2. Moore ගේ 1965 ලිපිය ඇත්තටම කීවේ කුමක්ද?<a class="anchor" href="#2-moore-%e0%b6%9c-1965-%e0%b6%bd%e0%b6%b4%e0%b6%ba-%e0%b6%87%e0%b6%ad%e0%b6%ad%e0%b6%a7%e0%b6%b8-%e0%b6%9a%e0%b7%80-%e0%b6%9a%e0%b6%b8%e0%b6%9a%e0%b6%af">#</a></h3>
+<p>1965 <em>Electronics</em> ලිපියේ (IEEE 1998 නැවත මුද්‍රණයේ 2 වන පිටුව) තර්කය පියවර තුනකින්:</p>
+<ol>
+<li>සරල පරිපථවලට, <em>සංරචකයකට පිරිවැය</em> සංරචක ගණනට ආසන්න වශයෙන් ප්‍රතිලෝමව සමානුපාතිකයි — එකම ඇසුරුම තුළ වැඩි සංරචක = එකකට අඩු පිරිවැය.</li>
+<li>නමුත් සංරචක වැඩි වන විට අස්වැන්න අඩු වී පිරිවැය නැවත නැගේ. <strong>එබැවින් ඕනෑම මොහොතක &ldquo;අවම පිරිවැයක්&rdquo; (minimum cost) ඇත</strong> — 1965 දී එය පරිපථයකට සංරචක 50ක් පමණ විය.</li>
+<li>&ldquo;අවම සංරචක පිරිවැය සඳහා සංකීර්ණත්වය <strong>වසරකට දළ වශයෙන් දෙගුණයක</strong> වේගයකින් වැඩි වී ඇත&rdquo;; එය අවම වශයෙන් වසර දහයක් එලෙසම පවතිනු ඇතැයි සිතීමට හේතු ඇති බවත්, එසේ නම් <strong>1975 වන විට අවම පිරිවැය සඳහා සංරචක ගණන 65,000</strong> වනු ඇති බවත් ඔහු ලිවීය.</li>
+</ol>
+<p>සලකන්න: Moore ගේ &ldquo;නීතිය&rdquo; මුලින්ම <strong>ආර්ථික</strong> ප්‍රකාශයකි — <em>අවම පිරිවැය</em> ලැබෙන සංරචක ගණන ගැන — &ldquo;ට්‍රාන්සිස්ටර කොපමණ කුඩා කළ හැකිද&rdquo; යන්න ගැන පමණක් නොවේ.</p>
+<p><strong>65,000 පරීක්ෂා කරමු (අපේ ගණිතය):</strong> 65,000 ≈ 2¹⁶ = 65,536. 1965 දී සංරචක 2⁶ = 64 ක් පමණ (ඉහත සඳහන් 50 ට ආසන්න) ගෙන වසර 10ක් වසරකට දෙගුණ වුවහොත්: 64 × 2¹⁰ = 64 × 1024 = <strong>65,536</strong>. Moore ගේ සංඛ්‍යාව වසර 10ක් පුරා දෙගුණ වීම් 10ක ප්‍රතිඵලයයි.</p>
+<h3 id="3-අවම-පරවය-වකරය--සරල-ආදරශයක">3. &ldquo;අවම පිරිවැය&rdquo; වක්‍රය — සරල ආදර්ශයක්<a class="anchor" href="#3-%e0%b6%85%e0%b7%80%e0%b6%b8-%e0%b6%b4%e0%b6%bb%e0%b7%80%e0%b6%ba-%e0%b7%80%e0%b6%9a%e0%b6%bb%e0%b6%ba--%e0%b7%83%e0%b6%bb%e0%b6%bd-%e0%b6%86%e0%b6%af%e0%b6%bb%e0%b7%81%e0%b6%ba%e0%b6%9a">#</a></h3>
+<p>(පහත අංක <strong>ඉගැන්වීම සඳහා අප සාදාගත් ඒවා</strong> — සැබෑ කර්මාන්ත දත්ත නොවේ.) චිපයක් සාදන පිරිවැය:</p>
+<ul>
+<li>ස්ථිර පිරිවැය (ඇසුරුම, පරීක්ෂාව): <strong>$1</strong></li>
+<li>සංරචකයකට සිලිකන් වර්ගඵල පිරිවැය: <strong>$0.01</strong></li>
+<li>අස්වැන්න: Y = e^(−n/1000) — සංරචක n වැඩි වන තරමට (විශාල die) දෝෂයක් වැටීමේ සම්භාවිතාව වැඩිය.</li>
+</ul>
+<p><em>ක්‍රියා කරන</em> සංරචකයකට පිරිවැය = (1 + 0.01n) ÷ (n × Y):</p>
+<table>
+	<thead>
+			<tr>
+					<th>n (සංරචක)</th>
+					<th>චිප පිරිවැය</th>
+					<th>අස්වැන්න Y</th>
+					<th>ක්‍රියා කරන සංරචකයකට පිරිවැය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>10</td>
+					<td>$1.10</td>
+					<td>0.990</td>
+					<td>$0.111</td>
+			</tr>
+			<tr>
+					<td>100</td>
+					<td>$2.00</td>
+					<td>0.905</td>
+					<td>$0.0221</td>
+			</tr>
+			<tr>
+					<td><strong>270</strong></td>
+					<td>$3.70</td>
+					<td>0.763</td>
+					<td><strong>$0.0180 (අවමය)</strong></td>
+			</tr>
+			<tr>
+					<td>500</td>
+					<td>$6.00</td>
+					<td>0.607</td>
+					<td>$0.0198</td>
+			</tr>
+			<tr>
+					<td>1000</td>
+					<td>$11.00</td>
+					<td>0.368</td>
+					<td>$0.0299</td>
+			</tr>
+			<tr>
+					<td>2000</td>
+					<td>$21.00</td>
+					<td>0.135</td>
+					<td>$0.0776</td>
+			</tr>
+	</tbody>
+</table>
+<p>වක්‍රය මුලින් වේගයෙන් පහළ යයි (ස්ථිර $1 වැඩි සංරචක අතර බෙදේ), n ≈ 270 දී අවමයට පැමිණ, පසුව අස්වැන්න කඩා වැටීම නිසා නැවත නැගේ.</p>
+<p>දැන් තාක්ෂණය දියුණු වී දෝෂ අඩකින් අඩු වූයේ යැයි සිතමු: Y = e^(−n/2000). එවිට අවමය n ≈ <strong>400</strong> දී, <strong>$0.0153</strong> ක් වේ. <strong>අවම ලක්ෂ්‍යය දකුණට (වැඩි සංරචක දෙසට) ගමන් කරන අතර මුළු වක්‍රයම පහළ යයි</strong> — Moore ගේ වචනවලින්, &ldquo;අවමය වේගයෙන් නැගෙන අතර මුළු පිරිවැය වක්‍රයම පහළ යයි&rdquo;. &ldquo;Moore ගේ නීතිය&rdquo; යනු මෙම <em>අවම ලක්ෂ්‍යය</em> කාලයත් සමඟ ඝාතීයව ගමන් කිරීමයි.</p>
+<h3 id="4-1975-සශධනය-සධක-තනක-වසර-දකක">4. 1975 සංශෝධනය: සාධක තුනක්, වසර දෙකක්<a class="anchor" href="#4-1975-%e0%b7%83%e0%b7%81%e0%b6%b0%e0%b6%b1%e0%b6%ba-%e0%b7%83%e0%b6%b0%e0%b6%9a-%e0%b6%ad%e0%b6%b1%e0%b6%9a-%e0%b7%80%e0%b7%83%e0%b6%bb-%e0%b6%af%e0%b6%9a%e0%b6%9a">#</a></h3>
+<p>1975 IEEE International Electron Devices Meeting (IEDM) හි &ldquo;Progress in Digital Integrated Electronics&rdquo; කතාවේදී Moore සංකීර්ණත්වයේ වර්ධනය <strong>සාධක තුනකට</strong> බෙදා විශ්ලේෂණය කළේය:</p>
+<ol>
+<li><strong>විශාල die (die area):</strong> චිප වර්ගඵලය වැඩි වීම.</li>
+<li><strong>කුඩා මාන (dimension reduction):</strong> රේඛා පළල සහ පරතරය අඩු වීම → වර්ග mm එකකට වැඩි සංරචක.</li>
+<li><strong>පරිපථ සහ උපාංග දක්ෂතාව (&ldquo;circuit and device cleverness&rdquo;):</strong> එකම ප්‍රමාණයේ රේඛා තිබියදීත් වඩා ඝන ලෙස සංරචක ඇසුරුම් කිරීමේ සැලසුම් උපක්‍රම.</li>
+</ol>
+<p>තුන්වන සාධකය අවසන් වෙමින් පවතින බව ඔහු දුටුවේය; එබැවින් &ldquo;නව බෑවුම දශකය අවසානය වන විට, <strong>සෑම වසරකට වරක් නොව සෑම වසර දෙකකට වරක් දෙගුණ වීමකට</strong> ආසන්න විය හැකිය&rdquo; යැයි ලිවීය (ලිපියේ 3 වන පිටුව). අද &ldquo;Moore ගේ නීතිය&rdquo; ලෙස බොහෝ දෙනා උපුටා දක්වන &ldquo;වසර දෙකකට වරක්&rdquo; එන්නේ මෙතැනිනි.</p>
+<h3 id="5-දගණ-වම-ගණතය">5. දෙගුණ වීමේ ගණිතය<a class="anchor" href="#5-%e0%b6%af%e0%b6%9c%e0%b6%ab-%e0%b7%80%e0%b6%b8-%e0%b6%9c%e0%b6%ab%e0%b6%ad%e0%b6%ba">#</a></h3>
+<p>දෙගුණ වීමේ කාලය T වසර නම්, t වසරකට පසු වර්ධන සාධකය = <strong>2^(t/T)</strong>.</p>
+<table>
+	<thead>
+			<tr>
+					<th>T</th>
+					<th>වසරකට වර්ධනය (2^(1/T))</th>
+					<th>දශකයකට (2^(10/T))</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>වසර 1 (1965 ප්‍රකාශය)</td>
+					<td>×2.00 (+100%)</td>
+					<td>×1024</td>
+			</tr>
+			<tr>
+					<td>වසර 1.5</td>
+					<td>×1.59 (+59%)</td>
+					<td>×101.6</td>
+			</tr>
+			<tr>
+					<td>වසර 2 (1975 සංශෝධනය)</td>
+					<td>×1.414 (+41%)</td>
+					<td>×32</td>
+			</tr>
+	</tbody>
+</table>
+<p>&ldquo;වසරකට&rdquo; සහ &ldquo;වසර දෙකකට&rdquo; අතර වෙනස පමණක් දශකයකදී ×1024 සහ ×32 අතර වෙනසයි — 32 ගුණයක පරතරයක්. සෑම වසරකම වැඩි වීම 41% ක් වුවද, දශක පහකට පසු එය දැවැන්ත වන්නේ සංයුක්ත (compound) වන නිසාය.</p>
+<p><strong>සැබෑ චිප දෙකකින් පරීක්ෂා කරමු:</strong></p>
+<ul>
+<li><strong>Intel 4004 (1971):</strong> ට්‍රාන්සිස්ටර <strong>2,300</strong> (Intel ඉතිහාස කාලරේඛාව).</li>
+<li><strong>NVIDIA GA100 (A100 GPU, 2020):</strong> ට්‍රාන්සිස්ටර <strong>බිලියන 54.2</strong>, die වර්ගඵලය 826 mm² (NVIDIA A100 whitepaper, 14 වන පිටුව).</li>
+</ul>
+<ol>
+<li>අනුපාතය: 54,200,000,000 ÷ 2,300 ≈ <strong>23,565,217</strong> (මිලියන 23.6 ගුණයක්).</li>
+<li>එය දෙගුණ වීම් කීයක්ද? log₂(23,565,217) ≈ <strong>24.5</strong>.</li>
+<li>කාලය: 2020 − 1971 = වසර <strong>49</strong>.</li>
+<li>සාමාන්‍ය දෙගුණ වීමේ කාලය: 49 ÷ 24.5 ≈ <strong>වසර 2.0</strong>.</li>
+</ol>
+<p>පුදුම සහගත ලෙස Moore ගේ 1975 අනාවැකියට ගැළපේ. නමුත් <strong>අවවාදයක්:</strong> මෙය තනි-දත්ත-ලක්ෂ්‍ය යුගලයකි, සහ GA100 යනු ඉතා විශාල die එකක් (826 mm²) ඇති ඉහළම කෙළවරේ චිපයකි. එනම් Moore ගේ පළමු සාධකය (විශාල die) මෙම සංඛ්‍යාවේ ලොකු කොටසකි — &ldquo;ට්‍රාන්සිස්ටර කුඩා වීම පමණක්&rdquo; නොවේ.</p>
+<h3 id="6-පඩම-එක-slogan-එකක-යනතරණ-තනක">6. පාඩම: එක් slogan එකක්, යාන්ත්‍රණ තුනක්<a class="anchor" href="#6-%e0%b6%b4%e0%b6%a9%e0%b6%b8-%e0%b6%91%e0%b6%9a-slogan-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%ba%e0%b6%b1%e0%b6%ad%e0%b6%bb%e0%b6%ab-%e0%b6%ad%e0%b6%b1%e0%b6%9a">#</a></h3>
+<p>ඉහත &ldquo;මෙට්‍රික තුනක්, slogan එකක්&rdquo; කොටසට මෙම ගණනය කිරීම් සම්බන්ධ කරමු: ට්‍රාන්සිස්ටර <em>ගණන</em> (සාධක තුනේම එකතුව) තවමත් නැගේ; <em>clock speed</em> ඊට වෙනම නීතියක් නොවීය (Post 36 හි Dennard scaling එය පැහැදිලි කරයි); සහ ඉහත ආදර්ශයේ <em>අවම පිරිවැය</em> ලක්ෂ්‍යය ගමන් කරන්නේ දෝෂ අඩු වීම සහ නිෂ්පාදන ක්‍රම (Post 48 හි lithography) ලාභ වන තාක් පමණි. EUV වැනි මිල අධික මෙවලම් ආදර්ශයේ &ldquo;$0.01 per component&rdquo; කොටස බලාපොරොත්තු වූ පරිදි අඩු නොකරයි නම්, ඝනත්වය නැගුණත් පිරිවැය-වාසිය දුර්වල වේ.</p>
+<h3 id="7-පනසලන-අභයසය-මම-පටවට-lab-එකක-නත">7. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවට lab එකක් නැත)<a class="anchor" href="#7-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba-%e0%b6%b8%e0%b6%b8-%e0%b6%b4%e0%b6%a7%e0%b7%80%e0%b6%a7-lab-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%b1%e0%b6%ad">#</a></h3>
+<ol>
+<li>සෑම වසර 2කට වරක් දෙගුණ වන්නේ නම්, වසර 20කදී සාධකය කීයද? වසර 30කදී?</li>
+<li>1971 දී ට්‍රාන්සිස්ටර 2,300 සිට වසරකට දෙගුණ වුවහොත් 2001 වන විට කීයක් විය යුතුද? එය යථාර්ථවාදීද?</li>
+<li>ඉහත ආදර්ශයේ n = 300 සහ Y = e^(−n/1000) සඳහා ක්‍රියා කරන සංරචකයකට පිරිවැය ගණනය කරන්න (e^(−0.3) ≈ 0.741).</li>
+<li>චිපයක ට්‍රාන්සිස්ටර ගණන වසර 6කදී 8 ගුණයක් වූයේ නම්, දෙගුණ වීමේ කාලය කීයද?</li>
+</ol>
+<p>(පිළිතුරු: 1 → 2¹⁰ = 1024; 2¹⁵ = 32,768. 2 → 2,300 × 2³⁰ ≈ 2,300 × 1,073,741,824 ≈ 2.47 × 10¹² (ට්‍රිලියන 2.5) — නැත; 1975 සංශෝධනය අවශ්‍ය වූයේ එබැවිනි. 3 → (1 + 3) ÷ (300 × 0.741) = 4 ÷ 222.3 ≈ $0.0180. 4 → 8 = 2³, එනම් දෙගුණ වීම් 3ක් වසර 6කදී → වසර 2.)</p>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong> Gordon E. Moore, &ldquo;Cramming More Components onto Integrated Circuits&rdquo;, <em>Electronics</em>, පිටු 114–117, 1965 අප්‍රේල් 19; <em>Proceedings of the IEEE</em> 86(1), 1998 ජනවාරි, පිටු 82–85 හි නැවත මුද්‍රණය (PDF: <a href="https://www.cs.utexas.edu/~fussell/courses/cs352h/papers/moore.pdf">https://www.cs.utexas.edu/~fussell/courses/cs352h/papers/moore.pdf</a>, 2 වන පිටුව — අවම පිරිවැය, &ldquo;factor of two per year&rdquo;, 65,000). Gordon E. Moore, &ldquo;Progress in Digital Integrated Electronics&rdquo;, <em>IEDM Technical Digest</em>, 1975, පිටු 11–13 (PDF: <a href="https://www.lithoguru.com/scientist/CHE323/Moore1975.pdf">https://www.lithoguru.com/scientist/CHE323/Moore1975.pdf</a>, 3 වන පිටුව — &ldquo;circuit and device cleverness&rdquo;, &ldquo;doubling every two years&rdquo;). Intel 4004 ට්‍රාන්සිස්ටර 2,300: <a href="https://timeline.intel.com/1971/the-first-programmable-microprocessor%3A-the-4004">https://timeline.intel.com/1971/the-first-programmable-microprocessor%3A-the-4004</a>. GA100: NVIDIA A100 Tensor Core GPU Architecture whitepaper, 14 වන පිටුව (<a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf</a>).</p>
+<p><strong>පිටවීමේ දොර:</strong> Gordon E. Moore, &ldquo;Cramming more components onto integrated circuits&rdquo; (<em>Electronics</em>, April 19, 1965) — පසුව Moore&rsquo;s Law යන අන්වර්ථ නාමය ලැබුණු ආර්ථික සංරචක-ගණන් නිරීක්ෂණයේ ප්‍රාථමික ප්‍රකාශනය.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Moore%27s&#43;Law&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F50-moore-s-law%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F50-moore-s-law.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F50-moore-s-law.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/49-finfet-to-gaa/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>FinFET සිට GAA දක්වා</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/51-chiplets-advanced-packaging/" class="flex align-center">
+        <span>Chiplets සහ Advanced Packaging</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#moore-ඇතතටම-ලවව-කමකද">Moore ඇත්තටම ලිව්වේ කුමක්ද</a></li>
+    <li><a href="#ටරනසසටර-ගණන-තවමත-නග">ට්‍රාන්සිස්ටර ගණන: තවමත් නැගේ</a></li>
+    <li><a href="#clock-speed-වනස-බතතයක">Clock Speed: වෙනස් බිත්තියක්</a></li>
+    <li><a href="#cost-per-transistor-ඝරෂණය-පනන-තන">Cost Per Transistor: ඝර්ෂණය පෙනෙන තැන</a></li>
+    <li><a href="#මටරක-තනක-slogan-එකක">මෙට්‍රික තුනක්, slogan එකක්</a></li>
+    <li><a href="#ගඹරන-moore-ග-නතය-අකවලන--දගණ-වම-අවම-පරවය-සහ-සධක-තන">ගැඹුරින්: Moore ගේ නීතිය අංකවලින් — දෙගුණ වීම, &ldquo;අවම පිරිවැය&rdquo; සහ සාධක තුන</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-moore-ග-1965-ලපය-ඇතතටම-කව-කමකද">2. Moore ගේ 1965 ලිපිය ඇත්තටම කීවේ කුමක්ද?</a></li>
+        <li><a href="#3-අවම-පරවය-වකරය--සරල-ආදරශයක">3. &ldquo;අවම පිරිවැය&rdquo; වක්‍රය — සරල ආදර්ශයක්</a></li>
+        <li><a href="#4-1975-සශධනය-සධක-තනක-වසර-දකක">4. 1975 සංශෝධනය: සාධක තුනක්, වසර දෙකක්</a></li>
+        <li><a href="#5-දගණ-වම-ගණතය">5. දෙගුණ වීමේ ගණිතය</a></li>
+        <li><a href="#6-පඩම-එක-slogan-එකක-යනතරණ-තනක">6. පාඩම: එක් slogan එකක්, යාන්ත්‍රණ තුනක්</a></li>
+        <li><a href="#7-පනසලන-අභයසය-මම-පටවට-lab-එකක-නත">7. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවට lab එකක් නැත)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

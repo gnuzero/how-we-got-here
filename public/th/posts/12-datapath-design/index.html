@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Datapath แบบ single-cycle ทำให้ชิ้นส่วนมองเห็นได้ — และแสดงเหตุใดคล็อกของมันจึงถูกขนาดตามกรณีแย่สุด">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/12-datapath-design/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="การออกแบบ Datapath">
+	<meta property="og:description" content="Datapath แบบ single-cycle ทำให้ชิ้นส่วนมองเห็นได้ — และแสดงเหตุใดคล็อกของมันจึงถูกขนาดตามกรณีแย่สุด">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="การออกแบบ Datapath">
+	<meta itemprop="description" content="Datapath แบบ single-cycle ทำให้ชิ้นส่วนมองเห็นได้ — และแสดงเหตุใดคล็อกของมันจึงถูกขนาดตามกรณีแย่สุด">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1280">
+
+<title>การออกแบบ Datapath • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/12-datapath-design/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/12-datapath-design/" title="Datapath Design">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/12-datapath-design/" title="Datapath නිර්මාණය">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/12-datapath-design/" title="Datapath வடிவமைப்பு">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/12-datapath-design/" title="Proiectarea căii de date">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/12-datapath-design/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/12-datapath-design/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/12-datapath-design/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/12-datapath-design/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="active">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>การออกแบบ Datapath</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#หนงคำสง-หนงคลอก">หนึ่งคำสั่ง หนึ่งคล็อก</a></li>
+    <li><a href="#ตองมมกซตรงไหนบาง-สราง-datapath-จากคำสงทละตว">ต้องมีมักซ์ตรงไหนบ้าง: สร้าง datapath จากคำสั่งทีละตัว</a></li>
+    <li><a href="#อานเครองในแลบเปน-datapath">อ่านเครื่องในแล็บเป็น datapath</a></li>
+    <li><a href="#ขอจำกดทบงคบไปปไลน">ข้อจำกัดที่บังคับไปป์ไลน์</a>
+      <ul>
+        <li><a href="#คำนวณคาบคลอกจรง-ๆ">คำนวณคาบคล็อกจริง ๆ</a></li>
+      </ul>
+    </li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    การออกแบบ Datapath
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>ISA (บทที่ 11) คือสัญญา Datapath คือฮาร์ดแวร์ที่ทำให้มันเกิดขึ้น เวอร์ชันที่เรียบง่ายที่สุด — datapath แบบ <em>single-cycle</em> — จบคำสั่งทั้งคำสั่งต่อหนึ่งติ๊กคล็อก: fetch, decode, execute, write-back เสร็จ CPU จริงวันนี้ไม่ได้สร้างแบบนี้ แต่มันยังเป็นวิธีที่ชัดเจนที่สุดที่จะเห็นว่าชิ้นส่วนของเฟส 2 เชื่อมกันอย่างไร</p>
+<p>ก่อนลงรายละเอียด ขอวางคำศัพท์ให้ชัด <strong>datapath</strong> (ยังไม่พบศัพท์บัญญัติ บทนี้จะเรียกทับศัพท์ หรือแปลตามความว่า &ldquo;เส้นทางข้อมูล&rdquo;) คือชุดของหน่วยเก็บค่า (รีจิสเตอร์ หน่วยความจำ) กับวงจรคำนวณ และสายที่ต่อพวกมันเข้าด้วยกัน ส่วน <strong>หน่วยควบคุม</strong> (control unit, ศัพท์บัญญัติ) คือวงจรที่ตัดสินว่าในแต่ละคำสั่ง สายเส้นไหนจะถูกเลือกและหน่วยไหนจะถูกสั่งให้เขียน แยกสองส่วนนี้ออกจากกันแล้วงานออกแบบซีพียูจะกลายเป็นสองคำถาม: <em>ข้อมูลต้องไหลผ่านอะไรบ้าง</em> และ <em>ใครเป็นคนเปิดปิดประตู</em></p>
+<h2 id="หนงคำสง-หนงคลอก">หนึ่งคำสั่ง หนึ่งคล็อก<a class="anchor" href="#%e0%b8%ab%e0%b8%99%e0%b8%87%e0%b8%84%e0%b8%b3%e0%b8%aa%e0%b8%87-%e0%b8%ab%e0%b8%99%e0%b8%87%e0%b8%84%e0%b8%a5%e0%b8%ad%e0%b8%81">#</a></h2>
+<p>ชิ้นส่วน: <strong>program counter</strong> (flip-flop จากบทที่ 9) ที่เก็บที่อยู่คำสั่งถัดไป; <strong>instruction memory</strong> ที่ถูกดัชนีด้วย PC นั้น; <strong>register file</strong> สำหรับตัวถูกดำเนินการและผล; <strong>ALU</strong> (บทที่ 8) สำหรับการดำเนินการ; <strong>data memory</strong> สำหรับ load และ store; และ <strong>control unit</strong> ที่อ่าน opcode แล้วขับทุก mux และ enable</p>
+<p>นิยามทีละชิ้น:</p>
+<ul>
+<li><strong>ตัวนับระบุตำแหน่งคำสั่ง</strong> (program counter: PC, ศัพท์บัญญัติ) — รีจิสเตอร์ที่ทำจาก D flip-flop เก็บที่อยู่ของคำสั่งที่จะทำ ทุกขอบคล็อกมันจะรับค่าใหม่ ปกติคือ &ldquo;ที่อยู่เดิม + ขนาดหนึ่งคำสั่ง&rdquo; เว้นแต่คำสั่งเป็นการกระโดด</li>
+<li><strong>หน่วยความจำคำสั่ง</strong> (instruction memory) — ป้อนที่อยู่เข้าไป แล้วหลังช่วง <em>เวลาเข้าถึง</em> (access time) คำสั่งจะปรากฏที่ขาออก ในแบบจำลองนี้การ <em>อ่าน</em> หน่วยความจำทำตัวเหมือนตรรกะเชิงผสม คือไม่ต้องรอขอบคล็อก</li>
+<li><strong>เรจิสเตอร์คำสั่งเครื่อง</strong> (instruction register: IR, ศัพท์บัญญัติ) — ที่พักของคำสั่งที่เพิ่งดึงมา ในแล็บด้านล่างมีช่อง IR ให้ดู</li>
+<li><strong>แฟ้มเรจิสเตอร์</strong> (register file; ยังไม่พบศัพท์บัญญัติ) — กลุ่มเรจิสเตอร์ (register, ศัพท์บัญญัติ &ldquo;เรจิสเตอร์&rdquo;) ที่มีพอร์ตอ่านสองพอร์ตกับพอร์ตเขียนหนึ่งพอร์ต อ่านได้สองตัวพร้อมกันแบบเชิงผสม แต่เขียนได้เฉพาะที่ขอบคล็อกเมื่อสัญญาณอนุญาตเขียน (write enable) เป็น 1</li>
+<li><strong>ALU</strong> (arithmetic logic unit) — วงจรบวก ลบ AND OR จากบทที่ 8 ศัพท์บัญญัติมีคำว่า <strong>หน่วยคำนวณ</strong> (arithmetic unit) แต่ยังไม่พบศัพท์บัญญัติของชื่อเต็ม บทนี้จึงเรียก ALU</li>
+<li><strong>หน่วยความจำข้อมูล</strong> (data memory) — ที่เก็บข้อมูลที่ load อ่านและ store เขียน</li>
+<li><strong>อุปกรณ์สหสัญญาณ</strong> (multiplexer, ศัพท์บัญญัติ; เรียกสั้นว่า &ldquo;มักซ์&rdquo;) — สวิตช์ดิจิทัลที่เลือกอินพุตหนึ่งในหลายตัวส่งออกไป ตามสัญญาณเลือก (select) ทุกจุดที่ข้อมูล &ldquo;มาได้จากสองทาง&rdquo; ต้องมีมักซ์หนึ่งตัว และสัญญาณเลือกของมักซ์นั่นเองคือสิ่งที่หน่วยควบคุมผลิต</li>
+<li><strong>รหัสดำเนินการ</strong> (operation code หรือ opcode, ศัพท์บัญญัติ) — ส่วนของคำสั่งที่บอกว่าจะทำอะไร ส่วนที่เหลือคือ <strong>ตัวถูกดำเนินการ</strong> (operand, ศัพท์บัญญัติ) หรือที่อยู่ของมัน</li>
+</ul>
+<p>เอา ADD PC ดัชนี instruction memory Control unit เห็น ADD แบบ register-register รีจิสเตอร์ต้นทางสองตัวป้อน ALU; ผลของ ALU เขียนปลายทาง; PC ก้าวไป Fetch, decode, อ่านรีจิสเตอร์, ALU, write-back, อัปเดต PC — ทั้งหมดภายใน <em>หนึ่ง</em> คาบคล็อก</p>
+<p>ลำดับขั้นนี้คือ <strong>รอบคำสั่งเครื่อง</strong> (instruction cycle, ศัพท์บัญญัติ): <strong>การดึงคำสั่ง</strong> (fetch; ศัพท์บัญญัติคือ &ldquo;ไปนำมา&rdquo;) → <strong>ถอดรหัส</strong> (decode, ศัพท์บัญญัติ) → ทำงาน (execute) → เขียนผลกลับ (write-back) คำถามสำคัญคือ ถ้าทั้งหมดเกิดใน <em>คาบเดียว</em> แล้ว &ldquo;ลำดับ&rdquo; มาจากไหน คำตอบคือไม่มีใครสั่งลำดับ ลำดับเป็นผลของ <em>ฟิสิกส์ของสาย</em>: ทันทีที่ PC เปลี่ยนที่ขอบคล็อก สัญญาณก็เริ่มวิ่งผ่านหน่วยความจำคำสั่ง เข้าตัวถอดรหัส เข้าแฟ้มเรจิสเตอร์ เข้า ALU เหมือนระลอกคลื่นที่ไหลผ่านตรรกะเชิงผสม ระหว่างทาง ค่าที่ปลายทางยังผิดอยู่ชั่วคราว แต่ไม่มีใครสนใจ เพราะไม่มีอะไร <em>ถูกเขียน</em> จนกว่าขอบคล็อกถัดไปจะมาถึง ณ ขอบนั้น PC ตัวใหม่ เรจิสเตอร์ปลายทาง และ (ถ้าเป็น store) ช่องหน่วยความจำ ถูกเขียน <em>พร้อมกัน</em> นี่คือหลักการของวงจรประสานเวลาในบทที่ 9 ทั้งดุ้น: สถานะทั้งหมดอยู่ในหน่วยเก็บ งานทั้งหมดอยู่ในตรรกะระหว่างมัน และขอบคล็อกคือจังหวะ &ldquo;บันทึก&rdquo;</p>
+<h2 id="ตองมมกซตรงไหนบาง-สราง-datapath-จากคำสงทละตว">ต้องมีมักซ์ตรงไหนบ้าง: สร้าง datapath จากคำสั่งทีละตัว<a class="anchor" href="#%e0%b8%95%e0%b8%ad%e0%b8%87%e0%b8%a1%e0%b8%a1%e0%b8%81%e0%b8%8b%e0%b8%95%e0%b8%a3%e0%b8%87%e0%b9%84%e0%b8%ab%e0%b8%99%e0%b8%9a%e0%b8%b2%e0%b8%87-%e0%b8%aa%e0%b8%a3%e0%b8%b2%e0%b8%87-datapath-%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%84%e0%b8%b3%e0%b8%aa%e0%b8%87%e0%b8%97%e0%b8%a5%e0%b8%b0%e0%b8%95%e0%b8%a7">#</a></h2>
+<p>วิธีที่ตำราสอนกัน (ตัวอย่างในสไลด์ของ Stephen Edwards ที่อ้างด้านล่าง) คือเริ่มจากคำสั่งหนึ่ง วาดเส้นทางของมัน แล้วเพิ่มคำสั่งถัดไป ทุกครั้งที่คำสั่งใหม่ต้องการให้ข้อมูลมาจาก <em>ที่อื่น</em> ก็เติมมักซ์ ลองไล่ด้วย ISA แบบ MIPS สามคำสั่ง</p>
+<ol>
+<li><strong><code>lw</code> (load word)</strong> — ต้องการ: อ่านเรจิสเตอร์ฐาน บวกค่าคงที่ที่ฝังในคำสั่ง ได้ที่อยู่ อ่านหน่วยความจำข้อมูล เขียนผลลงเรจิสเตอร์ ค่าคงที่ในคำสั่งเรียกว่า <strong>ค่าทันที</strong> (immediate; ยังไม่พบศัพท์บัญญัติ) มันกว้าง 16 บิตแต่ ALU กว้าง 32 บิต จึงต้องมีวงจร <em>ขยายเครื่องหมาย</em> (sign extension) ที่ก๊อปบิตบนสุดไปเติมข้างหน้า เพื่อให้ −4 ยังเป็น −4</li>
+<li><strong><code>add</code> (R-type)</strong> — ALU ต้องรับตัวถูกดำเนินการตัวที่สองจาก <em>เรจิสเตอร์</em> ไม่ใช่ค่าทันที เกิดจุดที่ข้อมูลมาได้สองทาง → เติมมักซ์หน้า ALU (สไลด์เรียกสัญญาณเลือกว่า <code>ALUSrc</code>) และผลที่จะเขียนกลับตอนนี้มาจาก ALU ไม่ใช่หน่วยความจำ → เติมมักซ์ก่อนพอร์ตเขียน (<code>MemtoReg</code>)</li>
+<li><strong><code>beq</code> (branch if equal)</strong> — PC ตัวถัดไปมาได้จาก PC+4 หรือเป้าหมายการกระโดด → เติมมักซ์หน้า PC (<code>PCSrc</code>) ALU ลบสองเรจิสเตอร์ แล้วใช้สัญญาณ &ldquo;ผลเป็นศูนย์&rdquo; ตัดสินว่ากระโดดหรือไม่</li>
+</ol>
+<p>พอครบ หน่วยควบคุมก็เป็นแค่ <strong>ตารางความจริง</strong> ที่รับ opcode แล้วคายสัญญาณออกมา ตัวอย่างสี่แถวจากตารางตัวถอดรหัสหลักในสไลด์ของ Edwards (1 = เปิด, 0 = ปิด, – = ไม่สน):</p>
+<table>
+	<thead>
+			<tr>
+					<th>คำสั่ง</th>
+					<th>RegWrite</th>
+					<th>ALUSrc</th>
+					<th>MemWrite</th>
+					<th>MemtoReg</th>
+					<th>Branch</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>R-type (<code>add</code>)</td>
+					<td>1</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td><code>lw</code></td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td><code>sw</code></td>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+					<td>–</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td><code>beq</code></td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>–</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<p>อ่านตารางนี้เป็นภาษาคน: <code>sw</code> เป็นคำสั่งเดียวที่เขียนหน่วยความจำ; <code>sw</code> กับ <code>beq</code> ไม่เขียนเรจิสเตอร์ ดังนั้นมักซ์ <code>MemtoReg</code> เลือกอะไรก็ได้ (ค่า &ldquo;ไม่สน&rdquo; เปิดโอกาสให้ย่อวงจรควบคุมให้เล็กลง); <code>lw</code> กับ <code>sw</code> ใช้ค่าทันทีเป็นตัวถูกดำเนินการตัวที่สองของ ALU เพราะต้องคำนวณที่อยู่ นี่คือทั้งหมดที่ &ldquo;หน่วยควบคุม&rdquo; ของ datapath แบบ single-cycle เป็น — วงจรเชิงผสมล้วน ๆ ไม่มีสถานะของตัวเอง</p>
+<p><strong>ข้อสังเกตที่ตามมาทันที:</strong> <code>lw</code> ต้องอ่าน <em>คำสั่ง</em> และอ่าน <em>ข้อมูล</em> ภายในคาบเดียวกัน หน่วยความจำพอร์ตเดียวทำสองอย่างพร้อมกันไม่ได้ datapath แบบ single-cycle จึงวาดหน่วยความจำคำสั่งกับหน่วยความจำข้อมูลแยกกันเสมอ (ในซีพียูจริง บทบาทนี้ตกเป็นของแคชคำสั่งกับแคชข้อมูลที่แยกกันในบทที่ 15)</p>
+<h2 id="อานเครองในแลบเปน-datapath">อ่านเครื่องในแล็บเป็น datapath<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%ad%e0%b8%87%e0%b9%83%e0%b8%99%e0%b9%81%e0%b8%a5%e0%b8%9a%e0%b9%80%e0%b8%9b%e0%b8%99-datapath">#</a></h2>
+<p>แล็บ mini-CPU ด้านล่างเป็น ISA ของเล่นขนาด 8 บิต: opcode 4 บิตบน ตัวถูกดำเนินการ 4 บิตล่าง หน่วยความจำ 16 ไบต์ เรจิสเตอร์ A ธงทด (carry) กับธงศูนย์ (zero) ผู้เขียนเปิดโค้ดของแล็บ (<code>static/labs/mini-cpu/index.html</code>) ดูแล้ว ฟังก์ชัน <code>step()</code> ของมันทำ fetch, decode, execute ครบ <em>ทั้งคำสั่งในการกดหนึ่งครั้ง</em> — แปลว่าแต่ละ Step คือหนึ่งคาบคล็อกของเครื่อง single-cycle พอดี</p>
+<p><strong>ถอดรหัสด้วยมือ.</strong> โปรแกรมตั้งต้นในแล็บแปลงเป็นไบต์ได้ดังนี้ (opcode × 16 + ตัวถูกดำเนินการ): <code>LDI 5</code> = 0x55, <code>STA 14</code> = 0x4E, <code>LDI 8</code> = 0x58, <code>ADD 14</code> = 0x2E, <code>STA 15</code> = 0x4F, <code>LDA 15</code> = 0x1F, <code>OUT</code> = 0xE0, <code>HLT</code> = 0xF0 ลองกด Step ครั้งที่สี่แล้วดูช่อง IR: ควรเห็น 0x2E ซึ่งตัวถอดรหัสผ่าออกเป็น opcode 2 (ADD) กับที่อยู่ 14 — การ &ldquo;ถอดรหัส&rdquo; ในเครื่องนี้มีแค่ตัดสายแปดเส้นเป็นสองกลุ่ม</p>
+<p><strong>สร้างตารางควบคุมของ mini-CPU.</strong> ไล่จากโค้ดของแล็บ datapath ของมันต้องมีจุดเลือกสามจุด: (ก) ค่าที่จะเขียนลง A มาจาก ALU, จากหน่วยความจำ หรือจากค่าทันที → มักซ์ 3 ทาง; (ข) PC ตัวถัดไปมาจาก PC+1 หรือจากตัวถูกดำเนินการ → มักซ์ 2 ทาง; (ค) ALU บวกหรือลบ ตารางควบคุมที่ได้ (ผู้เขียนสร้างเองจากโค้ด):</p>
+<table>
+	<thead>
+			<tr>
+					<th>คำสั่ง</th>
+					<th>เขียน A?</th>
+					<th>A มาจาก</th>
+					<th>เขียนหน่วยความจำ?</th>
+					<th>PC ถัดไป</th>
+					<th>อัปเดตธง</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>LDA a</code></td>
+					<td>ใช่</td>
+					<td>หน่วยความจำ[a]</td>
+					<td>ไม่</td>
+					<td>PC+1</td>
+					<td>ศูนย์ เท่านั้น</td>
+			</tr>
+			<tr>
+					<td><code>ADD a</code> / <code>SUB a</code></td>
+					<td>ใช่</td>
+					<td>ALU (บวก/ลบ)</td>
+					<td>ไม่</td>
+					<td>PC+1</td>
+					<td>ทด และ ศูนย์</td>
+			</tr>
+			<tr>
+					<td><code>STA a</code></td>
+					<td>ไม่</td>
+					<td>–</td>
+					<td>ใช่</td>
+					<td>PC+1</td>
+					<td>ไม่</td>
+			</tr>
+			<tr>
+					<td><code>LDI n</code></td>
+					<td>ใช่</td>
+					<td>ค่าทันที n</td>
+					<td>ไม่</td>
+					<td>PC+1</td>
+					<td>ศูนย์ เท่านั้น</td>
+			</tr>
+			<tr>
+					<td><code>JMP a</code></td>
+					<td>ไม่</td>
+					<td>–</td>
+					<td>ไม่</td>
+					<td>a</td>
+					<td>ไม่</td>
+			</tr>
+			<tr>
+					<td><code>JZ a</code> / <code>JC a</code></td>
+					<td>ไม่</td>
+					<td>–</td>
+					<td>ไม่</td>
+					<td>a ถ้าธงเป็น 1 ไม่งั้น PC+1</td>
+					<td>ไม่</td>
+			</tr>
+			<tr>
+					<td><code>OUT</code></td>
+					<td>ไม่ (เขียนเรจิสเตอร์เอาต์พุต)</td>
+					<td>–</td>
+					<td>ไม่</td>
+					<td>PC+1</td>
+					<td>ไม่</td>
+			</tr>
+	</tbody>
+</table>
+<p>รายละเอียดเล็ก ๆ ที่โค้ดเปิดเผย: ทั้ง <code>LDA</code> และ <code>LDI</code> อัปเดตธงศูนย์ (ศูนย์เมื่อ A เป็น 0) ส่วน <code>STA</code> กับคำสั่งกระโดดไม่แตะธง — นั่นเป็นการตัดสินใจออกแบบของแล็บนี้ ไม่ใช่กฎสากล และเป็นตัวอย่างดีว่า &ldquo;ISA คือสัญญา&rdquo; หมายถึงอะไร: โปรแกรมเมอร์ที่เขียน <code>LDA</code> แล้วตามด้วย <code>JZ</code> ต้องรู้ว่าธงสะท้อนค่าที่เพิ่งโหลด ไม่ใช่ค่าจากคำสั่ง <em>ก่อนหน้า</em></p>
+<p><strong>ธงคือสถานะ.</strong> ลองพิมพ์โปรแกรมนับถอยหลังนี้ลงแล็บ แล้วกด Assemble:</p>
+<pre tabindex="0"><code>LDI 1
+STA 15
+LDI 3
+OUT
+SUB 15
+JZ 7
+JMP 3
+OUT
+HLT</code></pre><p>ผู้เขียนจำลองโปรแกรมนี้ด้วยสคริปต์ที่ทำตามกฎเดียวกับโค้ดของแล็บ ผลที่ควรเห็น: เอาต์พุตเป็น 3, 2, 1, 0 ตามลำดับ และเครื่องหยุดหลัง <strong>16</strong> Step (3 คำสั่งตั้งค่า + รอบ A = 3 สี่คำสั่ง + รอบ A = 2 สี่คำสั่ง + รอบ A = 1 สามคำสั่ง เพราะ <code>JZ</code> กระโดดไปเลย + <code>OUT</code> กับ <code>HLT</code> อีกสอง = 16) สังเกตว่า <code>JZ</code> ตัดสินจากธงศูนย์ที่ <code>SUB</code> เขียนไว้ใน <em>คาบก่อนหน้า</em> ธงจึงต้องเป็น flip-flop ที่อยู่ข้ามคาบ เหมือน PC และ A</p>
+<p><strong>ข้อจำกัดที่แล็บซ่อนไว้.</strong> mini-CPU มีหน่วยความจำก้อนเดียว 16 ไบต์ ใช้ทั้งเก็บคำสั่งและข้อมูล แต่ <code>ADD 14</code> ต้องอ่านคำสั่งที่ PC <em>และ</em> อ่านข้อมูลที่ 14 ในคาบเดียว ซอฟต์แวร์จำลองทำได้สบาย ฮาร์ดแวร์จริงต้องมีหน่วยความจำสองพอร์ต หรือแยกเป็นสองก้อน ตามเหตุผลในหัวข้อก่อน อีกเรื่องหนึ่ง: ถ้าโปรแกรมยาวถึงที่อยู่ 14 คำสั่ง <code>STA 14</code> จะเขียนทับโค้ดของตัวเอง — นี่คือราคาของการเก็บคำสั่งและข้อมูลในที่เดียว (แนวคิดโปรแกรมที่เก็บในหน่วยความจำ จากบทก่อน ๆ)</p>
+<p><strong>ลองตอนนี้.</strong> กด Step ใน mini-CPU ด้านล่างตามโปรแกรมแนะนำ แต่ละ Step คือชิ้นส่วนเหล่านั้นแบบช้า ๆ — fetch เข้า IR, decode opcode, execute เข้า A และหน่วยความจำ — เส้นทางเดียวกับที่บทนี้เพิ่งตั้งชื่อ เล็กพอจะดูได้</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=th"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="แล็บเชิงโต้ตอบ: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=th" target="_blank" rel="noopener">เปิดแล็บในแท็บใหม่ ↗</a>
+  </div>
+</div>
+
+<h2 id="ขอจำกดทบงคบไปปไลน">ข้อจำกัดที่บังคับไปป์ไลน์<a class="anchor" href="#%e0%b8%82%e0%b8%ad%e0%b8%88%e0%b8%b3%e0%b8%81%e0%b8%94%e0%b8%97%e0%b8%9a%e0%b8%87%e0%b8%84%e0%b8%9a%e0%b9%84%e0%b8%9b%e0%b8%9b%e0%b9%84%e0%b8%a5%e0%b8%99">#</a></h2>
+<p>คาบคล็อกนั้นต้องยาวพอสำหรับเส้นทางเต็มของคำสั่งที่ <em>ช้าที่สุด</em> — แม้คำสั่งที่ไม่เคยแตะ data memory ดังนั้นทุก ADD จึงรันด้วยความเร็วของกรณีแย่สุด ปริมาณงานนั่งพื้น</p>
+<h3 id="คำนวณคาบคลอกจรง-ๆ">คำนวณคาบคล็อกจริง ๆ<a class="anchor" href="#%e0%b8%84%e0%b8%b3%e0%b8%99%e0%b8%a7%e0%b8%93%e0%b8%84%e0%b8%b2%e0%b8%9a%e0%b8%84%e0%b8%a5%e0%b8%ad%e0%b8%81%e0%b8%88%e0%b8%a3%e0%b8%87-%e0%b9%86">#</a></h3>
+<p>จากบทที่ 9 เงื่อนไขของทุกเส้นทางจาก flip-flop ถึง flip-flop คือ <strong>T ≥ t_cq + t_pd + t_su</strong> ใน datapath แบบ single-cycle &ldquo;เส้นทาง&rdquo; หนึ่งเส้นเริ่มที่ PC และจบที่หน่วยเก็บที่คำสั่งนั้นเขียน เส้นทางที่ยาวที่สุดในวงจรเรียกว่า <strong>เส้นทางวิกฤต</strong> (critical path; ยังไม่พบศัพท์บัญญัติในสาขาคอมพิวเตอร์) และมันเป็นตัวกำหนด <strong>เวลาครบรอบ</strong> (cycle time, ศัพท์บัญญัติ) ของทั้งเครื่อง</p>
+<p>ใช้ค่าความหน่วง <em>ตัวอย่าง</em> จากสไลด์ของ Edwards (เป็นตัวเลขสมมุติเพื่อการสอน ไม่ใช่ชิปจริง): clock-to-Q ของ PC 30 ps, setup ของรีจิสเตอร์ 20 ps, มักซ์ 25 ps, ALU 200 ps, อ่านหน่วยความจำ 250 ps, อ่านแฟ้มเรจิสเตอร์ 150 ps, setup ของแฟ้มเรจิสเตอร์ 20 ps</p>
+<p><strong><code>lw</code> — เส้นทางยาวที่สุด:</strong> PC (30) → หน่วยความจำคำสั่ง (250) → อ่านเรจิสเตอร์ฐาน (150) → ALU คำนวณที่อยู่ (200) → หน่วยความจำข้อมูล (250) → มักซ์ <code>MemtoReg</code> (25) → setup ของแฟ้มเรจิสเตอร์ (20) รวม 30 + 250 + 150 + 200 + 250 + 25 + 20 = <strong>925 ps</strong> ตรงกับที่สไลด์คำนวณไว้ ความถี่สูงสุดจึงเป็น 1/925 ps ≈ <strong>1.08 GHz</strong> (ค่าทันทีวิ่งผ่านวงจรขยายเครื่องหมายและมักซ์ <em>ขนาน</em> กับการอ่านเรจิสเตอร์ จึงไม่ต่อความยาว)</p>
+<p>ต่อไปนี้เป็นการคำนวณของผู้เขียนเองด้วยค่าชุดเดียวกัน (สมมุติเพิ่มว่าการเขียนหน่วยความจำข้อมูลต้องการ setup 20 ps เท่ากับรีจิสเตอร์):</p>
+<table>
+	<thead>
+			<tr>
+					<th>คำสั่ง</th>
+					<th>เส้นทาง</th>
+					<th>รวม</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>lw</code></td>
+					<td>30 + 250 + 150 + 200 + 250 + 25 + 20</td>
+					<td>925 ps</td>
+			</tr>
+			<tr>
+					<td>R-type (<code>add</code>)</td>
+					<td>30 + 250 + 150 + 25 (มักซ์ <code>ALUSrc</code>) + 200 + 25 + 20</td>
+					<td>700 ps</td>
+			</tr>
+			<tr>
+					<td><code>beq</code></td>
+					<td>30 + 250 + 150 + 25 + 200 + 25 (มักซ์ <code>PCSrc</code>) + 20</td>
+					<td>700 ps</td>
+			</tr>
+			<tr>
+					<td><code>sw</code></td>
+					<td>30 + 250 + 150 + 200 + 20</td>
+					<td>650 ps</td>
+			</tr>
+			<tr>
+					<td><code>j</code></td>
+					<td>30 + 250 + 25 + 20</td>
+					<td>325 ps</td>
+			</tr>
+	</tbody>
+</table>
+<p>แต่คล็อกมีคาบเดียว มันต้องเป็น 925 ps สำหรับ <em>ทุก</em> คำสั่ง <code>add</code> ที่เสร็จจริงใน 700 ps นั่งรอเปล่า 225 ps; <code>j</code> นั่งรอ 600 ps</p>
+<p><strong>สมการเหล็กของสมรรถนะ.</strong> เวลาทำงาน = จำนวนคำสั่ง × รอบต่อคำสั่ง (CPI) × คาบคล็อก เครื่อง single-cycle มี CPI = 1 พอดี งาน 100,000 ล้านคำสั่งจึงใช้ 100 × 10⁹ × 1 × 925 ps = <strong>92.5 วินาที</strong> (ตรงกับตัวอย่างในสไลด์)</p>
+<p><strong>ถ้าคล็อกยาวไม่เท่ากันได้ล่ะ?</strong> สมมุติส่วนผสมคำสั่ง <em>ตัวอย่าง</em> (ตัวเลขประกอบการอธิบาย ไม่ได้วัดจากโปรแกรมจริง): <code>lw</code> 25%, <code>sw</code> 10%, R-type 45%, <code>beq</code> 15%, <code>j</code> 5% เวลาเฉลี่ยต่อคำสั่งถ้าแต่ละคำสั่งได้คาบของตัวเองคือ 0.25×925 + 0.10×650 + 0.45×700 + 0.15×700 + 0.05×325 = 231.25 + 65 + 315 + 105 + 16.25 = <strong>732.5 ps</strong> เร็วกว่า 925 ps แค่ประมาณ <strong>1.26 เท่า</strong> — และการสร้างคล็อกที่ยืดหดได้ทุกคำสั่งนั้นยุ่งยากมาก ข้อสรุป: ความสูญเปล่าจากการ &ldquo;รอคำสั่งช้าสุด&rdquo; มีจริง แต่ไม่ใช่ความสูญเปล่าที่ใหญ่ที่สุด ความสูญเปล่าที่ใหญ่กว่าคือ <em>ตลอด 925 ps นั้น แต่ละชิ้นส่วนทำงานแค่ช่วงสั้น ๆ แล้วนั่งว่าง</em> — หน่วยความจำคำสั่งทำงาน 250 ps แรกแล้วก็ไม่มีอะไรทำอีก 675 ps</p>
+<p>ไปป์ไลน์ตอบข้อจำกัดนั้น: ตัดเส้นทางยาวเป็นขั้น คล็อกแต่ละขั้นตามกรณีแย่สุด <em>ของมัน</em> และให้คำสั่งต่างกันครองขั้นต่างกันพร้อมกัน ISA เดิม งานเสร็จต่อวินาทีมากขึ้นมาก นั่นคือบทถัดไป — และแนวคิดกลางของไมโครสถาปัตยกรรมคลาสสิก</p>
+<p><strong>ตัวเลขชิมลาง.</strong> ถ้าตัดเป็นห้าขั้น (ดึงคำสั่ง, อ่านเรจิสเตอร์, ALU, หน่วยความจำ, เขียนกลับ) ขั้นที่ช้าสุดคือขั้นหน่วยความจำ 250 ps และทุกขั้นต้องจ่ายค่ารีจิสเตอร์กั้นขั้น clock-to-Q + setup = 30 + 20 = 50 ps คาบคล็อกจึงเหลือราว 300 ps ในกรณีอุดมคติที่เสร็จหนึ่งคำสั่งทุกคาบ <strong>ปริมาณงาน</strong> (throughput, ศัพท์บัญญัติ) จะเพิ่มขึ้น 925/300 ≈ <strong>3.1 เท่า</strong> ขณะที่ <strong>เวลาแฝง</strong> (latency, ศัพท์บัญญัติ) ของคำสั่งเดี่ยวกลับ <em>ยาวขึ้น</em> เป็น 5 × 300 = 1,500 ps สังเกตด้วยว่า 3.1 น้อยกว่า 5 เพราะขั้นต่าง ๆ ยาวไม่เท่ากันและค่ารีจิสเตอร์กั้นขั้นกินส่วนแบ่ง ส่วนเหตุที่ของจริงได้ต่ำกว่า 3.1 อีก — คำสั่งที่พึ่งผลของกันและกัน การกระโดด — คือเรื่อง hazard ใน <strong>การทำงานแบบสายท่อ</strong> (pipeline, ศัพท์บัญญัติ) ของบทที่ 13</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>จันทนา จันทราพรชัย, <em>สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ</em></li>
+<li>ผศ.ดร. ปัทมา ลงกานี, <em>สถาปัตยกรรมคอมพิวเตอร์</em></li>
+<li>รศ.ดร.เกริก ภิรมย์โสภา, <em>สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์</em></li>
+<li>Stephen A. Edwards, &ldquo;Fundamentals of Computer Systems: A Single Cycle MIPS Processor&rdquo; (สไลด์ Columbia University, Fall 2011; สไลด์ระบุว่าภาพประกอบเป็นลิขสิทธิ์ของ Elsevier ปี 2007) — การสร้าง datapath ทีละคำสั่ง ตารางตัวถอดรหัสหลัก ค่าความหน่วงตัวอย่าง และการคำนวณคาบ 925 ps: <a href="https://www.cs.columbia.edu/~sedwards/classes/2011/3827-fall/mips-uarch.pdf">https://www.cs.columbia.edu/~sedwards/classes/2011/3827-fall/mips-uarch.pdf</a></li>
+<li>ซอร์สโค้ดของแล็บ mini-CPU ในรีโปของหนังสือเล่มนี้ (<code>static/labs/mini-cpu/index.html</code>) — ที่มาของตารางควบคุม mini-CPU ข้างต้น</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%81%E0%B8%9A%E0%B8%9A&#43;Datapath&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F12-datapath-design%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F12-datapath-design.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F12-datapath-design.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/11-instruction-sets/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>ชุดคำสั่ง</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/13-pipelining/" class="flex align-center">
+        <span>ไปป์ไลน์</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#หนงคำสง-หนงคลอก">หนึ่งคำสั่ง หนึ่งคล็อก</a></li>
+    <li><a href="#ตองมมกซตรงไหนบาง-สราง-datapath-จากคำสงทละตว">ต้องมีมักซ์ตรงไหนบ้าง: สร้าง datapath จากคำสั่งทีละตัว</a></li>
+    <li><a href="#อานเครองในแลบเปน-datapath">อ่านเครื่องในแล็บเป็น datapath</a></li>
+    <li><a href="#ขอจำกดทบงคบไปปไลน">ข้อจำกัดที่บังคับไปป์ไลน์</a>
+      <ul>
+        <li><a href="#คำนวณคาบคลอกจรง-ๆ">คำนวณคาบคล็อกจริง ๆ</a></li>
+      </ul>
+    </li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

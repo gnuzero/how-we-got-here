@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- NOINDEX-PRELAUNCH: remove at announcement -->
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<title>Virtual Breadboard Lab</title>
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --border:#30363d; --text:#c9d1d9; --accent:#58a6ff; }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'SF Mono', Consolas, monospace;
+    margin: 0; padding: 16px; }
+  h1 { font-size: 16px; color: var(--accent); margin: 0 0 4px; }
+  .sub { color: #8b949e; font-size: 12px; margin-bottom: 12px; }
+  .toolbar { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  a.btn, button { background: #21262d; color: var(--text); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 12px;
+    text-decoration: none; display: inline-block; }
+  a.btn:hover, button:hover { background: #30363d; }
+  iframe { width: 100%; height: 640px; border: 1px solid var(--border); border-radius: 6px; background: #fff; }
+  .note { font-size: 13px; color: var(--text); margin-top: 10px; line-height: 1.55; }
+  .note .meta { font-size: 11px; color: #8b949e; margin-top: 8px; }
+  .note code { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<h1>Virtual Breadboard Lab</h1>
+<div class="sub">Interactive circuit simulator — a real gate on load, not a blank canvas</div>
+
+<div class="toolbar">
+  <a class="btn" href="https://www.falstad.com/circuit/circuitjs.html?cct=%24%201%205.0E-6%2010.200277308305085%2050%205.0%0A150%20208%20240%20320%20240%200%202%200%0AL%20208%20192%20128%20192%200%20true%20false%0AL%20208%20288%20128%20288%200%20true%20false%0Aw%20208%20192%20208%20224%200%0Aw%20208%20288%20208%20256%200%0AM%20352%20240%20416%20240%200%0Aw%20320%20240%20352%20240%200%0A" target="_blank" rel="noopener">Open AND gate in new tab ↗</a>
+  <a class="btn" href="https://wokwi.com/projects/new/blank" target="_blank" rel="noopener">Wokwi (physical breadboard + real MCU) ↗</a>
+</div>
+
+<iframe src="https://www.falstad.com/circuit/circuitjs.html?cct=%24%201%205.0E-6%2010.200277308305085%2050%205.0%0A150%20208%20240%20320%20240%200%202%200%0AL%20208%20192%20128%20192%200%20true%20false%0AL%20208%20288%20128%20288%200%20true%20false%0Aw%20208%20192%20208%20224%200%0Aw%20208%20288%20208%20256%200%0AM%20352%20240%20416%20240%200%0Aw%20320%20240%20352%20240%200%0A" loading="lazy" title="Circuit simulator — AND gate"></iframe>
+
+<div class="note">
+  You are looking at an <strong>AND gate</strong>: the output is high only when both inputs are high.
+  Click the two inputs on the left to toggle them, and watch the output on the right.
+  <div class="meta">Circuit data is embedded in the URL (<code>cct=</code>) — not loaded from Falstad’s removed <code>/circuits/and.txt</code>. Simulator UI still needs falstad.com. Local copy of the circuit: <code>and.txt</code> beside this page.</div>
+</div>
+
+</body>
+</html>

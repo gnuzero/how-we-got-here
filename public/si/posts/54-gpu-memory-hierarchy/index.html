@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="දහස් ගණන් threads DDR ට වඩා bandwidth බල කරයි — HBM මතකය compute අසල stack කරයි">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/54-gpu-memory-hierarchy/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="GPU මතක ධුරාවලිය">
+	<meta property="og:description" content="දහස් ගණන් threads DDR ට වඩා bandwidth බල කරයි — HBM මතකය compute අසල stack කරයි">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="GPU මතක ධුරාවලිය">
+	<meta itemprop="description" content="දහස් ගණන් threads DDR ට වඩා bandwidth බල කරයි — HBM මතකය compute අසල stack කරයි">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1539">
+
+<title>GPU මතක ධුරාවලිය • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/54-gpu-memory-hierarchy/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/54-gpu-memory-hierarchy/" title="GPU Memory Hierarchy">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/54-gpu-memory-hierarchy/" title="ลำดับชั้นหน่วยความจำ GPU">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/54-gpu-memory-hierarchy/" title="GPU Memory Hierarchy">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/54-gpu-memory-hierarchy/" title="Ierarhia de memorie a GPU-ului">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="active">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>GPU මතක ධුරාවලිය</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#gpu-cpu-වලස-මතකය-කසගනනන-පළනන-ඇය">GPU CPU-විලාස මතකයේ කුසගින්නෙන් පෙළෙන්නේ ඇයි</a></li>
+    <li><a href="#hbm-die-එක-අසල-stack-කරනන">HBM: Die එක අසල Stack කරන්න</a></li>
+    <li><a href="#gpu-ඇතළත-ධරවලය">GPU ඇතුළත ධුරාවලිය</a></li>
+    <li><a href="#ඊළඟ-ද-පෂණය-කරම">ඊළඟ දේ පෝෂණය කිරීම</a></li>
+    <li><a href="#ගඹරන-gpu-මතකය-අකවලන--hbm-bandwidth-coalescing-සහ-shared-memory-banks">ගැඹුරින්: GPU මතකය අංකවලින් — HBM bandwidth, coalescing සහ shared memory banks</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-hbm-bandwidth--පළල--වගය">2. HBM bandwidth — පළල × වේගය</a></li>
+        <li><a href="#3-a100-ඇතළත-පරමඩය">3. A100 ඇතුළත පිරමීඩය</a></li>
+        <li><a href="#4-ridge-point-ඔබ-kernel-එක-මතක-සමතද">4. Ridge point: ඔබේ kernel එක මතක-සීමිතද?</a></li>
+        <li><a href="#5-coalescing--එකම-දතත-8-ගණයක-වනසක">5. Coalescing — එකම දත්ත, 8 ගුණයක වෙනසක්</a></li>
+        <li><a href="#6-shared-memory-banks--mod-32-ගණතය">6. Shared memory banks — mod 32 ගණිතය</a></li>
+        <li><a href="#7-පනසලන-අභයසය-මම-පටව-lab-එකක-නත">7. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවේ lab එකක් නැත)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    GPU මතක ධුරාවලිය
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Post 35 මතක බිත්තිය නම් කළේය: DRAM latency compute ට පසුපසින් ගියේය, එබැවින් latency මුරණ්ඩුවෙන් රැඳුණු තැන කර්මාන්තය <em>bandwidth</em> පසුපස ගියේය. එම ප්‍රතිචාරය GPU මතකයේ තරම් ප්‍රතිවිපාක සහිත තැනක් නැත — Posts 52–53 හි සමාන්තර throughput සාම්ප්‍රදායික DDR (Post 34) පෝෂණය කළ නොහැකි ආශාවක් නිර්මාණය කරයි.</p>
+<h2 id="gpu-cpu-වලස-මතකය-කසගනනන-පළනන-ඇය">GPU CPU-විලාස මතකයේ කුසගින්නෙන් පෙළෙන්නේ ඇයි<a class="anchor" href="#gpu-cpu-%e0%b7%80%e0%b6%bd%e0%b7%83-%e0%b6%b8%e0%b6%ad%e0%b6%9a%e0%b6%ba-%e0%b6%9a%e0%b7%83%e0%b6%9c%e0%b6%b1%e0%b6%b1%e0%b6%b1-%e0%b6%b4%e0%b7%85%e0%b6%b1%e0%b6%b1-%e0%b6%87%e0%b6%ba">#</a></h2>
+<p>CPU එකක් මධ්‍යස්ථ උපදෙස් ප්‍රවාහ ගණනක් ධාවනය කරයි; caches (Post 15) බොහෝ විට working set එක අවශෝෂණය කරයි. GPU එකකට බොහෝ SM හරහා දහස් ගණන් threads එකවර මතකය අවශ්‍ය විය හැක. On-chip caching උපකාරී වේ, නමුත් aggregate bandwidth ඉල්ලුම සමාන බලයකදී CPU මතක උපපද්ධතියකට වඩා නාටකාකාර ලෙස ඉහළ ය — වෙනස් භෞතික පිළිතුරක් බල කළ සීමාව.</p>
+<h2 id="hbm-die-එක-අසල-stack-කරනන">HBM: Die එක අසල Stack කරන්න<a class="anchor" href="#hbm-die-%e0%b6%91%e0%b6%9a-%e0%b6%85%e0%b7%83%e0%b6%bd-stack-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1">#</a></h2>
+<p>High Bandwidth Memory DRAM dies සිරස්ව stack කරයි, වෙනම DIMM එකකට දිගු PCB traces වෙනුවට through-silicon vias (TSV) හරහා සම්බන්ධ වේ. ඉතා පුළුල් interface එකක් සමඟ ඒකාබද්ධව, එය සමාන DDR ට වඩා බොහෝ bandwidth ලබා දෙයි — Post 51 හි advanced packaging මිලට. HBM සහ GPU compute die එක සාමාන්‍යයෙන් සිලිකන් interposer එකක් බෙදා ගනී: chiplets සඳහා භාවිතා කළ එම packaging පවුලම, මෙහිදී ක්‍රියාකාරී dies බෙදීම වෙනුවට මතකය compute <em>අසල</em> තැබීමට යොදන ලදී.</p>
+<h2 id="gpu-ඇතළත-ධරවලය">GPU ඇතුළත ධුරාවලිය<a class="anchor" href="#gpu-%e0%b6%87%e0%b6%ad%e0%b7%85%e0%b6%ad-%e0%b6%b0%e0%b6%bb%e0%b7%80%e0%b6%bd%e0%b6%ba">#</a></h2>
+<p>HBM-එදිරිව-DDR ඉක්මවා, GPU ට තමන්ගේ pyramid එකක් ඇත — Post 10 හි register–cache–main-memory හැඩය GPU-විශේෂිත මට්ටම් සමඟ ප්‍රතිධ්වනි කරමින්. එක් එක් SM හි register file යනු වේගවත්ම දේශීය ගබඩාවයි. Shared memory — SM එකේ programmer-managed scratchpad එකක් — block එකක threads ට තව දුරටත් round-trip නොකර දත්ත බෙදා ගැනීමට ඉඩ දෙයි. L2 cache එක මුළු GPU එකම ආවරණය කරයි. HBM යනු &ldquo;ප්‍රධාන මතක&rdquo; මට්ටමයි: CPU DRAM ට වඩා බොහෝ ඉහළ bandwidth, තවමත් on-chip ඕනෑම දෙයකට වඩා ඉහළ latency — එම latency-එදිරිව-capacity tradeoff එකම, GPU පරිමාණයේ.</p>
+<h2 id="ඊළඟ-ද-පෂණය-කරම">ඊළඟ දේ පෝෂණය කිරීම<a class="anchor" href="#%e0%b6%8a%e0%b7%85%e0%b6%9f-%e0%b6%af-%e0%b6%b4%e0%b7%82%e0%b6%ab%e0%b6%ba-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h2>
+<p>මෙම ගෘහ නිර්මාණය පවතින්නේ විශාල compute ආශාවක් පෝෂණය කිරීමට ය. Peak FLOPS අර්ථයක් නැත operands පැමිණිය නොහැකි නම් සහ ප්‍රතිඵල පිටවිය නොහැකි නම්. ඊළඟ පෝස්ට් එකේ tensor cores යනු HBM හි bandwidth සැපයීමට ගොඩනැගූ compute ව්‍යුහයයි — bandwidth රාමුව ඉදිරියට ගෙන යන්න: tensor core එකක peak අර්ථවත් වන්නේ එය පවත්වා ගත හැකි මතක පද්ධතියකට එරෙහිව පමණි.</p>
+<h2 id="ගඹරන-gpu-මතකය-අකවලන--hbm-bandwidth-coalescing-සහ-shared-memory-banks">ගැඹුරින්: GPU මතකය අංකවලින් — HBM bandwidth, coalescing සහ shared memory banks<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-gpu-%e0%b6%b8%e0%b6%ad%e0%b6%9a%e0%b6%ba-%e0%b6%85%e0%b6%9a%e0%b7%80%e0%b6%bd%e0%b6%b1--hbm-bandwidth-coalescing-%e0%b7%83%e0%b7%84-shared-memory-banks">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> &ldquo;HBM memory sinhala&rdquo;, &ldquo;GPU architecture sinhala&rdquo; සෙවුම්වලින් 2026 සැප්තැම්බරයේ සිංහල පැහැදිලි කිරීමක් අපට හමු නොවීය. පහත සංඛ්‍යා NVIDIA A100 whitepaper එකෙන් සහ CUDA Programming Guide (2026 සැප්තැම්බර් 10 අනුවාදය) එකෙනි; &ldquo;ridge point&rdquo; සහ bank ගණනය කිරීම් එම අංකවලින් අප ව්‍යුත්පන්න කළ ඒවාය.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>HBM (High Bandwidth Memory):</strong> DRAM dies සිරස්ව stack කර, GPU එක අසල ඉතා පුළුල් interface එකකින් සම්බන්ධ කළ මතකය.</li>
+<li><strong>ගෝලීය මතකය (global memory):</strong> GPU හි device memory (A100 හි HBM2) — සියලු threads ට පෙනේ; විශාලතම සහ මන්දගාමීම මට්ටම.</li>
+<li><strong>Shared memory:</strong> SM එකක ඇති, block එකක threads බෙදා ගන්නා, programmer විසින් කළමනාකරණය කරන scratchpad එකක්; L1 cache එක සමඟ එකම භෞතික සම්පත භාවිතා කරයි.</li>
+<li><strong>Registers:</strong> thread එකකට පමණක් පෙනෙන, SM එකේ ඇති වේගවත්ම ගබඩාව.</li>
+<li><strong>ගැටගැසීම (coalescing):</strong> warp එකක threads 32 හි මතක ඉල්ලීම් හැකි තරම් අඩු මතක transactions ගණනකට ඒකාබද්ධ කිරීම.</li>
+<li><strong>Memory bank සහ bank conflict:</strong> shared memory සමාන්තර කොටස් 32 කට (banks) බෙදා ඇත; එකම warp එකේ threads කිහිපයක් එකම bank එකේ <em>වෙනස්</em> ලිපින ඉල්ලුවොත් ඒවා අනුක්‍රමිකව සේවය කෙරේ — එය bank conflict එකකි.</li>
+<li><strong>ගණිත තීව්‍රතාව (arithmetic intensity):</strong> මතකයෙන් ගෙන එන බයිටයකට කරන ගණිත මෙහෙයුම් (FLOP/byte).</li>
+</ul>
+<h3 id="2-hbm-bandwidth--පළල--වගය">2. HBM bandwidth — පළල × වේගය<a class="anchor" href="#2-hbm-bandwidth--%e0%b6%b4%e0%b7%85%e0%b6%bd--%e0%b7%80%e0%b6%9c%e0%b6%ba">#</a></h3>
+<p>A100 whitepaper හි GPU සංසන්දන වගුව (පිටු 36–37) මතක interface පළල සහ data rate දෙයි. Post 34 හි DDR4 සූත්‍රයම යොදමු: <strong>bandwidth = (interface bits ÷ 8) × clock × 2 (DDR)</strong>.</p>
+<table>
+	<thead>
+			<tr>
+					<th>GPU</th>
+					<th>Interface</th>
+					<th>Data rate</th>
+					<th>ගණනය</th>
+					<th>whitepaper අගය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P100</td>
+					<td>4096-bit HBM2</td>
+					<td>703 MHz DDR</td>
+					<td>512 B × 703 × 10⁶ × 2 ≈ 720 GB/s</td>
+					<td>720 GB/s</td>
+			</tr>
+			<tr>
+					<td>V100</td>
+					<td>4096-bit HBM2</td>
+					<td>877.5 MHz DDR</td>
+					<td>512 B × 877.5 × 10⁶ × 2 ≈ 899 GB/s</td>
+					<td>900 GB/s</td>
+			</tr>
+			<tr>
+					<td>A100</td>
+					<td>5120-bit HBM2</td>
+					<td>1215 MHz DDR</td>
+					<td>640 B × 1215 × 10⁶ × 2 ≈ 1555 GB/s</td>
+					<td>1555 GB/s</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>DDR4 සමඟ සංසන්දනය (Post 34):</strong> DDR4-3200 channel එකක් 25.6 GB/s. A100: 1555 ÷ 25.6 ≈ <strong>61 ගුණයක්</strong>. එහෙත් pin එකකට වේගය බලන්න:</p>
+<ul>
+<li>DDR4-3200: pin එකකට 3.2 Gb/s, pins 64</li>
+<li>A100 HBM2: pin එකකට 1215 MHz × 2 = <strong>2.43 Gb/s</strong> — DDR4 ට වඩා <em>මන්දගාමී</em> — නමුත් pins <strong>5120</strong> (80 ගුණයක් පුළුල්)</li>
+</ul>
+<p>HBM ජය ගන්නේ වේගවත් රැහැන්වලින් නොව, රැහැන් <strong>අතිවිශාල ගණනකින්</strong> — එවැනි පුළුල් සම්බන්ධතාවයක් හැකි වන්නේ ඉහත පෙළේ කී පරිදි මතකය interposer එකක් මත GPU අසලම තැබූ නිසාය. Post 31 හි &ldquo;bandwidth = පළල × හුවමාරු/තත්පරය&rdquo; නීතියම, වෙනත් පරිමාණයක.</p>
+<h3 id="3-a100-ඇතළත-පරමඩය">3. A100 ඇතුළත පිරමීඩය<a class="anchor" href="#3-a100-%e0%b6%87%e0%b6%ad%e0%b7%85%e0%b6%ad-%e0%b6%b4%e0%b6%bb%e0%b6%b8%e0%b6%a9%e0%b6%ba">#</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>මට්ටම</th>
+					<th>ප්‍රමාණය (A100)</th>
+					<th>මූලාශ්‍රය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Registers</td>
+					<td>SM එකකට 256 KB; GPU එකට 27,648 KB</td>
+					<td>whitepaper පිටුව 37</td>
+			</tr>
+			<tr>
+					<td>L1 + shared memory</td>
+					<td>SM එකකට 192 KB ඒකාබද්ධ (shared memory 164 KB දක්වා වින්‍යාස කළ හැකිය)</td>
+					<td>whitepaper පිටු 21, 37</td>
+			</tr>
+			<tr>
+					<td>L2 cache</td>
+					<td>40,960 KB (40 MB)</td>
+					<td>whitepaper පිටුව 37</td>
+			</tr>
+			<tr>
+					<td>HBM2</td>
+					<td>40 GB, 1555 GB/s</td>
+					<td>whitepaper පිටු 36–37</td>
+			</tr>
+	</tbody>
+</table>
+<p>සිත්ගන්නා කරුණක්: A100 හි <em>registers</em> එකතුව (27 MB පමණ) L2 cache එකට (40 MB) ආසන්න ප්‍රමාණයකි — GPU එකක් තම threads දහස් ගණන &ldquo;resident&rdquo; ලෙස තබා ගැනීමට (Post 53) කොතරම් සිලිකන් වැය කරන්නේද යන්නට සාක්ෂියක්.</p>
+<h3 id="4-ridge-point-ඔබ-kernel-එක-මතක-සමතද">4. Ridge point: ඔබේ kernel එක මතක-සීමිතද?<a class="anchor" href="#4-ridge-point-%e0%b6%94%e0%b6%b6-kernel-%e0%b6%91%e0%b6%9a-%e0%b6%b8%e0%b6%ad%e0%b6%9a-%e0%b7%83%e0%b6%b8%e0%b6%ad%e0%b6%af">#</a></h3>
+<p>A100 හි FP32 (non-Tensor) උපරිමය <strong>19.5 TFLOPS</strong> සහ මතක bandwidth <strong>1555 GB/s</strong> (whitepaper පිටු 36–37). සමතුලිත ලක්ෂ්‍යය (ridge point):</p>
+<pre tabindex="0"><code>19,500 GFLOP/s ÷ 1,555 GB/s ≈ 12.5 FLOP/byte</code></pre><p>kernel එකක ගණිත තීව්‍රතාව මීට වඩා අඩු නම් එය <strong>මතකයෙන් සීමිතයි</strong> — ALUs දත්ත එනතුරු රැඳේ.</p>
+<p><strong>උදාහරණය — දෛශික එකතුව <code>c[i] = a[i] + b[i]</code> (float, බයිට් 4):</strong> එක් මූලද්‍රව්‍යයකට කියවීම් 2 × 4 + ලිවීම 4 = <strong>බයිට් 12</strong>, ගණිතය <strong>1 FLOP</strong> → තීව්‍රතාව 1 ÷ 12 ≈ <strong>0.083 FLOP/byte</strong>.</p>
+<ul>
+<li>ලැබිය හැකි උපරිමය ≈ 1555 GB/s × 0.083 ≈ <strong>130 GFLOP/s</strong></li>
+<li>එය 19,500 න් <strong>0.67%</strong> පමණි!</li>
+</ul>
+<p>එබැවින් දෛශික එකතුවට වේගවත් ALUs වලින් වැඩක් නැත — එහි වේගය මුළුමනින්ම bandwidth ය. ඉහත පෙළේ &ldquo;peak FLOPS අර්ථයක් නැත operands පැමිණිය නොහැකි නම්&rdquo; යන්නේ අංක මෙයයි; Post 55 හි tensor cores සඳහා මෙම ගැටලුව තවත් දරුණු වේ.</p>
+<h3 id="5-coalescing--එකම-දතත-8-ගණයක-වනසක">5. Coalescing — එකම දත්ත, 8 ගුණයක වෙනසක්<a class="anchor" href="#5-coalescing--%e0%b6%91%e0%b6%9a%e0%b6%b8-%e0%b6%af%e0%b6%ad%e0%b6%ad-8-%e0%b6%9c%e0%b6%ab%e0%b6%ba%e0%b6%9a-%e0%b7%80%e0%b6%b1%e0%b7%83%e0%b6%9a">#</a></h3>
+<p>CUDA Programming Guide (§2.3.4.1) ට අනුව, global memory වෙත ප්‍රවේශය <strong>බයිට් 32 ක transactions</strong> මගිනි. warp එකක threads 32 එක එකක් බයිට් 4 ක float එකක් කියවයි (මුළු ප්‍රයෝජනවත් දත්ත 32 × 4 = <strong>බයිට් 128</strong>):</p>
+<table>
+	<thead>
+			<tr>
+					<th>රටාව</th>
+					<th>Transactions</th>
+					<th>මාරු කළ බයිට්</th>
+					<th>භාවිතය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>අනුක්‍රමික threads → අනුක්‍රමික වචන</td>
+					<td>128 ÷ 32 = <strong>4</strong></td>
+					<td>128</td>
+					<td><strong>100%</strong></td>
+			</tr>
+			<tr>
+					<td>threads බයිට් 32 හෝ වැඩියෙන් ඈත්ව</td>
+					<td><strong>32</strong> (thread එකකට එකක්)</td>
+					<td>32 × 32 = 1024</td>
+					<td>128 ÷ 1024 = <strong>12.5%</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>දෙවන අවස්ථාවේ සඵල bandwidth ≈ 1555 × 0.125 ≈ <strong>194 GB/s</strong> — එකම දෘඪාංගය, එකම දත්ත ප්‍රමාණය, ලිපින රටාව නිසා පමණක් 8 ගුණයක අලාභයක්. Guide එක පවසන පරිදි: &ldquo;භාවිතා කළ බයිට් ÷ මාරු කළ බයිට් අනුපාතය උපරිම කරන්න.&rdquo;</p>
+<h3 id="6-shared-memory-banks--mod-32-ගණතය">6. Shared memory banks — mod 32 ගණිතය<a class="anchor" href="#6-shared-memory-banks--mod-32-%e0%b6%9c%e0%b6%ab%e0%b6%ad%e0%b6%ba">#</a></h3>
+<p>Guide එක (§2.3.4.2): shared memory හි <strong>banks 32</strong> ඇත; අනුක්‍රමික 32-bit වචන අනුක්‍රමික banks වලට යයි; එක් bank එකකට clock චක්‍රයකට bits 32. එබැවින් <strong>bank = (වචන දර්ශකය) mod 32</strong>.</p>
+<p>thread t (0–31) වචනය <code>s × t</code> කියවයි නම් (s = stride):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Stride s</th>
+					<th>Thread 0</th>
+					<th>Thread 1</th>
+					<th>Thread 16</th>
+					<th>ප්‍රතිඵලය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>bank 0</td>
+					<td>bank 1</td>
+					<td>bank 16</td>
+					<td>සියල්ල වෙනස් — <strong>conflict නැත</strong></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>bank 0</td>
+					<td>bank 2</td>
+					<td>32 mod 32 = <strong>bank 0</strong></td>
+					<td>threads 0 සහ 16 එකම bank → <strong>2-way conflict</strong></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>bank 0</td>
+					<td>bank 3</td>
+					<td>48 mod 32 = bank 16</td>
+					<td>3 සහ 32 ට පොදු සාධක නැති නිසා සියල්ල වෙනස් — <strong>conflict නැත</strong></td>
+			</tr>
+			<tr>
+					<td>32</td>
+					<td>bank 0</td>
+					<td>32 mod 32 = <strong>bank 0</strong></td>
+					<td>bank 0</td>
+					<td>සියල්ලම bank 0 → <strong>32-way conflict</strong> (වාර 32 ක් අනුක්‍රමිකව)</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Matrix transpose උපක්‍රමය (Guide §2.3.4.2.2):</strong> <code>float tile[32][32]</code> හි <em>තීරුවක්</em> කියවීම යනු stride 32 — 32-way conflict. Guide එකේ විසඳුම: තීරු මානයට 1 ක් එකතු කරන්න → <code>float tile[32][33]</code>. දැන් stride = 33, සහ 33 mod 32 = <strong>1</strong> → සෑම thread එකක්ම වෙනස් bank එකකට. එක් &ldquo;නිෂ්ඵල&rdquo; තීරුවක් (32 × 4 = බයිට් 128) වැය කර, 32 ගුණයක අනුක්‍රමිකකරණයක් ඉවත් කෙරේ.</p>
+<h3 id="7-පනසලන-අභයසය-මම-පටව-lab-එකක-නත">7. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවේ lab එකක් නැත)<a class="anchor" href="#7-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba-%e0%b6%b8%e0%b6%b8-%e0%b6%b4%e0%b6%a7%e0%b7%80-lab-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%b1%e0%b6%ad">#</a></h3>
+<ol>
+<li>4096-bit HBM interface එකක් 1000 MHz DDR දී ධාවනය වේ නම් bandwidth කීයද?</li>
+<li><code>y[i] = a × x[i] + y[i]</code> (float; x සහ y කියවා y ලියයි; ගුණ කිරීම + එකතු කිරීම = FLOP 2) හි ගණිත තීව්‍රතාව කීයද? A100 හි ලැබිය හැකි උපරිම GFLOP/s?</li>
+<li>warp එකක threads බයිට් 8 ක double අගයන් අනුක්‍රමිකව කියවයි. බයිට් 32 transactions කීයක් අවශ්‍යද?</li>
+<li>Stride 4 සමඟ shared memory කියවීම: bank conflict කී-way ද?</li>
+<li><code>float tile[32][34]</code> හි තීරුවක් කියවීමේදී stride සහ conflict කීයද?</li>
+</ol>
+<p>(පිළිතුරු: 1 → 512 B × 1000 × 10⁶ × 2 = <strong>1024 GB/s</strong>. 2 → බයිට් 12, FLOP 2 → <strong>0.167 FLOP/byte</strong>; 1555 × 0.167 ≈ <strong>259 GFLOP/s</strong>. 3 → 32 × 8 = 256 බයිට් ÷ 32 = <strong>8</strong> transactions. 4 → banks 0, 4, 8, … 28 පමණක් (8 ක්) → threads 32 ÷ 8 = <strong>4-way</strong>. 5 → stride 34, 34 mod 32 = 2 → <strong>2-way</strong> conflict (33 හොඳම තේරීමයි).)</p>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong> NVIDIA, <em>NVIDIA A100 Tensor Core GPU Architecture</em> whitepaper (<a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf</a>) — පිටුව 21 (SM එකකට ඒකාබද්ධ shared memory/L1 192 KB), පිටු 36–37 (P100/V100/A100 වගුව: interface පළල, data rate, 720/900/1555 GB/s, L2 40,960 KB, register file, shared memory 164 KB, FP32 19.5 TFLOPS). NVIDIA, <em>CUDA Programming Guide</em> (2026 සැප්තැම්බර් 10), &ldquo;2.3 Writing SIMT Kernels&rdquo; (<a href="https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html">https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html</a>) — §2.3.3.2 (shared memory, L1 සමඟ එකම සම්පත), §2.3.4.1 (බයිට් 32 transactions, 100% / 12.5% උදාහරණ), §2.3.4.2 (banks 32, bits 32/චක්‍රය, stride 1/2/3), §2.3.4.2.2 (transpose හි 32-way conflict සහ +1 padding). DDR4 සංසන්දනය Post 34 හි Micron datasheets වලිනි. Ridge point සහ bank වගු අපේ ගණනය කිරීම්ය.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;GPU&#43;%E0%B6%B8%E0%B6%AD%E0%B6%9A&#43;%E0%B6%B0%E0%B7%94%E0%B6%BB%E0%B7%8F%E0%B7%80%E0%B6%BD%E0%B7%92%E0%B6%BA&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F54-gpu-memory-hierarchy%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F54-gpu-memory-hierarchy.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F54-gpu-memory-hierarchy.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>CUDA Cores, Warps සහ Occupancy</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/55-tensor-cores/" class="flex align-center">
+        <span>Tensor Cores</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#gpu-cpu-වලස-මතකය-කසගනනන-පළනන-ඇය">GPU CPU-විලාස මතකයේ කුසගින්නෙන් පෙළෙන්නේ ඇයි</a></li>
+    <li><a href="#hbm-die-එක-අසල-stack-කරනන">HBM: Die එක අසල Stack කරන්න</a></li>
+    <li><a href="#gpu-ඇතළත-ධරවලය">GPU ඇතුළත ධුරාවලිය</a></li>
+    <li><a href="#ඊළඟ-ද-පෂණය-කරම">ඊළඟ දේ පෝෂණය කිරීම</a></li>
+    <li><a href="#ගඹරන-gpu-මතකය-අකවලන--hbm-bandwidth-coalescing-සහ-shared-memory-banks">ගැඹුරින්: GPU මතකය අංකවලින් — HBM bandwidth, coalescing සහ shared memory banks</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-hbm-bandwidth--පළල--වගය">2. HBM bandwidth — පළල × වේගය</a></li>
+        <li><a href="#3-a100-ඇතළත-පරමඩය">3. A100 ඇතුළත පිරමීඩය</a></li>
+        <li><a href="#4-ridge-point-ඔබ-kernel-එක-මතක-සමතද">4. Ridge point: ඔබේ kernel එක මතක-සීමිතද?</a></li>
+        <li><a href="#5-coalescing--එකම-දතත-8-ගණයක-වනසක">5. Coalescing — එකම දත්ත, 8 ගුණයක වෙනසක්</a></li>
+        <li><a href="#6-shared-memory-banks--mod-32-ගණතය">6. Shared memory banks — mod 32 ගණිතය</a></li>
+        <li><a href="#7-පනසලන-අභයසය-මම-පටව-lab-එකක-නත">7. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවේ lab එකක් නැත)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>විකල්ප ඉගෙනුම් මාර්ග on අප එතැනට පැමිණි ආකාරය</title>
+		<link>http://localhost:1478/si/paths/</link>
+		<description>Recent content in විකල්ප ඉගෙනුම් මාර්ග on අප එතැනට පැමිණි ආකාරය</description>
+		<generator>Hugo</generator>
+		<language>si</language>
+		
+		
+		
+		
+			<atom:link href="http://localhost:1478/si/paths/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Crypto සහ යුද්ධකාලීන පරිගණකකරණය</title>
+				<link>http://localhost:1478/si/paths/crypto-wartime/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/paths/crypto-wartime/</guid>
+				<description>&lt;p&gt;Workload එකක් ලෙස රහස්‍යභාවය — සයිෆර් කඩා දැමීම ගියර් සහ relays ඉක්මවා ගොස් පරිගණකකරණය ඉලෙක්ට්‍රොනිකයට ඇද ගත්තේ ඇයි. සිහින් index; දොර posts තුළ ජීවත් වේ.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/02-relays-and-electromechanical-logic/&#34;&gt;රිලේ සහ විද්‍යුත් යාන්ත්‍රික තර්කය&lt;/a&gt; — චලනය වන ලෝහයේ ද්විමය තර්කය, සහ ලෝහය මන්දගාමී වන්නේ ඇයි&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/66-wartime-crypto/&#34;&gt;යුද්ධකාලීන Crypto&lt;/a&gt; — Enigma, Bletchley, Colossus; නම් කළ මිනිසුන්; හදිසි බව&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/03-the-vacuum-tube-era/&#34;&gt;රික්තක නල යුගය&lt;/a&gt; — යාන්ත්‍රික සම්බන්ධතා නොමැතිව ඉලෙක්ට්‍රොනික ස්විචය&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/04-why-the-transistor-had-to-happen/&#34;&gt;ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි&lt;/a&gt; — නල වේගය ජය ගනී, ඉන්පසු තාපය/බලය/අසාර්ථකත්වයට ගැටේ&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1478/si/paths/&#34;&gt;සියලු මාර්ග&lt;/a&gt; වෙත ආපසු.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>අන්තර්ජාලය ධාවනය කරන්නේ කවුද</title>
+				<link>http://localhost:1478/si/paths/who-runs-the-internet/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/paths/who-runs-the-internet/</guid>
+				<description>&lt;p&gt;අංක, නම්, සහ encodings නම් කරන්නේ කවුද — සහ එම registries වාඩි වන protocol කතාව කුමක්ද. සිහින් index; org නාමාවලියක් නොවේ.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/39-arpanet-and-packet-switching/&#34;&gt;ARPANET සහ Packet Switching&lt;/a&gt; — packets ඔප්පු කළ පර්යේෂණ ජාලය&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/40-ethernet-and-the-local-area-network/&#34;&gt;Ethernet සහ Local Area Network&lt;/a&gt; — දේශීය link ප්‍රමිතිකරණය (IEEE 802 kin)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/41-tcp-ip-and-the-modern-internet-stack/&#34;&gt;TCP/IP සහ නවීන අන්තර්ජාල Stack එක&lt;/a&gt; — විෂම ජාල එක් internetwork එකක් වන ආකාරය&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/64-who-decides-the-wire/&#34;&gt;වයර් එක තීරණය කරන්නේ කවුද&lt;/a&gt; — RFCs / IETF / IANA / ICANN / RIRs / Unicode වර්ගයක බීජ ලෙස&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1478/si/paths/&#34;&gt;සියලු මාර්ග&lt;/a&gt; වෙත ආපසු.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>සොයන්න, ඉන්පසු කතා කරන්න</title>
+				<link>http://localhost:1478/si/paths/find-then-talk/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/paths/find-then-talk/</guid>
+				<description>&lt;p&gt;තොරතුරු ලබාගැනීම සහ peer සන්නිවේදනය එක් චාපයක් ලෙස — ඉන්පසු දෙකෙහිම පාරිභෝගික ඇසුරුම්කරණය. සිහින් index.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/41-tcp-ip-and-the-modern-internet-stack/&#34;&gt;TCP/IP සහ නවීන අන්තර්ජාල Stack එක&lt;/a&gt; — apps ධාවනය වූ transport එක&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/&#34;&gt;Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය&lt;/a&gt; — find + talk → IRC → portals (බීජය ලෙස Yahoo)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/44-google-s-big-data-infrastructure-why-they-won/&#34;&gt;Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි&lt;/a&gt; — crawler පරිමාණයේ එම find &lt;em&gt;වර්ගයම&lt;/em&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1478/si/paths/&#34;&gt;සියලු මාර්ග&lt;/a&gt; වෙත ආපසු.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>රහස්‍යතාව / අනන්‍යතාව / එකඟතාව</title>
+				<link>http://localhost:1478/si/paths/privacy-identity-consent/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/paths/privacy-identity-consent/</guid>
+				<description>&lt;p&gt;Protection, පොදු ජාලයක් මත cryptography, අනන්‍යතා protocols, සහ විරුද්ධකාරී පද්ධති — ඉංජිනේරු පරිණාමය, ප්‍රතිපත්ති පත්‍රිකාවක් නොවේ. සිහින් index.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/24-virtual-memory-and-multitasking/&#34;&gt;අතථ්‍ය මතකය සහ බහුකාර්යතාව&lt;/a&gt; — hardware/OS සීමාවක් ලෙස isolation&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/25-containers-and-modern-os-isolation/&#34;&gt;Containers සහ නවීන OS හුදකලාව&lt;/a&gt; — බෙදාගත්-kernel සීමා ලෙස namespaces සහ cgroups&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/66-wartime-crypto/&#34;&gt;යුද්ධකාලීන Crypto&lt;/a&gt; — කැපවූ විරුද්ධකරුවකු යටතේ රහස්‍යභාවය (විවෘත ජාලය සමඟ සසඳන්න)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/67-privacy-consent-identity-cyber/&#34;&gt;රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber&lt;/a&gt; — Saltzer/Schroeder → public-key → auth/consent → feedback ලෙස cyber&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/64-who-decides-the-wire/&#34;&gt;වයර් එක තීරණය කරන්නේ කවුද&lt;/a&gt; — privacy ස්ථරය තවමත් රඳා පවතින බෙදාගත් හඳුනාගැනීම්&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1478/si/paths/&#34;&gt;සියලු මාර්ග&lt;/a&gt; වෙත ආපසු.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</title>
+				<link>http://localhost:1478/si/paths/visions-that-shipped/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/paths/visions-that-shipped/</guid>
+				<description>&lt;p&gt;ගමනෙන් ඉදිරියට යන සබැඳි — stack එක ජීවත් වන platforms බවට පත් කළ වර්ගවල බීජ. චරිතාපදාන නොවේ. සිහින් index.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/23-the-gnu-movement-and-linux/&#34;&gt;GNU ව්‍යාපාරය සහ Linux&lt;/a&gt; — Stallman, Torvalds, සහ නවීන servers යටතේ commons&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/68-visions-that-shipped/&#34;&gt;ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්&lt;/a&gt; — Cisco, Gates, Jobs, GNU+Linus, Bezos, Musk බීජ ලෙස; ඥාතීන් ව්‍යුත්පන්න කරන්න; නවත්වන්න&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/si/posts/69-platform-synthesis/&#34;&gt;Platform සංස්ලේෂණය&lt;/a&gt; — එක් ඉහළ-මට්ටමේ නැවතුමක්: බෙදාහැරුණු පද්ධති + networking + AI infra + privacy + software engineering&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1478/si/paths/&#34;&gt;සියලු මාර්ග&lt;/a&gt; වෙත ආපසු.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

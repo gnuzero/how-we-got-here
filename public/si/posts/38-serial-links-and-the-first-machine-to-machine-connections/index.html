@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Point-to-point ශ්‍රේණි සබැඳි සම්බන්ධ කරන්නේ අග දෙකක් පමණයි — packet switching බල කළ සීමාව">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා">
+	<meta property="og:description" content="Point-to-point ශ්‍රේණි සබැඳි සම්බන්ධ කරන්නේ අග දෙකක් පමණයි — packet switching බල කළ සීමාව">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:08:43+05:30">
+
+
+	<meta itemprop="name" content="ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා">
+	<meta itemprop="description" content="Point-to-point ශ්‍රේණි සබැඳි සම්බන්ධ කරන්නේ අග දෙකක් පමණයි — packet switching බල කළ සීමාව">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:08:43+05:30">
+	<meta itemprop="wordCount" content="1314">
+
+<title>ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/38-serial-links-and-the-first-machine-to-machine-connections/" title="Serial Links and the First Machine-to-Machine Connections">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" title="ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" title="Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="active">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#rs-232-මලක-ශරණ-සබඳය">RS-232: මූලික ශ්‍රේණි සබැඳිය</a></li>
+    <li><a href="#modem-එක-analog-වයර-මත-digital">Modem එක: Analog වයර් මත Digital</a></li>
+    <li><a href="#මයන-ඊළඟ-ගහ-නරමණය-බල-කරනන-ඇය">මෙයින් ඊළඟ ගෘහ නිර්මාණය බල කරන්නේ ඇයි</a></li>
+    <li><a href="#ගඹරන-වයරයක-මත-එක-අකෂරයක--uart-frame-එක-අතන-rs-232-වලටයත-300-bits-modem-සහ-shannon-සමව">ගැඹුරින්: වයරයක් මත එක් අක්ෂරයක් — UART frame එක අතින්, RS-232 වෝල්ටීයතා, 300 bit/s modem සහ Shannon සීමාව</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-වඩ-කළ-උදහරණය-h-අකෂරය-8n1-frame-එකක">2. වැඩ කළ උදාහරණය: &lsquo;H&rsquo; අක්ෂරය 8N1 frame එකක</a></li>
+        <li><a href="#3-rs-232-වලටයත-1-යන-සණ">3. RS-232 වෝල්ටීයතා: 1 යනු සෘණ</a></li>
+        <li><a href="#4-modem-300-bits-සහ-එය-අරථවත-ව-ආකරය">4. Modem: 300 bit/s සහ එය අර්ථවත් වූ ආකාරය</a></li>
+        <li><a href="#5-සමව-shannon-ධරතව">5. සීමාව: Shannon ධාරිතාව</a></li>
+        <li><a href="#6-vm-terminal-linux-හ-serial-port-එක">6. VM terminal: Linux හි serial port එක</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Phase 5 හි සෑම bus එකක්ම එක් යන්ත්‍රයක් <em>ඇතුළත</em> රැඳේ. ජාලකරණය ආරම්භ වන්නේ වෙන වෙනම යන්ත්‍ර කතා කළ යුතු වූ විටයි — සහ packet-switched ජාල තිබුණේ නැති කල, එයින් අදහස් වූයේ ශ්‍රේණි සබැඳියකි: එක් bit stream එකක්, point to point, routing නැත, &ldquo;මෙම වයර් එකේ අනෙක් කෙළවරේ ඇති දේ&rdquo; ට ඔබ්බෙන් address එකක් නැත.</p>
+<h2 id="rs-232-මලක-ශරණ-සබඳය">RS-232: මූලික ශ්‍රේණි සබැඳිය<a class="anchor" href="#rs-232-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b7%81%e0%b6%bb%e0%b6%ab-%e0%b7%83%e0%b6%b6%e0%b6%b3%e0%b6%ba">#</a></h2>
+<p>RS-232 (EIA, 1960) උපාංග දෙකක් අතර voltage මට්ටම් සහ asynchronous ශ්‍රේණි සම්මුතීන් ස්ථිර කළේය — දෙකම කලින් baud rate එකට එකඟ වේ, මන්ද දත්ත සමඟ clock එකක් නොයයි. Addressing නැත, routing නැත, අග තෝරා ගත් සරල parity ට ඔබ්බෙන් error correction නැත. උපාංග දෙකක් පමණයි, එකවරට එක් bit එකක්.</p>
+<p>එය ප්‍රමාණවත් විය. Terminals එය භාවිතා කළේ mainframes සහ minicomputers වෙත ළඟා වීමට (Phase 3 හි පෙළපත). ඉහළ ජාලකරණ stack එකකට රඳා නොපවතින නාලිකාවක් අවශ්‍ය වූ විට, එය තවමත් routers සහ embedded උපකරණ වෙත යන dead-simple console මාර්ගයයි.</p>
+<h2 id="modem-එක-analog-වයර-මත-digital">Modem එක: Analog වයර් මත Digital<a class="anchor" href="#modem-%e0%b6%91%e0%b6%9a-analog-%e0%b7%80%e0%b6%ba%e0%b6%bb-%e0%b6%b8%e0%b6%ad-digital">#</a></h2>
+<p>දුර-දිග කතාව දුරකථන ජාලය මත යා යුතු විය — analog, narrowband, හඬ සඳහා ගොඩනැගූ. Modem එකක් digital bit stream එකක් දුරකථන රේඛාවට රැගෙන යා හැකි analog carrier එකක් මත modulate කරයි, සහ ඈත අගේ එය නැවත bits වෙත demodulate කරයි. මුල් අනුපාත තත්පරයට bits සිය ගණනක් වූ අතර, පසුව කිලෝබිට් දස ගණනක් — නවීන මිනුමකින් මන්දගාමීය, නමුත් එකම කාමරයේ නොමැති යන්ත්‍රයකට ළඟා වීමට ප්‍රායෝගික එකම මාර්ගය, දැනටමත් බොහෝ තැන්වලට ගිය යටිතල පහසුකම් මත.</p>
+<h2 id="මයන-ඊළඟ-ගහ-නරමණය-බල-කරනන-ඇය">මෙයින් ඊළඟ ගෘහ නිර්මාණය බල කරන්නේ ඇයි<a class="anchor" href="#%e0%b6%b8%e0%b6%ba%e0%b6%b1-%e0%b6%8a%e0%b7%85%e0%b6%9f-%e0%b6%9c%e0%b7%84-%e0%b6%b1%e0%b6%bb%e0%b6%b8%e0%b6%ab%e0%b6%ba-%e0%b6%b6%e0%b6%bd-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1-%e0%b6%87%e0%b6%ba">#</a></h2>
+<p>Point-to-point ශ්‍රේණි සබැඳියක් — සෘජු RS-232 හෝ modem-over-phone — සම්බන්ධ කරන්නේ හරියටම endpoints <em>දෙකක්</em> පමණයි. බහු-node ජාලයක් නැත, වයර් එකේ නොමැති ගමනාන්තයක් සඳහා routing තීරණයක් නැත. සෑම යුගලයක් අතර කැප වූ යුගලයක් නොමැතිව එකිනෙකාට ළඟා වන යන්ත්‍ර බොහෝ ගණනකට පරිමාණය කිරීමට වෙනස් ඔට්ටුවක් අවශ්‍යයි: දත්ත packets වලට බිඳ දමන්න, hop by hop route කරන්න, සබැඳි බෙදා ගන්න. ARPANET ඔප්පු කිරීමට යෙදුණේ එයයි — ඊළඟ පෝස්ට් එක.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=si"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="අන්තර්ක්‍රියාකාරී lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=si" target="_blank" rel="noopener">Lab එක නව tab එකක විවෘත කරන්න ↗</a>
+  </div>
+</div>
+
+<h2 id="ගඹරන-වයරයක-මත-එක-අකෂරයක--uart-frame-එක-අතන-rs-232-වලටයත-300-bits-modem-සහ-shannon-සමව">ගැඹුරින්: වයරයක් මත එක් අක්ෂරයක් — UART frame එක අතින්, RS-232 වෝල්ටීයතා, 300 bit/s modem සහ Shannon සීමාව<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-%e0%b7%80%e0%b6%ba%e0%b6%bb%e0%b6%ba%e0%b6%9a-%e0%b6%b8%e0%b6%ad-%e0%b6%91%e0%b6%9a-%e0%b6%85%e0%b6%9a%e0%b7%82%e0%b6%bb%e0%b6%ba%e0%b6%9a--uart-frame-%e0%b6%91%e0%b6%9a-%e0%b6%85%e0%b6%ad%e0%b6%b1-rs-232-%e0%b7%80%e0%b6%bd%e0%b6%a7%e0%b6%ba%e0%b6%ad-300-bits-modem-%e0%b7%83%e0%b7%84-shannon-%e0%b7%83%e0%b6%b8%e0%b7%80">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> si.wikipedia හි &ldquo;මොඩමය&rdquo; ලිපිය අක්ෂර ~350 ක කෙටි ලිපියකි (stub). RS-232, UART framing හෝ නාලිකා ධාරිතාව (channel capacity) ගැන සිංහල ලිපියක් අපට හමු නොවීය. මෙම කොටස bit එකෙන් bit එක ගණනය කරයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>ශ්‍රේණිගත සබැඳිය (serial link):</strong> bits එකින් එක, එකම වයරයක් දිගේ යැවීම.</li>
+<li><strong>UART (universal asynchronous receiver-transmitter):</strong> byte එකක් bits පෙළක් බවට හරවා යවන සහ නැවත byte එකක් බවට හරවන චිපය.</li>
+<li><strong>අසමමුහුර්ත (asynchronous):</strong> යවන්නා සහ ලබන්නා අතර පොදු clock වයරයක් නැත. එක් එක් අක්ෂරය &ldquo;start bit&rdquo; එකකින් ආරම්භ වේ.</li>
+<li><strong>Baud (baud):</strong> තත්පරයකට සංකේත (symbols) ගණන. සරල RS-232 හි එක් සංකේතයක් = එක් bit එකක්.</li>
+<li><strong>8N1:</strong> data bits 8, parity (parity) නැත, stop bit 1.</li>
+<li><strong>LSB-first (least significant bit first):</strong> byte එකේ කුඩාම bit එක පළමුව යැවීම.</li>
+<li><strong>නාලිකා ධාරිතාව (channel capacity):</strong> ශබ්දය (noise) ඇති නාලිකාවක දෝෂ නැතිව යැවිය හැකි උපරිම bit අනුපාතය.</li>
+</ul>
+<h3 id="2-වඩ-කළ-උදහරණය-h-අකෂරය-8n1-frame-එකක">2. වැඩ කළ උදාහරණය: &lsquo;H&rsquo; අක්ෂරය 8N1 frame එකක<a class="anchor" href="#2-%e0%b7%80%e0%b6%a9-%e0%b6%9a%e0%b7%85-%e0%b6%8b%e0%b6%af%e0%b7%84%e0%b6%bb%e0%b6%ab%e0%b6%ba-h-%e0%b6%85%e0%b6%9a%e0%b7%82%e0%b6%bb%e0%b6%ba-8n1-frame-%e0%b6%91%e0%b6%9a%e0%b6%9a">#</a></h3>
+<p>&lsquo;H&rsquo; = ASCII 72 = hex 0x48 = binary <strong>0100 1000</strong>.</p>
+<p>UART එක idle වන විට රේඛාව <strong>1</strong> (mark) මට්ටමේ තබයි. ඉන්පසු:</p>
+<table>
+	<thead>
+			<tr>
+					<th>bit අංකය</th>
+					<th>අර්ථය</th>
+					<th>අගය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>start bit</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>d0 (LSB)</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>d1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>d2</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>d3</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>d4</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>d5</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>d6</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>d7 (MSB)</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>9</td>
+					<td>stop bit</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<p>රේඛාවේ පෙළ: <code>0 0001 0010 1</code>. Byte එක &ldquo;පසුපසට&rdquo; යන බව පෙනේ: 0100 1000 → 0001 0010.</p>
+<p><strong>කාලය (9600 baud):</strong> එක් bit එකක් = 1 / 9600 = <strong>104.17 µs</strong>. Frame එකකට bits 10 → 1.0417 ms. එබැවින් තත්පරයට අක්ෂර <strong>960</strong> ක් පමණි, 9600 / 8 = 1200 නොවේ. Start සහ stop bits නිසා 20% ක් &ldquo;අමතර&rdquo; වැය වේ.</p>
+<p><strong>ලබන්නා කරන දේ:</strong> 1 → 0 වෙනස (start bit හි ආරම්භය) දුටු පසු bit කාලයෙන් භාගයක් (52 µs) බලා සිට start bit එක තවමත් 0 දැයි පරීක්ෂා කරයි. ඉන්පසු 104.17 µs වරක් බැගින් bits 8 කියවයි. ඒ නිසා clock දෙක සම්පූර්ණයෙන් සමාන නොවුණත්, frame එකක් තුළ පමණක් ගැළපීම ප්‍රමාණවත්ය. <!-- UNVERIFIED: mid-bit sampling at half a bit time after the start edge | no UART datasheet (e.g. 16550A) opened this round; TI PC16550D datasheet (SNLS378) opened in fact-check: 16x RCLK and "False Start Bit Detection" only, no mid-bit wording --></p>
+<h3 id="3-rs-232-වලටයත-1-යන-සණ">3. RS-232 වෝල්ටීයතා: 1 යනු සෘණ<a class="anchor" href="#3-rs-232-%e0%b7%80%e0%b6%bd%e0%b6%a7%e0%b6%ba%e0%b6%ad-1-%e0%b6%ba%e0%b6%b1-%e0%b7%83%e0%b6%ab">#</a></h3>
+<p>Texas Instruments ගේ application report &ldquo;Interface Circuits for TIA/EIA-232-F&rdquo; (SLLA037A, PDF පිටුව 8) අනුව:</p>
+<ul>
+<li>Driver: logic <strong>0</strong> = <strong>+5 සිට +15 V</strong>, logic <strong>1</strong> = <strong>−5 සිට −15 V</strong>.</li>
+<li>Receiver: +3 සිට +15 V = 0, −3 සිට −15 V = 1. ±3 V අතර කලාපය නිර්වචනය නොවේ.</li>
+<li>උපරිම data rate <strong>20 kbit/s</strong>, load 3–7 kΩ, receiver ±25 V දක්වා ඉවසයි.</li>
+</ul>
+<p>එබැවින් ඉහත idle &ldquo;1&rdquo; රේඛාව ඇත්තටම <strong>සෘණ</strong> වෝල්ටීයතාවයකි, start bit එක ධන වෝල්ටීයතාවයකි. Driver (අවම 5 V) සහ receiver (අවම 3 V) සීමා අතර <strong>2 V</strong> වෙනස ශබ්ද ආන්තිකය (noise margin) වේ: කේබලය දිගේ 2 V දක්වා ශබ්දයක් හෝ පරිහානියක් ඉවසිය හැකිය.</p>
+<h3 id="4-modem-300-bits-සහ-එය-අරථවත-ව-ආකරය">4. Modem: 300 bit/s සහ එය අර්ථවත් වූ ආකාරය<a class="anchor" href="#4-modem-300-bits-%e0%b7%83%e0%b7%84-%e0%b6%91%e0%b6%ba-%e0%b6%85%e0%b6%bb%e0%b6%ae%e0%b7%80%e0%b6%ad-%e0%b7%80-%e0%b6%86%e0%b6%9a%e0%b6%bb%e0%b6%ba">#</a></h3>
+<p>ITU-T නිර්දේශය <strong>V.21</strong> හි මාතෘකාව: &ldquo;300 bits per second duplex modem standardized for use in the general switched telephone network&rdquo;. (ITU-T හි නිල පිටුව.)</p>
+<p>වැඩ කළ උදාහරණය: 300 bit/s, 8N1 → තත්පරයට අක්ෂර 30. 80 × 24 = 1,920 අක්ෂර තිරයක් පිරවීමට 1,920 / 30 = <strong>64 s</strong>. මිනිසෙකුගේ කියවීමේ වේගයට මෙය ප්‍රමාණවත් වූ නමුත් පින්තූරයක් යැවීමට නොවේ.</p>
+<h3 id="5-සමව-shannon-ධරතව">5. සීමාව: Shannon ධාරිතාව<a class="anchor" href="#5-%e0%b7%83%e0%b6%b8%e0%b7%80-shannon-%e0%b6%b0%e0%b6%bb%e0%b6%ad%e0%b7%80">#</a></h3>
+<p>Claude E. Shannon, &ldquo;A Mathematical Theory of Communication&rdquo; (1948), ප්‍රමේයය 17 (Theorem 17): කලාප පළල (bandwidth) W, සංඥා බලය P, white ශබ්ද බලය N නම්,</p>
+<p><strong>C = W log₂((P + N) / N)</strong> bits per second.</p>
+<p>ආදර්ශ (illustrative) ගණනය: දුරකථන රේඛාවක ප්‍රයෝජනවත් කලාප පළල 3,100 Hz සහ signal-to-noise අනුපාතය 30 dB (එනම් P/N = 1,000) යැයි සිතමු:</p>
+<p>C = 3100 × log₂(1001) ≈ 3100 × 9.967 ≈ <strong>30,898 bit/s</strong>.</p>
+<p>මෙම ආදර්ශ අංක සමඟ 300 bit/s V.21 සීමාවට වඩා 100 ගුණයක් පහළින් පිහිටයි. පසුකාලීන modem සංකීර්ණ modulation මගින් මෙම සීමාව වෙත ළඟා වූයේ මේ නිසාය. Shannon ගේ ප්‍රමේයය කියන්නේ කිසිදු modem එකකට C ඉක්මවිය නොහැකි බවයි.</p>
+<h3 id="6-vm-terminal-linux-හ-serial-port-එක">6. VM terminal: Linux හි serial port එක<a class="anchor" href="#6-vm-terminal-linux-%e0%b7%84-serial-port-%e0%b6%91%e0%b6%9a">#</a></h3>
+<p>මෙම පිටුවේ VM image එකේ (Linux 4.16.13, BusyBox) අපි මෙම විධාන <strong>serial console</strong> (<code>/dev/ttyS0</code>) හරහා ධාවනය කළෙමු:</p>
+<pre tabindex="0"><code>dmesg | grep ttyS
+cat /proc/tty/driver/serial
+stty -F /dev/ttyS0
+echo Hi | hexdump -C</code></pre><p>අපට ලැබුණු ප්‍රතිඵල:</p>
+<ul>
+<li><code>dmesg</code>: <code>ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A</code> — emulate කළ 16550A UART චිපයක්.</li>
+<li><code>/proc/tty/driver/serial</code>: port 0 සඳහා <code>uart:16550A</code>, port <code>3F8</code>, <code>irq 4</code>.</li>
+<li><code>stty -F /dev/ttyS0</code>: <code>speed 9600 baud</code>.</li>
+<li><code>echo Hi | hexdump -C</code>: <code>48 69 0a</code> — &lsquo;H&rsquo; = 0x48 (§2), &lsquo;i&rsquo; = 0x69, newline = 0x0a.</li>
+</ul>
+<p>පිටුවේ VM terminal එක browser එකේ ධාවනය වන්නේ VGA console (<code>/dev/tty1</code>) මතය, serial port එක මත නොවේ. එබැවින් ඔබට <code>dmesg</code>, <code>/proc</code> සහ <code>hexdump</code> විධාන එලෙසම ක්‍රියා කළ යුතුය. <code>stty -F /dev/ttyS0</code> ද ක්‍රියා කරයි: <code>-F</code> මගින් stty device එකම විවෘත කරන නිසා, විධානය ධාවනය කරන terminal එක වැදගත් නොවේ. (අපි එය <code>/dev/tty1</code> ආදානය ලෙස යොදාද ධාවනය කළෙමු. ප්‍රතිදානය එලෙසමයි: <code>speed 9600 baud</code>.)</p>
+<h3 id="7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#7-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>&lsquo;U&rsquo; (ASCII 85 = 0x55) 8N1 frame එකේ bits 10 ලියන්න. එය විශේෂ වන්නේ ඇයි?</li>
+<li>115,200 baud හි, 8N1, එක් bit එකක කාලය සහ තත්පරයකට අක්ෂර ගණන කීයද?</li>
+<li>7E1 (data 7, even parity, stop 1) frame එකක bits කීයද? &lsquo;H&rsquo; සඳහා parity bit එක කුමක්ද? (7-bit &lsquo;H&rsquo; = 100 1000.)</li>
+<li>Receiver එකක් +4 V දකී. එය 0 ද 1 ද? +2 V නම්?</li>
+<li>කලාප පළල 3,000 Hz, P/N = 255 නම් Shannon C කීයද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>0x55 = 0101 0101. LSB-first: 1010 1010. Frame: <code>0 1010 1010 1</code> — 0 සහ 1 මාරුවෙන් මාරුවට. Baud අනුපාතය මැනීමට හෝ ගැළපීමට ප්‍රයෝජනවත් රටාවකි.</li>
+<li>1 / 115200 = <strong>8.68 µs</strong>. 115200 / 10 = <strong>11,520</strong> අක්ෂර/s.</li>
+<li>1 + 7 + 1 + 1 = <strong>10</strong> bits. &lsquo;H&rsquo; හි 1 bits 2 ක් (ඉරට්ටේ) → even parity bit = <strong>0</strong>.</li>
+<li>+4 V → <strong>0</strong> (+3 සිට +15 V). +2 V → <strong>නිර්වචනය නොවේ.</strong></li>
+<li>3000 × log₂(256) = 3000 × 8 = <strong>24,000 bit/s</strong>.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>Texas Instruments, &ldquo;Interface Circuits for TIA/EIA-232-F&rdquo; (SLLA037A), PDF පිටුව 8: <a href="https://www.ti.com/lit/an/slla037a/slla037a.pdf">https://www.ti.com/lit/an/slla037a/slla037a.pdf</a></li>
+<li>ITU-T Recommendation V.21 නිල පිටුව: <a href="https://www.itu.int/rec/T-REC-V.21/en">https://www.itu.int/rec/T-REC-V.21/en</a></li>
+<li>C. E. Shannon, &ldquo;A Mathematical Theory of Communication&rdquo;, <em>Bell System Technical Journal</em> 27, 1948, ප්‍රමේයය 17 (අප කියවූ Harvard ගණිත දෙපාර්තමේන්තු පිටපතේ PDF පිටුව 43): <a href="https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf</a> (නිල නොවන පිටපත).</li>
+<li>මෙම පොතේ VM terminal image එක: §6 හි ප්‍රතිදාන අපි ධාවනය කර ලබා ගත්තෙමු.</li>
+<li>§5 හි කලාප පළල සහ SNR ආදර්ශ (illustrative) අංක වේ.</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/453b3f22c5934f1acbd68d680dc1c84f028b9d9d" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B7%81%E0%B7%8A%E2%80%8D%E0%B6%BB%E0%B7%9A%E0%B6%AB%E0%B7%92&#43;%E0%B7%83%E0%B6%B6%E0%B7%90%E0%B6%B3%E0%B7%92&#43;%E0%B7%83%E0%B7%84&#43;%E0%B6%B4%E0%B7%85%E0%B6%B8%E0%B7%94&#43;%E0%B6%BA%E0%B6%B1%E0%B7%8A%E0%B6%AD%E0%B7%8A%E2%80%8D%E0%B6%BB-%E0%B7%83%E0%B7%92%E0%B6%A7-%E0%B6%BA%E0%B6%B1%E0%B7%8A%E0%B6%AD%E0%B7%8A%E2%80%8D%E0%B6%BB&#43;%E0%B7%83%E0%B6%B8%E0%B7%8A%E0%B6%B6%E0%B6%B1%E0%B7%8A%E0%B6%B0%E0%B6%AD%E0%B7%8F&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F38-serial-links-and-the-first-machine-to-machine-connections%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F38-serial-links-and-the-first-machine-to-machine-connections.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F38-serial-links-and-the-first-machine-to-machine-connections.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/37-interconnects-at-scale/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>පරිමාණයේ Interconnects</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/39-arpanet-and-packet-switching/" class="flex align-center">
+        <span>ARPANET සහ Packet Switching</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#rs-232-මලක-ශරණ-සබඳය">RS-232: මූලික ශ්‍රේණි සබැඳිය</a></li>
+    <li><a href="#modem-එක-analog-වයර-මත-digital">Modem එක: Analog වයර් මත Digital</a></li>
+    <li><a href="#මයන-ඊළඟ-ගහ-නරමණය-බල-කරනන-ඇය">මෙයින් ඊළඟ ගෘහ නිර්මාණය බල කරන්නේ ඇයි</a></li>
+    <li><a href="#ගඹරන-වයරයක-මත-එක-අකෂරයක--uart-frame-එක-අතන-rs-232-වලටයත-300-bits-modem-සහ-shannon-සමව">ගැඹුරින්: වයරයක් මත එක් අක්ෂරයක් — UART frame එක අතින්, RS-232 වෝල්ටීයතා, 300 bit/s modem සහ Shannon සීමාව</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-වඩ-කළ-උදහරණය-h-අකෂරය-8n1-frame-එකක">2. වැඩ කළ උදාහරණය: &lsquo;H&rsquo; අක්ෂරය 8N1 frame එකක</a></li>
+        <li><a href="#3-rs-232-වලටයත-1-යන-සණ">3. RS-232 වෝල්ටීයතා: 1 යනු සෘණ</a></li>
+        <li><a href="#4-modem-300-bits-සහ-එය-අරථවත-ව-ආකරය">4. Modem: 300 bit/s සහ එය අර්ථවත් වූ ආකාරය</a></li>
+        <li><a href="#5-සමව-shannon-ධරතව">5. සීමාව: Shannon ධාරිතාව</a></li>
+        <li><a href="#6-vm-terminal-linux-හ-serial-port-එක">6. VM terminal: Linux හි serial port එක</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>华虹 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/%E5%8D%8E%E8%99%B9/</link>
+		<description>Recent content in 华虹 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/%E5%8D%8E%E8%99%B9/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>光刻：从显微镜到扫描机</title>
+				<link>http://localhost:1478/zh-hans/posts/48-zh-lithography-fabs/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/48-zh-lithography-fabs/</guid>
+				<description>1964 年的“土光刻机”是两台显微镜加一盏紫外灯；1980 年清华做出自动对准的分步投影光刻机；1990 年代，摩尔定律成了审批流程的时钟。</description>
+			</item>
+	</channel>
+</rss>

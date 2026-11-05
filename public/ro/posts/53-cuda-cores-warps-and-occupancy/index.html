@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SIMT pe SM-uri și warp-uri de 32: pasul comun câștigă până la divergență, iar ocuparea ascunde așteptarea după memorie">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/53-cuda-cores-warps-and-occupancy/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Nuclee CUDA, warp-uri și ocupare">
+	<meta property="og:description" content="SIMT pe SM-uri și warp-uri de 32: pasul comun câștigă până la divergență, iar ocuparea ascunde așteptarea după memorie">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Nuclee CUDA, warp-uri și ocupare">
+	<meta itemprop="description" content="SIMT pe SM-uri și warp-uri de 32: pasul comun câștigă până la divergență, iar ocuparea ascunde așteptarea după memorie">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="3284">
+
+<title>Nuclee CUDA, warp-uri și ocupare • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/53-cuda-cores-warps-and-occupancy/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/53-cuda-cores-warps-and-occupancy/" title="CUDA Cores, Warps, and Occupancy">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/53-cuda-cores-warps-and-occupancy/" title="CUDA Core, Warp และ Occupancy">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/53-cuda-cores-warps-and-occupancy/" title="CUDA Cores, Warps සහ Occupancy">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/53-cuda-cores-warps-and-occupancy/" title="CUDA Cores, Warps மற்றும் Occupancy">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="active">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Nuclee CUDA, warp-uri și ocupare</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ierarhia-grid-bloc-warp-thread">1. Ierarhia: grid, bloc, warp, thread</a></li>
+    <li><a href="#2-simt-o-instrucțiune-multe-thread-uri">2. SIMT: o instrucțiune, multe thread-uri</a>
+      <ul>
+        <li><a href="#cum-arată-un-sm-concret-volta-gv100">Cum arată un SM concret: Volta GV100</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-divergența-când-thread-urile-nu-mai-sunt-de-acord">3. Divergența: când thread-urile nu mai sunt de acord</a>
+      <ul>
+        <li><a href="#pre-volta-un-singur-contor-de-program-pe-warp">Pre-Volta: un singur contor de program pe warp</a></li>
+        <li><a href="#volta-planificare-independentă-a-thread-urilor">Volta: planificare independentă a thread-urilor</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-planificarea-warp-urilor-și-ascunderea-latenței">4. Planificarea warp-urilor și ascunderea latenței</a></li>
+    <li><a href="#5-ocuparea-definiția-oficială">5. Ocuparea: definiția oficială</a></li>
+    <li><a href="#6-calcul-lucrat-de-ocupare-pe-nvidia-a100-compute-capability-80">6. Calcul lucrat de ocupare pe NVIDIA A100 (compute capability 8.0)</a></li>
+    <li><a href="#7-volta-vs-ampere-ce-s-a-schimbat-la-limite">7. Volta vs. Ampere: ce s-a schimbat la limite</a></li>
+    <li><a href="#8-drumul-spre-atenție">8. Drumul spre atenție</a></li>
+    <li><a href="#rezumat">Rezumat</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Nuclee CUDA, warp-uri și ocupare
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 52 a explicat <em>de ce</em> GPU-ul a pariat pe paralelism masiv. Aici coborâm la nivelul la care lucrează efectiv un inginer care scrie kernel-uri: <strong>Streaming Multiprocessor</strong> (SM), <strong>warp</strong>, <strong>planificatorul de warp-uri</strong> și <strong>ocuparea</strong> (<em>occupancy</em>). Le vom lua pe rând, cu cifre din documentația NVIDIA pe care am deschis-o integral: whitepaper-ul Tesla V100 (NVIDIA, <em>NVIDIA Tesla V100 GPU Architecture</em>, WP-08608-001_v1.1, august 2017, <a href="https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf">PDF</a>), whitepaper-ul A100 (NVIDIA, <em>NVIDIA A100 Tensor Core GPU Architecture</em>, V1.0, 2020, <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">PDF</a>) și ghidul de programare CUDA (NVIDIA, <em>CUDA Programming Guide</em>, Release 13.5, 31 octombrie 2026, <a href="https://docs.nvidia.com/cuda/cuda-programming-guide/pdf/cuda-programming-guide.pdf">PDF</a>, descărcat și accesat la 2026-11-05). Numerele de pagină de mai jos sunt cele tipărite în subsolul fiecărui document.</p>
+<p>O precizare de vocabular: în română spunem de obicei „fir de execuție” pentru <em>thread</em>, dar în comunitatea CUDA se păstrează aproape mereu termenii englezești — <em>thread</em>, <em>thread block</em>, <em>warp</em>, <em>lane</em>, <em>kernel</em>. Îi vom păstra și noi, explicându-i.</p>
+<h2 id="1-ierarhia-grid-bloc-warp-thread">1. Ierarhia: grid, bloc, warp, thread<a class="anchor" href="#1-ierarhia-grid-bloc-warp-thread">#</a></h2>
+<p>Când lansezi un kernel CUDA, thread-urile sunt grupate în <strong>blocuri de thread-uri</strong> (<em>thread blocks</em>), iar blocurile formează un <strong>grid</strong>, conform configurației de lansare (<em>CUDA PG</em>, Release 13.5, §2.3.7, p. 74, accesat 2026-11-05). Planificatorul hardware distribuie apoi blocurile pe SM-uri; aplicația nu poate controla și nici interoga ce bloc ajunge pe ce SM, iar ordinea nu e garantată, deci corectitudinea programului nu are voie să depindă de ea (<em>CUDA PG</em>, Release 13.5, §2.3.7, p. 74, accesat 2026-11-05). Cât timp un SM are resurse libere, primește blocuri noi; când niciun SM nu mai are loc, planificatorul așteaptă să se termine blocuri deja atribuite (același loc).</p>
+<p>În interiorul unui bloc, thread-urile sunt organizate în grupuri de <strong>32</strong>, numite <strong>warp-uri</strong> (<em>CUDA PG</em>, Release 13.5, §1.2.2.2 „Warps and SIMT”, p. 7, accesat 2026-11-05). Împărțirea e deterministă: fiecare warp conține thread-uri cu ID-uri consecutive, crescătoare, iar primul warp îl conține pe thread-ul 0; numărul de warp-uri al unui bloc este numărul de thread-uri rotunjit în sus la un multiplu de 32, împărțit la 32 (<em>CUDA PG</em>, Release 13.5, §3.2.2.2 „Hardware Multithreading”, p. 152, accesat 2026-11-05). Fiecare thread dintr-un warp primește o <strong>bandă</strong> (<em>warp lane</em>), numerotată de la 0 la 31 (<em>CUDA PG</em>, Release 13.5, §1.2.2.2, p. 9, accesat 2026-11-05).</p>
+<p>Consecința practică, spusă explicit de NVIDIA: e bine ca numărul de thread-uri dintr-un bloc să fie multiplu de 32; orice alt număr e legal, dar ultimul warp va avea benzi nefolosite pe toată durata execuției, cu utilizare mai slabă a unităților funcționale și a accesului la memorie (<em>CUDA PG</em>, Release 13.5, §1.2.2.2, p. 9, accesat 2026-11-05). Un bloc de 100 de thread-uri ocupă deci 4 warp-uri, iar al patrulea are doar 4 benzi active din 32 (aritmetică proprie, pe regula de rotunjire de mai sus).</p>
+<h2 id="2-simt-o-instrucțiune-multe-thread-uri">2. SIMT: o instrucțiune, multe thread-uri<a class="anchor" href="#2-simt-o-instruc%c8%9biune-multe-thread-uri">#</a></h2>
+<p>NVIDIA numește modelul <strong>SIMT</strong> — <em>Single-Instruction Multiple-Threads</em>: toate thread-urile unui warp execută același cod de kernel, dar fiecare poate urma alte ramuri prin cod (<em>CUDA PG</em>, Release 13.5, §1.2.2.2, p. 7, accesat 2026-11-05). Ghidul îl compară direct cu SIMD-ul clasic: în SIMD execuția urmează un singur flux de control, pe când în SIMT fiecare thread are voie să-și urmeze propriul flux, motiv pentru care SIMT nu are o lățime fixă a datelor cum are SIMD (același §, p. 9).</p>
+<p>Diferența e mai mult decât semantică. Într-un set de instrucțiuni SIMD de tip AVX, programatorul (sau compilatorul) împachetează explicit datele în registre vectoriale; în CUDA scrii cod pentru <em>un singur</em> thread, iar hardware-ul grupează 32 de astfel de thread-uri și le execută împreună. Ghidul insistă că nu e <em>necesar</em> să te gândești la warp-uri ca să scrii cod CUDA corect, dar că modelul de execuție pe warp e esențial pentru a înțelege coalescerea accesului la memoria globală și conflictele de bancă din memoria partajată (<em>CUDA PG</em>, Release 13.5, §1.2.2.2, p. 9, accesat 2026-11-05) — subiectele capitolului 54.</p>
+<h3 id="cum-arată-un-sm-concret-volta-gv100">Cum arată un SM concret: Volta GV100<a class="anchor" href="#cum-arat%c4%83-un-sm-concret-volta-gv100">#</a></h3>
+<p>Ca să nu vorbim abstract, să deschidem SM-ul Volta. Whitepaper-ul spune că SM-ul GV100 are 64 de nuclee FP32 și 32 de nuclee FP64 și este împărțit în <strong>patru blocuri de procesare</strong> (<em>processing blocks</em>, numite și partiții); fiecare partiție are 16 nuclee FP32, 8 nuclee FP64, 16 nuclee INT32, două Tensor Cores, un cache de instrucțiuni L0, <strong>un planificator de warp-uri</strong>, o unitate de dispatch și un fișier de registre de 64 KB (NVIDIA, Tesla V100 whitepaper, 2017, secțiunea „Volta SM (Streaming Multiprocessor)”, p. 12). Patru partiții × 64 KB dau 256 KB de registre pe SM, cifră confirmată de Tabelul 1 al aceluiași whitepaper („Register File Size / SM: 256KB”, p. 10).</p>
+<p>GPU-ul GV100 complet are 84 de SM-uri, iar placa Tesla V100 folosește 80 (Tesla V100 whitepaper, p. 8, și Tabelul 1, p. 10). „Nucleul CUDA” din marketing este, în acest vocabular, o bandă de execuție FP32 — o unitate aritmetică, nu un procesor cu propriul flux de instrucțiuni: cel care decide <em>ce</em> instrucțiune se execută este planificatorul de warp-uri al partiției (interpretarea mea, pe baza descrierii partiției de la p. 12; whitepaper-ul nu folosește formula „bandă”).</p>
+<blockquote class='book-hint '>
+<p><strong>Notă de terminologie.</strong> Un nucleu de CPU din faza 3 a cărții are predicție de salturi, execuție <em>out-of-order</em> și propriul contor de program. O bandă CUDA nu are nimic din toate acestea; costul de control este amortizat pe 32 de thread-uri care execută aceeași instrucțiune. Acesta e tot pariul SIMT.</p>
+</blockquote><h2 id="3-divergența-când-thread-urile-nu-mai-sunt-de-acord">3. Divergența: când thread-urile nu mai sunt de acord<a class="anchor" href="#3-divergen%c8%9ba-c%c3%a2nd-thread-urile-nu-mai-sunt-de-acord">#</a></h2>
+<p>Ce se întâmplă când un <code>if</code> e adevărat pentru unele thread-uri dintr-un warp și fals pentru altele? Ghidul CUDA răspunde direct: toate thread-urile warp-ului execută aceeași instrucțiune simultan; thread-urile care nu urmează ramura sunt <strong>mascate</strong> (<em>masked off</em>) cât timp le execută cele care o urmează; dacă o condiție e adevărată pentru jumătate din warp, cealaltă jumătate stă mascată pe durata acelor instrucțiuni (<em>CUDA PG</em>, Release 13.5, §1.2.2.2, p. 9, accesat 2026-11-05). Fenomenul se numește <strong>divergență de warp</strong> (<em>warp divergence</em>), iar utilizarea GPU-ului e maximă când thread-urile unui warp urmează același drum de control (același loc).</p>
+<p>Un exemplu <strong>ilustrativ</strong> (nu o măsurătoare): fie un warp în care benzile pare execută ramura <code>A</code> de 10 instrucțiuni, iar cele impare ramura <code>B</code> de 10 instrucțiuni. Fără divergență, warp-ul ar emite 10 instrucțiuni; cu divergență, emite ramura A cu 16 benzi active, apoi ramura B cu celelalte 16 — aproximativ 20 de emisiuni pentru aceeași muncă utilă, adică eficiență SIMT de circa 50% în regiunea divergentă. Cifrele sunt alese de mine pentru claritate; costul real depinde de compilator și de arhitectură.</p>
+<h3 id="pre-volta-un-singur-contor-de-program-pe-warp">Pre-Volta: un singur contor de program pe warp<a class="anchor" href="#pre-volta-un-singur-contor-de-program-pe-warp">#</a></h3>
+<p>Whitepaper-ul V100 descrie istoric mecanismul: GPU-urile Pascal și cele anterioare execută warp-urile de 32 de thread-uri în mod SIMT cu <strong>un singur contor de program partajat</strong> de toate cele 32 de thread-uri, combinat cu o <strong>mască activă</strong> care spune ce thread-uri sunt active; ramurile divergente sunt serializate, masca originală e păstrată până la reconvergență, de obicei la finalul secțiunii divergente (Tesla V100 whitepaper, secțiunea „Independent Thread Scheduling”, Figura 20, p. 26). Whitepaper-ul notează și prețul: thread-urile aceluiași warp aflate în regiuni divergente nu pot comunica sau aștepta unele după altele, iar algoritmi cu blocări fine (<em>locks</em>, <em>mutex</em>) pot ajunge la <em>deadlock</em> în funcție de warp-ul din care provin thread-urile concurente (același loc, p. 26).</p>
+<h3 id="volta-planificare-independentă-a-thread-urilor">Volta: planificare independentă a thread-urilor<a class="anchor" href="#volta-planificare-independent%c4%83-a-thread-urilor">#</a></h3>
+<p>Volta schimbă tabloul păstrând starea de execuție <strong>per thread</strong>, inclusiv contor de program și stivă de apel (Tesla V100 whitepaper, Figura 21, p. 27). Un „schedule optimizer” grupează thread-urile active ale aceluiași warp în unități SIMT, iar thread-urile pot diverge și reconverge la granularitate sub-warp (același loc, p. 27). Important pentru intuiție: execuția <em>rămâne</em> SIMT — la orice ciclu de ceas, nucleele CUDA execută aceeași instrucțiune pentru toate thread-urile active ale warp-ului, ca înainte; ce se schimbă este că instrucțiunile din ramurile <code>if</code> și <code>else</code> pot fi intercalate în timp (același whitepaper, Figura 22, p. 27). Tabelul 2 al whitepaper-ului adaugă o notă de subsol tehnică: contorul de program per thread ocupă de regulă două sloturi de registru pe thread (p. 18).</p>
+<p>Ghidul CUDA actual formulează consecința pentru programator: modelul de programare spune că thread-urile unui warp progresează împreună, dar execuția hardware poate diferi; exploatarea cunoștințelor despre maparea reală pe hardware e descurajată, iar un program care încalcă modelul poate avea comportament nedefinit diferit de la un GPU la altul (<em>CUDA PG</em>, Release 13.5, §1.2.2.2, p. 9, accesat 2026-11-05).</p>
+<h2 id="4-planificarea-warp-urilor-și-ascunderea-latenței">4. Planificarea warp-urilor și ascunderea latenței<a class="anchor" href="#4-planificarea-warp-urilor-%c8%99i-ascunderea-laten%c8%9bei">#</a></h2>
+<p>Aici e miezul economic al GPU-ului. Ghidul spune: contextul de execuție al fiecărui warp — contoare de program, registre etc. — este păstrat <strong>pe cip</strong> pe toată durata vieții warp-ului, așa că <strong>comutarea între warp-uri nu costă nimic</strong>; la fiecare ciclu de emisie, planificatorul alege un warp ale cărui thread-uri sunt gata să execute următoarea instrucțiune și o emite pentru ele (<em>CUDA PG</em>, Release 13.5, §3.2.2.2, p. 152, accesat 2026-11-05).</p>
+<p>Comparați cu capitolul 35 (zidul memoriei): un CPU combate latența DRAM cu cache-uri mari și execuție speculativă. Un GPU o combate altfel: când un warp așteaptă un operand din memoria globală, planificatorul emite din alt warp. Cu cât sunt mai multe warp-uri rezidente gata de lucru, cu atât e mai mare șansa ca, la fiecare ciclu, să existe <em>ceva</em> de emis. De aici vine noțiunea de ocupare.</p>
+<p>Un model <strong>ilustrativ</strong>, deliberat simplificat: dacă un warp execută în medie 4 instrucțiuni aritmetice între două accese la memorie și fiecare acces durează, să zicem, ~375 de cicluri, un planificator care emite o instrucțiune pe ciclu ar avea nevoie de ordinul a ~100 de warp-uri pregătite ca să nu stea niciodată degeaba (concurență ≈ debit × latență — legea lui Little din capitolul 35). Cifra de ~375 de cicluri nu e din documentația NVIDIA: Jia et al. au măsurat pe V100, cu metoda <em>pointer-chase</em>, o latență de <strong>375 de cicluri</strong> pentru un miss în L2 cu hit în TLB (1029 de cicluri când miss-ul de L2 e însoțit și de un miss în TLB; hit-ul în L1 e ~28 de cicluri) (Jia, Maggioni, Staiger, Scarpazza, „Dissecting the NVIDIA Volta GPU Architecture via Microbenchmarking”, arXiv:1804.06826, 2018, Figura 3.2 și textul aferent, <a href="https://arxiv.org/pdf/1804.06826">PDF</a>). Exemplul rămâne ilustrativ: am ales 4 instrucțiuni între accese ca să arăt <em>forma</em> raționamentului, nu ca măsurătoare pe un kernel real.</p>
+<h2 id="5-ocuparea-definiția-oficială">5. Ocuparea: definiția oficială<a class="anchor" href="#5-ocuparea-defini%c8%9bia-oficial%c4%83">#</a></h2>
+<p>Ghidul CUDA definește <strong>ocuparea</strong> ca raportul dintre numărul de warp-uri active și numărul maxim de warp-uri active suportat de SM; în general e o practică bună ca ocuparea să fie cât mai mare, pentru că ascunde latența și crește performanța (<em>CUDA PG</em>, Release 13.5, §2.3.7, p. 74, accesat 2026-11-05). Ca s-o calculezi, trebuie să știi limitele de resurse ale SM-ului și ce resurse cere kernel-ul; opțiunea <code>--resource-usage</code> a lui <code>nvcc</code> raportează numărul de registre și memoria partajată cerute de kernel (același §, p. 74).</p>
+<p>Patru resurse limitează câte blocuri încap simultan pe un SM (<em>CUDA PG</em>, Release 13.5, §2.3.7, p. 74, și §3.2.2.2, p. 152, accesat 2026-11-05):</p>
+<ol>
+<li><strong>numărul maxim de thread-uri (warp-uri) rezidente</strong> pe SM;</li>
+<li><strong>numărul maxim de blocuri rezidente</strong> pe SM;</li>
+<li><strong>registrele de 32 de biți</strong> ale SM-ului, partiționate între warp-uri;</li>
+<li><strong>memoria partajată</strong> a SM-ului, partiționată între blocuri.</li>
+</ol>
+<p>Ghidul precizează că alocarea de registre se face per thread, iar memoria partajată per bloc (<em>CUDA PG</em>, Release 13.5, §1.2.3.3, p. 14, accesat 2026-11-05), și că un bloc poate fi plasat pe un SM doar dacă numărul de registre pe thread înmulțit cu numărul de thread-uri din bloc nu depășește registrele disponibile (același loc). Dacă nu există resurse nici pentru un singur bloc, kernel-ul nu se lansează (<em>CUDA PG</em>, Release 13.5, §3.2.2.2, p. 153, accesat 2026-11-05).</p>
+<p>Ghidul dă el însuși două exemple pentru un dispozitiv de <em>compute capability</em> 10.0, cu 2048 de thread-uri rezidente și 32 de blocuri pe SM: un kernel cu blocuri de 768 de thread-uri încape în doar 2 blocuri pe SM, deci ocupare (768·2)/2048 = 75%; unul cu blocuri de 32 de thread-uri se lovește de limita de 32 de blocuri, deci 1024/2048 = 50% (<em>CUDA PG</em>, Release 13.5, §2.3.7, Tabelul 2, p. 75, accesat 2026-11-05). Al doilea exemplu e instructiv: blocurile prea mici irosesc SM-ul chiar dacă nu atingi nicio limită de registre sau memorie.</p>
+<h2 id="6-calcul-lucrat-de-ocupare-pe-nvidia-a100-compute-capability-80">6. Calcul lucrat de ocupare pe NVIDIA A100 (compute capability 8.0)<a class="anchor" href="#6-calcul-lucrat-de-ocupare-pe-nvidia-a100-compute-capability-80">#</a></h2>
+<p>Aleg A100 pentru că limitele lui sunt documentate în două surse primare deschise, care concordă.</p>
+<p><strong>Limitele SM-ului (date documentate):</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>Resursă</th>
+					<th>Valoare</th>
+					<th>Sursă</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Thread-uri / warp</td>
+					<td>32</td>
+					<td>A100 whitepaper, Tabelul 5, p. 43</td>
+			</tr>
+			<tr>
+					<td>Max. warp-uri / SM</td>
+					<td>64</td>
+					<td>A100 whitepaper, Tabelul 5, p. 43; <em>CUDA PG</em>, Release 13.5, §5.1, Tabelul 33, p. 521, accesat 2026-11-05</td>
+			</tr>
+			<tr>
+					<td>Max. thread-uri / SM</td>
+					<td>2048</td>
+					<td>aceleași</td>
+			</tr>
+			<tr>
+					<td>Max. blocuri / SM</td>
+					<td>32</td>
+					<td>aceleași</td>
+			</tr>
+			<tr>
+					<td>Registre de 32 biți / SM</td>
+					<td>65 536</td>
+					<td>A100 whitepaper, Tabelul 5; <em>CUDA PG</em>, Release 13.5, §5.1, Tabelul 34, p. 522, accesat 2026-11-05</td>
+			</tr>
+			<tr>
+					<td>Max. registre / thread</td>
+					<td>255</td>
+					<td>aceleași</td>
+			</tr>
+			<tr>
+					<td>Memorie partajată / SM</td>
+					<td>configurabilă până la 164 KB</td>
+					<td>A100 whitepaper, Tabelul 5, p. 43; <em>CUDA PG</em>, Release 13.5, §5.1, Tabelul 34, p. 522, accesat 2026-11-05</td>
+			</tr>
+			<tr>
+					<td>Memorie partajată / bloc</td>
+					<td>max. 163 KB <strong>la cc 8.0 (A100)</strong>; alte cipuri au alte limite (peste 48 KB doar cu <em>opt-in</em> dinamic)</td>
+					<td><em>CUDA PG</em>, Release 13.5, §5.1, Tabelul 34 și nota 4, p. 522, accesat 2026-11-05</td>
+			</tr>
+	</tbody>
+</table>
+<p>Atenție la ultimul rând: plafonul de <strong>163 KB</strong> de memorie partajată pe bloc este valoarea pentru <em>compute capability</em> <strong>8.0</strong> (A100) — și pentru 8.7 —, nu o constantă CUDA. Sursa este „Table 34: Memory Information per Compute Capability”, rândul „Maximum amount of shared memory per thread block” <em>with</em> <code>max_shared_memory_per_block_optin</code>, cu nota 4: peste 48 KB pe bloc, kernel-ul trebuie să folosească memorie partajată dinamică și un <em>opt-in</em> explicit (<em>CUDA PG</em>, Release 13.5, §5.1, Tabelul 34 și nota 4, p. 522 tipărită = pagina PDF 540, accesat 2026-11-05). Coloanele tabelului, citite din layout-ul PDF (nu doar din extragerea de text), sunt: <strong>7.5 → 64 KB</strong>, <strong>8.0 → 163 KB</strong>, <strong>8.6 → 99 KB</strong>, <strong>8.7 → 163 KB</strong>, <strong>8.9 → 99 KB</strong>. Pentru orice alt GPU decât A100, citiți limita din coloana propriei capabilități.</p>
+<p><strong>Kernel-ul (valori ilustrative, alese de mine):</strong> blocuri de 256 de thread-uri, 64 de registre pe thread, 48 KB de memorie partajată statică pe bloc.</p>
+<p><strong>Pasul 1 — limita de thread-uri:</strong> 2048 / 256 = <strong>8 blocuri</strong>.</p>
+<p><strong>Pasul 2 — limita de blocuri:</strong> 32 de blocuri; nu e restrictivă aici.</p>
+<p><strong>Pasul 3 — limita de registre:</strong> un bloc cere 64 × 256 = 16 384 de registre; 65 536 / 16 384 = <strong>4 blocuri</strong>.</p>
+<p><strong>Pasul 4 — limita de memorie partajată:</strong> 3 × 48 KB = 144 KB ≤ 164 KB, dar 4 × 48 KB = 192 KB &gt; 164 KB, deci <strong>3 blocuri</strong>.</p>
+<p><strong>Rezultat:</strong> minimul este 3 blocuri × 8 warp-uri = 24 de warp-uri active din 64 posibile, adică <strong>ocupare teoretică 37,5%</strong>. Limita restrictivă e memoria partajată.</p>
+<p><strong>Ce putem schimba (tot ilustrativ):</strong></p>
+<ul>
+<li>Reducem memoria partajată la 32 KB pe bloc: memoria permite 5 blocuri (160 KB ≤ 164 KB), dar acum registrele limitează la 4 → 32 de warp-uri → <strong>50%</strong>.</li>
+<li>Dacă, în plus, compilatorul reușește cu 32 de registre pe thread: registrele permit 8 blocuri, memoria 5 → 40 de warp-uri → <strong>62,5%</strong>.</li>
+</ul>
+<p>Ghidul descrie exact acest compromis: programatorul controlează direct dimensiunea blocului și memoria partajată, dar mai puțin registrele; cu <code>--maxrregcount</code> poate impune un plafon, iar dacă kernel-ul are nevoie de mai multe registre decât plafonul, va face <em>spill</em> în memoria locală — totuși, uneori mai multe blocuri rezidente compensează și performanța netă crește (<em>CUDA PG</em>, Release 13.5, §2.3.7, p. 75, accesat 2026-11-05).</p>
+<p><strong>Două avertismente oneste.</strong> Primul: calculul de mai sus e <strong>teoretic</strong>. Ignoră granularitatea de alocare a registrelor (alocarea se face pe multipii de registre pe warp, nu pe unu-câte-unu) și eventuala memorie partajată rezervată de sistem pe bloc — detalii pe care ghidul 13.5 nu le dă în secțiunile citate. Pentru cifra reală a unui kernel compilat, ghidul arată cum se cere direct numărul de blocuri active pe SM prin API-ul <code>cudaOccupancyMaxActiveBlocksPerMultiprocessor</code> (<em>CUDA PG</em>, Release 13.5, §5.7.3.6.2.1, p. 732, accesat 2026-11-05). Al doilea: ocupare mare nu înseamnă automat performanță mare. Ghidul spune doar că, „în general”, e bine să fie mare (<em>CUDA PG</em>, Release 13.5, §2.3.7, p. 74, accesat 2026-11-05). V. Volkov a arătat încă din 2010, pe arhitecturi anterioare, că un kernel poate atinge o fracțiune mare din vârful de calcul sau de lățime de bandă la ocupare deliberat mică, dacă fiecare thread ține mai multe date în registre și exploatează paralelismul la nivel de instrucțiune (Volkov, „Better Performance at Lower Occupancy”, GTC 2010, slides, <a href="https://www.nvidia.com/content/GTC-2010/pdfs/2238_GTC2010.pdf">PDF</a>). Kernel-urile de matmul cu Tensor Cores (capitolul 55) urmează aceeași logică: fragmentele WMMA stau în registre, deci o ocupare mai mică poate lăsa loc pentru mai multe registre pe thread (raționament pe baza §5.4.11 din ghid și a capitolului 55; nu o măsurătoare pe un kernel GEMM anume).</p>
+<h2 id="7-volta-vs-ampere-ce-s-a-schimbat-la-limite">7. Volta vs. Ampere: ce s-a schimbat la limite<a class="anchor" href="#7-volta-vs-ampere-ce-s-a-schimbat-la-limite">#</a></h2>
+<p>Comparând Tabelul 2 din whitepaper-ul V100 cu Tabelul 5 din whitepaper-ul A100: thread-uri pe warp (32), warp-uri maxime pe SM (64), thread-uri pe SM (2048), blocuri pe SM (32) și registre pe SM (65 536) sunt identice între Volta (cc 7.0) și Ampere A100 (cc 8.0); ce crește este memoria partajată configurabilă pe SM, de la maximum 96 KB la maximum 164 KB (V100 whitepaper, Tabelul 2, p. 18; A100 whitepaper, Tabelul 5, p. 43). Whitepaper-ul A100 adaugă că unitatea combinată L1/memorie partajată are 192 KB pe SM la A100 față de 128 KB la V100 (p. 15).</p>
+<p>Asta înseamnă că, pentru același kernel, raționamentul de ocupare pe registre e același pe cele două generații, iar diferențele apar la memoria partajată. Pentru generațiile ulterioare, ghidul 13.5 listează alte valori — de exemplu, pentru unele capabilități doar 48 de warp-uri sau 1536 de thread-uri pe SM (<em>CUDA PG</em>, Release 13.5, §5.1, Tabelul 33, p. 521, accesat 2026-11-05) — așa că nu copiați niciodată limitele unei generații pe alta; citiți-le din <code>cudaGetDeviceProperties</code> sau din <code>cuda::arch_traits</code>, cum recomandă ghidul (<em>CUDA PG</em>, Release 13.5, §2.3.7, p. 74–75, accesat 2026-11-05).</p>
+<h2 id="8-drumul-spre-atenție">8. Drumul spre atenție<a class="anchor" href="#8-drumul-spre-aten%c8%9bie">#</a></h2>
+<p>Capitolul 63 va arăta că atenția din transformere înseamnă, în mare, două înmulțiri de matrice separate de un softmax: Attention(Q, K, V) = softmax(QKᵀ/√d_k)V (Vaswani et al., „Attention Is All You Need”, NeurIPS 2017, Ec. 1, §3.2.1, <a href="https://arxiv.org/abs/1706.03762">arXiv:1706.03762</a>). Pe GPU, fiecare dintre aceste etape devine un kernel care trebuie să-și împartă munca în blocuri și warp-uri și să încapă cu registrele și memoria partajată pe SM.</p>
+<p>FlashAttention (Dao et al., 2022) e un exemplu bun de gândire în exact termenii acestui capitol: autorii descriu modelul de execuție al GPU-ului ca un număr masiv de thread-uri care încarcă intrări din HBM în registre și SRAM, calculează și scriu rezultatele înapoi în HBM, și construiesc un algoritm de atenție care folosește <em>tiling</em> pentru a reduce citirile și scrierile între HBM și SRAM-ul de pe cip (Dao, Fu, Ermon, Rudra, Ré, „FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness”, NeurIPS 2022, Abstract și §2.1, <a href="https://arxiv.org/abs/2205.14135">arXiv:2205.14135</a>). Dimensiunea blocului de <em>tiling</em> este, practic, o decizie de ocupare: blocuri mai mari reutilizează mai mult datele, dar consumă mai multă memorie partajată și registre și lasă mai puține warp-uri rezidente (raționamentul meu, pe baza calculului din secțiunea 6).</p>
+<p>Capitolul 54 deschide ierarhia de memorie în care trăiesc aceste warp-uri; capitolul 55 arată unitatea care face înmulțirea propriu-zisă — Tensor Core — și cum o comandă un warp întreg, cooperativ.</p>
+<h2 id="rezumat">Rezumat<a class="anchor" href="#rezumat">#</a></h2>
+<ul>
+<li>Un warp are 32 de thread-uri; blocurile se împart în warp-uri cu ID-uri consecutive (<em>CUDA PG</em>, Release 13.5, §1.2.2.2, p. 7–9, și §3.2.2.2, p. 152, accesat 2026-11-05).</li>
+<li>SIMT: aceeași instrucțiune pentru toate thread-urile active ale warp-ului; ramurile divergente se maschează și se serializează (<em>CUDA PG</em>, Release 13.5, §1.2.2.2, p. 9, accesat 2026-11-05; V100 whitepaper, p. 26–27).</li>
+<li>Comutarea între warp-uri e gratuită pentru că tot contextul stă pe cip; latența se ascunde prin multe warp-uri gata de lucru (<em>CUDA PG</em>, Release 13.5, §3.2.2.2, p. 152, accesat 2026-11-05).</li>
+<li>Ocupare = warp-uri active / warp-uri maxime; limitele sunt thread-uri, blocuri, registre, memorie partajată (<em>CUDA PG</em>, Release 13.5, §2.3.7, p. 74–75, accesat 2026-11-05).</li>
+<li>Exemplu A100 (ilustrativ): 256 thread-uri, 64 registre, 48 KB → 3 blocuri → 37,5%.</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Nuclee&#43;CUDA%2C&#43;warp-uri&#43;%C8%99i&#43;ocupare&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F53-cuda-cores-warps-and-occupancy%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F53-cuda-cores-warps-and-occupancy.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F53-cuda-cores-warps-and-occupancy.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/49-finfet-to-gaa/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>De la FinFET la GAA</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/54-gpu-memory-hierarchy/" class="flex align-center">
+        <span>Ierarhia de memorie a GPU-ului</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ierarhia-grid-bloc-warp-thread">1. Ierarhia: grid, bloc, warp, thread</a></li>
+    <li><a href="#2-simt-o-instrucțiune-multe-thread-uri">2. SIMT: o instrucțiune, multe thread-uri</a>
+      <ul>
+        <li><a href="#cum-arată-un-sm-concret-volta-gv100">Cum arată un SM concret: Volta GV100</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-divergența-când-thread-urile-nu-mai-sunt-de-acord">3. Divergența: când thread-urile nu mai sunt de acord</a>
+      <ul>
+        <li><a href="#pre-volta-un-singur-contor-de-program-pe-warp">Pre-Volta: un singur contor de program pe warp</a></li>
+        <li><a href="#volta-planificare-independentă-a-thread-urilor">Volta: planificare independentă a thread-urilor</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-planificarea-warp-urilor-și-ascunderea-latenței">4. Planificarea warp-urilor și ascunderea latenței</a></li>
+    <li><a href="#5-ocuparea-definiția-oficială">5. Ocuparea: definiția oficială</a></li>
+    <li><a href="#6-calcul-lucrat-de-ocupare-pe-nvidia-a100-compute-capability-80">6. Calcul lucrat de ocupare pe NVIDIA A100 (compute capability 8.0)</a></li>
+    <li><a href="#7-volta-vs-ampere-ce-s-a-schimbat-la-limite">7. Volta vs. Ampere: ce s-a schimbat la limite</a></li>
+    <li><a href="#8-drumul-spre-atenție">8. Drumul spre atenție</a></li>
+    <li><a href="#rezumat">Rezumat</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

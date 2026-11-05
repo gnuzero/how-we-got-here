@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>神威·太湖之光 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/%E7%A5%9E%E5%A8%81%E5%A4%AA%E6%B9%96%E4%B9%8B%E5%85%89/</link>
+		<description>Recent content in 神威·太湖之光 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:38:43 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/%E7%A5%9E%E5%A8%81%E5%A4%AA%E6%B9%96%E4%B9%8B%E5%85%89/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>规模：从银河到太湖之光</title>
+				<link>http://localhost:1478/zh-hans/posts/17-zh-supercomputers-cpus/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/17-zh-supercomputers-cpus/</guid>
+				<description>兼容别人、手工自造、用商品芯片拼、再自己设计芯片：中国的大型计算机四十年里换了几条路，每一次转向都被一个具体的约束逼出来。</description>
+			</item>
+	</channel>
+</rss>

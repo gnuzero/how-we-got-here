@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>激光照排 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/%E6%BF%80%E5%85%89%E7%85%A7%E6%8E%92/</link>
+		<description>Recent content in 激光照排 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:38:43 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/%E6%BF%80%E5%85%89%E7%85%A7%E6%8E%92/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>把汉字敲进机器：打字机、输入法与激光照排</title>
+				<link>http://localhost:1478/zh-hans/posts/26-zh-input-and-typesetting/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/26-zh-input-and-typesetting/</guid>
+				<description>英文键盘一键一个字母，汉字却有几千上万个；从打字机字盘到输入法、汉卡和王选的字形压缩，每一步都在绕过同一个瓶颈。</description>
+			</item>
+	</channel>
+</rss>

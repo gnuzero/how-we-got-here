@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="เมื่อ compute เป็นหลายชิป เส้นทางระหว่างพวกมันคือกำแพงถัดไป — ลิงก์เฉพาะ คัดลอกน้อยลง">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/37-interconnects-at-scale/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="อินเตอร์คอนเนกต์ในระดับสเกล">
+	<meta property="og:description" content="เมื่อ compute เป็นหลายชิป เส้นทางระหว่างพวกมันคือกำแพงถัดไป — ลิงก์เฉพาะ คัดลอกน้อยลง">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="อินเตอร์คอนเนกต์ในระดับสเกล">
+	<meta itemprop="description" content="เมื่อ compute เป็นหลายชิป เส้นทางระหว่างพวกมันคือกำแพงถัดไป — ลิงก์เฉพาะ คัดลอกน้อยลง">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1046">
+
+<title>อินเตอร์คอนเนกต์ในระดับสเกล • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/37-interconnects-at-scale/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/37-interconnects-at-scale/" title="Interconnects at Scale">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/37-interconnects-at-scale/" title="පරිමාණයේ Interconnects">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/37-interconnects-at-scale/" title="Interconnects at Scale">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/37-interconnects-at-scale/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/37-interconnects-at-scale/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/37-interconnects-at-scale/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="active">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>อินเตอร์คอนเนกต์ในระดับสเกล</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#เสนทางปรยายคอภาษ">เส้นทางปริยายคือภาษี</a>
+      <ul>
+        <li><a href="#ราคาของการคดลอก-แบบจำลองเวลาถายโอน">ราคาของการคัดลอก: แบบจำลองเวลาถ่ายโอน</a></li>
+      </ul>
+    </li>
+    <li><a href="#ลงกเฉพาะ-หนวยความจำทสอดคลอง-คดลอกนอยลง">ลิงก์เฉพาะ หน่วยความจำที่สอดคล้อง คัดลอกน้อยลง</a>
+      <ul>
+        <li><a href="#all-reduce-ทำไมแบนดวดทระหวาง-gpu-จงเปนอนดบหนง">all-reduce: ทำไมแบนด์วิดท์ระหว่าง GPU จึงเป็นอันดับหนึ่ง</a></li>
+      </ul>
+    </li>
+    <li><a href="#ปญหาเดยวกน-ฮารดแวรเปด">ปัญหาเดียวกัน ฮาร์ดแวร์เปิด</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    อินเตอร์คอนเนกต์ในระดับสเกล
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>เฟสนี้จนถึงตอนนี้เชื่อมส่วนประกอบ <em>ภายใน</em> เครื่องเดียว — CPU กับหน่วยความจำ CPU กับอุปกรณ์ เมื่อ workload ต้องการหลาย GPU หรือหลายเครื่อง คำถามเปลี่ยน: หน่วยเหล่านั้นคุยกัน <em>เอง</em> เร็วพอที่การสื่อสารเพิ่มจะไม่กิน compute เพิ่มหรือไม่?</p>
+<h2 id="เสนทางปรยายคอภาษ">เส้นทางปริยายคือภาษี<a class="anchor" href="#%e0%b9%80%e0%b8%aa%e0%b8%99%e0%b8%97%e0%b8%b2%e0%b8%87%e0%b8%9b%e0%b8%a3%e0%b8%a2%e0%b8%b2%e0%b8%a2%e0%b8%84%e0%b8%ad%e0%b8%a0%e0%b8%b2%e0%b8%a9">#</a></h2>
+<p>หากไม่มีเส้นทาง peer GPU A เขียนผ่านหน่วยความจำระบบ และ GPU B อ่านกลับ — ฮอปเพิ่ม latency เพิ่ม แบนด์วิดท์ PCIe เผาไปกับการคัดลอก แม้บน PCIe อย่างเดียว GPUDirect P2P ก็ DMA GPU↔GPU ได้โดยไม่ต้อง stage ที่โฮสต์ (ยังที่อัตรา PCIe) ข้อจำกัดที่เหลือคือแบนด์วิดท์และทอโพโลยี: fabric ขยายร่วมไม่เคยออกแบบเป็น mesh หลาย GPU</p>
+<p><strong>คำศัพท์</strong> (ศัพท์บัญญัติราชบัณฑิตยสภา; สาขาระบุในวงเล็บเมื่อไม่ใช่คอมพิวเตอร์และเทคโนโลยีสารสนเทศ): <strong>แบนด์วิดท์</strong> (bandwidth); <strong>เวลาแฝง</strong> (latency); <strong>เชื่อมโยง</strong> (link); <strong>บัส</strong> (bus); <strong>หน่วยความจำ</strong> และ <strong>แคช</strong> (memory, cache); <strong>กลุ่มข้อมูล</strong> (packet); <strong>ปริมาณงาน</strong> (throughput); <strong>ทอพอโลยี</strong> (topology — วิทยาศาสตร์/คณิตศาสตร์); <strong>สวิตช์</strong> (switch — วิศวกรรมไฟฟ้า) ไม่พบศัพท์บัญญัติสำหรับ cache coherence, interconnect, fabric, peer-to-peer, memory pooling, shared memory และ direct memory access ในความหมายนี้ (coherence มีศัพท์บัญญัติสาขาวิศวกรรมไฟฟ้าว่า ความอาพันธ์ ซึ่งเป็นเรื่องคลื่น ไม่ใช่แคช) บทนี้จึงใช้คำอธิบายภาษาไทยคู่กับคำอังกฤษ เช่น ความสอดคล้องของแคช (cache coherence) และการรวมหน่วยความจำเป็นพูล (memory pooling)</p>
+<h3 id="ราคาของการคดลอก-แบบจำลองเวลาถายโอน">ราคาของการคัดลอก: แบบจำลองเวลาถ่ายโอน<a class="anchor" href="#%e0%b8%a3%e0%b8%b2%e0%b8%84%e0%b8%b2%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%84%e0%b8%94%e0%b8%a5%e0%b8%ad%e0%b8%81-%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%88%e0%b8%b3%e0%b8%a5%e0%b8%ad%e0%b8%87%e0%b9%80%e0%b8%a7%e0%b8%a5%e0%b8%b2%e0%b8%96%e0%b8%b2%e0%b8%a2%e0%b9%82%e0%b8%ad%e0%b8%99">#</a></h3>
+<p>ให้เวลาส่งข้อมูลขนาด S ผ่านเส้นทางหนึ่งเป็น T = α + S/B โดย α คือเวลาแฝงคงที่ต่อการส่ง และ B คือแบนด์วิดท์ต่อทิศ (แบบจำลองจากหลักการแรก) ใช้ตัวเลขสมมติ α = 10 µs ทุกเส้นทาง และ B ของ PCIe 5.0 x16 = 64 GB/s ต่อทิศ (32 GT/s × 16 lane ÷ 8 บิต ยังไม่หักโอเวอร์เฮดของการเข้ารหัสสาย; ตัวเลข 32 GT/s อนุมานจากที่ PCI-SIG เขียนว่า PCIe 6.0 ที่ 64 GT/s &ldquo;เพิ่มอัตราเป็นสองเท่าของ PCIe 5.0&rdquo;)</p>
+<table>
+	<thead>
+			<tr>
+					<th>เส้นทาง</th>
+					<th>สูตร</th>
+					<th>S = 1 GB</th>
+					<th>S = 64 KB</th>
+					<th>S = 0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ผ่านหน่วยความจำโฮสต์ (คัดลอกสองครั้งต่อกัน)</td>
+					<td>2α + 2S/B</td>
+					<td>31.3 ms</td>
+					<td>22 µs</td>
+					<td>20 µs</td>
+			</tr>
+			<tr>
+					<td>GPUDirect P2P บน PCIe (ครั้งเดียว)</td>
+					<td>α + S/B</td>
+					<td>15.6 ms</td>
+					<td>11 µs</td>
+					<td>10 µs</td>
+			</tr>
+			<tr>
+					<td>NVLink รุ่นที่ 4 (450 GB/s ต่อทิศ, ดูข้างล่าง)</td>
+					<td>α + S/B</td>
+					<td>2.2 ms</td>
+					<td>10.1 µs</td>
+					<td>10 µs</td>
+			</tr>
+	</tbody>
+</table>
+<p>อ่านตาราง: ข้อความใหญ่ถูกกำหนดด้วยแบนด์วิดท์ ข้อความเล็กถูกกำหนดด้วยเวลาแฝง จุดเปลี่ยนที่สองพจน์เท่ากันคือ S = α × B ซึ่งเท่ากับ 10 µs × 64 GB/s = 640 KB สำหรับ PCIe และ 4.5 MB สำหรับ 450 GB/s กรณีขอบ S = 0 ทุกเส้นทางเหลือแต่ α ลิงก์ที่เร็วกว่าไม่ช่วยอะไร เส้นทางผ่านโฮสต์ยังเสียเปรียบสองเท่าเพราะนับ α สองครั้ง (ในทางปฏิบัติอาจแบ่งเป็นชิ้นแล้วส่งซ้อนกันเพื่อลดเวลารวม แต่ข้อมูลยังข้ามหน่วยความจำโฮสต์สองครั้ง)</p>
+<h2 id="ลงกเฉพาะ-หนวยความจำทสอดคลอง-คดลอกนอยลง">ลิงก์เฉพาะ หน่วยความจำที่สอดคล้อง คัดลอกน้อยลง<a class="anchor" href="#%e0%b8%a5%e0%b8%87%e0%b8%81%e0%b9%80%e0%b8%89%e0%b8%9e%e0%b8%b2%e0%b8%b0-%e0%b8%ab%e0%b8%99%e0%b8%a7%e0%b8%a2%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%88%e0%b8%b3%e0%b8%97%e0%b8%aa%e0%b8%ad%e0%b8%94%e0%b8%84%e0%b8%a5%e0%b8%ad%e0%b8%87-%e0%b8%84%e0%b8%94%e0%b8%a5%e0%b8%ad%e0%b8%81%e0%b8%99%e0%b8%ad%e0%b8%a2%e0%b8%a5%e0%b8%87">#</a></h2>
+<p>NVLink ของ NVIDIA เป็นอินเตอร์คอนเนกต์ GPU-ถึง-GPU ที่สร้างเพื่องานนี้ — CPU และหน่วยความจำระบบอยู่นอกการถ่ายโอน NVSwitch ทำให้ทุก GPU ในโหนดถึงทุกอันอื่นได้ ที่แบนด์วิดท์สูงกว่าเส้นทาง PCIe-และ-CPU มาก สำหรับการแลกเปลี่ยนขนาดใหญ่บ่อย — รูปแบบที่การฝึกระดับใหญ่กลับมาในเฟส 7 และ 10 — เส้นทางตรงนั้นเป็นอันดับหนึ่ง ไม่ใช่การปรับแต่ง</p>
+<p><strong>ตัวเลขของ NVLink จากหน้าผลิตภัณฑ์ของ NVIDIA</strong> (เปิดเมื่อ 26 กันยายน 2026; NVIDIA ระบุว่าค่าของรุ่นที่ 6 เป็น &ldquo;ข้อกำหนดเบื้องต้น อาจเปลี่ยนแปลงได้&rdquo;):</p>
+<table>
+	<thead>
+			<tr>
+					<th>รุ่น NVLink</th>
+					<th>สถาปัตยกรรม</th>
+					<th>แบนด์วิดท์ต่อ GPU</th>
+					<th>ลิงก์สูงสุดต่อ GPU</th>
+					<th>ต่อลิงก์ (ผู้เขียนหาร)</th>
+					<th>แบนด์วิดท์รวมของโดเมน</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>4</td>
+					<td>Hopper</td>
+					<td>900 GB/s</td>
+					<td>18</td>
+					<td>50 GB/s</td>
+					<td>7.2 TB/s (8 GPU)</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>Blackwell</td>
+					<td>1,800 GB/s</td>
+					<td>18</td>
+					<td>100 GB/s</td>
+					<td>130 TB/s (NVL72)</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>Vera Rubin</td>
+					<td>3,000 GB/s</td>
+					<td>36</td>
+					<td>83.3 GB/s</td>
+					<td>216 TB/s (NVL72)</td>
+			</tr>
+	</tbody>
+</table>
+<p>ตรวจตัวเลขของผู้ผลิตเอง: 8 × 900 GB/s = 7.2 TB/s ตรง; 72 × 1.8 TB/s = 129.6 TB/s ซึ่งปัดเป็น 130; 72 × 3 TB/s = 216 TB/s ตรง หน้าเดียวกันเขียนว่ารุ่นที่ 6 ได้ &ldquo;1.7 เท่าของรุ่นก่อน&rdquo; (3,000 / 1,800 = 1.67) และ &ldquo;12 เท่าของ PCIe Gen6&rdquo; ซึ่งตรวจได้กับตัวเลขของ PCI-SIG: PCIe 6.0 x16 ได้สูงสุด 256 GB/s สองทิศรวมกัน และ 3,000 / 256 = 11.7 ≈ 12 ข่าวประชาสัมพันธ์ Blackwell (18 มีนาคม 2024) ระบุว่า 1.8 TB/s เป็นปริมาณงาน <em>สองทิศรวมกัน</em> ต่อ GPU และเชื่อมได้สูงสุด 576 GPU ตัวเลข 450 GB/s ต่อทิศของรุ่นที่ 4 ในตารางก่อนหน้าจึงมาจากการหาร 900 ด้วยสองโดยสมมติว่าสองทิศเท่ากัน (อนุมาน) ข้อสังเกต: ต่อลิงก์ของรุ่นที่ 6 ต่ำกว่ารุ่นที่ 5 แต่จำนวนลิงก์เพิ่มเป็นสองเท่า แบนด์วิดท์ต่อ GPU จึงยังโต</p>
+<h3 id="all-reduce-ทำไมแบนดวดทระหวาง-gpu-จงเปนอนดบหนง">all-reduce: ทำไมแบนด์วิดท์ระหว่าง GPU จึงเป็นอันดับหนึ่ง<a class="anchor" href="#all-reduce-%e0%b8%97%e0%b8%b3%e0%b9%84%e0%b8%a1%e0%b9%81%e0%b8%9a%e0%b8%99%e0%b8%94%e0%b8%a7%e0%b8%94%e0%b8%97%e0%b8%a3%e0%b8%b0%e0%b8%ab%e0%b8%a7%e0%b8%b2%e0%b8%87-gpu-%e0%b8%88%e0%b8%87%e0%b9%80%e0%b8%9b%e0%b8%99%e0%b8%ad%e0%b8%99%e0%b8%94%e0%b8%9a%e0%b8%ab%e0%b8%99%e0%b8%87">#</a></h3>
+<p>การฝึกแบบขนานข้อมูลต้องรวม gradient จากทุก GPU หลังทุกขั้น วิธีแบบวงแหวน (ring all-reduce) คิดได้จากหลักการแรก:</p>
+<ol>
+<li>แบ่งข้อมูลขนาด S ของแต่ละ GPU เป็น N ชิ้น ชิ้นละ S/N</li>
+<li>ช่วง reduce-scatter: N − 1 รอบ แต่ละรอบทุก GPU ส่งชิ้นหนึ่งให้เพื่อนถัดไปพร้อมบวกสะสม จบแล้วแต่ละ GPU ถือผลรวมสมบูรณ์หนึ่งชิ้น</li>
+<li>ช่วง all-gather: อีก N − 1 รอบ ส่งผลรวมที่สมบูรณ์ต่อกันจนทุก GPU มีครบ</li>
+<li>แต่ละ GPU ส่งทั้งหมด 2(N − 1) × S/N ไบต์ และใช้เวลา T = 2(N − 1)·α + 2(N − 1)/N × S/B</li>
+</ol>
+<p>กรณีขอบ: N = 1 ไม่ต้องส่งอะไร (T = 0); N = 2 แต่ละ GPU ส่ง S พอดี; N → ∞ ปริมาณต่อ GPU เข้าใกล้ 2S แต่ไม่เกิน ส่วนพจน์เวลาแฝง 2(N − 1)α โตตาม N เรื่อย ๆ ข้อความเล็กในวงแหวนใหญ่จึงถูกเวลาแฝงกิน และ S = 0 เหลือแต่ 2(N − 1)α</p>
+<p>ตัวอย่างสมมติ: gradient 10 GB (เช่นพารามิเตอร์ 5 พันล้านตัว ตัวละ 2 ไบต์), ไม่นับ α:</p>
+<table>
+	<thead>
+			<tr>
+					<th>ระบบ (สมมติ)</th>
+					<th>N</th>
+					<th>B ต่อทิศ</th>
+					<th>เวลา all-reduce หนึ่งครั้ง</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>8 GPU บน PCIe 5.0 x16</td>
+					<td>8</td>
+					<td>64 GB/s</td>
+					<td>2 × 7/8 × 10 / 64 = 273 ms</td>
+			</tr>
+			<tr>
+					<td>8 GPU บน NVLink รุ่นที่ 4</td>
+					<td>8</td>
+					<td>450 GB/s</td>
+					<td>38.9 ms</td>
+			</tr>
+			<tr>
+					<td>72 GPU บน NVLink รุ่นที่ 5</td>
+					<td>72</td>
+					<td>900 GB/s</td>
+					<td>2 × 71/72 × 10 / 900 = 21.9 ms</td>
+			</tr>
+	</tbody>
+</table>
+<p>ความต่างราวเจ็ดเท่าระหว่างสองแถวแรกเกิดซ้ำทุกขั้นของการฝึก ซึ่งคือความหมายของ &ldquo;ภาษี&rdquo; ในหัวข้อข้างบน (วงแหวนเป็นเพียงอัลกอริทึมหนึ่ง ระบบจริงอาจใช้แบบต้นไม้หรือให้สวิตช์ช่วยรวม ตัวเลขนี้จึงใช้เทียบสัดส่วน ไม่ใช่ทำนายเวลาจริง)</p>
+<p>CXL (Compute Express Link) ตอบข้อจำกัดข้างเคียง: การเข้าถึงที่สอดคล้องแคชข้ามไดย์เดียว และต่อไป หน่วยความจำแบบพูลที่ไม่ได้ติดกับซ็อกเก็ตเดียว ความจุย้ายระหว่างโหนดคำนวณได้แทนการแช่แข็งกับสล็อต DIMM ที่มันลง — ความยืดหยุ่นที่ DDR (บทที่ 34) หรือ PCIe ดิบไม่ให้</p>
+<p><strong>CXL ทีละรุ่น</strong> (จากเอกสาร &ldquo;Compute Express Link 3.0&rdquo; ของ CXL Consortium เขียนโดย Debendra Das Sharma และ Ishwar Agarwal, หน้า &ldquo;About CXL&rdquo; ของ consortium และเอกสาร Linux kernel):</p>
+<table>
+	<thead>
+			<tr>
+					<th>รุ่น</th>
+					<th>สิ่งที่เพิ่ม</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>CXL 1.0 (มีนาคม 2019)</td>
+					<td>สลับโปรโตคอลสามชุดบนลิงก์เดียว: CXL.io (อิงบน PCIe), CXL.cache และ CXL.memory โดยคงพื้นที่หน่วยความจำที่สอดคล้องกันระหว่าง CPU กับหน่วยความจำบนอุปกรณ์</td>
+			</tr>
+			<tr>
+					<td>CXL 2.0 (พฤศจิกายน 2020)</td>
+					<td>สวิตช์ชั้นเดียว, หน่วยความจำถาวร, การรวมหน่วยความจำเป็นพูล และความปลอดภัย; เข้ากันได้กับ PCIe 5.0</td>
+			</tr>
+			<tr>
+					<td>CXL 3.0</td>
+					<td>อิงบน PCIe 6.0 ที่ 64 GT/s &ldquo;แบนด์วิดท์ดิบรวมสูงสุด 256 GB/s สำหรับ x16&rdquo;; flit ขนาด 256 ไบต์; flit แบบลดเวลาแฝงที่ตัด CRC เป็นชิ้น 128 ไบต์ ลดเวลาแฝงได้ 2–5 ns; back-invalidate แคชของโฮสต์; แชร์หน่วยความจำข้ามหลายโฮสต์อย่างสอดคล้อง; fabric ที่ไม่ใช่ต้นไม้ได้สูงสุด 4,096 โหนด</td>
+			</tr>
+			<tr>
+					<td>CXL 4.0</td>
+					<td>เพิ่มเป็น 128 GT/s คง flit 256 ไบต์ เพิ่ม bundled port และเข้ากันได้ย้อนหลังถึง 1.0 (หน้า About CXL)</td>
+			</tr>
+	</tbody>
+</table>
+<p>อุปกรณ์สามชนิดตามเอกสาร Linux kernel: <strong>Type-1</strong> รองรับ CXL.io และ CXL.cache มีแคชที่สอดคล้องเต็มรูปแต่ไม่มีหน่วยความจำที่โฮสต์จัดการ เช่น Smart NIC ที่อยากเขียนกลุ่มข้อมูลลงหน่วยความจำโฮสต์โดยตรง; <strong>Type-2</strong> รองรับทั้งสามโปรโตคอล มักเป็นตัวเร่งที่มีหน่วยความจำแบนด์วิดท์สูงของตัวเอง; <strong>Type-3</strong> รองรับ CXL.io และ CXL.mem เช่นตัวขยายหน่วยความจำที่ CPU เข้าถึงได้เหมือนหน่วยความจำปกติ การ &ldquo;ย้ายความจุระหว่างโหนด&rdquo; ในย่อหน้าข้างบนคือการรวมอุปกรณ์ Type-3 เป็นพูลผ่านสวิตช์ของ CXL 2.0 ขึ้นไป</p>
+<p>ตรวจตัวเลข 256 GB/s ของ CXL 3.0 จากหลักการแรก: 64 GT/s × 16 lane ÷ 8 = 128 GB/s ต่อทิศ สองทิศรวมกัน 256 GB/s ตรงกับตัวเลขของ PCIe 6.0 เพราะใช้ชั้นกายภาพเดียวกัน คำว่า &ldquo;ดิบ&rdquo; หมายถึงยังไม่หักส่วนหัวของ flit และการแก้ข้อผิดพลาด</p>
+<p>GPUDirect RDMA ให้ NIC อ่านหรือเขียนหน่วยความจำ GPU โดยตรง หากไม่มี การถ่ายโอน GPU-ถึง-GPU ข้ามเครือข่ายคือ GPU → หน่วยความจำระบบ → NIC → หน่วยความจำระบบไกล → GPU ไกล — การคัดลอกที่กิน latency และแบนด์วิดท์หน่วยความจำ ยุบเหลือ GPU → เครือข่าย → GPU ด้วยเหตุผลเดียวกับที่ RDMA (บทที่ 42) ชนะในที่เก็บและข้อความ: คัดลอกน้อยลง CPU น้อยลงคอยเฝ้าการย้าย</p>
+<p><strong>สิ่งที่เอกสารของ NVIDIA บอกเรื่อง GPUDirect RDMA:</strong> เป็นเทคโนโลยีที่เริ่มใน GPU รุ่น Kepler กับ CUDA 5.0 ให้เส้นทางตรงระหว่าง GPU กับอุปกรณ์ของผู้ผลิตอื่น (เช่นการ์ดเครือข่าย อุปกรณ์จับภาพ ตัวแปลงสตอเรจ) โดยใช้คุณสมบัติมาตรฐานของ PCI Express ข้อจำกัดสำคัญที่สุดคือสองอุปกรณ์ต้องอยู่ใต้ root complex ต้นทางเดียวกัน และเอกสารแบ่งสามกรณีตามสิ่งที่อยู่ระหว่างทาง: มีแต่สวิตช์ PCIe ดีที่สุด; ผ่าน CPU/IOH หนึ่งตัว ใช้ได้แต่ช้ากว่า (แบนด์วิดท์การอ่านแบบ peer-to-peer &ldquo;ถูกจำกัดอย่างมาก&rdquo; บนสถาปัตยกรรมโปรเซสเซอร์บางแบบ); ข้ามลิงก์ QPI/HT ระหว่างซ็อกเก็ต อาจช้ามากหรือทำงานไม่เสถียร ทอพอโลยีภายในเครื่องจึงสำคัญเท่ากับการมีฟีเจอร์</p>
+<p>นับการข้ามหน่วยความจำโฮสต์จากหลักการแรก (สำหรับข้อความขนาด S ฝั่งละเครื่อง): เส้นทางแบบเดิม GPU → หน่วยความจำระบบ → NIC ทำให้ DRAM ของโฮสต์ถูกเขียน S และอ่าน S (รวม 2S) ในเครื่องส่ง และอีก 2S ในเครื่องรับ รวม 4S ส่วน GPUDirect RDMA ไม่ผ่าน DRAM ของโฮสต์เลย (0) ส่งข้อความ 1 GB จึงประหยัดการใช้หน่วยความจำโฮสต์ 4 GB ต่อครั้ง ไม่นับเวลาที่ CPU ต้องคอยสั่งการ</p>
+<h2 id="ปญหาเดยวกน-ฮารดแวรเปด">ปัญหาเดียวกัน ฮาร์ดแวร์เปิด<a class="anchor" href="#%e0%b8%9b%e0%b8%8d%e0%b8%ab%e0%b8%b2%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7%e0%b8%81%e0%b8%99-%e0%b8%ae%e0%b8%b2%e0%b8%a3%e0%b8%94%e0%b9%81%e0%b8%a7%e0%b8%a3%e0%b9%80%e0%b8%9b%e0%b8%94">#</a></h2>
+<p>นี่คือรากฐานแนวคิดใต้ GPU memory fabric กำหนดเองที่ชุดบทความชี้ไปเรื่อย ๆ: ทำให้หน่วยความจำ GPU ระยะไกล address ได้โดยไม่มี CPU อเนกประสงค์ในเส้นทาง NVLink และ GPUDirect แก้ภายในสแต็กของผู้ขายรายเดียว ทางเลือกเปิดบน PCIe ต้องลบ inefficiency เดียวกัน — นั่นคือเหตุผลที่เส้นทาง peer ระดับ TLP ในบทที่ 32–33 และ &ldquo;เหตุใดลิงก์เฉพาะจึงมีอยู่&rdquo; ในบทนี้ เป็นเรื่องเดียวกัน</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>จันทนา จันทราพรชัย, <em>สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ</em></li>
+<li>ผศ.ดร. ปัทมา ลงกานี, <em>สถาปัตยกรรมคอมพิวเตอร์</em></li>
+<li>รศ.ดร.เกริก ภิรมย์โสภา, <em>สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์</em></li>
+<li>NVIDIA, &ldquo;NVLink &amp; NVLink Switch&rdquo; (หน้าข้อกำหนด เปิด 26 September 2026): <a href="https://www.nvidia.com/en-us/data-center/nvlink/">https://www.nvidia.com/en-us/data-center/nvlink/</a></li>
+<li>NVIDIA, <em>Developing a Linux Kernel Module using GPUDirect RDMA</em> (หัวข้อ 1 Overview และ 3.4 Supported Systems): <a href="https://docs.nvidia.com/cuda/gpudirect-rdma/index.html">https://docs.nvidia.com/cuda/gpudirect-rdma/index.html</a></li>
+<li>PCI-SIG, &ldquo;PCIe 6.0 Specification Released to Members: Double the Bandwidth for Next-Generation Applications&rdquo; (10 January 2022): <a href="https://pcisig.com/blog/pcie%C2%AE-60-specification-released-members-double-bandwidth-next-generation-applications">https://pcisig.com/blog/pcie%C2%AE-60-specification-released-members-double-bandwidth-next-generation-applications</a></li>
+<li>D. Das Sharma, I. Agarwal, &ldquo;Compute Express Link 3.0&rdquo; (CXL Consortium white paper): <a href="https://computeexpresslink.org/wp-content/uploads/2023/12/CXL_3.0_white-paper_FINAL-1.pdf">https://computeexpresslink.org/wp-content/uploads/2023/12/CXL_3.0_white-paper_FINAL-1.pdf</a></li>
+<li>CXL Consortium, &ldquo;About CXL&rdquo;: <a href="https://computeexpresslink.org/about-cxl/">https://computeexpresslink.org/about-cxl/</a></li>
+<li>The Linux Kernel documentation, &ldquo;Devices and Protocols&rdquo; (CXL device types): <a href="https://docs.kernel.org/driver-api/cxl/devices/device-types.html">https://docs.kernel.org/driver-api/cxl/devices/device-types.html</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%84%E0%B8%AD%E0%B8%99%E0%B9%80%E0%B8%99%E0%B8%81%E0%B8%95%E0%B9%8C%E0%B9%83%E0%B8%99%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B9%80%E0%B8%81%E0%B8%A5&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F37-interconnects-at-scale%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F37-interconnects-at-scale.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F37-interconnects-at-scale.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/36-the-clock-speed-wall/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>กำแพงความเร็วคล็อก</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="flex align-center">
+        <span>ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#เสนทางปรยายคอภาษ">เส้นทางปริยายคือภาษี</a>
+      <ul>
+        <li><a href="#ราคาของการคดลอก-แบบจำลองเวลาถายโอน">ราคาของการคัดลอก: แบบจำลองเวลาถ่ายโอน</a></li>
+      </ul>
+    </li>
+    <li><a href="#ลงกเฉพาะ-หนวยความจำทสอดคลอง-คดลอกนอยลง">ลิงก์เฉพาะ หน่วยความจำที่สอดคล้อง คัดลอกน้อยลง</a>
+      <ul>
+        <li><a href="#all-reduce-ทำไมแบนดวดทระหวาง-gpu-จงเปนอนดบหนง">all-reduce: ทำไมแบนด์วิดท์ระหว่าง GPU จึงเป็นอันดับหนึ่ง</a></li>
+      </ul>
+    </li>
+    <li><a href="#ปญหาเดยวกน-ฮารดแวรเปด">ปัญหาเดียวกัน ฮาร์ดแวร์เปิด</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

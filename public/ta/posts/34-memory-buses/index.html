@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DDR bandwidth வாங்கியது; latency அரிதாக நகர்ந்தது — banks மற்றும் channels காத்திருப்பை மறைக்கின்றன">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/34-memory-buses/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Memory Buses">
+	<meta property="og:description" content="DDR bandwidth வாங்கியது; latency அரிதாக நகர்ந்தது — banks மற்றும் channels காத்திருப்பை மறைக்கின்றன">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Memory Buses">
+	<meta itemprop="description" content="DDR bandwidth வாங்கியது; latency அரிதாக நகர்ந்தது — banks மற்றும் channels காத்திருப்பை மறைக்கின்றன">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1031">
+
+<title>Memory Buses • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/34-memory-buses/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/34-memory-buses/" title="Memory Buses">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/34-memory-buses/" title="บัสหน่วยความจำ">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/34-memory-buses/" title="මතක බස්">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/34-memory-buses/" title="Magistralele de memorie">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/34-memory-buses/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/34-memory-buses/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/34-memory-buses/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/34-memory-buses/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="active">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Memory Buses</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#இர-edges-வகமன-clock-அலல">இரு Edges, வேகமான Clock அல்ல</a></li>
+    <li><a href="#இர-வளமபகளன-கணகக">இரு விளிம்புகளின் கணக்கு</a></li>
+    <li><a href="#bandwidth-ஏறயத-first-bit-latency-ஏறவலல">Bandwidth ஏறியது; First-Bit Latency ஏறவில்லை</a></li>
+    <li><a href="#bandwidth-ஏறயத-latency-ஏன-அசயவலல-ஒர-கணகக">Bandwidth ஏறியது, latency ஏன் அசையவில்லை: ஒரு கணக்கு</a></li>
+    <li><a href="#மதவன-அணகல-மறகக-parallelism">மெதுவான அணுகலை மறைக்க Parallelism</a></li>
+    <li><a href="#இணச-சயலபட-எபபட-latency-ஐ-மறககறத">இணைச் செயல்பாடு எப்படி latency-ஐ மறைக்கிறது</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Memory Buses
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>PCIe (பதிவுகள் 32–33) விரிவாக்கச் சாதனங்களுக்கான பாதை. Memory bus உண்மையில் CPU-க்கு உணவளிக்கும் பாதை — பதிவு 10-இன் DRAM — மற்றும் அதன் பரிணாமம் bandwidth, latency, மற்றும் மின்சாரம் இடையேயான தொடர் பேச்சுவார்த்தை. Generation பெயர்கள் கதை அல்ல. அந்த மூன்றிற்கும் இடையேயான பிரிவுதான்.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> DDR SDRAM, நினைவகக் கட்டுப்படுத்தி / channel-கள் பற்றித் தமிழ் எழுத்து விளக்கம் இல்லை; காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. கீழே உள்ள MT/s, CAS latency, அணுகல் நேரம் போன்ற எல்லா எண்களும் சூத்திரங்களைக் காட்டுவதற்கான &ldquo;எடுத்துக்காட்டு மதிப்புகள்&rdquo; — குறிப்பிட்ட தயாரிப்புகளின் அளவீடுகள் அல்ல. DDR5-இன் இரண்டு சுதந்திரமான 32-பிட் subchannel-கள் என்பது ஆங்கிலப் பதிவிலிருந்து. இந்தப் பதிவுக்கு lab இல்லை; காகிதப் பயிற்சிகள் கீழே.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>DRAM (இயக்க நினைவகம்):</strong> capacitor-களில் மின்னூட்டமாகத் தரவை வைக்கும், அவ்வப்போது புதுப்பிக்க (refresh) வேண்டிய முதன்மை நினைவகம்.</li>
+<li><strong>DDR (Double Data Rate, இரட்டைத் தரவு வீதம்):</strong> clock-இன் உயரும், விழும் இரண்டு விளிம்புகளிலும் தரவு பரிமாற்றம்.</li>
+<li><strong>MT/s (வினாடிக்கு மில்லியன் பரிமாற்றங்கள்):</strong> கம்பியில் ஒரு வினாடியில் நடக்கும் தரவுப் பரிமாற்றங்கள்; DDR-இல் clock அதிர்வெண்ணின் இருமடங்கு.</li>
+<li><strong>Bandwidth (அலைவரிசை):</strong> தொடங்கிய ஓட்டம் எவ்வளவு வேகமாகத் தரவு நகர்த்துகிறது.</li>
+<li><strong>Latency (தாமதம்):</strong> கோரிக்கையிலிருந்து முதல் bit வரும் வரை காத்திருப்பு.</li>
+<li><strong>CAS latency (CL):</strong> column கட்டளைக்கும் தரவுக்கும் இடையிலான clock சுழற்சிகள்.</li>
+<li><strong>Channel / rank / bank:</strong> சுதந்திரமான controller பாதை / ஒரு module-இல் சேர்ந்து இயங்கும் chip குழு / chip-க்குள் சுதந்திரமாக இயங்கக்கூடிய பகுதி.</li>
+<li><strong>DIMM:</strong> நிலையான விளிம்பு இணைப்பியுடன் (edge connector) DRAM chip-கள் பொருத்திய பலகை.</li>
+</ul>
+<h2 id="இர-edges-வகமன-clock-அலல">இரு Edges, வேகமான Clock அல்ல<a class="anchor" href="#%e0%ae%87%e0%ae%b0-edges-%e0%ae%b5%e0%ae%95%e0%ae%ae%e0%ae%a9-clock-%e0%ae%85%e0%ae%b2%e0%ae%b2">#</a></h2>
+<p>DDR — Double Data Rate — உயரும் <em>மற்றும்</em> விழும் edge-இல் பரிமாற்றுகிறது. அதே clock-இல் single-data-rate வடிவமைப்பின் தோராயமாக இருமடங்கு throughput, அதிர்வெண்ணை இரட்டிப்பாக்காமல் (மற்றும் அதனுடன் வரும் signal-integrity பிரச்சனைகள் இல்லாமல்). முதலில் clock சுவருக்குச் செலுத்தாமல் bandwidth.</p>
+<h2 id="இர-வளமபகளன-கணகக">இரு விளிம்புகளின் கணக்கு<a class="anchor" href="#%e0%ae%87%e0%ae%b0-%e0%ae%b5%e0%ae%b3%e0%ae%ae%e0%ae%aa%e0%ae%95%e0%ae%b3%e0%ae%a9-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95">#</a></h2>
+<p>எடுத்துக்காட்டு மதிப்புகள்: I/O clock 1,600 MHz, 64-பிட் (8 byte) channel.</p>
+<table>
+	<thead>
+			<tr>
+					<th>வடிவமைப்பு</th>
+					<th>ஒரு சுழற்சிக்குப் பரிமாற்றங்கள்</th>
+					<th>பரிமாற்றங்கள் / வினாடி</th>
+					<th>உச்ச bandwidth</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ஒற்றைத் தரவு வீதம் (SDR)</td>
+					<td>1</td>
+					<td>1,600 மில்லியன்</td>
+					<td>1,600 M × 8 byte = 12.8 GB/s</td>
+			</tr>
+			<tr>
+					<td>DDR</td>
+					<td>2</td>
+					<td>3,200 மில்லியன் (3,200 MT/s)</td>
+					<td>3,200 M × 8 byte = 25.6 GB/s</td>
+			</tr>
+	</tbody>
+</table>
+<p>அதே clock, இருமடங்கு bandwidth. SDR-இல் அதைப் பெற clock-ஐ 3,200 MHz ஆக்க வேண்டும் — காலம் 0.625 ns-இலிருந்து 0.3125 ns ஆகச் சுருங்கி, பதிவு 32-இன் skew, சமிக்ஞை நேர்மைப் பிரச்சினைகள் அனைத்தும் இருமடங்கு கடினமாகும்.</p>
+<h2 id="bandwidth-ஏறயத-first-bit-latency-ஏறவலல">Bandwidth ஏறியது; First-Bit Latency ஏறவில்லை<a class="anchor" href="#bandwidth-%e0%ae%8f%e0%ae%b1%e0%ae%af%e0%ae%a4-first-bit-latency-%e0%ae%8f%e0%ae%b1%e0%ae%b5%e0%ae%b2%e0%ae%b2">#</a></h2>
+<p>ஒவ்வொரு DDR generation-ம் உச்ச bandwidth-ஐ உயர்த்தியது, பெரும்பாலும் வேகமான I/O மூலம். Prefetch மற்றும், DDR5-இல், இரண்டு சுதந்திரமான 32-bit subchannels-ஆகப் பிரிவு module-இல் அதிக parallelism வாங்குகிறது. தலைப்பு எண்கள் மறைப்பது: மூல அணுகல் <em>latency</em> — request-இலிருந்து முதல் bit வரை — bandwidth-ஐ விட மிக மெதுவாக நகர்ந்தது. DRAM தொடங்கியவுடன் ஒரு stream-இல் மிகச் சிறந்தது, தொடங்குவதற்கு முன் காத்திருப்பில் சற்று மட்டும் சிறந்தது. அது பதிவு 35-இன் அமைப்பு. வேறு அளவீடு, வேறு இயற்பியல் (charge sensing, capacitor கலங்கள்).</p>
+<h2 id="bandwidth-ஏறயத-latency-ஏன-அசயவலல-ஒர-கணகக">Bandwidth ஏறியது, latency ஏன் அசையவில்லை: ஒரு கணக்கு<a class="anchor" href="#bandwidth-%e0%ae%8f%e0%ae%b1%e0%ae%af%e0%ae%a4-latency-%e0%ae%8f%e0%ae%a9-%e0%ae%85%e0%ae%9a%e0%ae%af%e0%ae%b5%e0%ae%b2%e0%ae%b2-%e0%ae%92%e0%ae%b0-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95">#</a></h2>
+<p>CAS latency சுழற்சிகளில் சொல்லப்படுகிறது; நானோவினாடியாக மாற்ற: CL × clock காலம். DDR-இல் clock = MT/s ÷ 2. இரண்டு கற்பனைத் தலைமுறைகள் (எடுத்துக்காட்டு மதிப்புகள்):</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>பழைய தலைமுறை</th>
+					<th>புதிய தலைமுறை</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>வீதம்</td>
+					<td>3,200 MT/s</td>
+					<td>6,400 MT/s</td>
+			</tr>
+			<tr>
+					<td>Clock</td>
+					<td>1,600 MHz → காலம் 0.625 ns</td>
+					<td>3,200 MHz → காலம் 0.3125 ns</td>
+			</tr>
+			<tr>
+					<td>CAS latency</td>
+					<td>22 சுழற்சிகள்</td>
+					<td>40 சுழற்சிகள்</td>
+			</tr>
+			<tr>
+					<td>CAS நேரம்</td>
+					<td>22 × 0.625 = <strong>13.75 ns</strong></td>
+					<td>40 × 0.3125 = <strong>12.5 ns</strong></td>
+			</tr>
+			<tr>
+					<td>64-பிட் அகலத்துக்கு உச்ச bandwidth</td>
+					<td>3,200 M × 8 = 25.6 GB/s</td>
+					<td>6,400 M × 8 = 51.2 GB/s</td>
+			</tr>
+	</tbody>
+</table>
+<p>Bandwidth 2 மடங்கு; முதல்-bit காத்திருப்பு 13.75 → 12.5 ns, சுமார் 9% மட்டுமே குறைவு. சுழற்சி எண்ணிக்கை ஏறுவதால் clock வேகம் பெரும்பாலும் சமன்படுகிறது — capacitor-இன் மின்னூட்டத்தை உணரும் இயற்பியல் வேகமாகவில்லை. இதுவே பதிவு 35-இன் நினைவகச் சுவர்.</p>
+<p>64 byte cache வரியை நகர்த்தும் மொத்த நேரம் (எடுத்துக்காட்டு, பழைய தலைமுறை): காத்திருப்பு 13.75 ns + பரிமாற்றம் 64 ÷ 25.6 GB/s = 2.5 ns → 16.25 ns; இதில் 85% காத்திருப்பு. புதிய தலைமுறையில் 12.5 + 1.25 = 13.75 ns — bandwidth இருமடங்கானாலும் ஒரு வரியின் நேரம் 15% மட்டுமே குறைகிறது.</p>
+<h2 id="மதவன-அணகல-மறகக-parallelism">மெதுவான அணுகலை மறைக்க Parallelism<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b5%e0%ae%a9-%e0%ae%85%e0%ae%a3%e0%ae%95%e0%ae%b2-%e0%ae%ae%e0%ae%b1%e0%ae%95%e0%ae%95-parallelism">#</a></h2>
+<p>ஒரு <em>channel</em> சுதந்திரமான controller பாதை — இணை request-கள் ஒன்றையொன்று பின்னால் வரிசையில் நிற்கத் தேவையில்லை. ஒரு channel-க்குள், <em>ranks</em> மற்றும் <em>banks</em> ஒரு bank முடிக்க (அல்லது refresh — பதிவு 10) அனுமதிக்கின்றன மற்றொன்று புதிய request எடுக்கும்போது. போதுமான சுதந்திரமான அணுகல்களை மேற்பொருத்துங்கள், <em>aggregate</em> throughput உயர்ந்தே இருக்கும் எந்த ஒரு அணுகலும் வேகமாகாதபோதும். அதனால்தான் அமைப்பு உள்ளது: DIMM அம்சங்களின் பட்டியல் அல்ல, அடுத்த பதிவு சுவராகப் பெயரிடும் latency-ஐ மறைக்கும் வழி.</p>
+<p>ஒரு DIMM இயற்பியல் தொகுப்பு — நிலையான edge connector-உடன் ஒரு பலகையில் chips — எனவே கொள்ளளவு &ldquo;எத்தனை slots, என்ன அளவு,&rdquo; bus-இன் மறுவடிவமைப்பு அல்ல.</p>
+<h2 id="இணச-சயலபட-எபபட-latency-ஐ-மறககறத">இணைச் செயல்பாடு எப்படி latency-ஐ மறைக்கிறது<a class="anchor" href="#%e0%ae%87%e0%ae%a3%e0%ae%9a-%e0%ae%9a%e0%ae%af%e0%ae%b2%e0%ae%aa%e0%ae%9f-%e0%ae%8e%e0%ae%aa%e0%ae%aa%e0%ae%9f-latency-%e0%ae%90-%e0%ae%ae%e0%ae%b1%e0%ae%95%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>எடுத்துக்காட்டு மதிப்புகள்: ஒவ்வொரு நினைவக அணுகலும் (கோரிக்கை முதல் தரவு வரை) 50 ns, ஒவ்வொன்றும் 64 byte கொண்டுவருகிறது. ஒரே நேரத்தில் பறக்கும் சுதந்திரமான கோரிக்கைகள் N என்றால், பெறும் throughput ≈ N × 64 byte ÷ 50 ns (channel-இன் உச்சம் வரை):</p>
+<table>
+	<thead>
+			<tr>
+					<th>ஒரே நேரக் கோரிக்கைகள் N</th>
+					<th>Throughput</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>64 ÷ 50 ns = 1.28 GB/s</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>4 × 1.28 = 5.12 GB/s</td>
+			</tr>
+			<tr>
+					<td>16</td>
+					<td>16 × 1.28 = 20.48 GB/s</td>
+			</tr>
+			<tr>
+					<td>20</td>
+					<td>20 × 1.28 = 25.6 GB/s — மேலே உள்ள 25.6 GB/s channel உச்சம்</td>
+			</tr>
+	</tbody>
+</table>
+<p>ஒவ்வொரு அணுகலும் இன்னும் 50 ns — எதுவும் வேகமாகவில்லை. ஆனால் வெவ்வேறு bank-களும் channel-களும் ஒன்றோடொன்று ஒன்றிப் பணிபுரிவதால், மொத்த ஓட்டம் 20 மடங்கு. இரண்டு channel-கள் என்றால் உச்சம் 2 × 25.6 = 51.2 GB/s; அதை நிரப்ப சுமார் 40 ஒரே நேரக் கோரிக்கைகள் வேண்டும்.</p>
+<p>அடுத்த இரண்டு பதிவுகள் இந்தப் பேச்சுவார்த்தை குறைந்தால் என்ன நடக்கிறது: memory wall, மற்றும் compute பக்கத்தில் அதன் உறவினர், clock-speed wall.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<ol>
+<li>
+<p><strong>ஒரு DDR நினைவகம் 2,400 MT/s-இல் 64-பிட் channel-இல் ஓடுகிறது (எடுத்துக்காட்டு மதிப்பு). உச்ச bandwidth? அதன் I/O clock?</strong>
+விடை: 2,400 M × 8 byte = <strong>19.2 GB/s</strong>; clock = 2,400 ÷ 2 = <strong>1,200 MHz</strong>.</p>
+</li>
+<li>
+<p><strong>CL 16, 2,400 MT/s — CAS நேரம் எவ்வளவு ns?</strong>
+விடை: clock 1,200 MHz → காலம் 1 ÷ 1.2 GHz ≈ 0.833 ns; 16 × 0.833 ≈ <strong>13.3 ns</strong>.</p>
+</li>
+<li>
+<p><strong>DDR5-இன் ஒரு module-இல் இரண்டு சுதந்திரமான 32-பிட் subchannel-கள். 6,400 MT/s-இல் ஒவ்வொரு subchannel-இன் உச்சம்? இரண்டும் சேர்த்து?</strong>
+விடை: 32 bit = 4 byte; 6,400 M × 4 = <strong>25.6 GB/s</strong> ஒவ்வொன்றும்; சேர்த்து 51.2 GB/s — 64-பிட் அகலத்துக்குச் சமம், ஆனால் இரண்டு சுதந்திரமான கோரிக்கை ஓட்டங்களாக.</p>
+</li>
+<li>
+<p><strong>அணுகல் 60 ns, அணுகலுக்கு 64 byte, channel உச்சம் 32 GB/s (எடுத்துக்காட்டு மதிப்புகள்). உச்சத்தை அடைய எத்தனை ஒரே நேரக் கோரிக்கைகள் வேண்டும்?</strong>
+விடை: ஒரு கோரிக்கை = 64 ÷ 60 ns ≈ 1.067 GB/s; 32 ÷ 1.067 ≈ <strong>30 கோரிக்கைகள்</strong>. (சரிபார்ப்பு: 32 GB/s × 60 ns = 1,920 byte பறந்துகொண்டிருக்க வேண்டும்; 1,920 ÷ 64 = 30.)</p>
+</li>
+<li>
+<p><strong>&ldquo;புதிய நினைவகம் இருமடங்கு bandwidth, எனவே என் நிரல் இருமடங்கு வேகமாக ஓடும்.&rdquo; எந்த வகை நிரலுக்கு இது தவறு?</strong>
+விடை: ஒவ்வொரு அணுகலும் முந்தையதன் முடிவைச் சார்ந்திருக்கும் நிரல்களுக்கு (எ.கா. linked list-ஐப் பின்தொடர்தல்) — ஒரே நேரத்தில் ஒரு கோரிக்கை மட்டுமே பறக்கும், எனவே அவை latency-ஆல் வரம்பிடப்படுகின்றன; மேலே கண்டதுபோல் latency அரிதாகவே மாறியது.</p>
+</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>இயக்க நினைவகம்</td>
+					<td>dynamic RAM (DRAM)</td>
+			</tr>
+			<tr>
+					<td>இரட்டைத் தரவு வீதம்</td>
+					<td>double data rate (DDR)</td>
+			</tr>
+			<tr>
+					<td>உயரும் / விழும் விளிம்பு</td>
+					<td>rising / falling edge</td>
+			</tr>
+			<tr>
+					<td>அலைவரிசை</td>
+					<td>bandwidth</td>
+			</tr>
+			<tr>
+					<td>தாமதம்</td>
+					<td>latency</td>
+			</tr>
+			<tr>
+					<td>முன்கூட்டியே கொணர்தல்</td>
+					<td>prefetch</td>
+			</tr>
+			<tr>
+					<td>துணை வழித்தடம்</td>
+					<td>subchannel</td>
+			</tr>
+			<tr>
+					<td>நினைவகக் கட்டுப்படுத்தி</td>
+					<td>memory controller</td>
+			</tr>
+			<tr>
+					<td>வழித்தடம் / அடுக்கு / வங்கி</td>
+					<td>channel / rank / bank</td>
+			</tr>
+			<tr>
+					<td>புதுப்பித்தல்</td>
+					<td>refresh</td>
+			</tr>
+			<tr>
+					<td>சமிக்ஞை நேர்மை</td>
+					<td>signal integrity</td>
+			</tr>
+			<tr>
+					<td>நினைவகச் சுவர்</td>
+					<td>memory wall</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ்நாடு அரசு, <em>11ஆம் வகுப்பு கணினி அறிவியல்</em>, அலகு 3: கணினி அமைப்பு (நினைவகச் சாதனங்கள்: DRAM அறிமுகம்; DDR generation / channel–rank–bank அமைப்பு அல்ல)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Memory&#43;Buses&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F34-memory-buses%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F34-memory-buses.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F34-memory-buses.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/33-pcie-deep-dive/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>PCIe Deep Dive</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/35-the-memory-wall/" class="flex align-center">
+        <span>The Memory Wall</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#இர-edges-வகமன-clock-அலல">இரு Edges, வேகமான Clock அல்ல</a></li>
+    <li><a href="#இர-வளமபகளன-கணகக">இரு விளிம்புகளின் கணக்கு</a></li>
+    <li><a href="#bandwidth-ஏறயத-first-bit-latency-ஏறவலல">Bandwidth ஏறியது; First-Bit Latency ஏறவில்லை</a></li>
+    <li><a href="#bandwidth-ஏறயத-latency-ஏன-அசயவலல-ஒர-கணகக">Bandwidth ஏறியது, latency ஏன் அசையவில்லை: ஒரு கணக்கு</a></li>
+    <li><a href="#மதவன-அணகல-மறகக-parallelism">மெதுவான அணுகலை மறைக்க Parallelism</a></li>
+    <li><a href="#இணச-சயலபட-எபபட-latency-ஐ-மறககறத">இணைச் செயல்பாடு எப்படி latency-ஐ மறைக்கிறது</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

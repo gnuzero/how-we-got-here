@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tags on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+		<link>http://localhost:1478/ta/tags/</link>
+		<description>Recent content in Tags on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</description>
+		<generator>Hugo</generator>
+		<language>ta</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 15:06:51 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/ta/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Attribution</title>
+				<link>http://localhost:1478/ta/tags/attribution/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/attribution/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Credits</title>
+				<link>http://localhost:1478/ta/tags/credits/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/credits/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Sources</title>
+				<link>http://localhost:1478/ta/tags/sources/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/sources/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Attention</title>
+				<link>http://localhost:1478/ta/tags/attention/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/attention/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Foreword</title>
+				<link>http://localhost:1478/ta/tags/foreword/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/foreword/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Glossary</title>
+				<link>http://localhost:1478/ta/tags/glossary/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/glossary/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>History</title>
+				<link>http://localhost:1478/ta/tags/history/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/history/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Introduction</title>
+				<link>http://localhost:1478/ta/tags/introduction/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/introduction/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Neural Networks</title>
+				<link>http://localhost:1478/ta/tags/neural-networks/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/neural-networks/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Reference</title>
+				<link>http://localhost:1478/ta/tags/reference/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/reference/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Timeline</title>
+				<link>http://localhost:1478/ta/tags/timeline/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/timeline/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Transformers</title>
+				<link>http://localhost:1478/ta/tags/transformers/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/tags/transformers/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

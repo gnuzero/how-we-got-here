@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1960 年，两位程序员花三四个月读懂一个设计者已离开、资料残缺的编译程序；此后几家单位的说法里都有“第一”或“最早”，各自说的并不是同一件事。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hans/posts/27-zh-languages-compilers/">
+	<meta property="og:site_name" content="我们如何走到那里">
+	<meta property="og:title" content="编程语言与编译器：从 104 机到仓颉">
+	<meta property="og:description" content="1960 年，两位程序员花三四个月读懂一个设计者已离开、资料残缺的编译程序；此后几家单位的说法里都有“第一”或“最早”，各自说的并不是同一件事。">
+	<meta property="og:locale" content="zh_Hans">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+		<meta property="article:tag" content="编译器">
+		<meta property="article:tag" content="董韫美">
+		<meta property="article:tag" content="徐家福">
+		<meta property="article:tag" content="104机">
+		<meta property="article:tag" content="BCY">
+		<meta property="article:tag" content="ALGOL 60">
+
+
+	<meta itemprop="name" content="编程语言与编译器：从 104 机到仓颉">
+	<meta itemprop="description" content="1960 年，两位程序员花三四个月读懂一个设计者已离开、资料残缺的编译程序；此后几家单位的说法里都有“第一”或“最早”，各自说的并不是同一件事。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="299">
+	<meta itemprop="keywords" content="编译器,董韫美,徐家福,104机,BCY,ALGOL 60,国家标准,LCCD,仓颉">
+
+<title>编程语言与编译器：从 104 机到仓颉 • 我们如何走到那里</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hans/posts/27-zh-languages-compilers/">
+  <link rel="alternate" hreflang="zh-hant" href="http://localhost:1478/zh-hant/posts/27-zh-languages-compilers/" title="程式語言與編譯器：從 104 機到倉頡">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hans.search.min.d369906e95123348f130fcf51e745dc120f1a18f8009278172e975f6091f5a95.js" integrity="sha256-02mQbpUSM0jxMPz1HnRdwSDxoY&#43;ACSeBcul19gkfWpU=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hans/"><span>我们如何走到那里</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜索"
+    aria-label="搜索"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="语言" />
+        简体中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展开" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hant/posts/27-zh-languages-compilers/" class="flex flex-auto">
+          繁體中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/00-credits/" class="">
+      致谢与延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-counting-rods-abacus/" class="">
+      算筹与算盘：数放在手里，算法记在口诀里</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-drawloom-huaben/" class="">
+      花本：程序第一次和机器分开</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-gears-and-calculators/" class="">
+      齿轮会数数：从记里鼓车到“较数器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/02-zh-relays-switching/" class="">
+      继电器与交换机：上海电话局里的“计算机”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/03-zh-first-electronic-computers/" class="">
+      电子管与晶体管：中国第一批计算机，和算盘的真实角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-hanzi-encoding/" class="">
+      汉字上线：从四位电码到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/26-zh-input-and-typesetting/" class="">
+      把汉字敲进机器：打字机、输入法与激光照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/39-zh-networks-1986-1994/" class="">
+      越过长城：中文世界接入网络（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/47-zh-taiwan-semiconductors/" class="">
+      从豆浆店到晶圆代工：台湾半导体之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/17-zh-supercomputers-cpus/" class="">
+      规模：从银河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/63-zh-road-to-attention/" class="">
+      从中文信息处理到注意力机制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/05-zh-transistors-semiconductors/" class="">
+      从一门课到一块芯片：中国半导体的头十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/48-zh-lithography-fabs/" class="">
+      光刻：从显微镜到扫描机</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/58-zh-deep-learning-chips/" class="">
+      从 DianNao 到昇腾：为矩阵乘法造的芯片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/23-zh-operating-systems/" class="">
+      操作系统：从大庆的“虚拟机”到开源欧拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/27-zh-languages-compilers/" class="active">
+      编程语言与编译器：从 104 机到仓颉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主机与天文台的电脑</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/43-zh-bbs/" class="">
+      挤不进去的广场：两岸三地的校园 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/44-zh-chinese-search/" class="">
+      一台服务器装不下：中国大陆第一批搜索引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/66-zh-commercial-crypto/" class="">
+      从“属于国家秘密”到国际标准：中国商用密码的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/67-zh-privacy-law/" class="">
+      从电脑处理到自动化决策：两岸三地的个人信息保护法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-mobile-standards/" class="">
+      空中的标准之争：从大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/68-zh-computer-craze/" class="">
+      娃娃与学习机：1984 年以后的电脑热</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="菜单" />
+  </label>
+
+  <h3>编程语言与编译器：从 104 机到仓颉</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目录" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#104-机把别人的编译程序读懂">104 机：把别人的编译程序读懂</a></li>
+    <li><a href="#p语法与-bcy">P语法与 BCY</a></li>
+    <li><a href="#谁是第一">谁是“第一”</a></li>
+    <li><a href="#1970-年代系统语言与国家标准">1970 年代：系统语言与国家标准</a></li>
+    <li><a href="#汉字字形与中文编程">汉字字形与中文编程</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    编程语言与编译器：从 104 机到仓颉
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>九月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hans/tags/%E7%BC%96%E8%AF%91%E5%99%A8/">编译器</a>, 
+      <a href="/zh-hans/tags/%E8%91%A3%E9%9F%AB%E7%BE%8E/">董韫美</a>, 
+      <a href="/zh-hans/tags/%E5%BE%90%E5%AE%B6%E7%A6%8F/">徐家福</a>, 
+      <a href="/zh-hans/tags/104%E6%9C%BA/">104机</a>, 
+      <a href="/zh-hans/tags/bcy/">BCY</a>, 
+      <a href="/zh-hans/tags/algol-60/">ALGOL 60</a>, 
+      <a href="/zh-hans/tags/%E5%9B%BD%E5%AE%B6%E6%A0%87%E5%87%86/">国家标准</a>, 
+      <a href="/zh-hans/tags/lccd/">LCCD</a>, 
+      <a href="/zh-hans/tags/%E4%BB%93%E9%A2%89/">仓颉</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F09-01, F09-02, F09-03, F09-04, F09-05, F09-06, F09-07, F09-08, F09-09, F09-10, F09-11, F03-02, F03-12 -->
+<p>编译器把人写的程序翻译成机器能执行的指令。中国第一批编译器的故事，是从一个设计者已经离开、资料残缺的程序开始的。</p>
+<h2 id="104-机把别人的编译程序读懂">104 机：把别人的编译程序读懂<a class="anchor" href="#104-%e6%9c%ba%e6%8a%8a%e5%88%ab%e4%ba%ba%e7%9a%84%e7%bc%96%e8%af%91%e7%a8%8b%e5%ba%8f%e8%af%bb%e6%87%82">#</a></h2>
+<p>1960 年，中国科学院计算技术研究所的董韫美参加了 104 机编译程序的总体设计。据中国科学院官网 2026 年的人物报道，104 机是“我国当时最大的计算机”。编译程序进入联调时，“原来的设计人员大多已经离开，留下的资料不仅残缺，还有不少错误”。董韫美和同事李开德决定不放弃，“每天看几十条程序，反复推测、验证、再推测，整整看了三四个月”，一点一点弄清这个程序接受什么输入、做什么加工、产生什么输出。报道说，“104机编译程序成为国内第一个能够运行的编译程序”。</p>
+<p>那个年代程序员用的工具，有一部分保存了下来。中国计算机学会 2019 年认定的历史记忆里，有张绮霞保存的流程图板、程序纸和 104、109乙、111、119、655、013 机的指令系统表。同一条目记载，《104电子计算机标准程序汇编》是“国内首个算法标准程序库”，用浮动地址的机器语言写成，共发行 2600 册。</p>
+<p>下面的小 CPU 实验，可以让你体会手写机器指令是什么感觉：先汇编引导程序，再单步执行，每条助记符都对应一串操作码。编译器做的，就是把一行高级语言自动变成许多条这样的指令。（这台小 CPU 是教学模型，和 104 机的指令系统无关。）</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=zh-hans"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="交互实验：mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=zh-hans" target="_blank" rel="noopener">在新标签页打开实验 ↗</a>
+  </div>
+</div>
+
+<h2 id="p语法与-bcy">P语法与 BCY<a class="anchor" href="#p%e8%af%ad%e6%b3%95%e4%b8%8e-bcy">#</a></h2>
+<p>1962 年，董韫美所在的程序组转向研究 ALGOL 60。1963 年，他与李开德提出语法模型“P语法”，用数学方式精确描述程序语言的规则。BCY 的来历有两种记载。据中国科学院的人物报道，1964 至 1965 年，董韫美主持研制 BCY，在 119 机上成功运行，报道称它是“国内最早的实用高级程序语言”。中国计算机学会“中国计算机历史记忆”收录的程序手稿条目则写道，BCY 编程语言系统“是由中科院计算所三室姚伟民等自主研发”，“从1971年起配置于109，111等国产机上”。两份记载给出的研制者和机器不同，这一页把两说并列，不作取舍。据中国科学院的报道，BCY 借鉴 ALGOL 的核心思想，删繁就简，更贴近中国计算机的硬件；报道还说它“开创性地支持汉字书写”，但没有说明汉字具体用在哪里。同一篇报道写到，BCY 后来用于 109丙机和 015 机：109丙机为“两弹一星”研制工作了 15 年，015 机连续运行 16 年。</p>
+<h2 id="谁是第一">谁是“第一”<a class="anchor" href="#%e8%b0%81%e6%98%af%e7%ac%ac%e4%b8%80">#</a></h2>
+<p>几乎同时，南京大学也在做 ALGOL。中国计算机学会的终身成就奖介绍说，1965 年徐家福领导南京大学与华东计算所的研制组，在国产 J-501 机上研制出“中国第一个ALGOL编译系统”。《南京大学报》上一位组员的回忆更具体：1964 年 8 月开工，共 8 人，1965 年 6 月调试完毕，是“国内第一个可用的Algol编译系统”。北京大学这边，据陈嘉庚科学奖基金会 1990 年的获奖介绍，王选与北大另三位同志于 1967 年完成 DJS21 机 ALGOL 60 编译系统，“是国内最早的几个实用编译系统之一”。1975 年起，王选转向汉字激光照排系统的研制。</p>
+<p>把几种说法放在一起看，用的标准并不相同：“第一个能够运行的编译程序”“最早的实用高级程序语言”“第一个ALGOL编译系统”“第一个可用的”“最早的几个实用编译系统之一”。这一页不替它们排座次。</p>
+<h2 id="1970-年代系统语言与国家标准">1970 年代：系统语言与国家标准<a class="anchor" href="#1970-%e5%b9%b4%e4%bb%a3%e7%b3%bb%e7%bb%9f%e8%af%ad%e8%a8%80%e4%b8%8e%e5%9b%bd%e5%ae%b6%e6%a0%87%e5%87%86">#</a></h2>
+<p>1977 年，徐家福在 655 机上设计实现了基于自编译语言的软件自动产生系统 NDHD；1979 年，他与仲萃豪、杨芙清合作研制通用系统程序设计语言 XCY（杨芙清的操作系统工作见<a href="/zh-hans/posts/23-zh-operating-systems/">《操作系统》</a>）。据中国计算机学会的记载，张绮霞第一次用 FORTRAN 编程计算，是 1976 年在华东计算所的 655 机上。</p>
+<p>语言也成了国家标准。据标准目录，ALGOL 60 国家标准 GB 1500 首发于 1979 年 2 月 13 日，1987 年代替它的 GB/T 1500-1987 等同采用 ISO 1538-1984；FORTRAN 标准 GB 3057-1982 后来被 GB/T 3057-1996 全部代替；1984 年的最小 BASIC 标准 GB 4144-1984，是为了“在多种自动数据处理系统中促进BASIC程序的可互换性”。1979 至 1981 年，徐家福参加了 ALGOL、COBOL 国家标准的制定。</p>
+<h2 id="汉字字形与中文编程">汉字字形与中文编程<a class="anchor" href="#%e6%b1%89%e5%ad%97%e5%ad%97%e5%bd%a2%e4%b8%8e%e4%b8%ad%e6%96%87%e7%bc%96%e7%a8%8b">#</a></h2>
+<p>1978 年 11 月，董韫美到斯坦福大学做访问学者，合作导师是高德纳。据中国科学院的报道，他用参数描述汉字笔画，做成 LCCD 系统，1980 年在斯坦福人工智能实验室运行；1981 年《计算机程序设计艺术》第二卷新版问世，“索引中首次出现了汉字”。回国后，他研发出汉字字形设计系统 CCDS，并用它设计了 GB 2312-80 全部 6763 个汉字的宋体字形。</p>
+<p>进入 21 世纪，也有人专门做中文编程。易语言官网称，“易语言汉语编程环境”2004 年 11 月获得科学技术部高技术研究发展中心组织的技术经济评议。据南京大学的新闻稿，2024 年 6 月 21 日，华为在开发者大会上向全球开发者介绍了自研编程语言仓颉，并发布了开发者预览版。新闻稿说，“此前主流的通用编程语言均源于国外”；仓颉项目 2019 年启动，南京大学冯新宇教授担任首席架构师。</p>
+<p>英文版第 27 章讲 FORTRAN、COBOL、Lisp 和 C，第 28 章讲编译器、JIT 和现代语言运行时；这一页讲的是同一批问题在中国由谁、在哪几台机器上做出来。</p>
+<p>**出处：**樊晓丽《董韫美：在空白荒原拓出中国软件之路》（中国科学院官网）；中国计算机学会“中国计算机历史记忆”与终身成就奖介绍；《南京大学报》《铁骨铮铮一鸿儒》。</p>
+<h2 id="延伸阅读">延伸阅读<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb">#</a></h2>
+<ul>
+<li>樊晓丽，《董韫美：在空白荒原拓出中国软件之路》（English: Dong Yunmei: opening a road for Chinese software on blank ground），《中国科学报》，中国科学院官网，2026-08-27。<a href="https://www.cas.cn/zt/hyzt/ysdh22nd/fc/202608/t20260827_5119143.shtml">链接</a></li>
+<li>中国计算机学会，《2013年CCF终身成就奖 董韫美》（English: CCF Lifetime Achievement Award 2013: Dong Yunmei），2013。<a href="https://www.ccf.org.cn/Awards/Awards_Recipients/2013/Lifetime_Contribution/2013-02-16/578017.shtml">链接</a></li>
+<li>中国计算机学会，《2011年CCF终身成就奖 徐家福》（English: CCF Lifetime Achievement Award 2011: Xu Jiafu），2011。<a href="https://www.ccf.org.cn/Awards/Awards_Recipients/2011/Lifetime_Contribution/2011-02-16/578028.shtml">链接</a></li>
+<li>《南京大学报》，《铁骨铮铮一鸿儒》（English: A scholar of iron integrity, a team member&rsquo;s memoir of Xu Jiafu），2020-05-20。<a href="https://xiaobao.nju.edu.cn/da/a0/c18185a318112/page.htm">链接</a></li>
+<li>中国计算机学会，《104、109乙、111、119、013、655等机器程序手稿》（English: Program manuscripts for the 104, 109B, 111, 119, 013, 655 and other machines, China Computing History Memory, 2019），2020-03-24。<a href="https://www.ccf.org.cn/Computing_history/Full_List/2019/Second_class/2020-03-24/697781.shtml">链接</a></li>
+<li>陈嘉庚科学奖基金会，《技术科学奖·1990·王选》（English: Tan Kah Kee Science Award in technological sciences, 1990: Wang Xuan），2009-04-02。<a href="https://tsaf.cas.cn/ljhjqk/cjgkxj/asj/1990/200904/t20090402_4954702.html">链接</a></li>
+<li>工标网，《GB/T 1500-1987 程序设计语言 ALGOL 60》（English: Catalogue record for the ALGOL 60 national standard）。<a href="http://doc.csres.com/detail/63390.html">链接</a></li>
+<li>国家标准信息公共服务平台，《GB/T 3057-1996 信息技术 程序设计语言 Fortran》（English: National standard record for Fortran）。<a href="https://std.samr.gov.cn/gb/search/gbDetailed?id=71F772D79D40D3A7E05397BE0A0AB82A">链接</a></li>
+<li>工标网，《GB 4144-1984 程序设计语言 最小BASIC》（English: Catalogue record for the Minimal BASIC national standard）。<a href="http://doc.csres.com/detail/65823.html">链接</a></li>
+<li>易语言官网，《易语言获得〈科技项目技术经济评议书〉》（English: EPL receives a technical-economic review certificate, vendor news），2004-11-18。<a href="http://epl.eyuyan.com/news/2004/111801.html">链接</a></li>
+<li>南京大学，《华为发布通用编程语言“仓颉”，南京大学计算机科学与技术系冯新宇教授作为首席架构师领导研发》（English: Huawei releases the general-purpose language Cangjie, with NJU&rsquo;s Feng Xinyu as chief architect），2024-06-21。<a href="https://www.nju.edu.cn/info/1067/369771.htm">链接</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='最后修改者 Nayana | 十一月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>十一月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%BC%96%E8%AF%91%E5%99%A8%EF%BC%9A%E4%BB%8E&#43;104&#43;%E6%9C%BA%E5%88%B0%E4%BB%93%E9%A2%89&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hans%2Fposts%2F27-zh-languages-compilers%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hans%2Fposts%2F27-zh-languages-compilers.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hans%2Fposts%2F27-zh-languages-compilers.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hans/posts/23-zh-operating-systems/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一页" />
+        <span>操作系统：从大庆的“虚拟机”到开源欧拉</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hans/posts/18-zh-hong-kong-computing/" class="flex align-center">
+        <span>香港：打孔卡、主机与天文台的电脑</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一页" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#104-机把别人的编译程序读懂">104 机：把别人的编译程序读懂</a></li>
+    <li><a href="#p语法与-bcy">P语法与 BCY</a></li>
+    <li><a href="#谁是第一">谁是“第一”</a></li>
+    <li><a href="#1970-年代系统语言与国家标准">1970 年代：系统语言与国家标准</a></li>
+    <li><a href="#汉字字形与中文编程">汉字字形与中文编程</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

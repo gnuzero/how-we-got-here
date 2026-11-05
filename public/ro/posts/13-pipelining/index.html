@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Suprapui instrucțiunile pentru debit, apoi hazardurile cer redirecționare (forwarding), așteptări (stall) și tot ce urmează">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/13-pipelining/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Pipelining">
+	<meta property="og:description" content="Suprapui instrucțiunile pentru debit, apoi hazardurile cer redirecționare (forwarding), așteptări (stall) și tot ce urmează">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:06:55+05:30">
+
+
+	<meta itemprop="name" content="Pipelining">
+	<meta itemprop="description" content="Suprapui instrucțiunile pentru debit, apoi hazardurile cer redirecționare (forwarding), așteptări (stall) și tot ce urmează">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:06:55+05:30">
+	<meta itemprop="wordCount" content="892">
+
+<title>Pipelining • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/13-pipelining/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/13-pipelining/" title="Pipelining">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/13-pipelining/" title="ไปป์ไลน์">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/13-pipelining/" title="Pipelining">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/13-pipelining/" title="Pipelining">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/13-pipelining/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/13-pipelining/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/13-pipelining/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/13-pipelining/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="active">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Pipelining</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ideea-înainte-de-microprocesoare-stretch-1959">Ideea, înainte de microprocesoare: Stretch, 1959</a></li>
+    <li><a href="#etaje-suprapuse">Etaje suprapuse</a></li>
+    <li><a href="#hazarde-unde-se-rupe-independența">Hazarde: unde se rupe independența</a></li>
+    <li><a href="#cum-se-vede-în-isa-risc-v">Cum se vede în ISA: RISC-V</a></li>
+    <li><a href="#ce-forțează-costurile">Ce forțează costurile</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Pipelining
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 12 s-a încheiat cu o risipă: într-o cale de date cu un singur ciclu, fiecare instrucțiune plătește timpul celei mai lente. Pipelining-ul (execuția în bandă de asamblare) taie drumul în etaje și lasă fiecare etaj să lucreze la altă instrucțiune; calculul ilustrativ de mai jos arată costul și câștigul.</p>
+<h2 id="ideea-înainte-de-microprocesoare-stretch-1959">Ideea, înainte de microprocesoare: Stretch, 1959<a class="anchor" href="#ideea-%c3%aenainte-de-microprocesoare-stretch-1959">#</a></h2>
+<p>Suprapunerea instrucțiunilor nu începe cu RISC. În 1959, Erich Bloch descrie IBM Stretch, un proiect pornit ca să obțină „two orders of magnitude” de îmbunătățire a performanței față de IBM 704, „the then existing 704” (Bloch, E., „The Engineering Design of the Stretch Computer”, <em>Proceedings of the Eastern Joint Computer Conference</em>, 1959, pp. 48–58, aici p. 48; PDF scanat <a href="https://www.bitsavers.org/pdf/ibm/7030/Bloch_EngrDesOfStretch_1959.pdf">bitsavers.org</a>, accesat 2026-11-05; text obținut de noi prin OCR, vezi SOURCES-B2.md). Bloch scrie că pentru asta sistemul trebuia organizat ca să profite de „every possible overlap of systems function”, de procesarea simultană a operațiilor și de anticiparea evenimentelor, oriunde se putea (ibid., p. 48).</p>
+<p>Contrastul pe care îl face e exact cel din capitolul 12. La majoritatea calculatoarelor din ultimii opt ani, „and the 704 is a case in point”, există „a sequential flow of instructions”: după procesare și execuție, următoarea instrucțiune e cerută din memorie (ibid., pp. 49–50, Fig. 4a). La Stretch, în schimb, două cuvinte de instrucțiuni și patru operanzi pot fi aduși simultan, iar execuția se face în paralel cu aducerea (ibid., p. 50, Fig. 4b).</p>
+<h2 id="etaje-suprapuse">Etaje suprapuse<a class="anchor" href="#etaje-suprapuse">#</a></h2>
+<p>Modelul didactic modern are cinci etaje: IF (aducerea instrucțiunii), ID (decodarea și citirea registrelor), EX (ALU), MEM (accesul la memoria de date) și WB (scrierea înapoi). Între etaje stau registre de pipeline. La fiecare front de ceas, fiecare instrucțiune avansează un etaj. <!-- NEVERIFICAT: împărțirea IF/ID/EX/MEM/WB e modelul din manualul Patterson & Hennessy, pe care nu l-am deschis; o folosim ca vocabular, fără cifre preluate. --></p>
+<table>
+	<thead>
+			<tr>
+					<th>ciclu →</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>instr. 1</td>
+					<td>IF</td>
+					<td>ID</td>
+					<td>EX</td>
+					<td>MEM</td>
+					<td>WB</td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>instr. 2</td>
+					<td></td>
+					<td>IF</td>
+					<td>ID</td>
+					<td>EX</td>
+					<td>MEM</td>
+					<td>WB</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>instr. 3</td>
+					<td></td>
+					<td></td>
+					<td>IF</td>
+					<td>ID</td>
+					<td>EX</td>
+					<td>MEM</td>
+					<td>WB</td>
+			</tr>
+	</tbody>
+</table>
+<p>Exemplu ilustrativ (inclusiv tabelul de mai sus), continuarea calculului nostru din capitolul 12 (cifre inventate): dacă cele cinci etaje ar dura 200, 100, 150, 200 și 100 de unități, ceasul pipeline-ului e dat de cel mai lent etaj, 200, nu de suma de 750. În regim stabil, ar ieși o instrucțiune la fiecare 200 de unități în loc de 750, adică un debit (instrucțiuni terminate pe unitatea de timp) de 750/200 = 3,75 ori mai mare. Am ignorat costul registrelor de pipeline și orice blocaj, iar etajele inegale explică de ce câștigul nu e 5. Fiecare instrucțiune durează acum 5 × 200 = 1000 de unități de la intrare la ieșire, mai mult decât cele 750 de înainte. Pipelining-ul cumpără debit cu prețul latenței.</p>
+<h2 id="hazarde-unde-se-rupe-independența">Hazarde: unde se rupe independența<a class="anchor" href="#hazarde-unde-se-rupe-independen%c8%9ba">#</a></h2>
+<p>Calculul de mai sus presupune că instrucțiunile nu depind una de alta. Programele reale nu arată așa, iar Bloch descrie problemele deja în 1959.</p>
+<p><strong>Hazard de date.</strong> Bloch dă un exemplu cu trei instrucțiuni: (n) STORE acumulatorul în m, (n+1) LOAD R, (n+2) ADD m. Dacă (n+2) intră în unitatea de look-ahead cât timp STORE-ul încă așteaptă, operandul de la adresa m nu poate fi citit din memorie, pentru că urmează să fie schimbat. Unitatea trebuie să recunoască situația și să „forward” rezultatul instrucțiunii (n), când sosește, la nivelul în care stă (n+2) (Bloch, 1959, p. 51). Aceasta e redirecționarea (<em>forwarding</em>), descrisă cu acest cuvânt, între ghilimele, în 1959. Când rezultatul nu e încă disponibil nici pentru redirecționare, instrucțiunea trebuie să aștepte; în engleză, oprirea se numește <em>stall</em>. <!-- NEVERIFICAT: termenul și regula generală nu vin de la Bloch, care descrie doar interblocarea de mai jos. --> Bloch descrie un mecanism de contoare interblocate care ține în pas cele patru niveluri ale look-ahead-ului, „preventing out-of-sequence execution of instructions, even if all information for a succeeding one is available, before the previous instruction has been started” (ibid., p. 51).</p>
+<p><strong>Hazard de control.</strong> Un salt condiționat nu își știe destinația până nu e evaluat, dar etajele din față trebuie să aducă ceva între timp. Stretch face un pariu. La salturile condiționate, unitatea de instrucțiuni „makes the assumption that the branch will not be successful”, ceea ce menține fluxul de instrucțiuni continuu (Bloch, 1959, p. 50). Când se dovedește că saltul a fost luat, toate modificările făcute între timp în registrele adresabile trebuie anulate, iar look-ahead-ul funcționează „as a recovery memory” (ibid., p. 51). Lectura noastră: pariul, verificarea și anularea anticipează predicția salturilor din capitolul 14.</p>
+<p><strong>Hazard structural.</strong> Două instrucțiuni vor aceeași resursă în același ciclu, de exemplu o singură memorie pentru instrucțiuni și date. <!-- NEVERIFICAT: nu am un exemplu sursat pentru hazardul structural; îl menționăm doar ca a treia categorie din vocabularul didactic standard. --></p>
+<h2 id="cum-se-vede-în-isa-risc-v">Cum se vede în ISA: RISC-V<a class="anchor" href="#cum-se-vede-%c3%aen-isa-risc-v">#</a></h2>
+<p>Manualul RISC-V spune că instrucțiunile de transfer al controlului din RV32I „do not have architecturally visible delay slots” (<em>The RISC-V Instruction Set Manual, Volume I: Unprivileged ISA</em>, versiunea 20240411 (RV32I 2.1 „Ratified”), §2.5 „Control Transfer Instructions”, p. 28; <a href="https://github.com/riscv/riscv-isa-manual/releases/download/20240411/unpriv-isa-asciidoc.pdf">PDF</a>, accesat 2026-11-05). Altfel spus, ISA-ul nu expune un detaliu de pipeline pe care programul să trebuiască să-l respecte. Despre salturile condiționate, manualul explică de ce compară direct două registre în loc să folosească <em>condition codes</em>: „a combined compare-and-branch instruction fits into a regular pipeline”, evită starea suplimentară și permite ca salturile să fie observate și prezise mai devreme în etajele de aducere a instrucțiunilor („front-end”) (ibid., §2.5.2 „Conditional Branches”, comentariu, pp. 30–31). Tot acolo, manualul numește costul unei predicții greșite: golirea pipeline-ului („flushing pipelines on a branch mispredict”) (ibid.).</p>
+<h2 id="ce-forțează-costurile">Ce forțează costurile<a class="anchor" href="#ce-for%c8%9beaz%c4%83-costurile">#</a></h2>
+<p>Fiecare hazard costă cicluri: redirecționarea elimină o parte, așteptările plătesc restul, iar un salt prezis greșit golește pipeline-ul (manualul RISC-V, ibid.). Următoarele capitole tratează predicția salturilor (14), cache-urile (15) și execuția în afara ordinii (16).</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/fda917a9de57c81d9cc44247a03a0a49d955181d" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Pipelining&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F13-pipelining%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F13-pipelining.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F13-pipelining.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/12-datapath-design/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Proiectarea căii de date</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/14-branch-prediction/" class="flex align-center">
+        <span>Predicția salturilor</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ideea-înainte-de-microprocesoare-stretch-1959">Ideea, înainte de microprocesoare: Stretch, 1959</a></li>
+    <li><a href="#etaje-suprapuse">Etaje suprapuse</a></li>
+    <li><a href="#hazarde-unde-se-rupe-independența">Hazarde: unde se rupe independența</a></li>
+    <li><a href="#cum-se-vede-în-isa-risc-v">Cum se vede în ISA: RISC-V</a></li>
+    <li><a href="#ce-forțează-costurile">Ce forțează costurile</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

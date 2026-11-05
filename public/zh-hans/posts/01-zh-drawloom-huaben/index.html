@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从老官山汉墓的多综提花机到《天工开物》的结花本：织出什么花，记在一束丝线里，而不在织工脑子里。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hans/posts/01-zh-drawloom-huaben/">
+	<meta property="og:site_name" content="我们如何走到那里">
+	<meta property="og:title" content="花本：程序第一次和机器分开">
+	<meta property="og:description" content="从老官山汉墓的多综提花机到《天工开物》的结花本：织出什么花，记在一束丝线里，而不在织工脑子里。">
+	<meta property="og:locale" content="zh_Hans">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+		<meta property="article:tag" content="花楼机">
+		<meta property="article:tag" content="花本">
+		<meta property="article:tag" content="挑花结本">
+		<meta property="article:tag" content="提花机">
+		<meta property="article:tag" content="天工开物">
+		<meta property="article:tag" content="云锦">
+
+
+	<meta itemprop="name" content="花本：程序第一次和机器分开">
+	<meta itemprop="description" content="从老官山汉墓的多综提花机到《天工开物》的结花本：织出什么花，记在一束丝线里，而不在织工脑子里。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="153">
+	<meta itemprop="keywords" content="花楼机,花本,挑花结本,提花机,天工开物,云锦,程序">
+
+<title>花本：程序第一次和机器分开 • 我们如何走到那里</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hans/posts/01-zh-drawloom-huaben/">
+  <link rel="alternate" hreflang="zh-hant" href="http://localhost:1478/zh-hant/posts/01-zh-drawloom-huaben/" title="花本：程式第一次和機器分開">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hans.search.min.d369906e95123348f130fcf51e745dc120f1a18f8009278172e975f6091f5a95.js" integrity="sha256-02mQbpUSM0jxMPz1HnRdwSDxoY&#43;ACSeBcul19gkfWpU=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hans/"><span>我们如何走到那里</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜索"
+    aria-label="搜索"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="语言" />
+        简体中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展开" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hant/posts/01-zh-drawloom-huaben/" class="flex flex-auto">
+          繁體中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/00-credits/" class="">
+      致谢与延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-counting-rods-abacus/" class="">
+      算筹与算盘：数放在手里，算法记在口诀里</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-drawloom-huaben/" class="active">
+      花本：程序第一次和机器分开</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-gears-and-calculators/" class="">
+      齿轮会数数：从记里鼓车到“较数器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/02-zh-relays-switching/" class="">
+      继电器与交换机：上海电话局里的“计算机”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/03-zh-first-electronic-computers/" class="">
+      电子管与晶体管：中国第一批计算机，和算盘的真实角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-hanzi-encoding/" class="">
+      汉字上线：从四位电码到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/26-zh-input-and-typesetting/" class="">
+      把汉字敲进机器：打字机、输入法与激光照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/39-zh-networks-1986-1994/" class="">
+      越过长城：中文世界接入网络（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/47-zh-taiwan-semiconductors/" class="">
+      从豆浆店到晶圆代工：台湾半导体之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/17-zh-supercomputers-cpus/" class="">
+      规模：从银河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/63-zh-road-to-attention/" class="">
+      从中文信息处理到注意力机制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/05-zh-transistors-semiconductors/" class="">
+      从一门课到一块芯片：中国半导体的头十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/48-zh-lithography-fabs/" class="">
+      光刻：从显微镜到扫描机</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/58-zh-deep-learning-chips/" class="">
+      从 DianNao 到昇腾：为矩阵乘法造的芯片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/23-zh-operating-systems/" class="">
+      操作系统：从大庆的“虚拟机”到开源欧拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/27-zh-languages-compilers/" class="">
+      编程语言与编译器：从 104 机到仓颉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主机与天文台的电脑</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/43-zh-bbs/" class="">
+      挤不进去的广场：两岸三地的校园 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/44-zh-chinese-search/" class="">
+      一台服务器装不下：中国大陆第一批搜索引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/66-zh-commercial-crypto/" class="">
+      从“属于国家秘密”到国际标准：中国商用密码的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/67-zh-privacy-law/" class="">
+      从电脑处理到自动化决策：两岸三地的个人信息保护法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-mobile-standards/" class="">
+      空中的标准之争：从大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/68-zh-computer-craze/" class="">
+      娃娃与学习机：1984 年以后的电脑热</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="菜单" />
+  </label>
+
+  <h3>花本：程序第一次和机器分开</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目录" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#老官山储存再释放">老官山：储存，再释放</a></li>
+    <li><a href="#挑花与提花">挑花与提花</a></li>
+    <li><a href="#十万根线的程序">十万根线的程序</a></li>
+    <li><a href="#同一门手艺两种说法">同一门手艺，两种说法</a></li>
+    <li><a href="#卡片来到中国">卡片来到中国</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    花本：程序第一次和机器分开
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>九月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hans/tags/%E8%8A%B1%E6%A5%BC%E6%9C%BA/">花楼机</a>, 
+      <a href="/zh-hans/tags/%E8%8A%B1%E6%9C%AC/">花本</a>, 
+      <a href="/zh-hans/tags/%E6%8C%91%E8%8A%B1%E7%BB%93%E6%9C%AC/">挑花结本</a>, 
+      <a href="/zh-hans/tags/%E6%8F%90%E8%8A%B1%E6%9C%BA/">提花机</a>, 
+      <a href="/zh-hans/tags/%E5%A4%A9%E5%B7%A5%E5%BC%80%E7%89%A9/">天工开物</a>, 
+      <a href="/zh-hans/tags/%E4%BA%91%E9%94%A6/">云锦</a>, 
+      <a href="/zh-hans/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F31-01, F31-02, F31-03, F31-04, F31-05, F31-06, F31-07, F31-08, F31-09, F31-10 -->
+<p>1637 年，宋应星在《天工开物》里写下一句话，放进今天的计算机教科书也不违和：</p>
+<blockquote class='book-hint '>
+<p>即织者不知成何花色，穿综带经，随其尺寸度数提起衢脚。</p>
+</blockquote><p>织工并不知道自己在织什么花。他只是按尺寸、按次数拉起该拉的线；梭子过去，“居然花现”。花纹在哪里？在一件叫“花本”的东西里：结花本的人照着画稿，用丝线“算计分寸杪忽而结成之”，再把它高高挂在花楼上。机器是机器，花本是花本。这就是“程序与机器分离”，它在中国有一条可以追到两千多年前的实物链。</p>
+<figure><img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Tiangong_Kaiwu_Drawloom.jpg" alt="《天工开物》中的花楼机木刻插图，上方坐着拽花工，下方是织工" loading="lazy" width="500"><figcaption>《天工开物》（1637）中的花机图：拽花工坐在花楼上提线，织工在下方投梭。图片：<a href="https://commons.wikimedia.org/wiki/File:Tiangong_Kaiwu_Drawloom.jpg">宋应星</a> / Wikimedia Commons，<a href="https://commons.wikimedia.org/wiki/Template:PD-old">公有领域</a>。</figcaption></figure>
+<h2 id="老官山储存再释放">老官山：储存，再释放<a class="anchor" href="#%e8%80%81%e5%ae%98%e5%b1%b1%e5%82%a8%e5%ad%98%e5%86%8d%e9%87%8a%e6%94%be">#</a></h2>
+<p>2012—2013 年，成都天回镇老官山 2 号西汉墓出土了 4 部竹木提花织机模型和 15 件纺织木俑，墓葬年代推测为景帝至武帝时期（约公元前 157—前 88 年）。中国丝绸博物馆称它们是迄今世界上最早的提花织机实物资料；发掘者认为，这些“是参照原织机制作的缩小模型”。</p>
+<p>复原研究把它读作“一勾多综提花机”：纹样分散存放在一片片提花综里，织工每织一纬，就把“选综齿梁”移动一齿，让钩子对准下一片综，再踩踏板把它提起。丝绸博物馆的龙博称之为“利用多个综片将纹样信息储存再释放的装置”。一片综是一步，齿梁就是指向“下一步”的指针。要说明的是，这套操作顺序是依据模型做出的现代复原。</p>
+<p>复原还走得更远。丝绸博物馆用改进的老官山型织机复制尼雅出土的“五星出东方利中国”锦：“总经根数有10470根，纹综84片，地综2片，穿综过程耗时一年有余”。换成今天的话：一段 84 步的程序，写了一年多。</p>
+<p>**出处：**龙博《成都老官山汉墓出土提花织机的复原研究》《“五星出东方利中国”锦的复制》，中国丝绸博物馆，2021。</p>
+<h2 id="挑花与提花">挑花与提花<a class="anchor" href="#%e6%8c%91%e8%8a%b1%e4%b8%8e%e6%8f%90%e8%8a%b1">#</a></h2>
+<p>纺织史学者赵丰区分了两种做法：“挑花”每织一次都要重新挑起经线；“提花”则“只需一次制作花纹程序，反复利用，循环织出同一图案”。“程序”二字是他自己用的。他还认为花楼机并非纯粹的本土发明：西域的“1-N 线综系统”传入后与多综提花结合，约在公元 6 世纪前后完善为束综提花机，南宋《蚕织图》是明确的图像证据。这是他的学术论证，年代并无定论。</p>
+<h2 id="十万根线的程序">十万根线的程序<a class="anchor" href="#%e5%8d%81%e4%b8%87%e6%a0%b9%e7%ba%bf%e7%9a%84%e7%a8%8b%e5%ba%8f">#</a></h2>
+<p>到明清，大花楼机把这套思路推到了极致。中国丝绸博物馆的展览文字给提花机下的定义，几乎就是计算机术语：“利用提花规律的贮存来控制提花程序的织机”。据该展览介绍，南京妆花机的花本耳子线可多达十余万根；花本做成环状挂在机后，用过一根就移到最后，图案于是循环往复，像一个首尾相接的程序环。</p>
+<p>南京云锦把编花本的工序叫“挑花结本”。据江西服装学院古丝绸研究院的介绍，意匠图的纵格对应经线：用丝线做“脚子线”当经，用棉线做“耳子线”当纬，逐格挑成花本；上机后，每根脚子线与经丝一一相连，拉起一根耳子线，该起花的经线就一齐抬起。每个结，就是一个“提或不提”。那里把这道工序称为“纹样由图纸过渡到织物上的桥梁”。</p>
+<p>在西南，程序还可以带着走。丝绸博物馆展出的广西壮锦竹笼机，用约 100 根提花竹棍编成花本，每织一纬转动一根；傣锦机用耳子线帘式花本。老挝—泰国织工的花本，“是当地女儿重要的财产，无论是出嫁还是旅行都会带在身边”，展览称之为“原始的移动应用”。</p>
+<h2 id="同一门手艺两种说法">同一门手艺，两种说法<a class="anchor" href="#%e5%90%8c%e4%b8%80%e9%97%a8%e6%89%8b%e8%89%ba%e4%b8%a4%e7%a7%8d%e8%af%b4%e6%b3%95">#</a></h2>
+<p>2006 年，南京云锦木机妆花手工织造技艺列入第一批国家级非遗；2009 年，“南京云锦织造技艺”入选联合国教科文组织人类非遗代表作名录。中文官方介绍写的是“由材料准备、纹样设计、挑花结本、造机、织造等百余道工序构成”，织造时拽花工在上、织工在下。教科文组织的英文简介却写成 “the creation of jacquard cards for programming weaving patterns”，即制作用来编排织造图案的“贾卡卡片”。云锦的程序载体是结成的丝线，不是卡片。这个英文措辞，恰好抹掉了中国程序载体最独特的地方。</p>
+<h2 id="卡片来到中国">卡片来到中国<a class="anchor" href="#%e5%8d%a1%e7%89%87%e6%9d%a5%e5%88%b0%e4%b8%ad%e5%9b%bd">#</a></h2>
+<p>据中国丝绸博物馆介绍，贾卡织机约在清末民初经日本传入：1910 年，经日本改进、装有贾卡装置的提花机运到江浙，苏州人叫它“铁机”；1915 年，上海肇新绸厂引进了 9 台瑞士电力丝织机。在工业里，卡片渐渐取代了丝线花本。</p>
+<p>在西方，法国人雅卡尔（Jacquard）用穿孔卡片控制提花。据《不列颠百科全书》，他 1801 年展示了改良的提花机，1804—1805 年推出用一串可更换的穿孔卡片控制提花的装置，1806 年这种织机被宣布为公共财产。有意思的是，同一份中国丝绸博物馆展览文字对贾卡的发明年份既写 1817 年又写 1799 年，自相矛盾。</p>
+<h2 id="延伸阅读">延伸阅读<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb">#</a></h2>
+<ul>
+<li>宋應星，《天工開物·結花本》（English: <em>Tiangong Kaiwu</em>, &ldquo;Knotting the pattern record&rdquo;），1637，维基文库。<a href="https://zh.wikisource.org/wiki/%e5%a4%a9%e5%b7%a5%e9%96%8b%e7%89%a9/%e7%b5%90%e8%8a%b1%e6%9c%ac">链接</a></li>
+<li>宋應星，《天工開物·花機式》（English: <em>Tiangong Kaiwu</em>, &ldquo;The drawloom&rdquo;），1637，维基文库。<a href="https://zh.wikisource.org/wiki/%e5%a4%a9%e5%b7%a5%e9%96%8b%e7%89%a9/%e8%8a%b1%e6%a9%9f%e5%bc%8f">链接</a></li>
+<li>龙博，《成都老官山汉墓出土提花织机的复原研究》（English: Reconstructing the pattern looms from the Laoguanshan Han tomb, Chengdu），中国丝绸博物馆，2021-04-15。<a href="https://www.chinasilkmuseum.com/gskt/info_319.aspx?itemid=28182">链接</a></li>
+<li>龙博，《“五星出东方利中国”锦的复制》（English: Re-weaving the &ldquo;Five Stars Rise in the East&rdquo; brocade），中国丝绸博物馆，2021-05-07。<a href="https://www.chinasilkmuseum.com/gskt/info_319.aspx?itemid=28201">链接</a></li>
+<li>吴晓铃，《成都老官山汉墓出土的4台织机入选“指南针计划”》（English: The four looms from Laoguanshan selected for the &ldquo;Compass Plan&rdquo;），四川日报，中国社会科学院考古研究所转载，2014-09-17。<a href="http://kaogu.cssn.cn/xsqy/zdkt/201409/t20140917_5948961.shtml">链接</a></li>
+<li>赵丰，《丝路之绸与中国纺织史研究》（English: Silk Road silks and the study of Chinese textile history），科学网，2017-11-27。<a href="https://www.sciencenet.cn/skhtmlnews/2017/11/3788.html">链接</a></li>
+<li>中国丝绸博物馆，《神机妙算：世界织机与织造艺术》展览（English: Divine machines, marvellous reckoning: world looms and the art of weaving, exhibition），2018-04-03。<a href="https://www.chinasilkmuseum.com/cs/info_164.aspx?itemid=30809">链接</a></li>
+<li>江西服装学院古丝绸研究院，《南京云锦》（English: Nanjing yunjin brocade），2022-10-31。<a href="https://gscyjy.jift.edu.cn/info/1072/1005.htm">链接</a></li>
+<li>中国非物质文化遗产网，《南京云锦织造技艺》（English: Craftsmanship of Nanjing yunjin brocade: national record）。<a href="https://www.ihchina.cn/yunjinzhizao.html">链接</a></li>
+<li>UNESCO，“Craftsmanship of Nanjing Yunjin brocade”（中文：南京云锦织造技艺），人类非物质文化遗产代表作名录，2009。<a href="https://ich.unesco.org/en/RL/craftsmanship-of-nanjing-yunjin-brocade-00200">链接</a></li>
+<li>Encyclopaedia Britannica，“Joseph-Marie Jacquard”（中文：《不列颠百科全书》雅卡尔词条），britannica.com。<a href="https://www.britannica.com/biography/Joseph-Marie-Jacquard">链接</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='最后修改者 Nayana | 十一月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>十一月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E8%8A%B1%E6%9C%AC%EF%BC%9A%E7%A8%8B%E5%BA%8F%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%92%8C%E6%9C%BA%E5%99%A8%E5%88%86%E5%BC%80&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hans%2Fposts%2F01-zh-drawloom-huaben%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hans%2Fposts%2F01-zh-drawloom-huaben.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hans%2Fposts%2F01-zh-drawloom-huaben.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hans/posts/01-zh-counting-rods-abacus/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一页" />
+        <span>算筹与算盘：数放在手里，算法记在口诀里</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hans/posts/01-zh-gears-and-calculators/" class="flex align-center">
+        <span>齿轮会数数：从记里鼓车到“较数器”</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一页" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#老官山储存再释放">老官山：储存，再释放</a></li>
+    <li><a href="#挑花与提花">挑花与提花</a></li>
+    <li><a href="#十万根线的程序">十万根线的程序</a></li>
+    <li><a href="#同一门手艺两种说法">同一门手艺，两种说法</a></li>
+    <li><a href="#卡片来到中国">卡片来到中国</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

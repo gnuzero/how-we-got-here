@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="வாயில்களைக் கூட்டிகளாகவும் ALU-வாகவும் இணைக்கவும் — பிறகு சிறந்த கட்டமைப்புகளைக் கட்டாயப்படுத்தும் carry-ripple தாமதம்">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/08-from-gates-to-combinational-logic/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்">
+	<meta property="og:description" content="வாயில்களைக் கூட்டிகளாகவும் ALU-வாகவும் இணைக்கவும் — பிறகு சிறந்த கட்டமைப்புகளைக் கட்டாயப்படுத்தும் carry-ripple தாமதம்">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்">
+	<meta itemprop="description" content="வாயில்களைக் கூட்டிகளாகவும் ALU-வாகவும் இணைக்கவும் — பிறகு சிறந்த கட்டமைப்புகளைக் கட்டாயப்படுத்தும் carry-ripple தாமதம்">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1681">
+
+<title>வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம் • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/08-from-gates-to-combinational-logic/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/08-from-gates-to-combinational-logic/" title="From Gates to Combinational Logic">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/08-from-gates-to-combinational-logic/" title="จากเกตสู่ตรรกะเชิงผสม">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/08-from-gates-to-combinational-logic/" title="ද්වාරවලින් සංයෝජන තර්කය දක්වා">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/08-from-gates-to-combinational-logic/" title="De la porți la logică combinațională">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/08-from-gates-to-combinational-logic/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/08-from-gates-to-combinational-logic/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/08-from-gates-to-combinational-logic/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="active">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#half-adder">Half Adder</a></li>
+    <li><a href="#full-adder">Full Adder</a></li>
+    <li><a href="#உணம-அடடவணகள">உண்மை அட்டவணைகள்</a></li>
+    <li><a href="#ripple-carry-எளத-மறறம-பரநதகளளத-தகநத-கரணததறகக-மதவனத">Ripple-Carry: எளிது, மற்றும் புரிந்துகொள்ளத் தகுந்த காரணத்திற்காக மெதுவானது</a></li>
+    <li><a href="#4-பட-கடடல-நல-நலயக">4-பிட் கூட்டல், நிலை நிலையாக</a></li>
+    <li><a href="#ripple-தமதம-எணகளல">Ripple தாமதம், எண்களில்</a></li>
+    <li><a href="#carry-lookahead-கததரககமல-carry-ஐக-கணததல">Carry-lookahead: காத்திருக்காமல் carry-ஐக் கணித்தல்</a></li>
+    <li><a href="#கடடகளலரநத-ஒர-எளய-alu-கக">கூட்டிகளிலிருந்து ஒரு எளிய ALU-க்கு</a></li>
+    <li><a href="#ஒர-கடட-கழததலககம">ஒரே கூட்டி, கழித்தலுக்கும்</a></li>
+    <li><a href="#multiplexer-சததரததல">Multiplexer, சூத்திரத்தில்</a></li>
+    <li><a href="#ஒர-சறய-alu-மழ-வலயடன">ஒரு சிறிய ALU, முழு வேலையுடன்</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>ஒரு தனித் தர்க்க வாயில் தனியாக கிட்டத்தட்ட எதையும் பயனுள்ளதாகச் செய்வதில்லை. அவற்றை ஏதோ கணிக்கும் அமைப்புகளாக இணைக்கும்போதுதான் சுவாரஸ்யமான நடத்தை தொடங்குகிறது — மற்றும் நியம தொடக்க எடுத்துக்காட்டு, ஒவ்வொரு டிஜிட்டல் வடிவமைப்புப் பாடமும் திறக்கும் ஒன்று, கூட்டி.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> Half adder, full adder, multiplexer பற்றித் தமிழில் பல காணொளித் தலைப்புகள் உண்டு (YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை); எழுத்தில் ஒரு கலைக்களஞ்சியக் குறிப்பில் போகிற போக்கில் ஒரு குறிப்பும், பாடநூலில் சுருக்கமான அறிமுகமும் மட்டும். Ripple தாமதத்தைக் கணக்கிடுவது, carry-lookahead எப்படி அதைக் குறைக்கிறது, ஒரே கூட்டி எப்படிக் கழிக்கவும் செய்கிறது, ஒரு சிறிய ALU-வின் முழு வேலை — இவை எண்களுடன் தமிழில் விளக்கப்பட்டதாகத் தெரியவில்லை. இங்கே சேர்க்கிறோம். கணக்குகள் Python-இல் சரிபார்க்கப்பட்டவை; lab படிகள் Falstad simulator-இன் மூலக் குறியீட்டிலிருந்து (மெனு பெயர்கள், பாகங்களின் pin பெயர்கள்) சரிபார்க்கப்பட்டவை. வாயில் தாமதங்கள் &ldquo;எடுத்துக்காட்டு மதிப்பு&rdquo;.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>சேர்க்கைத் தர்க்கம் (combinational logic):</strong> வெளியீடு தற்போதைய உள்ளீடுகளை மட்டுமே சார்ந்த சுற்று; நினைவு இல்லை.</li>
+<li><strong>Half adder (அரைக் கூட்டி):</strong> இரண்டு பிட்களைக் கூட்டி Sum, Carry தரும்; கீழ் இடத்திலிருந்து வரும் carry-ஐ ஏற்காது.</li>
+<li><strong>Full adder (முழுக் கூட்டி):</strong> A, B, Cin மூன்றையும் கூட்டி Sum, Cout தரும்.</li>
+<li><strong>Carry (மீதி / கொண்டு செல்லல்):</strong> ஒரு பிட் இடத்தில் கூட்டல் 1-ஐத் தாண்டும்போது அடுத்த இடத்துக்குப் போகும் 1.</li>
+<li><strong>Ripple-carry (அலை-carry):</strong> ஒவ்வொரு நிலையின் Cout அடுத்ததன் Cin ஆகும் சங்கிலி.</li>
+<li><strong>Carry-lookahead (முன்னோக்கு carry):</strong> carry-களை வரிசையாகக் காத்திருக்காமல் நேரடியாகக் கணிக்கும் கூட்டி.</li>
+<li><strong>Two&rsquo;s complement (இருநிரப்பு):</strong> எதிர்மறை எண்களைக் குறிக்கும் முறை; −B = (B-இன் எல்லாப் பிட்களையும் தலைகீழாக்கி) + 1.</li>
+<li><strong>Multiplexer, mux (தேர்வி):</strong> பல உள்ளீடுகளில் ஒன்றைத் தேர்வுப் பிட்களின்படி வெளியீட்டுக்கு அனுப்பும் சுற்று.</li>
+<li><strong>Gate delay (வாயில் தாமதம்):</strong> உள்ளீடு மாறியதிலிருந்து வெளியீடு நிலைபெறும் வரையிலான நேரம்.</li>
+</ul>
+<h2 id="half-adder">Half Adder<a class="anchor" href="#half-adder">#</a></h2>
+<p>இரண்டு தனி பிட்களை, A மற்றும் B-ஐ, கூட்டுவது ஒரு தொகை பிட்டையும் ஒரு carry-out பிட்டையும் உருவாக்குகிறது. தொகை A XOR B (சரியாக ஒரு உள்ளீடு 1 என்றால் 1); carry A AND B (இரு உள்ளீடுகளும் 1 என்றால் மட்டுமே 1). இரண்டு வாயில்கள், மேலும் நீங்கள் கூட்டும் ஒரு சுற்றைக் கட்டியுள்ளீர்கள் — ஆனால் ஏதோ குறைகிறது: முந்தைய, குறைந்த-முக்கியத்துவ பிட் இடத்திலிருந்து carry-<em>in</em>-ஐ ஏற்க வழி இல்லை. அதனால்தான் இது &ldquo;half&rdquo; adder என்று அழைக்கப்படுகிறது.</p>
+<h2 id="full-adder">Full Adder<a class="anchor" href="#full-adder">#</a></h2>
+<p>ஒரு full adder மூன்று உள்ளீடுகளை எடுக்கிறது — A, B, மற்றும் Carry-in — மற்றும் Sum மற்றும் Carry-out-ஐ உருவாக்குகிறது. இதை இரண்டு half adder-களிலிருந்தும் இரு சாத்தியமான carry-out மூலங்களை இணைக்க ஒரு OR வாயிலிலிருந்தும் கட்டலாம், அல்லது நேரடியாக Sum = A XOR B XOR Cin, மற்றும் Carry-out = (A AND B) OR (Cin AND (A XOR B)) ஆக. எந்த வழியிலும், முக்கியத் தன்மை அது <em>இணைக்கக்கூடியது</em>: ஒரு full adder-இன் carry-out-ஐ அடுத்ததன் carry-in-க்குச் சங்கிலியாக்குங்கள், தன்னிச்சையான அகல எண்களை ஒரு பிட் இடம் ஒவ்வொன்றாகக் கூட்டலாம்.</p>
+<h2 id="உணம-அடடவணகள">உண்மை அட்டவணைகள்<a class="anchor" href="#%e0%ae%89%e0%ae%a3%e0%ae%ae-%e0%ae%85%e0%ae%9f%e0%ae%9f%e0%ae%b5%e0%ae%a3%e0%ae%95%e0%ae%b3">#</a></h2>
+<p><strong>Half adder:</strong> Sum = A XOR B, Carry = A AND B</p>
+<table>
+	<thead>
+			<tr>
+					<th>A</th>
+					<th>B</th>
+					<th>Sum</th>
+					<th>Carry</th>
+					<th>பொருள்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0 + 0 = 0</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+					<td>0 + 1 = 1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1 + 0 = 1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>1 + 1 = 2 = இருமத்தில் 10</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Full adder:</strong> Sum = A XOR B XOR Cin; Cout = மூன்றில் குறைந்தது இரண்டு 1 என்றால் 1 (பெரும்பான்மை)</p>
+<table>
+	<thead>
+			<tr>
+					<th>A</th>
+					<th>B</th>
+					<th>Cin</th>
+					<th>மொத்தம்</th>
+					<th>Sum</th>
+					<th>Cout</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+					<td>2</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>2</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+					<td>2</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>3</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<p>சரிபார்ப்பு விதி: ஒவ்வொரு வரிசையிலும் மொத்தம் = 2 × Cout + Sum. எ.கா. கடைசி வரிசை: 2 × 1 + 1 = 3 ✓.</p>
+<h2 id="ripple-carry-எளத-மறறம-பரநதகளளத-தகநத-கரணததறகக-மதவனத">Ripple-Carry: எளிது, மற்றும் புரிந்துகொள்ளத் தகுந்த காரணத்திற்காக மெதுவானது<a class="anchor" href="#ripple-carry-%e0%ae%8e%e0%ae%b3%e0%ae%a4-%e0%ae%ae%e0%ae%b1%e0%ae%b1%e0%ae%ae-%e0%ae%aa%e0%ae%b0%e0%ae%a8%e0%ae%a4%e0%ae%95%e0%ae%b3%e0%ae%b3%e0%ae%a4-%e0%ae%a4%e0%ae%95%e0%ae%a8%e0%ae%a4-%e0%ae%95%e0%ae%b0%e0%ae%a3%e0%ae%a4%e0%ae%a4%e0%ae%b1%e0%ae%95%e0%ae%95-%e0%ae%ae%e0%ae%a4%e0%ae%b5%e0%ae%a9%e0%ae%a4">#</a></h2>
+<p>நான்கு full adder-களை இப்படிச் சங்கிலியாக்கினால் 4-பிட் ripple-carry கூட்டி கிடைக்கும். அது வேலை செய்கிறது, மேலும் அது கருத்தியலாக மிக எளிய பல-பிட் கூட்டி — ஆனால் சார்பைக் கவனியுங்கள்: பிட் 3-இன் carry-out, பிட் 2-இன் carry-out அமர்ந்த பிறகே சரியாக இருக்க முடியும், அது பிட் 1-இன் மீது சார்ந்தது, அது பிட் 0-இன் மீது சார்ந்தது. இறுதி முடிவு செல்லுபடியாகும் முன் carry ஒவ்வொரு நிலை வழியாக இயற்பியலாக &ldquo;ripple&rdquo; ஆக வேண்டும். 4-பிட் கூட்டிக்கு அது சிறிய தாமதம்; 64-பிட் கூட்டிக்கு, அந்த ripple தாமதம் முழு ALU எவ்வளவு வேகமாக ஓட முடியும் என்பதற்கு உண்மையான இடையூறாகிறது — பின்னர் உண்மையான CPU-களில் மேலும் சிக்கலான carry-lookahead கூட்டி வடிவமைப்புகளைத் தூண்டும் சரியாக அந்த வகையான கட்டுப்பாடு, மோசமான-நிலை தாமதத்தைக் குறைக்க வாயில் எண்ணிக்கையை வர்த்தகம் செய்கிறது.</p>
+<h2 id="4-பட-கடடல-நல-நலயக">4-பிட் கூட்டல், நிலை நிலையாக<a class="anchor" href="#4-%e0%ae%aa%e0%ae%9f-%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%b2-%e0%ae%a8%e0%ae%b2-%e0%ae%a8%e0%ae%b2%e0%ae%af%e0%ae%95">#</a></h2>
+<p>6 + 7 = ? இருமத்தில்: A = 0110, B = 0111. பிட் 0 (வலது) முதல்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>பிட்</th>
+					<th>A</th>
+					<th>B</th>
+					<th>Cin</th>
+					<th>Sum</th>
+					<th>Cout</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+	</tbody>
+</table>
+<p>முடிவு (பிட் 3 → 0): <strong>1101</strong> = 8 + 4 + 0 + 1 = <strong>13</strong> ✓. பிட் 3-இன் Sum, பிட் 2-இன் Cout வரும் வரை தெரியாது; அது பிட் 1-இன் Cout-க்குக் காத்திருக்கிறது — இதுதான் &ldquo;ripple&rdquo;.</p>
+<h2 id="ripple-தமதம-எணகளல">Ripple தாமதம், எண்களில்<a class="anchor" href="#ripple-%e0%ae%a4%e0%ae%ae%e0%ae%a4%e0%ae%ae-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%b2">#</a></h2>
+<p>ஒரு full adder-இல் Cin-இலிருந்து Cout-க்கான பாதை: ஒரு AND, பிறகு ஒரு OR → 2 வாயில் தாமதங்கள். ஒரு வாயில் தாமதம் 20 ps என்று வைப்போம் (எடுத்துக்காட்டு மதிப்பு).</p>
+<table>
+	<thead>
+			<tr>
+					<th>அகலம்</th>
+					<th>Carry பாதை (வாயில்கள்)</th>
+					<th>தாமதம்</th>
+					<th>கூட்டிக்கு மட்டும் அதிகபட்ச clock</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>4 பிட்</td>
+					<td>4 × 2 = 8</td>
+					<td>8 × 20 = 160 ps</td>
+					<td>1 ÷ 160 ps = 6.25 GHz</td>
+			</tr>
+			<tr>
+					<td>16 பிட்</td>
+					<td>16 × 2 = 32</td>
+					<td>640 ps</td>
+					<td>≈ 1.56 GHz</td>
+			</tr>
+			<tr>
+					<td>64 பிட்</td>
+					<td>64 × 2 = 128</td>
+					<td>2,560 ps = 2.56 ns</td>
+					<td>≈ 390 MHz</td>
+			</tr>
+	</tbody>
+</table>
+<p>தாமதம் அகலத்துக்கு <strong>நேர் விகிதம்</strong>. 64-பிட் CPU-வில் ripple கூட்டி ஒன்றே clock-ஐ 390 MHz-க்குக் கட்டிப்போடும் (இந்த எடுத்துக்காட்டு மதிப்புகளில்) — ஆங்கிலப் பதிவு சொல்லும் &ldquo;அந்தச் சங்கிலி முழு ALU எவ்வளவு வேகமாக ஓட முடியும் என்பதை அமைக்கிறது&rdquo;.</p>
+<h2 id="carry-lookahead-கததரககமல-carry-ஐக-கணததல">Carry-lookahead: காத்திருக்காமல் carry-ஐக் கணித்தல்<a class="anchor" href="#carry-lookahead-%e0%ae%95%e0%ae%a4%e0%ae%a4%e0%ae%b0%e0%ae%95%e0%ae%95%e0%ae%ae%e0%ae%b2-carry-%e0%ae%90%e0%ae%95-%e0%ae%95%e0%ae%a3%e0%ae%a4%e0%ae%a4%e0%ae%b2">#</a></h2>
+<p>ஒவ்வொரு பிட் இடத்துக்கும் இரண்டு சமிக்ஞைகள்:</p>
+<ul>
+<li><strong>Generate</strong> gᵢ = Aᵢ AND Bᵢ — இந்த இடமே ஒரு carry-ஐ <em>உருவாக்குகிறது</em></li>
+<li><strong>Propagate</strong> pᵢ = Aᵢ XOR Bᵢ — உள்ளே வரும் carry-ஐ இந்த இடம் <em>கடத்துகிறது</em></li>
+</ul>
+<p>அப்போது: c₁ = g₀ + p₀c₀; c₂ = g₁ + p₁g₀ + p₁p₀c₀; c₃ = g₂ + p₂g₁ + p₂p₁g₀ + p₂p₁p₀c₀ (இங்கே + என்பது OR, அருகருகே எழுதுவது AND).</p>
+<p><strong>6 + 7-க்குச் சரிபார்ப்போம்:</strong> A = 0110, B = 0111, c₀ = 0.</p>
+<ul>
+<li>g = (g₃ g₂ g₁ g₀) = 0 1 1 0; p = 0 0 0 1</li>
+<li>c₁ = g₀ + p₀c₀ = 0 + 1·0 = <strong>0</strong></li>
+<li>c₂ = g₁ + p₁g₀ + … = 1 + … = <strong>1</strong></li>
+<li>c₃ = g₂ + … = 1 + … = <strong>1</strong></li>
+<li>c₄ = g₃ + p₃g₂ + … = 0 + 0·1 + … = <strong>0</strong></li>
+</ul>
+<p>மேலே உள்ள ripple அட்டவணையின் Cin நெடுவரிசையோடு (0, 0, 1, 1) மற்றும் கடைசி Cout (0) சரியாகப் பொருந்துகிறது. வித்தியாசம் நேரத்தில்: ஒவ்வொரு cᵢ-உம் g, p-இலிருந்து நேரடியாக — ஒரு AND நிலை, ஒரு OR நிலை — கணிக்கப்படுகிறது. g/p-க்கு 1 வாயில் + 2 = சுமார் 3 வாயில் தாமதம் = 60 ps (அதே எடுத்துக்காட்டு மதிப்பில்), 4-பிட் ripple-இன் 160 ps-க்குப் பதிலாக. விலை: c₃-க்கே ஒரு நான்கு-உள்ளீடு OR வாயிலும் மூன்று AND வாயில்களும் (அவற்றில் ஒன்று நான்கு-உள்ளீடு) — அகலம் கூடக்கூட வாயில்கள் வேகமாகப் பெருகும். அதனால் உண்மையான கூட்டிகள் 4-பிட் lookahead தொகுதிகளை அடுக்கடுக்காக (hierarchically) இணைக்கின்றன. &ldquo;அதிக வாயில்கள், குறுகிய மோசமான-நிலைப் பாதை&rdquo; — ஆங்கிலப் பதிவின் வாக்கியம், எண்களில்.</p>
+<h2 id="கடடகளலரநத-ஒர-எளய-alu-கக">கூட்டிகளிலிருந்து ஒரு எளிய ALU-க்கு<a class="anchor" href="#%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%b2%e0%ae%b0%e0%ae%a8%e0%ae%a4-%e0%ae%92%e0%ae%b0-%e0%ae%8e%e0%ae%b3%e0%ae%af-alu-%e0%ae%95%e0%ae%95">#</a></h2>
+<p>ஒரு ALU (Arithmetic Logic Unit) இந்த யோசனையைப் பொதுமைப்படுத்துகிறது: <em>மட்டும்</em> கூட்டாமல், கூட்டித் தர்க்கத்திற்கு முன் ஒரு multiplexer-ஐச் சேர்த்து செயல்பாடுகளுக்கு இடையே தேர்ந்தெடுக்கிறது — கூட்டல், கழித்தல் (inverted-operand-plus-carry-in உடன் கூட்டலாகச் செயல்படுத்தப்படுகிறது, அதே கூட்டி வன்பொருளை மீண்டும் பயன்படுத்தும் நேர்த்தியான தந்திரம்), AND, OR — சில கட்டுப்பாட்டு பிட்களின் அடிப்படையில். வெளியீடு கட்டுப்பாட்டு சமிக்ஞை தேர்ந்தெடுத்த செயல்பாடு, முன்கூட்டியே இணைக்கப்பட்ட சேர்க்கைப் பாதைகளின் பட்டியலிலிருந்து தேர்ந்தெடுக்கப்பட்டது.</p>
+<p>இது கருத்தியலாக உண்மையிலேயே சிறிய படி ஆனால் நடைமுறையில் பெரியது: இந்தத் தொடரில் &ldquo;தர்க்க வாயில்கள்&rdquo; &ldquo;CPU-க்குள் உண்மையில் கணிதம் செய்யும் பொருள்&rdquo; ஆகும் முதல் இடம் இது. இதுவரை இங்குள்ள அனைத்தும் சேர்க்கை — வெளியீடுகள் தற்போதைய உள்ளீடுகளை மட்டுமே சார்ந்தவை, கடந்த காலத்தின் நினைவகம் இல்லை. அடுத்த பதிவு இன்னும் குறைவாக உள்ள துண்டை அறிமுகப்படுத்துகிறது: காலம் முழுவதும் நீடிக்கும் நிலை, அது ஒரு <em>வரிசை</em> செயல்பாடுகளைச் சாத்தியமாக்குவது — ஒரே உடனடிக் கணிப்பை மட்டும் அல்ல.</p>
+<p><strong>இப்போது முயல்க.</strong> கீழே உள்ள lab இன்னும் ஒரு AND வாயிலில் திறக்கிறது — அது half-adder-இன் carry. இரு உள்ளீடுகளையும் high-ஆக மாற்றி வெளியீடு high ஆவதைப் பாருங்கள்; அடுத்த பகுதியில் கூட்டிகளைச் சங்கிலியாக்கும்போது ripple ஆகும் கட்டுப்பாடு அந்த ஒற்றை வாயில்.</p>
+<p><strong>இப்போது முயல்க: AND-ஐ half adder ஆக்குங்கள்.</strong> Lab-இன் &ldquo;Open AND gate in new tab ↗&rdquo; பொத்தானால் simulator-ஐ முழுத் திரையில் திறங்கள் (மெனு பெயர்கள் simulator-இன் மூலக் குறியீட்டிலிருந்து சரிபார்க்கப்பட்டவை; பதிப்புக்கேற்பச் சற்று மாறலாம்).</p>
+<ol>
+<li><strong>Draw → Logic Gates, Input and Output → Add XOR Gate</strong> — AND வாயிலுக்குக் கீழே வையுங்கள்.</li>
+<li><strong>Draw → Add Wire</strong> மூலம் XOR-இன் இரண்டு உள்ளீடுகளையும் AND-க்குச் செல்லும் அதே இரண்டு Logic Input-களுடன் இணையுங்கள்.</li>
+<li><strong>Draw → Logic Gates, Input and Output → Add Logic Output</strong> — XOR-இன் வெளியீட்டுக்கு. இப்போது AND வெளியீடு = Carry, XOR வெளியீடு = Sum.</li>
+<li>இரண்டு உள்ளீடுகளையும் கிளிக் செய்து நான்கு சேர்க்கைகளையும் முயலுங்கள்; மேலே உள்ள half adder அட்டவணையோடு ஒப்பிடுங்கள். 1 + 1-இல் Sum = 0, Carry = 1 — &ldquo;10&rdquo;.</li>
+<li>முழுக் கூட்டிக்கு: <strong>Draw → Digital Chips → Add Adder</strong>. இது இயல்பாக 4-பிட்; அதன் மேல் வலது-கிளிக் → <strong>Edit&hellip;</strong> → <strong># of Bits</strong> = 1 ஆக்கினால் ஒற்றை full adder கிடைக்கும் — இடப்பக்கம் A, B, Cin; வலப்பக்கம் S, C. மூன்று Logic Input, இரண்டு Logic Output இணைத்து full adder அட்டவணையின் எட்டு வரிசைகளையும் சரிபாருங்கள்.</li>
+</ol>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/breadboard/?lang=ta"
+    style="width:100%; height:700px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: breadboard">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/breadboard/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<h2 id="ஒர-கடட-கழததலககம">ஒரே கூட்டி, கழித்தலுக்கும்<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%95%e0%ae%9f%e0%ae%9f-%e0%ae%95%e0%ae%b4%e0%ae%a4%e0%ae%a4%e0%ae%b2%e0%ae%95%e0%ae%95%e0%ae%ae">#</a></h2>
+<p>A − B = A + (−B), இருநிரப்பில் −B = (B-இன் பிட்கள் தலைகீழ்) + 1. அந்த &ldquo;+1&rdquo;-ஐ கூட்டியின் Cin = 1 மூலம் இலவசமாகச் சேர்க்கலாம்.</p>
+<p><strong>6 − 3 (4 பிட்):</strong></p>
+<ol>
+<li>A = 0110, B = 0011</li>
+<li>B தலைகீழ் = 1100</li>
+<li>0110 + 1100 + 1 (Cin) = 1 0011</li>
+<li>4 பிட்டை மட்டும் வைத்துக்கொள்: <strong>0011 = 3</strong> ✓ (வெளியே போகும் 1 கழித்தலில் &ldquo;கடன் இல்லை&rdquo; என்று பொருள்)</li>
+</ol>
+<p>வன்பொருள்: B-இன் ஒவ்வொரு பிட்டுக்கும் ஒரு XOR வாயில், அதன் மற்ற உள்ளீடு &ldquo;SUB&rdquo; கட்டுப்பாட்டுப் பிட். SUB = 0 → B அப்படியே (XOR 0), Cin = 0 → கூட்டல். SUB = 1 → B தலைகீழ் (XOR 1), Cin = 1 → கழித்தல். நான்கு XOR வாயில்கள் சேர்த்து ஒரே கூட்டி இரண்டு வேலை செய்கிறது.</p>
+<h2 id="multiplexer-சததரததல">Multiplexer, சூத்திரத்தில்<a class="anchor" href="#multiplexer-%e0%ae%9a%e0%ae%a4%e0%ae%a4%e0%ae%b0%e0%ae%a4%e0%ae%a4%e0%ae%b2">#</a></h2>
+<p><strong>2:1 mux:</strong> Y = (NOT S AND I₀) OR (S AND I₁). S = 0 → Y = I₀; S = 1 → Y = I₁. மூன்று வாயில்களும் ஒரு inverter-உம்.</p>
+<p><strong>4:1 mux:</strong> இரண்டு தேர்வுப் பிட்கள் S₁S₀ → 2² = 4 உள்ளீடுகள். பொதுவாக k தேர்வுப் பிட்கள் → 2^k உள்ளீடுகள்.</p>
+<h2 id="ஒர-சறய-alu-மழ-வலயடன">ஒரு சிறிய ALU, முழு வேலையுடன்<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%9a%e0%ae%b1%e0%ae%af-alu-%e0%ae%ae%e0%ae%b4-%e0%ae%b5%e0%ae%b2%e0%ae%af%e0%ae%9f%e0%ae%a9">#</a></h2>
+<p>2-பிட் செயல் குறி (op) நான்கு முடிவுகளில் ஒன்றை ஒரு 4:1 mux மூலம் தேர்கிறது (குறியீடுகள் நம் எடுத்துக்காட்டுக்காகத் தேர்ந்தவை):</p>
+<table>
+	<thead>
+			<tr>
+					<th>op</th>
+					<th>செயல்</th>
+					<th>A = 0110 (6), B = 0011 (3)</th>
+					<th>முடிவு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>00</td>
+					<td>AND</td>
+					<td>0110 AND 0011</td>
+					<td>0010 (2)</td>
+			</tr>
+			<tr>
+					<td>01</td>
+					<td>OR</td>
+					<td>0110 OR 0011</td>
+					<td>0111 (7)</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td>ADD</td>
+					<td>0110 + 0011</td>
+					<td>1001 (9)</td>
+			</tr>
+			<tr>
+					<td>11</td>
+					<td>SUB</td>
+					<td>0110 + 1100 + 1</td>
+					<td>0011 (3)</td>
+			</tr>
+	</tbody>
+</table>
+<p>நான்கு முடிவுகளும் <em>ஒரே நேரத்தில்</em> கணிக்கப்படுகின்றன (AND வாயில்கள், OR வாயில்கள், கூட்டி — எல்லாம் இணையாக); mux ஒன்றை மட்டும் வெளியே விடுகிறது. op பிட்கள் எங்கிருந்து வருகின்றன? Instruction-இன் opcode-இலிருந்து, கட்டுப்பாட்டகம் வழியாக — பதிவு 11, 12-இல் பார்ப்பது அதைத்தான்.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>சேர்க்கைத் தர்க்கம்</td>
+					<td>combinational logic</td>
+			</tr>
+			<tr>
+					<td>அரைக் கூட்டி</td>
+					<td>half adder</td>
+			</tr>
+			<tr>
+					<td>முழுக் கூட்டி</td>
+					<td>full adder</td>
+			</tr>
+			<tr>
+					<td>அலை-carry கூட்டி</td>
+					<td>ripple-carry adder</td>
+			</tr>
+			<tr>
+					<td>முன்னோக்கு carry</td>
+					<td>carry-lookahead</td>
+			</tr>
+			<tr>
+					<td>உருவாக்கு / கடத்து</td>
+					<td>generate / propagate</td>
+			</tr>
+			<tr>
+					<td>இருநிரப்பு</td>
+					<td>two&rsquo;s complement</td>
+			</tr>
+			<tr>
+					<td>தேர்வி</td>
+					<td>multiplexer (mux)</td>
+			</tr>
+			<tr>
+					<td>தேர்வுப் பிட்</td>
+					<td>select bit</td>
+			</tr>
+			<tr>
+					<td>வாயில் தாமதம்</td>
+					<td>gate delay</td>
+			</tr>
+			<tr>
+					<td>பெரும்பான்மைச் சார்பு</td>
+					<td>majority function</td>
+			</tr>
+			<tr>
+					<td>எண்கணித தர்க்க அலகு</td>
+					<td>arithmetic logic unit (ALU)</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ்நாடு அரசு, <em>11ஆம் வகுப்பு கணினி அறிவியல்</em>, அலகு 2b: பூலியன் இயற்கணிதம்</li>
+<li>தமிழ்நாடு அரசு, <em>கணினி அறிவியல் தொகுதி 1: Concepts</em> (2005), அத்தியாயம் 4: Half Adder, Full Adder</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%AE%B5%E0%AE%BE%E0%AE%AF%E0%AE%BF%E0%AE%B2%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AE%BF%E0%AE%B2%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%A8%E0%AF%8D%E0%AE%A4%E0%AF%81&#43;%E0%AE%9A%E0%AF%87%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AF%88%E0%AE%A4%E0%AF%8D&#43;%E0%AE%A4%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F08-from-gates-to-combinational-logic%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F08-from-gates-to-combinational-logic.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F08-from-gates-to-combinational-logic.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/07-logic-gates-from-transistors/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/09-sequential-logic/" class="flex align-center">
+        <span>தொடர்நிலைத் தர்க்கம்</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#half-adder">Half Adder</a></li>
+    <li><a href="#full-adder">Full Adder</a></li>
+    <li><a href="#உணம-அடடவணகள">உண்மை அட்டவணைகள்</a></li>
+    <li><a href="#ripple-carry-எளத-மறறம-பரநதகளளத-தகநத-கரணததறகக-மதவனத">Ripple-Carry: எளிது, மற்றும் புரிந்துகொள்ளத் தகுந்த காரணத்திற்காக மெதுவானது</a></li>
+    <li><a href="#4-பட-கடடல-நல-நலயக">4-பிட் கூட்டல், நிலை நிலையாக</a></li>
+    <li><a href="#ripple-தமதம-எணகளல">Ripple தாமதம், எண்களில்</a></li>
+    <li><a href="#carry-lookahead-கததரககமல-carry-ஐக-கணததல">Carry-lookahead: காத்திருக்காமல் carry-ஐக் கணித்தல்</a></li>
+    <li><a href="#கடடகளலரநத-ஒர-எளய-alu-கக">கூட்டிகளிலிருந்து ஒரு எளிய ALU-க்கு</a></li>
+    <li><a href="#ஒர-கடட-கழததலககம">ஒரே கூட்டி, கழித்தலுக்கும்</a></li>
+    <li><a href="#multiplexer-சததரததல">Multiplexer, சூத்திரத்தில்</a></li>
+    <li><a href="#ஒர-சறய-alu-மழ-வலயடன">ஒரு சிறிய ALU, முழு வேலையுடன்</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

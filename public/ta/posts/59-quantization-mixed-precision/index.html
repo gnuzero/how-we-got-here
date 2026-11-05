@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ஒரு MAC-க்குக் குறைந்த bits அதே ஆற்றல் பட்ஜெட்டில் அதிக MAC-கள் — துல்லியம் இன்னும் தேவைப்படும் இடத்தில் precision கலக்குங்கள்">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/59-quantization-mixed-precision/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Quantization மற்றும் Mixed Precision">
+	<meta property="og:description" content="ஒரு MAC-க்குக் குறைந்த bits அதே ஆற்றல் பட்ஜெட்டில் அதிக MAC-கள் — துல்லியம் இன்னும் தேவைப்படும் இடத்தில் precision கலக்குங்கள்">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Quantization மற்றும் Mixed Precision">
+	<meta itemprop="description" content="ஒரு MAC-க்குக் குறைந்த bits அதே ஆற்றல் பட்ஜெட்டில் அதிக MAC-கள் — துல்லியம் இன்னும் தேவைப்படும் இடத்தில் precision கலக்குங்கள்">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1189">
+
+<title>Quantization மற்றும் Mixed Precision • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/59-quantization-mixed-precision/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/59-quantization-mixed-precision/" title="Quantization &amp; Mixed Precision">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/59-quantization-mixed-precision/" title="Quantization และ Mixed Precision">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/59-quantization-mixed-precision/" title="Quantization සහ Mixed Precision">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/59-quantization-mixed-precision/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/59-quantization-mixed-precision/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/59-quantization-mixed-precision/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="active">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Quantization மற்றும் Mixed Precision</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#இஙக-precision-எனறல-எனன">இங்கே Precision என்றால் என்ன</a></li>
+    <li><a href="#கறநத-bits-அதக-throughput">குறைந்த Bits, அதிக Throughput</a></li>
+    <li><a href="#எனன-பரமறபபடகறத">என்ன பரிமாறப்படுகிறது</a></li>
+    <li><a href="#blanket-low-அலல-mixed">Blanket Low அல்ல, Mixed</a></li>
+    <li><a href="#அடதத-நமபகல">அடுத்த நெம்புகோல்</a></li>
+    <li><a href="#வடவஙகள-ஒர-அடடவணயல">வடிவங்கள் ஒரே அட்டவணையில்</a></li>
+    <li><a href="#ஒர-எண-மனற-வடவஙகளல-65">ஒரே எண், மூன்று வடிவங்களில்: 6.5</a></li>
+    <li><a href="#தலலயம-எதர-வசச-மனற-சதனகள">துல்லியம் எதிர் வீச்சு: மூன்று சோதனைகள்</a></li>
+    <li><a href="#ஏன-கறநத-பட--அதக-throughput-பரககயன-பரபப">ஏன் குறைந்த பிட் = அதிக throughput: பெருக்கியின் பரப்பு</a></li>
+    <li><a href="#int8-quantization-ஒர-எடததககடட">INT8 quantization, ஒரு எடுத்துக்காட்டு</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Quantization மற்றும் Mixed Precision
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவு 55 இணைப்பைக் குறித்தது: tensor-core மற்றும் systolic-array திறன் அவை ஓட்டும் எண் precision-ஐப் பொறுத்தது. இந்தப் பதிவு குறைந்த precision ஏன் மைய நெம்புகோலாகியது — மற்றும் அதைப் பெற என்ன பரிமாறப்படுகிறது.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> bfloat16/FP16 எண் வடிவங்கள் பற்றித் தமிழில் விளக்கம் இல்லை; quantization பற்றியும் மேலோட்டமான விளக்கங்களே உள்ளன. இங்கே ஒரே எண்ணை FP32, FP16, BF16 மூன்றிலும் பிட் அளவில் குறியாக்கி, வீச்சு (range) எதிர் துல்லியம் (precision) பரிமாற்றத்தை எண்களில் காட்டுகிறோம். FP8 விவரங்கள் Micikevicius மற்றும் சகாக்களின் &ldquo;FP8 Formats for Deep Learning&rdquo; (2022) கட்டுரையிலிருந்து சரிபார்த்தவை; மற்ற மதிப்புகள் numpy கொண்டு கணக்கிட்டவை அல்லது &ldquo;எடுத்துக்காட்டு மதிப்பு&rdquo;.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Floating point (மிதவைப் புள்ளி எண்):</strong> ஒரு எண்ணை ± 1.xxx × 2^e என்ற அறிவியல் குறியீட்டு வடிவில் சேமிப்பது.</li>
+<li><strong>Sign பிட் (குறிப் பிட்):</strong> நேர்மறையா எதிர்மறையா.</li>
+<li><strong>Exponent (அடுக்குக் குறி):</strong> 2-இன் எந்த அடுக்கு — எண் எவ்வளவு பெரியது/சிறியது என்பதைத் தீர்மானிக்கிறது (<strong>வீச்சு</strong>). சேமிக்கும்போது ஒரு <strong>bias</strong> கூட்டப்படுகிறது (எ.கா. FP32-இல் 127), அதனால் எதிர்மறை அடுக்குகளையும் நேர்மறை முழு எண்ணாகச் சேமிக்கலாம்.</li>
+<li><strong>Mantissa / fraction (பின்னப் பகுதி):</strong> 1.xxx-இல் புள்ளிக்குப் பின் உள்ள பிட்கள் — எண் எவ்வளவு நுணுக்கமாக இருக்கிறது என்பதைத் தீர்மானிக்கிறது (<strong>துல்லியம்</strong>). முன்னால் உள்ள &ldquo;1.&rdquo; சேமிக்கப்படுவதில்லை (மறைந்த பிட்).</li>
+<li><strong>Machine epsilon (ε):</strong> 1.0-க்கும் அடுத்த பெரிய எண்ணுக்கும் இடையிலான இடைவெளி = 2^(−mantissa பிட்கள்).</li>
+<li><strong>Overflow / underflow (மேல்வழிதல் / கீழ்வழிதல்):</strong> எண் அதிகபட்சத்தை விடப் பெரியதாகி ∞ ஆவது / மிகச் சிறியதாகி 0 ஆவது.</li>
+<li><strong>INT8:</strong> −128 முதல் 127 வரையிலான 8-bit முழு எண்; ஒரு <strong>scale factor</strong> உடன் உண்மை எண்களைக் குறிக்கப் பயன்படுகிறது.</li>
+<li><strong>Quantization (அளவாக்கம்):</strong> அதிக பிட் எண்களைக் குறைந்த பிட் வடிவத்துக்கு மாற்றுதல்.</li>
+</ul>
+<h2 id="இஙக-precision-எனறல-எனன">இங்கே Precision என்றால் என்ன<a class="anchor" href="#%e0%ae%87%e0%ae%99%e0%ae%95-precision-%e0%ae%8e%e0%ae%a9%e0%ae%b1%e0%ae%b2-%e0%ae%8e%e0%ae%a9%e0%ae%a9">#</a></h2>
+<p>வடிவங்கள் நிலையான bit பட்ஜெட்டுடன் வரம்பு மற்றும் precision-ஐப் பரிமாறிக்கொள்ளும். FP32 (sign, 8 exponent bits, 23 mantissa) பாரம்பரிய அறிவியல் இயல்புநிலை. FP16 மற்றும் BF16 பாதி bits பயன்படுத்தும் — BF16 FP32-இன் exponent வரம்பை வைத்து mantissa-இல் குறைவாகச் செலவிடும், நுண்ணிய தானியத்தை விட dynamic range-க்குச் சாதகம். FP8 மேலும் செல்கிறது; INT8 floating point-ஐக் கைவிட்டு நிலையான integers மற்றும் தேவையான வரம்புக்குத் திரும்பும் scale factor பயன்படுத்தும்.</p>
+<h2 id="கறநத-bits-அதக-throughput">குறைந்த Bits, அதிக Throughput<a class="anchor" href="#%e0%ae%95%e0%ae%b1%e0%ae%a8%e0%ae%a4-bits-%e0%ae%85%e0%ae%a4%e0%ae%95-throughput">#</a></h2>
+<p>பதிவுகள் 6–7 நீங்கள் கணிப்பதற்கு ஏற்ப circuit பரப்பு அளவிடுவதை நிறுவின. ஒரு FP32 MAC-க்கு FP16 அல்லது INT8-ஐ விட அதிக டிரான்சிஸ்டர்கள் மற்றும் ஆற்றல் தேவை. நிலையான பரப்பு மற்றும் ஆற்றல் பட்ஜெட் கொடுக்கப்பட்டால் (பதிவு 36-இன் சுவர் இன்னும் accelerators-ஐக் கட்டுப்படுத்தும்), குறைந்த precision அதே உறைக்குள் அதிக parallel MAC throughput அடுக்கும். அது இயற்பியல் காரணம் — அல்காரிதத் தேர்வு மட்டும் அல்ல — tensor cores மற்றும் systolic arrays அடிக்கடி குறிப்பிட்ட குறைந்த-precision வடிவங்களைச் சுற்றி வடிவமைக்கப்படுவதற்கு.</p>
+<h2 id="எனன-பரமறபபடகறத">என்ன பரிமாறப்படுகிறது<a class="anchor" href="#%e0%ae%8e%e0%ae%a9%e0%ae%a9-%e0%ae%aa%e0%ae%b0%e0%ae%ae%e0%ae%b1%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>குறைக்கப்பட்ட precision என்பது கரடுமுரடான மதிப்புகள் மற்றும் நீண்ட சங்கிலிகள் குறுக்கே அதிக rounding பிழை. அனுபவரீதியாக, பல neural networks அதை நன்றாகத் தாங்கும் — குறிப்பாக inference-க்கு, மற்றும் பயிற்சியின் பெரிய பகுதிகளுக்கு கவனத்துடன் — முன்கூட்டியே தெளிவாக இல்லை; காட்டப்பட வேண்டியது.</p>
+<h2 id="blanket-low-அலல-mixed">Blanket Low அல்ல, Mixed<a class="anchor" href="#blanket-low-%e0%ae%85%e0%ae%b2%e0%ae%b2-mixed">#</a></h2>
+<p>Mixed-precision பயிற்சி மற்றும் inference வன்பொருள் throughput லாபம் பெறும் கனமான matmuls-க்குக் குறைந்த precision (அடிக்கடி FP16 அல்லது BF16) பயன்படுத்தி, எண்ரீதியாக உணர்திறன் வேலைக்கு — rounding குவியும் accumulations போன்றவை — உயர் precision (அடிக்கடி FP32) வைத்திருக்கும். அதன் வைப்பு சம்பாதிக்கும் இடத்தில் மட்டும் முழு precision: அதனால்தான் சொல் <em>mixed</em>, வெறுமனே <em>low</em> அல்ல.</p>
+<h2 id="அடதத-நமபகல">அடுத்த நெம்புகோல்<a class="anchor" href="#%e0%ae%85%e0%ae%9f%e0%ae%a4%e0%ae%a4-%e0%ae%a8%e0%ae%ae%e0%ae%aa%e0%ae%95%e0%ae%b2">#</a></h2>
+<p>Precision ஒவ்வொரு செயல்பாட்டையும் மலிவாக்கும். அடுத்த பதிவின் sparsity அறியப்பட்ட பூஜ்யம் ஒன்றும் பங்களிக்காதபோது சில செயல்பாடுகளை முழுவதும் தவிர்க்க இலக்கு வைக்கும்.</p>
+<h2 id="வடவஙகள-ஒர-அடடவணயல">வடிவங்கள் ஒரே அட்டவணையில்<a class="anchor" href="#%e0%ae%b5%e0%ae%9f%e0%ae%b5%e0%ae%99%e0%ae%95%e0%ae%b3-%e0%ae%92%e0%ae%b0-%e0%ae%85%e0%ae%9f%e0%ae%9f%e0%ae%b5%e0%ae%a3%e0%ae%af%e0%ae%b2">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>வடிவம்</th>
+					<th>Sign</th>
+					<th>Exponent</th>
+					<th>Mantissa</th>
+					<th>அதிகபட்ச மதிப்பு</th>
+					<th>ε (1-க்கு அருகில் இடைவெளி)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>FP32</td>
+					<td>1</td>
+					<td>8</td>
+					<td>23</td>
+					<td>≈ 3.40 × 10³⁸</td>
+					<td>2⁻²³ ≈ 1.19 × 10⁻⁷</td>
+			</tr>
+			<tr>
+					<td>FP16</td>
+					<td>1</td>
+					<td>5</td>
+					<td>10</td>
+					<td>65,504</td>
+					<td>2⁻¹⁰ ≈ 9.77 × 10⁻⁴</td>
+			</tr>
+			<tr>
+					<td>BF16</td>
+					<td>1</td>
+					<td>8</td>
+					<td>7</td>
+					<td>≈ 3.39 × 10³⁸</td>
+					<td>2⁻⁷ = 0.0078125</td>
+			</tr>
+			<tr>
+					<td>FP8 E4M3</td>
+					<td>1</td>
+					<td>4</td>
+					<td>3</td>
+					<td>448</td>
+					<td>2⁻³ = 0.125</td>
+			</tr>
+			<tr>
+					<td>FP8 E5M2</td>
+					<td>1</td>
+					<td>5</td>
+					<td>2</td>
+					<td>57,344</td>
+					<td>2⁻² = 0.25</td>
+			</tr>
+			<tr>
+					<td>INT8</td>
+					<td>—</td>
+					<td>—</td>
+					<td>—</td>
+					<td>127 (× scale)</td>
+					<td>scale-ஐப் பொறுத்தது</td>
+			</tr>
+	</tbody>
+</table>
+<p>இரண்டு 16-bit வடிவங்களின் வேறுபாட்டைக் கவனியுங்கள்: FP16 பிட்களை mantissa-வுக்குக் கொடுக்கிறது (நுணுக்கம்), BF16 exponent-க்குக் கொடுக்கிறது (வீச்சு). BF16-இன் exponent FP32-இன் exponent-க்குச் சமம் — அதனால் அதன் வீச்சும் கிட்டத்தட்ட FP32-க்குச் சமம். FP8 கட்டுரை பரிந்துரைப்பது: weight, activation-களுக்கு E4M3; gradient-களுக்கு (பரந்த வீச்சு தேவை) E5M2.</p>
+<h2 id="ஒர-எண-மனற-வடவஙகளல-65">ஒரே எண், மூன்று வடிவங்களில்: 6.5<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%8e%e0%ae%a3-%e0%ae%ae%e0%ae%a9%e0%ae%b1-%e0%ae%b5%e0%ae%9f%e0%ae%b5%e0%ae%99%e0%ae%95%e0%ae%b3%e0%ae%b2-65">#</a></h2>
+<ol>
+<li>6.5 = 1.625 × 2² (ஏனெனில் 1.625 × 4 = 6.5)</li>
+<li>0.625 பைனரியில் = 0.101 (½ + ⅛ = 0.5 + 0.125)</li>
+<li>Sign = 0</li>
+</ol>
+<p><strong>FP32:</strong> exponent = 2 + 127 = 129 = 10000001; fraction = 101 பிறகு 20 பூஜ்ஜியங்கள்.
+<code>0 10000001 10100000000000000000000</code> = <strong>0x40D00000</strong></p>
+<p><strong>BF16:</strong> exponent அதே 10000001 (bias 127); fraction 7 பிட்: 1010000.
+<code>0 10000001 1010000</code> = <strong>0x40D0</strong></p>
+<p><strong>FP16:</strong> exponent = 2 + 15 = 17 = 10001 (bias 15); fraction 10 பிட்: 1010000000.
+<code>0 10001 1010000000</code> = <strong>0x4680</strong></p>
+<p>BF16 = FP32-இன் <strong>மேல் 16 பிட்கள்</strong> (0x40D0<strong>0000</strong> → 0x40D0). FP32-இலிருந்து BF16-க்கு மாற்றுவது கிட்டத்தட்ட &ldquo;கீழ்ப் பாதியை வெட்டி, round செய்&rdquo; என்பது மட்டுமே — மலிவான வன்பொருள். FP16-க்கு exponent-ஐயே மீண்டும் கணக்கிட வேண்டும். (மூன்று hex மதிப்புகளையும் Python struct/numpy கொண்டு சரிபார்த்தோம்.)</p>
+<h2 id="தலலயம-எதர-வசச-மனற-சதனகள">துல்லியம் எதிர் வீச்சு: மூன்று சோதனைகள்<a class="anchor" href="#%e0%ae%a4%e0%ae%b2%e0%ae%b2%e0%ae%af%e0%ae%ae-%e0%ae%8e%e0%ae%a4%e0%ae%b0-%e0%ae%b5%e0%ae%9a%e0%ae%9a-%e0%ae%ae%e0%ae%a9%e0%ae%b1-%e0%ae%9a%e0%ae%a4%e0%ae%a9%e0%ae%95%e0%ae%b3">#</a></h2>
+<p>numpy float16, float32 மற்றும் FP32-இலிருந்து round-to-nearest-even BF16 மாற்றம் கொண்டு கணக்கிட்டவை:</p>
+<table>
+	<thead>
+			<tr>
+					<th>மதிப்பு</th>
+					<th>FP32</th>
+					<th>FP16</th>
+					<th>BF16</th>
+					<th>என்ன நடந்தது</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0.1</td>
+					<td>0.100000001…</td>
+					<td>0.0999756</td>
+					<td>0.1000977</td>
+					<td>இரண்டும் தோராயம்; FP16 அதிக நுணுக்கம்</td>
+			</tr>
+			<tr>
+					<td>70,000</td>
+					<td>70,000</td>
+					<td><strong>∞</strong></td>
+					<td>70,144</td>
+					<td>FP16 overflow (அதிகபட்சம் 65,504)</td>
+			</tr>
+			<tr>
+					<td>10⁻⁸</td>
+					<td>1.0 × 10⁻⁸</td>
+					<td><strong>0</strong></td>
+					<td>≈ 1.001 × 10⁻⁸</td>
+					<td>FP16 underflow</td>
+			</tr>
+	</tbody>
+</table>
+<p>பயிற்சியின்போது gradient-கள் மிகச் சிறியவையாக இருக்கலாம் (10⁻⁸ போல). FP16-இல் அவை 0 ஆகி, கற்றல் நின்றுவிடும். பழைய தீர்வு <strong>loss scaling</strong>: loss-ஐ ஒரு பெரிய எண்ணால் பெருக்கி (எ.கா. 8,192 — எடுத்துக்காட்டு மதிப்பு), gradient-களை FP16 வீச்சுக்குள் தள்ளுவது: 10⁻⁸ × 8,192 = 8.19 × 10⁻⁵ — FP16-இல் சேமிக்க முடியும். பிறகு புதுப்பிக்கும் முன் மீண்டும் வகுப்பது. BF16-இல் வீச்சு FP32 அளவு என்பதால் இந்தத் தந்திரம் பெரும்பாலும் தேவையில்லை — அதுதான் பயிற்சிக்கு BF16-இன் முக்கியக் கவர்ச்சி.</p>
+<h2 id="ஏன-கறநத-பட--அதக-throughput-பரககயன-பரபப">ஏன் குறைந்த பிட் = அதிக throughput: பெருக்கியின் பரப்பு<a class="anchor" href="#%e0%ae%8f%e0%ae%a9-%e0%ae%95%e0%ae%b1%e0%ae%a8%e0%ae%a4-%e0%ae%aa%e0%ae%9f--%e0%ae%85%e0%ae%a4%e0%ae%95-throughput-%e0%ae%aa%e0%ae%b0%e0%ae%95%e0%ae%95%e0%ae%af%e0%ae%a9-%e0%ae%aa%e0%ae%b0%e0%ae%aa%e0%ae%aa">#</a></h2>
+<p>Floating-point பெருக்கலின் மையம் mantissa-களின் முழு எண் பெருக்கல் (மறைந்த &ldquo;1&rdquo; பிட்டையும் சேர்த்து). ஒரு எளிய array பெருக்கி m-bit × m-bit-க்கு m² &ldquo;partial product&rdquo; பிட்களை உருவாக்குகிறது. பரப்புக்கான தோராயமான மாதிரியாக m²-ஐ எடுத்தால்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>வடிவம்</th>
+					<th>Significand பிட்கள் m (மறைந்த பிட் உட்பட)</th>
+					<th>m²</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>FP32</td>
+					<td>24</td>
+					<td>576</td>
+			</tr>
+			<tr>
+					<td>FP16</td>
+					<td>11</td>
+					<td>121</td>
+			</tr>
+			<tr>
+					<td>BF16</td>
+					<td>8</td>
+					<td>64</td>
+			</tr>
+			<tr>
+					<td>FP8 E4M3</td>
+					<td>4</td>
+					<td>16</td>
+			</tr>
+			<tr>
+					<td>INT8</td>
+					<td>8</td>
+					<td>64</td>
+			</tr>
+	</tbody>
+</table>
+<p>FP32 பெருக்கியின் இடத்தில் சுமார் 576 ÷ 64 = <strong>9</strong> BF16 பெருக்கிகள் (இந்த எளிய மாதிரியில்; உண்மையான சுற்றுகளில் exponent கையாளல், rounding போன்றவையும் உண்டு). பதிவு 36-இன் power wall-உம் பதிவு 55-இன் tensor core-களும் இதனால்தான் குறைந்த பிட் வடிவங்களைச் சுற்றி வடிவமைக்கப்படுகின்றன. நினைவகப் பக்கமும் அதே கதை: 700 கோடி parameter மாதிரி (எடுத்துக்காட்டு மதிப்பு) FP32-இல் 28 GB, BF16-இல் 14 GB, INT8-இல் 7 GB — bandwidth (பதிவு 54) அதே விகிதத்தில் மிச்சம்.</p>
+<h2 id="int8-quantization-ஒர-எடததககடட">INT8 quantization, ஒரு எடுத்துக்காட்டு<a class="anchor" href="#int8-quantization-%e0%ae%92%e0%ae%b0-%e0%ae%8e%e0%ae%9f%e0%ae%a4%e0%ae%a4%e0%ae%95%e0%ae%95%e0%ae%9f%e0%ae%9f">#</a></h2>
+<p>ஒரு tensor-இன் மதிப்புகள் −2.54 முதல் +2.54 வரை (எடுத்துக்காட்டு மதிப்புகள்). Symmetric quantization:</p>
+<ol>
+<li>scale = அதிகபட்ச அளவு ÷ 127 = 2.54 ÷ 127 = 0.02</li>
+<li>x = 0.731 → q = round(0.731 ÷ 0.02) = round(36.55) = <strong>37</strong></li>
+<li>மீட்பு: 37 × 0.02 = 0.74 → பிழை 0.009</li>
+</ol>
+<p><strong>ஒரு outlier வந்தால்:</strong> tensor-இல் ஒரே ஒரு மதிப்பு 25.4 என்று வைத்துக்கொள்வோம்.</p>
+<ol>
+<li>scale = 25.4 ÷ 127 = 0.2</li>
+<li>x = 0.731 → round(3.655) = 4 → மீட்பு 0.8 → பிழை <strong>0.069</strong> — ஏழு மடங்கு மோசம்</li>
+</ol>
+<p>ஒரே ஒரு பெரிய மதிப்பு மற்ற எல்லா மதிப்புகளின் நுணுக்கத்தையும் பறிக்கிறது. அதனால்தான் நடைமுறையில் ஒவ்வொரு channel-க்கும் அல்லது ஒவ்வொரு tensor-க்கும் தனி scale பயன்படுத்துகிறார்கள்; FP8 கட்டுரையும் per-tensor scaling-ஐப் பரிந்துரைக்கிறது. Floating point-இன் exponent ஒவ்வொரு எண்ணுக்கும் தனி &ldquo;scale&rdquo; போல வேலை செய்வதால் FP8 இந்தச் சிக்கலை ஓரளவு தானாகக் கையாள்கிறது.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<p>(பயிற்சிகளில் புதிதாக வரும் உள்ளீட்டு எண்கள், மூலத்துடன் குறிக்கப்பட்டவை தவிர, எடுத்துக்காட்டு மதிப்புகள்.)</p>
+<ol>
+<li>−3.0-ஐ BF16-இல் hex-ஆக எழுதுக.
+<em>விடை:</em> −3 = −1.5 × 2¹. Sign 1; exponent 1 + 127 = 128 = 10000000; fraction .1 → 1000000. <code>1 10000000 1000000</code> = 0xC040.</li>
+<li>BF16-இல் 256-க்கு அருகில் அடுத்தடுத்த எண்களுக்கு இடையிலான இடைவெளி? 256 + 1 என்ன ஆகும்?
+<em>விடை:</em> 256 = 2⁸; இடைவெளி 2^(8 − 7) = 2. 257 என்பது 256-க்கும் 258-க்கும் நடுவில் → round-to-even: 256.</li>
+<li>மதிப்புகள் −0.635 முதல் 0.635 வரை. INT8 scale? 0.3-இன் q மற்றும் மீட்பு?
+<em>விடை:</em> 0.635 ÷ 127 = 0.005. 0.3 ÷ 0.005 = 60 → q = 60, மீட்பு 0.300 (பிழை 0).</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>மிதவைப் புள்ளி எண்</td>
+					<td>floating point</td>
+			</tr>
+			<tr>
+					<td>குறிப் பிட்</td>
+					<td>sign bit</td>
+			</tr>
+			<tr>
+					<td>அடுக்குக் குறி / சார்பு</td>
+					<td>exponent / bias</td>
+			</tr>
+			<tr>
+					<td>பின்னப் பகுதி</td>
+					<td>mantissa / fraction</td>
+			</tr>
+			<tr>
+					<td>மறைந்த பிட்</td>
+					<td>hidden (implicit) bit</td>
+			</tr>
+			<tr>
+					<td>வீச்சு</td>
+					<td>dynamic range</td>
+			</tr>
+			<tr>
+					<td>துல்லியம் / நுணுக்கம்</td>
+					<td>precision</td>
+			</tr>
+			<tr>
+					<td>இயந்திர எப்சிலான்</td>
+					<td>machine epsilon</td>
+			</tr>
+			<tr>
+					<td>மேல்வழிதல் / கீழ்வழிதல்</td>
+					<td>overflow / underflow</td>
+			</tr>
+			<tr>
+					<td>இழப்பு அளவீடு</td>
+					<td>loss scaling</td>
+			</tr>
+			<tr>
+					<td>அளவாக்கம்</td>
+					<td>quantization</td>
+			</tr>
+			<tr>
+					<td>அளவுக் காரணி</td>
+					<td>scale factor</td>
+			</tr>
+			<tr>
+					<td>விலகல் மதிப்பு</td>
+					<td>outlier</td>
+			</tr>
+			<tr>
+					<td>கலப்புத் துல்லியம்</td>
+					<td>mixed precision</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Quantization&#43;%E0%AE%AE%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AF%81%E0%AE%AE%E0%AF%8D&#43;Mixed&#43;Precision&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F59-quantization-mixed-precision%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F59-quantization-mixed-precision.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F59-quantization-mixed-precision.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/58-systolic-arrays/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Systolic Arrays</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/60-sparsity-in-hardware/" class="flex align-center">
+        <span>வன்பொருளில் Sparsity</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#இஙக-precision-எனறல-எனன">இங்கே Precision என்றால் என்ன</a></li>
+    <li><a href="#கறநத-bits-அதக-throughput">குறைந்த Bits, அதிக Throughput</a></li>
+    <li><a href="#எனன-பரமறபபடகறத">என்ன பரிமாறப்படுகிறது</a></li>
+    <li><a href="#blanket-low-அலல-mixed">Blanket Low அல்ல, Mixed</a></li>
+    <li><a href="#அடதத-நமபகல">அடுத்த நெம்புகோல்</a></li>
+    <li><a href="#வடவஙகள-ஒர-அடடவணயல">வடிவங்கள் ஒரே அட்டவணையில்</a></li>
+    <li><a href="#ஒர-எண-மனற-வடவஙகளல-65">ஒரே எண், மூன்று வடிவங்களில்: 6.5</a></li>
+    <li><a href="#தலலயம-எதர-வசச-மனற-சதனகள">துல்லியம் எதிர் வீச்சு: மூன்று சோதனைகள்</a></li>
+    <li><a href="#ஏன-கறநத-பட--அதக-throughput-பரககயன-பரபப">ஏன் குறைந்த பிட் = அதிக throughput: பெருக்கியின் பரப்பு</a></li>
+    <li><a href="#int8-quantization-ஒர-எடததககடட">INT8 quantization, ஒரு எடுத்துக்காட்டு</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

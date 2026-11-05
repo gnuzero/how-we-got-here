@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="பகிரப்பட்ட bus ஒரே நேரத்தில் ஒரு transaction மட்டும் செய்யும் — அந்தக் கூரை அதற்குப் பின் வரும் அனைத்தையும் கட்டாயப்படுத்துகிறது">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/31-buses-101/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Buses 101">
+	<meta property="og:description" content="பகிரப்பட்ட bus ஒரே நேரத்தில் ஒரு transaction மட்டும் செய்யும் — அந்தக் கூரை அதற்குப் பின் வரும் அனைத்தையும் கட்டாயப்படுத்துகிறது">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Buses 101">
+	<meta itemprop="description" content="பகிரப்பட்ட bus ஒரே நேரத்தில் ஒரு transaction மட்டும் செய்யும் — அந்தக் கூரை அதற்குப் பின் வரும் அனைத்தையும் கட்டாயப்படுத்துகிறது">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="950">
+
+<title>Buses 101 • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/31-buses-101/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/31-buses-101/" title="Buses 101">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/31-buses-101/" title="บัส 101">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/31-buses-101/" title="බස් 101">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/31-buses-101/" title="Magistrale 101">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/31-buses-101/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/31-buses-101/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/31-buses-101/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/31-buses-101/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="active">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Buses 101</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#மனற-சகனலகள-ஒர-கமபத-தகபப">மூன்று சிக்னல்கள், ஒரு கம்பித் தொகுப்பு</a></li>
+    <li><a href="#மகவர-அகலம--மகவர-வள">முகவரி அகலம் → முகவரி வெளி</a></li>
+    <li><a href="#data-அகலம--bandwidth">Data அகலம் → bandwidth</a></li>
+    <li><a href="#பகரவகக-ஏன-ஒர-master-தவ">பகிர்வுக்கு ஏன் ஒரு Master தேவை</a></li>
+    <li><a href="#நடவர-தரவ-நலதத-மனனரம-எதர-சழல-மற">நடுவர் தேர்வு: நிலைத்த முன்னுரிமை எதிர் சுழல் முறை</a></li>
+    <li><a href="#கடடபபட-ஒர-நரததல-ஒர-transaction">கட்டுப்பாடு: ஒரே நேரத்தில் ஒரு Transaction</a></li>
+    <li><a href="#பகரவன-கர-ஒர-கணககல">பகிர்வின் கூரை, ஒரு கணக்கில்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Buses 101
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>முந்தைய ஒவ்வொரு phase-ம் ஏதோ ஒன்றைக் கட்டியது — logic, ஒரு CPU, ஒரு operating system. இந்த phase அந்தத் துண்டுகள் <em>எப்படிப் பேசுகின்றன</em> என்பது. ஒரு bus என்பது CPU, நினைவகம், மற்றும் I/O இடையேயான பகிரப்பட்ட பாதை, மேலும் அதன் வடிவமைப்பு Phase 3 மற்றும் Phase 4 வெறுமனே &ldquo;இணைக்கப்பட்டவை&rdquo; எனக் கருதிய பாகங்களுக்கு இடையே ஒரு அமைப்பு எவ்வளவு வேகமாகத் தரவை நகர்த்த முடியும் என்பதைத் தீர்மானிக்கிறது.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> கணினி bus பற்றித் தமிழ் எழுத்து விளக்கம் மெலிதானது; bus arbitration-க்குத் தமிழ் எழுத்து விளக்கம் இல்லை; காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. இந்தப் பதிவுக்கு lab இல்லை; அதனால் கணக்குகளும் விடையுடன் கூடிய காகிதப் பயிற்சிகளும் சேர்க்கப்பட்டுள்ளன. முகவரி வெளிக் கணக்குகள் 2-இன் அடுக்குகள் (ஒவ்வொரு முகவரிக்கும் ஒரு byte என்ற அனுமானத்துடன்); bus அகலம், clock, சாதனத் தேவைகள் &ldquo;எடுத்துக்காட்டு மதிப்புகள்&rdquo;.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Bus (பாட்டை):</strong> CPU, நினைவகம், I/O சாதனங்கள் பகிர்ந்துகொள்ளும் கம்பித் தொகுப்பு.</li>
+<li><strong>Address bus (முகவரிப் பாட்டை):</strong> எந்த இடத்தை அணுக வேண்டும் என்று பெயரிடும் கோடுகள்; அகலம் = முகவரி வெளியின் கூரை.</li>
+<li><strong>Data bus (தரவுப் பாட்டை):</strong> மதிப்பைச் சுமக்கும் கோடுகள்; அகலம் = ஒரு பரிமாற்றத்தில் நகரும் bit-கள்.</li>
+<li><strong>Control bus (கட்டுப்பாட்டுப் பாட்டை):</strong> திசை (படி/எழுது), செல்லுபடி, clock, interrupt போன்ற ஒருங்கிணைப்புச் சமிக்ஞைகள்.</li>
+<li><strong>Transaction (பரிமாற்றம்):</strong> ஒரு முழுப் படி அல்லது எழுது செயல் — முகவரி, தரவு, உறுதிப்படுத்தல்.</li>
+<li><strong>Bus master (பாட்டைத் தலைவர்):</strong> அடுத்த பரிமாற்றத்தைத் தொடங்கி கம்பிகளை இயக்க அனுமதி பெற்ற சாதனம்.</li>
+<li><strong>Arbitration (நடுவர் தேர்வு):</strong> பலர் கேட்கும்போது யார் அடுத்த master என்று முடிவு செய்வது — request, grant.</li>
+<li><strong>DMA (Direct Memory Access):</strong> CPU ஒவ்வொரு byte-ஐயும் நகர்த்தாமல், ஒரு controller நேரடியாக நினைவகத்துடன் தரவு பரிமாறுவது.</li>
+</ul>
+<h2 id="மனற-சகனலகள-ஒர-கமபத-தகபப">மூன்று சிக்னல்கள், ஒரு கம்பித் தொகுப்பு<a class="anchor" href="#%e0%ae%ae%e0%ae%a9%e0%ae%b1-%e0%ae%9a%e0%ae%95%e0%ae%a9%e0%ae%b2%e0%ae%95%e0%ae%b3-%e0%ae%92%e0%ae%b0-%e0%ae%95%e0%ae%ae%e0%ae%aa%e0%ae%a4-%e0%ae%a4%e0%ae%95%e0%ae%aa%e0%ae%aa">#</a></h2>
+<p>ஒரு செவ்வியல் system bus பகிரப்பட்ட இயற்பியல் கம்பிகளில் மூன்று வகை சிக்னலைக் கொண்டு செல்கிறது. <strong>Address bus</strong> இலக்கைப் பெயரிடுகிறது — அதன் அகலம் address-space கூரை (32 bits → 4 GB, நினைவகம் வளர்ந்தபோது 32-bit அமைப்புகள் மோதிய சுவர்). <strong>Data bus</strong> மதிப்பைக் கொண்டு செல்கிறது — அதன் அகலம் ஒரு transaction-க்கு bandwidth. <strong>Control bus</strong> ஒருங்கிணைக்கிறது: திசை, செல்லுபடித்தன்மை, clock, interrupts.</p>
+<h2 id="மகவர-அகலம--மகவர-வள">முகவரி அகலம் → முகவரி வெளி<a class="anchor" href="#%e0%ae%ae%e0%ae%95%e0%ae%b5%e0%ae%b0-%e0%ae%85%e0%ae%95%e0%ae%b2%e0%ae%ae--%e0%ae%ae%e0%ae%95%e0%ae%b5%e0%ae%b0-%e0%ae%b5%e0%ae%b3">#</a></h2>
+<p>n முகவரிக் கோடுகள் 2ⁿ தனி முகவரிகளைப் பெயரிட முடியும். ஒவ்வொரு முகவரியும் ஒரு byte என்றால்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>முகவரிக் கோடுகள்</th>
+					<th>முகவரிகள் 2ⁿ</th>
+					<th>அளவு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>16</td>
+					<td>65,536</td>
+					<td>64 KB</td>
+			</tr>
+			<tr>
+					<td>20</td>
+					<td>1,048,576</td>
+					<td>1 MB</td>
+			</tr>
+			<tr>
+					<td>24</td>
+					<td>16,777,216</td>
+					<td>16 MB</td>
+			</tr>
+			<tr>
+					<td>32</td>
+					<td>4,294,967,296</td>
+					<td>4 GB</td>
+			</tr>
+	</tbody>
+</table>
+<p>32-பிட் கூரை: 2³² = 4,294,967,296 byte = 4 × 1,024 × 1,024 × 1,024 = 4 GB — ஆங்கிலப் பதிவு சொல்லும் சுவர். ஒவ்வொரு கூடுதல் கோடும் வெளியை இருமடங்காக்குகிறது: 33 கோடுகள் = 8 GB.</p>
+<h2 id="data-அகலம--bandwidth">Data அகலம் → bandwidth<a class="anchor" href="#data-%e0%ae%85%e0%ae%95%e0%ae%b2%e0%ae%ae--bandwidth">#</a></h2>
+<p>உச்ச bandwidth = (data அகலம் byte-களில்) × (வினாடிக்குப் பரிமாற்றங்கள்). எடுத்துக்காட்டு மதிப்புகள்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Data bus</th>
+					<th>Clock (ஒரு பரிமாற்றம் / சுழற்சி)</th>
+					<th>உச்ச bandwidth</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>8 bit = 1 byte</td>
+					<td>8 MHz</td>
+					<td>1 × 8,000,000 = 8 MB/s</td>
+			</tr>
+			<tr>
+					<td>16 bit = 2 byte</td>
+					<td>8 MHz</td>
+					<td>2 × 8,000,000 = 16 MB/s</td>
+			</tr>
+			<tr>
+					<td>32 bit = 4 byte</td>
+					<td>33 MHz</td>
+					<td>4 × 33,000,000 = 132 MB/s</td>
+			</tr>
+	</tbody>
+</table>
+<p>அகலத்தை இருமடங்காக்கினால் அல்லது clock-ஐ இருமடங்காக்கினால் bandwidth இருமடங்கு — ஆனால் இது முகவரி, கட்டுப்பாடு, காத்திருப்புச் சுழற்சிகள் இல்லாத &ldquo;உச்சம்&rdquo; மட்டும்.</p>
+<h2 id="பகரவகக-ஏன-ஒர-master-தவ">பகிர்வுக்கு ஏன் ஒரு Master தேவை<a class="anchor" href="#%e0%ae%aa%e0%ae%95%e0%ae%b0%e0%ae%b5%e0%ae%95%e0%ae%95-%e0%ae%8f%e0%ae%a9-%e0%ae%92%e0%ae%b0-master-%e0%ae%a4%e0%ae%b5">#</a></h2>
+<p>ஒரு bus வரையறையால் பகிரப்பட்டது. CPU, DMA controller, I/O device அனைத்தும் ஒரு பரிமாற்றத்தைத் தொடங்க விரும்பலாம்; ஒன்று மட்டும் கம்பிகளை ஓட்ட முடியும் — இல்லையெனில் மின்னழுத்தங்கள் மோதிக்கொள்ளும். Arbitration அடுத்த transaction-க்கு ஒரு bus master-ஐத் தேர்ந்தெடுக்கிறது — request மற்றும் grant, சில நேரம் முன்னுரிமையுடன், latency-உணர்திறன் DMA மற்ற எல்லோராலும் பட்டினி போடப்படாதபடி. Phase 4-இன் schedulers-இன் அதே நியாயப் பிரச்சனை, ஒரு அடுக்கு கீழே, வன்பொருளில்.</p>
+<h2 id="நடவர-தரவ-நலதத-மனனரம-எதர-சழல-மற">நடுவர் தேர்வு: நிலைத்த முன்னுரிமை எதிர் சுழல் முறை<a class="anchor" href="#%e0%ae%a8%e0%ae%9f%e0%ae%b5%e0%ae%b0-%e0%ae%a4%e0%ae%b0%e0%ae%b5-%e0%ae%a8%e0%ae%b2%e0%ae%a4%e0%ae%a4-%e0%ae%ae%e0%ae%a9%e0%ae%a9%e0%ae%b0%e0%ae%ae-%e0%ae%8e%e0%ae%a4%e0%ae%b0-%e0%ae%9a%e0%ae%b4%e0%ae%b2-%e0%ae%ae%e0%ae%b1">#</a></h2>
+<p>மூன்று சாதனங்கள் — DMA, வட்டு, விசைப்பலகை — ஒவ்வொரு bus சுழற்சியிலும் கேட்கின்றன என்று வைத்துக்கொள்வோம் (எடுத்துக்காட்டு மதிப்புகள்). ஒரு சுழற்சிக்கு ஒரு grant மட்டும்.</p>
+<table>
+	<thead>
+			<tr>
+					<th>சுழற்சி</th>
+					<th>நிலைத்த முன்னுரிமை (DMA &gt; வட்டு &gt; விசைப்பலகை)</th>
+					<th>சுழல் முறை (round-robin)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>DMA</td>
+					<td>DMA</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>DMA</td>
+					<td>வட்டு</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>DMA</td>
+					<td>விசைப்பலகை</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>DMA</td>
+					<td>DMA</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>DMA</td>
+					<td>வட்டு</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>DMA</td>
+					<td>விசைப்பலகை</td>
+			</tr>
+	</tbody>
+</table>
+<p>DMA எப்போதும் கேட்டுக்கொண்டிருந்தால், நிலைத்த முன்னுரிமையில் வட்டும் விசைப்பலகையும் <strong>ஒருமுறையும்</strong> grant பெறுவதில்லை — பட்டினி (starvation). சுழல் முறையில் ஒவ்வொன்றும் 3 சுழற்சிகளில் ஒருமுறை: 6 சுழற்சிகளில் தலா 2. முன்னுரிமையைக் காக்கவும் பட்டினியைத் தவிர்க்கவும் உண்மையான அமைப்புகள் இரண்டையும் கலக்கின்றன — Phase 4-இன் scheduler பிரச்சினை, வன்பொருளில்.</p>
+<h2 id="கடடபபட-ஒர-நரததல-ஒர-transaction">கட்டுப்பாடு: ஒரே நேரத்தில் ஒரு Transaction<a class="anchor" href="#%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f-%e0%ae%92%e0%ae%b0-%e0%ae%a8%e0%ae%b0%e0%ae%a4%e0%ae%a4%e0%ae%b2-%e0%ae%92%e0%ae%b0-transaction">#</a></h2>
+<p>மொத்த bandwidth முழு இயந்திரமும் பகிரும் கடினக் கூரை. அதிக சாதனங்கள் என்றால் அதிக காத்திருப்பு, மற்றும் போட்டியின் கீழ் யாரும் காணும் பயனுள்ள bandwidth குறைவு. அது ஒரு செயலாக்க விவரம் அல்ல. இது இந்த phase-இன் மீதி சுற்றி வேலை செய்யும் கட்டுப்பாடு — முதலில் பகிரப்பட்ட parallel bus-ஐ வேகமாக்குவதன் மூலம், பிறகு பகிரப்பட்ட கம்பிகளை முழுவதும் கைவிடுவதன் மூலம். பதிவு 32 அந்தத் தப்பித்தல்: ஒவ்வொரு சாதனத்தையும் அதே செம்புக்குப் போட்டியிடக் கட்டாயப்படுத்தாத point-to-point serial இணைப்புகளை நோக்கி ஒரு parallel bus-இலிருந்து.</p>
+<h2 id="பகரவன-கர-ஒர-கணககல">பகிர்வின் கூரை, ஒரு கணக்கில்<a class="anchor" href="#%e0%ae%aa%e0%ae%95%e0%ae%b0%e0%ae%b5%e0%ae%a9-%e0%ae%95%e0%ae%b0-%e0%ae%92%e0%ae%b0-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95%e0%ae%b2">#</a></h2>
+<p>எடுத்துக்காட்டு மதிப்புகள்: bus-இன் பயனுள்ள bandwidth 100 MB/s. ஒவ்வொரு சாதனமும் தனியாக இருந்தால் 40 MB/s விரும்புகிறது.</p>
+<table>
+	<thead>
+			<tr>
+					<th>சாதனங்கள்</th>
+					<th>மொத்தத் தேவை</th>
+					<th>கிடைப்பது (ஒவ்வொன்றுக்கும், சமமாகப் பகிர்ந்தால்)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>40 MB/s</td>
+					<td>40 MB/s (முழுத் தேவை)</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>80 MB/s</td>
+					<td>40 MB/s (முழுத் தேவை)</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>120 MB/s</td>
+					<td>100 ÷ 3 ≈ 33.3 MB/s</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>200 MB/s</td>
+					<td>100 ÷ 5 = 20 MB/s</td>
+			</tr>
+	</tbody>
+</table>
+<p>மூன்றாவது சாதனம் சேர்ந்தவுடன் எல்லோரும் மெதுவாகிறார்கள் — ஏனெனில் 120 &gt; 100. கூரை பகிரப்பட்டது; சாதனங்களைச் சேர்ப்பது அதை உயர்த்தாது.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<ol>
+<li>
+<p><strong>ஒரு பழைய செயலிக்கு 20 முகவரிக் கோடுகள். எவ்வளவு நினைவகத்தை நேரடியாக முகவரியிட முடியும்?</strong>
+விடை: 2²⁰ = 1,048,576 byte = <strong>1 MB</strong>.</p>
+</li>
+<li>
+<p><strong>16 GB நினைவகத்தை byte வாரியாக முகவரியிட எத்தனை கோடுகள் வேண்டும்?</strong>
+விடை: 16 GB = 16 × 2³⁰ = 2⁴ × 2³⁰ = 2³⁴ → <strong>34 கோடுகள்</strong>.</p>
+</li>
+<li>
+<p><strong>16-பிட் data bus, 10 MHz, ஒரு சுழற்சிக்கு ஒரு பரிமாற்றம் (எடுத்துக்காட்டு மதிப்புகள்). உச்ச bandwidth என்ன? ஒவ்வொரு பரிமாற்றத்துக்கும் 2 சுழற்சிகள் (முகவரி + தரவு) தேவைப்பட்டால்?</strong>
+விடை: 2 byte × 10,000,000 = <strong>20 MB/s</strong>; 2 சுழற்சிகள் என்றால் பரிமாற்றங்கள் 5,000,000/s → <strong>10 MB/s</strong>.</p>
+</li>
+<li>
+<p><strong>நிலைத்த முன்னுரிமையில் உயர் முன்னுரிமைச் சாதனம் 60% சுழற்சிகளைக் கேட்கிறது. மீதி இரண்டு சாதனங்களும் சமமாகப் பகிர்ந்தால் ஒவ்வொன்றுக்கும் எத்தனை சதவீதம்?</strong>
+விடை: 100 − 60 = 40%; 40 ÷ 2 = <strong>20%</strong> ஒவ்வொன்றுக்கும். உயர் சாதனம் 100% கேட்டால் மீதிக்கு 0% — பட்டினி.</p>
+</li>
+<li>
+<p><strong>&ldquo;Bus-இல் இன்னொரு வேகமான சாதனத்தைச் சேர்த்தால் அமைப்பு வேகமாகும்.&rdquo; எப்போது இது தவறு?</strong>
+விடை: மொத்தத் தேவை ஏற்கனவே bus கூரையை நெருங்கினால், புதிய சாதனம் அதே கம்பிகளுக்குப் போட்டியிட்டு மற்ற எல்லோரின் பங்கையும் குறைக்கிறது; bus ஒரே நேரத்தில் ஒரு பரிமாற்றம் மட்டுமே சுமக்கும். பகிர்ந்த கம்பிகளை விட்டு விலகுவதே தீர்வு — பதிவு 32.</p>
+</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>பாட்டை</td>
+					<td>bus</td>
+			</tr>
+			<tr>
+					<td>முகவரிப் பாட்டை</td>
+					<td>address bus</td>
+			</tr>
+			<tr>
+					<td>தரவுப் பாட்டை</td>
+					<td>data bus</td>
+			</tr>
+			<tr>
+					<td>கட்டுப்பாட்டுப் பாட்டை</td>
+					<td>control bus</td>
+			</tr>
+			<tr>
+					<td>முகவரி வெளி</td>
+					<td>address space</td>
+			</tr>
+			<tr>
+					<td>பரிமாற்றம்</td>
+					<td>transaction</td>
+			</tr>
+			<tr>
+					<td>பாட்டைத் தலைவர்</td>
+					<td>bus master</td>
+			</tr>
+			<tr>
+					<td>நடுவர் தேர்வு</td>
+					<td>arbitration</td>
+			</tr>
+			<tr>
+					<td>கோரிக்கை / அனுமதி</td>
+					<td>request / grant</td>
+			</tr>
+			<tr>
+					<td>பட்டினி</td>
+					<td>starvation</td>
+			</tr>
+			<tr>
+					<td>சுழல் முறை</td>
+					<td>round-robin</td>
+			</tr>
+			<tr>
+					<td>போட்டி</td>
+					<td>contention</td>
+			</tr>
+			<tr>
+					<td>நேரடி நினைவக அணுகல்</td>
+					<td>direct memory access (DMA)</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ்நாடு அரசு, <em>11ஆம் வகுப்பு கணினி அறிவியல்</em>, அலகு 3: கணினி அமைப்பு (பாட்டை / bus; address bus, data bus, control bus — அறிமுகம் மட்டும்; arbitration / shared-bus ceiling அல்ல)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Buses&#43;101&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F31-buses-101%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F31-buses-101.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F31-buses-101.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/30-real-time-systems-in-practice/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>நடைமுறையில் Real-Time அமைப்புகள்</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="flex align-center">
+        <span>ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#மனற-சகனலகள-ஒர-கமபத-தகபப">மூன்று சிக்னல்கள், ஒரு கம்பித் தொகுப்பு</a></li>
+    <li><a href="#மகவர-அகலம--மகவர-வள">முகவரி அகலம் → முகவரி வெளி</a></li>
+    <li><a href="#data-அகலம--bandwidth">Data அகலம் → bandwidth</a></li>
+    <li><a href="#பகரவகக-ஏன-ஒர-master-தவ">பகிர்வுக்கு ஏன் ஒரு Master தேவை</a></li>
+    <li><a href="#நடவர-தரவ-நலதத-மனனரம-எதர-சழல-மற">நடுவர் தேர்வு: நிலைத்த முன்னுரிமை எதிர் சுழல் முறை</a></li>
+    <li><a href="#கடடபபட-ஒர-நரததல-ஒர-transaction">கட்டுப்பாடு: ஒரே நேரத்தில் ஒரு Transaction</a></li>
+    <li><a href="#பகரவன-கர-ஒர-கணககல">பகிர்வின் கூரை, ஒரு கணக்கில்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

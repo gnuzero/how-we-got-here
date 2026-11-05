@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从 1882 年外滩的人工交换所到 1991 年的 HJD04：上海的继电器交换机一用几十年，改线就是改程序。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hans/posts/02-zh-relays-switching/">
+	<meta property="og:site_name" content="我们如何走到那里">
+	<meta property="og:title" content="继电器与交换机：上海电话局里的“计算机”">
+	<meta property="og:description" content="从 1882 年外滩的人工交换所到 1991 年的 HJD04：上海的继电器交换机一用几十年，改线就是改程序。">
+	<meta property="og:locale" content="zh_Hans">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+		<meta property="article:tag" content="继电器">
+		<meta property="article:tag" content="电话交换">
+		<meta property="article:tag" content="旋转制">
+		<meta property="article:tag" content="纵横制">
+		<meta property="article:tag" content="记发器">
+		<meta property="article:tag" content="七国八制">
+
+
+	<meta itemprop="name" content="继电器与交换机：上海电话局里的“计算机”">
+	<meta itemprop="description" content="从 1882 年外滩的人工交换所到 1991 年的 HJD04：上海的继电器交换机一用几十年，改线就是改程序。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="158">
+	<meta itemprop="keywords" content="继电器,电话交换,旋转制,纵横制,记发器,七国八制,HJD04,上海">
+
+<title>继电器与交换机：上海电话局里的“计算机” • 我们如何走到那里</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hans/posts/02-zh-relays-switching/">
+  <link rel="alternate" hreflang="zh-hant" href="http://localhost:1478/zh-hant/posts/02-zh-relays-switching/" title="繼電器與交換機：上海電話局裡的“電腦”">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hans.search.min.d369906e95123348f130fcf51e745dc120f1a18f8009278172e975f6091f5a95.js" integrity="sha256-02mQbpUSM0jxMPz1HnRdwSDxoY&#43;ACSeBcul19gkfWpU=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hans/"><span>我们如何走到那里</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜索"
+    aria-label="搜索"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="语言" />
+        简体中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展开" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hant/posts/02-zh-relays-switching/" class="flex flex-auto">
+          繁體中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/00-credits/" class="">
+      致谢与延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-counting-rods-abacus/" class="">
+      算筹与算盘：数放在手里，算法记在口诀里</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-drawloom-huaben/" class="">
+      花本：程序第一次和机器分开</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-gears-and-calculators/" class="">
+      齿轮会数数：从记里鼓车到“较数器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/02-zh-relays-switching/" class="active">
+      继电器与交换机：上海电话局里的“计算机”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/03-zh-first-electronic-computers/" class="">
+      电子管与晶体管：中国第一批计算机，和算盘的真实角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-hanzi-encoding/" class="">
+      汉字上线：从四位电码到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/26-zh-input-and-typesetting/" class="">
+      把汉字敲进机器：打字机、输入法与激光照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/39-zh-networks-1986-1994/" class="">
+      越过长城：中文世界接入网络（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/47-zh-taiwan-semiconductors/" class="">
+      从豆浆店到晶圆代工：台湾半导体之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/17-zh-supercomputers-cpus/" class="">
+      规模：从银河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/63-zh-road-to-attention/" class="">
+      从中文信息处理到注意力机制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/05-zh-transistors-semiconductors/" class="">
+      从一门课到一块芯片：中国半导体的头十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/48-zh-lithography-fabs/" class="">
+      光刻：从显微镜到扫描机</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/58-zh-deep-learning-chips/" class="">
+      从 DianNao 到昇腾：为矩阵乘法造的芯片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/23-zh-operating-systems/" class="">
+      操作系统：从大庆的“虚拟机”到开源欧拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/27-zh-languages-compilers/" class="">
+      编程语言与编译器：从 104 机到仓颉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主机与天文台的电脑</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/43-zh-bbs/" class="">
+      挤不进去的广场：两岸三地的校园 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/44-zh-chinese-search/" class="">
+      一台服务器装不下：中国大陆第一批搜索引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/66-zh-commercial-crypto/" class="">
+      从“属于国家秘密”到国际标准：中国商用密码的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/67-zh-privacy-law/" class="">
+      从电脑处理到自动化决策：两岸三地的个人信息保护法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-mobile-standards/" class="">
+      空中的标准之争：从大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/68-zh-computer-craze/" class="">
+      娃娃与学习机：1984 年以后的电脑热</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="菜单" />
+  </label>
+
+  <h3>继电器与交换机：上海电话局里的“计算机”</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目录" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1882外滩-7-号">1882：外滩 7 号</a></li>
+    <li><a href="#1924不是步进制">1924：不是步进制</a></li>
+    <li><a href="#六十年的旋转制">六十年的旋转制</a></li>
+    <li><a href="#1959自己造纵横制">1959：自己造纵横制</a></li>
+    <li><a href="#改线就是改程序">改线就是改程序</a></li>
+    <li><a href="#七国八制与-hjd04">七国八制与 HJD04</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    继电器与交换机：上海电话局里的“计算机”
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>九月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hans/tags/%E7%BB%A7%E7%94%B5%E5%99%A8/">继电器</a>, 
+      <a href="/zh-hans/tags/%E7%94%B5%E8%AF%9D%E4%BA%A4%E6%8D%A2/">电话交换</a>, 
+      <a href="/zh-hans/tags/%E6%97%8B%E8%BD%AC%E5%88%B6/">旋转制</a>, 
+      <a href="/zh-hans/tags/%E7%BA%B5%E6%A8%AA%E5%88%B6/">纵横制</a>, 
+      <a href="/zh-hans/tags/%E8%AE%B0%E5%8F%91%E5%99%A8/">记发器</a>, 
+      <a href="/zh-hans/tags/%E4%B8%83%E5%9B%BD%E5%85%AB%E5%88%B6/">七国八制</a>, 
+      <a href="/zh-hans/tags/hjd04/">HJD04</a>, 
+      <a href="/zh-hans/tags/%E4%B8%8A%E6%B5%B7/">上海</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F35-01, F35-02, F35-03, F35-04, F35-05, F15-01, F15-02, F15-03, F15-04, F15-05, F15-06, F02-08 -->
+<p>在电子管时代之前，城市里最会“按规则做决定”的机器不在实验室，而在电话局。你每拨一个号码，就有一串继电器按规则开合，替你找到一条线路。上海是看这件事的好地方：那里的继电器交换机，一用就是几十年。</p>
+<h2 id="1882外滩-7-号">1882：外滩 7 号<a class="anchor" href="#1882%e5%a4%96%e6%bb%a9-7-%e5%8f%b7">#</a></h2>
+<p>1882 年，丹麦大北电报公司在上海外滩 7 号开设磁石式人工电话交换所，这是中国领土上第一个电话交换所。第二年改由英商经营，1900 年专营权转给华洋德律风公司。早期号码只有一到三位；1907 年，清政府办的南市电话局为华界开通。人工交换，意味着每一次接续都要接线员动手。</p>
+<h2 id="1924不是步进制">1924：不是步进制<a class="anchor" href="#1924%e4%b8%8d%e6%98%af%e6%ad%a5%e8%bf%9b%e5%88%b6">#</a></h2>
+<p>1924 年，华洋德律风公司东区交换所装了 1000 门爱立信自动交换机，上海号码第一次改为五位。说到自动交换，人们常想到史端乔（Strowger）步进制；但当年的《爱立信评论》描述的是 register finder 和 register 两类设备（本书译作记发器寻线器、记发器），从这一点看，上海第一套自动交换机是爱立信的记发器控制系统，而不是步进制。开通月份也有两说：澎湃新闻的文章说 3 月，《爱立信评论》说“今年 5 月”。</p>
+<p>记发器是这段故事的关键。中国电信博物馆这样解释：步进制由用户的拨号脉冲直接驱动继电器动作；纵横制是间接控制，拨号脉冲“先由记发器接收、存储，然后通过标志器驱动接线器”。先存起来，再决定怎么动：这是用继电器搭出来的存储，也是后来“程控”的种子。</p>
+<h2 id="六十年的旋转制">六十年的旋转制<a class="anchor" href="#%e5%85%ad%e5%8d%81%e5%b9%b4%e7%9a%84%e6%97%8b%e8%bd%ac%e5%88%b6">#</a></h2>
+<p>1928 年，租界各电话局全部改为自动交换；1933 年，华界的上海电话局也改用自动交换机接线；1942 年 6 月 28 日，全市统一为五位号码。中国电信博物馆藏有一台比利时生产的 7A1 型旋转制交换机，说明写着“20世纪20-80年代上海电话局使用”。一套继电器系统，在一座城市里天天工作了约六十年。</p>
+<h2 id="1959自己造纵横制">1959：自己造纵横制<a class="anchor" href="#1959%e8%87%aa%e5%b7%b1%e9%80%a0%e7%ba%b5%e6%a8%aa%e5%88%b6">#</a></h2>
+<p>1959 年 8 月，上海电信研究所、上海自动电话厂和上海市内电话局联合研制成功我国第一部纵横制局用自动电话交换机。它何时投入使用，中国电信博物馆自己的两份材料说法不同：2023 年的文章说同年 12 月 16 日，第一套 1000 门纵横制交换机在上海吴淞局开通；2021 年的大事记说，1960 年 1 月第一个纵横制自动电话实验局在吴淞分局安装开通。可能一个指安装、一个指正式开通，这里两说并存。</p>
+<p>电话工业也直接帮了第一台计算机。据中国科学院的记述，1958 年 5 月下旬，103 机插件底板的焊接进度落后，技术员夏纪寅和 738 厂的钱基广请熟练工人“采取交换机总装车间的扎缆型工艺”，5 月 31 日凌晨 2 点完工。</p>
+<h2 id="改线就是改程序">改线就是改程序<a class="anchor" href="#%e6%94%b9%e7%ba%bf%e5%b0%b1%e6%98%af%e6%94%b9%e7%a8%8b%e5%ba%8f">#</a></h2>
+<p>1989 年 11 月 12 日，上海电话升为七位号码。在此之前，要先完成 18 万门纵横制交换机的电路修改。继电器逻辑里没有软件可改，号码规则一变，就得动手改线。对继电器机器来说，改线就是改程序。</p>
+<h2 id="七国八制与-hjd04">七国八制与 HJD04<a class="anchor" href="#%e4%b8%83%e5%9b%bd%e5%85%ab%e5%88%b6%e4%b8%8e-hjd04">#</a></h2>
+<p>程控交换来得很快。1982 年，福州引进并开通了日本富士通 F-150 万门程控电话交换机，程控电话随即出现在其他城市。进口设备来自七个国家、八种制式，业内称为“七国八制”；1989 年起，巴黎统筹委员会又对中国实施大型程控交换机禁运。1991 年，解放军信息工程学院与中国邮电工业总公司联合研制成功 HJD04，这是我国第一台拥有完全自主知识产权的大型数字程控交换机。新华社称，它“标志着‘七国八制’长期垄断中国程控交换机市场格局的终结”，也使巴统的禁运彻底流产。此后，巨龙、大唐、中兴、华为，也就是人们说的“巨大中华”，相继崛起。</p>
+<p>故事也在上海收尾：2017 年 12 月 21 日，中国电信最后一台程控交换机在上海退网，网络转向全光、全 IP。</p>
+<p>在西方，史端乔步进制常被当作自动电话交换的起点。上海的例子说明，继电器时代在不同城市走的是不同的路：这里先来的是记发器，再是纵横制，最后是被禁运逼出来的国产程控机。</p>
+<p>**出处：**中国电信博物馆《从听得见到听得好，电话交换技术的百年演进》（2023）；叶亦帆《信息史︱电话号码知几位》（澎湃新闻，2021）。</p>
+<h2 id="延伸阅读">延伸阅读<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb">#</a></h2>
+<ul>
+<li>叶亦帆，《信息史︱电话号码知几位》（English: Information history: how many digits in a phone number?），澎湃新闻，2021-12-12。<a href="https://www.thepaper.cn/newsDetail_forward_15277146">链接</a></li>
+<li>中国电信博物馆，《从听得见到听得好，电话交换技术的百年演进》（English: From audible to clear: a century of telephone switching technology），2023-11-13。<a href="http://museum.chinatelecom.com.cn/yj/txkp/202311/t20231113_77967.html">链接</a></li>
+<li>中国电信博物馆，《电信业大事，你知道多少？（1950——1979）》（English: How much do you know of telecom milestones, 1950–1979?），2021-06-11。<a href="http://museum.chinatelecom.com.cn/yj/zt/bwgwzbndx/2021bwgbnds/202106/t20210611_61601.html">链接</a></li>
+<li>L. M. Ericsson，“The Shanghai Automatic Exchange”（中文：上海自动交换所），<em>The L. M. Ericsson Review</em>，1924 年第 9—10 期。<a href="https://telecom.wiki/download/attachments/819291/Ericsson_Review_Vol_1_1924_9-10.pdf">链接</a></li>
+<li>甘晓，《中国从此“有了”计算机》（English: From then on, China &ldquo;had&rdquo; a computer），《中国科学报》，中国科学院官网转载，2024-04-01。<a href="https://www.cas.cn/cm/202404/t20240401_5010362.shtml">链接</a></li>
+<li>新华社，《我国第一套拥有自主知识产权的大型数字程控交换机诞生》（English: China&rsquo;s first large digital stored-program exchange with its own intellectual property is born），《经济日报》，2009-11-11。<a href="http://paper.ce.cn/jjrb/html/2009-11/11/content_86815.htm">链接</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='最后修改者 Nayana | 十一月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>十一月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E7%BB%A7%E7%94%B5%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%9A%E4%B8%8A%E6%B5%B7%E7%94%B5%E8%AF%9D%E5%B1%80%E9%87%8C%E7%9A%84%E2%80%9C%E8%AE%A1%E7%AE%97%E6%9C%BA%E2%80%9D&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hans%2Fposts%2F02-zh-relays-switching%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hans%2Fposts%2F02-zh-relays-switching.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hans%2Fposts%2F02-zh-relays-switching.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hans/posts/01-zh-gears-and-calculators/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一页" />
+        <span>齿轮会数数：从记里鼓车到“较数器”</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hans/posts/03-zh-first-electronic-computers/" class="flex align-center">
+        <span>电子管与晶体管：中国第一批计算机，和算盘的真实角色</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一页" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1882外滩-7-号">1882：外滩 7 号</a></li>
+    <li><a href="#1924不是步进制">1924：不是步进制</a></li>
+    <li><a href="#六十年的旋转制">六十年的旋转制</a></li>
+    <li><a href="#1959自己造纵横制">1959：自己造纵横制</a></li>
+    <li><a href="#改线就是改程序">改线就是改程序</a></li>
+    <li><a href="#七国八制与-hjd04">七国八制与 HJD04</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

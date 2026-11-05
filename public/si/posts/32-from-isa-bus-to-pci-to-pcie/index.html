@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Skew පුළුල් parallel බස් එක මැරුවේය; point-to-point serial යනු අප පැන ගත් ආකාරයයි">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/32-from-isa-bus-to-pci-to-pcie/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="ISA Bus සිට PCI දක්වා PCIe දක්වා">
+	<meta property="og:description" content="Skew පුළුල් parallel බස් එක මැරුවේය; point-to-point serial යනු අප පැන ගත් ආකාරයයි">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="ISA Bus සිට PCI දක්වා PCIe දක්වා">
+	<meta itemprop="description" content="Skew පුළුල් parallel බස් එක මැරුවේය; point-to-point serial යනු අප පැන ගත් ආකාරයයි">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1810">
+
+<title>ISA Bus සිට PCI දක්වා PCIe දක්වා • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/32-from-isa-bus-to-pci-to-pcie/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/32-from-isa-bus-to-pci-to-pcie/" title="From ISA Bus to PCI to PCIe">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/32-from-isa-bus-to-pci-to-pcie/" title="จาก ISA Bus ถึง PCI ถึง PCIe">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/32-from-isa-bus-to-pci-to-pcie/" title="ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/32-from-isa-bus-to-pci-to-pcie/" title="De la magistrala ISA la PCI și la PCIe">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/32-from-isa-bus-to-pci-to-pcie/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="active">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>ISA Bus සිට PCI දක්වා PCIe දක්වා</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#parallel-සහජ-බදධය-සහ-එය-කඩන-තන">Parallel සහජ බුද්ධිය, සහ එය කැඩෙන තැන</a></li>
+    <li><a href="#pci-headroom-මලද-ගතතය-escape-නව">PCI Headroom මිලදී ගත්තේය, Escape නොවේ</a></li>
+    <li><a href="#pcie-හවල-රහන-අතහරයය">PCIe හවුල් රැහැන් අත්හැරියේය</a></li>
+    <li><a href="#ගඹරන-skew-අයවය-pin-එකකට-bandwidth-සහ-කතන-බදද--pci-සට-pcie-දකව-අකවලන">ගැඹුරින්: Skew අයවැය, pin එකකට bandwidth සහ කේතන බද්ද — PCI සිට PCIe දක්වා අංකවලින්</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-skew-අයවය-clock-එක-වගවත-වන-වට-කමක-සද-වද">2. Skew අයවැය: clock එක වේගවත් වන විට කුමක් සිදු වේද</a></li>
+        <li><a href="#3-pci-බස-එක-bandwidth-සහ-එය-හවල-බදම">3. PCI බස් එකේ bandwidth සහ එය හවුලේ බෙදීම</a></li>
+        <li><a href="#4-කතන-බදද-gts-සට-mbs-දකව">4. කේතන බද්ද: GT/s සිට MB/s දක්වා</a></li>
+        <li><a href="#5-pin-එකකට-bandwidth-සබ-වසය">5. Pin එකකට bandwidth: සැබෑ වාසිය</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    ISA Bus සිට PCI දක්වා PCIe දක්වා
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Post 31 හි උඩුකුරු සීමාව: සෑම උපාංගයක්ම එකම රැහැන් සඳහා තරඟ කරයි. ISA, පසුව PCI, පසුව PCIe යනු එම උඩුකුරු සීමාව වටා ඇති ඉංජිනේරුකරණයයි — බස් නාමාවලියක් නොව, සීමා අනුක්‍රමයකි. අවසානයේ පුදුමය: <em>serial</em> යාම (රැහැන් අඩු) parallel ලෙස රැඳී සිටීම (රැහැන් වැඩි) පරාජය කළේය.</p>
+<h2 id="parallel-සහජ-බදධය-සහ-එය-කඩන-තන">Parallel සහජ බුද්ධිය, සහ එය කැඩෙන තැන<a class="anchor" href="#parallel-%e0%b7%83%e0%b7%84%e0%b6%a2-%e0%b6%b6%e0%b6%af%e0%b6%b0%e0%b6%ba-%e0%b7%83%e0%b7%84-%e0%b6%91%e0%b6%ba-%e0%b6%9a%e0%b6%a9%e0%b6%b1-%e0%b6%ad%e0%b6%b1">#</a></h2>
+<p>ISA (Industry Standard Architecture) පුළුල් parallel බස් එකක් විය: දත්ත රේඛා බොහෝ, එකිනෙකට bit එකක්, එකට clock කරන ලදී. රැහැන් වැඩි නම් bandwidth වැඩි විය යුතුය. මධ්‍යස්ථ clocks වලදී එසේ වේ.</p>
+<p>සෑම රැහැනකටම තරමක් වෙනස් දිග සහ capacitance ඇත, එබැවින් bits එකම මොහොතේ නොපැමිණේ — <strong>skew</strong>. මන්දගාමී clock එකකදී විචලනය කාල සීමාවේ කුඩා කොටසක් වන අතර වැදගත් නොවේ. Clock එක ඉහළ දමන්න, කාල සීමාව හකුළන්න, සහ එම ස්ථිර skew එක timing margin කන තෙක් receiver එකට එක් edge එකකදී සෑම bit එකක්ම sample කළ නොහැක. එය භෞතික උඩුකුරු සීමාවකි, මඟ හැරුණු උපක්‍රමයක් නොවේ. පුළුල් parallel බස් එකක් අනන්තව තද කළ නොහැක.</p>
+<h2 id="pci-headroom-මලද-ගතතය-escape-නව">PCI Headroom මිලදී ගත්තේය, Escape නොවේ<a class="anchor" href="#pci-headroom-%e0%b6%b8%e0%b6%bd%e0%b6%af-%e0%b6%9c%e0%b6%ad%e0%b6%ad%e0%b6%ba-escape-%e0%b6%b1%e0%b7%80">#</a></h2>
+<p>PCI (Peripheral Component Interconnect, 1992) ISA ට වඩා වේගවත් විය — වඩා හොඳ arbitration, plug-and-play configuration, වඩා ප්‍රායෝගික bandwidth. එය තවමත් හවුල් parallel බස් එකක් විය, clocks ඉහළ යන විට තවමත් skew ට යටත් විය. Headroom, නව ගෘහ නිර්මාණයක් නොවේ.</p>
+<h2 id="pcie-හවල-රහන-අතහරයය">PCIe හවුල් රැහැන් අත්හැරියේය<a class="anchor" href="#pcie-%e0%b7%84%e0%b7%80%e0%b6%bd-%e0%b6%bb%e0%b7%84%e0%b6%b1-%e0%b6%85%e0%b6%ad%e0%b7%84%e0%b6%bb%e0%b6%ba%e0%b6%ba">#</a></h2>
+<p>PCI Express (2003) topology වෙනස් කළේය. එක් හවුල් parallel බස් එකක් වෙනුවට, සෑම උපාංගයකටම switch එකකට කැප වූ point-to-point serial සබැඳියක් (lane එකක්, හෝ lanes කට්ටලයක්) ලැබේ. දිශාවකට lane එකකට එක් differential pair එකක්: රැහැන් දුසිමක් හරහා lockstep තබා ගත යුතු කිසිවක් නැත, එබැවින් per-lane clocks ඕනෑම parallel බස් එකකට බොහෝ ඈතට නැගිය හැක. Lanes බැඳේ (x1, x4, x8, x16) වැඩි අවශ්‍ය උපාංග සඳහා — GPU එකක් x16 ගනී එය x1 හි NIC එකකට වඩා බොහෝ දුරට වැඩි චලනය කරන නිසා. අසම්බන්ධ උපාංග තවදුරටත් රැහැන් බෙදා නොගනී, එබැවින් ඒවා තවදුරටත් එකිනෙකාගේ arbitration මත රැඳී නොසිටී.</p>
+<p>භෞතික රැහැන් අඩු. ළඟා විය හැකි bandwidth ඉහළ. හවුල්-බස් උඩුකුරු සීමාව නැති වී ඇත. Post 33 යනු එම serial සබැඳි transfer එකක් ව්‍යුහගත කරන්නේ කෙසේද යන්නයි එවිට යන්ත්‍රයේ ඉතිරියට තවමත් කියවීමක් හෝ ලිවීමක් <em>අර්ථ</em> කළ හැක.</p>
+<h2 id="ගඹරන-skew-අයවය-pin-එකකට-bandwidth-සහ-කතන-බදද--pci-සට-pcie-දකව-අකවලන">ගැඹුරින්: Skew අයවැය, pin එකකට bandwidth සහ කේතන බද්ද — PCI සිට PCIe දක්වා අංකවලින්<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-skew-%e0%b6%85%e0%b6%ba%e0%b7%80%e0%b6%ba-pin-%e0%b6%91%e0%b6%9a%e0%b6%9a%e0%b6%a7-bandwidth-%e0%b7%83%e0%b7%84-%e0%b6%9a%e0%b6%ad%e0%b6%b1-%e0%b6%b6%e0%b6%af%e0%b6%af--pci-%e0%b7%83%e0%b6%a7-pcie-%e0%b6%af%e0%b6%9a%e0%b7%80-%e0%b6%85%e0%b6%9a%e0%b7%80%e0%b6%bd%e0%b6%b1">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> සිංහලෙන් ඇත්තේ පාරිභෝගික මට්ටමේ වීඩියෝ කිහිපයකි. උදාහරණ ලෙස &ldquo;PCIe SLOTS, PCI Lanes ගැන සරලව&rdquo; (Anytiplk) සහ motherboard slots පිළිබඳ පාඩම් දැක්විය හැකිය (අප හඳුනාගත්තේ මාතෘකාවෙන් පමණි, නැරඹුවේ නැත). මාතෘකා අනුව ඒවා කුමන slot එකට කුමන card එක දැමිය යුතුද යන්න ගැනය. parallel බස් එකක් skew නිසා නතර වන්නේ ඇයි, PCI සිට PCIe දක්වා bandwidth ගණනය කරන්නේ කෙසේද යන්න ගැන සිංහල පාඩමක් අපට හමු නොවීය. ISA→PCI→PCIe පිළිබඳ සිංහල විකිපීඩියා ලිපියක්ද නැත. එබැවින් මෙම කොටස PCIe නිර්මාණය කළ Intel ඉංජිනේරුවාගේ 2002 පත්‍රිකාවෙන් සහ PCI-SIG හි නිල පිළිතුරුවලින් (FAQ) අංක ගෙන මුල සිට ගණනය කරයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>Parallel බස් එක (parallel bus):</strong> bits කිහිපයක් එකවර, වෙනම රැහැන් කිහිපයක් ඔස්සේ යවන බස් එකකි. සියලු රැහැන් එකම clock එකකින් පාලනය වේ.</li>
+<li><strong>Multi-drop බස් එක:</strong> එකම රැහැන් කට්ටලයට උපාංග කිහිපයක් සම්බන්ධ කර, ඒවා හවුලේ භාවිතා කරන බස් එකකි.</li>
+<li><strong>සංඥා පමාවේ වෙනස (skew):</strong> එකම clock edge එකේදී යැවූ bits, විවිධ රැහැන් ඔස්සේ වෙනස් කාලවලදී පැමිණීම.</li>
+<li><strong>Point-to-point සබැඳිය:</strong> උපාංග <em>දෙකක්</em> පමණක් සම්බන්ධ කරන කැප වූ රැහැන් කට්ටලයකි.</li>
+<li><strong>Differential pair:</strong> එක් bit ප්‍රවාහයක් සඳහා ප්‍රතිවිරුද්ධ සංඥා දෙකක් රැගෙන යන රැහැන් දෙකකි. ග්‍රාහකය කියවන්නේ ඒවා අතර වෙනසයි.</li>
+<li><strong>Lane:</strong> PCIe හි මූලික ඒකකයයි. යැවීමට (transmit) pair එකක් සහ ලැබීමට (receive) pair එකක් ලෙස රැහැන් <strong>4</strong> කින් සමන්විත වේ.</li>
+<li><strong>GT/s (gigatransfers per second):</strong> රැහැනේ තත්පරයකට සිදු වන සංඥා වෙනස්වීම් (symbols) ගණනයි. කේතන බද්ද අඩු කිරීමට පෙර අගයයි.</li>
+<li><strong>කේතනය (encoding) — 8b/10b සහ 128b/130b:</strong> දත්ත bits කට්ටලයක් මඳක් දිගු bit රටාවකට හරවා යැවීමයි. එමගින් ග්‍රාහකයට bit ප්‍රවාහයෙන්ම clock එක නැවත ලබා ගත හැකිය.</li>
+</ul>
+<h3 id="2-skew-අයවය-clock-එක-වගවත-වන-වට-කමක-සද-වද">2. Skew අයවැය: clock එක වේගවත් වන විට කුමක් සිදු වේද<a class="anchor" href="#2-skew-%e0%b6%85%e0%b6%ba%e0%b7%80%e0%b6%ba-clock-%e0%b6%91%e0%b6%9a-%e0%b7%80%e0%b6%9c%e0%b7%80%e0%b6%ad-%e0%b7%80%e0%b6%b1-%e0%b7%80%e0%b6%a7-%e0%b6%9a%e0%b6%b8%e0%b6%9a-%e0%b7%83%e0%b6%af-%e0%b7%80%e0%b6%af">#</a></h3>
+<p>Parallel බස් එකක ග්‍රාහකය සෑම bit එකක්ම එකම clock edge එකකදී sample කළ යුතුය. clock කාලය T = 1/f නම්, සියලු රැහැන්වල bits එම කාලය තුළම ස්ථාවර විය යුතුය. රැහැන් අතර skew එක සාමාන්‍යයෙන් රැහැන් දිග සහ capacitance වල වෙනස නිසා ඇති වන අතර, clock එක වේගවත් කළත් එය <strong>අඩු නොවේ</strong>.</p>
+<p><strong>ගණනය කළ උදාහරණය (ආදර්ශ අංක):</strong> රැහැන් අතර ස්ථිර skew එක <strong>1 ns</strong> යැයි උපකල්පනය කරමු.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Clock</th>
+					<th>කාලය T = 1/f</th>
+					<th>skew එක T හි කොටසක් ලෙස</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>33 MHz (PCI)</td>
+					<td>30 ns</td>
+					<td>3.3%</td>
+			</tr>
+			<tr>
+					<td>66 MHz</td>
+					<td>15 ns</td>
+					<td>6.7%</td>
+			</tr>
+			<tr>
+					<td>133 MHz (PCI-X)</td>
+					<td>7.5 ns</td>
+					<td>13.3%</td>
+			</tr>
+			<tr>
+					<td>500 MHz</td>
+					<td>2 ns</td>
+					<td>50%</td>
+			</tr>
+			<tr>
+					<td>1 GHz</td>
+					<td>1 ns</td>
+					<td><strong>100%</strong> (sample කිරීමට කාලයක් ඉතිරි නැත)</td>
+			</tr>
+	</tbody>
+</table>
+<p>skew එක ns 1 හිම රැඳී තිබියදී clock එක දෙගුණ කළ විට, ඉතිරි වන ආන්තිකය (margin) වේගයෙන් නැති වේ. Intel හි Ajay V. Bhatt 2002 දී ලියූ &ldquo;Creating a Third Generation I/O Interconnect&rdquo; පත්‍රිකාවේ (පිටුව 1) මෙම කරුණම සඳහන් වේ. එහි අනුව 1990 ගණන්වල PCI &ldquo;multi-drop, parallel&rdquo; බස් එකක් වූ අතර එය කාර්ය සාධනයේ ප්‍රායෝගික සීමාවට ආසන්නව තිබුණි. එහි &ldquo;synchronously clocked data transfer is signal skew limited&rdquo; විය. එනම් එකම clock එකකට සමමුහුර්තව දත්ත යැවීම skew නිසා සීමා විය. ලාභ FR4 පරිපථ පුවරු සඳහා රැහැන් මාර්ග නීතිද සීමාවේ තිබුණි.</p>
+<p><strong>Serial lane එක මෙය මඟ හරින්නේ කෙසේද:</strong> PCIe lane එකක clock එක වෙනම රැහැනකින් යවන්නේ නැත. Bhatt පත්‍රිකාවේ (පිටුව 4) පරිදි clock එක 8b/10b කේතනය මගින් දත්ත ප්‍රවාහය තුළම තැන්පත් කර ඇත (&ldquo;embedded&rdquo;). එබැවින් සෑම lane එකක්ම තමන්ගේම කාලය තමාම නැවත ලබා ගනී. රැහැන් දුසිමක් එකම මොහොතට පෙළගැස්විය යුතු නැත. lanes කිහිපයක් එකට බැඳුණු විට ඒවා අතර වෙනස පසුව ග්‍රාහකයේදී පෙළගස්වනු ලැබේ.</p>
+<h3 id="3-pci-බස-එක-bandwidth-සහ-එය-හවල-බදම">3. PCI බස් එකේ bandwidth සහ එය හවුලේ බෙදීම<a class="anchor" href="#3-pci-%e0%b6%b6%e0%b7%83-%e0%b6%91%e0%b6%9a-bandwidth-%e0%b7%83%e0%b7%84-%e0%b6%91%e0%b6%ba-%e0%b7%84%e0%b7%80%e0%b6%bd-%e0%b6%b6%e0%b6%af%e0%b6%b8">#</a></h3>
+<p>PCI: දත්ත පළල bits 32 = බයිට් 4, clock 33 MHz → 4 × 33 = <strong>133 MB/s</strong> (උච්ච අගය).</p>
+<p>මෙම 133 MB/s බස් එකේ ඇති <strong>සියලු</strong> උපාංග අතර බෙදී යයි. <strong>ආදර්ශ උදාහරණය:</strong> එකවර දත්ත යවන card 4 ක් ඇත්නම්, එකකට සාමාන්‍යයෙන් ලැබෙන්නේ 133 ÷ 4 ≈ <strong>33 MB/s</strong> පමණි. arbitration වියදම නිසා සැබෑ අගය ඊටත් අඩුය. PCIe හි සෑම උපාංගයකටම තමන්ගේම lane(s) ඇත. එබැවින් x1 card හතරක් තිබුණත්, එක් එක් card එකට PCIe 1.x දී දිශාවකට ~250 MB/s බැගින් ලැබේ (§4).</p>
+<h3 id="4-කතන-බදද-gts-සට-mbs-දකව">4. කේතන බද්ද: GT/s සිට MB/s දක්වා<a class="anchor" href="#4-%e0%b6%9a%e0%b6%ad%e0%b6%b1-%e0%b6%b6%e0%b6%af%e0%b6%af-gts-%e0%b7%83%e0%b6%a7-mbs-%e0%b6%af%e0%b6%9a%e0%b7%80">#</a></h3>
+<p>PCI-SIG හි නිල FAQ පිළිතුර (&ldquo;How does the PCIe 3.0 8.0 GT/s &lsquo;double&rsquo; the PCIe 2.0 5.0 GT/s bit rate?&rdquo;) අනුව:</p>
+<ul>
+<li>8b/10b යනු දත්ත bits 8 ක් bits 10 ක් ලෙස යැවීමයි. එයින් <strong>20%</strong> බද්දක් ඇති වේ.</li>
+<li>128b/130b යනු bits 128 ක් bits 130 ක් ලෙස යැවීමයි. එහි බද්ද 2/130 ≈ <strong>1.5%</strong> පමණි. (1.5% යන අගය FAQ හි නැත. එය අපගේ ගණනයයි.)</li>
+</ul>
+<p><strong>සූත්‍රය:</strong> lane එකක දිශාවකට බයිට් ප්‍රමාණය = GT/s × (කේතන කාර්යක්ෂමතාව) ÷ 8.</p>
+<table>
+	<thead>
+			<tr>
+					<th>පරම්පරාව</th>
+					<th>GT/s</th>
+					<th>කේතනය</th>
+					<th>lane එකක දිශාවකට</th>
+					<th>x16, එක් දිශාවකට</th>
+					<th>x16, දෙදිශාවම (PCI-SIG වගුව)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>PCIe 1.x</td>
+					<td>2.5</td>
+					<td>8b/10b</td>
+					<td>2.5 × 0.8 ÷ 8 = <strong>250 MB/s</strong></td>
+					<td>4 GB/s</td>
+					<td>~8 GB/s</td>
+			</tr>
+			<tr>
+					<td>PCIe 2.x</td>
+					<td>5.0</td>
+					<td>8b/10b</td>
+					<td>5 × 0.8 ÷ 8 = <strong>500 MB/s</strong></td>
+					<td>8 GB/s</td>
+					<td>~16 GB/s</td>
+			</tr>
+			<tr>
+					<td>PCIe 3.0</td>
+					<td>8.0</td>
+					<td>128b/130b</td>
+					<td>8 × 128/130 ÷ 8 = <strong>984.6 MB/s</strong> ≈ 1 GB/s</td>
+					<td>15.75 GB/s</td>
+					<td>~32 GB/s</td>
+			</tr>
+	</tbody>
+</table>
+<p>PCI-SIG ම පෙන්වා දෙන උපක්‍රමය මෙයයි. 8b/10b රඳවා ගත්තා නම්, 3.0 හි bandwidth දෙගුණ කිරීමට <strong>10 GT/s</strong> අවශ්‍ය වේ (10 × 0.8 = 8 Gb/s). කේතනය වෙනස් කිරීමෙන් එම ප්‍රතිඵලයම 8 GT/s දී ලැබුණි. PCI-SIG ට අනුව එයින් PHY සංකීර්ණත්වය, die ප්‍රමාණය සහ බලය යන දඬුවම් මඟ හැරුණි.</p>
+<p><strong>සටහන (මූලාශ්‍ර අතර වෙනසක්):</strong> Bhatt පත්‍රිකාවේ පෙළ (පිටුව 4) 2.5 Gb/s lane එකක් &ldquo;200MB/s&rdquo; ලෙස දක්වයි. එහෙත් එම පත්‍රිකාවේම Figure 14 හි 100 MB/s ÷ pin අගය ගැළපෙන්නේ 250 MB/s සමඟය: lanes 8 × 250 × දිශා 2 = 4000 MB/s, 4000 ÷ 40 = 100 (§5). 200 ගත්තොත් 3200 ÷ 40 = 80 ක් පමණක් ලැබේ. තවද එම පෙළම x1 lane එක &ldquo;close to twice the classic PCI data rate&rdquo; යැයි කියයි. 250 ÷ 133 ≈ 1.88 වන අතර 200 ÷ 133 ≈ 1.5 පමණි. එබැවින් &ldquo;දෙගුණයට ආසන්න&rdquo; යන්නට වඩා හොඳින් ගැළපෙන්නේ 250 ය. පත්‍රිකාව 200 පැහැදිලි නොකරයි. 2.5 × 0.8 ÷ 8 = 250 නිසා අපි PCI-SIG හි 250 MB/s භාවිතා කරමු. 200 යනු පත්‍රිකාවේ වැරදීමක් හෝ හේතුවක් නොකියූ ප්‍රවේශම් අගයක් (conservative) බව අපගේ නිගමනයයි.</p>
+<h3 id="5-pin-එකකට-bandwidth-සබ-වසය">5. Pin එකකට bandwidth: සැබෑ වාසිය<a class="anchor" href="#5-pin-%e0%b6%91%e0%b6%9a%e0%b6%9a%e0%b6%a7-bandwidth-%e0%b7%83%e0%b6%b6-%e0%b7%80%e0%b7%83%e0%b6%ba">#</a></h3>
+<p>Bhatt පත්‍රිකාවේ Figure 14 (පිටුව 8) bandwidth එක pins වලින් බෙදයි. එහි &ldquo;pins&rdquo; යනු දත්ත, ලිපින, පාලන, බලය සහ භූගත (ground) pins සියල්ලයි. පත්‍රිකාවේ අගයන් නැවත ගණනය කරමු:</p>
+<table>
+	<thead>
+			<tr>
+					<th>බස් එක</th>
+					<th>උච්ච bandwidth</th>
+					<th>Pins</th>
+					<th>MB/s ÷ pin</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>PCI (32b × 33 MHz)</td>
+					<td>133 MB/s</td>
+					<td>84</td>
+					<td>133 ÷ 84 = <strong>1.58</strong></td>
+			</tr>
+			<tr>
+					<td>PCI-X (64b × 133 MHz)</td>
+					<td>8 × 133 = 1064 MB/s</td>
+					<td>150</td>
+					<td><strong>7.09</strong></td>
+			</tr>
+			<tr>
+					<td>AGP4X (32b × 4 × 66 MHz)</td>
+					<td>4 × 266 = 1064 MB/s</td>
+					<td>108</td>
+					<td><strong>9.85</strong></td>
+			</tr>
+			<tr>
+					<td>3GIO/PCIe (lanes 8, 2.5 Gb/s)</td>
+					<td>8 × 250 × 2 දිශා = 4000 MB/s</td>
+					<td>40</td>
+					<td><strong>100</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>PCIe x8 සබැඳියක සංඥා රැහැන් 8 × 4 = 32 ක් ඇත. ඉතිරි 8 බලය/භූගත pins ලෙස ගණන් ගත් විට එකතුව 40 වේ. (පත්‍රිකාව pins 40 පමණක් දක්වයි. 32 + 8 ලෙස බෙදීම අපගේ අනුමානයයි.) එබැවින් PCIe හි pin එකක් PCI හි pin එකක් මෙන් 100 ÷ 1.58 ≈ <strong>63</strong> ගුණයක් දත්ත රැගෙන යයි. පෝස්ට් එකේ &ldquo;භෞතික රැහැන් අඩු, bandwidth ඉහළ&rdquo; යන්නෙහි අංකමය අර්ථය එයයි. (AGP අගය ගැන: Figure 14 පුරාම පත්‍රිකාව &ldquo;8b x 4x66MHz&rdquo; (Hub Architecture 1) 266 MB/s ලෙසත් &ldquo;64b x 133MHz&rdquo; (PCI-X) 1064 MB/s ලෙසත් ගනී (266 ÷ 23 = 11.57, 1064 ÷ 150 = 7.09, දෙකම පත්‍රිකාවේ අගයන්). AGP4X = 4 × 266 = 1064, 1064 ÷ 108 = 9.85. එනම් පත්‍රිකාවේ 9.85 එහිම වටයීම් සමඟ ගැළපේ. 66 MHz අකුරටම ගත්තොත් 4 × 264 = 1056, 1056 ÷ 108 ≈ 9.78 වේ. 66.67 MHz ගත්තොත් ≈ 9.88 වේ. එබැවින් 9.78 සහ 9.85 අතර වෙනස වටයීම පමණි.)</p>
+<p>Bhatt 2002 දී 2.5 Gb/s ආරම්භක වේගය සිලිකන් තාක්ෂණය සමඟ <strong>10 Gb/s</strong> දක්වා වැඩි වේ යැයි පුරෝකථනය කළේය. ඔහු එය &ldquo;the practical maximum for signals in copper&rdquo; ලෙස හැඳින්වීය (පිටුව 4). පසු පරම්පරා ගැන Post 33 බලන්න.</p>
+<h3 id="6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#6-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>64-bit, 66 MHz PCI බස් එකක උච්ච bandwidth කීයද?</li>
+<li>skew 1 ns ස්ථිරව පවතී නම්, skew එක clock කාලයෙන් 25% ට වඩා අඩු වීමට ඉඩ දෙන උපරිම clock සංඛ්‍යාතය කීයද?</li>
+<li>PCIe 2.x x4 සබැඳියක එක් දිශාවක bandwidth කීයද? PCIe 3.0 x4 එකක?</li>
+<li>8 GT/s lane එකක් 8b/10b සමඟ භාවිතා කළා නම් දිශාවකට කොපමණ ලැබෙනු ඇත්ද? 128b/130b සමඟ ලැබෙන අගයට වඩා කොපමණ ප්‍රතිශතයකින් අඩුද?</li>
+<li>PCIe x1 lane එකකට සංඥා රැහැන් කීයක් තිබේද? PCI බස් එකේ pins 84 ට සාපේක්ෂව එය කීයෙන් කොටසක්ද (බලය/භූගත pins නොසලකා)?</li>
+</ol>
+<p>(පිළිතුරු: 1 → බයිට් 8 × 66 MHz = <strong>528 MB/s</strong> (≈533, 66.67 MHz ගත්තොත්). 2 → T ≥ 1 ns ÷ 0.25 = 4 ns → f ≤ <strong>250 MHz</strong>. 3 → 4 × 500 = <strong>2 GB/s</strong>; 4 × 984.6 ≈ <strong>3.94 GB/s</strong>. 4 → 8 × 0.8 ÷ 8 = <strong>800 MB/s</strong>. (984.6 − 800) ÷ 984.6 ≈ <strong>18.8%</strong> අඩුය. 5 → රැහැන් <strong>4</strong> (pairs 2). 4 ÷ 84 ≈ <strong>1/21</strong>.)</p>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong> Ajay V. Bhatt (Intel), &ldquo;Creating a Third Generation I/O Interconnect&rdquo;, 2002. Intel හි නිල developer.intel.com පිටපතේ archive.org සටහන: <a href="http://web.archive.org/web/20061016041753/http://developer.intel.com/technology/pciexpress/downloads/3rdGenWhitePaper.pdf">http://web.archive.org/web/20061016041753/http://developer.intel.com/technology/pciexpress/downloads/3rdGenWhitePaper.pdf</a>. භාවිත කළ පිටු:</p>
+<ul>
+<li>පිටුව 1: multi-drop parallel, &ldquo;signal skew limited&rdquo;</li>
+<li>පිටුව 4: 8b/10b තැන්පත් clock, 2.5 Gb/s/direction, &ldquo;200MB/s&rdquo;, &ldquo;close to twice the classic PCI data rate&rdquo;, 10 Gb/s &ldquo;practical maximum&rdquo;</li>
+<li>පිටුව 7–8: Figure 14, bandwidth per pin</li>
+</ul>
+<p>PCI-SIG, FAQ &ldquo;How does the PCIe 3.0 8.0 GT/s &lsquo;double&rsquo; the PCIe 2.0 5.0 GT/s bit rate?&rdquo;: <a href="https://pcisig.com/how-does-pcie-30-8gts-double-pcie-20-5gts-bit-rate">https://pcisig.com/how-does-pcie-30-8gts-double-pcie-20-5gts-bit-rate</a>. Skew වගුව සහ PCI බෙදාගැනීමේ උදාහරණය ආදර්ශ ගණනය කිරීම් වේ.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;ISA&#43;Bus&#43;%E0%B7%83%E0%B7%92%E0%B6%A7&#43;PCI&#43;%E0%B6%AF%E0%B6%9A%E0%B7%8A%E0%B7%80%E0%B7%8F&#43;PCIe&#43;%E0%B6%AF%E0%B6%9A%E0%B7%8A%E0%B7%80%E0%B7%8F&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F32-from-isa-bus-to-pci-to-pcie%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F32-from-isa-bus-to-pci-to-pcie.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F32-from-isa-bus-to-pci-to-pcie.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/31-buses-101/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>බස් 101</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/33-pcie-deep-dive/" class="flex align-center">
+        <span>PCIe ගැඹුරු ගවේෂණය</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#parallel-සහජ-බදධය-සහ-එය-කඩන-තන">Parallel සහජ බුද්ධිය, සහ එය කැඩෙන තැන</a></li>
+    <li><a href="#pci-headroom-මලද-ගතතය-escape-නව">PCI Headroom මිලදී ගත්තේය, Escape නොවේ</a></li>
+    <li><a href="#pcie-හවල-රහන-අතහරයය">PCIe හවුල් රැහැන් අත්හැරියේය</a></li>
+    <li><a href="#ගඹරන-skew-අයවය-pin-එකකට-bandwidth-සහ-කතන-බදද--pci-සට-pcie-දකව-අකවලන">ගැඹුරින්: Skew අයවැය, pin එකකට bandwidth සහ කේතන බද්ද — PCI සිට PCIe දක්වා අංකවලින්</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-skew-අයවය-clock-එක-වගවත-වන-වට-කමක-සද-වද">2. Skew අයවැය: clock එක වේගවත් වන විට කුමක් සිදු වේද</a></li>
+        <li><a href="#3-pci-බස-එක-bandwidth-සහ-එය-හවල-බදම">3. PCI බස් එකේ bandwidth සහ එය හවුලේ බෙදීම</a></li>
+        <li><a href="#4-කතන-බදද-gts-සට-mbs-දකව">4. කේතන බද්ද: GT/s සිට MB/s දක්වා</a></li>
+        <li><a href="#5-pin-එකකට-bandwidth-සබ-වසය">5. Pin එකකට bandwidth: සැබෑ වාසිය</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

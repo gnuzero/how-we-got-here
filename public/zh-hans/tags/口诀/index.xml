@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>口诀 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/%E5%8F%A3%E8%AF%80/</link>
+		<description>Recent content in 口诀 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 15:39:52 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/%E5%8F%A3%E8%AF%80/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>算筹与算盘：数放在手里，算法记在口诀里</title>
+				<link>http://localhost:1478/zh-hans/posts/01-zh-counting-rods-abacus/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/01-zh-counting-rods-abacus/</guid>
+				<description>从《孙子算经》的纵横摆筹到程大位的珠算口诀：数存在筹和珠里，算法存在口诀里，执行它的是人。</description>
+			</item>
+	</channel>
+</rss>

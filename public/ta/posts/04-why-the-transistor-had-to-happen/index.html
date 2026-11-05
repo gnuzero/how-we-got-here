@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="அளவு, மின்சாரம், நம்பகத்தன்மை — திண்மநிலை மாறுதலை தவிர்க்க முடியாததாக்கிய மூன்று குழாய் உச்சவரம்புகள்">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/04-why-the-transistor-had-to-happen/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது">
+	<meta property="og:description" content="அளவு, மின்சாரம், நம்பகத்தன்மை — திண்மநிலை மாறுதலை தவிர்க்க முடியாததாக்கிய மூன்று குழாய் உச்சவரம்புகள்">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது">
+	<meta itemprop="description" content="அளவு, மின்சாரம், நம்பகத்தன்மை — திண்மநிலை மாறுதலை தவிர்க்க முடியாததாக்கிய மூன்று குழாய் உச்சவரம்புகள்">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1277">
+
+<title>டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/04-why-the-transistor-had-to-happen/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/04-why-the-transistor-had-to-happen/" title="Why the Transistor Had to Happen">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/04-why-the-transistor-had-to-happen/" title="เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/04-why-the-transistor-had-to-happen/" title="ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/04-why-the-transistor-had-to-happen/" title="De ce trebuia să apară tranzistorul">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/04-why-the-transistor-had-to-happen/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="active">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#மனற-கடடபபடகள-ஒர-இடயற">மூன்று கட்டுப்பாடுகள், ஒரு இடையூறு</a></li>
+    <li><a href="#எணகள-பககததறகப-பககம">எண்கள், பக்கத்திற்குப் பக்கம்</a></li>
+    <li><a href="#அடதத-எனன-வரகறத">அடுத்து என்ன வருகிறது</a></li>
+    <li><a href="#point-contact-டரனசஸடர--எனன-நடநதத">Point-contact டிரான்சிஸ்டர் — என்ன நடந்தது</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>1950களின் தொடக்கத்தில், வெற்றிடக் குழாய் ஏற்கனவே கருத்தை நிரூபித்திருந்தது: மின்னணு மாறுதல், நகரும் பாகங்கள் இல்லை, மைக்ரோவிநாடி அளவிலான வேகம். அது தீர்க்காதது <em>அளவு</em>. ஒவ்வொரு கூடுதல் குழாயும் வெப்பத்தைச் சேர்த்தது, அதிக மின்சார நுகர்வு, மற்றும் தோல்விக்கான மற்றொரு வாய்ப்பு. டிரான்சிஸ்டர் குழாயை மாற்றியது ஏனெனில் அது அழகான கேஜெட் அல்ல — அது குழாயை மாற்றியது ஏனெனில் குழாயின் சொந்த இயற்பியலுக்குக் கடினமான உச்சவரம்பு இருந்தது, மற்றும் கணினி அதைத் தாண்ட வேண்டியிருந்தது.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> gaps.md-இல் &ldquo;டிரான்சிஸ்டர் கண்டுபிடிப்பு&rdquo; என்ற பொதுத் தலைப்புக்குத் தமிழ் எழுத்தும் காணொளியும் போதுமானவை என மதிப்பீடு உள்ளது; ஆனால் &ldquo;point-contact டிரான்சிஸ்டர்&rdquo; பற்றித் தமிழில் எழுத்தும் இல்லை, காணொளியும் இல்லை (காணொளித் தேடல்: YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை). அதனால் இந்தச் சேர்க்கை point-contact சாதனத்தின் மீது கவனம் செலுத்துகிறது. சரிபார்த்த மூலங்கள்: Computer History Museum-இன் &ldquo;The Silicon Engine&rdquo; காலவரிசைப் பக்கம் (&ldquo;1947: Invention of the Point-Contact Transistor&rdquo;), John Bardeen-இன் 1956 Nobel உரை &ldquo;Semiconductor Research Leading to the Point Contact Transistor&rdquo; (nobelprize.org PDF), nobelprize.org-இன் 1956 இயற்பியல் பரிசுச் சுருக்கம். குழாய் ஆயுள், மின்தடை போன்ற சில எண்கள் &ldquo;எடுத்துக்காட்டு மதிப்புகள்&rdquo; எனக் குறிக்கப்பட்டுள்ளன. இந்தப் பதிவுக்கு lab இல்லை; காகிதப் பயிற்சிகள் கீழே.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>குறைகடத்தி (semiconductor):</strong> கடத்திக்கும் காப்பானுக்கும் இடைப்பட்ட கடத்துத்திறன் கொண்ட பொருள் — இங்கே germanium.</li>
+<li><strong>Point contact (புள்ளித் தொடர்பு):</strong> குறைகடத்தியின் மேற்பரப்பை மிகக் கூர்மையான உலோக முனை தொடும் இடம்.</li>
+<li><strong>Emitter / collector / base:</strong> முன்னோக்கு bias-இல் துளைகளை உள்ளே செலுத்தும் தொடர்பு / பின்னோக்கு bias-இல் அவற்றைச் சேகரிக்கும் தொடர்பு / குறைகடத்திக் கட்டியுடன் குறைந்த மின்தடைத் தொடர்பு.</li>
+<li><strong>துளை (hole):</strong> எலக்ட்ரான் இல்லாத இடம்; நேர் மின்னூட்டம் போல நகர்கிறது.</li>
+<li><strong>சிறுபான்மை மின்னூட்டக் கடத்திகள் (minority carriers):</strong> n-வகைப் பொருளில் துளைகள் போல, எண்ணிக்கையில் குறைவான கடத்திகள்.</li>
+<li><strong>மேற்பரப்பு நிலைகள் (surface states):</strong> குறைகடத்தியின் மேற்பரப்பில் எலக்ட்ரான்களைப் பிடித்து வைக்கும் ஆற்றல் நிலைகள்.</li>
+<li><strong>Gain / dB (பெருக்கம் / டெசிபெல்):</strong> வெளியீடு ÷ உள்ளீடு; power-க்கு dB = 10 × log₁₀(விகிதம்).</li>
+</ul>
+<h2 id="மனற-கடடபபடகள-ஒர-இடயற">மூன்று கட்டுப்பாடுகள், ஒரு இடையூறு<a class="anchor" href="#%e0%ae%ae%e0%ae%a9%e0%ae%b1-%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%b3-%e0%ae%92%e0%ae%b0-%e0%ae%87%e0%ae%9f%e0%ae%af%e0%ae%b1">#</a></h2>
+<p><strong>அளவு.</strong> ஒரு வெற்றிடக் குழாய்க்கு cathode, grid மற்றும் anode-ஐ பிரிக்கப் போதுமான பெரிய, வெற்றிடத்தை வைத்திருக்கப் போதுமான வலிமையான வெளியேற்றப்பட்ட கண்ணாடி உறை தேவை. அது எவ்வளவு சிறியதாக இருக்க முடியும் என்பதற்குத் தரை உள்ளது. ஒரு டிரான்சிஸ்டர் திண்மநிலை (solid-state) — வெற்றிடம் இல்லை, கண்ணாடி உறை இல்லை — மற்றும் அதன் அளவு உற்பத்தித் துல்லியத்தால் அமைக்கப்படுகிறது, வெளியேற்றப்பட்ட அறையின் இயற்பியலால் அல்ல. அது வேறு அளவிடல் வளைவு, மற்றும் அதுவே இறுதியில் ஒரே die-இல் பில்லியன் கணக்கான டிரான்சிஸ்டர்களை வைக்கிறது (Phase 8).</p>
+<p><strong>மின்சாரம்.</strong> ஒரு குழாயின் cathode thermionic emission-க்கு சூடாக்கப்பட வேண்டும் — குழாய் மாறினாலும் மாறாவிட்டாலும் அந்த ஹீட்டர் மின்னோட்டம் இழுக்கிறது. ஆயிரக்கணக்கான குழாய்களால் பெருக்கினால் ENIAC இன் சுமார் 150–174 kW கிடைக்கும். ஒரு டிரான்சிஸ்டருக்கு ஹீட்டர் இழை இல்லை; அது depletion region அல்லது channel-ஐ மாற்றியமைப்பதன் மூலம் மாறுகிறது, புறக்கணிக்கத்தக்க standby மின்சாரத்துடன். டிரான்சிஸ்டர் இயந்திரங்கள் உருகாமல் மிகவும் அடர்த்தியாக இருக்க முடிந்ததற்கு அதுவே ஒற்றைப் பெரிய காரணம்.</p>
+<p><strong>நம்பகத்தன்மை.</strong> குழாய்கள் இழை எரிதல் மற்றும் சீல் சீர்கேடு மூலம் தோல்வியடைகின்றன — சாதாரண வெப்ப சுழற்சியில் பதிக்கப்பட்ட தேய்வு. திண்மநிலை டிரான்சிஸ்டர்களுக்கு இழை இல்லை மற்றும் பராமரிக்க வெற்றிட சீல் இல்லை, எனவே அவை அந்தத் தோல்வி முறையை அதே வழியில் பகிர்வதில்லை. ஆரம்ப டிரான்சிஸ்டர்களுக்கு அவற்றின் சொந்த பிரச்சனைகள் இருந்தன (பேக்கேஜிங், மாசு), ஆனால் தோல்வியின் <em>பொறிமுறை</em> குழாய்களுக்கு இழை எரிதல் இருந்தது போல் அன்றாடச் செயல்பாட்டில் பதிக்கப்படவில்லை.</p>
+<h2 id="எணகள-பககததறகப-பககம">எண்கள், பக்கத்திற்குப் பக்கம்<a class="anchor" href="#%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3-%e0%ae%aa%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%a4%e0%ae%b1%e0%ae%95%e0%ae%aa-%e0%ae%aa%e0%ae%95%e0%ae%95%e0%ae%ae">#</a></h2>
+<p>ஒரு குழாய் தொடர்ச்சியாக சில வாட் அளவில் சிதறடிக்கிறது (பெரும்பாலும் ஹீட்டர்) மற்றும் தொடர்ச்சியான செயல்பாட்டில் ஆயிரக்கணக்கான மணிநேரங்கள் நீடிக்கும். ஆரம்ப டிரான்சிஸ்டர் அதன் சிறிய பகுதியைச் சிதறடிக்கிறது, ஹீட்டர் இழப்பு இல்லை, மற்றும் — முக்கியமானதாக — உற்பத்தி மேம்படும்போது அதன் அளவும் மின்சாரமும் <em>கீழே</em> அளவிடுகின்றன, குழாயினுடையவை அல்ல. அந்த சமச்சீரின்மை குவிகிறது. பத்து குழாய்கள் கையாளக்கூடியவை. பதினெட்டாயிரம் குழாய்கள் ENIAC இன் பராமரிப்புத் துர்க்கனவு. பதினெட்டாயிரம் டிரான்சிஸ்டர்கள் பில்லியன்களை வைத்திருக்கும் நவீன die-இல் கணக்கிலேயே வராத அளவு.</p>
+<p><strong>ENIAC-இன் எண்களிலிருந்து ஒரு குழாய்க்கு.</strong> இந்தப் பதிவின் சொந்த எண்கள்: சுமார் 150–174 kW, சுமார் பதினெட்டாயிரம் குழாய்கள். எல்லா மின்சாரத்தையும் குழாய்களுக்கே பிரித்தால் (மேல் வரம்பு — மற்ற சுற்றுகளும் மின்சாரம் எடுக்கின்றன):</p>
+<ul>
+<li>150,000 W ÷ 18,000 ≈ <strong>8.3 W</strong> ஒரு குழாய்க்கு</li>
+<li>174,000 W ÷ 18,000 ≈ <strong>9.7 W</strong> ஒரு குழாய்க்கு</li>
+</ul>
+<p>&ldquo;சில வாட்&rdquo; என்ற பதிவின் கூற்றுடன் அளவுவரிசையில் பொருந்துகிறது.</p>
+<p><strong>நம்பகத்தன்மை, பெருக்கலில் (எடுத்துக்காட்டு மதிப்புகள்).</strong> ஒரு பாகம் சராசரியாக M மணிநேரத்துக்கு ஒருமுறை தோல்வியடைந்தால், N சுதந்திரமான பாகங்கள் கொண்ட இயந்திரத்தில் ஏதாவது ஒன்று சராசரியாக M ÷ N மணிநேரத்துக்கு ஒருமுறை தோல்வியடையும்.</p>
+<table>
+	<thead>
+			<tr>
+					<th>பாகம்</th>
+					<th>ஒரு பாகத்தின் M</th>
+					<th>N</th>
+					<th>இயந்திரத்தின் M ÷ N</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>குழாய்</td>
+					<td>5,000 மணி</td>
+					<td>18,000</td>
+					<td>5,000 ÷ 18,000 ≈ 0.28 மணி ≈ <strong>17 நிமிடம்</strong></td>
+			</tr>
+			<tr>
+					<td>டிரான்சிஸ்டர்</td>
+					<td>1,000,000 மணி</td>
+					<td>18,000</td>
+					<td>1,000,000 ÷ 18,000 ≈ <strong>55.6 மணி</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>பாகங்களின் எண்ணிக்கை வளர வளர, ஒரு பாகத்தின் நம்பகத்தன்மையே முழு இயந்திரத்தின் உச்சவரம்பாகிறது — அதுதான் பதிவு சொல்லும் &ldquo;குவிகிறது&rdquo;.</p>
+<h2 id="அடதத-எனன-வரகறத">அடுத்து என்ன வருகிறது<a class="anchor" href="#%e0%ae%85%e0%ae%9f%e0%ae%a4%e0%ae%a4-%e0%ae%8e%e0%ae%a9%e0%ae%a9-%e0%ae%b5%e0%ae%b0%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>Point-contact டிரான்சிஸ்டர் Bell Labsஇல் 1947இல் வந்தது (Bardeen, Brattain; விரைவில் Shockley junction வடிவத்தில்). அதில் எதுவும் சாதனம் முடிந்த நிலையில் வந்தது என்று அர்த்தமல்ல. அது <em>எப்படி</em> மாறுகிறது என்பதின் இயற்பியல் — குறைகடத்திகள், doping, band gaps — இன்னும் புரிந்துகொள்ளப்பட்டு பொறியியல் செய்யப்பட வேண்டியிருந்தது. அது அது ஏன் நிகழ வேண்டியிருந்தது என்பதிலிருந்து வேறு பொருள். Phase 2 அங்கிருந்து தொடங்குகிறது: குறைகடத்தி என்றால் என்ன, சிலிகான் ஏன் தேர்ந்தெடுக்கப்பட்ட பொருளானது, மற்றும் doping குழாய்கள் ஒருபோதும் இருக்க முடியாத கட்டுப்படுத்தக்கூடிய மாறியை எப்படி உருவாக்குகிறது.</p>
+<h2 id="point-contact-டரனசஸடர--எனன-நடநதத">Point-contact டிரான்சிஸ்டர் — என்ன நடந்தது<a class="anchor" href="#point-contact-%e0%ae%9f%e0%ae%b0%e0%ae%a9%e0%ae%9a%e0%ae%b8%e0%ae%9f%e0%ae%b0--%e0%ae%8e%e0%ae%a9%e0%ae%a9-%e0%ae%a8%e0%ae%9f%e0%ae%a8%e0%ae%a4%e0%ae%a4">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தேதி</th>
+					<th>நிகழ்வு (Computer History Museum காலவரிசை)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1945</td>
+					<td>Mervin Kelly-யின் ஊக்கத்தில் William Shockley Bell Labs-இல் திண்மநிலை இயற்பியல் குழுவை அமைக்கிறார்; அதே ஆண்டு &ldquo;field-effect&rdquo; பெருக்கி யோசனை — எதிர்பார்த்தபடி வேலை செய்யவில்லை</td>
+			</tr>
+			<tr>
+					<td>~1946</td>
+					<td>மேற்பரப்பு எலக்ட்ரான்கள் மின்புலத்தைத் தடுக்கின்றன என்று John Bardeen கருதுகிறார்; Walter Brattain-உடன் &ldquo;surface states&rdquo; ஆய்வு</td>
+			</tr>
+			<tr>
+					<td>16 டிசம்பர் 1947</td>
+					<td>முதல் வெற்றிகரமான குறைகடத்திப் பெருக்கி</td>
+			</tr>
+			<tr>
+					<td>23 டிசம்பர் 1947</td>
+					<td>ஆய்வக அதிகாரிகளுக்குச் செய்முறை விளக்கம்</td>
+			</tr>
+			<tr>
+					<td>17 ஜூன் 1948</td>
+					<td>காப்புரிமை விண்ணப்பம் (U.S. Patent 2,524,035; வழங்கப்பட்டது 3 அக்டோபர் 1950)</td>
+			</tr>
+			<tr>
+					<td>30 ஜூன் 1948</td>
+					<td>New York-இல் பத்திரிகையாளர் சந்திப்பில் பொது அறிவிப்பு; &ldquo;transistor&rdquo; என்ற பெயர் John Pierce தந்தது</td>
+			</tr>
+			<tr>
+					<td>15 ஜூலை 1948</td>
+					<td>Bardeen &amp; Brattain, &ldquo;The Transistor, a Semi-Conductor Triode&rdquo;, <em>Physical Review</em> 74, பக். 230–231</td>
+			</tr>
+			<tr>
+					<td>1956</td>
+					<td>Shockley, Bardeen, Brattain மூவருக்கும் இயற்பியல் Nobel பரிசு, &ldquo;for their researches on semiconductors and their discovery of the transistor effect&rdquo; (nobelprize.org)</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>சாதனம்.</strong> CHM விவரிப்பு: உயர்-தூய்மை germanium சிறு பலகையின் மேற்பரப்பில், ஒரு plastic ஆப்பு (wedge) இரண்டு மிக நெருக்கமான தங்கத் தொடர்புகளைப் பிடித்து வைத்தது. ஒரு தொடர்பின் மின்னழுத்தம் மற்றதன் வழியே பாயும் மின்னோட்டத்தை மாற்றியது; உள்ளீட்டுச் சமிக்ஞை 100 மடங்கு வரை பெருக்கப்பட்டது. Bardeen-இன் Nobel உரை: தொடர்புகள் &ldquo;of the order of 0.005 cm&rdquo; இடைவெளியில் இருந்தால் power பெருக்கம் கிடைக்கும் என்று கணித்தனர்; முதல் முயற்சியில் ஆப்பின் மீது தங்கம் ஆவியாக்கப்பட்டு, முனையில் razor blade-ஆல் பிரிக்கப்பட்டது.</p>
+<ul>
+<li>0.005 cm = 0.05 mm = <strong>50 µm</strong> (மைக்ரோமீட்டர்).</li>
+</ul>
+<p><strong>அது எப்படிப் பெருக்குகிறது (Bardeen உரையின்படி).</strong> Emitter முன்னோக்கு bias-இல் — குறைந்த மின்தடை; அதன் மின்னோட்டத்தின் பெரும்பகுதி germanium-க்குள் பாயும் துளைகள். Collector பின்னோக்கு bias-இல் — உயர் மின்தடை; அதன் மின்னோட்டம் உருவாக்கும் மின்புலம் emitter-இன் துளைகளை இழுக்கிறது. ஆக emitter மின்னோட்டத்தின் பெரும்பகுதி collector சுற்றில் பாய்கிறது: குறைந்த மின்தடையில் நுழைந்து, உயர் மின்தடையில் வெளியேறுகிறது. அதனால் பெரிய மின்னழுத்தப் பெருக்கம்; சிறிது மின்னோட்டப் பெருக்கமும் சேர்ந்து, மொத்த power gain &ldquo;20 db. or more&rdquo;.</p>
+<ul>
+<li>20 dB = 10^(20 ÷ 10) = <strong>100 மடங்கு power</strong> — CHM-இன் &ldquo;100 மடங்கு வரை&rdquo;-உடன் பொருந்துகிறது.</li>
+</ul>
+<p><strong>ஒரு எளிய கணக்கு (எடுத்துக்காட்டு மதிப்புகள்).</strong> உள்ளீட்டு (emitter) மின்தடை R_in = 500 Ω, collector சுமை R_L = 20,000 Ω, மின்னோட்டப் பெருக்கம் α.</p>
+<table>
+	<thead>
+			<tr>
+					<th>α</th>
+					<th>மின்னழுத்தப் பெருக்கம் α × R_L ÷ R_in</th>
+					<th>Power பெருக்கம் α² × R_L ÷ R_in</th>
+					<th>dB</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>1 × 40 = 40</td>
+					<td>1 × 40 = 40</td>
+					<td>10 × log₁₀ 40 ≈ <strong>16 dB</strong></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>2 × 40 = 80</td>
+					<td>4 × 40 = 160</td>
+					<td>10 × log₁₀ 160 ≈ <strong>22 dB</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>α = 1 ஆக இருந்தாலும் (மின்னோட்டம் பெருகாவிட்டாலும்) மின்தடை விகிதம் மட்டுமே power பெருக்கத்தைத் தருகிறது.</p>
+<p><strong>பாடம்.</strong> Bardeen தன் உரையில் எழுதுகிறார்: point contact-இன் முன்னோக்கு, பின்னோக்கு மின்னோட்டங்களின் பெரும்பகுதி சிறுபான்மைக் கடத்திகளான துளைகளால் சுமக்கப்படுகிறது; &ldquo;இது முன்பே உணரப்பட்டிருந்தால், டிரான்சிஸ்டர் முன்பே வந்திருக்கக்கூடும்&rdquo;. பின்னர் Shockley முன்மொழிந்த junction டிரான்சிஸ்டரில் emitter-இன் சிறுபான்மைக் கடத்திகள் மெல்லிய base அடுக்கின் வழியே collector-க்குப் பரவுகின்றன (அதே உரை). மென்மையான இயந்திர அமைப்பு இருந்தபோதும், point-contact சாதனம் உலோக cartridge-இல் Bell Labs &ldquo;Type A&rdquo; டிரான்சிஸ்டராகப் பல ஆயிரக்கணக்கில் தயாரிக்கப்பட்டது (CHM).</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<ol>
+<li>
+<p><strong>30 dB power gain என்றால் எத்தனை மடங்கு?</strong>
+விடை: 10^(30 ÷ 10) = <strong>1,000 மடங்கு</strong>.</p>
+</li>
+<li>
+<p><strong>ஒரு இயந்திரம் 10,000 குழாய்கள், 120 kW (எடுத்துக்காட்டு மதிப்புகள்). எல்லா மின்சாரமும் குழாய்களுக்கே என்றால், ஒரு குழாய்க்கு எத்தனை வாட்?</strong>
+விடை: 120,000 ÷ 10,000 = <strong>12 W</strong>.</p>
+</li>
+<li>
+<p><strong>ஒரு குழாயின் சராசரி ஆயுள் 3,000 மணி (எடுத்துக்காட்டு மதிப்பு), 18,000 குழாய்கள். சராசரியாக எத்தனை நிமிடத்துக்கு ஒரு தோல்வி?</strong>
+விடை: 3,000 ÷ 18,000 ≈ 0.167 மணி = <strong>10 நிமிடம்</strong>.</p>
+</li>
+<li>
+<p><strong>0.005 cm-ஐ mm-இலும் µm-இலும் எழுதுக.</strong>
+விடை: <strong>0.05 mm = 50 µm</strong>.</p>
+</li>
+<li>
+<p><strong>R_in = 1,000 Ω, R_L = 50,000 Ω, α = 1 (எடுத்துக்காட்டு மதிப்புகள்). Power பெருக்கம், dB-இல்?</strong>
+விடை: 50,000 ÷ 1,000 = 50; 10 × log₁₀ 50 ≈ <strong>17 dB</strong>.</p>
+</li>
+<li>
+<p><strong>Emitter முன்னோக்கு bias-இலும் collector பின்னோக்கு bias-இலும் ஏன் இருக்க வேண்டும்?</strong>
+விடை: emitter குறைந்த மின்தடையில் துளைகளைச் செலுத்த வேண்டும்; collector உயர் மின்தடையில் அவற்றைச் சேகரிக்க வேண்டும். அந்த மின்தடை வேறுபாடே மின்னழுத்த, power பெருக்கத்தைத் தருகிறது.</p>
+</li>
+</ol>
+<p><strong>Door out:</strong> Bardeen, Brattain மற்றும் Shockley இன் Bell Labs டிரான்சிஸ்டர் கட்டுரைகள் (1940களின் பிற்பகுதி / 1950களின் தொடக்கம்) — குழாய் உச்சவரம்பை உடைத்த திண்மநிலை மாறியின் முதன்மை இயற்பியல்.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>குறைகடத்தி</td>
+					<td>semiconductor</td>
+			</tr>
+			<tr>
+					<td>புள்ளித் தொடர்பு</td>
+					<td>point contact</td>
+			</tr>
+			<tr>
+					<td>துளை</td>
+					<td>hole</td>
+			</tr>
+			<tr>
+					<td>சிறுபான்மைக் கடத்திகள்</td>
+					<td>minority carriers</td>
+			</tr>
+			<tr>
+					<td>மேற்பரப்பு நிலைகள்</td>
+					<td>surface states</td>
+			</tr>
+			<tr>
+					<td>முன்னோக்கு / பின்னோக்கு bias</td>
+					<td>forward / reverse bias</td>
+			</tr>
+			<tr>
+					<td>பெருக்கம்</td>
+					<td>gain / amplification</td>
+			</tr>
+			<tr>
+					<td>மின்தடை</td>
+					<td>resistance / impedance</td>
+			</tr>
+			<tr>
+					<td>டெசிபெல்</td>
+					<td>decibel (dB)</td>
+			</tr>
+			<tr>
+					<td>காப்புரிமை</td>
+					<td>patent</td>
+			</tr>
+			<tr>
+					<td>சராசரித் தோல்வி இடைவெளி</td>
+					<td>mean time between failures</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%AE%9F%E0%AE%BF%E0%AE%B0%E0%AE%BE%E0%AE%A9%E0%AF%8D%E0%AE%9A%E0%AE%BF%E0%AE%B8%E0%AF%8D%E0%AE%9F%E0%AE%B0%E0%AF%8D&#43;%E0%AE%8F%E0%AE%A9%E0%AF%8D&#43;%E0%AE%A8%E0%AE%BF%E0%AE%95%E0%AE%B4&#43;%E0%AE%B5%E0%AF%87%E0%AE%A3%E0%AF%8D%E0%AE%9F%E0%AE%BF%E0%AE%AF%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%A8%E0%AF%8D%E0%AE%A4%E0%AE%A4%E0%AF%81&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F04-why-the-transistor-had-to-happen%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F04-why-the-transistor-had-to-happen.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F04-why-the-transistor-had-to-happen.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/01c-why-mechanical-matters/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>இயந்திரக் கணினி ஏன் முக்கியம்</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/05-semiconductors-from-first-principles/" class="flex align-center">
+        <span>முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#மனற-கடடபபடகள-ஒர-இடயற">மூன்று கட்டுப்பாடுகள், ஒரு இடையூறு</a></li>
+    <li><a href="#எணகள-பககததறகப-பககம">எண்கள், பக்கத்திற்குப் பக்கம்</a></li>
+    <li><a href="#அடதத-எனன-வரகறத">அடுத்து என்ன வருகிறது</a></li>
+    <li><a href="#point-contact-டரனசஸடர--எனன-நடநதத">Point-contact டிரான்சிஸ்டர் — என்ன நடந்தது</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Adresa folosită de program nu mai este locul din memorie: pagini, defecte de pagină, working set și thrashing">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/24-virtual-memory-and-multitasking/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Memoria virtuală și multitaskingul">
+	<meta property="og:description" content="Adresa folosită de program nu mai este locul din memorie: pagini, defecte de pagină, working set și thrashing">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:25:24+05:30">
+
+
+	<meta itemprop="name" content="Memoria virtuală și multitaskingul">
+	<meta itemprop="description" content="Adresa folosită de program nu mai este locul din memorie: pagini, defecte de pagină, working set și thrashing">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:25:24+05:30">
+	<meta itemprop="wordCount" content="1761">
+
+<title>Memoria virtuală și multitaskingul • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/24-virtual-memory-and-multitasking/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/24-virtual-memory-and-multitasking/" title="Virtual Memory and Multitasking">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/24-virtual-memory-and-multitasking/" title="หน่วยความจำเสมือนและการมัลติทาสก์">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/24-virtual-memory-and-multitasking/" title="අතථ්‍ය මතකය සහ බහුකාර්යතාව">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/24-virtual-memory-and-multitasking/" title="Virtual Memory மற்றும் Multitasking">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/24-virtual-memory-and-multitasking/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/24-virtual-memory-and-multitasking/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/24-virtual-memory-and-multitasking/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="active">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Memoria virtuală și multitaskingul</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ideea-de-bază-adresa-nu-e-locul">Ideea de bază: adresa nu e locul</a></li>
+    <li><a href="#atlas-miez-de-ferite-plus-tambur-văzute-ca-o-singură-memorie">Atlas: miez de ferite plus tambur, văzute ca o singură memorie</a>
+      <ul>
+        <li><a href="#pagini-registre-de-adresă-de-pagină-și-nonechivalență">Pagini, registre de adresă de pagină și „nonechivalență”</a></li>
+        <li><a href="#tamburul-și-primul-algoritm-de-înlocuire">Tamburul și primul algoritm de înlocuire</a></li>
+      </ul>
+    </li>
+    <li><a href="#working-set-câtă-memorie-îi-trebuie-de-fapt-unui-proces">Working set: câtă memorie îi trebuie de fapt unui proces</a>
+      <ul>
+        <li><a href="#thrashing">Thrashing</a></li>
+      </ul>
+    </li>
+    <li><a href="#segmente-și-pagini-multics">Segmente și pagini: Multics</a></li>
+    <li><a href="#multitasking-de-ce-protecția-vine-din-traducere">Multitasking: de ce protecția vine din traducere</a></li>
+    <li><a href="#ce-urmează">Ce urmează</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Memoria virtuală și multitaskingul
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Time-sharing-ul din capitolul 22 ține mai multe programe în aceeași memorie. Articolul CTSS din 1962 cerea deja de la hardware protecția memoriei și relocarea dinamică a fiecărei accesări (Corbató, F. J., Merwin-Daggett, M., Daley, R. C., „An Experimental Time-Sharing System”, <em>Proc. AFIPS 1962 SJCC</em>, vol. 21, pp. 335–344, aici p. 336; <a href="https://cseweb.ucsd.edu/classes/wi19/cse221-a/papers/corbato62.pdf">cseweb.ucsd.edu/classes/wi19/cse221-a/papers/corbato62.pdf</a>, accesat 2026-11-05). Memoria virtuală generalizează aceste două cerințe într-o singură idee: adresa pe care o folosește programul nu mai este adresa fizică din memorie.</p>
+<h2 id="ideea-de-bază-adresa-nu-e-locul">Ideea de bază: adresa nu e locul<a class="anchor" href="#ideea-de-baz%c4%83-adresa-nu-e-locul">#</a></h2>
+<p>Peter Denning rezumă în 1970 ideea astfel: într-o memorie virtuală, adresele pe care le folosește un program se deosebesc de adresele cu care sistemul de memorie identifică locațiile fizice, iar traducerea dintre ele se face automat (Denning, P. J., „Virtual Memory”, <em>Computing Surveys</em> 2(3), septembrie 1970, pp. 153–189, abstract; <a href="https://denninginstitute.com/pjd/PUBS/VirtMem_1970.pdf">denninginstitute.com/pjd/PUBS/VirtMem_1970.pdf</a>, accesat 2026-11-05). Denning numește motivele: modularitatea programelor, independența față de mașină și partajarea resurselor (ibid., abstract). Tot el scrie că, astfel, problema alocării memoriei „vanishes completely from the programmer&rsquo;s purview” și trece în sarcina sistemului (ibid., p. 156).</p>
+<p>Denning plasează originea în 1961, când grupul de la Manchester a publicat propunerea unei memorii pe un singur nivel (<em>one-level store</em>) pentru calculatorul Atlas, „a proposal that has had profound influence on computer system architecture” (ibid., p. 156). El adaugă că, până la mijlocul anilor 1960, ideea fusese aplicată în proiectarea multor procesoare mari, între care IBM 360/85 și 195, CDC 7600, Burroughs B6500 și GE 645 (ibid., p. 156).</p>
+<h2 id="atlas-miez-de-ferite-plus-tambur-văzute-ca-o-singură-memorie">Atlas: miez de ferite plus tambur, văzute ca o singură memorie<a class="anchor" href="#atlas-miez-de-ferite-plus-tambur-v%c4%83zute-ca-o-singur%c4%83-memorie">#</a></h2>
+<p>Articolul lui Kilburn, Edwards, Lanigan și Sumner explică de ce: pe Atlas se puteau adresa 10⁶ cuvinte, iar prima instalație de la Universitatea Manchester avea în total 10⁵, dar era mult mai economic să le dai ca o combinație de memorie cu ferite (16.000 de cuvinte) și tambur magnetic (96.000 de cuvinte) decât ca un singur nivel rapid (Kilburn, T., Edwards, D. B. G., Lanigan, M. J., Sumner, F. H., „One-Level Storage System”, §1 „Introduction”; copie: <a href="https://www.dcs.gla.ac.uk/~wpc/grcs/kilburn.pdf">dcs.gla.ac.uk/~wpc/grcs/kilburn.pdf</a>, accesat 2026-11-05). Timpul de acces la tambur era de 6 ms (ibid., §1).</p>
+<p>Datele de publicare lipsesc din copia de la Glasgow. Metadatele DOI (Crossref) dau <em>IRE Transactions on Electronic Computers</em>, vol. EC-11, nr. 2, aprilie 1962, pp. 223–235, DOI <a href="https://doi.org/10.1109/TEC.1962.5219356">10.1109/TEC.1962.5219356</a> (Crossref, interogare api.crossref.org, accesat 2026-11-05). Numerele de secțiune de mai jos sunt cele din copia de la Glasgow; originalul IRE nu a fost deschis (paywall). <!-- NEVERIFICAT: paginile individuale din originalul IRE pentru afirmațiile din §1–§6 | surse încercate: copia dcs.gla.ac.uk (fără paginație), Crossref (doar metadate) --></p>
+<p>Autorii spun de ce nu se putea lăsa programatorul să organizeze singur transferurile: Atlas rula echipamentele periferice prin întreruperi și putea ține mai multe programe în memorie în același timp, așa că nu era „really feasible” să „optimizezi” transferurile dintre ferite și tambur din program (ibid., §1). Soluția a fost un sistem care face ca ferita și tamburul să apară programatorului ca un singur nivel de memorie, cu transferuri automate (ibid., §1). Ca beneficii suplimentare, ei numesc adresarea relativă, care permite rutinelor să ruleze oriunde în memorie, și un mecanism de blocare (<em>lock out</em>) care împiedică interferența dintre programele aflate simultan în memorie (ibid., §1).</p>
+<h3 id="pagini-registre-de-adresă-de-pagină-și-nonechivalență">Pagini, registre de adresă de pagină și „nonechivalență”<a class="anchor" href="#pagini-registre-de-adres%c4%83-de-pagin%c4%83-%c8%99i-nonechivalen%c8%9b%c4%83">#</a></h3>
+<p>Memoria centrală era împărțită în blocuri de 512 cuvinte, iar memoria cu ferite era împărțită în poziții de aceeași mărime, numite <strong>pagini</strong> (ibid., §3 „One-Level Store Concept”). Fiecărei pagini din ferită îi corespundea un registru de adresă de pagină (<em>page address register</em>, PAR), care conținea numărul blocului aflat acolo în acel moment (ibid., §3). La fiecare acces, adresa de bloc cerută era comparată cu toate registrele PAR; dacă apărea o „echivalență”, accesul era permis la acea pagină (ibid., §3). Un bloc putea ocupa oricare dintre cele 32 de poziții de pagină din ferită (ibid., §3).</p>
+<p>Dacă nu exista echivalență, adresa cerută era salvată într-un registru și apărea o întrerupere, care pornea o rutină din memoria fixă ce organiza transferul dintre tambur și ferită (ibid., §3). Este ceea ce azi numim <em>page fault</em> (defect de pagină), deși termenul nu apare în articol.</p>
+<p><strong>Exemplu ilustrativ (calculul nostru, nu din articol):</strong> cu blocuri de 512 cuvinte, cuvântul cu adresa 1.000 din memoria centrală se află în blocul 1, la linia 488, pentru că 1.000 = 1 × 512 + 488. Mașina caută „blocul 1” printre cele 32 de registre PAR; dacă îl găsește, de exemplu în poziția de pagină 7, accesul merge la linia 488 din pagina fizică 7. Dacă nu îl găsește, apare întreruperea.</p>
+<p>Am găsit o neconcordanță între surse: articolul lui Kilburn et al. vorbește de 32 de poziții de pagină în ferită (§3), iar pagina de istorie Multics spune că paginarea fusese demonstrată pe Atlas „with 16 pages” (Multicians, „Multics History”, §2.0.1 „Predecessors”, <a href="https://multicians.org/history.html">multicians.org/history.html</a>, accesat 2026-11-05). Cifra 32 se potrivește cu descrierea hardware din articol: patru stive de câte 4.096 de cuvinte (Kilburn et al., §2), adică 16.384 de cuvinte împărțite la 512 dau 32 (calculul nostru). Și programul de „învățare” ține „32 values of t and T, one of each for each page of the core store” (Kilburn et al., §5). Pe pagină folosim 32, cifra din sursa primară.</p>
+<h3 id="tamburul-și-primul-algoritm-de-înlocuire">Tamburul și primul algoritm de înlocuire<a class="anchor" href="#tamburul-%c8%99i-primul-algoritm-de-%c3%aenlocuire">#</a></h3>
+<p>Timpul unui transfer de citire de pe tambur varia între 2 și 14 ms, pentru că o rotație dura 12 ms și transferul propriu-zis 2 ms (ibid., §3A „Drum Transfers”). Scrierea pe tambur era accelerată prin scrierea blocului în prima poziție liberă de pe oricare tambur, cu un director actualizat la fiecare transfer (ibid., §3A).</p>
+<p>Când ferita era plină, sistemul trebuia să aleagă ce pagină trimite înapoi pe tambur. Autorii observă că alegerea ideală ar putea-o face doar programatorul, care însă ar trebui să știe exact cum funcționează programul său, „which is not always the case”, și câtă memorie îi este disponibilă în fiecare moment, informație care în general nu există, pentru că memoria e împărțită cu alte programe (ibid., §5 „The Drum Transfer Learning Program”). Soluția lor, programul de „învățare” (<em>learning program</em>), urmărea comportamentul programului: fiecare pagină avea un bit de utilizare (<em>use digit</em>), pus pe 1 la orice acces, iar biții erau copiați într-o listă la fiecare 1.024 de instrucțiuni executate (ibid., §5). Folosirea unui contor de instrucțiuni în locul unui ceas real era deliberată: programul principal putea fi întrerupt aleator de periferice, iar contorul păstra același tipar temporal la rulări succesive (ibid., §5).</p>
+<p>Din aceste date, programul ținea pentru fiecare pagină două valori: <em>t</em>, timpul de când pagina nu a mai fost folosită, și <em>T</em>, durata ultimei perioade de inactivitate (ibid., §5). Prima regulă alegea orice pagină nefolosită de mai mult timp decât ultima ei perioadă de inactivitate, adică o pagină pe care programul probabil nu o mai folosește (ibid., §5). Autorii raportează că metoda ocupa mai puțin de 1% din timpul de funcționare, iar reducerea numărului de transferuri acoperea cu prisosință acest cost (ibid., §5).</p>
+<h2 id="working-set-câtă-memorie-îi-trebuie-de-fapt-unui-proces">Working set: câtă memorie îi trebuie de fapt unui proces<a class="anchor" href="#working-set-c%c3%a2t%c4%83-memorie-%c3%aei-trebuie-de-fapt-unui-proces">#</a></h2>
+<p>Denning pornește în 1968 de la observația că, într-un sistem cu resurse multiplexate, fiecare utilizator primește iluzia că are la dispoziție un sistem de calcul complet, un „calculator virtual”, cu procesor virtual și memorie virtuală „infinită”, pe un singur nivel (Denning, P. J., „The Working Set Model for Program Behavior”, <em>Communications of the ACM</em> 11(5), mai 1968, pp. 323–333, aici p. 323; <a href="https://denninginstitute.com/pjd/PUBS/WSModel_1968.pdf">denninginstitute.com/pjd/PUBS/WSModel_1968.pdf</a>, accesat 2026-11-05). El susține că sistemul de operare trebuie să afle singur comportamentul programelor, pentru că nici utilizatorul, nici compilatorul nu pot da informații de alocare adecvate (ibid., p. 323).</p>
+<p>Definiția lui: <em>working set</em>-ul W(t, τ) al unui proces la momentul <em>t</em> este mulțimea informației la care procesul a făcut referire în intervalul de timp de proces (t − τ, t); τ se numește parametrul working set-ului (ibid., p. 325). Din punctul de vedere al sistemului, aceasta înseamnă mulțimea paginilor folosite cel mai recent (ibid., p. 325). Una dintre proprietățile enunțate: mărimea working set-ului crește monoton cu τ, pentru că într-un interval mai lung pot fi referite mai multe pagini (ibid., p. 325, proprietatea P1).</p>
+<h3 id="thrashing">Thrashing<a class="anchor" href="#thrashing">#</a></h3>
+<p>Denning descrie și fenomenul care face memoria virtuală periculoasă în multiprogramare: când prea multe working set-uri ocupă memoria principală, fiecare îi dislocă paginile celuilalt ca să și le aducă pe ale sale, iar acest fenomen, „known as thrashing”, poate lăsa multe programe blocate în așteptarea paginilor și poate degrada serios serviciul (ibid., p. 332). Concluzia lui practică: memoria trebuie echilibrată prima, iar procesorul abia după aceea (ibid., p. 332). Tot acolo, el compară patru politici de înlocuire a paginilor, aleatoare, FIFO, LRU și working set, și scrie că politica aleatoare produce cel mai mare trafic de pagini, iar working set-ul cel mai mic (ibid., p. 332).</p>
+<p>În sinteza din 1970, Denning enumeră problemele întâlnite de implementările de atunci: fragmentarea, pentru că cererile de memorie sunt rotunjite la un număr întreg de pagini; costul mare al paginării „pure” la cerere (<em>pure demand paging</em>), când paginile de lucru ale unui program sunt aduse una câte una la începutul fiecărui quantum; și sensibilitatea extremă la thrashing (Denning, 1970, p. 156).</p>
+<h2 id="segmente-și-pagini-multics">Segmente și pagini: Multics<a class="anchor" href="#segmente-%c8%99i-pagini-multics">#</a></h2>
+<p>Denning compară în 1970 cele două metode principale: segmentarea, care organizează spațiul de adrese în blocuri de mărime variabilă, și paginarea, care îl organizează în pagini de mărime fixă (Denning, 1970, p. 156). Multics le combina: memoria era împărțită în segmente adresate direct de programe, segmentele puteau fi partajate între spațiile de adrese ale mai multor procese, iar fiecare segment avea adrese de la 0 la 256K cuvinte (1 MB) (Multicians, „Multics History”, §1.2.1 „Segmented memory”). Aceeași pagină îl creditează pe profesorul Jack Dennis de la MIT cu ideea de a combina paginarea și segmentarea (ibid., §2.0.1).</p>
+<h2 id="multitasking-de-ce-protecția-vine-din-traducere">Multitasking: de ce protecția vine din traducere<a class="anchor" href="#multitasking-de-ce-protec%c8%9bia-vine-din-traducere">#</a></h2>
+<p>Legătura cu multitaskingul apare deja în textele primare. Kilburn et al. enumeră ca avantaje ale sistemului automat alocarea eficientă a memoriei între programe diferite și mecanismele de blocare, și observă că niciun programator, oricât de inteligent, nu poate ști câte programe sau periferice funcționează în timp ce rulează programul său (Kilburn et al., §6 „Conclusions”). Articolul despre Unix din 1974 notează că a doua versiune a sistemului rula pe un PDP-11/20 „unprotected” (Ritchie, D. M., Thompson, K., „The UNIX Time-Sharing System”, <em>CACM</em> 17(7), 1974, §1; <a href="https://people.eecs.berkeley.edu/~brewer/cs262/unix.pdf">people.eecs.berkeley.edu/~brewer/cs262/unix.pdf</a>, accesat 2026-11-05), iar Ritchie descrie munca pe acea mașină fără protecție a memoriei ca una în care fiecare program nou testat putea prăbuși ușor sistemul (Ritchie, D. M., „The Evolution of the Unix Time-sharing System”, 1984, „The first PDP-11 system”; <a href="https://www.nokia.com/bell-labs/about/dennis-m-ritchie/hist.html">nokia.com/bell-labs/about/dennis-m-ritchie/hist.html</a>, accesat 2026-11-05).</p>
+<!-- NEVERIFICAT / omis: detaliile tabelelor de pagini multinivel, TLB și bitul NX la x86-64 cer Intel SDM (403 la fetch automat). Nu le includ până nu sunt verificate dintr-o sursă deschisă. -->
+<h2 id="ce-urmează">Ce urmează<a class="anchor" href="#ce-urmeaz%c4%83">#</a></h2>
+<p>Memoria virtuală izolează <em>memoria</em> proceselor. Capitolul 25 arată cum nucleul Linux izolează și restul: arborele de procese, rețeaua, sistemul de fișiere și consumul de resurse.</p>
+<p><strong>Încearcă acum.</strong> Pornește mașina virtuală de mai jos și rulează câteva comenzi: fiecare rulează ca proces separat al nucleului Linux din mașină.</p>
+<!-- NEVERIFICAT: un exercițiu cu /proc/self/maps ar cere proc(5) deschis și ieșirea verificată în VM; omis. -->
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=ro"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=ro" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9b17a0270323d6e8d6f80d4dde73cb1f8612bcaa" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Memoria&#43;virtual%C4%83&#43;%C8%99i&#43;multitaskingul&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F24-virtual-memory-and-multitasking%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F24-virtual-memory-and-multitasking.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F24-virtual-memory-and-multitasking.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Mișcarea GNU și Linux</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="flex align-center">
+        <span>Containerele și izolarea în sistemele de operare moderne</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ideea-de-bază-adresa-nu-e-locul">Ideea de bază: adresa nu e locul</a></li>
+    <li><a href="#atlas-miez-de-ferite-plus-tambur-văzute-ca-o-singură-memorie">Atlas: miez de ferite plus tambur, văzute ca o singură memorie</a>
+      <ul>
+        <li><a href="#pagini-registre-de-adresă-de-pagină-și-nonechivalență">Pagini, registre de adresă de pagină și „nonechivalență”</a></li>
+        <li><a href="#tamburul-și-primul-algoritm-de-înlocuire">Tamburul și primul algoritm de înlocuire</a></li>
+      </ul>
+    </li>
+    <li><a href="#working-set-câtă-memorie-îi-trebuie-de-fapt-unui-proces">Working set: câtă memorie îi trebuie de fapt unui proces</a>
+      <ul>
+        <li><a href="#thrashing">Thrashing</a></li>
+      </ul>
+    </li>
+    <li><a href="#segmente-și-pagini-multics">Segmente și pagini: Multics</a></li>
+    <li><a href="#multitasking-de-ce-protecția-vine-din-traducere">Multitasking: de ce protecția vine din traducere</a></li>
+    <li><a href="#ce-urmează">Ce urmează</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="O cale de date cu un singur ciclu face piesele vizibile și arată de ce ceasul ei e dimensionat după cazul cel mai lent">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/12-datapath-design/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Proiectarea căii de date">
+	<meta property="og:description" content="O cale de date cu un singur ciclu face piesele vizibile și arată de ce ceasul ei e dimensionat după cazul cel mai lent">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:06:55+05:30">
+
+
+	<meta itemprop="name" content="Proiectarea căii de date">
+	<meta itemprop="description" content="O cale de date cu un singur ciclu face piesele vizibile și arată de ce ceasul ei e dimensionat după cazul cel mai lent">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:06:55+05:30">
+	<meta itemprop="wordCount" content="804">
+
+<title>Proiectarea căii de date • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/12-datapath-design/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/12-datapath-design/" title="Datapath Design">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/12-datapath-design/" title="การออกแบบ Datapath">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/12-datapath-design/" title="Datapath නිර්මාණය">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/12-datapath-design/" title="Datapath வடிவமைப்பு">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/12-datapath-design/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/12-datapath-design/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/12-datapath-design/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/12-datapath-design/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="active">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Proiectarea căii de date</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#piesele-numite-încă-din-1945">Piesele, numite încă din 1945</a></li>
+    <li><a href="#cum-circulă-o-instrucțiune-varianta-ias-1946">Cum circulă o instrucțiune: varianta IAS, 1946</a></li>
+    <li><a href="#o-cale-de-date-cu-un-singur-ciclu-pe-o-mașină-de-tip-risc">O cale de date cu un singur ciclu, pe o mașină de tip RISC</a></li>
+    <li><a href="#constrângerea-care-forțează-pipelining-ul">Constrângerea care forțează pipelining-ul</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Proiectarea căii de date
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 11 a definit contractul, adică ce instrucțiuni promite mașina. Calea de date (<em>datapath</em>) e hardware-ul care respectă promisiunea; piesele ei au fost numite încă din 1945.</p>
+<h2 id="piesele-numite-încă-din-1945">Piesele, numite încă din 1945<a class="anchor" href="#piesele-numite-%c3%aenc%c4%83-din-1945">#</a></h2>
+<p>Împărțirea în piese e mai veche decât orice cip. În <em>First Draft of a Report on the EDVAC</em>, von Neumann separă trei „specific parts”. Prima e o parte aritmetică centrală, CA, pentru că mașina va face cel mai des operațiile elementare (von Neumann, J., <em>First Draft of a Report on the EDVAC</em>, 30 iunie 1945, §2.2, ediția Godfrey, <a href="https://people.csail.mit.edu/brooks/idocs/JvN.pdf">PDF</a>, accesat 2026-11-05). A doua e un organ de control central, CC, care asigură „the proper sequencing of its operations”. Von Neumann distinge explicit instrucțiunile unei probleme anume, care trebuie stocate, de organele de control care le execută, „no matter what they are” (ibid., §2.3). A treia e memoria, M (ibid., §2.4–2.5).</p>
+<p>Lectura noastră: distincția din §2.3 corespunde graniței dintre ISA și calea de date: instrucțiunile se schimbă de la program la program, iar organele care le execută rămân aceleași.</p>
+<h2 id="cum-circulă-o-instrucțiune-varianta-ias-1946">Cum circulă o instrucțiune: varianta IAS, 1946<a class="anchor" href="#cum-circul%c4%83-o-instruc%c8%9biune-varianta-ias-1946">#</a></h2>
+<p>Raportul IAS din 1946 descrie pas cu pas ce face controlul. Un cuvânt de memorie conține o pereche de ordine. Controlul trebuie să comande memoriei Selectron să transmită perechea în registrul Selectron și de acolo în control, apoi să comande execuția operației din primul ordin. Apoi procesul se repetă cu al doilea ordin, „until the end of the problem” (Burks, Goldstine, von Neumann, <em>Preliminary Discussion…</em>, IAS, 1946, §6.1; transcriere HTML <a href="https://www.cs.unc.edu/~adyilie/comp265/vonNeumann.html">cs.unc.edu</a>, accesat 2026-11-05).</p>
+<p>Același pasaj distinge două tipuri principale de ordine. Unul aduce un număr dintr-o locație de memorie în registrul Selectron, cere unității aritmetice o operație cu el, de obicei împreună cu un număr aflat deja acolo, și păstrează rezultatul în unitatea aritmetică. Celălalt mută numărul din unitatea aritmetică, prin registrul Selectron, într-o locație de memorie (ibid.). În termeni de azi (echivalarea e a noastră), primul e o instrucțiune de tip încărcare-și-operație (<em>load-and-operate</em>), iar al doilea o scriere în memorie (<em>store</em>).</p>
+<p>Unitatea aritmetică are la rândul ei piese numite. Prima e un acumulator, „a parallel storage organ which can receive a number and add it to the one already in it, which is also able to clear its contents and which can transmit what it contains” (ibid., §5.5). Autorii notează că acest organ e „quite conventional”, prezent în mașini de birou, contoare IBM, mașini cu relee și ENIAC (ibid.). Pentru înmulțire, raportul folosește un al doilea registru, AR, care se deplasează spre dreapta odată cu acumulatorul, și un contor binar cu șase etaje care numără cei 39 de pași (ibid., §5.8).</p>
+<h2 id="o-cale-de-date-cu-un-singur-ciclu-pe-o-mașină-de-tip-risc">O cale de date cu un singur ciclu, pe o mașină de tip RISC<a class="anchor" href="#o-cale-de-date-cu-un-singur-ciclu-pe-o-ma%c8%99in%c4%83-de-tip-risc">#</a></h2>
+<p>Manualele moderne explică aceleași piese pe un ISA simplu, cu o cale de date în care fiecare instrucțiune se termină într-un singur ciclu de ceas. Pașii sunt: citești instrucțiunea de la adresa din <code>pc</code>, citești registrele sursă, calculezi în ALU (rezultatul sau adresa), accesezi memoria de date dacă e un load sau un store, scrii rezultatul în registrul destinație și actualizezi <code>pc</code>. Multiplexoarele aleg, după tipul instrucțiunii, ce intră în ALU și ce se scrie înapoi. <!-- NEVERIFICAT: Patterson & Hennessy, *Computer Organization and Design* (sursa didactică standard pentru calea de date cu un singur ciclu) e o carte fără copie deschisă în această sesiune; descrierea de mai sus nu preia figuri sau cifre din ea. --></p>
+<p>ISA-ul poate face calea de date mai ușoară. Manualul RISC-V spune că registrele <code>rs1</code>, <code>rs2</code> și <code>rd</code> stau în aceleași poziții în toate formatele de bază „to simplify decoding” (<em>The RISC-V Instruction Set Manual, Volume I: Unprivileged ISA</em>, versiunea 20240411 (RV32I 2.1 „Ratified”), §2.2, p. 23; <a href="https://github.com/riscv/riscv-isa-manual/releases/download/20240411/unpriv-isa-asciidoc.pdf">PDF</a>, accesat 2026-11-05). Pe calea de date, asta înseamnă că fișierul de registre poate primi adresele de citire direct din biți fixați ai instrucțiunii, înainte ca decodorul să termine de stabilit ce operație e. Inferența aceasta, despre ce câștigă hardware-ul, e a noastră; manualul dă doar motivul, „simplify decoding”.</p>
+<h2 id="constrângerea-care-forțează-pipelining-ul">Constrângerea care forțează pipelining-ul<a class="anchor" href="#constr%c3%a2ngerea-care-for%c8%9beaz%c4%83-pipelining-ul">#</a></h2>
+<p>Într-o cale de date cu un singur ciclu, fiecare instrucțiune trebuie să încapă într-o perioadă de ceas. Ceasul e unul singur, așa că perioada lui e dată de instrucțiunea cu drumul cel mai lung, de obicei un load: memorie de instrucțiuni, registre, ALU pentru adresă, memorie de date, scriere înapoi. E același buget de timp ca între două bistabile din capitolul 09. <!-- NEVERIFICAT: afirmația că perioada e dată de drumul cel mai lung, de obicei un load, e vocabular didactic standard, necitat dintr-o sursă deschisă. --></p>
+<p>Exemplu ilustrativ (cifre inventate pentru aritmetică, nu măsurători): dacă un load ar avea nevoie de 200 + 100 + 150 + 200 + 100 = 750 de unități de timp, iar o adunare între registre de doar 200 + 100 + 150 + 100 = 550, ceasul trebuie totuși să meargă la 750 pentru toate instrucțiunile. Adunarea irosește 200 de unități în fiecare ciclu. Proporția e a exemplului nostru, nu a vreunui procesor real.</p>
+<p>Sunt două ieșiri din impas. Prima: tai instrucțiunea în mai mulți pași scurți, pe ceas mai rapid, și lași instrucțiunile simple să folosească mai puțini pași. A doua: tai calea de date în etaje și pui mai multe instrucțiuni în lucru în același timp. Capitolul 13 urmărește a doua variantă. <!-- NEVERIFICAT: cele două „ieșiri” (multi-ciclu și pipeline) sunt prezentarea didactică standard, necitată aici; pentru a doua, Bloch 1959 dă exemplul istoric din capitolul 13. --></p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/fda917a9de57c81d9cc44247a03a0a49d955181d" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Proiectarea&#43;c%C4%83ii&#43;de&#43;date&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F12-datapath-design%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F12-datapath-design.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F12-datapath-design.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/11-instruction-sets/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Seturi de instrucțiuni</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/13-pipelining/" class="flex align-center">
+        <span>Pipelining</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#piesele-numite-încă-din-1945">Piesele, numite încă din 1945</a></li>
+    <li><a href="#cum-circulă-o-instrucțiune-varianta-ias-1946">Cum circulă o instrucțiune: varianta IAS, 1946</a></li>
+    <li><a href="#o-cale-de-date-cu-un-singur-ciclu-pe-o-mașină-de-tip-risc">O cale de date cu un singur ciclu, pe o mașină de tip RISC</a></li>
+    <li><a href="#constrângerea-care-forțează-pipelining-ul">Constrângerea care forțează pipelining-ul</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

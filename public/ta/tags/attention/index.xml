@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Attention on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+		<link>http://localhost:1478/ta/tags/attention/</link>
+		<description>Recent content in Attention on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</description>
+		<generator>Hugo</generator>
+		<language>ta</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:48:08 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/ta/tags/attention/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Attention Is All You Need</title>
+				<link>http://localhost:1478/ta/posts/63-attention-is-all-you-need/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/63-attention-is-all-you-need/</guid>
+				<description>Self-attention spine-ஐ மூடியது — பயணம் கட்டிய matmul வன்பொருள் மீது வரைபடமாகும் parallel வரிசை மாதிரியாக்கம்</description>
+			</item>
+	</channel>
+</rss>

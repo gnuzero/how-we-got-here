@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ගියර් වැඩසටහනේ අදහස බල කළේය; ඝර්ෂණය විදුලිය බල කළේය">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/01-mechanical-electromechanical-computing/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය">
+	<meta property="og:description" content="ගියර් වැඩසටහනේ අදහස බල කළේය; ඝර්ෂණය විදුලිය බල කළේය">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:37:53+05:30">
+
+
+	<meta itemprop="name" content="යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය">
+	<meta itemprop="description" content="ගියර් වැඩසටහනේ අදහස බල කළේය; ඝර්ෂණය විදුලිය බල කළේය">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:37:53+05:30">
+	<meta itemprop="wordCount" content="2094">
+
+<title>යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/01-mechanical-electromechanical-computing/">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="active">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#babbage-ග-එනජන">Babbage ගේ එන්ජින්</a></li>
+    <li><a href="#jacquard-රද-යනතරය">Jacquard රෙදි යන්ත්‍රය</a></li>
+    <li><a href="#මය-ඊට-පස-සයලලටම-වදගත-වනන-ඇය">මෙය ඊට පසු සියල්ලටම වැදගත් වන්නේ ඇයි</a></li>
+    <li><a href="#ගඹරන-එකත-කරමන-පමණක-වගවක-ගණනය-කරම--සමත-අනතර-කරමය-පයවරන-පයවර">ගැඹුරින්: එකතු කිරීමෙන් පමණක් වගුවක් ගණනය කිරීම — සීමිත අන්තර ක්‍රමය පියවරෙන් පියවර</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-පරශනය-මනසන-ගණනය-කළ-වග">2. ප්‍රශ්නය: මිනිසුන් ගණනය කළ වගු</a></li>
+        <li><a href="#3-කරමය-අතන-chm-උදහරණය-fx--x--4">3. ක්‍රමය අතින්: CHM උදාහරණය F(x) = x² + 4</a></li>
+        <li><a href="#4-ඉහළ-බල-n-වන-අනතරය-නයතය">4. ඉහළ බල: n වන අන්තරය නියතය</a></li>
+        <li><a href="#5-ආරමභක-අගයක-දෂයක-පතරන-හට-ආදරශ">5. ආරම්භක අගයක දෝෂයක් පැතිරෙන හැටි (ආදර්ශ)</a></li>
+        <li><a href="#6-ඉලකකම-රද-සහ-රගන-යම">6. ඉලක්කම් රෝද සහ රැගෙන යාම</a></li>
+        <li><a href="#7-යනතරවල-පරමණය-chm-අක">7. යන්ත්‍රවල පරිමාණය (CHM අංක)</a></li>
+        <li><a href="#8-analytical-engine-store-mill-සහ-කඩ">8. Analytical Engine: store, mill සහ කාඩ්</a></li>
+        <li><a href="#9-පනසලන-අභයසය">9. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>පරිගණකකරණය විදුලිය සමඟ ආරම්භ නොවීය. එය ආරම්භ වූයේ ගියර් සමඟිනි.</p>
+<h2 id="babbage-ග-එනජන">Babbage ගේ එන්ජින්<a class="anchor" href="#babbage-%e0%b6%9c-%e0%b6%91%e0%b6%b1%e0%b6%a2%e0%b6%b1">#</a></h2>
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/London_Science_Museum_by_Marcin_Wichary_-_Difference_Engine_No._2%2C_pt._1_%282290036668%29.jpg" alt="ලන්ඩන් Science Museum හි Charles Babbage ගේ Difference Engine No. 2" loading="lazy" width="1280">
+<figcaption>Difference Engine No. 2 (Science Museum, London). ඡායාරූපය: <a href="https://commons.wikimedia.org/wiki/File:London_Science_Museum_by_Marcin_Wichary_-_Difference_Engine_No._2,_pt._1_(2290036668).jpg">Marcin Wichary</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
+</figure>
+<p>1822 දී Charles Babbage විසින් Difference Engine යෝජනා කළේය — අන්තර්ලිප්ත ගියර් සහ තීරු රෝද හරහා පමණක්, සීමිත අන්තරයන්ගේ ක්‍රමය (method of finite differences) භාවිතයෙන් බහුපද ශ්‍රිත ගණනය කළ හැකි යාන්ත්‍රික ගණක යන්ත්‍රයකි. විදුලියක් නැත. සෑම තීරුවක්ම ඉලක්කමක් විය; &ldquo;1&rdquo; ගෙන යාම භෞතික සිදුවීමක් විය: ගියර් දතක් අසල්වැසියා අල්ලා කරකැවීම.</p>
+<p>ඔහු සම්පූර්ණ පරිමාණ Difference Engine එකක් කිසි විටෙකත් අවසන් කළේ නැත — අරමුදල් සහ නිෂ්පාදන ඉවසීම් දෙකම ඔහුට එරෙහි විය — නමුත් ඔහුගේ අනුගාමී ව්‍යාපෘතිය වන Analytical Engine සැබෑ පූර්වජයා ය. එයට &ldquo;store&rdquo; (මතකය) සහ &ldquo;mill&rdquo; (අංක ගණිත ඒකකය) තිබූ අතර, එය ක්‍රමලේඛනය කළ හැකි විය. උපදෙස් පැමිණියේ පන්ච් කාඩ් වලින් — කර්මාන්තශාලා බිමේ දැනටමත් තිබූ කාර්මික යන්ත්‍රයකින් ණයට ගත් අදහසකි.</p>
+<h2 id="jacquard-රද-යනතරය">Jacquard රෙදි යන්ත්‍රය<a class="anchor" href="#jacquard-%e0%b6%bb%e0%b6%af-%e0%b6%ba%e0%b6%b1%e0%b6%ad%e0%b6%bb%e0%b6%ba">#</a></h2>
+<p>එම යන්ත්‍රය වූයේ Jacquard රෙදි යන්ත්‍රයයි. Joseph-Marie Jacquard ගේ 1800 දශකයේ මුල් drawloom එකක් shuttle එකේ සෑම ගමනකදීම කුමන නූල් ඔසවන්නේද යන්න තීරණය කිරීමට පන්ච් කාඩ් දාමයක් භාවිතා කළේය: සිදුරක් → ඔසවන්න, සිදුරක් නැත → අවහිර කරන්න. කාඩ් වෙනස් කරන්න, රටාව වෙනස් වේ. රෙදි යන්ත්‍රයට &ldquo;සේද brocade&rdquo; යනු කුමක්දැයි දැනුණේ නැත; එය ඔසවන්න/නොඔසවන්න තීරණවල ස්ථිර, භෞතිකව කේතනය කළ අනුක්‍රමයක් ක්‍රියාත්මක කළේය.</p>
+<p>එය Babbage අනුගමනය කළ වියුක්තීකරණයයි: වැඩසටහනක් යනු ඒවා ක්‍රියාත්මක කරන යන්ත්‍රයෙන් වෙන් වූ උපදෙස් අනුක්‍රමයකි. Ada Lovelace එම වෙන්කිරීමෙන් අදහස් වූ දේ දුටුවාය — නිවැරදි කාඩ් නිර්මාණය කළහොත් යන්ත්‍රයට සංඛ්‍යා පමණක් නොව <em>ඕනෑම</em> සංකේත හැසිරවිය හැක. Menabrea ගේ Analytical Engine පත්‍රිකාව පිළිබඳ ඇගේ සටහන් තුළ බොහෝ විට පළමු ප්‍රකාශිත පරිගණක වැඩසටහන ලෙස හඳුන්වන දේ ඇතුළත් ය (Bernoulli සංඛ්‍යා).</p>
+<p><strong>පිටවීමේ දොර:</strong> Ada Lovelace ගේ Analytical Engine පිළිබඳ <em>Notes</em> (Menabrea ගේ පරිවර්තනය මත) — Bernoulli-සංඛ්‍යා සටහන සහ &ldquo;ඕනෑම සංකේත&rdquo; තර්කය සඳහා ප්‍රාථමික පෙළ.</p>
+<h2 id="මය-ඊට-පස-සයලලටම-වදගත-වනන-ඇය">මෙය ඊට පසු සියල්ලටම වැදගත් වන්නේ ඇයි<a class="anchor" href="#%e0%b6%b8%e0%b6%ba-%e0%b6%8a%e0%b6%a7-%e0%b6%b4%e0%b7%83-%e0%b7%83%e0%b6%ba%e0%b6%bd%e0%b6%bd%e0%b6%a7%e0%b6%b8-%e0%b7%80%e0%b6%af%e0%b6%9c%e0%b6%ad-%e0%b7%80%e0%b6%b1%e0%b6%b1-%e0%b6%87%e0%b6%ba">#</a></h2>
+<p>උපදෙස් කට්ටි, ගබඩා කළ වැඩසටහන්, පාලනය datapath එකෙන් වෙන් කිරීම — සියල්ලටම මෙහි මුල් ඇත. මාධ්‍යය සම්පූර්ණයෙන්ම වෙනස් වේ (relays, නල, ට්‍රාන්සිස්ටර); තාර්කික හැඩය වෙනස් නොවේ: උපදෙස් අනුක්‍රමයක්, ක්‍රියාත්මක ඒකකයක්, පියවර අතර තත්ත්වය රඳවන ගබඩාවක්.</p>
+<p>යාන්ත්‍රික පරිගණකකරණයට <em>නොහැකි</em> වූයේ පරිමාණයයි. ගියර් දාමවල ඝර්ෂණය, backlash සහ ඉවසීම් එකතුව ඇත; නිරවද්‍යතාවයේ සෑම අමතර ඉලක්කමක්ම යන්ත්‍රය විශ්වාසනීයව තැනීම දුෂ්කර කළේය. එම උඩුකුරු සීමාව — අදහස් නොමැතිකම නොව — පරිගණකකරණය විද්‍යුත් මාරු කිරීම කරා තල්ලු කළේය. ඊළඟට: relays, සහ ගෘහ නිර්මාණ ශිල්පය WWII වෙත ගෙන ගිය විද්‍යුත් යාන්ත්‍රික තර්කය.</p>
+<h2 id="ගඹරන-එකත-කරමන-පමණක-වගවක-ගණනය-කරම--සමත-අනතර-කරමය-පයවරන-පයවර">ගැඹුරින්: එකතු කිරීමෙන් පමණක් වගුවක් ගණනය කිරීම — සීමිත අන්තර ක්‍රමය පියවරෙන් පියවර<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-%e0%b6%91%e0%b6%9a%e0%b6%ad-%e0%b6%9a%e0%b6%bb%e0%b6%b8%e0%b6%b1-%e0%b6%b4%e0%b6%b8%e0%b6%ab%e0%b6%9a-%e0%b7%80%e0%b6%9c%e0%b7%80%e0%b6%9a-%e0%b6%9c%e0%b6%ab%e0%b6%b1%e0%b6%ba-%e0%b6%9a%e0%b6%bb%e0%b6%b8--%e0%b7%83%e0%b6%b8%e0%b6%ad-%e0%b6%85%e0%b6%b1%e0%b6%ad%e0%b6%bb-%e0%b6%9a%e0%b6%bb%e0%b6%b8%e0%b6%ba-%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb%e0%b6%b1-%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> පරිගණක ඉතිහාසය සිංහලෙන් හොඳින් ආවරණය වේ. නමුත් ආවරණය වන්නේ නම් සහ වර්ෂ පමණි.</p>
+<ul>
+<li><strong>පෙළපොත් සහ මාර්ගෝපදේශ:</strong> අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුවේ 10 ශ්‍රේණිය ICT පෙළපොත (<a href="http://www.edupub.gov.lk/Administrator/Sinhala/10/ict%20g10%20S/ict%20g10%20S.pdf">PDF</a>) PDF pp.37–38 (මුද්‍රිත pp.27–28) ඇබකසය, Pascal, Leibniz, Jacquard, Babbage ගේ Analytical Engine, Ada Lovelace සහ Aiken ගේ Mark I කාලරේඛාවක් ලෙස දෙයි. NIE 12 ශ්‍රේණිය ICT ගුරු මාර්ගෝපදේශය (<a href="https://nie.lk/pdffiles/tg/sGr12TG%20ICT.pdf">PDF</a>) PDF p.75 (මුද්‍රිත p.62) &ldquo;යාන්ත්‍රික යුගය&rdquo; යටතේ එවැනිම ලැයිස්තුවක් දෙයි.</li>
+<li><strong>si.wikipedia:</strong> &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b6%86%e0%b6%b1%e0%b7%8a%e0%b6%ad%e0%b6%bb_%e0%b6%91%e0%b6%b1%e0%b7%8a%e0%b6%a2%e0%b7%92%e0%b6%b8">ආන්තර එන්ජිම</a>&rdquo; (අක්ෂර ~680, අර්ථ දැක්වීම සහ අභිප්‍රේරණය පමණි), &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b7%80%e0%b7%92%e0%b7%81%e0%b7%8a%e0%b6%bd%e0%b7%9a%e0%b7%82%e0%b6%ab_%e0%b6%91%e0%b6%b1%e0%b7%8a%e0%b6%a2%e0%b7%92%e0%b6%b8_%28Analytical_Engine%29">විශ්ලේෂණ එන්ජිම (Analytical Engine)</a>&rdquo; (අක්ෂර ~1.4k), &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b6%a0%e0%b7%8f%e0%b6%bd%e0%b7%8a%e0%b7%83%e0%b7%8a_%e0%b6%b6%e0%b7%90%e0%b6%b6%e0%b7%9a%e0%b6%a2%e0%b7%8a">චාල්ස් බැබේජ්</a>&rdquo;, සහ &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b6%b4%e0%b6%bb%e0%b7%92%e0%b6%9c%e0%b6%ab%e0%b6%9a_%e0%b6%89%e0%b6%ad%e0%b7%92%e0%b7%84%e0%b7%8f%e0%b7%83%e0%b6%ba">පරිගණක ඉතිහාසය</a>&rdquo; (අක්ෂර ~11.9k, කාලරේඛාව).</li>
+<li><strong>වීඩියෝ:</strong> DP Education, Charles Babbage ගැන (<a href="https://www.youtube.com/watch?v=AQ4JYrcdiLY">YT AQ4JYrcdiLY</a>, මිනිත්තු 6:26); පරමාණුවා (<a href="https://www.youtube.com/watch?v=RqUgiLLKxEU">YT RqUgiLLKxEU</a>, 1:01); Sanka Rathnayaka, &ldquo;History Of The Computers In Sinhala&rdquo; (<a href="https://www.youtube.com/watch?v=NSfHZ2lSXtA">YT NSfHZ2lSXtA</a>, 3:05). අප වීඩියෝ හඳුනා ගත්තේ මාතෘකාවෙන් පමණි.</li>
+</ul>
+<p>ඒවා කිසිවක් Difference Engine එක <em>ගණනය කරන්නේ කෙසේද</em> යන්න පෙන්වන්නේ නැත. සීමිත අන්තර ක්‍රමය අතින් කිරීම, එය ගුණ කිරීම ඉවත් කරන්නේ ඇයි, යන්ත්‍රයට රෙජිස්ටර් කීයක් අවශ්‍යද, සහ එම යන්ත්‍ර කොතරම් විශාලද යන්න මෙම කොටස පෙන්වයි. <strong>වර්ෂ පිළිබඳ සටහන:</strong> NIE p.75 Difference Engine එක &ldquo;1880&rdquo; ට යොදයි. Computer History Museum (CHM) අනුව Babbage Difference Engine No. 1 ආරම්භ කළේ 1821 දීය. Difference Engine No. 2 සැලසුම් කළේ 1847–1849 දීය. Babbage මිය ගියේ 1871 දීය. එබැවින් 1880 නිවැරදි විය නොහැක.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>බහුපදය (polynomial):</strong> x², x³ … වැනි බල සහ නියත සංගුණක එකතු කර සාදන ශ්‍රිතයක්. උදා. x² + 4.</li>
+<li><strong>වගු ගත කිරීම (tabulation):</strong> x = 1, 2, 3 … සඳහා ශ්‍රිතයේ අගයන් වගුවක් ලෙස ලිවීම.</li>
+<li><strong>පළමු අන්තරය (first difference, Δ):</strong> වගුවේ අනුයාත අගයන් දෙකක වෙනස.</li>
+<li><strong>දෙවන අන්තරය (second difference, Δ²):</strong> අනුයාත පළමු අන්තර දෙකක වෙනස. Δ³ ආදිය එලෙසම.</li>
+<li><strong>සීමිත අන්තර ක්‍රමය (method of finite differences):</strong> අවසාන අන්තරය නියත වන බව භාවිතා කර, එකතු කිරීමෙන් පමණක් ඊළඟ අගයන් ගණනය කිරීම.</li>
+<li><strong>රෙජිස්ටරය (register):</strong> එක් සංඛ්‍යාවක් රඳවා තබන ඉලක්කම් රෝද තීරුවක්.</li>
+<li><strong>රැගෙන යාම (carry):</strong> එක් ඉලක්කම් රෝදයක් 9 සිට 0 ට පෙරළෙන විට ඊළඟ රෝදයට 1 ක් එකතු කිරීම.</li>
+<li><strong>Store සහ Mill:</strong> Analytical Engine එකේ සංඛ්‍යා රඳවන කොටස (Store, මතකය) සහ අංක ගණිතය කරන කොටස (Mill).</li>
+</ul>
+<h3 id="2-පරශනය-මනසන-ගණනය-කළ-වග">2. ප්‍රශ්නය: මිනිසුන් ගණනය කළ වගු<a class="anchor" href="#2-%e0%b6%b4%e0%b6%bb%e0%b7%81%e0%b6%b1%e0%b6%ba-%e0%b6%b8%e0%b6%b1%e0%b7%83%e0%b6%b1-%e0%b6%9c%e0%b6%ab%e0%b6%b1%e0%b6%ba-%e0%b6%9a%e0%b7%85-%e0%b7%80%e0%b6%9c">#</a></h3>
+<p>CHM ට අනුව, 1821 ගිම්හානයේ Babbage සහ තාරකා විද්‍යාඥ John Herschel අතින් ගණනය කළ තාරකා විද්‍යා වගු පරීක්ෂා කරමින් සිටියහ. දෝෂයෙන් දෝෂය හමු වූ විට Babbage මෙසේ කීවේය: &ldquo;I wish to God these calculations had been executed by steam&rdquo;. නාවිකයින්, ඉංජිනේරුවන්, බැංකු සහ රක්ෂණ සමාගම් මුද්‍රිත වගු මත රඳා පැවතුණි. ගණනය, පිටපත් කිරීම සහ අකුරු ඇමිණීම (typesetting) යන තුනේදීම දෝෂ ඇතුළු විය. එබැවින් Babbage ගේ සැලසුම්වල මුද්‍රණ යන්ත්‍රයක්ද ඇතුළත් විය.</p>
+<h3 id="3-කරමය-අතන-chm-උදහරණය-fx--x--4">3. ක්‍රමය අතින්: CHM උදාහරණය F(x) = x² + 4<a class="anchor" href="#3-%e0%b6%9a%e0%b6%bb%e0%b6%b8%e0%b6%ba-%e0%b6%85%e0%b6%ad%e0%b6%b1-chm-%e0%b6%8b%e0%b6%af%e0%b7%84%e0%b6%bb%e0%b6%ab%e0%b6%ba-fx--x--4">#</a></h3>
+<p>CHM ගේ &ldquo;How it Works&rdquo; පිටුව මෙම ශ්‍රිතය ගනී. පළමු අගයන් හතර අතින් ගණනය කරන්න: F(1) = 5, F(2) = 8, F(3) = 13, F(4) = 20. ඉන්පසු වෙනස්කම් ගන්න.</p>
+<table>
+	<thead>
+			<tr>
+					<th>x</th>
+					<th>F(x)</th>
+					<th>Δ</th>
+					<th>Δ²</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>5</td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>8</td>
+					<td>8 − 5 = 3</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>13</td>
+					<td>13 − 8 = 5</td>
+					<td>5 − 3 = 2</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>20</td>
+					<td>20 − 13 = 7</td>
+					<td>7 − 5 = 2</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><strong>29</strong></td>
+					<td>7 + 2 = <strong>9</strong></td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><strong>40</strong></td>
+					<td>9 + 2 = <strong>11</strong></td>
+					<td>2</td>
+			</tr>
+	</tbody>
+</table>
+<p>Δ² සෑම විටම 2 කි. එබැවින් ක්‍රියාවලිය ආපසු හරවන්න:</p>
+<ol>
+<li>Δ² (2) පළමු අන්තරයට (7) එකතු කරන්න → 9.</li>
+<li>එම 9, අවසාන අගයට (20) එකතු කරන්න → <strong>F(5) = 29</strong>.</li>
+<li>නැවත: 9 + 2 = 11, 29 + 11 = <strong>F(6) = 40</strong>.</li>
+</ol>
+<p>පරීක්ෂාව: 5² + 4 = 29, 6² + 4 = 40. ගුණ කිරීමක් නැත. එකතු කිරීම් දෙකක් පමණි. CHM ට අනුව Difference Engine No. 2 හි එක් එක් තීරුවකට එක් සංඛ්‍යාවක් බැගින් රඳවන &ldquo;රෙජිස්ටර්&rdquo; ඇත (උදා. 20, 7, 2). යන්ත්‍රය කරන්නේ මෙම එකතු කිරීම් දෙකයි.</p>
+<p><strong>දැන් මෙය උත්සාහ කරන්න.</strong> පහත difference-engine lab එක F(x) = x² ඉලක්කම් රෝද තීරු තුනකින් (Y, Δ₁, Δ₂) පෙන්වයි. එය x = 3 න් ආරම්භ වේ: Y = 9, Δ₁ = 7, Δ₂ = 2. <strong>පියවර</strong> ඔබන සෑම වරකදීම එය මුලින් Δ₁, Y ට එකතු කරයි. ඉන්පසු Δ₂, Δ₁ ට එකතු කරයි. ඉහත CHM වගුවේ Δ &ldquo;පසුපස&rdquo; වෙනසයි (8 − 5). Lab එකේ Δ₁ &ldquo;ඉදිරි&rdquo; වෙනසයි (16 − 9). එබැවින් එකතු කිරීම් දෙකේ පිළිවෙළ ප්‍රතිවිරුද්ධය. ප්‍රතිඵලය එකමය. පළමු පියවරේ 9 + 7 = 16 දී ඒකක රෝදය 9 පසු කර දහයේ රෝදයට carry එකක් යවන හැටි බලන්න (6 වන කොටස). &ldquo;යළි සකසන්න (x=0 සම්භාව්‍ය)&rdquo; බොත්තම Y = 0, Δ₁ = 1, Δ₂ = 2 න් ආරම්භ කරයි. x = 9 (Y = 81) දක්වා <strong>පියවර</strong> ඔබා සෑම අගයක්ම x² ට සමාන දැයි පරීක්ෂා කරන්න.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/difference-engine/?lang=si"
+    style="width:100%; height:720px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="අන්තර්ක්‍රියාකාරී lab: difference-engine">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/difference-engine/?lang=si" target="_blank" rel="noopener">Lab එක නව tab එකක විවෘත කරන්න ↗</a>
+  </div>
+</div>
+
+<p>මෙම පොත සඳහාම නිර්මාණය කළ මුල් කෘතියකි, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. මෙය ඉගැන්වීම සඳහා වූ තීරු ආකෘතියකි; No. 2 හි සම්පූර්ණ ප්‍රතිනිර්මාණයක් නොවේ.</p>
+<h3 id="4-ඉහළ-බල-n-වන-අනතරය-නයතය">4. ඉහළ බල: n වන අන්තරය නියතය<a class="anchor" href="#4-%e0%b6%89%e0%b7%84%e0%b7%85-%e0%b6%b6%e0%b6%bd-n-%e0%b7%80%e0%b6%b1-%e0%b6%85%e0%b6%b1%e0%b6%ad%e0%b6%bb%e0%b6%ba-%e0%b6%b1%e0%b6%ba%e0%b6%ad%e0%b6%ba">#</a></h3>
+<p>n වන මාත්‍රයේ (degree) බහුපදයක n වන අන්තරය නියත වේ. <strong>ආදර්ශ උදාහරණය:</strong> F(x) = x³.</p>
+<table>
+	<thead>
+			<tr>
+					<th>x</th>
+					<th>F</th>
+					<th>Δ</th>
+					<th>Δ²</th>
+					<th>Δ³</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>8</td>
+					<td>7</td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>27</td>
+					<td>19</td>
+					<td>12</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>64</td>
+					<td>37</td>
+					<td>18</td>
+					<td>6</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><strong>125</strong></td>
+					<td>37 + 24 = <strong>61</strong></td>
+					<td>18 + 6 = <strong>24</strong></td>
+					<td>6</td>
+			</tr>
+	</tbody>
+</table>
+<p>නව අගයකට එකතු කිරීම් <strong>3</strong> කි (Δ³ → Δ² → Δ → F). පරීක්ෂාව: 5³ = 125.</p>
+<p>සාමාන්‍ය නීතිය: n මාත්‍රයක් සඳහා නව අගයකට එකතු කිරීම් <strong>n</strong> ක් සහ රෙජිස්ටර් <strong>n + 1</strong> ක් (F සහ අන්තර n) අවශ්‍ය වේ. CHM ට අනුව Difference Engine No. 2 හි අන්තර <strong>හතකට</strong> රෙජිස්ටර් ඇත. එබැවින් එයට x⁷ දක්වා පද ඇති බහුපද සඳහා ඉලක්කම් <strong>31</strong> අගයන් ගණනය කළ හැක.</p>
+<p><strong>සැසඳීම (අප ගණනය කළ):</strong> මාත්‍රය 7 බහුපදයක් Horner ක්‍රමයෙන් කෙලින්ම ගණනය කිරීමට ගුණ කිරීම් 7 ක් සහ එකතු කිරීම් 7 ක් අවශ්‍යය. අන්තර ක්‍රමයට ආරම්භක අගයන් සකස් කළ පසු එකතු කිරීම් 7 ක් පමණි. ඉලක්කම් 31 ගුණ කිරීම් ගියර්වලින් තැනීම එකතු කිරීමට වඩා බොහෝ දුෂ්කරය. CHM පවසන්නේ ක්‍රමයේ අලංකාරය මෙය බවයි: ගුණ කිරීම සහ බෙදීම අවශ්‍ය නොවේ.</p>
+<h3 id="5-ආරමභක-අගයක-දෂයක-පතරන-හට-ආදරශ">5. ආරම්භක අගයක දෝෂයක් පැතිරෙන හැටි (ආදර්ශ)<a class="anchor" href="#5-%e0%b6%86%e0%b6%bb%e0%b6%b8%e0%b6%b7%e0%b6%9a-%e0%b6%85%e0%b6%9c%e0%b6%ba%e0%b6%9a-%e0%b6%af%e0%b7%82%e0%b6%ba%e0%b6%9a-%e0%b6%b4%e0%b6%ad%e0%b6%bb%e0%b6%b1-%e0%b7%84%e0%b6%a7-%e0%b6%86%e0%b6%af%e0%b6%bb%e0%b7%81">#</a></h3>
+<p>ඉහත x² + 4 වගුවේ x = 4 දී Δ² රෙජිස්ටරය වැරදීමකින් 2 වෙනුවට 3 ලෙස සකසා ඇතැයි සිතමු.</p>
+<table>
+	<thead>
+			<tr>
+					<th>x</th>
+					<th>නිවැරදි F</th>
+					<th>වැරදි Δ</th>
+					<th>වැරදි F</th>
+					<th>දෝෂය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>5</td>
+					<td>29</td>
+					<td>7 + 3 = 10</td>
+					<td>30</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>40</td>
+					<td>13</td>
+					<td>43</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>53</td>
+					<td>16</td>
+					<td>59</td>
+					<td>6</td>
+			</tr>
+	</tbody>
+</table>
+<p>දෝෂය 1, 3, 6 … ලෙස වැඩේ. පසුව එන සෑම අගයක්ම වැරදිය. ආරම්භක අගයන් නිවැරදිව සකස් කිරීම ඉතා වැදගත් වූයේ එබැවිනි.</p>
+<h3 id="6-ඉලකකම-රද-සහ-රගන-යම">6. ඉලක්කම් රෝද සහ රැගෙන යාම<a class="anchor" href="#6-%e0%b6%89%e0%b6%bd%e0%b6%9a%e0%b6%9a%e0%b6%b8-%e0%b6%bb%e0%b6%af-%e0%b7%83%e0%b7%84-%e0%b6%bb%e0%b6%9c%e0%b6%b1-%e0%b6%ba%e0%b6%b8">#</a></h3>
+<p>CHM ට අනුව Babbage ගේ එන්ජින් <strong>දශම ඩිජිටල්</strong> යන්ත්‍ර වේ. සංඛ්‍යාවක එක් එක් ඉලක්කමකට තමන්ගේම ගියර් රෝදයක් ඇත. පූර්ණ සංඛ්‍යා පමණක් වලංගුය. රෝදයක් අගයන් දෙකක් අතර නතර වුවහොත් යන්ත්‍රය හිර වේ (jam). එය දෝෂ හඳුනා ගැනීමේ (error detection) ක්‍රමයකි. Babbage ද්විමය (binary) ඇතුළු 3, 4, 5, 12, 16 සහ 100 පාද සලකා බැලුවද, චලනය වන කොටස් අඩු කිරීමටත් හුරු පුරුදු නිසාත් දශමය තෝරා ගත්තේය.</p>
+<p><strong>ආදර්ශ උදාහරණය:</strong> රෝද හතරක රෙජිස්ටරයක 0999 ට 1 එකතු කරන්න. ඒකක රෝදය 9 → 0 පෙරළී දහයේ රෝදයට carry එකක් යවයි. එයද 9 → 0 පෙරළී සියයේ රෝදයට යවයි. එයද එසේම කරයි. අවසානයේ දහසේ රෝදය 0 → 1. <strong>Carry තුනක්</strong>, එකිනෙක පසු පසු. පිළිතුර 1000. තාර්කික ද්වාර වල ripple-carry adder එකේ එකම ගැටලුව Post 08 හි ඇත.</p>
+<h3 id="7-යනතරවල-පරමණය-chm-අක">7. යන්ත්‍රවල පරිමාණය (CHM අංක)<a class="anchor" href="#7-%e0%b6%ba%e0%b6%b1%e0%b6%ad%e0%b6%bb%e0%b7%80%e0%b6%bd-%e0%b6%b4%e0%b6%bb%e0%b6%b8%e0%b6%ab%e0%b6%ba-chm-%e0%b6%85%e0%b6%9a">#</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>Difference Engine No. 1</th>
+					<th>Difference Engine No. 2</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>සැලසුම</td>
+					<td>1821 සිට (1830 සැලසුම)</td>
+					<td>1847–1849</td>
+			</tr>
+			<tr>
+					<td>ඉලක්කම්</td>
+					<td>16</td>
+					<td>31</td>
+			</tr>
+			<tr>
+					<td>අන්තර මාත්‍ර</td>
+					<td>6</td>
+					<td>7</td>
+			</tr>
+			<tr>
+					<td>කොටස්</td>
+					<td>~25,000 (ගණනය සහ මුද්‍රණය අතර සමව)</td>
+					<td>8,000 (එලෙසම සමව)</td>
+			</tr>
+			<tr>
+					<td>බර</td>
+					<td>~ටොන් 4 (ගණන් බැලීම)</td>
+					<td>ටොන් 5</td>
+			</tr>
+			<tr>
+					<td>ඉදි කිරීම</td>
+					<td>නතර විය: CHM &ldquo;The Engines&rdquo; පිටුව 1832 ලෙසද, &ldquo;A Brief History&rdquo; පිටුව 1833 ලෙසද දෙයි. 1/7 ක ආදර්ශ කොටසක් (~කොටස් 2,000) 1832 දී</td>
+					<td>Science Museum, London: 1985 ආරම්භය, ගණන කොටස 1991, මුද්‍රණ යන්ත්‍රය 2002</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>පරීක්ෂාව (අප ගණනය කළ):</strong> No. 1 හි කොටස් 25,000 න් භාගයක් ගණන කොටසට නම් 12,500 කි. එයින් 1/7 ≈ <strong>1,786</strong>. CHM කියන &ldquo;කොටස් 2,000 පමණ&rdquo; සමඟ එය ගැළපේ. රජයේ භාණ්ඩාගාරය £17,500 වියදම් කළේය. CHM ට අනුව එය 1831 දී Robert Stephenson ගේ කර්මාන්තශාලාවේ අලුත් දුම්රිය එන්ජින් 22 ක මිලයි.</p>
+<p><strong>ආසන්න ගණනය (අප ගණනය කළ):</strong> No. 2 හි රෙජිස්ටර් 8 (F සහ අන්තර 7) × ඉලක්කම් 31 = ඉලක්කම් රෝද 248. ගණන කොටසේ කොටස් 4,000 ÷ 248 ≈ ඉලක්කම් රෝදයකට කොටස් <strong>16</strong> ක් පමණ.</p>
+<p>Science Museum ව්‍යාපෘතිය පෙන්වූයේ Babbage ගේ කාලයේ නිරවද්‍යතාවයෙන් එන්ජිම වැඩ කරන බවයි. CHM ට අනුව අසාර්ථකත්වයට තාක්ෂණයට වඩා දේශපාලනය, ආර්ථිකය සහ පෞරුෂයන් හේතු විය.</p>
+<h3 id="8-analytical-engine-store-mill-සහ-කඩ">8. Analytical Engine: store, mill සහ කාඩ්<a class="anchor" href="#8-analytical-engine-store-mill-%e0%b7%83%e0%b7%84-%e0%b6%9a%e0%b6%a9">#</a></h3>
+<p>CHM ට අනුව Babbage 1834 දී Analytical Engine සිතුවේය. එය Jacquard රෙදි යන්ත්‍රයෙන් ගත් සිදුරු කාඩ් මඟින් ක්‍රමලේඛනය කළ හැකි විය. සංඛ්‍යා සහ අතරමැදි ප්‍රතිඵල <strong>Store</strong> එකේ රැඳුණි. අංක ගණිතය වෙනම <strong>Mill</strong> එකේ සිදු විය. එයට මූලික අංක ගණිත ක්‍රියා හතරම සහ සෘජු ගුණ කිරීම සහ බෙදීම තිබුණි. අද අප කොන්දේසි සහිත අතු බෙදීම (conditional branching) සහ ලූප (looping) ලෙස හඳුන්වන හැකියාවන්ද තිබුණි. CHM එහි ව්‍යුහය &ldquo;fetch-execute cycle&rdquo; සහිත, මතකය මධ්‍ය සකසනයෙන් වෙන් කළ නවීන පරිගණකයේ ව්‍යුහයම ලෙස විස්තර කරයි. උපදෙස් කට්ටල Post 11 හි ද, datapath Post 12 හි ද ඇත.</p>
+<h3 id="9-පනසලන-අභයසය">9. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#9-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>F(x) = x² + 4 වගුව අන්තර ක්‍රමයෙන් F(7) සහ F(8) දක්වා දිගු කරන්න.</li>
+<li>F(x) = 2x + 1 (ආදර්ශ). කුමන අන්තරය නියතද? රෙජිස්ටර් කීයක් අවශ්‍යද?</li>
+<li>F(x) = x³ වගුව F(6) දක්වා දිගු කරන්න.</li>
+<li>මාත්‍රය 5 බහුපදයක් සඳහා නව අගයකට එකතු කිරීම් කීයද? රෙජිස්ටර් කීයද?</li>
+<li>රෝද හතරක රෙජිස්ටරයක 9999 ට 1 එකතු කළ විට carry කීයක් සිදු වේද? පිළිතුර කුමක්ද?</li>
+<li>Difference Engine No. 1 හි පූර්ණ ගණන කොටස හා ආදර්ශ කොටස (1/7) අතර කොටස් වෙනස ආසන්න වශයෙන් කීයද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>Δ: 11 + 2 = 13 → F(7) = 40 + 13 = <strong>53</strong>. Δ: 13 + 2 = 15 → F(8) = 53 + 15 = <strong>68</strong>. (7² + 4 = 53, 8² + 4 = 68.)</li>
+<li>අගයන් 3, 5, 7, 9 → Δ = 2 සැමවිටම. <strong>පළමු අන්තරය</strong> නියතය. රෙජිස්ටර් <strong>2</strong> (F සහ Δ).</li>
+<li>Δ² = 24 + 6 = 30, Δ = 61 + 30 = 91, F(6) = 125 + 91 = <strong>216</strong>.</li>
+<li>එකතු කිරීම් <strong>5</strong>, රෙජිස්ටර් <strong>6</strong>.</li>
+<li>Carry <strong>4</strong> ක්. රෝද හතරටම 0000 වේ. දහසේ රෝදයෙන් යන carry එක රඳවා ගැනීමට රෝදයක් නැත: <strong>පිටාර ගැලීම (overflow)</strong>.</li>
+<li>12,500 − 1,786 ≈ <strong>10,700</strong> කොටස්.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>Computer History Museum, &ldquo;The Babbage Engine&rdquo; අඩවිය: &ldquo;Overview&rdquo; (1821 වගු සිද්ධිය), &ldquo;A Brief History&rdquo; (1833 නැවතීම, 1832 ආදර්ශ කොටස, £17,500, Lovelace), &ldquo;The Engines&rdquo; (1832 නැවතීම, දශම රෝද, jam වීම, No. 1 සහ No. 2 අංක, 1834 Analytical Engine, store/mill), &ldquo;How it Works&rdquo; (x² + 4 උදාහරණය, රෙජිස්ටර්), &ldquo;A Modern Sequel&rdquo; (1985–2002 ඉදි කිරීම): <a href="https://www.computerhistory.org/babbage/">https://www.computerhistory.org/babbage/</a></li>
+<li>NIE, 12 ශ්‍රේණිය ICT ගුරු මාර්ගෝපදේශය, PDF p.75 (මුද්‍රිත p.62).</li>
+<li>අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුව, 10 ශ්‍රේණිය ICT පෙළපොත, PDF pp.37–38 (මුද්‍රිත pp.27–28).</li>
+</ul>
+<p>x³ සහ 2x + 1 උදාහරණ, වැරදි Δ² අගය, 0999 සහ 9999 රෙජිස්ටර්, Horner සැසඳීම, 1,786 සහ ඉලක්කම් රෝදයකට කොටස් 16 ආදර්ශ අගයන් හෝ අප ගණනය කළ අගයන් වේ.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/62cd0e52f9c592c21b0a071443adabace9942d79" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B6%BA%E0%B7%8F%E0%B6%B1%E0%B7%8A%E0%B6%AD%E0%B7%8A%E2%80%8D%E0%B6%BB%E0%B7%92%E0%B6%9A&#43;%E0%B7%83%E0%B7%84&#43;%E0%B7%80%E0%B7%92%E0%B6%AF%E0%B7%8A%E2%80%8D%E0%B6%BA%E0%B7%94%E0%B6%AD%E0%B7%8A&#43;%E0%B6%BA%E0%B7%8F%E0%B6%B1%E0%B7%8A%E0%B6%AD%E0%B7%8A%E2%80%8D%E0%B6%BB%E0%B7%92%E0%B6%9A&#43;%E0%B6%B4%E0%B6%BB%E0%B7%92%E0%B6%9C%E0%B6%AB%E0%B6%9A%E0%B6%9A%E0%B6%BB%E0%B6%AB%E0%B6%BA&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F01-mechanical-electromechanical-computing%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F01-mechanical-electromechanical-computing.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F01-mechanical-electromechanical-computing.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/00-foreword/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>පෙරවදන</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/02-relays-and-electromechanical-logic/" class="flex align-center">
+        <span>Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#babbage-ග-එනජන">Babbage ගේ එන්ජින්</a></li>
+    <li><a href="#jacquard-රද-යනතරය">Jacquard රෙදි යන්ත්‍රය</a></li>
+    <li><a href="#මය-ඊට-පස-සයලලටම-වදගත-වනන-ඇය">මෙය ඊට පසු සියල්ලටම වැදගත් වන්නේ ඇයි</a></li>
+    <li><a href="#ගඹරන-එකත-කරමන-පමණක-වගවක-ගණනය-කරම--සමත-අනතර-කරමය-පයවරන-පයවර">ගැඹුරින්: එකතු කිරීමෙන් පමණක් වගුවක් ගණනය කිරීම — සීමිත අන්තර ක්‍රමය පියවරෙන් පියවර</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-පරශනය-මනසන-ගණනය-කළ-වග">2. ප්‍රශ්නය: මිනිසුන් ගණනය කළ වගු</a></li>
+        <li><a href="#3-කරමය-අතන-chm-උදහරණය-fx--x--4">3. ක්‍රමය අතින්: CHM උදාහරණය F(x) = x² + 4</a></li>
+        <li><a href="#4-ඉහළ-බල-n-වන-අනතරය-නයතය">4. ඉහළ බල: n වන අන්තරය නියතය</a></li>
+        <li><a href="#5-ආරමභක-අගයක-දෂයක-පතරන-හට-ආදරශ">5. ආරම්භක අගයක දෝෂයක් පැතිරෙන හැටි (ආදර්ශ)</a></li>
+        <li><a href="#6-ඉලකකම-රද-සහ-රගන-යම">6. ඉලක්කම් රෝද සහ රැගෙන යාම</a></li>
+        <li><a href="#7-යනතරවල-පරමණය-chm-අක">7. යන්ත්‍රවල පරිමාණය (CHM අංක)</a></li>
+        <li><a href="#8-analytical-engine-store-mill-සහ-කඩ">8. Analytical Engine: store, mill සහ කාඩ්</a></li>
+        <li><a href="#9-පනසලන-අභයසය">9. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

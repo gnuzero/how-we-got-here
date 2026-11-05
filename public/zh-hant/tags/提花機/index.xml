@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>提花機 on 我們如何走到那裡</title>
+		<link>http://localhost:1478/zh-hant/tags/%E6%8F%90%E8%8A%B1%E6%A9%9F/</link>
+		<description>Recent content in 提花機 on 我們如何走到那裡</description>
+		<generator>Hugo</generator>
+		<language>zh-Hant</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hant/tags/%E6%8F%90%E8%8A%B1%E6%A9%9F/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>花本：程式第一次和機器分開</title>
+				<link>http://localhost:1478/zh-hant/posts/01-zh-drawloom-huaben/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/01-zh-drawloom-huaben/</guid>
+				<description>從老官山漢墓的多綜提花機到《天工開物》的結花本：織出什麼花，記在一束絲線裡，而不在織工腦子裡。</description>
+			</item>
+	</channel>
+</rss>

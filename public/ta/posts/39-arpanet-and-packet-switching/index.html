@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bursty கணினி போக்குவரத்து circuit switching-ஐ உடைத்தது — ARPANET packets மற்றும் பகிரப்பட்ட இணைப்புகள் வேலை செய்யும் என நிரூபித்தது">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/39-arpanet-and-packet-switching/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="ARPANET மற்றும் Packet Switching">
+	<meta property="og:description" content="Bursty கணினி போக்குவரத்து circuit switching-ஐ உடைத்தது — ARPANET packets மற்றும் பகிரப்பட்ட இணைப்புகள் வேலை செய்யும் என நிரூபித்தது">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="ARPANET மற்றும் Packet Switching">
+	<meta itemprop="description" content="Bursty கணினி போக்குவரத்து circuit switching-ஐ உடைத்தது — ARPANET packets மற்றும் பகிரப்பட்ட இணைப்புகள் வேலை செய்யும் என நிரூபித்தது">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1038">
+
+<title>ARPANET மற்றும் Packet Switching • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/39-arpanet-and-packet-switching/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/39-arpanet-and-packet-switching/" title="ARPANET and Packet Switching">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/39-arpanet-and-packet-switching/" title="ARPANET และการสลับแพ็กเก็ต">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/39-arpanet-and-packet-switching/" title="ARPANET සහ Packet Switching">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/39-arpanet-and-packet-switching/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/39-arpanet-and-packet-switching/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/39-arpanet-and-packet-switching/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="active">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>ARPANET மற்றும் Packet Switching</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#circuit-switching-எதர-packet-switching">Circuit Switching எதிர் Packet Switching</a></li>
+    <li><a href="#பகரவன-கணகக-ஏன-packet-கள-வனறன">பகிர்வின் கணக்கு: ஏன் packet-கள் வென்றன</a></li>
+    <li><a href="#imps-அசல-routers">IMPs: அசல் Routers</a></li>
+    <li><a href="#சமதத-அனபபதலன-தமதம">சேமித்து-அனுப்புதலின் தாமதம்</a></li>
+    <li><a href="#இத-ஏன-உணமயன-பநதயம">இது ஏன் உண்மையான பந்தயம்</a></li>
+    <li><a href="#இத-எத-அமததத">இது எதை அமைத்தது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    ARPANET மற்றும் Packet Switching
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவு 38-இன் serial இணைப்புகள் சரியாக இரண்டு endpoints-ஐ இணைக்கின்றன. ARPANET, 1969-இல் ARPA (பின்னர் DARPA) கீழ் நேரடி, வேறு ஒன்றை நிரூபிக்கப் புறப்பட்டது: ஒவ்வொரு இணையிடையேயும் அர்ப்பணிக்கப்பட்ட circuit இல்லாமல் பல இயந்திரங்கள் பலவற்றை அடைவது, தரவை சுயாதீனமாக hop by hop route செய்யும் packets-ஆக உடைப்பதன் மூலம்.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> ARPANET பற்றித் தமிழில் போதுமான எழுத்து விளக்கம் உண்டு (இணைய வரலாறு பற்றிய நீண்ட கட்டுரை வழியாக); packet switching-க்கு மெலிதானது; காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. இங்குள்ள இணைப்பு வேகம், packet அளவு, பயனர் எண்ணிக்கை எல்லாம் கணக்குக்காகத் தேர்ந்தெடுத்த &ldquo;எடுத்துக்காட்டு மதிப்புகள்&rdquo; — ARPANET-இன் உண்மை அளவீடுகள் அல்ல. VM பயிற்சியின் வெளியீடுகள் உண்மையில் ஓட்டிப் பெற்றவை.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Circuit switching (சுற்று நிலைமாற்றல்):</strong> உரையாடல் முழுவதற்கும் ஒரு முனை-முதல்-முனை பாதையை ஒதுக்கி வைப்பது.</li>
+<li><strong>Packet switching (பொட்டல நிலைமாற்றல்):</strong> data-வைச் சிறு packet-களாகப் பிரித்து, ஒவ்வொன்றையும் தனியாக வழிச்செலுத்தி, இணைப்புகளைப் பகிர்வது.</li>
+<li><strong>Packet (பொட்டலம்):</strong> சேரிட முகவரி உள்ள header-உம் data-வும் கொண்ட ஒரு அலகு.</li>
+<li><strong>Header (தலைப்பு):</strong> முகவரி போன்ற கட்டுப்பாட்டுத் தகவல்; data அல்லாத கூடுதல் செலவு.</li>
+<li><strong>Store-and-forward (சேமித்து-அனுப்புதல்):</strong> ஒவ்வொரு hop-உம் முழு packet-ஐயும் பெற்ற பிறகே அடுத்த hop-க்கு அனுப்புவது.</li>
+<li><strong>Hop (தாவல்):</strong> ஒரு node-இலிருந்து அடுத்த node-க்கு ஒரு இணைப்பு வழியாகச் செல்லும் ஒரு படி.</li>
+<li><strong>IMP (Interface Message Processor):</strong> ஒவ்வொரு ARPANET தளத்திலும் packet-களை ஏற்று, அடுத்த hop-ஐத் தேர்ந்தெடுத்து அனுப்பிய minicomputer — இன்றைய router-இன் முன்னோடி.</li>
+<li><strong>Bursty traffic (வெடிப்புப் போக்குவரத்து):</strong> சிறிது நேரம் அதிக data, பிறகு நீண்ட அமைதி — கணினிப் போக்குவரத்தின் இயல்பு.</li>
+</ul>
+<h2 id="circuit-switching-எதர-packet-switching">Circuit Switching எதிர் Packet Switching<a class="anchor" href="#circuit-switching-%e0%ae%8e%e0%ae%a4%e0%ae%b0-packet-switching">#</a></h2>
+<p>பதிவு 38 ஏறிய தொலைபேசி வலையமைப்பு circuit switching பயன்படுத்தியது: <em>முழு</em> அழைப்புக்கும் தொடர்ச்சியான end-to-end பாதையை ஒதுக்குங்கள், யாரும் பேசினாலும் இல்லாவிட்டாலும். தொடர்ச்சியான குரலுக்கு நல்லது; கணினி போக்குவரத்துக்கு மோசமான பொருத்தம் — அது bursty: செயலில் பரிமாற்றம், பிறகு ஒதுக்கப்பட்ட circuit பயன்படுத்தப்படாமல் அமர்ந்திருக்கும் இடைவெளிகள்.</p>
+<p>Packet switching எதிர் பந்தயம். தரவை packets-ஆக உடைக்கவும், ஒவ்வொன்றும் இலக்கு முகவரியைச் சுமக்கட்டும்; ஒவ்வொன்றையும் சுயாதீனமாக route செய்யவும்; பல உரையாடல்களுக்கு இடையே இயற்பியல் இணைப்புகளைப் பகிரவும். முழு session-க்கும் பாதை ஒதுக்கப்படாது — வெவ்வேறு பரிமாற்றங்களின் packets இடைசெல்கின்றன, வெவ்வேறு வழிகளை எடுக்கலாம், மற்றும் இலக்கில் மீண்டும் இணைகின்றன. Paul Baran-இன் RAND பணி — விநியோகிக்கப்பட்ட, உயிர்வாழும் தகவல்தொடர்புகள் — மற்றும் Leonard Kleinrock-இன் packet வலையமைப்புகளின் queueing பகுப்பாய்வு அறிவுசார் அடித்தளம் அளித்தன; ARPA-வில் Lawrence Roberts அந்தப் பந்தயத்தை நிதியளிக்கப்பட்ட ஆராய்ச்சி வலையமைப்பாக மாற்றினார்.</p>
+<h2 id="பகரவன-கணகக-ஏன-packet-கள-வனறன">பகிர்வின் கணக்கு: ஏன் packet-கள் வென்றன<a class="anchor" href="#%e0%ae%aa%e0%ae%95%e0%ae%b0%e0%ae%b5%e0%ae%a9-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95-%e0%ae%8f%e0%ae%a9-packet-%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%a9%e0%ae%b1%e0%ae%a9">#</a></h2>
+<p>எடுத்துக்காட்டு மதிப்புகள்: பகிர்ந்த இணைப்பின் வேகம் 1 Mb/s. ஒவ்வொரு பயனரும் செயலில் இருக்கும்போது 100 kb/s அனுப்புகிறார், ஆனால் நேரத்தின் 10% மட்டுமே செயலில் — மீதி அமைதி (bursty).</p>
+<table>
+	<thead>
+			<tr>
+					<th>முறை</th>
+					<th>எத்தனை பயனர்கள்?</th>
+					<th>கணக்கு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Circuit switching</td>
+					<td>10</td>
+					<td>ஒவ்வொருவருக்கும் 100 kb/s ஒதுக்கீடு: 1,000 ÷ 100 = 10; ஒவ்வொரு circuit-உம் 90% நேரம் சும்மா</td>
+			</tr>
+			<tr>
+					<td>Packet switching</td>
+					<td>35</td>
+					<td>35 பேரில் 11 அல்லது அதற்கு மேற்பட்டோர் ஒரே நேரத்தில் செயலில் இருந்தால் மட்டுமே இணைப்பு நிரம்பும்; அதன் நிகழ்தகவு ≈ 0.0004</td>
+			</tr>
+	</tbody>
+</table>
+<p>நிகழ்தகவுக் கணக்கு (binomial): ஒவ்வொருவரும் p = 0.1 நிகழ்தகவுடன் தனித்தனியாகச் செயலில் இருந்தால், 35 பேரில் k பேர் செயலில் இருக்கும் நிகழ்தகவு = C(35, k) × 0.1^k × 0.9^(35 − k). k = 11 முதல் 35 வரை கூட்டினால் ≈ 0.000424 — அதாவது நேரத்தின் சுமார் 0.04% மட்டுமே நெரிசல். அதே இணைப்பில் 3.5 மடங்கு பயனர்கள்.</p>
+<p>Packet-களாகப் பிரிப்பதன் செலவு (எடுத்துக்காட்டு மதிப்புகள்): 1,000,000 byte கோப்பு, ஒவ்வொரு packet-இலும் 1,000 byte data + 40 byte header → 1,000,000 ÷ 1,000 = 1,000 packet-கள்; கூடுதல் byte-கள் 1,000 × 40 = 40,000 = 4%. பகிர்வுக்கான விலை அது.</p>
+<h2 id="imps-அசல-routers">IMPs: அசல் Routers<a class="anchor" href="#imps-%e0%ae%85%e0%ae%9a%e0%ae%b2-routers">#</a></h2>
+<p>ARPANET-இன் hops Interface Message Processors (IMPs) — ஒவ்வொரு தளத்திலும் அர்ப்பணிக்கப்பட்ட minicomputers (Phase 3-இன் minicomputer காலம், கம்பிக்குப் பயன்படுத்தப்பட்டது) உள்ளூர் host-இலிருந்து packets ஏற்று, அடுத்த hop-ஐத் தேர்ந்தெடுத்து, முன்னனுப்பும். கருத்தியலாக, நவீன router இன்னும் செய்வது அதுதான். முதல் நான்கு nodes — UCLA, Stanford Research Institute, UC Santa Barbara, University of Utah — பின்னைய தரங்களால் சிறியவை. Packet switching காகிதத்தில் மட்டும் அல்ல, நடைமுறையில் வேலை செய்கிறது எனக் காட்ட அவை போதுமானவை.</p>
+<h2 id="சமதத-அனபபதலன-தமதம">சேமித்து-அனுப்புதலின் தாமதம்<a class="anchor" href="#%e0%ae%9a%e0%ae%ae%e0%ae%a4%e0%ae%a4-%e0%ae%85%e0%ae%a9%e0%ae%aa%e0%ae%aa%e0%ae%a4%e0%ae%b2%e0%ae%a9-%e0%ae%a4%e0%ae%ae%e0%ae%a4%e0%ae%ae">#</a></h2>
+<p>ஒவ்வொரு IMP-உம் முழு packet-ஐப் பெற்ற பிறகே அனுப்புகிறது. எடுத்துக்காட்டு மதிப்புகள்: packet = 1,000 byte = 8,000 bit; ஒவ்வொரு இணைப்பும் 50 kb/s; மூலத்திலிருந்து சேரிடம் வரை 3 இணைப்புகள் (இடையில் 2 IMP-கள்). பரவல் (propagation) தாமதத்தைப் புறக்கணிக்கிறோம்.</p>
+<ul>
+<li>ஒரு hop-இல் ஒரு packet-ஐ அனுப்பும் நேரம் = 8,000 ÷ 50,000 = <strong>0.16 s</strong></li>
+<li>ஒரு packet, 3 hop: 3 × 0.16 = 0.48 s</li>
+<li>10 packet-கள், 3 hop: முதல் packet 0.48 s-இல் சேருகிறது; அதன் பின்னால் pipeline போல ஒவ்வொரு 0.16 s-க்கும் ஒன்று → (10 + 3 − 1) × 0.16 = 12 × 0.16 = <strong>1.92 s</strong></li>
+<li>ஒரே பெரிய 80,000 bit செய்தியாக அனுப்பியிருந்தால்: ஒவ்வொரு hop-உம் 1.6 s → 3 × 1.6 = 4.8 s</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>எப்படி அனுப்புவது</th>
+					<th>மொத்த நேரம்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ஒரே பெரிய செய்தி (80,000 bit)</td>
+					<td>4.8 s</td>
+			</tr>
+			<tr>
+					<td>10 packet-கள் (தலா 8,000 bit)</td>
+					<td>1.92 s</td>
+			</tr>
+	</tbody>
+</table>
+<p>சிறு packet-கள் வெவ்வேறு இணைப்புகளை ஒரே நேரத்தில் பயன்படுத்துகின்றன — அதுவும் பிரிப்பதன் பலன்.</p>
+<h2 id="இத-ஏன-உணமயன-பநதயம">இது ஏன் உண்மையான பந்தயம்<a class="anchor" href="#%e0%ae%87%e0%ae%a4-%e0%ae%8f%e0%ae%a9-%e0%ae%89%e0%ae%a3%e0%ae%ae%e0%ae%af%e0%ae%a9-%e0%ae%aa%e0%ae%a8%e0%ae%a4%e0%ae%af%e0%ae%ae">#</a></h2>
+<p>Circuit switching-இல் மூழ்கிய telecom பொறியாளர்கள் அடிக்கடி ஒதுக்கப்பட்ட பாதைகள் இல்லாத வலையமைப்பு தரவை நம்பகமாக வழங்கவே முடியுமா என சந்தேகித்தனர். ARPANET-இன் வெற்றி என்பது உண்மையான சந்தேகத்திற்கு எதிரான ஒரு கட்டமைப்பின் நிறுவன உறுதிப்படுத்தல் — எல்லோரும் ஏற்கனவே ஒப்புக்கொண்ட தவிர்க்க முடியாத &ldquo;அடுத்த படி&rdquo; அல்ல.</p>
+<h2 id="இத-எத-அமததத">இது எதை அமைத்தது<a class="anchor" href="#%e0%ae%87%e0%ae%a4-%e0%ae%8e%e0%ae%a4-%e0%ae%85%e0%ae%ae%e0%ae%a4%e0%ae%a4%e0%ae%a4">#</a></h2>
+<p>ARPANET-இன் சொந்த host-to-host நெறிமுறைகள் இன்னும் TCP/IP அல்ல (பதிவு 41). கட்டமைப்பு வெற்றி — அர்ப்பணிக்கப்பட்ட circuits-க்குப் பதிலாக packets — இந்த phase-இன் பின்னைய ஒவ்வொரு வலையமைப்பும் கட்டும் அடித்தளம், நவீன இணையம் வழியாக, பதிவு 42-இன் datacenter fabrics வரை, மற்றும் Phase 10-இன் training-cluster interconnects வரை. அடுத்து, உள்ளூர்: TCP/IP பன்முக nets-ஐ ஒரே internetwork-ஆகக் கட்டுவதற்கு முன் கட்டிடங்கள் எப்படி Ethernet-இல் தரநிலையானது (பதிவு 40).</p>
+<p><strong>Door out:</strong> Paul Baran, <em>On Distributed Communications</em> (RAND Corporation, 1964) — Kleinrock-இன் queueing பணியும் Roberts-இன் ARPA திட்டமும் சேர்ந்து, ARPANET ஏன் circuit switching-க்கு எதிராகப் பந்தயம் கட்ட முடிந்தது என்பதற்கு அடிகோலும் செவ்வியல் distributed/packet வாதம்.</p>
+<p><strong>இப்போது முயல்க: packet-களை எண்ணுங்கள்.</strong> கீழே உள்ள VM-இல் (எல்லாம் ஓட்டிச் சரிபார்த்தவை; நேரங்கள் உங்கள் ஓட்டத்தில் வேறுபடும்):</p>
+<ol>
+<li><code>ifconfig lo 127.0.0.1 up</code> — loopback இடைமுகத்தை இயக்குங்கள். <code>ifconfig lo | grep packets</code> → <code>RX packets:0</code>, <code>TX packets:0</code>.</li>
+<li><code>ping -c 3 127.0.0.1</code> → மூன்று பதில்கள் (<code>seq=0</code>, <code>1</code>, <code>2</code>; எங்கள் ஓட்டத்தில் சுமார் 0.6–1.1 ms). மீண்டும் <code>ifconfig lo | grep packets</code> → <code>RX packets:6</code>, <code>TX packets:6</code>: 3 கோரிக்கை + 3 பதில் = 6 தனிப் packet-கள்.</li>
+<li><code>ping -c 1 -s 1000 127.0.0.1</code> பிறகு <code>ifconfig lo | grep -E 'packets|bytes'</code> → <code>packets:8</code>, <code>bytes:2560</code>. கணக்கு: சாதாரண ping packet = 20 (IP header) + 8 (ICMP header) + 56 (data) = 84 byte; 6 × 84 = 504. பெரிய ping = 20 + 8 + 1,000 = 1,028 byte; 2 × 1,028 = 2,056. 504 + 2,056 = <strong>2,560</strong> — ஒவ்வொரு byte-உம் header-களுடன் கணக்கில்.</li>
+<li><code>route -n</code> → அட்டவணை காலி; <code>ip route get 10.0.0.1</code> → <code>Network is unreachable</code>. ஒவ்வொரு packet-உம் &ldquo;அடுத்த hop எது?&rdquo; என்று கேட்கிறது; பதில் இல்லையென்றால் அனுப்ப முடியாது — IMP-கள் செய்த வேலை இதுதான்.</li>
+</ol>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=ta"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>சுற்று நிலைமாற்றல்</td>
+					<td>circuit switching</td>
+			</tr>
+			<tr>
+					<td>பொட்டல நிலைமாற்றல்</td>
+					<td>packet switching</td>
+			</tr>
+			<tr>
+					<td>பொட்டலம்</td>
+					<td>packet</td>
+			</tr>
+			<tr>
+					<td>தலைப்பு</td>
+					<td>header</td>
+			</tr>
+			<tr>
+					<td>சேமித்து-அனுப்புதல்</td>
+					<td>store-and-forward</td>
+			</tr>
+			<tr>
+					<td>தாவல்</td>
+					<td>hop</td>
+			</tr>
+			<tr>
+					<td>வழிச்செலுத்தி</td>
+					<td>router</td>
+			</tr>
+			<tr>
+					<td>வெடிப்புப் போக்குவரத்து</td>
+					<td>bursty traffic</td>
+			</tr>
+			<tr>
+					<td>புள்ளியியல் பகிர்வு</td>
+					<td>statistical multiplexing</td>
+			</tr>
+			<tr>
+					<td>நெரிசல்</td>
+					<td>congestion</td>
+			</tr>
+			<tr>
+					<td>வரிசைக் கோட்பாடு</td>
+					<td>queueing theory</td>
+			</tr>
+			<tr>
+					<td>தப்பிப்பிழைக்கும் தொடர்பு</td>
+					<td>survivable communications</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ்நாடு அரசு, <em>12ஆம் வகுப்பு கணினி பயன்பாடுகள்</em>, பாடம் 10: கணினி வலையமைப்பு ஓர் அறிமுகம் (ARPANET 1969 நான்கு nodes; Paul Baran / Leonard Kleinrock packet switching; வரலாற்று அட்டவணை — IMP-ஆழ அல்ல)</li>
+<li>தமிழ்நாடு அரசு, <em>12ஆம் வகுப்பு கணினி பயன்பாடுகள்</em>, பாடம் 11: வலையமைப்பு எடுத்துக்காட்டுகள் மற்றும் நெறிமுறைகள் (ARPANET / Internet அறிமுகம்)</li>
+<li>மு. சிவலிங்கம், <em>நெட்வொர்க் தொழில்நுட்பம்</em> (பாரதி பகத் பதிப்பகம்; பிணைய அடுக்குகள் / switching அறிமுகம்)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;ARPANET&#43;%E0%AE%AE%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AF%81%E0%AE%AE%E0%AF%8D&#43;Packet&#43;Switching&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F39-arpanet-and-packet-switching%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F39-arpanet-and-packet-switching.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F39-arpanet-and-packet-switching.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="flex align-center">
+        <span>Ethernet மற்றும் Local Area Network</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#circuit-switching-எதர-packet-switching">Circuit Switching எதிர் Packet Switching</a></li>
+    <li><a href="#பகரவன-கணகக-ஏன-packet-கள-வனறன">பகிர்வின் கணக்கு: ஏன் packet-கள் வென்றன</a></li>
+    <li><a href="#imps-அசல-routers">IMPs: அசல் Routers</a></li>
+    <li><a href="#சமதத-அனபபதலன-தமதம">சேமித்து-அனுப்புதலின் தாமதம்</a></li>
+    <li><a href="#இத-ஏன-உணமயன-பநதயம">இது ஏன் உண்மையான பந்தயம்</a></li>
+    <li><a href="#இத-எத-அமததத">இது எதை அமைத்தது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

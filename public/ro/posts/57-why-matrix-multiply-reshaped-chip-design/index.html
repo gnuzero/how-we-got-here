@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="La scară, calculul AI se reduce la înmulțiri de matrice — merită să specializezi siliciul pentru această formă">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/57-why-matrix-multiply-reshaped-chip-design/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="De ce înmulțirea de matrice a remodelat proiectarea cipurilor">
+	<meta property="og:description" content="La scară, calculul AI se reduce la înmulțiri de matrice — merită să specializezi siliciul pentru această formă">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="De ce înmulțirea de matrice a remodelat proiectarea cipurilor">
+	<meta itemprop="description" content="La scară, calculul AI se reduce la înmulțiri de matrice — merită să specializezi siliciul pentru această formă">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="2340">
+
+<title>De ce înmulțirea de matrice a remodelat proiectarea cipurilor • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/57-why-matrix-multiply-reshaped-chip-design/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/57-why-matrix-multiply-reshaped-chip-design/" title="Why Matrix Multiply Reshaped Chip Design">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/57-why-matrix-multiply-reshaped-chip-design/" title="เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/57-why-matrix-multiply-reshaped-chip-design/" title="Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" title="Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/57-why-matrix-multiply-reshaped-chip-design/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="active">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>De ce înmulțirea de matrice a remodelat proiectarea cipurilor</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ce-calculează-un-strat">1. Ce calculează un strat</a></li>
+    <li><a href="#2-intensitate-aritmetică-de-ce-matmul-țipa-după-hardware-special">2. Intensitate aritmetică: de ce matmul „țipa” după hardware special</a>
+      <ul>
+        <li><a href="#un-exemplu-ilustrativ-nu-o-măsurătoare-de-cip">Un exemplu ilustrativ (nu o măsurătoare de cip)</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-de-ce-un-nucleu-cpu-general-e-scump-aici">3. De ce un nucleu CPU „general” e scump aici</a></li>
+    <li><a href="#4-reutilizarea-datelor-cele-trei-axe">4. Reutilizarea datelor: cele trei axe</a>
+      <ul>
+        <li><a href="#cât-de-dens-e-dens-un-al-doilea-exemplu-numeric">Cât de „dens” e dens: un al doilea exemplu numeric</a></li>
+        <li><a href="#cuantizare-de-ce-8-biți-pe-tpu-v1">Cuantizare: de ce 8 biți pe TPU v1</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-de-la-observație-la-siliciu-un-tipar-care-se-repetă">5. De la observație la siliciu: un tipar care se repetă</a></li>
+    <li><a href="#5b-unde-se-leagă-de-restul-cărții">5b. Unde se leagă de restul cărții</a></li>
+    <li><a href="#6-ce-nu-spune-acest-capitol">6. Ce nu spune acest capitol</a></li>
+    <li><a href="#7-ce-să-rețineți">7. Ce să rețineți</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    De ce înmulțirea de matrice a remodelat proiectarea cipurilor
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Această fază a cărții este despre hardware construit pentru sarcinile AI moderne. Motivul pentru care proiectarea cipurilor s-a îndoit atât de tare în această direcție e mai clar odată ce spui ce înseamnă, la nivel aritmetic, un „workload AI”: mai îngust și mai mecanic decât sugerează fraza. În cea mai mare parte a ciclurilor brute, antrenare sau inferență, nu rulezi „inteligență” ca pe un program oarecare. Rulezi <strong>înmulțiri de matrice</strong> (<em>matrix multiply</em>, <em>matmul</em>) și acumulări (<em>multiply-accumulate</em>, MAC), la scară masivă, repetate fără încetare.</p>
+<p>Capitolul următor (58) duce aceeași observație până la arhitectură: matricea sistolică. Aici rămânem la <em>de ce</em> a meritat să schimbi siliciul.</p>
+<h2 id="1-ce-calculează-un-strat">1. Ce calculează un strat<a class="anchor" href="#1-ce-calculeaz%c4%83-un-strat">#</a></h2>
+<p>Un neuron artificial clasic e o funcție neliniară aplicată unei sume ponderate a intrărilor (Jouppi et al., „In-Datacenter Performance Analysis of a Tensor Processing Unit”, ISCA 2017, <a href="https://arxiv.org/abs/1704.04760">arXiv:1704.04760</a>, §1). Când aduni mulți astfel de neuroni într-un strat <em>fully connected</em> (complet conectat), fiecare ieșire e produsul scalar dintre un vector de activări și un vector de ponderi. Scrisă pe întregul strat, operația este o <strong>înmulțire de matrice</strong>: activările ori ponderile, urmate de o neliniaritate ieftină pe fiecare element (aceeași sursă, §1, tipul MLP).</p>
+<p>Rețelele convoluționale (CNN) nu scapă de matmul. Ele aplică nuclee mici pe vecinătăți spațiale, dar implementările rapide „desfășoară” (<em>unroll</em>) convoluția într-un produs matrice–matrice, apoi apelează biblioteci BLAS (Chellapilla, Puri &amp; Simard, „High Performance Convolutional Neural Networks for Document Processing”, IWFHR 2006, <a href="https://inria.hal.science/inria-00112631">HAL inria-00112631</a>, Abstract și §2). Tehnica e cunoscută în practică sub numele <em>im2col</em> (tokenul „im2col” nu apare în Chellapilla et al.; ei spun <em>unrolled convolution</em>): plătești memorie și copieri ca să câștigi un kernel dens de tip GEMM. Eyeriss notează, pe baza literaturii, că convoluțiile reprezintă peste 90% din operațiile unei CNN și domină timpul de rulare (Chen, Emer &amp; Sze, „Eyeriss…”, ISCA 2016, <a href="https://eems.mit.edu/wp-content/uploads/2016/04/eyeriss_isca_2016.pdf">PDF MIT</a>, Abstract / Introducere).</p>
+<p>Atenția (<em>attention</em>), nucleul Transformerelor din spatele modelelor de limbaj mari, e tot matmul la inimă. Vaswani et al. definesc atenția scalată ca</p>
+<pre tabindex="0"><code>Attention(Q, K, V) = softmax(Q Kᵀ / √d_k) V</code></pre><p>(Vaswani et al., „Attention Is All You Need”, NeurIPS 2017 / arXiv:1706.03762, ec. 1). <code>Q Kᵀ</code> este o înmulțire de matrice; produsul cu <code>V</code> este o a doua. Proiecțiile liniare care produc <code>Q</code>, <code>K</code>, <code>V</code> și cele din <em>multi-head attention</em> sunt, din nou, matmul-uri (aceeași lucrare, §3.2.2). Tabelul 1 din Vaswani et al. dă complexitatea pe strat a self-attention: O(n² · d) (Vaswani et al., 2017, Tabelul 1). Nu e o simplificare didactică: forma aritmetică a atenției <em>este</em> produsul de matrice plus un softmax.</p>
+<p>Jouppi et al. (2017) clasifică workload-ul de inferență din centrele de date Google în trei familii — MLP, CNN, LSTM — și spun că cele șase aplicații măsurate reprezintă 95% din cererea de inferență NN din acele centre (Jouppi et al., 2017, Abstract și Tabelul 1). În toate cele trei familii, nucleul aritmetic rămâne suma ponderată: adică MAC-uri pe matrici dense.</p>
+<h2 id="2-intensitate-aritmetică-de-ce-matmul-țipa-după-hardware-special">2. Intensitate aritmetică: de ce matmul „țipa” după hardware special<a class="anchor" href="#2-intensitate-aritmetic%c4%83-de-ce-matmul-%c8%9bipa-dup%c4%83-hardware-special">#</a></h2>
+<p>Nu orice operație merită un cip dedicat. Kung (1982) împarte calculele în <em>compute-bound</em> și <em>I/O-bound</em>: dacă numărul total de operații e mai mare decât numărul total de elemente de intrare și ieșire, calculul e compute-bound; altfel e I/O-bound (Kung, „Why Systolic Architectures?”, <em>Computer</em> 15(1):37–46, ianuarie 1982, p. 39, <a href="https://eecs.harvard.edu/~htk/publication/1982-kung-why-systolic-architecture.pdf">PDF Harvard</a>). Înmulțirea clasică matrice–matrice e exemplul lui de sarcină compute-bound: fiecare element din A e înmulțit cu o întreagă linie sau coloană din cealaltă matrice (Kung, 1982, p. 39). Adunarea a două matrici e I/O-bound: nu faci mai multe adunări decât ai elemente (aceeași pagină).</p>
+<p>Aceeași idee, reformulată pentru epoca multicore, apare în modelul <em>roofline</em>. Williams, Waterman și Patterson definesc <strong>intensitatea operațională</strong> (<em>operational intensity</em>) ca număr de operații pe octet de trafic DRAM, măsurat <em>după</em> filtrarea de către ierarhia de cache (Williams, Waterman &amp; Patterson, „Roofline…”, raport tehnic EECS-2008-134 / CACM 52(4), 2009, §3, <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2008/Archive/EECS-2008-134.pdf">PDF Berkeley</a>). Plafonul atins e minimul dintre plafonul de calcul și bandwidth × intensitate. Autorii notează explicit că, pentru unele kernel-uri — inclusiv <em>Dense Matrix</em> — intensitatea crește odată cu dimensiunea problemei (Williams et al., 2009, §5).</p>
+<h3 id="un-exemplu-ilustrativ-nu-o-măsurătoare-de-cip">Un exemplu ilustrativ (nu o măsurătoare de cip)<a class="anchor" href="#un-exemplu-ilustrativ-nu-o-m%c4%83sur%c4%83toare-de-cip">#</a></h3>
+<p>Fie C = A × B, cu A de dimensiune m×k și B de dimensiune k×n, în FP32 (4 octeți pe element). Numărul de operații în virgulă mobilă, numărând înmulțirea și adunarea din fiecare MAC, este 2 · m · k · n. Dacă ai citi A și B o singură dată din DRAM și ai scrie C o singură dată, traficul ar fi 4 · (m·k + k·n + m·n) octeți. Intensitatea „ideală” ar fi atunci</p>
+<pre tabindex="0"><code>I = 2 m k n  /  [4 (m k + k n + m n)]   FLOP/octet</code></pre><p>Pentru un pătrat n×n×n, I = n / (6) FLOP/octet — deci <strong>crește liniar cu n</strong>. (Aritmetică ilustrativă; cache-ul real și tiling-ul schimbă traficul măsurat în sensul Roofline, Williams et al., 2009, §3.) De aceea matmul-ul dens „mare” e candidat natural la specializare: cu cât matricele sunt mai mari, cu atât poți face mai multe operații pe fiecare octet adus din memorie — exact proprietatea pe care Kung o cerea sistemelor sistolice: „multiple computations for each memory access” (Kung, 1982, motto / p. 37).</p>
+<p>Contrastul cu generarea unui token într-un LLM cu <em>batch</em> = 1, discutat în capitolul 35, e instructiv: acolo intensitatea poate cădea spre ~1 FLOP/octet când ponderile sunt citite o dată și folosite o dată. Matmul-ul dens pe matrici mari stă pe partea cealaltă a acoperișului. Același operator, două regimuri de intensitate.</p>
+<p>O altă cale spre aceeași concluzie: energia. Chen et al. (2016) amintesc că aducerea unui datum din DRAM costă ordine de mărime mai mult decât o operație aritmetică locală (Chen et al., ISCA 2016, Introducere). Dacă un kernel face un singur FLOP pe octet, plătești energia DRAM la fiecare operație. Dacă face o mie de FLOP pe octet, energia aritmetică începe să conteze din nou — și merită să o optimizezi cu MAC-uri specializate, nu cu ALU-uri generale.</p>
+<h2 id="3-de-ce-un-nucleu-cpu-general-e-scump-aici">3. De ce un nucleu CPU „general” e scump aici<a class="anchor" href="#3-de-ce-un-nucleu-cpu-general-e-scump-aici">#</a></h2>
+<p>Un nucleu de CPU din fazele anterioare ale cărții e construit pentru cod secvențial arbitrar: ramificații, acces neregulat la memorie, flux de control greu de prezis. Acea generalitate costă arie și putere — predicție de ramificații, execuție <em>out-of-order</em>, cache-uri sofisticate — pe mecanisme pe care un workload dominat de o singură operație regulată nu le folosește la capacitate. Jouppi et al. (2017) rezumă contrastul pe dos: TPU-ul omitte intenționat cache-uri, <em>out-of-order</em>, multithreading, prefetch speculative etc., tocmai pentru că modelul de execuție determinist se potrivește mai bine cerințelor de latență la percentila 99 ale aplicațiilor NN de producție (Jouppi et al., 2017, Abstract). Minimalismul e „o virtute a procesoarelor domain-specific” (Jouppi et al., 2017, §5, formulare apropiată).</p>
+<p>Odată ce matmul-ul a fost recunoscut ca ponderea dominantă a calculului AI, specializarea a devenit rentabilă: siliciu care sare peste mașinăria general-purpose și își cheltuie bugetul pe <em>throughput</em> de MAC. Nucleele tensor (<em>tensor cores</em>) din GPU (capitolul 55) încorporează ideea <em>în interiorul</em> unui GPU încă general. Capitolul următor (58) merge mai departe: specializează <em>întreaga</em> arhitectură în jurul aceleiași observații.</p>
+<h2 id="4-reutilizarea-datelor-cele-trei-axe">4. Reutilizarea datelor: cele trei axe<a class="anchor" href="#4-reutilizarea-datelor-cele-trei-axe">#</a></h2>
+<p>În limbajul acceleratoarelor CNN, Chen, Emer și Sze taxonomizează <em>dataflow</em>-urile după ce rămâne „staționar” lângă elementul de procesare (PE):</p>
+<ul>
+<li><strong>Weight-stationary (WS):</strong> fiecare pondere de filtru rămâne în registrul local al PE-ului; se maximizează reutilizarea ponderilor (Chen et al., ISCA 2016, §IV.A).</li>
+<li><strong>Output-stationary (OS):</strong> acumularea fiecărui pixel de ieșire rămâne în PE; se minimizează mișcarea sumelor parțiale (Chen et al., ISCA 2016, §IV.B).</li>
+<li>(Ei propun și <em>row-stationary</em>, specific Eyeriss; nu e necesar aici.)</li>
+</ul>
+<p>De ce contează taxonomia pentru proiectarea cipului: energia de a aduce un octet din DRAM e cu ordine de mărime mai mare decât energia de a-l citi dintr-un registru on-chip (Chen et al., 2016, Introducere, citând [11–13] din lucrarea lor). Matmul-ul are trei operanzi reutilizabili — A, B și C parțial — iar alegerea care stă pe loc decide ce trafic oferi memoriei. TPU v1 alege un dataflow în care ponderile sunt încărcate dinainte și ținute, iar activările curg (Jouppi et al., 2017, Fig. 4 și textul aferent) — adică un WS pe unitatea de matrice. Detaliile sistolice apar în capitolul 58.</p>
+<h3 id="cât-de-dens-e-dens-un-al-doilea-exemplu-numeric">Cât de „dens” e dens: un al doilea exemplu numeric<a class="anchor" href="#c%c3%a2t-de-dens-e-dens-un-al-doilea-exemplu-numeric">#</a></h3>
+<p>Luați un strat fully-connected care mapează 1024 de activări în 1024 de ieșiri. Matricea de ponderi e 1024×1024. Un <em>forward</em> face 2 · 1024³ ≈ 2,15 × 10⁹ FLOP (înmulțire + adunare pe fiecare MAC). În FP16, ponderile ocupă 1024² · 2 ≈ 2,1 MB; activările de intrare și ieșire, câte ~2 KB fiecare — neglijabile față de ponderi. Dacă <em>batch</em>-ul e 1 și citiți ponderile o dată din memorie, intensitatea e</p>
+<pre tabindex="0"><code>I ≈ 2,15e9 FLOP / 2,1e6 B  ≈ 1000 FLOP/octet</code></pre><p>(Exemplu ilustrativ; ignoră overhead-ul de framing, KV etc.) Pe TPU v1, punctul de cotitură al roofline-ului pe <em>weight memory</em> e ~1350 operații/octet (Jouppi et al., 2017, Fig. 5): un astfel de strat e aproape de platoul de calcul. Dacă același strat e servit cu batch B, ponderile se citesc o dată și se aplică pe B exemple, deci intensitatea crește proporțional cu B — exact mecanismul pe care Jouppi et al. îl invocă când spun că reutilizarea ponderilor pe un batch amortizează costul accesului (Jouppi et al., 2017, §1).</p>
+<p>Schimbați problema în înmulțire matrice–vector (efectiv k mare, n = 1): intensitatea se prăbușește, pentru că nu mai reutilizați liniile din B. Kung (1982) deja separa matrice–matrice (compute-bound) de operații pe vectori care pot degenera spre I/O. De aceea acceleratoarele moderne țin pe chip dale (<em>tiles</em>) cât mai mari de ponderi și activează matmul-uri pe dale, nu pe vectori izolați (Jouppi et al., 2017, §2: tile de 64 KiB de ponderi plus unul pentru double-buffering).</p>
+<h3 id="cuantizare-de-ce-8-biți-pe-tpu-v1">Cuantizare: de ce 8 biți pe TPU v1<a class="anchor" href="#cuantizare-de-ce-8-bi%c8%9bi-pe-tpu-v1">#</a></h3>
+<p>Jouppi et al. (2017, §1) notează că antrenarea e aproape întotdeauna în virgulă mobilă, dar inferența acceptă adesea întregi înguști — „often just 8 bits” — după un pas de <em>quantization</em>. Ei citează estimările lui Dally ([Dal16]): înmulțirile pe întregi pe 8 biți pot costa de ~6× mai puțină energie și de ~6× mai puțină arie decât înmulțirile IEEE 754 pe 16 biți în virgulă mobilă, iar pentru adunare avantajul e ~13× la energie și ~38× la arie — <strong>cifre raportate aici ca citate de Jouppi et al. (2017, §1), nu din PDF-ul primar [Dal16]</strong>, care nu a fost redeschis pe desk-ul acesta.</p>
+<p>Alegerea MAC pe 8 biți pe grila 256×256 nu e decorativă: e cum încap 65 536 de multiplicatoare pe un die ≤ jumătate din Haswell, la ~40 W busy (Jouppi et al., 2017, Abstract + Tabelul 2). Capitolul 59 al cărții tratează cuantizarea pe larg.</p>
+<h2 id="5-de-la-observație-la-siliciu-un-tipar-care-se-repetă">5. De la observație la siliciu: un tipar care se repetă<a class="anchor" href="#5-de-la-observa%c8%9bie-la-siliciu-un-tipar-care-se-repet%c4%83">#</a></h2>
+<p>Povestea e de același <em>fel</em> cu pivotul superscalar → multicore (capitolul 17) și cu evoluția planar → FinFET → GAA (capitolele 47–49), dar acum la nivel de arhitectură a întregului cip: odată ce forma unui workload e bine înțeleasă și suficient de dominantă, hardware-ul specializat pentru acea formă bate hardware-ul general care o tratează ca pe un caz printre altele.</p>
+<p>Kung (1982) formulase deja criteriul economic: un sistem specializat trebuie să aibă cost de proiectare suficient de mic încât utilitatea lui îngustă să merite; de aceea cere design „simplu și regulat”, din câteva tipuri de celule repetate (Kung, 1982, pp. 37–38). VLSI-ul anilor 1978–1982 făcea fezabile astfel de dispozitive periferice (Kung &amp; Leiserson, „Systolic Arrays for (VLSI)”, CMU-CS-79-103, aprilie 1978 / rev. decembrie 1978, Abstract, <a href="https://eecs.harvard.edu/htk/static/files/1978-cmu-cs-report-kung-leiserson.pdf">PDF Harvard</a>). Deep learning-ul anilor 2010 a livrat, în sfârșit, workload-ul suficient de regulat și suficient de valoros economic încât același tipar — MAC regulat, comunicare locală, puțin control global — să merite un ASIC de producție în centrul de date (Jouppi et al., 2017: TPU desfășurat din 2015).</p>
+<h2 id="5b-unde-se-leagă-de-restul-cărții">5b. Unde se leagă de restul cărții<a class="anchor" href="#5b-unde-se-leag%c4%83-de-restul-c%c4%83r%c8%9bii">#</a></h2>
+<ul>
+<li>Capitolul 35 (zidul memoriei) și modelul roofline explică <em>de ce</em> intensitatea contează: fără destule FLOP pe octet, nici un plafon de MAC nu se atinge (Williams et al., 2009; Jouppi et al., 2017, Fig. 5).</li>
+<li>Capitolele 53–55 (warps, occupancy, Tensor Cores) arată specializarea <em>în interiorul</em> unui GPU încă general — același diagnostic, alt punct pe axa flexibilitate.</li>
+<li>Capitolul 58 duce specializarea la capăt: o grilă sistolică pe tot die-ul de calcul.</li>
+<li>Capitolul 63 închide arcul algoritmic: atenția lui Vaswani et al. (2017) e forma care „trage” de hardware-ul din aceste capitole.</li>
+</ul>
+<h2 id="6-ce-nu-spune-acest-capitol">6. Ce nu spune acest capitol<a class="anchor" href="#6-ce-nu-spune-acest-capitol">#</a></h2>
+<ul>
+<li>Nu spune că <em>orice</em> AI se reduce la un singur matmul. Softmax, normalizări, activări, <em>pooling</em>, scrie/citește pe host rămân; pe TPU v1 ele stau în unitatea de activare și în buffer-ul unificat, lângă MXU (Jouppi et al., 2017, Fig. 1 și lista de instrucțiuni).</li>
+<li>Nu spune că matmul-ul e mereu compute-bound pe mașina ta. Roofline-ul TPU are punctul de cotitură la ~1350 operații pe octet de <em>weight memory</em> — foarte în dreapta — iar patru din cele șase aplicații măsurate erau totuși limitate de bandwidth-ul memoriei pe TPU (Jouppi et al., 2017, Fig. 5 și highlights). Forma operatorului e una; regimul pe o mașină anume e altceva (vezi capitolul 35).</li>
+<li>Nu inventează cifre despre generații TPU ulterioare sau despre Tensor Core-uri NVIDIA: acelea apar, cu surse proprii, în alte capitole.</li>
+</ul>
+<h2 id="7-ce-să-rețineți">7. Ce să rețineți<a class="anchor" href="#7-ce-s%c4%83-re%c8%9bine%c8%9bi">#</a></h2>
+<ol>
+<li>Stratul fully-connected, convoluția desfășurată și atenția Transformer sunt, la nucleu, înmulțiri de matrice (Jouppi et al., 2017; Chellapilla et al., 2006; Vaswani et al., 2017).</li>
+<li>Matmul-ul dens e compute-bound în sensul lui Kung (1982) și are intensitate care crește cu dimensiunea (Williams et al., 2009) — deci plătește specializarea.</li>
+<li>Costul generalității unui CPU (sau al unui GPU foarte flexibil) e arie și energie pe mecanisme pe care acest workload nu le cere; TPU-ul arată varianta minimală (Jouppi et al., 2017).</li>
+<li>Alegerea <em>ce rămâne staționar</em> (ponderi, ieșiri, …) decide traficul de memorie (Chen et al., 2016).</li>
+<li>Tiparul se repetă în istoria calculatoarelor: când forma e clară, specializarea bate generalitatea pe acel colț de spațiu.</li>
+</ol>
+<p><strong>Ușa de ieșire:</strong> citiți Kung (1982) pentru criteriul compute-bound / I/O și pentru motto-ul „multiple computations for each memory access”; apoi Vaswani et al. (2017), ec. 1, ca să vedeți atenția ca matmul; apoi treceți la capitolul 58, unde aceeași observație devine o grilă de MAC-uri care pulsează.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;De&#43;ce&#43;%C3%AEnmul%C8%9Birea&#43;de&#43;matrice&#43;a&#43;remodelat&#43;proiectarea&#43;cipurilor&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F57-why-matrix-multiply-reshaped-chip-design%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F57-why-matrix-multiply-reshaped-chip-design.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F57-why-matrix-multiply-reshaped-chip-design.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/55-tensor-cores/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Tensor Cores</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/58-systolic-arrays/" class="flex align-center">
+        <span>Matrice sistolice</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ce-calculează-un-strat">1. Ce calculează un strat</a></li>
+    <li><a href="#2-intensitate-aritmetică-de-ce-matmul-țipa-după-hardware-special">2. Intensitate aritmetică: de ce matmul „țipa” după hardware special</a>
+      <ul>
+        <li><a href="#un-exemplu-ilustrativ-nu-o-măsurătoare-de-cip">Un exemplu ilustrativ (nu o măsurătoare de cip)</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-de-ce-un-nucleu-cpu-general-e-scump-aici">3. De ce un nucleu CPU „general” e scump aici</a></li>
+    <li><a href="#4-reutilizarea-datelor-cele-trei-axe">4. Reutilizarea datelor: cele trei axe</a>
+      <ul>
+        <li><a href="#cât-de-dens-e-dens-un-al-doilea-exemplu-numeric">Cât de „dens” e dens: un al doilea exemplu numeric</a></li>
+        <li><a href="#cuantizare-de-ce-8-biți-pe-tpu-v1">Cuantizare: de ce 8 biți pe TPU v1</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-de-la-observație-la-siliciu-un-tipar-care-se-repetă">5. De la observație la siliciu: un tipar care se repetă</a></li>
+    <li><a href="#5b-unde-se-leagă-de-restul-cărții">5b. Unde se leagă de restul cărții</a></li>
+    <li><a href="#6-ce-nu-spune-acest-capitol">6. Ce nu spune acest capitol</a></li>
+    <li><a href="#7-ce-să-rețineți">7. Ce să rețineți</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

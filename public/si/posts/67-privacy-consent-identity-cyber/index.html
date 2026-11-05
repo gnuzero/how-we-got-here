@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="විවෘත ජාලයක් මත ඉංජිනේරු පරිණාමයක් ලෙස රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, සහ cybersecurity — ප්‍රතිපත්ති පත්‍රිකාවක් නොවේ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/67-privacy-consent-identity-cyber/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber">
+	<meta property="og:description" content="විවෘත ජාලයක් මත ඉංජිනේරු පරිණාමයක් ලෙස රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, සහ cybersecurity — ප්‍රතිපත්ති පත්‍රිකාවක් නොවේ">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:20:20+05:30">
+
+
+	<meta itemprop="name" content="රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber">
+	<meta itemprop="description" content="විවෘත ජාලයක් මත ඉංජිනේරු පරිණාමයක් ලෙස රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, සහ cybersecurity — ප්‍රතිපත්ති පත්‍රිකාවක් නොවේ">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:20:20+05:30">
+	<meta itemprop="wordCount" content="1801">
+
+<title>රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/67-privacy-consent-identity-cyber/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/67-privacy-consent-identity-cyber/" title="Privacy, Consent, Identity, Cyber">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/67-privacy-consent-identity-cyber/" title="ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/67-privacy-consent-identity-cyber/" title="தனியுரிமை, ஒப்புதல், அடையாளம், Cyber">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/67-privacy-consent-identity-cyber/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/67-privacy-consent-identity-cyber/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="active">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#isolation-පළමව-ආවය">Isolation පළමුව ආවේය</a></li>
+    <li><a href="#පද-ජලයක-මත-crypto">පොදු ජාලයක් මත Crypto</a></li>
+    <li><a href="#අනනයතව-protocol-ගටලවක">අනන්‍යතාව Protocol ගැටලුවකි</a></li>
+    <li><a href="#බලයට-interface-එකක-ලස-එකඟතව">බලයට Interface එකක් ලෙස එකඟතාව</a></li>
+    <li><a href="#cybersecurity-වරදධකර-පදධත-ඉජනරකරණය">Cybersecurity: විරුද්ධකාරී පද්ධති ඉංජිනේරුකරණය</a></li>
+    <li><a href="#මය-ගමන-පරමදය-අයත-වනන-ඇය">මෙය ගමනේ ප්‍රමාදයේ අයත් වන්නේ ඇයි</a></li>
+    <li><a href="#ගඹරන-මලධරම-අට-සට-rsa-diffiehellman-tls-13-සහ-oauth-දකව--පනසලන">ගැඹුරින්: මූලධර්ම අටේ සිට RSA, Diffie–Hellman, TLS 1.3 සහ OAuth දක්වා — පැන්සලෙන්</a>
+      <ul>
+        <li><a href="#1-saltzer-සහ-schroeder-ග-සලසම-මලධරම-අට-1975">1. Saltzer සහ Schroeder ගේ සැලසුම් මූලධර්ම අට (1975)</a></li>
+        <li><a href="#2-diffiehellman-රහසක-නයව-රහසක-බද-ගනම-1976">2. Diffie–Hellman: රහසක් නොයවා රහසක් බෙදා ගැනීම (1976)</a></li>
+        <li><a href="#3-rsa-paper-එකම-කඩ-උදහරණය">3. RSA: paper එකේම කුඩා උදාහරණය</a></li>
+        <li><a href="#4-tls-13-වනසකම-දකක-rfc-8446-අගසත-2018">4. TLS 1.3: වෙනස්කම් දෙකක් (RFC 8446, අගෝස්තු 2018)</a></li>
+        <li><a href="#5-oauth-20-භමක-හතර-සහ-authorization-code-rfc-6749-ඔකතබර-2012">5. OAuth 2.0: භූමිකා හතර සහ authorization code (RFC 6749, ඔක්තෝබර් 2012)</a></li>
+        <li><a href="#පනසල-අභයස">පැන්සල් අභ්‍යාස</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>යුද්ධකාලීන crypto (Post 66) කැපවූ යන්ත්‍ර කාමරයක් ඇති රාජ්‍ය විරුද්ධකරුවකුට එරෙහි රහස්‍යභාවය විය. විවෘත අන්තර්ජාලය වෙනස් ඉංජිනේරු ගැටලුවක් ඉදිරිපත් කරයි: <em>බොහෝ</em> පාර්ශ්ව වයර් එක, hosts, සහ platforms බෙදා ගනී — සහ ඒවායින් සමහරක් සතුරු, කුතුහලයෙන් යුතු, හෝ පරිශීලකයාට වඩා විශාල ය. රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, සහ cybersecurity යනු එම ගැටලුව code සහ protocols තුළ පරිණාමය වූ ආකාරයට දෙන නම් ය. මෙය ප්‍රතිපත්ති පත්‍රිකාවක් නොවේ.</p>
+<h2 id="isolation-පළමව-ආවය">Isolation පළමුව ආවේය<a class="anchor" href="#isolation-%e0%b6%b4%e0%b7%85%e0%b6%b8%e0%b7%80-%e0%b6%86%e0%b7%80%e0%b6%ba">#</a></h2>
+<p>&ldquo;privacy product&rdquo; එකකට පෙර, <strong>ආරක්ෂාව (protection)</strong> තිබුණේය. Jerome Saltzer සහ Michael Schroeder ගේ 1975 survey, <a href="https://web.mit.edu/Saltzer/www/publications/protection/"><em>The Protection of Information in Computer Systems</em></a>, තවමත් ඉංජිනේරු නීතියක් ලෙස කියවෙන නිර්මාණ මූලධර්ම රාමු කළේය: least privilege, complete mediation, fail-safe defaults, economy of mechanism. Virtual memory (Post 24) සහ containers (Post 25) එම ඔට්ටුවේම පසුකාලීන අවස්ථා ය — දෘඪාංගය සහ kernel එක බලාත්මක කරන සීමාවක් අඳින්න, එසේ නම් එක් වැඩසටහනකට අනෙකක් සුළුසේ කියවිය නොහැක.</p>
+<p>පිටවීමේ දොර: Saltzer &amp; Schroeder (1975).</p>
+<h2 id="පද-ජලයක-මත-crypto">පොදු ජාලයක් මත Crypto<a class="anchor" href="#%e0%b6%b4%e0%b6%af-%e0%b6%a2%e0%b6%bd%e0%b6%ba%e0%b6%9a-%e0%b6%b8%e0%b6%ad-crypto">#</a></h2>
+<p>බෙදාගත් ජාල courier-key ආකෘතිය කඩා දැමුවේය. Whitfield Diffie සහ Martin Hellman ගේ 1976 පත්‍රිකාව <a href="https://ee.stanford.edu/~hellman/publications/24.pdf"><em>New Directions in Cryptography</em></a> public-key agreement පර්යේෂණ වස්තුවක් කළේය: eavesdroppers හුවමාරුව අසන අතරතුර පාර්ශ්ව දෙකකට බෙදාගත් රහසක් ස්ථාපිත කළ හැක. Ronald Rivest, Adi Shamir, සහ Leonard Adleman RSA (1977/78) සමඟ අනුගමනය කළහ — පණිවිඩය සමඟ ගමන් කළ හැකි public encryption සහ signatures. අද වෙබ් එකේ TLS යනු එම පෙළපතේ යෙදවූ පරම්පරාවයි (දිගු protocol සංශෝධන මාවතක් සමඟ), වෙනම සදාචාර කාණ්ඩයක් නොවේ.</p>
+<p>පිටවීමේ දොර: Diffie–Hellman (1976); RSA පත්‍රිකාව; නවීන දොරක් ලෙස <a href="https://www.rfc-editor.org/rfc/rfc8446">RFC 8446</a> (TLS 1.3).</p>
+<h2 id="අනනයතව-protocol-ගටලවක">අනන්‍යතාව Protocol ගැටලුවකි<a class="anchor" href="#%e0%b6%85%e0%b6%b1%e0%b6%b1%e0%b6%ba%e0%b6%ad%e0%b7%80-protocol-%e0%b6%9c%e0%b6%a7%e0%b6%bd%e0%b7%80%e0%b6%9a">#</a></h2>
+<p>ජාලයක &ldquo;ඔබ කවුද?&rdquo; vibe එකක් නොවේ — එය authentication සහ authorization යන්ත්‍රෝපකරණයකි. Passwords මුල් ලාභ authenticator වූ අතර තවමත් breach මතුපිටකි. Needham සහ Schroeder ගේ authentication වැඩ, Kerberos (MIT Project Athena; Steve Miller, Clifford Neuman, සහ සගයන්), සහ පසුකාලීන public-key certificates අනන්‍යතාව යන්ත්‍ර පරීක්ෂා කළ හැකි <em>සත්‍යාපනය කළ හැකි claims</em> බවට පත් කළේය. OAuth සහ OpenID Connect (IETF / OpenID Foundation specs) පසුව &ldquo;ඔබ කවුදැයි ඔප්පු කරන්න&rdquo; සහ &ldquo;මෙම app එකට පටු හැකියාවක් ලබා දෙන්න&rdquo; වෙන් කළේය — එකඟතාව අපැහැදිලි පොරොන්දුවක් නොව scoped token එකක් ලෙස.</p>
+<p>නම් කළ සීමාව: verifier එක, credential එක, හෝ recovery මාර්ගය ඔවුන් ආරක්ෂා කරන දේට වඩා දුර්වල වන විට අනන්‍යතා පද්ධති ඉංජිනේරු වශයෙන් අසාර්ථක වේ. පිටවීමේ දොර: MIT වෙතින් Kerberos ඉතිහාස; <a href="https://www.rfc-editor.org/rfc/rfc6749">RFC 6749</a> (OAuth 2.0).</p>
+<h2 id="බලයට-interface-එකක-ලස-එකඟතව">බලයට Interface එකක් ලෙස එකඟතාව<a class="anchor" href="#%e0%b6%b6%e0%b6%bd%e0%b6%ba%e0%b6%a7-interface-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%bd%e0%b7%83-%e0%b6%91%e0%b6%9a%e0%b6%9f%e0%b6%ad%e0%b7%80">#</a></h2>
+<p>පද්ධතියකට සීමාවක් හරහා ක්‍රියා කිරීමට අවසර අවශ්‍ය තැන තැන එකඟතාව stack එකේ පෙනේ: browsers තුළ cookie jars සහ same-origin policy (වෙබ් වේදිකාවේ isolation කතාව), උපාංග මත permission prompts, සහ platforms මත scoped API tokens. ඉංජිනේරු ප්‍රශ්නය සැමවිටම එකම ය — <em>කුමන හැකියාව, කාට, කොපමණ කාලයකට ලබා දුන්නේද, සහ එය අවලංගු කළ හැකිද?</em> — UI copy එක &ldquo;Accept&rdquo; කියනවාද හෝ header එක <code>Authorization</code> කියනවාද යන්න නොසලකා. Post 64 ගේ governance ස්ථරය නම් සහ අංක තීරණය කරයි; මෙම ස්ථරය තීරණය කරන්නේ <em>ඔබ වෙනුවෙන් ඒවා භාවිතා කළ හැක්කේ කාටද</em> යන්නයි.</p>
+<h2 id="cybersecurity-වරදධකර-පදධත-ඉජනරකරණය">Cybersecurity: විරුද්ධකාරී පද්ධති ඉංජිනේරුකරණය<a class="anchor" href="#cybersecurity-%e0%b7%80%e0%b6%bb%e0%b6%af%e0%b6%b0%e0%b6%9a%e0%b6%bb-%e0%b6%b4%e0%b6%af%e0%b6%b0%e0%b6%ad-%e0%b6%89%e0%b6%a2%e0%b6%b1%e0%b6%bb%e0%b6%9a%e0%b6%bb%e0%b6%ab%e0%b6%ba">#</a></h2>
+<p>Cybersecurity යනු ජාලය, supply chain, සහ සමහර විට ක්‍රියාකරු සතුරු යැයි උපකල්පනය කරන විට සිදු වන දෙයයි. එය ඉහත සියල්ල — isolation, crypto, අනන්‍යතාව — attacker model එකක් යටතේ නැවත භාවිතා කරයි: malware, phishing, side channels, vulnerable dependencies, පරිමාණයේ misconfiguration. විනයේ සම්බන්ධක පටකය බිය නොවේ; එය ප්‍රතිපෝෂණයයි. Vulnerabilities නම් කෙරේ (CVE), patch කෙරේ, සහ regress-test කෙරේ; අපයෝජනයට rate limits, sandboxing, සහ monitoring සමඟ මුහුණ දෙයි. Dorothy Denning ගේ මුල් intrusion-detection වැඩ සහ පසුකාලීන CERT සම්බන්ධීකරණ ආකෘතිය <em>වර්ගයක</em> බීජ ය: ප්‍රහාර පද්ධතිය නැවත හැඩගස්වන සංඥා ලෙස සලකන්න.</p>
+<p>පිටවීමේ දොර: CVE program ලේඛන; Saltzer/Schroeder පදනම ලෙස උපුටා දක්වන සම්භාව්‍ය security-engineering පාඨ.</p>
+<h2 id="මය-ගමන-පරමදය-අයත-වනන-ඇය">මෙය ගමනේ ප්‍රමාදයේ අයත් වන්නේ ඇයි<a class="anchor" href="#%e0%b6%b8%e0%b6%ba-%e0%b6%9c%e0%b6%b8%e0%b6%b1-%e0%b6%b4%e0%b6%bb%e0%b6%b8%e0%b6%af%e0%b6%ba-%e0%b6%85%e0%b6%ba%e0%b6%ad-%e0%b7%80%e0%b6%b1%e0%b6%b1-%e0%b6%87%e0%b6%ba">#</a></h2>
+<p>පොත OS isolation, ජාල, බෙදාහැරුණු පද්ධති, සහ AI infra ගොඩනඟා තිබෙන තුරු platform එකක රහස්‍යතාව ගැන අවංකව කතා කළ නොහැක. එම පරිච්ඡේද substrate එකයි. මෙය ඉහළින් ගමන් කරන විරුද්ධකාරී සහ එකඟතාව-හැඩැති සීමා නම් කරයි — එසේ නම් Post 69 ගේ platform සංස්ලේෂණයට privacy engineering පළමු පන්තියේ ස්ථරයක් ලෙස සැලකිය හැක, appendix එකක් ලෙස නොවේ.</p>
+<h2 id="ගඹරන-මලධරම-අට-සට-rsa-diffiehellman-tls-13-සහ-oauth-දකව--පනසලන">ගැඹුරින්: මූලධර්ම අටේ සිට RSA, Diffie–Hellman, TLS 1.3 සහ OAuth දක්වා — පැන්සලෙන්<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-%e0%b6%b8%e0%b6%bd%e0%b6%b0%e0%b6%bb%e0%b6%b8-%e0%b6%85%e0%b6%a7-%e0%b7%83%e0%b6%a7-rsa-diffiehellman-tls-13-%e0%b7%83%e0%b7%84-oauth-%e0%b6%af%e0%b6%9a%e0%b7%80--%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1">#</a></h2>
+<p>ඉහත කොටස් චාපය (arc) නම් කළේය. මෙහිදී ප්‍රාථමික මූලාශ්‍රවලම ඇති උදාහරණ සහ නීති ගෙන, අතින් ගණනය කළ හැකි ප්‍රමාණයට කුඩා කර බලමු. &ldquo;නිදර්ශන&rdquo; ලෙස සලකුණු කළ සංඛ්‍යා පාඩම සඳහා අප තෝරාගත් ඒවාය — සැබෑ පද්ධතිවල අංක සිය ගණන් ඉලක්කම් දිගය.</p>
+<h3 id="1-saltzer-සහ-schroeder-ග-සලසම-මලධරම-අට-1975">1. Saltzer සහ Schroeder ගේ සැලසුම් මූලධර්ම අට (1975)<a class="anchor" href="#1-saltzer-%e0%b7%83%e0%b7%84-schroeder-%e0%b6%9c-%e0%b7%83%e0%b6%bd%e0%b7%83%e0%b6%b8-%e0%b6%b8%e0%b6%bd%e0%b6%b0%e0%b6%bb%e0%b6%b8-%e0%b6%85%e0%b6%a7-1975">#</a></h3>
+<p>&ldquo;The Protection of Information in Computer Systems&rdquo; (Saltzer &amp; Schroeder; MIT හි කතුවරුන්ගේ web පිටපත, &ldquo;Basic Principles&rdquo; කොටස) මූලධර්ම අටක් ලැයිස්තු කරයි:</p>
+<ol>
+<li><strong>යාන්ත්‍රණයේ අරපිරිමැස්ම (Economy of mechanism):</strong> සැලසුම හැකි තරම් සරල හා කුඩා කරන්න.</li>
+<li><strong>ආරක්ෂිත පෙරනිමි (Fail-safe defaults):</strong> ප්‍රවේශ තීරණ <em>බැහැර කිරීම</em> මත නොව <em>අවසරය</em> මත පදනම් කරන්න.</li>
+<li><strong>සම්පූර්ණ මැදිහත්වීම (Complete mediation):</strong> සෑම වස්තුවකටම කරන සෑම ප්‍රවේශයක්ම අධිකාරිය සඳහා පරීක්ෂා කළ යුතුය.</li>
+<li><strong>විවෘත සැලසුම (Open design):</strong> සැලසුම රහසක් නොවිය යුතුය; ආරක්ෂාව රඳා පැවතිය යුත්තේ යතුරු හෝ මුරපද මතය.</li>
+<li><strong>වරප්‍රසාද වෙන් කිරීම (Separation of privilege):</strong> හැකි තැන, යතුරු <em>දෙකක්</em> අවශ්‍ය යාන්ත්‍රණයක් එකකට වඩා ශක්තිමත්ය.</li>
+<li><strong>අවම වරප්‍රසාදය (Least privilege):</strong> සෑම වැඩසටහනක්ම සහ පරිශීලකයෙක්ම කාර්යයට අවශ්‍ය අවම වරප්‍රසාද කට්ටලයෙන් ක්‍රියා කළ යුතුය.</li>
+<li><strong>අවම පොදු යාන්ත්‍රණය (Least common mechanism):</strong> පරිශීලකයන් කිහිප දෙනෙකුට පොදු යාන්ත්‍රණ අවම කරන්න — එක් එක් පොදු යාන්ත්‍රණය පරිශීලකයන් අතර තොරතුරු මාර්ගයක් විය හැක.</li>
+<li><strong>මනෝවිද්‍යාත්මක පිළිගැනීම (Psychological acceptability):</strong> මිනිසුන් එය නිවැරදිව, ස්වයංක්‍රීයව භාවිත කරන තරමට අතුරුමුහුණත පහසු විය යුතුය.</li>
+</ol>
+<p>ඊට අමතරව paper එක පරිගණකවලට &ldquo;අසම්පූර්ණව පමණක්&rdquo; ගැළපෙන මූලධර්ම දෙකක් කියයි; ඉන් එකක් <strong>වැඩ සාධකය (work factor)</strong>: ප්‍රහාරකයාගේ සම්පත් සමඟ යාන්ත්‍රණය මඟහැරීමේ පිරිවැය සසඳන්න. Paper එකේම උදාහරණය: අකුරු හතරේ මුරපද සියල්ල උත්සාහ කිරීමට අවශ්‍ය අත්හදා බැලීම් 26^4 = 456,976; terminal එකක අතින් නම් ප්‍රමාණවත් විය හැකි නමුත්, තත්පරයකට මුරපද මිලියනයක් උත්සාහ කළ හැකි පරිගණකයකට එය සුළු බාධාවකි.</p>
+<p><strong>විසඳූ උදාහරණය 1:</strong> 456,976 ÷ 1,000,000 ≈ <strong>තත්පර 0.46</strong>. (නිදර්ශන) අකුරු 8 කට: 26^8 = 208,827,064,576 ≈ තත්පර 208,827 ≈ <strong>දින 2.4</strong>. දිග එකතු කිරීම වැඩ සාධකය ඝාතීයව (exponentially) වැඩි කරයි.</p>
+<h3 id="2-diffiehellman-රහසක-නයව-රහසක-බද-ගනම-1976">2. Diffie–Hellman: රහසක් නොයවා රහසක් බෙදා ගැනීම (1976)<a class="anchor" href="#2-diffiehellman-%e0%b6%bb%e0%b7%84%e0%b7%83%e0%b6%9a-%e0%b6%b1%e0%b6%ba%e0%b7%80-%e0%b6%bb%e0%b7%84%e0%b7%83%e0%b6%9a-%e0%b6%b6%e0%b6%af-%e0%b6%9c%e0%b6%b1%e0%b6%b8-1976">#</a></h3>
+<p>Diffie සහ Hellman ගේ &ldquo;New Directions in Cryptography&rdquo; (IEEE Transactions on Information Theory, IT-22, no. 6, නොවැම්බර් 1976; Stanford හි කතුවරයාගේ පිටපත, PDF p6) ක්‍රමය: ප්‍රථමක (prime) q සහ ප්‍රාථමික මූලද්‍රව්‍යයක් (primitive element) α පොදුය. සෑම පරිශීලකයෙක්ම රහස් අංකයක් X තෝරා, <strong>Y = α^X mod q</strong> පොදු ගොනුවක තබයි. i සහ j ට පොදු යතුර K = α^(Xi·Xj) mod q: i එය ගණනය කරන්නේ Yj^Xi ලෙස, j එය Yi^Xj ලෙස. ප්‍රහාරකයාට ඇත්තේ Yi සහ Yj පමණි; X සොයා ගැනීමට <strong>discrete logarithm</strong> ගණනය කිරීමට සිදු වේ — paper එක ආරක්ෂාව එම දුෂ්කරතාව මත රඳා පවතී යැයි කියයි.</p>
+<p><strong>විසඳූ උදාහරණය 2 (නිදර්ශන — ඉතා කුඩා අංක):</strong> q = 23, α = 5 (5 යනු mod 23 හි primitive element එකකි: 5^1 … 5^22 මගින් 1–22 සියල්ල ලැබේ). Alice X = 6, Bob X = 15.</p>
+<ul>
+<li>Alice: 5^6 = 15625; 15625 mod 23 = <strong>8</strong> → පොදු Y = 8.</li>
+<li>Bob: 5^15 mod 23 = <strong>19</strong> → පොදු Y = 19.</li>
+<li>Alice: 19^6 mod 23 = <strong>2</strong>. Bob: 8^15 mod 23 = <strong>2</strong>. දෙදෙනාටම K = 2, එය කිසිදා රැහැනේ ගියේ නැත.</li>
+</ul>
+<p>පැන්සල් උපක්‍රමය: 19^6 = (19^2)^3; 19^2 = 361 = 15·23 + 16 → 16; 16^3 = 4096 = 178·23 + 2 → <strong>2</strong>. සෑම පියවරකදීම mod කරන්න, අංක කුඩාව පවතී.</p>
+<h3 id="3-rsa-paper-එකම-කඩ-උදහරණය">3. RSA: paper එකේම කුඩා උදාහරණය<a class="anchor" href="#3-rsa-paper-%e0%b6%91%e0%b6%9a%e0%b6%b8-%e0%b6%9a%e0%b6%a9-%e0%b6%8b%e0%b6%af%e0%b7%84%e0%b6%bb%e0%b6%ab%e0%b6%ba">#</a></h3>
+<p>Rivest, Shamir සහ Adleman ගේ &ldquo;A Method for Obtaining Digital Signatures and Public-Key Cryptosystems&rdquo; (<em>Communications of the ACM</em> 21(2):120–126, February 1978, doi:10.1145/359340.359342; Rivest ගේ MIT පිටුවේ කතුවරුන්ගේ පිටපත — ලැබුණේ 1977 අප්‍රේල් 4, සංශෝධනය 1977 සැප්තැම්බර් 1; §VIII &ldquo;A Small Example&rdquo;, PDF p10):</p>
+<ul>
+<li>p = 47, q = 59, n = 47 · 59 = <strong>2773</strong>.</li>
+<li>φ(n) = 46 · 58 = <strong>2668</strong>.</li>
+<li>රහස් d = <strong>157</strong>; පොදු e = <strong>17</strong> (Euclid ක්‍රමයෙන්, 17 · 157 ≡ 1 mod 2668).</li>
+<li>අකුරු: හිස්තැන = 00, A = 01, B = 02, …, Z = 26; block එකකට අකුරු දෙකක්.</li>
+<li>පණිවිඩය &ldquo;ITS ALL GREEK TO ME&rdquo; → <code>0920 1900 0112 1200 0718 0505 1100 2015 0013 0500</code>.</li>
+<li>පළමු block එක M = 920: 920^17 mod 2773 = <strong>948</strong>.</li>
+</ul>
+<p><strong>විසඳූ උදාහරණය 3 (පරීක්ෂාව):</strong> 17 · 157 = 2669 = 2668 + 1 ✓. Decrypt: 948^157 mod 2773 = <strong>920</strong> ✓ (අප python මගින් පරීක්ෂා කළෙමු). &ldquo;IT&rdquo; → I = 09, T = 20 → 0920.</p>
+<p>පැන්සලෙන් 920^17: 17 = 10001 (ද්විමය) නිසා paper එක වර්ග කිරීම් හතරක් සහ ගුණ කිරීමක් භාවිත කරයි: M^17 = ((((M^2)^2)^2)^2) · M. ගුණ කිරීම් 5 ක් පමණි — 16 ක් නොවේ. සැබෑ RSA හි e සහ d bits දහස් ගණනක් වුවද, එම &ldquo;square-and-multiply&rdquo; ක්‍රමය නිසා ගණනය වේගවත්ය.</p>
+<h3 id="4-tls-13-වනසකම-දකක-rfc-8446-අගසත-2018">4. TLS 1.3: වෙනස්කම් දෙකක් (RFC 8446, අගෝස්තු 2018)<a class="anchor" href="#4-tls-13-%e0%b7%80%e0%b6%b1%e0%b7%83%e0%b6%9a%e0%b6%b8-%e0%b6%af%e0%b6%9a%e0%b6%9a-rfc-8446-%e0%b6%85%e0%b6%9c%e0%b7%83%e0%b6%ad-2018">#</a></h3>
+<p>RFC 8446 §1.2 &ldquo;Major Differences from TLS 1.2&rdquo; හි ලැයිස්තුවෙන් දෙකක්:</p>
+<ul>
+<li><strong>Static RSA සහ Diffie–Hellman cipher suites ඉවත් කර ඇත;</strong> සියලු public-key key exchange ක්‍රම දැන් <strong>forward secrecy</strong> සපයයි.</li>
+<li><strong>ServerHello ට පසු සියලු handshake පණිවිඩ encrypt වේ.</strong></li>
+</ul>
+<p><strong>Forward secrecy</strong> යනු: server එකේ දිගුකාලීන යතුර පසුව සොරා ගත්තද, පෙර සැසිවල (sessions) යතුරු ලබා ගත නොහැකි වීමයි. ඉහත DH උදාහරණය සිතන්න: සැසියකට වරක් නව X අංක (ephemeral) භාවිත කර විසි කළහොත්, පසුව සොරකම් කිරීමට කිසිවක් ඉතිරි නොවේ. Static RSA key transport හිදී, සැසි රහස server එකේ RSA යතුරෙන් encrypt වී රැහැනේ යයි — එම යතුර පසුව කාන්දු වූවොත්, පටිගත කළ පැරණි සැසි සියල්ල විවෘත වේ.</p>
+<h3 id="5-oauth-20-භමක-හතර-සහ-authorization-code-rfc-6749-ඔකතබර-2012">5. OAuth 2.0: භූමිකා හතර සහ authorization code (RFC 6749, ඔක්තෝබර් 2012)<a class="anchor" href="#5-oauth-20-%e0%b6%b7%e0%b6%b8%e0%b6%9a-%e0%b7%84%e0%b6%ad%e0%b6%bb-%e0%b7%83%e0%b7%84-authorization-code-rfc-6749-%e0%b6%94%e0%b6%9a%e0%b6%ad%e0%b6%b6%e0%b6%bb-2012">#</a></h3>
+<p>RFC 6749 භූමිකා හතරක් නම් කරයි: <strong>resource owner</strong> (ඔබ), <strong>client</strong> (යෙදුම), <strong>authorization server</strong>, සහ <strong>resource server</strong> (API එක). ප්‍රධාන අදහස නම් එකඟතාවයි: client එකට ඔබේ මුරපදය ලැබෙන්නේ නැත; ඒ වෙනුවට සීමිත <strong>scope</strong> සහ කල් ඉකුත්වන <strong>access token</strong> එකක් ලැබේ.</p>
+<p>Authorization code grant (§4.1) හිදී browser එක client එකට කෙටිකාලීන <strong>code</strong> එකක් ගෙන එයි; client එක එය authorization server සමඟ token එකකට හුවමාරු කරයි. §4.1.2 අනුව code එක නිකුත් කළ විගස ඉක්මනින් කල් ඉකුත් විය යුතු අතර <strong>උපරිම මිනිත්තු 10</strong> ක ආයු කාලයක් නිර්දේශිතය (RECOMMENDED); client එක code එක එක් වරකට වඩා භාවිත නොකළ යුතුය.</p>
+<p><strong>විසඳූ උදාහරණය 4 (නිදර්ශන):</strong> photo-printing යෙදුමකට ඔබේ ඡායාරූප කියවීමට පමණක් අවසර දෙයි. Saltzer මූලධර්ම සමඟ ගැළපීම: scope එක &ldquo;කියවීම පමණක්&rdquo; = <strong>least privilege</strong>; scope එකේ නැති ඕනෑම දෙයක් පෙරනිමියෙන් තහනම් = <strong>fail-safe defaults</strong>; සෑම API ඉල්ලීමකදීම token පරීක්ෂාව = <strong>complete mediation</strong>.</p>
+<h3 id="පනසල-අභයස">පැන්සල් අභ්‍යාස<a class="anchor" href="#%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83">#</a></h3>
+<ol>
+<li>අකුරු 6 ක කුඩා අකුරු මුරපද සියල්ල, තත්පරයට මිලියනයක් බැගින් උත්සාහ කිරීමට කොපමණ කාලයක්ද? (නිදර්ශන)</li>
+<li>q = 23, α = 5, Alice X = 3, Bob X = 7 (නිදර්ශන). පොදු අගයන් සහ බෙදාගත් K සොයන්න.</li>
+<li>RSA උදාහරණයේ n = 2773 සමඟ, block එකකට අකුරු <em>තුනක්</em> (උදා. &ldquo;ZZZ&rdquo; = 262626) දැමිය නොහැක්කේ ඇයි?</li>
+<li>17 · 157 mod 2668 ගණනය කර e සහ d එකිනෙකෙහි ප්‍රතිලෝම බව පෙන්වන්න.</li>
+<li>TLS 1.3 හි static RSA key exchange ඉවත් කිරීම forward secrecy ට අදාළ වන්නේ කෙසේද? වාක්‍ය දෙකකින්.</li>
+</ol>
+<p><strong>පිළිතුරු:</strong></p>
+<ol>
+<li>26^6 = 308,915,776 → ≈ තත්පර 309 ≈ <strong>මිනිත්තු 5.1</strong>.</li>
+<li>Alice: 5^3 = 125 mod 23 = <strong>10</strong>. Bob: 5^7 mod 23 = <strong>17</strong>. Alice: 17^3 mod 23 = <strong>14</strong>; Bob: 10^7 mod 23 = <strong>14</strong>. K = 14.</li>
+<li>RSA ක්‍රියා කරන්නේ M &lt; n සඳහාය; 262626 &gt; 2773, එබැවින් block එක n ට වඩා කුඩා විය යුතුය. අකුරු දෙකක උපරිමය 2626 &lt; 2773 ✓.</li>
+<li>17 · 157 = 2669; 2669 − 2668 = <strong>1</strong> ✓.</li>
+<li>Static RSA හිදී සැසි රහස දිගුකාලීන යතුරෙන් ආරක්ෂා වන නිසා එම යතුර කාන්දු වූ විට පැරණි සැසි විවෘත වේ. සැසියකට නව (ephemeral) DH යතුරු භාවිත කිරීමෙන්, සැසිය අවසන් වූ පසු එම රහස නැවත ගණනය කිරීමට කිසිවක් ඉතිරි නොවේ.</li>
+</ol>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9d4bce40b267b3e7431360d19bec4303a19d6ae7" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B6%BB%E0%B7%84%E0%B7%83%E0%B7%8A%E2%80%8D%E0%B6%BA%E0%B6%AD%E0%B7%8F%E0%B7%80%2C&#43;%E0%B6%91%E0%B6%9A%E0%B6%9F%E0%B6%AD%E0%B7%8F%E0%B7%80%2C&#43;%E0%B6%85%E0%B6%B1%E0%B6%B1%E0%B7%8A%E2%80%8D%E0%B6%BA%E0%B6%AD%E0%B7%8F%E0%B7%80%2C&#43;Cyber&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F67-privacy-consent-identity-cyber%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F67-privacy-consent-identity-cyber.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F67-privacy-consent-identity-cyber.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/66-wartime-crypto/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>යුද්ධකාලීන Crypto</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/68-visions-that-shipped/" class="flex align-center">
+        <span>ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#isolation-පළමව-ආවය">Isolation පළමුව ආවේය</a></li>
+    <li><a href="#පද-ජලයක-මත-crypto">පොදු ජාලයක් මත Crypto</a></li>
+    <li><a href="#අනනයතව-protocol-ගටලවක">අනන්‍යතාව Protocol ගැටලුවකි</a></li>
+    <li><a href="#බලයට-interface-එකක-ලස-එකඟතව">බලයට Interface එකක් ලෙස එකඟතාව</a></li>
+    <li><a href="#cybersecurity-වරදධකර-පදධත-ඉජනරකරණය">Cybersecurity: විරුද්ධකාරී පද්ධති ඉංජිනේරුකරණය</a></li>
+    <li><a href="#මය-ගමන-පරමදය-අයත-වනන-ඇය">මෙය ගමනේ ප්‍රමාදයේ අයත් වන්නේ ඇයි</a></li>
+    <li><a href="#ගඹරන-මලධරම-අට-සට-rsa-diffiehellman-tls-13-සහ-oauth-දකව--පනසලන">ගැඹුරින්: මූලධර්ම අටේ සිට RSA, Diffie–Hellman, TLS 1.3 සහ OAuth දක්වා — පැන්සලෙන්</a>
+      <ul>
+        <li><a href="#1-saltzer-සහ-schroeder-ග-සලසම-මලධරම-අට-1975">1. Saltzer සහ Schroeder ගේ සැලසුම් මූලධර්ම අට (1975)</a></li>
+        <li><a href="#2-diffiehellman-රහසක-නයව-රහසක-බද-ගනම-1976">2. Diffie–Hellman: රහසක් නොයවා රහසක් බෙදා ගැනීම (1976)</a></li>
+        <li><a href="#3-rsa-paper-එකම-කඩ-උදහරණය">3. RSA: paper එකේම කුඩා උදාහරණය</a></li>
+        <li><a href="#4-tls-13-වනසකම-දකක-rfc-8446-අගසත-2018">4. TLS 1.3: වෙනස්කම් දෙකක් (RFC 8446, අගෝස්තු 2018)</a></li>
+        <li><a href="#5-oauth-20-භමක-හතර-සහ-authorization-code-rfc-6749-ඔකතබර-2012">5. OAuth 2.0: භූමිකා හතර සහ authorization code (RFC 6749, ඔක්තෝබර් 2012)</a></li>
+        <li><a href="#පනසල-අභයස">පැන්සල් අභ්‍යාස</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

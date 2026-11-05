@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mii de thread-uri cer lățime de bandă, nu doar capacitate — de la registre și memorie partajată până la HBM lipit lângă cip">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/54-gpu-memory-hierarchy/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Ierarhia de memorie a GPU-ului">
+	<meta property="og:description" content="Mii de thread-uri cer lățime de bandă, nu doar capacitate — de la registre și memorie partajată până la HBM lipit lângă cip">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Ierarhia de memorie a GPU-ului">
+	<meta itemprop="description" content="Mii de thread-uri cer lățime de bandă, nu doar capacitate — de la registre și memorie partajată până la HBM lipit lângă cip">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="2273">
+
+<title>Ierarhia de memorie a GPU-ului • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/54-gpu-memory-hierarchy/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/54-gpu-memory-hierarchy/" title="GPU Memory Hierarchy">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/54-gpu-memory-hierarchy/" title="ลำดับชั้นหน่วยความจำ GPU">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/54-gpu-memory-hierarchy/" title="GPU මතක ධුරාවලිය">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/54-gpu-memory-hierarchy/" title="GPU Memory Hierarchy">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="active">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Ierarhia de memorie a GPU-ului</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-etajele-de-sus-în-jos">1. Etajele, de sus în jos</a></li>
+    <li><a href="#2-de-ce-gpu-ul-nu-se-poate-baza-pe-cache-uri-ca-un-cpu">2. De ce GPU-ul nu se poate baza pe cache-uri ca un CPU</a></li>
+    <li><a href="#3-hbm-memoria-lipită-lângă-cip">3. HBM: memoria lipită lângă cip</a></li>
+    <li><a href="#4-l2-ultimul-etaj-comun">4. L2: ultimul etaj comun</a></li>
+    <li><a href="#5-l1-și-memoria-partajată-același-siliciu">5. L1 și memoria partajată: același siliciu</a>
+      <ul>
+        <li><a href="#bănci-și-conflicte">Bănci și conflicte</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-memoria-globală-coalescerea">6. Memoria globală: coalescerea</a></li>
+    <li><a href="#7-registrele-cel-mai-rapid-etaj-și-cel-mai-disputat">7. Registrele: cel mai rapid etaj, și cel mai disputat</a></li>
+    <li><a href="#8-atenția-ca-problemă-de-memorie">8. Atenția ca problemă de memorie</a></li>
+    <li><a href="#rezumat">Rezumat</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Ierarhia de memorie a GPU-ului
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 35 a numit <strong>zidul memoriei</strong>: calculul a crescut mai repede decât capacitatea memoriei de a-l hrăni. Capitolul 53 a arătat cum un GPU ține zeci de warp-uri rezidente ca să ascundă așteptarea după date, iar capitolul 55 arată Tensor Cores capabile de sute de TFLOPS. Acest capitol leagă cele două: <strong>de unde vin datele</strong> pentru toate aceste thread-uri și de ce ierarhia de memorie a unui GPU arată altfel decât a unui CPU.</p>
+<p>Surse deschise integral, cu paginile tipărite în subsol: whitepaper-ul Volta (NVIDIA, <em>NVIDIA Tesla V100 GPU Architecture</em>, WP-08608-001_v1.1, august 2017, <a href="https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf">PDF</a>), whitepaper-ul Ampere (NVIDIA, <em>NVIDIA A100 Tensor Core GPU Architecture</em>, V1.0, 2020, <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">PDF</a>), ghidul (NVIDIA, <em>CUDA Programming Guide</em>, Release 13.5, 31 octombrie 2026, <a href="https://docs.nvidia.com/cuda/cuda-programming-guide/pdf/cuda-programming-guide.pdf">PDF</a>) și FlashAttention (Dao et al., NeurIPS 2022, <a href="https://arxiv.org/abs/2205.14135">arXiv:2205.14135</a>).</p>
+<h2 id="1-etajele-de-sus-în-jos">1. Etajele, de sus în jos<a class="anchor" href="#1-etajele-de-sus-%c3%aen-jos">#</a></h2>
+<p>Ghidul CUDA descrie memoria de pe cip a GPU-ului: fiecare SM are un <strong>fișier de registre</strong> și o <strong>memorie partajată</strong> (<em>shared memory</em>), accesibile extrem de rapid thread-urilor care rulează pe SM; registrele țin variabilele locale ale thread-urilor, de obicei alocate de compilator, iar memoria partajată e accesibilă tuturor thread-urilor dintr-un bloc (sau <em>cluster</em>) și servește la schimbul de date între ele (<em>CUDA Programming Guide</em> 13.5, §1.2.3.3, p. 14). Pe lângă memoriile programabile, există cache-uri: fiecare SM are un <strong>L1</strong>, parte a unui <em>unified data cache</em>, iar un <strong>L2</strong> mai mare e partajat de toate SM-urile GPU-ului; fiecare SM are și un cache separat pentru memoria constantă (același §1.2.3.3.1, p. 14). Sub toate stă <strong>memoria globală</strong>, DRAM-ul plăcii — pe V100 și A100, <strong>HBM2</strong>.</p>
+<p>Să le punem cifre, pe A100 (cc 8.0), din surse primare:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Etaj</th>
+					<th>Capacitate (A100)</th>
+					<th>Sursă</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Registre</td>
+					<td>65 536 × 32 biți / SM (= 256 KB / SM)</td>
+					<td>A100 whitepaper, Tabelul 5, p. 43; <em>CUDA PG</em> 13.5, Tabelul 34, p. 522</td>
+			</tr>
+			<tr>
+					<td>L1 + memorie partajată</td>
+					<td>192 KB / SM combinat; partajată configurabilă până la 164 KB</td>
+					<td>A100 whitepaper, p. 15 și Tabelul 5, p. 43</td>
+			</tr>
+			<tr>
+					<td>L2</td>
+					<td>40 MB pe GPU</td>
+					<td>A100 whitepaper, p. 16 și 35</td>
+			</tr>
+			<tr>
+					<td>HBM2</td>
+					<td>40 GB, 1555 GB/s</td>
+					<td>A100 whitepaper, p. 16</td>
+			</tr>
+	</tbody>
+</table>
+<p>(Conversia 65 536 × 4 octeți = 256 KB e aritmetică proprie; whitepaper-ul V100 dă explicit „Register File Size / SM: 256KB” pentru V100, Tabelul 1, p. 10.)</p>
+<p>Un lucru surprinzător pentru cine vine din lumea CPU: <strong>registrele sunt cel mai mare etaj de pe SM</strong>. Pe V100, aceleași 256 KB de registre pe SM, înmulțite cu 80 de SM-uri, dau 20 480 KB de registre pe GPU (V100 whitepaper, Tabelul 1, p. 10) — mai mult decât L2-ul V100, de 6144 KB (același tabel, rândul „L2 Cache Size”). Motivul ține de capitolul 53: contextul fiecărui warp stă permanent pe cip, pentru ca comutarea să fie gratuită.</p>
+<h2 id="2-de-ce-gpu-ul-nu-se-poate-baza-pe-cache-uri-ca-un-cpu">2. De ce GPU-ul nu se poate baza pe cache-uri ca un CPU<a class="anchor" href="#2-de-ce-gpu-ul-nu-se-poate-baza-pe-cache-uri-ca-un-cpu">#</a></h2>
+<p>Un CPU rulează puține fluxuri de instrucțiuni și speră că setul de lucru încape în cache. Un GPU are zeci de mii de thread-uri rezidente: pe A100, 108 SM-uri × 2048 de thread-uri = 221 184 de thread-uri simultan (aritmetică proprie pe 108 SM-uri din A100 whitepaper, p. 24, și 2048 thread-uri/SM din Tabelul 5, p. 43). Chiar dacă fiecare cere doar câțiva octeți la un moment dat, cererea agregată e uriașă.</p>
+<p>Al doilea motiv e raportul calcul/bandă. A100 are 312 TFLOPS FP16 dens pe Tensor Cores (A100 whitepaper, Tabelul 1, p. 15) și 1555 GB/s de HBM2 (p. 16). Ca să nu aștepte memoria, un kernel trebuie să facă în medie circa 200 de operații pe fiecare octet citit din HBM (312 / 1,555 ≈ 200,6, calcul propriu). Acesta e „punctul de cotitură” (<em>ridge point</em>) din modelul roofline (Williams, Waterman &amp; Patterson, „Roofline”, EECS-2008-134, 2008, §3, <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2008/Archive/EECS-2008-134.pdf">PDF</a>), aplicat de mine pe cifrele A100. Puțini algoritmi ating această intensitate direct din DRAM; restul trebuie să <strong>reutilizeze</strong> datele în etajele de sus.</p>
+<p>Așa că ierarhia GPU-ului nu e doar o cascadă de cache-uri transparente: o parte importantă — registrele și memoria partajată — e <strong>controlată explicit de programator</strong>.</p>
+<h2 id="3-hbm-memoria-lipită-lângă-cip">3. HBM: memoria lipită lângă cip<a class="anchor" href="#3-hbm-memoria-lipit%c4%83-l%c3%a2ng%c4%83-cip">#</a></h2>
+<p>Whitepaper-ul V100 descrie HBM2 ca fiind compusă din stive de memorie aflate pe același pachet fizic cu GPU-ul, cu economii substanțiale de putere și arie față de designurile GDDR5 tradiționale (V100 whitepaper, secțiunea „HBM2 Memory Architecture”, p. 21). Pe Tesla V100: patru cipuri de memorie pe stivă, patru stive, maximum 16 GB, 900 GB/s lățime de bandă de vârf pe cele patru stive, față de maximum 732 GB/s la Tesla P100 (p. 21). Interfața de memorie este de 4096 de biți HBM2, față de 384 de biți GDDR5 la generațiile Kepler și Maxwell din același tabel (Tabelul 1, p. 10).</p>
+<p>Aici e ideea fizică: în loc de o magistrală îngustă și rapidă spre cipuri aflate departe pe placă, HBM folosește o magistrală <strong>extrem de lată</strong> spre memorie aflată foarte aproape. Capitolul 35 a explicat de ce lățimea de bandă a fost „scăparea” industriei atunci când latența DRAM a rămas încăpățânată.</p>
+<p>Whitepaper-ul V100 adaugă și o cifră de eficiență: combinația dintre noua generație HBM2 de la Samsung și noul controler de memorie din Volta dă de 1,5 ori mai multă lățime de bandă livrată decât Pascal GP100 și peste 95% eficiență a lățimii de bandă pe multe sarcini (p. 21, Figura 15). Notați distincția: 900 GB/s e <strong>vârful teoretic</strong>, iar „livrat” e ce obține o aplicație.</p>
+<p>Pentru A100, whitepaper-ul dă <strong>40 GB</strong> HBM2 la <strong>1555 GB/s</strong>, o creștere de 73% față de Tesla V100 (A100 whitepaper, p. 16). Whitepaper-ul acesta <strong>nu</strong> documentează varianta de 80 GB; nu dau aici cifre de pe pagina de produs. Dao et al. scriu, ca descriere a ierarhiei, „40–80 GB” de HBM cu lățime de bandă „1.5–2.0 TB/s” (FlashAttention, §2.1, p. 3) — e afirmația <em>lor</em>, nu o cifră NVIDIA din whitepaper-ul deschis aici; o redau doar ca citată de ei.</p>
+<p><strong>Ce nu am pus.</strong> Promptul de imagine al capitolului vorbește despre TSV-uri (<em>through-silicon vias</em>) și <em>interposer</em>. Niciunul dintre documentele deschise pentru acest capitol (cele două whitepaper-e NVIDIA) nu descrie TSV-urile sau interposer-ul, așa că nu dau detalii fizice sau cifre despre ele. Standardul JEDEC pentru HBM (JESD235) ar fi sursa primară potrivită; nu l-am deschis aici.</p>
+<h2 id="4-l2-ultimul-etaj-comun">4. L2: ultimul etaj comun<a class="anchor" href="#4-l2-ultimul-etaj-comun">#</a></h2>
+<p>L2 este partajat de toate SM-urile (<em>CUDA PG</em> 13.5, §1.2.3.3.1, p. 14). La A100, whitepaper-ul spune că L2 are 40 MB, de 6,7 ori mai mare decât al Tesla V100, și că sarcinile limitate de lățimea de bandă DRAM beneficiază de el — de exemplu rețelele neuronale cu <em>batch</em> mic — pentru că porțiuni mai mari din date și modele pot fi ținute în cache și reaccesate mult mai repede decât din HBM2 (A100 whitepaper, secțiunea „A100 L2 Cache”, p. 35). Ampere introduce și controale de rezidență în L2, care permit aplicațiilor să marcheze date pentru păstrare persistentă în cache și să reducă traficul DRAM (A100 whitepaper, Figura 16, p. 41); ghidul 13.5 descrie API-ul corespunzător în §4.15 „L2 Cache Control” (p. 413).</p>
+<h2 id="5-l1-și-memoria-partajată-același-siliciu">5. L1 și memoria partajată: același siliciu<a class="anchor" href="#5-l1-%c8%99i-memoria-partajat%c4%83-acela%c8%99i-siliciu">#</a></h2>
+<p>Volta a unificat cele două: whitepaper-ul spune că subsistemul combinat L1 / memorie partajată are 128 KB pe SM, că programele care nu folosesc memoria partajată pot folosi totul drept cache și că, de exemplu, dacă memoria partajată e configurată la 64 KB, operațiile de load/store pot folosi restul de 64 KB ca L1 (V100 whitepaper, „Enhanced L1 Data Cache and Shared Memory”, p. 17). Tot acolo, NVIDIA spune că integrarea face ca L1-ul GV100 să aibă latență mult mai mică și lățime de bandă mai mare decât L1-urile generațiilor anterioare (p. 17). Pe A100, capacitatea combinată crește la 192 KB pe SM (A100 whitepaper, p. 15).</p>
+<p>Ce câștigi cu memoria partajată față de un cache? <strong>Control.</strong> Tu decizi ce stă acolo și cât timp. Asta permite tiparul fundamental al GEMM-ului și al atenției: un bloc încarcă o placă (<em>tile</em>) din matrice în memoria partajată o singură dată, apoi toate thread-urile blocului o reutilizează de multe ori.</p>
+<h3 id="bănci-și-conflicte">Bănci și conflicte<a class="anchor" href="#b%c4%83nci-%c8%99i-conflicte">#</a></h3>
+<p>Ghidul precizează: memoria partajată are <strong>32 de bănci</strong>, organizate astfel încât cuvinte succesive de 32 de biți corespund unor bănci succesive, iar fiecare bancă are o lățime de bandă de 32 de biți pe ciclu (<em>CUDA PG</em> 13.5, §2.3.4.2, p. 63). Când mai multe thread-uri din același warp accesează elemente <em>diferite</em> din aceeași bancă, apare un <strong>conflict de bancă</strong>, iar accesele la acea bancă se serializează (același loc). Excepția: dacă mai multe thread-uri citesc <em>aceeași</em> locație, cuvântul e difuzat (<em>broadcast</em>) (același loc). Ghidul dă exemplele clasice: adresare liniară cu pas de un cuvânt — fără conflict; pas de două cuvinte — conflict în două căi; pas de trei cuvinte — fără conflict (p. 63–64).</p>
+<p>Exemplu <strong>ilustrativ</strong>, calculat pe regula din §2.3.4.2: o matrice <code>float tile[32][32]</code> în memoria partajată, citită pe coloană de un warp (thread-ul <em>i</em> citește <code>tile[i][0]</code>). Adresele sunt la distanță de 32 de cuvinte de 32 de biți, deci toate cad în banca 0: conflict în 32 de căi, 32 de accese serializate. O coloană de umplutură — <code>float tile[32][33]</code> — face pasul 33 de cuvinte; 33 mod 32 = 1, deci thread-ul <em>i</em> lovește banca <em>i</em> mod 32, fără conflict. Aritmetica e proprie; regula băncilor e din ghid (<em>CUDA PG</em> 13.5, §2.3.4.2, p. 63).</p>
+<h2 id="6-memoria-globală-coalescerea">6. Memoria globală: coalescerea<a class="anchor" href="#6-memoria-global%c4%83-coalescerea">#</a></h2>
+<p>Aici warp-ul din capitolul 53 revine în centru. Ghidul spune că memoria globală e accesată prin tranzacții de 32 de octeți; când un thread cere un cuvânt, warp-ul <strong>coalescează</strong> cererile tuturor celor 32 de thread-uri în numărul de tranzacții necesar, în funcție de mărimea cuvântului și de distribuția adreselor (<em>CUDA PG</em> 13.5, §2.3.4.1, p. 60). Exemplul ghidului: dacă thread-uri consecutive cer cuvinte consecutive de 4 octeți, warp-ul cere în total 128 de octeți, aduși în patru tranzacții de 32 de octeți — utilizare 100% a tranzacțiilor (același loc). Cel mai simplu mod de a obține coalescere este ca thread-uri consecutive să acceseze adrese consecutive (același §, p. 60–61).</p>
+<p>Exemplu <strong>ilustrativ</strong> pe aceeași regulă: dacă fiecare thread citește un <code>float</code> aflat la 128 de octeți de cel al vecinului, fiecare cerere cade în altă tranzacție de 32 de octeți — 32 de tranzacții, adică 1024 de octeți transferați pentru 128 de octeți utili, eficiență 12,5% (calcul propriu: 128/1024). Pe o memorie de 1555 GB/s, asta înseamnă că kernel-ul „vede” efectiv o optime din ea.</p>
+<h2 id="7-registrele-cel-mai-rapid-etaj-și-cel-mai-disputat">7. Registrele: cel mai rapid etaj, și cel mai disputat<a class="anchor" href="#7-registrele-cel-mai-rapid-etaj-%c8%99i-cel-mai-disputat">#</a></h2>
+<p>Registrele sunt per thread; un bloc încape pe un SM doar dacă registrele pe thread × thread-urile din bloc nu depășesc registrele SM-ului (<em>CUDA PG</em> 13.5, §1.2.3.3, p. 14). Maximul este 255 de registre pe thread pe cc 8.0 (A100 whitepaper, Tabelul 5, p. 43). Ce nu încape în registre ajunge în <strong>memoria locală</strong>: ghidul enumeră printre candidați tablourile indexate neconstant, structurile prea mari și orice variabilă când kernel-ul cere mai multe registre decât există (<em>register spilling</em>), și precizează că memoria locală rezidă în memoria dispozitivului, deci are aceeași latență și lățime de bandă ca memoria globală; e totuși organizată astfel încât accesele sunt complet coalescate dacă toate thread-urile warp-ului accesează aceeași adresă relativă (<em>CUDA PG</em> 13.5, §2.3, p. 53–54). De aceea <code>--maxrregcount</code> din capitolul 53 e o sabie cu două tăișuri: mai puține registre înseamnă ocupare mai mare, dar și <em>spill</em> spre DRAM.</p>
+<p>Ampere adaugă o scurtătură: o instrucțiune de <strong>copiere asincronă</strong> care încarcă date direct din memoria globală în memoria partajată a SM-ului, fără să mai treacă prin fișierul de registre; NVIDIA spune că reduce lățimea de bandă a registrelor, folosește mai eficient memoria și reduce consumul, și că poate rula în fundal cât timp SM-ul calculează altceva (A100 whitepaper, „Asynchronous Copy”, p. 17).</p>
+<h2 id="8-atenția-ca-problemă-de-memorie">8. Atenția ca problemă de memorie<a class="anchor" href="#8-aten%c8%9bia-ca-problem%c4%83-de-memorie">#</a></h2>
+<p>Acum avem vocabularul pentru capitolul 63. Atenția standard calculează S = QKᵀ, aplică softmax pe rânduri și înmulțește cu V (Vaswani et al., NeurIPS 2017, Ec. 1). Pentru o secvență de lungime N, matricea S are N×N elemente — Tabelul 1 al lui Vaswani et al. dă complexitatea pe strat O(n²·d) pentru <em>self-attention</em> (§4, Tabelul 1).</p>
+<p>FlashAttention reformulează problema exact în termenii acestui capitol. Autorii descriu ierarhia de memorie a A100: 40–80 GB de HBM cu lățime de bandă 1,5–2,0 TB/s și 192 KB de SRAM pe cip pentru fiecare din cele 108 SM-uri, cu o lățime de bandă <em>estimată</em> la circa 19 TB/s; SRAM-ul de pe cip e cu un ordin de mărime mai rapid decât HBM, dar cu multe ordine de mărime mai mic (Dao et al., 2022, §2.1, p. 3). Atenție: cifra de 19 TB/s este o <strong>estimare</strong> a autorilor, nu o cifră NVIDIA din whitepaper-ul deschis aici; o redau ca citată de Dao et al. Algoritmul folosește <em>tiling</em> ca să reducă citirile/scrierile dintre HBM și SRAM și nu scrie niciodată în HBM matricea de atenție N×N; autorii raportează până la 7,6× accelerare pe GPT-2 față de implementarea PyTorch (Dao et al., 2022, Abstract, Figura 1 și §1).</p>
+<p>Nimic din FlashAttention nu face mai puține operații aritmetice decât atenția standard în sensul asimptotic; câștigul vine din <strong>mai puțin trafic spre HBM</strong> (Dao et al., 2022, §1 și §3.2, unde se analizează complexitatea IO). Este zidul memoriei din capitolul 35, ocolit cu memoria partajată din acest capitol, pe warp-urile din capitolul 53, pentru Tensor Cores din capitolul 55.</p>
+<h2 id="rezumat">Rezumat<a class="anchor" href="#rezumat">#</a></h2>
+<ul>
+<li>Etajele: registre → L1/memorie partajată (pe SM) → L2 (comun) → HBM (<em>CUDA PG</em> 13.5, §1.2.3.3).</li>
+<li>A100: 256 KB registre/SM, 192 KB L1+partajată/SM, 40 MB L2, 40 GB HBM2 la 1555 GB/s (A100 whitepaper, p. 15–16, 43).</li>
+<li>V100: HBM2 4 stive × 4 cipuri, 16 GB, 900 GB/s vârf, interfață 4096 biți (V100 whitepaper, p. 10, 21).</li>
+<li>Memoria partajată: 32 de bănci de 32 biți; conflictele serializează (<em>CUDA PG</em> 13.5, §2.3.4.2).</li>
+<li>Memoria globală: tranzacții de 32 B; acces consecutiv = coalescere completă (<em>CUDA PG</em> 13.5, §2.3.4.1).</li>
+<li>FlashAttention: atenție exactă, IO-aware, cu tiling în SRAM (Dao et al., 2022).</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Ierarhia&#43;de&#43;memorie&#43;a&#43;GPU-ului&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F54-gpu-memory-hierarchy%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F54-gpu-memory-hierarchy.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F54-gpu-memory-hierarchy.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Nuclee CUDA, warp-uri și ocupare</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/55-tensor-cores/" class="flex align-center">
+        <span>Tensor Cores</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-etajele-de-sus-în-jos">1. Etajele, de sus în jos</a></li>
+    <li><a href="#2-de-ce-gpu-ul-nu-se-poate-baza-pe-cache-uri-ca-un-cpu">2. De ce GPU-ul nu se poate baza pe cache-uri ca un CPU</a></li>
+    <li><a href="#3-hbm-memoria-lipită-lângă-cip">3. HBM: memoria lipită lângă cip</a></li>
+    <li><a href="#4-l2-ultimul-etaj-comun">4. L2: ultimul etaj comun</a></li>
+    <li><a href="#5-l1-și-memoria-partajată-același-siliciu">5. L1 și memoria partajată: același siliciu</a>
+      <ul>
+        <li><a href="#bănci-și-conflicte">Bănci și conflicte</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-memoria-globală-coalescerea">6. Memoria globală: coalescerea</a></li>
+    <li><a href="#7-registrele-cel-mai-rapid-etaj-și-cel-mai-disputat">7. Registrele: cel mai rapid etaj, și cel mai disputat</a></li>
+    <li><a href="#8-atenția-ca-problemă-de-memorie">8. Atenția ca problemă de memorie</a></li>
+    <li><a href="#rezumat">Rezumat</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

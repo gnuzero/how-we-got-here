@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Din porți facem sumatoare și un ALU; transportul care se propagă bit cu bit (ripple carry) cere structuri mai bune">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/08-from-gates-to-combinational-logic/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="De la porți la logică combinațională">
+	<meta property="og:description" content="Din porți facem sumatoare și un ALU; transportul care se propagă bit cu bit (ripple carry) cere structuri mai bune">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:06:55+05:30">
+
+
+	<meta itemprop="name" content="De la porți la logică combinațională">
+	<meta itemprop="description" content="Din porți facem sumatoare și un ALU; transportul care se propagă bit cu bit (ripple carry) cere structuri mai bune">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:06:55+05:30">
+	<meta itemprop="wordCount" content="902">
+
+<title>De la porți la logică combinațională • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/08-from-gates-to-combinational-logic/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/08-from-gates-to-combinational-logic/" title="From Gates to Combinational Logic">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/08-from-gates-to-combinational-logic/" title="จากเกตสู่ตรรกะเชิงผสม">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/08-from-gates-to-combinational-logic/" title="ද්වාරවලින් සංයෝජන තර්කය දක්වා">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/08-from-gates-to-combinational-logic/" title="வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/08-from-gates-to-combinational-logic/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/08-from-gates-to-combinational-logic/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/08-from-gates-to-combinational-logic/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="active">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>De la porți la logică combinațională</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#un-sumator-binar-încă-din-1938-cu-relee">Un sumator binar, încă din 1938, cu relee</a></li>
+    <li><a href="#de-la-semi-sumator-la-sumator-complet">De la semi-sumator la sumator complet</a></li>
+    <li><a href="#transportul-în-lanț-ripple-carry-simplu-și-lent-dintr-un-motiv-precis">Transportul în lanț (ripple-carry): simplu și lent dintr-un motiv precis</a></li>
+    <li><a href="#ce-face-industria-transport-anticipat-look-ahead-în-aceeași-capsulă">Ce face industria: transport anticipat (look-ahead) în aceeași capsulă</a></li>
+    <li><a href="#de-la-sumator-la-alu">De la sumator la ALU</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    De la porți la logică combinațională
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>O poartă singură nu face aritmetică. Capitolul acesta compune porțile din capitolul 07 în circuite combinaționale, adică circuite fără memorie, în care ieșirea depinde doar de intrările prezente. Ajungem la sumator, apoi la ideea de ALU, și dăm de prima limită structurală: transportul.</p>
+<h2 id="un-sumator-binar-încă-din-1938-cu-relee">Un sumator binar, încă din 1938, cu relee<a class="anchor" href="#un-sumator-binar-%c3%aenc%c4%83-din-1938-cu-relee">#</a></h2>
+<p>Ideea că un circuit de comutație poate aduna e mai veche decât tranzistorul. În teza de master de la MIT, Claude Shannon proiectează un sumator „using only relays and switches” și notează că, deși orice bază ar fi posibilă, circuitul e „greatly simplified by using the scale of two” (Shannon, C. E., <em>A Symbolic Analysis of Relay and Switching Circuits</em>, teză MIT, 1937/1940, secțiunea „An Electric Adder to the Base Two”, pp. 59–61 în paginarea tipărită (titlul secțiunii e pe p. 59, în acord cu cuprinsul); copie <a href="https://fab.cba.mit.edu/classes/862.19/notes/computation/Shannon-1937.pdf">fab.cba.mit.edu</a>, accesat 2026-11-05). Shannon reprezintă fiecare cifră a celor două numere printr-un comutator, cifrele sumei prin relee, iar transportul (<em>carry</em>) din coloana j−1 în coloana j printr-un releu separat, c_j (ibid.). Lectura noastră: aceeași structură, cu porți în loc de relee, seamănă cu ce numim azi sumator <em>ripple-carry</em> (cu transport în lanț).</p>
+<h2 id="de-la-semi-sumator-la-sumator-complet">De la semi-sumator la sumator complet<a class="anchor" href="#de-la-semi-sumator-la-sumator-complet">#</a></h2>
+<p>Pentru un bit, un semi-sumator (<em>half adder</em>) primește A și B și produce suma S = A XOR B și transportul C = A AND B. Un sumator complet (<em>full adder</em>) primește în plus transportul de intrare Cin:</p>
+<ul>
+<li>S = A XOR B XOR Cin</li>
+<li>Cout = (A AND B) OR (Cin AND (A XOR B))</li>
+</ul>
+<p>Am verificat noi aceste două ecuații pe toate cele opt combinații de intrare. Rezultatul e întotdeauna A + B + Cin = 2·Cout + S. Ecuațiile sunt algebră booleană, nu un fapt istoric, așa că nu au nevoie de o sursă externă.</p>
+<h2 id="transportul-în-lanț-ripple-carry-simplu-și-lent-dintr-un-motiv-precis">Transportul în lanț (ripple-carry): simplu și lent dintr-un motiv precis<a class="anchor" href="#transportul-%c3%aen-lan%c8%9b-ripple-carry-simplu-%c8%99i-lent-dintr-un-motiv-precis">#</a></h2>
+<p>Lipești n sumatoare complete în lanț, iar Cout-ul fiecăruia devine Cin-ul următorului. Rezultatul e corect, dar bitul cel mai semnificativ nu își știe suma până când transportul nu a trecut, în cazul cel mai rău, prin toate etajele de dedesubt (vezi formularea din 1946 de mai jos).</p>
+<p>Problema a fost numită explicit încă din 1946. În <em>Preliminary Discussion</em> de la IAS, Burks, Goldstine și von Neumann descriu adunarea paralelă în doi pași: întâi se adună cifrele corespunzătoare, apoi se efectuează transporturile, „and this must be done in sequence since a carry may produce a carry” (Burks, A. W., Goldstine, H. H., von Neumann, J., <em>Preliminary Discussion of the Logical Design of an Electronic Computing Instrument</em>, IAS, 1946, §5.5; scanare IAS <a href="https://www.ias.edu/sites/default/files/library/Prelim_Disc_Logical_Design.pdf">ias.edu</a>, citită prin OCR, și transcriere HTML <a href="https://www.cs.unc.edu/~adyilie/comp265/vonNeumann.html">cs.unc.edu</a>, accesate 2026-11-05). Pentru cuvintele lor de 40 de cifre binare, „in the worst case, 39 carries will occur”, iar autorii consideră ineficient să aloci pasului de transport de 39 de ori timpul pasului de adunare: „either the carries must be accelerated, or use must be made of the average number of carries or both” (ibid., §5.5). În §5.6 arată că, pentru două cuvinte de lungime n, cea mai lungă secvență de transport are în medie o lungime „not in excess of 2 log n” (ibid., §5.6; verificat în transcrierea UNC).</p>
+<p>Ca ilustrare (calculul nostru, nu o cifră din vreo sursă): dacă fiecare etaj de sumator adaugă două niveluri de poartă pe drumul transportului, un sumator ripple pe 32 de biți are în cazul cel mai rău un drum de ordinul a 64 de niveluri de poartă. Dacă am lua întârzierea maximă de 15 ns a unei porți NAND 74LS00 din capitolul 07 (TI, SN74LS00 datasheet, SDLS025D, §6.9, <a href="https://www.ti.com/lit/ds/symlink/sn74ls00.pdf">PDF</a>, accesat 2026-11-05), ar ieși aproape o microsecundă. Cifra e un exemplu de ordin de mărime, nu o proiectare reală.</p>
+<h2 id="ce-face-industria-transport-anticipat-look-ahead-în-aceeași-capsulă">Ce face industria: transport anticipat (look-ahead) în aceeași capsulă<a class="anchor" href="#ce-face-industria-transport-anticipat-look-ahead-%c3%aen-aceea%c8%99i-capsul%c4%83">#</a></h2>
+<p>Soluția „accelerează transporturile” a devenit componentă de catalog. Fișa tehnică TI a sumatorului pe 4 biți SN74LS283 se intitulează „4-bit binary full adders with fast carry” și promite „full-carry look-ahead across the four bits” (TI, <em>SN54283, SN54LS283, SN74283, SN74LS283 4-Bit Binary Full Adders with Fast Carry</em>, SDLS095A, oct. 1976, rev. mart. 1988, p. 1, <a href="https://www.ti.com/lit/ds/symlink/sn74ls283.pdf">PDF</a>, accesat 2026-11-05; PDF scanat, citit de noi de pe imaginea paginii). Aceeași pagină spune că look-ahead-ul intern pe toți cei patru biți generează termenul de transport „in ten nanoseconds, typically” pentru &lsquo;283 și &lsquo;LS283 (ibid., p. 1, „description”). Tabelul „typical add times” dă pentru &lsquo;LS283 25 ns la adunarea a două cuvinte de 8 biți și 45 ns la două cuvinte de 16 biți, cu o putere tipică de 95 mW per sumator (ibid., p. 1).</p>
+<p>Sunt valori <em>tipice</em> din fișa producătorului, nu maxime garantate și nici măsurători independente. Mai precis, fișa vorbește de look-ahead <em>parțial</em> pentru sisteme construite din mai multe capsule („partial look-ahead performance with the economy of ripple carry”, ibid.): în interiorul capsulei, transportul e calculat anticipat, iar între capsule se propagă tot în lanț.</p>
+<h2 id="de-la-sumator-la-alu">De la sumator la ALU<a class="anchor" href="#de-la-sumator-la-alu">#</a></h2>
+<p>O unitate aritmetică și logică (ALU) e, în esență, un sumator plus câteva funcții logice bit cu bit (AND, OR, XOR), urmate de un multiplexor care alege ce rezultat iese, comandat de câțiva biți de operație. <!-- NEVERIFICAT: n-am deschis o fișă tehnică de ALU (ex. 74181) în această sesiune; descrierea de mai sus e generică și nu conține cifre. --> Ideea unei unități aritmetice centrale e și ea din anii &lsquo;40: von Neumann o numește în 1945 „central arithmetical part”, CA (von Neumann, <em>First Draft of a Report on the EDVAC</em>, 30 iunie 1945, §2.2, ediția Godfrey, <a href="https://people.csail.mit.edu/brooks/idocs/JvN.pdf">PDF</a>, accesat 2026-11-05).</p>
+<p>Circuitele din capitolul acesta nu păstrează nimic după ce intrările se schimbă; elementele care țin minte sunt subiectul capitolului 09.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/fda917a9de57c81d9cc44247a03a0a49d955181d" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;De&#43;la&#43;por%C8%9Bi&#43;la&#43;logic%C4%83&#43;combina%C8%9Bional%C4%83&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F08-from-gates-to-combinational-logic%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F08-from-gates-to-combinational-logic.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F08-from-gates-to-combinational-logic.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/07-logic-gates-from-transistors/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Porți logice din tranzistori</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/09-sequential-logic/" class="flex align-center">
+        <span>Logică secvențială</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#un-sumator-binar-încă-din-1938-cu-relee">Un sumator binar, încă din 1938, cu relee</a></li>
+    <li><a href="#de-la-semi-sumator-la-sumator-complet">De la semi-sumator la sumator complet</a></li>
+    <li><a href="#transportul-în-lanț-ripple-carry-simplu-și-lent-dintr-un-motiv-precis">Transportul în lanț (ripple-carry): simplu și lent dintr-un motiv precis</a></li>
+    <li><a href="#ce-face-industria-transport-anticipat-look-ahead-în-aceeași-capsulă">Ce face industria: transport anticipat (look-ahead) în aceeași capsulă</a></li>
+    <li><a href="#de-la-sumator-la-alu">De la sumator la ALU</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Attribution on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+		<link>http://localhost:1478/ta/tags/attribution/</link>
+		<description>Recent content in Attribution on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</description>
+		<generator>Hugo</generator>
+		<language>ta</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:59:24 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/ta/tags/attribution/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>நன்றியுரையும் மூலாதாரங்களும்</title>
+				<link>http://localhost:1478/ta/posts/00-credits/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/00-credits/</guid>
+				<description>முதலில் நன்றியுரை — இந்தப் பயணம் நிற்கும் வெளியிடப்பட்ட மூலாதாரங்கள், ஏற்கனவே உள்ள ஊடாடும் ஊடகம், மற்றும் படங்கள்</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Introduction on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+		<link>http://localhost:1478/ta/tags/introduction/</link>
+		<description>Recent content in Introduction on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</description>
+		<generator>Hugo</generator>
+		<language>ta</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 09 Sep 2026 19:17:22 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/ta/tags/introduction/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>முன்னுரை</title>
+				<link>http://localhost:1478/ta/posts/00-foreword/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/00-foreword/</guid>
+				<description>இந்தத் தொடர் ஏன் உள்ளது — மின்னியந்திர ரிலேக்களில் இருந்து நவீன Attention பொறிமுறைகள் வரை</description>
+			</item>
+	</channel>
+</rss>

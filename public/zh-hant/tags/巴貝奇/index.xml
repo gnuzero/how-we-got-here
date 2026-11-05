@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>巴貝奇 on 我們如何走到那裡</title>
+		<link>http://localhost:1478/zh-hant/tags/%E5%B7%B4%E8%B2%9D%E5%A5%87/</link>
+		<description>Recent content in 巴貝奇 on 我們如何走到那裡</description>
+		<generator>Hugo</generator>
+		<language>zh-Hant</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:38:43 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hant/tags/%E5%B7%B4%E8%B2%9D%E5%A5%87/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>齒輪會數數：從記里鼓車到“較數器”</title>
+				<link>http://localhost:1478/zh-hant/posts/01-zh-gears-and-calculators/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/01-zh-gears-and-calculators/</guid>
+				<description>宋代的齒輪已經會十進位制計數，蘇頌想把人手從儀器裡拿走，清宮造出了自己的手搖計算機，1858 年（一說 1859 年）的上海雜誌用中文介紹了巴貝奇的差分機。</description>
+			</item>
+	</channel>
+</rss>

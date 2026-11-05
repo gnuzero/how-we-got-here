@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="முழு VM-கள் வலுவான isolation-ஐ கனமான செலவில் வாங்குகின்றன — namespaces மற்றும் cgroups ஒரே kernel பகிர்ந்து மற்ற எல்லாவற்றையும் கிட்டத்தட்ட தனிமைப்படுத்துகின்றன">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/25-containers-and-modern-os-isolation/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Containers மற்றும் நவீன OS Isolation">
+	<meta property="og:description" content="முழு VM-கள் வலுவான isolation-ஐ கனமான செலவில் வாங்குகின்றன — namespaces மற்றும் cgroups ஒரே kernel பகிர்ந்து மற்ற எல்லாவற்றையும் கிட்டத்தட்ட தனிமைப்படுத்துகின்றன">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Containers மற்றும் நவீன OS Isolation">
+	<meta itemprop="description" content="முழு VM-கள் வலுவான isolation-ஐ கனமான செலவில் வாங்குகின்றன — namespaces மற்றும் cgroups ஒரே kernel பகிர்ந்து மற்ற எல்லாவற்றையும் கிட்டத்தட்ட தனிமைப்படுத்துகின்றன">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1407">
+
+<title>Containers மற்றும் நவீன OS Isolation • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/25-containers-and-modern-os-isolation/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/25-containers-and-modern-os-isolation/" title="Containers and Modern OS Isolation">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/25-containers-and-modern-os-isolation/" title="คอนเทนเนอร์และการแยกของ OS สมัยใหม่">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/25-containers-and-modern-os-isolation/" title="Containers සහ නවීන OS හුදකලාව">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/25-containers-and-modern-os-isolation/" title="Containerele și izolarea în sistemele de operare moderne">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/25-containers-and-modern-os-isolation/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/25-containers-and-modern-os-isolation/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/25-containers-and-modern-os-isolation/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="active">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Containers மற்றும் நவீன OS Isolation</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மழ-virtualization-வலவனத-கனமனத">முழு Virtualization: வலுவானது, கனமானது</a></li>
+    <li><a href="#kernel-பகரஙகள-view-தனமபபடததஙகள">Kernel பகிருங்கள், View தனிமைப்படுத்துங்கள்</a></li>
+    <li><a href="#namespaces-ஒவவர-வகயம-எதத-தனமபபடததகறத">Namespaces: ஒவ்வொரு வகையும் எதைத் தனிமைப்படுத்துகிறது</a></li>
+    <li><a href="#cgroups-வரமபம-கணககம">Cgroups: வரம்பும் கணக்கும்</a></li>
+    <li><a href="#வரததகம-ஏன-அளவல-வனறத">வர்த்தகம் ஏன் அளவில் வென்றது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Containers மற்றும் நவீன OS Isolation
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Virtual memory (பதிவு 24) process-களை ஒருவருக்கொருவர் நினைவகத்திலிருந்து தனிமைப்படுத்துகிறது. அதே filesystem, process-ID இடம், அல்லது network கட்டமைப்பைப் பகிர்வதிலிருந்து அவற்றைத் தனிமைப்படுத்தாது — பாரம்பரிய Unix process இன்னும் raw RAM-க்கு அப்பால் பல வழிகளில் மற்றவற்றைப் பார்த்து சில நேரம் தலையிட முடியும். Containers isolation-ஐ அந்த மேற்பரப்பின் அதிக பகுதிக்கு நீட்டிக்கின்றன, முழு வன்பொருள் virtualization வரை செல்லாமல்.</p>
+<p>&ldquo;Container&rdquo;, &ldquo;Docker&rdquo; என்ற சொற்களுக்குத் தமிழில் அறிமுகக் காணொளிகள் சில உள்ளன; ஆனால் அவற்றின் அடியில் உள்ள Linux பொறிமுறைகளான namespaces, குறிப்பாக <strong>cgroups</strong> பற்றித் தமிழில் எழுத்து விளக்கமோ காணொளியோ இந்தத் தணிக்கையில் கிடைக்கவில்லை. இந்தப் பக்கம் அவற்றை அடிப்படையிலிருந்து விளக்கி, கீழே உள்ள lab-இல் ஒரு cgroup-ஐ நீங்களே உருவாக்கிப் பார்க்க வழிகாட்டுகிறது.</p>
+<h2 id="மழ-virtualization-வலவனத-கனமனத">முழு Virtualization: வலுவானது, கனமானது<a class="anchor" href="#%e0%ae%ae%e0%ae%b4-virtualization-%e0%ae%b5%e0%ae%b2%e0%ae%b5%e0%ae%a9%e0%ae%a4-%e0%ae%95%e0%ae%a9%e0%ae%ae%e0%ae%a9%e0%ae%a4">#</a></h2>
+<p>பாரம்பரிய VM முழுமையான guest OS — சொந்த kernel, சொந்த drivers — hypervisor மீது ஓட்டுகிறது, அது virtualized (அல்லது வன்பொருள் உதவியுடன், near-native) CPU, நினைவகம், சேமிப்பு, மற்றும் networking வழங்குகிறது. மிக வலுவான isolation: guest host-இன் process-களையோ மற்ற guests-ஐயோ பார்க்க முடியாது, கடுமையான hypervisor பிழை இல்லாவிட்டால். செலவு உண்மையானது — ஒவ்வொரு VM-ம் தன் kernel-ஐ boot செய்கிறது, அந்த kernel-இன் நினைவக அடிச்சுவட்டைச் சுமக்கிறது, மற்றும் பொதுவாக host-இல் ஓடுவதை விட சில வன்பொருளுக்கு மெதுவான அணுகலைச் செலுத்துகிறது.</p>
+<h2 id="kernel-பகரஙகள-view-தனமபபடததஙகள">Kernel பகிருங்கள், View தனிமைப்படுத்துங்கள்<a class="anchor" href="#kernel-%e0%ae%aa%e0%ae%95%e0%ae%b0%e0%ae%99%e0%ae%95%e0%ae%b3-view-%e0%ae%a4%e0%ae%a9%e0%ae%ae%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%a4%e0%ae%a4%e0%ae%99%e0%ae%95%e0%ae%b3">#</a></h2>
+<p>Containers மற்ற வர்த்தகத்தை எடுக்கின்றன: host-இல் ஒவ்வொரு container-ம் <em>அதே</em> kernel-ஐப் பகிர்கிறது — instance ஒன்றுக்கு guest OS boot இல்லை — அதே நேரத்தில் kernel isolation வழங்குகிறது, ஒவ்வொரு container-இன் view தனித்தனியாகத் தெரியும்படி. இரண்டு Linux அம்சங்கள் பெரும்பாலான வேலையைச் செய்கின்றன. <strong>Namespaces</strong> process-இன் குறிப்பிட்ட வளங்களின் view-ஐத் தனிமைப்படுத்துகின்றன — PID namespace container-ஐ தன் சொந்த process மரத்தை மட்டும் பார்க்க வைக்கிறது (உள்ளே process 1 host-இல் PID 1 அல்ல); network namespace தனிப்பட்ட இடைமுகங்கள் மற்றும் routing கொடுக்கிறது; mount namespace தனிப்பட்ட filesystem view கொடுக்கிறது. <strong>Cgroups</strong> (control groups) CPU, நினைவகம், மற்றும் I/O-ஐ வரம்பு மற்றும் கணக்கு வைக்கின்றன, ஒரே host-இல் ஒரு container மற்றவற்றைப் பட்டினி போடாதபடி.</p>
+<p>வம்சாவளி buzzword-ஐ விடப் பழையது: chroot (process-இன் தோற்ற filesystem root-ஐ மாற்றுதல், 1980களின் ஆரம்பம்) தசாப்தங்களுக்கு முன் வரையறுக்கப்பட்ட filesystem isolation; cgroups மற்றும் நவீன namespaces அந்தக் கருத்தை process-இன் உலகின் அதிக பகுதிக்கு பொதுமைப்படுத்துகின்றன.</p>
+<h2 id="namespaces-ஒவவர-வகயம-எதத-தனமபபடததகறத">Namespaces: ஒவ்வொரு வகையும் எதைத் தனிமைப்படுத்துகிறது<a class="anchor" href="#namespaces-%e0%ae%92%e0%ae%b5%e0%ae%b5%e0%ae%b0-%e0%ae%b5%e0%ae%95%e0%ae%af%e0%ae%ae-%e0%ae%8e%e0%ae%a4%e0%ae%a4-%e0%ae%a4%e0%ae%a9%e0%ae%ae%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%a4%e0%ae%a4%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p><strong>Namespace</strong> (பெயர்வெளி) என்பது ஒரு process-க்கு ஒரு வகை வளத்தின் <em>தனிப் பார்வை</em>யைக் கொடுக்கும் kernel பொறிமுறை. ஒரே namespace-இல் உள்ள process-கள் ஒரே பார்வையைப் பகிர்கின்றன; வேறு namespace-இல் உள்ளவை வேறு உலகத்தைப் பார்க்கின்றன. ஒவ்வொரு process-உம் ஒவ்வொரு வகையிலும் சரியாக ஒரு namespace-இல் இருக்கிறது.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Namespace</th>
+					<th>எதைத் தனிமைப்படுத்துகிறது</th>
+					<th>Container-க்குள் விளைவு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>mnt</td>
+					<td>mount-களின் பட்டியல் (எந்த filesystem எங்கே இணைக்கப்பட்டுள்ளது)</td>
+					<td>சொந்த <code>/</code> — host-இன் கோப்புகள் தெரியாது</td>
+			</tr>
+			<tr>
+					<td>pid</td>
+					<td>process ID எண்கள்</td>
+					<td>உள்ளே முதல் process PID 1; host-இல் அதற்கு வேறு எண்</td>
+			</tr>
+			<tr>
+					<td>net</td>
+					<td>network இடைமுகங்கள், IP முகவரிகள், routing அட்டவணை, ports</td>
+					<td>சொந்த <code>eth0</code>, சொந்த port 80</td>
+			</tr>
+			<tr>
+					<td>uts</td>
+					<td>hostname</td>
+					<td>சொந்தப் பெயர்</td>
+			</tr>
+			<tr>
+					<td>ipc</td>
+					<td>System V IPC, POSIX message queues</td>
+					<td>பிற container-களின் பகிர்ந்த நினைவகத்தைத் தொட முடியாது</td>
+			</tr>
+			<tr>
+					<td>user</td>
+					<td>user/group ID எண்கள்</td>
+					<td>உள்ளே &ldquo;root&rdquo; (UID 0), host-இல் சாதாரணப் பயனர்</td>
+			</tr>
+			<tr>
+					<td>cgroup</td>
+					<td>cgroup படிநிலையின் பார்வை</td>
+					<td>தன் cgroup-ஐ வேராகப் பார்க்கிறது</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>PID namespace எடுத்துக்காட்டு</strong> (எடுத்துக்காட்டு மதிப்புகள்): host-இல் ஒரு container-இன் முதல் process PID 4321. Container-க்குள் அதே process தன்னை PID 1 என்று பார்க்கிறது; அது தொடங்கும் அடுத்த process உள்ளே PID 2, host-இல் 4322 போன்ற ஏதோ ஒரு எண். Container-க்குள் <code>ps</code> ஓட்டினால் அதன் சொந்த மரம் மட்டுமே தெரியும்; host-இல் <code>ps</code> ஓட்டினால் எல்லாம் தெரியும். ஒரே process-க்கு இரண்டு எண்கள் — namespace ஒரு <em>மொழிபெயர்ப்பு அடுக்கு</em>, பதிவு 24-இன் page table ஒரு virtual முகவரியை மொழிபெயர்ப்பது போல.</p>
+<p>கவனிக்க வேண்டியது: namespace <em>பார்வையை</em> மட்டுமே பிரிக்கிறது, <em>அளவை</em> அல்ல. தனி PID namespace-இல் உள்ள container இன்னும் எல்லா CPU-வையும் நினைவகத்தையும் விழுங்க முடியும். அளவைக் கட்டுப்படுத்துவது cgroups-இன் வேலை.</p>
+<h2 id="cgroups-வரமபம-கணககம">Cgroups: வரம்பும் கணக்கும்<a class="anchor" href="#cgroups-%e0%ae%b5%e0%ae%b0%e0%ae%ae%e0%ae%aa%e0%ae%ae-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95%e0%ae%ae">#</a></h2>
+<p><strong>Cgroup</strong> (control group, கட்டுப்பாட்டுக் குழு) என்பது process-களின் ஒரு குழு; kernel அந்தக் குழு முழுவதற்குமாக வளப் பயன்பாட்டை அளக்கிறது, வரம்பிடுகிறது. ஒவ்வொரு வகை வளத்தையும் ஒரு <strong>controller</strong> (கட்டுப்படுத்தி) கையாள்கிறது: <code>cpu</code>, <code>memory</code>, <code>io</code>, <code>pids</code> போன்றவை.</p>
+<p>சிறு வரலாறு: இந்த வேலை Google-இல் Paul Menage, Rohit Seth ஆகியோரால் &ldquo;process containers&rdquo; என்ற பெயரில் தொடங்கியது; &ldquo;containers&rdquo; என்ற சொல் மிகப் பொதுவானது என்பதால் &ldquo;control groups&rdquo; எனப் பெயர் மாற்றப்பட்டு Linux 2.6.24-இல் (2008 ஜனவரி) சேர்க்கப்பட்டது. ஒவ்வொரு controller-க்கும் தனிப் படிநிலை என்ற முதல் வடிவம் (v1) சிக்கலானதால், ஒரே படிநிலை கொண்ட <strong>cgroup v2</strong> வடிவமைக்கப்பட்டு Linux 4.5-இல் (2016) அதிகாரப்பூர்வமானது.</p>
+<p>இடைமுகம் வியக்கத்தக்க அளவு எளியது — அது ஒரு <strong>filesystem</strong>:</p>
+<ul>
+<li>ஒரு அடைவு (directory) = ஒரு cgroup. <code>mkdir</code> செய்தால் புதிய குழு.</li>
+<li>ஒரு process-ஐக் குழுவில் சேர்க்க, அதன் PID-ஐ அந்த அடைவின் <code>cgroup.procs</code> கோப்பில் எழுதுங்கள்.</li>
+<li>வரம்புகள் = அதே அடைவில் உள்ள கோப்புகளில் எண்களை எழுதுவது (<code>cpu.weight</code>, <code>cpu.max</code>, <code>memory.max</code>, <code>pids.max</code>).</li>
+<li>அளவீடுகள் = கோப்புகளைப் படிப்பது (<code>cpu.stat</code>, <code>memory.current</code>).</li>
+</ul>
+<p><strong>CPU பங்கு: weight கணக்கு.</strong> <code>cpu.weight</code> ஒப்பீட்டு எடை (இயல்பு 100). கீழே உள்ள எடைகள், quota-கள், வரம்புகள் எடுத்துக்காட்டு மதிப்புகள். CPU-க்குப் போட்டி இருக்கும்போது, ஒவ்வொரு குழுவும் பெறுவது = தன் எடை / போட்டியிடும் குழுக்களின் மொத்த எடை.</p>
+<ul>
+<li>A = 100, B = 400, இரண்டும் முழு வேலையில்: A = 100 / 500 = <strong>20%</strong>, B = 400 / 500 = <strong>80%</strong>.</li>
+<li>A = 100, B = 100, C = 200: 25%, 25%, 50%.</li>
+<li>B சும்மா இருந்தால் A <strong>100%</strong> பெறுகிறது — weight ஒரு வரம்பு அல்ல, போட்டியின்போது மட்டுமான பங்கீடு (work-conserving).</li>
+</ul>
+<p><strong>CPU வரம்பு: quota கணக்கு.</strong> <code>cpu.max</code>-இல் இரண்டு எண்கள்: &ldquo;அனுமதி காலம்&rdquo; — ஒவ்வொரு காலத்திலும் (period) குழு அதிகபட்சம் எத்தனை மைக்ரோவிநாடி ஓடலாம்.</p>
+<ul>
+<li><code>20000 100000</code> → ஒவ்வொரு 100 ms-இலும் 20 ms = ஒரு CPU-வின் <strong>20%</strong>, மற்ற CPU-கள் சும்மா இருந்தாலும்.</li>
+<li><code>200000 100000</code> → ஒவ்வொரு 100 ms-இலும் 200 ms = <strong>2 முழு CPU-கள்</strong> (பல core இயந்திரத்தில்).</li>
+</ul>
+<p>Weight &ldquo;நியாயமான பங்கு&rdquo;; max &ldquo;கடினக் கூரை&rdquo;. Cloud-இல் ஒரு container-க்கு &ldquo;0.5 vCPU&rdquo; என்று நீங்கள் கேட்பது அடியில் பெரும்பாலும் இத்தகைய quota-தான்.</p>
+<p><strong>நினைவக வரம்பு.</strong> <code>memory.max</code> = 2 GiB என்றால், குழுவின் process-கள் அதைத் தாண்ட முயலும்போது kernel முதலில் அந்தக் குழுவின் பக்கங்களையே மீட்க (reclaim) முயல்கிறது; முடியாவிட்டால் அந்தக் குழுவுக்குள் மட்டும் ஒரு process-ஐக் கொல்கிறது (OOM kill). எடுத்துக்காட்டு மதிப்புகள்: 8 GiB host-இல் மூன்று container-கள், ஒவ்வொன்றும் 2 GiB வரம்பு → ஒன்று நினைவகக் கசிவில் சிக்கினாலும் மற்ற இரண்டுக்கும் host-க்கும் குறைந்தது 4 GiB பாதுகாப்பாக இருக்கிறது.</p>
+<p><strong>Process எண்ணிக்கை வரம்பு.</strong> <code>pids.max</code> = 100 என்றால், ஒரு &ldquo;fork bomb&rdquo; (தன்னையே முடிவில்லாமல் நகலெடுக்கும் நிரல்) அந்தக் குழுவுக்குள் 100 process-களில் நின்றுவிடும்; host முழுவதையும் முடக்காது.</p>
+<p><strong>ஒரு &ldquo;container&rdquo; = இவற்றின் சேர்க்கை.</strong> Docker போன்ற கருவி ஒரு container-ஐத் தொடங்கும்போது செய்வது சுருக்கமாக: புதிய namespaces-இல் (mnt, pid, net, uts, ipc, சில நேரம் user) ஒரு process-ஐ உருவாக்குகிறது, அதன் <code>/</code>-ஆக ஒரு image-இன் கோப்புகளை mount செய்கிறது, அதை ஒரு புதிய cgroup-இல் வைத்து வரம்புகளை எழுதுகிறது. தனி kernel இல்லை, boot இல்லை — அதனால்தான் விநாடியின் பின்னத்தில் தொடக்கம்.</p>
+<h2 id="வரததகம-ஏன-அளவல-வனறத">வர்த்தகம் ஏன் அளவில் வென்றது<a class="anchor" href="#%e0%ae%b5%e0%ae%b0%e0%ae%a4%e0%ae%a4%e0%ae%95%e0%ae%ae-%e0%ae%8f%e0%ae%a9-%e0%ae%85%e0%ae%b3%e0%ae%b5%e0%ae%b2-%e0%ae%b5%e0%ae%a9%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>Containers host kernel பகிர்வதால், அவை பொதுவாக வினாடியின் பின்னத்தில் தொடங்குகின்றன (kernel boot இல்லை) மற்றும் instance ஒன்றுக்கு மிகச் சிறிய அடிச்சுவட்டைச் சுமக்கின்றன — நகல் kernel image அல்லது kernel-நிலை caches இல்லை. அந்தத் திறன் அவை நவீன cloud உள்கட்டமைப்பின் இயல்புநிலை packaging மற்றும் deployment அலகாக மாறியதற்குக் காரணம்: அதே வன்பொருளில் VM-களை விட மிக அதிக containers, இது விநியோகிக்கப்பட்ட அமைப்புகள் (Phase 7) உண்மையில் ஓடும் அளவில் முக்கியம்.</p>
+<p>வர்த்தகம்: பகிரப்பட்ட kernel என்றால் போதுமான கடுமையான kernel vulnerability கொள்கையளவில் container isolation-ஐ உடைக்கலாம் — தனி-kernel virtualization-இன் கீழ் கட்டமைப்புரீதியாகக் கடினமான வழி. பெரும்பாலான production அமைப்புகள் அதை வேண்டுமென்றே ஏற்கின்றன, சில நேரம் மேலே அதிக sandboxing அடுக்கி. பதிவு 45-இன் Kubernetes விவாதம் இங்கிருந்து தொடர்கிறது: இலகுவான, வேகமாகத் தொடங்கும் isolation அலகு இருந்தால், அடுத்த பிரச்சினை கப்பற்படை முழுவதும் ஆயிரக்கணக்கானவற்றை orchestrate செய்வது.</p>
+<p><strong>இப்போது முயல்க: ஒரு cgroup-ஐ நீங்களே கட்டுங்கள்.</strong> கீழே உள்ள lab-இன் Linux (kernel 4.16) cgroup v2-ஐ ஆதரிக்கிறது. <strong>Boot VM</strong> அழுத்தி, prompt வந்ததும் திரையைக் கிளிக் செய்து, கீழே உள்ளவற்றை ஒவ்வொன்றாகத் தட்டச்சு செய்யுங்கள் (நீங்கள் ஏற்கனவே root). காட்டப்படும் வெளியீடுகள் இதே lab image-இல் ஓட்டிப் பெற்றவை; எண்கள் ஒவ்வொரு ஓட்டத்திலும் சற்று மாறும்.</p>
+<ol>
+<li>
+<p><strong>எந்த controller-கள் உள்ளன?</strong> <code>cat /proc/cgroups</code> → <code>cpuset</code>, <code>cpu</code>, <code>cpuacct</code>, <code>freezer</code> — நான்கும் <code>enabled 1</code>. (இந்தச் சிறிய kernel-இல் memory, pids controller-கள் இல்லை.)</p>
+</li>
+<li>
+<p><strong>Namespaces-ஐப் பாருங்கள்:</strong> <code>ls -l /proc/self/ns</code> → <code>mnt:[4026531840]</code>, <code>pid:[4026531836]</code>, <code>net:[…]</code> போன்ற வரிகள். அடைப்புக்குள் உள்ள எண் அந்த namespace-இன் அடையாளம். <code>ls -l /proc/1/ns</code>-உடன் ஒப்பிடுங்கள் — அதே எண்கள்: இங்கே எல்லா process-களும் ஒரே namespaces-இல் (container இல்லை). (இந்த VM-இல் புதிய namespace உருவாக்கும் <code>unshare</code> கருவி இல்லை; எனவே இங்கே cgroups-ஐ மட்டும் கட்டுகிறோம்.)</p>
+</li>
+<li>
+<p><strong>cgroup v2-ஐ mount செய்யுங்கள்:</strong> <code>mount -t cgroup2 none /sys/fs/cgroup</code>, பிறகு <code>cat /sys/fs/cgroup/cgroup.controllers</code> → <code>cpu</code>.</p>
+</li>
+<li>
+<p><strong>cpu controller-ஐக் குழந்தைகளுக்கு இயக்கி, இரண்டு குழுக்கள் உருவாக்குங்கள்:</strong></p>
+<pre tabindex="0"><code>echo +cpu &gt; /sys/fs/cgroup/cgroup.subtree_control
+mkdir /sys/fs/cgroup/a /sys/fs/cgroup/b
+cat /sys/fs/cgroup/a/cpu.weight
+echo 400 &gt; /sys/fs/cgroup/b/cpu.weight</code></pre><p><code>cat</code> → <code>100</code> (இயல்பு எடை). இப்போது a = 100, b = 400.</p>
+</li>
+<li>
+<p><strong>இரண்டு &ldquo;பேராசை&rdquo; process-களை ஒவ்வொரு குழுவிலும் வையுங்கள்</strong> (ஒவ்வொன்றும் CPU-வை முழுவதும் தின்னும் முடிவில்லா loop; <code>$!</code> = கடைசியாகப் பின்னணியில் தொடங்கிய process-இன் PID):</p>
+<pre tabindex="0"><code>while :; do :; done &amp;
+echo $! &gt; /sys/fs/cgroup/a/cgroup.procs
+while :; do :; done &amp;
+echo $! &gt; /sys/fs/cgroup/b/cgroup.procs</code></pre></li>
+<li>
+<p><strong>அளவிடுங்கள்:</strong> <code>grep usage_usec /sys/fs/cgroup/a/cpu.stat /sys/fs/cgroup/b/cpu.stat</code>, பிறகு <code>sleep 10</code>, பிறகு அதே <code>grep</code> மீண்டும். எங்கள் ஓட்டத்தில்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>குழு</th>
+					<th>முன் (µs)</th>
+					<th>பின் (µs)</th>
+					<th>வேறுபாடு (µs)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>a (100)</td>
+					<td>612,713</td>
+					<td>2,755,558</td>
+					<td>2,142,845</td>
+			</tr>
+			<tr>
+					<td>b (400)</td>
+					<td>632,616</td>
+					<td>9,213,209</td>
+					<td>8,580,593</td>
+			</tr>
+	</tbody>
+</table>
+<p>விகிதம் 8,580,593 / 2,142,845 ≈ <strong>4.0</strong>; பங்குகள் 2.14 / 10.72 ≈ 20% மற்றும் 8.58 / 10.72 ≈ 80% — மேலே உள்ள weight கணக்கு அப்படியே. (இந்த VM-க்கு ஒரே CPU; <code>nproc</code> → <code>1</code>.)</p>
+</li>
+<li>
+<p><strong>இரண்டையும் நிறுத்துங்கள்:</strong> <code>kill %1 %2</code>.</p>
+</li>
+<li>
+<p><strong>ஒரு குழுவை உறைய வையுங்கள் (freezer, cgroup v1 வடிவம்):</strong></p>
+<pre tabindex="0"><code>mkdir /tmp/fz
+mount -t cgroup -o freezer freezer /tmp/fz
+mkdir /tmp/fz/box
+(i=0; while true; do i=$((i+1)); echo $i &gt; /tmp/count; sleep 1; done) &amp;
+echo $! &gt; /tmp/fz/box/tasks
+echo FROZEN &gt; /tmp/fz/box/freezer.state
+cat /tmp/count; sleep 3; cat /tmp/count
+echo THAWED &gt; /tmp/fz/box/freezer.state
+sleep 3; cat /tmp/count</code></pre><p>உறைந்திருக்கும்போது இரண்டு <code>cat</code>-உம் ஒரே எண்ணைக் காட்டுகின்றன (எங்களுக்கு <code>1</code>, <code>1</code>); THAWED-க்குப் பின் எண்ணி மீண்டும் ஏறுகிறது (<code>5</code>). Process கொல்லப்படவில்லை — குழு முழுவதும் நிறுத்தி வைக்கப்பட்டது. Container-களை &ldquo;pause&rdquo; செய்வது இப்படித்தான். (v1-இல் PID-களை <code>tasks</code> கோப்பில் எழுதுகிறோம்; v2-இல் <code>cgroup.procs</code>.)</p>
+</li>
+</ol>
+<p>இந்த lab-இன் kernel-இல் <code>cpu.max</code> கோப்பு இல்லை (CPU quota அம்சம் இந்த build-இல் சேர்க்கப்படவில்லை), எனவே மேலே உள்ள quota கணக்கை இங்கே நேரடியாகச் சோதிக்க முடியாது; weight சோதனை அதே கொள்கையைக் காட்டுகிறது.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=ta"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>பெயர்வெளி</td>
+					<td>namespace</td>
+			</tr>
+			<tr>
+					<td>கட்டுப்பாட்டுக் குழு</td>
+					<td>control group (cgroup)</td>
+			</tr>
+			<tr>
+					<td>கட்டுப்படுத்தி</td>
+					<td>controller</td>
+			</tr>
+			<tr>
+					<td>படிநிலை</td>
+					<td>hierarchy</td>
+			</tr>
+			<tr>
+					<td>ஒப்பீட்டு எடை</td>
+					<td>weight (cpu.weight)</td>
+			</tr>
+			<tr>
+					<td>ஒதுக்கீட்டுக் கூரை</td>
+					<td>quota (cpu.max)</td>
+			</tr>
+			<tr>
+					<td>நினைவக மீட்பு</td>
+					<td>memory reclaim</td>
+			</tr>
+			<tr>
+					<td>நினைவகம் தீர்ந்த கொலை</td>
+					<td>OOM kill</td>
+			</tr>
+			<tr>
+					<td>உறைய வைத்தல் / உருக்குதல்</td>
+					<td>freeze / thaw</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Containers&#43;%E0%AE%AE%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AF%81%E0%AE%AE%E0%AF%8D&#43;%E0%AE%A8%E0%AE%B5%E0%AF%80%E0%AE%A9&#43;OS&#43;Isolation&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F25-containers-and-modern-os-isolation%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F25-containers-and-modern-os-isolation.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F25-containers-and-modern-os-isolation.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Virtual Memory மற்றும் Multitasking</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/26-from-machine-code-to-assembly/" class="flex align-center">
+        <span>Machine Code-இலிருந்து Assembly வரை</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மழ-virtualization-வலவனத-கனமனத">முழு Virtualization: வலுவானது, கனமானது</a></li>
+    <li><a href="#kernel-பகரஙகள-view-தனமபபடததஙகள">Kernel பகிருங்கள், View தனிமைப்படுத்துங்கள்</a></li>
+    <li><a href="#namespaces-ஒவவர-வகயம-எதத-தனமபபடததகறத">Namespaces: ஒவ்வொரு வகையும் எதைத் தனிமைப்படுத்துகிறது</a></li>
+    <li><a href="#cgroups-வரமபம-கணககம">Cgroups: வரம்பும் கணக்கும்</a></li>
+    <li><a href="#வரததகம-ஏன-அளவல-வனறத">வர்த்தகம் ஏன் அளவில் வென்றது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

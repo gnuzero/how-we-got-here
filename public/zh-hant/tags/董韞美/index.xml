@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>董韞美 on 我們如何走到那裡</title>
+		<link>http://localhost:1478/zh-hant/tags/%E8%91%A3%E9%9F%9E%E7%BE%8E/</link>
+		<description>Recent content in 董韞美 on 我們如何走到那裡</description>
+		<generator>Hugo</generator>
+		<language>zh-Hant</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hant/tags/%E8%91%A3%E9%9F%9E%E7%BE%8E/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>程式語言與編譯器：從 104 機到倉頡</title>
+				<link>http://localhost:1478/zh-hant/posts/27-zh-languages-compilers/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/27-zh-languages-compilers/</guid>
+				<description>1960 年，兩位程式設計師花三四個月讀懂一個設計者已離開、資料殘缺的編譯程式；此後幾家單位的說法裡都有“第一”或“最早”，各自說的並不是同一件事。</description>
+			</item>
+	</channel>
+</rss>

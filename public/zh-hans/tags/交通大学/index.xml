@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>交通大学 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6/</link>
+		<description>Recent content in 交通大学 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>从一门课到一块芯片：中国半导体的头十年</title>
+				<link>http://localhost:1478/zh-hans/posts/05-zh-transistors-semiconductors/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/05-zh-transistors-semiconductors/</guid>
+				<description>1955 年北大开出第一门半导体物理课，十年后北京做出了可实用的硅集成电路，新竹的交大也做出了第一批电晶体：先有人，再有晶体，最后才有芯片。</description>
+			</item>
+	</channel>
+</rss>

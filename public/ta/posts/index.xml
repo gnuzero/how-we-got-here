@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+		<link>http://localhost:1478/ta/posts/</link>
+		<description>Recent content in Posts on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</description>
+		<generator>Hugo</generator>
+		<language>ta</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 15:16:07 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/ta/posts/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>நன்றியுரையும் மூலாதாரங்களும்</title>
+				<link>http://localhost:1478/ta/posts/00-credits/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/00-credits/</guid>
+				<description>முதலில் நன்றியுரை — இந்தப் பயணம் நிற்கும் வெளியிடப்பட்ட மூலாதாரங்கள், ஏற்கனவே உள்ள ஊடாடும் ஊடகம், மற்றும் படங்கள்</description>
+			</item>
+			<item>
+				<title>முன்னுரை</title>
+				<link>http://localhost:1478/ta/posts/00-foreword/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/00-foreword/</guid>
+				<description>இந்தத் தொடர் ஏன் உள்ளது — மின்னியந்திர ரிலேக்களில் இருந்து நவீன Attention பொறிமுறைகள் வரை</description>
+			</item>
+			<item>
+				<title>இது என்ன?</title>
+				<link>http://localhost:1478/ta/posts/01-what-is-this-thing/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01-what-is-this-thing/</guid>
+				<description>ஒரே கருத்துக்கு ஒன்பது கதவுகள் — எதையாவது தேர்ந்தெடுங்கள், பிறகு பித்தளை இயந்திரங்களைச் சந்தியுங்கள்</description>
+			</item>
+			<item>
+				<title>கூழாங்கல் தட்டுகள்</title>
+				<link>http://localhost:1478/ta/posts/01-take-pebbles/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01-take-pebbles/</guid>
+				<description>மூன்று தட்டுகள், ஒவ்வொரு படியாகச் செல்லும் செய்முறை அட்டை, ஒரு விடைப் பட்டை</description>
+			</item>
+			<item>
+				<title>தானியங்கிப் பியானோ</title>
+				<link>http://localhost:1478/ta/posts/01-take-player-piano/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01-take-player-piano/</guid>
+				<description>சுருளில் துளைகள்; அதே சுருளை இருமுறை ஓட்டினால் அதே இசை</description>
+			</item>
+			<item>
+				<title>நீர்ச் சக்கரம்</title>
+				<link>http://localhost:1478/ta/posts/01-take-water-wheel/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01-take-water-wheel/</guid>
+				<description>நம்பக்கூடிய ஒரு நிலையான வேலை — சக்கரம் தானாக எதையும் புனைவதில்லை</description>
+			</item>
+			<item>
+				<title>பட்டுக்கான வடிவ அட்டைகள்</title>
+				<link>http://localhost:1478/ta/posts/01-take-silk-cards/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01-take-silk-cards/</guid>
+				<description>அட்டைகளை மாற்றினால் பூ மாறும் — நெசவாளரின் கைகள் அப்படியே</description>
+			</item>
+			<item>
+				<title>பிடிவாதமான உதவியாளர்</title>
+				<link>http://localhost:1478/ta/posts/01-take-stubborn-helper/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01-take-stubborn-helper/</guid>
+				<description>ஒருபோதும் சலிப்பில்லை, ஊகமில்லை, கேட்டதை “மேம்படுத்துவதும்” இல்லை</description>
+			</item>
+			<item>
+				<title>பீப்பாய் இசைப்பெட்டி</title>
+				<link>http://localhost:1478/ta/posts/01-take-barrel-organ/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01-take-barrel-organ/</guid>
+				<description>அதற்குப் பாடல் தெரியாது — ஆணிகளே பாடலைத் தீர்மானிக்கின்றன</description>
+			</item>
+			<item>
+				<title>மேசை எழுத்தர்</title>
+				<link>http://localhost:1478/ta/posts/01-take-clerk/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01-take-clerk/</guid>
+				<description>குறிகள், எழுதப்பட்ட படிகளின் பட்டியல் — களைப்படையக்கூடிய, படியைத் தவறவிடக்கூடிய, ஊகிக்கக்கூடிய ஒரு மனிதர்</description>
+			</item>
+			<item>
+				<title>வணிகக் கூட்டம் (caravan)</title>
+				<link>http://localhost:1478/ta/posts/01-take-caravan/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01-take-caravan/</guid>
+				<description>களிமண்ணிலோ துணியிலோ ஒப்புக்கொண்ட குறிகள் — புத்திசாலித்தனம் குறிகளிலும் நிறுத்தங்களிலும்; ஒட்டகங்களில் அல்ல</description>
+			</item>
+			<item>
+				<title>விருந்து அகப்பை</title>
+				<link>http://localhost:1478/ta/posts/01-take-feast-scoop/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01-take-feast-scoop/</guid>
+				<description>ஒவ்வொரு விருந்தினருக்கும் ஒரே அளவு — பத்தாவது இலைக்கு ஆழமான அகப்பை இல்லை</description>
+			</item>
+			<item>
+				<title>Babbage இன் இயந்திரங்கள்</title>
+				<link>http://localhost:1478/ta/posts/01a-babbage-engines/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01a-babbage-engines/</guid>
+				<description>வித்தியாசப் பொறியும் பகுப்புப் பொறியும் — நினைவகம் (store), கணித அலகு (mill), அட்டைகளில் ஒரு நிரல்</description>
+			</item>
+			<item>
+				<title>ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</title>
+				<link>http://localhost:1478/ta/posts/02-relays-and-electromechanical-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/02-relays-and-electromechanical-logic/</guid>
+				<description>ரிலேக்கள் இருமத் தர்க்கம் வேலை செய்கிறது என்பதை நிரூபித்தன — நகரும் உலோகம் பிடிக்க முடியாது என்பதையும்</description>
+			</item>
+			<item>
+				<title>Jacquard தறி</title>
+				<link>http://localhost:1478/ta/posts/01b-jacquard-loom/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01b-jacquard-loom/</guid>
+				<description>பஞ்ச் கார்டுகள் நிரலை, அதை இயக்கும் இயந்திரத்திலிருந்து பிரித்தன</description>
+			</item>
+			<item>
+				<title>வெற்றிடக் குழாய் காலம்</title>
+				<link>http://localhost:1478/ta/posts/03-the-vacuum-tube-era/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/03-the-vacuum-tube-era/</guid>
+				<description>குழாய்கள் நகரும் பாகங்களை அகற்றின — அந்த வேகத்தை வெப்பம், மின்சாரம் மற்றும் தோல்விக்குப் பரிமாற்றம் செய்தன</description>
+			</item>
+			<item>
+				<title>இயந்திரக் கணினி ஏன் முக்கியம்</title>
+				<link>http://localhost:1478/ta/posts/01c-why-mechanical-matters/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/01c-why-mechanical-matters/</guid>
+				<description>தர்க்க வடிவம் பித்தளையில் வந்தது; உராய்வு மின்சாரத்தைக் கட்டாயப்படுத்தியது</description>
+			</item>
+			<item>
+				<title>டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</title>
+				<link>http://localhost:1478/ta/posts/04-why-the-transistor-had-to-happen/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/04-why-the-transistor-had-to-happen/</guid>
+				<description>அளவு, மின்சாரம், நம்பகத்தன்மை — திண்மநிலை மாறுதலை தவிர்க்க முடியாததாக்கிய மூன்று குழாய் உச்சவரம்புகள்</description>
+			</item>
+			<item>
+				<title>முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</title>
+				<link>http://localhost:1478/ta/posts/05-semiconductors-from-first-principles/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/05-semiconductors-from-first-principles/</guid>
+				<description>இரு வழியிலும் தள்ளக்கூடிய band gap — doping சிலிகானைக் கட்டுப்படுத்தக்கூடிய மாறியாக மாற்றுகிறது</description>
+			</item>
+			<item>
+				<title>டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</title>
+				<link>http://localhost:1478/ta/posts/06-the-transistor-bjt-to-mosfet/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/06-the-transistor-bjt-to-mosfet/</guid>
+				<description>Current-controlled BJT-கள் idle மின்சாரத்தை எரித்தன; voltage-controlled MOSFET-கள் அடர்த்தியைச் சாத்தியமாக்கின</description>
+			</item>
+			<item>
+				<title>டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</title>
+				<link>http://localhost:1478/ta/posts/07-logic-gates-from-transistors/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/07-logic-gates-from-transistors/</guid>
+				<description>CMOS NMOS-ஐயும் PMOS-ஐயும் இணைக்கிறது — idle வாயில்களில் static பாதை இல்லை; அளவிட்ட இடவியல்</description>
+			</item>
+			<item>
+				<title>வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</title>
+				<link>http://localhost:1478/ta/posts/08-from-gates-to-combinational-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/08-from-gates-to-combinational-logic/</guid>
+				<description>வாயில்களைக் கூட்டிகளாகவும் ALU-வாகவும் இணைக்கவும் — பிறகு சிறந்த கட்டமைப்புகளைக் கட்டாயப்படுத்தும் carry-ripple தாமதம்</description>
+			</item>
+			<item>
+				<title>தொடர்நிலைத் தர்க்கம்</title>
+				<link>http://localhost:1478/ta/posts/09-sequential-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/09-sequential-logic/</guid>
+				<description>பின்னூட்டம் இருநிலை நினைவகத்தை உருவாக்குகிறது; edge-triggered flip-flop-கள் ஒத்திசைவு வடிவமைப்பைக் கையாளக்கூடியதாக்குகின்றன — setup/hold clock-ஐக் கட்டுப்படுத்தும் வரை</description>
+			</item>
+			<item>
+				<title>நினைவகப் படிநிலை தொடங்குகிறது</title>
+				<link>http://localhost:1478/ta/posts/10-the-memory-hierarchy-begins/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/10-the-memory-hierarchy-begins/</guid>
+				<description>Flip-flop-கள் பிட்டுக்கு மிகவும் விலை உயர்ந்தவை — SRAM வேகத்தை வாங்குகிறது, DRAM அடர்த்தியை வாங்குகிறது; படிநிலை அந்த வர்த்தகத்தின் மறுபடி</description>
+			</item>
+			<item>
+				<title>அறிவுறுத்தல் தொகுப்புகள்</title>
+				<link>http://localhost:1478/ta/posts/11-instruction-sets/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/11-instruction-sets/</guid>
+				<description>ஒரு ISA உண்மையில் என்ன — CISC vs RISC</description>
+			</item>
+			<item>
+				<title>Datapath வடிவமைப்பு</title>
+				<link>http://localhost:1478/ta/posts/12-datapath-design/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/12-datapath-design/</guid>
+				<description>Single-cycle CPU நடை</description>
+			</item>
+			<item>
+				<title>Pipelining</title>
+				<link>http://localhost:1478/ta/posts/13-pipelining/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/13-pipelining/</guid>
+				<description>Throughput-க்கு அறிவுறுத்தல்களை மேலெழுதல் — பின்னர் hazards forwarding, stall, மற்றும் அடுத்து வரும் அனைத்தையும் கட்டாயப்படுத்துகின்றன</description>
+			</item>
+			<item>
+				<title>Branch Prediction</title>
+				<link>http://localhost:1478/ta/posts/14-branch-prediction/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/14-branch-prediction/</guid>
+				<description>Pipeline flush-கள் விலை உயர்ந்தவை — அவற்றை அரிதாக்க prediction உள்ளது</description>
+			</item>
+			<item>
+				<title>Caches</title>
+				<link>http://localhost:1478/ta/posts/15-caches/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/15-caches/</guid>
+				<description>Locality நினைவகப் படிநிலையை வேலை செய்ய வைக்கிறது; associativity மற்றும் coherence அதை நேர்மையாக வைக்கும் செலவுகள்</description>
+			</item>
+			<item>
+				<title>Out-of-Order Execution</title>
+				<link>http://localhost:1478/ta/posts/16-out-of-order-execution/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/16-out-of-order-execution/</guid>
+				<description>காத்திருக்க வேண்டியதை மட்டும் stall செய்யுங்கள் — Tomasulo-வின் யோசனை: தயாரானபோது execute, வரிசையில் commit</description>
+			</item>
+			<item>
+				<title>Superscalar &amp; Multicore</title>
+				<link>http://localhost:1478/ta/posts/17-superscalar-multicore/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/17-superscalar-multicore/</guid>
+				<description>ILP மற்றும் மின்சாரம் சுவர்களை மோதின — எனவே தொழில் ஒரு thread-க்கு வேகத்திற்குப் பதிலாக அகலத்திற்குச் சென்றது</description>
+			</item>
+			<item>
+				<title>Mainframes முதல் Minicomputers முதல் Microprocessors வரை</title>
+				<link>http://localhost:1478/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/</guid>
+				<description>கணினி யாருக்குக் கிடைக்கும் மூன்று காலங்கள் — நிறுவனம், துறை, பிறகு அனைவருக்கும் ஒரு சிப்</description>
+			</item>
+			<item>
+				<title>x86 vs RISC பிளவு</title>
+				<link>http://localhost:1478/ta/posts/19-the-x86-vs-risc-split/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/19-the-x86-vs-risc-split/</guid>
+				<description>RISC காகிதத்தில் சுத்தமானது — மென்பொருள் lock-in மற்றும் µop மொழிபெயர்ப்பு x86-ஐ மேலே வைத்தன</description>
+			</item>
+			<item>
+				<title>ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</title>
+				<link>http://localhost:1478/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/</guid>
+				<description>Desktop x86-இல் அமர்ந்த பிறகு, போர் மின்சாரம் மற்றும் licensing-க்கு நகர்ந்தது — ARM மொபைலை வென்றது; RISC-V திறந்ததில் பந்தயம் கட்டுகிறது</description>
+			</item>
+			<item>
+				<title>Batch Processing மற்றும் Operating System-இன் பிறப்பு</title>
+				<link>http://localhost:1478/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/</guid>
+				<description>Punch-card வேலைகளுக்கு இடையே விலையுயர்ந்த CPU idle ஆனது — முதல் resident monitor-ஐ கட்டாயப்படுத்தியது: பயனர் நிரல் அல்ல, system மென்பொருள்</description>
+			</item>
+			<item>
+				<title>Time-Sharing மற்றும் Unix வம்சாவளி</title>
+				<link>http://localhost:1478/ta/posts/22-time-sharing-and-the-unix-lineage/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/22-time-sharing-and-the-unix-lineage/</guid>
+				<description>Batch CPU-ஐ வேலைப்படுத்தி வைத்தது; time-sharing பல பயனர்களுக்கு அதைச் சொந்தமாக்கிய மாயையைக் கொடுத்தது — Multics ஆசை, பிறகு Unix எளிமை</description>
+			</item>
+			<item>
+				<title>GNU இயக்கம் மற்றும் Linux</title>
+				<link>http://localhost:1478/ta/posts/23-the-gnu-movement-and-linux/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/23-the-gnu-movement-and-linux/</guid>
+				<description>Unix மூடியது; Stallman இலவச userland கட்டினார்; Torvalds kernel இடைவெளியை நிரப்பினார் — GPL சேர்க்கையைத் திறந்ததாக வைத்தது</description>
+			</item>
+			<item>
+				<title>Virtual Memory மற்றும் Multitasking</title>
+				<link>http://localhost:1478/ta/posts/24-virtual-memory-and-multitasking/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/24-virtual-memory-and-multitasking/</guid>
+				<description>Time-sharing-க்கு isolation தேவை — virtual memory ஒவ்வொரு process-க்கும் இயந்திரத்தைச் சொந்தமாக்கிய மாயையைக் கொடுக்கிறது</description>
+			</item>
+			<item>
+				<title>Containers மற்றும் நவீன OS Isolation</title>
+				<link>http://localhost:1478/ta/posts/25-containers-and-modern-os-isolation/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/25-containers-and-modern-os-isolation/</guid>
+				<description>முழு VM-கள் வலுவான isolation-ஐ கனமான செலவில் வாங்குகின்றன — namespaces மற்றும் cgroups ஒரே kernel பகிர்ந்து மற்ற எல்லாவற்றையும் கிட்டத்தட்ட தனிமைப்படுத்துகின்றன</description>
+			</item>
+			<item>
+				<title>Machine Code-இலிருந்து Assembly வரை</title>
+				<link>http://localhost:1478/ta/posts/26-from-machine-code-to-assembly/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/26-from-machine-code-to-assembly/</guid>
+				<description>CPU ஓட்டுவது raw binary — assembly முதல் வாசிப்புத்திறன் அடுக்கு, இன்னும் mnemonic ஒன்றுக்கு ஒரு அறிவுறுத்தல்</description>
+			</item>
+			<item>
+				<title>உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</title>
+				<link>http://localhost:1478/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/</guid>
+				<description>நான்கு துறைகள் நான்கு abstractions கட்டாயப்படுத்தின — சூத்திரம், வணிக உரை, குறியீட்டு பட்டியல்கள், உலோகத்திற்கு அருகில் உள்ள அமைப்புகள்</description>
+			</item>
+			<item>
+				<title>Compilers, JIT, மற்றும் நவீன மொழி Runtimes</title>
+				<link>http://localhost:1478/ta/posts/28-compilers-jit-and-modern-language-runtimes/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/28-compilers-jit-and-modern-language-runtimes/</guid>
+				<description>AOT runtime உண்மைகள் இல்லாமல் ஒருமுறை தொகுக்கிறது; JIT hot paths-க்காகக் காத்திருக்கிறது — garbage collection செலவை runtime-க்குள் மாற்றுகிறது</description>
+			</item>
+			<item>
+				<title>Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</title>
+				<link>http://localhost:1478/ta/posts/29-real-time-systems-and-deterministic-scheduling/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/29-real-time-systems-and-deterministic-scheduling/</guid>
+				<description>Throughput மற்றும் நியாயம் காலக்கெடு அல்ல — hard real-time-க்கு சராசரி வேகம் அல்ல, வரம்புடைய மோசமான-வழக்கு நேரம் தேவை</description>
+			</item>
+			<item>
+				<title>நடைமுறையில் Real-Time அமைப்புகள்</title>
+				<link>http://localhost:1478/ta/posts/30-real-time-systems-in-practice/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/30-real-time-systems-in-practice/</guid>
+				<description>நிலையான பட்ஜெட்டில் sense–compute–actuate — Phase 3-இன் வேகத் தந்திரங்கள் நேர எதிரிகளாகும் avionics மற்றும் தொழில்துறை கட்டுப்பாடு</description>
+			</item>
+			<item>
+				<title>Buses 101</title>
+				<link>http://localhost:1478/ta/posts/31-buses-101/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/31-buses-101/</guid>
+				<description>பகிரப்பட்ட bus ஒரே நேரத்தில் ஒரு transaction மட்டும் செய்யும் — அந்தக் கூரை அதற்குப் பின் வரும் அனைத்தையும் கட்டாயப்படுத்துகிறது</description>
+			</item>
+			<item>
+				<title>ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</title>
+				<link>http://localhost:1478/ta/posts/32-from-isa-bus-to-pci-to-pcie/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/32-from-isa-bus-to-pci-to-pcie/</guid>
+				<description>Skew அகலமான parallel bus-ஐக் கொன்றது; point-to-point serial தப்பித்தல் எப்படி</description>
+			</item>
+			<item>
+				<title>PCIe Deep Dive</title>
+				<link>http://localhost:1478/ta/posts/33-pcie-deep-dive/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/33-pcie-deep-dive/</guid>
+				<description>நோக்கம் TLP-களில் சவாரி செய்கிறது; நம்பகத்தன்மையும் signaling-ம் கீழே அமர்கின்றன — பகிரப்பட்ட bus-ஐ மாற்றிய stack</description>
+			</item>
+			<item>
+				<title>Memory Buses</title>
+				<link>http://localhost:1478/ta/posts/34-memory-buses/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/34-memory-buses/</guid>
+				<description>DDR bandwidth வாங்கியது; latency அரிதாக நகர்ந்தது — banks மற்றும் channels காத்திருப்பை மறைக்கின்றன</description>
+			</item>
+			<item>
+				<title>The Memory Wall</title>
+				<link>http://localhost:1478/ta/posts/35-the-memory-wall/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/35-the-memory-wall/</guid>
+				<description>CPU வேகமும் DRAM latency-யும் பத்தாண்டுகளாகப் பிரிந்தன — caches இடைவெளியை மறைக்கின்றன; மூடுவதில்லை</description>
+			</item>
+			<item>
+				<title>The Clock Speed Wall</title>
+				<link>http://localhost:1478/ta/posts/36-the-clock-speed-wall/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/36-the-clock-speed-wall/</guid>
+				<description>அதிர்வெண் வெப்பத்தை மோதியது — எனவே தொழில் அகலத்திற்குச் சென்றது (cores, பிறகு fabrics) வேகமான clocks-க்குப் பதிலாக</description>
+			</item>
+			<item>
+				<title>Interconnects at Scale</title>
+				<link>http://localhost:1478/ta/posts/37-interconnects-at-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/37-interconnects-at-scale/</guid>
+				<description>Compute பல chips ஆனதும், அவற்றுக்கிடையேயான பாதை அடுத்த சுவர் — அர்ப்பணிக்கப்பட்ட இணைப்புகள், குறைந்த நகல்கள்</description>
+			</item>
+			<item>
+				<title>Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</title>
+				<link>http://localhost:1478/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/</guid>
+				<description>Point-to-point serial இணைப்பு சரியாக இரண்டு முனைகளை இணைக்கும் — packet switching-ஐ கட்டாயப்படுத்திய கூரை</description>
+			</item>
+			<item>
+				<title>ARPANET மற்றும் Packet Switching</title>
+				<link>http://localhost:1478/ta/posts/39-arpanet-and-packet-switching/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/39-arpanet-and-packet-switching/</guid>
+				<description>Bursty கணினி போக்குவரத்து circuit switching-ஐ உடைத்தது — ARPANET packets மற்றும் பகிரப்பட்ட இணைப்புகள் வேலை செய்யும் என நிரூபித்தது</description>
+			</item>
+			<item>
+				<title>Ethernet மற்றும் Local Area Network</title>
+				<link>http://localhost:1478/ta/posts/40-ethernet-and-the-local-area-network/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/40-ethernet-and-the-local-area-network/</guid>
+				<description>பகிரப்பட்ட கம்பி, மைய arbiter இல்லை — CSMA/CD LAN collision கட்டுப்பாட்டைத் தீர்த்தது; switches பின்னர் அதை அகற்றின</description>
+			</item>
+			<item>
+				<title>TCP/IP மற்றும் நவீன இணைய Stack</title>
+				<link>http://localhost:1478/ta/posts/41-tcp-ip-and-the-modern-internet-stack/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/41-tcp-ip-and-the-modern-internet-stack/</guid>
+				<description>இணைய நெறிமுறைகள் எப்படி அடுக்கியன, ஏன் — அடுக்குகள், flag day, நம்பகமற்ற substrate மீது apps — ஒரு பட்டியல் அல்ல</description>
+			</item>
+			<item>
+				<title>Datacenter Networking மற்றும் RDMA</title>
+				<link>http://localhost:1478/ta/posts/42-datacenter-networking-and-rdma/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/42-datacenter-networking-and-rdma/</guid>
+				<description>ஒரு கட்டுப்படுத்தப்பட்ட fabric-க்குள், kernel நகல்கள் வரியாகும் — RDMA மற்றும் topology கம்பியை மீண்டும் வாங்கும்</description>
+			</item>
+			<item>
+				<title>Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</title>
+				<link>http://localhost:1478/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/</guid>
+				<description>கண்டுபிடி, பிறகு பேசு — Usenet, Archie, Gopher, IRC, மற்றும் இரண்டையும் தொகுத்த consumer portals</description>
+			</item>
+			<item>
+				<title>Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</title>
+				<link>http://localhost:1478/ta/posts/44-google-s-big-data-infrastructure-why-they-won/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/44-google-s-big-data-infrastructure-why-they-won/</guid>
+				<description>Web-அளவு தரவு failure-as-normal சேமிப்பைக் கட்டாயப்படுத்தியது, பிறகு cluster-ஐ மறைத்த நிரலாக்க மாதிரி — GFS, MapReduce, Bigtable</description>
+			</item>
+			<item>
+				<title>Kubernetes மற்றும் Container Orchestration அளவில்</title>
+				<link>http://localhost:1478/ta/posts/45-kubernetes-and-container-orchestration-at-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/45-kubernetes-and-container-orchestration-at-scale/</guid>
+				<description>ஆயிரக்கணக்கான containers வழக்கமாகத் தோல்வியுறும்போது declarative desired state மற்றும் தொடர்ச்சியான reconciliation loop கட்டாயம்</description>
+			</item>
+			<item>
+				<title>Machine Learning மென்பொருள் Stack</title>
+				<link>http://localhost:1478/ta/posts/46-the-machine-learning-software-stack/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/46-the-machine-learning-software-stack/</guid>
+				<description>ஒரு model-க்கும் சிலிகானுக்கும் இடையே tensors-ஐ விநியோகிக்கப்பட்ட training-ஆக மாற்றும் stack அமர்கிறது — மற்றும் interconnect சுவரைத் தாக்குகிறது</description>
+			</item>
+			<item>
+				<title>&#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</title>
+				<link>http://localhost:1478/ta/posts/47-what-7nm-actually-means/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/47-what-7nm-actually-means/</guid>
+				<description>Node பெயர்கள் ஒற்றை இயற்பியல் நீளத்தைப் பின்தொடர்வதை நிறுத்தின — அடர்த்தி மற்றும் pitch தான் இயற்பியல்; லேபிள் ஒரு தலைமுறை</description>
+			</item>
+			<item>
+				<title>Photolithography</title>
+				<link>http://localhost:1478/ta/posts/48-photolithography/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/48-photolithography/</guid>
+				<description>Diffraction குறுகிய அலைநீளங்களைக் கட்டாயப்படுத்துகிறது — EUV-இன் mirrors மற்றும் tin plasma தான் feature அளவுகளை நகர்த்தின</description>
+			</item>
+			<item>
+				<title>FinFET முதல் GAA வரை</title>
+				<link>http://localhost:1478/ta/posts/49-finfet-to-gaa/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/49-finfet-to-gaa/</guid>
+				<description>Short-channel leakage planar shrink-ஐக் கொன்றது — gate-ஐ மூடுங்கள் (FinFET), பிறகு எல்லாப் பக்கமும் மூடுங்கள் (GAA)</description>
+			</item>
+			<item>
+				<title>Moore&#39;s Law</title>
+				<link>http://localhost:1478/ta/posts/50-moore-s-law/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/50-moore-s-law/</guid>
+				<description>Moore-இன் கவனிப்பு பொருளாதாரக் கூறு எண்ணிக்கை — டிரான்சிஸ்டர் எண்ணிக்கை இன்னும் ஏறுகிறது; clocks மற்றும் cost-per-transistor வேறு கதைகள் சொல்கின்றன</description>
+			</item>
+			<item>
+				<title>Chiplets மற்றும் Advanced Packaging</title>
+				<link>http://localhost:1478/ta/posts/51-chiplets-advanced-packaging/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/51-chiplets-advanced-packaging/</guid>
+				<description>Yield die பரப்புடன் வீழ்கிறது — chiplets-ஆகப் பிரித்து advanced packaging-ஆல் bandwidth மீண்டும் வாங்குங்கள்</description>
+			</item>
+			<item>
+				<title>GPU-கள் ஏன் உள்ளன</title>
+				<link>http://localhost:1478/ta/posts/52-why-gpus-exist/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/52-why-gpus-exist/</guid>
+				<description>Graphics வெட்கமற்ற parallel workload கொடுத்தது — SIMT வன்பொருள் பின்தொடர்ந்தது; பொதுக் கணினி அதே வடிவத்தைக் கண்டது</description>
+			</item>
+			<item>
+				<title>CUDA Cores, Warps மற்றும் Occupancy</title>
+				<link>http://localhost:1478/ta/posts/53-cuda-cores-warps-and-occupancy/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/53-cuda-cores-warps-and-occupancy/</guid>
+				<description>SIMT, SM-கள் மற்றும் warps மீது வரைபடமாகிறது — divergence வரை lockstep வெல்லும்; occupancy memory stall-களை மறைக்கும்</description>
+			</item>
+			<item>
+				<title>GPU Memory Hierarchy</title>
+				<link>http://localhost:1478/ta/posts/54-gpu-memory-hierarchy/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/54-gpu-memory-hierarchy/</guid>
+				<description>ஆயிரக்கணக்கான threads DDR-க்கு மேல் bandwidth கட்டாயப்படுத்துகின்றன — HBM நினைவகத்தை compute அருகில் அடுக்கும்</description>
+			</item>
+			<item>
+				<title>Tensor Cores</title>
+				<link>http://localhost:1478/ta/posts/55-tensor-cores/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/55-tensor-cores/</guid>
+				<description>Matrix multiply-accumulate மேலாதிக்க AI op ஆனது — எனவே வன்பொருள் அதை முதல்-தர primitive ஆக்கியது</description>
+			</item>
+			<item>
+				<title>Multi-GPU Scaling</title>
+				<link>http://localhost:1478/ta/posts/56-multi-gpu-scaling/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/56-multi-gpu-scaling/</guid>
+				<description>ஒரு GPU வரையறுக்கப்பட்டது — GPU-களுக்கு இடையேயான interconnect அடுத்த சுவர் ஆகிறது</description>
+			</item>
+			<item>
+				<title>Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</title>
+				<link>http://localhost:1478/ta/posts/57-why-matrix-multiply-reshaped-chip-design/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/57-why-matrix-multiply-reshaped-chip-design/</guid>
+				<description>AI compute அளவில் matmul-க்குக் குறைகிறது — அந்த வடிவத்திற்குச் சிலிகானைச் சிறப்புப்படுத்துங்கள்</description>
+			</item>
+			<item>
+				<title>Systolic Arrays</title>
+				<link>http://localhost:1478/ta/posts/58-systolic-arrays/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/58-systolic-arrays/</guid>
+				<description>தரவு ஒரு MAC கட்டம் வழியாகத் துடிக்கும் — முழு chip-ஐயும் matmul-க்குச் சிறப்புப்படுத்துங்கள் (TPU-கள்)</description>
+			</item>
+			<item>
+				<title>Quantization மற்றும் Mixed Precision</title>
+				<link>http://localhost:1478/ta/posts/59-quantization-mixed-precision/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/59-quantization-mixed-precision/</guid>
+				<description>ஒரு MAC-க்குக் குறைந்த bits அதே ஆற்றல் பட்ஜெட்டில் அதிக MAC-கள் — துல்லியம் இன்னும் தேவைப்படும் இடத்தில் precision கலக்குங்கள்</description>
+			</item>
+			<item>
+				<title>வன்பொருளில் Sparsity</title>
+				<link>http://localhost:1478/ta/posts/60-sparsity-in-hardware/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/60-sparsity-in-hardware/</guid>
+				<description>அறியப்பட்ட-பூஜ்ய MAC-களைத் தவிருங்கள் — ஆனால் அடர்த்தியான MAC வன்பொருள் சுரண்ட மலிவானவை structured patterns மட்டும்</description>
+			</item>
+			<item>
+				<title>Datacenter அளவில் Interconnect</title>
+				<link>http://localhost:1478/ta/posts/61-interconnect-at-datacenter-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/61-interconnect-at-datacenter-scale/</guid>
+				<description>ஆயிரக்கணக்கான GPU-கள் — topology மற்றும் all-reduce எந்த chip-இன் peak FLOPS போலவே முக்கியம்</description>
+			</item>
+			<item>
+				<title>அது எங்கே போகிறது</title>
+				<link>http://localhost:1478/ta/posts/62-where-it-s-headed/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/62-where-it-s-headed/</guid>
+				<description>முன்னோக்கி அதே pattern — chiplets, package-க்கு அருகில் optics, நினைவகத்திற்கு அருகில் compute</description>
+			</item>
+			<item>
+				<title>Attention Is All You Need</title>
+				<link>http://localhost:1478/ta/posts/63-attention-is-all-you-need/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/63-attention-is-all-you-need/</guid>
+				<description>Self-attention spine-ஐ மூடியது — பயணம் கட்டிய matmul வன்பொருள் மீது வரைபடமாகும் parallel வரிசை மாதிரியாக்கம்</description>
+			</item>
+			<item>
+				<title>கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</title>
+				<link>http://localhost:1478/ta/posts/64-who-decides-the-wire/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/64-who-decides-the-wire/</guid>
+				<description>பன்முக வலையமைப்புகள் இடைசெயல்பட எண்கள், பெயர்கள் மற்றும் encodings-ஐ யார் பெயரிடுகிறார்கள்</description>
+			</item>
+			<item>
+				<title>போர்க்கால Crypto</title>
+				<link>http://localhost:1478/ta/posts/66-wartime-crypto/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/66-wartime-crypto/</guid>
+				<description>Enigma, Bletchley மற்றும் Colossus — cipher-களை உடைப்பது ஏன் மின்னணுக் கணினியைக் கட்டாயப்படுத்தியது</description>
+			</item>
+			<item>
+				<title>தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</title>
+				<link>http://localhost:1478/ta/posts/67-privacy-consent-identity-cyber/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/67-privacy-consent-identity-cyber/</guid>
+				<description>திறந்த வலையமைப்பில் பொறியியல் பரிணாமமாகத் தனியுரிமை, ஒப்புதல், அடையாளம் மற்றும் cybersecurity — கொள்கைப் பிரசுரம் அல்ல</description>
+			</item>
+			<item>
+				<title>நடைமுறைக்கு வந்த பார்வைகள்</title>
+				<link>http://localhost:1478/ta/posts/68-visions-that-shipped/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/68-visions-that-shipped/</guid>
+				<description>பயணத்திலிருந்து முன் இணைப்புகள் — Cisco, Gates, Jobs, GNU+Linus, Elon, Bezos stack-ஐ வாழும் platforms ஆக்கிய வகைகளின் விதைகள்</description>
+			</item>
+			<item>
+				<title>Platform தொகுப்பு</title>
+				<link>http://localhost:1478/ta/posts/69-platform-synthesis/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/69-platform-synthesis/</guid>
+				<description>ஒரு உயர்-நிலை நிறுத்தம் — பெரிய platform என்பது விநியோகிக்கப்பட்ட அமைப்புகள், networking, AI infra, தனியுரிமை பொறியியல் மற்றும் software engineering-இன் தொகுப்பு</description>
+			</item>
+			<item>
+				<title>காலவரிசை</title>
+				<link>http://localhost:1478/ta/posts/98-timeline/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/98-timeline/</guid>
+				<description>இயந்திரக் கணக்கீட்டிலிருந்து நவீன Attention பொறிமுறைகள் வரை சுருக்கமான காலவரிசை</description>
+			</item>
+			<item>
+				<title>சொற்களஞ்சியம்</title>
+				<link>http://localhost:1478/ta/posts/99-glossary/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/posts/99-glossary/</guid>
+				<description>தொடர் முழுவதும் பயன்படுத்தப்படும் முக்கியச் சொற்கள், துல்லியமாக வரையறுக்கப்பட்டவை</description>
+			</item>
+	</channel>
+</rss>

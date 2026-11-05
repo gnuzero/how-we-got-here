@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on เราไปถึงจุดนั้นได้อย่างไร</title>
+		<link>http://localhost:1478/th/posts/</link>
+		<description>Recent content in Posts on เราไปถึงจุดนั้นได้อย่างไร</description>
+		<generator>Hugo</generator>
+		<language>th</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:46:26 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/th/posts/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>กิตติกรรมประกาศและแหล่งข้อมูล</title>
+				<link>http://localhost:1478/th/posts/00-credits/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/00-credits/</guid>
+				<description>มาก่อนคำนำ — แหล่งที่ตีพิมพ์แล้ว แล็บที่มีอยู่ และภาพที่การเดินทางนี้ยืนอยู่</description>
+			</item>
+			<item>
+				<title>คำนำ</title>
+				<link>http://localhost:1478/th/posts/00-foreword/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/00-foreword/</guid>
+				<description>เหตุใดชุดบทความนี้จึงมีอยู่ — จากรีเลย์ไฟฟ้ากลไกสู่กลไก Attention สมัยใหม่</description>
+			</item>
+			<item>
+				<title>กองคาราวาน (caravan)</title>
+				<link>http://localhost:1478/th/posts/01-take-caravan/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01-take-caravan/</guid>
+				<description>เครื่องหมายที่ตกลงกันบนดินเหนียวหรือผ้า — เครื่องหมายและจุดพักต่างหากที่ฉลาด ไม่ใช่กองคาราวาน</description>
+			</item>
+			<item>
+				<title>กังหันน้ำ (water wheel)</title>
+				<link>http://localhost:1478/th/posts/01-take-water-wheel/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01-take-water-wheel/</guid>
+				<description>งานตายตัวที่ไว้ใจได้ — กังหันจะไม่ด้นสด</description>
+			</item>
+			<item>
+				<title>ถาดก้อนกรวด</title>
+				<link>http://localhost:1478/th/posts/01-take-pebbles/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01-take-pebbles/</guid>
+				<description>สามถาด บัตรสูตรทีละขั้น และแถบคำตอบ</description>
+			</item>
+			<item>
+				<title>ทัพพีในงานเลี้ยง</title>
+				<link>http://localhost:1478/th/posts/01-take-feast-scoop/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01-take-feast-scoop/</guid>
+				<description>ตักเท่ากันทุกแขก — ไม่ตักลึกขึ้นสำหรับจานที่สิบ</description>
+			</item>
+			<item>
+				<title>นี่คืออะไร?</title>
+				<link>http://localhost:1478/th/posts/01-what-is-this-thing/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01-what-is-this-thing/</guid>
+				<description>เก้าประตูสู่แนวคิดเดียวกัน — เลือกบานไหนก็ได้ แล้วไปพบเครื่องจักรทองเหลือง</description>
+			</item>
+			<item>
+				<title>บัตรลายบนผ้าไหม</title>
+				<link>http://localhost:1478/th/posts/01-take-silk-cards/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01-take-silk-cards/</guid>
+				<description>สลับบัตร ดอกไม้ก็เปลี่ยน — มือของช่างทอยังคงเดิม</description>
+			</item>
+			<item>
+				<title>เปียโนกล (player piano)</title>
+				<link>http://localhost:1478/th/posts/01-take-player-piano/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01-take-player-piano/</guid>
+				<description>รูบนม้วนกระดาษ ม้วนเดิมสองครั้งคือเพลงเดิม</description>
+			</item>
+			<item>
+				<title>ผู้ช่วยหัวดื้อ</title>
+				<link>http://localhost:1478/th/posts/01-take-stubborn-helper/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01-take-stubborn-helper/</guid>
+				<description>ไม่เคยเบื่อ ไม่เคยเดา ไม่เคย “ปรับปรุง” คำขอ</description>
+			</item>
+			<item>
+				<title>เสมียนประจำโต๊ะ</title>
+				<link>http://localhost:1478/th/posts/01-take-clerk/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01-take-clerk/</guid>
+				<description>เครื่องหมาย รายการขั้นตอนที่เขียนไว้ — และคนที่เหนื่อยได้ ข้ามได้ หรือเดาได้</description>
+			</item>
+			<item>
+				<title>ออร์แกนกระบอกหมุด (barrel organ)</title>
+				<link>http://localhost:1478/th/posts/01-take-barrel-organ/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01-take-barrel-organ/</guid>
+				<description>มันไม่รู้จักเพลงสวด — หมุดเป็นผู้กำหนดเพลง</description>
+			</item>
+			<item>
+				<title>เครื่องจักรของแบบเบจ</title>
+				<link>http://localhost:1478/th/posts/01a-babbage-engines/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01a-babbage-engines/</guid>
+				<description>เครื่องผลต่างและเครื่องวิเคราะห์ — หน่วยเก็บ หน่วยประมวล และโปรแกรมบนบัตร</description>
+			</item>
+			<item>
+				<title>รีเลย์และตรรกะไฟฟ้ากลไก</title>
+				<link>http://localhost:1478/th/posts/02-relays-and-electromechanical-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/02-relays-and-electromechanical-logic/</guid>
+				<description>รีเลย์พิสูจน์ว่าตรรกะไบนารีใช้ได้ — และว่าโลหะที่เคลื่อนตามไม่ทัน</description>
+			</item>
+			<item>
+				<title>กี่ทอแบบฌักการ์</title>
+				<link>http://localhost:1478/th/posts/01b-jacquard-loom/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01b-jacquard-loom/</guid>
+				<description>บัตรเจาะรูทำให้โปรแกรมแยกออกจากเครื่องที่รันมัน</description>
+			</item>
+			<item>
+				<title>ยุคหลอดสุญญากาศ</title>
+				<link>http://localhost:1478/th/posts/03-the-vacuum-tube-era/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/03-the-vacuum-tube-era/</guid>
+				<description>หลอดเอาชิ้นส่วนที่เคลื่อนที่ออก — และแลกความเร็วนั้นด้วยความร้อน พลังงาน และความล้มเหลว</description>
+			</item>
+			<item>
+				<title>ทำไมการคำนวณเชิงกลจึงสำคัญ</title>
+				<link>http://localhost:1478/th/posts/01c-why-mechanical-matters/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/01c-why-mechanical-matters/</guid>
+				<description>รูปทรงเชิงตรรกะมาถึงในรูปทองเหลือง แรงเสียดทานบังคับให้ต้องใช้ไฟฟ้า</description>
+			</item>
+			<item>
+				<title>เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</title>
+				<link>http://localhost:1478/th/posts/04-why-the-transistor-had-to-happen/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/04-why-the-transistor-had-to-happen/</guid>
+				<description>ขนาด พลังงาน ความเชื่อถือได้ — สามเพดานของหลอดที่ทำให้การสลับสถานะของแข็งหลีกเลี่ยงไม่ได้</description>
+			</item>
+			<item>
+				<title>เซมิคอนดักเตอร์จากหลักการพื้นฐาน</title>
+				<link>http://localhost:1478/th/posts/05-semiconductors-from-first-principles/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/05-semiconductors-from-first-principles/</guid>
+				<description>ช่องว่างแถบที่ผลักได้ทั้งสองทาง — การเจือสารเปลี่ยนซิลิคอนให้เป็นสวิตช์ที่ควบคุมได้</description>
+			</item>
+			<item>
+				<title>ทรานซิสเตอร์: จาก BJT สู่ MOSFET</title>
+				<link>http://localhost:1478/th/posts/06-the-transistor-bjt-to-mosfet/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/06-the-transistor-bjt-to-mosfet/</guid>
+				<description>BJT ที่ควบคุมด้วยกระแสเผาพลังงานว่าง; MOSFET ที่ควบคุมด้วยแรงดันทำให้ความหนาแน่นเป็นไปได้</description>
+			</item>
+			<item>
+				<title>เกตตรรกะจากทรานซิสเตอร์</title>
+				<link>http://localhost:1478/th/posts/07-logic-gates-from-transistors/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/07-logic-gates-from-transistors/</guid>
+				<description>CMOS จับคู่ NMOS กับ PMOS เพื่อให้เกตว่างไม่มีเส้นทางสถิต — โทโพโลยีที่ขยายขนาดได้</description>
+			</item>
+			<item>
+				<title>จากเกตสู่ตรรกะเชิงผสม</title>
+				<link>http://localhost:1478/th/posts/08-from-gates-to-combinational-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/08-from-gates-to-combinational-logic/</guid>
+				<description>ประกอบเกตเป็นอแดเดอร์และ ALU — แล้วชนดีเลย์ carry-ripple ที่บังคับโครงสร้างที่ดีกว่า</description>
+			</item>
+			<item>
+				<title>ตรรกะเชิงลำดับ</title>
+				<link>http://localhost:1478/th/posts/09-sequential-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/09-sequential-logic/</guid>
+				<description>ฟีดแบ็กสร้างความจำ bistable; flip-flop ที่กระตุ้นด้วยขอบทำให้การออกแบบ synchronous จัดการได้ — จน setup/hold จำกัดคล็อก</description>
+			</item>
+			<item>
+				<title>ลำดับชั้นหน่วยความจำเริ่มต้น</title>
+				<link>http://localhost:1478/th/posts/10-the-memory-hierarchy-begins/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/10-the-memory-hierarchy-begins/</guid>
+				<description>Flip-flop แพงเกินไปต่อบิต — SRAM ซื้อความเร็ว DRAM ซื้อความหนาแน่น และลำดับชั้นคือการแลกเปลี่ยนนั้นซ้ำ</description>
+			</item>
+			<item>
+				<title>ชุดคำสั่ง</title>
+				<link>http://localhost:1478/th/posts/11-instruction-sets/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/11-instruction-sets/</guid>
+				<description>ISA คือสัญญาระหว่างซอฟต์แวร์กับฮาร์ดแวร์; CISC กับ RISC คือสองคำตอบว่าสัญญานั้นควรหน้าตาอย่างไร</description>
+			</item>
+			<item>
+				<title>การออกแบบ Datapath</title>
+				<link>http://localhost:1478/th/posts/12-datapath-design/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/12-datapath-design/</guid>
+				<description>Datapath แบบ single-cycle ทำให้ชิ้นส่วนมองเห็นได้ — และแสดงเหตุใดคล็อกของมันจึงถูกขนาดตามกรณีแย่สุด</description>
+			</item>
+			<item>
+				<title>ไปป์ไลน์</title>
+				<link>http://localhost:1478/th/posts/13-pipelining/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/13-pipelining/</guid>
+				<description>ทับซ้อนคำสั่งเพื่อปริมาณงาน — แล้ว hazards บังคับ forwarding, stall และทุกอย่างที่ตามมา</description>
+			</item>
+			<item>
+				<title>การทำนาย Branch</title>
+				<link>http://localhost:1478/th/posts/14-branch-prediction/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/14-branch-prediction/</guid>
+				<description>Pipeline flush แพง — การทำนายมีอยู่เพื่อทำให้มันหายาก</description>
+			</item>
+			<item>
+				<title>แคช</title>
+				<link>http://localhost:1478/th/posts/15-caches/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/15-caches/</guid>
+				<description>Locality ทำให้ลำดับชั้นหน่วยความจำใช้ได้; associativity และ coherence คือต้นทุนของการทำให้มันซื่อสัตย์</description>
+			</item>
+			<item>
+				<title>การประมวลผลนอกลำดับ</title>
+				<link>http://localhost:1478/th/posts/16-out-of-order-execution/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/16-out-of-order-execution/</guid>
+				<description>Stall เฉพาะสิ่งที่ต้องรอ — แนวคิดของ Tomasulo: ประมวลผลเมื่อพร้อม commit ตามลำดับ</description>
+			</item>
+			<item>
+				<title>Superscalar และ Multicore</title>
+				<link>http://localhost:1478/th/posts/17-superscalar-multicore/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/17-superscalar-multicore/</guid>
+				<description>ILP และพลังงานชนกำแพง — ดังนั้นอุตสาหกรรมไปทางกว้างแทนที่จะเร็วขึ้นต่อเธรด</description>
+			</item>
+			<item>
+				<title>จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</title>
+				<link>http://localhost:1478/th/posts/18-mainframes-to-minicomputers-to-microprocessors/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/18-mainframes-to-minicomputers-to-microprocessors/</guid>
+				<description>สามยุคของใครได้ใช้คอมพิวเตอร์ — สถาบัน แผนก แล้วชิปเดียวสำหรับทุกคน</description>
+			</item>
+			<item>
+				<title>การแยกทางของ x86 กับ RISC</title>
+				<link>http://localhost:1478/th/posts/19-the-x86-vs-risc-split/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/19-the-x86-vs-risc-split/</guid>
+				<description>RISC สะอาดกว่าบนกระดาษ — การล็อกอินซอฟต์แวร์และการแปล µop คง x86 ไว้บนยอด</description>
+			</item>
+			<item>
+				<title>ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</title>
+				<link>http://localhost:1478/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/</guid>
+				<description>หลังเดสก์ท็อปตั้งหลักบน x86 การต่อสู้ย้ายไปที่พลังงานและการไลเซนส์ — ARM ชนะมือถือ; RISC-V เดิมพันบนเปิด</description>
+			</item>
+			<item>
+				<title>Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</title>
+				<link>http://localhost:1478/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/</guid>
+				<description>CPU แพงที่ว่างระหว่างงาน punch-card บังคับ resident monitor ชุดแรก — ซอฟต์แวร์ระบบ ไม่ใช่โปรแกรมของผู้ใช้</description>
+			</item>
+			<item>
+				<title>Time-Sharing และสายเลือด Unix</title>
+				<link>http://localhost:1478/th/posts/22-time-sharing-and-the-unix-lineage/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/22-time-sharing-and-the-unix-lineage/</guid>
+				<description>Batch ให้ CPU ไม่ว่าง; time-sharing ให้ผู้ใช้หลายคนภาพลวงตาว่าเป็นเจ้าของ — ความทะเยอทะยานของ Multics แล้วความเรียบง่ายของ Unix</description>
+			</item>
+			<item>
+				<title>ขบวนการ GNU และ Linux</title>
+				<link>http://localhost:1478/th/posts/23-the-gnu-movement-and-linux/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/23-the-gnu-movement-and-linux/</guid>
+				<description>Unix ปิด; Stallman สร้าง userland เสรี; Torvalds อุดช่องเคอร์เนล — GPL คงการรวมนั้นให้เปิด</description>
+			</item>
+			<item>
+				<title>หน่วยความจำเสมือนและการมัลติทาสก์</title>
+				<link>http://localhost:1478/th/posts/24-virtual-memory-and-multitasking/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/24-virtual-memory-and-multitasking/</guid>
+				<description>Time-sharing ต้องการการแยก — หน่วยความจำเสมือนให้ทุกโพรเซสภาพลวงตาว่าเป็นเจ้าของเครื่อง</description>
+			</item>
+			<item>
+				<title>คอนเทนเนอร์และการแยกของ OS สมัยใหม่</title>
+				<link>http://localhost:1478/th/posts/25-containers-and-modern-os-isolation/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/25-containers-and-modern-os-isolation/</guid>
+				<description>VM เต็มซื้อการแยกแข็งด้วยต้นทุนหนัก — namespaces และ cgroups แชร์เคอร์เนลเดียวและแยกเกือบอย่างอื่นทั้งหมด</description>
+			</item>
+			<item>
+				<title>จากรหัสเครื่องสู่ Assembly</title>
+				<link>http://localhost:1478/th/posts/26-from-machine-code-to-assembly/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/26-from-machine-code-to-assembly/</guid>
+				<description>ไบนารีดิบคือสิ่งที่ CPU รัน — assembly คือชั้นความอ่านได้แรก ยังหนึ่งคำสั่งต่อหนึ่ง mnemonic</description>
+			</item>
+			<item>
+				<title>ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</title>
+				<link>http://localhost:1478/th/posts/27-high-level-languages-fortran-cobol-lisp-c/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/27-high-level-languages-fortran-cobol-lisp-c/</guid>
+				<description>สี่โดเมนบังคับสี่ abstraction — สูตร ร้อยแก้วธุรกิจ รายการสัญลักษณ์ ระบบใกล้วัตถุ</description>
+			</item>
+			<item>
+				<title>คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</title>
+				<link>http://localhost:1478/th/posts/28-compilers-jit-and-modern-language-runtimes/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/28-compilers-jit-and-modern-language-runtimes/</guid>
+				<description>AOT คอมไพล์ครั้งเดียวโดยไม่มีข้อเท็จจริงรันไทม์; JIT รอ hot path — และ garbage collection ย้ายต้นทุนเข้าไปในรันไทม์</description>
+			</item>
+			<item>
+				<title>ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</title>
+				<link>http://localhost:1478/th/posts/29-real-time-systems-and-deterministic-scheduling/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/29-real-time-systems-and-deterministic-scheduling/</guid>
+				<description>ปริมาณงานและความยุติธรรมไม่ใช่กำหนดเวลา — hard real-time ต้องการจังหวะกรณีแย่สุดที่ถูกขอบเขต ไม่ใช่ความเร็วเฉลี่ย</description>
+			</item>
+			<item>
+				<title>ระบบเรียลไทม์ในทางปฏิบัติ</title>
+				<link>http://localhost:1478/th/posts/30-real-time-systems-in-practice/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/30-real-time-systems-in-practice/</guid>
+				<description>Sense–compute–actuate บนงบคงที่ — อากาศยานและการควบคุมอุตสาหกรรมที่กลลวงความเร็วของเฟส 3 กลายเป็นศัตรูของจังหวะ</description>
+			</item>
+			<item>
+				<title>บัส 101</title>
+				<link>http://localhost:1478/th/posts/31-buses-101/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/31-buses-101/</guid>
+				<description>บัสร่วมทำได้ทีละหนึ่งทรานแซกชัน — เพดานนั้นบังคับทุกอย่างที่ตามมา</description>
+			</item>
+			<item>
+				<title>จาก ISA Bus ถึง PCI ถึง PCIe</title>
+				<link>http://localhost:1478/th/posts/32-from-isa-bus-to-pci-to-pcie/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/32-from-isa-bus-to-pci-to-pcie/</guid>
+				<description>Skew ฆ่าบัสขนานกว้าง; อนุกรมจุดต่อจุดคือทางหนี</description>
+			</item>
+			<item>
+				<title>เจาะลึก PCIe</title>
+				<link>http://localhost:1478/th/posts/33-pcie-deep-dive/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/33-pcie-deep-dive/</guid>
+				<description>เจตนานั่งบน TLP; ความเชื่อถือได้และการส่งสัญญาณอยู่ข้างล่าง — สแต็กที่แทนบัสร่วม</description>
+			</item>
+			<item>
+				<title>บัสหน่วยความจำ</title>
+				<link>http://localhost:1478/th/posts/34-memory-buses/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/34-memory-buses/</guid>
+				<description>DDR ซื้อแบนด์วิดท์; latency แทบไม่ขยับ — bank และ channel ซ่อนการรอ</description>
+			</item>
+			<item>
+				<title>กำแพงหน่วยความจำ</title>
+				<link>http://localhost:1478/th/posts/35-the-memory-wall/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/35-the-memory-wall/</guid>
+				<description>ความเร็ว CPU กับ latency ของ DRAM แยกทางกันหลายทศวรรษ — แคชซ่อนช่องว่าง; ไม่ได้ปิดมัน</description>
+			</item>
+			<item>
+				<title>กำแพงความเร็วคล็อก</title>
+				<link>http://localhost:1478/th/posts/36-the-clock-speed-wall/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/36-the-clock-speed-wall/</guid>
+				<description>ความถี่ชนความร้อน — ดังนั้นอุตสาหกรรมไปกว้าง (คอร์ แล้ว fabric) แทนคล็อกเร็วขึ้น</description>
+			</item>
+			<item>
+				<title>อินเตอร์คอนเนกต์ในระดับสเกล</title>
+				<link>http://localhost:1478/th/posts/37-interconnects-at-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/37-interconnects-at-scale/</guid>
+				<description>เมื่อ compute เป็นหลายชิป เส้นทางระหว่างพวกมันคือกำแพงถัดไป — ลิงก์เฉพาะ คัดลอกน้อยลง</description>
+			</item>
+			<item>
+				<title>ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</title>
+				<link>http://localhost:1478/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/</guid>
+				<description>ลิงก์อนุกรมจุดต่อจุดเชื่อมพอดีสองปลาย — เพดานที่บังคับ packet switching</description>
+			</item>
+			<item>
+				<title>ARPANET และการสลับแพ็กเก็ต</title>
+				<link>http://localhost:1478/th/posts/39-arpanet-and-packet-switching/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/39-arpanet-and-packet-switching/</guid>
+				<description>ทราฟฟิกคอมพิวเตอร์แบบเป็นพัก ๆ พัง circuit switching — ARPANET พิสูจน์ว่าแพ็กเก็ตและลิงก์ร่วมใช้ได้</description>
+			</item>
+			<item>
+				<title>Ethernet และเครือข่ายท้องถิ่น</title>
+				<link>http://localhost:1478/th/posts/40-ethernet-and-the-local-area-network/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/40-ethernet-and-the-local-area-network/</guid>
+				<description>สายร่วม ไม่มีผู้ตัดสินศูนย์กลาง — CSMA/CD แก้ข้อจำกัดการชนของ LAN; สวิตช์ภายหลังลบมัน</description>
+			</item>
+			<item>
+				<title>TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</title>
+				<link>http://localhost:1478/th/posts/41-tcp-ip-and-the-modern-internet-stack/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/41-tcp-ip-and-the-modern-internet-stack/</guid>
+				<description>โปรโตคอลอินเทอร์เน็ตซ้อนกันอย่างไรและเหตุใด — ชั้น, flag day, แอปบนพื้นผิวที่ไม่เชื่อถือได้ — ไม่ใช่แคตตาล็อก</description>
+			</item>
+			<item>
+				<title>เครือข่ายศูนย์ข้อมูลและ RDMA</title>
+				<link>http://localhost:1478/th/posts/42-datacenter-networking-and-rdma/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/42-datacenter-networking-and-rdma/</guid>
+				<description>ในผ้าใบที่ควบคุมได้ การคัดลอกผ่านเคอร์เนลคือภาษี — RDMA และทอโพโลยีซื้อสายกลับ</description>
+			</item>
+			<item>
+				<title>Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</title>
+				<link>http://localhost:1478/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/</guid>
+				<description>หา แล้วพูด — Usenet, Archie, Gopher, IRC และพอร์ทัลผู้บริโภคที่ห่อทั้งสอง</description>
+			</item>
+			<item>
+				<title>โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</title>
+				<link>http://localhost:1478/th/posts/44-google-s-big-data-infrastructure-why-they-won/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/44-google-s-big-data-infrastructure-why-they-won/</guid>
+				<description>ข้อมูลระดับเว็บบังคับที่เก็บที่ถือความล้มเหลวเป็นปกติ แล้วโมเดลโปรแกรมที่ซ่อนคลัสเตอร์ — GFS, MapReduce, Bigtable</description>
+			</item>
+			<item>
+				<title>Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</title>
+				<link>http://localhost:1478/th/posts/45-kubernetes-and-container-orchestration-at-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/45-kubernetes-and-container-orchestration-at-scale/</guid>
+				<description>คอนเทนเนอร์นับพันที่ล้มเป็นประจำบังคับสถานะที่ต้องการแบบประกาศและลูป reconciliation ต่อเนื่อง</description>
+			</item>
+			<item>
+				<title>สแตกซอฟต์แวร์ Machine Learning</title>
+				<link>http://localhost:1478/th/posts/46-the-machine-learning-software-stack/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/46-the-machine-learning-software-stack/</guid>
+				<description>ระหว่างโมเดลกับซิลิคอนมีสแตกที่เปลี่ยนเทนเซอร์เป็นการฝึกแบบกระจาย — แล้วชนกำแพงอินเตอร์คอนเนกต์</description>
+			</item>
+			<item>
+				<title>&#39;7nm&#39; หมายถึงอะไรจริง ๆ</title>
+				<link>http://localhost:1478/th/posts/47-what-7nm-actually-means/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/47-what-7nm-actually-means/</guid>
+				<description>ชื่อโหนดหยุดติดตามความยาวกายภาพเดี่ยว — ความหนาแน่นและ pitch คือฟิสิกส์; ป้ายคือรุ่น</description>
+			</item>
+			<item>
+				<title>Photolithography</title>
+				<link>http://localhost:1478/th/posts/48-photolithography/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/48-photolithography/</guid>
+				<description>Diffraction บังคับความยาวคลื่นสั้นลง — กระจกและพลาสมาดีบุกของ EUV คือสิ่งที่ให้ขนาดฟีเจอร์ยังเดินต่อ</description>
+			</item>
+			<item>
+				<title>จาก FinFET ถึง GAA</title>
+				<link>http://localhost:1478/th/posts/49-finfet-to-gaa/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/49-finfet-to-gaa/</guid>
+				<description>การรั่ว short-channel ฆ่าการหด planar — พันเกต (FinFET) แล้วพันรอบทั้งหมด (GAA)</description>
+			</item>
+			<item>
+				<title>กฎของมัวร์</title>
+				<link>http://localhost:1478/th/posts/50-moore-s-law/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/50-moore-s-law/</guid>
+				<description>การสังเกตของมัวร์คือจำนวนส่วนประกอบเชิงเศรษฐกิจ — จำนวนทรานซิสเตอร์ยังไต่; คล็อกและต้นทุนต่อทรานซิสเตอร์เล่าเรื่องต่างกัน</description>
+			</item>
+			<item>
+				<title>Chiplets และการบรรจุขั้นสูง</title>
+				<link>http://localhost:1478/th/posts/51-chiplets-advanced-packaging/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/51-chiplets-advanced-packaging/</guid>
+				<description>Yield ตกตามพื้นที่ได — แยกเป็น chiplets แล้วซื้อแบนด์วิดท์คืนด้วยการบรรจุขั้นสูง</description>
+			</item>
+			<item>
+				<title>เหตุใด GPU จึงมีอยู่</title>
+				<link>http://localhost:1478/th/posts/52-why-gpus-exist/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/52-why-gpus-exist/</guid>
+				<description>กราฟิกให้ workload ขนานแบบ embarrassingly parallel — ฮาร์ดแวร์ SIMT ตามมา แล้ว compute ทั่วไปพบรูปทรงเดียวกัน</description>
+			</item>
+			<item>
+				<title>CUDA Core, Warp และ Occupancy</title>
+				<link>http://localhost:1478/th/posts/53-cuda-cores-warps-and-occupancy/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/53-cuda-cores-warps-and-occupancy/</guid>
+				<description>SIMT แมปลง SM และ warp — lockstep ชนะจนกว่า divergence; occupancy ซ่อน memory stall</description>
+			</item>
+			<item>
+				<title>ลำดับชั้นหน่วยความจำ GPU</title>
+				<link>http://localhost:1478/th/posts/54-gpu-memory-hierarchy/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/54-gpu-memory-hierarchy/</guid>
+				<description>เธรดนับพันบังคับแบนด์วิดท์เหนือ DDR — HBM ซ้อนหน่วยความจำข้าง compute</description>
+			</item>
+			<item>
+				<title>Tensor Core</title>
+				<link>http://localhost:1478/th/posts/55-tensor-cores/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/55-tensor-cores/</guid>
+				<description>Matrix multiply-accumulate กลายเป็น op ครองของ AI — ฮาร์ดแวร์จึงทำให้เป็น primitive ชั้นหนึ่ง</description>
+			</item>
+			<item>
+				<title>การขยายหลาย GPU</title>
+				<link>http://localhost:1478/th/posts/56-multi-gpu-scaling/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/56-multi-gpu-scaling/</guid>
+				<description>GPU เดียวมีขอบเขต — อินเตอร์คอนเนกต์ระหว่าง GPU กลายเป็นกำแพงถัดไป</description>
+			</item>
+			<item>
+				<title>เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</title>
+				<link>http://localhost:1478/th/posts/57-why-matrix-multiply-reshaped-chip-design/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/57-why-matrix-multiply-reshaped-chip-design/</guid>
+				<description>Compute ของ AI ลดลงเป็น matmul ที่สเกล — เฉพาะทางซิลิคอนสำหรับรูปทรงนั้น</description>
+			</item>
+			<item>
+				<title>Systolic Array</title>
+				<link>http://localhost:1478/th/posts/58-systolic-arrays/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/58-systolic-arrays/</guid>
+				<description>ข้อมูลเต้นผ่านกริด MAC — เฉพาะทางชิปทั้งก้อนสำหรับ matmul (TPU)</description>
+			</item>
+			<item>
+				<title>Quantization และ Mixed Precision</title>
+				<link>http://localhost:1478/th/posts/59-quantization-mixed-precision/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/59-quantization-mixed-precision/</guid>
+				<description>บิตน้อยกว่าต่อ MAC หมายถึง MAC มากขึ้นในงบพลังงานเดิม — ผสมความละเอียดที่ความแม่นยังต้องการ</description>
+			</item>
+			<item>
+				<title>Sparsity ในฮาร์ดแวร์</title>
+				<link>http://localhost:1478/th/posts/60-sparsity-in-hardware/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/60-sparsity-in-hardware/</guid>
+				<description>ข้าม MAC ที่รู้ว่าเป็นศูนย์ — แต่มีเพียงแบบแผนที่มีโครงสร้างที่ฮาร์ดแวร์ MAC หนาแน่นใช้ถูก</description>
+			</item>
+			<item>
+				<title>อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</title>
+				<link>http://localhost:1478/th/posts/61-interconnect-at-datacenter-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/61-interconnect-at-datacenter-scale/</guid>
+				<description>GPU นับพัน — ทอโพโลยีและ all-reduce สำคัญเท่า FLOPS สูงสุดของชิปใดตัวเดียว</description>
+			</item>
+			<item>
+				<title>ทิศทางข้างหน้า</title>
+				<link>http://localhost:1478/th/posts/62-where-it-s-headed/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/62-where-it-s-headed/</guid>
+				<description>แบบแผนเดิมต่อไป — chiplet, ออปติกใกล้แพ็กเกจ, compute ใกลหน่วยความจำ</description>
+			</item>
+			<item>
+				<title>Attention Is All You Need</title>
+				<link>http://localhost:1478/th/posts/63-attention-is-all-you-need/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/63-attention-is-all-you-need/</guid>
+				<description>Self-attention ปิดแกน — การจำลองลำดับแบบขนานที่แมปเข้าฮาร์ดแวร์คูณเมทริกซ์ที่การเดินทางสร้างไว้</description>
+			</item>
+			<item>
+				<title>ใครเป็นคนตัดสินสาย</title>
+				<link>http://localhost:1478/th/posts/64-who-decides-the-wire/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/64-who-decides-the-wire/</guid>
+				<description>ใครตั้งชื่อหมายเลข ชื่อ และการเข้ารหัส เพื่อให้เครือข่ายต่างชนิดทำงานร่วมกันได้</description>
+			</item>
+			<item>
+				<title>รหัสลับยามสงคราม</title>
+				<link>http://localhost:1478/th/posts/66-wartime-crypto/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/66-wartime-crypto/</guid>
+				<description>Enigma, Bletchley และ Colossus — เหตุใดการถอดรหัสจึงบังคับการคำนวณอิเล็กทรอนิกส์</description>
+			</item>
+			<item>
+				<title>ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</title>
+				<link>http://localhost:1478/th/posts/67-privacy-consent-identity-cyber/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/67-privacy-consent-identity-cyber/</guid>
+				<description>ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ และความมั่นคงไซเบอร์ในฐานะวิวัฒนาการทางวิศวกรรมบนเครือข่ายเปิด — ไม่ใช่แผ่นพับนโยบาย</description>
+			</item>
+			<item>
+				<title>วิสัยทัศน์ที่เกิดขึ้นจริง</title>
+				<link>http://localhost:1478/th/posts/68-visions-that-shipped/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/68-visions-that-shipped/</guid>
+				<description>ลิงก์ไปข้างหน้าออกจากการเดินทาง — Cisco, Gates, Jobs, GNU+Linus, Elon, Bezos ในฐานะเมล็ดของชนิดที่เปลี่ยนสแต็กเป็นแพลตฟอร์มที่คนอยู่จริง</description>
+			</item>
+			<item>
+				<title>การสังเคราะห์แพลตฟอร์ม</title>
+				<link>http://localhost:1478/th/posts/69-platform-synthesis/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/69-platform-synthesis/</guid>
+				<description>จุดจอดระดับสูงจุดเดียว — แพลตฟอร์มใหญ่คือระบบกระจาย เครือข่าย โครงสร้างพื้นฐาน AI วิศวกรรมความเป็นส่วนตัว และวิศวกรรมซอฟต์แวร์ประกอบกัน</description>
+			</item>
+			<item>
+				<title>อภิธานศัพท์</title>
+				<link>http://localhost:1478/th/posts/99-glossary/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/99-glossary/</guid>
+				<description>คำสำคัญที่ใช้ตลอดชุดบทความ นิยามอย่างแม่นยำ</description>
+			</item>
+			<item>
+				<title>ไทม์ไลน์</title>
+				<link>http://localhost:1478/th/posts/98-timeline/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/98-timeline/</guid>
+				<description>ลำดับเหตุการณ์ย่อจากการคำนวณเชิงกลสู่กลไก Attention สมัยใหม่</description>
+			</item>
+	</channel>
+</rss>

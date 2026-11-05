@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Un singur nucleu, mai multe lumi: namespace-uri pentru ce vede un proces, cgroup-uri pentru cât consumă">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/25-containers-and-modern-os-isolation/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Containerele și izolarea în sistemele de operare moderne">
+	<meta property="og:description" content="Un singur nucleu, mai multe lumi: namespace-uri pentru ce vede un proces, cgroup-uri pentru cât consumă">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:25:24+05:30">
+
+
+	<meta itemprop="name" content="Containerele și izolarea în sistemele de operare moderne">
+	<meta itemprop="description" content="Un singur nucleu, mai multe lumi: namespace-uri pentru ce vede un proces, cgroup-uri pentru cât consumă">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:25:24+05:30">
+	<meta itemprop="wordCount" content="826">
+
+<title>Containerele și izolarea în sistemele de operare moderne • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/25-containers-and-modern-os-isolation/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/25-containers-and-modern-os-isolation/" title="Containers and Modern OS Isolation">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/25-containers-and-modern-os-isolation/" title="คอนเทนเนอร์และการแยกของ OS สมัยใหม่">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/25-containers-and-modern-os-isolation/" title="Containers සහ නවීන OS හුදකලාව">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/25-containers-and-modern-os-isolation/" title="Containers மற்றும் நவீன OS Isolation">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/25-containers-and-modern-os-isolation/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/25-containers-and-modern-os-isolation/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/25-containers-and-modern-os-isolation/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="active">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Containerele și izolarea în sistemele de operare moderne</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#două-feluri-de-izolare">Două feluri de izolare</a></li>
+    <li><a href="#namespace-uri-aceeași-resursă-altă-vedere">Namespace-uri: aceeași resursă, altă vedere</a></li>
+    <li><a href="#cgroup-uri-cât-are-voie-să-consume">Cgroup-uri: cât are voie să consume</a></li>
+    <li><a href="#containerul-ca-format-specificația-oci">Containerul ca format: specificația OCI</a></li>
+    <li><a href="#compromisul">Compromisul</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Containerele și izolarea în sistemele de operare moderne
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 24 a arătat cum memoria virtuală dă fiecărui proces propriul spațiu de adrese. Un container duce aceeași idee mai departe: procesul vede și propriul arbore de procese, propria rețea, propriile puncte de montare, dar împarte în continuare un singur nucleu cu restul sistemului. Capitolul descrie cele două mecanisme Linux pe care se sprijină containerele, <em>namespace</em>-urile și <em>cgroup</em>-urile, și formatul standard care le împachetează.</p>
+<h2 id="două-feluri-de-izolare">Două feluri de izolare<a class="anchor" href="#dou%c4%83-feluri-de-izolare">#</a></h2>
+<p>Prima variantă este virtualizarea completă: fiecare sistem invitat își rulează propriul nucleu peste un hipervizor. A doua variantă păstrează un singur nucleu și îi cere acestuia să arate fiecărui grup de procese o altă „lume”. Pagina de manual Linux despre namespace-uri spune explicit că aceasta este una dintre utilizările lor: „One use of namespaces is to implement containers” (Kerrisk, M. et al., <em>namespaces(7)</em>, Linux man-pages, <a href="https://man7.org/linux/man-pages/man7/namespaces.7.html">man7.org/linux/man-pages/man7/namespaces.7.html</a>, accesat 2026-11-05).</p>
+<!-- NEVERIFICAT: comparația de cost (timp de pornire, memorie) între mașini virtuale și containere din EN nu are sursă deschisă; omisă. Nici istoria hipervizoarelor nu are încă sursă primară în acest lot. -->
+<h2 id="namespace-uri-aceeași-resursă-altă-vedere">Namespace-uri: aceeași resursă, altă vedere<a class="anchor" href="#namespace-uri-aceea%c8%99i-resurs%c4%83-alt%c4%83-vedere">#</a></h2>
+<p>Definiția din manual: un namespace „înfășoară” o resursă globală a sistemului într-o abstracție care le dă proceselor din namespace impresia că au propria instanță izolată a resursei; modificările făcute înăuntru sunt vizibile celorlalți membri ai namespace-ului, dar invizibile pentru restul proceselor (ibid., „DESCRIPTION”).</p>
+<p>Manualul enumeră opt tipuri, fiecare cu un indicator pentru apelurile <code>clone(2)</code> și <code>unshare(2)</code> (ibid., tabelul „Namespace types”):</p>
+<ul>
+<li><strong>Cgroup</strong> (<code>CLONE_NEWCGROUP</code>): rădăcina ierarhiei cgroup;</li>
+<li><strong>IPC</strong> (<code>CLONE_NEWIPC</code>): comunicarea între procese System V și cozile de mesaje POSIX;</li>
+<li><strong>Network</strong> (<code>CLONE_NEWNET</code>): dispozitive, stive, porturi de rețea;</li>
+<li><strong>Mount</strong> (<code>CLONE_NEWNS</code>): punctele de montare;</li>
+<li><strong>PID</strong> (<code>CLONE_NEWPID</code>): identificatorii de proces;</li>
+<li><strong>Time</strong> (<code>CLONE_NEWTIME</code>): ceasurile de pornire și monotone;</li>
+<li><strong>User</strong> (<code>CLONE_NEWUSER</code>): identificatorii de utilizator și de grup;</li>
+<li><strong>UTS</strong> (<code>CLONE_NEWUTS</code>): numele de gazdă și numele de domeniu NIS.</li>
+</ul>
+<p>Namespace-urile nu au apărut deodată. Intrările din directorul <code>/proc/[pid]/ns/</code> sunt datate în manual: <code>ipc</code>, <code>net</code> și <code>uts</code> din Linux 3.0, <code>mnt</code>, <code>pid</code> și <code>user</code> din 3.8, <code>cgroup</code> din 4.6, <code>time</code> din 5.6 (ibid., „The /proc/pid/ns/ directory”). Atenție: acestea sunt datele intrărilor din <code>/proc</code>, nu neapărat ale namespace-urilor înseși, iar manualul nu dă aici data introducerii fiecărui tip.</p>
+<p>Crearea unui namespace nou cere de regulă capabilitatea <code>CAP_SYS_ADMIN</code>, pentru că, înăuntru, creatorul poate schimba resurse vizibile altor procese; excepția sunt namespace-urile de utilizator, care din Linux 3.8 se pot crea fără privilegii (ibid., „DESCRIPTION”).</p>
+<h2 id="cgroup-uri-cât-are-voie-să-consume">Cgroup-uri: cât are voie să consume<a class="anchor" href="#cgroup-uri-c%c3%a2t-are-voie-s%c4%83-consume">#</a></h2>
+<p>Namespace-urile decid ce <em>vede</em> un proces; cgroup-urile decid cât <em>consumă</em>. Documentația nucleului, scrisă de Tejun Heo în octombrie 2015, definește cgroup-ul ca un mecanism care organizează procesele ierarhic și distribuie resursele sistemului de-a lungul ierarhiei într-un mod controlat și configurabil (Heo, T., „Control Group v2”, documentația nucleului Linux, <a href="https://docs.kernel.org/admin-guide/cgroup-v2.html">docs.kernel.org/admin-guide/cgroup-v2.html</a>, accesat 2026-11-05, §„Introduction”, „What is cgroup?”). Același text separă două părți: nucleul (<em>core</em>) cgroup, care organizează ierarhic procesele, și controlerele, fiecare responsabil de obicei de distribuirea unui anumit tip de resursă (ibid.).</p>
+<p>Istoria versiunilor, după pagina de manual <em>cgroups(7)</em>: implementarea inițială a apărut în Linux 2.6.24; din cauza problemelor primei versiuni (cgroups v1), din Linux 3.10 a început lucrul la o implementare nouă, iar cgroups v2 a devenit oficială în Linux 4.5 (Kerrisk, M. et al., <em>cgroups(7)</em>, Linux man-pages, <a href="https://man7.org/linux/man-pages/man7/cgroups.7.html">man7.org/linux/man-pages/man7/cgroups.7.html</a>, accesat 2026-11-05, „DESCRIPTION”).</p>
+<p>Două fișiere de interfață arată cum arată concret o limită (Heo, „Control Group v2”, secțiunile despre controlerele CPU și Memory):</p>
+<ul>
+<li><code>cpu.max</code> conține două valori, „$MAX $PERIOD”: grupul poate consuma cel mult $MAX în fiecare perioadă $PERIOD, iar „max” înseamnă fără limită; valoarea implicită este „max 100000”.</li>
+<li><code>memory.max</code> este limita fixă de memorie, „the main mechanism to limit memory usage of a cgroup”; dacă grupul o atinge și memoria nu poate fi recuperată, în cgroup este pornit OOM killer-ul (mecanismul care oprește procese când memoria se termină).</li>
+</ul>
+<p><strong>Exemplu ilustrativ (nerulat aici, calculul nostru):</strong> convențiile de interfață ale aceleiași documentații spun că „The default time unit is microseconds” (Heo, „Control Group v2”, secțiunea despre convențiile fișierelor de interfață). Dacă scriem <code>50000 100000</code> în <code>cpu.max</code>, grupul poate folosi cel mult 50.000 µs (50 ms) de CPU în fiecare perioadă de 100.000 µs (100 ms), adică echivalentul a jumătate dintr-un procesor.</p>
+<h2 id="containerul-ca-format-specificația-oci">Containerul ca format: specificația OCI<a class="anchor" href="#containerul-ca-format-specifica%c8%9bia-oci">#</a></h2>
+<p>Ca un container să ruleze la fel cu unelte diferite, Open Container Initiative definește o specificație de rulare care „aims to specify the configuration, execution environment, and lifecycle of a container” (Open Container Initiative, <em>Runtime Specification</em>, <code>spec.md</code>, „Abstract”, ramura main: <a href="https://github.com/opencontainers/runtime-spec/blob/main/spec.md">github.com/opencontainers/runtime-spec</a>, accesat 2026-11-05). Unitatea de lucru este <em>bundle</em>-ul: un director care conține obligatoriu un fișier <code>config.json</code> cu configurația și, dacă proprietatea <code>root.path</code> din <code>config.json</code> este setată, sistemul de fișiere rădăcină al containerului, în directorul indicat de ea (ibid., <code>bundle.md</code>). Fișierul <code>config.json</code> declară și versiunea specificației, în câmpul <code>ociVersion</code>, în format SemVer (ibid., <code>config.md</code>).</p>
+<h2 id="compromisul">Compromisul<a class="anchor" href="#compromisul">#</a></h2>
+<p>Avantajul și slăbiciunea vin din același fapt: toate containerele de pe o mașină folosesc același nucleu. Manualul namespace-urilor spune că un namespace face o resursă <em>globală</em> să pară izolată (Kerrisk et al., <em>namespaces(7)</em>), deci izolarea depinde de corectitudinea nucleului care face această separare. O mașină virtuală, în schimb, are propriul nucleu.</p>
+<!-- NEVERIFICAT: orice afirmație despre incidente de securitate concrete (evadări din containere) are nevoie de surse; omisă. -->
+<p><strong>Încearcă acum.</strong> În mașina virtuală de mai jos, <code>ls -l /proc/self/ns</code> listează namespace-urile procesului curent, dacă nucleul mașinii le expune; directorul este descris în <em>namespaces(7)</em>, dar nu am verificat ieșirea pe această mașină.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=ro"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=ro" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9b17a0270323d6e8d6f80d4dde73cb1f8612bcaa" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Containerele&#43;%C8%99i&#43;izolarea&#43;%C3%AEn&#43;sistemele&#43;de&#43;operare&#43;moderne&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F25-containers-and-modern-os-isolation%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F25-containers-and-modern-os-isolation.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F25-containers-and-modern-os-isolation.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Memoria virtuală și multitaskingul</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/26-from-machine-code-to-assembly/" class="flex align-center">
+        <span>De la codul mașină la limbajul de asamblare</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#două-feluri-de-izolare">Două feluri de izolare</a></li>
+    <li><a href="#namespace-uri-aceeași-resursă-altă-vedere">Namespace-uri: aceeași resursă, altă vedere</a></li>
+    <li><a href="#cgroup-uri-cât-are-voie-să-consume">Cgroup-uri: cât are voie să consume</a></li>
+    <li><a href="#containerul-ca-format-specificația-oci">Containerul ca format: specificația OCI</a></li>
+    <li><a href="#compromisul">Compromisul</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

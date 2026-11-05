@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1964 年的“土光刻机”是两台显微镜加一盏紫外灯；1980 年清华做出自动对准的分步投影光刻机；1990 年代，摩尔定律成了审批流程的时钟。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hans/posts/48-zh-lithography-fabs/">
+	<meta property="og:site_name" content="我们如何走到那里">
+	<meta property="og:title" content="光刻：从显微镜到扫描机">
+	<meta property="og:description" content="1964 年的“土光刻机”是两台显微镜加一盏紫外灯；1980 年清华做出自动对准的分步投影光刻机；1990 年代，摩尔定律成了审批流程的时钟。">
+	<meta property="og:locale" content="zh_Hans">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+		<meta property="article:tag" content="光刻">
+		<meta property="article:tag" content="光刻机">
+		<meta property="article:tag" content="分步重复">
+		<meta property="article:tag" content="清华大学">
+		<meta property="article:tag" content="909工程">
+		<meta property="article:tag" content="华虹">
+
+
+	<meta itemprop="name" content="光刻：从显微镜到扫描机">
+	<meta itemprop="description" content="1964 年的“土光刻机”是两台显微镜加一盏紫外灯；1980 年清华做出自动对准的分步投影光刻机；1990 年代，摩尔定律成了审批流程的时钟。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="253">
+	<meta itemprop="keywords" content="光刻,光刻机,分步重复,清华大学,909工程,华虹,中芯国际,上海微电子">
+
+<title>光刻：从显微镜到扫描机 • 我们如何走到那里</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hans/posts/48-zh-lithography-fabs/">
+  <link rel="alternate" hreflang="zh-hant" href="http://localhost:1478/zh-hant/posts/48-zh-lithography-fabs/" title="微影：從顯微鏡到掃描機">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hans.search.min.d369906e95123348f130fcf51e745dc120f1a18f8009278172e975f6091f5a95.js" integrity="sha256-02mQbpUSM0jxMPz1HnRdwSDxoY&#43;ACSeBcul19gkfWpU=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hans/"><span>我们如何走到那里</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜索"
+    aria-label="搜索"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="语言" />
+        简体中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展开" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hant/posts/48-zh-lithography-fabs/" class="flex flex-auto">
+          繁體中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/00-credits/" class="">
+      致谢与延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-counting-rods-abacus/" class="">
+      算筹与算盘：数放在手里，算法记在口诀里</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-drawloom-huaben/" class="">
+      花本：程序第一次和机器分开</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-gears-and-calculators/" class="">
+      齿轮会数数：从记里鼓车到“较数器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/02-zh-relays-switching/" class="">
+      继电器与交换机：上海电话局里的“计算机”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/03-zh-first-electronic-computers/" class="">
+      电子管与晶体管：中国第一批计算机，和算盘的真实角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-hanzi-encoding/" class="">
+      汉字上线：从四位电码到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/26-zh-input-and-typesetting/" class="">
+      把汉字敲进机器：打字机、输入法与激光照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/39-zh-networks-1986-1994/" class="">
+      越过长城：中文世界接入网络（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/47-zh-taiwan-semiconductors/" class="">
+      从豆浆店到晶圆代工：台湾半导体之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/17-zh-supercomputers-cpus/" class="">
+      规模：从银河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/63-zh-road-to-attention/" class="">
+      从中文信息处理到注意力机制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/05-zh-transistors-semiconductors/" class="">
+      从一门课到一块芯片：中国半导体的头十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/48-zh-lithography-fabs/" class="active">
+      光刻：从显微镜到扫描机</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/58-zh-deep-learning-chips/" class="">
+      从 DianNao 到昇腾：为矩阵乘法造的芯片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/23-zh-operating-systems/" class="">
+      操作系统：从大庆的“虚拟机”到开源欧拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/27-zh-languages-compilers/" class="">
+      编程语言与编译器：从 104 机到仓颉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主机与天文台的电脑</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/43-zh-bbs/" class="">
+      挤不进去的广场：两岸三地的校园 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/44-zh-chinese-search/" class="">
+      一台服务器装不下：中国大陆第一批搜索引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/66-zh-commercial-crypto/" class="">
+      从“属于国家秘密”到国际标准：中国商用密码的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/67-zh-privacy-law/" class="">
+      从电脑处理到自动化决策：两岸三地的个人信息保护法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-mobile-standards/" class="">
+      空中的标准之争：从大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/68-zh-computer-craze/" class="">
+      娃娃与学习机：1984 年以后的电脑热</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="菜单" />
+  </label>
+
+  <h3>光刻：从显微镜到扫描机</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目录" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#19631964两台显微镜一盏紫外灯">1963—1964：两台显微镜，一盏紫外灯</a></li>
+    <li><a href="#19711980清华造的分步重复照相机">1971—1980：清华造的分步重复照相机</a></li>
+    <li><a href="#19901999摩尔定律成了审批的时钟">1990—1999：摩尔定律成了审批的时钟</a></li>
+    <li><a href="#2000-年以后代工厂与国产扫描机">2000 年以后：代工厂与国产扫描机</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    光刻：从显微镜到扫描机
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>九月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hans/tags/%E5%85%89%E5%88%BB/">光刻</a>, 
+      <a href="/zh-hans/tags/%E5%85%89%E5%88%BB%E6%9C%BA/">光刻机</a>, 
+      <a href="/zh-hans/tags/%E5%88%86%E6%AD%A5%E9%87%8D%E5%A4%8D/">分步重复</a>, 
+      <a href="/zh-hans/tags/%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6/">清华大学</a>, 
+      <a href="/zh-hans/tags/909%E5%B7%A5%E7%A8%8B/">909工程</a>, 
+      <a href="/zh-hans/tags/%E5%8D%8E%E8%99%B9/">华虹</a>, 
+      <a href="/zh-hans/tags/%E4%B8%AD%E8%8A%AF%E5%9B%BD%E9%99%85/">中芯国际</a>, 
+      <a href="/zh-hans/tags/%E4%B8%8A%E6%B5%B7%E5%BE%AE%E7%94%B5%E5%AD%90/">上海微电子</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F07-09, F07-13, F16-01, F16-02, F16-03, F16-04, F16-05, F16-06, F16-07, F16-08, F16-10 -->
+<p>光刻，说到底是用光把图形印到硅片上。你可以把它想成一台极精密的照相机：光越细，印出的线越细。1960 年代初，中国连一台这样的照相机都没有。</p>
+<h2 id="19631964两台显微镜一盏紫外灯">1963—1964：两台显微镜，一盏紫外灯<a class="anchor" href="#19631964%e4%b8%a4%e5%8f%b0%e6%98%be%e5%be%ae%e9%95%9c%e4%b8%80%e7%9b%8f%e7%b4%ab%e5%a4%96%e7%81%af">#</a></h2>
+<p>据半导体所 2024 年的文章，当时国内根本没有光刻机，王守觉“因陋就简，巧妙地用两台显微镜再加上一个紫外曝光灯”，搭建了一台“土光刻机”。靠它，研究团队 1963 年底做出第一批超小型硅平面高速开关管和高频晶体管样管，只有火柴头那么大；1964 年改进后小如芝麻，俗称“芝麻管”。1964 年 4 月，半导体所的 5 种硅平面器件通过鉴定。这些晶体管从哪里来、后来用到哪里，见<a href="/zh-hans/posts/05-zh-transistors-semiconductors/">《从一门课到一块芯片》</a>。</p>
+<h2 id="19711980清华造的分步重复照相机">1971—1980：清华造的分步重复照相机<a class="anchor" href="#19711980%e6%b8%85%e5%8d%8e%e9%80%a0%e7%9a%84%e5%88%86%e6%ad%a5%e9%87%8d%e5%a4%8d%e7%85%a7%e7%9b%b8%e6%9c%ba">#</a></h2>
+<p>下一步是把手工对准变成机器。据中国计算机学会的历史记忆档案，1971 年，我国第一台自动分步重复照相机研制成功，投入规模生产，供应全国半导体行业，1978 年获全国科技大会奖；它的一块插件印刷电路底板由清华 1954 级计算机系校友谢树煜捐赠，今藏清华大学科学博物馆。分步重复的意思是：把同一个图形一格一格地重复曝光，排满整块版。</p>
+<p>参与研制的清华教授徐端颐回忆，第一代激光干涉定位分步重复照相机用的是 532 纳米的绿光，加上物镜数值孔径不够大、运行中焦距失调，加工能力只有 2—3 微米，定位精度为 ±0.25 微米。波长决定了能印多细，这正是英文版第 48 章的主题。</p>
+<p>据徐端颐的说法，1970 年代以分步重复照相机、图形发生器及分步投影光刻机为代表的集成电路微细加工设备“99%来自国内”，供应商正是清华大学，精密仪器系工厂累计生产超过 200 台。他还写道，1980 年清华完成了国内第一台自动对准分步投影光刻机，加工最细线宽 0.8 微米，安装在华北微电子研究所，获 1981 年北京市首届科技成果一等奖；“三年之后类似的设备才开始进入我国”。0.8 微米这一数字出自研制者本人的回忆，还需要鉴定档案佐证。</p>
+<h2 id="19901999摩尔定律成了审批的时钟">1990—1999：摩尔定律成了审批的时钟<a class="anchor" href="#19901999%e6%91%a9%e5%b0%94%e5%ae%9a%e5%be%8b%e6%88%90%e4%ba%86%e5%ae%a1%e6%89%b9%e7%9a%84%e6%97%b6%e9%92%9f">#</a></h2>
+<p>1990 年，71 岁的王守武在给全国政协七届三次会议的提案中写道：“想从西方国家引进先进的微电子技术和装备纯属幻想。”</p>
+<p>1996 年起任上海 909 工程办公室主任的夏钟瑞，在 2019 年的口述中讲了此前 908 工程的教训：它的可行性研究报告光审批就花了 5 年，而按摩尔定律，这期间国际半导体产业升级了两代，工程投产即落后。据他回忆，1995 年底江泽民在韩国考察三星的半导体工厂，回国后在一次专门会议上说，就算砸锅卖铁也要把我们国家的半导体产业搞上去。1996 年 3 月 29 日，国务院正式批准 909 工程立项，核心是投资百亿建设一条 8 英寸、0.5 微米的超大规模集成电路生产线，电子工业部代表中央出资 60%，上海出资 40%。工厂 18 个月建成；1999 年 9 月 28 日，华虹 NEC 浦东新厂投产，月产 2 万片。</p>
+<h2 id="2000-年以后代工厂与国产扫描机">2000 年以后：代工厂与国产扫描机<a class="anchor" href="#2000-%e5%b9%b4%e4%bb%a5%e5%90%8e%e4%bb%a3%e5%b7%a5%e5%8e%82%e4%b8%8e%e5%9b%bd%e4%ba%a7%e6%89%ab%e6%8f%8f%e6%9c%ba">#</a></h2>
+<p>据中芯国际科创板上市的法律意见书，2000 年 4 月 3 日，中芯国际依开曼群岛公司法注册成立，同年 5 月发行的首批 10,000 股普通股由张汝京持有。它与台积电的官司以 2009 年的和解收场：据中芯国际 2009 年 11 月 10 日的公告，加州陪审团 11 月 4 日判中芯国际败诉，双方 11 月 9 日订立和解协议，中芯国际向台积电支付合共 2 亿美元（分四年付清），并授出约占已发行股本 8% 的股份。</p>
+<p>光刻机本身呢？上海微电子 2002 年 3 月在张江成立。据公司的发展历程，2016 年 6 月，“我司首台暨国内首台前道扫描光刻机交付用户”；其 SSX600 系列产品页标称可满足 90 纳米、110 纳米、280 纳米关键层和非关键层的光刻需求。这和清华 1980 年的“国内第一台”并不矛盾：那是分步投影式，一次曝光一整格；这是扫描式，用一道光缝扫过整格。</p>
+<p>节点数字这时也成了政策指标。2014 年 6 月的《国家集成电路产业发展推进纲要》要求，到 2015 年 32/28 纳米制造工艺实现规模量产，到 2020 年 16/14 纳米制造工艺实现规模量产。这些纳米数字到底量的是什么，见英文版第 47 章。</p>
+<p>**出处：**徐端颐《我国半导体专用设备研究开发历史上光辉的一页》；贾彦、宋晓东《神秘的“909工程”》（夏钟瑞口述）；上海微电子《发展历程》。</p>
+<h2 id="延伸阅读">延伸阅读<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb">#</a></h2>
+<ul>
+<li>中国科学院半导体研究所，《自力更生，“从0到1”｜中国第一块集成电路诞生记》（English: Self-reliance &ldquo;from 0 to 1&rdquo;: the birth of China&rsquo;s first integrated circuit），原载《中国科学报》，2024-03-14。<a href="https://semi.cas.cn/xwdt/zhxw/202403/t20240314_7031094.html">链接</a></li>
+<li>中国计算机学会，《清华大学自动分步重复照相机印刷电路板》（English: PCB from Tsinghua&rsquo;s automatic step-and-repeat camera, CCF computing-history record, 2024），中国计算机历史记忆。<a href="https://www.ccf.org.cn/Computing_history/Full_List/2024/ellsjy/2025-02-28/838658.shtml">链接</a></li>
+<li>徐端颐，《我国半导体专用设备研究开发历史上光辉的一页》（English: A glorious page in the history of China&rsquo;s semiconductor equipment R&amp;D, a first-hand account by a Tsinghua developer），清华大学建党百年网站。<a href="https://www.jiandang100.tsinghua.edu.cn/info/1014/6518.htm">链接</a></li>
+<li>计红梅，《王守武：为中国半导体奠基的“大王先生”》（English: Wang Shouwu, the founder of Chinese semiconductors），《中国科学报》2023-11-17，中国科学院微电子研究所网站转载。<a href="https://ime.cas.cn/icac/newsroom/newsroom_1/202312/t20231228_6931573.html">链接</a></li>
+<li>贾彦、宋晓东，《神秘的“909工程”：为何国家领导人说砸锅卖铁也要搞》（English: The mysterious Project 909, oral history of Xia Zhongrui, director of the 909 office），上观新闻 2020-05-12，上海党史网转载。<a href="https://www.ccphistory.org.cn/shds/pdkfkf30zn/content/3a59d8f1-f741-4b02-8aad-ebdefe4251d3.html">链接</a></li>
+<li>上海市锦天城律师事务所，《关于中芯国际集成电路制造有限公司首次公开发行人民币普通股（A股）股票并在科创板上市的法律意见书》（English: Legal opinion for SMIC&rsquo;s STAR Market listing），上海证券交易所披露，2020 年 6 月。<a href="http://static.sse.com.cn/stock/disclosure/announcement/c/202006/000497_20200622_RC98.pdf">链接</a></li>
+<li>中芯國際，《中芯國際與台積電達成所有訴訟和解，預期不會對客戶造成干擾》（English: SMIC and TSMC settle all litigation; no disruption to customers expected），2009-11-10。<a href="https://www.smics.com/tc/site/news_read/4281">链接</a></li>
+<li>上海微电子装备（集团）股份有限公司，《发展历程》（English: SMEE company history），smee.com.cn。<a href="https://www.smee.com.cn/eis.pub?method=indexinfo&amp;onclicknodeno=1_2_2&amp;service=homepageService">链接</a></li>
+<li>上海微电子装备（集团）股份有限公司，《SSX600系列光刻机》（English: SSX600-series scanner product page），smee.com.cn。<a href="https://www.smee.com.cn/eis.pub?method=indexinfo&amp;onclicknodeno=1_4_1_1&amp;service=homepageService">链接</a></li>
+<li>国务院，《国家集成电路产业发展推进纲要》（English: National guideline for the development of the IC industry），2014 年 6 月，国家网信办网站转载。<a href="http://www.cac.gov.cn/2014-06/26/c_1111325916.htm">链接</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='最后修改者 Nayana | 十一月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>十一月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E5%85%89%E5%88%BB%EF%BC%9A%E4%BB%8E%E6%98%BE%E5%BE%AE%E9%95%9C%E5%88%B0%E6%89%AB%E6%8F%8F%E6%9C%BA&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hans%2Fposts%2F48-zh-lithography-fabs%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hans%2Fposts%2F48-zh-lithography-fabs.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hans%2Fposts%2F48-zh-lithography-fabs.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hans/posts/05-zh-transistors-semiconductors/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一页" />
+        <span>从一门课到一块芯片：中国半导体的头十年</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hans/posts/58-zh-deep-learning-chips/" class="flex align-center">
+        <span>从 DianNao 到昇腾：为矩阵乘法造的芯片</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一页" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#19631964两台显微镜一盏紫外灯">1963—1964：两台显微镜，一盏紫外灯</a></li>
+    <li><a href="#19711980清华造的分步重复照相机">1971—1980：清华造的分步重复照相机</a></li>
+    <li><a href="#19901999摩尔定律成了审批的时钟">1990—1999：摩尔定律成了审批的时钟</a></li>
+    <li><a href="#2000-年以后代工厂与国产扫描机">2000 年以后：代工厂与国产扫描机</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

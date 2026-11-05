@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tags on අප එතැනට පැමිණි ආකාරය</title>
+		<link>http://localhost:1478/si/tags/</link>
+		<description>Recent content in Tags on අප එතැනට පැමිණි ආකාරය</description>
+		<generator>Hugo</generator>
+		<language>si</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:31:05 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/si/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Attribution</title>
+				<link>http://localhost:1478/si/tags/attribution/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/tags/attribution/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Credits</title>
+				<link>http://localhost:1478/si/tags/credits/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/tags/credits/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Sources</title>
+				<link>http://localhost:1478/si/tags/sources/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/tags/sources/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Foreword</title>
+				<link>http://localhost:1478/si/tags/foreword/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/tags/foreword/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Glossary</title>
+				<link>http://localhost:1478/si/tags/glossary/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/tags/glossary/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>History</title>
+				<link>http://localhost:1478/si/tags/history/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/tags/history/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Introduction</title>
+				<link>http://localhost:1478/si/tags/introduction/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/tags/introduction/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Reference</title>
+				<link>http://localhost:1478/si/tags/reference/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/tags/reference/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Timeline</title>
+				<link>http://localhost:1478/si/tags/timeline/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/tags/timeline/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

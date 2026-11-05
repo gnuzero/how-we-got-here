@@ -1,0 +1,120 @@
+
+    Pseudorandom sequence generator
+    
+A set decimal places to 9
+A write numbers with decimal point
+    
+    Seed for the generator
+    
+N010 28151657	    . Seed for generator 1
+
+    Constants
+
+N012 40014  	    . Multiplicative factor 1
+N013 2147483563     . Modulus 1
+N014 40692  	    . Multiplicative factor 2
+N015 2147483399     . Modulus 2
+N016 2147483648     . 2^31
+N019 1	    	    . Constant 1
+
+    Variables
+ N017	    	    . temp1
+ N018	    	    . temp2    
+ N020	    	    . gen1
+ N021	    	    . gen2
+N022 5     	    . Number of values to compute (including those burned)
+N023 0	    	    . Iteration count
+N024 2     	    . Values to burn during initialisation
+N025 0	    	    . Initialisation burn counter
+ 
+    Return value
+    
+ N000	    	    . Pseudorandom value
+ 
+    Initialisation
+ 
+/
+L010	    	    . Take seed mod 2^31
+L016
+S010	    	    . Set initial generator values to seed
+S020
+S021
+
+(?
+
+    Update generator 1
+    
+*
+L020	    	    . Multiply by factor 1
+L012
+S017'
+S018
+
+/
+L017'	    	    . Divide by modulus 1
+L018
+L013
+S020	    	    . Store remainder in gen1
+
+    Update generator 2
+    
+*
+L021	    	    . Multiply by factor 2
+L014
+S017'
+S018
+
+/
+L017'	    	    . Divide by modulus 1
+L018
+L015
+S021	    	    . Store remainder in gen2
+
+    BURN START
++
+L025    . increment burn count
+L019
+S025
+
+-
+L025    . test if number of values to burn reached
+L024
+
+{?
+    BURN END
+
+    Combine generators modulo generator 1
+
++
+L020	    	    . temp1 = gen1 + gen2
+L021
+S017
+
+/
+L017	    	    . temp2 = temp1 % mod1
+L013
+S018
+
+    Scale the result to a fixed point value between 0 and 1
+    
+/
+L018
+<
+L013
+S000'
+
+P
+
+    Loop for requested number of outputs
+
++
+L023    . increment iteration count
+L019
+S023
+
+}
+
+-
+L023    . test if number of iterations reached
+L022
+)

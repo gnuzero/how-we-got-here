@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dezaxarea a omorât magistrala paralelă lată; serialul punct-la-punct e cum am scăpat">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/32-from-isa-bus-to-pci-to-pcie/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="De la magistrala ISA la PCI și la PCIe">
+	<meta property="og:description" content="Dezaxarea a omorât magistrala paralelă lată; serialul punct-la-punct e cum am scăpat">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:31:54+05:30">
+
+
+	<meta itemprop="name" content="De la magistrala ISA la PCI și la PCIe">
+	<meta itemprop="description" content="Dezaxarea a omorât magistrala paralelă lată; serialul punct-la-punct e cum am scăpat">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:31:54+05:30">
+	<meta itemprop="wordCount" content="856">
+
+<title>De la magistrala ISA la PCI și la PCIe • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/32-from-isa-bus-to-pci-to-pcie/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/32-from-isa-bus-to-pci-to-pcie/" title="From ISA Bus to PCI to PCIe">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/32-from-isa-bus-to-pci-to-pcie/" title="จาก ISA Bus ถึง PCI ถึง PCIe">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/32-from-isa-bus-to-pci-to-pcie/" title="ISA Bus සිට PCI දක්වා PCIe දක්වා">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/32-from-isa-bus-to-pci-to-pcie/" title="ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/32-from-isa-bus-to-pci-to-pcie/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="active">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>De la magistrala ISA la PCI și la PCIe</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#isa-paralelul-lat-pe-ceas-comun">ISA: paralelul lat, pe ceas comun</a></li>
+    <li><a href="#pci-spațiu-de-manevră-nu-evadare">PCI: spațiu de manevră, nu evadare</a></li>
+    <li><a href="#pcie-a-părăsit-firele-partajate">PCIe: a părăsit firele partajate</a></li>
+    <li><a href="#rate-pe-generație-din-pci-sig">Rate pe generație, din PCI-SIG</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    De la magistrala ISA la PCI și la PCIe
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 31 a numit plafonul: fiecare dispozitiv concurează pentru aceleași fire. ISA, apoi PCI, apoi PCIe e ingineria din jurul acestui plafon — nu un catalog de magistrale, o succesiune de constrângeri. Surpriza de la final: trecerea la <em>serial</em> (mai puține fire) a învins rămânerea la paralel (mai multe fire).</p>
+<h2 id="isa-paralelul-lat-pe-ceas-comun">ISA: paralelul lat, pe ceas comun<a class="anchor" href="#isa-paralelul-lat-pe-ceas-comun">#</a></h2>
+<p>Materialul PCI-SIG despre 30 de ani de I/O plasează pe linia timpului, înainte de PCI, magistrala „ISA, 8 -&gt; 16 bits @ 8-10 MHz (from PC-AT)”, apoi Micro Channel (MCA, „16/32 bits, 10 MHz”), Extended ISA („32b @ 8-10 MHz”) și VESA („32b @ 25-40 MHz”), iar debutul PCI în 1992; pe axă apar anii 1981, 1987, 1988 și 1992 (PCI-SIG, „The History of PCI IO Technology: 30 Years of PCI-SIG Innovation”, webinar actualizat 23.03.2023, slide „PCI – Debuts in 1992”; <a href="https://pcisig.com/sites/default/files/files/30%20Years%20of%20PCI-SIG%20Innovation%20Webinar_Updated%203.23.2023.pdf">pcisig.com/&hellip;/30 Years…</a>, accesat 2026-11-05). ISA (<em>Industry Standard Architecture</em>) e magistrala paralelă clasică a PC-ului: multe linii de date, câte un bit pe fiecare, eșantionate pe același ceas.</p>
+<p>Ceasul și lățimea ISA de pe această pagină (8–10 MHz, de la 8 la 16 biți odată cu PC-AT) vin doar din slide-ul PCI-SIG de mai sus. <!-- NEVERIFICAT: IBM PC/AT Technical Reference (bitsavers/archive.org 500/503; pe box nu există o copie locală). Cifra exactă de ceas a AT-ului nu este dată separat de intervalul PCI-SIG. --></p>
+<!-- NEVERIFICAT: mecanismul fizic al dezaxării (skew) ca „lungimi și capacități diferite pe fire” e explicație pedagogică; nu am un primar deschis care să îl formuleze astfel pentru ISA. -->
+<p>Intuiția paralelă e: mai multe fire ⇒ mai multă lățime de bandă. La ceasuri modeste, da. Când crești ceasul, aceeași dezaxare fixă între linii mănâncă marginea de timp până când receptorul nu mai poate eșantiona toți biții pe aceeași muchie. Acesta e un plafon fizic, nu un truc ratat.</p>
+<h2 id="pci-spațiu-de-manevră-nu-evadare">PCI: spațiu de manevră, nu evadare<a class="anchor" href="#pci-spa%c8%9biu-de-manevr%c4%83-nu-evadare">#</a></h2>
+<p>PCI-SIG datează debutul PCI în 1992 și se prezintă ca organizație „Established in 1992” (ibid., slide-uri de introducere și „PCI – Debuts in 1992”). Același material rezumă anii 1992–2003 ca epoca „PCI and PCI-X”, cu rate pe magistrala paralelă (32b, apoi 32b/64b, apoi PCI-X) tot pe modelul de slot partajat (ibid., slide „PCI and PCI-X: 1992–2003”). PCI a consolidat o industrie fragmentată (ibid., „PCI successful in consolidating a fragmented industry…”).</p>
+<p>A rămas o magistrală paralelă partajată. A cumpărat spațiu de manevră față de ISA, nu o arhitectură nouă.</p>
+<h2 id="pcie-a-părăsit-firele-partajate">PCIe: a părăsit firele partajate<a class="anchor" href="#pcie-a-p%c4%83r%c4%83sit-firele-partajate">#</a></h2>
+<p>PCI Express apare în materialul PCI-SIG ca specificație debutată în 2003: soluția e „a Link-based interconnect”, cu compatibilitate software față de PCI ca să facă tranziția fezabilă, și cu punți PCIe-la-PCI pentru platformele de trecere (ibid., „The BIG Transition: PCI Express® Specification Debuts in 2003”). UTCN notează introducerea sub numele „Third Generation I/O” (3GIO) în 2002 și faptul că PCIe a înlocuit PCI și PCI-X; topologia e comutată, fiecare placă legată la un comutator prin fire dedicate, nu printr-o magistrală partajată (UTCN, „C13. PCIe overview”, <a href="https://elupu.utcluj.ro/wp-content/uploads/2024/06/C12_pciexpress_rom.pdf">elupu.utcluj.ro/&hellip;/C12_pciexpress_rom.pdf</a>, accesat 2026-11-05).</p>
+<p>Un <em>lane</em> este perechea de transmisie și recepție: „Perechea de transmisie și recepție împreună se numește lane” (UTCN, C12, ibid.); PCI-SIG descrie semnalizarea ca „Differential, full-duplex” (PCI-SIG, 30 Years, slide „The BIG Transition…”). Lane-urile se grupează în legături mai late (PCI-SIG FAQ Gen 5: un Link PCIe are 1, 2, 4, 8, 12, 16 sau 32 de Lane-uri; <a href="https://pcisig.com/faq?keys=5.0">pcisig.com/faq</a>, accesat 2026-11-05). Dispozitivele fără legătură comună nu mai așteaptă arbitrajul unul altuia pe aceleași fire.</p>
+<h2 id="rate-pe-generație-din-pci-sig">Rate pe generație, din PCI-SIG<a class="anchor" href="#rate-pe-genera%c8%9bie-din-pci-sig">#</a></h2>
+<p>FAQ-ul PCI-SIG care explică de ce 8,0 GT/s la Gen 3 „dublează” pe Gen 2 dă tabelul (PCI-SIG, „How does the PCIe 3.0 8.0 GT/s double the PCIe 2.0 5.0 GT/s bit rate?”, <a href="https://pcisig.com/how-does-pcie-30-8gts-double-pcie-20-5gts-bit-rate">pcisig.com/how-does-pcie-30-8gts-double-pcie-20-5gts-bit-rate</a>, accesat 2026-11-05):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Generație</th>
+					<th>Rată brută</th>
+					<th>Lățime de bandă pe interconect (după codare)</th>
+					<th>Pe lane / direcție</th>
+					<th>Total pe link x16</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>PCIe 1.x</td>
+					<td>2,5 GT/s</td>
+					<td>2 Gb/s</td>
+					<td>~250 MB/s</td>
+					<td>~8,0 GB/s</td>
+			</tr>
+			<tr>
+					<td>PCIe 2.x</td>
+					<td>5,0 GT/s</td>
+					<td>4 Gb/s</td>
+					<td>~500 MB/s</td>
+					<td>~16,0 GB/s</td>
+			</tr>
+			<tr>
+					<td>PCIe 3.0</td>
+					<td>8,0 GT/s</td>
+					<td>8 Gb/s</td>
+					<td>~1,0 GB/s</td>
+					<td>~32,0 GB/s</td>
+			</tr>
+	</tbody>
+</table>
+<p>FAQ-ul precizează: Gen 1–2 folosesc codarea 8b/10b (20% overhead); Gen 3 trece la 128b/130b; iar „Total bandwidth represents the aggregate interconnect bandwidth in both directions” (ibid.).</p>
+<p><strong>Verificare aritmetică (calculul nostru):</strong> (2{,}5 \times 8/10 = 2{,}0) Gb/s = 0,25 GB/s pe lane și direcție; (\times 16 = 4) GB/s pe o direcție; pe ambele direcții, (8) GB/s — coincidență cu coloana „Total… x16” din FAQ. La fel pentru Gen 2: (5{,}0 \times 8/10 = 4) Gb/s → 0,5 GB/s → (\times 16 = 8) pe o direcție → (16) agregat. La Gen 3: (8{,}0 \times 128/130 \approx 7{,}877) Gb/s ≈ 0,985 GB/s ≈ ~1,0 GB/s; (\times 16 \approx 15{,}8) pe o direcție; agregat ≈ 31,5 ≈ ~32 GB/s.</p>
+<p>FAQ-ul Gen 5 adaugă ratele brute ulterioare: Gen 4 la 16,0 Gigabit/s/Lane/direcție; Gen 5 la 32,0; un Link Gen 5 cu 32 de Lane-uri la 32,0 GT/s dă „an effective raw bandwidth of 128.0 Gigabytes/second in each direction simultaneously” (PCI-SIG FAQ, „What bit rates does the PCIe 5.0 specification support…”, <a href="https://pcisig.com/faq?keys=5.0">pcisig.com/faq?keys=5.0</a>, accesat 2026-11-05).</p>
+<p><strong>Notă despre „total”:</strong> webinarul PCI-SIG Rev 6 listează pentru Gen 3 o lățime de bandă x16 „per direction” de 126 Gb/s (≈ 15,75 GB/s, calculul nostru: 126/8), cu nota „bandwidth after encoding overhead” (PCI-SIG, „PCIe Specification Webinar Rev 6”, slide „Evolution of PCI Express® Specification: Speeds and Feeds”; <a href="https://pcisig.com/sites/default/files/files/PCIe_Specification_Webinar_Rev%206_FINAL_0.pdf">pcisig.com/&hellip;/PCIe_Specification_Webinar_Rev 6_FINAL_0.pdf</a>, accesat 2026-11-05). FAQ-ul de mai sus raportează ~32 GB/s pe x16 ca <em>agregat bidirecțional</em>. Nu e o contradicție de cifră: e o diferență de convenție (o direcție față de ambele). Pe pagină le țin separate.</p>
+<p>Capitolul 33 descompune legătura serială: cum arată un transfer pe straturi.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/98c122906f82fe66d7520d499851b6a45004a5c4" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;De&#43;la&#43;magistrala&#43;ISA&#43;la&#43;PCI&#43;%C8%99i&#43;la&#43;PCIe&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F32-from-isa-bus-to-pci-to-pcie%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F32-from-isa-bus-to-pci-to-pcie.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F32-from-isa-bus-to-pci-to-pcie.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/31-buses-101/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Magistrale 101</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/33-pcie-deep-dive/" class="flex align-center">
+        <span>PCIe în detaliu</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#isa-paralelul-lat-pe-ceas-comun">ISA: paralelul lat, pe ceas comun</a></li>
+    <li><a href="#pci-spațiu-de-manevră-nu-evadare">PCI: spațiu de manevră, nu evadare</a></li>
+    <li><a href="#pcie-a-părăsit-firele-partajate">PCIe: a părăsit firele partajate</a></li>
+    <li><a href="#rate-pe-generație-din-pci-sig">Rate pe generație, din PCI-SIG</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
