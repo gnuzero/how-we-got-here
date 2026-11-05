@@ -1,0 +1,54 @@
+/*
+  Site overrides (loaded last by hugo-book via styles/index.yaml).
+
+  CJK typography for the Chinese editions. Scoped by :lang() so the
+  English / Thai / Sinhala / Tamil pages are untouched. <html lang> comes
+  from each language's `locale` in hugo.toml (zh-Hans / zh-Hant).
+  No web-font download: local Noto / platform fonts only. Latin-only
+  fonts come first (they carry no CJK glyphs), then the script-specific
+  CJK face, so Hans/Hant glyph shapes are not left to OS fallback.
+  Set on <html> only so code/pre keep the theme's monospace font.
+  No letter-spacing tweaks.
+*/
+
+html:lang(zh-Hans) {
+  font-family:
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans SC',
+    'Noto Sans CJK SC',
+    'Source Han Sans SC',
+    'PingFang SC',
+    'Hiragino Sans GB',
+    'Microsoft YaHei',
+    sans-serif;
+}
+
+html:lang(zh-Hant) {
+  font-family:
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans TC',
+    'Noto Sans CJK TC',
+    'Source Han Sans TC',
+    'PingFang TC',
+    'Microsoft JhengHei',
+    sans-serif;
+}
+
+/* Dense ideographs need more leading than Latin body text (theme default 1.6). */
+:lang(zh-Hans) .markdown,
+:lang(zh-Hant) .markdown {
+  line-height: 1.8;
+}
+
+/* CJK has no italics; keep emphasis readable. */
+:lang(zh-Hans) .markdown em,
+:lang(zh-Hant) .markdown em {
+  font-style: normal;
+  font-weight: 600;
+}

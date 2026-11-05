@@ -65,6 +65,8 @@
   .err { color: var(--red); }
   .isa { font-size: 11px; color: #8b949e; line-height: 1.6; margin-top: 8px; }
   .isa code { color: var(--accent); }
+  .isa .notes { margin: 6px 0 0; padding-left: 16px; }
+  .isa .notes li { margin-bottom: 2px; }
 </style>
 </head>
 <body>
@@ -103,7 +105,13 @@ HLT</textarea>
     <div class="isa">
       <strong>ISA:</strong> <code>NOP</code> <code>LDA a</code> <code>ADD a</code> <code>SUB a</code>
       <code>STA a</code> <code>LDI n</code> <code>JMP a</code> <code>JC a</code> <code>JZ a</code>
-      <code>OUT</code> <code>HLT</code> — addresses/immediates 0–15
+      <code>OUT</code> <code>HLT</code> — addresses/immediates 0–15, written in decimal (<code>13</code>) or hex (<code>0xD</code>)
+      <ul class="notes">
+        <li>Operands must be whole numbers 0–15. Anything else (<code>0xZZ</code>, <code>300</code>, a missing address) stops Assemble with an error naming the line — it is never quietly read as 0. <code>NOP</code>, <code>OUT</code> and <code>HLT</code> ignore an operand when they run, so <code>NOP 7</code> is a way to put the value 7 in memory.</li>
+        <li>ZERO lights when A ends up 0 after <code>LDI</code>, <code>LDA</code>, <code>ADD</code> or <code>SUB</code>. <code>STA</code>, <code>OUT</code> and jumps leave it alone. Reset clears it, so a <code>JZ</code> before any of those falls through.</li>
+        <li>Registers are 8-bit: 0 − 1 wraps to 255 (and sets CARRY). A countdown from n=0 runs 256 loops, not zero.</li>
+        <li>Program and values share the same 16 words. A <code>STA</code> can overwrite an instruction — even your final <code>HLT</code>, and then the CPU runs on past it.</li>
+      </ul>
     </div>
     <div id="log" class="log"></div>
   </div>
@@ -138,7 +146,7 @@ const OPS = {NOP:0x0, LDA:0x1, ADD:0x2, SUB:0x3, STA:0x4, LDI:0x5, JMP:0x6, JC:0
 const OPNAMES = Object.fromEntries(Object.entries(OPS).map(([k,v])=>[v,k]));
 
 let mem = new Uint8Array(16);
-let A=0, B=0, PC=0, IR=0, carry=0, zero=1, halted=false, outReg=0, running=false, timer=null;
+let A=0, B=0, PC=0, IR=0, carry=0, zero=0, halted=false, outReg=0, running=false, timer=null;
 let stepCount = 0;
 
 const INTRO_PHASE = 'Fetch → Decode → Execute';
@@ -157,7 +165,7 @@ function explainExecute(op, arg, prevA, prevMem) {
     case OPS.NOP:
       return 'NOP does nothing. PC already advanced.';
     case OPS.LDA:
-      return 'LDA ' + arg + ': A ← mem[' + arg + '] (was ' + prevA + ', now ' + A + '). Watch A.';
+      return 'LDA ' + arg + ': A ← mem[' + arg + '] (was ' + prevA + ', now ' + A + '; zero=' + zero + '). Watch A.';
     case OPS.ADD:
       return 'ADD ' + arg + ': A ← A + mem[' + arg + '] → ' + A + ' (carry=' + carry + ', zero=' + zero + '). Watch A.';
     case OPS.SUB:
@@ -165,7 +173,7 @@ function explainExecute(op, arg, prevA, prevMem) {
     case OPS.STA:
       return 'STA ' + arg + ': mem[' + arg + '] ← A (' + A + '). Was ' + prevMem + '; watch that memory cell.';
     case OPS.LDI:
-      return 'LDI ' + arg + ': A ← immediate ' + arg + ' (was ' + prevA + '). Watch A.';
+      return 'LDI ' + arg + ': A ← immediate ' + arg + ' (was ' + prevA + '; zero=' + zero + '). Watch A.';
     case OPS.JMP:
       return 'JMP ' + arg + ': PC ← ' + arg + ' (unconditional). Watch PC on the memory grid.';
     case OPS.JC:
@@ -190,22 +198,48 @@ function logMsg(msg, isErr) {
   log.scrollTop = log.scrollHeight;
 }
 
+// Instructions whose operand is optional and ignored when they run. The
+// assembler still stores it in the low 4 bits (as it always has), so
+// `NOP 7` plants the data word 7. Every other mnemonic needs an operand.
+const NO_OPERAND = new Set(['NOP', 'OUT', 'HLT']);
+
+// Read an operand token: decimal (13) or hex (0xD / 0X0d). Returns NaN for
+// anything else, so a bad token can never slip through as 0.
+function parseOperand(tok) {
+  if (/^0x[0-9a-f]+$/i.test(tok)) return parseInt(tok.slice(2), 16);
+  if (/^[0-9]+$/.test(tok)) return parseInt(tok, 10);
+  return NaN;
+}
+
 function assemble(src) {
-  const lines = src.split('\n').map(l => l.replace(/;.*/, '').trim()).filter(Boolean);
   const bytes = new Uint8Array(16);
-  lines.forEach((line, i) => {
-    if (i >= 16) throw new Error(`Line ${i+1}: program exceeds 16 words`);
-    const [mnem, argStr] = line.split(/\s+/);
-    const op = OPS[mnem.toUpperCase()];
-    if (op === undefined) throw new Error(`Line ${i+1}: unknown mnemonic '${mnem}'`);
+  let count = 0;
+  src.split('\n').forEach((raw, idx) => {
+    const lineNo = idx + 1;                       // line number as shown in the editor
+    const line = raw.replace(/;.*/, '').trim();
+    if (!line) return;
+    const [mnem, argStr, ...extra] = line.split(/\s+/);
+    const name = mnem.toUpperCase();
+    const op = OPS[name];
+    if (op === undefined) throw new Error(`Line ${lineNo}: unknown mnemonic '${mnem}'`);
+    if (count >= 16) throw new Error(`Line ${lineNo}: program exceeds 16 words`);
     let arg = 0;
-    if (argStr !== undefined) {
-      arg = parseInt(argStr, 10);
-      if (isNaN(arg) || arg < 0 || arg > 15) throw new Error(`Line ${i+1}: operand out of range (0-15)`);
+    const optional = NO_OPERAND.has(name);
+    if (optional && argStr === undefined) {
+      // NOP / OUT / HLT on their own: operand 0.
+    } else {
+      const what = optional ? 'operand' : name === 'LDI' ? 'value' : 'address';
+      if (argStr === undefined) throw new Error(`Line ${lineNo}: ${name} needs an ${what} (0–15)`);
+      if (extra.length) throw new Error(`Line ${lineNo}: unexpected '${extra[0]}' after '${mnem} ${argStr}'`);
+      arg = parseOperand(argStr);
+      if (isNaN(arg)) throw new Error(`Line ${lineNo}: bad ${what} '${argStr}' — write a number 0–15 in decimal (13) or hex (0xD)`);
+      if (arg > 15) throw new Error(name === 'LDI' || optional
+        ? `Line ${lineNo}: ${what} '${argStr}' is out of range — ${name} takes 0–15 (the operand is 4 bits)`
+        : `Line ${lineNo}: address '${argStr}' is past the end of memory — addresses are 0–15`);
     }
-    bytes[i] = (op << 4) | (arg & 0xF);
+    bytes[count++] = (op << 4) | arg;
   });
-  return { bytes, count: lines.length };
+  return { bytes, count };
 }
 
 function assembleAndLoad() {
@@ -224,7 +258,7 @@ function assembleAndLoad() {
 }
 
 function reset(doLog=true) {
-  A=0; B=0; PC=0; IR=0; carry=0; zero=1; halted=false; outReg=0;
+  A=0; B=0; PC=0; IR=0; carry=0; zero=0; halted=false; outReg=0;
   stepCount = 0;
   stop();
   if (doLog) {
@@ -256,7 +290,7 @@ function step() {
   // EXECUTE (decode is the op/arg split above)
   switch (op) {
     case OPS.NOP: break;
-    case OPS.LDA: A = mem[arg]; break;
+    case OPS.LDA: A = mem[arg]; zero = A===0?1:0; break;
     case OPS.ADD: { const r = A + mem[arg]; carry = r > 255 ? 1 : 0; A = r & 0xFF; zero = A===0?1:0; break; }
     case OPS.SUB: { const r = A - mem[arg]; carry = r < 0 ? 1 : 0; A = (r + 256) & 0xFF; zero = A===0?1:0; break; }
     case OPS.STA: mem[arg] = A; break;
