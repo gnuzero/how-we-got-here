@@ -3,3 +3,9 @@ other = "เราไปถึงจุดนั้นได้อย่าง�
 
 [foreword]
 other = "คำนำ"
+
+[labIframeTitle]
+other = "แล็บเชิงโต้ตอบ: {{ .Type }}"
+
+[labOpenNewTab]
+other = "เปิดแล็บในแท็บใหม่ ↗"
