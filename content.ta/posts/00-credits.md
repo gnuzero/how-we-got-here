@@ -141,6 +141,8 @@ Wokwi என்பது breadboard பக்கத்திலிருந்�
 Science Museum Group காப்பக வரைபடங்கள் பெரும்பாலும் CC BY-NC-SA — இணைக்க நன்றாக இருக்கும்; இலவச வணிகக் கலையாகக் கருதப்படவில்லை. CC BY / CC BY-SA கீழ் பார்வையாளர் புகைப்படங்கள் படக் கதவு.
 
 
+<!-- TODO(desk): EN credits (PR credits-zh-tone) softened the vocalist note and the closing line, and added a 'Chinese published sources' section. Mirror both in this locale's language; see content/posts/00-credits.md. -->
+
 ## கேட்கும் குரலுக்கு இன்னும் பெயர் இல்லை
 
 2026 செப்டம்பர் 10 அன்று Raz & Upgrade, Regroup Records-இல் *[Zunara](https://open.spotify.com/track/3G538vBZ7ldslS4lqGyD6P)* வெளியிட்டனர். சிங்களத்தில் பாடும் பெண் குரல் கேட்கிறது. கடைப் பக்கம் தயாரிப்பாளர், நிறுவனப் பெயரைச் சொல்கிறது. பாடகியின் பெயரைச் சொல்லவில்லை.

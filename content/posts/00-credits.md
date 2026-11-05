@@ -11,7 +11,7 @@ summary: "Credits due first — published sources, existing interactives, and im
 
 # Credits & Doors Out
 
-This journey names constraints and people in the chapters. When a topic already has a strong primary, we point out. Wikipedia is a map, not the destination. Thai, Sinhala, and Tamil desks credit published local literature only when it exists — never a name invented to fill a gap.
+This journey names constraints and people in the chapters. When a topic already has a strong primary, we point out. Wikipedia is a map, not the destination. The Chinese, Thai, Sinhala, and Tamil desks credit published local literature where it exists, and leave a gap open rather than fill it with a guess.
 
 Team roles (concept, writing, desks) live on [About](/about/). This page is the professional record *before* the Foreword, so no one has to guess who already published this material.
 
@@ -35,7 +35,7 @@ Chapter door-outs (Baran, Tomasulo, Kung/Leiserson, and the rest) stay *in* thos
 
 [Wikipedia](https://www.wikipedia.org/) and its language editions are orientation maps. Verify against a primary before treating a page as settled. We link out; we do not host encyclopedia text.
 
-Wikimedia Commons is the image door (see below). Language editions (ไทย, සිංහල, தமிழ்) are the same *kind* of map for those readers.
+Wikimedia Commons is the image door (see below). Language editions (中文, ไทย, සිංහල, தமிழ்) are the same *kind* of map for those readers.
 
 ## Named professional authors
 
@@ -66,6 +66,24 @@ Historians and canonical textbooks this spine stands on. Title, year, publisher 
 - David A. Patterson and John L. Hennessy — *Computer Organization and Design* (RISC-V edition) — [Elsevier](https://shop.elsevier.com/books/computer-organization-and-design-risc-v-edition/patterson/978-0-12-820331-6)
 - Donald E. Knuth — *The Art of Computer Programming* — [cs.stanford.edu/~knuth/taocp.html](https://cs.stanford.edu/~knuth/taocp.html)
 - Andrew S. Tanenbaum and Herbert Bos — *Modern Operating Systems* — [Pearson](https://www.pearson.com/en-us/subject-catalog/p/modern-operating-systems/P200000003295/9780137618880)
+
+## Chinese published sources
+
+Already cited by name in the Chinese edition (延伸阅读). The Chinese desk (Wen) wrote these pages as originals in Simplified Chinese, co-authoritative with English; Traditional is converted from Simplified, then reviewed. A sample of the named authors and works, as cited there — the full lists stay in each chapter.
+
+<!-- TODO(zh-desk): sample only, copied from content.zh-hans/posts/*/延伸阅读. Desk to confirm the selection and add any named Chinese-language books it wants on this page. -->
+
+- 宋應星 (Song Yingxing) — 《天工開物》 (*Tiangong Kaiwu*), 1637 — [维基文库](https://zh.wikisource.org/wiki/天工開物/結花本)
+- 蘇頌 (Su Song) — 《新儀象法要》 (*New Design for an Armillary Clock*), Siku edition — [维基文库](https://zh.wikisource.org/wiki/新儀象法要_(四庫全書本)/卷上)
+- 徐祖哲、司宏伟 (Xu Zuzhe, Si Hongwei) — 《中国计算机：从核物理到卫星测控》, 《中国科学院院刊》 2025, 40(Z2): 109–118 — [CAS Bulletin](http://old2022.bulletin.cas.cn/publish_article/2025/Z2/zgkxyyk-40-Z2-109.htm)
+- 龚滨良 (Gong Binliang) — 《中文信息处理技术大事记》, 《中国科技史料》 1985 年第 2 期 — [链接](https://nmlr.muc.edu.cn/info/1106/2042.htm)
+- 李军、孙玉方 (Li Jun, Sun Yufang) — 《基于微核心的国产操作系统安全性研究》, 《软件学报》 1997, 8(2): 99–106 — [jos.org.cn](https://jos.org.cn/jos/article/abstract/19970204)
+- 朱邦复 (Chu Bong-Foo) — 《智慧之旅》 (*Journey of Wisdom*), ch. 3 — [open-lit](http://open-lit.com/html/lit/506/18353.html)
+- 中国计算机学会 (China Computer Federation) — 中国计算机历史记忆 (China Computing History Memory) — [ccf.org.cn](https://www.ccf.org.cn/Computing_history/Full_List/2019/First_class/2020-03-24/697778.shtml)
+
+Institutional doors: 故宫博物院 (Palace Museum) [collection](https://www.dpm.org.cn/collection/clock/234581.html); 中国丝绸博物馆 (China National Silk Museum) [site](https://www.chinasilkmuseum.com/cs/info_164.aspx?itemid=30809); 清华大学科学博物馆 (Tsinghua University Science Museum) [site](https://tsm.tsinghua.edu.cn/?p=9500).
+
+Orientation map: [维基百科](https://zh.wikipedia.org/).
 
 ## Thai published sources
 
@@ -168,11 +186,11 @@ Institutions behind the object, separate from the photographer:
 Science Museum Group archive drawings are often CC BY-NC-SA — fine to link, not treated as free commercial art. Visitor photos under CC BY / CC BY-SA are the image door.
 
 
-## A voice you can hear and still cannot credit
+## A voice we can hear but cannot yet name
 
-On 10 September 2026, Raz & Upgrade released *[Zunara](https://open.spotify.com/track/3G538vBZ7ldslS4lqGyD6P)* on Regroup Records. You can hear a woman singing in Sinhala. The store page names the producer and the label. It does not name the singer.
+On 10 September 2026, Raz & Upgrade released *[Zunara](https://open.spotify.com/track/3G538vBZ7ldslS4lqGyD6P)* on Regroup Records. You can hear a woman singing in Sinhala. The store page names the producer and the label; the singer's name is not listed there.
 
-That is the gap this page is for. Hearing someone is not a license to use their voice, and it is not a name you can put on the line.
+We mention it because this page is about putting names on the line where we can. Hearing a voice does not tell us whose it is, so the line stays open for now.
 
 {{< spotify track="3G538vBZ7ldslS4lqGyD6P" >}}
 
@@ -181,16 +199,16 @@ What we can write:
 - Track: *Zunara* — Raz & Upgrade (Raz Kfir), © 2026 [Regroup Records](https://www.regrouprecords.com/). Official player above — Spotify's license with the label, not a file we host.
 - Language of the refrain: Sinhala. A gloss, not a lyric reprint: someone hiding among the stars, hiding in a dream, left alone, asking when they will come.
 
-What we cannot write:
+What we cannot write yet:
 
-- The vocalist's name. None is published. We do not invent one to fill the gap.
-- A Creative Commons mark on the recording. It is not CC.
-- A hosted stem or rip. An isolated vocal is a derivative of a © 2026 master. Putting it in a CC BY 4.0 book would lie about that file.
+- The vocalist's name. It is not given in the sources available to us, so we leave it blank rather than guess.
+- A Creative Commons mark on the recording, which is not released under CC.
+- A hosted stem or rip. An isolated vocal is a derivative of a © 2026 master. It stays outside this CC BY 4.0 book.
 
-If the singer or the label later publishes a credit or a sample license, that line gets a name. Until then the honest credit is the missing one.
+If the singer or the label publishes a credit, we will add the name here, with thanks.
 
 ## This book's own license
 
 The journey text is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Embedded labs keep *their* licenses above. Credit both.
 
-If a published name is missing here, that is a gap to fix — not a claim that the work is ours.
+If a published name is missing here, tell us and we will add it. A missing name is never a claim that the work is ours.
