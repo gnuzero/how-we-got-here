@@ -1,0 +1,45 @@
+[title]
+other = "De la relee la Attention: cum am ajuns aici"
+
+[foreword]
+other = "Prefață"
+
+# hugo-book chrome (theme falls back to English keys otherwise).
+[Search]
+other = "Căutare"
+
+["Edit this page"]
+other = "Editează această pagină"
+
+["Last modified by"]
+other = "Ultima modificare de"
+
+[Languages]
+other = "Limbi"
+
+[Expand]
+other = "Afișează"
+
+[Calendar]
+other = "Calendar"
+
+[Backward]
+other = "Înapoi"
+
+[Forward]
+other = "Înainte"
+
+[Edit]
+other = "Editează"
+
+[Logo]
+other = "Siglă"
+
+[Menu]
+other = "Meniu"
+
+["Table of Contents"]
+other = "Cuprins"
+
+[Thumbnail]
+other = "Miniatură"
