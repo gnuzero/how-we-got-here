@@ -5,11 +5,9 @@ Mechanism and desk instructions: `static/labs/_shared/README.md`.
 
 ## Order (Nayana, 2026-11-05: desks localise labs themselves via strings files)
 1. difference-engine — done.
-2. pebble-trays — done (second PR; 44 keys; `note` context tells desks not to claim "one English copy") and
-   vm-terminal (wrapper chrome only, ~19 HTML + 5 JS; guest Linux output stays English).
-3. mini-cpu (~55 HTML + ~35 JS; most embedded lab, 47 embeds — budget a careful DOM diff, the
-   assembler error messages are JS-generated).
-4. breadboard frame (wrapper text only; circuitjs1 itself is GPL third-party, not translated).
+2. pebble-trays — done (44 keys); vm-terminal — done (15 keys; guest Linux output stays English).
+3. mini-cpu — done (72 keys; assembler error messages are JS-generated).
+4. breadboard — done (wrapper chrome only, 7 keys; circuitjs1 / Falstad UI stays English, GPL).
 5. analytical-engine frame text last (our wrapper chrome only; Walker's scripts/*.js and its
    alert() calls stay as upstream).
 
