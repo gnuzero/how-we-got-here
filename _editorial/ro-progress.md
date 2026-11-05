@@ -120,9 +120,17 @@
 - **Still NEVERIFICAT (10):** FSM labels; locality terms; 64-byte line; cache taxonomy; literal "MESI"; mid-2000s power-wall narrative; Rus 1997 pages; µop chronology; Arm licence tiers (secondary only); RAND P-7316.
 - **Discrepancy flagged on page:** DACICC-1 years ICTP 1959–1963 vs Iancu/Guran 1958–1959.
 
+### Early chapters 22–28 (batch 4, fact-checked 2026-11-05)
+
+- **Primaries opened (batch 4):** Ritchie & Thompson 1974 (Brewer copy, CACM 17(7) pp. 365–375); Ritchie hist/chist; Corbató 1962; Van Vleck CTSS; Multicians history; GNU initial announcement (gnu.org + Wayback 20201224); Linux RELNOTES-0.12, COPYING; GPL-2.0; Torvalds 1991 post; Kilburn et al. 1962 (Crossref DOI 10.1109/TEC.1962.5219356); Denning 1968/1970; namespaces(7), cgroups(7), cgroup-v2; OCI runtime-spec; RISC-V Unprivileged 20240411; First Draft (EDVAC); Backus 1957; COBOL 1960 (OCR); McCarthy 1960; Aycock 2003.
+- **Closed:** CACM pages, GNU 1983 announcement, GPL switch (0.12 relnotes), Kilburn IRE citation, cpu.max unit (µs).
+- **Computed:** addi x1,x0,5 = 0x00500093; awk sum 500000500000; ELF magic 7f 45 4c 46.
+- **Still NEVERIFICAT (11):** BSD/SysV omission (approved); 0.12 release date; IRE page numbers; x86-64 paging/TLB/NX (SDM 403); /proc/self/maps; VM vs container cost; container escapes; x86 asm examples; Hopper/bitsavers PDF; compiler stages; HotSpot/V8/CLR.
+- **Discrepancy flagged on page:** Atlas 32 page positions (Kilburn) vs "16 pages" (Multicians).
+
 ## Not yet (pending)
 
-- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (batch 4: ch. 22–28 next)
+- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (batch 5: ch. 29–34 next)
 
 ## Notes
 
