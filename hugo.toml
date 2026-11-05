@@ -36,6 +36,23 @@ defaultContentLanguageInSubdir = false
   weight = 4
   title = "ரிலேயிலிருந்து Attention வரை: நாம் இங்கு எப்படி வந்தோம்"
 
+# Chinese: co-authoritative source language (VISION.md, Language authority lock 2026-09-26).
+# Simplified is the master text; Traditional is derived (OpenCC s2twp) + terminology review.
+# `locale` is emitted as <html lang> by hugo-book, so keep the BCP 47 script subtags.
+[languages.zh-hans]
+  label = "简体中文"
+  locale = "zh-Hans"
+  contentDir = "content.zh-hans"
+  weight = 5
+  title = "从继电器到注意力机制：我们如何走到今天"
+
+[languages.zh-hant]
+  label = "繁體中文"
+  locale = "zh-Hant"
+  contentDir = "content.zh-hant"
+  weight = 6
+  title = "從繼電器到注意力機制：我們如何走到今天"
+
 [params]
   BookSection = "posts"
   BookRepo = "https://github.com/gnuzero/how-we-got-here"
