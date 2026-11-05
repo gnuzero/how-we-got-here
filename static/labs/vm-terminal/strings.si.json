@@ -1,0 +1,17 @@
+{
+  "page.title": "VM Terminal Lab",
+  "page.heading": "VM Terminal Lab",
+  "page.subtitle": "සැබෑ x86 යන්ත්‍රයක්, WASM හරහා ඔබේ browser එක තුළම ධාවනය වේ — සැබෑ Linux එකක්, සැබෑ shell එකක්, සැබෑ විධාන boot කරයි",
+  "btn.boot": "VM ආරම්භ කරන්න",
+  "btn.restart": "නැවත ආරම්භ කරන්න",
+  "status.idle": "තවම ආරම්භ කර නැත — VM ආරම්භ කරන්න ඔබන්න",
+  "first.heading": "පළමු විධාන",
+  "first.body_html": "<strong>VM ආරම්භ කරන්න</strong> ඔබා, login/shell prompt එක එන තුරු රැඳී සිට, keyboard එක VM වෙත යොමු වීමට <strong>කළු තිරය මත click කරන්න</strong>. මේවා උත්සාහ කරන්න:",
+  "first.hint": "සෑම විධානයක්ම type කර Enter ඔබන්න. සැසිය හිර වුවහොත්, නැවත ආරම්භ කරන්න මගින් නව boot එකකට ගෙන යයි.",
+  "note_html": "<strong>v86</strong> මගින් බලගැන්වේ — WebAssembly හි සම්පූර්ණ x86 emulator එකකි. Runtime, BIOS සහ Linux image මෙම පිටුව අසල <code>assets/</code> යටතේ ඇතුළත් කර ඇත (පළමු boot එකට සජීවී CDN එකක් අවශ්‍ය නැත). <a href=\"ORIGIN.md\">මූලාශ්‍රය &amp; බලපත්‍ර</a>",
+  "status.already": "දැනටමත් ධාවනය වේ — keyboard සඳහා තිරය මත click කරන්න",
+  "status.loading": "දේශීය VM image එක load කර boot කරමින්…",
+  "status.booting": "Kernel එක boot වෙමින්…",
+  "status.running": "ධාවනය වේ — තිරය මත click කර, whoami / uname / ls උත්සාහ කරන්න",
+  "status.restarted": "නැවත ආරම්භ විය — prompt එක නැවත ආ විට තිරය මත click කරන්න"
+}
