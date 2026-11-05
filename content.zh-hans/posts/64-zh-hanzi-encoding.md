@@ -69,7 +69,7 @@ Big5 收 13053 字（去掉两个重复字后为 13051），字集取自 1983 �
 - 全国标准信息公共服务平台，GB 18030-2000 记录（English: GB 18030-2000 official record），std.samr.gov.cn。[链接](https://std.samr.gov.cn/gb/search/gbDetailed?id=71F772D79585D3A7E05397BE0A0AB82A)
 - 林宁，《关于GB18030汉字编码标准集》（English: On the GB 18030 Chinese character set standard），中国计算机报，新浪科技转载，2001-07-26。[链接](http://tech.sina.com.cn/s/2001-07-26/1850.html)
 - 教育部，GB 18030-2022 发布会新闻（English: Ministry of Education news on the GB 18030-2022 launch），2022-07-29。[链接](http://www.moe.gov.cn/jyb_xwfb/gzdt_gzdt/moe_1485/202207/t20220729_649675.html)
-- 中央研究院，《認識中文字元碼》第 9 节（English: Understanding Chinese character codes, section 9: Big5），idv.sinica.edu.tw。[链接](https://idv.sinica.edu.tw/bear/charcodes/Section09.htm)
+- 中央研究院，《認識中文字元碼》第 9 节（English: Understanding Chinese character codes, section 9: Big5），idv.sinica.edu.tw。[链接（存档）](https://web.archive.org/web/20251016233709/https://idv.sinica.edu.tw/bear/charcodes/Section09.htm)
 - 華視新聞，1984-03-30 关于五大软体专案签约的报道（English: CTS television news report on the signing of the Big Five software project）。[链接](https://news.cts.com.tw/cts/politics/198403/198403301730592.html)
 - 香港特區政府共通語言資訊基建，香港增補字符集介绍页面（English: Hong Kong government Common Chinese Language Interface: what HKSCS is），ccli.gov.hk。[链接](https://www.ccli.gov.hk/tc/hkscs/what_is_hkscs.html)
 - 全国标准信息公共服务平台，《TC28 全国信息技术标准化技术委员会》（English: TC28, National IT Standardization Technical Committee），std.samr.gov.cn。[链接](https://std.samr.gov.cn/search/orgDetailView?tcCode=TC28)
