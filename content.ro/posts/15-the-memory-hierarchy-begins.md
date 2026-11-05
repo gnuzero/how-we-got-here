@@ -15,7 +15,7 @@ labs: ["breadboard"]
 schematics: "Diagram: 6T SRAM cell + 1T1C DRAM cell + memory hierarchy pyramid"
 ---
 
-Capitolul 09 a construit un bit de memorie din bistabile. Funcționează, dar e scump. Capitolul acesta urmărește momentul în care proiectanții au acceptat că memoria nu poate fi în același timp mare, rapidă și ieftină și au început să o organizeze pe niveluri. Problema reapare la scară modernă în capitolul 35, „Zidul memoriei”.
+Capitolul 14, „Logică secvențială”, a construit un bit de memorie din bistabile. Funcționează, dar e scump. Capitolul acesta urmărește momentul în care proiectanții au acceptat că memoria nu poate fi în același timp mare, rapidă și ieftină și au început să o organizeze pe niveluri. Problema reapare la scară modernă în capitolul 40, „Zidul memoriei”.
 
 ## 1946: ierarhia scrisă negru pe alb
 
@@ -33,7 +33,7 @@ Nivelurile următoare sunt descrise la fel de explicit. Pentru problemele care n
 
 Memoria semiconductoare a intrat întâi pe nivelurile mici și rapide. Computer History Museum scrie că, până la mijlocul anilor '70, miezurile magnetice de ferită au fost tehnologia RAM dominantă, cu cel mai mic cost pe bit, iar RAM-urile bipolare au intrat pe piață pentru memorii de lucru rapide (*scratchpad*) și memorii tampon (*cache*) de înaltă performanță (CHM, *The Silicon Engine*, „1966: Semiconductor RAMs Serve High-speed Storage Needs”, [link](https://www.computerhistory.org/siliconengine/semiconductor-rams-serve-high-speed-storage-needs/), accesat 2026-11-05). Potrivit aceleiași pagini, Robert Norman a brevetat la Fairchild, în 1963, un design de RAM static semiconductor, iar în 1965 IBM a realizat SP95, un RAM de 16 biți pentru System/360 Model 95 (ibid.). Tot CHM notează că System/370 Model 145, livrat în 1971, a fost primul calculator comercial IBM cu memorie principală semiconductoare (ibid.).
 
-O celulă SRAM ține bitul într-o pereche de inversoare legate în cruce, adică reacția din capitolul 09, plus tranzistori de acces; bitul stă acolo static, cât timp există alimentare. <!-- NEVERIFICAT: întreaga descriere a celulei SRAM nu provine din sursele deschise (pagina CHM 1966 nu descrie celula); numărul de tranzistori al celulei SRAM CMOS clasice (6T) și ordinele de mărime de arie nu provin dintr-o sursă deschisă în această sesiune. -->
+O celulă SRAM ține bitul într-o pereche de inversoare legate în cruce, adică reacția din capitolul 14, plus tranzistori de acces; bitul stă acolo static, cât timp există alimentare. <!-- NEVERIFICAT: întreaga descriere a celulei SRAM nu provine din sursele deschise (pagina CHM 1966 nu descrie celula); numărul de tranzistori al celulei SRAM CMOS clasice (6T) și ordinele de mărime de arie nu provin dintr-o sursă deschisă în această sesiune. -->
 
 ## DRAM: dens, ieftin, pretențios
 
@@ -47,4 +47,8 @@ Celula care a câștigat e și mai simplă. Brevetul lui Robert H. Dennard (IBM)
 
 Paginile CHM deschise arată același compromis ca în 1946: RAM-urile semiconductoare bipolare au intrat întâi pe nivelurile mici și rapide (CHM 1966, ibid.), iar DRAM-ul 1103 a preluat memoria principală pe criteriul prețului (CHM 1970, ibid.). Fiecare nivel are mai multă capacitate și e mai lent decât precedentul, exact formula din §4.1 (Burks et al., 1946). <!-- NEVERIFICAT: regula generală „mai rapid = mai scump pe bit” nu e formulată ca atare în sursele deschise; CHM spune doar că miezurile aveau cel mai mic cost pe bit. -->
 
-Decalajul de viteză dintre logică și DRAM e subiectul din capitolul 35, iar capitolul 15 (cache-urile) arată cum se gestionează automat primele niveluri.
+Decalajul de viteză dintre logică și DRAM e subiectul din capitolul 40, iar capitolul 20 (cache-urile) arată cum se gestionează automat primele niveluri.
+
+**Încearcă acum.** Laboratorul de mai jos nu conține o celulă de memorie: e aceeași poartă AND de la început. Folosește-l ca să reții deosebirea din capitolul 14: la o poartă, ieșirea urmează imediat intrările; memoria apare abia când ieșirea se întoarce în intrare.
+
+{{< lab type="breadboard" height="700" >}}

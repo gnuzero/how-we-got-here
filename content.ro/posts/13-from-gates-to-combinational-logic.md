@@ -15,7 +15,7 @@ labs: ["breadboard"]
 schematics: "Diagram: full adder gate-level schematic + 4-bit ripple carry adder + 2-bit ALU block diagram"
 ---
 
-O poartă singură nu face aritmetică. Capitolul acesta compune porțile din capitolul 07 în circuite combinaționale, adică circuite fără memorie, în care ieșirea depinde doar de intrările prezente. Ajungem la sumator, apoi la ideea de ALU, și dăm de prima limită structurală: transportul.
+O poartă singură nu face aritmetică. Capitolul acesta compune porțile din capitolul 12 („Porți logice din tranzistori”) în circuite combinaționale, adică circuite fără memorie, în care ieșirea depinde doar de intrările prezente. Ajungem la sumator, apoi la ideea de ALU, și dăm de prima limită structurală: transportul.
 
 ## Un sumator binar, încă din 1938, cu relee
 
@@ -30,13 +30,17 @@ Pentru un bit, un semi-sumator (*half adder*) primește A și B și produce suma
 
 Am verificat noi aceste două ecuații pe toate cele opt combinații de intrare. Rezultatul e întotdeauna A + B + Cin = 2·Cout + S. Ecuațiile sunt algebră booleană, nu un fapt istoric, așa că nu au nevoie de o sursă externă.
 
+**Încearcă acum.** Laboratorul de mai jos se deschide tot pe o poartă AND, adică exact transportul semi-sumatorului de mai sus (C = A AND B). Pune ambele intrări pe 1 și urmărește ieșirea trecând pe 1: poarta aceasta e legătura pe care, în secțiunea următoare, o înlănțuim de la un etaj la altul.
+
+{{< lab type="breadboard" height="700" >}}
+
 ## Transportul în lanț (ripple-carry): simplu și lent dintr-un motiv precis
 
 Lipești n sumatoare complete în lanț, iar Cout-ul fiecăruia devine Cin-ul următorului. Rezultatul e corect, dar bitul cel mai semnificativ nu își știe suma până când transportul nu a trecut, în cazul cel mai rău, prin toate etajele de dedesubt (vezi formularea din 1946 de mai jos).
 
 Problema a fost numită explicit încă din 1946. În *Preliminary Discussion* de la IAS, Burks, Goldstine și von Neumann descriu adunarea paralelă în doi pași: întâi se adună cifrele corespunzătoare, apoi se efectuează transporturile, „and this must be done in sequence since a carry may produce a carry” (Burks, A. W., Goldstine, H. H., von Neumann, J., *Preliminary Discussion of the Logical Design of an Electronic Computing Instrument*, IAS, 1946, §5.5; scanare IAS [ias.edu](https://www.ias.edu/sites/default/files/library/Prelim_Disc_Logical_Design.pdf), citită prin OCR, și transcriere HTML [cs.unc.edu](https://www.cs.unc.edu/~adyilie/comp265/vonNeumann.html), accesate 2026-11-05). Pentru cuvintele lor de 40 de cifre binare, „in the worst case, 39 carries will occur”, iar autorii consideră ineficient să aloci pasului de transport de 39 de ori timpul pasului de adunare: „either the carries must be accelerated, or use must be made of the average number of carries or both” (ibid., §5.5). În §5.6 arată că, pentru două cuvinte de lungime n, cea mai lungă secvență de transport are în medie o lungime „not in excess of 2 log n” (ibid., §5.6; verificat în transcrierea UNC).
 
-Ca ilustrare (calculul nostru, nu o cifră din vreo sursă): dacă fiecare etaj de sumator adaugă două niveluri de poartă pe drumul transportului, un sumator ripple pe 32 de biți are în cazul cel mai rău un drum de ordinul a 64 de niveluri de poartă. Dacă am lua întârzierea maximă de 15 ns a unei porți NAND 74LS00 din capitolul 07 (TI, SN74LS00 datasheet, SDLS025D, §6.9, [PDF](https://www.ti.com/lit/ds/symlink/sn74ls00.pdf), accesat 2026-11-05), ar ieși aproape o microsecundă. Cifra e un exemplu de ordin de mărime, nu o proiectare reală.
+Ca ilustrare (calculul nostru, nu o cifră din vreo sursă): dacă fiecare etaj de sumator adaugă două niveluri de poartă pe drumul transportului, un sumator ripple pe 32 de biți are în cazul cel mai rău un drum de ordinul a 64 de niveluri de poartă. Dacă am lua întârzierea maximă de 15 ns a unei porți NAND 74LS00 din capitolul 12 (TI, SN74LS00 datasheet, SDLS025D, §6.9, [PDF](https://www.ti.com/lit/ds/symlink/sn74ls00.pdf), accesat 2026-11-05), ar ieși aproape o microsecundă. Cifra e un exemplu de ordin de mărime, nu o proiectare reală.
 
 ## Ce face industria: transport anticipat (look-ahead) în aceeași capsulă
 
@@ -48,4 +52,4 @@ Sunt valori *tipice* din fișa producătorului, nu maxime garantate și nici mă
 
 O unitate aritmetică și logică (ALU) e, în esență, un sumator plus câteva funcții logice bit cu bit (AND, OR, XOR), urmate de un multiplexor care alege ce rezultat iese, comandat de câțiva biți de operație. <!-- NEVERIFICAT: n-am deschis o fișă tehnică de ALU (ex. 74181) în această sesiune; descrierea de mai sus e generică și nu conține cifre. --> Ideea unei unități aritmetice centrale e și ea din anii '40: von Neumann o numește în 1945 „central arithmetical part”, CA (von Neumann, *First Draft of a Report on the EDVAC*, 30 iunie 1945, §2.2, ediția Godfrey, [PDF](https://people.csail.mit.edu/brooks/idocs/JvN.pdf), accesat 2026-11-05).
 
-Circuitele din capitolul acesta nu păstrează nimic după ce intrările se schimbă; elementele care țin minte sunt subiectul capitolului 09.
+Circuitele din capitolul acesta nu păstrează nimic după ce intrările se schimbă; elementele care țin minte sunt subiectul capitolului 14 („Logică secvențială”).

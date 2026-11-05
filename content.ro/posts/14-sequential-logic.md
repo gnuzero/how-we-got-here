@@ -15,11 +15,11 @@ labs: ["breadboard"]
 schematics: "Diagram: SR latch + D flip-flop schematic + timing diagram with setup/hold windows"
 ---
 
-Circuitele din capitolul 08 nu țin minte nimic. Logica secvențială adaugă elemente care păstrează o valoare după ce intrarea a dispărut, deci ieșirea depinde și de starea anterioară.
+Circuitele din capitolul 13 („De la porți la logică combinațională”) nu țin minte nimic. Logica secvențială adaugă elemente care păstrează o valoare după ce intrarea a dispărut, deci ieșirea depinde și de starea anterioară.
 
 ## Memorie din reacție
 
-Mecanismul e reacția inversă. Leagă două porți NAND în cruce, cu ieșirea fiecăreia la o intrare a celeilalte, și obții un circuit basculant SR (*latch*) cu intrări active pe zero (S̄, R̄). Tabelul de mai jos l-am derivat noi din tabelul NAND din capitolul 07:
+Mecanismul e reacția inversă. Leagă două porți NAND în cruce, cu ieșirea fiecăreia la o intrare a celeilalte, și obții un circuit basculant SR (*latch*) cu intrări active pe zero (S̄, R̄). Tabelul de mai jos l-am derivat noi din tabelul NAND din capitolul 12:
 
 | S̄ | R̄ | Q | Q̄ | Comportament |
 |---|---|---|---|---|
@@ -30,7 +30,11 @@ Mecanismul e reacția inversă. Leagă două porți NAND în cruce, cu ieșirea 
 
 Rândul „ține starea” e memoria: cu ambele intrări inactive, circuitul rămâne în oricare dintre cele două stări stabile în care a fost lăsat. Rândul interzis apare și într-o fișă tehnică reală. Pentru bistabilul 74LS74A, TI notează că, atunci când PRE și CLR sunt amândouă jos, ambele ieșiri sunt sus, o configurație care „is nonstable; that is, it will not persist when either preset or clear returns to its inactive (high) level” (TI, *SN5474, SN54LS74A, SN54S74, SN7474, SN74LS74A, SN74S74 Dual D-Type positive-edge-triggered flip-flops with preset and clear*, SDLS119, dec. 1983, rev. mart. 1988, p. 1, nota la „function table”, [PDF](https://www.ti.com/lit/ds/symlink/sn74ls74a.pdf), accesat 2026-11-05; PDF scanat, citit de noi de pe imaginea paginii).
 
-Elementul acesta bistabil e și cel la care se gândeau proiectanții din anii '40. Burks, Goldstine și von Neumann enumeră „the flip-flop or trigger circuit” printre cele mai comune forme de stocare din circuitele electrice (Burks, Goldstine, von Neumann, *Preliminary Discussion…*, IAS, 1946, §4.1; transcriere HTML [cs.unc.edu](https://www.cs.unc.edu/~adyilie/comp265/vonNeumann.html), accesat 2026-11-05). Capitolul 10 arată de ce l-au respins totuși ca memorie principală.
+Elementul acesta bistabil e și cel la care se gândeau proiectanții din anii '40. Burks, Goldstine și von Neumann enumeră „the flip-flop or trigger circuit” printre cele mai comune forme de stocare din circuitele electrice (Burks, Goldstine, von Neumann, *Preliminary Discussion…*, IAS, 1946, §4.1; transcriere HTML [cs.unc.edu](https://www.cs.unc.edu/~adyilie/comp265/vonNeumann.html), accesat 2026-11-05). Capitolul 15 („Începutul ierarhiei de memorie”) arată de ce l-au respins totuși ca memorie principală.
+
+**Încearcă acum.** Laboratorul de mai jos e tot o poartă simplă: comută intrările și vezi că ieșirea se schimbă *imediat*. Acesta e comportamentul combinațional din capitolul anterior. Capitolul de față arată ce se întâmplă când legi porțile înapoi în ele însele, ca ieșirea să *rămână* după ce intrarea a dispărut.
+
+{{< lab type="breadboard" height="700" >}}
 
 ## Bistabilul D: fronturi, nu niveluri
 
@@ -48,4 +52,4 @@ Hold-ul pune o limită de altă natură. Dacă drumul cel mai *scurt* dintre dou
 
 ## Ce deblochează asta
 
-Cu registre făcute din bistabile D poți ține un rezultat de la un ciclu la altul, adică poți construi registre de lucru; acumulatorul din raportul IAS, de exemplu, e un organ de stocare paralel (Burks et al., 1946, §5.5, citat în capitolul 12). Același buget de timp, „întârzierea cea mai lungă dintre două registre fixează ceasul”, revine în capitolul 12 la calea de date cu un singur ciclu, iar în capitolul 13 e motivul pentru care tăiem drumul în etaje de pipeline.
+Cu registre făcute din bistabile D poți ține un rezultat de la un ciclu la altul, adică poți construi registre de lucru; acumulatorul din raportul IAS, de exemplu, e un organ de stocare paralel (Burks et al., 1946, §5.5, citat în capitolul 13). Același buget de timp, „întârzierea cea mai lungă dintre două registre fixează ceasul”, revine în capitolul 17 („Proiectarea căii de date”) la calea de date cu un singur ciclu, iar în capitolul 18 („Pipelining”) e motivul pentru care tăiem drumul în etaje de pipeline.
