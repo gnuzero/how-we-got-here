@@ -497,3 +497,14 @@ All arithmetic was checked in Python.
   - Tamil chapters still name the buttons in English (for example **Step**-ஐ in 26 and 29), which no longer matches the Tamil buttons.
   - The iframe title is still English on this branch because `labIframeTitle` lives on ta-labs-1.
   - In the VM I did not type any commands.
+
+### Batch 4 — fork `forks/arun`, branch `ta-batch-4` from 5feee53 (2026-11-05 Asia/Colombo)
+
+- **Scope:** structural pass on 09, 14, 15, 16, 17, 25 and 29. Additions only; no existing section was deleted or rewritten.
+- **Gap notes:** a formal `தமிழ் இடைவெளிக் குறிப்பு` blockquote was added to all seven, after the existing prose gap paragraph. It is based on `ta-desk/research/gaps.md`, and YouTube is labelled as search results that were not watched.
+- **முதலில் சொற்கள்:** added to 09, 15, 16, 17 and 25. 14 and 29 already had it.
+- **Exercises with answers:** added to 09, 14, 16, 25 and 29, with the arithmetic checked in Python. 15 and 17 already had inline "கையால் முயல்க" exercises with answers, so they were left as they were.
+- **64:** English 64 names the RIRs and NIRs, so a short RIR section was added. Its sources are APNIC (service region: Sri Lanka and India are in South Asia; seven NIRs) and IRINN (run by NIXI, recognised by APNIC in March 2012).
+- **68:** no Memex body (held).
+- **Unverified markers:** none added.
+- **Build:** exit 0; `.hugo_build.lock` unchanged in git.
