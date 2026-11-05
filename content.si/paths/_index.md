@@ -12,7 +12,7 @@ draft: false
 - [Crypto සහ යුද්ධකාලීන පරිගණකකරණය](/si/paths/crypto-wartime/) — ඉලෙක්ට්‍රොනිකය බල කළ workload එකක් ලෙස රහස්‍යභාවය
 - [අන්තර්ජාලය ධාවනය කරන්නේ කවුද](/si/paths/who-runs-the-internet/) — අංක, නම්, encodings, සහ යටතේ ඇති protocols
 - [සොයන්න, ඉන්පසු කතා කරන්න](/si/paths/find-then-talk/) — විවෘත web එකට පෙර (සහ අසල) සෙවීම සහ peer සන්නිවේදනය
-- [රහස්‍යතාව / අනන්‍යතාව / එකඟතාව](/paths/privacy-identity-consent/) — protection, crypto, auth, සහ විරුද්ධකාරී ඉංජිනේරුකරණය
-- [ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්](/paths/visions-that-shipped/) — stack එකේ සිට ජීවත් වන platforms වෙත forward links
+- [රහස්‍යතාව / අනන්‍යතාව / එකඟතාව](/si/paths/privacy-identity-consent/) — protection, crypto, auth, සහ විරුද්ධකාරී ඉංජිනේරුකරණය
+- [ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්](/si/paths/visions-that-shipped/) — stack එකේ සිට ජීවත් වන platforms වෙත forward links
 
 අත්දැකීම තවමත් පළමුවයි: කියවීම ප්‍රමාණවත් නොවන තැන කශේරුකාව මත [labs](/labs/) වාඩි වේ.
