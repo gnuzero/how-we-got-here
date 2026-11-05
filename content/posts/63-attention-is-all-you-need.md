@@ -34,7 +34,7 @@ Because the op is matmuls plus a softmax, it maps onto the hardware of the previ
 
 One head tends to learn one kind of relationship. Multi-head attention runs several in parallel (different learned projections) and concatenates — syntactic, semantic, positional, long- and short-range in the same layer.
 
-The original Transformer used 8 heads. Modern LLMs typically use tens to low hundreds of query heads per layer (e.g. GPT-3: 96; Llama 3 405B: 128) across tens to ~100+ layers (Llama 3 405B: 126) — not routinely "hundreds" of either.
+The original Transformer's base model used 8 heads (the big model used 16). Modern LLMs typically use tens to low hundreds of query heads per layer (e.g. GPT-3: 96; Llama 3 405B: 128) across tens to ~100+ layers (Llama 3 405B: 126) — not routinely "hundreds" of either.
 
 ## Why It Became Dominant
 
