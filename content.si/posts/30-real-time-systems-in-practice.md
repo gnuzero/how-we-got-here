@@ -39,5 +39,124 @@ Post 29 න්‍යාය ආවරණය කළේය: දැඩි එදි�
 
 {{< lab type="vm-terminal" >}}
 
+## ගැඹුරින්: කාල අයවැයක් (timing budget) අතින් — පාලන loop එකක්, Pathfinder හි 8 Hz චක්‍රය, නියත-කාල කේතය සහ VM එකේ විචලනය මැනීම
+
+> **සිංහල මූලාශ්‍ර පිළිබඳ සටහන:** si.wikipedia හි "තථ්‍ය කාල මෙහෙයුම් පද්ධති" ලිපිය RTOS සංකල්පය හඳුන්වයි. Avionics සහතික කිරීම, Mars Pathfinder සිදුවීම, හෝ කාල අයවැයක් ගණනය කිරීම ගැන සිංහල ලිපියක් අපට හමු නොවීය.
+
+### 1. මූලික පද
+
+- **වසා දැමූ-ලූප පාලනය (closed-loop control):** සංවේදකය (sensor) කියවීම → ගණනය → ක්‍රියාකාරකය (actuator) වෙත විධානය, නැවත නැවතත්.
+- **චක්‍රය (cycle) / සංඛ්‍යාතය (rate):** loop එක එක් වරක් යාමට ඇති කාලය. 8 Hz = තත්පරයට 8 වතාවක් = චක්‍රයකට 0.125 s.
+- **කාල අයවැය (timing budget):** චක්‍රය තුළ එක් එක් කාර්යයට වෙන් කළ කාලය.
+- **Jitter (jitter):** එකම වැඩය නැවත කරන විට ධාවන කාලයේ විචලනය.
+- **Watchdog (watchdog):** deadline එකක් මග හැරුණු බව හඳුනාගෙන පද්ධතිය reset කරන යාන්ත්‍රණය.
+- **Design Assurance Level:** DO-178C හි මෘදුකාංගයේ අසාර්ථකත්වයේ බරපතළකම අනුව අරමුණු පරිමාණය කරන මට්ටම.
+
+### 2. වැඩ කළ උදාහරණය: පාලන loop එකක අයවැය (ආදර්ශ අංක)
+
+ආදර්ශ (illustrative) පාලකයක් 100 Hz වලින් ධාවනය වේ යැයි සිතමු → චක්‍රය = 1 / 100 = **10 ms**. එක් එක් කාර්යයේ WCET:
+
+| කාර්යය | WCET (ms) |
+|---|---|
+| සංවේදක කියවීම | 1.5 |
+| පාලන ගණනය | 3.0 |
+| ක්‍රියාකාරක ලිවීම | 1.0 |
+| සන්නිවේදනය | 2.0 |
+| **එකතුව** | **7.5** |
+
+භාවිතය U = 7.5 / 10 = **0.75**. ඉතිරි (margin) = 2.5 ms = 25%.
+
+දැන් අලුත් ලක්ෂණයකට (feature) 3 ms අවශ්‍ය යැයි සිතමු. එකතුව 10.5 ms > 10 ms → **සෑම චක්‍රයකම deadline මග හැරේ.** වේගවත් CPU එකක් "සාමාන්‍යයෙන්" 1 ms ඉතිරි කරයි නම් ප්‍රමාණවත් නොවේ. අයවැය ගණනය කරන්නේ **නරකම අවස්ථාව** සඳහාය. එසේම, කාර්යයන් ස්ථිර-priority ලෙස preempt කරන විට, U ≤ 1 පමණක් ප්‍රමාණවත් නොවේ (Post 29 හි RM බැඳීම බලන්න).
+
+### 3. සැබෑ උදාහරණය: Mars Pathfinder (1997)
+
+JPL හි Glenn Reeves ගේ 1997 දෙසැම්බර් 15 email එකෙන් (University of North Carolina පාඨමාලා පිටුවක පිටපත) කරුණු:
+
+- 1553 bus එක පාලනය කරන දෘඪාංගය Cassini යානයෙන් උරුම විය. එය "schedule activity at an 8 Hz rate" යන ක්‍රමය පැනවීය → චක්‍රය **.125 seconds**.
+- `bc_sched` කාර්යය ඊළඟ චක්‍රයේ bus ගනුදෙනු සකස් කළේය. `bc_dist` කාර්යය ලැබුණු දත්ත බෙදා හැරියේය.
+- අසාර්ථකත්වය: `bc_sched` අවදි වූ විට, `bc_dist` තම චක්‍රය අවසන් කර නොතිබුණි ("a hard deadline in the system"). පද්ධතිය "reset the computer" ලෙස ප්‍රතිචාර දැක්වීය.
+- හේතුව: ASI/MET (කාලගුණ) කාර්යය සමඟ IPC යාන්ත්‍රණය (pipes සහ `select()`) භාවිතය සහ සැකසුම. `select()` තුළ ඇති semaphore එක priority inheritance නොමැතිව සාදා තිබුණි. මෙය Post 29 හි විස්තර කළ **priority inversion** වේ.
+- Lab එකේදී "In less that 18 hours" ගැටලුව නැවත ඇති කර ගැනීමට හැකි විය. ගුවන් යානයේ debug ලක්ෂණ ලෙස trace/log එකතු කිරීම තබා තිබූ නිසාය.
+- විසඳුම: `semMCreate` හි "options" සඳහා Wind River සපයන global configuration variable එක වෙනස් කර **priority inheritance** සක්‍රීය කිරීම. Reeves සටහන් කරන්නේ මෙය එම පසු සාදන *සියලුම* select semaphores වලට බලපාන නිසා, විශ්ලේෂණයෙන් සහ පරීක්ෂණයෙන් අහිතකර බලපෑමක් නැති බව තහවුරු කළ බවයි.
+
+පාඩම: 0.125 s ක අයවැය "සාමාන්‍යයෙන්" ප්‍රමාණවත් විය. නමුත් කාර්ය අතර බෙදාගත් සම්පතක් (shared resource) නිසා නරකම අවස්ථාව අයවැය ඉක්මවා ගියේය.
+
+### 4. Mini-CPU: දත්ත මත රඳා නොපවතින කාලය
+
+ඉහත lab එකේ, අගය 0 ද නැද්ද යන්න අනුව output වෙනස් වන නමුත් කාලය **වෙනස් නොවන** වැඩසටහනක්. ලේබල නැත. `NOP v` යනු ලිපිනය 15 හි පරීක්ෂා කරන අගය v ය:
+
+```
+LDA 15    ; 0: A = v (Zero = 1 නම් v = 0)
+JZ 5      ; 1
+LDI 1     ; 2: v ≠ 0 මාර්ගය
+OUT       ; 3: 1 පෙන්වයි
+JMP 8     ; 4
+NOP       ; 5: v = 0 මාර්ගය (පිරවුම)
+LDI 9     ; 6
+OUT       ; 7: 9 පෙන්වයි
+HLT       ; 8
+NOP       ; 9–14 (හිස්)
+NOP
+NOP
+NOP
+NOP
+NOP
+NOP 0     ; 15: v
+```
+
+Bytes: `1F 85 51 E0 68 00 59 E0 F0 00 00 00 00 00 00 00`. Lab එකේ මූලාශ්‍ර කේතය ධාවනය කර පරීක්ෂා කළා: v = 0 → Output **9**, steps **6**; ලිපිනය 15 හි `NOP 3` නම් → Output **1**, steps **6**.
+
+ගණන් කිරීම: v ≠ 0 මාර්ගය 0, 1, 2, 3, 4, 8 = 6. v = 0 මාර්ගය 0, 1, 5, 6, 7, 8 = 6. `NOP` (ලිපිනය 5) හිතාමතාම තැබුවේ මාර්ග දෙක සමාන කිරීමටයි. Lab එකේ PR #26 පසු LDA මගින් Zero flag සකසයි. එබැවින් `LDA 15` පසු වහාම `JZ` භාවිත කළ හැකිය.
+
+සහතික කළ යුතු පද්ධතිවල, මාර්ග දෙකක කාලය වෙනස් නම් WCET ගණනය කරන්නේ දිගම මාර්ගයෙනි. මාර්ග සමාන කිරීමෙන් jitter නැති වේ.
+
+### 5. VM terminal: සාමාන්‍ය-අරමුණු OS එකේ විචලනය මැනීම
+
+ඉහත VM terminal එක Linux 4.16 සහ BusyBox ධාවනය කරයි. මෙම විධාන අපි එම image එකේම (serial console හරහා) ධාවනය කළෙමු:
+
+```
+time awk 'BEGIN{for(i=0;i<100000;i++)s+=i; print s}'
+```
+
+එකම විධානය 5 වතාවක් ධාවනය කළ විට `real` කාලය: 0.72, 0.62, 0.61, 0.62, 0.62 s. පළමු ධාවනය 16% පමණ මන්දගාමී විය. ඔබේ browser එකේ අංක වෙනස් වනු ඇත (VM එක JavaScript තුළ ධාවනය වන නිසා). වැදගත් වන්නේ **විචලනය**යි: සාමාන්‍ය-අරමුණු පද්ධතියක එකම වැඩය එකම කාලයක් නොගනී.
+
+Linux හි තත්‍ය කාල scheduling පන්ති බලන්න:
+
+```
+chrt -m
+chrt -p $$
+chrt -f 50 awk 'BEGIN{for(i=0;i<100000;i++)s+=i; print s}'
+```
+
+- `chrt -m`: `SCHED_FIFO` සහ `SCHED_RR` priority 1–99, `SCHED_OTHER` 0/0.
+- `chrt -p $$`: shell එක `SCHED_OTHER` priority 0 (සාමාන්‍ය time-sharing).
+- `chrt -f 50 …`: FIFO priority 50 යටතේ ධාවනය කර `4999950000` මුද්‍රණය කරයි.
+
+FIFO priority දීම *විචලනය අඩු කළ හැකි* නමුත් සහතිකයක් **නොදේ**: kernel interrupts, cache සහ emulator එක තවමත් බලපායි.
+
+### 6. DO-178C ගැන එක් නිවැරදි කරුණක්
+
+FAA හි Advisory Circular AC 20-115D (2017 ජූලි 21) "RTCA DO-178C, Software Considerations in Airborne Systems and Equipment Certification, dated December 13, 2011" (සහ සමාන EUROCAE ED-12C) පිළිගනී (recognizes). මට්ටම් අනුව අරමුණු වගුව DO-178C හි Annex A හි ඇත. DO-178C එයම RTCA හි මිලදී ගත යුතු ලේඛනයක් බැවින් අපි එහි වගු මෙහි උපුටා නොදක්වමු.
+
+### 7. පැන්සලෙන් අභ්‍යාසය
+
+1. 50 Hz loop එකක චක්‍රය කීයද? WCET 12 ms, 4 ms සහ 2 ms කාර්ය තුනක් සඳහා U සහ margin සොයන්න.
+2. Pathfinder හි චක්‍රය 0.125 s. තත්පර 60 ක චක්‍ර කීයක් ඇත්ද?
+3. §4 වැඩසටහනේ පිරවුම් `NOP` එක ඉවත් කළොත් වැඩසටහන `LDA 15 / JZ 5 / LDI 1 / OUT / JMP 7 / LDI 9 / OUT / HLT` වේ. මාර්ග දෙකේ steps කීයද?
+4. 5 ධාවනවල කාල 0.72, 0.62, 0.61, 0.62, 0.62 හි සාමාන්‍යය (mean) සහ උපරිමය (max) කීයද? WCET ලෙස භාවිත කළ යුත්තේ කුමක්ද?
+
+(පිළිතුරු:
+1. 1 / 50 = **20 ms**. U = 18 / 20 = **0.9**. Margin = **2 ms** (10%).
+2. 60 / 0.125 = **480**.
+3. v ≠ 0: 0, 1, 2, 3, 4, 7 = **6**. v = 0: 0, 1, 5, 6, 7 = **5** (lab මූලාශ්‍ර කේතය මත පරීක්ෂා කළා). මාර්ග අසමාන වේ, එනම් කාලයෙන් v ගැන තොරතුරු කාන්දු වේ.
+4. Mean = 3.19 / 5 = **0.638 s**. Max = **0.72 s**. මැනීම් 5 කින් WCET සහතික කළ නොහැක. උපරිමය පවා පහළ සීමාවක් (lower bound) පමණි. සහතික කිරීමට විශ්ලේෂණයක් අවශ්‍යයි.)
+
+**මෙම කොටසේ මූලාශ්‍ර:**
+- Glenn Reeves (JPL), "What really happened on Mars?" email, 15 Dec 1997. University of North Carolina පාඨමාලා පිටපත: https://www.cs.unc.edu/~anderson/teach/comp790/papers/mars_pathfinder_long_version.html (නිල නොවන පිටපත; කතුවරයාගේම පාඨය).
+- Mike Jones, "What really happened on Mars?" (Cornell CS614 පිටපත): https://www.cs.cornell.edu/courses/cs614/1999sp/papers/pathfinder.html (ද්විතීයික පසුබිම).
+- FAA, AC 20-115D, "Airborne Software Development Assurance Using EUROCAE ED-12( ) and RTCA DO-178( )", 2017-07-21: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_20-115D.pdf
+- මෙම පොතේ mini-CPU lab එකේ මූලාශ්‍ර කේතය සහ VM terminal image එක (Linux 4.16.13, BusyBox v1.28.4). §4 සහ §5 හි ප්‍රතිඵල අපි ධාවනය කර ලබා ගත්තෙමු.
+- §2 හි පාලකය සහ WCET අගයන් ආදර්ශ (illustrative) වේ.
+
 **පිටවීමේ දොර:** RTCA DO-178C, *Software Considerations in Airborne Systems and Equipment Certification* — මෙම පෝස්ට් එක නම් කරන ප්‍රාථමික සිවිල්-avionics මෘදුකාංග සහතික ප්‍රමිතිය (සහතික අරමුණු Design Assurance Level අනුව පරිමාණය වේ).
 
