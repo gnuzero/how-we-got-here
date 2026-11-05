@@ -550,3 +550,8 @@ All arithmetic was checked in Python.
   - On the analytical engine: Reset, Step ×5 and Start.
   - No console errors and no leftover placeholders. The PNG section titles show in English by design; only their alt text is in Tamil.
   - **Not tested:** inside the external Falstad iframe; it loads, but its UI is English and not ours.
+
+## ta-polish-1: English possessive in Tamil text (base 24fbe9f, chapter-map-rename-1)
+
+- `static/labs/breadboard/strings.ta.json` `note_html`: "Falstad’s நீக்கப்பட்ட `/circuits/and.txt`" → "Falstad தளத்திலிருந்து நீக்கப்பட்ட …". Tags/`<code>` unchanged; checker 0 errors; Hugo build exit 0.
+- Swept all `static/labs/*/strings.ta.json`, `i18n/ta.toml`, `content.ta` for 's inside Tamil sentences. All other hits are proper names, titles, quotes, or English glosses and were left as-is: Little's law (40-the-memory-wall, 59-cuda-cores-warps-and-occupancy), Amdahl's law (22-superscalar-multicore), two's complement (13-from-gates-to-combinational-logic, 25-arm-and-risc-v-the-architecture-landscape-today), Moore's Law (41-the-clock-speed-wall, 53-what-7nm-actually-means, 56-moore-s-law), GNU's Not Unix (28-the-gnu-movement-and-linux), source titles in 03-babbage-engines, 07-relays-and-electromechanical-logic, 41, 48-usenet-archie-gopher-and-the-pre-web-internet, 53, and King's College London (06-woodblock-to-movable-type).
