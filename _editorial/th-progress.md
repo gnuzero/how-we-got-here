@@ -225,3 +225,6 @@ Notes:
 ## Distill wave 51–60 start (2026-09-07)
 - 51 written first to confirm (EN Jules match; อ่านเพิ่ม ทรงพล kept)
 - 52–60 in flight
+
+## Gap pass 6 (th-gaps-6, 2026-09-26)
+- 64, 67, 50, 51, 37 deepened (Mira); fact-check commit: ch64 leaked aside removed + ส่งมอบ→เผยแพร่ + Punycode insert positions; ch67 RFC 10024 (was draft -05) + ClientHello conditions/header bytes; ch50 2005 interview is a separate Intel transcript; ch51 dies/wafer 198/411 + UCIe slide 24; ch37 BridgeStack dropped from video_prompt
