@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html{{ with (or .Site.Language.Locale .Site.Language.Lang) }} lang="{{ . }}"{{ end }}>
+<head>
+  <title>{{ .Permalink }}</title>
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
+  {{- /* Same gate as layouts/_partials/docs/inject/head.html */ -}}
+  {{- if .Site.Params.noindex -}}
+  <meta name="robots" content="noindex, nofollow">
+  {{- end -}}
+</head>
+</html>
