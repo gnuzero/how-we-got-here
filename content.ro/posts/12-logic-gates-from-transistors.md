@@ -15,7 +15,7 @@ labs: ["breadboard"]
 schematics: "Diagram: CMOS inverter schematic + NAND/NOR gate transistor-level schematics"
 ---
 
-Capitolul 06 ne-a lăsat cu două tipuri de MOSFET, cu canal n și cu canal p. Aici le punem împreună.
+Capitolul 11, „Tranzistorul: de la BJT la MOSFET”, ne-a lăsat cu două tipuri de MOSFET, cu canal n și cu canal p. Aici le punem împreună.
 
 ## Inversorul: cea mai mică unitate CMOS
 
@@ -33,7 +33,7 @@ Adoptarea a fost lentă, iar CHM explică de ce. CMOS a avut la început limită
 
 Ca să avem cifre măsurabile, luăm o poartă reală, chiar dacă nu e CMOS. Fișa tehnică Texas Instruments SN74LS00 descrie circuitele ca „quadruple, 2-input NAND gates”, adică patru porți NAND cu două intrări într-o capsulă (TI, *SNx400, SNx4LS00, and SNx4S00 Quadruple 2-Input Positive-NAND Gates*, SDLS025D, dec. 1983, rev. mai 2017, §8.1 „Overview”, [PDF](https://www.ti.com/lit/ds/symlink/sn74ls00.pdf), accesat 2026-11-05). Pentru varianta LS, tabelul *Switching Characteristics* (§6.9, la VCC = 5 V, TA = 25 °C, RL = 2 kΩ, CL = 15 pF) dă o întârziere de propagare tPLH tipic 9 ns și maximum 15 ns, iar tPHL tipic 10 ns și maximum 15 ns (ibid., §6.9).
 
-Aceste cifre sunt condiții de test din fișa tehnică, cu o sarcină dată. Nu sunt viteza unei porți dintr-un cip modern, și nici o măsurătoare făcută de noi. Fișa precizează că intrările sunt „TTL compliant” (ibid., §1); familia LS e bipolară, nu CMOS. <!-- NEVERIFICAT: „familia LS e bipolară” nu e formulat explicit în fișa deschisă. --> Exemplul ne servește ca să numim corect mărimea, întârzierea de propagare, pe care o vom aduna în capitolele 08 și 09.
+Aceste cifre sunt condiții de test din fișa tehnică, cu o sarcină dată. Nu sunt viteza unei porți dintr-un cip modern, și nici o măsurătoare făcută de noi. Fișa precizează că intrările sunt „TTL compliant” (ibid., §1); familia LS e bipolară, nu CMOS. <!-- NEVERIFICAT: „familia LS e bipolară” nu e formulat explicit în fișa deschisă. --> Exemplul ne servește ca să numim corect mărimea, întârzierea de propagare, pe care o vom aduna în capitolele 13 („De la porți la logică combinațională”) și 14 („Logică secvențială”).
 
 ## NAND, NOR și completitudinea funcțională
 
@@ -60,4 +60,4 @@ Pentru că NOT, AND și OR acoperă orice funcție booleană, NAND singur e func
 
 ## Pasul următor
 
-Porțile sunt doar alfabetul. Capitolul 08 le compune în sumatoare și într-un ALU, iar acolo întârzierea de propagare de mai sus nu se mai oprește la o poartă: se adună de-a lungul unui lanț de porți.
+Porțile sunt doar alfabetul. Capitolul 13 („De la porți la logică combinațională”) le compune în sumatoare și într-un ALU, iar acolo întârzierea de propagare de mai sus nu se mai oprește la o poartă: se adună de-a lungul unui lanț de porți.
