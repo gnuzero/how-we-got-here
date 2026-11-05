@@ -1,6 +1,6 @@
 # Translation Plan — Announcement MVP (TH / SI / TA)
 
-> **Language authority lock, 2026-09-26 (Nayana)** — see `VISION.md`; it wins where this plan conflicts. English and Chinese are co-authoritative source languages. Other locales are not translations: each fills its language's information gap, from first principles. The MVP list below is the historical announcement scope, not a translate-English mandate.
+> **Language authority lock, 2026-09-26 (Nayana)** — see `VISION.md`; it wins where this plan conflicts. English and Chinese are co-authoritative source languages. Other locales (including Romanian) are not translations: each fills its language's information gap, from first principles. Romanian is gap-filling like Sinhala/Tamil/Thai — original pages; depth on topics thin on the Romanian web. The MVP list below is the historical announcement scope, not a translate-English mandate.
 
 Short plan only. Titles, descriptions, and attribution live in **`TRANSLATIONS.md`** — use those; do not reinvent.
 

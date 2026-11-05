@@ -53,8 +53,19 @@ defaultContentLanguageInSubdir = false
   weight = 6
   title = "從繼電器到注意力機制：我們如何走到今天"
 
+[languages.ro]
+  label = "Română"
+  locale = "ro"
+  contentDir = "content.ro"
+  weight = 7
+  title = "De la relee la Attention: cum am ajuns aici"
+
 [params]
   BookSection = "posts"
+  # Only list a language in the switcher when this page exists in that locale
+  # (no silent fallback to that locale's home). Required so thin locales like ro
+  # are not linked from pages they do not have.
+  BookTranslatedOnly = true
   BookRepo = "https://github.com/gnuzero/how-we-got-here"
   # Footer "Open an issue" is in layouts/_partials/docs/footer.html
   BookLastChangeLink = "{{ .Site.Params.BookRepo }}/commit/{{ .GitInfo.Hash }}"
