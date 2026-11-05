@@ -104,7 +104,7 @@ Xuanzhou හි Jingde ප්‍රාන්තයේ පාලකයා ලෙ�
 
 බ්‍රිතාන්‍ය කෞතුකාගාරයේ සිංහල මුද්‍රිත පොත් නාමාවලිය, එහි ඇති පැරණිතම සිංහල මුද්‍රණ අතර *Singaleesch Gebeede Boek* (සිංහල යාච්ඤා පොත, **1737**) ප්‍රථමයෙන් නම් කරයි, ඊළඟට *Singaleesch Belijdenis Boek* (1738), *Singaleesch Schoolboek* (1742) ආදිය. ([Catalogue of the Sinhalese printed books in the library of the British Museum, archive.org](https://archive.org/stream/catalogueofsinha00brituoft/catalogueofsinha00brituoft_djvu.txt))
 
-අකුරු වාත්තු කළ ආයුධාගාර අධිකාරීවරයාගේ නම Gabriel Schade ලෙසත්, පොත 1737 සැප්තැම්බර් 6 දින නිකුත් කළ බවත් වෙන්දේසි නාමාවලියක් පවසයි. <!-- UNVERIFIED: Gabriel Schade as the type-caster; Gebeede Boek dated 6 Sept 1737 | Christie's lot 4747745 (auction catalogue, secondary); Libri 1995 full text not reachable this pass (abstract only, which names no person) --> ([Christie's lot 4747745](https://www.christies.com/en/lot/lot-4747745)) එය ප්‍රාථමික හෝ ශාස්ත්‍රීය මූලාශ්‍රයකින් අපට තහවුරු කරගත නොහැකි විය.
+Christie's වෙන්දේසි නාමාවලියක් පවසන්නේ ලංකාවේ පළමු මුද්‍රණ අත්හදා බැලීම් කළේ Gabriel Schade බවත්, පළමු ලේඛනය (*plakkaat*) 1737 අප්‍රේල් 5 දිනත්, මේ පොත 1737 සැප්තැම්බර් 6 දිනත් නිකුත් කළ බවත්ය; ඔහු ඉහත සඳහන් ආයුධාගාර අධිකාරීවරයාම දැයි එය නොකියයි. <!-- UNVERIFIED: Gabriel Schade's role; plakkaat 5 Apr 1737; Gebeede Boek 6 Sept 1737 | single secondary source (Christie's lot 4747745); Libri 1995 abstract names no person and gives no day; full text paywalled --> ([Christie's lot 4747745](https://www.christies.com/en/lot/lot-4747745)) එය ප්‍රාථමික හෝ ශාස්ත්‍රීය මූලාශ්‍රයකින් අපට තහවුරු කරගත නොහැකි විය.
 
 ## අවසානයේ: Gutenberg
 
