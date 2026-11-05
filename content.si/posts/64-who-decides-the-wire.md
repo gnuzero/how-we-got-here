@@ -311,7 +311,7 @@ Python හිදී `unicodedata.normalize('NFC', 'ක\u0DD9\u0DCF')` මගි�
 
 ### 11. දැන් මෙය උත්සාහ කරන්න: bytes ඔබේම ඇසින්
 
-[VM terminal lab](/labs/vm-terminal/) එක විවෘත කරන්න. එය browser එක තුළ කුඩා Linux එකක් (BusyBox) ධාවනය කරයි. එහි console එකට සිංහල glyphs ඇඳිය නොහැකි අතර, සිංහල ටයිප් කිරීමද ක්‍රියා නොකළ හැකිය. එබැවින් bytes octal escapes ලෙස ලබා දෙන්න:
+[VM terminal lab](/labs/vm-terminal/?lang=si) එක විවෘත කරන්න. එය browser එක තුළ කුඩා Linux එකක් (BusyBox) ධාවනය කරයි. එහි console එකට සිංහල glyphs ඇඳිය නොහැකි අතර, සිංහල ටයිප් කිරීමද ක්‍රියා නොකළ හැකිය. එබැවින් bytes octal escapes ලෙස ලබා දෙන්න:
 
 ```
 printf 'A' | od -An -tx1
