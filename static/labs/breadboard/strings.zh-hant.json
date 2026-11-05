@@ -2,8 +2,8 @@
   "page.title": "虛擬麵包板實驗",
   "page.heading": "虛擬麵包板實驗",
   "page.subtitle": "互動式電路模擬器 — 一開啟就是一個真實的閘電路，而不是空白畫布",
-  "btn.open_and": "在新標籤頁中開啟 AND 門 ↗",
+  "btn.open_and": "在新標籤頁中開啟 AND 閘 ↗",
   "btn.wokwi": "Wokwi（實體麵包板 + 真實 MCU）↗",
-  "iframe.title": "電路模擬器 — AND 門",
-  "note_html": "\n  你看到的是一個 <strong>AND 門（與門）</strong>：只有兩個輸入都為高電平時，輸出才為高電平。\n  點選左側的兩個輸入來切換它們，觀察右側的輸出。\n  <div class=\"meta\">電路資料嵌在網址中（<code>cct=</code>），並非從 Falstad 已刪除的 <code>/circuits/and.txt</code> 載入。模擬器介面仍需訪問 falstad.com。電路的本地副本：本頁旁的 <code>and.txt</code>。</div>\n"
+  "iframe.title": "電路模擬器 — AND 閘",
+  "note_html": "\n  你看到的是一個 <strong>AND 閘（及閘）</strong>：只有兩個輸入都為高電位時，輸出才為高電位。\n  點選左側的兩個輸入來切換它們，觀察右側的輸出。\n  <div class=\"meta\">電路資料嵌在網址中（<code>cct=</code>），並非從 Falstad 已刪除的 <code>/circuits/and.txt</code> 載入。模擬器介面仍需存取 falstad.com。電路的本地副本：本頁旁的 <code>and.txt</code>。</div>\n"
 }
