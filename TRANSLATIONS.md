@@ -69,6 +69,9 @@ Romanian titles are listed **only** for chapters that actually have a `content.r
 | Chapter (shared slug) | Romanian title | Status |
 |----------|-------|--------|
 | `posts/35-the-memory-wall.md` | Zidul memoriei | shipped (fact-checked) |
+| `posts/47-what-7nm-actually-means.md` | Ce înseamnă de fapt „7nm” | shipped (fact-checked) |
+| `posts/48-photolithography.md` | Fotolitografia | shipped (fact-checked) |
+| `posts/49-finfet-to-gaa.md` | De la FinFET la GAA | shipped (fact-checked) |
 | `posts/53-cuda-cores-warps-and-occupancy.md` | Nuclee CUDA, warp-uri și ocupare | shipped (fact-checked) |
 | `posts/54-gpu-memory-hierarchy.md` | Ierarhia de memorie a GPU-ului | shipped (fact-checked) |
 | `posts/55-tensor-cores.md` | Tensor Cores | shipped (fact-checked) |
@@ -113,8 +116,8 @@ Conceptul și inspirația acestei lucrări îi aparțin lui Nayana Hettiarachchi
 - **Announcement MVP bodies:** Foreword + Phase 1 (01–04) + Attention (63) + glossary/home chrome in TH / SI / TA
 - Full remaining chapter bodies: after announcement (phased)
 - **Chinese (zh-Hans / zh-Hant), 2026-09-26:** locales wired; placeholder landing only. Pages come from the Chinese desk, written from Chinese primary sources. Not translated from English. Native-reader proofread before final.
-- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `35-the-memory-wall`, then `53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
-- Last updated: 2026-11-05 (ro pages 53/54/55/57/58/60)
+- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
+- Last updated: 2026-11-05 (ro pages 47/48/49 + 53/54/55/57/58/60)
 
 ## Fact-check notes (ongoing)
 

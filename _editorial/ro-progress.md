@@ -11,6 +11,24 @@
 - `about.md` — Despre și credite (from ro-desk checked; unchanged in fact-check)
 - `posts/35-the-memory-wall.md` — **Zidul memoriei** (weight 38 / series_index 37; fact-checked 2026-11-05)
 
+### 47 — Ce înseamnă de fapt „7nm”
+
+- **Topic:** What process-node labels mean; contacted pitch vs marketing nm; IRDS “eq” / stacking; vendor density claims
+- **Primaries opened:** IRDS 2020/2021/2022 More Moore + Lithography; Intel 10 nm Fact Sheet 2017; Bohr/Mistry 2011 Tri-Gate; Badaroglu IRDS More Moore ICOS 2023 (eq = equivalent)
+- **Still unverified / hedged:** TSMC N7 / Samsung 7LPP contacted pitches (primaries unopened); independent check of Intel “~2× vs other 10 nm” density; Dennard 1974 full paper; IRDS 2025 “2nm” (MM) vs “2.1 nm” (Litho LITH-2) left as documented source inconsistency
+
+### 48 — Fotolitografia
+
+- **Topic:** Photolithography; Rayleigh / k1·λ/NA; immersion; EUV; stochastic noise
+- **Primaries opened:** IRDS Lithography; Smith SPIE 5040 (water n ≈ 1.44); ASML public pages (Rayleigh, Light & lasers, lenses/mirrors, pellicle story, NXT/EXE); Born & Wolf / classical Rayleigh via standard refs
+- **Still unverified / hedged:** ASML EUV source power (W), conversion efficiency, collector lifetime — omitted; EUV pellicle transmission % — omitted; ASML i-line 220 vs 280 nm both appear on same “Light & lasers” page (source inconsistency left documented)
+
+### 49 — De la FinFET la GAA
+
+- **Topic:** FinFET → GAA / nanosheet; swing / DIBL; Weff arithmetic; IRDS GAA gap
+- **Primaries opened:** Hisamoto et al. IEEE TED 2000 (PTAB Ex.1015 figures); Auth et al. VLSI 2012; IRDS §4.2.7
+- **Still unverified / hedged:** TSMC N3/N2 and Intel RibbonFET process geometry unopened; Loubet et al. VLSI 2017 / Samsung 3 nm GAA process paper internals unopened
+
 ### 53 — Nuclee CUDA, warp-uri și ocupare
 
 - **Topic:** SM / warp / scheduler / occupancy; latency hiding vs CPU memory wall
