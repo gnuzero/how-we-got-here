@@ -8,7 +8,7 @@ Educational series at 3 posts/week — electronics fundamentals through modern A
 
 **Live site (canonical):** https://how-we-got-here.org/
 
-Private GitHub Pages — sign in with a `gnuzero` account that has repo access (e.g. `ranjithproofread`), then you land on the single published version. Prefer this URL over any `github.io` mirror.
+Public GitHub Pages on the custom domain. Prefer this URL over any `github.io` mirror.
 
 ## Attribution
 
@@ -58,7 +58,7 @@ hugo server -D
 
 ## GitHub Pages
 
-Live at **https://how-we-got-here.org/** (private Pages, GitHub login). Deploy via `.github/workflows/deploy.yml` on push to `main`.
+Live at **https://how-we-got-here.org/** (public Pages). Deploy via `.github/workflows/deploy.yml` on push to `main`.
 
 ## Structure
 
