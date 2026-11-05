@@ -1,0 +1,9 @@
+{
+  "page.title": "虚拟面包板实验",
+  "page.heading": "虚拟面包板实验",
+  "page.subtitle": "交互式电路模拟器 — 一打开就是一个真实的门电路，而不是空白画布",
+  "btn.open_and": "在新标签页中打开 AND 门 ↗",
+  "btn.wokwi": "Wokwi（实体面包板 + 真实 MCU）↗",
+  "iframe.title": "电路模拟器 — AND 门",
+  "note_html": "\n  你看到的是一个 <strong>AND 门（与门）</strong>：只有两个输入都为高电平时，输出才为高电平。\n  点击左侧的两个输入来切换它们，观察右侧的输出。\n  <div class=\"meta\">电路数据嵌在网址中（<code>cct=</code>），并非从 Falstad 已删除的 <code>/circuits/and.txt</code> 加载。模拟器界面仍需访问 falstad.com。电路的本地副本：本页旁的 <code>and.txt</code>。</div>\n"
+}
