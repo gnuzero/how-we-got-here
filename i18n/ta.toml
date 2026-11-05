@@ -3,3 +3,9 @@ other = "நாம் அங்கு எப்படிச் சென்ற�
 
 [foreword]
 other = "முன்னுரை"
+
+[labIframeTitle]
+other = "ஊடாடும் ஆய்வகம்: {{ .Type }}"
+
+[labOpenNewTab]
+other = "ஆய்வகத்தைப் புதிய தாவலில் திறக்க ↗"
