@@ -471,3 +471,10 @@ All arithmetic was checked in Python.
 - **Unverified markers:** 01d (Goa type, Pero Luis, the 1713 arrival day: sources disagree). 43b (CCF 800 bits × 600,000 ≠ 4 MB; Starlink line dropped because its only source is Wikipedia).
 - **Labs:** no lab-strings mechanism in static/labs (no strings.*.json); skipped.
 - **Build:** exit 0; `.hugo_build.lock` unchanged in git.
+
+### Labs 1 — branch `ta-labs-1` from 5feee53 (2026-11-05 Asia/Colombo)
+
+- **Added:** `static/labs/difference-engine/strings.ta.json` (all 52 keys); `labIframeTitle` and `labOpenNewTab` in `i18n/ta.toml`. No lab code edits.
+- **Terminology:** follows 01a: வித்தியாசப் பொறி, கொண்டு செல்லல் (carry), முதல் / இரண்டாம் வேறுபாடு, இலக்கச் சக்கரம், நிரல்.
+- **Buttons:** படி; மீட்டமை (carry தயார்); மீட்டமை (x=0 தொடக்கம்). "carry" kept in English on the button to keep it short; Lucas to confirm.
+- **Checks:** `check-lab-strings.py` 0 errors, 0 warnings. Headless Chrome on hugo server clicked Step, Reset and Classic: all text Tamil, `<html lang=ta>`, no console errors, no leftover placeholders. The Tamil 01a iframe has a Tamil title and `?lang=ta`.
