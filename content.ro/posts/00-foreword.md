@@ -6,9 +6,9 @@ draft: false
 phase: "0 — Cuvânt înainte"
 series_index: 0
 tags: ["foreword", "introduction"]
-summary: "Cuvântul înainte al Nayanei (placeholder)"
+summary: "Inspirat de o voce care vorbește românește — această ediție îi este dedicată ei."
 ---
 
 # Cuvânt înainte
 
-Placeholder: cuvântul înainte al Nayanei — neatins de desk-ul românesc.
+Inspirat de o voce care vorbește românește, am simțit că lipsește o piesă. Această ediție îi este dedicată ei.
