@@ -2,7 +2,7 @@
 title: "மரப்பலகையிலிருந்து நகரும் அச்சு வரை"
 weight: 5
 date: 2026-01-02
-draft: false
+draft: true
 phase: "1 — அடித்தளங்கள்: இயந்திரத்திலிருந்து வெற்றிடக் குழாய் கணினி வரை"
 series_index: 4
 tags: []
@@ -71,7 +71,9 @@ Qing அளவு சீனக் கதையை முடிக்கிறத
 
 ஒன்றரை நூற்றாண்டுக்குப் பின் தரங்கம்பாடியில் (Tranquebar) இரண்டாவது தொடக்கம். King's College London நூலகக் கண்காட்சியின்படி, Bartholomäus Ziegenbalg (Johann Ernst Gründler உதவியுடன்) மொழிபெயர்த்த 1715 தமிழ் புதிய ஏற்பாடு, இந்திய மொழி எதிலும் அச்சான முதல் புதிய ஏற்பாடு. 1714 கோடைக்குள் நற்செய்திகள் அச்சாயின; பெரிய எழுத்துரு தாளை வேகமாகத் தீர்த்ததால், மீதிக்குப் **சிறிய எழுத்துரு** வார்க்கப்பட்டது. அச்சகர் Johann Adler, SPCK அனுப்பிய Cheshire பாலாடைக்கட்டிப் பெட்டிகளின் உலோக மூடிகளை அச்சு வார்க்கப் பயன்படுத்தினார் என்று *கூறப்படுகிறது* (கண்காட்சியின் சொல்: "reportedly"). ([King's College London, The Bible comes to India](https://kingscollections.org/exhibitions/specialcollections/bible/missionary-bible/bible-comes-to-india)) Halle-இன் Francke Foundations பட்டியல், நற்செய்திகளும் அப்போஸ்தலர் நடபடிகளும் "Tranquebarae: Adler, 1714" என்று பதிவு செய்கிறது. ([Francke Foundations, Alte Drucke](https://digital.francke-halle.de/fsaad/content/titleinfo/162120))
 
-<!-- சரிபார்க்கப்படவில்லை (unverified): கொல்லம் அச்சு Goa-வில் வடிவமைத்த எழுத்துருவையும் உள்ளூரில் செய்ததையும் பயன்படுத்தியது; Pero Luis பங்கு; 1713 அச்சகம் வந்த சரியான நாள் (The Hindu: 29 June; WLB Stuttgart: 12.9.1713) — முரண்படுவதால் நாள் தவிர்க்கப்பட்டது. -->
+<!-- UNVERIFIED: Kollam types designed in Goa / local casting; Pero Luis's role | not opened this pass -->
+<!-- UNVERIFIED: Tranquebar press arrival day 1713 | The Hindu says 29 June; WLB Stuttgart says 12 Sept — day omitted -->
+<!-- UNVERIFIED: Francke Foundations catalogue "Tranquebarae: Adler, 1714" for Gospels+Acts | digital.francke-halle.de titleinfo/162120 unreachable this pass; KCL covers 1714 Gospels / 1715 NT -->
 
 சீனக் கதையின் அதே பாடம் இங்கும்: **தாள் தீர்ந்தது → எழுத்துருவைச் சிறிதாக்கு**. ஒரு வரம்புள்ள வளம் (தாள், பின்னாளில் நினைவகம்) வடிவமைப்பை மாற்றுகிறது.
 

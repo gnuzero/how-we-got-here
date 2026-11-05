@@ -40,7 +40,7 @@ schematics: "Diagram: relay schematic symbol + physical cutaway, plus simple rel
 
 Cooke, Wheatstone இருவரும் 10 ஜூன் 1837 அன்று தங்கள் தந்திக்குக் காப்புரிமை பெற்று, 6 செப்டம்பர் 1837-க்குள் London and Birmingham Railway-இன் Euston Square-இல் இயக்கினர். ([Distant Writing, Cooke & Wheatstone](https://www.distantwriting.co.uk/cookewheatstone.html)) Morse, Vail ஆகியோரின் அதிகாரப்பூர்வ Washington–Baltimore செயல்விளக்கம் **24 மே 1844** அன்று நடந்தது; முதல் செய்தியை Annie Ellsworth தேர்ந்தெடுத்தார்: "What hath God wrought." ([U.S. Senate history](https://www.senate.gov/artandhistory/senate-stories/morses-telegraph-in-the-capitol.htm))
 
-<!-- மூலங்கள்: ஆங்கிலப் பதிப்பு காட்டியவை; தமிழ் மேசை U.S. Senate பக்கத்தை மட்டும் மீண்டும் சரிபார்த்தது (24 May 1844, Annie Ellsworth, "What hath God wrought"). Smithsonian பக்கம் fetch timeout. -->
+<!-- மூலங்கள் (Lucas fact-check): Frontinus 3.13.8; The Baron Reuter timeline; Distant Writing Cooke & Wheatstone (10 Jun / 6 Sep 1837); U.S. Senate Morse 24 May 1844; Smithsonian Archives siris_sic_12484 via Wayback 2012-10-03 (Henry 1835 intensity/quantity). -->
 
 மீண்டும் தர்க்கமாக ரிலேக்கு.
 
