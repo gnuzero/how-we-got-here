@@ -87,7 +87,7 @@ NOP 4     ; 14: B = 4
 NOP 1     ; 15: නියතය 1
 ```
 
-Assemble කළ විට bytes: `1C 2D 4C 1E 3F 4E 88 60 1C E0 F0 00 05 03 04 01`. Output **17**, steps **34**. (අපි මෙය lab එකේ මූලාශ්‍ර කේතයම ධාවනය කර පරීක්ෂා කළෙමු.)
+**එකලස් කරන්න** ඔබූ විට bytes: `1C 2D 4C 1E 3F 4E 88 60 1C E0 F0 00 05 03 04 01`. ප්‍රතිදානය **17**, steps **34**. (අපි මෙය lab එකේ මූලාශ්‍ර කේතයම ධාවනය කර පරීක්ෂා කළෙමු.)
 
 Steps ගණන් කරමු: loop එකේ එක් වටයක් උපදෙස් 8 කි (0–7). අවසාන වටයේ JZ පනින නිසා `JMP 0` ධාවනය නොවේ: 7. අවසානය 8, 9, 10: 3. එබැවින් B = 4 සඳහා 8 + 8 + 8 + 7 + 3 = **34**, සාමාන්‍යයෙන් **8B + 2**.
 
@@ -150,7 +150,7 @@ COBOL ගැන මෙම කොටස අමතර කරුණු එකතු
 ### 7. පැන්සලෙන් අභ්‍යාසය
 
 1. §2 වැඩසටහනේ A = 2, B = 6, C = 1 ලෙස වෙනස් කරන්න (ලිපින 12, 13, 14 හි `NOP` අගයන්). Output සහ steps කීයද?
-2. B = 0 ලෙස (`NOP 0` ලිපිනය 14 හි) Assemble කළොත් loop එක කීවරක් ධාවනය වේද? Output කුමක්ද?
+2. B = 0 ලෙස (`NOP 0` ලිපිනය 14 හි) **එකලස් කරන්න** ඔබුවොත් loop එක කීවරක් ධාවනය වේද? ප්‍රතිදානය කුමක්ද?
 3. `cdr[cdr[(A, B, C)]]` සහ `car[cons[X; (Y, Z)]]` ගණනය කරන්න.
 4. 4-byte `int` array එකක් 2000 දී ආරම්භ වේ. `ipointer = iarray + 5` හි byte ලිපිනය කුමක්ද?
 5. FORTRAN කණ්ඩායමේ ප්‍රධාන අවදානම ලෙස Backus දකින්නේ කුමක්ද? එක් වාක්‍යයකින්.
@@ -166,7 +166,7 @@ COBOL ගැන මෙම කොටස අමතර කරුණු එකතු
 - John Backus, "The History of FORTRAN I, II, and III", *ACM SIGPLAN Notices* 13(8), 1978, pp. 165–180. Software Preservation Group (Computer History Museum) පිටපත: https://www.softwarepreservation.org/projects/FORTRAN/paper/p165-backus.pdf (පිටු 167, 171, 173).
 - John McCarthy, "Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I", *CACM* 3(4), 1960. කතුවරයාගේ වෙබ් පිටපත: https://www-formal.stanford.edu/jmc/recursive.pdf (එම පිටපතේ පිටු 10–12, 16).
 - Dennis M. Ritchie, "The Development of the C Language" (HOPL-II, 1993). Bell Labs වෙබ් පිටපත: https://www.bell-labs.com/usr/dmr/www/chist.html ("The Problems of B", "Portability" කොටස්).
-- මෙම පොතේ mini-CPU lab එකේ මූලාශ්‍ර කේතය (`static/labs/mini-cpu/index.html`): opcode වගුව, ගුණ කිරීමේ උපදෙසක් නැත, Reset මතකය හිස් නොකරයි. §2 සහ අභ්‍යාස 1–2 හි වැඩසටහන් එම කේතයම ධාවනය කර පරීක්ෂා කළෙමු.
+- මෙම පොතේ mini-CPU lab එකේ මූලාශ්‍ර කේතය (`static/labs/mini-cpu/index.html`): opcode වගුව, ගුණ කිරීමේ උපදෙසක් නැත, **යළි සකසන්න** මතකය හිස් නොකරයි. §2 සහ අභ්‍යාස 1–2 හි වැඩසටහන් එම කේතයම ධාවනය කර පරීක්ෂා කළෙමු.
 - §2 හි A, B, C සහ §5 හි ලිපින ආදර්ශ (illustrative) අංක වේ.
 
 **පිටවීමේ දොර:** Dennis M. Ritchie, "The Development of the C Language" (HOPL-II / ACM) — Unix අසල C හි නිර්මාණය පිළිබඳ ප්‍රාථමික ගිණුම; Lisp හි ආරම්භක ප්‍රකාශය සඳහා, සංකේතාත්මක ප්‍රකාශනවල recursive functions පිළිබඳ John McCarthy ගේ මුල් CACM පත්‍රිකා බලන්න.
