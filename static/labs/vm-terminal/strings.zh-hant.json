@@ -6,12 +6,12 @@
   "btn.restart": "重啟",
   "status.idle": "尚未啟動——請按「啟動虛擬機器」",
   "first.heading": "先試這些命令",
-  "first.body_html": "按<strong>啟動虛擬機器</strong>，等待登入/shell 提示符出現，然後<strong>點選黑色螢幕</strong>，讓鍵盤輸入進入虛擬機器。試試這些：",
+  "first.body_html": "按<strong>啟動虛擬機器</strong>，等待登入/shell 提示字元出現，然後<strong>點選黑色螢幕</strong>，讓鍵盤輸入進入虛擬機器。試試這些：",
   "first.hint": "逐條輸入命令並按 Enter。會話卡住時，按「重啟」可重新啟動一次全新的系統。",
-  "note_html": "由 <strong>v86</strong> 驅動——一個用 WebAssembly 實現的完整 x86 模擬器。執行時、BIOS 和 Linux 映象都隨本頁放在 <code>assets/</code> 目錄下（首次啟動無需線上 CDN）。<a href=\"ORIGIN.md\">來源 &amp; 許可證</a>",
+  "note_html": "由 <strong>v86</strong> 驅動——一個用 WebAssembly 實現的完整 x86 模擬器。執行時、BIOS 和 Linux 映像檔都隨本頁放在 <code>assets/</code> 目錄下（首次啟動無需線上 CDN）。<a href=\"ORIGIN.md\">來源 &amp; 許可證</a>",
   "status.already": "已在執行——點選螢幕以使用鍵盤",
-  "status.loading": "正在載入本地虛擬機器映象並啟動…",
+  "status.loading": "正在載入本地虛擬機器映像檔並啟動…",
   "status.booting": "正在啟動核心…",
   "status.running": "執行中——點選螢幕，然後試試 whoami / uname / ls",
-  "status.restarted": "已重啟——提示符出現後點選螢幕"
+  "status.restarted": "已重啟——提示字元出現後點選螢幕"
 }
