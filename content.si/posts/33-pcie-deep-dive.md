@@ -1,10 +1,10 @@
 ---
 title: "PCIe ගැඹුරු ගවේෂණය"
-weight: 34
+weight: 38
 date: 2026-01-01
 draft: false
 phase: "5 — බස් සහ පද්ධති ගෘහ නිර්මාණය"
-series_index: 33
+series_index: 37
 tags: []
 summary: "අභිප්‍රාය TLPs මත ගමන් කරයි; විශ්වාසනීයත්වය සහ signaling පහළින් — හවුල් බස් එක ප්‍රතිස්ථාපනය කළ stack එක"
 image_prompt: "Technical diagram of the PCIe protocol stack with TLP structure broken down field by field, clean protocol-diagram style"

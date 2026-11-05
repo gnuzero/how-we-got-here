@@ -1,10 +1,10 @@
 ---
 title: "รีเลย์และตรรกะไฟฟ้ากลไก"
-weight: 3
+weight: 7
 date: 2026-01-01
 draft: false
 phase: "1 — รากฐาน: จากการคำนวณเชิงกลไกสู่หลอดสุญญากาศ"
-series_index: 2
+series_index: 6
 tags: []
 summary: "รีเลย์พิสูจน์ว่าตรรกะไบนารีใช้ได้ — และว่าโลหะที่เคลื่อนตามไม่ทัน"
 image_prompt: "Technical cutaway of an electromagnetic relay showing coil, armature, and contacts in both open and closed states side by side, labeled diagram style, clean line art on white background"

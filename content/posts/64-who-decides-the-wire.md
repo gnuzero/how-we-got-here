@@ -1,10 +1,10 @@
 ---
 title: "Who Decides the Wire"
-weight: 67
+weight: 70
 date: 2026-09-06
 draft: false
 phase: "Governance / Internet Civics"
-series_index: 66
+series_index: 69
 tags: []
 summary: "Who names numbers, names, and encodings so heterogeneous networks can interoperate"
 image_prompt: "Clean diagram of shared registries — protocol numbers, IP addresses, domain names, Unicode code points — flowing into one interoperable packet path, internet-governance infographic style"

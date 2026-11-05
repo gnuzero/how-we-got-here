@@ -1,10 +1,10 @@
 ---
 title: "De la porți la logică combinațională"
-weight: 11
+weight: 13
 date: 2026-01-01
 draft: false
 phase: "2 — Fizică și dispozitive"
-series_index: 10
+series_index: 12
 tags: []
 summary: "Din porți facem sumatoare și un ALU; transportul care se propagă bit cu bit (ripple carry) cere structuri mai bune"
 image_prompt: "Block diagram of a 1-bit full adder with truth table, clean digital logic textbook style"

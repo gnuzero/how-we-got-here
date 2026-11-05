@@ -1,10 +1,10 @@
 ---
 title: "เจาะลึก PCIe"
-weight: 34
+weight: 38
 date: 2026-01-01
 draft: false
 phase: "5 — บัสและสถาปัตยกรรมระบบ"
-series_index: 33
+series_index: 37
 tags: []
 summary: "เจตนานั่งบน TLP; ความเชื่อถือได้และการส่งสัญญาณอยู่ข้างล่าง — สแต็กที่แทนบัสร่วม"
 image_prompt: "Technical diagram of the PCIe protocol stack with TLP structure broken down field by field, clean protocol-diagram style"

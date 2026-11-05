@@ -1,10 +1,10 @@
 ---
 title: "ลำดับชั้นหน่วยความจำ GPU"
-weight: 55
+weight: 60
 date: 2026-01-01
 draft: false
 phase: "9 — GPU และการคำนวณขนาน"
-series_index: 54
+series_index: 59
 tags: []
 summary: "เธรดนับพันบังคับแบนด์วิดท์เหนือ DDR — HBM ซ้อนหน่วยความจำข้าง compute"
 image_prompt: "Cutaway diagram of HBM stacked memory with TSVs connecting to a GPU die via an interposer, clean packaging + memory diagram style"

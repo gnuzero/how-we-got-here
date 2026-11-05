@@ -1,10 +1,10 @@
 ---
 title: "ไปป์ไลน์"
-weight: 14
+weight: 18
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"
-series_index: 13
+series_index: 17
 tags: []
 summary: "ทับซ้อนคำสั่งเพื่อปริมาณงาน — แล้ว hazards บังคับ forwarding, stall และทุกอย่างที่ตามมา"
 image_prompt: "Pipeline diagram showing 5 instructions through IF/ID/EX/MEM/WB stages, classic pipeline diagram style"

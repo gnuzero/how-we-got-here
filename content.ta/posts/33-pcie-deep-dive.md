@@ -1,10 +1,10 @@
 ---
 title: "PCIe Deep Dive"
-weight: 34
+weight: 38
 date: 2026-01-01
 draft: false
 phase: "5 — பஸ் மற்றும் அமைப்புக் கட்டமைப்பு"
-series_index: 33
+series_index: 37
 tags: []
 summary: "நோக்கம் TLP-களில் சவாரி செய்கிறது; நம்பகத்தன்மையும் signaling-ம் கீழே அமர்கின்றன — பகிரப்பட்ட bus-ஐ மாற்றிய stack"
 image_prompt: "Technical diagram of the PCIe protocol stack with TLP structure broken down field by field, clean protocol-diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "จาก FinFET ถึง GAA"
-weight: 50
+weight: 55
 date: 2026-01-01
 draft: false
 phase: "8 — โหนดกระบวนการและการผลิต"
-series_index: 49
+series_index: 54
 tags: []
 summary: "การรั่ว short-channel ฆ่าการหด planar — พันเกต (FinFET) แล้วพันรอบทั้งหมด (GAA)"
 image_prompt: "3D cutaway comparison of planar MOSFET, FinFET, and GAA nanosheet transistor structures, clean semiconductor device diagram style"

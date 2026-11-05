@@ -1,10 +1,10 @@
 ---
 title: "කාලරේඛාව"
-weight: 99
+weight: 101
 date: 2026-01-01
 draft: false
 phase: "යොමුව"
-series_index: 98
+series_index: 100
 tags: ["timeline", "reference", "history"]
 summary: "යාන්ත්‍රික ගණනයේ සිට නවීන අවධානය යාන්ත්‍රණ දක්වා සංක්ෂිප්ත කාලරේඛාවක්"
 ---

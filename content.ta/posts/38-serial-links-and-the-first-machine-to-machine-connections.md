@@ -1,10 +1,10 @@
 ---
 title: "Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்"
-weight: 39
+weight: 43
 date: 2026-01-01
 draft: false
 phase: "6 — வலையமைப்பு பரிணாமம்"
-series_index: 38
+series_index: 42
 tags: []
 summary: "Point-to-point serial இணைப்பு சரியாக இரண்டு முனைகளை இணைக்கும் — packet switching-ஐ கட்டாயப்படுத்திய கூரை"
 image_prompt: "Technical illustration of an RS-232 connection and a modem modulating digital data onto an analog phone line, clean vintage telecom diagram style"

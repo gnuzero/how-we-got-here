@@ -1,10 +1,10 @@
 ---
 title: "Caches"
-weight: 16
+weight: 20
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"
-series_index: 15
+series_index: 19
 tags: []
 summary: "Locality මතක ධූරාවලිය ක්‍රියාත්මක කරවයි; associativity සහ coherence එය අවංකව තබා ගැනීමේ වියදම් වේ"
 image_prompt: "Diagram of cache organization: direct-mapped, set-associative, fully-associative, clean memory-system textbook style"

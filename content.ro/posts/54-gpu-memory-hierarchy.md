@@ -1,10 +1,10 @@
 ---
 title: "Ierarhia de memorie a GPU-ului"
-weight: 57
+weight: 60
 date: 2026-01-01
 draft: false
 phase: "9 — GPU-uri și calcul paralel"
-series_index: 56
+series_index: 59
 tags: []
 summary: "Mii de thread-uri cer lățime de bandă, nu doar capacitate — de la registre și memorie partajată până la HBM lipit lângă cip"
 image_prompt: "Cutaway diagram of HBM stacked memory with TSVs connecting to a GPU die via an interposer, clean packaging + memory diagram style"

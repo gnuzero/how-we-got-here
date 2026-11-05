@@ -1,10 +1,10 @@
 ---
 title: "Batch Processing மற்றும் Operating System-இன் பிறப்பு"
-weight: 22
+weight: 26
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"
-series_index: 21
+series_index: 25
 tags: []
 summary: "Punch-card வேலைகளுக்கு இடையே விலையுயர்ந்த CPU idle ஆனது — முதல் resident monitor-ஐ கட்டாயப்படுத்தியது: பயனர் நிரல் அல்ல, system மென்பொருள்"
 image_prompt: "Historical illustration of an operator loading punch cards into a batch-processing mainframe, clean vintage computing illustration style"

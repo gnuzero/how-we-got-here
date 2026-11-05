@@ -1,10 +1,10 @@
 ---
 title: "அச்சகத்திலிருந்து pixel வரை"
-weight: 46
+weight: 49
 date: 2026-01-02
-draft: true
+draft: false
 phase: "7 — விநியோகிக்கப்பட்ட அமைப்புகள், Big Data மற்றும் Orchestration"
-series_index: 45
+series_index: 48
 tags: []
 summary: "பக்கமும் எழுத்தும் மென்பொருளாகும்போது — Wang Xuan-இன் லேசர் ஒளி அச்சுக்கோப்பு முதலில்; தமிழ் Tamil99, Unicode; மேற்கத்திய PostScript, CSS கடைசியில்"
 image_prompt: "Technical diagram of Chinese character bitmap compressed to outline glyphs, then laser-scanned onto film, clean line art, labeled stages"

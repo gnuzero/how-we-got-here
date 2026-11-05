@@ -1,10 +1,10 @@
 ---
 title: "Machine Learning மென்பொருள் Stack"
-weight: 47
+weight: 52
 date: 2026-01-01
 draft: false
 phase: "7 — விநியோகிக்கப்பட்ட அமைப்புகள், Big Data மற்றும் Orchestration"
-series_index: 46
+series_index: 51
 tags: []
 summary: "ஒரு model-க்கும் சிலிகானுக்கும் இடையே tensors-ஐ விநியோகிக்கப்பட்ட training-ஆக மாற்றும் stack அமர்கிறது — மற்றும் interconnect சுவரைத் தாக்குகிறது"
 image_prompt: "Layered infographic showing the ML software stack from Python/NumPy up through frameworks (PyTorch/TensorFlow) to distributed training orchestration to hardware, clean AI-software diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Ethernet และเครือข่ายท้องถิ่น"
-weight: 41
+weight: 45
 date: 2026-01-01
 draft: false
 phase: "6 — วิวัฒนาการเครือข่าย"
-series_index: 40
+series_index: 44
 tags: []
 summary: "สายร่วม ไม่มีผู้ตัดสินศูนย์กลาง — CSMA/CD แก้ข้อจำกัดการชนของ LAN; สวิตช์ภายหลังลบมัน"
 image_prompt: "Diagram of a classic Ethernet bus topology showing a collision event and CSMA/CD backoff, clean networking textbook diagram style"

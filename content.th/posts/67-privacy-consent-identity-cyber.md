@@ -1,10 +1,10 @@
 ---
 title: "ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์"
-weight: 68
+weight: 73
 date: 2026-09-06
 draft: false
 phase: "ความเป็นส่วนตัว / อัตลักษณ์ / ความยินยอม"
-series_index: 67
+series_index: 72
 tags: []
 summary: "ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ และความมั่นคงไซเบอร์ในฐานะวิวัฒนาการทางวิศวกรรมบนเครือข่ายเปิด — ไม่ใช่แผ่นพับนโยบาย"
 image_prompt: "Clean layered diagram: isolation boundaries, cryptographic keys, identity credentials, and adversarial threat arrows on one stack, modern security-engineering infographic style"

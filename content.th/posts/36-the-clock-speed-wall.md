@@ -1,10 +1,10 @@
 ---
 title: "กำแพงความเร็วคล็อก"
-weight: 37
+weight: 41
 date: 2026-01-01
 draft: false
 phase: "5 — บัสและสถาปัตยกรรมระบบ"
-series_index: 36
+series_index: 40
 tags: []
 summary: "ความถี่ชนความร้อน — ดังนั้นอุตสาหกรรมไปกว้าง (คอร์ แล้ว fabric) แทนคล็อกเร็วขึ้น"
 image_prompt: "Graph infographic: CPU clock frequency climbing then flattening around 2005, power density curve rising toward a thermal ceiling, clean data-visualization diagram style"

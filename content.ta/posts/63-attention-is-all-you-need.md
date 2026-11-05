@@ -1,10 +1,10 @@
 ---
 title: "Attention Is All You Need"
-weight: 64
+weight: 69
 date: 2026-01-01
 draft: false
 phase: "10 — நவீன AI வன்பொருள்"
-series_index: 63
+series_index: 68
 tags: ["attention", "transformers", "neural networks"]
 summary: "Self-attention spine-ஐ மூடியது — பயணம் கட்டிய matmul வன்பொருள் மீது வரைபடமாகும் parallel வரிசை மாதிரியாக்கம்"
 image_prompt: "Clean technical diagram of multi-head self-attention: queries, keys, values flowing into scaled dot-product attention, multiple heads, residual connections, modern AI architecture illustration style, white background"

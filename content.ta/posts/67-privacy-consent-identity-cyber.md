@@ -1,10 +1,10 @@
 ---
 title: "தனியுரிமை, ஒப்புதல், அடையாளம், Cyber"
-weight: 68
+weight: 73
 date: 2026-09-06
 draft: false
 phase: "தனியுரிமை / அடையாளம் / ஒப்புதல்"
-series_index: 67
+series_index: 72
 tags: []
 summary: "திறந்த வலையமைப்பில் பொறியியல் பரிணாமமாகத் தனியுரிமை, ஒப்புதல், அடையாளம் மற்றும் cybersecurity — கொள்கைப் பிரசுரம் அல்ல"
 image_prompt: "Clean layered diagram: isolation boundaries, cryptographic keys, identity credentials, and adversarial threat arrows on one stack, modern security-engineering infographic style"

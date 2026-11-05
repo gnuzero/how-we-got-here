@@ -1,10 +1,10 @@
 ---
 title: "Proiectarea căii de date"
-weight: 15
+weight: 17
 date: 2026-01-01
 draft: false
 phase: "3 — Construirea unui CPU și arhitecturile lui"
-series_index: 14
+series_index: 16
 tags: []
 summary: "O cale de date cu un singur ciclu face piesele vizibile și arată de ce ceasul ei e dimensionat după cazul cel mai lent"
 image_prompt: "Block diagram of a single-cycle RISC datapath, classic computer architecture textbook style"

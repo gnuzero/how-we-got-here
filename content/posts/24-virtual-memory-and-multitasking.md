@@ -1,10 +1,10 @@
 ---
 title: "Virtual Memory and Multitasking"
-weight: 27
+weight: 29
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
-series_index: 26
+series_index: 28
 tags: []
 summary: "Time-sharing needs isolation — virtual memory gives every process the illusion of owning the machine"
 image_prompt: "Diagram of virtual address space mapping to physical memory via a page table, clean OS textbook diagram style"

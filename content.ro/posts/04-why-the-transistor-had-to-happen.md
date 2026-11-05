@@ -1,10 +1,10 @@
 ---
 title: "De ce trebuia să apară tranzistorul"
-weight: 7
+weight: 9
 date: 2026-01-01
 draft: false
 phase: "1 — Fundamente: de la calcul mecanic la tuburi vidate"
-series_index: 6
+series_index: 8
 tags: []
 summary: "Dimensiune, putere, fiabilitate — trei plafoane ale tubului care au făcut comutarea solid-state inevitabilă"
 image_prompt: "Split comparison illustration: vacuum tube vs point-contact transistor at same scale, size and heat dissipation visually contrasted, minimalist technical infographic style, clean typography"

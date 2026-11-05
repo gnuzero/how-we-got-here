@@ -1,10 +1,10 @@
 ---
 title: "เกตตรรกะจากทรานซิสเตอร์"
-weight: 8
+weight: 12
 date: 2026-01-01
 draft: false
 phase: "2 — ฟิสิกส์และอุปกรณ์"
-series_index: 7
+series_index: 11
 tags: []
 summary: "CMOS จับคู่ NMOS กับ PMOS เพื่อให้เกตว่างไม่มีเส้นทางสถิต — โทโพโลยีที่ขยายขนาดได้"
 image_prompt: "Circuit schematic of a CMOS inverter with truth table, clean schematic style"

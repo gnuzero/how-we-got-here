@@ -1,10 +1,10 @@
 ---
 title: "Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது"
-weight: 58
+weight: 63
 date: 2026-01-01
 draft: false
 phase: "10 — நவீன AI வன்பொருள்"
-series_index: 57
+series_index: 62
 tags: []
 summary: "AI compute அளவில் matmul-க்குக் குறைகிறது — அந்த வடிவத்திற்குச் சிலிகானைச் சிறப்புப்படுத்துங்கள்"
 image_prompt: "Infographic showing a neural network layer's forward pass as a matrix multiply mapped onto specialized hardware, clean AI hardware explainer style"

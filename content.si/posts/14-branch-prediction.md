@@ -1,10 +1,10 @@
 ---
 title: "Branch Prediction"
-weight: 15
+weight: 19
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"
-series_index: 14
+series_index: 18
 tags: []
 summary: "Pipeline flush මිල අධිකය — ඒවා දුර්ලභ කිරීමට prediction පවතී"
 image_prompt: "Diagram of a 2-bit saturating counter branch predictor state machine, clean state-machine diagram style"

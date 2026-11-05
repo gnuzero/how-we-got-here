@@ -1,10 +1,10 @@
 ---
 title: "Multi-GPU Scaling"
-weight: 57
+weight: 62
 date: 2026-01-01
 draft: false
 phase: "9 — GPU සහ Parallel Compute"
-series_index: 56
+series_index: 61
 tags: []
 summary: "එක් GPU එකක් සීමිත ය — GPU අතර interconnect ඊළඟ බිත්තිය බවට පත් වේ"
 image_prompt: "System diagram of an 8-GPU NVLink-connected node with NVSwitch, clean datacenter GPU cluster diagram style"

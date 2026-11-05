@@ -1,10 +1,10 @@
 ---
 title: "GNU ව්‍යාපාරය සහ Linux"
-weight: 24
+weight: 28
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"
-series_index: 23
+series_index: 27
 tags: []
 summary: "Unix වසා දැමුණේය; Stallman නිදහස් userland ගොඩනැගුවේය; Torvalds kernel හිඩැස පිරවුවේය — GPL එකතුව විවෘතව තැබුවේය"
 image_prompt: "Illustration of the GNU logo alongside Tux the penguin, with a layered diagram showing GNU userland tools sitting atop the Linux kernel, clean open-source movement infographic style"

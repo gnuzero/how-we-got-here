@@ -1,10 +1,10 @@
 ---
 title: "คอนเทนเนอร์และการแยกของ OS สมัยใหม่"
-weight: 26
+weight: 30
 date: 2026-01-01
 draft: false
 phase: "4 — รากฐานซอฟต์แวร์: OS, ภาษา และระบบเรียลไทม์"
-series_index: 25
+series_index: 29
 tags: []
 summary: "VM เต็มซื้อการแยกแข็งด้วยต้นทุนหนัก — namespaces และ cgroups แชร์เคอร์เนลเดียวและแยกเกือบอย่างอื่นทั้งหมด"
 image_prompt: "Layered diagram comparing full virtualization vs container isolation, clean modern infrastructure diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "De la gravura în lemn la literele mobile"
-weight: 5
+weight: 6
 date: 2026-01-02
-draft: true
+draft: false
 phase: "1 — Fundamente: de la calcul mecanic la tuburi vidate"
-series_index: 4
+series_index: 5
 tags: []
 summary: "Un semn reproductibil fără copiere de mână — gravura în lemn și literele mobile chinezești în prim-plan, Gutenberg la final, plus primele tipărituri românești"
 image_prompt: "Technical illustration of clay movable type in an iron frame beside woodblock printing, East Asian print-shop diagram style, labeled trays and revolving typecase, clean line art on white background"

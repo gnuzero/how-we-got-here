@@ -1,10 +1,10 @@
 ---
 title: "ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C"
-weight: 28
+weight: 32
 date: 2026-01-01
 draft: false
 phase: "4 — รากฐานซอฟต์แวร์: OS, ภาษา และระบบเรียลไทม์"
-series_index: 27
+series_index: 31
 tags: []
 summary: "สี่โดเมนบังคับสี่ abstraction — สูตร ร้อยแก้วธุรกิจ รายการสัญลักษณ์ ระบบใกล้วัตถุ"
 image_prompt: "Timeline infographic of FORTRAN, COBOL, Lisp, C with characteristic code snippets, clean historical technical infographic"

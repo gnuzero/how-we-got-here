@@ -1,10 +1,10 @@
 ---
 title: "ใครเป็นคนตัดสินสาย"
-weight: 65
+weight: 70
 date: 2026-09-06
 draft: false
 phase: "การกำกับดูแล / พลเมืองอินเทอร์เน็ต"
-series_index: 64
+series_index: 69
 tags: []
 summary: "ใครตั้งชื่อหมายเลข ชื่อ และการเข้ารหัส เพื่อให้เครือข่ายต่างชนิดทำงานร่วมกันได้"
 image_prompt: "Clean diagram of shared registries — protocol numbers, IP addresses, domain names, Unicode code points — flowing into one interoperable packet path, internet-governance infographic style"

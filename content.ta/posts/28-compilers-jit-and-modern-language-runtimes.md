@@ -1,10 +1,10 @@
 ---
 title: "Compilers, JIT, மற்றும் நவீன மொழி Runtimes"
-weight: 29
+weight: 33
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"
-series_index: 28
+series_index: 32
 tags: []
 summary: "AOT runtime உண்மைகள் இல்லாமல் ஒருமுறை தொகுக்கிறது; JIT hot paths-க்காகக் காத்திருக்கிறது — garbage collection செலவை runtime-க்குள் மாற்றுகிறது"
 image_prompt: "Pipeline diagram of a compiler with a JIT feedback loop shown alongside, clean compiler-textbook diagram style"

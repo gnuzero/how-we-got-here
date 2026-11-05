@@ -1,10 +1,10 @@
 ---
 title: "From Woodblock to Movable Type"
-weight: 5
+weight: 6
 date: 2026-01-02
-draft: true
+draft: false
 phase: "1 — Foundations: Mechanical to Vacuum-Tube Computing"
-series_index: 4
+series_index: 5
 tags: []
 summary: "A reproducible mark without hand-copying — Chinese woodblock and movable type lead; Gutenberg at the bottom"
 image_prompt: "Technical illustration of clay movable type in an iron frame beside woodblock printing, East Asian print-shop diagram style, labeled trays and revolving typecase, clean line art on white background"

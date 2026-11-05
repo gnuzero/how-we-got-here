@@ -1,10 +1,10 @@
 ---
 title: "Moore's Law"
-weight: 51
+weight: 56
 date: 2026-01-01
 draft: false
 phase: "8 — ක්‍රියාවලි නෝඩ් සහ Fabrication"
-series_index: 50
+series_index: 55
 tags: []
 summary: "Moore ගේ නිරීක්ෂණය ආර්ථික සංරචක ගණන විය — ට්‍රාන්සිස්ටර ගණන තවමත් නැගේ; clocks සහ cost-per-transistor වෙනස් කතා කියයි"
 image_prompt: "Graph infographic: transistor count, clock speed, and cost-per-transistor over time, clean data visualization style"

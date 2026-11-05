@@ -1,10 +1,10 @@
 ---
 title: "வெற்றிடக் குழாய் காலம்"
-weight: 4
+weight: 8
 date: 2026-01-01
 draft: false
 phase: "1 — அடித்தளங்கள்: இயந்திரத்திலிருந்து வெற்றிடக் குழாய் கணினி வரை"
-series_index: 3
+series_index: 7
 tags: []
 summary: "குழாய்கள் நகரும் பாகங்களை அகற்றின — அந்த வேகத்தை வெப்பம், மின்சாரம் மற்றும் தோல்விக்குப் பரிமாற்றம் செய்தன"
 image_prompt: "Cross-section technical diagram of a triode vacuum tube showing cathode, grid, and anode with electron flow arrows, labeled, vintage engineering textbook illustration style, amber glow accent"

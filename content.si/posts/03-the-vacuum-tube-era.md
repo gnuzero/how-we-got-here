@@ -1,10 +1,10 @@
 ---
 title: "රික්තක නල යුගය"
-weight: 4
+weight: 8
 date: 2026-01-01
 draft: false
 phase: "1 — පදනම්: යාන්ත්‍රික සිට රික්තක-නල පරිගණකකරණය දක්වා"
-series_index: 3
+series_index: 7
 tags: []
 summary: "නල චලනය වන කොටස් ඉවත් කළේය — එම වේගය තාපය, බලය සහ අසාර්ථකත්වය සඳහා හුවමාරු කළේය"
 image_prompt: "Cross-section technical diagram of a triode vacuum tube showing cathode, grid, and anode with electron flow arrows, labeled, vintage engineering textbook illustration style, amber glow accent"

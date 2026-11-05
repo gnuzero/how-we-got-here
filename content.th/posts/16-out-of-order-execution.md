@@ -1,10 +1,10 @@
 ---
 title: "การประมวลผลนอกลำดับ"
-weight: 17
+weight: 21
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"
-series_index: 16
+series_index: 20
 tags: []
 summary: "Stall เฉพาะสิ่งที่ต้องรอ — แนวคิดของ Tomasulo: ประมวลผลเมื่อพร้อม commit ตามลำดับ"
 image_prompt: "Block diagram of an out-of-order pipeline with reservation stations and reorder buffer, clean superscalar diagram style"

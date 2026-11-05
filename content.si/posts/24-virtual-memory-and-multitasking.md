@@ -1,10 +1,10 @@
 ---
 title: "අතථ්‍ය මතකය සහ බහුකාර්යතාව"
-weight: 25
+weight: 29
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"
-series_index: 24
+series_index: 28
 tags: []
 summary: "Time-sharing හුදකලාව අවශ්‍ය කරයි — අතථ්‍ය මතකය සෑම process එකකටම යන්ත්‍රය අයිති කර ගත් මායාව දෙයි"
 image_prompt: "Diagram of virtual address space mapping to physical memory via a page table, clean OS textbook diagram style"

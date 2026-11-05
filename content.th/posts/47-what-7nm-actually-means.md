@@ -1,10 +1,10 @@
 ---
 title: "'7nm' หมายถึงอะไรจริง ๆ"
-weight: 48
+weight: 53
 date: 2026-01-01
 draft: false
 phase: "8 — โหนดกระบวนการและการผลิต"
-series_index: 47
+series_index: 52
 tags: []
 summary: "ชื่อโหนดหยุดติดตามความยาวกายภาพเดี่ยว — ความหนาแน่นและ pitch คือฟิสิกส์; ป้ายคือรุ่น"
 image_prompt: "Infographic debunking the '7nm = physical measurement' myth, showing fin pitch/gate pitch numbers vs marketing node names, clean technical infographic style"

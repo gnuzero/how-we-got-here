@@ -1,10 +1,10 @@
 ---
 title: "Superscalar și multicore"
-weight: 20
+weight: 22
 date: 2026-01-01
 draft: false
 phase: "3 — Construirea unui CPU și arhitecturile lui"
-series_index: 19
+series_index: 21
 tags: []
 summary: "ILP și puterea lovesc un plafon — industria a mers pe lățime, nu pe un singur fir mai rapid"
 image_prompt: "Comparison infographic: single-core deep pipeline vs multicore chip layout, clean technical style"

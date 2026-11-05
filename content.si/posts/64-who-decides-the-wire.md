@@ -1,10 +1,10 @@
 ---
 title: "වයර් එක තීරණය කරන්නේ කවුද"
-weight: 65
+weight: 70
 date: 2026-01-01
 draft: false
 phase: "Governance / අන්තර්ජාල පුරවැසිභාවය"
-series_index: 64
+series_index: 69
 tags: []
 summary: "විවිධ ජාල අන්තර් ක්‍රියා කිරීමට අංක, නම්, සහ encodings නම් කරන්නේ කවුද"
 image_prompt: "Clean diagram of shared registries — protocol numbers, IP addresses, domain names, Unicode code points — flowing into one interoperable packet path, internet-governance infographic style"

@@ -1,10 +1,10 @@
 ---
 title: "ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර"
-weight: 8
+weight: 12
 date: 2026-01-01
 draft: false
 phase: "2 — භෞතික විද්‍යාව සහ උපාංග"
-series_index: 7
+series_index: 11
 tags: []
 summary: "CMOS සහ බල/මාරු වෙළඳාම"
 image_prompt: "Circuit schematic of a CMOS inverter with truth table, clean schematic style"

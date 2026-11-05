@@ -1,10 +1,10 @@
 ---
 title: "TCP/IP and the Modern Internet Stack"
-weight: 44
+weight: 46
 date: 2026-01-01
 draft: false
 phase: "6 — Networking Evolution"
-series_index: 43
+series_index: 45
 tags: []
 summary: "How internet protocols stacked and why — layers, flag day, apps on an unreliable substrate — not a catalog"
 image_prompt: "Layered protocol stack diagram with a packet gaining headers at each layer, clean networking textbook diagram style"

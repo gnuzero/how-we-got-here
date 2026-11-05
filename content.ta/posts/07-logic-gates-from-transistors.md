@@ -1,10 +1,10 @@
 ---
 title: "டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்"
-weight: 8
+weight: 12
 date: 2026-01-01
 draft: false
 phase: "2 — இயற்பியல் மற்றும் சாதனங்கள்"
-series_index: 7
+series_index: 11
 tags: []
 summary: "CMOS NMOS-ஐயும் PMOS-ஐயும் இணைக்கிறது — idle வாயில்களில் static பாதை இல்லை; அளவிட்ட இடவியல்"
 image_prompt: "Circuit schematic of a CMOS inverter with truth table, clean schematic style"

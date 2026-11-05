@@ -1,10 +1,10 @@
 ---
 title: "ARPANET மற்றும் Packet Switching"
-weight: 40
+weight: 44
 date: 2026-01-01
 draft: false
 phase: "6 — வலையமைப்பு பரிணாமம்"
-series_index: 39
+series_index: 43
 tags: []
 summary: "Bursty கணினி போக்குவரத்து circuit switching-ஐ உடைத்தது — ARPANET packets மற்றும் பகிரப்பட்ட இணைப்புகள் வேலை செய்யும் என நிரூபித்தது"
 image_prompt: "Historical network topology map of early ARPANET nodes connected via IMPs, clean historical network diagram style"

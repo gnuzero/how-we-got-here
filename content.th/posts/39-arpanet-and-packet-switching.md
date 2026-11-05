@@ -1,10 +1,10 @@
 ---
 title: "ARPANET และการสลับแพ็กเก็ต"
-weight: 40
+weight: 44
 date: 2026-01-01
 draft: false
 phase: "6 — วิวัฒนาการเครือข่าย"
-series_index: 39
+series_index: 43
 tags: []
 summary: "ทราฟฟิกคอมพิวเตอร์แบบเป็นพัก ๆ พัง circuit switching — ARPANET พิสูจน์ว่าแพ็กเก็ตและลิงก์ร่วมใช้ได้"
 image_prompt: "Historical network topology map of early ARPANET nodes connected via IMPs, clean historical network diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Datacenter පරිමාණයේ Interconnect"
-weight: 62
+weight: 67
 date: 2026-01-01
 draft: false
 phase: "10 — නවීන AI දෘඪාංග"
-series_index: 61
+series_index: 66
 tags: []
 summary: "දහස් ගණන් GPU — topology සහ all-reduce ඕනෑම චිපයක peak FLOPS තරම්ම වැදගත් ය"
 image_prompt: "System diagram of a multi-rack AI training cluster showing a fat-tree network topology, clean datacenter network architecture diagram style"

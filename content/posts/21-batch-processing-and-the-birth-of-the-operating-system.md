@@ -1,10 +1,10 @@
 ---
 title: "Batch Processing and the Birth of the Operating System"
-weight: 24
+weight: 26
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
-series_index: 23
+series_index: 25
 tags: []
 summary: "Expensive CPUs sitting idle between punch-card jobs forced the first resident monitor — system software, not a user's program"
 image_prompt: "Historical illustration of an operator loading punch cards into a batch-processing mainframe, clean vintage computing illustration style"

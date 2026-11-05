@@ -1,10 +1,10 @@
 ---
 title: "Chiplets மற்றும் Advanced Packaging"
-weight: 52
+weight: 57
 date: 2026-01-01
 draft: false
 phase: "8 — செயல்முறை நோட்கள் மற்றும் உற்பத்தி"
-series_index: 51
+series_index: 56
 tags: []
 summary: "Yield die பரப்புடன் வீழ்கிறது — chiplets-ஆகப் பிரித்து advanced packaging-ஆல் bandwidth மீண்டும் வாங்குங்கள்"
 image_prompt: "Cutaway diagram comparing a monolithic die vs a chiplet package with interposer, clean semiconductor packaging illustration style"

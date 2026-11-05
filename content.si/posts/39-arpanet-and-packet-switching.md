@@ -1,10 +1,10 @@
 ---
 title: "ARPANET සහ Packet Switching"
-weight: 40
+weight: 44
 date: 2026-01-01
 draft: false
 phase: "6 — ජාලකරණය: ශ්‍රේණි සබැඳි සිට දත්ත මධ්‍යස්ථාන RDMA දක්වා"
-series_index: 39
+series_index: 43
 tags: []
 summary: "Bursty පරිගණක ගමනාගමනය circuit switching බිඳ දැමුවේය — ARPANET packets සහ හවුල් සබැඳි ක්‍රියා කළ හැකි බව ඔප්පු කළේය"
 image_prompt: "Historical network topology map of early ARPANET nodes connected via IMPs, clean historical network diagram style"

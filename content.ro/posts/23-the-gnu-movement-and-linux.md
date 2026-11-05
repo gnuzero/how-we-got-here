@@ -1,10 +1,10 @@
 ---
 title: "Mișcarea GNU și Linux"
-weight: 26
+weight: 28
 date: 2026-01-01
 draft: false
 phase: "4 — Fundamente software: sisteme de operare, limbaje și sisteme în timp real"
-series_index: 25
+series_index: 27
 tags: []
 summary: "Un sistem compatibil cu Unix, o licență care păstrează libertatea codului și un nucleu pornit ca hobby"
 image_prompt: "Illustration of the GNU logo alongside Tux the penguin, with a layered diagram showing GNU userland tools sitting atop the Linux kernel, clean open-source movement infographic style"

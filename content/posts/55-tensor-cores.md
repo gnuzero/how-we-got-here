@@ -1,10 +1,10 @@
 ---
 title: "Tensor Cores"
-weight: 58
+weight: 61
 date: 2026-01-01
 draft: false
 phase: "9 — GPUs & Parallel Compute"
-series_index: 57
+series_index: 60
 tags: []
 summary: "Matrix multiply-accumulate became the dominant AI op — so hardware made it a first-class primitive"
 image_prompt: "Diagram of a tensor core performing a 4x4 matrix multiply-accumulate in a single cycle, clean AI hardware diagram style"

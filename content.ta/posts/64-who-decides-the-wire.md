@@ -1,10 +1,10 @@
 ---
 title: "கம்பிக்கு யார் முடிவெடுக்கிறார்கள்"
-weight: 65
+weight: 70
 date: 2026-09-06
 draft: false
 phase: "ஆளுமை / இணையக் குடியியல்"
-series_index: 64
+series_index: 69
 tags: []
 summary: "பன்முக வலையமைப்புகள் இடைசெயல்பட எண்கள், பெயர்கள் மற்றும் encodings-ஐ யார் பெயரிடுகிறார்கள்"
 image_prompt: "Clean diagram of shared registries — protocol numbers, IP addresses, domain names, Unicode code points — flowing into one interoperable packet path, internet-governance infographic style"

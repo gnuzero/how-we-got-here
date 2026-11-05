@@ -1,10 +1,10 @@
 ---
 title: "நடைமுறையில் Real-Time அமைப்புகள்"
-weight: 31
+weight: 35
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"
-series_index: 30
+series_index: 34
 tags: []
 summary: "நிலையான பட்ஜெட்டில் sense–compute–actuate — Phase 3-இன் வேகத் தந்திரங்கள் நேர எதிரிகளாகும் avionics மற்றும் தொழில்துறை கட்டுப்பாடு"
 image_prompt: "Illustration of a real-time control loop in an industrial/avionics context, clean industrial-engineering diagram style"

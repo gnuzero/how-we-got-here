@@ -1,10 +1,10 @@
 ---
 title: "Mainframes සිට Minicomputers සිට Microprocessors දක්වා"
-weight: 19
+weight: 23
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"
-series_index: 18
+series_index: 22
 tags: []
 summary: "පරිගණකයක් ලැබෙන්නේ කාටද යන යුග තුනක් — ආයතනික, දෙපාර්තමේන්තු, පසුව සෑම කෙනෙකුටම එක් චිපයක්"
 image_prompt: "Timeline infographic showing mainframe, minicomputer, and microprocessor at matching scale, clean historical infographic style"

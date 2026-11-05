@@ -1,10 +1,10 @@
 ---
 title: "போர்க்கால Crypto"
-weight: 67
+weight: 72
 date: 2026-09-06
 draft: false
 phase: "Crypto மற்றும் போர்க்கால கணினி"
-series_index: 66
+series_index: 71
 tags: []
 summary: "Enigma, Bletchley மற்றும் Colossus — cipher-களை உடைப்பது ஏன் மின்னணுக் கணினியைக் கட்டாயப்படுத்தியது"
 image_prompt: "Clean historical-technical diagram: Enigma rotors beside a Colossus rack of vacuum tubes at Bletchley, connective arrows from cipher traffic to electronic counting, muted wartime-engineering style"

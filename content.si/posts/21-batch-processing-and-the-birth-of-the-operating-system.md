@@ -1,10 +1,10 @@
 ---
 title: "කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත"
-weight: 22
+weight: 26
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"
-series_index: 21
+series_index: 25
 tags: []
 summary: "පන්ච්-කාඩ් රැකියා අතර මිල අධික CPU idle වීම පළමු resident monitor එක බල කළේය — පරිශීලක වැඩසටහනක් නොව පද්ධති මෘදුකාංගයක්"
 image_prompt: "Historical illustration of an operator loading punch cards into a batch-processing mainframe, clean vintage computing illustration style"

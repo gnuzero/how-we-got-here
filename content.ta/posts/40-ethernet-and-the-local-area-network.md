@@ -1,10 +1,10 @@
 ---
 title: "Ethernet மற்றும் Local Area Network"
-weight: 41
+weight: 45
 date: 2026-01-01
 draft: false
 phase: "6 — வலையமைப்பு பரிணாமம்"
-series_index: 40
+series_index: 44
 tags: []
 summary: "பகிரப்பட்ட கம்பி, மைய arbiter இல்லை — CSMA/CD LAN collision கட்டுப்பாட்டைத் தீர்த்தது; switches பின்னர் அதை அகற்றின"
 image_prompt: "Diagram of a classic Ethernet bus topology showing a collision event and CSMA/CD backoff, clean networking textbook diagram style"

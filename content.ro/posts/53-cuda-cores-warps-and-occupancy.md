@@ -1,10 +1,10 @@
 ---
 title: "Nuclee CUDA, warp-uri și ocupare"
-weight: 56
+weight: 59
 date: 2026-01-01
 draft: false
 phase: "9 — GPU-uri și calcul paralel"
-series_index: 55
+series_index: 58
 tags: []
 summary: "SIMT pe SM-uri și warp-uri de 32: pasul comun câștigă până la divergență, iar ocuparea ascunde așteptarea după memorie"
 image_prompt: "Block diagram of a GPU Streaming Multiprocessor showing CUDA cores, warp scheduler, register file, clean GPU microarchitecture diagram style"

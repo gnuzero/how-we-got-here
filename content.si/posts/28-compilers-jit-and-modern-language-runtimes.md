@@ -1,10 +1,10 @@
 ---
 title: "Compilers, JIT, සහ නවීන භාෂා Runtimes"
-weight: 29
+weight: 33
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"
-series_index: 28
+series_index: 32
 tags: []
 summary: "AOT runtime කරුණු නොමැතිව එක් වරක් compile කරයි; JIT hot paths සඳහා බලා සිටී — සහ garbage collection පිරිවැය runtime වෙත මාරු කරයි"
 image_prompt: "Pipeline diagram of a compiler with a JIT feedback loop shown alongside, clean compiler-textbook diagram style"

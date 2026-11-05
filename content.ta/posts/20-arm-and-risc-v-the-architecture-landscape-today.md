@@ -1,10 +1,10 @@
 ---
 title: "ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு"
-weight: 21
+weight: 25
 date: 2026-01-01
 draft: false
 phase: "3 — CPU மற்றும் அதன் கட்டமைப்புகளைக் கட்டுதல்"
-series_index: 20
+series_index: 24
 tags: []
 summary: "Desktop x86-இல் அமர்ந்த பிறகு, போர் மின்சாரம் மற்றும் licensing-க்கு நகர்ந்தது — ARM மொபைலை வென்றது; RISC-V திறந்ததில் பந்தயம் கட்டுகிறது"
 image_prompt: "Modern infographic comparing ARM licensing vs RISC-V open ISA, with market segment icons, clean contemporary tech-diagram style"

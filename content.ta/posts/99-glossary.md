@@ -1,10 +1,10 @@
 ---
 title: "சொற்களஞ்சியம்"
-weight: 100
+weight: 102
 date: 2026-01-01
 draft: false
 phase: "குறிப்பு"
-series_index: 99
+series_index: 101
 tags: ["glossary", "reference"]
 summary: "தொடர் முழுவதும் பயன்படுத்தப்படும் முக்கியச் சொற்கள், துல்லியமாக வரையறுக்கப்பட்டவை"
 ---

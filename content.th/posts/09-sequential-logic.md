@@ -1,10 +1,10 @@
 ---
 title: "ตรรกะเชิงลำดับ"
-weight: 10
+weight: 14
 date: 2026-01-01
 draft: false
 phase: "2 — ฟิสิกส์และอุปกรณ์"
-series_index: 9
+series_index: 13
 tags: []
 summary: "ฟีดแบ็กสร้างความจำ bistable; flip-flop ที่กระตุ้นด้วยขอบทำให้การออกแบบ synchronous จัดการได้ — จน setup/hold จำกัดคล็อก"
 image_prompt: "Timing diagram showing clock, data, output for a D flip-flop, clean waveform diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "De ce înmulțirea de matrice a remodelat proiectarea cipurilor"
-weight: 60
+weight: 63
 date: 2026-01-01
 draft: false
 phase: "10 — Hardware AI modern"
-series_index: 59
+series_index: 62
 tags: []
 summary: "La scară, calculul AI se reduce la înmulțiri de matrice — merită să specializezi siliciul pentru această formă"
 image_prompt: "Infographic showing a neural network layer's forward pass as a matrix multiply mapped onto specialized hardware, clean AI hardware explainer style"

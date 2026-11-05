@@ -1,10 +1,10 @@
 ---
 title: "Branch Prediction"
-weight: 17
+weight: 19
 date: 2026-01-01
 draft: false
 phase: "3 — Building a CPU & Its Architectures"
-series_index: 16
+series_index: 18
 tags: []
 summary: "Pipeline flushes are expensive — prediction exists to make them rare"
 image_prompt: "Diagram of a 2-bit saturating counter branch predictor state machine, clean state-machine diagram style"

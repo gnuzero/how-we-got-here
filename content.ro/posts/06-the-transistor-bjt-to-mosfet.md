@@ -1,10 +1,10 @@
 ---
 title: "Tranzistorul: de la BJT la MOSFET"
-weight: 9
+weight: 11
 date: 2026-01-01
 draft: false
 phase: "2 — Fizică și dispozitive"
-series_index: 8
+series_index: 10
 tags: []
 summary: "Doi tranzistori, două fizici: BJT-ul cere curent de bază, MOSFET-ul se comandă prin câmp, printr-un oxid izolator, și asta a deschis drumul densității"
 image_prompt: "Side-by-side cross-section diagrams of BJT and MOSFET, labeled, clean semiconductor engineering textbook style"

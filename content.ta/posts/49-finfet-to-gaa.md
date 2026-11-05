@@ -1,10 +1,10 @@
 ---
 title: "FinFET முதல் GAA வரை"
-weight: 50
+weight: 55
 date: 2026-01-01
 draft: false
 phase: "8 — செயல்முறை நோட்கள் மற்றும் உற்பத்தி"
-series_index: 49
+series_index: 54
 tags: []
 summary: "Short-channel leakage planar shrink-ஐக் கொன்றது — gate-ஐ மூடுங்கள் (FinFET), பிறகு எல்லாப் பக்கமும் மூடுங்கள் (GAA)"
 image_prompt: "3D cutaway comparison of planar MOSFET, FinFET, and GAA nanosheet transistor structures, clean semiconductor device diagram style"

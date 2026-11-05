@@ -1,10 +1,10 @@
 ---
 title: "CUDA Core, Warp และ Occupancy"
-weight: 54
+weight: 59
 date: 2026-01-01
 draft: false
 phase: "9 — GPU และการคำนวณขนาน"
-series_index: 53
+series_index: 58
 tags: []
 summary: "SIMT แมปลง SM และ warp — lockstep ชนะจนกว่า divergence; occupancy ซ่อน memory stall"
 image_prompt: "Block diagram of a GPU Streaming Multiprocessor showing CUDA cores, warp scheduler, register file, clean GPU microarchitecture diagram style"

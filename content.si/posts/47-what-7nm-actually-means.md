@@ -1,10 +1,10 @@
 ---
 title: "'7nm' යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද"
-weight: 48
+weight: 53
 date: 2026-01-01
 draft: false
 phase: "8 — ක්‍රියාවලි නෝඩ් සහ Fabrication"
-series_index: 47
+series_index: 52
 tags: []
 summary: "Node නම් එක් භෞතික දිගක් ලුහුබැඳීම නැවැත්තුවේය — density සහ pitch භෞතික විද්‍යාවයි; ලේබලය පරම්පරාවකි"
 image_prompt: "Infographic debunking the '7nm = physical measurement' myth, showing fin pitch/gate pitch numbers vs marketing node names, clean technical infographic style"

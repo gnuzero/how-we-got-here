@@ -1,10 +1,10 @@
 ---
 title: "From Press to Pixel"
-weight: 46
+weight: 49
 date: 2026-01-02
-draft: true
+draft: false
 phase: "7 — Distributed Systems, Big Data & Orchestration"
-series_index: 45
+series_index: 48
 tags: []
 summary: "When page and type become software — Wang Xuan's laser phototypesetting leads; Western PostScript and CSS at the bottom"
 image_prompt: "Technical diagram of Chinese character bitmap compressed to outline glyphs, then laser-scanned onto film, clean line art, labeled stages"

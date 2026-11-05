@@ -1,10 +1,10 @@
 ---
 title: "පාරිභාෂික ශබ්දකෝෂය"
-weight: 100
+weight: 102
 date: 2026-01-01
 draft: false
 phase: "යොමුව"
-series_index: 99
+series_index: 101
 tags: ["glossary", "reference"]
 summary: "මාලාව පුරා භාවිතා වන ප්‍රධාන පද, නිවැරදිව අර්ථ දක්වා ඇත"
 ---

@@ -1,10 +1,10 @@
 ---
 title: "Kubernetes and Container Orchestration at Scale"
-weight: 48
+weight: 51
 date: 2026-01-01
 draft: false
 phase: "7 — Distributed Systems, Big Data & Orchestration"
-series_index: 47
+series_index: 50
 tags: []
 summary: "Thousands of containers failing routinely force declarative desired state and a continuous reconciliation loop"
 image_prompt: "System diagram of a Kubernetes cluster showing control plane, nodes, pods, and services, clean cloud-native architecture diagram style"

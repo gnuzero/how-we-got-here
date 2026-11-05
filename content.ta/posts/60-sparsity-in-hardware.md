@@ -1,10 +1,10 @@
 ---
 title: "வன்பொருளில் Sparsity"
-weight: 61
+weight: 66
 date: 2026-01-01
 draft: false
 phase: "10 — நவீன AI வன்பொருள்"
-series_index: 60
+series_index: 65
 tags: []
 summary: "அறியப்பட்ட-பூஜ்ய MAC-களைத் தவிருங்கள் — ஆனால் அடர்த்தியான MAC வன்பொருள் சுரண்ட மலிவானவை structured patterns மட்டும்"
 image_prompt: "Diagram of a dense weight matrix vs a 2:4 structured-sparse weight matrix, clean AI accelerator diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Time-Sharing மற்றும் Unix வம்சாவளி"
-weight: 23
+weight: 27
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"
-series_index: 22
+series_index: 26
 tags: []
 summary: "Batch CPU-ஐ வேலைப்படுத்தி வைத்தது; time-sharing பல பயனர்களுக்கு அதைச் சொந்தமாக்கிய மாயையைக் கொடுத்தது — Multics ஆசை, பிறகு Unix எளிமை"
 image_prompt: "Family-tree infographic: Multics branching into Unix, then BSD/System V leading to Linux/macOS, clean genealogy diagram style"

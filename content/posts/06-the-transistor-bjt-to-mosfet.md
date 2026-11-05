@@ -1,10 +1,10 @@
 ---
 title: "The Transistor: BJT to MOSFET"
-weight: 9
+weight: 11
 date: 2026-01-01
 draft: false
 phase: "2 — Physics & Devices"
-series_index: 8
+series_index: 10
 tags: []
 summary: "Current-controlled BJTs burned idle power; voltage-controlled MOSFETs made density possible"
 image_prompt: "Side-by-side cross-section diagrams of BJT and MOSFET, labeled, clean semiconductor engineering textbook style"

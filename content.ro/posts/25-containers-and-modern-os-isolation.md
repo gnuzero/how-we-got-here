@@ -1,10 +1,10 @@
 ---
 title: "Containerele și izolarea în sistemele de operare moderne"
-weight: 28
+weight: 30
 date: 2026-01-01
 draft: false
 phase: "4 — Fundamente software: sisteme de operare, limbaje și sisteme în timp real"
-series_index: 27
+series_index: 29
 tags: []
 summary: "Un singur nucleu, mai multe lumi: namespace-uri pentru ce vede un proces, cgroup-uri pentru cât consumă"
 image_prompt: "Layered diagram comparing full virtualization vs container isolation, clean modern infrastructure diagram style"

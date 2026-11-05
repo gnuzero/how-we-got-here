@@ -1,10 +1,10 @@
 ---
 title: "ARM și RISC-V: peisajul de arhitecturi azi"
-weight: 23
+weight: 25
 date: 2026-01-01
 draft: false
 phase: "3 — Construirea unui CPU și arhitecturile lui"
-series_index: 22
+series_index: 24
 tags: []
 summary: "După ce desktop-ul s-a așezat pe x86, lupta s-a mutat pe putere și pe licențiere — ARM a câștigat mobilul; RISC-V mizează pe deschidere"
 image_prompt: "Modern infographic comparing ARM licensing vs RISC-V open ISA, with market segment icons, clean contemporary tech-diagram style"

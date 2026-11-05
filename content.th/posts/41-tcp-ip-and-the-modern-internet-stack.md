@@ -1,10 +1,10 @@
 ---
 title: "TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่"
-weight: 42
+weight: 46
 date: 2026-01-01
 draft: false
 phase: "6 — วิวัฒนาการเครือข่าย"
-series_index: 41
+series_index: 45
 tags: []
 summary: "โปรโตคอลอินเทอร์เน็ตซ้อนกันอย่างไรและเหตุใด — ชั้น, flag day, แอปบนพื้นผิวที่ไม่เชื่อถือได้ — ไม่ใช่แคตตาล็อก"
 image_prompt: "Layered protocol stack diagram with a packet gaining headers at each layer, clean networking textbook diagram style"

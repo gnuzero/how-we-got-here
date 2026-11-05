@@ -1,10 +1,10 @@
 ---
 title: "De la presă la pixel"
-weight: 46
+weight: 49
 date: 2026-01-02
-draft: true
+draft: false
 phase: "7 — Sisteme distribuite, Big Data și orchestrare"
-series_index: 45
+series_index: 48
 tags: []
 summary: "Când pagina și literele devin program — fotoculegerea cu laser a lui Wang Xuan în prim-plan, PostScript și CSS la final"
 image_prompt: "Technical diagram of Chinese character bitmap compressed to outline glyphs, then laser-scanned onto film, clean line art, labeled stages"

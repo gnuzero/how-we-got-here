@@ -1,10 +1,10 @@
 ---
 title: "รหัสลับยามสงคราม"
-weight: 67
+weight: 72
 date: 2026-09-06
 draft: false
 phase: "รหัสลับและการคำนวณยามสงคราม"
-series_index: 66
+series_index: 71
 tags: []
 summary: "Enigma, Bletchley และ Colossus — เหตุใดการถอดรหัสจึงบังคับการคำนวณอิเล็กทรอนิกส์"
 image_prompt: "Clean historical-technical diagram: Enigma rotors beside a Colossus rack of vacuum tubes at Bletchley, connective arrows from cipher traffic to electronic counting, muted wartime-engineering style"

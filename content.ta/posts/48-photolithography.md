@@ -1,10 +1,10 @@
 ---
 title: "Photolithography"
-weight: 49
+weight: 54
 date: 2026-01-01
 draft: false
 phase: "8 — செயல்முறை நோட்கள் மற்றும் உற்பத்தி"
-series_index: 48
+series_index: 53
 tags: []
 summary: "Diffraction குறுகிய அலைநீளங்களைக் கட்டாயப்படுத்துகிறது — EUV-இன் mirrors மற்றும் tin plasma தான் feature அளவுகளை நகர்த்தின"
 image_prompt: "Cutaway diagram of an EUV lithography system showing plasma source, mirrors, mask, wafer, clean fab equipment illustration style"

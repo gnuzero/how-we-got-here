@@ -1,10 +1,10 @@
 ---
 title: "Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล"
-weight: 46
+weight: 51
 date: 2026-01-01
 draft: false
 phase: "7 — ระบบกระจาย บิ๊กดาต้า และออร์เคสตรา"
-series_index: 45
+series_index: 50
 tags: []
 summary: "คอนเทนเนอร์นับพันที่ล้มเป็นประจำบังคับสถานะที่ต้องการแบบประกาศและลูป reconciliation ต่อเนื่อง"
 image_prompt: "System diagram of a Kubernetes cluster showing control plane, nodes, pods, and services, clean cloud-native architecture diagram style"

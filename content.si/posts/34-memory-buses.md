@@ -1,10 +1,10 @@
 ---
 title: "මතක බස්"
-weight: 35
+weight: 39
 date: 2026-01-01
 draft: false
 phase: "5 — බස් සහ පද්ධති ගෘහ නිර්මාණය"
-series_index: 34
+series_index: 38
 tags: []
 summary: "DDR bandwidth මිලදී ගත්තේය; latency කලාතුරකින් චලනය විය — banks සහ channels රැඳීම සඟවයි"
 image_prompt: "Comparison chart of DDR generations, clean technical infographic style, alongside a DIMM pinout diagram"

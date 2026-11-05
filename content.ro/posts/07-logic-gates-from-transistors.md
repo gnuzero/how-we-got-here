@@ -1,10 +1,10 @@
 ---
 title: "Porți logice din tranzistori"
-weight: 10
+weight: 12
 date: 2026-01-01
 draft: false
 phase: "2 — Fizică și dispozitive"
-series_index: 9
+series_index: 11
 tags: []
 summary: "CMOS pune în pereche un nMOS și un pMOS, ca o poartă în repaus să nu lase cale de curent între alimentare și masă"
 image_prompt: "Circuit schematic of a CMOS inverter with truth table, clean schematic style"

@@ -1,10 +1,10 @@
 ---
 title: "ระบบเรียลไทม์ในทางปฏิบัติ"
-weight: 31
+weight: 35
 date: 2026-01-01
 draft: false
 phase: "4 — รากฐานซอฟต์แวร์: OS, ภาษา และระบบเรียลไทม์"
-series_index: 30
+series_index: 34
 tags: []
 summary: "Sense–compute–actuate บนงบคงที่ — อากาศยานและการควบคุมอุตสาหกรรมที่กลลวงความเร็วของเฟส 3 กลายเป็นศัตรูของจังหวะ"
 image_prompt: "Illustration of a real-time control loop in an industrial/avionics context, clean industrial-engineering diagram style"

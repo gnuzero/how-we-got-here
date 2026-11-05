@@ -1,10 +1,10 @@
 ---
 title: "நினைவகப் படிநிலை தொடங்குகிறது"
-weight: 11
+weight: 15
 date: 2026-01-01
 draft: false
 phase: "2 — இயற்பியல் மற்றும் சாதனங்கள்"
-series_index: 10
+series_index: 14
 tags: []
 summary: "Flip-flop-கள் பிட்டுக்கு மிகவும் விலை உயர்ந்தவை — SRAM வேகத்தை வாங்குகிறது, DRAM அடர்த்தியை வாங்குகிறது; படிநிலை அந்த வர்த்தகத்தின் மறுபடி"
 image_prompt: "Side-by-side cell diagrams: 6T SRAM vs 1T1C DRAM, labeled, clean semiconductor memory textbook style"

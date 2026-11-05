@@ -1,10 +1,10 @@
 ---
 title: "ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා"
-weight: 7
+weight: 11
 date: 2026-01-01
 draft: false
 phase: "2 — භෞතික විද්‍යාව සහ උපාංග"
-series_index: 6
+series_index: 10
 tags: []
 summary: "MOSFET කර්මාන්ත ප්‍රමිතිය බවට පත් වූයේ ඇයි"
 image_prompt: "Side-by-side cross-section diagrams of BJT and MOSFET, labeled, clean semiconductor engineering textbook style"

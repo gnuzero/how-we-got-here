@@ -1,10 +1,10 @@
 ---
 title: "Zidul memoriei"
-weight: 38
+weight: 40
 date: 2026-01-01
 draft: false
 phase: "5 — Magistrala și arhitectura sistemului"
-series_index: 37
+series_index: 39
 tags: []
 summary: "Viteza procesoarelor și latența DRAM s-au despărțit timp de decenii: cache-ul ascunde prăpastia, nu o închide, iar în epoca LLM zidul se măsoară în bandwidth"
 image_prompt: "Graph infographic showing CPU speed and DRAM speed diverging from 1980 to today, clean data-visualization diagram style"

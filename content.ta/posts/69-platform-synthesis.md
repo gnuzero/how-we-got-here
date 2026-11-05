@@ -1,10 +1,10 @@
 ---
 title: "Platform தொகுப்பு"
-weight: 70
+weight: 75
 date: 2026-09-06
 draft: false
 phase: "ஒரு இயந்திரத்திலிருந்து ஒரு Platform வரை"
-series_index: 69
+series_index: 74
 tags: []
 summary: "ஒரு உயர்-நிலை நிறுத்தம் — பெரிய platform என்பது விநியோகிக்கப்பட்ட அமைப்புகள், networking, AI infra, தனியுரிமை பொறியியல் மற்றும் software engineering-இன் தொகுப்பு"
 image_prompt: "Single clean stack diagram composing distributed systems, networking, AI accelerators, privacy/identity controls, and software delivery into one platform silhouette, modern systems-architecture style"

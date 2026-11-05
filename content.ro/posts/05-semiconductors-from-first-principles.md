@@ -1,10 +1,10 @@
 ---
 title: "Semiconductori de la primele principii"
-weight: 8
+weight: 10
 date: 2026-01-01
 draft: false
 phase: "2 — Fizică și dispozitive"
-series_index: 7
+series_index: 9
 tags: []
 summary: "O bandă interzisă pe care o poți împinge în ambele sensuri — doparea face din siliciu un comutator controlabil"
 image_prompt: "Technical illustration of a silicon crystal lattice showing band gap diagram, labeled, textbook diagram style, blue/orange color coding"

@@ -1,10 +1,10 @@
 ---
 title: "GPU Memory Hierarchy"
-weight: 55
+weight: 60
 date: 2026-01-01
 draft: false
 phase: "9 — GPU-கள் மற்றும் Parallel Compute"
-series_index: 54
+series_index: 59
 tags: []
 summary: "ஆயிரக்கணக்கான threads DDR-க்கு மேல் bandwidth கட்டாயப்படுத்துகின்றன — HBM நினைவகத்தை compute அருகில் அடுக்கும்"
 image_prompt: "Cutaway diagram of HBM stacked memory with TSVs connecting to a GPU die via an interposer, clean packaging + memory diagram style"

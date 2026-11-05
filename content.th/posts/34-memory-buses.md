@@ -1,10 +1,10 @@
 ---
 title: "บัสหน่วยความจำ"
-weight: 35
+weight: 39
 date: 2026-01-01
 draft: false
 phase: "5 — บัสและสถาปัตยกรรมระบบ"
-series_index: 34
+series_index: 38
 tags: []
 summary: "DDR ซื้อแบนด์วิดท์; latency แทบไม่ขยับ — bank และ channel ซ่อนการรอ"
 image_prompt: "Comparison chart of DDR generations, clean technical infographic style, alongside a DIMM pinout diagram"

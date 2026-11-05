@@ -1,10 +1,10 @@
 ---
 title: "Caches"
-weight: 18
+weight: 20
 date: 2026-01-01
 draft: false
 phase: "3 — Building a CPU & Its Architectures"
-series_index: 17
+series_index: 19
 tags: []
 summary: "Locality makes the memory hierarchy work; associativity and coherence are the costs of keeping it honest"
 image_prompt: "Diagram of cache organization: direct-mapped, set-associative, fully-associative, clean memory-system textbook style"

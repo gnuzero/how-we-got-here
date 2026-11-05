@@ -1,10 +1,10 @@
 ---
 title: "Kubernetes සහ පරිමාණයේ Container Orchestration"
-weight: 46
+weight: 51
 date: 2026-01-01
 draft: false
 phase: "7 — බෙදාහැරුණු පද්ධති, Big Data සහ Orchestration"
-series_index: 45
+series_index: 50
 tags: []
 summary: "දහස් ගණනක් containers රුටීන ලෙස අසාර්ථක වීම declarative අපේක්ෂිත තත්ත්වයක් සහ අඛණ්ඩ reconciliation loop එකක් බල කරයි"
 image_prompt: "System diagram of a Kubernetes cluster showing control plane, nodes, pods, and services, clean cloud-native architecture diagram style"

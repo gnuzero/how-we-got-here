@@ -1,10 +1,10 @@
 ---
 title: "Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය"
-weight: 44
+weight: 48
 date: 2026-01-01
 draft: false
 phase: "7 — බෙදාහැරුණු පද්ධති, Big Data සහ Orchestration"
-series_index: 43
+series_index: 47
 tags: []
 summary: "Find, පසුව talk — Usenet, Archie, Gopher, IRC, සහ දෙකම ඇසුරුම් කළ පාරිභෝගික portals"
 image_prompt: "Historical illustration of a Usenet hierarchy, Archie prompt, Gopher menu, IRC channel list, and a Yahoo-style portal homepage as one arc, clean vintage internet-history infographic style"

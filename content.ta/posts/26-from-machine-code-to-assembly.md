@@ -1,10 +1,10 @@
 ---
 title: "Machine Code-இலிருந்து Assembly வரை"
-weight: 27
+weight: 31
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"
-series_index: 26
+series_index: 30
 tags: []
 summary: "CPU ஓட்டுவது raw binary — assembly முதல் வாசிப்புத்திறன் அடுக்கு, இன்னும் mnemonic ஒன்றுக்கு ஒரு அறிவுறுத்தல்"
 image_prompt: "Side-by-side comparison of raw binary machine code and its assembly mnemonic equivalent, clean textbook diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling"
-weight: 30
+weight: 34
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"
-series_index: 29
+series_index: 33
 tags: []
 summary: "Throughput மற்றும் நியாயம் காலக்கெடு அல்ல — hard real-time-க்கு சராசரி வேகம் அல்ல, வரம்புடைய மோசமான-வழக்கு நேரம் தேவை"
 image_prompt: "Diagram comparing general-purpose OS scheduler vs RTOS scheduler, clean embedded-systems diagram style"

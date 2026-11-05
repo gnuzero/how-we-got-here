@@ -1,10 +1,10 @@
 ---
 title: "ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්"
-weight: 69
+weight: 74
 date: 2026-01-01
 draft: false
 phase: "ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්"
-series_index: 68
+series_index: 73
 tags: []
 summary: "ගමනෙන් ඉදිරියට යන සබැඳි — Cisco, Gates, Jobs, GNU+Linus, Elon, Bezos stack එක ජීවත් වන platforms බවට පත් කළ වර්ගවල බීජ ලෙස"
 image_prompt: "Clean forward-looking diagram: protocol stack arrows pointing into product seeds — router, PC software, integrated personal machine, open OS, logistics/cloud/space — not corporate logos as heroes, modern technical infographic"

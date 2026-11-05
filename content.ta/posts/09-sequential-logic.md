@@ -1,10 +1,10 @@
 ---
 title: "தொடர்நிலைத் தர்க்கம்"
-weight: 10
+weight: 14
 date: 2026-01-01
 draft: false
 phase: "2 — இயற்பியல் மற்றும் சாதனங்கள்"
-series_index: 9
+series_index: 13
 tags: []
 summary: "பின்னூட்டம் இருநிலை நினைவகத்தை உருவாக்குகிறது; edge-triggered flip-flop-கள் ஒத்திசைவு வடிவமைப்பைக் கையாளக்கூடியதாக்குகின்றன — setup/hold clock-ஐக் கட்டுப்படுத்தும் வரை"
 image_prompt: "Timing diagram showing clock, data, output for a D flip-flop, clean waveform diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "අවධානය පමණක් ප්‍රමාණවත්ය"
-weight: 64
+weight: 69
 date: 2026-01-01
 draft: false
 phase: "10 — නවීන AI දෘඪාංග"
-series_index: 63
+series_index: 68
 tags: []
 summary: "Self-attention කශේරුකාව වසා දැමුවේය — මාලාව ගොඩනැගූ matmul දෘඪාංගයට map වන සමාන්තර අනුක්‍රම ආකෘතිකරණය"
 image_prompt: "Clean technical diagram of multi-head self-attention: queries, keys, values flowing into scaled dot-product attention, multiple heads, residual connections, modern AI architecture illustration style, white background"

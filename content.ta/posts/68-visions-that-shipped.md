@@ -1,10 +1,10 @@
 ---
 title: "நடைமுறைக்கு வந்த பார்வைகள்"
-weight: 69
+weight: 74
 date: 2026-09-06
 draft: false
 phase: "நடைமுறைக்கு வந்த பார்வைகள்"
-series_index: 68
+series_index: 73
 tags: []
 summary: "பயணத்திலிருந்து முன் இணைப்புகள் — Cisco, Gates, Jobs, GNU+Linus, Elon, Bezos stack-ஐ வாழும் platforms ஆக்கிய வகைகளின் விதைகள்"
 image_prompt: "Clean forward-looking diagram: protocol stack arrows pointing into product seeds — router, PC software, integrated personal machine, open OS, logistics/cloud/space — not corporate logos as heroes, modern technical infographic"

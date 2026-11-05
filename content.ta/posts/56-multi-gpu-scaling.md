@@ -1,10 +1,10 @@
 ---
 title: "Multi-GPU Scaling"
-weight: 57
+weight: 62
 date: 2026-01-01
 draft: false
 phase: "9 — GPU-கள் மற்றும் Parallel Compute"
-series_index: 56
+series_index: 61
 tags: []
 summary: "ஒரு GPU வரையறுக்கப்பட்டது — GPU-களுக்கு இடையேயான interconnect அடுத்த சுவர் ஆகிறது"
 image_prompt: "System diagram of an 8-GPU NVLink-connected node with NVSwitch, clean datacenter GPU cluster diagram style"

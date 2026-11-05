@@ -1,10 +1,10 @@
 ---
 title: "තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling"
-weight: 30
+weight: 34
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"
-series_index: 29
+series_index: 33
 tags: []
 summary: "Throughput සහ සාධාරණත්වය deadlines නොවේ — දැඩි තත්‍ය කාලයට සාමාන්‍ය වේගය නොව බැඳුණු නරකම-අවස්ථා කාලය අවශ්‍යය"
 image_prompt: "Diagram comparing general-purpose OS scheduler vs RTOS scheduler, clean embedded-systems diagram style"

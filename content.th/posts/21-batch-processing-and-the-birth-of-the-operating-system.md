@@ -1,10 +1,10 @@
 ---
 title: "Batch Processing และการถือกำเนิดของระบบปฏิบัติการ"
-weight: 22
+weight: 26
 date: 2026-01-01
 draft: false
 phase: "4 — รากฐานซอฟต์แวร์: OS, ภาษา และระบบเรียลไทม์"
-series_index: 21
+series_index: 25
 tags: []
 summary: "CPU แพงที่ว่างระหว่างงาน punch-card บังคับ resident monitor ชุดแรก — ซอฟต์แวร์ระบบ ไม่ใช่โปรแกรมของผู้ใช้"
 image_prompt: "Historical illustration of an operator loading punch cards into a batch-processing mainframe, clean vintage computing illustration style"

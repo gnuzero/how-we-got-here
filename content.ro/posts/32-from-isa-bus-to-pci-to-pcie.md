@@ -1,10 +1,10 @@
 ---
 title: "De la magistrala ISA la PCI și la PCIe"
-weight: 35
+weight: 37
 date: 2026-01-01
 draft: false
 phase: "5 — Magistralele și arhitectura sistemului"
-series_index: 34
+series_index: 36
 tags: []
 summary: "Dezaxarea a omorât magistrala paralelă lată; serialul punct-la-punct e cum am scăpat"
 image_prompt: "Timeline infographic: ISA → PCI → PCIe evolution with bandwidth numbers, clean historical technical infographic style"

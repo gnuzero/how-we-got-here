@@ -1,10 +1,10 @@
 ---
 title: "ප්‍රායෝගිකව තත්‍ය කාල පද්ධති"
-weight: 31
+weight: 35
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"
-series_index: 30
+series_index: 34
 tags: []
 summary: "ස්ථිර අයවැයක් මත sense–compute–actuate — Phase 3 හි වේග උපක්‍රම කාල සතුරන් බවට පත් වන avionics සහ කාර්මික පාලනය"
 image_prompt: "Illustration of a real-time control loop in an industrial/avionics context, clean industrial-engineering diagram style"

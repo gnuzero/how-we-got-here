@@ -1,10 +1,10 @@
 ---
 title: "GPU මතක ධුරාවලිය"
-weight: 55
+weight: 60
 date: 2026-01-01
 draft: false
 phase: "9 — GPU සහ Parallel Compute"
-series_index: 54
+series_index: 59
 tags: []
 summary: "දහස් ගණන් threads DDR ට වඩා bandwidth බල කරයි — HBM මතකය compute අසල stack කරයි"
 image_prompt: "Cutaway diagram of HBM stacked memory with TSVs connecting to a GPU die via an interposer, clean packaging + memory diagram style"

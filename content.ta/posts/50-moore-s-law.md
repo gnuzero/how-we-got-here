@@ -1,10 +1,10 @@
 ---
 title: "Moore's Law"
-weight: 51
+weight: 56
 date: 2026-01-01
 draft: false
 phase: "8 — செயல்முறை நோட்கள் மற்றும் உற்பத்தி"
-series_index: 50
+series_index: 55
 tags: []
 summary: "Moore-இன் கவனிப்பு பொருளாதாரக் கூறு எண்ணிக்கை — டிரான்சிஸ்டர் எண்ணிக்கை இன்னும் ஏறுகிறது; clocks மற்றும் cost-per-transistor வேறு கதைகள் சொல்கின்றன"
 image_prompt: "Graph infographic: transistor count, clock speed, and cost-per-transistor over time, clean data visualization style"

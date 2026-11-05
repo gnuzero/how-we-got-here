@@ -1,10 +1,10 @@
 ---
 title: "High-Level Languages: FORTRAN, COBOL, Lisp, C"
-weight: 30
+weight: 32
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
-series_index: 29
+series_index: 31
 tags: []
 summary: "Four domains forced four abstractions — formula, business prose, symbolic lists, systems close to the metal"
 image_prompt: "Timeline infographic of FORTRAN, COBOL, Lisp, C with characteristic code snippets, clean historical technical infographic"

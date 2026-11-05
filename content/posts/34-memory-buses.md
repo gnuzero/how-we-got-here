@@ -1,10 +1,10 @@
 ---
 title: "Memory Buses"
-weight: 37
+weight: 39
 date: 2026-01-01
 draft: false
 phase: "5 — The Bus & System Architecture"
-series_index: 36
+series_index: 38
 tags: []
 summary: "DDR bought bandwidth; latency barely moved — banks and channels hide the wait"
 image_prompt: "Comparison chart of DDR generations, clean technical infographic style, alongside a DIMM pinout diagram"

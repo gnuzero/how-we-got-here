@@ -1,10 +1,10 @@
 ---
 title: "Logică secvențială"
-weight: 12
+weight: 14
 date: 2026-01-01
 draft: false
 phase: "2 — Fizică și dispozitive"
-series_index: 11
+series_index: 13
 tags: []
 summary: "Reacția face memorie bistabilă, bistabilul D pe front face proiectarea sincronă posibilă, iar setup/hold pun plafon ceasului"
 image_prompt: "Timing diagram showing clock, data, output for a D flip-flop, clean waveform diagram style"

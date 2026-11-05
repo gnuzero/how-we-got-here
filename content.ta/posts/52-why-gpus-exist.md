@@ -1,10 +1,10 @@
 ---
 title: "GPU-கள் ஏன் உள்ளன"
-weight: 53
+weight: 58
 date: 2026-01-01
 draft: false
 phase: "9 — GPU-கள் மற்றும் Parallel Compute"
-series_index: 52
+series_index: 57
 tags: []
 summary: "Graphics வெட்கமற்ற parallel workload கொடுத்தது — SIMT வன்பொருள் பின்தொடர்ந்தது; பொதுக் கணினி அதே வடிவத்தைக் கண்டது"
 image_prompt: "Diagram of the graphics rendering pipeline alongside a SIMD execution diagram, clean GPU architecture textbook style"

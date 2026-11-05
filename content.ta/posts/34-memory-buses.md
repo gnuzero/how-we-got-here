@@ -1,10 +1,10 @@
 ---
 title: "Memory Buses"
-weight: 35
+weight: 39
 date: 2026-01-01
 draft: false
 phase: "5 — பஸ் மற்றும் அமைப்புக் கட்டமைப்பு"
-series_index: 34
+series_index: 38
 tags: []
 summary: "DDR bandwidth வாங்கியது; latency அரிதாக நகர்ந்தது — banks மற்றும் channels காத்திருப்பை மறைக்கின்றன"
 image_prompt: "Comparison chart of DDR generations, clean technical infographic style, alongside a DIMM pinout diagram"

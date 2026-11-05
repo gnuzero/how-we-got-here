@@ -1,10 +1,10 @@
 ---
 title: "โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ"
-weight: 45
+weight: 50
 date: 2026-01-01
 draft: false
 phase: "7 — ระบบกระจาย บิ๊กดาต้า และออร์เคสตรา"
-series_index: 44
+series_index: 49
 tags: []
 summary: "ข้อมูลระดับเว็บบังคับที่เก็บที่ถือความล้มเหลวเป็นปกติ แล้วโมเดลโปรแกรมที่ซ่อนคลัสเตอร์ — GFS, MapReduce, Bigtable"
 image_prompt: "System diagram of the Google File System with chunkservers and a master node, alongside a MapReduce job splitting into map and reduce phases across a cluster, clean distributed-systems textbook diagram style"

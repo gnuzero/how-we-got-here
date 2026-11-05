@@ -1,10 +1,10 @@
 ---
 title: "ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය"
-weight: 21
+weight: 25
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"
-series_index: 20
+series_index: 24
 tags: []
 summary: "Desktop x86 මත පදිංචි වූ පසු, සටන බලය සහ licensing වෙත ගියේය — ARM mobile ජයග්‍රහණය කළේය; RISC-V විවෘත බව මත ඔට්ටු අල්ලයි"
 image_prompt: "Modern infographic comparing ARM licensing vs RISC-V open ISA, with market segment icons, clean contemporary tech-diagram style"

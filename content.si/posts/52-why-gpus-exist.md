@@ -1,10 +1,10 @@
 ---
 title: "GPU පවතින්නේ ඇයි"
-weight: 53
+weight: 58
 date: 2026-01-01
 draft: false
 phase: "9 — GPU සහ Parallel Compute"
-series_index: 52
+series_index: 57
 tags: []
 summary: "Graphics එකෙන් embarrassingly parallel workload එකක් ආවේය — SIMT දෘඪාංගය අනුගමනය කළේය, පසුව සාමාන්‍ය compute එකටත් එම හැඩය හමු විය"
 image_prompt: "Diagram of the graphics rendering pipeline alongside a SIMD execution diagram, clean GPU architecture textbook style"

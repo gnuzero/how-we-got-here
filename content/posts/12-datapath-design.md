@@ -1,10 +1,10 @@
 ---
 title: "Datapath Design"
-weight: 15
+weight: 17
 date: 2026-01-01
 draft: false
 phase: "3 — Building a CPU & Its Architectures"
-series_index: 14
+series_index: 16
 tags: []
 summary: "A single-cycle datapath makes the pieces visible — and shows why its clock is sized to the worst case"
 image_prompt: "Block diagram of a single-cycle RISC datapath, classic computer architecture textbook style"

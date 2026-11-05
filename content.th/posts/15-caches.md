@@ -1,10 +1,10 @@
 ---
 title: "แคช"
-weight: 16
+weight: 20
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"
-series_index: 15
+series_index: 19
 tags: []
 summary: "Locality ทำให้ลำดับชั้นหน่วยความจำใช้ได้; associativity และ coherence คือต้นทุนของการทำให้มันซื่อสัตย์"
 image_prompt: "Diagram of cache organization: direct-mapped, set-associative, fully-associative, clean memory-system textbook style"

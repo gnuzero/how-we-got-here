@@ -1,10 +1,10 @@
 ---
 title: "Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි"
-weight: 45
+weight: 50
 date: 2026-01-01
 draft: false
 phase: "7 — බෙදාහැරුණු පද්ධති, Big Data සහ Orchestration"
-series_index: 44
+series_index: 49
 tags: []
 summary: "Web-පරිමාණ දත්ත failure-as-normal ගබඩාව බල කළේය, පසුව cluster එක සඟවන ක්‍රමලේඛන ආකෘතියක් — GFS, MapReduce, Bigtable"
 image_prompt: "System diagram of the Google File System with chunkservers and a master node, alongside a MapReduce job splitting into map and reduce phases across a cluster, clean distributed-systems textbook diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Superscalar සහ Multicore"
-weight: 18
+weight: 22
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"
-series_index: 17
+series_index: 21
 tags: []
 summary: "ILP සහ බලය බිත්තිවලට හැපුණේය — එබැවින් කර්මාන්තය ත්‍රෙඩ් එකකට වේගවත් වීම වෙනුවට පුළුල් විය"
 image_prompt: "Comparison infographic: single-core deep pipeline vs multicore chip layout, clean technical style"

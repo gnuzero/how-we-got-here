@@ -1,10 +1,10 @@
 ---
 title: "Ethernet සහ Local Area Network"
-weight: 41
+weight: 45
 date: 2026-01-01
 draft: false
 phase: "6 — ජාලකරණය: ශ්‍රේණි සබැඳි සිට දත්ත මධ්‍යස්ථාන RDMA දක්වා"
-series_index: 40
+series_index: 44
 tags: []
 summary: "හවුල් කේබලයක්, මධ්‍යම arbiter නැත — CSMA/CD LAN collision සීමාව විසඳුවේය; switches පසුව එය ඉවත් කළේය"
 image_prompt: "Diagram of a classic Ethernet bus topology showing a collision event and CSMA/CD backoff, clean networking textbook diagram style"

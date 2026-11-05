@@ -1,10 +1,10 @@
 ---
 title: "Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C"
-weight: 30
+weight: 32
 date: 2026-01-01
 draft: false
 phase: "4 — Fundamente software: sisteme de operare, limbaje și sisteme în timp real"
-series_index: 29
+series_index: 31
 tags: []
 summary: "Patru domenii, patru abstracții: formule, proză de afaceri, liste simbolice și programare de sistem aproape de hardware"
 image_prompt: "Timeline infographic of FORTRAN, COBOL, Lisp, C with characteristic code snippets, clean historical technical infographic"

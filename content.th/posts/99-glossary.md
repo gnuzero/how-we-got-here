@@ -1,10 +1,10 @@
 ---
 title: "อภิธานศัพท์"
-weight: 100
+weight: 102
 date: 2026-01-01
 draft: false
 phase: "อ้างอิง"
-series_index: 99
+series_index: 101
 tags: ["glossary", "reference"]
 summary: "คำสำคัญที่ใช้ตลอดชุดบทความ นิยามอย่างแม่นยำ"
 ---

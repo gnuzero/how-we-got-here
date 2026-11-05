@@ -1,10 +1,10 @@
 ---
 title: "ARM and RISC-V: The Architecture Landscape Today"
-weight: 23
+weight: 25
 date: 2026-01-01
 draft: false
 phase: "3 — Building a CPU & Its Architectures"
-series_index: 22
+series_index: 24
 tags: []
 summary: "After desktop settled on x86, the fight moved to power and licensing — ARM won mobile; RISC-V bets on open"
 image_prompt: "Modern infographic comparing ARM licensing vs RISC-V open ISA, with market segment icons, clean contemporary tech-diagram style"

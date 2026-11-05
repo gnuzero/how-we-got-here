@@ -1,10 +1,10 @@
 ---
 title: "உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C"
-weight: 28
+weight: 32
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"
-series_index: 27
+series_index: 31
 tags: []
 summary: "நான்கு துறைகள் நான்கு abstractions கட்டாயப்படுத்தின — சூத்திரம், வணிக உரை, குறியீட்டு பட்டியல்கள், உலோகத்திற்கு அருகில் உள்ள அமைப்புகள்"
 image_prompt: "Timeline infographic of FORTRAN, COBOL, Lisp, C with characteristic code snippets, clean historical technical infographic"

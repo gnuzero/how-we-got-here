@@ -1,10 +1,10 @@
 ---
 title: "පරිමාණයේ Interconnects"
-weight: 38
+weight: 42
 date: 2026-01-01
 draft: false
 phase: "5 — බස් සහ පද්ධති ගෘහ නිර්මාණය"
-series_index: 37
+series_index: 41
 tags: []
 summary: "ගණනය chips බොහෝ වූ පසු, ඒවා අතර මාර්ගය ඊළඟ බිත්තියයි — කැප වූ සබැඳි, පිටපත් අඩු"
 image_prompt: "System diagram comparing PCIe-connected GPUs vs NVLink direct GPU-to-GPU mesh, clean datacenter architecture diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை"
-weight: 7
+weight: 11
 date: 2026-01-01
 draft: false
 phase: "2 — இயற்பியல் மற்றும் சாதனங்கள்"
-series_index: 6
+series_index: 10
 tags: []
 summary: "Current-controlled BJT-கள் idle மின்சாரத்தை எரித்தன; voltage-controlled MOSFET-கள் அடர்த்தியைச் சாத்தியமாக்கின"
 image_prompt: "Side-by-side cross-section diagrams of BJT and MOSFET, labeled, clean semiconductor engineering textbook style"

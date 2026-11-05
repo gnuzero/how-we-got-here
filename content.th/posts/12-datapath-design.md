@@ -1,10 +1,10 @@
 ---
 title: "การออกแบบ Datapath"
-weight: 13
+weight: 17
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"
-series_index: 12
+series_index: 16
 tags: []
 summary: "Datapath แบบ single-cycle ทำให้ชิ้นส่วนมองเห็นได้ — และแสดงเหตุใดคล็อกของมันจึงถูกขนาดตามกรณีแย่สุด"
 image_prompt: "Block diagram of a single-cycle RISC datapath, classic computer architecture textbook style"

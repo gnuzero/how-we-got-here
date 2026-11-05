@@ -1,10 +1,10 @@
 ---
 title: "ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு"
-weight: 33
+weight: 37
 date: 2026-01-01
 draft: false
 phase: "5 — பஸ் மற்றும் அமைப்புக் கட்டமைப்பு"
-series_index: 32
+series_index: 36
 tags: []
 summary: "Skew அகலமான parallel bus-ஐக் கொன்றது; point-to-point serial தப்பித்தல் எப்படி"
 image_prompt: "Timeline infographic: ISA → PCI → PCIe evolution with bandwidth numbers, clean historical technical infographic style"

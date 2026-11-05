@@ -1,10 +1,10 @@
 ---
 title: "x86 එදිරිව RISC බෙදීම"
-weight: 20
+weight: 24
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"
-series_index: 19
+series_index: 23
 tags: []
 summary: "RISC කඩදාසියේ පිරිසිදු විය — software lock-in සහ µop පරිවර්තනය x86 ඉහළින් තබා ගත්තේය"
 image_prompt: "Family-tree infographic branching CISC/RISC research into x86, MIPS, SPARC, PowerPC lineages, clean genealogy diagram style"

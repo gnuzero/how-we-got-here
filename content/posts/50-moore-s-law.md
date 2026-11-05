@@ -1,10 +1,10 @@
 ---
 title: "Moore's Law"
-weight: 53
+weight: 56
 date: 2026-01-01
 draft: false
 phase: "8 — Process Nodes & Fabrication"
-series_index: 52
+series_index: 55
 tags: []
 summary: "Moore's observation was economic component count — transistor count still climbs; clocks and cost-per-transistor tell different stories"
 image_prompt: "Graph infographic: transistor count, clock speed, and cost-per-transistor over time, clean data visualization style"

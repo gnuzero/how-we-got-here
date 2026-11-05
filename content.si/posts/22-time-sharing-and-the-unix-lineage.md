@@ -1,10 +1,10 @@
 ---
 title: "Time-Sharing සහ Unix පෙළපත"
-weight: 23
+weight: 27
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"
-series_index: 22
+series_index: 26
 tags: []
 summary: "Batch CPU කාර්යබහුලව තැබුවේය; time-sharing බහු පරිශීලකයන්ට එය අයිති කර ගත් මායාව දුන්නේය — Multics අභිලාෂය, පසුව Unix සරලත්වය"
 image_prompt: "Family-tree infographic: Multics branching into Unix, then BSD/System V leading to Linux/macOS, clean genealogy diagram style"

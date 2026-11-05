@@ -1,10 +1,10 @@
 ---
 title: "Platform සංස්ලේෂණය"
-weight: 70
+weight: 75
 date: 2026-01-01
 draft: false
 phase: "එක් යන්ත්‍රයකින් Platform එකකට"
-series_index: 69
+series_index: 74
 tags: []
 summary: "එක් ඉහළ-මට්ටමේ නැවතුමක් — විශාල platform එකක් යනු බෙදාහැරුණු පද්ධති, networking, AI infra, privacy engineering, සහ software engineering සංයුක්තයකි"
 image_prompt: "Single clean stack diagram composing distributed systems, networking, AI accelerators, privacy/identity controls, and software delivery into one platform silhouette, modern systems-architecture style"

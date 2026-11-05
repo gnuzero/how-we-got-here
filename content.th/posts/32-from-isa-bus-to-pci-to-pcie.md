@@ -1,10 +1,10 @@
 ---
 title: "จาก ISA Bus ถึง PCI ถึง PCIe"
-weight: 33
+weight: 37
 date: 2026-01-01
 draft: false
 phase: "5 — บัสและสถาปัตยกรรมระบบ"
-series_index: 32
+series_index: 36
 tags: []
 summary: "Skew ฆ่าบัสขนานกว้าง; อนุกรมจุดต่อจุดคือทางหนี"
 image_prompt: "Timeline infographic: ISA → PCI → PCIe evolution with bandwidth numbers, clean historical technical infographic style"

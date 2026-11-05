@@ -1,10 +1,10 @@
 ---
 title: "முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்"
-weight: 6
+weight: 10
 date: 2026-01-01
 draft: false
 phase: "2 — இயற்பியல் மற்றும் சாதனங்கள்"
-series_index: 5
+series_index: 9
 tags: []
 summary: "இரு வழியிலும் தள்ளக்கூடிய band gap — doping சிலிகானைக் கட்டுப்படுத்தக்கூடிய மாறியாக மாற்றுகிறது"
 image_prompt: "Technical illustration of a silicon crystal lattice showing band gap diagram, labeled, textbook diagram style, blue/orange color coding"

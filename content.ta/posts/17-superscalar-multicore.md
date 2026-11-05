@@ -1,10 +1,10 @@
 ---
 title: "Superscalar & Multicore"
-weight: 18
+weight: 22
 date: 2026-01-01
 draft: false
 phase: "3 — CPU மற்றும் அதன் கட்டமைப்புகளைக் கட்டுதல்"
-series_index: 17
+series_index: 21
 tags: []
 summary: "ILP மற்றும் மின்சாரம் சுவர்களை மோதின — எனவே தொழில் ஒரு thread-க்கு வேகத்திற்குப் பதிலாக அகலத்திற்குச் சென்றது"
 image_prompt: "Comparison infographic: single-core deep pipeline vs multicore chip layout, clean technical style"
