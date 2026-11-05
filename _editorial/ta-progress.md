@@ -478,3 +478,22 @@ All arithmetic was checked in Python.
 - **Terminology:** follows 01a: வித்தியாசப் பொறி, கொண்டு செல்லல் (carry), முதல் / இரண்டாம் வேறுபாடு, இலக்கச் சக்கரம், நிரல்.
 - **Buttons:** படி; மீட்டமை (carry தயார்); மீட்டமை (x=0 தொடக்கம்). "carry" kept in English on the button to keep it short; Lucas to confirm.
 - **Checks:** `check-lab-strings.py` 0 errors, 0 warnings. Headless Chrome on hugo server clicked Step, Reset and Classic: all text Tamil, `<html lang=ta>`, no console errors, no leftover placeholders. The Tamil 01a iframe has a Tamil title and `?lang=ta`.
+
+### Labs 2 — fork `forks/arun`, branch `ta-labs-2` from main 3a5d8cf (2026-11-05 Asia/Colombo)
+
+- **Added:** `static/labs/mini-cpu/strings.ta.json` (72 keys) and `static/labs/vm-terminal/strings.ta.json` (15 keys; wrapper chrome only, guest Linux stays English). No lab code or `i18n/ta.toml` changes.
+- **Terms (Mini-CPU):**
+  - Buttons: தொகு = Assemble, படி = Step, ஓட்டு = Run, நிறுத்து = Stop, மீட்டமை = Reset (same as ta-labs-1).
+  - Panels: பதிவேடு = register, வெளியீட்டுப் பதிவேடு = Output Register, நினைவகம் = memory, கொடிகள் = flags, CPU நிலை = CPU State, வழிகாட்டும் ஓட்டம் = Guided beat.
+  - Steps: எடு / குறிவிலக்கு / செயல்படுத்து = fetch / decode / execute; அறிவுறுத்தல் = instruction; சொல் = word; முகவரி = address; மதிப்பு = value; வரி = line.
+  - Kept in English: PC, IR, A, B, CARRY/ZERO/HALT, mnemonics, opcode, operand, immediate, mnemonic, decimal/hex, mem[…], and the "Assembly" panel title.
+- **Terms (VM terminal):** VM-ஐத் தொடங்கு = Boot VM, மீண்டும் தொடங்கு = Restart, முனையம் = terminal, கட்டளை = command, சொடுக்கு = click. Kept in English: boot, kernel, shell, prompt, image, emulator, v86, WASM.
+- **Assembler errors:** "needs an {what}" became `{name}-க்கு ஒரு {what} தேவை`, where {what} is operand / மதிப்பு / முகவரி.
+- **Tests:**
+  - `check-lab-strings.py`: 0 errors, 0 warnings for both labs.
+  - Headless Chrome with `?lang=ta`. Mini-CPU: Assemble, Step ×2, Run to HLT (Output 13), Reset, and all seven assembler errors were seen in Tamil. VM terminal: Boot VM was clicked and the status reached "running". Both chapter embeds (26, 22) load their labs in Tamil.
+  - No page errors and no leftover placeholders.
+- **Caveats:**
+  - Tamil chapters still name the buttons in English (for example **Step**-ஐ in 26 and 29), which no longer matches the Tamil buttons.
+  - The iframe title is still English on this branch because `labIframeTitle` lives on ta-labs-1.
+  - In the VM I did not type any commands.
