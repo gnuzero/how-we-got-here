@@ -3,8 +3,9 @@
 <head>
 <!-- NOINDEX-PRELAUNCH: remove at announcement -->
 <meta name="robots" content="noindex,nofollow">
-<title>The Analytical Engine Emulator</title>
 <meta charset="utf-8" />
+<script src="../_shared/i18n.js"></script>
+<title data-i18n="page.title">The Analytical Engine Emulator</title>
 <link rel="stylesheet"
     href="https://www.fourmilab.ch/documents/styles/standard_screen.css"
     type="text/css" />
@@ -55,23 +56,23 @@
 </style>
 </head>
 
-<body class="standard" onload="initialise();">
+<body class="standard">
 
 <h1 class="c" style="margin-bottom: 0px;"><a class="i"
     href="https://www.fourmilab.ch/babbage/"><img class="button"
     src="figures/aetitlew.png" width="513" height="51"
-    alt="The Analytical Engine" /></a></h1>
+    alt="The Analytical Engine" data-i18n-attr="alt:alt.title" /></a></h1>
 
 <h2 class="em"><img src="figures/t_emulator.png" width="154" height="45"
-    alt="Emulator" /></h2>
+    alt="Emulator" data-i18n-attr="alt:alt.emulator" /></h2>
 
 <p class="c">
 <img src="figures/scrule.png" width="448" height="16"
-    alt="----------------------------------------" />
+    alt="----------------------------------------" data-i18n-attr="alt:alt.rule" />
 </p>
 
 <h2 style="margin-top: 0px; margin-bottom: 0px;"><img src="figures/t_program.png" width="140" height="51"
-    alt="Program" /></h2>
+    alt="Program" data-i18n-attr="alt:alt.program" /></h2>
 
 <div class="c">
 <textarea id="P_cards" cols="80" rows="20"
@@ -80,80 +81,89 @@
 </textarea>
 <br />
 <input type="button" id="P_submit" value="Submit"
+    data-i18n-attr="value:btn.submit"
     onclick="submitProgram();" />
 &nbsp;
 <input type="button" id="P_clear" value="Clear"
+    data-i18n-attr="value:btn.clear"
     onclick="prog.clear();" />
 &nbsp;
 <label><input type="checkbox" id="P_comments" value="comments"
-    checked="checked" />&nbsp;Keep comments</label>
+    checked="checked" />&nbsp;<span data-i18n="chk.comments">Keep comments</span></label>
 <br />
 <input type="button" id="P_load" value="Load"
+    data-i18n-attr="value:btn.load"
     onclick="prog.load();" />
 <input type="file" id="P_file" size="40" name="myfile.ae" accept=".ae" />
 </div>
 
 <h2><img src="figures/t_printer.png" width="111" height="33"
-    alt="Printer" /></h2>
+    alt="Printer" data-i18n-attr="alt:alt.printer" /></h2>
 
 <div class="c">
 <textarea id="O_output" cols="90" rows="12">
 </textarea>
 <br />
 <input type="button" id="O_erase" value="Erase"
+    data-i18n-attr="value:btn.erase"
     onclick="document.getElementById('O_output').value = '';" />
 </div>
 
 <h2><img src="figures/t_attlog.png" width="249" height="53"
-    alt="Attendant's Log" /></h2>
+    alt="Attendant's Log" data-i18n-attr="alt:alt.attlog" /></h2>
 
 <div class="c">
 <textarea id="L_output" cols="90" rows="12">
 </textarea>
 <br />
 <input type="button" id="L_erase" value="Erase"
+    data-i18n-attr="value:btn.erase"
     onclick="document.getElementById('L_output').value = '';" />
 &nbsp;
 <input type="button" id="L_timing" value="Timing"
+    data-i18n-attr="value:btn.timing"
     onclick="att.traceLog(tim.report());" />
 </div>
 
 <h2><img src="figures/t_controls.png" width="121" height="43"
-    alt="Controls" /></h2>
+    alt="Controls" data-i18n-attr="alt:alt.controls" /></h2>
 
 <div class="c">
 <label><input type="checkbox" id="C_panel" value="panel"
     checked="checked"
-    onclick="ann.setPanelShowing(C_panel.checked);" />&nbsp;Panel</label>
+    onclick="ann.setPanelShowing(C_panel.checked);" />&nbsp;<span data-i18n="chk.panel">Panel</span></label>
 &nbsp;
 <label><input type="checkbox" id="C_trace" value="trace"
-    onclick="Controls_trace()" />&nbsp;Trace</label>
+    onclick="Controls_trace()" />&nbsp;<span data-i18n="chk.trace">Trace</span></label>
 &nbsp;
 <label><input type="checkbox" id="C_animate" value="animate"
-    onclick="Controls_animate()" />&nbsp;Animate</label>
+    onclick="Controls_animate()" />&nbsp;<span data-i18n="chk.animate">Animate</span></label>
 &nbsp;
 <input type="button" id="C_reset" value="Reset"
+    data-i18n-attr="value:btn.reset"
     onclick="Controls_reset();" />
 &nbsp;
 <input type="button" id="C_step" value="Step"
+    data-i18n-attr="value:btn.step"
     onclick="Controls_step();" />
 &nbsp;
 <input type="button" id="C_start" value="Start"
+    data-i18n-attr="value:btn.start"
     onclick="Controls_start();" />
 </div>
 
 <div id="annunciator">
     <h2><img src="figures/t_annunciator.png" width="193" height="33"
-    alt="Annunciator" /></h2>
+    alt="Annunciator" data-i18n-attr="alt:alt.annunciator" /></h2>
 
     <h3 class="ann"><img src="figures/t_mill.png"
         width="63" height="28"
-        alt="Mill" /></h3>
+        alt="Mill" data-i18n-attr="alt:alt.mill" /></h3>
 
     <div class="c">
-    Operation:&nbsp;<input type="text" id="AM_op" size="1" value=" " />
+    <span data-i18n="label.operation">Operation:</span>&nbsp;<input type="text" id="AM_op" size="1" value=" " />
     &nbsp;
-    Run-up:&nbsp;<input type="text" id="AM_ru" size="8" value="Not set" />
+    <span data-i18n="label.runup">Run-up:</span>&nbsp;<input type="text" id="AM_ru" size="8" value="Not set" />
     &nbsp;
     <input type="text" id="AM_run" size="8" value="Stopped" />
 
@@ -161,27 +171,27 @@
 
     <table style="margin-left: auto; margin-right: auto;">
     <tr>
-        <td class="al">Ingress&nbsp;0:</td>
+        <td class="al"><span data-i18n="label.ingress0">Ingress&nbsp;0:</span></td>
     <td><input type="text" id="AM_in0" size="52"
     class="r" value="0" /></td>
     </tr>
     <tr>
-        <td class="al">Ingress&nbsp;0':</td>
+        <td class="al"><span data-i18n="label.ingress0p">Ingress&nbsp;0':</span></td>
     <td><input type="text" id="AM_in0p" size="52"
     class="r" value="0" /></td>
     </tr>
     <tr>
-        <td class="al">Ingress&nbsp;1:</td>
+        <td class="al"><span data-i18n="label.ingress1">Ingress&nbsp;1:</span></td>
     <td><input type="text" id="AM_in1" size="52"
     class="r" value="0" /></td>
     </tr>
     <tr>
-        <td class="al">Egress&nbsp;0:</td>
+        <td class="al"><span data-i18n="label.egress0">Egress&nbsp;0:</span></td>
     <td><input type="text" id="AM_eg0" size="52"
     class="r" value="0" /></td>
     </tr>
     <tr>
-        <td class="al">Egress&nbsp;0':</td>
+        <td class="al"><span data-i18n="label.egress0p">Egress&nbsp;0':</span></td>
     <td><input type="text" id="AM_eg0p" size="52"
     class="r" value="0" /></td>
     </tr>
@@ -189,14 +199,14 @@
     </div>
 
     <h3 class="ann"><img src="figures/t_cardreader.png"
-        width="147" height="32" alt="Card Reader" /></h3>
+        width="147" height="32" alt="Card Reader" data-i18n-attr="alt:alt.cardreader" /></h3>
 
     <div class="c">
     <textarea id="AC_cards" cols="90" rows="6"></textarea>
     </div>
 
     <h3 class="ann"><img src="figures/t_store.png"
-        width="62" height="26" alt="Store" /></h3>
+        width="62" height="26" alt="Store" data-i18n-attr="alt:alt.store" /></h3>
 
     <div class="c">
     <textarea id="AS_columns" cols="58" rows="8"></textarea>
@@ -205,17 +215,17 @@
 
 <div id="curve_drawing" style="display: none;">
     <h2><img src="figures/t_curvedrawing.png"
-        width="399" height="50" alt="Curve Drawing Apparatus" /></h2>
+        width="399" height="50" alt="Curve Drawing Apparatus" data-i18n-attr="alt:alt.curvedrawing" /></h2>
 
     <div class="c">
     <canvas id="D_plot" width="512" height="512"
         style="border: 1px solid black;">
-    <b>Your browser does not support HTML5 canvas.</b>
+    <b data-i18n="canvas.unsupported">Your browser does not support HTML5 canvas.</b>
     </canvas>
     <br />
-    <input type="button" value="Erase" onclick="cda.changePaper();" />
+    <input type="button" value="Erase" data-i18n-attr="value:btn.erase" onclick="cda.changePaper();" />
     &nbsp;
-    <input type="button" value="Hide"
+    <input type="button" value="Hide" data-i18n-attr="value:btn.hide"
         onclick="document.getElementById('curve_drawing').style.display = 'none';" />
     </div>
 </div>
@@ -226,16 +236,20 @@
 
 <p class="c">
 <img src="figures/scrule.png" width="448" height="16"
-    alt="----------------------------------------" />
+    alt="----------------------------------------" data-i18n-attr="alt:alt.rule" />
 </p>
 
-<h3 class="nav"><a href="https://www.fourmilab.ch/babbage/contents.html">Origin: Fourmilab / John Walker</a></h3>
+<h3 class="nav"><a href="https://www.fourmilab.ch/babbage/contents.html" data-i18n="nav.origin">Origin: Fourmilab / John Walker</a></h3>
 
 <p></p>
 
-<address>
+<address data-i18n-html="footer_html">
 by <a href="https://www.fourmilab.ch/">John Walker</a> — public-domain source hosted from <a href="https://www.fourmilab.ch/babbage/release/aemsource.zip">aemsource.zip</a>
 </address>
+
+<script>
+LabI18n.ready.then(function () { initialise(); });
+</script>
 
 </body>
 </html>
