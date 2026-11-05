@@ -508,3 +508,28 @@ All arithmetic was checked in Python.
 - **68:** no Memex body (held).
 - **Unverified markers:** none added.
 - **Build:** exit 0; `.hugo_build.lock` unchanged in git.
+
+### Assemble term — branch `ta-assemble-term` from main 6995b93 (2026-11-05 Asia/Colombo)
+
+- **Decision (Arun → Lucas):** Assemble = அசெம்பிள்; assembler = அசெம்பிளர். தொகு was dropped because it reads as "compile" (தொகுப்பி = compiler).
+- **mini-cpu strings.ta.json** (9 changes):
+  - `btn.assemble` is now அசெம்பிள்.
+  - The quoted "அசெம்பிள்" in isa.note1_html, guide.intro.body, guide.assembleError.hint, guide.halted.body and exec.hlt.
+  - guide.reset.hint: அசெம்பிள் செய்த நிரல்.
+  - guide.assembleError.phase: அசெம்பிள் பிழை.
+  - log.assembled: அசெம்பிள் செய்யப்பட்டு.
+- **Chapters:** 26 (lines 116, 119, 121, 122) and 29 (lines 143, 161), with the bracket style kept. 12 had no Assemble occurrence.
+- **Left alone:** every other தொகு-form means collection/set/block/compile, e.g. தொகுப்பு, தொகுதி, தொகுக்கப்படுகிறது (26:114, compiled), and the 29 task-set lines.
+- **Not changed:** 26's glossary gloss "Assembler (சில்லுமொழி பெயர்ப்பி)", pending Lucas.
+- **Chapter quote audit (Lucas):** I compared every Mini-CPU button, label and message quoted in the chapters with the strings the lab renders. Fixes:
+  - 11:137 and 20:162: the error is now the real one, "அசெம்பிள் பிழை" + "வரி N: மதிப்பு '16' வரம்புக்கு வெளியே — LDI 0–15 மட்டுமே ஏற்கும் (operand 4 பிட்கள்)". In 20 it is வரி 3, not Line 1: the lab counts comment lines, so the old claim that it doesn't was wrong.
+  - 20:160: DECODE is now குறிவிலக்கு.
+  - 30:96: `படி 15 · …`, the வெளியீடு 13 hint, and `HLT — நிரல் முடிந்தது. வெளியீடு = 1`.
+  - English button names are now in the "Tamil (English)" bracket style in 11, 13, 14, 16, 18, 19, 20, 26 and 30.
+  - Output Register is now வெளியீட்டுப் பதிவேடு (Output Register).
+  - 26: the glossary line (25) and the சொற்கள் row (132) now read அசெம்பிளர் instead of சில்லுமொழி பெயர்ப்பி.
+  - Error and HLT texts were re-checked in headless Chrome; the Hugo build exits 0.
+- **Tests:**
+  - Checker: 0 errors.
+  - Headless Chrome with `?lang=ta`: button reads அசெம்பிள்; Assemble, Step, Run to HLT (Output 13), Reset; the `LDA` error shows அசெம்பிள் பிழை.
+  - Hugo build: exit 0.
