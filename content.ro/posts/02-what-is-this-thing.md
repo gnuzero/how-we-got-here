@@ -13,7 +13,7 @@ tags: []
 summary: "Nouă uși spre aceeași idee — alege oricare, apoi întâlnești motoarele de alamă"
 ---
 
-Cu mult înaintea motoarelor de alamă, oamenii predau deja treburi unor lucruri care continuă singure: o roată care se învârte, o lingură care măsoară, un cartonaș care repetă un model. Trebăria e fixă. Lucrul nu inventează alta pe drum.
+Cu mult înaintea motoarelor de alamă, oamenii predau deja treburi unor lucruri care continuă singure: o roată care se învârte, o lingură care măsoară, un cartelă care repetă un model. Trebăria e fixă. Lucrul nu inventează alta pe drum.
 
 Iată nouă uși spre aceeași idee. Sunt egale — alege oricare. Fiecare e o scurtă analogie ilustrativă pe pagina ei. Mai târziu putem vedea pe care uși le deschid cititorii.
 
@@ -26,7 +26,7 @@ Iată nouă uși spre aceeași idee. Sunt egale — alege oricare. Fiecare e o s
 <a href="{{< relref "02-take-player-piano.md" >}}" style="display:block;border:1px solid #30363d;border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;"><strong>Pianola</strong><br><span style="opacity:.85;font-size:.95em;">Găuri pe o rolă; aceeași rolă de două ori e aceeași piesă.</span></a>
 <a href="{{< relref "02-take-caravan.md" >}}" style="display:block;border:1px solid #30363d;border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;"><strong>Caravana</strong><br><span style="opacity:.85;font-size:.95em;">Semne convenite pe lut sau pânză — istețimea e în semne, nu în cămile.</span></a>
 <a href="{{< relref "02-take-stubborn-helper.md" >}}" style="display:block;border:1px solid #30363d;border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;"><strong>Ajutorul încăpățânat</strong><br><span style="opacity:.85;font-size:.95em;">Niciodată plictisit, niciodată ghicit, niciodată „îmbunătățind” cererea.</span></a>
-<a href="{{< relref "02-take-silk-cards.md" >}}" style="display:block;border:1px solid #30363d;border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;"><strong>Cartonașe de model pe mătase</strong><br><span style="opacity:.85;font-size:.95em;">Schimbi cartonașele, schimbi floarea — mâinile rămân aceleași.</span></a>
+<a href="{{< relref "02-take-silk-cards.md" >}}" style="display:block;border:1px solid #30363d;border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;"><strong>Cartele de model pe mătase</strong><br><span style="opacity:.85;font-size:.95em;">Schimbi cartelele, schimbi floarea — mâinile rămân aceleași.</span></a>
 </div>
 
 Când ai deschis o ușă (sau trei), continuă spre motoarele de alamă:

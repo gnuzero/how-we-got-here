@@ -8,7 +8,7 @@ series_index: 2
 aliases:
   - /posts/01a-babbage-engines/
 tags: []
-summary: "Difference Engine și Analytical Engine — depozit, moară și un program pe cartonașe"
+summary: "Difference Engine și Analytical Engine — depozit, moară și un program pe cartele"
 image_prompt: "Cutaway technical illustration of Babbage's Analytical Engine, brass gears and column wheels, engineering-diagram style, labeled parts, cross-hatched shading, 19th century technical drawing aesthetic, white background"
 video_prompt: "30-second animation: mechanical gear train advancing digit by digit on a Babbage-style calculating engine, camera slowly panning across interlocking brass gears, showing carry propagation mechanically, muted sepia tones"
 schematics: "Diagram: Babbage difference engine gear train (carry mechanism detail); Analytical Engine store vs mill"
@@ -36,12 +36,12 @@ Original pentru această carte, [CC BY 4.0](https://creativecommons.org/licenses
 
 Computer History Museum notează că Babbage a inventat calculatoarele, dar nu le-a construit complet în epoca lui; prima Difference Engine No. 2 terminată după desenele originale a fost finalizată la Londra în 2002 — circa 8.000 de piese, cinci tone, unsprezece picioare lungime (Computer History Museum, „The Babbage Engine”, [computerhistory.org/babbage/](https://www.computerhistory.org/babbage/), accesat 2026-11-05). Science Museum descrie și o porțiune demonstrativă din Difference Engine No. 1 (circa 2.000 de piese), asamblată de Joseph Clement și terminată în 1832 — „porțiunea terminată a motorului neterminat”, cam o șeptime din proiectul complet; lucrul s-a oprit brusc în 1833 după un conflict cu Clement (Science Museum, art. cit., accesat 2026-11-05). Computer History Museum, pe pagina „The Engines”, plasează oprirea construcției No. 1 în 1832, tot după disputa cu Clement, iar finanțarea guvernamentală e tăiată în 1842 (CHM, „The Engines”, accesat 2026-11-05). <!-- NEVERIFICAT: reconcilierea fină 1832 vs 1833 între cele două pagini de muzeu; pe pagină păstrăm ambele formulări cu sursa lor. -->
 
-Următorul proiect, **Analytical Engine**, e strămoșul conceptual al calculatorului general. Menabrea separă clar două organe: *mill* (aparatajul care execută operațiile aritmetice) și coloanele de *Variables*, pe care le numește un *store* de numere acumulate de moară; plus două specii de cartonașe — *Operation cards* (ce operație se face) și cartonașe ale variabilelor (pe ce coloane apar rezultatele) (Menabrea / Lovelace, *Sketch*, secțiunile despre mill, store și cele două specii de cards, Fourmilab). Computer History Museum rezumă aceeași separare *Store* / *Mill* și notează că ideea cartonașelor perforate e împrumutată de la războiul Jacquard (CHM, „The Engines”, accesat 2026-11-05). Schimbi șirul de cartonașe, schimbi calculul — fără să reconstruiești mașina.
+Următorul proiect, **Analytical Engine**, e strămoșul conceptual al calculatorului general. Menabrea separă clar două organe: *mill* (aparatajul care execută operațiile aritmetice) și coloanele de *Variables*, pe care le numește un *store* de numere acumulate de moară; plus două specii de cartele — *Operation cards* (ce operație se face) și cartele ale variabilelor (pe ce coloane apar rezultatele) (Menabrea / Lovelace, *Sketch*, secțiunile despre mill, store și cele două specii de cards, Fourmilab). Computer History Museum rezumă aceeași separare *Store* / *Mill* și notează că ideea cartelelor perforate e împrumutată de la războiul Jacquard (CHM, „The Engines”, accesat 2026-11-05). Schimbi șirul de cartele, schimbi calculul — fără să reconstruiești mașina.
 
-Emulatorul găzduit mai jos e Analytical Engine de pe Fourmilab (John Walker). Pașii pe cartonașe schimbă coloanele de la moară și depozit. Domeniu public; găzduim o copie și păstrăm legătura de origine.
+Emulatorul găzduit mai jos e Analytical Engine de pe Fourmilab (John Walker). Pașii pe cartele schimbă coloanele de la moară și depozit. Domeniu public; găzduim o copie și păstrăm legătura de origine.
 
 {{< lab type="analytical-engine" height="780" >}}
 
 Origine: [Fourmilab / John Walker](https://www.fourmilab.ch/babbage/) — [arhiva sursă](https://www.fourmilab.ch/babbage/release/aemsource.zip) (domeniu public). Hărți: [Difference Engine](https://en.wikipedia.org/wiki/Difference_Engine), [Analytical Engine](https://en.wikipedia.org/wiki/Analytical_Engine).
 
-Împrumutul cartonașelor e următoarea oprire: războiul Jacquard și separarea programului de mașină.
+Împrumutul cartelelor e următoarea oprire: războiul Jacquard și separarea programului de mașină.
