@@ -1,0 +1,17 @@
+{
+  "page.title": "虚拟机终端实验",
+  "page.heading": "虚拟机终端实验",
+  "page.subtitle": "真实的 x86 机器，通过 WASM 在你的浏览器本地运行——启动真实的 Linux、真实的 shell、真实的命令",
+  "btn.boot": "启动虚拟机",
+  "btn.restart": "重启",
+  "status.idle": "尚未启动——请按「启动虚拟机」",
+  "first.heading": "先试这些命令",
+  "first.body_html": "按<strong>启动虚拟机</strong>，等待登录/shell 提示符出现，然后<strong>点击黑色屏幕</strong>，让键盘输入进入虚拟机。试试这些：",
+  "first.hint": "逐条输入命令并按 Enter。会话卡住时，按「重启」可重新启动一次全新的系统。",
+  "note_html": "由 <strong>v86</strong> 驱动——一个用 WebAssembly 实现的完整 x86 模拟器。运行时、BIOS 和 Linux 镜像都随本页放在 <code>assets/</code> 目录下（首次启动无需在线 CDN）。<a href=\"ORIGIN.md\">来源 &amp; 许可证</a>",
+  "status.already": "已在运行——点击屏幕以使用键盘",
+  "status.loading": "正在加载本地虚拟机镜像并启动…",
+  "status.booting": "正在启动内核…",
+  "status.running": "运行中——点击屏幕，然后试试 whoami / uname / ls",
+  "status.restarted": "已重启——提示符出现后点击屏幕"
+}
