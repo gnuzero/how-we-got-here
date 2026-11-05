@@ -168,6 +168,8 @@ Wokwi เป็นลิงก์ออกจากหน้า breadboard ไ�
 ภาพวาดคลัง Science Museum Group มักเป็น CC BY-NC-SA — ลิงก์ได้ ไม่ถือเป็นศิลปะเชิงพาณิชย์อิสระ ภาพผู้เยี่ยมชมภายใต้ CC BY / CC BY-SA คือประตูภาพ
 
 
+<!-- TODO(desk): EN credits (PR credits-zh-tone) softened the vocalist note and the closing line, and added a 'Chinese published sources' section. Mirror both in this locale's language; see content/posts/00-credits.md. -->
+
 ## เสียงที่ได้ยิน แต่ยังให้เครดิตไม่ได้
 
 วันที่ 10 กันยายน 2026 Raz & Upgrade ออก *[Zunara](https://open.spotify.com/track/3G538vBZ7ldslS4lqGyD6P)* บน Regroup Records คุณได้ยินผู้หญิงร้องเป็นภาษาสิงหล หน้าสโตร์บอกชื่อโปรดิวเซอร์และค่าย ไม่บอกชื่อนักร้อง
