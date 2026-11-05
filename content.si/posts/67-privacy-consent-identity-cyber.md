@@ -81,9 +81,7 @@ Diffie සහ Hellman ගේ "New Directions in Cryptography" (IEEE Transactions
 
 ### 3. RSA: paper එකේම කුඩා උදාහරණය
 
-<!-- UNVERIFIED: RSA paper publication in CACM Feb 1978 | author copy only states "Received April 4, 1977; revised September 1, 1977" -->
-
-Rivest, Shamir සහ Adleman ගේ "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems" (Rivest ගේ MIT පිටුවේ කතුවරුන්ගේ පිටපත — එහි සඳහන් වන්නේ 1977 අප්‍රේල් 4 ලැබී, 1977 සැප්තැම්බර් 1 සංශෝධනය කළ බවයි; §VIII "A Small Example", PDF p10):
+Rivest, Shamir සහ Adleman ගේ "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems" (*Communications of the ACM* 21(2):120–126, February 1978, doi:10.1145/359340.359342; Rivest ගේ MIT පිටුවේ කතුවරුන්ගේ පිටපත — ලැබුණේ 1977 අප්‍රේල් 4, සංශෝධනය 1977 සැප්තැම්බර් 1; §VIII "A Small Example", PDF p10):
 
 - p = 47, q = 59, n = 47 · 59 = **2773**.
 - φ(n) = 46 · 58 = **2668**.
