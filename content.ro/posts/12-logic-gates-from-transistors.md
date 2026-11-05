@@ -54,6 +54,10 @@ Din el se construiesc toate celelalte funcții. Am verificat noi, rând cu rând
 
 Pentru că NOT, AND și OR acoperă orice funcție booleană, NAND singur e funcțional complet. <!-- NEVERIFICAT: faptul că NOT/AND/OR acoperă orice funcție booleană e un rezultat standard de algebră booleană pe care nu l-am citat dintr-o sursă deschisă. --> Rezultatul are o sursă istorică pentru NOR. În 1913, Henry M. Sheffer definește o operație „neither-nor”, pe care o numește „rejection”, și arată că negația și disjuncția pot fi exprimate prin ea: ~p = p|p și p∨q = (p|q)|(p|q) (Sheffer, H. M., „A set of five independent postulates for Boolean algebras, with application to logical constants”, *Transactions of the AMS* 14(4), 1913, pp. 481–488, Teorema 1, pp. 487–488; [PDF ams.org](https://www.ams.org/journals/tran/1913-014-04/S0002-9947-1913-1500960-1/S0002-9947-1913-1500960-1.pdf), accesat 2026-11-05). Operația lui Sheffer este deci NOR; varianta NAND decurge prin dualitate, iar identitățile de mai sus le-am verificat noi pe tabelul de adevăr. <!-- NEVERIFICAT: atribuirea către Peirce nu e citată; n-am deschis sursa primară. -->
 
+**Încearcă acum.** Laboratorul de mai jos se deschide pe o poartă AND: comută cele două intrări și urmărește ieșirea. NAND și NOR sunt primitivele de mai sus; AND se obține compunându-le, conform identităților verificate mai sus. Atinge poarta înainte ca următorul capitol să construiască sumatoare din ele.
+
+{{< lab type="breadboard" height="700" >}}
+
 ## Pasul următor
 
 Porțile sunt doar alfabetul. Capitolul 08 le compune în sumatoare și într-un ALU, iar acolo întârzierea de propagare de mai sus nu se mai oprește la o poartă: se adună de-a lungul unui lanț de porți.

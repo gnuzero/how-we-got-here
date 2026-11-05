@@ -32,6 +32,10 @@ Rândul „ține starea” e memoria: cu ambele intrări inactive, circuitul ră
 
 Elementul acesta bistabil e și cel la care se gândeau proiectanții din anii '40. Burks, Goldstine și von Neumann enumeră „the flip-flop or trigger circuit” printre cele mai comune forme de stocare din circuitele electrice (Burks, Goldstine, von Neumann, *Preliminary Discussion…*, IAS, 1946, §4.1; transcriere HTML [cs.unc.edu](https://www.cs.unc.edu/~adyilie/comp265/vonNeumann.html), accesat 2026-11-05). Capitolul 10 arată de ce l-au respins totuși ca memorie principală.
 
+**Încearcă acum.** Laboratorul de mai jos e tot o poartă simplă: comută intrările și vezi că ieșirea se schimbă *imediat*. Acesta e comportamentul combinațional din capitolul anterior. Capitolul de față arată ce se întâmplă când legi porțile înapoi în ele însele, ca ieșirea să *rămână* după ce intrarea a dispărut.
+
+{{< lab type="breadboard" height="700" >}}
+
 ## Bistabilul D: fronturi, nu niveluri
 
 Un circuit basculant „transparent” urmărește intrarea cât timp e activat, ceea ce face greu de controlat momentul exact în care se schimbă starea. Fișa SN74LS75 descrie exact acest comportament: informația de la intrarea D „is transferred to the Q output when the enable (C) is high and the Q output will follow the data input as long as the enable remains high”; când activarea trece în 0, informația e reținută (TI, SN74LS75, SDLS120, p. 1, „description”; [PDF ti.com](https://www.ti.com/lit/ds/symlink/sn74ls75.pdf), accesat 2026-11-05). Bistabilul D comandat pe front (*edge-triggered*) rezolvă problema: eșantionează intrarea D într-un singur moment, la frontul ceasului. Fișa 74LS74A descrie exact acest comportament: datele de la intrarea D care respectă cerințele de setup „are transferred to the outputs on the positive-going edge of the clock pulse” (TI, SDLS119, p. 1, „description”). Aceeași pagină precizează că declanșarea are loc la un anumit nivel de tensiune și „is not directly related to the rise time of the clock pulse” (ibid.).

@@ -30,6 +30,10 @@ Pentru un bit, un semi-sumator (*half adder*) primește A și B și produce suma
 
 Am verificat noi aceste două ecuații pe toate cele opt combinații de intrare. Rezultatul e întotdeauna A + B + Cin = 2·Cout + S. Ecuațiile sunt algebră booleană, nu un fapt istoric, așa că nu au nevoie de o sursă externă.
 
+**Încearcă acum.** Laboratorul de mai jos se deschide tot pe o poartă AND, adică exact transportul semi-sumatorului de mai sus (C = A AND B). Pune ambele intrări pe 1 și urmărește ieșirea trecând pe 1: poarta aceasta e legătura pe care, în secțiunea următoare, o înlănțuim de la un etaj la altul.
+
+{{< lab type="breadboard" height="700" >}}
+
 ## Transportul în lanț (ripple-carry): simplu și lent dintr-un motiv precis
 
 Lipești n sumatoare complete în lanț, iar Cout-ul fiecăruia devine Cin-ul următorului. Rezultatul e corect, dar bitul cel mai semnificativ nu își știe suma până când transportul nu a trecut, în cazul cel mai rău, prin toate etajele de dedesubt (vezi formularea din 1946 de mai jos).

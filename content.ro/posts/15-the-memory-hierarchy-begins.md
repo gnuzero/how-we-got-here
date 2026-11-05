@@ -48,3 +48,7 @@ Celula care a câștigat e și mai simplă. Brevetul lui Robert H. Dennard (IBM)
 Paginile CHM deschise arată același compromis ca în 1946: RAM-urile semiconductoare bipolare au intrat întâi pe nivelurile mici și rapide (CHM 1966, ibid.), iar DRAM-ul 1103 a preluat memoria principală pe criteriul prețului (CHM 1970, ibid.). Fiecare nivel are mai multă capacitate și e mai lent decât precedentul, exact formula din §4.1 (Burks et al., 1946). <!-- NEVERIFICAT: regula generală „mai rapid = mai scump pe bit” nu e formulată ca atare în sursele deschise; CHM spune doar că miezurile aveau cel mai mic cost pe bit. -->
 
 Decalajul de viteză dintre logică și DRAM e subiectul din capitolul 35, iar capitolul 15 (cache-urile) arată cum se gestionează automat primele niveluri.
+
+**Încearcă acum.** Laboratorul de mai jos nu conține o celulă de memorie: e aceeași poartă AND de la început. Folosește-l ca să reții deosebirea din capitolul 14: la o poartă, ieșirea urmează imediat intrările; memoria apare abia când ieșirea se întoarce în intrare.
+
+{{< lab type="breadboard" height="700" >}}
