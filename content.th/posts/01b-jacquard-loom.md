@@ -19,7 +19,7 @@ schematics: "Diagram: Jacquard loom punch card mechanism (hole → lift, no hole
 <figcaption>กี่ทอแบบฌักการ์ Musée d'art et d'industrie เมืองแซ็งเตเตียน (Saint-Étienne) ภาพ: <a href="https://commons.wikimedia.org/wiki/File:02_Metier_jacquard_etroit.jpg">Hélène Rival</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</figcaption>
 </figure>
 
-กี่ทอแบบดึงเส้นด้าย (drawloom) ของโฌแซฟ-มารี ฌักการ์ (Joseph-Marie Jacquard) ในช่วงต้นทศวรรษ 1800 ใช้สายบัตรเจาะรูต่อกันเพื่อกำหนดว่าเส้นด้ายใดจะยกขึ้นในการพุ่งกระสวยแต่ละครั้ง: มีรู → ยก ไม่มีรู → กั้น เปลี่ยนบัตร ลายก็เปลี่ยน กี่ไม่รู้จัก "ผ้ายกดอกไหม" (silk brocade) มันเพียงทำตามลำดับการตัดสินใจยก/ไม่ยกที่ตายตัวและเข้ารหัสไว้ทางกายภาพ
+กลไกติดกี่ของโฌแซฟ-มารี ฌักการ์ (Joseph-Marie Jacquard) (จดสิทธิบัตร ค.ศ. 1804) เข้ามาทำหน้าที่แทนคนดึงด้าย (draw boy) ของกี่ทอแบบดึงเส้นด้าย (drawloom): มันใช้สายบัตรเจาะรูต่อกันเพื่อกำหนดว่าเส้นด้ายใดจะยกขึ้นในการพุ่งกระสวยแต่ละครั้ง: มีรู → ยก ไม่มีรู → กั้น เปลี่ยนบัตร ลายก็เปลี่ยน กี่ไม่รู้จัก "ผ้ายกดอกไหม" (silk brocade) มันเพียงทำตามลำดับการตัดสินใจยก/ไม่ยกที่ตายตัวและเข้ารหัสไว้ทางกายภาพ
 
 <figure>
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Jacquard.loom.cards.jpg" alt="ภาพใกล้บัตรเจาะรูของกี่ทอแบบฌักการ์ ที่ Museum of Science and Industry เมืองแมนเชสเตอร์" loading="lazy" width="249">
