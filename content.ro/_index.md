@@ -1,9 +1,9 @@
 ---
-title: "De la relee la Attention: cum am ajuns aici"
+title: "Cum am ajuns acolo"
 type: docs
 ---
 
-# De la relee la Attention: cum am ajuns aici
+# Cum am ajuns acolo
 
 > **Notă pentru cititorii ediției în română:** această ediție abia a început. **Numele (de oameni, proiecte și surse locale) nu sunt încă traduse sau adaptate** și apar deocamdată în forma originală. Multe pagini **lipsesc încă** din versiunea în română. Paginile românești nu sunt traduceri ale capitolelor în engleză, ci texte originale scrise pe aceleași teme. Până la apariția lor, capitolele lipsă pot fi citite în ediția în engleză.
 

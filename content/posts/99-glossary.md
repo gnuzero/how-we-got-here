@@ -11,7 +11,7 @@ summary: "Key terms used throughout the series, defined precisely"
 
 # Glossary
 
-A concise reference for the most important terms that appear across *From Relays to Attention*.
+A concise reference for the most important terms that appear across *How We Got There*.
 
 **Attention (Self-Attention)**  
 A mechanism that computes, for every position in a sequence, a weighted sum of value vectors from all positions. Weights come from the similarity between query and key vectors. The core computational pattern of the Transformer.

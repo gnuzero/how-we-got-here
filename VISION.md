@@ -2,7 +2,7 @@
 
 This is not an encyclopedia. We do not rewrite Wikipedia.
 
-**From Relays to Attention** is an interactive journey. Readers live through systems and touch them. They do not collect articles.
+**How We Got There** is an interactive journey. Readers live through systems and touch them. They do not collect articles.
 
 ## Language authority lock, 2026-09-26 (Nayana)
 

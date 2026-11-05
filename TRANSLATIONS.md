@@ -1,4 +1,4 @@
-# Translations — From Relays to Attention
+# Translations — How We Got There
 
 > **Language authority lock, 2026-09-26 (Nayana)** — see `VISION.md`. This file holds shared chrome only: series titles, key page titles, attribution. Locale pages are **not** translations of each other. English and Chinese are co-authoritative source languages. Sinhala, Tamil, Thai, Romanian, and any future locale fill their language's information gap, explained from first principles in that language. A title listed here is a label, not a mandate to translate the page behind it.
 
@@ -6,13 +6,13 @@
 
 | Language | Title |
 |----------|-------|
-| **English** | From Relays to Attention: How We Got Here |
-| **Thai** | จากรีเลย์สู่ Attention: เรามาถึงจุดนี้อย่างไร |
-| **Sinhala** | රිලේ සිට අවධානය දක්වා: අප මෙතැනට පැමිණි ආකාරය |
-| **Tamil** | ரிலேயிலிருந்து Attention வரை: நாம் இங்கு எப்படி வந்தோம் |
-| **Chinese (Simplified, zh-Hans)** | 从继电器到注意力机制：我们如何走到今天 |
-| **Chinese (Traditional, zh-Hant)** | 從繼電器到注意力機制：我們如何走到今天 |
-| **Romanian** | De la relee la Attention: cum am ajuns aici |
+| **English** | How We Got There |
+| **Thai** | เราไปถึงจุดนั้นได้อย่างไร |
+| **Sinhala** | අප එතැනට පැමිණි ආකාරය |
+| **Tamil** | நாம் அங்கு எப்படிச் சென்றடைந்தோம் |
+| **Chinese (Simplified, zh-Hans)** | 我们如何走到那里 |
+| **Chinese (Traditional, zh-Hant)** | 我們如何走到那裡 |
+| **Romanian** | Cum am ajuns acolo |
 
 ## Short Series Description
 
@@ -78,7 +78,7 @@ Romanian titles are listed **only** for chapters that actually have a `content.r
 | `posts/57-why-matrix-multiply-reshaped-chip-design.md` | De ce înmulțirea de matrice a remodelat proiectarea cipurilor | shipped (fact-checked) |
 | `posts/58-systolic-arrays.md` | Matrice sistolice | shipped (fact-checked) |
 | `posts/60-sparsity-in-hardware.md` | Sparsity în hardware | shipped (fact-checked) |
-| Home (`_index.md`) | De la relee la Attention: cum am ajuns aici | shipped |
+| Home (`_index.md`) | Cum am ajuns acolo | shipped |
 | `about.md` | Despre și credite | shipped |
 | All other chapters | — | pending |
 

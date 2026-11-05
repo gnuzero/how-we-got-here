@@ -1,5 +1,5 @@
 baseURL = "https://how-we-got-here.org/"
-title = "From Relays to Attention: How We Got Here"
+title = "How We Got There"
 theme = "hugo-book"
 enableGitInfo = true
 
@@ -13,28 +13,28 @@ defaultContentLanguageInSubdir = false
   locale = "en-us"
   contentDir = "content"
   weight = 1
-  title = "From Relays to Attention: How We Got Here"
+  title = "How We Got There"
 
 [languages.th]
   label = "ไทย"
   locale = "th"
   contentDir = "content.th"
   weight = 2
-  title = "จากรีเลย์สู่ Attention: เรามาถึงจุดนี้อย่างไร"
+  title = "เราไปถึงจุดนั้นได้อย่างไร"
 
 [languages.si]
   label = "සිංහල"
   locale = "si"
   contentDir = "content.si"
   weight = 3
-  title = "රිලේ සිට අවධානය දක්වා: අප මෙතැනට පැමිණි ආකාරය"
+  title = "අප එතැනට පැමිණි ආකාරය"
 
 [languages.ta]
   label = "தமிழ்"
   locale = "ta"
   contentDir = "content.ta"
   weight = 4
-  title = "ரிலேயிலிருந்து Attention வரை: நாம் இங்கு எப்படி வந்தோம்"
+  title = "நாம் அங்கு எப்படிச் சென்றடைந்தோம்"
 
 # Chinese: co-authoritative source language (VISION.md, Language authority lock 2026-09-26).
 # Simplified is the master text; Traditional is derived (OpenCC s2twp) + terminology review.
@@ -44,21 +44,21 @@ defaultContentLanguageInSubdir = false
   locale = "zh-Hans"
   contentDir = "content.zh-hans"
   weight = 5
-  title = "从继电器到注意力机制：我们如何走到今天"
+  title = "我们如何走到那里"
 
 [languages.zh-hant]
   label = "繁體中文"
   locale = "zh-Hant"
   contentDir = "content.zh-hant"
   weight = 6
-  title = "從繼電器到注意力機制：我們如何走到今天"
+  title = "我們如何走到那裡"
 
 [languages.ro]
   label = "Română"
   locale = "ro"
   contentDir = "content.ro"
   weight = 7
-  title = "De la relee la Attention: cum am ajuns aici"
+  title = "Cum am ajuns acolo"
 
 [params]
   # Site-wide <meta name="robots" content="noindex, nofollow"> via layouts/_partials/docs/inject/head.html.

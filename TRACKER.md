@@ -1,4 +1,4 @@
-# Series Tracker — From Relays to Attention: How We Got Here
+# Series Tracker — How We Got There
 
 Cadence: **3 posts/week**. 62 posts total (~21 weeks / ~4.8 months).
 

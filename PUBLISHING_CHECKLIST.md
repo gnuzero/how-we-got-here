@@ -1,4 +1,4 @@
-# Publishing Checklist — From Relays to Attention
+# Publishing Checklist — How We Got There
 
 ## Ready now
 - [x] Full first-draft content (63 technical chapters + Foreword + Glossary + Timeline)
