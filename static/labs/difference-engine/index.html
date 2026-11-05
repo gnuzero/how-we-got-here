@@ -4,8 +4,9 @@
 <!-- NOINDEX-PRELAUNCH: remove at announcement -->
 <meta name="robots" content="noindex,nofollow">
 <meta charset="UTF-8">
+<script src="../_shared/i18n.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Difference Engine Lab — Finite Differences &amp; Carry</title>
+<title data-i18n="page.title">Difference Engine Lab — Finite Differences &amp; Carry</title>
 <style>
   :root {
     --bg:#0d1117; --panel:#161b22; --border:#30363d;
@@ -121,59 +122,59 @@
 </style>
 </head>
 <body>
-  <h1>Difference Engine Lab — Carry</h1>
-  <div class="sub">Original for this book · CC BY 4.0 · Finite differences for f(x)=x² · figure wheels + tooth catching neighbor</div>
+  <h1 data-i18n="page.heading">Difference Engine Lab — Carry</h1>
+  <div class="sub" data-i18n="page.subtitle">Original for this book · CC BY 4.0 · Finite differences for f(x)=x² · figure wheels + tooth catching neighbor</div>
 
   <div class="guide" id="guide">
-    <h2>Guided beat</h2>
-    <div class="phase" id="guidePhase">Ready</div>
-    <div class="body" id="guideBody">Press Step. One finite-difference cycle: add Δ₁ into Y, then add Δ₂ into Δ₁. When a wheel rolls past 9, watch the arm catch the next column.</div>
-    <div class="hint" id="guideHint">Start at x=3 (Y=9, Δ₁=7, Δ₂=2) so the first Step produces a carry into tens.</div>
+    <h2 data-i18n="guide.heading">Guided beat</h2>
+    <div class="phase" id="guidePhase" data-i18n="guide.ready.phase">Ready</div>
+    <div class="body" id="guideBody" data-i18n="guide.ready.body">Press Step. One finite-difference cycle: add Δ₁ into Y, then add Δ₂ into Δ₁. When a wheel rolls past 9, watch the arm catch the next column.</div>
+    <div class="hint" id="guideHint" data-i18n="guide.ready.hint">Start at x=3 (Y=9, Δ₁=7, Δ₂=2) so the first Step produces a carry into tens.</div>
   </div>
 
   <div class="layout">
     <div class="panel">
-      <h2>Columns (method of differences)</h2>
+      <h2 data-i18n="panel.columns">Columns (method of differences)</h2>
       <div class="banks">
         <div class="bank" id="bank-y">
           <div class="bank-head">
-            <span class="bank-name">Y — result</span>
-            <span class="bank-meta">should track x²</span>
+            <span class="bank-name" data-i18n="bank.y.name">Y — result</span>
+            <span class="bank-meta" data-i18n="bank.y.meta">should track x²</span>
           </div>
           <div class="wheels" id="wheels-y"></div>
         </div>
         <div class="bank" id="bank-d1">
           <div class="bank-head">
-            <span class="bank-name">Δ₁ — first difference</span>
-            <span class="bank-meta">grows by Δ₂ each cycle</span>
+            <span class="bank-name" data-i18n="bank.d1.name">Δ₁ — first difference</span>
+            <span class="bank-meta" data-i18n="bank.d1.meta">grows by Δ₂ each cycle</span>
           </div>
           <div class="wheels" id="wheels-d1"></div>
         </div>
         <div class="bank" id="bank-d2">
           <div class="bank-head">
-            <span class="bank-name">Δ₂ — second difference</span>
-            <span class="bank-meta">constant for quadratics</span>
+            <span class="bank-name" data-i18n="bank.d2.name">Δ₂ — second difference</span>
+            <span class="bank-meta" data-i18n="bank.d2.meta">constant for quadratics</span>
           </div>
           <div class="wheels" id="wheels-d2"></div>
         </div>
       </div>
       <div class="btnrow">
-        <button class="primary" id="btnStep" onclick="stepCycle()">Step</button>
-        <button id="btnReset" onclick="resetDemo()">Reset (carry ready)</button>
-        <button id="btnClassic" onclick="resetClassic()">Reset (x=0 classic)</button>
+        <button class="primary" id="btnStep" onclick="stepCycle()" data-i18n="btn.step">Step</button>
+        <button id="btnReset" onclick="resetDemo()" data-i18n="btn.reset">Reset (carry ready)</button>
+        <button id="btnClassic" onclick="resetClassic()" data-i18n="btn.classic">Reset (x=0 classic)</button>
       </div>
       <div class="readout">
         x=<strong id="xOut">3</strong> ·
         Y=<strong id="yOut">09</strong> ·
         Δ₁=<strong id="d1Out">07</strong> ·
         Δ₂=<strong id="d2Out">2</strong> ·
-        cycles=<strong id="cOut">0</strong>
+        <span data-i18n="readout.cycles">cycles</span>=<strong id="cOut">0</strong>
       </div>
     </div>
     <div class="panel">
-      <h2>What just happened</h2>
+      <h2 data-i18n="panel.log">What just happened</h2>
       <div class="log" id="log"></div>
-      <div class="note">
+      <div class="note" data-i18n-html="note_html">
         Pedagogical figure-wheel model of decimal carry inside one Difference Engine–style difference cycle — not a full No.&nbsp;2 reconstruction.
         Analytical Engine (store/mill/cards): see the Fourmilab lab on this chapter.
         Door-outs:
@@ -221,7 +222,7 @@ function renderBank(id, value, width, highlight) {
     col.className = 'col';
     const lab = document.createElement('div');
     lab.className = 'col-label';
-    lab.textContent = place === 0 ? 'ones' : (place === 1 ? 'tens' : 'p' + place);
+    lab.textContent = place === 0 ? t('col.ones') : (place === 1 ? t('col.tens') : t('col.place', { n: place }));
     const wrap = document.createElement('div');
     wrap.className = 'wheel-wrap';
     if (place < width - 1) {
@@ -292,17 +293,17 @@ async function addInto(bankId, targetRef, addend, width, label) {
       const dst = i + 1 < width ? i + 1 : null;
       targetRef.set(fromDigits([...digits].reverse()));
       renderAll({ bank: bankId, src: i, arm: i, dst });
-      const dstName = dst != null ? (dst === 1 ? 'tens' : 'next') : 'overflow';
+      const dstName = dst != null ? (dst === 1 ? t('carry.to.tens') : t('carry.to.next')) : t('carry.to.overflow');
       setGuide(
-        'CARRY',
-        label + ': wheel rolled past 9→' + digits[i] + '. A tooth catches the next column toward ' + dstName + '.',
-        'That catch is the physical event Babbage’s columns enforced.'
+        t('guide.carry.phase'),
+        t('guide.carry.body', { label: label, digit: digits[i], dest: dstName }),
+        t('guide.carry.hint')
       );
-      logLine(label + ' carry @ ' + (i === 0 ? 'ones' : 'tens') + ': ' + before + '+' + add[i] + (carry ? '+1' : '') + ' → ' + digits[i] + ' · tooth catches ' + dstName, 'carry');
+      logLine(t('log.carry', { label: label, place: i === 0 ? t('col.ones') : t('col.tens'), before: before, add: add[i], carryIn: carry ? t('log.carryIn') : '', digit: digits[i], dest: dstName }), 'carry');
       await sleep(520);
       carry = 1;
       if (dst == null) {
-        logLine(label + ' overflow past column width — widen in a real engine.', 'carry');
+        logLine(t('log.overflow', { label: label }), 'carry');
         break;
       }
     } else {
@@ -311,7 +312,7 @@ async function addInto(bankId, targetRef, addend, width, label) {
       targetRef.set(fromDigits([...digits].reverse()));
       renderAll({ bank: bankId, src: i });
       if (add[i] || before !== digits[i]) {
-        logLine(label + ' ' + (i === 0 ? 'ones' : 'tens') + ': ' + before + '+' + add[i] + ' → ' + digits[i]);
+        logLine(t('log.add', { label: label, place: i === 0 ? t('col.ones') : t('col.tens'), before: before, add: add[i], digit: digits[i] }));
       }
     }
   }
@@ -328,23 +329,23 @@ async function stepCycle() {
 
   cycles++;
   const yBefore = Y, d1Before = D1;
-  logLine('—— Cycle ' + cycles + ' (x=' + x + ' → x=' + (x + 1) + ') ——', 'cycle');
-  setGuide('STEP — add Δ₁ into Y', 'First half of the difference cycle: add the first-difference column into the result.', 'Watch for a rollover past 9 on Y.');
+  logLine(t('log.cycle', { n: cycles, x: x, next: x + 1 }), 'cycle');
+  setGuide(t('guide.step1.phase'), t('guide.step1.body'), t('guide.step1.hint'));
 
-  await addInto('wheels-y', { get: () => Y, set: v => { Y = v; } }, D1, WIDTH.y, 'Y');
+  await addInto('wheels-y', { get: () => Y, set: v => { Y = v; } }, D1, WIDTH.y, t('label.y'));
 
-  setGuide('STEP — add Δ₂ into Δ₁', 'Second half: the constant second difference advances Δ₁ for the next cycle.', 'Carry can happen here too on later steps.');
-  await addInto('wheels-d1', { get: () => D1, set: v => { D1 = v; } }, D2, WIDTH.d1, 'Δ₁');
+  setGuide(t('guide.step2.phase'), t('guide.step2.body'), t('guide.step2.hint'));
+  await addInto('wheels-d1', { get: () => D1, set: v => { D1 = v; } }, D2, WIDTH.d1, t('label.d1'));
 
   x += 1;
   renderAll();
   const expect = x * x;
   const ok = Y === expect;
-  logLine('Settled: Y=' + Y + ' (expect x²=' + expect + ')' + (ok ? ' ✓' : ' ✗'), ok ? 'cycle' : 'carry');
+  logLine(t('log.settled', { y: Y, expect: expect, mark: ok ? ' ✓' : ' ✗' }), ok ? 'cycle' : 'carry');
   setGuide(
-    'SETTLE',
-    'Cycle done. Y is now ' + Y + (ok ? ' (= ' + x + '²).' : '.') + ' Step again to continue the table.',
-    'Reset (carry ready) jumps back to Y=9 so the carry is obvious on the first Step.'
+    t('guide.settle.phase'),
+    ok ? t('guide.settle.body.ok', { y: Y, x: x }) : t('guide.settle.body.bad', { y: Y }),
+    t('guide.settle.hint')
   );
 
   busy = false;
@@ -358,12 +359,8 @@ function resetDemo() {
   // x=3, Y=9, D1=7, D2=2 — next cycle → Y=16 (carry), D1=9
   Y = 9; D1 = 7; D2 = 2; x = 3; cycles = 0;
   document.getElementById('log').innerHTML = '';
-  logLine('Reset at x=3 (Y=9, Δ₁=7, Δ₂=2). First Step should carry on Y: 9+7 → 16.');
-  setGuide(
-    'Ready',
-    'Press Step. One finite-difference cycle: add Δ₁ into Y, then add Δ₂ into Δ₁. When a wheel rolls past 9, watch the arm catch the next column.',
-    'Start at x=3 (Y=9, Δ₁=7, Δ₂=2) so the first Step produces a carry into tens.'
-  );
+  logLine(t('log.reset'));
+  setGuide(t('guide.ready.phase'), t('guide.ready.body'), t('guide.ready.hint'));
   renderAll();
 }
 
@@ -372,16 +369,12 @@ function resetClassic() {
   // classic table start: x=0, Y=0, D1=1, D2=2
   Y = 0; D1 = 1; D2 = 2; x = 0; cycles = 0;
   document.getElementById('log').innerHTML = '';
-  logLine('Classic start x=0 (Y=0, Δ₁=1, Δ₂=2). Carry appears when Y reaches 9+7.');
-  setGuide(
-    'Ready (classic)',
-    'Same engine, blank table. Step repeatedly; carry shows once Y approaches 9.',
-    'Or use Reset (carry ready) to jump straight to the tooth-catch moment.'
-  );
+  logLine(t('log.classic'));
+  setGuide(t('guide.classic.phase'), t('guide.classic.body'), t('guide.classic.hint'));
   renderAll();
 }
 
-resetDemo();
+LabI18n.ready.then(resetDemo);
 </script>
 </body>
 </html>
