@@ -294,3 +294,12 @@ Landed as PR #101 (`d7b561b`) on main after `si-text-2` (#100); Falstad possessi
 - analytical-engine: 34 of 36 keys translated. Left as English on purpose: `alt.rule` (dashes only) and `label.runup` ("Run-up:", Babbage's own term for the carry lever). The term used is "Analytical Engine" in Latin script, as in 02-mechanical-electromechanical-computing; 03-babbage-engines has no si locale on this base. Mill and Store follow 02's glosses: "Mill (අංක ගණිත ඒකකය)", "Store (මතකය)". U+00A0 kept in the Ingress/Egress labels; `footer_html` hrefs unchanged. Walker's scripts, alert() text and Set/Not set/Running/Stopped untouched (English).
 - UNVERIFIED (no opened glossary/dictionary hit): අනුකාරකය (Emulator), තත්ත්ව දර්ශකය (Annunciator), වක්‍ර ඇඳීමේ උපකරණය (Curve Drawing Apparatus), පරිචාරක සටහන් පොත (Attendant's Log). ද්වාරය for gate (ICTA/UCSC glossaries more often ගේට්ටුව). මතකය for Store is fine as a gloss matching ch 02; report only.
 - AE iframe at 375 px: scrollWidth 800 (same as English upstream layout).
+
+## si-gap-7: chapters 06 and 49 new, 07 "Two jobs" section (2026-11-05, Asia/Colombo)
+
+Branch `si-gap-7` from local `si-base-main` (`9cc5d5c`); not pushed. Sources in `si-desk/research/sources9/` (URLS.md, webfetch-excerpts.md).
+- 06-woodblock-to-movable-type (formerly 01d; alias /posts/01d-woodblock-to-movable-type/), `51884f4`: new first-principles page; adds a Sri Lanka 1737 Colombo press section (like the Tamil desk's Tamil-printing section). 3 exercises with answers.
+- 49-from-press-to-pixel (formerly 43b; alias /posts/43b-from-press-to-pixel/), `d0d6ba0`: Wang Xuan/Huaguang (CCF, Wang 1999), UDN 1982, PostScript/CSS, lorem ipsum aside, film track, cables/Telstar/Starlink. Dingjunshan 1905 not asserted. 4 exercises.
+- 07-relays-and-electromechanical-logic (formerly 02), `a5738aa`: "එකම කොටසට රාජකාරි දෙකක්" with "කම්බියට පෙර: පියාපත් මත පණිවිඩ" and "විද්‍යුත් පණිවිඩය" inserted before "තර්කය ලෙස Relays". Dropped unsupported EN claims (Henry/SIA repeater link, Aachen–Brussels gap, 6 Sept 1837 as public demo, Morse–Vail "official demonstration"); 43 BC cited to the LacusCurtius note 67.
+- UNVERIFIED: 06 Gabriel Schade / Gebeede Boek 6 Sept 1737 (Christie's only); 49 Dingjunshan 1905; 49 Muybridge 19 June 1878 (LoC unreachable); 07 Joseph Henry relay (SIA bot-blocked).
+- Chapter map: Locales column for 06 and 49 reads "en,ta,ro"; needs si (map not edited).

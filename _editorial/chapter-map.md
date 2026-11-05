@@ -27,7 +27,7 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 | 3 | `03-babbage-engines.md` | `01a-babbage-engines` | `01a` | 2 | en,th,ta,ro |
 | 4 | `04-jacquard-loom.md` | `01b-jacquard-loom` | `01b` | 3 | en,th,ta,ro |
 | 5 | `05-why-mechanical-matters.md` | `01c-why-mechanical-matters` | `01c` | 4 | en,th,ta,ro |
-| 6 | `06-woodblock-to-movable-type.md` | `01d-woodblock-to-movable-type` | `01d` | 5 | en,th,ta,ro |
+| 6 | `06-woodblock-to-movable-type.md` | `01d-woodblock-to-movable-type` | `01d` | 5 | en,th,si,ta,ro |
 | 7 | `07-relays-and-electromechanical-logic.md` | `02-relays-and-electromechanical-logic` | `02` | 6 | en,th,si,ta,ro |
 | 8 | `08-the-vacuum-tube-era.md` | `03-the-vacuum-tube-era` | `03` | 7 | en,th,si,ta,ro |
 | 9 | `09-why-the-transistor-had-to-happen.md` | `04-why-the-transistor-had-to-happen` | `04` | 8 | en,th,si,ta,ro |
@@ -70,7 +70,7 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 | 46 | `46-tcp-ip-and-the-modern-internet-stack.md` | `41-tcp-ip-and-the-modern-internet-stack` | `41` | 45 | en,th,si,ta |
 | 47 | `47-datacenter-networking-and-rdma.md` | `42-datacenter-networking-and-rdma` | `42` | 46 | en,th,si,ta |
 | 48 | `48-usenet-archie-gopher-and-the-pre-web-internet.md` | `43-usenet-archie-gopher-and-the-pre-web-internet` | `43` | 47 | en,th,si,ta |
-| 49 | `49-from-press-to-pixel.md` | `43b-from-press-to-pixel` | `43b` | 48 | en,th,ta,ro |
+| 49 | `49-from-press-to-pixel.md` | `43b-from-press-to-pixel` | `43b` | 48 | en,th,si,ta,ro |
 | 50 | `50-google-s-big-data-infrastructure-why-they-won.md` | `44-google-s-big-data-infrastructure-why-they-won` | `44` | 49 | en,th,si,ta |
 | 51 | `51-kubernetes-and-container-orchestration-at-scale.md` | `45-kubernetes-and-container-orchestration-at-scale` | `45` | 50 | en,th,si,ta |
 | 52 | `52-the-machine-learning-software-stack.md` | `46-the-machine-learning-software-stack` | `46` | 51 | en,th,si,ta |
