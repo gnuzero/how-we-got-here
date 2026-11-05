@@ -883,3 +883,17 @@ All 24 files have the status **draft, needs native proofread**. zh-Hans needs a 
 - Add the cross-links listed under "TODO cross-links after PR #23 merges" (now that #23 has landed).
 - The open decisions above.
 - Reed: the lab ideas above (optional).
+
+## Batch 43: Chinese-first gap pages (2026-11-05)
+
+Four new pages plus a fold-in, zh-Hans and zh-Hant together. Spine numbering is provisional; the next renumbering pass (within ~48h) should revisit these weights.
+
+| File | weight (Hans = Hant) | Phase label | Topic neighbour |
+| --- | --- | --- | --- |
+| 01d-zh-woodblock-movable-type | 24 | 1 | 26-zh-input-and-typesetting (weight 7) |
+| 02-zh-post-and-telegraph | 25 | 1 | 02-zh-relays-switching (4), 64-zh-hanzi-encoding (6) |
+| 43b-zh-cables-and-satellites | 26 | 7 | 39-zh-networks-1986-1994 (8) |
+| 43b-zh-film-beginnings | 27 | 7 | 43b-zh-cables-and-satellites |
+| 26-zh-input-and-typesetting | 7 (unchanged) | 4 | research file 41 folded in |
+
+Why 24–27: the existing zh weights are the consecutive integers -1 and 1–23, and Hugo weights are integers, so no free slot exists beside the topic neighbours without renumbering existing pages (out of scope for this batch). The new pages are appended after 68-zh-computer-craze (23) in reader order (woodblock → post/telegraph → cables → film). Target slots for the next pass: woodblock just before 26-zh-input-and-typesetting; post-and-telegraph between 02-zh-relays-switching and 64-zh-hanzi-encoding; cables and film right after 39-zh-networks-1986-1994. Chinese filenames are not renamed (map policy); `scripts/renumber.py` does not manage the zh spine.
