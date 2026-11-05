@@ -4,13 +4,26 @@ This is not an encyclopedia. We do not rewrite Wikipedia.
 
 **From Relays to Attention** is an interactive journey. Readers live through systems and touch them. They do not collect articles.
 
+## Language authority lock, 2026-09-26 (Nayana)
+
+Overrides anything below, in `TRANSLATIONS.md`, or in `TRANSLATION_PLAN.md` that conflicts.
+
+1. **Two source languages.** English and Chinese are co-authoritative. Chinese is the authoritative Eastern source language, held to the same evidence bar as English. Chinese covers mainland, Taiwan and Hong Kong sources.
+2. **English does not flow into Chinese. Chinese flows into English.** English work is not brought into Chinese. Chinese findings do surface in the English edition: on an English page they sit at the top of the topic, and Western inventors are cited at the bottom.
+3. **Every other locale fills its language's gap.** Priority order: **Sinhala first** (Nayana singled it out), then Tamil, then Thai, then any future locale. The job: the technical topics this book covers that are missing or thin on that language's internet, explained elaborately, in that language, from first principles. Local sources and local history are welcome where they exist. The core job is thorough coverage of what that language's internet lacks.
+4. **Depth is the goal there.** For those locales, depth and completeness *are* the goal. This is an explicit exception to "not an encyclopedia" and "length is not a goal", which still hold for English and Chinese. Same spine. Same interactive labs.
+5. **No locale is a translation of another.** Findings from both source languages flow independently into the other locales, which re-tell them in their own voice.
+6. **Two Chinese scripts.** BCP 47 `zh-Hans` and `zh-Hant`. Simplified is the master text. Traditional is derived with OpenCC `s2twp`, then gets a mandatory terminology review (软件/軟體, 网络/網路, 内存/記憶體, 程序/程式, …).
+7. **Human proofread.** Chinese text is proofread by native readers before it is marked final.
+8. **Unchanged:** the interactive-journey vision and the spine.
+
 ## What we spend effort on
 
 1. **Connective tissue** — why one constraint forced the next architecture. The pattern, not the catalog.
 2. **Interactivity** — labs, terminals, boards, and other things you can operate. Experience first.
 3. **References** — where a topic already has robust textbooks, papers, RFCs, or (for Thai) named local literature: short context + a door out. Credit people by name.
 
-Existing chapter drafts (~63 + extras) are **source material to distill**, not the final voice. Long textbook passages get cut. Facts stay. Length is not a goal.
+Existing chapter drafts (~63 + extras) are **source material to distill**, not the final voice. Long textbook passages get cut. Facts stay. Length is not a goal. (English and Chinese. Gap-filling locales: see the language lock above.)
 
 ## The main narrative (unchanged spine)
 
@@ -59,10 +72,15 @@ A path is a thin index + a few experience beats. It is not a parallel book.
 
 ## Languages
 
-- **English** — distill toward this vision.
-- **Thai (Mira)** — full bodies exist; later distill the same way; keep verified Thai literature credits. Mira is the **named AI personality** on the Thai edition — Thai readers should see her name, not only “the Grok team.”
-- **Tamil (Arun)** — research-heavy. Wikipedia is not enough; verify Tamil sources or omit.
-- **Sinhala (Sena)** — assume ~99% of computing lit does not exist in Sinhala. No invented sources. Careful translation from English distill; honesty when no SI source exists.
+Authority and flow: **Language authority lock, 2026-09-26** (top of this file).
+
+Gap-filling priority: **Sinhala first** (Nayana singled it out), then Tamil, then Thai, then any future locale.
+
+- **English** — co-authoritative source. Distill toward this vision. Chinese findings lead a topic; Western inventors are cited at the bottom.
+- **Chinese (zh-Hans / zh-Hant)** — co-authoritative source; the authoritative Eastern source language. Written from Chinese primary sources (mainland, Taiwan, Hong Kong), same evidence bar as English. Not a translation of English. Simplified is the master; Traditional via OpenCC `s2twp` + terminology review. Native-reader proofread before final. Written by the Chinese desk.
+- **Sinhala (Sena)** — gap-filling locale. Assume ~99% of computing lit does not exist in Sinhala: that gap is the job. Explain it elaborately, in Sinhala, from first principles. No invented sources; honesty when no SI source exists. Not a translation of the English distill.
+- **Tamil (Arun)** — gap-filling locale. Research-heavy. Wikipedia is not enough: cite Tamil sources only when verified, never invent one. The topic still gets explained in full, from first principles.
+- **Thai (Mira)** — gap-filling locale. Full bodies exist; deepen them where Thai coverage is thin rather than distilling them down. Keep verified Thai literature credits. Mira is the **named AI personality** on the Thai edition — Thai readers should see her name, not only “the Grok team.”
 - SI/TA freeze lifted 2026-09-06 night (Nayana).
 
 ## Time
