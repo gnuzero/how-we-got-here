@@ -43,7 +43,7 @@ China Computer Federation-இன் வரலாற்றுப் பதிவ�
 
 ## தைவான்: ஓர் இணையான முதல்
 
-தைப்பேயின் United Daily News **16 செப்டம்பர் 1982** அன்று தன் கணினி அச்சுக்கோப்பு அமைப்பை இயக்கியது. பத்திரிகை அதை உலகில் முதல் என்கிறது; அது சீனப் பெருநிலத்தின் லேசர் வரிசையிலிருந்து தனியாக வளர்ந்தது. ([United Daily News anniversary book](https://reading.udn.com/act/flipbook/20210203/files/basic-html/page273.html))
+தைப்பேயின் United Daily News **16 செப்டம்பர் 1982** அன்று தன் கணினி அச்சுக்கோப்பு அமைப்பை இயக்கியது. கணினி அச்சுக்கோப்பை ஏற்ற முதல் சீன மொழி நாளிதழ் தானே என்று பத்திரிகை கூறுகிறது; அது சீனப் பெருநிலத்தின் லேசர் வரிசையிலிருந்து தனியாக வளர்ந்தது. ([United Daily News anniversary book](https://reading.udn.com/act/flipbook/20210203/files/basic-html/page273.html))
 
 ## தமிழ்: தட்டச்சுப்பொறியிலிருந்து Tamil99, Unicode வரை
 
