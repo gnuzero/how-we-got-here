@@ -83,6 +83,14 @@ Romanian titles are listed **only** for chapters that actually have a `content.r
 | `posts/11-instruction-sets.md` | Seturi de instrucțiuni | shipped (fact-checked) |
 | `posts/12-datapath-design.md` | Proiectarea căii de date | shipped (fact-checked) |
 | `posts/13-pipelining.md` | Pipelining | shipped (fact-checked) |
+| `posts/14-branch-prediction.md` | Predicția salturilor | shipped (fact-checked) |
+| `posts/15-caches.md` | Cache-uri | shipped (fact-checked) |
+| `posts/16-out-of-order-execution.md` | Execuția în afara ordinii | shipped (fact-checked) |
+| `posts/17-superscalar-multicore.md` | Superscalar și multicore | shipped (fact-checked) |
+| `posts/18-mainframes-to-minicomputers-to-microprocessors.md` | De la mainframe-uri la minicalculatoare și microprocesoare | shipped (fact-checked) |
+| `posts/19-the-x86-vs-risc-split.md` | Ruptura x86 versus RISC | shipped (fact-checked) |
+| `posts/20-arm-and-risc-v-the-architecture-landscape-today.md` | ARM și RISC-V: peisajul de arhitecturi azi | shipped (fact-checked) |
+| `posts/21-batch-processing-and-the-birth-of-the-operating-system.md` | Prelucrarea pe loturi și nașterea sistemului de operare | shipped (fact-checked) |
 | `posts/35-the-memory-wall.md` | Zidul memoriei | shipped (fact-checked) |
 | `posts/47-what-7nm-actually-means.md` | Ce înseamnă de fapt „7nm” | shipped (fact-checked) |
 | `posts/48-photolithography.md` | Fotolitografia | shipped (fact-checked) |
@@ -131,8 +139,8 @@ Conceptul și inspirația acestei lucrări îi aparțin lui Nayana Hettiarachchi
 - **Announcement MVP bodies:** Foreword + Phase 1 (01–04) + Attention (63) + glossary/home chrome in TH / SI / TA
 - Full remaining chapter bodies: after announcement (phased)
 - **Chinese (zh-Hans / zh-Hant), 2026-09-26:** locales wired; placeholder landing only. Pages come from the Chinese desk, written from Chinese primary sources. Not translated from English. Native-reader proofread before final.
-- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `00`–`13` (early chapters, batches 1–2), `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
-- Last updated: 2026-11-05 (ro early chapters 06–13, batch 2)
+- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `00`–`21` (early chapters, batches 1–3), `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
+- Last updated: 2026-11-05 (ro early chapters 14–21, batch 3)
 
 ## Fact-check notes (ongoing)
 
