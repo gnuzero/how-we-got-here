@@ -100,7 +100,8 @@
       if (!r[0]) console.info('[lab-i18n] strings.en.json not loaded; using built-in page text.');
       if (r[1]) { loc = r[1]; active = lang; }
       else if (lang !== 'en') console.info('[lab-i18n] no strings.' + lang + '.json; falling back to English.');
-      root.lang = active;
+      // File codes stay lowercase (strings.zh-hans.json); html lang uses BCP-47 case.
+      root.lang = active === 'zh-hans' ? 'zh-Hans' : active === 'zh-hant' ? 'zh-Hant' : active;
       apply(document);
     })
     .catch(function (e) { console.info('[lab-i18n] ' + e); })

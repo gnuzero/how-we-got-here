@@ -9,9 +9,28 @@
 
   type: mini-cpu | breadboard | vm-terminal | analytical-engine | difference-engine | pebble-trays
   height: optional, defaults to 560px
+
+  iframe title: i18n labIframeTitle with {{ .Type }} = human display name (English
+  map below). Optional per-locale override: i18n key labDisplayName-<type>
+  (e.g. labDisplayName-difference-engine); missing keys leave the English name.
+  URL path and ?lang= still use the slug in `type`.
 */}}
 {{ $type := .Get "type" }}
 {{ $height := .Get "height" | default "560" }}
+{{ $names := dict
+  "difference-engine" "Difference Engine"
+  "pebble-trays" "Pebble Trays"
+  "mini-cpu" "Mini-CPU"
+  "vm-terminal" "Terminal"
+  "breadboard" "Breadboard"
+  "analytical-engine" "Analytical Engine"
+}}
+{{ $display := index $names $type | default $type }}
+{{/* Optional locale override; empty/missing i18n keeps $display. */}}
+{{ $overrideKey := printf "labDisplayName-%s" $type }}
+{{ with i18n $overrideKey }}
+  {{ if and . (ne . $overrideKey) }}{{ $display = . }}{{ end }}
+{{ end }}
 {{/* ?lang= = this page's site language code (en, th, si, ta, ro, zh-hans, zh-hant); read by static/labs/_shared/i18n.js */}}
 {{ $src := printf "%s%s/?lang=%s" ("labs/" | relURL) $type (site.Language.Lang | urlquery) }}
 <div class="lab-embed" style="margin: 1.5em 0;">
@@ -19,7 +38,7 @@
     src="{{ $src }}"
     style="width:100%; height:{{ $height }}px; border:1px solid #30363d; border-radius:8px;"
     loading="lazy"
-    title="{{ i18n "labIframeTitle" (dict "Type" $type) | default (printf "Interactive lab: %s" $type) }}">
+    title="{{ i18n "labIframeTitle" (dict "Type" $display) | default (printf "Interactive lab: %s" $display) }}">
   </iframe>
   <div style="text-align:right; font-size:11px; margin-top:4px;">
     <a href="{{ $src }}" target="_blank" rel="noopener">{{ i18n "labOpenNewTab" | default "Open lab in new tab ↗" }}</a>
