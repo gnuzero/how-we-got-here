@@ -7,6 +7,8 @@ type: docs
 
 **how we got here.**
 
+Read in: [English](/) · [ไทย](/th/) · [සිංහල](/si/) · [தமிழ்](/ta/) · [简体中文](/zh-hans/) · [繁體中文](/zh-hant/) · [Română](/ro/)
+
 An interactive journey — not an encyclopedia. You live through systems and touch them; you do not collect articles.
 
 The spine is one continuous engineering argument: how each era's hard constraint forced the next architecture.
