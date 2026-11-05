@@ -276,3 +276,12 @@ Branch `si-lab-2` in fork `forks/sena` from main `3a5d8cf` (#68), with the three
 ## si-text-1: post text aligned with the Sinhala lab strings (2026-11-05, Asia/Colombo)
 
 Branch `si-text-1` from `si-lab-2` (`e0b9558`, on main `565e7af`); not pushed. Bold button names in 14:142, 19:114, 20:122, 26:90, 27:92, 31:112, 57:91 now quote the Sinhala labels (එකලස් කරන්න, පියවර, ධාවනය, යළි සකසන්න); 19:125 quotes "ප්‍රතිදාන රෙජිස්ටරය". Post 01: prose "carry" → රැගෙන යාම (carry) on first mention per section (86, 126, 155), රැගෙන යාම afterwards (126, 163); "ripple-carry adder" and the English image prompts are left. Post 64:314 link now `/labs/vm-terminal/?lang=si`. "Assembly" panel mentions unchanged (the lab keeps it English). Left for later: unbolded English Step/Assemble/Reset/Output in 14:156, 26:34, 27:88, 27:151, 27:167; 31:112 quotes the error as "operand out of range (0-15)", which matches neither the English nor the Sinhala lab message for `LDA 16`.
+## si-text-2: remaining English lab UI names in prose (2026-11-05, Asia/Colombo)
+
+Branch `si-text-2` from `si-base-24fbe9f` (`24fbe9f`, provisional public numbering); not pushed. Labels quoted from `static/labs/mini-cpu/strings.si.json`. One commit per chapter:
+- 19-branch-prediction (formerly 14-branch-prediction), line 158: ප්‍රතිදාන රෙජිස්ටරය; පියවර twice
+- 24-the-x86-vs-risc-split (formerly 19-…), line 127: ගෙන ඒම–විකේතනය–ක්‍රියාත්මක කිරීම (fetch–decode–execute)
+- 25-arm-and-risc-v-the-architecture-landscape-today (formerly 20-…), line 124: "විකේතනය (DECODE)" පේළියේ "ADD 15 (opcode 0x2, operand 15)" — the lab's step.decode text for ADD 15
+- 31-from-machine-code-to-assembly (formerly 26-…), line 36: එකලස් කරන්න / පියවර
+- 32-high-level-languages-fortran-cobol-lisp-c (formerly 27-…), lines 90, 153, 169: එකලස් කරන්න, ප්‍රතිදානය (as in the lab's log.hlt), යළි සකසන්න
+"Assembly කොටුව" left in English (the lab heading stays English).
