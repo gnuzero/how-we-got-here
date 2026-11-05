@@ -1,0 +1,17 @@
+{
+  "page.title": "แล็บเทอร์มินัล VM",
+  "page.heading": "แล็บเทอร์มินัล VM",
+  "page.subtitle": "เครื่อง x86 จริง ทำงานฝั่งไคลเอนต์ในเบราว์เซอร์ของคุณผ่าน WASM — บูต Linux จริง เชลล์จริง คำสั่งจริง",
+  "btn.boot": "บูต VM (Boot VM)",
+  "btn.restart": "เริ่มใหม่ (Restart)",
+  "status.idle": "ยังไม่เริ่ม — กด บูต VM (Boot VM)",
+  "first.heading": "คำสั่งแรก",
+  "first.body_html": "กด <strong>บูต VM (Boot VM)</strong> รอจนขึ้นพรอมต์ล็อกอิน/เชลล์ แล้ว<strong>คลิกที่หน้าจอสีดำ</strong> เพื่อให้คีย์บอร์ดโฟกัสที่ VM ลองคำสั่งเหล่านี้:",
+  "first.hint": "พิมพ์ทีละคำสั่งแล้วกด Enter หากเซสชันค้าง เริ่มใหม่ (Restart) จะพาคุณกลับไปบูตใหม่",
+  "note_html": "ขับเคลื่อนโดย <strong>v86</strong> — ตัวจำลอง x86 เต็มรูปแบบใน WebAssembly รันไทม์ BIOS และอิมเมจ Linux ถูกรวมไว้ใน <code>assets/</code> ข้างหน้านี้ (ไม่ต้องใช้ CDN ออนไลน์ในการบูตครั้งแรก) <a href=\"ORIGIN.md\">ซอร์สและสัญญาอนุญาต (source &amp; licences)</a>",
+  "status.already": "กำลังทำงานอยู่แล้ว — คลิกหน้าจอเพื่อใช้คีย์บอร์ด",
+  "status.loading": "กำลังโหลดอิมเมจ VM ในเครื่อง + บูต…",
+  "status.booting": "กำลังบูตเคอร์เนล…",
+  "status.running": "กำลังทำงาน — คลิกหน้าจอ แล้วลอง whoami / uname / ls",
+  "status.restarted": "เริ่มใหม่แล้ว — คลิกหน้าจอเมื่อพรอมต์กลับมา"
+}
