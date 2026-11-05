@@ -1,10 +1,10 @@
 ---
 title: "ไทม์ไลน์"
-weight: 99
+weight: 101
 date: 2026-01-01
 draft: false
 phase: "อ้างอิง"
-series_index: 98
+series_index: 100
 tags: ["timeline", "reference", "history"]
 summary: "ลำดับเหตุการณ์ย่อจากการคำนวณเชิงกลสู่กลไก Attention สมัยใหม่"
 ---

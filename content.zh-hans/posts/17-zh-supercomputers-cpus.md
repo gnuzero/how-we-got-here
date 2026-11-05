@@ -51,7 +51,7 @@ schematics: "Diagram 1: four strategies and their constraint (compatibility with
 
 - 吕文超，《100系列计算机联合设计成功的启示》（English: Lessons from the successful joint design of the 100-series computers），清华大学计算机系“60周年系庆”，2018-07-24。[链接](https://www.cs.tsinghua.edu.cn/info/1169/4071.htm)
 - 林行良，《DJS100系列机系统软件联合设计》（English: Joint design of the DJS-100 series system software），清华大学计算机系“60周年系庆”，2018-07-24。[链接](https://www.cs.tsinghua.edu.cn/info/1169/4069.htm)
-- 国防科技大学，《“银河－I”计算机横空出世！》（English: The Yinhe-I computer bursts onto the scene），国防科技大学官网，2019-12-06。[链接](https://www.nudt.edu.cn/zjkd/kdgs/f510ef9ef03c49ebac9350a302c80290.htm)
+- 国防科技大学，《“银河－I”计算机横空出世！》（English: The Yinhe-I computer bursts onto the scene），国防科技大学官网，2019-12-06。[链接（存档）](https://web.archive.org/web/20260811113811/https://www.nudt.edu.cn/zjkd/kdgs/f510ef9ef03c49ebac9350a302c80290.htm)
 - 中国计算机学会，《“银河-1”亿次计算机》（English: The Yinhe-1 100-million-ops computer），中国计算机历史记忆，2018-09-12。[链接](https://www.ccf.org.cn/Computing_history/Full_List/2017/First_class/2018-09-12/652326.shtml)
 - 中国计算机学会，《曙光1号并行计算机》（English: The Dawning-1 parallel computer），中国计算机历史记忆，2020-03-24。[链接](https://www.ccf.org.cn/Computing_history/Full_List/2019/First_class/2020-03-24/697778.shtml)
 - 中国科学院计算技术研究所，《历史沿革》（English: ICT history），计算所官网。[链接](https://www.ict.ac.cn/jssgk/lsyg/)

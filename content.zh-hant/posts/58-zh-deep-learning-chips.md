@@ -50,7 +50,7 @@ Google 的 Jouppi 等人 2017 年的 TPU 論文在相關工作裡專門討論了
 - 中國科學院，《開創“寒武紀”》（English: Founding "Cambricon", CAS feature on self-reliance in science and technology），2024-09-19。[連結](https://www.cas.cn/zt/kjzt/kjzlzqzl/kjzlzq/202409/t20240919_5032328.shtml)
 - Norman P. Jouppi et al.，“In-Datacenter Performance Analysis of a Tensor Processing Unit”（中文：資料中心內張量處理單元的效能分析），ISCA 2017，arXiv:1704.04760。[連結](https://arxiv.org/abs/1704.04760)
 - 華為，麒麟 970 IFA 2017 發表新聞稿（English: Huawei press release on the Kirin 970 launch at IFA 2017），2017-09。[連結](https://www.huawei.com/cn/news/2017/9/mobile-ai-ifa-2017)
-- 驅動中國，《中科院賀信柔中有剛，強調Kirin NPU並非華為所有》（English: CAS congratulatory letter stresses that the Kirin NPU is not Huawei's own），2017-09-08。[連結](https://mobile.qudong.com/article/433829.shtml)
+- 驅動中國，《中科院賀信柔中有剛，強調Kirin NPU並非華為所有》（English: CAS congratulatory letter stresses that the Kirin NPU is not Huawei's own），2017-09-08。[連結](https://www.qudong.com/article/301101.html)
 - 中科寒武紀科技股份有限公司，《首次公開發行股票並在科創板上市招股說明書（註冊稿）》（English: Cambricon STAR Market IPO prospectus, registration draft），上海證券交易所披露，2020-06-22。[連結](https://static.sse.com.cn/stock/disclosure/announcement/c/202006/000354_20200622_AWSW.pdf)
 - IT之家，《華為深度解讀達芬奇架構：3D Cube計算引擎加速運算》（English: Huawei explains the Da Vinci architecture and its 3D Cube engine），2019-08-22。[連結](https://www.ithome.com/0/440/590.htm)
 - 央視網，《華為正式發布最新AI處理器昇騰910及全場景AI計算框架MindSpore》（English: Huawei launches the Ascend 910 AI processor and the MindSpore framework），2019-08-23。[連結](http://news.cctv.com/2019/08/23/ARTI2cqgeaCmXn6WauhnfNyy190823.shtml)

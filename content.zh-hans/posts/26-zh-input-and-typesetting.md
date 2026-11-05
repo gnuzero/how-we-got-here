@@ -51,7 +51,7 @@ schematics: "Diagram 1: the three bottlenecks (too many characters / too few key
 
 - 姚妙峰，《为了大众教育：周厚坤眼中的中文打字机》（English: For mass education: the Chinese typewriter as Zhou Houkun saw it），结绳志，2022-10-06。[链接](https://tyingknots.net/2022/10/chinese-typewriter-2/)
 - 商务印书馆官网转载 2010 年世博会网站对舒震东之孙舒冲慧的访谈（English: The Commercial Press reprints the 2010 Expo website's interview with Shu Zhendong's grandson Shu Chonghui），商务印书馆，2014-08-01。[链接](https://www.cp.com.cn/Content/2014/08-01/1715352867.html)
-- 清华大学科学博物馆，《双鸽牌DHY-d中文打字机（1984）》（English: Double Pigeon DHY-d Chinese typewriter, 1984），清华大学科学博物馆。[链接](https://tsm.tsinghua.edu.cn/?p=5525)
+- 清华大学科学博物馆，《双鸽牌DHY-d中文打字机（1984）》（English: Double Pigeon DHY-d Chinese typewriter, 1984），清华大学科学博物馆。[链接（存档）](https://web.archive.org/web/20251112024909/https://tsm.tsinghua.edu.cn/?p=5525)
 - 东吴大学，“字键拾光”展览新闻稿（English: press release for the exhibition “字鍵拾光” [roughly: gathering light from the keys], on Lin Yutang's MingKwai typewriter），中央社讯息平台，2025-03-18。[链接](https://www.cna.com.tw/postwrite/chi/396716)
 - 朱邦复，《我与中文电脑的孽缘》（English: My fateful entanglement with the Chinese computer），为中推会撰。[链接](http://health999.net/jpf/word_01.htm)
 - 朱邦复，《智慧之旅》第三章《电脑 仓颉、天龙、零壹、汉卡》（English: Journey of Wisdom, ch. 3: Computers: Cangjie, Tianlong, Zero-One [his company], the Chinese card）。[链接](http://open-lit.com/html/lit/506/18353.html)
