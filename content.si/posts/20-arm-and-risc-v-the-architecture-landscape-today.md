@@ -119,7 +119,7 @@ C දිගුව ගැන පිරිවිතරය (පිටුව 97) ම
 
 ### 5. දැන්ම උත්සාහ කරන්න (මෙම පිටුවේ mini-cpu lab එක)
 
-ඉහත ඇති mini-cpu lab එකේ `ADD 15` ලියා **Assemble** කර, ඉන්පසු **Step** කරන්න. DECODE පේළියේ "opcode 0x2, operand 15" ලෙස පෙනේ. එනම් මුළු උපදෙස් බයිටය **0x2F** වේ: ඉහළ bits 4 opcode එක (2) වන අතර පහළ bits 4 operand එක (15 = F) වේ.
+ඉහත ඇති mini-cpu lab එකේ `ADD 15` ලියා **එකලස් කරන්න** ඔබා, ඉන්පසු **පියවර** ඔබන්න. DECODE පේළියේ "opcode 0x2, operand 15" ලෙස පෙනේ. එනම් මුළු උපදෙස් බයිටය **0x2F** වේ: ඉහළ bits 4 opcode එක (2) වන අතර පහළ bits 4 operand එක (15 = F) වේ.
 
 - mini-cpu හි opcode ක්ෂේත්‍රය bits 4 නිසා opcodes 16 කට පමණක් ඉඩ ඇත. lab එක ඉන් 11 ක් භාවිතා කරයි (NOP, LDA, ADD, SUB, STA, LDI, JMP, JC, JZ, OUT, HLT).
 - RV32I හි opcode එක bits 7 ක් වන අතර, funct3 (bits 3) සහ funct7 (bits 7) එකතු වූ විට බොහෝ උපදෙස් සඳහා ඉඩ ඇත.
