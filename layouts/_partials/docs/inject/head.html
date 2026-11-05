@@ -1,0 +1,7 @@
+{{- /* Site-wide robots meta. Controlled by [params] noindex in hugo.toml.
+       When true: emit noindex,nofollow. When false/absent: emit nothing.
+       Theme inject/head.html is empty; this override does not touch the submodule.
+       Launch flip: set params.noindex = false (one line). */ -}}
+{{- if .Site.Params.noindex -}}
+<meta name="robots" content="noindex, nofollow">
+{{- end -}}

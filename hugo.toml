@@ -61,6 +61,9 @@ defaultContentLanguageInSubdir = false
   title = "De la relee la Attention: cum am ajuns aici"
 
 [params]
+  # Site-wide <meta name="robots" content="noindex, nofollow"> via layouts/_partials/docs/inject/head.html.
+  # true = emit tag (pre-launch default). false = emit nothing. Flip to false at announcement (one line).
+  noindex = true
   BookSection = "posts"
   # Only list a language in the switcher when this page exists in that locale
   # (no silent fallback to that locale's home). Required so thin locales like ro
