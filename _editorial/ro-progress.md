@@ -112,9 +112,17 @@
 - **Primaries opened:** Mishra et al. arXiv:2104.08378; A100 WP; PTX ISA §9.7.16.6; cuSPARSELt docs; Han et al. 2015 & Deep Compression 2016; EIE 2016; Jouppi 2017
 - **Still unverified / hedged:** end-to-end (whole-net) 2:4 inference speedup on A100 — no primary opened (page gives none); cuSPARSELt HTML not re-scraped beyond desk copies; native Romanian polish still welcome
 
+### Early chapters 14–21 (batch 3, fact-checked 2026-11-05)
+
+- **Phase 4 string** `4 — Fundamente software: sisteme de operare, limbaje și sisteme în timp real` approved (mirrors EN; & → și).
+- **Primaries opened (batch 3):** Smith 1981; Lee & Smith 1984; Bloch 1959; Wilkes 1965; Papamarcos & Patel 1984; Sweazey & Smith 1986; Tomasulo 1967; Smith & Pleszkun 1988; Olukotun et al. 1996; Mudge 2001; Amdahl et al. 1964; CHM (PDP-11, 4004, Who invented the microprocessor); ICTP DACICC-1; Iancu 2013 (secondary); Patterson & Ditzel 1980; RISC-V Unprivileged 20240411; Intel Optimization Reference Manual Vol. 2 (050); arm.com/architecture; Patrick 2008 (CHM).
+- **Closed:** BTB (Lee & Smith), ROB (Smith & Pleszkun), power formula (Mudge), µop translation (Intel Opt. manual), Patterson & Ditzel.
+- **Still NEVERIFICAT (10):** FSM labels; locality terms; 64-byte line; cache taxonomy; literal "MESI"; mid-2000s power-wall narrative; Rus 1997 pages; µop chronology; Arm licence tiers (secondary only); RAND P-7316.
+- **Discrepancy flagged on page:** DACICC-1 years ICTP 1959–1963 vs Iancu/Guran 1958–1959.
+
 ## Not yet (pending)
 
-- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (batch 2: ch. 6–13 drafting)
+- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (batch 4: ch. 22–28 next)
 
 ## Notes
 
