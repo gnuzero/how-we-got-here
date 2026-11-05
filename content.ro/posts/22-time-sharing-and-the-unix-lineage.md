@@ -1,10 +1,10 @@
 ---
 title: "Partajarea timpului și descendența Unix"
-weight: 25
+weight: 27
 date: 2026-01-01
 draft: false
 phase: "4 — Fundamente software: sisteme de operare, limbaje și sisteme în timp real"
-series_index: 24
+series_index: 26
 tags: []
 summary: "Prelucrarea pe loturi ținea procesorul ocupat; partajarea timpului le-a dat mai multor utilizatori impresia că îl au fiecare: ambiția Multics, apoi simplitatea Unix"
 image_prompt: "Family-tree infographic: Multics branching into Unix, then BSD/System V leading to Linux/macOS, clean genealogy diagram style"

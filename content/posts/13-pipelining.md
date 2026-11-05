@@ -1,10 +1,10 @@
 ---
 title: "Pipelining"
-weight: 16
+weight: 18
 date: 2026-01-01
 draft: false
 phase: "3 — Building a CPU & Its Architectures"
-series_index: 15
+series_index: 17
 tags: []
 summary: "Overlap instructions for throughput — then hazards force forwarding, stalls, and everything that follows"
 image_prompt: "Pipeline diagram showing 5 instructions through IF/ID/EX/MEM/WB stages, classic pipeline diagram style"

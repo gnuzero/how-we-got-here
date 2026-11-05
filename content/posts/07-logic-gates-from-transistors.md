@@ -1,10 +1,10 @@
 ---
 title: "Logic Gates from Transistors"
-weight: 10
+weight: 12
 date: 2026-01-01
 draft: false
 phase: "2 — Physics & Devices"
-series_index: 9
+series_index: 11
 tags: []
 summary: "CMOS pairs NMOS and PMOS so idle gates draw no static path — the topology that scaled"
 image_prompt: "Circuit schematic of a CMOS inverter with truth table, clean schematic style"

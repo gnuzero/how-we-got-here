@@ -1,10 +1,10 @@
 ---
 title: "Prelucrarea pe loturi și nașterea sistemului de operare"
-weight: 24
+weight: 26
 date: 2026-01-01
 draft: false
 phase: "4 — Fundamente software: sisteme de operare, limbaje și sisteme în timp real"
-series_index: 23
+series_index: 25
 tags: []
 summary: "CPU-uri scumpe care stăteau degeaba între joburile pe cartele au forțat primul monitor rezident — software de sistem, nu programul utilizatorului"
 image_prompt: "Historical illustration of an operator loading punch cards into a batch-processing mainframe, clean vintage computing illustration style"

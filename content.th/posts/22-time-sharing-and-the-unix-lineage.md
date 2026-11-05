@@ -1,10 +1,10 @@
 ---
 title: "Time-Sharing และสายเลือด Unix"
-weight: 23
+weight: 27
 date: 2026-01-01
 draft: false
 phase: "4 — รากฐานซอฟต์แวร์: OS, ภาษา และระบบเรียลไทม์"
-series_index: 22
+series_index: 26
 tags: []
 summary: "Batch ให้ CPU ไม่ว่าง; time-sharing ให้ผู้ใช้หลายคนภาพลวงตาว่าเป็นเจ้าของ — ความทะเยอทะยานของ Multics แล้วความเรียบง่ายของ Unix"
 image_prompt: "Family-tree infographic: Multics branching into Unix, then BSD/System V leading to Linux/macOS, clean genealogy diagram style"

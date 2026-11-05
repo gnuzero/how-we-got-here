@@ -1,10 +1,10 @@
 ---
 title: "Clock Speed බිත්තිය"
-weight: 37
+weight: 41
 date: 2026-01-01
 draft: false
 phase: "5 — බස් සහ පද්ධති ගෘහ නිර්මාණය"
-series_index: 36
+series_index: 40
 tags: []
 summary: "සංඛ්‍යාතය තාපයට ගැටුණේය — එබැවින් කර්මාන්තය වේගවත් clocks වෙනුවට පුළුල් විය (cores, පසුව fabrics)"
 image_prompt: "Graph infographic: CPU clock frequency climbing then flattening around 2005, power density curve rising toward a thermal ceiling, clean data-visualization diagram style"

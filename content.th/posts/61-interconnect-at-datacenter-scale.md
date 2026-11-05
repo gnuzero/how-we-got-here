@@ -1,10 +1,10 @@
 ---
 title: "อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล"
-weight: 62
+weight: 67
 date: 2026-01-01
 draft: false
 phase: "10 — ฮาร์ดแวร์ AI สมัยใหม่"
-series_index: 61
+series_index: 66
 tags: []
 summary: "GPU นับพัน — ทอโพโลยีและ all-reduce สำคัญเท่า FLOPS สูงสุดของชิปใดตัวเดียว"
 image_prompt: "System diagram of a multi-rack AI training cluster showing a fat-tree network topology, clean datacenter network architecture diagram style"

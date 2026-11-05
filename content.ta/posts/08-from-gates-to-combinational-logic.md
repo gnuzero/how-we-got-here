@@ -1,10 +1,10 @@
 ---
 title: "வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்"
-weight: 9
+weight: 13
 date: 2026-01-01
 draft: false
 phase: "2 — இயற்பியல் மற்றும் சாதனங்கள்"
-series_index: 8
+series_index: 12
 tags: []
 summary: "வாயில்களைக் கூட்டிகளாகவும் ALU-வாகவும் இணைக்கவும் — பிறகு சிறந்த கட்டமைப்புகளைக் கட்டாயப்படுத்தும் carry-ripple தாமதம்"
 image_prompt: "Block diagram of a 1-bit full adder with truth table, clean digital logic textbook style"

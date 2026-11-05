@@ -1,10 +1,10 @@
 ---
 title: "Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි"
-weight: 58
+weight: 63
 date: 2026-01-01
 draft: false
 phase: "10 — නවීන AI දෘඪාංග"
-series_index: 57
+series_index: 62
 tags: []
 summary: "AI compute පරිමාණයේ matmul වෙත අඩු වේ — එම හැඩයට සිලිකන් විශේෂීකරණය කරන්න"
 image_prompt: "Infographic showing a neural network layer's forward pass as a matrix multiply mapped onto specialized hardware, clean AI hardware explainer style"

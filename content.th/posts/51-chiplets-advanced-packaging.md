@@ -1,10 +1,10 @@
 ---
 title: "Chiplets และการบรรจุขั้นสูง"
-weight: 52
+weight: 57
 date: 2026-01-01
 draft: false
 phase: "8 — โหนดกระบวนการและการผลิต"
-series_index: 51
+series_index: 56
 tags: []
 summary: "Yield ตกตามพื้นที่ได — แยกเป็น chiplets แล้วซื้อแบนด์วิดท์คืนด้วยการบรรจุขั้นสูง"
 image_prompt: "Cutaway diagram comparing a monolithic die vs a chiplet package with interposer, clean semiconductor packaging illustration style"

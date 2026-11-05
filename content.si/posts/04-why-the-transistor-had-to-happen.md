@@ -1,10 +1,10 @@
 ---
 title: "ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි"
-weight: 5
+weight: 9
 date: 2026-01-01
 draft: false
 phase: "1 — පදනම්: යාන්ත්‍රික සිට රික්තක-නල පරිගණකකරණය දක්වා"
-series_index: 4
+series_index: 8
 tags: []
 summary: "ප්‍රමාණය, බලය, විශ්වාසනීයත්වය — solid-state මාරු කිරීම නොවැළැක්විය හැකි කළ නල උඩුකුරු සීමා තුනක්"
 image_prompt: "Split comparison illustration: vacuum tube vs point-contact transistor at same scale, size and heat dissipation visually contrasted, minimalist technical infographic style, clean typography"

@@ -1,10 +1,10 @@
 ---
 title: "GPU Memory Hierarchy"
-weight: 57
+weight: 60
 date: 2026-01-01
 draft: false
 phase: "9 — GPUs & Parallel Compute"
-series_index: 56
+series_index: 59
 tags: []
 summary: "Thousands of threads force bandwidth over DDR — HBM stacks memory beside compute"
 image_prompt: "Cutaway diagram of HBM stacked memory with TSVs connecting to a GPU die via an interposer, clean packaging + memory diagram style"

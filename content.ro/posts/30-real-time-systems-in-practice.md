@@ -1,10 +1,10 @@
 ---
 title: "Sisteme în timp real în practică"
-weight: 33
+weight: 35
 date: 2026-01-01
 draft: false
 phase: "4 — Fundamente software: sisteme de operare, limbaje și sisteme în timp real"
-series_index: 32
+series_index: 34
 tags: []
 summary: "Simte–calculează–acționează pe un buget fix: Pathfinder și bucla de control unde trucurile de viteză din faza 3 devin inamici ai timpului"
 image_prompt: "Illustration of a real-time control loop in an industrial/avionics context, clean industrial-engineering diagram style"

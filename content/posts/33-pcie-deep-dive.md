@@ -1,10 +1,10 @@
 ---
 title: "PCIe Deep Dive"
-weight: 36
+weight: 38
 date: 2026-01-01
 draft: false
 phase: "5 — The Bus & System Architecture"
-series_index: 35
+series_index: 37
 tags: []
 summary: "Intent rides TLPs; reliability and signaling sit below — the stack that replaced the shared bus"
 image_prompt: "Technical diagram of the PCIe protocol stack with TLP structure broken down field by field, clean protocol-diagram style"

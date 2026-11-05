@@ -1,10 +1,10 @@
 ---
 title: "Datapath නිර්මාණය"
-weight: 13
+weight: 17
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"
-series_index: 12
+series_index: 16
 tags: []
 summary: "තනි-චක්‍ර datapath එකක් කොටස් දෘශ්‍යමාන කරයි — සහ එහි clock එක අවම-නරකම අවස්ථාවට ප්‍රමාණය කරන්නේ ඇයි පෙන්වයි"
 image_prompt: "Block diagram of a single-cycle RISC datapath, classic computer architecture textbook style"

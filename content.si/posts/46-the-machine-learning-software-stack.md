@@ -1,10 +1,10 @@
 ---
 title: "යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක"
-weight: 47
+weight: 52
 date: 2026-01-01
 draft: false
 phase: "7 — බෙදාහැරුණු පද්ධති, Big Data සහ Orchestration"
-series_index: 46
+series_index: 51
 tags: []
 summary: "Model එකක් සහ සිලිකන් අතර tensors බෙදාහැරුණු training බවට පත් කරන stack එකක් වාඩි වේ — සහ interconnect බිත්තියට හැපේ"
 image_prompt: "Layered infographic showing the ML software stack from Python/NumPy up through frameworks (PyTorch/TensorFlow) to distributed training orchestration to hardware, clean AI-software diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Containers மற்றும் நவீன OS Isolation"
-weight: 26
+weight: 30
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"
-series_index: 25
+series_index: 29
 tags: []
 summary: "முழு VM-கள் வலுவான isolation-ஐ கனமான செலவில் வாங்குகின்றன — namespaces மற்றும் cgroups ஒரே kernel பகிர்ந்து மற்ற எல்லாவற்றையும் கிட்டத்தட்ட தனிமைப்படுத்துகின்றன"
 image_prompt: "Layered diagram comparing full virtualization vs container isolation, clean modern infrastructure diagram style"

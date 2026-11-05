@@ -1,10 +1,10 @@
 ---
 title: "ISA Bus සිට PCI දක්වා PCIe දක්වා"
-weight: 33
+weight: 37
 date: 2026-01-01
 draft: false
 phase: "5 — බස් සහ පද්ධති ගෘහ නිර්මාණය"
-series_index: 32
+series_index: 36
 tags: []
 summary: "Skew පුළුල් parallel බස් එක මැරුවේය; point-to-point serial යනු අප පැන ගත් ආකාරයයි"
 image_prompt: "Timeline infographic: ISA → PCI → PCIe evolution with bandwidth numbers, clean historical technical infographic style"

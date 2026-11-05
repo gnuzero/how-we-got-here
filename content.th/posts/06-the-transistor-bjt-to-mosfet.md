@@ -1,10 +1,10 @@
 ---
 title: "ทรานซิสเตอร์: จาก BJT สู่ MOSFET"
-weight: 7
+weight: 11
 date: 2026-01-01
 draft: false
 phase: "2 — ฟิสิกส์และอุปกรณ์"
-series_index: 6
+series_index: 10
 tags: []
 summary: "BJT ที่ควบคุมด้วยกระแสเผาพลังงานว่าง; MOSFET ที่ควบคุมด้วยแรงดันทำให้ความหนาแน่นเป็นไปได้"
 image_prompt: "Side-by-side cross-section diagrams of BJT and MOSFET, labeled, clean semiconductor engineering textbook style"

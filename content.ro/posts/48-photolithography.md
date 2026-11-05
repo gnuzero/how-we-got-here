@@ -1,10 +1,10 @@
 ---
 title: "Fotolitografia"
-weight: 51
+weight: 54
 date: 2026-01-01
 draft: false
 phase: "8 — Noduri de proces și fabricație"
-series_index: 50
+series_index: 53
 tags: []
 summary: "Difracția cere lungimi de undă tot mai scurte: oglinzile EUV și plasma de staniu au ținut dimensiunile în scădere"
 image_prompt: "Cutaway diagram of an EUV lithography system showing plasma source, mirrors, mask, wafer, clean fab equipment illustration style"

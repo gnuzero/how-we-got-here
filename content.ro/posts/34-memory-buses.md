@@ -1,10 +1,10 @@
 ---
 title: "Magistralele de memorie"
-weight: 37
+weight: 39
 date: 2026-01-01
 draft: false
 phase: "5 — Magistralele și arhitectura sistemului"
-series_index: 36
+series_index: 38
 tags: []
 summary: "DDR a cumpărat lățime de bandă; latența primului bit abia s-a mișcat — băncile și canalele ascund așteptarea"
 image_prompt: "Comparison chart of DDR generations, clean technical infographic style, alongside a DIMM pinout diagram"

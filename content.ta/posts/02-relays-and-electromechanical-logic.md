@@ -1,10 +1,10 @@
 ---
 title: "ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்"
-weight: 3
+weight: 7
 date: 2026-01-01
 draft: false
 phase: "1 — அடித்தளங்கள்: இயந்திரத்திலிருந்து வெற்றிடக் குழாய் கணினி வரை"
-series_index: 2
+series_index: 6
 tags: []
 summary: "ரிலேக்கள் இருமத் தர்க்கம் வேலை செய்கிறது என்பதை நிரூபித்தன — நகரும் உலோகம் பிடிக்க முடியாது என்பதையும்"
 image_prompt: "Technical cutaway of an electromagnetic relay showing coil, armature, and contacts in both open and closed states side by side, labeled diagram style, clean line art on white background"

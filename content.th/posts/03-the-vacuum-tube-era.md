@@ -1,10 +1,10 @@
 ---
 title: "ยุคหลอดสุญญากาศ"
-weight: 4
+weight: 8
 date: 2026-01-01
 draft: false
 phase: "1 — รากฐาน: จากการคำนวณเชิงกลไกสู่หลอดสุญญากาศ"
-series_index: 3
+series_index: 7
 tags: []
 summary: "หลอดเอาชิ้นส่วนที่เคลื่อนที่ออก — และแลกความเร็วนั้นด้วยความร้อน พลังงาน และความล้มเหลว"
 image_prompt: "Cross-section technical diagram of a triode vacuum tube showing cathode, grid, and anode with electron flow arrows, labeled, vintage engineering textbook illustration style, amber glow accent"

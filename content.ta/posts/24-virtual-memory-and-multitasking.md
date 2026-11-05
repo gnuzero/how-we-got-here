@@ -1,10 +1,10 @@
 ---
 title: "Virtual Memory மற்றும் Multitasking"
-weight: 25
+weight: 29
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"
-series_index: 24
+series_index: 28
 tags: []
 summary: "Time-sharing-க்கு isolation தேவை — virtual memory ஒவ்வொரு process-க்கும் இயந்திரத்தைச் சொந்தமாக்கிய மாயையைக் கொடுக்கிறது"
 image_prompt: "Diagram of virtual address space mapping to physical memory via a page table, clean OS textbook diagram style"

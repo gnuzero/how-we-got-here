@@ -1,10 +1,10 @@
 ---
 title: "การแยกทางของ x86 กับ RISC"
-weight: 20
+weight: 24
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"
-series_index: 19
+series_index: 23
 tags: []
 summary: "RISC สะอาดกว่าบนกระดาษ — การล็อกอินซอฟต์แวร์และการแปล µop คง x86 ไว้บนยอด"
 image_prompt: "Family-tree infographic branching CISC/RISC research into x86, MIPS, SPARC, PowerPC lineages, clean genealogy diagram style"

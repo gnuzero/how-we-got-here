@@ -1,10 +1,10 @@
 ---
 title: "Începutul ierarhiei de memorie"
-weight: 13
+weight: 15
 date: 2026-01-01
 draft: false
 phase: "2 — Fizică și dispozitive"
-series_index: 12
+series_index: 14
 tags: []
 summary: "Un bit în bistabile e prea scump: SRAM cumpără viteză, DRAM cumpără densitate, iar ierarhia repetă același compromis"
 image_prompt: "Side-by-side cell diagrams: 6T SRAM vs 1T1C DRAM, labeled, clean semiconductor memory textbook style"

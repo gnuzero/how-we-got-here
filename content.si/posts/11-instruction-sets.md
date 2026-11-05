@@ -1,10 +1,10 @@
 ---
 title: "උපදෙස් කට්ටල"
-weight: 12
+weight: 16
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"
-series_index: 11
+series_index: 15
 tags: []
 summary: "ISA යනු මෘදුකාංග–දෘඪාංග ගිවිසුමයි; CISC සහ RISC එම ගිවිසුම පෙනෙන්නට ඇති ආකාරයට පිළිතුරු දෙකකි"
 image_prompt: "Infographic comparing CISC vs RISC instruction encoding, clean technical diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Interconnects at Scale"
-weight: 38
+weight: 42
 date: 2026-01-01
 draft: false
 phase: "5 — பஸ் மற்றும் அமைப்புக் கட்டமைப்பு"
-series_index: 37
+series_index: 41
 tags: []
 summary: "Compute பல chips ஆனதும், அவற்றுக்கிடையேயான பாதை அடுத்த சுவர் — அர்ப்பணிக்கப்பட்ட இணைப்புகள், குறைந்த நகல்கள்"
 image_prompt: "System diagram comparing PCIe-connected GPUs vs NVLink direct GPU-to-GPU mesh, clean datacenter architecture diagram style"

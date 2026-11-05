@@ -1,10 +1,10 @@
 ---
 title: "ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้"
-weight: 30
+weight: 34
 date: 2026-01-01
 draft: false
 phase: "4 — รากฐานซอฟต์แวร์: OS, ภาษา และระบบเรียลไทม์"
-series_index: 29
+series_index: 33
 tags: []
 summary: "ปริมาณงานและความยุติธรรมไม่ใช่กำหนดเวลา — hard real-time ต้องการจังหวะกรณีแย่สุดที่ถูกขอบเขต ไม่ใช่ความเร็วเฉลี่ย"
 image_prompt: "Diagram comparing general-purpose OS scheduler vs RTOS scheduler, clean embedded-systems diagram style"

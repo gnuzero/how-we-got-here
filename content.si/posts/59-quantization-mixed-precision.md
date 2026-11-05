@@ -1,10 +1,10 @@
 ---
 title: "Quantization සහ Mixed Precision"
-weight: 60
+weight: 65
 date: 2026-01-01
 draft: false
 phase: "10 — නවීන AI දෘඪාංග"
-series_index: 59
+series_index: 64
 tags: []
 summary: "MAC එකකට අඩු bits යනු එකම බල අයවැයේ වැඩි MAC — නිරවද්‍යතාවට තවමත් අවශ්‍ය තැන precision මිශ්‍ර කරන්න"
 image_prompt: "Comparison infographic of FP32, FP16, BF16, FP8, and INT8 bit-field layouts, clean numerical format diagram style"

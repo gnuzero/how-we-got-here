@@ -1,10 +1,10 @@
 ---
 title: "กฎของมัวร์"
-weight: 51
+weight: 56
 date: 2026-01-01
 draft: false
 phase: "8 — โหนดกระบวนการและการผลิต"
-series_index: 50
+series_index: 55
 tags: []
 summary: "การสังเกตของมัวร์คือจำนวนส่วนประกอบเชิงเศรษฐกิจ — จำนวนทรานซิสเตอร์ยังไต่; คล็อกและต้นทุนต่อทรานซิสเตอร์เล่าเรื่องต่างกัน"
 image_prompt: "Graph infographic: transistor count, clock speed, and cost-per-transistor over time, clean data visualization style"

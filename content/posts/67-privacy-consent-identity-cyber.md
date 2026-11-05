@@ -1,10 +1,10 @@
 ---
 title: "Privacy, Consent, Identity, Cyber"
-weight: 70
+weight: 73
 date: 2026-09-06
 draft: false
 phase: "Privacy / Identity / Consent"
-series_index: 69
+series_index: 72
 tags: []
 summary: "Privacy, consent, identity, and cybersecurity as engineering evolution on an open network — not a policy pamphlet"
 image_prompt: "Clean layered diagram: isolation boundaries, cryptographic keys, identity credentials, and adversarial threat arrows on one stack, modern security-engineering infographic style"

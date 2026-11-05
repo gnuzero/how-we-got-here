@@ -1,10 +1,10 @@
 ---
 title: "ชุดคำสั่ง"
-weight: 12
+weight: 16
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"
-series_index: 11
+series_index: 15
 tags: []
 summary: "ISA คือสัญญาระหว่างซอฟต์แวร์กับฮาร์ดแวร์; CISC กับ RISC คือสองคำตอบว่าสัญญานั้นควรหน้าตาอย่างไร"
 image_prompt: "Infographic comparing CISC vs RISC instruction encoding, clean technical diagram style"

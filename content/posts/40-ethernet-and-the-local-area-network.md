@@ -1,10 +1,10 @@
 ---
 title: "Ethernet and the Local Area Network"
-weight: 43
+weight: 45
 date: 2026-01-01
 draft: false
 phase: "6 — Networking Evolution"
-series_index: 42
+series_index: 44
 tags: []
 summary: "Shared cable, no central arbiter — CSMA/CD solved the LAN collision constraint; switches later removed it"
 image_prompt: "Diagram of a classic Ethernet bus topology showing a collision event and CSMA/CD backoff, clean networking textbook diagram style"

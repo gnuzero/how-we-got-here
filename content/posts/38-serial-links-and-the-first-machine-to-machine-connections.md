@@ -1,10 +1,10 @@
 ---
 title: "Serial Links and the First Machine-to-Machine Connections"
-weight: 41
+weight: 43
 date: 2026-01-01
 draft: false
 phase: "6 — Networking Evolution"
-series_index: 40
+series_index: 42
 tags: []
 summary: "Point-to-point serial links connect exactly two ends — the ceiling that forced packet switching"
 image_prompt: "Technical illustration of an RS-232 connection and a modem modulating digital data onto an analog phone line, clean vintage telecom diagram style"

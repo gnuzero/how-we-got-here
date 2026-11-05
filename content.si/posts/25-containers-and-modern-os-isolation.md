@@ -1,10 +1,10 @@
 ---
 title: "Containers සහ නවීන OS හුදකලාව"
-weight: 26
+weight: 30
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"
-series_index: 25
+series_index: 29
 tags: []
 summary: "පූර්ණ VMs බර පිරිවැයකින් ශක්තිමත් හුදකලාව මිලදී ගනී — namespaces සහ cgroups එක් kernel එකක් බෙදා ගෙන අනෙක් සියල්ල පාහේ හුදකලා කරයි"
 image_prompt: "Layered diagram comparing full virtualization vs container isolation, clean modern infrastructure diagram style"

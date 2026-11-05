@@ -1,10 +1,10 @@
 ---
 title: "Datacenter Networking and RDMA"
-weight: 45
+weight: 47
 date: 2026-01-01
 draft: false
 phase: "6 — Networking Evolution"
-series_index: 44
+series_index: 46
 tags: []
 summary: "Inside one controlled fabric, kernel copies become the tax — RDMA and topology buy back the wire"
 image_prompt: "System diagram comparing a traditional TCP/IP data path against an RDMA kernel-bypass data path, clean datacenter architecture diagram style"

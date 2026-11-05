@@ -1,10 +1,10 @@
 ---
 title: "De la codul mașină la limbajul de asamblare"
-weight: 29
+weight: 31
 date: 2026-01-01
 draft: false
 phase: "4 — Fundamente software: sisteme de operare, limbaje și sisteme în timp real"
-series_index: 28
+series_index: 30
 tags: []
 summary: "Un simbol scurt pentru fiecare cuvânt binar: ce face un asamblor și de ce a contat"
 image_prompt: "Side-by-side comparison of raw binary machine code and its assembly mnemonic equivalent, clean textbook diagram style"

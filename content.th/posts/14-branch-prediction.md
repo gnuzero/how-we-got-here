@@ -1,10 +1,10 @@
 ---
 title: "การทำนาย Branch"
-weight: 15
+weight: 19
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"
-series_index: 14
+series_index: 18
 tags: []
 summary: "Pipeline flush แพง — การทำนายมีอยู่เพื่อทำให้มันหายาก"
 image_prompt: "Diagram of a 2-bit saturating counter branch predictor state machine, clean state-machine diagram style"

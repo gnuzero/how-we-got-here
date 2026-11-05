@@ -1,10 +1,10 @@
 ---
 title: "Era tuburilor vidate"
-weight: 6
+weight: 8
 date: 2026-01-01
 draft: false
 phase: "1 — Fundamente: de la calcul mecanic la tuburi vidate"
-series_index: 5
+series_index: 7
 tags: []
 summary: "Tuburile au scos piesele în mișcare — și au schimbat viteza pe căldură, putere și defecte"
 image_prompt: "Cross-section technical diagram of a triode vacuum tube showing cathode, grid, and anode with electron flow arrows, labeled, vintage engineering textbook illustration style, amber glow accent"

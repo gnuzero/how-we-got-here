@@ -1,10 +1,10 @@
 ---
 title: "அறிவுறுத்தல் தொகுப்புகள்"
-weight: 12
+weight: 16
 date: 2026-01-01
 draft: false
 phase: "3 — CPU மற்றும் அதன் கட்டமைப்புகளைக் கட்டுதல்"
-series_index: 11
+series_index: 15
 tags: []
 summary: "ஒரு ISA உண்மையில் என்ன — CISC vs RISC"
 image_prompt: "Infographic comparing CISC vs RISC instruction encoding, clean technical diagram style"

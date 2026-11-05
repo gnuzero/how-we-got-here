@@ -1,10 +1,10 @@
 ---
 title: "එය යන්නේ කොහේටද"
-weight: 63
+weight: 68
 date: 2026-01-01
 draft: false
 phase: "10 — නවීන AI දෘඪාංග"
-series_index: 62
+series_index: 67
 tags: []
 summary: "එම රටාවම ඉදිරියට — chiplets, package එකට සමීප optics, මතකයට සමීප compute"
 image_prompt: "Forward-looking infographic showing chiplet AI accelerators, silicon photonics, and in-memory compute, clean speculative technical illustration style"

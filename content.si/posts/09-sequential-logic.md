@@ -1,10 +1,10 @@
 ---
 title: "අනුක්‍රමික තර්කය"
-weight: 10
+weight: 14
 date: 2026-01-01
 draft: false
 phase: "2 — භෞතික විද්‍යාව සහ උපාංග"
-series_index: 9
+series_index: 13
 tags: []
 summary: "Latches, flip-flops, clocking, setup/hold time"
 image_prompt: "Timing diagram showing clock, data, output for a D flip-flop, clean waveform diagram style"

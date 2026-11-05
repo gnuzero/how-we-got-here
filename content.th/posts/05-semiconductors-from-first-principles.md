@@ -1,10 +1,10 @@
 ---
 title: "เซมิคอนดักเตอร์จากหลักการพื้นฐาน"
-weight: 6
+weight: 10
 date: 2026-01-01
 draft: false
 phase: "2 — ฟิสิกส์และอุปกรณ์"
-series_index: 5
+series_index: 9
 tags: []
 summary: "ช่องว่างแถบที่ผลักได้ทั้งสองทาง — การเจือสารเปลี่ยนซิลิคอนให้เป็นสวิตช์ที่ควบคุมได้"
 image_prompt: "Technical illustration of a silicon crystal lattice showing band gap diagram, labeled, textbook diagram style, blue/orange color coding"

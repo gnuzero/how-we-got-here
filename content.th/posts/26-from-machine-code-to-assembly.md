@@ -1,10 +1,10 @@
 ---
 title: "จากรหัสเครื่องสู่ Assembly"
-weight: 27
+weight: 31
 date: 2026-01-01
 draft: false
 phase: "4 — รากฐานซอฟต์แวร์: OS, ภาษา และระบบเรียลไทม์"
-series_index: 26
+series_index: 30
 tags: []
 summary: "ไบนารีดิบคือสิ่งที่ CPU รัน — assembly คือชั้นความอ่านได้แรก ยังหนึ่งคำสั่งต่อหนึ่ง mnemonic"
 image_prompt: "Side-by-side comparison of raw binary machine code and its assembly mnemonic equivalent, clean textbook diagram style"

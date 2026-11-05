@@ -1,10 +1,10 @@
 ---
 title: "FinFET to GAA"
-weight: 52
+weight: 55
 date: 2026-01-01
 draft: false
 phase: "8 — Process Nodes & Fabrication"
-series_index: 51
+series_index: 54
 tags: []
 summary: "Short-channel leakage killed planar shrink — wrap the gate (FinFET), then wrap it all around (GAA)"
 image_prompt: "3D cutaway comparison of planar MOSFET, FinFET, and GAA nanosheet transistor structures, clean semiconductor device diagram style"

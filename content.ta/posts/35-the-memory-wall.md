@@ -1,10 +1,10 @@
 ---
 title: "The Memory Wall"
-weight: 36
+weight: 40
 date: 2026-01-01
 draft: false
 phase: "5 — பஸ் மற்றும் அமைப்புக் கட்டமைப்பு"
-series_index: 35
+series_index: 39
 tags: []
 summary: "CPU வேகமும் DRAM latency-யும் பத்தாண்டுகளாகப் பிரிந்தன — caches இடைவெளியை மறைக்கின்றன; மூடுவதில்லை"
 image_prompt: "Graph infographic showing CPU speed and DRAM speed diverging from 1980 to today, clean data-visualization diagram style"

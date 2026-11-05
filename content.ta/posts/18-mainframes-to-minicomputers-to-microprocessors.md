@@ -1,10 +1,10 @@
 ---
 title: "Mainframes முதல் Minicomputers முதல் Microprocessors வரை"
-weight: 19
+weight: 23
 date: 2026-01-01
 draft: false
 phase: "3 — CPU மற்றும் அதன் கட்டமைப்புகளைக் கட்டுதல்"
-series_index: 18
+series_index: 22
 tags: []
 summary: "கணினி யாருக்குக் கிடைக்கும் மூன்று காலங்கள் — நிறுவனம், துறை, பிறகு அனைவருக்கும் ஒரு சிப்"
 image_prompt: "Timeline infographic showing mainframe, minicomputer, and microprocessor at matching scale, clean historical infographic style"

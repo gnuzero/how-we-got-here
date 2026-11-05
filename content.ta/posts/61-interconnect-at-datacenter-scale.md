@@ -1,10 +1,10 @@
 ---
 title: "Datacenter அளவில் Interconnect"
-weight: 62
+weight: 67
 date: 2026-01-01
 draft: false
 phase: "10 — நவீன AI வன்பொருள்"
-series_index: 61
+series_index: 66
 tags: []
 summary: "ஆயிரக்கணக்கான GPU-கள் — topology மற்றும் all-reduce எந்த chip-இன் peak FLOPS போலவே முக்கியம்"
 image_prompt: "System diagram of a multi-rack AI training cluster showing a fat-tree network topology, clean datacenter network architecture diagram style"

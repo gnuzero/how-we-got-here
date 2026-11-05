@@ -1,10 +1,10 @@
 ---
 title: "Superscalar และ Multicore"
-weight: 18
+weight: 22
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"
-series_index: 17
+series_index: 21
 tags: []
 summary: "ILP และพลังงานชนกำแพง — ดังนั้นอุตสาหกรรมไปทางกว้างแทนที่จะเร็วขึ้นต่อเธรด"
 image_prompt: "Comparison infographic: single-core deep pipeline vs multicore chip layout, clean technical style"

@@ -1,10 +1,10 @@
 ---
 title: "යන්ත්‍ර කේතයේ සිට Assembly දක්වා"
-weight: 27
+weight: 31
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"
-series_index: 26
+series_index: 30
 tags: []
 summary: "අමු binary යනු CPU ධාවනය කරන දෙයයි — assembly පළමු කියවිය හැකි තට්ටුවයි, තවමත් mnemonic එකකට එක් උපදෙසක්"
 image_prompt: "Side-by-side comparison of raw binary machine code and its assembly mnemonic equivalent, clean textbook diagram style"

@@ -149,9 +149,9 @@
 
 
 
-### Early 01d + 43b drafts (batch 7, fact-checked 2026-11-05)
+### Early 01d + 43b (batch 7, fact-checked 2026-11-05; published with renumber)
 
-- **Pages:** `01d-woodblock-to-movable-type` (~1475 words, Romanian section: Macarie / Coresi / Casa Mureșenilor), `43b-from-press-to-pixel` (~1320 words, no Romanian phototypesetting section). Both `draft: true`, date `2026-01-02` (match EN).
+- **Pages:** `01d-woodblock-to-movable-type` (~1475 words, Romanian section: Macarie / Coresi / Casa Mureșenilor), `43b-from-press-to-pixel` (~1320 words, no Romanian phototypesetting section). Published `draft: false` 2026-11-05 (with English renumber); date `2026-01-02` (match EN). New weights: 01d 6/5, 43b 49/48.
 - **Phase 43b:** `7 — Sisteme distribuite, Big Data și orchestrare` (first RO phase-7 string; `&` → `și` as in phases 4/5).
 - **Restored after opening sources:** Feng Dao / Changxing 2 = 931 (*Nongshu* j22); Qingli years 1041–1048 (Asian Art Museum); Muybridge 19 Jun 1878 Sallie Gardner (Smarthistory; LoC dump blocked); Le Prince disappeared 1890 (NSMM blog); Grand Café / Salon Indien (Catalogue Lumière FAQ; Institut Lumière heading alone insufficient).
 - **Kept NEVERIFICAT / omitted:** Tetraevanghel as first all-Romanian book (press only); Coresi technique wood vs metal / Liubavici; anonymous Transylvanian slide deck not cited; BRV only via Erich & Vârgolici.
@@ -161,7 +161,7 @@
 
 ## Not yet (pending)
 
-- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (next: early chapters 36+ / labs strings per PLAN; 01d+43b drafts shipped batch 7)
+- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (next: early chapters 36+ / labs strings per PLAN; 01d+43b published with renumber)
 
 ## Notes
 

@@ -1,10 +1,10 @@
 ---
 title: "Kubernetes மற்றும் Container Orchestration அளவில்"
-weight: 46
+weight: 51
 date: 2026-01-01
 draft: false
 phase: "7 — விநியோகிக்கப்பட்ட அமைப்புகள், Big Data மற்றும் Orchestration"
-series_index: 45
+series_index: 50
 tags: []
 summary: "ஆயிரக்கணக்கான containers வழக்கமாகத் தோல்வியுறும்போது declarative desired state மற்றும் தொடர்ச்சியான reconciliation loop கட்டாயம்"
 image_prompt: "System diagram of a Kubernetes cluster showing control plane, nodes, pods, and services, clean cloud-native architecture diagram style"

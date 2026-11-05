@@ -1,10 +1,10 @@
 ---
 title: "Systolic Arrays"
-weight: 59
+weight: 64
 date: 2026-01-01
 draft: false
 phase: "10 — நவீன AI வன்பொருள்"
-series_index: 58
+series_index: 63
 tags: []
 summary: "தரவு ஒரு MAC கட்டம் வழியாகத் துடிக்கும் — முழு chip-ஐயும் matmul-க்குச் சிறப்புப்படுத்துங்கள் (TPU-கள்)"
 image_prompt: "Diagram of a systolic array showing data and weights flowing through a 2D grid of processing elements, clean TPU architecture textbook style"

@@ -1,10 +1,10 @@
 ---
 title: "The Clock Speed Wall"
-weight: 37
+weight: 41
 date: 2026-01-01
 draft: false
 phase: "5 — பஸ் மற்றும் அமைப்புக் கட்டமைப்பு"
-series_index: 36
+series_index: 40
 tags: []
 summary: "அதிர்வெண் வெப்பத்தை மோதியது — எனவே தொழில் அகலத்திற்குச் சென்றது (cores, பிறகு fabrics) வேகமான clocks-க்குப் பதிலாக"
 image_prompt: "Graph infographic: CPU clock frequency climbing then flattening around 2005, power density curve rising toward a thermal ceiling, clean data-visualization diagram style"

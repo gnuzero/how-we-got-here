@@ -1,10 +1,10 @@
 ---
 title: "Tensor Cores"
-weight: 56
+weight: 61
 date: 2026-01-01
 draft: false
 phase: "9 — GPU සහ Parallel Compute"
-series_index: 55
+series_index: 60
 tags: []
 summary: "Matrix multiply-accumulate ප්‍රමුඛ AI op එක බවට පත් විය — එබැවින් දෘඪාංගය එය first-class primitive එකක් කළේය"
 image_prompt: "Diagram of a tensor core performing a 4x4 matrix multiply-accumulate in a single cycle, clean AI hardware diagram style"

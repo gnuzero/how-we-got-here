@@ -1,10 +1,10 @@
 ---
 title: "காலவரிசை"
-weight: 99
+weight: 101
 date: 2026-01-01
 draft: false
 phase: "குறிப்பு"
-series_index: 98
+series_index: 100
 tags: ["timeline", "reference", "history"]
 summary: "இயந்திரக் கணக்கீட்டிலிருந்து நவீன Attention பொறிமுறைகள் வரை சுருக்கமான காலவரிசை"
 ---

@@ -1,10 +1,10 @@
 ---
 title: "Chiplets සහ Advanced Packaging"
-weight: 52
+weight: 57
 date: 2026-01-01
 draft: false
 phase: "8 — ක්‍රියාවලි නෝඩ් සහ Fabrication"
-series_index: 51
+series_index: 56
 tags: []
 summary: "Yield die ප්‍රදේශය සමඟ පහළ යයි — chiplets වලට බෙදා advanced packaging සමඟ bandwidth ආපසු මිලදී ගන්න"
 image_prompt: "Cutaway diagram comparing a monolithic die vs a chiplet package with interposer, clean semiconductor packaging illustration style"

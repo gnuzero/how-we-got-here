@@ -1,10 +1,10 @@
 ---
 title: "Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය"
-weight: 3
+weight: 7
 date: 2026-01-01
 draft: false
 phase: "1 — පදනම්: යාන්ත්‍රික සිට රික්තක-නල පරිගණකකරණය දක්වා"
-series_index: 2
+series_index: 6
 tags: []
 summary: "Relays ද්විමය තර්කය ක්‍රියා කරන බව ඔප්පු කළේය — සහ චලනය වන ලෝහට ඉදිරියට යා නොහැකි බවද"
 image_prompt: "Technical cutaway of an electromagnetic relay showing coil, armature, and contacts in both open and closed states side by side, labeled diagram style, clean line art on white background"

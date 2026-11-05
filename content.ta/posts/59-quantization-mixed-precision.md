@@ -1,10 +1,10 @@
 ---
 title: "Quantization மற்றும் Mixed Precision"
-weight: 60
+weight: 65
 date: 2026-01-01
 draft: false
 phase: "10 — நவீன AI வன்பொருள்"
-series_index: 59
+series_index: 64
 tags: []
 summary: "ஒரு MAC-க்குக் குறைந்த bits அதே ஆற்றல் பட்ஜெட்டில் அதிக MAC-கள் — துல்லியம் இன்னும் தேவைப்படும் இடத்தில் precision கலக்குங்கள்"
 image_prompt: "Comparison infographic of FP32, FP16, BF16, FP8, and INT8 bit-field layouts, clean numerical format diagram style"

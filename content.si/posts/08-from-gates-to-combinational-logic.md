@@ -1,10 +1,10 @@
 ---
 title: "ද්වාරවලින් සංයෝජන තර්කය දක්වා"
-weight: 9
+weight: 13
 date: 2026-01-01
 draft: false
 phase: "2 — භෞතික විද්‍යාව සහ උපාංග"
-series_index: 8
+series_index: 12
 tags: []
 summary: "Adders, muxes, සහ ALUs"
 image_prompt: "Block diagram of a 1-bit full adder with truth table, clean digital logic textbook style"

@@ -1,10 +1,10 @@
 ---
 title: "Photolithography"
-weight: 49
+weight: 54
 date: 2026-01-01
 draft: false
 phase: "8 — โหนดกระบวนการและการผลิต"
-series_index: 48
+series_index: 53
 tags: []
 summary: "Diffraction บังคับความยาวคลื่นสั้นลง — กระจกและพลาสมาดีบุกของ EUV คือสิ่งที่ให้ขนาดฟีเจอร์ยังเดินต่อ"
 image_prompt: "Cutaway diagram of an EUV lithography system showing plasma source, mirrors, mask, wafer, clean fab equipment illustration style"

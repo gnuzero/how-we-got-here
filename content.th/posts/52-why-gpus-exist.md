@@ -1,10 +1,10 @@
 ---
 title: "เหตุใด GPU จึงมีอยู่"
-weight: 53
+weight: 58
 date: 2026-01-01
 draft: false
 phase: "9 — GPU และการคำนวณขนาน"
-series_index: 52
+series_index: 57
 tags: []
 summary: "กราฟิกให้ workload ขนานแบบ embarrassingly parallel — ฮาร์ดแวร์ SIMT ตามมา แล้ว compute ทั่วไปพบรูปทรงเดียวกัน"
 image_prompt: "Diagram of the graphics rendering pipeline alongside a SIMD execution diagram, clean GPU architecture textbook style"

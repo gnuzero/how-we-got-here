@@ -1,10 +1,10 @@
 ---
 title: "Where It's Headed"
-weight: 65
+weight: 68
 date: 2026-01-01
 draft: false
 phase: "10 — Modern AI Hardware"
-series_index: 64
+series_index: 67
 tags: []
 summary: "Same pattern forward — chiplets, optics closer to the package, compute nearer memory"
 image_prompt: "Forward-looking infographic showing chiplet AI accelerators, silicon photonics, and in-memory compute, clean speculative technical illustration style"

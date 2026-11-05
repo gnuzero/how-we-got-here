@@ -1,10 +1,10 @@
 ---
 title: "อินเตอร์คอนเนกต์ในระดับสเกล"
-weight: 38
+weight: 42
 date: 2026-01-01
 draft: false
 phase: "5 — บัสและสถาปัตยกรรมระบบ"
-series_index: 37
+series_index: 41
 tags: []
 summary: "เมื่อ compute เป็นหลายชิป เส้นทางระหว่างพวกมันคือกำแพงถัดไป — ลิงก์เฉพาะ คัดลอกน้อยลง"
 image_prompt: "System diagram comparing PCIe-connected GPUs vs NVLink direct GPU-to-GPU mesh, clean datacenter architecture diagram style"

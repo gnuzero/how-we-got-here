@@ -1,10 +1,10 @@
 ---
 title: "Real-Time Systems and Deterministic Scheduling"
-weight: 32
+weight: 34
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
-series_index: 31
+series_index: 33
 tags: []
 summary: "Throughput and fairness are not deadlines — hard real-time needs bounded worst-case timing, not average speed"
 image_prompt: "Diagram comparing general-purpose OS scheduler vs RTOS scheduler, clean embedded-systems diagram style"

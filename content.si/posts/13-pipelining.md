@@ -1,10 +1,10 @@
 ---
 title: "Pipelining"
-weight: 14
+weight: 18
 date: 2026-01-01
 draft: false
 phase: "3 — CPU ගොඩනැගීම සහ එහි ගෘහ නිර්මාණ"
-series_index: 13
+series_index: 17
 tags: []
 summary: "Throughput සඳහා උපදෙස් අතිච්ඡාදනය කරන්න — පසුව hazards මගින් forwarding, stalls, සහ ඊට පසු සියල්ල බල කෙරේ"
 image_prompt: "Pipeline diagram showing 5 instructions through IF/ID/EX/MEM/WB stages, classic pipeline diagram style"

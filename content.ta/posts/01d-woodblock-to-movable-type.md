@@ -1,10 +1,10 @@
 ---
 title: "மரப்பலகையிலிருந்து நகரும் அச்சு வரை"
-weight: 5
+weight: 6
 date: 2026-01-02
-draft: true
+draft: false
 phase: "1 — அடித்தளங்கள்: இயந்திரத்திலிருந்து வெற்றிடக் குழாய் கணினி வரை"
-series_index: 4
+series_index: 5
 tags: []
 summary: "கையால் நகலெடுக்காமல் மீண்டும் மீண்டும் உருவாக்கக்கூடிய குறி — சீன மரப்பலகை அச்சும் நகரும் அச்சும் முதலில்; கொல்லம் 1578, தரங்கம்பாடி 1713 தமிழ் அச்சு; Gutenberg கடைசியில்"
 image_prompt: "Technical illustration of clay movable type in an iron frame beside woodblock printing, East Asian print-shop diagram style, labeled trays and revolving typecase, clean line art on white background"

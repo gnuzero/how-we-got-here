@@ -1,10 +1,10 @@
 ---
 title: "การขยายหลาย GPU"
-weight: 57
+weight: 62
 date: 2026-01-01
 draft: false
 phase: "9 — GPU และการคำนวณขนาน"
-series_index: 56
+series_index: 61
 tags: []
 summary: "GPU เดียวมีขอบเขต — อินเตอร์คอนเนกต์ระหว่าง GPU กลายเป็นกำแพงถัดไป"
 image_prompt: "System diagram of an 8-GPU NVLink-connected node with NVSwitch, clean datacenter GPU cluster diagram style"

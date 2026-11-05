@@ -1,10 +1,10 @@
 ---
 title: "Multi-GPU Scaling"
-weight: 59
+weight: 62
 date: 2026-01-01
 draft: false
 phase: "9 — GPUs & Parallel Compute"
-series_index: 58
+series_index: 61
 tags: []
 summary: "One GPU is finite — interconnect between GPUs becomes the next wall"
 image_prompt: "System diagram of an 8-GPU NVLink-connected node with NVSwitch, clean datacenter GPU cluster diagram style"

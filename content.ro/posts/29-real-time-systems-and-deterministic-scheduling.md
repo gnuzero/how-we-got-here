@@ -1,10 +1,10 @@
 ---
 title: "Sisteme în timp real și planificarea deterministă"
-weight: 32
+weight: 34
 date: 2026-01-01
 draft: false
 phase: "4 — Fundamente software: sisteme de operare, limbaje și sisteme în timp real"
-series_index: 31
+series_index: 33
 tags: []
 summary: "Debitul și echitatea nu sunt termene: timpul real dur cere o limită pe cazul cel mai rău, nu o medie bună"
 image_prompt: "Diagram comparing general-purpose OS scheduler vs RTOS scheduler, clean embedded-systems diagram style"

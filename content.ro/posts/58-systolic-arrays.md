@@ -1,10 +1,10 @@
 ---
 title: "Matrice sistolice"
-weight: 61
+weight: 64
 date: 2026-01-01
 draft: false
 phase: "10 — Hardware AI modern"
-series_index: 60
+series_index: 63
 tags: []
 summary: "Datele pulsează printr-o grilă de MAC-uri — specializezi tot cipul pentru matmul (TPU)"
 image_prompt: "Diagram of a systolic array showing data and weights flowing through a 2D grid of processing elements, clean TPU architecture textbook style"

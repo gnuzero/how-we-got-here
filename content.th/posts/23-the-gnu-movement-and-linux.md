@@ -1,10 +1,10 @@
 ---
 title: "ขบวนการ GNU และ Linux"
-weight: 24
+weight: 28
 date: 2026-01-01
 draft: false
 phase: "4 — รากฐานซอฟต์แวร์: OS, ภาษา และระบบเรียลไทม์"
-series_index: 23
+series_index: 27
 tags: []
 summary: "Unix ปิด; Stallman สร้าง userland เสรี; Torvalds อุดช่องเคอร์เนล — GPL คงการรวมนั้นให้เปิด"
 image_prompt: "Illustration of the GNU logo alongside Tux the penguin, with a layered diagram showing GNU userland tools sitting atop the Linux kernel, clean open-source movement infographic style"

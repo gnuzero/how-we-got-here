@@ -1,10 +1,10 @@
 ---
 title: "คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่"
-weight: 29
+weight: 33
 date: 2026-01-01
 draft: false
 phase: "4 — รากฐานซอฟต์แวร์: OS, ภาษา และระบบเรียลไทม์"
-series_index: 28
+series_index: 32
 tags: []
 summary: "AOT คอมไพล์ครั้งเดียวโดยไม่มีข้อเท็จจริงรันไทม์; JIT รอ hot path — และ garbage collection ย้ายต้นทุนเข้าไปในรันไทม์"
 image_prompt: "Pipeline diagram of a compiler with a JIT feedback loop shown alongside, clean compiler-textbook diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA"
-weight: 43
+weight: 47
 date: 2026-01-01
 draft: false
 phase: "6 — ජාලකරණය: ශ්‍රේණි සබැඳි සිට දත්ත මධ්‍යස්ථාන RDMA දක්වා"
-series_index: 42
+series_index: 46
 tags: []
 summary: "එක් පාලිත fabric එකක් ඇතුළත, kernel පිටපත් බද්ද වේ — RDMA සහ topology වයර් එක ආපසු මිලදී ගනී"
 image_prompt: "System diagram comparing a traditional TCP/IP data path against an RDMA kernel-bypass data path, clean datacenter architecture diagram style"

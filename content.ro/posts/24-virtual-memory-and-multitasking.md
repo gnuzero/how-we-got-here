@@ -1,10 +1,10 @@
 ---
 title: "Memoria virtuală și multitaskingul"
-weight: 27
+weight: 29
 date: 2026-01-01
 draft: false
 phase: "4 — Fundamente software: sisteme de operare, limbaje și sisteme în timp real"
-series_index: 26
+series_index: 28
 tags: []
 summary: "Adresa folosită de program nu mai este locul din memorie: pagini, defecte de pagină, working set și thrashing"
 image_prompt: "Diagram of virtual address space mapping to physical memory via a page table, clean OS textbook diagram style"

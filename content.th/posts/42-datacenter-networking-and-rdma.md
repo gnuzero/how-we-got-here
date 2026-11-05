@@ -1,10 +1,10 @@
 ---
 title: "เครือข่ายศูนย์ข้อมูลและ RDMA"
-weight: 43
+weight: 47
 date: 2026-01-01
 draft: false
 phase: "6 — วิวัฒนาการเครือข่าย"
-series_index: 42
+series_index: 46
 tags: []
 summary: "ในผ้าใบที่ควบคุมได้ การคัดลอกผ่านเคอร์เนลคือภาษี — RDMA และทอโพโลยีซื้อสายกลับ"
 image_prompt: "System diagram comparing a traditional TCP/IP data path against an RDMA kernel-bypass data path, clean datacenter architecture diagram style"

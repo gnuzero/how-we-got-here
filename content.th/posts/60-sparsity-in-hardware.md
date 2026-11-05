@@ -1,10 +1,10 @@
 ---
 title: "Sparsity ในฮาร์ดแวร์"
-weight: 61
+weight: 66
 date: 2026-01-01
 draft: false
 phase: "10 — ฮาร์ดแวร์ AI สมัยใหม่"
-series_index: 60
+series_index: 65
 tags: []
 summary: "ข้าม MAC ที่รู้ว่าเป็นศูนย์ — แต่มีเพียงแบบแผนที่มีโครงสร้างที่ฮาร์ดแวร์ MAC หนาแน่นใช้ถูก"
 image_prompt: "Diagram of a dense weight matrix vs a 2:4 structured-sparse weight matrix, clean AI accelerator diagram style"

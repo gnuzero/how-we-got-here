@@ -1,10 +1,10 @@
 ---
 title: "පළමු මූලධර්මවලින් අර්ධසන්නායක"
-weight: 6
+weight: 10
 date: 2026-01-01
 draft: false
 phase: "2 — භෞතික විද්‍යාව සහ උපාංග"
-series_index: 5
+series_index: 9
 tags: []
 summary: "Band gaps, doping, සහ සිලිකන් ජයග්‍රහණය කළේ ඇයි"
 image_prompt: "Technical illustration of a silicon crystal lattice showing band gap diagram, labeled, textbook diagram style, blue/orange color coding"

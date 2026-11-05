@@ -1,10 +1,10 @@
 ---
 title: "TCP/IP සහ නවීන අන්තර්ජාල Stack එක"
-weight: 42
+weight: 46
 date: 2026-01-01
 draft: false
 phase: "6 — ජාලකරණය: ශ්‍රේණි සබැඳි සිට දත්ත මධ්‍යස්ථාන RDMA දක්වා"
-series_index: 41
+series_index: 45
 tags: []
 summary: "අන්තර්ජාල protocols stack වූ ආකාරය සහ ඇයි — ස්ථර, flag day, විශ්වාසනීය නොවන substrate එකක් මත apps — catalog එකක් නොවේ"
 image_prompt: "Layered protocol stack diagram with a packet gaining headers at each layer, clean networking textbook diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้"
-weight: 21
+weight: 25
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"
-series_index: 20
+series_index: 24
 tags: []
 summary: "หลังเดสก์ท็อปตั้งหลักบน x86 การต่อสู้ย้ายไปที่พลังงานและการไลเซนส์ — ARM ชนะมือถือ; RISC-V เดิมพันบนเปิด"
 image_prompt: "Modern infographic comparing ARM licensing vs RISC-V open ISA, with market segment icons, clean contemporary tech-diagram style"

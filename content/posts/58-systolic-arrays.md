@@ -1,10 +1,10 @@
 ---
 title: "Systolic Arrays"
-weight: 61
+weight: 64
 date: 2026-01-01
 draft: false
 phase: "10 — Modern AI Hardware"
-series_index: 60
+series_index: 63
 tags: []
 summary: "Data pulses through a MAC grid — specialize the whole chip for matmul (TPUs)"
 image_prompt: "Diagram of a systolic array showing data and weights flowing through a 2D grid of processing elements, clean TPU architecture textbook style"

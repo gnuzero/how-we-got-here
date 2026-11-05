@@ -1,10 +1,10 @@
 ---
 title: "TCP/IP மற்றும் நவீன இணைய Stack"
-weight: 42
+weight: 46
 date: 2026-01-01
 draft: false
 phase: "6 — வலையமைப்பு பரிணாமம்"
-series_index: 41
+series_index: 45
 tags: []
 summary: "இணைய நெறிமுறைகள் எப்படி அடுக்கியன, ஏன் — அடுக்குகள், flag day, நம்பகமற்ற substrate மீது apps — ஒரு பட்டியல் அல்ல"
 image_prompt: "Layered protocol stack diagram with a packet gaining headers at each layer, clean networking textbook diagram style"

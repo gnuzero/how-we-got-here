@@ -1,10 +1,10 @@
 ---
 title: "ARPANET and Packet Switching"
-weight: 42
+weight: 44
 date: 2026-01-01
 draft: false
 phase: "6 — Networking Evolution"
-series_index: 41
+series_index: 43
 tags: []
 summary: "Bursty computer traffic broke circuit switching — ARPANET proved packets and shared links could work"
 image_prompt: "Historical network topology map of early ARPANET nodes connected via IMPs, clean historical network diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Quantization และ Mixed Precision"
-weight: 60
+weight: 65
 date: 2026-01-01
 draft: false
 phase: "10 — ฮาร์ดแวร์ AI สมัยใหม่"
-series_index: 59
+series_index: 64
 tags: []
 summary: "บิตน้อยกว่าต่อ MAC หมายถึง MAC มากขึ้นในงบพลังงานเดิม — ผสมความละเอียดที่ความแม่นยังต้องการ"
 image_prompt: "Comparison infographic of FP32, FP16, BF16, FP8, and INT8 bit-field layouts, clean numerical format diagram style"

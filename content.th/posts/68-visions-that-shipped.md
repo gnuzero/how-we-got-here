@@ -1,10 +1,10 @@
 ---
 title: "วิสัยทัศน์ที่เกิดขึ้นจริง"
-weight: 69
+weight: 74
 date: 2026-09-06
 draft: false
 phase: "วิสัยทัศน์ที่เกิดขึ้นจริง"
-series_index: 68
+series_index: 73
 tags: []
 summary: "ลิงก์ไปข้างหน้าออกจากการเดินทาง — Cisco, Gates, Jobs, GNU+Linus, Elon, Bezos ในฐานะเมล็ดของชนิดที่เปลี่ยนสแต็กเป็นแพลตฟอร์มที่คนอยู่จริง"
 image_prompt: "Clean forward-looking diagram: protocol stack arrows pointing into product seeds — router, PC software, integrated personal machine, open OS, logistics/cloud/space — not corporate logos as heroes, modern technical infographic"

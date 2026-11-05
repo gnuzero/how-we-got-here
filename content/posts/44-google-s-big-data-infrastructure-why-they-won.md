@@ -1,10 +1,10 @@
 ---
 title: "Google's Big Data Infrastructure — Why They Won"
-weight: 47
+weight: 50
 date: 2026-01-01
 draft: false
 phase: "7 — Distributed Systems, Big Data & Orchestration"
-series_index: 46
+series_index: 49
 tags: []
 summary: "Web-scale data forced failure-as-normal storage, then a programming model that hid the cluster — GFS, MapReduce, Bigtable"
 image_prompt: "System diagram of the Google File System with chunkservers and a master node, alongside a MapReduce job splitting into map and reduce phases across a cluster, clean distributed-systems textbook diagram style"

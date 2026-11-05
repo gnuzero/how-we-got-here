@@ -1,10 +1,10 @@
 ---
 title: "หน่วยความจำเสมือนและการมัลติทาสก์"
-weight: 25
+weight: 29
 date: 2026-01-01
 draft: false
 phase: "4 — รากฐานซอฟต์แวร์: OS, ภาษา และระบบเรียลไทม์"
-series_index: 24
+series_index: 28
 tags: []
 summary: "Time-sharing ต้องการการแยก — หน่วยความจำเสมือนให้ทุกโพรเซสภาพลวงตาว่าเป็นเจ้าของเครื่อง"
 image_prompt: "Diagram of virtual address space mapping to physical memory via a page table, clean OS textbook diagram style"

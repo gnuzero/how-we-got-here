@@ -1,10 +1,10 @@
 ---
 title: "ลำดับชั้นหน่วยความจำเริ่มต้น"
-weight: 11
+weight: 15
 date: 2026-01-01
 draft: false
 phase: "2 — ฟิสิกส์และอุปกรณ์"
-series_index: 10
+series_index: 14
 tags: []
 summary: "Flip-flop แพงเกินไปต่อบิต — SRAM ซื้อความเร็ว DRAM ซื้อความหนาแน่น และลำดับชั้นคือการแลกเปลี่ยนนั้นซ้ำ"
 image_prompt: "Side-by-side cell diagrams: 6T SRAM vs 1T1C DRAM, labeled, clean semiconductor memory textbook style"

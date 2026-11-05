@@ -1,10 +1,10 @@
 ---
 title: "டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது"
-weight: 5
+weight: 9
 date: 2026-01-01
 draft: false
 phase: "1 — அடித்தளங்கள்: இயந்திரத்திலிருந்து வெற்றிடக் குழாய் கணினி வரை"
-series_index: 4
+series_index: 8
 tags: []
 summary: "அளவு, மின்சாரம், நம்பகத்தன்மை — திண்மநிலை மாறுதலை தவிர்க்க முடியாததாக்கிய மூன்று குழாய் உச்சவரம்புகள்"
 image_prompt: "Split comparison illustration: vacuum tube vs point-contact transistor at same scale, size and heat dissipation visually contrasted, minimalist technical infographic style, clean typography"

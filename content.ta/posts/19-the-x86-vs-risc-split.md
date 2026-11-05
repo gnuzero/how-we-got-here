@@ -1,10 +1,10 @@
 ---
 title: "x86 vs RISC பிளவு"
-weight: 20
+weight: 24
 date: 2026-01-01
 draft: false
 phase: "3 — CPU மற்றும் அதன் கட்டமைப்புகளைக் கட்டுதல்"
-series_index: 19
+series_index: 23
 tags: []
 summary: "RISC காகிதத்தில் சுத்தமானது — மென்பொருள் lock-in மற்றும் µop மொழிபெயர்ப்பு x86-ஐ மேலே வைத்தன"
 image_prompt: "Family-tree infographic branching CISC/RISC research into x86, MIPS, SPARC, PowerPC lineages, clean genealogy diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "Usenet, Archie, Gopher, and the Pre-Web Internet"
-weight: 46
+weight: 48
 date: 2026-01-01
 draft: false
 phase: "7 — Distributed Systems, Big Data & Orchestration"
-series_index: 45
+series_index: 47
 tags: []
 summary: "Find, then talk — Usenet, Archie, Gopher, IRC, and the consumer portals that packaged both"
 image_prompt: "Historical illustration of a Usenet hierarchy, Archie prompt, Gopher menu, IRC channel list, and a Yahoo-style portal homepage as one arc, clean vintage internet-history infographic style"

@@ -1,10 +1,10 @@
 ---
 title: "Sparsity în hardware"
-weight: 63
+weight: 66
 date: 2026-01-01
 draft: false
 phase: "10 — Hardware AI modern"
-series_index: 62
+series_index: 65
 tags: []
 summary: "Sari peste MAC-urile cu zero știut dinainte — dar numai tiparele structurate sunt ieftin de exploatat pentru hardware-ul MAC dens"
 image_prompt: "Diagram of a dense weight matrix vs a 2:4 structured-sparse weight matrix, clean AI accelerator diagram style"

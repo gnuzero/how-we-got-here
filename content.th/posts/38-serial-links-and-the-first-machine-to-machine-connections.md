@@ -1,10 +1,10 @@
 ---
 title: "ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก"
-weight: 39
+weight: 43
 date: 2026-01-01
 draft: false
 phase: "6 — วิวัฒนาการเครือข่าย"
-series_index: 38
+series_index: 42
 tags: []
 summary: "ลิงก์อนุกรมจุดต่อจุดเชื่อมพอดีสองปลาย — เพดานที่บังคับ packet switching"
 image_prompt: "Technical illustration of an RS-232 connection and a modem modulating digital data onto an analog phone line, clean vintage telecom diagram style"

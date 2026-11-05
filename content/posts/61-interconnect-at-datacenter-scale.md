@@ -1,10 +1,10 @@
 ---
 title: "Interconnect at Datacenter Scale"
-weight: 64
+weight: 67
 date: 2026-01-01
 draft: false
 phase: "10 — Modern AI Hardware"
-series_index: 63
+series_index: 66
 tags: []
 summary: "Thousands of GPUs — topology and all-reduce matter as much as any chip's peak FLOPS"
 image_prompt: "System diagram of a multi-rack AI training cluster showing a fat-tree network topology, clean datacenter network architecture diagram style"

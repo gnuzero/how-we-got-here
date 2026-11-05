@@ -1,10 +1,10 @@
 ---
 title: "Datacenter Networking மற்றும் RDMA"
-weight: 43
+weight: 47
 date: 2026-01-01
 draft: false
 phase: "6 — வலையமைப்பு பரிணாமம்"
-series_index: 42
+series_index: 46
 tags: []
 summary: "ஒரு கட்டுப்படுத்தப்பட்ட fabric-க்குள், kernel நகல்கள் வரியாகும் — RDMA மற்றும் topology கம்பியை மீண்டும் வாங்கும்"
 image_prompt: "System diagram comparing a traditional TCP/IP data path against an RDMA kernel-bypass data path, clean datacenter architecture diagram style"

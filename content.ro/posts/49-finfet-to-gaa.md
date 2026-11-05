@@ -1,10 +1,10 @@
 ---
 title: "De la FinFET la GAA"
-weight: 52
+weight: 55
 date: 2026-01-01
 draft: false
 phase: "8 — Noduri de proces și fabricație"
-series_index: 51
+series_index: 54
 tags: []
 summary: "Scurgerea de canal scurt a oprit micșorarea tranzistorului plan: poarta a înfășurat întâi canalul pe trei laturi (FinFET), apoi pe toate (GAA)"
 image_prompt: "3D cutaway comparison of planar MOSFET, FinFET, and GAA nanosheet transistor structures, clean semiconductor device diagram style"

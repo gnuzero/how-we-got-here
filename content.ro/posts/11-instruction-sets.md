@@ -1,10 +1,10 @@
 ---
 title: "Seturi de instrucțiuni"
-weight: 14
+weight: 16
 date: 2026-01-01
 draft: false
 phase: "3 — Construirea unui CPU și arhitecturile lui"
-series_index: 13
+series_index: 15
 tags: []
 summary: "ISA e contractul dintre software și hardware; CISC și RISC sunt două răspunsuri la ce ar trebui să conțină"
 image_prompt: "Infographic comparing CISC vs RISC instruction encoding, clean technical diagram style"

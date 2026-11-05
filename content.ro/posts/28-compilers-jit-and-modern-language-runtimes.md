@@ -1,10 +1,10 @@
 ---
 title: "Compilatoare, JIT și medii de rulare moderne"
-weight: 31
+weight: 33
 date: 2026-01-01
 draft: false
 phase: "4 — Fundamente software: sisteme de operare, limbaje și sisteme în timp real"
-series_index: 30
+series_index: 32
 tags: []
 summary: "Traducerea înainte de rulare, traducerea în timpul rulării și serviciile pe care mediul de rulare le oferă programului"
 image_prompt: "Pipeline diagram of a compiler with a JIT feedback loop shown alongside, clean compiler-textbook diagram style"

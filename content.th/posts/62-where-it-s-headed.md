@@ -1,10 +1,10 @@
 ---
 title: "ทิศทางข้างหน้า"
-weight: 63
+weight: 68
 date: 2026-01-01
 draft: false
 phase: "10 — ฮาร์ดแวร์ AI สมัยใหม่"
-series_index: 62
+series_index: 67
 tags: []
 summary: "แบบแผนเดิมต่อไป — chiplet, ออปติกใกล้แพ็กเกจ, compute ใกลหน่วยความจำ"
 image_prompt: "Forward-looking infographic showing chiplet AI accelerators, silicon photonics, and in-memory compute, clean speculative technical illustration style"

@@ -1,10 +1,10 @@
 ---
 title: "Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்"
-weight: 45
+weight: 50
 date: 2026-01-01
 draft: false
 phase: "7 — விநியோகிக்கப்பட்ட அமைப்புகள், Big Data மற்றும் Orchestration"
-series_index: 44
+series_index: 49
 tags: []
 summary: "Web-அளவு தரவு failure-as-normal சேமிப்பைக் கட்டாயப்படுத்தியது, பிறகு cluster-ஐ மறைத்த நிரலாக்க மாதிரி — GFS, MapReduce, Bigtable"
 image_prompt: "System diagram of the Google File System with chunkservers and a master node, alongside a MapReduce job splitting into map and reduce phases across a cluster, clean distributed-systems textbook diagram style"

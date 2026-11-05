@@ -1,10 +1,10 @@
 ---
 title: "යුද්ධකාලීන Crypto"
-weight: 67
+weight: 72
 date: 2026-01-01
 draft: false
 phase: "Crypto සහ යුද්ධකාලීන පරිගණකකරණය"
-series_index: 66
+series_index: 71
 tags: []
 summary: "Enigma, Bletchley, සහ Colossus — සයිෆර් කඩා දැමීම ඉලෙක්ට්‍රොනික පරිගණකකරණය බල කළේ ඇයි"
 image_prompt: "Clean historical-technical diagram: Enigma rotors beside a Colossus rack of vacuum tubes at Bletchley, connective arrows from cipher traffic to electronic counting, muted wartime-engineering style"

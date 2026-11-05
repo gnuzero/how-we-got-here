@@ -1,10 +1,10 @@
 ---
 title: "Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ"
-weight: 44
+weight: 48
 date: 2026-01-01
 draft: false
 phase: "7 — ระบบกระจาย บิ๊กดาต้า และออร์เคสตรา"
-series_index: 43
+series_index: 47
 tags: []
 summary: "หา แล้วพูด — Usenet, Archie, Gopher, IRC และพอร์ทัลผู้บริโภคที่ห่อทั้งสอง"
 image_prompt: "Historical illustration of a Usenet hierarchy, Archie prompt, Gopher menu, IRC channel list, and a Yahoo-style portal homepage as one arc, clean vintage internet-history infographic style"

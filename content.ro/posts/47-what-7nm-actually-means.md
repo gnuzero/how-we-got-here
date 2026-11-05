@@ -1,10 +1,10 @@
 ---
 title: "Ce înseamnă de fapt „7nm”"
-weight: 50
+weight: 53
 date: 2026-01-01
 draft: false
 phase: "8 — Noduri de proces și fabricație"
-series_index: 49
+series_index: 52
 tags: []
 summary: "Numele de nod nu mai măsoară nicio lungime de pe tranzistor: fizica stă în pitch-uri și densitate, iar eticheta numește doar o generație"
 image_prompt: "Infographic debunking the '7nm = physical measurement' myth, showing fin pitch/gate pitch numbers vs marketing node names, clean technical infographic style"

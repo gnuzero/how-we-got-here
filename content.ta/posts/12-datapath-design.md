@@ -1,10 +1,10 @@
 ---
 title: "Datapath வடிவமைப்பு"
-weight: 13
+weight: 17
 date: 2026-01-01
 draft: false
 phase: "3 — CPU மற்றும் அதன் கட்டமைப்புகளைக் கட்டுதல்"
-series_index: 12
+series_index: 16
 tags: []
 summary: "Single-cycle CPU நடை"
 image_prompt: "Block diagram of a single-cycle RISC datapath, classic computer architecture textbook style"

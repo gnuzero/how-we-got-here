@@ -1,10 +1,10 @@
 ---
 title: "CUDA Cores, Warps மற்றும் Occupancy"
-weight: 54
+weight: 59
 date: 2026-01-01
 draft: false
 phase: "9 — GPU-கள் மற்றும் Parallel Compute"
-series_index: 53
+series_index: 58
 tags: []
 summary: "SIMT, SM-கள் மற்றும் warps மீது வரைபடமாகிறது — divergence வரை lockstep வெல்லும்; occupancy memory stall-களை மறைக்கும்"
 image_prompt: "Block diagram of a GPU Streaming Multiprocessor showing CUDA cores, warp scheduler, register file, clean GPU microarchitecture diagram style"

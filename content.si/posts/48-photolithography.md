@@ -1,10 +1,10 @@
 ---
 title: "Photolithography"
-weight: 49
+weight: 54
 date: 2026-01-01
 draft: false
 phase: "8 — ක්‍රියාවලි නෝඩ් සහ Fabrication"
-series_index: 48
+series_index: 53
 tags: []
 summary: "Diffraction කෙටි තරංග ආයාම බල කරයි — EUV හි mirrors සහ tin plasma feature sizes චලනය කර තැබූ දේය"
 image_prompt: "Cutaway diagram of an EUV lithography system showing plasma source, mirrors, mask, wafer, clean fab equipment illustration style"

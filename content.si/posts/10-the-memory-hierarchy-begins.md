@@ -1,10 +1,10 @@
 ---
 title: "මතක ධූරාවලිය ආරම්භ වේ"
-weight: 11
+weight: 15
 date: 2026-01-01
 draft: false
 phase: "2 — භෞතික විද්‍යාව සහ උපාංග"
-series_index: 10
+series_index: 14
 tags: []
 summary: "SRAM එදිරිව DRAM කෝෂ නිර්මාණය"
 image_prompt: "Side-by-side cell diagrams: 6T SRAM vs 1T1C DRAM, labeled, clean semiconductor memory textbook style"

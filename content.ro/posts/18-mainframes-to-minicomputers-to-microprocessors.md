@@ -1,10 +1,10 @@
 ---
 title: "De la mainframe-uri la minicalculatoare și microprocesoare"
-weight: 21
+weight: 23
 date: 2026-01-01
 draft: false
 phase: "3 — Construirea unui CPU și arhitecturile lui"
-series_index: 20
+series_index: 22
 tags: []
 summary: "Trei epoci ale întrebării cine primește un calculator — instituția, departamentul, apoi un cip pentru oricine"
 image_prompt: "Timeline infographic showing mainframe, minicomputer, and microprocessor at matching scale, clean historical infographic style"

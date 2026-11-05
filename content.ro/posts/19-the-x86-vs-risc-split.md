@@ -1,10 +1,10 @@
 ---
 title: "Ruptura x86 versus RISC"
-weight: 22
+weight: 24
 date: 2026-01-01
 draft: false
 phase: "3 — Construirea unui CPU și arhitecturile lui"
-series_index: 21
+series_index: 23
 tags: []
 summary: "RISC arăta mai curat pe hârtie — blocajul softului și traducerea în µop-uri au ținut x86 deasupra"
 image_prompt: "Family-tree infographic branching CISC/RISC research into x86, MIPS, SPARC, PowerPC lineages, clean genealogy diagram style"

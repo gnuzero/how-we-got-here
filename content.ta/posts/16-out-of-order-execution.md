@@ -1,10 +1,10 @@
 ---
 title: "Out-of-Order Execution"
-weight: 17
+weight: 21
 date: 2026-01-01
 draft: false
 phase: "3 — CPU மற்றும் அதன் கட்டமைப்புகளைக் கட்டுதல்"
-series_index: 16
+series_index: 20
 tags: []
 summary: "காத்திருக்க வேண்டியதை மட்டும் stall செய்யுங்கள் — Tomasulo-வின் யோசனை: தயாரானபோது execute, வரிசையில் commit"
 image_prompt: "Block diagram of an out-of-order pipeline with reservation stations and reorder buffer, clean superscalar diagram style"

@@ -1,10 +1,10 @@
 ---
 title: "ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C"
-weight: 28
+weight: 32
 date: 2026-01-01
 draft: false
 phase: "4 — මෘදුකාංග පදනම්: OS, භාෂා සහ තත්‍ය කාල පද්ධති"
-series_index: 27
+series_index: 31
 tags: []
 summary: "වසම් හතරක් abstractions හතරක් බල කළේය — සූත්‍ර, ව්‍යාපාර ගද්‍ය, සංකේතාත්මක ලැයිස්තු, ලෝහයට සමීප පද්ධති"
 image_prompt: "Timeline infographic of FORTRAN, COBOL, Lisp, C with characteristic code snippets, clean historical technical infographic"

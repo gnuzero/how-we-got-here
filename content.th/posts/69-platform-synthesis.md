@@ -1,10 +1,10 @@
 ---
 title: "การสังเคราะห์แพลตฟอร์ม"
-weight: 70
+weight: 75
 date: 2026-09-06
 draft: false
 phase: "จากเครื่องเดียวสู่แพลตฟอร์ม"
-series_index: 69
+series_index: 74
 tags: []
 summary: "จุดจอดระดับสูงจุดเดียว — แพลตฟอร์มใหญ่คือระบบกระจาย เครือข่าย โครงสร้างพื้นฐาน AI วิศวกรรมความเป็นส่วนตัว และวิศวกรรมซอฟต์แวร์ประกอบกัน"
 image_prompt: "Single clean stack diagram composing distributed systems, networking, AI accelerators, privacy/identity controls, and software delivery into one platform silhouette, modern systems-architecture style"

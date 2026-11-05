@@ -1,10 +1,10 @@
 ---
 title: "จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์"
-weight: 19
+weight: 23
 date: 2026-01-01
 draft: false
 phase: "3 — การสร้าง CPU และสถาปัตยกรรมของมัน"
-series_index: 18
+series_index: 22
 tags: []
 summary: "สามยุคของใครได้ใช้คอมพิวเตอร์ — สถาบัน แผนก แล้วชิปเดียวสำหรับทุกคน"
 image_prompt: "Timeline infographic showing mainframe, minicomputer, and microprocessor at matching scale, clean historical infographic style"

@@ -1,10 +1,10 @@
 ---
 title: "Tensor Core"
-weight: 56
+weight: 61
 date: 2026-01-01
 draft: false
 phase: "9 — GPU และการคำนวณขนาน"
-series_index: 55
+series_index: 60
 tags: []
 summary: "Matrix multiply-accumulate กลายเป็น op ครองของ AI — ฮาร์ดแวร์จึงทำให้เป็น primitive ชั้นหนึ่ง"
 image_prompt: "Diagram of a tensor core performing a 4x4 matrix multiply-accumulate in a single cycle, clean AI hardware diagram style"

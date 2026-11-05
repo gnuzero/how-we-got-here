@@ -1,10 +1,10 @@
 ---
 title: "Why GPUs Exist"
-weight: 55
+weight: 58
 date: 2026-01-01
 draft: false
 phase: "9 — GPUs & Parallel Compute"
-series_index: 54
+series_index: 57
 tags: []
 summary: "Graphics gave an embarrassingly parallel workload — SIMT hardware followed, then general compute found the same shape"
 image_prompt: "Diagram of the graphics rendering pipeline alongside a SIMD execution diagram, clean GPU architecture textbook style"

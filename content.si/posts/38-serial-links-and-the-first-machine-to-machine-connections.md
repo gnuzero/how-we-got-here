@@ -1,10 +1,10 @@
 ---
 title: "ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා"
-weight: 39
+weight: 43
 date: 2026-01-01
 draft: false
 phase: "6 — ජාලකරණය: ශ්‍රේණි සබැඳි සිට දත්ත මධ්‍යස්ථාන RDMA දක්වා"
-series_index: 38
+series_index: 42
 tags: []
 summary: "Point-to-point ශ්‍රේණි සබැඳි සම්බන්ධ කරන්නේ අග දෙකක් පමණයි — packet switching බල කළ සීමාව"
 image_prompt: "Technical illustration of an RS-232 connection and a modem modulating digital data onto an analog phone line, clean vintage telecom diagram style"

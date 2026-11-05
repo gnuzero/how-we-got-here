@@ -1,10 +1,10 @@
 ---
 title: "สแตกซอฟต์แวร์ Machine Learning"
-weight: 47
+weight: 52
 date: 2026-01-01
 draft: false
 phase: "7 — ระบบกระจาย บิ๊กดาต้า และออร์เคสตรา"
-series_index: 46
+series_index: 51
 tags: []
 summary: "ระหว่างโมเดลกับซิลิคอนมีสแตกที่เปลี่ยนเทนเซอร์เป็นการฝึกแบบกระจาย — แล้วชนกำแพงอินเตอร์คอนเนกต์"
 image_prompt: "Layered infographic showing the ML software stack from Python/NumPy up through frameworks (PyTorch/TensorFlow) to distributed training orchestration to hardware, clean AI-software diagram style"

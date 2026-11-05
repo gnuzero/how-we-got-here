@@ -1,10 +1,10 @@
 ---
 title: "กำแพงหน่วยความจำ"
-weight: 36
+weight: 40
 date: 2026-01-01
 draft: false
 phase: "5 — บัสและสถาปัตยกรรมระบบ"
-series_index: 35
+series_index: 39
 tags: []
 summary: "ความเร็ว CPU กับ latency ของ DRAM แยกทางกันหลายทศวรรษ — แคชซ่อนช่องว่าง; ไม่ได้ปิดมัน"
 image_prompt: "Graph infographic showing CPU speed and DRAM speed diverging from 1980 to today, clean data-visualization diagram style"

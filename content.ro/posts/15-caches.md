@@ -1,10 +1,10 @@
 ---
 title: "Cache-uri"
-weight: 18
+weight: 20
 date: 2026-01-01
 draft: false
 phase: "3 — Construirea unui CPU și arhitecturile lui"
-series_index: 17
+series_index: 19
 tags: []
 summary: "Localitatea face ierarhia de memorie să meargă; asociativitatea și coerența sunt prețul sincerității"
 image_prompt: "Diagram of cache organization: direct-mapped, set-associative, fully-associative, clean memory-system textbook style"

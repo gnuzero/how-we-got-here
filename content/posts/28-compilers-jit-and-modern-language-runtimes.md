@@ -1,10 +1,10 @@
 ---
 title: "Compilers, JIT, and Modern Language Runtimes"
-weight: 31
+weight: 33
 date: 2026-01-01
 draft: false
 phase: "4 — Software Foundations: OS, Languages & Real-Time Systems"
-series_index: 30
+series_index: 32
 tags: []
 summary: "AOT compiles once without runtime facts; JIT waits for hot paths — and garbage collection shifts cost into the runtime"
 image_prompt: "Pipeline diagram of a compiler with a JIT feedback loop shown alongside, clean compiler-textbook diagram style"

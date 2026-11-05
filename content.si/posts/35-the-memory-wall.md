@@ -1,10 +1,10 @@
 ---
 title: "මතක බිත්තිය"
-weight: 36
+weight: 40
 date: 2026-01-01
 draft: false
 phase: "5 — බස් සහ පද්ධති ගෘහ නිර්මාණය"
-series_index: 35
+series_index: 39
 tags: []
 summary: "CPU වේගය සහ DRAM latency දශක ගණනක් අපසරනය විය — caches පරතරය සඟවයි; ඒවා එය වසා නොදමයි"
 image_prompt: "Graph infographic showing CPU speed and DRAM speed diverging from 1980 to today, clean data-visualization diagram style"

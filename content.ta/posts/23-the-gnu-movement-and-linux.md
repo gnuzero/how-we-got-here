@@ -1,10 +1,10 @@
 ---
 title: "GNU இயக்கம் மற்றும் Linux"
-weight: 24
+weight: 28
 date: 2026-01-01
 draft: false
 phase: "4 — மென்பொருள் அடித்தளங்கள்: OS, மொழிகள் மற்றும் Real-Time அமைப்புகள்"
-series_index: 23
+series_index: 27
 tags: []
 summary: "Unix மூடியது; Stallman இலவச userland கட்டினார்; Torvalds kernel இடைவெளியை நிரப்பினார் — GPL சேர்க்கையைத் திறந்ததாக வைத்தது"
 image_prompt: "Illustration of the GNU logo alongside Tux the penguin, with a layered diagram showing GNU userland tools sitting atop the Linux kernel, clean open-source movement infographic style"

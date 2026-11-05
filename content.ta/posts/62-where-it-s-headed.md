@@ -1,10 +1,10 @@
 ---
 title: "அது எங்கே போகிறது"
-weight: 63
+weight: 68
 date: 2026-01-01
 draft: false
 phase: "10 — நவீன AI வன்பொருள்"
-series_index: 62
+series_index: 67
 tags: []
 summary: "முன்னோக்கி அதே pattern — chiplets, package-க்கு அருகில் optics, நினைவகத்திற்கு அருகில் compute"
 image_prompt: "Forward-looking infographic showing chiplet AI accelerators, silicon photonics, and in-memory compute, clean speculative technical illustration style"

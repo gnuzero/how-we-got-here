@@ -1,10 +1,10 @@
 ---
 title: "PCIe în detaliu"
-weight: 36
+weight: 38
 date: 2026-01-01
 draft: false
 phase: "5 — Magistralele și arhitectura sistemului"
-series_index: 35
+series_index: 37
 tags: []
 summary: "Intenția călătorește în TLP; fiabilitatea și semnalizarea stau dedesubt — stiva care a înlocuit magistrala partajată"
 image_prompt: "Technical diagram of the PCIe protocol stack with TLP structure broken down field by field, clean protocol-diagram style"

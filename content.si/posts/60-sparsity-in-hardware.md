@@ -1,10 +1,10 @@
 ---
 title: "දෘඪාංගයේ Sparsity"
-weight: 61
+weight: 66
 date: 2026-01-01
 draft: false
 phase: "10 — නවීන AI දෘඪාංග"
-series_index: 60
+series_index: 65
 tags: []
 summary: "දන්නා-ශුන්‍ය MAC මඟහරින්න — නමුත් ඝන MAC දෘඪාංගයට ලාභ වන්නේ ව්‍යුහගත රටා පමණි"
 image_prompt: "Diagram of a dense weight matrix vs a 2:4 structured-sparse weight matrix, clean AI accelerator diagram style"

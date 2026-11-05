@@ -1,10 +1,10 @@
 ---
 title: "රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber"
-weight: 68
+weight: 73
 date: 2026-01-01
 draft: false
 phase: "රහස්‍යතාව / අනන්‍යතාව / එකඟතාව"
-series_index: 67
+series_index: 72
 tags: []
 summary: "විවෘත ජාලයක් මත ඉංජිනේරු පරිණාමයක් ලෙස රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, සහ cybersecurity — ප්‍රතිපත්ති පත්‍රිකාවක් නොවේ"
 image_prompt: "Clean layered diagram: isolation boundaries, cryptographic keys, identity credentials, and adversarial threat arrows on one stack, modern security-engineering infographic style"
