@@ -14,6 +14,22 @@ schematics: "Diagram: relay schematic symbol + physical cutaway, plus simple rel
 
 A relay is almost embarrassingly simple: an electromagnet, a spring-loaded armature, a set of contacts. Energize the coil, the armature pulls in, the contacts open or close. For roughly a decade and a half, that was computing's switching primitive.
 
+## Two jobs for the same part
+
+In this chapter a **relay** is a switch: a weak coil opens or closes a stronger circuit, and later it becomes a building block for AND, OR and NOT. On a telegraph line a relay does a different job. A weak signal arriving over a long wire switches a fresh local current, so the message can go farther. Same family of parts, two jobs. In 1835 at Princeton, Joseph Henry built an early relay in which a small "intensity" magnet controlled a larger "quantity" magnet. The Smithsonian treats that as the principle behind the repeater Morse's telegraph used. We don't call Henry the sole inventor of the relay. ([Smithsonian Institution Archives, Joseph Henry](https://siarchives.si.edu/collections/siris_sic_12484))
+
+### Before the wire: messages on wings
+
+Moving a message in hops is older than electricity. Frontinus records that during the siege of Mutina (43 BC), Hirtius kept pigeons in the dark without food, tied letters to their necks and released them near the city walls; the birds made for the highest buildings, where Brutus collected the letters. ([Frontinus, *Strategemata* 3.13.8](https://penelope.uchicago.edu/thayer/e/roman/texts/frontinus/strategemata/3*.html))
+
+On 28 April 1850, Paul Julius Reuter started a pigeon service between Aachen and Brussels with 45 birds bought from Heinrich Geller, to cover a stretch the telegraph had not yet reached. On 14 June 1851 he arrived in London, having run a news service that combined telegraph cables and carrier pigeons. It was store-and-forward across a missing segment. ([The Baron, Reuters history](https://www.thebaron.info/archives/history))
+
+### The electric message
+
+Cooke and Wheatstone patented their telegraph on 10 June 1837 and had it working at Euston Square on the London and Birmingham Railway by 6 September 1837. ([Distant Writing, Cooke & Wheatstone](https://www.distantwriting.co.uk/cookewheatstone.html)) Morse and Vail's official Washington–Baltimore demonstration ran on 24 May 1844. Annie Ellsworth chose the message: "What hath God wrought." ([U.S. Senate history](https://www.senate.gov/artandhistory/senate-stories/morses-telegraph-in-the-capitol.htm))
+
+Back to the relay as logic.
+
 ## Relays as Logic
 
 Wire two contacts in series and you have AND: current only if *both* are closed. Wire them in parallel and you have OR. Add a normally closed contact and you get NOT. Combine those and you can build any boolean function — adders, comparators, decoders — the same logic families Phase 2 builds in silicon, here in electromechanical hardware.
