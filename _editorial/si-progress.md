@@ -285,3 +285,12 @@ Branch `si-text-2` from `si-base-24fbe9f` (`24fbe9f`, provisional public numberi
 - 31-from-machine-code-to-assembly (formerly 26-…), line 36: එකලස් කරන්න / පියවර
 - 32-high-level-languages-fortran-cobol-lisp-c (formerly 27-…), lines 90, 153, 169: එකලස් කරන්න, ප්‍රතිදානය (as in the lab's log.hlt), යළි සකසන්න
 "Assembly කොටුව" left in English (the lab heading stays English).
+
+## si-lab-3: breadboard + analytical-engine strings (2026-11-05, Asia/Colombo)
+
+Landed as PR #101 (`d7b561b`) on main after `si-text-2` (#100); Falstad possessive fix + this progress note in a follow-up. Translated from strings.en.json. `check-lab-strings.py`: 0 errors, 0 warnings (both labs and all 6). Build clean; Chrome `?lang=si` at 900 and 375 px: no raw keys, no console errors.
+
+- breadboard: all 7 keys translated. "AND", "Wokwi", "MCU", "breadboard", "simulator", ↗, `cct=`/`and.txt` code literals and tags kept. "Falstad’s ඉවත් කළ" → "Falstad අඩවියෙන් ඉවත් කළ" (match Tamil/Thai desks).
+- analytical-engine: 34 of 36 keys translated. Left as English on purpose: `alt.rule` (dashes only) and `label.runup` ("Run-up:", Babbage's own term for the carry lever). The term used is "Analytical Engine" in Latin script, as in 02-mechanical-electromechanical-computing; 03-babbage-engines has no si locale on this base. Mill and Store follow 02's glosses: "Mill (අංක ගණිත ඒකකය)", "Store (මතකය)". U+00A0 kept in the Ingress/Egress labels; `footer_html` hrefs unchanged. Walker's scripts, alert() text and Set/Not set/Running/Stopped untouched (English).
+- UNVERIFIED (no opened glossary/dictionary hit): අනුකාරකය (Emulator), තත්ත්ව දර්ශකය (Annunciator), වක්‍ර ඇඳීමේ උපකරණය (Curve Drawing Apparatus), පරිචාරක සටහන් පොත (Attendant's Log). ද්වාරය for gate (ICTA/UCSC glossaries more often ගේට්ටුව). මතකය for Store is fine as a gloss matching ch 02; report only.
+- AE iframe at 375 px: scrollWidth 800 (same as English upstream layout).

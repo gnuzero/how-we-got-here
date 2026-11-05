@@ -5,5 +5,5 @@
   "btn.open_and": "AND ද්වාරය නව ටැබයක විවෘත කරන්න ↗",
   "btn.wokwi": "Wokwi (භෞතික breadboard + සැබෑ MCU) ↗",
   "iframe.title": "පරිපථ simulator — AND ද්වාරය",
-  "note_html": "\n  ඔබ දකින්නේ <strong>AND ද්වාරයක්</strong>: ආදාන දෙකම ඉහළ (high) වූ විට පමණක් ප්‍රතිදානය ඉහළ වේ.\n  වම් පස ඇති ආදාන දෙක ක්ලික් කර ඒවා මාරු කරන්න, දකුණු පස ප්‍රතිදානය බලන්න.\n  <div class=\"meta\">පරිපථ දත්ත URL එක තුළම කාවද්දා ඇත (<code>cct=</code>) — Falstad’s ඉවත් කළ <code>/circuits/and.txt</code> වෙතින් පූරණය නොවේ. Simulator අතුරුමුහුණතට තවමත් falstad.com අවශ්‍යයි. පරිපථයේ දේශීය පිටපත: මෙම පිටුව අසල ඇති <code>and.txt</code>.</div>\n"
+  "note_html": "\n  ඔබ දකින්නේ <strong>AND ද්වාරයක්</strong>: ආදාන දෙකම ඉහළ (high) වූ විට පමණක් ප්‍රතිදානය ඉහළ වේ.\n  වම් පස ඇති ආදාන දෙක ක්ලික් කර ඒවා මාරු කරන්න, දකුණු පස ප්‍රතිදානය බලන්න.\n  <div class=\"meta\">පරිපථ දත්ත URL එක තුළම කාවද්දා ඇත (<code>cct=</code>) — Falstad අඩවියෙන් ඉවත් කළ <code>/circuits/and.txt</code> වෙතින් පූරණය නොවේ. Simulator අතුරුමුහුණතට තවමත් falstad.com අවශ්‍යයි. පරිපථයේ දේශීය පිටපත: මෙම පිටුව අසල ඇති <code>and.txt</code>.</div>\n"
 }
