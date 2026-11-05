@@ -91,6 +91,13 @@ Romanian titles are listed **only** for chapters that actually have a `content.r
 | `posts/19-the-x86-vs-risc-split.md` | Ruptura x86 versus RISC | shipped (fact-checked) |
 | `posts/20-arm-and-risc-v-the-architecture-landscape-today.md` | ARM și RISC-V: peisajul de arhitecturi azi | shipped (fact-checked) |
 | `posts/21-batch-processing-and-the-birth-of-the-operating-system.md` | Prelucrarea pe loturi și nașterea sistemului de operare | shipped (fact-checked) |
+| `posts/22-time-sharing-and-the-unix-lineage.md` | Partajarea timpului și descendența Unix | shipped (fact-checked) |
+| `posts/23-the-gnu-movement-and-linux.md` | Mișcarea GNU și Linux | shipped (fact-checked) |
+| `posts/24-virtual-memory-and-multitasking.md` | Memoria virtuală și multitaskingul | shipped (fact-checked) |
+| `posts/25-containers-and-modern-os-isolation.md` | Containerele și izolarea în sistemele de operare moderne | shipped (fact-checked) |
+| `posts/26-from-machine-code-to-assembly.md` | De la codul mașină la limbajul de asamblare | shipped (fact-checked) |
+| `posts/27-high-level-languages-fortran-cobol-lisp-c.md` | Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C | shipped (fact-checked) |
+| `posts/28-compilers-jit-and-modern-language-runtimes.md` | Compilatoare, JIT și medii de rulare moderne | shipped (fact-checked) |
 | `posts/35-the-memory-wall.md` | Zidul memoriei | shipped (fact-checked) |
 | `posts/47-what-7nm-actually-means.md` | Ce înseamnă de fapt „7nm” | shipped (fact-checked) |
 | `posts/48-photolithography.md` | Fotolitografia | shipped (fact-checked) |
@@ -139,8 +146,8 @@ Conceptul și inspirația acestei lucrări îi aparțin lui Nayana Hettiarachchi
 - **Announcement MVP bodies:** Foreword + Phase 1 (01–04) + Attention (63) + glossary/home chrome in TH / SI / TA
 - Full remaining chapter bodies: after announcement (phased)
 - **Chinese (zh-Hans / zh-Hant), 2026-09-26:** locales wired; placeholder landing only. Pages come from the Chinese desk, written from Chinese primary sources. Not translated from English. Native-reader proofread before final.
-- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `00`–`21` (early chapters, batches 1–3), `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
-- Last updated: 2026-11-05 (ro early chapters 14–21, batch 3)
+- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `00`–`28` (early chapters, batches 1–4), `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
+- Last updated: 2026-11-05 (ro early chapters 22–28, batch 4)
 
 ## Fact-check notes (ongoing)
 
