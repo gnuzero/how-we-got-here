@@ -14,7 +14,7 @@ schematics: "Diagram 1: the three bottlenecks (too many characters / too few key
 # Status: not final. Needs a native-reader proofread before it is marked final.
 ---
 
-<!-- sources: F23-01, F23-02, F23-03, F23-04, F22-02, F22-03, F22-04, F22-05, F22-07, F22-08, F22-09, F22-10, F13-03, F12-02, F12-04, F12-05, F12-06, F12-07, F12-08, F22-12, F03-01, F03-02, F03-03, F03-05, F03-07, F03-14 -->
+<!-- sources: F23-01, F23-02, F23-03, F23-04, F22-02, F22-03, F22-04, F22-05, F22-07, F22-08, F22-09, F22-10, F13-03, F12-02, F12-04, F12-05, F12-06, F12-07, F12-08, F22-12, F03-01, F03-02, F03-03, F03-05, F03-07, F03-14, F41-01, F41-03, F41-04, F41-05 -->
 
 英文打字員面前只有幾十個鍵，一鍵一個字母。換成漢字，你面對的是幾千、幾萬個字。從 1910 年代到 1980 年代，中國工程師反覆撞上同一堵牆：**字太多，鍵太少，儲存太貴。**這一頁帶你看他們怎樣一次次繞過去。
 
@@ -42,7 +42,11 @@ schematics: "Diagram 1: the three bottlenecks (too many characters / too few key
 
 ## 王選：存不下，就壓縮
 
-排版的瓶頸更大。748 工程 1974 年獲批，北大王選計算機研究所記為 8 月，中國中文信息學會記為 10 月。要為每個字、每種字型、每個字號存精密點陣，陳嘉庚科學獎的介紹說需要幾百億位元組。王選 1975—1976 年的答案是：橫、豎、折等規則筆畫用參數表示，曲線形筆畫用輪廓表示，總體壓縮率高達 500:1（研究所自己的說法是“幾百倍”）。1976 年他決定跳過第二代光機式和第三代陰極射線管照排機，直接做第四代雷射照排。1979 年 7 月 27 日樣機輸出第一張報紙樣張；1987 年 5 月 22 日，《經濟日報》四個版面全部用華光 III 型雷射照排輸出。
+排版的瓶頸更大。748 工程 1974 年獲批，北大王選計算機研究所記為 8 月，中國中文信息學會記為 10 月。要為每個字、每種字型、每個字號存精密點陣，陳嘉庚科學獎的介紹說需要幾百億位元組。王選 1975—1976 年的答案是：橫、豎、折等規則筆畫用參數表示，曲線形筆畫用輪廓表示，總體壓縮率高達 500:1（研究所自己的說法是“幾百倍”）。1976 年他決定跳過第二代光機式和第三代陰極射線管照排機，直接做第四代雷射照排。1979 年 7 月 27 日樣機輸出第一張報紙樣張；中國計算機學會《FZ-91B型漢字照排控制器》條目記，1980 年 9 月 15 日排出第一本樣書《伍豪之劍》，原理性樣機後稱華光Ⅰ型。同一條目把壓縮寫具體：五號字資訊量從約一萬位降到平均約八百位（約十二倍）；可變倍後「整體壓縮倍數高達500倍」，「只需4M位元組的儲存量就能存下60萬字頭的全部資訊」。1987 年 5 月 22 日，《經濟日報》四個版面全部用華光 III 型雷射照排輸出。
+
+海峽對岸另有一條時間線。據《聯合報》六十年社史，民國七十一年九月十六日（1982 年 9 月 16 日）聯合報電腦檢排系統正式啟用；社史自稱「全世界第一個發展電腦檢排自動化的中文報紙」，並寫印務部門成為「沒有鉛字」的中文報館。自動鑄排機字庫僅二千三百七十六字，曾反過來約束記者用字。這與 1987 年《經濟日報》整頁雷射輸出不是同一件事：前者是電腦檢排後相紙貼版，後者是螢幕組版加整頁雷射照排；兩家各自的「第一」不宜排座次。
+
+據王選 1999 年署名文章：團隊於 1986 年制訂頁面描述格式，後稱廣泛流傳的 SZ 檔案格式，並成為 1990–1994 年遠端傳版的基礎；1990 年預感到 PostScript 將成為國際標準，1993 年秋推出「中國研製的第一個 PostScript2 直譯器」。同文把報業技術變遷概括為相繼「告別」鉛與火、報紙傳真機、電子分色機、紙和筆，並以 1999 年《羊城晚報》直接製版作為「告別底片」的開始。SZ 格式與 1993 年 PostScript Level 2 直譯器目前只見於這篇當事人文章，故僅作王選自述引用。
 
 需要糾正一個說法：中國科學技術館展板稱這項發明“比西方早了10年”，但沒有給出可核對的比較。本書的表述是：這是一套獨立、早期的漢字輪廓字形方案。
 
@@ -66,4 +70,7 @@ schematics: "Diagram 1: the three bottlenecks (too many characters / too few key
 - 陳嘉庚科學獎基金會，《技術科學獎·1990·王選》（English: Tan Kah Kee Science Award in technological sciences, 1990: Wang Xuan），中國科學院。[連結](https://tsaf.cas.cn/ljhjqk/cjgkxj/asj/1990/200904/t20090402_4954702.html)
 - 中國科學技術館，《漢字激光照排》展品說明（English: Exhibit text: Chinese laser phototypesetting），中國數字科技館，2021。[連結](https://www.cdstm.cn/museum/zphc/kcbnjd100znkjcjkpz/art/2021/art_4523f8dfceb24aabb9a29605ba2f17b6.html)
 - 黃橙，《1987年：第一張國產激光照排系統整版輸出的中文日報》（English: 1987: the first Chinese daily output in full pages by a domestic laser typesetting system），中國工程院網站，2009-06-15 轉載。[連結](https://www.cae.cn/cae/html/main/col278/2012-02/27/20120227140259086980845_1.html)
+- 中國計算機學會，《FZ-91B型漢字照排控制器（1991年）》（English: FZ-91B Chinese phototypesetting controller, 1991），中國計算機歷史記憶。[連結](https://www.ccf.org.cn/Computing_history/Full_List/2020/First_class/2021-01-20/722005.shtml)
+- 王選，《抓住機遇，實現技術跨越並佔領市場》（English: Seize the opportunity, leapfrog technologically and take the market），新浪財經，1999-11-19。[連結](https://finance.sina.com.cn/management/vision/1999-11-19/12733.html)
+- 《聯合報60年：在新聞的河 淘歷史的金》第十四章（English: United Daily News at 60, ch. 14, on leaving lead type），聯合報閱讀。[連結](https://reading.udn.com/act/flipbook/20210203/files/basic-html/page273.html)
 
