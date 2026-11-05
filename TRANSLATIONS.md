@@ -71,6 +71,19 @@ Romanian titles are listed **only** for chapters that actually have a `content.r
 | `posts/00-credits.md` | Credite și uși de ieșire | shipped (fact-checked) |
 | `posts/00-foreword.md` | Cuvânt înainte | placeholder (Nayana's lane; not expanded) |
 | `posts/01-mechanical-electromechanical-computing.md` | Calcul mecanic și electromecanic | shipped draft (`draft: true`, mirrors English) |
+| `posts/01-what-is-this-thing.md` | Ce e chestia asta? | shipped (fact-checked; hub) |
+| `posts/01-take-barrel-organ.md` | Flașneta | shipped (fact-checked; bookHidden) |
+| `posts/01-take-caravan.md` | Caravana | shipped (fact-checked; bookHidden) |
+| `posts/01-take-clerk.md` | Funcționarul de birou | shipped (fact-checked; bookHidden) |
+| `posts/01-take-feast-scoop.md` | Lingura de la nuntă | shipped (fact-checked; bookHidden) |
+| `posts/01-take-pebbles.md` | Tăvi cu pietricele | shipped (fact-checked; bookHidden) |
+| `posts/01-take-player-piano.md` | Pianola | shipped (fact-checked; bookHidden) |
+| `posts/01-take-silk-cards.md` | Cartonașe de model pe mătase | shipped (fact-checked; bookHidden) |
+| `posts/01-take-stubborn-helper.md` | Ajutorul încăpățânat | shipped (fact-checked; bookHidden) |
+| `posts/01-take-water-wheel.md` | Roata de apă | shipped (fact-checked; bookHidden) |
+| `posts/01a-babbage-engines.md` | Motoarele lui Babbage | shipped (fact-checked) |
+| `posts/01b-jacquard-loom.md` | Războiul Jacquard | shipped (fact-checked) |
+| `posts/01c-why-mechanical-matters.md` | De ce contează calculul mecanic | shipped (fact-checked) |
 | `posts/02-relays-and-electromechanical-logic.md` | Relee și logica electromecanică | shipped (fact-checked; deep) |
 | `posts/03-the-vacuum-tube-era.md` | Era tuburilor vidate | shipped (fact-checked) |
 | `posts/04-why-the-transistor-had-to-happen.md` | De ce trebuia să apară tranzistorul | shipped (fact-checked) |
@@ -152,8 +165,8 @@ Conceptul și inspirația acestei lucrări îi aparțin lui Nayana Hettiarachchi
 - **Announcement MVP bodies:** Foreword + Phase 1 (01–04) + Attention (63) + glossary/home chrome in TH / SI / TA
 - Full remaining chapter bodies: after announcement (phased)
 - **Chinese (zh-Hans / zh-Hant), 2026-09-26:** locales wired; placeholder landing only. Pages come from the Chinese desk, written from Chinese primary sources. Not translated from English. Native-reader proofread before final.
-- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `00`–`34` (early chapters, batches 1–5; phase 5 string „5 — Magistralele și arhitectura sistemului” approved), `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
-- Last updated: 2026-11-05 (ro early chapters 29–34, batch 5)
+- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `00`–`34` (early chapters, batches 1–6; phase 5 string „5 — Magistralele și arhitectura sistemului” approved; batch 6 adds hub `01-what-is-this-thing`, `01a`–`01c`, and nine `01-take-*` pages; `01-mechanical-…` stays `draft: true`), `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
+- Last updated: 2026-11-05 (ro early hub / 01a–01c / takes, batch 6)
 
 ## Fact-check notes (ongoing)
 
