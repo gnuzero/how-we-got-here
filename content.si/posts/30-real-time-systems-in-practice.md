@@ -112,7 +112,7 @@ Bytes: `1F 85 51 E0 68 00 59 E0 F0 00 00 00 00 00 00 00`. Lab එකේ මූ�
 
 ### 5. VM terminal: සාමාන්‍ය-අරමුණු OS එකේ විචලනය මැනීම
 
-පහත VM terminal එක Linux 4.16 සහ BusyBox ධාවනය කරයි. මෙම විධාන අපි එම image එකේම (serial console හරහා) ධාවනය කළෙමු:
+ඉහත VM terminal එක Linux 4.16 සහ BusyBox ධාවනය කරයි. මෙම විධාන අපි එම image එකේම (serial console හරහා) ධාවනය කළෙමු:
 
 ```
 time awk 'BEGIN{for(i=0;i<100000;i++)s+=i; print s}'

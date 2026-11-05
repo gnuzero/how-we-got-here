@@ -68,7 +68,7 @@ UART එක idle වන විට රේඛාව **1** (mark) මට්ටම�
 
 **කාලය (9600 baud):** එක් bit එකක් = 1 / 9600 = **104.17 µs**. Frame එකකට bits 10 → 1.0417 ms. එබැවින් තත්පරයට අක්ෂර **960** ක් පමණි, 9600 / 8 = 1200 නොවේ. Start සහ stop bits නිසා 20% ක් "අමතර" වැය වේ.
 
-**ලබන්නා කරන දේ:** 1 → 0 වෙනස (start bit හි ආරම්භය) දුටු පසු bit කාලයෙන් භාගයක් (52 µs) බලා සිට start bit එක තවමත් 0 දැයි පරීක්ෂා කරයි. ඉන්පසු 104.17 µs වරක් බැගින් bits 8 කියවයි. ඒ නිසා clock දෙක සම්පූර්ණයෙන් සමාන නොවුණත්, frame එකක් තුළ පමණක් ගැළපීම ප්‍රමාණවත්ය. <!-- UNVERIFIED: mid-bit sampling at half a bit time after the start edge | no UART datasheet (e.g. 16550A) opened this round -->
+**ලබන්නා කරන දේ:** 1 → 0 වෙනස (start bit හි ආරම්භය) දුටු පසු bit කාලයෙන් භාගයක් (52 µs) බලා සිට start bit එක තවමත් 0 දැයි පරීක්ෂා කරයි. ඉන්පසු 104.17 µs වරක් බැගින් bits 8 කියවයි. ඒ නිසා clock දෙක සම්පූර්ණයෙන් සමාන නොවුණත්, frame එකක් තුළ පමණක් ගැළපීම ප්‍රමාණවත්ය. <!-- UNVERIFIED: mid-bit sampling at half a bit time after the start edge | no UART datasheet (e.g. 16550A) opened this round; TI PC16550D datasheet (SNLS378) opened in fact-check: 16x RCLK and "False Start Bit Detection" only, no mid-bit wording -->
 
 ### 3. RS-232 වෝල්ටීයතා: 1 යනු සෘණ
 
@@ -115,7 +115,7 @@ echo Hi | hexdump -C
 - `stty -F /dev/ttyS0`: `speed 9600 baud`.
 - `echo Hi | hexdump -C`: `48 69 0a` — 'H' = 0x48 (§2), 'i' = 0x69, newline = 0x0a.
 
-පිටුවේ VM terminal එක browser එකේ ධාවනය වන්නේ VGA console (`/dev/tty1`) මතය, serial port එක මත නොවේ. එබැවින් ඔබට `dmesg`, `/proc` සහ `hexdump` විධාන එලෙසම ක්‍රියා කළ යුතුය. `stty -F /dev/ttyS0` ද device එක ඇති නිසා ක්‍රියා කළ යුතුය. <!-- UNVERIFIED: that stty -F /dev/ttyS0 behaves the same when run from the browser lab's tty1 session | we ran it only over the serial console in node v86 -->
+පිටුවේ VM terminal එක browser එකේ ධාවනය වන්නේ VGA console (`/dev/tty1`) මතය, serial port එක මත නොවේ. එබැවින් ඔබට `dmesg`, `/proc` සහ `hexdump` විධාන එලෙසම ක්‍රියා කළ යුතුය. `stty -F /dev/ttyS0` ද ක්‍රියා කරයි: `-F` මගින් stty device එකම විවෘත කරන නිසා, විධානය ධාවනය කරන terminal එක වැදගත් නොවේ. (අපි එය `/dev/tty1` ආදානය ලෙස යොදාද ධාවනය කළෙමු. ප්‍රතිදානය එලෙසමයි: `speed 9600 baud`.)
 
 ### 7. පැන්සලෙන් අභ්‍යාසය
 

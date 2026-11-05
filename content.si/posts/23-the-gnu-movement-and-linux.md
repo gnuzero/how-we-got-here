@@ -97,7 +97,7 @@ kernel.org හි තවමත් ඇති මුල්ම නිකුතු �
 
 **[RELNOTES-0.01](https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.01)** ("Copyrights etc" කොටස): kernel එක "(C) 1991 Linus Torvalds" ය. නැවත බෙදා හැරීමට කොන්දේසි තුනකි: සම්පූර්ණ මූලාශ්‍රය ලබා ගත හැකි විය යුතුය, කතුහිමි දැන්වීම් නොවෙනස්ව තිබිය යුතුය, සහ "You may not distibute this for a fee, not even "handling" costs" (මුල් අක්ෂර වින්‍යාසය එලෙසමයි). ඊට පසු එය මෙසේ කියයි: "Sadly, a kernel by itself gets you nowhere. To get a working system you need a shell, compilers, a library etc." සහ "Most of the tools used with linux are GNU software and are under the GNU copyleft." එම නිකුතුවම gcc මගින් compile කළ යුතු බවත් (Torvalds භාවිත කළේ 1.40), test කිරීමට `bash` binary එකක් ඇතුළත් බවත් සටහන කියයි.
 
-**[RELNOTES-0.12](https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.12)** ("COPYRIGHT" කොටස): "The Linux copyright will change", "removing the "you may not distribute it for money" condition", සහ "The GNU copyleft takes effect as of the first of February". <!-- UNVERIFIED: 0.12 relicensing year 1992 (the notes say "first of February" but print no year; the kernel.org directory listing dates the file 23-Jun-1993, an upload date) | RELNOTES-0.12 and the kernel.org Historic/old-versions listing -->
+**[RELNOTES-0.12](https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.12)** ("COPYRIGHT" කොටස): "The Linux copyright will change", "removing the "you may not distribute it for money" condition", සහ "The GNU copyleft takes effect as of the first of February". නිකුතු සටහන්වල වර්ෂය මුද්‍රණය කර නැත. Wikipedia හි "History of Linux" ලිපිය මෙම සටහන් **1992 ජනවාරි 5** දිනැති ලෙස උපුටා දක්වමින්, GPL බලාත්මක වූයේ **1992 පෙබරවාරි 1** සිට බව කියයි. Torvalds ද 2000 දී LKML හි ලියා ඇත්තේ kernel එකේ බලපත්‍රය "has been there since 0.12 or so" ලෙසයි.
 
 | | 0.01 | 0.12 සිට |
 |---|---|---|
@@ -135,7 +135,7 @@ ld-uClibc-1.0.30.so
 මෙය කියවන හැටි:
 - **Kernel එක Linux ය** (4.16.13). එය GNU compiler එකක් වන gcc 7.3.0 මගින් compile කර ඇත.
 - **Userland එක GNU නොවේ.** `ls` සහ `sh` යන දෙකම BusyBox නම් එක් binary එකකට symbolic links ය. C පුස්තකාලය glibc (GNU) නොව uClibc ය. `gcc` සහ `bash` ද මෙහි නැත (`which gcc bash` කිසිවක් නොපෙන්වයි).
-- එසේ වුවද `uname -o` මුද්‍රණය කරන්නේ "GNU/Linux" යි. එය kernel එකේ build එකේ සැකසුමකි (configuration), userland එක GNU ද යන්න පරීක්ෂා කිරීමක් නොවේ. <!-- UNVERIFIED: that BusyBox's uname -o prints a compile-time constant rather than inspecting the userland | observed output only; BusyBox 1.28.4 source not opened -->
+- එසේ වුවද `uname -o` මුද්‍රණය කරන්නේ "GNU/Linux" යි. එය kernel එකෙන් එන්නේ නැත: BusyBox හි `uname` මෙම පෙළ compile කරන විටම සවි කළ සැකසුමකින් (`CONFIG_UNAME_OSNAME`, පෙරනිමි අගය "GNU/Linux") මුද්‍රණය කරයි. එය userland එක GNU ද යන්න පරීක්ෂා කිරීමක් නොවේ (BusyBox 1.28.4 මූලාශ්‍රය, `coreutils/uname.c`).
 
 එබැවින් මෙම VM එක ප්‍රධාන පෙළේ "GNU/Linux" නාම විවාදයට රසවත් ප්‍රතිවිරුද්ධ උදාහරණයකි: Linux kernel එකට GNU userland අනිවාර්ය නොවේ. කුඩා embedded පද්ධතිවල බොහෝවිට ඇත්තේ මෙවැනි Linux + BusyBox එකතුවකි. 1991 දී එසේ නොවීය: 0.01 නිකුතු සටහනටම අනුව Linux ධාවනය කිරීමට gcc සහ bash අවශ්‍ය විය.
 
@@ -163,6 +163,8 @@ GNU හි සැලසුම් කළ kernel එක Hurd ය. GNU හි "[Lin
 - Richard Stallman, GNU initial announcement, 27 September 1983: https://www.gnu.org/gnu/initial-announcement.html ; GNU Manifesto (1985): https://www.gnu.org/gnu/manifesto.html ; "Linux and the GNU System": https://www.gnu.org/gnu/linux-and-gnu.html
 - GNU General Public License, version 2 (June 1991): https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt (§0, §1, §2(b), §3(a)–(c)).
 - Linus Torvalds, RELNOTES-0.01 සහ RELNOTES-0.12, kernel.org Historic archive: https://www.kernel.org/pub/linux/kernel/Historic/old-versions/
+- 0.12 දිනය සඳහා (ද්විතීයික): Wikipedia, "History of Linux": https://en.wikipedia.org/wiki/History_of_Linux ; Linus Torvalds, "Linux-2.4.0-test8", LKML, 2000 සැප්තැම්බර් 8.
+- BusyBox 1.28.4, `coreutils/uname.c` (`CONFIG_UNAME_OSNAME`): https://git.busybox.net/busybox/tree/coreutils/uname.c?h=1_28_4
 - මෙම පිටුවේ vm-terminal lab image එක (`static/labs/vm-terminal/assets/linux4.iso`, BusyBox 1.28.4, Linux 4.16.13, uClibc 1.0.30): §5 ප්‍රතිදානය එම image එක v86 හි boot කර serial console එකෙන් ලබා ගත් එකකි. බ්‍රවුසරයේ lab එක VGA තිරය භාවිත කරයි. විධාන එකමය, නමුත් prompt එකේ පෙනුම වෙනස් විය හැකිය.
 - §3 හි අවස්ථා හතර සහ §4 හි වගුව අප සකස් කළ ආදර්ශ (illustrative) විශ්ලේෂණ වේ.
 
