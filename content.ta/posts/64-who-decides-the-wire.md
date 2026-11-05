@@ -39,6 +39,22 @@ Packets protocol numbers, port numbers, address blocks, ASN மதிப்ப�
 
 வலையமைப்பு ஒரு நபரின் நோட்புக்கைத் தாண்டி அளவிட்டதும், எண் வளங்கள் *வகை* ஆல் பிரிந்தன. Protocol parameters IANA-வுடன் இருந்தன. IP address இடம் Regional Internet Registries நோக்கி நகர்ந்தது — வட அமெரிக்காவின் பெரும்பகுதிக்கு ARIN (1997); RIPE NCC, APNIC, LACNIC மற்றும் AFRINIC மற்ற பிராந்தியங்களுக்கு அதே *வகை*, சிலவற்றின் கீழ் அந்தப் பிராந்தியம் தேர்ந்தெடுத்த மாதிரியில் national அல்லது local Internet registries (NIR-கள்). Pattern தான் முக்கியம்: அரிய, தனித்துவ அடையாளங்களுக்கு எல்லோரும் சுட்டிக்காட்டக்கூடிய ஒரு பாதுகாவலர் தேவை. Door out: [iana.org](https://www.iana.org/), [arin.net](https://www.arin.net/).
 
+## RIR-கள்: ஐந்து பிராந்தியங்கள், ஒரே வகை வேலை
+
+IP முகவரிகளும் AS எண்களும் IANA-விலிருந்து ஐந்து Regional Internet Registry-களுக்குத் தொகுதிகளாகச் செல்கின்றன; ஒவ்வொன்றும் தன் பிராந்தியத்தில் உள்ள ISP-களுக்கும் நிறுவனங்களுக்கும் பகிர்ந்தளிக்கிறது:
+
+| RIR | பிராந்தியம் (சுருக்கமாக) |
+|---|---|
+| ARIN | வட அமெரிக்காவின் பெரும்பகுதி |
+| RIPE NCC | ஐரோப்பா, மத்திய கிழக்கு, மத்திய ஆசியாவின் சில பகுதிகள் |
+| APNIC | ஆசிய-பசிபிக் |
+| LACNIC | இலத்தீன் அமெரிக்கா, கரீபியனின் சில பகுதிகள் |
+| AFRINIC | ஆப்பிரிக்கா |
+
+இலங்கையில் இருந்து பார்த்தால்: APNIC ஆசியா, ஓசியானியா முழுவதும் 56 பொருளாதாரங்களுக்குச் சேவை செய்கிறது; அவற்றை நான்கு துணைப்பிராந்தியங்களாகப் பிரிக்கிறது. அதன் "South Asia" பட்டியலில் இலங்கை (LK), இந்தியா (IN), பங்களாதேஷ், மாலத்தீவு, நேபாளம், பாகிஸ்தான், பூட்டான், ஆப்கானிஸ்தான் ஆகியவை உள்ளன ([APNIC Service Region](https://www.apnic.net/about-apnic/corporate-documents/documents/corporate/apnic-service-region/)). எனவே இலங்கையில் ஒரு ISP-க்கு IP முகவரி தேவைப்பட்டால் அது APNIC-இடமிருந்து வருகிறது.
+
+ஆங்கிலப் பதிவு குறிப்பிடும் "சில பிராந்தியங்களுக்குக் கீழ் தேசியப் பதிவகங்கள்" (NIR) என்பதற்கு அருகிலுள்ள எடுத்துக்காட்டு இந்தியா: **IRINN** (Indian Registry for Internet Names and Numbers) இந்தியாவின் National Internet Registry; அதை **NIXI** (National Internet Exchange of India) நடத்துகிறது; APNIC அதை 2012 மார்ச்சில் அங்கீகரித்தது ([IRINN — About Us](https://www.irinn.in/pages/static/about_us.html)). APNIC பிராந்தியத்தில் ஏழு NIR-கள் உள்ளன; இந்தியாவில் ஒரு நிறுவனம் IRINN அல்லது APNIC — இரண்டில் ஒன்றிடமிருந்து வளங்களைப் பெறலாம், இரண்டிடமிருந்தும் அல்ல ([APNIC — National Internet Registries](https://www.apnic.net/about-apnic/organization/apnic-region/national-internet-registries/)).
+
 ## எண்கள் ஏன் அரியவை — கணக்கில்
 
 | அடையாளம் | அகலம் (மூலம்) | சாத்தியமான மதிப்புகள் |
