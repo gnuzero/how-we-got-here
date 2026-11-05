@@ -1,9 +1,11 @@
 ---
-title: "From Relays to Attention: How We Got Here"
+title: "From copying a page to pasting it, pigeons to cables to satellites, relays to machines that ask for attention: how we got here."
 type: docs
 ---
 
-# From Relays to Attention: How We Got Here
+# From copying a page to pasting it, pigeons to cables to satellites, relays to machines that ask for attention:
+
+**how we got here.**
 
 An interactive journey — not an encyclopedia. You live through systems and touch them; you do not collect articles.
 
