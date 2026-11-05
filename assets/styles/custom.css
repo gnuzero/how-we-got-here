@@ -52,3 +52,14 @@ html:lang(zh-Hant) {
   font-style: normal;
   font-weight: 600;
 }
+
+/*
+  Long unbroken words (e.g. Tamil compounds in titles at 32px, list summaries)
+  wider than a phone viewport pushed the whole page sideways at 375px.
+  break-word only splits a word that cannot fit on its own line, so
+  titles that already fit (every desktop width, other locales) are
+  unchanged. Tables already scroll inside themselves (theme markdown.css).
+*/
+.markdown {
+  overflow-wrap: break-word;
+}
