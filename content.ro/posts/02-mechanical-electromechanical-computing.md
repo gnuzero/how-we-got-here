@@ -22,13 +22,13 @@ Menabrea, în *Sketch of the Analytical Engine invented by Charles Babbage, Esq.
 
 Computer History Museum notează că Babbage a proiectat motoarele, dar nu le-a construit complet în epoca lui; prima Difference Engine No. 2 terminată după desenele originale a fost finalizată la Londra în 2002 — circa 8.000 de piese, cinci tone, unsprezece picioare lungime (Computer History Museum, „The Babbage Engine”, [computerhistory.org/babbage/](https://www.computerhistory.org/babbage/), accesat 2026-11-05).
 
-Următorul pas din *Sketch* e **Analytical Engine**. Menabrea separă clar două organe: *mill* (unitatea aritmetică) și *store* (depozitul de numere), plus două specii de cartonașe perforate — *operation cards* (ce operație se face) și cartonașe care indică pe ce variabile / unde se scriu rezultatele (Menabrea / Lovelace, *Sketch*, secțiunile despre mill, store și cards, Fourmilab). Schimbi șirul de cartonașe, schimbi calculul — fără să reconstruiești mașina. Asta e, în limbajul de azi, separarea programului de datapath.
+Următorul pas din *Sketch* e **Analytical Engine**. Menabrea separă clar două organe: *mill* (unitatea aritmetică) și *store* (depozitul de numere), plus două specii de cartele perforate — *operation cards* (ce operație se face) și cartele care indică pe ce variabile / unde se scriu rezultatele (Menabrea / Lovelace, *Sketch*, secțiunile despre mill, store și cards, Fourmilab). Schimbi șirul de cartele, schimbi calculul — fără să reconstruiești mașina. Asta e, în limbajul de azi, separarea programului de datapath.
 
 Babbage a anunțat pentru prima dată Difference Engine într-o lucrare citită la Royal Astronomical Society pe 14 iunie 1822, *A note respecting the application of machinery to the calculation of astronomical tables* (Science Museum, „Charles Babbage's Difference Engines and the Science Museum”, [sciencemuseum.org.uk](https://www.sciencemuseum.org.uk/objects-and-stories/charles-babbages-difference-engines-and-science-museum), accesat 2026-11-05).
 
-## De ce contează cartonașele
+## De ce contează cartelele
 
-*Sketch* insistă că șirul de operații comandate de cartonașe și rezultatele pot fi tratate ca o dezvoltare analitică pe care mașina o execută pas cu pas (Menabrea / Lovelace, *Sketch*, pasajele despre „series of operations commanded by the cards”, Fourmilab). Lovelace, în *Notes*, împinge implicația: dacă simbolurile de pe coloane nu sunt neapărat „numere”, ci orice simboluri pe care le-ați definit, mașina poate manipula și altceva decât aritmetică pură — argumentul clasic „nu doar numere” (Lovelace, *Notes* pe Menabrea, Fourmilab). Desk-ul ro nu reeditează aici programul Bernoulli; ușa de ieșire e textul primar de pe Fourmilab.
+*Sketch* insistă că șirul de operații comandate de cartele și rezultatele pot fi tratate ca o dezvoltare analitică pe care mașina o execută pas cu pas (Menabrea / Lovelace, *Sketch*, pasajele despre „series of operations commanded by the cards”, Fourmilab). Lovelace, în *Notes*, împinge implicația: dacă simbolurile de pe coloane nu sunt neapărat „numere”, ci orice simboluri pe care le-ați definit, mașina poate manipula și altceva decât aritmetică pură — argumentul clasic „nu doar numere” (Lovelace, *Notes* pe Menabrea, Fourmilab). Desk-ul ro nu reeditează aici programul Bernoulli; ușa de ieșire e textul primar de pe Fourmilab.
 
 ## Plafonul mecanic
 
