@@ -128,9 +128,18 @@
 - **Still NEVERIFICAT (11):** BSD/SysV omission (approved); 0.12 release date; IRE page numbers; x86-64 paging/TLB/NX (SDM 403); /proc/self/maps; VM vs container cost; container escapes; x86 asm examples; Hopper/bitsavers PDF; compiler stages; HotSpot/V8/CLR.
 - **Discrepancy flagged on page:** Atlas 32 page positions (Kilburn) vs "16 pages" (Multicians).
 
+### Early chapters 29–34 (batch 5, fact-checked 2026-11-05)
+
+- **Phase 5 string** `5 — Magistralele și arhitectura sistemului` approved (mirrors EN; & → și).
+- **Primaries opened (batch 5):** Liu & Layland 1973 (UPenn copy); Reeves 1997 (UNC + Wayback); Jones 1997 (Wayback MSR); PCI-SIG FAQ (3.0 double, Gen 4/5), Webinar Rev 6, 30 Years webinar (2023); UTCN C12 PCIe course; JEDEC DDR4 PR 2012, JESD79-4 (2012), DDR5 PR 14 Jul 2020; Micron DRAM module guide Rev. M.
+- **Recomputed:** m(2^{1/m}−1) = 1, 0.8284, 0.7798, 0.7568, 0.7435, 0.7177, ln 2 (matches si-b7); 3-task example U=0.75, demand 6 ≤ 8; n=2 boundary 0.8284; 8b/10b and 128b/130b rates; Gen5 126.03/63 GB/s; 2^32.
+- **Deferred (Lucas):** DO-178C, IEEE Annals 1991 — no claim relies on them. IBM AT reconciled to PCI-SIG 30 Years slide (8→16 bits @ 8–10 MHz).
+- **Still NEVERIFICAT (6):** control-loop timing; microcontroller no-cache generalisation; address/data/control triad label; IBM AT exact clock; ISA skew physics wording; DDR1 JESD79.
+- **Conflict stated on page:** Pathfinder patch — Jones/Wilner (VxWorks C interpreter) vs Reeves (specialized patch process; page follows Reeves).
+
 ## Not yet (pending)
 
-- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (batch 5: ch. 29–34 next)
+- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (next: early chapters 36+ per PLAN)
 
 ## Notes
 
