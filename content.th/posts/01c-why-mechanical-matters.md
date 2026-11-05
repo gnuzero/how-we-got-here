@@ -16,7 +16,7 @@ schematics: "Diagram: instruction sequence + execution unit + store — logical 
 
 <figure>
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Charles_Babbage%27s_Difference_Engine_No._2_%282586166238%29.jpg" alt="เครื่องผลต่างหมายเลข 2 เครื่องที่ 2 ที่พิพิธภัณฑ์ประวัติศาสตร์คอมพิวเตอร์" loading="lazy" width="1280">
-<figcaption>เครื่องผลต่างหมายเลข 2 เครื่องที่ 2 (Serial #2) (Computer History Museum) — สร้างในคริสต์ศตวรรษที่ 20 ตามเกณฑ์ความคลาดเคลื่อนของคริสต์ศตวรรษที่ 19 <!-- UNVERIFIED: Serial #2 "built in the 20th century" | Science Museum DE2 Technical Description PDF + CHM "A Modern Sequel" page say the second engine was completed in 2008 (21st century); EN caption kept as-is --> ภาพ: <a href="https://commons.wikimedia.org/wiki/File:Charles_Babbage%27s_Difference_Engine_No._2_(2586166238).jpg">Erik Pitti</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
+<figcaption>เครื่องผลต่างหมายเลข 2 เครื่องที่ 2 (Serial #2) (Computer History Museum) — สร้างเสร็จใน ค.ศ. 2008 ตามเกณฑ์ความคลาดเคลื่อนของคริสต์ศตวรรษที่ 19 ภาพ: <a href="https://commons.wikimedia.org/wiki/File:Charles_Babbage%27s_Difference_Engine_No._2_(2586166238).jpg">Erik Pitti</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
 </figure>
 
 สิ่งที่การคำนวณเชิงกล *ทำไม่ได้* ในช่วงชีวิตของแบบเบจ คือการขยายขนาด ชุดเฟืองมีแรงเสียดทาน ระยะคลอน (backlash) และความคลาดเคลื่อนในการผลิตที่สะสมกัน (tolerance stack-up) ความแม่นยำที่เพิ่มขึ้นทุกหลักทำให้เครื่องสร้างให้เชื่อถือได้ยากขึ้น เพดานนั้น — ไม่ใช่การขาดไอเดีย — คือสิ่งที่ผลักการคำนวณไปสู่การสวิตช์ด้วยไฟฟ้า
