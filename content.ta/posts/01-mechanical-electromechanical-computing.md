@@ -2,7 +2,7 @@
 title: "இயந்திர மற்றும் மின்னியந்திர கணினி"
 weight: 2
 date: 2026-01-01
-draft: false
+draft: true
 phase: "1 — அடித்தளங்கள்: இயந்திரத்திலிருந்து வெற்றிடக் குழாய் கணினி வரை"
 series_index: 1
 tags: []
@@ -144,7 +144,7 @@ Computer History Museum-இன் "The Engines" பக்கத்திலி�
 
 | தமிழ் | English |
 |---|---|
-| வேறுபாட்டுப் பொறி | Difference Engine |
+| வித்தியாசப் பொறி | Difference Engine |
 | பகுப்புப் பொறி | Analytical Engine |
 | முடிவுள்ள வேறுபாடுகள் முறை | method of finite differences |
 | பல்லுறுப்புக் கோவை | polynomial |
