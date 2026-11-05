@@ -3,3 +3,10 @@ other = "How We Got There"
 
 [foreword]
 other = "Foreword"
+
+# Lab embed chrome (layouts/shortcodes/lab.html). Other locales fall back to English until a desk adds these.
+[labIframeTitle]
+other = "Interactive lab: {{ .Type }}"
+
+[labOpenNewTab]
+other = "Open lab in new tab ↗"
