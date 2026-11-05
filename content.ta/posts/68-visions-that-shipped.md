@@ -1,9 +1,9 @@
 ---
-title: "கப்பலுக்குச் சென்ற பார்வைகள்"
+title: "நடைமுறைக்கு வந்த பார்வைகள்"
 weight: 69
 date: 2026-09-06
 draft: false
-phase: "கப்பலுக்குச் சென்ற பார்வைகள்"
+phase: "நடைமுறைக்கு வந்த பார்வைகள்"
 series_index: 68
 tags: []
 summary: "பயணத்திலிருந்து முன் இணைப்புகள் — Cisco, Gates, Jobs, GNU+Linus, Elon, Bezos stack-ஐ வாழும் platforms ஆக்கிய வகைகளின் விதைகள்"
@@ -28,7 +28,7 @@ schematics: "Diagram: protocol/OS/hardware spine → forward-link seeds (interne
 
 ## Cisco — வணிகமாக Internetworks
 
-பதிவுகள் 39–41 நெறிமுறைப் பந்தயம். **Cisco** (Leonard Bosack மற்றும் Sandy Lerner, 1980களின் நடுப்பகுதி) multiprotocol routing நீங்கள் வாங்கக்கூடிய பொருளாகும்போது நடப்பது: internetwork கதையின் வணிகப் பொருளாக router. உறவினர்களைத் தருவித்து நிறுத்துங்கள் — மற்ற networking விற்பனையாளர்களும் carrier உபகரண வரிசைகளும் அதே *வகை* (பன்முக nets இடையே glue-ஐக் கப்பலுக்கு அனுப்புங்கள்), மனப்பாடப் பட்டியல் அல்ல.
+பதிவுகள் 39–41 நெறிமுறைப் பந்தயம். **Cisco** (Leonard Bosack மற்றும் Sandy Lerner, 1980களின் நடுப்பகுதி) multiprotocol routing நீங்கள் வாங்கக்கூடிய பொருளாகும்போது நடப்பது: internetwork கதையின் வணிகப் பொருளாக router. உறவினர்களைத் தருவித்து நிறுத்துங்கள் — மற்ற networking விற்பனையாளர்களும் carrier உபகரண வரிசைகளும் அதே *வகை* (பன்முக nets இடையே glue-ஐ ஒரு தயாரிப்பாக வெளியிடுங்கள்), மனப்பாடப் பட்டியல் அல்ல.
 
 **Router என்ன கணக்கிடுகிறது.** RFC 4632 (CIDR): "Forwarding in the Internet is done on a longest-match basis." ஒரு சிறு அட்டவணை (எடுத்துக்காட்டு மதிப்புகள்):
 
@@ -67,7 +67,7 @@ schematics: "Diagram: protocol/OS/hardware spine → forward-link seeds (interne
 
 ## GNU + Linus — இந்தப் புத்தகம் ஏற்கனவே நிற்கும் Free/Open Stack
 
-பதிவு 23 ஏற்கனவே **Richard Stallman**-ஐ (GNU, GPL) மற்றும் **Linus Torvalds**-ஐ (Linux kernel, 1992 ஆரம்பத்தில் GPL relicensing) பெயரிட்டது. புத்தக முடிவுக்கு முன் இணைப்பு மட்டும் தேவை: நவீன platforms கீழ் servers, clouds, phones மற்றும் toolchains அதிகமாக அந்த free/open stack மீது அமர்கின்றன. கப்பலுக்குச் சென்ற பார்வை ஒரு பிராண்ட் அல்ல — அது மீதமுள்ள தொழில் கட்டிய சட்ட மற்றும் பொறியியல் பொதுவெளி.
+பதிவு 23 ஏற்கனவே **Richard Stallman**-ஐ (GNU, GPL) மற்றும் **Linus Torvalds**-ஐ (Linux kernel, 1992 ஆரம்பத்தில் GPL relicensing) பெயரிட்டது. புத்தக முடிவுக்கு முன் இணைப்பு மட்டும் தேவை: நவீன platforms கீழ் servers, clouds, phones மற்றும் toolchains அதிகமாக அந்த free/open stack மீது அமர்கின்றன. நடைமுறைக்கு வந்த பார்வை ஒரு பிராண்ட் அல்ல — அது மீதமுள்ள தொழில் கட்டிய சட்ட மற்றும் பொறியியல் பொதுவெளி.
 
 **GPL எதை உறுதி செய்கிறது.** GNU-வின் வரையறைப்படி நான்கு அடிப்படைச் சுதந்திரங்கள்:
 

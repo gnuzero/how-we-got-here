@@ -1,5 +1,7 @@
 # Translation Plan — Announcement MVP (TH / SI / TA)
 
+> **Language authority lock, 2026-09-26 (Nayana)** — see `VISION.md`; it wins where this plan conflicts. English and Chinese are co-authoritative source languages. Other locales are not translations: each fills its language's information gap, from first principles. The MVP list below is the historical announcement scope, not a translate-English mandate.
+
 Short plan only. Titles, descriptions, and attribution live in **`TRANSLATIONS.md`** — use those; do not reinvent.
 
 ## Chosen Hugo i18n approach
@@ -24,13 +26,15 @@ Config shape (when wiring later — not done in this commit):
 | Code | Language | Role |
 |------|----------|------|
 | `en` | English | Default (existing `content/`) |
-| `th` | Thai | Announcement MVP |
-| `si` | Sinhala | Announcement MVP |
-| `ta` | Tamil | Announcement MVP |
+| `th` | Thai | Announcement MVP; gap-filling locale |
+| `si` | Sinhala | Announcement MVP; gap-filling locale |
+| `ta` | Tamil | Announcement MVP; gap-filling locale |
+| `zh-hans` | Chinese, Simplified (`zh-Hans`) | Co-authoritative source; master text |
+| `zh-hant` | Chinese, Traditional (`zh-Hant`) | Derived from `zh-hans` (OpenCC `s2twp` + terminology review) |
 
 ## File placement conventions
 
-Mirror the English relative path under each language’s `contentDir`:
+Mirror the path **shape** (same section names, `posts/`) under each language’s `contentDir`. Which pages a locale has follows its own sources and gap, not the English page list. Same filename = Hugo links the pages in the language switcher; it does not mean one is a translation of the other.
 
 - **Chapters / posts:** `content.<lang>/posts/<same-filename>.md`
 - **Home:** `content.<lang>/_index.md`
@@ -67,6 +71,13 @@ For each of `th`, `si`, `ta`, create the same relative paths (bodies next; title
 - `i18n/<lang>.toml` (series title / foreword label and other chrome as needed)
 
 English references: `content/posts/00-foreword.md`, `01`–`04`, `63-attention-is-all-you-need.md`, `99-glossary.md`, `content/_index.md`.
+
+## Chinese (zh-Hans / zh-Hant)
+
+- Hugo keys `zh-hans` / `zh-hant`, `locale` `zh-Hans` / `zh-Hant` (emitted as `<html lang>`), `contentDir` `content.zh-hans` / `content.zh-hant`, UI strings `i18n/zh-hans.toml` / `i18n/zh-hant.toml`.
+- Write in `content.zh-hans/`. Derive the same relative path in `content.zh-hant/` with OpenCC `s2twp`, then do the terminology review (软件/軟體, 网络/網路, 内存/記憶體, 程序/程式, …).
+- Native-reader proofread before any Chinese page is marked final.
+- CJK font stacks and line-height: `assets/styles/custom.css`, scoped by `:lang(zh-Hans)` / `:lang(zh-Hant)`.
 
 ## Workflow
 
