@@ -8,7 +8,7 @@ they never edit lab HTML/JS and never fork a lab per language.
    code is Hugo's `site.Language.Lang`: `en`, `th`, `si`, `ta`, `ro`, `zh-hans`, `zh-hant`
    (lowercase, exactly the keys under `[languages]` in `hugo.toml`). The "Open lab in new tab"
    link carries the same `?lang=`. The iframe title and that link text come from Hugo
-   `i18n/<lang>.toml` keys `labIframeTitle` (`{{ .Type }}` = lab type) and `labOpenNewTab`;
+   `i18n/<lang>.toml` keys `labIframeTitle` (`{{ .Type }}` = human display name from the shortcode map, e.g. "Difference Engine"; optional per-locale override key `labDisplayName-<type>`) and `labOpenNewTab`;
    locales without them fall back to English.
 2. A converted lab loads `<script src="../_shared/i18n.js"></script>` in `<head>` (relative
    path, so it works under any baseURL, `hugo server`, GitHub Pages and the built `public/`).
@@ -17,7 +17,7 @@ they never edit lab HTML/JS and never fork a lab per language.
    - `data-i18n="key"` → element `textContent`
    - `data-i18n-html="key"` → element `innerHTML` (only for keys ending `_html`, e.g. text with links)
    - `data-i18n-attr="title:key1;aria-label:key2"` → attributes
-   - sets `<html lang>` to the locale actually loaded (`en` if it fell back)
+   - sets `<html lang>` to the locale actually loaded (`en` if it fell back); `zh-hans`/`zh-hant` become BCP-47 `zh-Hans`/`zh-Hant` on the attribute only (file names stay lowercase)
    - exposes `t(key, vars)` (also `LabI18n.t`) for JS-generated text and `LabI18n.ready`
      (a Promise; start the lab's first render in `LabI18n.ready.then(...)`).
 4. Fallbacks, per key: locale file → `strings.en.json` → the English text already in the
