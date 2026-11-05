@@ -34,7 +34,7 @@ summary: "先致谢：本书中文版所依据的已出版资料、机构与图�
 - 朱邦复，《智慧之旅》第三章。[链接](http://open-lit.com/html/lit/506/18353.html)
 - 中国计算机学会，“中国计算机历史记忆”。[链接](https://www.ccf.org.cn/Computing_history/Full_List/2019/First_class/2020-03-24/697778.shtml)
 
-机构入口：故宫博物院[藏品](https://www.dpm.org.cn/collection/clock/234581.html)；中国丝绸博物馆[网站](https://www.chinasilkmuseum.com/cs/info_164.aspx?itemid=30809)；清华大学科学博物馆[网站](https://tsm.tsinghua.edu.cn/?p=9500)。
+机构入口：故宫博物院[藏品](https://www.dpm.org.cn/collection/clock/234581.html)；中国丝绸博物馆[网站](https://www.chinasilkmuseum.com/cs/info_164.aspx?itemid=30809)；清华大学科学博物馆[网站](https://web.archive.org/web/20260316000604/https://tsm.tsinghua.edu.cn/?p=9500)。
 
 地图：[维基百科](https://zh.wikipedia.org/)。
 

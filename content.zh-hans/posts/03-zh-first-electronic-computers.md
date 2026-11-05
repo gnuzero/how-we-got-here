@@ -31,7 +31,7 @@ schematics: "Timeline diagram 1952-1979: 1952 group; 1956 twelve-year plan and f
 
 “中国用算盘算出了原子弹”，这个说法流传很广，英文世界也常这么讲。中国科学院自然科学史研究所的徐祖哲、司宏伟 2025 年在《中国科学院院刊》上明确指出，这类说法“误导了公众”：原子弹的大量课题用的是手摇计算机和计算所的 104 电子管计算机，日夜运算，“一些边缘题只得使用算盘作为辅助工具”。
 
-手摇计算机也有名有姓。中国国家博物馆藏有邓稼先团队用过的一台“上海通用”201 型，编号 34695；清华大学科学博物馆藏有一台飞鱼牌 JSY-20，1964 年由上海计算机打字机厂生产，是 221 厂退役转隶时转交青海大学的科研仪器之一，2018 年由青海大学基础部捐赠；据德国 Rechnerlexikon，它是阶梯轴（莱布尼茨轮）式机械计算器。著名的“九次计算”，各方说法并不一致：清华的展签说四台飞鱼牌手摇机日夜连轴转，算了九天；旗帜网说九遍用了九个多月（国家博物馆的英文说明只说算了九次，未给时长）；九三学社的材料说用的是“几台电动计算机和手摇计算机”，历时将近一年。
+手摇计算机也有名有姓。中国国家博物馆藏有邓稼先团队用过的一台“上海通用”201 型，编号 34695；清华大学科学博物馆藏有一台飞鱼牌 JSY-20，1964 年由上海计算机打字机厂生产，由青海大学捐赠；据德国 Rechnerlexikon，它是阶梯轴（莱布尼茨轮）式机械计算器。著名的“九次计算”，各方说法并不一致：清华的展签说四台飞鱼牌手摇机日夜连轴转，算了九天；旗帜网说九遍用了九个多月（国家博物馆的英文说明只说算了九次，未给时长）；九三学社的材料说用的是“几台电动计算机和手摇计算机”，历时将近一年。
 
 真正的瓶颈是机时。1960 年，738 厂给九所提供了一台 104 机，于敏所在的小组每周只能争取到 6 小时；“596”（第一颗原子弹）的计算多排在晚 6 点到早 6 点的夜班。1963 年，用机器语言编写的“596L”程序在 104 机上一次通过。论文作者还指出，“因为核武器研制计算机属于机密”，计算机界多年闭口不谈，这些贡献才少为人知。
 
@@ -58,10 +58,9 @@ schematics: "Timeline diagram 1952-1979: 1952 group; 1956 twelve-year plan and f
 - 中国科学技术大学档案文博院，《中国第一台通用数字电子计算机》（English: China's first general-purpose digital electronic computer），2023-09-03。[链接](https://arch.ustc.edu.cn/2023/0903/c30534a611014/page.htm)
 - 中国计算机学会，《国产441B晶体管计算机文档（讲义）》（English: Documents (lecture notes) of the Chinese-made 441B transistor computer），中国计算机历史记忆。[链接](https://www.ccf.org.cn/Computing_history/Full_List/2018/Second_class/2019-02-18/660377.shtml)
 - National Museum of China，“Hand-cranked calculator used by Deng Jiaxian and his team”（中文：邓稼先团队使用的手摇计算机），2020-08-06。[链接](https://en.chnmuseum.cn/collections_577/collection_highlights_608/objects_of_chinese_modern_history_611/202008/t20200806_246811.html)
-- 清华大学科学博物馆，《飞鱼牌JSY-20型计算机》（English: The Flying Fish JSY-20 calculator），2020-02-17。[链接](https://tsm.tsinghua.edu.cn/?p=1620)
-- 清华大学科学博物馆，《国产飞鱼牌JSY-20型手摇计算器》藏品页（English: Tsinghua Science Museum collection page for the JSY-20, with its provenance from Factory 221 via Qinghai University）。[链接](https://tsm.tsinghua.edu.cn/?p=2842)
+- 清华大学科学博物馆，《飞鱼牌JSY-20型计算机》（English: The Flying Fish JSY-20 calculator），2020-02-17。[链接（存档）](https://web.archive.org/web/20251211085405/https://tsm.tsinghua.edu.cn/?p=1620)
 - Rechnerlexikon，“Shanghai Calculator JSY-20”（中文：德国机械计算器百科 JSY-20 词条）。[链接](https://rechnerlexikon.de/en/artikel/Shanghai_Calculator_JSY-20)
-- 九三学社中央，《人物素描》（邓稼先）（English: Portrait sketch: Deng Jiaxian）。[链接](https://www.93.gov.cn/html/93gov/zt/70/rwsm/150821142728561820.html)
+- 九三学社中央，《人物素描》（邓稼先）（English: Portrait sketch: Deng Jiaxian）。[链接（存档）](https://web.archive.org/web/20260213001102/https://www.93.gov.cn/html/93gov/zt/70/rwsm/150821142728561820.html)
 - 旗帜网，《党建史话｜干惊天动地事 做隐姓埋名人》（English: Party-history notes: do earth-shaking work, live as an unknown），2023-02-17。[链接](http://www.qizhiwang.org.cn/n1/2023/0217/c447058-32626010.html)
 - 吕文超，《100系列计算机联合设计成功的启示》（English: Lessons from the successful joint design of the 100-series computers），清华大学计算机系，2018-07-24。[链接](https://www.cs.tsinghua.edu.cn/info/1169/4071.htm)
 - 林行良，《DJS100系列机系统软件联合设计》（English: Joint design of system software for the DJS-100 series），清华大学计算机系，2018-07-24。[链接](https://www.cs.tsinghua.edu.cn/info/1169/4069.htm)
