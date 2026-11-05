@@ -1,0 +1,50 @@
+
+A set decimal places to 10
+A write numbers with decimal point
+
+N011 50     	. Number of iterations
+N000 1234567	. Seed for pseudorandom generator
+
+N010 0	    	. Iteration counter
+N012 1	    	. Constant 1
+N013 1.0        . Constant 1.0
+ N014           . Temp
+N020 0          . Sum accumulator
+
+A include from library cards for prand_init
+
+(?
+
+A include from library cards for prand_next
+
+P
+
++               . Add this pseudorandom value to sum
+L020
+L000
+S020
+
++   	    	. Increment iteration count
+L010
+L012
+S010
+
+−
+L010
+L011
+
+)
+
+*               . Fixed point scale iteration count
+L011
+L013
+S014
+
+÷               . Divide sum by iteration count
+L020
+<
+L014
+S014'
+
+A write annotation Mean value:
+P

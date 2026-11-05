@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>150机 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/150%E6%9C%BA/</link>
+		<description>Recent content in 150机 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/150%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>操作系统：从大庆的“虚拟机”到开源欧拉</title>
+				<link>http://localhost:1478/zh-hans/posts/23-zh-operating-systems/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/23-zh-operating-systems/</guid>
+				<description>1970 年代初，北大的操作系统组在大庆油田的另一台计算机上模拟出 150 机，用 23 天调通了操作系统；半个世纪后，中国的操作系统走进了开源基金会。</description>
+			</item>
+	</channel>
+</rss>

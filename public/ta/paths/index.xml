@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>விருப்பக் கற்றல் பாதைகள் on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+		<link>http://localhost:1478/ta/paths/</link>
+		<description>Recent content in விருப்பக் கற்றல் பாதைகள் on நாம் அங்கு எப்படிச் சென்றடைந்தோம்</description>
+		<generator>Hugo</generator>
+		<language>ta</language>
+		
+		
+		
+		
+			<atom:link href="http://localhost:1478/ta/paths/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Crypto மற்றும் போர்க்காலக் கணினி</title>
+				<link>http://localhost:1478/ta/paths/crypto-wartime/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/paths/crypto-wartime/</guid>
+				<description>&lt;p&gt;Workload ஆக இரகசியம் — cipher உடைப்பு gears மற்றும் relays-ஐ ஏன் மீறி கணினியை மின்னணுவியலுக்கு இழுத்தது. மெல்லிய அட்டவணை; கதவுகள் பதிவுகளில் வாழ்கின்றன.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/02-relays-and-electromechanical-logic/&#34;&gt;ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்&lt;/a&gt; — நகரும் உலோகத்தில் இரும தர்க்கம், மற்றும் உலோகம் ஏன் மெதுவானது&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/66-wartime-crypto/&#34;&gt;போர்க்கால Crypto&lt;/a&gt; — Enigma, Bletchley, Colossus; பெயரிடப்பட்ட மக்கள்; அவசரம்&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/03-the-vacuum-tube-era/&#34;&gt;வெற்றிடக் குழாய் காலம்&lt;/a&gt; — இயந்திரத் தொடர்புகள் இல்லாமல் மின்னணுச் சுவிட்ச்&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/04-why-the-transistor-had-to-happen/&#34;&gt;டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது&lt;/a&gt; — குழாய்கள் வேகத்தை வெல்கின்றன, பிறகு வெப்பம்/ஆற்றல்/தோல்வியைத் தாக்குகின்றன&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1478/ta/paths/&#34;&gt;அனைத்துப் பாதைகளுக்கும்&lt;/a&gt; திரும்புங்கள்.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>இணையத்தை யார் இயக்குகிறார்கள்</title>
+				<link>http://localhost:1478/ta/paths/who-runs-the-internet/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/paths/who-runs-the-internet/</guid>
+				<description>&lt;p&gt;எண்கள், பெயர்கள் மற்றும் encodings-ஐ யார் பெயரிடுகிறார்கள் — மற்றும் அந்தப் பதிவேடுகள் எந்த நெறிமுறைக் கதையின் மேல் அமர்கின்றன. மெல்லிய அட்டவணை; org catalog அல்ல.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/39-arpanet-and-packet-switching/&#34;&gt;ARPANET மற்றும் Packet Switching&lt;/a&gt; — packets-ஐ நிரூபித்த ஆராய்ச்சி வலையமைப்பு&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/40-ethernet-and-the-local-area-network/&#34;&gt;Ethernet மற்றும் Local Area Network&lt;/a&gt; — உள்ளூர் இணைப்புத் தரநிலைப்படுத்தல் (IEEE 802 kin)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/41-tcp-ip-and-the-modern-internet-stack/&#34;&gt;TCP/IP மற்றும் நவீன இணைய Stack&lt;/a&gt; — பன்முக nets எப்படி ஒரே internetwork ஆகிறது&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/64-who-decides-the-wire/&#34;&gt;கம்பிக்கு யார் முடிவெடுக்கிறார்கள்&lt;/a&gt; — RFCs / IETF / IANA / ICANN / RIRs / Unicode ஒரு வகையின் விதைகளாக&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1478/ta/paths/&#34;&gt;அனைத்துப் பாதைகளுக்கும்&lt;/a&gt; திரும்புங்கள்.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>கண்டுபிடி, பிறகு பேசு</title>
+				<link>http://localhost:1478/ta/paths/find-then-talk/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/paths/find-then-talk/</guid>
+				<description>&lt;p&gt;தகவல் மீட்டெடுப்பும் peer தொடர்பும் ஒரே வளைவாக — பிறகு இரண்டின் நுகர்வோர் தொகுப்பு. மெல்லிய அட்டவணை.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/41-tcp-ip-and-the-modern-internet-stack/&#34;&gt;TCP/IP மற்றும் நவீன இணைய Stack&lt;/a&gt; — apps சவாரி செய்த போக்குவரத்து&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/&#34;&gt;Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்&lt;/a&gt; — find + talk → IRC → portals (விதையாக Yahoo)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/44-google-s-big-data-infrastructure-why-they-won/&#34;&gt;Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்&lt;/a&gt; — crawler அளவில் அதே &lt;em&gt;வகை&lt;/em&gt; find&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1478/ta/paths/&#34;&gt;அனைத்துப் பாதைகளுக்கும்&lt;/a&gt; திரும்புங்கள்.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>தனியுரிமை / அடையாளம் / ஒப்புதல்</title>
+				<link>http://localhost:1478/ta/paths/privacy-identity-consent/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/paths/privacy-identity-consent/</guid>
+				<description>&lt;p&gt;பாதுகாப்பு, பொது வலையமைப்பில் cryptography, அடையாள நெறிமுறைகள் மற்றும் விரோத அமைப்புகள் — பொறியியல் பரிணாமம், கொள்கைப் பிரசுரம் அல்ல. மெல்லிய அட்டவணை.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/24-virtual-memory-and-multitasking/&#34;&gt;Virtual Memory மற்றும் Multitasking&lt;/a&gt; — வன்பொருள்/OS எல்லையாக isolation&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/25-containers-and-modern-os-isolation/&#34;&gt;Containers மற்றும் நவீன OS Isolation&lt;/a&gt; — பகிரப்பட்ட-kernel எல்லைகளாக namespaces மற்றும் cgroups&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/66-wartime-crypto/&#34;&gt;போர்க்கால Crypto&lt;/a&gt; — அர்ப்பணிக்கப்பட்ட எதிரியின் கீழ் இரகசியம் (திறந்த வலையுடன் முரண்பாடு)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/67-privacy-consent-identity-cyber/&#34;&gt;தனியுரிமை, ஒப்புதல், அடையாளம், Cyber&lt;/a&gt; — Saltzer/Schroeder → public-key → auth/ஒப்புதல் → பின்னூட்டமாக cyber&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/64-who-decides-the-wire/&#34;&gt;கம்பிக்கு யார் முடிவெடுக்கிறார்கள்&lt;/a&gt; — தனியுரிமை அடுக்கு இன்னும் சார்ந்திருக்கும் பகிரப்பட்ட அடையாளங்காட்டிகள்&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1478/ta/paths/&#34;&gt;அனைத்துப் பாதைகளுக்கும்&lt;/a&gt; திரும்புங்கள்.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>நடைமுறைக்கு வந்த பார்வைகள்</title>
+				<link>http://localhost:1478/ta/paths/visions-that-shipped/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ta/paths/visions-that-shipped/</guid>
+				<description>&lt;p&gt;பயணத்திலிருந்து முன் இணைப்புகள் — stack-ஐ வாழும் platforms ஆக்கிய வகைகளின் விதைகள். வாழ்க்கை வரலாறுகள் அல்ல. மெல்லிய அட்டவணை.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/23-the-gnu-movement-and-linux/&#34;&gt;GNU இயக்கம் மற்றும் Linux&lt;/a&gt; — Stallman, Torvalds, மற்றும் நவீன servers கீழ் பொதுவெளி&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/68-visions-that-shipped/&#34;&gt;நடைமுறைக்கு வந்த பார்வைகள்&lt;/a&gt; — Cisco, Gates, Jobs, GNU+Linus, Bezos, Musk விதைகளாக; உறவினர்களைத் தருவித்து நிறுத்துங்கள்&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1478/ta/posts/69-platform-synthesis/&#34;&gt;Platform தொகுப்பு&lt;/a&gt; — ஒரு உயர்-நிலை நிறுத்தம்: விநியோகிக்கப்பட்ட அமைப்புகள் + networking + AI infra + தனியுரிமை + software engineering&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1478/ta/paths/&#34;&gt;அனைத்துப் பாதைகளுக்கும்&lt;/a&gt; திரும்புங்கள்.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

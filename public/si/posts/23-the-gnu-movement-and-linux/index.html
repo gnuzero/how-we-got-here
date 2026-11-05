@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Unix වසා දැමුණේය; Stallman නිදහස් userland ගොඩනැගුවේය; Torvalds kernel හිඩැස පිරවුවේය — GPL එකතුව විවෘතව තැබුවේය">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/23-the-gnu-movement-and-linux/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="GNU ව්‍යාපාරය සහ Linux">
+	<meta property="og:description" content="Unix වසා දැමුණේය; Stallman නිදහස් userland ගොඩනැගුවේය; Torvalds kernel හිඩැස පිරවුවේය — GPL එකතුව විවෘතව තැබුවේය">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:08:43+05:30">
+
+
+	<meta itemprop="name" content="GNU ව්‍යාපාරය සහ Linux">
+	<meta itemprop="description" content="Unix වසා දැමුණේය; Stallman නිදහස් userland ගොඩනැගුවේය; Torvalds kernel හිඩැස පිරවුවේය — GPL එකතුව විවෘතව තැබුවේය">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:08:43+05:30">
+	<meta itemprop="wordCount" content="2128">
+
+<title>GNU ව්‍යාපාරය සහ Linux • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/23-the-gnu-movement-and-linux/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/23-the-gnu-movement-and-linux/" title="The GNU Movement and Linux">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/23-the-gnu-movement-and-linux/" title="ขบวนการ GNU และ Linux">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/23-the-gnu-movement-and-linux/" title="GNU இயக்கம் மற்றும் Linux">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/23-the-gnu-movement-and-linux/" title="Mișcarea GNU și Linux">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/23-the-gnu-movement-and-linux/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/23-the-gnu-movement-and-linux/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="active">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>GNU ව්‍යාපාරය සහ Linux</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#gnu-kernel-එකක-නමත-userland">GNU: Kernel එකක් නොමැති Userland</a></li>
+    <li><a href="#gpl-copyright-පටතට-හරවන-ලද">GPL: Copyright පිටතට හරවන ලදී</a></li>
+    <li><a href="#linux-හඩස-පරවය">Linux හිඩැස පුරවයි</a></li>
+    <li><a href="#මම-එකතව-ජයගරහණය-කළ-ඇය">මෙම එකතුව ජයග්‍රහණය කළේ ඇයි</a></li>
+    <li><a href="#ගඹරන-නදහස-මදකගය-යනතරණය--නදහස-හතර-gpl-හ-කනදස-සහ-kernel-එකක-userland-එකකට-හම-ව-හට">ගැඹුරින්: නිදහස් මෘදුකාංගයේ යාන්ත්‍රණය — නිදහස් හතර, GPL හි කොන්දේසි සහ kernel එකක් userland එකකට හමු වූ හැටි</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-නදහස-යනනහ-නශචත-අරථය-නදහස-හතර">2. &ldquo;නිදහස්&rdquo; යන්නෙහි නිශ්චිත අර්ථය: නිදහස් හතර</a></li>
+        <li><a href="#3-gpl-හ-යනතරණය-බද-හරන-වට-පමණක-කරයතමක-වන-කනදසය">3. GPL හි යාන්ත්‍රණය: බෙදා හරින විට පමණක් ක්‍රියාත්මක වන කොන්දේසිය</a></li>
+        <li><a href="#4-linux-හ-බලපතරය-001-සට-012-දකව">4. Linux හි බලපත්‍රය: 0.01 සිට 0.12 දක්වා</a></li>
+        <li><a href="#5-kernel-සහ-userland-ඔබම-ඇසන-මම-පටව-vm-එක">5. Kernel සහ userland ඔබේම ඇසින්: මෙම පිටුවේ VM එක</a></li>
+        <li><a href="#6-gnu-hurd-ගන-එක-වචනයක">6. GNU Hurd ගැන එක් වචනයක්</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    GNU ව්‍යාපාරය සහ Linux
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>1980 ගණන්වල මුල් භාගය වන විට, Unix (Post 22) තාක්ෂණිකව විශිෂ්ට වූ අතර වැඩි වැඩියෙන් හිමිකාර විය — AT&amp;T වාණිජ පාලනය තහවුරු කරමින්, ශාස්ත්‍රීය සහ රසික ප්‍රවේශය තද වෙමින්. Richard Stallman ගේ ප්‍රතිචාරය, 1983 දී ආරම්භ වූයේ, මූලිකව තාක්ෂණික නිවැරදි කිරීමක් නොවීය. එය දෘෂ්ටිවාදී සහ නීතිමය විය: සම්පූර්ණයෙන්ම නිදහස් (නිදහස ලෙස, මිල පමණක් නොව) Unix ප්‍රතිස්ථාපනයක් ශුන්‍යයෙන් ගොඩනඟන්න, සහ එය එසේම තබා ගැනීමට නිර්මාණය කළ බලපත්‍රයකින් එයට සහාය වන්න.</p>
+<h2 id="gnu-kernel-එකක-නමත-userland">GNU: Kernel එකක් නොමැති Userland<a class="anchor" href="#gnu-kernel-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%b1%e0%b6%b8%e0%b6%ad-userland">#</a></h2>
+<p>GNU — &ldquo;GNU&rsquo;s Not Unix&rdquo; — සෑම සංරචකයක්ම නිදහස් මෘදුකාංග වන සම්පූර්ණ, Unix-අනුකූල මෙහෙයුම් පද්ධතියක් ගොඩනැගීමට පටන් ගත්තේය: භාවිතා කළ හැකි, වෙනස් කළ හැකි, සහ නැවත බෙදාහැරිය හැකි, ඔබේම වෙනස්කම් නැවත බෙදාහැරීම ඇතුළුව. ඊළඟ දශකය තුළ ව්‍යාපෘතිය අත්‍යවශ්‍ය යටිතල පහසුකම් නිෂ්පාදනය කළේය: GCC (තවමත් වඩාත්ම පුළුල්ව භාවිතා වන compilers අතරින් එකක් — Post 28), Bash, GNU coreutils, Emacs, සහ තවත් බොහෝ දේ.</p>
+<p>GNU හට වසර ගණනක් තිස්සේ තිබුණේ නැති දෙය වූයේ ක්‍රියාකාරී kernel එකකි. එහි සැලසුම් කළ kernel එක, GNU Hurd, බරපතල තාක්ෂණික දුෂ්කරතාවලට මුහුණ දුන් අතර පුළුල් ප්‍රායෝගික භාවිතයට කිසිදා ළඟා නොවීය. සම්පූර්ණ userland; සැබෑ දෘඪාංගය සඳහා යටින් kernel එකක් නැත.</p>
+<h2 id="gpl-copyright-පටතට-හරවන-ලද">GPL: Copyright පිටතට හරවන ලදී<a class="anchor" href="#gpl-copyright-%e0%b6%b4%e0%b6%a7%e0%b6%ad%e0%b6%a7-%e0%b7%84%e0%b6%bb%e0%b7%80%e0%b6%b1-%e0%b6%bd%e0%b6%af">#</a></h2>
+<p>Stallman ගේ අනෙක් ප්‍රධාන දායකත්වය GNU General Public License (GPL) විය — හිතාමතාම ගුණයක් සහිත &ldquo;copyleft&rdquo; බලපත්‍රයක්: ඔබ GPL-බලපත්‍රිත කේතය ඇතුළත් මෘදුකාංග බෙදාහරින්නේ නම්, ඔබේ වෙනස් කළ මූලාශ්‍රය එම කොන්දේසි යටතේම ලබා ගත හැකි කළ යුතුය. සාමාන්‍යයෙන් නැවත බෙදාහැරීම <em>සීමා කිරීමට</em> මෙවලමක් වන Copyright, සෑම ව්‍යුත්පන්නයක් හරහාම නිදහස ප්‍රචාරණය වන බව සහතික කිරීමට භාවිතා කෙරේ — පහළට යන වාණිජ fork එකකින් නිශ්ශබ්දව වසා දැමීමට වඩා.</p>
+<h2 id="linux-හඩස-පරවය">Linux හිඩැස පුරවයි<a class="anchor" href="#linux-%e0%b7%84%e0%b6%a9%e0%b7%83-%e0%b6%b4%e0%b6%bb%e0%b7%80%e0%b6%ba">#</a></h2>
+<p>1991 දී, ෆින්ලන්ත ශිෂ්‍ය Linus Torvalds තමන්ගේම PC එක සඳහා පුද්ගලික ව්‍යාපෘතියක් ලෙස kernel එකක් ආරම්භ කළේය. ඔහු එය එම වසරේම තමන්ගේම සීමාකාරී අනාගත-වාණිජ නොවන බලපත්‍රයක් යටතේ නිකුත් කළේය, පසුව — විවේචනාත්මකව — 1992 මුල් භාගයේදී එය GPL යටතේ නැවත බලපත්‍ර කළේය. එම එකතුව අතුරුදහන් වූ කැබැල්ල විය: GNU හට ප්‍රායෝගික kernel එකක් නොමැති පරිණත userland තිබුණි; Linux යනු අත්‍යවශ්‍යයෙන්ම userland නොමැති ක්‍රියාකාරී kernel එකකි. එක්ව, Linux kernel එක මත GNU utilities සම්පූර්ණ, නිදහසේ බලපත්‍රිත, Unix-අනුකූල පද්ධතියක් සැදුවේය — සාමාන්‍යයෙන් &ldquo;Linux&rdquo; ලෙස හැඳින්වේ, නමුත් &ldquo;GNU/Linux&rdquo; යනු එකතුව සඳහා වඩාත් ඓතිහාසිකව නිවැරදි නමයි (Stallman ගේ ඉඳහිට ප්‍රසිද්ධ කලකිරීමට).</p>
+<p><strong>දැන් මෙය උත්සාහ කරන්න.</strong> පහත VM එක boot කරන්න, තිරය ක්ලික් කරන්න, පසුව <code>uname</code>, <code>whoami</code>, සහ <code>ls</code> උත්සාහ කරන්න — ඔබ එම එකතුවේ GNU/Linux පැත්තේ සිටී, ඔබේ බ්‍රවුසරය තුළ.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=si"
+    style="width:100%; height:600px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="අන්තර්ක්‍රියාකාරී lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=si" target="_blank" rel="noopener">Lab එක නව tab එකක විවෘත කරන්න ↗</a>
+  </div>
+</div>
+
+<h2 id="මම-එකතව-ජයගරහණය-කළ-ඇය">මෙම එකතුව ජයග්‍රහණය කළේ ඇයි<a class="anchor" href="#%e0%b6%b8%e0%b6%b8-%e0%b6%91%e0%b6%9a%e0%b6%ad%e0%b7%80-%e0%b6%a2%e0%b6%ba%e0%b6%9c%e0%b6%bb%e0%b7%84%e0%b6%ab%e0%b6%ba-%e0%b6%9a%e0%b7%85-%e0%b6%87%e0%b6%ba">#</a></h2>
+<p>GPL හි ව්‍යුහය මගින් සමාගම්වලට යටින් ඇති වේදිකාව නිශ්ශබ්දව වසා නොදමා Linux වටා වාණිජ නිෂ්පාදන ගොඩනැගිය හැකි විය — kernel වෙනස්කම් එම කොන්දේසි යටතේම මූලාශ්‍රය ලෙස ලබා ගත හැකිව තිබිය යුතු විය. එය තිරසාර විශ්වාසයක් ගොඩනැගුවේය, සහ අවසානයේ තිරසාර <em>ආයතනික</em> දායකත්වයක්: සමාගම්වලට තනි තරඟකරුවෙකු විසින් අල්ලා ගැනීමට වඩා වේදිකාව විවෘතව පවතිනු ඇතැයි විශ්වාස කළ හැකි විය. නිදහස්, වාණිජ භාවිතයට විවෘත, එසේම තබා ගැනීමට නීතිමය ව්‍යුහගත — Linux servers, cloud යටිතල පහසුකම්, Android, සහ නවීන අන්තර්ජාලයේ backbone බොහෝමය යටතේ ප්‍රමුඛ kernel එක බවට පත් වූයේ ඇයි යන්නෙන් විශාල කොටසක්, එක් ශිෂ්‍යයෙකුගේ පුද්ගලික ව්‍යාපෘතියකට බොහෝ ඈතින්.</p>
+<h2 id="ගඹරන-නදහස-මදකගය-යනතරණය--නදහස-හතර-gpl-හ-කනදස-සහ-kernel-එකක-userland-එකකට-හම-ව-හට">ගැඹුරින්: නිදහස් මෘදුකාංගයේ යාන්ත්‍රණය — නිදහස් හතර, GPL හි කොන්දේසි සහ kernel එකක් userland එකකට හමු වූ හැටි<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-%e0%b6%b1%e0%b6%af%e0%b7%84%e0%b7%83-%e0%b6%b8%e0%b6%af%e0%b6%9a%e0%b6%9c%e0%b6%ba-%e0%b6%ba%e0%b6%b1%e0%b6%ad%e0%b6%bb%e0%b6%ab%e0%b6%ba--%e0%b6%b1%e0%b6%af%e0%b7%84%e0%b7%83-%e0%b7%84%e0%b6%ad%e0%b6%bb-gpl-%e0%b7%84-%e0%b6%9a%e0%b6%b1%e0%b6%af%e0%b7%83-%e0%b7%83%e0%b7%84-kernel-%e0%b6%91%e0%b6%9a%e0%b6%9a-userland-%e0%b6%91%e0%b6%9a%e0%b6%9a%e0%b6%a7-%e0%b7%84%e0%b6%b8-%e0%b7%80-%e0%b7%84%e0%b6%a7">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> මෙම මාතෘකාව ගැන සිංහලෙන් ඇති ද්‍රව්‍ය:</p>
+<ul>
+<li>si.wikipedia හි &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b6%bd%e0%b7%92%e0%b6%b1%e0%b6%9a%e0%b7%8a%e0%b7%83%e0%b7%8a">ලිනක්ස්</a>&rdquo;, &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b6%bd%e0%b7%92%e0%b6%b1%e0%b6%9a%e0%b7%8a%e0%b7%83%e0%b7%8a_%e0%b6%9a%27%e0%b6%b1%e0%b6%bd%e0%b6%ba">ලිනක්ස් ක&rsquo;නලය</a>&rdquo;, &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b7%80%e0%b7%92%e0%b6%b1%e0%b7%8a%e0%b6%a9%e0%b7%9d%e0%b7%83%e0%b7%8a_%e0%b7%84%e0%b7%8f_%e0%b6%9c%e0%b7%8a%e0%b6%b1%e0%b7%96_%e0%b6%bd%e0%b7%92%e0%b6%b1%e0%b6%9a%e0%b7%8a%e0%b7%83%e0%b7%8a_%e0%b6%85%e0%b6%ad%e0%b6%bb_%e0%b7%80%e0%b7%99%e0%b6%b1%e0%b7%83%e0%b7%8a%e0%b6%9a%e0%b6%b8%e0%b7%8a">වින්ඩෝස් හා ග්නූ ලිනක්ස් අතර වෙනස්කම්</a>&rdquo; සහ &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b6%b1%e0%b7%92%e0%b6%af%e0%b7%84%e0%b7%83%e0%b7%8a_%e0%b7%84%e0%b7%8f_%e0%b7%80%e0%b7%92%e0%b7%80%e0%b7%98%e0%b6%ad_%e0%b6%b8%e0%b7%96%e0%b6%bd%e0%b7%8f%e0%b7%81%e0%b7%8a%e2%80%8d%e0%b6%bb_%e0%b6%b8%e0%b7%98%e0%b6%af%e0%b7%94%e0%b6%9a%e0%b7%8f%e0%b6%82%e0%b6%9c">නිදහස් හා විවෘත මූලාශ්‍ර මෘදුකාංග</a>&rdquo; ලිපි. ග්නූ ව්‍යාපෘතිය Stallman විසින් මෙහෙයවූ බවත්, GPL යටතේ සීමා කිරීම් තහනම් බවත් ඒවා සඳහන් කරයි.</li>
+</ul>
+<p>ඒවායේ නැති දේ: GPL ඇත්තටම ඉල්ලන්නේ <em>කුමක්ද</em> (කවදා මූලාශ්‍රය දිය යුතුද, කවදා අවශ්‍ය නැද්ද), Linux හි මුල් බලපත්‍රය කුමක්ද සහ එය වෙනස් වූයේ කෙසේද, සහ &ldquo;kernel&rdquo; සහ &ldquo;userland&rdquo; අතර රේඛාව ඔබේම ඇසින් බලන හැටි. මෙම කොටස ඒවා පියවරෙන් පියවර පෙන්වයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>මූලාශ්‍ර කේතය (source code):</strong> මිනිසුන් ලියන, කියවිය හැකි වැඩසටහන් පෙළ.</li>
+<li><strong>Binary / object code (object code):</strong> compiler එකක් නිපදවන, යන්ත්‍රයට ධාවනය කළ හැකි bytes. එයින් වැඩසටහන වෙනස් කිරීම ප්‍රායෝගිකව ඉතා අපහසුය.</li>
+<li><strong>බලපත්‍රය (license):</strong> කතුහිමිකරු (copyright holder) අන් අයට දෙන අවසරය සහ එහි කොන්දේසි.</li>
+<li><strong>Copyleft (copyleft):</strong> &ldquo;වෙනස් කළ පිටපත් බෙදා හරින්නේ නම් ඒවාද එම නිදහසම සහිතව බෙදා හැරිය යුතුය&rdquo; යන කොන්දේසිය කතුහිමිකම හරහා බලාත්මක කිරීම.</li>
+<li><strong>Kernel (kernel):</strong> දෘඪාංගය, මතකය, ක්‍රියාවලි සහ ගොනු පද්ධතිය පාලනය කරන මෙහෙයුම් පද්ධතියේ හරය.</li>
+<li><strong>Userland (userland):</strong> kernel එකට ඉහළින් ධාවනය වන shell, <code>ls</code> වැනි මෙවලම්, C පුස්තකාලය (C library) සහ compiler.</li>
+</ul>
+<h3 id="2-නදහස-යනනහ-නශචත-අරථය-නදහස-හතර">2. &ldquo;නිදහස්&rdquo; යන්නෙහි නිශ්චිත අර්ථය: නිදහස් හතර<a class="anchor" href="#2-%e0%b6%b1%e0%b6%af%e0%b7%84%e0%b7%83-%e0%b6%ba%e0%b6%b1%e0%b6%b1%e0%b7%84-%e0%b6%b1%e0%b7%81%e0%b6%a0%e0%b6%ad-%e0%b6%85%e0%b6%bb%e0%b6%ae%e0%b6%ba-%e0%b6%b1%e0%b6%af%e0%b7%84%e0%b7%83-%e0%b7%84%e0%b6%ad%e0%b6%bb">#</a></h3>
+<p>GNU ව්‍යාපෘතියේ &ldquo;<a href="https://www.gnu.org/philosophy/free-sw.html">What is Free Software?</a>&rdquo; පිටුව නිදහස් මෘදුකාංගය අර්ථ දක්වන්නේ මිලෙන් නොව නිදහස් හතරකින් ය. ඒවා අංක කර ඇත්තේ 0 සිට ය:</p>
+<table>
+	<thead>
+			<tr>
+					<th>අංකය</th>
+					<th>නිදහස (පිටුවේ අර්ථයෙන්, අපේ සාරාංශය)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>ඕනෑම අරමුණක් සඳහා වැඩසටහන ධාවනය කිරීමේ නිදහස</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>වැඩසටහන ක්‍රියා කරන හැටි අධ්‍යයනය කර ඔබට අවශ්‍ය ලෙස වෙනස් කිරීමේ නිදහස. මේ සඳහා මූලාශ්‍ර කේතයට ප්‍රවේශය පූර්ව කොන්දේසියකි</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>අන් අයට උදව් කිරීමට පිටපත් නැවත බෙදා හැරීමේ නිදහස</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>ඔබ වෙනස් කළ පිටපත් අන් අයට බෙදා හැරීමේ නිදහස</td>
+			</tr>
+	</tbody>
+</table>
+<p>නිදහස 1 සහ 3 මූලාශ්‍ර කේතය නොමැතිව අර්ථශූන්‍ය වේ. Binary එකක් පමණක් ලැබුණොත් එය ධාවනය කළ හැකිය (0), පිටපත් කළ හැකිය (2), නමුත් ඔබට එය වෙනස් කළ නොහැක. GPL ගොඩනැගී ඇත්තේ මෙම හිඩැස වසා දැමීමටයි.</p>
+<p>ඉතිහාසය, GNU හි මූලාශ්‍රවලින්ම:</p>
+<ul>
+<li>Stallman ගේ මුල් නිවේදනය දිනය <strong>1983 සැප්තැම්බර් 27</strong> ය. එහි &ldquo;Starting this Thanksgiving I am going to write a complete Unix-compatible software system called GNU&rdquo; යනුවෙන් ඇත (<a href="https://www.gnu.org/gnu/initial-announcement.html">gnu.org initial announcement</a>).</li>
+<li>GNU Manifesto ලියා ඇත්තේ <strong>1985</strong> දී ය (<a href="https://www.gnu.org/gnu/manifesto.html">gnu.org manifesto</a>).</li>
+</ul>
+<h3 id="3-gpl-හ-යනතරණය-බද-හරන-වට-පමණක-කරයතමක-වන-කනදසය">3. GPL හි යාන්ත්‍රණය: බෙදා හරින විට පමණක් ක්‍රියාත්මක වන කොන්දේසිය<a class="anchor" href="#3-gpl-%e0%b7%84-%e0%b6%ba%e0%b6%b1%e0%b6%ad%e0%b6%bb%e0%b6%ab%e0%b6%ba-%e0%b6%b6%e0%b6%af-%e0%b7%84%e0%b6%bb%e0%b6%b1-%e0%b7%80%e0%b6%a7-%e0%b6%b4%e0%b6%b8%e0%b6%ab%e0%b6%9a-%e0%b6%9a%e0%b6%bb%e0%b6%ba%e0%b6%ad%e0%b6%b8%e0%b6%9a-%e0%b7%80%e0%b6%b1-%e0%b6%9a%e0%b6%b1%e0%b6%af%e0%b7%83%e0%b6%ba">#</a></h3>
+<p>GPL අනුවාද 2 (1991; Linux kernel එක යටතේ ඇත්තේ මෙම අනුවාදයයි) හි <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt">පෙළ</a> කියවූ විට, කොන්දේසි ක්‍රියාත්මක වන්නේ කුමන ක්‍රියා සඳහාද යන්න පැහැදිලිය:</p>
+<ul>
+<li><strong>§0:</strong> පිටපත් කිරීම, බෙදා හැරීම සහ වෙනස් කිරීම හැර වෙනත් ක්‍රියා බලපත්‍රයෙන් ආවරණය නොවේ. වැඩසටහන ධාවනය කිරීම සීමා කර නැත.</li>
+<li><strong>§2(b):</strong> වැඩසටහන හෝ එයින් ව්‍යුත්පන්න වූ කෘතියක් (work based on the Program) ඔබ බෙදා හරින්නේ නම්, එය මුළුමනින්ම මෙම බලපත්‍රයේ කොන්දේසි යටතේ, තුන්වන පාර්ශ්ව සියල්ලන්ටම ගාස්තුවකින් තොරව බලපත්‍ර කළ යුතුය.</li>
+<li><strong>§3:</strong> Object code හෝ executable ආකාරයෙන් බෙදා හරින්නේ නම්, (a) සම්පූර්ණ machine-readable මූලාශ්‍රය සමඟ දිය යුතුය, හෝ (b) <strong>අවම වශයෙන් වසර තුනක්</strong> වලංගු ලිඛිත පොරොන්දුවක් (written offer) දිය යුතුය. (c) යටතේ වාණිජ නොවන බෙදා හැරීමකදී ඔබට ලැබුණු පොරොන්දුව ඉදිරියට දිය හැකිය.</li>
+</ul>
+<p>මෙහි තර්කය: කතුහිමිකම සාමාන්‍යයෙන් පිටපත් කිරීම <em>තහනම්</em> කරයි. GPL කියන්නේ &ldquo;ඔබට බෙදා හැරීමට අවසර ඇත්තේ මෙම කොන්දේසි පිළිපදින්නේ නම් පමණි&rdquo; යනුවෙනි. කොන්දේසි කඩ කළොත් බෙදා හැරීමේ අවසරයම නැති වේ. එනිසා නිදහස ඊළඟ පිටපතටත් ගලා යයි.</p>
+<p><strong>වැඩ කළ උදාහරණය: පහත අවස්ථා හතරේදී මූලාශ්‍රය දීමේ බැඳීමක් තිබේද?</strong> (සියල්ල GPLv2 කේතය ගැන; නීති උපදෙස් නොවේ, බලපත්‍ර පෙළේ තර්කය පමණි.)</p>
+<table>
+	<thead>
+			<tr>
+					<th>අවස්ථාව</th>
+					<th>බෙදා හරිනවාද?</th>
+					<th>ප්‍රතිඵලය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>A. ඔබ GPL වැඩසටහනක් ඔබේම පරිගණකයේ වෙනස් කර ඔබ පමණක් භාවිත කරයි</td>
+					<td>නැත</td>
+					<td>§2 සහ §3 කොන්දේසි ක්‍රියාත්මක නොවේ; බැඳීමක් නැත</td>
+			</tr>
+			<tr>
+					<td>B. ඔබ වෙනස් කළ binary එක පාරිභෝගිකයින්ට විකුණයි</td>
+					<td>ඔව්</td>
+					<td>§3: මූලාශ්‍රය සමඟ, හෝ වසර 3 ක ලිඛිත පොරොන්දුවක් සමඟ. මිල අය කිරීම තහනම් නැත (§1: &ldquo;You may charge a fee for the physical act of transferring a copy&rdquo;)</td>
+			</tr>
+			<tr>
+					<td>C. ඔබ නොවෙනස් GPL binary එකක් USB එකක දමා මිතුරෙකුට දෙයි</td>
+					<td>ඔව්</td>
+					<td>§3 තවමත් අදාළයි: මූලාශ්‍රය හෝ පොරොන්දුව</td>
+			</tr>
+			<tr>
+					<td>D. ඔබ GPL කේතයේ කොටසක් ඔබේ වසා දැමූ (proprietary) වැඩසටහනකට ඇතුළු කර binary එක බෙදා හරියි</td>
+					<td>ඔව්</td>
+					<td>§2(b): මුළු ව්‍යුත්පන්න කෘතියම GPL යටතේ දිය යුතුය. එසේ කිරීමට අකමැති නම් එය බෙදා හැරිය නොහැක</td>
+			</tr>
+	</tbody>
+</table>
+<p>D අවස්ථාව ප්‍රධාන පෙළේ &ldquo;Why This Combination Won&rdquo; කොටස කියන දෙයයි: සමාගමකට Linux වෙනස් කර නිෂ්පාදනයක් විකිණිය හැකිය, නමුත් එම වෙනස්කම් වසා දැමිය නොහැක.</p>
+<h3 id="4-linux-හ-බලපතරය-001-සට-012-දකව">4. Linux හි බලපත්‍රය: 0.01 සිට 0.12 දක්වා<a class="anchor" href="#4-linux-%e0%b7%84-%e0%b6%b6%e0%b6%bd%e0%b6%b4%e0%b6%ad%e0%b6%bb%e0%b6%ba-001-%e0%b7%83%e0%b6%a7-012-%e0%b6%af%e0%b6%9a%e0%b7%80">#</a></h3>
+<p>kernel.org හි තවමත් ඇති මුල්ම නිකුතු සටහන් කියවමු.</p>
+<p><strong><a href="https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.01">RELNOTES-0.01</a></strong> (&ldquo;Copyrights etc&rdquo; කොටස): kernel එක &ldquo;(C) 1991 Linus Torvalds&rdquo; ය. නැවත බෙදා හැරීමට කොන්දේසි තුනකි: සම්පූර්ණ මූලාශ්‍රය ලබා ගත හැකි විය යුතුය, කතුහිමි දැන්වීම් නොවෙනස්ව තිබිය යුතුය, සහ &ldquo;You may not distibute this for a fee, not even &ldquo;handling&rdquo; costs&rdquo; (මුල් අක්ෂර වින්‍යාසය එලෙසමයි). ඊට පසු එය මෙසේ කියයි: &ldquo;Sadly, a kernel by itself gets you nowhere. To get a working system you need a shell, compilers, a library etc.&rdquo; සහ &ldquo;Most of the tools used with linux are GNU software and are under the GNU copyleft.&rdquo; එම නිකුතුවම gcc මගින් compile කළ යුතු බවත් (Torvalds භාවිත කළේ 1.40), test කිරීමට <code>bash</code> binary එකක් ඇතුළත් බවත් සටහන කියයි.</p>
+<p><strong><a href="https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.12">RELNOTES-0.12</a></strong> (&ldquo;COPYRIGHT&rdquo; කොටස): &ldquo;The Linux copyright will change&rdquo;, &ldquo;removing the &ldquo;you may not distribute it for money&rdquo; condition&rdquo;, සහ &ldquo;The GNU copyleft takes effect as of the first of February&rdquo;. නිකුතු සටහන්වල වර්ෂය මුද්‍රණය කර නැත. Wikipedia හි &ldquo;History of Linux&rdquo; ලිපිය මෙම සටහන් <strong>1992 ජනවාරි 5</strong> දිනැති ලෙස උපුටා දක්වමින්, GPL බලාත්මක වූයේ <strong>1992 පෙබරවාරි 1</strong> සිට බව කියයි. Torvalds ද 2000 දී LKML හි ලියා ඇත්තේ kernel එකේ බලපත්‍රය &ldquo;has been there since 0.12 or so&rdquo; ලෙසයි.</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>0.01</th>
+					<th>0.12 සිට</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>මූලාශ්‍රය ලබා දිය යුතුද</td>
+					<td>ඔව්</td>
+					<td>ඔව් (GPL §3)</td>
+			</tr>
+			<tr>
+					<td>මුදලට බෙදා හැරිය හැකිද</td>
+					<td><strong>නැත</strong>, handling ගාස්තුවක්වත් නැත</td>
+					<td><strong>ඔව්</strong> (GPL §1)</td>
+			</tr>
+			<tr>
+					<td>ව්‍යුත්පන්න කෘති</td>
+					<td>පැහැදිලි නීතියක් නැත</td>
+					<td>GPL යටතේම (§2(b))</td>
+			</tr>
+	</tbody>
+</table>
+<p>මුදල් කොන්දේසිය ඉවත් කිරීම වැදගත් වූයේ ඇයි? 0.01 කොන්දේසිය යටතේ CD එකක් හෝ තැටි කට්ටලයක් පිටපත් කිරීමේ පිරිවැය අය කර Linux බෙදා හරින්නෙකුට එය නීත්‍යනුකූලව කළ නොහැකි විය. GPL යටතේ මිලට විකිණීමට ඉඩ ඇත. නමුත් මිලදී ගන්නාට මූලාශ්‍රය සහ එම නිදහස හතරම ලැබේ. එය පසු කාලීන වාණිජ බෙදාහැරීම්වලට (distributions) දොර විවර කළ එක් නීතිමය පියවරකි.</p>
+<h3 id="5-kernel-සහ-userland-ඔබම-ඇසන-මම-පටව-vm-එක">5. Kernel සහ userland ඔබේම ඇසින්: මෙම පිටුවේ VM එක<a class="anchor" href="#5-kernel-%e0%b7%83%e0%b7%84-userland-%e0%b6%94%e0%b6%b6%e0%b6%b8-%e0%b6%87%e0%b7%83%e0%b6%b1-%e0%b6%b8%e0%b6%b8-%e0%b6%b4%e0%b6%a7%e0%b7%80-vm-%e0%b6%91%e0%b6%9a">#</a></h3>
+<p>ඉහත VM එක boot කර (තිරය click කර) මෙම විධාන ටයිප් කරන්න:</p>
+<pre tabindex="0"><code>uname -s -r -m
+uname -o
+cat /proc/version
+ls -l /bin/ls /bin/sh
+busybox | head -2
+ls /lib | head -3</code></pre><p>අපි මෙම lab එකේම image එක (<code>linux4.iso</code>) boot කර ලැබූ ප්‍රතිදානය (serial console හරහා):</p>
+<pre tabindex="0"><code>Linux 4.16.13 i686
+GNU/Linux
+Linux version 4.16.13 (fabian@nyu) (gcc version 7.3.0 (Buildroot 2018.08-git-00153-g8ac477681f)) ...
+/bin/ls -&gt; busybox
+/bin/sh -&gt; busybox
+BusyBox v1.28.4 (2018-06-02 20:33:24 EST) multi-call binary.
+ld-uClibc-1.0.30.so</code></pre><p>මෙය කියවන හැටි:</p>
+<ul>
+<li><strong>Kernel එක Linux ය</strong> (4.16.13). එය GNU compiler එකක් වන gcc 7.3.0 මගින් compile කර ඇත.</li>
+<li><strong>Userland එක GNU නොවේ.</strong> <code>ls</code> සහ <code>sh</code> යන දෙකම BusyBox නම් එක් binary එකකට symbolic links ය. C පුස්තකාලය glibc (GNU) නොව uClibc ය. <code>gcc</code> සහ <code>bash</code> ද මෙහි නැත (<code>which gcc bash</code> කිසිවක් නොපෙන්වයි).</li>
+<li>එසේ වුවද <code>uname -o</code> මුද්‍රණය කරන්නේ &ldquo;GNU/Linux&rdquo; යි. එය kernel එකෙන් එන්නේ නැත: BusyBox හි <code>uname</code> මෙම පෙළ compile කරන විටම සවි කළ සැකසුමකින් (<code>CONFIG_UNAME_OSNAME</code>, පෙරනිමි අගය &ldquo;GNU/Linux&rdquo;) මුද්‍රණය කරයි. එය userland එක GNU ද යන්න පරීක්ෂා කිරීමක් නොවේ (BusyBox 1.28.4 මූලාශ්‍රය, <code>coreutils/uname.c</code>).</li>
+</ul>
+<p>එබැවින් මෙම VM එක ප්‍රධාන පෙළේ &ldquo;GNU/Linux&rdquo; නාම විවාදයට රසවත් ප්‍රතිවිරුද්ධ උදාහරණයකි: Linux kernel එකට GNU userland අනිවාර්ය නොවේ. කුඩා embedded පද්ධතිවල බොහෝවිට ඇත්තේ මෙවැනි Linux + BusyBox එකතුවකි. 1991 දී එසේ නොවීය: 0.01 නිකුතු සටහනටම අනුව Linux ධාවනය කිරීමට gcc සහ bash අවශ්‍ය විය.</p>
+<h3 id="6-gnu-hurd-ගන-එක-වචනයක">6. GNU Hurd ගැන එක් වචනයක්<a class="anchor" href="#6-gnu-hurd-%e0%b6%9c%e0%b6%b1-%e0%b6%91%e0%b6%9a-%e0%b7%80%e0%b6%a0%e0%b6%b1%e0%b6%ba%e0%b6%9a">#</a></h3>
+<p>GNU හි සැලසුම් කළ kernel එක Hurd ය. GNU හි &ldquo;<a href="https://www.gnu.org/gnu/linux-and-gnu.html">Linux and the GNU System</a>&rdquo; ලිපිය (Stallman) මෙසේ කියයි: &ldquo;By the early 90s we had put together the whole system aside from the kernel.&rdquo; Hurd ධාවනය වන්නේ Mach මත ය. &ldquo;GNU Hurd started working reliably in 2001&rdquo;, නමුත් සාමාන්‍ය භාවිතයට සූදානම් වීමට තවම බොහෝ දුර ඇති බව එම ලිපියම පිළිගනී. &ldquo;GNU/Linux&rdquo; නම ඉල්ලා සිටීමට එම ලිපිය දෙන හේතුවද මෙයයි. මෙය GNU පාර්ශ්වයේ අදහසයි. Torvalds ගේ පාර්ශ්වය &ldquo;Linux&rdquo; නම භාවිත කරයි. ප්‍රධාන පෙළ දෙකම සඳහන් කරයි.</p>
+<h3 id="7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#7-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>GPL නිදහස් හතරෙන් මූලාශ්‍ර කේතය අවශ්‍ය වන්නේ කුමන ඒවාටද? ඇයි?</li>
+<li>සමාගමක් GPLv2 Linux kernel එකක් වෙනස් කර router එකක firmware ලෙස විකුණයි. මූලාශ්‍රය router පෙට්ටියේ නැත. GPLv2 §3 යටතේ ඔවුන්ට ඇති විකල්පය කුමක්ද?</li>
+<li>0.01 බලපත්‍රය යටතේ, Linux තැටි 10 ක් එක තැටියකට රුපියල් 100 ක පිරිවැය අය කර බෙදා හැරීමට ඉඩ තිබුණාද? 0.12 සිට?</li>
+<li>VM එකේ <code>ls -l /bin/cat /bin/grep</code> ටයිප් කරන්න. ඒවා GNU coreutils/grep ද?</li>
+<li>ඔබ GPL පුස්තකාලයක් භාවිත කරන වැඩසටහනක් ලියා කිසිවෙකුට නොදී ඔබේම සේවාදායකයේ (server) පමණක් ධාවනය කරයි. GPLv2 ට අනුව මූලාශ්‍රය දිය යුතුද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li><strong>1 සහ 3</strong> (අධ්‍යයනය/වෙනස් කිරීම, වෙනස් කළ පිටපත් බෙදා හැරීම). Binary එකක් වෙනස් කිරීම ප්‍රායෝගික නොවන නිසා.</li>
+<li>පෙට්ටිය සමඟ අවම වශයෙන් <strong>වසර 3 ක ලිඛිත පොරොන්දුවක්</strong> දී, ඉල්ලන ඕනෑම තුන්වන පාර්ශ්වයකට භෞතික පිරිවැයට වඩා වැඩි නොවන ගාස්තුවකට මූලාශ්‍රය ලබා දීම (§3(b)). නැතිනම් මූලාශ්‍රය සමඟම බෙදා හැරීම (§3(a)).</li>
+<li>0.01: <strong>නැත</strong> (&ldquo;not even handling costs&rdquo;). 0.12 සිට: <strong>ඔව්</strong>, ලබන්නාට මූලාශ්‍රය සහ GPL අයිතීන් ලැබෙන තාක් කල්.</li>
+<li><strong>නැත.</strong> මෙම image එකේ දෙකම <strong>BusyBox</strong> වෙත යොමු වේ (<code>/bin/cat -&gt; busybox</code>, <code>/bin/grep -&gt; busybox</code>; image එකේ පරීක්ෂා කළා).</li>
+<li><strong>නැත.</strong> GPLv2 කොන්දේසි ක්‍රියාත්මක වන්නේ පිටපත් කිරීම/බෙදා හැරීමේදී පමණි (§0, §3). (සේවාදායක භාවිතය ආවරණය කිරීමට වෙනම බලපත්‍ර ඇත. ඒවා මෙම පිටුවේ විෂය නොවේ.))</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>Free Software Foundation, &ldquo;What is Free Software?&rdquo;: <a href="https://www.gnu.org/philosophy/free-sw.html">https://www.gnu.org/philosophy/free-sw.html</a> (නිදහස් 0–3).</li>
+<li>Richard Stallman, GNU initial announcement, 27 September 1983: <a href="https://www.gnu.org/gnu/initial-announcement.html">https://www.gnu.org/gnu/initial-announcement.html</a> ; GNU Manifesto (1985): <a href="https://www.gnu.org/gnu/manifesto.html">https://www.gnu.org/gnu/manifesto.html</a> ; &ldquo;Linux and the GNU System&rdquo;: <a href="https://www.gnu.org/gnu/linux-and-gnu.html">https://www.gnu.org/gnu/linux-and-gnu.html</a></li>
+<li>GNU General Public License, version 2 (June 1991): <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt">https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt</a> (§0, §1, §2(b), §3(a)–(c)).</li>
+<li>Linus Torvalds, RELNOTES-0.01 සහ RELNOTES-0.12, kernel.org Historic archive: <a href="https://www.kernel.org/pub/linux/kernel/Historic/old-versions/">https://www.kernel.org/pub/linux/kernel/Historic/old-versions/</a></li>
+<li>0.12 දිනය සඳහා (ද්විතීයික): Wikipedia, &ldquo;History of Linux&rdquo;: <a href="https://en.wikipedia.org/wiki/History_of_Linux">https://en.wikipedia.org/wiki/History_of_Linux</a> ; Linus Torvalds, &ldquo;Linux-2.4.0-test8&rdquo;, LKML, 2000 සැප්තැම්බර් 8.</li>
+<li>BusyBox 1.28.4, <code>coreutils/uname.c</code> (<code>CONFIG_UNAME_OSNAME</code>): <a href="https://git.busybox.net/busybox/tree/coreutils/uname.c?h=1_28_4">https://git.busybox.net/busybox/tree/coreutils/uname.c?h=1_28_4</a></li>
+<li>මෙම පිටුවේ vm-terminal lab image එක (<code>static/labs/vm-terminal/assets/linux4.iso</code>, BusyBox 1.28.4, Linux 4.16.13, uClibc 1.0.30): §5 ප්‍රතිදානය එම image එක v86 හි boot කර serial console එකෙන් ලබා ගත් එකකි. බ්‍රවුසරයේ lab එක VGA තිරය භාවිත කරයි. විධාන එකමය, නමුත් prompt එකේ පෙනුම වෙනස් විය හැකිය.</li>
+<li>§3 හි අවස්ථා හතර සහ §4 හි වගුව අප සකස් කළ ආදර්ශ (illustrative) විශ්ලේෂණ වේ.</li>
+</ul>
+<p><strong>පිටවීමේ දොර:</strong> The GNU General Public License (Free Software Foundation) — copyleft බලාත්මක කළ ප්‍රාථමික නීතිමය පෙළ; ව්‍යාපෘතියේ ප්‍රකාශිත අරමුණ සඳහා Stallman ගේ GNU Manifesto (1985) සමඟ කියවන්න.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/453b3f22c5934f1acbd68d680dc1c84f028b9d9d" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;GNU&#43;%E0%B7%80%E0%B7%8A%E2%80%8D%E0%B6%BA%E0%B7%8F%E0%B6%B4%E0%B7%8F%E0%B6%BB%E0%B6%BA&#43;%E0%B7%83%E0%B7%84&#43;Linux&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F23-the-gnu-movement-and-linux%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F23-the-gnu-movement-and-linux.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F23-the-gnu-movement-and-linux.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Time-Sharing සහ Unix පෙළපත</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/24-virtual-memory-and-multitasking/" class="flex align-center">
+        <span>අතථ්‍ය මතකය සහ බහුකාර්යතාව</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#gnu-kernel-එකක-නමත-userland">GNU: Kernel එකක් නොමැති Userland</a></li>
+    <li><a href="#gpl-copyright-පටතට-හරවන-ලද">GPL: Copyright පිටතට හරවන ලදී</a></li>
+    <li><a href="#linux-හඩස-පරවය">Linux හිඩැස පුරවයි</a></li>
+    <li><a href="#මම-එකතව-ජයගරහණය-කළ-ඇය">මෙම එකතුව ජයග්‍රහණය කළේ ඇයි</a></li>
+    <li><a href="#ගඹරන-නදහස-මදකගය-යනතරණය--නදහස-හතර-gpl-හ-කනදස-සහ-kernel-එකක-userland-එකකට-හම-ව-හට">ගැඹුරින්: නිදහස් මෘදුකාංගයේ යාන්ත්‍රණය — නිදහස් හතර, GPL හි කොන්දේසි සහ kernel එකක් userland එකකට හමු වූ හැටි</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-නදහස-යනනහ-නශචත-අරථය-නදහස-හතර">2. &ldquo;නිදහස්&rdquo; යන්නෙහි නිශ්චිත අර්ථය: නිදහස් හතර</a></li>
+        <li><a href="#3-gpl-හ-යනතරණය-බද-හරන-වට-පමණක-කරයතමක-වන-කනදසය">3. GPL හි යාන්ත්‍රණය: බෙදා හරින විට පමණක් ක්‍රියාත්මක වන කොන්දේසිය</a></li>
+        <li><a href="#4-linux-හ-බලපතරය-001-සට-012-දකව">4. Linux හි බලපත්‍රය: 0.01 සිට 0.12 දක්වා</a></li>
+        <li><a href="#5-kernel-සහ-userland-ඔබම-ඇසන-මම-පටව-vm-එක">5. Kernel සහ userland ඔබේම ඇසින්: මෙම පිටුවේ VM එක</a></li>
+        <li><a href="#6-gnu-hurd-ගන-එක-වචනයක">6. GNU Hurd ගැන එක් වචනයක්</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

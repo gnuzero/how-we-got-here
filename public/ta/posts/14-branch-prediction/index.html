@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pipeline flush-கள் விலை உயர்ந்தவை — அவற்றை அரிதாக்க prediction உள்ளது">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/14-branch-prediction/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Branch Prediction">
+	<meta property="og:description" content="Pipeline flush-கள் விலை உயர்ந்தவை — அவற்றை அரிதாக்க prediction உள்ளது">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Branch Prediction">
+	<meta itemprop="description" content="Pipeline flush-கள் விலை உயர்ந்தவை — அவற்றை அரிதாக்க prediction உள்ளது">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1514">
+
+<title>Branch Prediction • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/14-branch-prediction/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/14-branch-prediction/" title="Branch Prediction">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/14-branch-prediction/" title="การทำนาย Branch">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/14-branch-prediction/" title="Branch Prediction">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/14-branch-prediction/" title="Predicția salturilor">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/14-branch-prediction/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/14-branch-prediction/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/14-branch-prediction/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/14-branch-prediction/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="active">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Branch Prediction</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள-கள-எனறல-எனன">முதலில் சொற்கள்: கிளை என்றால் என்ன?</a></li>
+    <li><a href="#ஏன-ஊககக-வணடம-ஒர-கணகக">ஏன் ஊகிக்க வேண்டும்: ஒரு கணக்கு</a></li>
+    <li><a href="#static-ஊகல-பதத">Static ஊகலி போதாது</a></li>
+    <li><a href="#1-bit-ஊகபப-ஒர-படபபடயன-சவட">1-Bit ஊகிப்பு: ஒரு படிப்படியான சுவடு</a></li>
+    <li><a href="#2-bit-saturating-counter">2-Bit Saturating Counter</a></li>
+    <li><a href="#களகள-ஒனறடனற-பசமபத-global-history">கிளைகள் ஒன்றோடொன்று பேசும்போது: Global History</a></li>
+    <li><a href="#அடதத-எஙக-fetch-சயவத">அடுத்து எங்கே Fetch செய்வது</a></li>
+    <li><a href="#ஊகம-தவறனல-speculation-மறறம-மடப">ஊகம் தவறினால்: Speculation மற்றும் மீட்பு</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Branch Prediction
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>தவறாக ஊகிக்கப்பட்ட கிளை தவறான பாதையில் fetch செய்யப்பட்ட அனைத்தையும் flush செய்கிறது. ஆழமான pipeline-இல் அது பத்து சுழற்சிகளுக்கு மேல் செலவாகலாம். பதிவு 13 அந்தச் செலவை மேசையில் விட்டது; இந்தப் பதிவு பதில்: திசை (மற்றும் இலக்கு) முன்கூட்டியே ஊகித்து flush அரிதாகும்படி செய்யுங்கள்.</p>
+<p>இந்தத் தலைப்புக்குத் தமிழில் எழுத்து வடிவ விளக்கம் இணையத்தில் கிட்டத்தட்ட இல்லை (தமிழ் விக்கிப்பீடியாவில் கட்டுரை இல்லை; தமிழ் YouTube-இலும் தனி விளக்கம் கிடைக்கவில்லை). எனவே இந்தப் பக்கம் அடிப்படையிலிருந்து, ஒவ்வொரு சொல்லையும் வரையறுத்து, கணக்குகளோடு நடக்கிறது.</p>
+<h2 id="மதலல-சறகள-கள-எனறல-எனன">முதலில் சொற்கள்: கிளை என்றால் என்ன?<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3-%e0%ae%95%e0%ae%b3-%e0%ae%8e%e0%ae%a9%e0%ae%b1%e0%ae%b2-%e0%ae%8e%e0%ae%a9%e0%ae%a9">#</a></h2>
+<p>ஒரு நிரல் பொதுவாக அடுத்தடுத்த முகவரிகளில் உள்ள அறிவுறுத்தல்களை வரிசையாக ஓட்டுகிறது: நிரல் கவுண்டர் (program counter, PC) ஒவ்வொரு முறையும் அடுத்த அறிவுறுத்தலின் முகவரிக்கு நகர்கிறது (mini-CPU-இல் ஒன்று கூடுகிறது; 4-பைட் அறிவுறுத்தல்கள் கொண்ட RISC-V-இல் நான்கு). <strong>கிளை அறிவுறுத்தல்</strong> (branch instruction) அந்த வரிசையை உடைக்கிறது — PC-ஐ வேறொரு முகவரிக்கு மாற்றுகிறது.</p>
+<ul>
+<li><strong>நிபந்தனையற்ற கிளை</strong> (unconditional branch / jump) — எப்போதும் தாவும். Mini-CPU lab-இல் <code>JMP a</code>: PC ← a.</li>
+<li><strong>நிபந்தனைக் கிளை</strong> (conditional branch) — ஒரு நிபந்தனை உண்மையானால் மட்டும் தாவும். Mini-CPU-இல் <code>JZ a</code> (Zero கொடி அமைந்திருந்தால் தாவு) மற்றும் <code>JC a</code> (Carry கொடி அமைந்திருந்தால் தாவு).</li>
+<li><strong>Taken / not-taken</strong> — கிளை உண்மையில் தாவினால் <em>taken</em>; அடுத்த அறிவுறுத்தலுக்கே விழுந்தால் (fall through) <em>not-taken</em>.</li>
+<li><strong>கிளை இலக்கு</strong> (branch target) — taken ஆனால் PC செல்லும் முகவரி.</li>
+<li><strong>கட்டுப்பாட்டு இடர்</strong> (control hazard) — pipeline-இல் கிளையின் முடிவு தெரியும் முன்பே அடுத்த அறிவுறுத்தல்களை fetch செய்ய வேண்டிய நெருக்கடி (பதிவு 13).</li>
+</ul>
+<p><code>if</code>, <code>while</code>, <code>for</code>, function அழைப்பு/திரும்புதல் — உயர்நிலை மொழியின் (பதிவு 27) ஒவ்வொரு கட்டுப்பாட்டுக் கட்டமைப்பும் இயந்திர மட்டத்தில் கிளைகளாகவே மாறுகிறது. எனவே கிளைகள் அரிதானவை அல்ல; சாதாரண நிரல்களில் பல அறிவுறுத்தல்களுக்கு ஒருமுறை ஒரு கிளை வருகிறது.</p>
+<h2 id="ஏன-ஊககக-வணடம-ஒர-கணகக">ஏன் ஊகிக்க வேண்டும்: ஒரு கணக்கு<a class="anchor" href="#%e0%ae%8f%e0%ae%a9-%e0%ae%8a%e0%ae%95%e0%ae%95%e0%ae%95-%e0%ae%b5%e0%ae%a3%e0%ae%9f%e0%ae%ae-%e0%ae%92%e0%ae%b0-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95">#</a></h2>
+<p>பதிவு 13-இன் ஐந்து நிலை pipeline-ஐ (IF, ID, EX, MEM, WB) எடுத்துக்கொள்வோம். கிளையின் நிபந்தனை EX நிலையில்தான் தீர்மானமாகிறது என்று வைத்துக்கொள்வோம். அதற்குள் IF, ID நிலைகளில் அடுத்த இரண்டு அறிவுறுத்தல்கள் ஏற்கனவே நுழைந்துவிட்டன. கிளை taken என்று தெரிந்தால் அந்த இரண்டும் தவறான பாதையைச் சேர்ந்தவை — அவற்றைத் தூக்கி எறிய (flush) வேண்டும். ஆக <strong>தவறான ஊகத்தின் தண்டனை</strong> (misprediction penalty) = 2 சுழற்சிகள்.</p>
+<p>அடிப்படை அளவு: <strong>CPI</strong> (cycles per instruction, ஒரு அறிவுறுத்தலுக்கான சராசரி சுழற்சிகள்). இலட்சிய pipeline-இல் CPI = 1. கிளைகள் சேர்க்கும் கூடுதல்:</p>
+<blockquote class='book-hint '>
+<p>CPI = 1 + (கிளைகளின் விகிதம்) × (தவறும் விகிதம்) × (தண்டனைச் சுழற்சிகள்)</p>
+</blockquote><p>எடுத்துக்காட்டு எண்கள்: அறிவுறுத்தல்களில் 20% கிளைகள்; அவற்றில் 60% taken.</p>
+<table>
+	<thead>
+			<tr>
+					<th>உத்தி</th>
+					<th>ஒரு கிளைக்கு எப்போது தண்டனை</th>
+					<th>CPI கணக்கு</th>
+					<th>CPI</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ஒவ்வொரு கிளைக்கும் காத்திரு (stall)</td>
+					<td>எப்போதும்</td>
+					<td>1 + 0.20 × 1.00 × 2</td>
+					<td>1.40</td>
+			</tr>
+			<tr>
+					<td>எப்போதும் not-taken என ஊகி</td>
+					<td>taken ஆனபோது (60%)</td>
+					<td>1 + 0.20 × 0.60 × 2</td>
+					<td>1.24</td>
+			</tr>
+			<tr>
+					<td>90% துல்லிய dynamic predictor</td>
+					<td>தவறும் 10%</td>
+					<td>1 + 0.20 × 0.10 × 2</td>
+					<td>1.04</td>
+			</tr>
+	</tbody>
+</table>
+<p>இப்போது நவீன ஆழமான pipeline-ஐ நினையுங்கள்: தண்டனை 2 அல்ல, சுமார் 15 சுழற்சிகள் என்று வைத்தால் — 90% துல்லியத்தில் CPI = 1 + 0.20 × 0.10 × 15 = <strong>1.30</strong>; 95%-இல் 1 + 0.20 × 0.05 × 15 = <strong>1.15</strong>; 99%-இல் <strong>1.03</strong>. அதாவது pipeline ஆழமாகும்போது, துல்லியத்தில் ஒவ்வொரு சதவீதமும் பெரும் வேகமாக மாறுகிறது. இதுதான் predictor-கள் சிப்பில் இவ்வளவு பரப்பைப் பெறக் காரணம்.</p>
+<h2 id="static-ஊகல-பதத">Static ஊகலி போதாது<a class="anchor" href="#static-%e0%ae%8a%e0%ae%95%e0%ae%b2-%e0%ae%aa%e0%ae%a4%e0%ae%a4">#</a></h2>
+<p><strong>Static ஊகிப்பு</strong> (static prediction) — ஓட்டத்துக்கு முன்பே நிர்ணயிக்கப்பட்ட விதி, வரலாற்றைப் பார்க்காது:</p>
+<ul>
+<li><em>எப்போதும் not-taken</em> — வன்பொருள் செலவு பூஜ்யம்; அடுத்த முகவரியிலேயே fetch தொடரும்.</li>
+<li><em>BTFN</em> (backward taken, forward not-taken) — இலக்கு பின்னோக்கி (சிறிய முகவரி) இருந்தால் taken என ஊகி. ஏன்? Loop-இன் அடியில் உள்ள கிளை பின்னோக்கித் தாவுகிறது, அது பெரும்பாலும் taken. முன்னோக்கித் தாவும் கிளைகள் பெரும்பாலும் <code>if</code> வெளியேற்றங்கள்.</li>
+<li><em>Compiler குறிப்புகள்</em> — சில ISA-கள் கிளை அறிவுறுத்தலிலேயே &ldquo;பெரும்பாலும் taken&rdquo; என்ற பிட்டை வைக்க அனுமதிக்கின்றன.</li>
+</ul>
+<p>இவை நிறைய உண்மையான குறியீட்டைத் தவறவிடுகின்றன: கிளை நடத்தை தரவையும் வரலாற்றையும் சார்ந்தது; நிலைத்த விதியால் அதைப் பிடிக்க முடியாது.</p>
+<p><strong>Dynamic ஊகிப்பு</strong> (dynamic prediction) இயக்க நேரத்தில் முடிவுகளைக் கண்காணிக்கிறது. 100 முறை ஓடும் ஒரு loop தன் பின்நோக்கு கிளையை 99 முறை எடுக்கிறது; &ldquo;கடந்த முறை taken&rdquo; என்று நினைவில் வைக்கும் predictor கிட்டத்தட்ட ஒவ்வொரு iteration-ஐயும் சரியாகப் பெறுகிறது.</p>
+<h2 id="1-bit-ஊகபப-ஒர-படபபடயன-சவட">1-Bit ஊகிப்பு: ஒரு படிப்படியான சுவடு<a class="anchor" href="#1-bit-%e0%ae%8a%e0%ae%95%e0%ae%aa%e0%ae%aa-%e0%ae%92%e0%ae%b0-%e0%ae%aa%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%af%e0%ae%a9-%e0%ae%9a%e0%ae%b5%e0%ae%9f">#</a></h2>
+<p>எளிய dynamic predictor: ஒவ்வொரு கிளைக்கும் ஒரு பிட் — &ldquo;கடைசி முறை என்ன நடந்தது&rdquo;. அதையே அடுத்த முறைக்கான ஊகமாக வைக்கிறது. இந்த அட்டவணையை <strong>Branch History Table</strong> (BHT) என்பர்; கிளையின் முகவரியின் கீழ் பிட்களால் அட்டவணைப்படுத்தப்படுகிறது.</p>
+<p>ஒரு loop நான்கு முறை ஓடுகிறது என்று வைப்போம்; அடியில் உள்ள கிளையின் முடிவுகள்: T T T N (மூன்று முறை திரும்பத் தாவி, நான்காவதில் வெளியேறும்). இந்த loop இரண்டு முறை அழைக்கப்படுகிறது: T T T N T T T N. தொடக்க நிலை N.</p>
+<table>
+	<thead>
+			<tr>
+					<th>முறை</th>
+					<th>உண்மை</th>
+					<th>ஊகம் (1-bit)</th>
+					<th>சரியா?</th>
+					<th>புதிய நிலை</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>T</td>
+					<td>N</td>
+					<td>✗</td>
+					<td>T</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>T</td>
+					<td>T</td>
+					<td>✓</td>
+					<td>T</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>T</td>
+					<td>T</td>
+					<td>✓</td>
+					<td>T</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>N</td>
+					<td>T</td>
+					<td>✗</td>
+					<td>N</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>T</td>
+					<td>N</td>
+					<td>✗</td>
+					<td>T</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>T</td>
+					<td>T</td>
+					<td>✓</td>
+					<td>T</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>T</td>
+					<td>T</td>
+					<td>✓</td>
+					<td>T</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>N</td>
+					<td>T</td>
+					<td>✗</td>
+					<td>N</td>
+			</tr>
+	</tbody>
+</table>
+<p>8-இல் 4 தவறு. நிலையான நிலையில் (steady state) ஒவ்வொரு loop ஓட்டத்துக்கும் <strong>இரண்டு</strong> தவறுகள்: வெளியேறும்போது ஒன்று (முறை 4), பிறகு அடுத்த ஓட்டத்தின் முதல் iteration-இல் இன்னொன்று (முறை 5) — ஏனெனில் ஒரே ஒரு விதிவிலக்கு (N) பிட்டைப் புரட்டிவிட்டது.</p>
+<h2 id="2-bit-saturating-counter">2-Bit Saturating Counter<a class="anchor" href="#2-bit-saturating-counter">#</a></h2>
+<p>செவ்வியல் கட்டுமானத் தொகுதி: நான்கு நிலைகள் — strongly not-taken (00), weakly not-taken (01), weakly taken (10), strongly taken (11). ஒவ்வொரு தீர்க்கப்பட்ட முடிவும் counter-ஐ உண்மையில் நடந்ததை நோக்கி ஒரு படி தள்ளுகிறது: taken ஆனால் +1, not-taken ஆனால் −1; முனைகளில் (00, 11) மேலும் நகராது — அதுவே <em>saturating</em>. ஊகம் = மேல் பிட் (1 ஆனால் taken).</p>
+<p>அதே T T T N T T T N வரிசை, தொடக்கம் 01 (weakly not-taken):</p>
+<table>
+	<thead>
+			<tr>
+					<th>முறை</th>
+					<th>உண்மை</th>
+					<th>நிலை (முன்)</th>
+					<th>ஊகம்</th>
+					<th>சரியா?</th>
+					<th>நிலை (பின்)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>T</td>
+					<td>01</td>
+					<td>N</td>
+					<td>✗</td>
+					<td>10</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>T</td>
+					<td>10</td>
+					<td>T</td>
+					<td>✓</td>
+					<td>11</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>T</td>
+					<td>11</td>
+					<td>T</td>
+					<td>✓</td>
+					<td>11</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>N</td>
+					<td>11</td>
+					<td>T</td>
+					<td>✗</td>
+					<td>10</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>T</td>
+					<td>10</td>
+					<td>T</td>
+					<td>✓</td>
+					<td>11</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>T</td>
+					<td>11</td>
+					<td>T</td>
+					<td>✓</td>
+					<td>11</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>T</td>
+					<td>11</td>
+					<td>T</td>
+					<td>✓</td>
+					<td>11</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>N</td>
+					<td>11</td>
+					<td>T</td>
+					<td>✗</td>
+					<td>10</td>
+			</tr>
+	</tbody>
+</table>
+<p>8-இல் 3 தவறு; நிலையான நிலையில் ஓட்டத்துக்கு <strong>ஒன்று</strong> மட்டும் (வெளியேற்றம்). முறை 4-இல் counter 11 → 10 மட்டுமே இறங்கியது, ஊகம் இன்னும் &ldquo;taken&rdquo; — எனவே முறை 5 சரி. பொதுவாக n முறை ஓடும் loop-க்கு: 1-bit துல்லியம் ≈ (n−2)/n, 2-bit துல்லியம் ≈ (n−1)/n. n = 4-இல் 50% எதிர் 75%; n = 100-இல் 98% எதிர் 99% — அதாவது தவறுகள் பாதியாகின்றன.</p>
+<p>ஏன் ஒரு பிட் அல்ல? 1-பிட் &ldquo;கடைசி முடிவு&rdquo; ஒரே anomaly-க்குப் பிறகு புரளுகிறது — பிறகு அடுத்த <em>சாதாரண</em> iteration-ஐயும் தவறாக ஊகிக்கிறது. இரண்டு பிட்களுக்குப் புரள இரண்டு தொடர்ச்சியான anomalies தேவை, எனவே ஒரு loop-இன் இறுதி not-taken வெளியேற்றம் அடுத்த loop ஓட்டத்தை விஷமாக்காது.</p>
+<h2 id="களகள-ஒனறடனற-பசமபத-global-history">கிளைகள் ஒன்றோடொன்று பேசும்போது: Global History<a class="anchor" href="#%e0%ae%95%e0%ae%b3%e0%ae%95%e0%ae%b3-%e0%ae%92%e0%ae%a9%e0%ae%b1%e0%ae%9f%e0%ae%a9%e0%ae%b1-%e0%ae%aa%e0%ae%9a%e0%ae%ae%e0%ae%aa%e0%ae%a4-global-history">#</a></h2>
+<p>சில கிளைகளின் முடிவு <em>மற்ற</em> கிளைகளின் முடிவைச் சார்ந்தது:</p>
+<pre tabindex="0"><code>if (x &gt; 0)  { ... }     // கிளை B1
+if (x &gt; 5)  { ... }     // கிளை B2</code></pre><p>B1 not-taken ஆனால் (x ≤ 0), B2-உம் நிச்சயம் not-taken. ஒவ்வொரு கிளையையும் தனியாகப் பார்க்கும் counter இந்தத் தொடர்பைப் பார்க்காது. <strong>Global history register</strong> (GHR) — கடைசியாக ஓடிய k கிளைகளின் T/N முடிவுகளைப் பிட்களாக வைக்கும் shift register — இதற்குப் பதில். <strong>இருநிலை தகவமைப்பு ஊகிப்பு</strong> (two-level adaptive prediction; Tse-Yu Yeh மற்றும் Yale Patt, 1991) வரலாற்றுப் பிட்களை ஒரு <strong>pattern history table</strong>-இல் 2-bit counter-களைத் தேர்ந்தெடுக்கப் பயன்படுத்துகிறது. <strong>gshare</strong> (Scott McFarling, 1993) கிளை முகவரியையும் global history-யையும் XOR செய்து அட்டவணை index-ஆக்குகிறது — சிறிய வன்பொருளில் இரண்டு தகவல்களையும் கலக்கும் எளிய தந்திரம். நவீன உயர்நிலை சிப்கள் இன்னும் நுட்பமான, பல நீள வரலாறுகளைக் கலக்கும் predictor-களைப் பயன்படுத்துகின்றன; ஆனால் அனைத்தின் அடியிலும் இதே யோசனை: <em>வரலாறு → அட்டவணை → counter → ஊகம்</em>.</p>
+<h2 id="அடதத-எஙக-fetch-சயவத">அடுத்து எங்கே Fetch செய்வது<a class="anchor" href="#%e0%ae%85%e0%ae%9f%e0%ae%a4%e0%ae%a4-%e0%ae%8e%e0%ae%99%e0%ae%95-fetch-%e0%ae%9a%e0%ae%af%e0%ae%b5%e0%ae%a4">#</a></h2>
+<p>திசை பாதி மட்டுமே. Taken கிளைக்கு, கிளை முழுமையாக டிகோட் ஆகும் முன் fetch-க்கு ஒரு <em>இலக்கும்</em> தேவை. <strong>Branch Target Buffer</strong> (BTB) ஒரு சிறிய cache (பதிவு 15), அறிவுறுத்தல் முகவரியால் அட்டவணைப்படுத்தப்பட்டது, கடைசி தீர்க்கப்பட்ட இலக்கை நினைவில் வைக்கிறது. Hit-இல், fetch அடுத்த சுழற்சியில் speculative-ஆகத் தாவ முடியும். <code>JMP</code> போன்ற நிபந்தனையற்ற கிளைக்குக்கூட திசை தெரியும், இலக்கு டிகோட் ஆகும் வரை தெரியாது — BTB அந்த இடைவெளியையும் மூடுகிறது. Function-இலிருந்து திரும்பும் (return) கிளைகளுக்கு இலக்கு ஒவ்வொரு அழைப்பிலும் மாறும்; அதற்கென <strong>return address stack</strong> என்ற சிறிய அடுக்கு அழைப்பு முகவரிகளை push/pop செய்து ஊகிக்கிறது.</p>
+<h2 id="ஊகம-தவறனல-speculation-மறறம-மடப">ஊகம் தவறினால்: Speculation மற்றும் மீட்பு<a class="anchor" href="#%e0%ae%8a%e0%ae%95%e0%ae%ae-%e0%ae%a4%e0%ae%b5%e0%ae%b1%e0%ae%a9%e0%ae%b2-speculation-%e0%ae%ae%e0%ae%b1%e0%ae%b1%e0%ae%ae-%e0%ae%ae%e0%ae%9f%e0%ae%aa">#</a></h2>
+<p>ஊகத்தின் அடிப்படையில் fetch செய்து ஓட்டப்படும் அறிவுறுத்தல்கள் <strong>speculative</strong> — இன்னும் &ldquo;உறுதி&rdquo; செய்யப்படாதவை. கிளை தீர்ந்து ஊகம் தவறு என்று தெரிந்தால், CPU அந்தக் கிளைக்குப் பின் வந்த அனைத்தையும் நிராகரித்து, சரியான இலக்கிலிருந்து fetch-ஐ மீண்டும் தொடங்குகிறது. இதற்கு நிரல் வரிசையில் முடிவுகளை உறுதி செய்யும் இயந்திரம் (பதிவு 16-இன் reorder buffer) அவசியம். ஒரு பக்கக் குறிப்பு: நிராகரிக்கப்பட்ட speculative வேலை cache-இல் தடம் விடலாம் என்பதை 2018-இல் வெளியான Spectre தாக்குதல்கள் காட்டின — வேகத்துக்கான ஊகம் பாதுகாப்புக் கேள்வியாகவும் மாறியது.</p>
+<p><strong>இப்போது முயல்க.</strong> கீழே உள்ள mini-CPU-இல் predictor இல்லை — அது ஒவ்வொரு அறிவுறுத்தலையும் தனியாக ஓட்டும் single-cycle இயந்திரம். எனவே <em>நீங்களே</em> predictor ஆகுங்கள். Assembly பெட்டியில் உள்ளதை அழித்து இதை ஒட்டுங்கள், பிறகு <strong>Assemble</strong> அழுத்துங்கள்:</p>
+<pre tabindex="0"><code>LDI 3      ; 0: A ← 3 (loop எண்ணி)
+STA 15     ; 1: mem[15] ← 3
+LDI 1      ; 2: A ← 1
+STA 14     ; 3: mem[14] ← 1 (மாறிலி 1)
+LDA 15     ; 4: loop: A ← எண்ணி
+SUB 14     ; 5: A ← A − 1 ; A பூஜ்யமானால் Zero கொடி
+STA 15     ; 6: எண்ணி ← A
+OUT        ; 7: A-ஐக் காட்டு
+JZ 10      ; 8: பூஜ்யமானால் வெளியேறு (முன்னோக்குக் கிளை)
+JMP 4      ; 9: loop-க்குத் திரும்பு (பின்னோக்கு, நிபந்தனையற்றது)
+HLT        ; 10</code></pre><ol>
+<li><strong>Step</strong>-ஐ ஒவ்வொன்றாக அழுத்துங்கள். PC 8-ஐ (<code>JZ 10</code>) அடையும் ஒவ்வொரு முறையும், Step அழுத்தும் <em>முன்</em> ஒரு காகிதத்தில் உங்கள் ஊகத்தை (T/N) எழுதுங்கள்; பிறகு அழுத்தி, PC 9-க்குச் சென்றதா (not-taken) 10-க்குச் சென்றதா (taken) என்று பாருங்கள். ZERO கொடி விளக்கையும் கவனியுங்கள்.</li>
+<li><code>JZ</code>-இன் உண்மை முடிவுகள் N, N, T ஆக இருக்க வேண்டும்; Output Register 2, 1, 0 என்று காட்டும். 00 நிலையிலிருந்து தொடங்கும் 2-bit counter-ஐக் காகிதத்தில் இயக்குங்கள்: அது N, N, N என்று ஊகித்து கடைசியில் மட்டும் தவறும்.</li>
+<li>BTFN விதி இங்கே என்ன சொல்லும்? <code>JZ 10</code> முன்னோக்கு → not-taken என ஊகிக்கும் (இரண்டு சரி, ஒன்று தவறு); <code>JMP 4</code> பின்னோக்கு → taken (எப்போதும் சரி). ஆனால் <code>JMP</code>-க்கும் இலக்கு 4 என்பதை fetch நேரத்திலேயே அறிய BTB தேவை என்பதைக் கவனியுங்கள்.</li>
+<li>பரிசோதனை: முதல் வரியை <code>LDI 9</code> என மாற்றி மீண்டும் Assemble செய்யுங்கள். இப்போது <code>JZ</code> எட்டு முறை N, ஒருமுறை T — static &ldquo;not-taken&rdquo; விதியே 9-இல் 8 சரி. நீண்ட loop-களில் எளிய விதிகளும் ஏன் நன்றாக வேலை செய்கின்றன, குறுகிய loop-களில் ஏன் தடுமாறுகின்றன என்பது இங்கே தெரியும்.</li>
+</ol>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=ta"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>கிளை அறிவுறுத்தல்</td>
+					<td>branch instruction</td>
+			</tr>
+			<tr>
+					<td>நிபந்தனைக் கிளை / நிபந்தனையற்ற கிளை</td>
+					<td>conditional / unconditional branch</td>
+			</tr>
+			<tr>
+					<td>கிளை இலக்கு</td>
+					<td>branch target</td>
+			</tr>
+			<tr>
+					<td>கட்டுப்பாட்டு இடர்</td>
+					<td>control hazard</td>
+			</tr>
+			<tr>
+					<td>தவறான ஊகத்தின் தண்டனை</td>
+					<td>misprediction penalty</td>
+			</tr>
+			<tr>
+					<td>நிலைகொள் எண்ணி (2-பிட்)</td>
+					<td>2-bit saturating counter</td>
+			</tr>
+			<tr>
+					<td>ஊக ஓட்டம்</td>
+					<td>speculative execution</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Door out:</strong> James E. Smith, &ldquo;A Study of Branch Prediction Strategies&rdquo; (ISCA 1981) — dynamic branch prediction-இன் ஆரம்ப முறையான சிகிச்சை, பாடநூலாக மாறிய saturating-counter யோசனைகள் உட்பட. மேலும்: T.-Y. Yeh and Y. N. Patt, &ldquo;Two-Level Adaptive Training Branch Prediction&rdquo; (MICRO-24, 1991); S. McFarling, &ldquo;Combining Branch Predictors&rdquo; (DEC WRL Technical Note TN-36, 1993).</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Branch&#43;Prediction&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F14-branch-prediction%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F14-branch-prediction.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F14-branch-prediction.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/13-pipelining/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Pipelining</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/15-caches/" class="flex align-center">
+        <span>Caches</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள-கள-எனறல-எனன">முதலில் சொற்கள்: கிளை என்றால் என்ன?</a></li>
+    <li><a href="#ஏன-ஊககக-வணடம-ஒர-கணகக">ஏன் ஊகிக்க வேண்டும்: ஒரு கணக்கு</a></li>
+    <li><a href="#static-ஊகல-பதத">Static ஊகலி போதாது</a></li>
+    <li><a href="#1-bit-ஊகபப-ஒர-படபபடயன-சவட">1-Bit ஊகிப்பு: ஒரு படிப்படியான சுவடு</a></li>
+    <li><a href="#2-bit-saturating-counter">2-Bit Saturating Counter</a></li>
+    <li><a href="#களகள-ஒனறடனற-பசமபத-global-history">கிளைகள் ஒன்றோடொன்று பேசும்போது: Global History</a></li>
+    <li><a href="#அடதத-எஙக-fetch-சயவத">அடுத்து எங்கே Fetch செய்வது</a></li>
+    <li><a href="#ஊகம-தவறனல-speculation-மறறம-மடப">ஊகம் தவறினால்: Speculation மற்றும் மீட்பு</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

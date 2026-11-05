@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Compute பல chips ஆனதும், அவற்றுக்கிடையேயான பாதை அடுத்த சுவர் — அர்ப்பணிக்கப்பட்ட இணைப்புகள், குறைந்த நகல்கள்">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/37-interconnects-at-scale/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Interconnects at Scale">
+	<meta property="og:description" content="Compute பல chips ஆனதும், அவற்றுக்கிடையேயான பாதை அடுத்த சுவர் — அர்ப்பணிக்கப்பட்ட இணைப்புகள், குறைந்த நகல்கள்">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Interconnects at Scale">
+	<meta itemprop="description" content="Compute பல chips ஆனதும், அவற்றுக்கிடையேயான பாதை அடுத்த சுவர் — அர்ப்பணிக்கப்பட்ட இணைப்புகள், குறைந்த நகல்கள்">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1420">
+
+<title>Interconnects at Scale • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/37-interconnects-at-scale/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/37-interconnects-at-scale/" title="Interconnects at Scale">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/37-interconnects-at-scale/" title="อินเตอร์คอนเนกต์ในระดับสเกล">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/37-interconnects-at-scale/" title="පරිමාණයේ Interconnects">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/37-interconnects-at-scale/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/37-interconnects-at-scale/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/37-interconnects-at-scale/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="active">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Interconnects at Scale</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#இயலபநல-பத-வர">இயல்புநிலை பாதை வரி</a></li>
+    <li><a href="#வரய-எணணதல--நகலகள-எததன">&ldquo;வரி&quot;யை எண்ணுதல் — நகல்கள் எத்தனை?</a></li>
+    <li><a href="#அரபபணககபபடட-இணபபகள-coherent-நனவகம-கறநத-நகலகள">அர்ப்பணிக்கப்பட்ட இணைப்புகள், Coherent நினைவகம், குறைந்த நகல்கள்</a></li>
+    <li><a href="#nvlink-எணகளல">NVLink, எண்களில்</a></li>
+    <li><a href="#cxl--ஒததசவம-பகரபபடட-நனவகமம">CXL — ஒத்திசைவும், பகிரப்பட்ட நினைவகமும்</a></li>
+    <li><a href="#gpudirect-rdma-infiniband-மறறம-bar-சளரம">GPUDirect RDMA, InfiniBand, மற்றும் BAR சாளரம்</a></li>
+    <li><a href="#அத-பரசசன-தறநத-வனபரள">அதே பிரச்சனை, திறந்த வன்பொருள்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Interconnects at Scale
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>இந்த phase இதுவரை <em>ஒரு</em> இயந்திரத்திற்குள் பாகங்களை இணைத்தது — CPU-க்கு நினைவகம், CPU-க்கு சாதனங்கள். ஒரு workload பல GPU-களை, அல்லது பல இயந்திரங்களைத் தேவைப்பட்டால், கேள்வி மாறுகிறது: அந்த அலகுகள் <em>ஒன்றையொன்று</em> கூடுதல் தொடர்பு கூடுதல் compute-ஐத் தின்னாத அளவுக்கு வேகமாகப் பேச முடியுமா?</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> NVLink, CXL, InfiniBand மூன்றுக்கும் தமிழில் எழுத்தும் காணொளியும் கிடைக்கவில்லை (காணொளித் தேடல்: YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை). ஆங்கிலப் பதிவு InfiniBand-ஐப் பெயரிடவில்லை; இங்கே அது GPUDirect RDMA பாதையின் network பகுதியாக மட்டும், NVIDIA ஆவணம் சொல்லும் அளவுக்கு வருகிறது. சரிபார்த்த மூலங்கள்: NVIDIA nccl-tests PERFORMANCE.md (all-reduce நேரச் சூத்திரம்), NVIDIA-வின் NVLink / NVLink Switch பக்கம் (தலைமுறை வாரியான bandwidth அட்டவணை), NVIDIA CUDA &ldquo;GPUDirect RDMA&rdquo; ஆவணம், Compute Express Link Consortium-இன் &ldquo;About CXL&rdquo; பக்கம்; PCIe Gen 5 x16 ≈ 64 GB/s ஆங்கிலப் பதிவு 33-இலிருந்து. Model அளவு, நினைவகத் தேவைகள் போன்றவை &ldquo;எடுத்துக்காட்டு மதிப்புகள்&rdquo;. இந்தப் பதிவுக்கு lab இல்லை; காகிதப் பயிற்சிகள் கீழே.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Interconnect (இணைப்பு வலை):</strong> சிப்கள், GPU-கள், இயந்திரங்களுக்கு இடையே தரவு நகரும் கம்பி / இணைப்பு அமைப்பு.</li>
+<li><strong>Peer-to-peer, P2P (சமநிலை இணைப்பு):</strong> CPU / system memory வழியாகச் செல்லாமல் இரு சாதனங்கள் நேரடியாகத் தரவு பரிமாறுவது.</li>
+<li><strong>DMA (நேரடி நினைவக அணுகல்):</strong> CPU ஒவ்வொரு byte-ஐயும் நகர்த்தாமல், சாதனமே நினைவகத்தில் படித்து எழுதுவது.</li>
+<li><strong>NVLink / NVSwitch:</strong> NVIDIA-வின் GPU-to-GPU இணைப்பு / பல NVLink-களை இணைத்து எல்லா GPU-க்கும் எல்லா GPU-வையும் அடையச் செய்யும் switch சிப்.</li>
+<li><strong>Cache-coherent (cache ஒத்திசைவுள்ள):</strong> ஒரு முகவரியின் எல்லா cache நகல்களும் ஒரே மதிப்பைக் காட்டும்படி வன்பொருளே பார்த்துக்கொள்வது.</li>
+<li><strong>CXL (Compute Express Link):</strong> processor, நினைவக விரிவாக்கம், accelerator-களுக்கான cache-coherent திறந்த இணைப்புத் தரநிலை.</li>
+<li><strong>RDMA / GPUDirect RDMA:</strong> தொலை இயந்திரத்தின் நினைவகத்தில் CPU தலையீடின்றி நேரடியாக எழுதுதல் / NIC GPU நினைவகத்தையே நேரடியாக அணுகுதல்.</li>
+<li><strong>InfiniBand / HCA:</strong> உயர்-வேக, குறைந்த-latency datacenter network / அதற்கான network அட்டை (Host Channel Adapter).</li>
+</ul>
+<h2 id="இயலபநல-பத-வர">இயல்புநிலை பாதை வரி<a class="anchor" href="#%e0%ae%87%e0%ae%af%e0%ae%b2%e0%ae%aa%e0%ae%a8%e0%ae%b2-%e0%ae%aa%e0%ae%a4-%e0%ae%b5%e0%ae%b0">#</a></h2>
+<p>Peer பாதை இல்லாமல், GPU A system memory வழியாக எழுதுகிறது மற்றும் GPU B அதை மீண்டும் படிக்கிறது — கூடுதல் hops, கூடுதல் latency, நகல்களில் செலவழிக்கப்பட்ட PCIe bandwidth. PCIe மட்டும் இருந்தாலும், GPUDirect P2P host staging இல்லாமல் GPU↔GPU DMA செய்ய முடியும் (இன்னும் PCIe வீதங்களில்). மீதமுள்ள கட்டுப்பாடு bandwidth மற்றும் topology: பகிரப்பட்ட விரிவாக்க fabric பல-GPU mesh-ஆக ஒருபோதும் வடிவமைக்கப்படவில்லை.</p>
+<h2 id="வரய-எணணதல--நகலகள-எததன">&ldquo;வரி&quot;யை எண்ணுதல் — நகல்கள் எத்தனை?<a class="anchor" href="#%e0%ae%b5%e0%ae%b0%e0%ae%af-%e0%ae%8e%e0%ae%a3%e0%ae%a3%e0%ae%a4%e0%ae%b2--%e0%ae%a8%e0%ae%95%e0%ae%b2%e0%ae%95%e0%ae%b3-%e0%ae%8e%e0%ae%a4%e0%ae%a4%e0%ae%a9">#</a></h2>
+<p>ஒரு GPU-விலிருந்து இன்னொரு இயந்திரத்தின் GPU-க்கு 1 GB அனுப்புவதாக வைப்போம் (எடுத்துக்காட்டு மதிப்பு; எளிய மாதிரி — ஒவ்வொரு படியும் ஒரு முழு நகல்):</p>
+<table>
+	<thead>
+			<tr>
+					<th>பாதை</th>
+					<th>படிகள்</th>
+					<th>system memory வழியாகச் செல்லும் தரவு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Host வழியாக (staged)</td>
+					<td>GPU → system memory → NIC → … → NIC → தொலை system memory → தொலை GPU</td>
+					<td>அனுப்புபக்கம்: எழுது 1 GB + படி 1 GB; பெறுபக்கம்: எழுது 1 GB + படி 1 GB = <strong>4 GB</strong></td>
+			</tr>
+			<tr>
+					<td>GPUDirect RDMA</td>
+					<td>GPU → NIC → … → NIC → தொலை GPU</td>
+					<td><strong>0 GB</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>ஒவ்வொரு GB-க்கும் இரு பக்க system memory-யிலும் மொத்தம் 4 GB போக்குவரத்து — மற்ற வேலைகளுக்கான நினைவக bandwidth-இலிருந்து பறிக்கப்படுகிறது, CPU நகல்களை மேற்பார்வையிடுகிறது.</p>
+<p><strong>PCIe மட்டும் இருந்தாலும்.</strong> NVIDIA-வின் GPUDirect RDMA ஆவணம்: இது Kepler-வகை GPU-களிலும் CUDA 5.0-இலும் அறிமுகமானது; &ldquo;standard features of PCI Express&rdquo; மட்டுமே பயன்படுத்துகிறது; ஆனால் இரு சாதனங்களும் ஒரே upstream PCIe root complex-ஐப் பகிர வேண்டும். பாதையில் PCIe switch-கள் மட்டும் இருந்தால் சிறந்த செயல்திறன்; ஒரு CPU/IOH இருந்தால் வேலை செய்யும் ஆனால் மெதுவாக; இரண்டு CPU-களுக்கு இடையேயான QPI/HT இணைப்பைக் கடந்தால் &ldquo;extremely performance-limited or even not work reliably&rdquo;. அதாவது topology-யே கட்டுப்பாடு — பதிவு சொல்வது போல.</p>
+<h2 id="அரபபணககபபடட-இணபபகள-coherent-நனவகம-கறநத-நகலகள">அர்ப்பணிக்கப்பட்ட இணைப்புகள், Coherent நினைவகம், குறைந்த நகல்கள்<a class="anchor" href="#%e0%ae%85%e0%ae%b0%e0%ae%aa%e0%ae%aa%e0%ae%a3%e0%ae%95%e0%ae%95%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%9f-%e0%ae%87%e0%ae%a3%e0%ae%aa%e0%ae%aa%e0%ae%95%e0%ae%b3-coherent-%e0%ae%a8%e0%ae%a9%e0%ae%b5%e0%ae%95%e0%ae%ae-%e0%ae%95%e0%ae%b1%e0%ae%a8%e0%ae%a4-%e0%ae%a8%e0%ae%95%e0%ae%b2%e0%ae%95%e0%ae%b3">#</a></h2>
+<p>NVIDIA-இன் NVLink நோக்கத்திற்காகக் கட்டப்பட்ட GPU-to-GPU interconnect — பரிமாற்றத்திலிருந்து CPU மற்றும் system memory வெளியே. ஒரு NVSwitch ஒரு node-இல் ஒவ்வொரு GPU-ஐயும் மற்ற ஒவ்வொன்றிலிருந்தும் அடையக்கூடியதாக்கலாம், PCIe-மற்றும்-CPU பாதையை விட மிக அதிக bandwidth-இல். அடிக்கடி, பெரிய பரிமாற்றங்கள் — பெரிய அளவிலான training Phases 7 மற்றும் 10-இல் திரும்பும் முறை — அந்த நேரடிப் பாதை முதல்-வரிசை, சிறு சரிசெய்தல் அல்ல.</p>
+<h2 id="nvlink-எணகளல">NVLink, எண்களில்<a class="anchor" href="#nvlink-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%b2">#</a></h2>
+<p>NVIDIA-வின் NVLink பக்க அட்டவணை (GPU ஒன்றுக்கு NVLink bandwidth):</p>
+<table>
+	<thead>
+			<tr>
+					<th>தலைமுறை</th>
+					<th>GPU ஒன்றுக்கு</th>
+					<th>Architecture</th>
+					<th>Switch domain</th>
+					<th>மொத்தம் (எங்கள் சரிபார்ப்பு)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>4</td>
+					<td>900 GB/s</td>
+					<td>Hopper</td>
+					<td>8 GPU</td>
+					<td>8 × 900 = 7,200 GB/s = <strong>7.2 TB/s</strong> (அட்டவணை: 7.2 TB/s)</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>1,800 GB/s</td>
+					<td>Blackwell</td>
+					<td>72 GPU (NVL72)</td>
+					<td>72 × 1,800 = 129,600 GB/s ≈ <strong>130 TB/s</strong> (அட்டவணை: 130 TB/s)</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>3,000 GB/s</td>
+					<td>Vera Rubin</td>
+					<td>72 GPU (NVL72)</td>
+					<td>72 × 3,000 = <strong>216 TB/s</strong> (அட்டவணை: 216 TB/s)</td>
+			</tr>
+	</tbody>
+</table>
+<p>அதே பக்கம் 6-ஆம் தலைமுறையை &ldquo;3 TB/s bidirectional&rdquo; என்றும் &ldquo;PCIe Gen6-இன் 12 மடங்கு&rdquo; என்றும் சொல்கிறது: 3,000 ÷ 12 = 250 GB/s — ஒரு PCIe Gen6 x16 இணைப்பின் இருதிசை மொத்தத்துக்கு அருகில்.</p>
+<p><strong>PCIe-உடன் ஒப்பீடு.</strong> 4-ஆம் தலைமுறையின் 900 GB/s இருதிசை மொத்தம் என்று எடுத்தால், ஒரு திசைக்கு 450 GB/s (பாதி — எங்கள் கணிப்பு). ஆங்கிலப் பதிவு 33-இன்படி PCIe Gen 5 x16 ஒரு திசைக்கு ≈ 64 GB/s. 450 ÷ 64 ≈ <strong>7 மடங்கு</strong>.</p>
+<p><strong>ஏன் switch?</strong> ஒவ்வொரு GPU-வையும் மற்ற ஒவ்வொன்றுடனும் நேரடிக் கம்பியால் இணைத்தால் n(n − 1)/2 இணைப்புகள்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>GPU-கள் n</th>
+					<th>நேரடி இணைப்புகள் n(n − 1)/2</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>8</td>
+					<td>8 × 7 ÷ 2 = 28</td>
+			</tr>
+			<tr>
+					<td>72</td>
+					<td>72 × 71 ÷ 2 = 2,556</td>
+			</tr>
+	</tbody>
+</table>
+<p>Switch இருந்தால் ஒவ்வொரு GPU-வும் தன் link-களை switch-களுக்கு மட்டும் இணைக்கிறது; எந்த ஜோடியும் முழு வேகத்தில் பேசலாம் — NVIDIA அதை &ldquo;all-to-all&rdquo;, &ldquo;non-blocking&rdquo; என்கிறது.</p>
+<p><strong>Training-இல் அதன் பொருள் (எடுத்துக்காட்டு மதிப்புகள்).</strong> 8 GPU-கள், bf16 gradients S = 14 GB (7 B parameters × 2 bytes), NVIDIA nccl-tests ஆவணத்தின் (PERFORMANCE.md) all-reduce சூத்திரம் t = (S ÷ B) × 2(n − 1)/n, 2 × 7/8 = 1.75:</p>
+<table>
+	<thead>
+			<tr>
+					<th>இணைப்பு (ஒரு திசைக்கு B)</th>
+					<th>t</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>NVLink 4, 450 GB/s</td>
+					<td>14 ÷ 450 × 1.75 ≈ <strong>0.054 s</strong></td>
+			</tr>
+			<tr>
+					<td>PCIe Gen 5 x16, 64 GB/s</td>
+					<td>14 ÷ 64 × 1.75 ≈ <strong>0.383 s</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>ஒவ்வொரு training படியிலும் இந்த வேறுபாடு — அதனால்தான் பதிவு நேரடிப் பாதையை &ldquo;முதல்-வரிசை&rdquo; என்கிறது.</p>
+<p>CXL (Compute Express Link) அண்டை கட்டுப்பாட்டிற்குப் பதிலளிக்கிறது: ஒரு die-க்கு அப்பால் cache-coherent அணுகல், மற்றும், மேலும் வெளியே, ஒரு socket-க்கு soldering செய்யப்படாத pooled நினைவகம். கொள்ளளவு compute nodes இடையே நகரலாம் எந்த DIMM slot-இல் இறங்கியதோ அதற்கு உறைந்திருக்காமல் — DDR (பதிவு 34) அல்லது மூல PCIe கொடுக்காத நெகிழ்வுத்தன்மை.</p>
+<h2 id="cxl--ஒததசவம-பகரபபடட-நனவகமம">CXL — ஒத்திசைவும், பகிரப்பட்ட நினைவகமும்<a class="anchor" href="#cxl--%e0%ae%92%e0%ae%a4%e0%ae%a4%e0%ae%9a%e0%ae%b5%e0%ae%ae-%e0%ae%aa%e0%ae%95%e0%ae%b0%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%9f-%e0%ae%a8%e0%ae%a9%e0%ae%b5%e0%ae%95%e0%ae%ae%e0%ae%ae">#</a></h2>
+<p>CXL Consortium-இன் விளக்கம்: CXL என்பது processor-கள், நினைவக விரிவாக்கம், accelerator-களுக்கான &ldquo;cache-coherent interconnect&rdquo;; CPU நினைவக இடத்துக்கும் இணைக்கப்பட்ட சாதனங்களின் நினைவகத்துக்கும் இடையே coherency-ஐப் பராமரிக்கிறது. CXL 4.0 bandwidth-ஐ 64 GT/s-இலிருந்து 128 GT/s-க்கு இருமடங்காக்குகிறது; CXL 3.x, 2.0, 1.1, 1.0-உடன் பின்னோக்கு இணக்கம்.</p>
+<p><strong>Pooling ஏன் உதவுகிறது (எடுத்துக்காட்டு மதிப்புகள்).</strong> நான்கு server-கள்; ஒவ்வொன்றின் உச்ச நினைவகத் தேவை 512 GB, ஆனால் உச்சங்கள் வெவ்வேறு நேரங்களில்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>நேரம்</th>
+					<th>S1</th>
+					<th>S2</th>
+					<th>S3</th>
+					<th>S4</th>
+					<th>மொத்தம்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>காலை</td>
+					<td>512</td>
+					<td>128</td>
+					<td>128</td>
+					<td>256</td>
+					<td>1,024</td>
+			</tr>
+			<tr>
+					<td>மதியம்</td>
+					<td>128</td>
+					<td>512</td>
+					<td>256</td>
+					<td>128</td>
+					<td>1,024</td>
+			</tr>
+			<tr>
+					<td>மாலை</td>
+					<td>256</td>
+					<td>128</td>
+					<td>512</td>
+					<td>128</td>
+					<td>1,024</td>
+			</tr>
+			<tr>
+					<td>இரவு</td>
+					<td>128</td>
+					<td>256</td>
+					<td>128</td>
+					<td>512</td>
+					<td>1,024</td>
+			</tr>
+	</tbody>
+</table>
+<p>ஒவ்வொரு socket-இலும் நினைவகம் பற்றவைக்கப்பட்டால், ஒவ்வொருவரின் உச்சத்துக்கும் 512 × 4 = <strong>2,048 GB</strong> வாங்க வேண்டும். ஒரு பொதுக் குளத்திலிருந்து பகிர்ந்தால், எந்த நேரத்திலும் மொத்தத் தேவை 1,024 GB — <strong>பாதி</strong> போதும் (latency, தோல்வி-பகுதி வடிவமைப்பைப் புறக்கணித்த எளிய கணக்கு).</p>
+<p>GPUDirect RDMA ஒரு NIC-ஐ GPU நினைவகத்தை நேரடியாகப் படிக்க அல்லது எழுத அனுமதிக்கிறது. அது இல்லாமல், network குறுக்கே GPU-to-GPU பரிமாற்றம் GPU → system memory → NIC → தொலை system memory → தொலை GPU — latency மற்றும் நினைவக bandwidth செலவாகும் நகல்கள். அதை GPU → network → GPU ஆகச் சுருக்குங்கள், RDMA (பதிவு 42) storage மற்றும் messaging-இல் வெல்வதற்கான அதே காரணத்திற்கு: குறைந்த நகல்கள், நகர்வை babysit செய்யும் குறைந்த CPU.</p>
+<h2 id="gpudirect-rdma-infiniband-மறறம-bar-சளரம">GPUDirect RDMA, InfiniBand, மற்றும் BAR சாளரம்<a class="anchor" href="#gpudirect-rdma-infiniband-%e0%ae%ae%e0%ae%b1%e0%ae%b1%e0%ae%ae-bar-%e0%ae%9a%e0%ae%b3%e0%ae%b0%e0%ae%ae">#</a></h2>
+<p>NVIDIA ஆவணப்படி, <code>nvidia-peermem</code> kernel module NVIDIA InfiniBand HCA-களுக்கு GPU நினைவகத்தில் நேரடி peer-to-peer படிக்கும் / எழுதும் அணுகலைத் தருகிறது — host நினைவகத்துக்கு நகலெடுக்காமல்; இது InfiniBand, RoCE (RDMA over Converged Ethernet) இரண்டுடனும் வேலை செய்கிறது. பதிவு 42-இன் RDMA இங்கே GPU நினைவகம் வரை நீள்கிறது.</p>
+<p>NIC GPU நினைவகத்தை PCIe BAR எனும் முகவரிச் சாளரம் வழியாகப் பார்க்கிறது. அதே ஆவணம் ஒரு உதாரணம் தருகிறது: Kepler-வகை GPU-களில் மிகச் சிறிய BAR 256 MB, அதில் 32 MB உள் பயன்பாட்டுக்கு ஒதுக்கப்பட்டது; GPU BAR 64 KB பக்கங்களாக map செய்யப்படுகிறது.</p>
+<ul>
+<li>பயன்படுத்தக்கூடியது: 256 − 32 = <strong>224 MB</strong></li>
+<li>64 KB பக்கங்களில்: 224 × 1,024 ÷ 64 = <strong>3,584 பக்கங்கள்</strong> ஒரே நேரத்தில் pin செய்யக்கூடியவை.</li>
+</ul>
+<p>அதனால்தான் ஆவணம் &ldquo;lazy unpinning&rdquo;, &ldquo;registration cache&rdquo; பரிந்துரைக்கிறது: pinning &ldquo;milliseconds வரை&rdquo; எடுக்கும் விலையுயர்ந்த செயல், சாளரமும் சிறியது.</p>
+<h2 id="அத-பரசசன-தறநத-வனபரள">அதே பிரச்சனை, திறந்த வன்பொருள்<a class="anchor" href="#%e0%ae%85%e0%ae%a4-%e0%ae%aa%e0%ae%b0%e0%ae%9a%e0%ae%9a%e0%ae%a9-%e0%ae%a4%e0%ae%b1%e0%ae%a8%e0%ae%a4-%e0%ae%b5%e0%ae%a9%e0%ae%aa%e0%ae%b0%e0%ae%b3">#</a></h2>
+<p>இது தொடர் சுட்டிக்காட்டும் தனிப்பயன் GPU நினைவக fabric கீழ் உள்ள கருத்து அடித்தளம்: பொது நோக்க CPU பாதையில் இல்லாமல் தொலை GPU நினைவகத்தை முகவரியிடக்கூடியதாக்குங்கள். NVLink மற்றும் GPUDirect அதை ஒரு vendor-இன் stack-க்குள் தீர்க்கின்றன. ஒரு திறந்த, PCIe-அடிப்படையிலான மாற்று அதே திறமையின்மையை அகற்ற வேண்டும் — அதனால்தான் பதிவுகள் 32–33-இன் TLP-நிலை peer பாதையும், இந்தப் பதிவின் &ldquo;அர்ப்பணிக்கப்பட்ட இணைப்பு ஏன் உள்ளது&rdquo; என்பதும் அதே கதை.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<ol>
+<li>
+<p><strong>16 GPU-களை நேரடிக் கம்பிகளால் முழுமையாக இணைக்க எத்தனை இணைப்புகள்?</strong>
+விடை: 16 × 15 ÷ 2 = <strong>120</strong>.</p>
+</li>
+<li>
+<p><strong>NVLink 5-ஆம் தலைமுறை, 8-GPU domain. மொத்த bandwidth (அட்டவணை முறையில்)?</strong>
+விடை: 8 × 1,800 = 14,400 GB/s = <strong>14.4 TB/s</strong>.</p>
+</li>
+<li>
+<p><strong>16 GPU-கள், S = 2 GB (எடுத்துக்காட்டு மதிப்புகள்). ஒரு திசைக்கு 450 GB/s எதிர் 64 GB/s இணைப்பில் all-reduce நேரங்கள்?</strong>
+விடை: 2(16 − 1)/16 = 1.875. 2 ÷ 450 × 1.875 ≈ <strong>8.3 ms</strong>; 2 ÷ 64 × 1.875 ≈ <strong>58.6 ms</strong>.</p>
+</li>
+<li>
+<p><strong>Host வழிப் பாதையில் 5 GB (எடுத்துக்காட்டு மதிப்பு) அனுப்பினால் இரு பக்க system memory-யிலும் மொத்தம் எவ்வளவு போக்குவரத்து (மேலே உள்ள எளிய மாதிரி)?</strong>
+விடை: 4 × 5 = <strong>20 GB</strong>; GPUDirect RDMA-வில் 0.</p>
+</li>
+<li>
+<p><strong>BAR 16 GB, அதில் 32 MB ஒதுக்கப்பட்டது (எடுத்துக்காட்டு மதிப்புகள்). 64 KB பக்கங்களில் எத்தனை?</strong>
+விடை: 16 GB = 16,384 MB; 16,384 − 32 = 16,352 MB; 16,352 × 1,024 ÷ 64 = <strong>261,632 பக்கங்கள்</strong>.</p>
+</li>
+<li>
+<p><strong>மூன்று server-கள், உச்சம் தலா 400 GB, ஆனால் ஒரே நேரத்தில் மொத்தத் தேவை அதிகபட்சம் 700 GB (எடுத்துக்காட்டு மதிப்புகள்). தனித்தனியாக எதிர் pool?</strong>
+விடை: 3 × 400 = <strong>1,200 GB</strong> எதிர் <strong>700 GB</strong>; 500 GB சேமிப்பு.</p>
+</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>இணைப்பு வலை</td>
+					<td>interconnect</td>
+			</tr>
+			<tr>
+					<td>சமநிலை இணைப்பு</td>
+					<td>peer-to-peer (P2P)</td>
+			</tr>
+			<tr>
+					<td>நேரடி நினைவக அணுகல்</td>
+					<td>direct memory access (DMA)</td>
+			</tr>
+			<tr>
+					<td>cache ஒத்திசைவுள்ள</td>
+					<td>cache-coherent</td>
+			</tr>
+			<tr>
+					<td>நினைவகக் குளம்</td>
+					<td>memory pooling</td>
+			</tr>
+			<tr>
+					<td>பிணைத்தல் / விடுவித்தல்</td>
+					<td>pinning / unpinning</td>
+			</tr>
+			<tr>
+					<td>முகவரிச் சாளரம்</td>
+					<td>BAR (base address register) window</td>
+			</tr>
+			<tr>
+					<td>இருதிசை / ஒருதிசை</td>
+					<td>bidirectional / unidirectional</td>
+			</tr>
+			<tr>
+					<td>எல்லாவற்றுக்கும் எல்லாம்</td>
+					<td>all-to-all</td>
+			</tr>
+			<tr>
+					<td>தடையற்ற</td>
+					<td>non-blocking</td>
+			</tr>
+			<tr>
+					<td>கூட்டுச் செயல்</td>
+					<td>collective operation</td>
+			</tr>
+			<tr>
+					<td>பிணைய அட்டை</td>
+					<td>network interface card (NIC) / HCA</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Interconnects&#43;at&#43;Scale&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F37-interconnects-at-scale%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F37-interconnects-at-scale.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F37-interconnects-at-scale.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/36-the-clock-speed-wall/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>The Clock Speed Wall</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="flex align-center">
+        <span>Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#இயலபநல-பத-வர">இயல்புநிலை பாதை வரி</a></li>
+    <li><a href="#வரய-எணணதல--நகலகள-எததன">&ldquo;வரி&quot;யை எண்ணுதல் — நகல்கள் எத்தனை?</a></li>
+    <li><a href="#அரபபணககபபடட-இணபபகள-coherent-நனவகம-கறநத-நகலகள">அர்ப்பணிக்கப்பட்ட இணைப்புகள், Coherent நினைவகம், குறைந்த நகல்கள்</a></li>
+    <li><a href="#nvlink-எணகளல">NVLink, எண்களில்</a></li>
+    <li><a href="#cxl--ஒததசவம-பகரபபடட-நனவகமம">CXL — ஒத்திசைவும், பகிரப்பட்ட நினைவகமும்</a></li>
+    <li><a href="#gpudirect-rdma-infiniband-மறறம-bar-சளரம">GPUDirect RDMA, InfiniBand, மற்றும் BAR சாளரம்</a></li>
+    <li><a href="#அத-பரசசன-தறநத-வனபரள">அதே பிரச்சனை, திறந்த வன்பொருள்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="එක් පාලිත fabric එකක් ඇතුළත, kernel පිටපත් බද්ද වේ — RDMA සහ topology වයර් එක ආපසු මිලදී ගනී">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/42-datacenter-networking-and-rdma/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA">
+	<meta property="og:description" content="එක් පාලිත fabric එකක් ඇතුළත, kernel පිටපත් බද්ද වේ — RDMA සහ topology වයර් එක ආපසු මිලදී ගනී">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA">
+	<meta itemprop="description" content="එක් පාලිත fabric එකක් ඇතුළත, kernel පිටපත් බද්ද වේ — RDMA සහ topology වයර් එක ආපසු මිලදී ගනී">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1745">
+
+<title>දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/42-datacenter-networking-and-rdma/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/42-datacenter-networking-and-rdma/" title="Datacenter Networking and RDMA">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/42-datacenter-networking-and-rdma/" title="เครือข่ายศูนย์ข้อมูลและ RDMA">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/42-datacenter-networking-and-rdma/" title="Datacenter Networking மற்றும் RDMA">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/42-datacenter-networking-and-rdma/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/42-datacenter-networking-and-rdma/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="active">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#overhead-එක-පමණනන-කහනද">Overhead එක පැමිණෙන්නේ කොහෙන්ද</a></li>
+    <li><a href="#rdma-දතත-මරගයන-kernel-සහ-cpu-එළයට">RDMA: දත්ත මාර්ගයෙන් Kernel සහ CPU එළියට</a></li>
+    <li><a href="#fat-tree-දහස-ගණනක-සමනව-වයර-කරම">Fat-Tree: දහස් ගණනක් සමානව වයර් කිරීම</a></li>
+    <li><a href="#මම-මලව-fabric-වඩ-සමඟ-එකම-දරශනය">මෙම මාලාවේ Fabric වැඩ සමඟ එකම දර්ශනය</a></li>
+    <li><a href="#ගඹරන-පටපත-බදද-rdma-මහයම-සහ-fat-tree-ගණතය">ගැඹුරින්: පිටපත් බද්ද, RDMA මෙහෙයුම් සහ fat-tree ගණිතය</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-පටපත-සද-වනන-කහද--rfc-4297">2. පිටපත් සිදු වන්නේ කොහේද — RFC 4297</a></li>
+        <li><a href="#3-මතක-bandwidth-ගණනය-ජලය-මතකයට-වඩ-වගවත-ව-වට">3. මතක bandwidth ගණනය: ජාලය මතකයට වඩා වේගවත් වූ විට</a></li>
+        <li><a href="#4-rdma-මහයම-තන-rfc-5040-2-පට-1214">4. RDMA මෙහෙයුම් තුන (RFC 5040, §2, පිටු 12–14)</a></li>
+        <li><a href="#5-fat-tree-switches-සහ-hosts-ගණන-කරම">5. Fat-tree: switches සහ hosts ගණන් කිරීම</a></li>
+        <li><a href="#6-දනම-උතසහ-කරනන-මම-පටව-vm-terminal-lab-එක">6. දැන්ම උත්සාහ කරන්න (මෙම පිටුවේ vm-terminal lab එක)</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>TCP/IP (Post 41) විවිධාකාර, විශ්වාසනීය නොවන, ගෝලීය ජාලයක් සඳහා නිවැරදි backbone එකයි. එක් දත්ත මධ්‍යස්ථානයක් ඇතුළත — එක් හිමිකරුවෙක්, කෙටි දුරවල්, ඉංජිනේරු කළ fabric එකක් — එම kernel-මැදිහත් මාර්ගයම සෑම microsecond එකක්ම සහ bandwidth හි සෑම byte එකක්ම වියදම් කරන workloads සඳහා overhead ලෙස පෙනෙන්නට පටන් ගනී.</p>
+<h2 id="overhead-එක-පමණනන-කහනද">Overhead එක පැමිණෙන්නේ කොහෙන්ද<a class="anchor" href="#overhead-%e0%b6%91%e0%b6%9a-%e0%b6%b4%e0%b6%b8%e0%b6%ab%e0%b6%b1%e0%b6%b1-%e0%b6%9a%e0%b7%84%e0%b6%b1%e0%b6%af">#</a></h2>
+<p>සාම්ප්‍රදායික TCP/IP send එකක් application දත්ත kernel buffer එකකට පිටපත් කරයි, stack එක ධාවනය කරයි, සහ NIC එකට transmit කිරීමට ඉඩ දෙයි — receive මත පිළිබිඹු වේ. එක් එක් පියවර CPU cycles වැය කරයි, සහ latency සඳහා ඊටත් නරක, මතක ස්ථාන අතර සැබෑ <em>පිටපත්</em>. සාමාන්‍ය web ගමනාගමනයට හොඳයි. තත්පරයකට බොහෝ වාරයක් gradients හුවමාරු කරන HPC හෝ බෙදාහැරුණු ML training සඳහා මිල අධිකයි.</p>
+<h2 id="rdma-දතත-මරගයන-kernel-සහ-cpu-එළයට">RDMA: දත්ත මාර්ගයෙන් Kernel සහ CPU එළියට<a class="anchor" href="#rdma-%e0%b6%af%e0%b6%ad%e0%b6%ad-%e0%b6%b8%e0%b6%bb%e0%b6%9c%e0%b6%ba%e0%b6%b1-kernel-%e0%b7%83%e0%b7%84-cpu-%e0%b6%91%e0%b7%85%e0%b6%ba%e0%b6%a7">#</a></h2>
+<p>RDMA (Remote Direct Memory Access) එක් යන්ත්‍රයකට තවත් යන්ත්‍රයක මතකය receiver ගේ CPU හෝ kernel එක transfer එක babysit නොකර කියවීමට හෝ ලිවීමට ඉඩ දෙයි. RDMA-හැකි adapter එක ජාලය හරහා bytes මතකයේ-සිට-මතකයට ගෙන යයි. Post 37 හි GPUDirect RDMA හි එකම අදහස — පිටපත් අඩු, CPU ගණනය සඳහා නිදහස් — සම්පූර්ණ යන්ත්‍ර අතර යොදන ලද, node එකක GPUs අතර පමණක් නොව.</p>
+<h2 id="fat-tree-දහස-ගණනක-සමනව-වයර-කරම">Fat-Tree: දහස් ගණනක් සමානව වයර් කිරීම<a class="anchor" href="#fat-tree-%e0%b6%af%e0%b7%84%e0%b7%83-%e0%b6%9c%e0%b6%ab%e0%b6%b1%e0%b6%9a-%e0%b7%83%e0%b6%b8%e0%b6%b1%e0%b7%80-%e0%b7%80%e0%b6%ba%e0%b6%bb-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h2>
+<p>යන්ත්‍ර දහස් ගණනකදී, topology තීරණය කරන්නේ bandwidth සැබෑද නැතහොත් ප්‍රචාරණය පමණක්ද යන්නයි. Fat-tree එකක් switches සකසන්නේ ධාරිතාව ධුරාවලිය ඉහළට පුරෝකථනය කළ හැකි ලෙස පරිමාණය වන පරිදිය, බර යටතේ පමණක් පෙනෙන bottleneck සබැඳි සඟවනවා වෙනුවට. විශාල training clusters (Phase 10) එම හිතාමතා සැලසුම සමඟ වයර් කෙරේ — ad-hoc පහසුවක් නොවේ.</p>
+<h2 id="මම-මලව-fabric-වඩ-සමඟ-එකම-දරශනය">මෙම මාලාවේ Fabric වැඩ සමඟ එකම දර්ශනය<a class="anchor" href="#%e0%b6%b8%e0%b6%b8-%e0%b6%b8%e0%b6%bd%e0%b7%80-fabric-%e0%b7%80%e0%b6%a9-%e0%b7%83%e0%b6%b8%e0%b6%9f-%e0%b6%91%e0%b6%9a%e0%b6%b8-%e0%b6%af%e0%b6%bb%e0%b7%81%e0%b6%b1%e0%b6%ba">#</a></h2>
+<p>අනවශ්‍ය පිටපත් ඉවත් කරන්න; අවශ්‍ය නොවන තැන kernel එක bypass කරන්න; topology ඉඩ දෙන තරමට සෘජුව දත්ත ගෙන යාමට දෘඪාංගයට ඉඩ දෙන්න. Post 37 එය GPU nodes ඇතුළත සහ හරහා යොදුවේය; මෙම පෝස්ට් එක එය යන්ත්‍ර-සිට-යන්ත්‍ර ජාලකරණයට යොදයි. එක්ව ඒවා Phase 7 හි බෙදාහැරුණු පද්ධති වෙත භාර දෙයි — web ට පෙර අන්තර්ජාලයේම මුල් find-and-talk පද්ධතිවලින් පටන් ගනිමින්.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=si"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="අන්තර්ක්‍රියාකාරී lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=si" target="_blank" rel="noopener">Lab එක නව tab එකක විවෘත කරන්න ↗</a>
+  </div>
+</div>
+
+<h2 id="ගඹරන-පටපත-බදද-rdma-මහයම-සහ-fat-tree-ගණතය">ගැඹුරින්: පිටපත් බද්ද, RDMA මෙහෙයුම් සහ fat-tree ගණිතය<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-%e0%b6%b4%e0%b6%a7%e0%b6%b4%e0%b6%ad-%e0%b6%b6%e0%b6%af%e0%b6%af-rdma-%e0%b6%b8%e0%b7%84%e0%b6%ba%e0%b6%b8-%e0%b7%83%e0%b7%84-fat-tree-%e0%b6%9c%e0%b6%ab%e0%b6%ad%e0%b6%ba">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> RDMA, kernel bypass හෝ fat-tree topology ගැන සිංහල විකිපීඩියා ලිපියක්, සිංහල පාඩමක් හෝ වීඩියෝවක් අපට හමු නොවීය. &ldquo;RDMA sinhala&rdquo;, &ldquo;data center network sinhala&rdquo;, &ldquo;fat tree topology sinhala&rdquo; සෙවුම්වලට අදාළ සිංහල ප්‍රතිඵල නොලැබුණි. NIE A/L ICT ගුරු මාර්ගෝපදේශයේ ජාල topology (bus, star, ring ආදිය) ඇතත් දත්ත මධ්‍යස්ථාන fabric ගැන කිසිවක් නැත. එබැවින් මෙම කොටස IETF RFC ලේඛන දෙකක් සහ fat-tree ගෘහ නිර්මාණය හඳුන්වා දුන් SIGCOMM 2008 පත්‍රිකාව මත පදනම් වේ.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>Kernel සහ පද්ධති ඇමතුම (system call):</strong> යෙදුමකට ජාල කාඩ්පතක් කෙලින්ම ස්පර්ශ කළ නොහැක. එයට kernel එකෙන් ඉල්ලිය යුතුය. සෑම ඉල්ලීමක්ම පද්ධති ඇමතුමකි.</li>
+<li><strong>පිටපත (copy):</strong> දත්ත මතකයේ එක් ස්ථානයකින් කියවා තවත් ස්ථානයකට ලිවීමයි. එයට මතක bandwidth වැය වේ.</li>
+<li><strong>පිටපත් වැළැක්වීම (copy avoidance / zero-copy):</strong> ජාල කාඩ්පත දත්ත කෙලින්ම යෙදුමේ buffer එකට තැබීමයි.</li>
+<li><strong>RDMA (Remote Direct Memory Access):</strong> RFC 5040 හි නිර්වචනයට අනුව, දුරස්ථ පද්ධතියක මතකයට ප්‍රවේශ වන ක්‍රමයකි. එහිදී දත්ත යා යුතු දුරස්ථ ස්ථානය දේශීය පද්ධතියම නියම කරයි. දුරස්ථ පද්ධතියේ RDMA හැකි NIC එකක් (RNIC) ඇති විට, එම ප්‍රවේශය &ldquo;without interrupting the processing of the CPU(s)&rdquo; සිදු වේ.</li>
+<li><strong>STag (Steering Tag):</strong> දුරස්ථ පාර්ශ්වයට ලිවීමට/කියවීමට ඉඩ දෙන buffer එකක හඳුනාගැනීමේ අංකයයි.</li>
+<li><strong>Bisection bandwidth:</strong> ජාලය සමාන කොටස් දෙකකට කැපූ විට, එම කැපුම හරහා යා හැකි මුළු bandwidth එකයි.</li>
+<li><strong>Oversubscription (අධි-දායකත්ව අනුපාතය):</strong> hosts වලට ඉල්ලිය හැකි bandwidth එක සහ ජාලයට සැබවින්ම ලබා දිය හැකි bandwidth එක අතර අනුපාතයයි.</li>
+</ul>
+<h3 id="2-පටපත-සද-වනන-කහද--rfc-4297">2. පිටපත් සිදු වන්නේ කොහේද — RFC 4297<a class="anchor" href="#2-%e0%b6%b4%e0%b6%a7%e0%b6%b4%e0%b6%ad-%e0%b7%83%e0%b6%af-%e0%b7%80%e0%b6%b1%e0%b6%b1-%e0%b6%9a%e0%b7%84%e0%b6%af--rfc-4297">#</a></h3>
+<p>IETF හි RFC 4297 &ldquo;RDMA over IP Problem Statement&rdquo; (2005 දෙසැම්බර්, §2, පිටු 3–4) මෙසේ කියයි:</p>
+<ul>
+<li>හොඳින් ක්‍රියාත්මක කළ පද්ධතියක පිටපත් දෙකක් සිදු වේ: ජාල අතුරුමුහුණත → kernel buffer, සහ kernel → යෙදුම් buffer.</li>
+<li>ඒ සෑම එකක්ම මතක බස් එක <strong>දෙවරක්</strong> (කියවීමට සහ ලිවීමට) තරණය කරයි.</li>
+<li>1989 Clark සහ සගයන්ගේ මිනුම්වලට අනුව TCP ක්‍රියාවලි වියදමෙන් <strong>64%</strong> ක් දත්ත ස්පර්ශ කරන මෙහෙයුම් නිසා ඇති විය. <strong>48%</strong> ක් පිටපත් කිරීම නිසාම විය.</li>
+<li>බයිට් 1500 Ethernet packets සමඟ කළ තවත් අධ්‍යයනයක මුළු සැකසීමේ කාලයෙන් <strong>20%</strong> ක් පිටපත් කිරීමට ගියේය.</li>
+<li>කුඩා පණිවිඩවලදී (බයිට් 128 ට අඩු) වැඩිපුර බලපාන්නේ packet එකකට වන වියදමයි (per-packet overhead).</li>
+</ul>
+<h3 id="3-මතක-bandwidth-ගණනය-ජලය-මතකයට-වඩ-වගවත-ව-වට">3. මතක bandwidth ගණනය: ජාලය මතකයට වඩා වේගවත් වූ විට<a class="anchor" href="#3-%e0%b6%b8%e0%b6%ad%e0%b6%9a-bandwidth-%e0%b6%9c%e0%b6%ab%e0%b6%b1%e0%b6%ba-%e0%b6%a2%e0%b6%bd%e0%b6%ba-%e0%b6%b8%e0%b6%ad%e0%b6%9a%e0%b6%ba%e0%b6%a7-%e0%b7%80%e0%b6%a9-%e0%b7%80%e0%b6%9c%e0%b7%80%e0%b6%ad-%e0%b7%80-%e0%b7%80%e0%b6%a7">#</a></h3>
+<p>RFC 4297 (§3, පිටුව 7) 2001 උදාහරණයක් දෙයි:</p>
+<ul>
+<li>1.2 GHz Athlon යන්ත්‍රයක් දත්ත ලැබීමේදී ඒවා මතකය තුළ <strong>3</strong> වතාවක් ගෙන යයි: NIC එක මතකයට තැබීම (1), සහ CPU එක පිටපත් කිරීමේදී කියවීම සහ ලිවීම (2).</li>
+<li>මතක bandwidth <strong>1 GB/s</strong> නම්, හැසිරවිය හැකි ජාල bandwidth එක 1 ÷ 3 GB/s ≈ 0.333 GB/s × 8 = <strong>2.67 Gb/s</strong> පමණි. එයත් යන්ත්‍රය වෙනත් කිසිවක් නොකරන විට පමණි.</li>
+<li>එවකට server එකකට 1 Gb/s සබැඳි දෙකක් (2 Gb/s) සාමාන්‍ය විය. 2.67 Gb/s යනු 100% භාවිතයේ සෛද්ධාන්තික උපරිමයයි. එය කළ නොහැකිය, තවද එවිට යන්ත්‍රය වෙන කිසිවක් කළ නොහැකිය. එබැවින් RFC 4297 නිගමනය කරන්නේ 2001 දී යන්ත්‍රයට සන්නිවේදන ඉල්ලුමට &ldquo;basically could not keep up&rdquo; (මූලික වශයෙන් ගැළපිය <strong>නොහැකි</strong> විය) යනුවෙනි.</li>
+</ul>
+<p><strong>එම ගණනය zero-copy සමඟ (ආදර්ශ):</strong> RDMA සමඟ NIC එක දත්ත කෙලින්ම යෙදුම් buffer එකට තබයි. එවිට මතක තරණ <strong>1</strong> ක් පමණි. එම 1 GB/s මතකයෙන්ම 1 × 8 = <strong>8 Gb/s</strong> ක් හැසිරවිය හැකිය. එය තුන් ගුණයකි.</p>
+<p><strong>අද දිනට ආදර්ශ පරිමාණය:</strong> 100 Gb/s NIC එකක් = 12.5 GB/s.</p>
+<table>
+	<thead>
+			<tr>
+					<th>මාර්ගය</th>
+					<th>මතක තරණ</th>
+					<th>අවශ්‍ය මතක bandwidth</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>සාම්ප්‍රදායික (පිටපත් 2)</td>
+					<td>3</td>
+					<td>3 × 12.5 = <strong>37.5 GB/s</strong></td>
+			</tr>
+			<tr>
+					<td>RDMA (zero-copy)</td>
+					<td>1</td>
+					<td><strong>12.5 GB/s</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>DDR4-3200 නාලිකාවක් 3200 MT/s × බයිට් 8 = 25.6 GB/s ලබා දෙයි (Post 34 ද බලන්න). 37.5 ÷ 25.6 ≈ 1.46. එනම් පිටපත් සහිත මාර්ගයට DDR4 නාලිකා <strong>එකහමාරක් පමණ</strong> ජාලය සඳහා පමණක් වැය වේ.</p>
+<h3 id="4-rdma-මහයම-තන-rfc-5040-2-පට-1214">4. RDMA මෙහෙයුම් තුන (RFC 5040, §2, පිටු 12–14)<a class="anchor" href="#4-rdma-%e0%b6%b8%e0%b7%84%e0%b6%ba%e0%b6%b8-%e0%b6%ad%e0%b6%b1-rfc-5040-2-%e0%b6%b4%e0%b6%a7-1214">#</a></h3>
+<ul>
+<li><strong>RDMA Write:</strong> දේශීය buffer එකක අන්තර්ගතය දුරස්ථ buffer එකකට යවයි. පණිවිඩය විස්තර කරන්නේ ගමනාන්ත (Data Sink) buffer එක පමණි.</li>
+<li><strong>RDMA Read:</strong> දේශීය පාර්ශ්වය දුරස්ථ buffer එකක දත්ත ඉල්ලයි. එය එක් Read Request පණිවිඩයකින් සහ එක් Read Response පණිවිඩයකින් සමන්විත වේ.</li>
+<li><strong>Send:</strong> දත්ත දුරස්ථ පාර්ශ්වයේ &ldquo;untagged&rdquo; buffer එකකට යවයි. ලැබෙන තැන තීරණය කරන්නේ ග්‍රාහකයයි.</li>
+</ul>
+<p><strong>පියවරෙන් පියවර: A සිට B ට 1 MB ක් RDMA Write මගින් යැවීම</strong></p>
+<ol>
+<li>B තමන්ගේ buffer එක ලියාපදිංචි කර, STag, offset සහ දිග (1 MB) A ට දන්වයි (&ldquo;Tagged Buffer&rdquo;, RFC 5040).</li>
+<li>A තම RNIC එකට &ldquo;මෙම 1 MB, B හි මෙම STag + offset වෙත&rdquo; යැයි කියයි.</li>
+<li>B හි RNIC එක ලැබෙන දත්ත කෙලින්ම එම buffer එකට ලියයි. B හි kernel එකට පිටපතක් නැත. B හි CPU එකට බාධාවක් නැත.</li>
+<li>B ට දැනගැනීමට අවශ්‍ය නම්, A ට පසුව කුඩා Send පණිවිඩයක් යැවිය හැකිය.</li>
+</ol>
+<h3 id="5-fat-tree-switches-සහ-hosts-ගණන-කරම">5. Fat-tree: switches සහ hosts ගණන් කිරීම<a class="anchor" href="#5-fat-tree-switches-%e0%b7%83%e0%b7%84-hosts-%e0%b6%9c%e0%b6%ab%e0%b6%b1-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h3>
+<p>Al-Fares, Loukissas සහ Vahdat ගේ &ldquo;A Scalable, Commodity Data Center Network Architecture&rdquo; (SIGCOMM 2008, §2.2) පත්‍රිකාවේ <strong>k-ary fat-tree</strong> එක මෙසේය:</p>
+<ul>
+<li>ports k ඇති එකම වර්ගයේ switches පමණක් භාවිතා කරයි.</li>
+<li><strong>pods k</strong> කි. සෑම pod එකකම edge switches k/2 සහ aggregation switches k/2 ක් ඇත.</li>
+<li>සෑම edge switch එකක්ම hosts k/2 කට සහ aggregation switches k/2 කට සම්බන්ධ වේ.</li>
+<li>core switches <strong>(k/2)²</strong> කි. සෑම core switch එකකටම සෑම pod එකකටම port එක බැගින් ඇත.</li>
+<li>මුළු hosts <strong>k³/4</strong>.</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>k</th>
+					<th>Hosts k³/4</th>
+					<th>Switches k² + (k/2)²</th>
+					<th>pod දෙකක් අතර කෙටිම මාර්ග (k/2)²</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>4</td>
+					<td>16</td>
+					<td>16 + 4 = 20</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>128</td>
+					<td>64 + 16 = 80</td>
+					<td>16</td>
+			</tr>
+			<tr>
+					<td>48</td>
+					<td><strong>27,648</strong></td>
+					<td>2304 + 576 = <strong>2,880</strong></td>
+					<td>576</td>
+			</tr>
+	</tbody>
+</table>
+<p>පත්‍රිකාව port 48 GigE switches භාවිතා කර hosts <strong>27,648</strong> කට සම්පූර්ණ bandwidth ලබා දිය හැකි බව පෙන්වයි (§1, §2.2). pod දෙකක් අතර කෙටිම මාර්ග (k/2)² ක් ඇති බවද එය කියයි (§3.1). එම මාර්ග හරහා ගමනාගමනය බෙදා හැරීම bandwidth ලබා ගැනීමේ රහසයි.</p>
+<p><strong>Oversubscription (§2.1.2):</strong></p>
+<ul>
+<li>පත්‍රිකාව oversubscription අර්ථ දක්වන්නේ hosts අතර ලබා ගත හැකි නරකම-අවස්ථාවේ මුළු bandwidth එක සහ topology එකේ bisection bandwidth එක අතර අනුපාතය ලෙසයි.</li>
+<li>1:1 යනු සියලු hosts වලට තම අතුරුමුහුණතේ පූර්ණ වේගයෙන් එකවර කතා කළ හැකි බවයි.</li>
+<li><strong>5:1</strong> යනු සමහර රටාවලදී host bandwidth එකෙන් <strong>20%</strong> ක් පමණක් ලැබෙන බවයි.</li>
+<li>සාමාන්‍ය නිර්මාණ 1 Gb/s මත <strong>2.5:1 (400 Mbps)</strong> සිට <strong>8:1 (125 Mbps)</strong> දක්වා oversubscribe කර ඇත.</li>
+</ul>
+<p><strong>ආදර්ශ උදාහරණය:</strong> port 48 ක edge switch එකක ports 40 ක් hosts වලට සහ 8 ක් ඉහළට (එකම වේගයෙන්) යොදා ඇත්නම්, oversubscription = 40 : 8 = <strong>5:1</strong> වේ. fat-tree එකේ ports 24 පහළට සහ 24 ඉහළට යන නිසා එය <strong>1:1</strong> වේ.</p>
+<p><strong>පිරිවැය (Table 1, §2.1.4):</strong> 2008 දී port 48 GigE fat-tree එකකින් hosts 27,648 ක් 1:1 දී host එකකට <strong>$0.3K</strong> පමණ පිරිවැයකින් සම්බන්ධ කළ හැකි විය. සාම්ප්‍රදායික 10 GigE ධුරාවලියකින් hosts 20,480 ක් සඳහා host එකකට $1.8K විය.</p>
+<h3 id="6-දනම-උතසහ-කරනන-මම-පටව-vm-terminal-lab-එක">6. දැන්ම උත්සාහ කරන්න (මෙම පිටුවේ vm-terminal lab එක)<a class="anchor" href="#6-%e0%b6%af%e0%b6%b1%e0%b6%b8-%e0%b6%8b%e0%b6%ad%e0%b7%83%e0%b7%84-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1-%e0%b6%b8%e0%b6%b8-%e0%b6%b4%e0%b6%a7%e0%b7%80-vm-terminal-lab-%e0%b6%91%e0%b6%9a">#</a></h3>
+<p>පිටපත් සහ පද්ධති ඇමතුම් වල වියදම ඔබේම ඇසින් දකින්න. ඉහත ඇති VM එකේ මෙම විධාන දෙක ක්‍රියාත්මක කරන්න. දෙකම දළ වශයෙන් MB 100 ක් ගෙන යයි:</p>
+<pre tabindex="0"><code>time dd if=/dev/zero of=/dev/null bs=512 count=200000
+time dd if=/dev/zero of=/dev/null bs=64k count=1600</code></pre><ul>
+<li>පළමු විධානය බයිට් 512 × 200,000 = <strong>102,400,000</strong> බයිට් ගෙන යයි. එයට කියවීම්/ලිවීම් පද්ධති ඇමතුම් යුගල <strong>200,000</strong> ක් ගතවේ.</li>
+<li>දෙවැන්න 65,536 × 1,600 = <strong>104,857,600</strong> බයිට් ගෙන යයි. එයට යුගල <strong>1,600</strong> ක් පමණි.</li>
+<li>මෙම BusyBox dd එක <code>records in</code> / <code>records out</code> පමණක් පෙන්වයි; ගතවූ කාලය හෝ අනුපාතය නොපෙන්වයි. එබැවින් විධානවලට ඉදිරියෙන් ඇති <code>time</code> මඟින් <code>real</code> කාලය පෙන්වයි. අපේ ධාවනයේ පළමු විධානයට තත්පර <strong>1.12</strong> ක් ද, දෙවැන්නට තත්පර <strong>0.06</strong> ක් ද ගත විය. බ්‍රව්සරයේ අනුකරණය කළ (emulated) යන්ත්‍රයක් නිසා ඔබේ කාල සැබෑ යන්ත්‍රයකට වඩා බොහෝ වැඩි වනු ඇත. එහෙත් <strong>කුඩා block එක මන්දගාමී</strong> විය යුතුය. වෙනසට හේතුව දත්ත ප්‍රමාණය නොව ඇමතුම් ගණනයි. RFC 4297 හි &ldquo;කුඩා පණිවිඩවලට packet එකකට වන වියදම ආධිපත්‍යය දරයි&rdquo; යන්නම මෙයයි. RDMA ඇමතුමකට වන kernel වියදමද ඉවත් කරයි.</li>
+</ul>
+<h3 id="7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#7-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>k = 16 fat-tree එකක hosts, core switches සහ මුළු switches ගණන කීයද?</li>
+<li>10 Gb/s hosts සමඟ 4:1 oversubscription එකක, නරකම අවස්ථාවේ host එකකට ලැබෙන bandwidth එක කීයද?</li>
+<li>මතක bandwidth 4 GB/s ඇති යන්ත්‍රයක, පිටපත් දෙකක් සහිතව (තරණ 3) හැසිරවිය හැකි උපරිම ජාල අනුපාතය Gb/s වලින් කීයද? zero-copy සමඟ?</li>
+<li>RDMA Read එකකට පණිවිඩ කීයක් අවශ්‍යද? RDMA Write එකක් විස්තර කරන්නේ කුමන buffer එකද?</li>
+<li>port 64 switch එකක ports 48 ක් පහළට සහ 16 ක් ඉහළට යොදා ඇත්නම් oversubscription අනුපාතය කීයද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>16³ ÷ 4 = <strong>1,024</strong> hosts. core (8)² = <strong>64</strong>. මුළු 16² + 64 = <strong>320</strong>.</li>
+<li>10 ÷ 4 = <strong>2.5 Gb/s</strong>.</li>
+<li>4 ÷ 3 × 8 ≈ <strong>10.7 Gb/s</strong>. zero-copy: 4 × 8 = <strong>32 Gb/s</strong>.</li>
+<li>පණිවිඩ <strong>2</strong> (Read Request සහ Read Response). RDMA Write විස්තර කරන්නේ <strong>ගමනාන්ත (Data Sink)</strong> buffer එක පමණි.</li>
+<li>48 : 16 = <strong>3:1</strong>.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>A. Romanow සහ සගයන්, <em>RDMA over IP Problem Statement</em>, RFC 4297, IETF, 2005 දෙසැම්බර්, §2 (පිටු 3–4) සහ §3 (පිටුව 7): <a href="https://www.rfc-editor.org/rfc/rfc4297.txt">https://www.rfc-editor.org/rfc/rfc4297.txt</a></li>
+<li>R. Recio සහ සගයන්, <em>A Remote Direct Memory Access Protocol Specification</em>, RFC 5040, IETF, 2007 ඔක්තෝබර්, §2 නිර්වචන (පිටු 12–14): <a href="https://www.rfc-editor.org/rfc/rfc5040.txt">https://www.rfc-editor.org/rfc/rfc5040.txt</a></li>
+<li>M. Al-Fares, A. Loukissas සහ A. Vahdat, &ldquo;A Scalable, Commodity Data Center Network Architecture&rdquo;, <em>Proc. ACM SIGCOMM 2008</em>, §1, §2.1.2, §2.1.4 (Table 1), §2.2, §3.1. කතුවරයාගේ ආයතනික පිටපත: <a href="https://cseweb.ucsd.edu/~vahdat/papers/sigcomm08.pdf">https://cseweb.ucsd.edu/~vahdat/papers/sigcomm08.pdf</a></li>
+</ul>
+<p>අපි lab image එක (BusyBox v1.28.4) boot කර මෙම <code>time dd</code> විධාන දෙකම ධාවනය කළෙමු: <code>/dev/zero</code> සහ <code>/dev/null</code> ඇත, දෙකම සාර්ථකව අවසන් වේ. 100 Gb/s වගුව සහ edge switch උදාහරණය ආදර්ශ ගණනය කිරීම් වේ.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B6%AF%E0%B6%AD%E0%B7%8A%E0%B6%AD&#43;%E0%B6%B8%E0%B6%B0%E0%B7%8A%E2%80%8D%E0%B6%BA%E0%B7%83%E0%B7%8A%E0%B6%AE%E0%B7%8F%E0%B6%B1&#43;%E0%B6%A2%E0%B7%8F%E0%B6%BD%E0%B6%9A%E0%B6%BB%E0%B6%AB%E0%B6%BA&#43;%E0%B7%83%E0%B7%84&#43;RDMA&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F42-datacenter-networking-and-rdma%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F42-datacenter-networking-and-rdma.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F42-datacenter-networking-and-rdma.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>TCP/IP සහ නවීන අන්තර්ජාල Stack එක</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="flex align-center">
+        <span>Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#overhead-එක-පමණනන-කහනද">Overhead එක පැමිණෙන්නේ කොහෙන්ද</a></li>
+    <li><a href="#rdma-දතත-මරගයන-kernel-සහ-cpu-එළයට">RDMA: දත්ත මාර්ගයෙන් Kernel සහ CPU එළියට</a></li>
+    <li><a href="#fat-tree-දහස-ගණනක-සමනව-වයර-කරම">Fat-Tree: දහස් ගණනක් සමානව වයර් කිරීම</a></li>
+    <li><a href="#මම-මලව-fabric-වඩ-සමඟ-එකම-දරශනය">මෙම මාලාවේ Fabric වැඩ සමඟ එකම දර්ශනය</a></li>
+    <li><a href="#ගඹරන-පටපත-බදද-rdma-මහයම-සහ-fat-tree-ගණතය">ගැඹුරින්: පිටපත් බද්ද, RDMA මෙහෙයුම් සහ fat-tree ගණිතය</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-පටපත-සද-වනන-කහද--rfc-4297">2. පිටපත් සිදු වන්නේ කොහේද — RFC 4297</a></li>
+        <li><a href="#3-මතක-bandwidth-ගණනය-ජලය-මතකයට-වඩ-වගවත-ව-වට">3. මතක bandwidth ගණනය: ජාලය මතකයට වඩා වේගවත් වූ විට</a></li>
+        <li><a href="#4-rdma-මහයම-තන-rfc-5040-2-පට-1214">4. RDMA මෙහෙයුම් තුන (RFC 5040, §2, පිටු 12–14)</a></li>
+        <li><a href="#5-fat-tree-switches-සහ-hosts-ගණන-කරම">5. Fat-tree: switches සහ hosts ගණන් කිරීම</a></li>
+        <li><a href="#6-දනම-උතසහ-කරනන-මම-පටව-vm-terminal-lab-එක">6. දැන්ම උත්සාහ කරන්න (මෙම පිටුවේ vm-terminal lab එක)</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

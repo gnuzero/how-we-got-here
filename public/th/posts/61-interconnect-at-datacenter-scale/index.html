@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GPU นับพัน — ทอโพโลยีและ all-reduce สำคัญเท่า FLOPS สูงสุดของชิปใดตัวเดียว">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/61-interconnect-at-datacenter-scale/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล">
+	<meta property="og:description" content="GPU นับพัน — ทอโพโลยีและ all-reduce สำคัญเท่า FLOPS สูงสุดของชิปใดตัวเดียว">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล">
+	<meta itemprop="description" content="GPU นับพัน — ทอโพโลยีและ all-reduce สำคัญเท่า FLOPS สูงสุดของชิปใดตัวเดียว">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1050">
+
+<title>อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/61-interconnect-at-datacenter-scale/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/61-interconnect-at-datacenter-scale/" title="Interconnect at Datacenter Scale">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/61-interconnect-at-datacenter-scale/" title="Datacenter පරිමාණයේ Interconnect">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/61-interconnect-at-datacenter-scale/" title="Datacenter அளவில் Interconnect">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/61-interconnect-at-datacenter-scale/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="active">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ศพทพนฐาน">ศัพท์พื้นฐาน</a></li>
+    <li><a href="#การเดนสายตรง-ๆ-ไมสเกล">การเดินสายตรง ๆ ไม่สเกล</a></li>
+    <li><a href="#วธแรกทนกออก-สงไปรวมทเดยว">วิธีแรกที่นึกออก: ส่งไปรวมที่เดียว</a></li>
+    <li><a href="#ring-all-reduce-ทละขน">Ring all-reduce ทีละขั้น</a>
+      <ul>
+        <li><a href="#ตวอยาง-4-gpu-เวกเตอร-4-ชน">ตัวอย่าง: 4 GPU เวกเตอร์ 4 ชิ้น</a></li>
+        <li><a href="#ทำไมวงแหวนจงด-นบขอมลทสง">ทำไมวงแหวนจึงดี: นับข้อมูลที่ส่ง</a></li>
+        <li><a href="#ราคาทวงแหวนตองจาย-จำนวนขน">ราคาที่วงแหวนต้องจ่าย: จำนวนขั้น</a></li>
+      </ul>
+    </li>
+    <li><a href="#fat-tree-จนเพอการฝก">Fat-Tree จูนเพื่อการฝึก</a>
+      <ul>
+        <li><a href="#นยามและตวเลข">นิยามและตัวเลข</a></li>
+        <li><a href="#รางคออะไร">รางคืออะไร</a></li>
+      </ul>
+    </li>
+    <li><a href="#all-reduce-คอแบบแผนทผกมด">All-Reduce คือแบบแผนที่ผูกมัด</a>
+      <ul>
+        <li><a href="#ซอนการสอสารไวหลงการคำนวณ">ซ่อนการสื่อสารไว้หลังการคำนวณ</a></li>
+      </ul>
+    </li>
+    <li><a href="#ทอโพโลยเอาชนะสเปกชตได">ทอโพโลยีเอาชนะสเปกชีตได้</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>บทที่ 56 ครอบคลุมการขยายหลาย GPU ภายในและข้ามเซิร์ฟเวอร์จำนวนน้อย — NVLink, NVSwitch, GPUDirect RDMA การฝึกขนาดใหญ่เป็นอีกอันดับ: GPU นับพันถึงหลายหมื่นข้ามเซิร์ฟเวอร์นับร้อยถึงนับพัน วิธีเดินสายสำคัญเท่าสเปกของ GPU ตัวใดตัวหนึ่ง</p>
+<p>ตอนตรวจสำรวจแหล่งภาษาไทยสำหรับบทนี้ เราไม่พบคำอธิบายภาษาไทยของ all-reduce เลยแม้แต่หน้าเดียว บทนี้จึงไล่ตั้งแต่ต้นว่า all-reduce คืออะไร ทำไมอัลกอริทึมแบบวงแหวนจึงส่งข้อมูลน้อยที่สุดเท่าที่จะเป็นไปได้ และทอพอโลยีของเครือข่ายเข้ามาเกี่ยวตรงไหน พร้อมตัวเลขที่คำนวณตามได้</p>
+<h2 id="ศพทพนฐาน">ศัพท์พื้นฐาน<a class="anchor" href="#%e0%b8%a8%e0%b8%9e%e0%b8%97%e0%b8%9e%e0%b8%99%e0%b8%90%e0%b8%b2%e0%b8%99">#</a></h2>
+<ul>
+<li><strong>การฝึกแบบขนานข้อมูล</strong> (data-parallel training) — ทุก GPU มีสำเนาโมเดลครบชุด แต่ได้ข้อมูลฝึกคนละส่วนของแบตช์ แต่ละตัวคำนวณ <strong>เกรเดียนต์</strong> (gradient, ศัพท์บัญญัติ; คือทิศทางและขนาดที่ควรปรับน้ำหนักแต่ละตัว ดูบทที่ 46) จากข้อมูลส่วนของตัวเอง</li>
+<li>ก่อนปรับน้ำหนัก ทุก GPU ต้องได้ <strong>ค่าเฉลี่ย</strong> ของเกรเดียนต์จากทุกตัว ไม่อย่างนั้นสำเนาโมเดลจะค่อย ๆ ต่างกันไป</li>
+<li><strong>การดำเนินการร่วม</strong> (collective operation) คือการสื่อสารที่ทุกตัวในกลุ่มเข้าร่วมพร้อมกัน ตัวที่ต้องรู้จักมีสี่แบบ
+<ul>
+<li><strong>reduce</strong> — รวมค่าจากทุกตัว (เช่น บวก) แล้วเก็บผลไว้ที่ตัวเดียว</li>
+<li><strong>broadcast</strong> — ส่งค่าจากตัวเดียวไปให้ทุกตัว</li>
+<li><strong>reduce-scatter</strong> — รวมค่าจากทุกตัว แต่ผลลัพธ์ถูกหั่นเป็นชิ้น แต่ละตัวได้เก็บชิ้นเดียว</li>
+<li><strong>all-gather</strong> — แต่ละตัวมีชิ้นของตัวเอง แล้วทุกตัวแลกกันจนทุกตัวมีครบทุกชิ้น</li>
+</ul>
+</li>
+<li><strong>all-reduce</strong> = รวมค่าจากทุกตัว แล้ว <em>ทุกตัว</em> ได้ผลรวมครบทั้งก้อน เทียบเท่ากับ reduce ตามด้วย broadcast หรือ reduce-scatter ตามด้วย all-gather</li>
+</ul>
+<h2 id="การเดนสายตรง-ๆ-ไมสเกล">การเดินสายตรง ๆ ไม่สเกล<a class="anchor" href="#%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%80%e0%b8%94%e0%b8%99%e0%b8%aa%e0%b8%b2%e0%b8%a2%e0%b8%95%e0%b8%a3%e0%b8%87-%e0%b9%86-%e0%b9%84%e0%b8%a1%e0%b8%aa%e0%b9%80%e0%b8%81%e0%b8%a5">#</a></h2>
+<p>การต่อทุกเซิร์ฟเวอร์กับทุกเซิร์ฟเวอร์อื่นโตแบบกำลังสอง — เหลวไหลนานก่อนถึงโหนดนับพัน คลัสเตอร์จริงใช้สวิตช์แบบลำดับชั้น; โครงสร้างที่เลือกตัดสินทั้งแบนด์วิดท์ที่ทำได้ และว่าแบนด์วิดท์นั้นกระจาย <em>สม่ำเสมอ</em> เพียงใดใต้ทราฟฟิกฝึกหนัก</p>
+<p>ตัวเลขช่วยให้เห็นภาพ: การต่อตรงทุกคู่ระหว่าง N เครื่องต้องใช้สาย N(N − 1)/2 เส้น 1,000 เครื่องคือ 499,500 เส้น และแต่ละเครื่องต้องมีพอร์ต 999 พอร์ต ไม่มีเครื่องไหนทำได้</p>
+<h2 id="วธแรกทนกออก-สงไปรวมทเดยว">วิธีแรกที่นึกออก: ส่งไปรวมที่เดียว<a class="anchor" href="#%e0%b8%a7%e0%b8%98%e0%b9%81%e0%b8%a3%e0%b8%81%e0%b8%97%e0%b8%99%e0%b8%81%e0%b8%ad%e0%b8%ad%e0%b8%81-%e0%b8%aa%e0%b8%87%e0%b9%84%e0%b8%9b%e0%b8%a3%e0%b8%a7%e0%b8%a1%e0%b8%97%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7">#</a></h2>
+<p>สมมติมี GPU 8 ตัว แต่ละตัวมีเกรเดียนต์ขนาด S = 2 GB (เช่น โมเดล 1 พันล้านพารามิเตอร์ เก็บเกรเดียนต์เป็น FP16 ตัวละ 2 ไบต์) และลิงก์ของแต่ละ GPU รับส่งได้ B = 100 GB/s ต่อทิศทาง (ตัวเลขสมมติเพื่อการคำนวณ)</p>
+<p>วิธีตรงไปตรงมาคือให้ GPU ตัวที่ 0 เป็นศูนย์กลาง อีก 7 ตัวส่งเกรเดียนต์มาให้ ตัวที่ 0 บวกรวมแล้วส่งผลกลับ ปัญหาคือลิงก์ของตัวที่ 0 ต้องรับ 7 × 2 GB = 14 GB ใช้เวลา 14 ÷ 100 = <strong>140 ms</strong> แล้วต้องส่งกลับอีก 14 GB อีก 140 ms ระหว่างนั้นลิงก์ของอีก 7 ตัวแทบว่าง ยิ่งเพิ่ม GPU ตัวที่ 0 ก็ยิ่งเป็นคอขวด เวลาโตตาม N ตรง ๆ</p>
+<h2 id="ring-all-reduce-ทละขน">Ring all-reduce ทีละขั้น<a class="anchor" href="#ring-all-reduce-%e0%b8%97%e0%b8%a5%e0%b8%b0%e0%b8%82%e0%b8%99">#</a></h2>
+<p>ไอเดียของอัลกอริทึมแบบ <strong>วงแหวน</strong> (ring) คือกระจายงานให้ทุกลิงก์ทำงานพร้อมกันตลอดเวลา จัด GPU เป็นวง 0 → 1 → 2 → 3 → 0 แต่ละตัวส่งให้ตัวถัดไปอย่างเดียวและรับจากตัวก่อนหน้าอย่างเดียว แล้วหั่นเวกเตอร์ของแต่ละตัวเป็น N ชิ้นเท่า ๆ กัน</p>
+<h3 id="ตวอยาง-4-gpu-เวกเตอร-4-ชน">ตัวอย่าง: 4 GPU เวกเตอร์ 4 ชิ้น<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87-4-gpu-%e0%b9%80%e0%b8%a7%e0%b8%81%e0%b9%80%e0%b8%95%e0%b8%ad%e0%b8%a3-4-%e0%b8%8a%e0%b8%99">#</a></h3>
+<p>ให้แต่ละ GPU มีเวกเตอร์ 4 ค่า (ชิ้น A, B, C, D) ที่เลือกให้ตามรอยง่าย</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>A</th>
+					<th>B</th>
+					<th>C</th>
+					<th>D</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>GPU 0</td>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>GPU 1</td>
+					<td>10</td>
+					<td>20</td>
+					<td>30</td>
+					<td>40</td>
+			</tr>
+			<tr>
+					<td>GPU 2</td>
+					<td>100</td>
+					<td>200</td>
+					<td>300</td>
+					<td>400</td>
+			</tr>
+			<tr>
+					<td>GPU 3</td>
+					<td>1000</td>
+					<td>2000</td>
+					<td>3000</td>
+					<td>4000</td>
+			</tr>
+	</tbody>
+</table>
+<p>ผลที่ต้องการคือทุก GPU มี [1111, 2222, 3333, 4444]</p>
+<p><strong>ช่วงที่ 1: reduce-scatter (3 ขั้น = N − 1)</strong> ทุกขั้น ทุก GPU ส่ง <em>หนึ่งชิ้น</em> ให้ตัวถัดไป ตัวที่รับเอาไปบวกเข้ากับชิ้นเดียวกันของตัวเอง</p>
+<ul>
+<li>ขั้นที่ 1: GPU 0 ส่ง A=1 ให้ GPU 1 (A ของ GPU 1 กลายเป็น 11), GPU 1 ส่ง B=20 ให้ GPU 2 (B กลายเป็น 220), GPU 2 ส่ง C=300 ให้ GPU 3 (C กลายเป็น 3300), GPU 3 ส่ง D=4000 ให้ GPU 0 (D กลายเป็น 4004)</li>
+<li>ขั้นที่ 2: แต่ละตัวส่งชิ้นที่เพิ่งได้รับและบวกแล้วต่อไป: GPU 0 ส่ง D=4004 ให้ GPU 1 (ได้ 4044), GPU 1 ส่ง A=11 ให้ GPU 2 (ได้ 111), GPU 2 ส่ง B=220 ให้ GPU 3 (ได้ 2220), GPU 3 ส่ง C=3300 ให้ GPU 0 (ได้ 3303)</li>
+<li>ขั้นที่ 3: GPU 0 ส่ง C=3303 ให้ GPU 1 (ได้ <strong>3333</strong>), GPU 1 ส่ง D=4044 ให้ GPU 2 (ได้ <strong>4444</strong>), GPU 2 ส่ง A=111 ให้ GPU 3 (ได้ <strong>1111</strong>), GPU 3 ส่ง B=2220 ให้ GPU 0 (ได้ <strong>2222</strong>)</li>
+</ul>
+<p>จบช่วงแรก แต่ละ GPU ถือผลรวมที่ <em>สมบูรณ์</em> อยู่หนึ่งชิ้น: GPU 0 มี B = 2222, GPU 1 มี C = 3333, GPU 2 มี D = 4444, GPU 3 มี A = 1111</p>
+<p><strong>ช่วงที่ 2: all-gather (อีก 3 ขั้น)</strong> ส่งชิ้นที่สมบูรณ์ต่อไปรอบวงแบบเดิม แต่คราวนี้ผู้รับ <em>เขียนทับ</em> แทนการบวก หลังสามขั้น ทุกชิ้นที่สมบูรณ์เดินทางไปถึงทุก GPU ผลสุดท้ายคือทุกตัวมี [1111, 2222, 3333, 4444] ตรงตามต้องการ (ลำดับทั้งหมดนี้ตรวจแล้วด้วยการจำลองในโปรแกรม)</p>
+<h3 id="ทำไมวงแหวนจงด-นบขอมลทสง">ทำไมวงแหวนจึงดี: นับข้อมูลที่ส่ง<a class="anchor" href="#%e0%b8%97%e0%b8%b3%e0%b9%84%e0%b8%a1%e0%b8%a7%e0%b8%87%e0%b9%81%e0%b8%ab%e0%b8%a7%e0%b8%99%e0%b8%88%e0%b8%87%e0%b8%94-%e0%b8%99%e0%b8%9a%e0%b8%82%e0%b8%ad%e0%b8%a1%e0%b8%a5%e0%b8%97%e0%b8%aa%e0%b8%87">#</a></h3>
+<p>แต่ละขั้น แต่ละ GPU ส่งชิ้นเดียว ขนาด S/N มีทั้งหมด 2(N − 1) ขั้น แต่ละ GPU จึงส่งรวม</p>
+<p>2(N − 1) × S/N = 2 × (N − 1)/N × S</p>
+<ul>
+<li>N = 4: ส่งคนละ 1.5 S</li>
+<li>N = 8: ส่งคนละ 1.75 S</li>
+<li>N ใหญ่มาก: เข้าใกล้ <strong>2 S</strong> แต่ไม่เกิน</li>
+</ul>
+<p>ข้อสำคัญคือปริมาณที่แต่ละตัวส่ง <em>แทบไม่โตตามจำนวน GPU</em> ต่างจากวิธีรวมที่เดียวที่ศูนย์กลางต้องรับ (N − 1)S และทุกลิงก์ในวงทำงานพร้อมกันทุกขั้น Patarasuk และ Yuan (2009) พิสูจน์ว่ามีอย่างน้อยหนึ่ง process ที่ต้องสื่อสารข้อมูลอย่างน้อย 2 × (N − 1)/N × ขนาดข้อมูล วงแหวนจึงถึงขอบเขตล่างนั้นพอดี คือ <strong>เหมาะสมที่สุดด้านแบนด์วิดท์</strong> (bandwidth optimal)</p>
+<p>กลับไปที่ตัวอย่าง 8 GPU ขนาด 2 GB ลิงก์ 100 GB/s: เวลาส่วนแบนด์วิดท์ = 1.75 × 2 GB ÷ 100 GB/s = <strong>35 ms</strong> เทียบกับ 280 ms ของวิธีรวมที่เดียว เร็วขึ้น 8 เท่า</p>
+<h3 id="ราคาทวงแหวนตองจาย-จำนวนขน">ราคาที่วงแหวนต้องจ่าย: จำนวนขั้น<a class="anchor" href="#%e0%b8%a3%e0%b8%b2%e0%b8%84%e0%b8%b2%e0%b8%97%e0%b8%a7%e0%b8%87%e0%b9%81%e0%b8%ab%e0%b8%a7%e0%b8%99%e0%b8%95%e0%b8%ad%e0%b8%87%e0%b8%88%e0%b8%b2%e0%b8%a2-%e0%b8%88%e0%b8%b3%e0%b8%99%e0%b8%a7%e0%b8%99%e0%b8%82%e0%b8%99">#</a></h3>
+<p>แต่ละขั้นมีค่าใช้จ่ายคงที่ α (เวลาเริ่มส่ง เดินทางผ่านสวิตช์ ซิงโครไนซ์ ไม่ขึ้นกับขนาดข้อมูล) แบบจำลองเวลาที่นิยมจึงเป็น</p>
+<p>T ≈ 2(N − 1) × α + 2 × (N − 1)/N × S/B</p>
+<p>สมมติ α = 5 µs</p>
+<ul>
+<li>N = 8: ส่วน α = 14 × 5 µs = 0.07 ms เล็กมากเทียบกับ 35 ms</li>
+<li>N = 1,024: ส่วนแบนด์วิดท์ ≈ 39.96 ms แต่ส่วน α = 2,046 × 5 µs ≈ <strong>10.2 ms</strong> กลายเป็นหนึ่งในห้าของเวลาทั้งหมด</li>
+</ul>
+<p>เมื่อ GPU มากหรือข้อความเล็ก จำนวนขั้นที่เป็นเชิงเส้นของวงแหวนจะเริ่มเจ็บ อัลกอริทึมแบบ <strong>ต้นไม้</strong> หรือแบบผีเสื้อ (butterfly) ใช้จำนวนรอบเป็นลอการิทึม เช่น 1,024 ตัวใช้ราว 2 × log₂ 1,024 = 20 รอบ ส่วน α เหลือแค่ 0.1 ms ไลบรารีจริงจึงเลือกอัลกอริทึมตามขนาดข้อความและทอพอโลยี และมักทำเป็น <strong>ลำดับชั้น</strong> (hierarchical): รวมกันภายในเซิร์ฟเวอร์ผ่าน NVLink ที่เร็วมากก่อน แล้วค่อยข้ามเครือข่ายระหว่างเซิร์ฟเวอร์ด้วยข้อมูลที่เหลือเพียงส่วนเดียว</p>
+<h2 id="fat-tree-จนเพอการฝก">Fat-Tree จูนเพื่อการฝึก<a class="anchor" href="#fat-tree-%e0%b8%88%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%ad%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%9d%e0%b8%81">#</a></h2>
+<p>Fat-tree จัดสวิตช์เป็นชั้น — leaf ที่เซิร์ฟเวอร์ spine ต่อ leaf — มุ่งแบนด์วิดท์แบ่งครึ่งสูง (ในอุดมคติไม่ oversubscribe); คลัสเตอร์ AI จริงอาจยัง oversubscribe หรือใช้ตัวแปรจูนราง นี่คือไอเดียเครือข่ายศูนย์ข้อมูลของบทที่ 42 ที่ระบอบ GPU นับพัน</p>
+<h3 id="นยามและตวเลข">นิยามและตัวเลข<a class="anchor" href="#%e0%b8%99%e0%b8%a2%e0%b8%b2%e0%b8%a1%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%95%e0%b8%a7%e0%b9%80%e0%b8%a5%e0%b8%82">#</a></h3>
+<ul>
+<li><strong>แบนด์วิดท์แบ่งครึ่ง</strong> (bisection bandwidth) — ตัดเครือข่ายเป็นสองซีกที่มีเครื่องเท่ากัน แบนด์วิดท์รวมที่วิ่งข้ามรอยตัดได้ในกรณีแย่ที่สุดคือแบนด์วิดท์แบ่งครึ่ง ถ้ามันเท่ากับครึ่งหนึ่งของแบนด์วิดท์รวมของทุกเครื่อง แปลว่าครึ่งหนึ่งของเครื่องคุยกับอีกครึ่งได้เต็มความเร็วพร้อมกัน เรียกว่า <em>full bisection</em></li>
+<li><strong>oversubscription</strong> — สวิตช์ leaf ที่มีพอร์ตลงไปหาเซิร์ฟเวอร์ 48 พอร์ต แต่มีพอร์ตขึ้นไปหา spine แค่ 16 พอร์ต (ความเร็วเท่ากัน) คือ oversubscribe <strong>3:1</strong> ถ้าทุกเครื่องใต้ leaf นี้ต้องคุยกับเครื่องนอก leaf พร้อมกัน แต่ละเครื่องได้แบนด์วิดท์แค่หนึ่งในสาม ประหยัดสวิตช์และสายได้มาก แต่ all-reduce ที่ต้องข้าม leaf จะช้าลงตามนั้น</li>
+<li>Al-Fares และคณะ (SIGCOMM 2008) แสดงว่า fat-tree แบบ k-ary ที่สร้างจากสวิตช์ธรรมดาขนาด k พอร์ตเท่ากันทั้งหมด รองรับเครื่องได้ <strong>k³/4</strong> เครื่องด้วย full bisection สวิตช์ 48 พอร์ตได้ 48³/4 = 27,648 เครื่อง (ตัวเลขที่เปเปอร์ยกมาเอง) สวิตช์ 64 พอร์ตได้ 64³/4 = 65,536 เครื่อง</li>
+</ul>
+<p>การออกแบบจูนรางจูนเพิ่มรอบแบบแผนการสื่อสารที่งานฝึกใหญ่สร้างจริง — ไม่ใช่ทราฟฟิกศูนย์ข้อมูลทั่วไป ทราฟฟิกฝึกต่าง; ทอโพโลยีที่สร้างเพื่อมันเอาชนะแบบทั่วไปได้</p>
+<h3 id="รางคออะไร">รางคืออะไร<a class="anchor" href="#%e0%b8%a3%e0%b8%b2%e0%b8%87%e0%b8%84%e0%b8%ad%e0%b8%ad%e0%b8%b0%e0%b9%84%e0%b8%a3">#</a></h3>
+<p>เซิร์ฟเวอร์ GPU ทั่วไปมี GPU 8 ตัว และมักมีการ์ดเครือข่ายแยกต่อ GPU <strong>ราง</strong> (rail) คือกลุ่มของ GPU ที่มี <em>ลำดับในเครื่องเดียวกัน</em> จากทุกเซิร์ฟเวอร์ เช่น GPU หมายเลข 3 ของทุกเครื่องคือราง 3 เครือข่ายแบบ <strong>จูนราง</strong> (rail-optimized) ต่อ GPU ในรางเดียวกันเข้ากับสวิตช์ชุดเดียวกัน แล้วใช้ชั้น spine เชื่อมระหว่างรางสำหรับทราฟฟิกที่เหลือ</p>
+<p>ทำไมถึงเข้ากับ all-reduce แบบลำดับชั้น: ขั้นแรกรวมภายในเครื่องผ่าน NVLink แล้วแบ่งให้ GPU แต่ละตัวในเครื่องรับผิดชอบชิ้นหนึ่งในแปด ขั้นที่สองคือ GPU หมายเลขเดียวกันของทุกเครื่องทำ all-reduce ของชิ้นนั้นร่วมกัน ซึ่งก็คือคุยกันภายในรางเดียว ทราฟฟิกจึงผ่านสวิตช์รางตัวเดียวโดยไม่ต้องขึ้นไปถึง spine Wang และคณะ (arXiv:2307.12169) วิเคราะห์ทราฟฟิกการฝึกโมเดลภาษาขนาดใหญ่แล้วพบว่า ทราฟฟิกที่ออกนอกเครื่องแทบทั้งหมดอยู่ภายในราง จนเสนอให้ตัดชั้น spine ทิ้งไปเลย (ข้อเสนอนี้เป็นงานวิจัย ไม่ใช่แนวปฏิบัติมาตรฐานของอุตสาหกรรม)</p>
+<h2 id="all-reduce-คอแบบแผนทผกมด">All-Reduce คือแบบแผนที่ผูกมัด<a class="anchor" href="#all-reduce-%e0%b8%84%e0%b8%ad%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b9%81%e0%b8%9c%e0%b8%99%e0%b8%97%e0%b8%9c%e0%b8%81%e0%b8%a1%e0%b8%94">#</a></h2>
+<p>การฝึก data-parallel (บทที่ 46) ต้องซิงค์ gradient ข้ามทุก GPU ที่ร่วมในทุกขั้น — gradient ท้องถิ่นจากชิ้นแบตช์ แล้วรวม (โดยปกติเฉลี่ย) ก่อนขั้นถัดไป All-reduce นั้นรันตลอดรอบฝึกเต็ม ประสิทธิภาพขึ้นกับแบนด์วิดท์ดิบ <em>และ</em> ทอโพโลยี: อัลกอริทึมแบบวงแหวนหรือต้นไม้รู้สึกการเดินสายกายภาพ ไม่ใช่เพียงยอดรวมทางทฤษฎี</p>
+<p>วงแหวนแสดงให้เห็นตรง ๆ ว่าทำไม: ทุกขั้นของวงแหวนต้องรอให้ทุกลิงก์ในวงส่งเสร็จก่อน ความเร็วของทั้งวงจึงเท่ากับ <em>ลิงก์ที่ช้าที่สุด</em> ในวง ถ้าวงแหวน 1,024 GPU มีหนึ่งช่วงที่ต้องวิ่งผ่าน spine ที่ oversubscribe 3:1 ทั้งวงจะวิ่งด้วยความเร็วหนึ่งในสามตลอดทุกขั้น ไลบรารีสื่อสารจึงพยายามจัดลำดับ GPU ในวงให้ตรงกับการเดินสายจริง</p>
+<h3 id="ซอนการสอสารไวหลงการคำนวณ">ซ่อนการสื่อสารไว้หลังการคำนวณ<a class="anchor" href="#%e0%b8%8b%e0%b8%ad%e0%b8%99%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%aa%e0%b8%ad%e0%b8%aa%e0%b8%b2%e0%b8%a3%e0%b9%84%e0%b8%a7%e0%b8%ab%e0%b8%a5%e0%b8%87%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%84%e0%b8%b3%e0%b8%99%e0%b8%a7%e0%b8%93">#</a></h3>
+<p>ขั้นย้อนกลับ (backward pass) คำนวณเกรเดียนต์จากชั้นท้ายของโครงข่ายไล่ขึ้นมาชั้นแรก เกรเดียนต์ของชั้นท้ายจึงพร้อมก่อน เฟรมเวิร์กจึงรวบเกรเดียนต์เป็นก้อน ๆ (bucket) แล้วเริ่ม all-reduce ของก้อนที่พร้อมทันที ระหว่างที่ GPU ยังคำนวณเกรเดียนต์ของชั้นที่เหลือ ถ้าการคำนวณที่เหลือนานพอ เวลา all-reduce ส่วนใหญ่ก็ถูกซ่อน ถ้าเครือข่ายช้าเกินไป GPU ก็ต้องนั่งรอหลังคำนวณเสร็จ ซึ่งคือจุดที่ &ldquo;ทอพอโลยีเอาชนะสเปกชีต&rdquo; ในหัวข้อถัดไป</p>
+<h2 id="ทอโพโลยเอาชนะสเปกชตได">ทอโพโลยีเอาชนะสเปกชีตได้<a class="anchor" href="#%e0%b8%97%e0%b8%ad%e0%b9%82%e0%b8%9e%e0%b9%82%e0%b8%a5%e0%b8%a2%e0%b9%80%e0%b8%ad%e0%b8%b2%e0%b8%8a%e0%b8%99%e0%b8%b0%e0%b8%aa%e0%b9%80%e0%b8%9b%e0%b8%81%e0%b8%8a%e0%b8%95%e0%b9%84%e0%b8%94">#</a></h2>
+<p>GPU ยอดเยี่ยมบน fabric ออกแบบไม่ดีหรือ oversubscribe แพ้ GPU เรียบกว่าบนเครือข่ายจูนรางอย่างระมัดระวังได้ — เพราะ all-reduce กลายเป็นคอขวด ไม่ใช่ FLOPS สูงสุดของชิปใดตัวเดียว ธีมของชุดนี้อีกครั้ง: สเปกชิ้นส่วน (จำนวนทรานซิสเตอร์ ความเร็วคล็อก FLOPS สูงสุด) บอกเพียงส่วนของเรื่อง วิธีที่ชิ้นส่วนถูกเชื่อม — จากบัสในชิป (เฟส 5) ถึงทอโพโลยีของคลัสเตอร์ฝึก — มักตัดสินประสิทธิภาพที่ได้จริง</p>
+<p>ลองคิดด้วยตัวเลข (ตัวเลขสมมติ): ถ้าขั้นฝึกหนึ่งขั้นใช้เวลาคำนวณ 100 ms และ all-reduce ซ่อนหลังการคำนวณไม่ได้เลย 40 ms ขั้นหนึ่งจะกินเวลา 140 ms เปลี่ยนเป็น GPU ที่คำนวณเร็วขึ้นสองเท่าบนเครือข่ายเดิม ได้ 50 + 40 = 90 ms เร็วขึ้นแค่ 1.56 เท่า แต่ถ้าปรับเครือข่ายจน all-reduce เหลือ 10 ms โดยใช้ GPU รุ่นเดิม ได้ 110 ms เร็วขึ้น 1.27 เท่าด้วยเงินที่มักน้อยกว่ามาก และยิ่ง GPU เร็วขึ้น สัดส่วนของเวลาสื่อสารก็ยิ่งใหญ่ขึ้น</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>โอภาส เอี่ยมสิริวงศ์, <em>เครือข่ายคอมพิวเตอร์และการสื่อสาร</em></li>
+<li>จตุชัย แพงจันทร์ และ อนุโชต วุฒิพรพงษ์, <em>เจาะระบบ Network</em></li>
+<li>ภัทรสินี ภัทรโกศล, <em>เครือข่ายคอมพิวเตอร์</em></li>
+<li>จันทนา จันทราพรชัย, <em>สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ</em></li>
+<li>Pitch Patarasuk และ Xin Yuan, &ldquo;Bandwidth Optimal All-reduce Algorithms for Clusters of Workstations&rdquo; (<em>Journal of Parallel and Distributed Computing</em>, 2009) — ขอบเขตล่าง 2(N − 1)/N และอัลกอริทึมแบบวงแหวน (ภาษาอังกฤษ)</li>
+<li>Mohammad Al-Fares, Alexander Loukissas และ Amin Vahdat, &ldquo;A Scalable, Commodity Data Center Network Architecture&rdquo; (SIGCOMM 2008) — fat-tree แบบ k-ary และสูตร k³/4 (ภาษาอังกฤษ)</li>
+<li>Weiyang Wang และคณะ, &ldquo;Rail-only: A Low-Cost High-Performance Network for Training LLMs with Trillion Parameters&rdquo; (arXiv:2307.12169) — คำอธิบายเครือข่ายจูนรางและการวิเคราะห์ทราฟฟิก (ภาษาอังกฤษ)</li>
+<li>ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, <a href="https://coined-word.orst.go.th/">coined-word.orst.go.th</a> — <em>เกรเดียนต์</em> (gradient), <em>ทอพอโลยี</em> (topology), <em>สวิตช์</em> (switch)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%84%E0%B8%AD%E0%B8%99%E0%B9%80%E0%B8%99%E0%B8%81%E0%B8%95%E0%B9%8C%E0%B9%83%E0%B8%99%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B1%E0%B8%9A%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F61-interconnect-at-datacenter-scale%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F61-interconnect-at-datacenter-scale.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F61-interconnect-at-datacenter-scale.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/60-sparsity-in-hardware/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Sparsity ในฮาร์ดแวร์</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/62-where-it-s-headed/" class="flex align-center">
+        <span>ทิศทางข้างหน้า</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ศพทพนฐาน">ศัพท์พื้นฐาน</a></li>
+    <li><a href="#การเดนสายตรง-ๆ-ไมสเกล">การเดินสายตรง ๆ ไม่สเกล</a></li>
+    <li><a href="#วธแรกทนกออก-สงไปรวมทเดยว">วิธีแรกที่นึกออก: ส่งไปรวมที่เดียว</a></li>
+    <li><a href="#ring-all-reduce-ทละขน">Ring all-reduce ทีละขั้น</a>
+      <ul>
+        <li><a href="#ตวอยาง-4-gpu-เวกเตอร-4-ชน">ตัวอย่าง: 4 GPU เวกเตอร์ 4 ชิ้น</a></li>
+        <li><a href="#ทำไมวงแหวนจงด-นบขอมลทสง">ทำไมวงแหวนจึงดี: นับข้อมูลที่ส่ง</a></li>
+        <li><a href="#ราคาทวงแหวนตองจาย-จำนวนขน">ราคาที่วงแหวนต้องจ่าย: จำนวนขั้น</a></li>
+      </ul>
+    </li>
+    <li><a href="#fat-tree-จนเพอการฝก">Fat-Tree จูนเพื่อการฝึก</a>
+      <ul>
+        <li><a href="#นยามและตวเลข">นิยามและตัวเลข</a></li>
+        <li><a href="#รางคออะไร">รางคืออะไร</a></li>
+      </ul>
+    </li>
+    <li><a href="#all-reduce-คอแบบแผนทผกมด">All-Reduce คือแบบแผนที่ผูกมัด</a>
+      <ul>
+        <li><a href="#ซอนการสอสารไวหลงการคำนวณ">ซ่อนการสื่อสารไว้หลังการคำนวณ</a></li>
+      </ul>
+    </li>
+    <li><a href="#ทอโพโลยเอาชนะสเปกชตได">ทอโพโลยีเอาชนะสเปกชีตได้</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

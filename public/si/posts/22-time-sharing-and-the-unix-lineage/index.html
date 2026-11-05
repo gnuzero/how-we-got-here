@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Batch CPU කාර්යබහුලව තැබුවේය; time-sharing බහු පරිශීලකයන්ට එය අයිති කර ගත් මායාව දුන්නේය — Multics අභිලාෂය, පසුව Unix සරලත්වය">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/22-time-sharing-and-the-unix-lineage/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="Time-Sharing සහ Unix පෙළපත">
+	<meta property="og:description" content="Batch CPU කාර්යබහුලව තැබුවේය; time-sharing බහු පරිශීලකයන්ට එය අයිති කර ගත් මායාව දුන්නේය — Multics අභිලාෂය, පසුව Unix සරලත්වය">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Time-Sharing සහ Unix පෙළපත">
+	<meta itemprop="description" content="Batch CPU කාර්යබහුලව තැබුවේය; time-sharing බහු පරිශීලකයන්ට එය අයිති කර ගත් මායාව දුන්නේය — Multics අභිලාෂය, පසුව Unix සරලත්වය">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1929">
+
+<title>Time-Sharing සහ Unix පෙළපත • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/22-time-sharing-and-the-unix-lineage/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/22-time-sharing-and-the-unix-lineage/" title="Time-Sharing and the Unix Lineage">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/22-time-sharing-and-the-unix-lineage/" title="Time-Sharing และสายเลือด Unix">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/22-time-sharing-and-the-unix-lineage/" title="Time-Sharing மற்றும் Unix வம்சாவளி">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/22-time-sharing-and-the-unix-lineage/" title="Partajarea timpului și descendența Unix">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/22-time-sharing-and-the-unix-lineage/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="active">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Time-Sharing සහ Unix පෙළපත</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#මලක-උපකරමය-වගවත-මරවම">මූලික උපක්‍රමය: වේගවත් මාරුවීම</a></li>
+    <li><a href="#multics-සට-unix-දකව">Multics සිට Unix දක්වා</a></li>
+    <li><a href="#බදම-bsd-සහ-system-v">බෙදීම: BSD සහ System V</a></li>
+    <li><a href="#මය-ගන-යනන-කහද">මෙය ගෙන යන්නේ කොහේද</a></li>
+    <li><a href="#ගඹරන-time-sharing-සහ-unix-අකවලන--1974-ලපය-සඛයලඛන-i-node-pipes">ගැඹුරින්: Time-sharing සහ Unix අංකවලින් — 1974 ලිපියේ සංඛ්‍යාලේඛන, i-node, pipes</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-මයව-කරය-කරනන-ඇය--bell-labs-හ-1974-සඛය">2. මායාව ක්‍රියා කරන්නේ ඇයි — Bell Labs හි 1974 සංඛ්‍යා</a></li>
+        <li><a href="#3-round-robin-කල-පත-ආදරශ-අක">3. Round-robin කාල පෙති (ආදර්ශ අංක)</a></li>
+        <li><a href="#4-සයලලම-file-එකක-directory-i-node-links">4. &ldquo;සියල්ලම file එකකි&rdquo;: directory, i-node, links</a></li>
+        <li><a href="#5-ආරකෂණ-බට-1974-ද-හතක-අද-වඩ-ගණනක">5. ආරක්ෂණ බිට්: 1974 දී හතක්, අද වැඩි ගණනක්</a></li>
+        <li><a href="#6-pipes-filters-fork-සහ-exec">6. Pipes, filters, fork සහ exec</a></li>
+        <li><a href="#7-දනම-උතසහ-කරනන-ඉහත-vm-එක-i-node-සහ-pipes">7. දැන්ම උත්සාහ කරන්න: ඉහත VM එකේ i-node සහ pipes</a></li>
+        <li><a href="#8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Time-Sharing සහ Unix පෙළපත
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Batch processing (Post 21) throughput විසඳුවේය — මිල අධික CPU රැකියා අතර කාර්යබහුලව තබන්න. එය අන්තර්ක්‍රියාකාරීත්වය සඳහා කිසිවක් නොකළේය. 1960 ගණන්වල මුල් සිට මැද භාගය දක්වා මතු වූ Time-sharing වෙනස් සීමාවක් විසඳුවේය: බහු පරිශීලකයන්ට <em>එකවර</em> අන්තර්ක්‍රියා කිරීමට ඉඩ දෙන්න, එක් එක් කෙනාට යන්ත්‍රය තනිවම ඇති මායාව සමඟ.</p>
+<h2 id="මලක-උපකරමය-වගවත-මරවම">මූලික උපක්‍රමය: වේගවත් මාරුවීම<a class="anchor" href="#%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%8b%e0%b6%b4%e0%b6%9a%e0%b6%bb%e0%b6%b8%e0%b6%ba-%e0%b7%80%e0%b6%9c%e0%b7%80%e0%b6%ad-%e0%b6%b8%e0%b6%bb%e0%b7%80%e0%b6%b8">#</a></h2>
+<p>CPU එකක් මිනිස් ප්‍රතිචාර කාලයට සාපේක්ෂව වේගවත්ය. බහු පරිශීලකයන්ගේ processes තත්පරයකට බොහෝ වාරයක් අතර මාරු වන්න — එක් එක් කෙනාට කුඩා කැබැල්ලක් ලැබේ — සහ කිසිවෙකුට හිඩැස් නොදැනේ. Post 9 හි clocked logic එකේ මෘදුකාංග-scheduling සමානකය: විවික්ත, වේගවත් මාරුවීම <em>අඛණ්ඩ</em> ලෙස පෙනේ, එක් තනි core එකක ඕනෑම මොහොතක එක් process එකක් පමණක් ධාවනය වුවත්.</p>
+<p>Multics (MULTiplexed Information and Computing Service), 1964 සිට සැලසුම් කර 1965 දී ප්‍රසිද්ධියේ විස්තර කළ ඒකාබද්ධ MIT / Bell Labs / GE ව්‍යාපෘතියක්, අතිශය අභිලාෂකාමී විය — hierarchical file systems, dynamic linking, දශක ගණනකට පසුවත් වෙනත් තැන්වල සම්මත වූ fine-grained access control. එය බොහෝ ගිණුම් අනුව එකල දෘඪාංගයට over-engineered වූ අතර වාණිජව අරගල කළේය.</p>
+<h2 id="multics-සට-unix-දකව">Multics සිට Unix දක්වා<a class="anchor" href="#multics-%e0%b7%83%e0%b6%a7-unix-%e0%b6%af%e0%b6%9a%e0%b7%80">#</a></h2>
+<p>Bell Labs 1969 දී Multics වෙතින් ඉවත් විය. එහි වැඩ කළ Ken Thompson සහ Dennis Ritchie බොහෝ කුඩා පරිමාණයකින් නැවත නැවත ක්‍රියා කළහ — හිතාමතාම සරලව, බොහෝ අඩු බලවත් දෘඪාංගය මත (මුලින් spare PDP-7 එකක්). ප්‍රතිඵලය Unix විය: composable අදහස් කුඩා කට්ටලයක් වටා ගොඩනැගූ time-sharing OS එකක් — &ldquo;සියල්ලක්ම file එකකි,&rdquo; pipes මගින් සම්බන්ධ වූ කුඩා තනි-අරමුණු වැඩසටහන්, සහ C භාෂාවෙන් නැවත ලිවීමෙන් පසු portable නිර්මාණයක් (Post 27 එම භාෂාව ආවරණය කරයි, බොහෝ දුරට එම මිනිසුන්ම විසින්).</p>
+<p>Portability වැදගත් විය. Unix බොහෝ සමකාලීනයන් මෙන් එක් නිෂ්පාදකයෙකුගේ පෙට්ටියකට අගුළු දමා නොතිබූ නිසා, සුළු porting උත්සාහයකින් vendors හරහා පැතිරිය හැකි විය — තනි නිෂ්පාදන රේඛාවකට බැඳුණු පද්ධතිවලට වඩා ව්‍යුහාත්මක වාසියක්.</p>
+<p><strong>දැන් මෙය උත්සාහ කරන්න.</strong> පහත VM එක boot කරන්න, යතුරුපුවරු අවධානය සඳහා කළු තිරය ක්ලික් කරන්න, පසුව <code>uname</code>, <code>whoami</code>, සහ <code>ls</code> ධාවනය කරන්න — එකක රූප සටහනක් නොව, ජීවමාන Unix-පෙළපත් shell එකක්.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=si"
+    style="width:100%; height:600px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="අන්තර්ක්‍රියාකාරී lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=si" target="_blank" rel="noopener">Lab එක නව tab එකක විවෘත කරන්න ↗</a>
+  </div>
+</div>
+
+<h2 id="බදම-bsd-සහ-system-v">බෙදීම: BSD සහ System V<a class="anchor" href="#%e0%b6%b6%e0%b6%af%e0%b6%b8-bsd-%e0%b7%83%e0%b7%84-system-v">#</a></h2>
+<p>Unix හි licensing ඉතිහාසය දඟලන සුළුය (AT&amp;T හි antitrust-සම්බන්ධ සීමා මගින් දිගු කාලයක් Unix නිදහසේ වාණිජකරණය කිරීමට නොහැකි වූ අතර, එය පරස්පර විරෝධී ලෙස පුළුල් ශාස්ත්‍රීය බෙදාහැරීම දිරිමත් කළේය). එය අවසානයේ ප්‍රධාන පෙළපත් දෙකකට බෙදුණේය: BSD (Berkeley Software Distribution), Phase 6 හි TCP/IP stack බොහෝමය ඇතුළුව සැලකිය යුතු නව කාර්යය සමඟ, සහ AT&amp;T හි වාණිජ System V රේඛාව. දෙකම වසර ගණනක් හරස්-පරාගණය විය. නවීන පද්ධති තවමත් එක් ශාඛාවකට හෝ අනෙකට නිර්මාණ තීරණ අනුගමනය කරයි — macOS හි kernel එකට ගැඹුරු BSD පෙළපතක් ඇත; බොහෝ enterprise Unix වඩාත් සෘජුව System V වෙතින් පැවත ආවේය.</p>
+<h2 id="මය-ගන-යනන-කහද">මෙය ගෙන යන්නේ කොහේද<a class="anchor" href="#%e0%b6%b8%e0%b6%ba-%e0%b6%9c%e0%b6%b1-%e0%b6%ba%e0%b6%b1%e0%b6%b1-%e0%b6%9a%e0%b7%84%e0%b6%af">#</a></h2>
+<p>Unix හි අදහස් — සහ අවසානයේ Unix-ව්‍යුත්පන්න හෝ Unix-ආනුභාවිත කේතය — Linux සහ macOS යන දෙකෙහිම සෘජු පූර්වජයාය, ඒවා දෙක අතර අද servers, workstations, සහ වැඩි වැඩියෙන් mobile සහ embedded උපාංගවලින් අතිමහත් බහුතරය ධාවනය කරයි. &ldquo;AT&amp;T හි හිමිකාර Unix&rdquo; සිට &ldquo;අන්තර්ජාලයේ බොහෝමය ධාවනය කරන නිදහස්, විවෘතව සංවර්ධිත Linux&rdquo; දක්වා යාමට වෙනම දෘෂ්ටිවාදී සහ නීතිමය ව්‍යාපාරයක් අවශ්‍ය විය — GNU ව්‍යාපෘතිය — ඊළඟ පෝස්ට් එක ආවරණය කරයි. ඒ දෙක අවසානයේ එක් ප්‍රමුඛ තොගයකට ඒකාබද්ධ වුවත්, Unix හි තාක්ෂණික පෙළපතෙන් වෙනස් කතාවකි.</p>
+<h2 id="ගඹරන-time-sharing-සහ-unix-අකවලන--1974-ලපය-සඛයලඛන-i-node-pipes">ගැඹුරින්: Time-sharing සහ Unix අංකවලින් — 1974 ලිපියේ සංඛ්‍යාලේඛන, i-node, pipes<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-time-sharing-%e0%b7%83%e0%b7%84-unix-%e0%b6%85%e0%b6%9a%e0%b7%80%e0%b6%bd%e0%b6%b1--1974-%e0%b6%bd%e0%b6%b4%e0%b6%ba-%e0%b7%83%e0%b6%9b%e0%b6%ba%e0%b6%bd%e0%b6%9b%e0%b6%b1-i-node-pipes">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> A/L ICT විෂය නිර්දේශය මෙහෙයුම් පද්ධති (operating systems) ආවරණය කළත්, Unix ඉතිහාසය, i-node හෝ pipes පිළිබඳ ගැඹුරු සිංහල පැහැදිලි කිරීමක් අපට හමු නොවීය; &ldquo;unix history sinhala&rdquo; සෙවුමෙන් YouTube හි ලැබුණේ ඉංග්‍රීසි වීඩියෝ පමණි (2026 සැප්තැම්බර්). පහත සංඛ්‍යා Ritchie සහ Thompson ගේ 1974 ලිපියෙන්මය (පිටු අංක <em>Communications of the ACM</em> පිටු). Round-robin උදාහරණයේ අංක ආදර්ශ පමණි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>කාල බෙදාගැනීම (time-sharing):</strong> එක් CPU එකක් පරිශීලකයන් කිහිප දෙනෙකු අතර වේගයෙන් මාරු කරමින්, එක් එක් කෙනාට යන්ත්‍රය තමන්ටම ඇති මායාව දීම.</li>
+<li><strong>ක්‍රියාවලිය (process):</strong> ධාවනය වන වැඩසටහනක්. Ritchie සහ Thompson ගේ භාෂාවෙන්, process එකක් යනු <strong>image</strong> එකක (&ldquo;core image&rdquo;, register අගයන්, විවෘත files, වත්මන් directory) ක්‍රියාත්මක කිරීමයි.</li>
+<li><strong>කාල පෙත්ත (time slice / quantum):</strong> process එකකට වරකට ලැබෙන CPU කාලය.</li>
+<li><strong>සන්දර්භ මාරුව (context switch):</strong> එක් process එකක registers සහ තත්ත්වය සුරකිමින් තවත් එකක් පූරණය කිරීම; එයට CPU කාලය වැය වේ.</li>
+<li><strong>i-node සහ i-number:</strong> file එකක විස්තරය (හිමිකරු, ආරක්ෂණ බිට්, තැටි ලිපින, ප්‍රමාණය…) ඇති වාර්තාව <em>i-node</em> ය; එහි දර්ශක අංකය <em>i-number</em> (&ldquo;index number&rdquo;) ය.</li>
+<li><strong>සබැඳිය (link):</strong> directory එකක ඇති නමක් සහ i-number යුගලයක්. එකම file එකට නම් කිහිපයක් (links) තිබිය හැකිය.</li>
+<li><strong>පයිප්පය (pipe):</strong> එක් process එකක ප්‍රතිදානය තවත් එකක ආදානයට සම්බන්ධ කරන නාලිකාව; <strong>filter</strong> යනු ආදානය කියවා, සකසා, ප්‍රතිදානයට ලියන වැඩසටහනකි.</li>
+<li><strong>fork / exec:</strong> <code>fork</code> process එකක් සර්වසම කොටස් දෙකකට බෙදයි; <code>exec</code> (1974 ලිපියේ <code>execute</code>) process එකක ඇති වැඩසටහන වෙනත් එකකින් ප්‍රතිස්ථාපනය කරයි.</li>
+</ul>
+<h3 id="2-මයව-කරය-කරනන-ඇය--bell-labs-හ-1974-සඛය">2. මායාව ක්‍රියා කරන්නේ ඇයි — Bell Labs හි 1974 සංඛ්‍යා<a class="anchor" href="#2-%e0%b6%b8%e0%b6%ba%e0%b7%80-%e0%b6%9a%e0%b6%bb%e0%b6%ba-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1-%e0%b6%87%e0%b6%ba--bell-labs-%e0%b7%84-1974-%e0%b7%83%e0%b6%9b%e0%b6%ba">#</a></h3>
+<p>ලිපියේ 9 වන කොටස (පිටුව 375) Bell Labs හි PDP-11/45 Unix පද්ධතිය ගැන මෙම සංඛ්‍යා දෙයි (144K bytes core මතකය, Unix විසින්ම 42K bytes — පිටුව 365):</p>
+<table>
+	<thead>
+			<tr>
+					<th>මිනුම</th>
+					<th>අගය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>පරිශීලක ජනගහනය</td>
+					<td>72</td>
+			</tr>
+			<tr>
+					<td>උපරිම එකවර පරිශීලකයන්</td>
+					<td>14</td>
+			</tr>
+			<tr>
+					<td>දිනකට CPU පැය (background හැර)</td>
+					<td>4.3</td>
+			</tr>
+			<tr>
+					<td>දිනකට සම්බන්ධතා පැය (connect hours)</td>
+					<td>70</td>
+			</tr>
+			<tr>
+					<td>දිනකට විධාන</td>
+					<td>1800</td>
+			</tr>
+			<tr>
+					<td>දිනකට logins</td>
+					<td>75</td>
+			</tr>
+	</tbody>
+</table>
+<p>දැන් ගණනය කරමු:</p>
+<ol>
+<li><strong>සාමාන්‍යයෙන් සම්බන්ධ වී සිටින අය:</strong> 70 පැය ÷ 24 පැය ≈ <strong>2.9 දෙනෙක්</strong> ඕනෑම මොහොතක.</li>
+<li><strong>CPU කාර්යබහුලත්වය:</strong> 4.3 ÷ 24 ≈ <strong>18%</strong> (ඉතිරි කාලය &ldquo;background&rdquo; process එකක් උරා ගනී — ලිපිය කියන පරිදි e − 2 හි ඉලක්කම් මිලියනයක් ගණනය කිරීමට එය භාවිතා විය).</li>
+<li><strong>සම්බන්ධ පැයකට CPU කාලය:</strong> 4.3 ÷ 70 × 60 ≈ <strong>මිනිත්තු 3.7</strong> — එනම් පරිශීලකයෙකු සම්බන්ධ වී සිටින කාලයෙන් 6% ක් පමණ පමණක් CPU භාවිතා කරයි. ඉතිරි 94% ඔහු සිතමින්, ටයිප් කරමින්, කියවමින් සිටී.</li>
+<li><strong>විධානයකට CPU:</strong> 4.3 × 3600 ÷ 1800 ≈ <strong>තත්පර 8.6</strong> (සාමාන්‍යයක් — C compiler වැනි බර විධාන සහ <code>ls</code> වැනි සැහැල්ලු ඒවා මිශ්‍රයි).</li>
+</ol>
+<p><strong>පාඩම:</strong> time-sharing ක්‍රියා කරන්නේ මිනිසුන් CPU එකට සාපේක්ෂව <em>අතිශය මන්දගාමී</em> නිසාය. එක් පරිශීලකයෙකු 6% ක් පමණක් භාවිතා කරන්නේ නම්, CPU එකට න්‍යායිකව දහසය දෙනෙකුට පමණ (100 ÷ 6) සේවය කළ හැකිය — ලිපියේ &ldquo;උපරිම එකවර 14&rdquo; ට කිට්ටුයි (මෙම සංසන්දනය අපේ).</p>
+<h3 id="3-round-robin-කල-පත-ආදරශ-අක">3. Round-robin කාල පෙති (ආදර්ශ අංක)<a class="anchor" href="#3-round-robin-%e0%b6%9a%e0%b6%bd-%e0%b6%b4%e0%b6%ad-%e0%b6%86%e0%b6%af%e0%b6%bb%e0%b7%81-%e0%b6%85%e0%b6%9a">#</a></h3>
+<p>(පහත අංක <strong>ආදර්ශ පමණි</strong> — 1974 Unix හි සැබෑ කාල පෙති ප්‍රමාණය ලිපියේ නැත.) පරිශීලකයන් 14 දෙනාම එකවර CPU ඉල්ලන <em>නරකම</em> අවස්ථාව සිතන්න; කාල පෙත්ත 20 ms, සන්දර්භ මාරුවක් 1 ms:</p>
+<ul>
+<li>ඔබේ ඊළඟ වාරය දක්වා උපරිම රැඳීම: 13 × (20 + 1) = <strong>273 ms</strong> — මිනිසෙකුට තවමත් &ldquo;ක්ෂණික&rdquo; ආසන්නයි.</li>
+<li>මාරු කිරීමේ අපතේ යාම: 1 ÷ (20 + 1) ≈ <strong>4.8%</strong>.</li>
+<li>කාල පෙත්ත 10 ms දක්වා අඩු කළොත්: රැඳීම 13 × 11 = 143 ms (වඩා හොඳයි), නමුත් අපතේ යාම 1 ÷ 11 ≈ <strong>9.1%</strong> (වඩා නරකයි).</li>
+</ul>
+<p>මෙයයි scheduler නිර්මාණයේ මූලික වෙළඳාම: කෙටි පෙති = වඩා හොඳ ප්‍රතිචාරය, දිගු පෙති = වඩා අඩු අපතේ යාම.</p>
+<h3 id="4-සයලලම-file-එකක-directory-i-node-links">4. &ldquo;සියල්ලම file එකකි&rdquo;: directory, i-node, links<a class="anchor" href="#4-%e0%b7%83%e0%b6%ba%e0%b6%bd%e0%b6%bd%e0%b6%b8-file-%e0%b6%91%e0%b6%9a%e0%b6%9a-directory-i-node-links">#</a></h3>
+<p>Unix හි directory entry එකක ඇත්තේ <strong>නමක් සහ i-number එකක් පමණි</strong> (පිටුව 368). i-number එක i-list නම් වගුවකට දර්ශකයකි; එහි ඇති i-node එකේ ලිපිය ලැයිස්තුගත කරන කොටස් නවය (පිටු 368–369):</p>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>i-node හි ඇති දේ</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>හිමිකරු (owner)</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>ආරක්ෂණ බිට් (protection bits)</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>අන්තර්ගතයේ භෞතික තැටි/පටි ලිපින</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>ප්‍රමාණය</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>අවසන් වෙනස් කිරීමේ වේලාව</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><strong>links ගණන</strong> — file එක directories වල කී වතාවක් පෙනේද</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>directory එකක්ද යන්න දැක්වෙන බිට් එක</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>විශේෂ file එකක්ද (උපාංගයක්) යන්න දැක්වෙන බිට් එක</td>
+			</tr>
+			<tr>
+					<td>9</td>
+					<td>&ldquo;විශාල&rdquo; ද &ldquo;කුඩා&rdquo; ද යන්න දැක්වෙන බිට් එක</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>නම i-node හි නැති බව සලකන්න.</strong> එබැවින් එකම i-node එකට නම් දෙකක් තිබිය හැකිය. link එකක් සෑදීම = නව directory entry එකකට i-number පිටපත් කර links ගණන 1 කින් වැඩි කිරීම; නමක් ඉවත් කිරීම = links ගණන 1 කින් අඩු කිරීම, සහ එය 0 වූ විට පමණක් තැටි blocks නිදහස් කිරීම (පිටුව 369).</p>
+<p><strong>විශේෂ files:</strong> සෑම I/O උපාංගයක්ම <code>/dev</code> යටතේ file එකකි; ලිපියේ උදාහරණය — paper tape punch කිරීමට <code>/dev/ppt</code> වෙත ලියන්න (පිටුව 367). එකම <code>read</code>/<code>write</code> කැඳවීම් තැටි files, උපාංග සහ pipes යන සියල්ලටම ක්‍රියා කරයි.</p>
+<h3 id="5-ආරකෂණ-බට-1974-ද-හතක-අද-වඩ-ගණනක">5. ආරක්ෂණ බිට්: 1974 දී හතක්, අද වැඩි ගණනක්<a class="anchor" href="#5-%e0%b6%86%e0%b6%bb%e0%b6%9a%e0%b7%82%e0%b6%ab-%e0%b6%b6%e0%b6%a7-1974-%e0%b6%af-%e0%b7%84%e0%b6%ad%e0%b6%9a-%e0%b6%85%e0%b6%af-%e0%b7%80%e0%b6%a9-%e0%b6%9c%e0%b6%ab%e0%b6%b1%e0%b6%9a">#</a></h3>
+<p>1974 Unix හි සෑම නව file එකකටම <strong>ආරක්ෂණ බිට් හතක්</strong> ලැබිණි (පිටුව 367): හිමිකරුට සහ &ldquo;අනෙක් සියලු දෙනාට&rdquo; වෙන වෙනම read, write, execute (2 × 3 = 6), සහ හත්වැන්න <strong>set-user-ID</strong> — වැඩසටහනක් ධාවනය වන අතරතුර පරිශීලක හැඳුනුම එහි නිර්මාතෘගේ හැඳුනුමට තාවකාලිකව මාරු කරයි (උදා. අනෙක් අයට කියවිය නොහැකි ගිණුම් file එකක් යාවත්කාලීන කරන වැඩසටහනක්).</p>
+<p>අද Linux හි (ඉහත lab එකේ <code>ls -l</code> පෙන්වන පරිදි) හිමිකරු, <strong>කණ්ඩායම (group)</strong>, අනෙක් අය සඳහා බිට් 3 බැගින් = 9 ක් පෙනේ. අෂ්ටක (octal) ඉලක්කමකින් බිට් 3ක්: r = 4, w = 2, x = 1.</p>
+<table>
+	<thead>
+			<tr>
+					<th>octal</th>
+					<th>බිට්</th>
+					<th><code>ls -l</code> හි පෙනීම</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>644</td>
+					<td>110 100 100</td>
+					<td><code>rw-r--r--</code></td>
+			</tr>
+			<tr>
+					<td>640</td>
+					<td>110 100 000</td>
+					<td><code>rw-r-----</code></td>
+			</tr>
+			<tr>
+					<td>755</td>
+					<td>111 101 101</td>
+					<td><code>rwxr-xr-x</code></td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="6-pipes-filters-fork-සහ-exec">6. Pipes, filters, fork සහ exec<a class="anchor" href="#6-pipes-filters-fork-%e0%b7%83%e0%b7%84-exec">#</a></h3>
+<p>ලිපියේ උදාහරණය (පිටුව 371): directory ලැයිස්තුව තීරු 2 කට පිටු ගසා (<code>pr -2</code>) මුද්‍රණයට යැවීම (<code>opr</code>):</p>
+<pre tabindex="0"><code>ls | pr -2 | opr</code></pre><p>pipes නැතිව එයම තාවකාලික files දෙකකින් කළ යුතුය:</p>
+<pre tabindex="0"><code>ls &gt;temp
+pr -2 &lt;temp &gt;temp2
+opr &lt;temp2</code></pre><p>ලිපිය එම විකල්පය &ldquo;clumsier&rdquo; (වඩා අපහසු) ලෙසද, <code>ls</code> තුළම පිටු ගැසීම වැනි විකල්ප ගොඩනැගීම &ldquo;unwise&rdquo; ලෙසද හඳුන්වයි. <code>pr</code> වැනි stdin → stdout වැඩසටහනක් <strong>filter</strong> එකකි.</p>
+<p>shell එකක් විධානයක් ධාවනය කරන්නේ (§6.5, පිටුව 372; ප්‍රාථමික කැඳවීම් §5, පිටුව 370): <code>fork</code> කැඳවා process එක දෙකට බෙදා, <em>child</em> process එක <code>execute</code> මගින් අදාළ වැඩසටහන පූරණය කර, <em>parent</em> (shell) child එක අවසන් වන තුරු <code>wait</code> කරයි. pipe එක <code>fork</code> හරහා parent සිට child දක්වා උරුම වන විවෘත file එකක් පමණි.</p>
+<p><strong>කාර්යක්ෂමතාව — ලිපියේම මිනුමක් (පිටුව 370):</strong> පේළි 7621 ක වැඩසටහනක් assemble කිරීමට තත්පර 35.9 ක් ගත විය:</p>
+<ul>
+<li>වේගය: 7621 ÷ 35.9 ≈ <strong>පේළි 212 / තත්පරය</strong></li>
+<li>assembler ක්‍රියාත්මක වීම 63.5% ≈ <strong>22.8 s</strong>; පද්ධති overhead 16.5% ≈ <strong>5.9 s</strong>; තැටිය සඳහා රැඳීම 20.0% ≈ <strong>7.2 s</strong></li>
+</ul>
+<h3 id="7-දනම-උතසහ-කරනන-ඉහත-vm-එක-i-node-සහ-pipes">7. දැන්ම උත්සාහ කරන්න: ඉහත VM එකේ i-node සහ pipes<a class="anchor" href="#7-%e0%b6%af%e0%b6%b1%e0%b6%b8-%e0%b6%8b%e0%b6%ad%e0%b7%83%e0%b7%84-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1-%e0%b6%89%e0%b7%84%e0%b6%ad-vm-%e0%b6%91%e0%b6%9a-i-node-%e0%b7%83%e0%b7%84-pipes">#</a></h3>
+<p>ඉහත vm-terminal lab එකේ VM එක boot කර, තිරය ක්ලික් කර, පහත විධාන එකින් එක ටයිප් කරන්න:</p>
+<pre tabindex="0"><code>cd /tmp
+echo hello &gt; a.txt
+ln a.txt b.txt
+ls -li a.txt b.txt</code></pre><p><code>-i</code> මගින් පළමු තීරුවේ i-number පෙන්වයි: <strong>a.txt සහ b.txt දෙකටම එකම අංකය</strong>, සහ links ගණන (අවසර තීරුවට පසු අංකය) <strong>2</strong>. දැන්:</p>
+<pre tabindex="0"><code>rm a.txt
+ls -li b.txt
+cat b.txt</code></pre><p>links ගණන <strong>1</strong> දක්වා අඩු වී ඇති නමුත් <code>hello</code> තවමත් පවතී — ඉවත් කළේ <em>නමක්</em> පමණි, file එක නොවේ. ඉතිරි උත්සාහයන්:</p>
+<ul>
+<li><code>chmod 640 b.txt</code> ඉන්පසු <code>ls -l b.txt</code> → <code>-rw-r-----</code></li>
+<li><code>echo hello | wc -c</code> → <strong>6</strong> (අකුරු 5 + පේළි අවසන් අක්ෂරය)</li>
+<li><code>ls -l /bin/ls</code> → <code>/bin/ls -&gt; busybox</code>: මෙම කුඩා Linux එකේ <code>ls</code>, <code>ln</code>, <code>wc</code>, <code>ps</code> යනාදිය BusyBox නම් <em>එකම</em> වැඩසටහනකට යොමු වන සංකේතාත්මක සබැඳි (symbolic links) වේ.</li>
+</ul>
+<h3 id="8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#8-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>ලිපියේ සංඛ්‍යා භාවිතයෙන්: දිනකට logins 75 ක් සහ සම්බන්ධතා පැය 70 ක් නම්, login එකක සාමාන්‍ය කාලය මිනිත්තු කීයද? පරිශීලකයෙකුට දිනකට විධාන කීයක්ද (දිනකට වෙනස් පරිශීලකයන් 30)?</li>
+<li>කාල පෙත්ත 50 ms සහ සන්දර්භ මාරුව 1 ms නම්, එකවර පරිශීලකයන් 10 දෙනෙකු සඳහා නරකම රැඳීම සහ අපතේ යාමේ ප්‍රතිශතය කීයද?</li>
+<li><code>rwxr-x---</code> octal වලින් කීයද?</li>
+<li>file එකකට links 3 ක් ඇත. <code>rm</code> දෙවරක් කළ පසු එහි දත්ත තවමත් තැටියේ තිබේද?</li>
+<li>1974 ආරක්ෂණ බිට් 7 ට හැකි සංයෝජන කීයක්ද? අද 9 බිට් සඳහා?</li>
+</ol>
+<p>(පිළිතුරු: 1 → 70 × 60 ÷ 75 = <strong>මිනිත්තු 56</strong>; 1800 ÷ 30 = <strong>විධාන 60</strong>. 2 → 9 × 51 = <strong>459 ms</strong>; 1 ÷ 51 ≈ <strong>2.0%</strong>. 3 → 111 101 000 = <strong>750</strong>. 4 → <strong>ඔව්</strong> — links ගණන 1 යි; තවත් <code>rm</code> එකකින් 0 වූ විට පමණක් blocks නිදහස් වේ. 5 → 2⁷ = <strong>128</strong>; 2⁹ = <strong>512</strong>.)</p>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong> Dennis M. Ritchie සහ Ken Thompson, &ldquo;The UNIX Time-Sharing System&rdquo;, <em>Communications of the ACM</em> 17(7), 1974 ජූලි, පිටු 365–375 (Eric A. Brewer ගේ ඉලෙක්ට්‍රොනික ප්‍රතිනිර්මාණය: <a href="https://dsf.berkeley.edu/cs262/unix.pdf">https://dsf.berkeley.edu/cs262/unix.pdf</a>) — පිටුව 365 (PDP-11/45, 144K / 42K bytes), පිටුව 367 (§3.3 විශේෂ files <code>/dev/ppt</code>; §3.5 ආරක්ෂණ බිට් හත සහ set-user-ID), පිටු 368–369 (§4 i-number, i-node කොටස් නවය, links), පිටුව 370 (§4.1 පේළි 7621 / තත්පර 35.9; §5 images, processes, <code>fork</code>, pipes), පිටුව 371 (§6.2 <code>ls | pr -2 | opr</code>, filters), පිටුව 372 (§6.5 shell එකේ fork–execute–wait), පිටුව 375 (§9 සංඛ්‍යාලේඛන). VM විධාන lab එකේ Linux image එකෙහි (BusyBox v1.28.4) ඇති applets සමඟ පරීක්ෂා කරන ලදී.</p>
+<p><strong>පිටවීමේ දොර:</strong> Dennis M. Ritchie and Ken Thompson, &ldquo;The UNIX Time-Sharing System&rdquo; (<em>Communications of the ACM</em>, 1974) — Unix හි නිර්මාණය පිළිබඳ සම්භාව්‍ය ප්‍රාථමික ප්‍රකාශය.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Time-Sharing&#43;%E0%B7%83%E0%B7%84&#43;Unix&#43;%E0%B6%B4%E0%B7%99%E0%B7%85%E0%B6%B4%E0%B6%AD&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F22-time-sharing-and-the-unix-lineage%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F22-time-sharing-and-the-unix-lineage.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F22-time-sharing-and-the-unix-lineage.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/23-the-gnu-movement-and-linux/" class="flex align-center">
+        <span>GNU ව්‍යාපාරය සහ Linux</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#මලක-උපකරමය-වගවත-මරවම">මූලික උපක්‍රමය: වේගවත් මාරුවීම</a></li>
+    <li><a href="#multics-සට-unix-දකව">Multics සිට Unix දක්වා</a></li>
+    <li><a href="#බදම-bsd-සහ-system-v">බෙදීම: BSD සහ System V</a></li>
+    <li><a href="#මය-ගන-යනන-කහද">මෙය ගෙන යන්නේ කොහේද</a></li>
+    <li><a href="#ගඹරන-time-sharing-සහ-unix-අකවලන--1974-ලපය-සඛයලඛන-i-node-pipes">ගැඹුරින්: Time-sharing සහ Unix අංකවලින් — 1974 ලිපියේ සංඛ්‍යාලේඛන, i-node, pipes</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-මයව-කරය-කරනන-ඇය--bell-labs-හ-1974-සඛය">2. මායාව ක්‍රියා කරන්නේ ඇයි — Bell Labs හි 1974 සංඛ්‍යා</a></li>
+        <li><a href="#3-round-robin-කල-පත-ආදරශ-අක">3. Round-robin කාල පෙති (ආදර්ශ අංක)</a></li>
+        <li><a href="#4-සයලලම-file-එකක-directory-i-node-links">4. &ldquo;සියල්ලම file එකකි&rdquo;: directory, i-node, links</a></li>
+        <li><a href="#5-ආරකෂණ-බට-1974-ද-හතක-අද-වඩ-ගණනක">5. ආරක්ෂණ බිට්: 1974 දී හතක්, අද වැඩි ගණනක්</a></li>
+        <li><a href="#6-pipes-filters-fork-සහ-exec">6. Pipes, filters, fork සහ exec</a></li>
+        <li><a href="#7-දනම-උතසහ-කරනන-ඉහත-vm-එක-i-node-සහ-pipes">7. දැන්ම උත්සාහ කරන්න: ඉහත VM එකේ i-node සහ pipes</a></li>
+        <li><a href="#8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

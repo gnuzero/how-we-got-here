@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Node பெயர்கள் ஒற்றை இயற்பியல் நீளத்தைப் பின்தொடர்வதை நிறுத்தின — அடர்த்தி மற்றும் pitch தான் இயற்பியல்; லேபிள் ஒரு தலைமுறை">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/47-what-7nm-actually-means/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="&#39;7nm&#39; உண்மையில் என்ன அர்த்தம்">
+	<meta property="og:description" content="Node பெயர்கள் ஒற்றை இயற்பியல் நீளத்தைப் பின்தொடர்வதை நிறுத்தின — அடர்த்தி மற்றும் pitch தான் இயற்பியல்; லேபிள் ஒரு தலைமுறை">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:48:08+05:30">
+
+
+	<meta itemprop="name" content="&#39;7nm&#39; உண்மையில் என்ன அர்த்தம்">
+	<meta itemprop="description" content="Node பெயர்கள் ஒற்றை இயற்பியல் நீளத்தைப் பின்தொடர்வதை நிறுத்தின — அடர்த்தி மற்றும் pitch தான் இயற்பியல்; லேபிள் ஒரு தலைமுறை">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:48:08+05:30">
+	<meta itemprop="wordCount" content="1125">
+
+<title>&#39;7nm&#39; உண்மையில் என்ன அர்த்தம் • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/47-what-7nm-actually-means/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/47-what-7nm-actually-means/" title="What &#39;7nm&#39; Actually Means">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/47-what-7nm-actually-means/" title="&#39;7nm&#39; หมายถึงอะไรจริง ๆ">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/47-what-7nm-actually-means/" title="&#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/47-what-7nm-actually-means/" title="Ce înseamnă de fapt „7nm”">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/47-what-7nm-actually-means/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/47-what-7nm-actually-means/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/47-what-7nm-actually-means/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/47-what-7nm-actually-means/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="active">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>&#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#பயர-ஒர-நளமக-இரநதபத">பெயர் ஒரு நீளமாக இருந்தபோது</a></li>
+    <li><a href="#பயர-ஒர-வதயப-பனபறறயபத--07-மடஙக">பெயர் ஒரு விதியைப் பின்பற்றியபோது — 0.7 மடங்கு</a></li>
+    <li><a href="#ஏன-ஒறற-எண-பதமல-பனத">ஏன் ஒற்றை எண் போதாமல் போனது</a></li>
+    <li><a href="#ஒர-பயர-வற-பரபப--pitch-கணகக">ஒரே பெயர், வேறு பரப்பு — pitch கணக்கு</a></li>
+    <li><a href="#லபள-இபபத-எனன">லேபிள் இப்போது என்ன</a></li>
+    <li><a href="#bohr-இன-அடரததச-சததரம-கயல">Bohr-இன் அடர்த்திச் சூத்திரம், கையால்</a></li>
+    <li><a href="#இடவள-ஏன-மககயம">இடைவெளி ஏன் முக்கியம்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>இந்தத் தொடரில் முந்தைய ஒவ்வொரு சிலிகான் சாதனமும் — MOSFET (பதிவு 6), CMOS (பதிவு 7), memory cells (பதிவு 10) — உற்பத்தித் துல்லியம் என்ன சாத்தியம் எனத் தீர்மானிக்கும் அளவில் வாழ்கிறது. &ldquo;7nm&rdquo; அல்லது &ldquo;5nm&rdquo; போன்ற லேபிள்கள் டிரான்சிஸ்டரில் ஒற்றை அளவிடக்கூடிய நீளம் போல் கருதப்படுகின்றன. அவை நீண்ட காலமாக அப்படி இல்லை.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> Process node பெயரிடல் பற்றித் தமிழ் எழுத்து விளக்கம் கிடைக்கவில்லை; காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. கீழே உள்ள 0.7 மடங்கு பெயரிடல் விதியும் அடர்த்திச் சூத்திரமும் Mark Bohr-இன் Intel கட்டுரையிலிருந்து (&ldquo;Let&rsquo;s Clear Up the Node Naming Mess&rdquo;, 28 மார்ச் 2017); 2021 பெயர் மாற்றமும் &ldquo;1997&rdquo; கூற்றும் Intel-இன் 26 ஜூலை 2021 SEC 8-K அறிக்கை மற்றும் அதன் இணைப்புச் செய்திக்குறிப்பிலிருந்து சரிபார்க்கப்பட்டவை. Cell பரப்புகள், pitch-கள் போன்றவை &ldquo;எடுத்துக்காட்டு மதிப்புகள்&rdquo; — எந்த உண்மையான foundry-யின் எண்களும் அல்ல. இந்தப் பதிவுக்கு lab இல்லை; காகிதப் பயிற்சிகள் கீழே.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Process node (உற்பத்தித் தலைமுறை):</strong> ஒரு foundry-யின் ஒரு தலைமுறை உற்பத்தி முறை; &ldquo;7nm&rdquo;, &ldquo;Intel 4&rdquo; போன்ற பெயர் பெறுகிறது.</li>
+<li><strong>Gate length (gate நீளம்):</strong> MOSFET-இல் source-க்கும் drain-க்கும் இடையே gate மூடும் channel-இன் நீளம்.</li>
+<li><strong>Pitch (இடைவெளி அளவு):</strong> ஒரே மாதிரியான இரண்டு அடுத்தடுத்த அமைப்புகளின் மையங்களுக்கிடையேயான தூரம் — அகலம் + இடைவெளி.</li>
+<li><strong>Gate pitch / metal pitch:</strong> அடுத்தடுத்த gate-கள் / அடுத்தடுத்த interconnect கம்பிகளுக்கிடையேயான pitch.</li>
+<li><strong>Fin pitch / fin height:</strong> FinFET-இல் அடுத்தடுத்த fin-களுக்கிடையேயான pitch / fin-இன் உயரம்.</li>
+<li><strong>Standard cell (நிலையான cell):</strong> NAND2, flip-flop போன்ற, முன்பே வடிவமைக்கப்பட்ட logic கட்டுமானத் தொகுதி.</li>
+<li><strong>Transistor density, MTr/mm² (டிரான்சிஸ்டர் அடர்த்தி):</strong> ஒரு சதுர மில்லிமீட்டரில் மில்லியன் டிரான்சிஸ்டர்கள்.</li>
+</ul>
+<h2 id="பயர-ஒர-நளமக-இரநதபத">பெயர் ஒரு நீளமாக இருந்தபோது<a class="anchor" href="#%e0%ae%aa%e0%ae%af%e0%ae%b0-%e0%ae%92%e0%ae%b0-%e0%ae%a8%e0%ae%b3%e0%ae%ae%e0%ae%95-%e0%ae%87%e0%ae%b0%e0%ae%a8%e0%ae%a4%e0%ae%aa%e0%ae%a4">#</a></h2>
+<p>வரலாற்றுரீதியாக process-node பெயர் உண்மையான பரிமாணத்தைப் பின்தொடர்ந்தது — தோராயமாக planar MOSFET-இன் குறைந்தபட்ச gate length (பதிவு 6). பல தசாப்தங்களாக node பெயர் சாதனத்தில் சுட்டிக்காட்டக்கூடிய ஒன்றைக் குறித்தது. ஆனால் planar டிரான்சிஸ்டர்கள் விடைபெறுவதற்கு வெகு முன்பே அந்தப் பொருத்தம் உடைந்தது: Intel-இன் ஜூலை 2021 node பெயர் மாற்ற அறிவிப்பு (SEC-இல் Form 8-K ஆகத் தாக்கல் செய்யப்பட்டது), nanometer அடிப்படையிலான பாரம்பரிய node பெயரிடல் உண்மையான gate length அளவுடன் பொருந்துவது 1997-இல் நின்றுவிட்டது என்று தொழில்துறை &ldquo;நீண்ட காலமாக ஏற்றுக்கொண்டுள்ளது&rdquo; (&ldquo;has long recognized that traditional nanometer-based process node naming stopped matching the actual gate-length metric in 1997&rdquo;) என்கிறது. Planar டிரான்சிஸ்டர்கள் 2010-கள் வரை உற்பத்தியில் இருந்தன; எனவே planar காலத்தின் பெரும்பகுதியில் பெயர் ஏற்கனவே ஒரு அளவீடு அல்ல, ஒரு அடையாளச் சீட்டு.</p>
+<h2 id="பயர-ஒர-வதயப-பனபறறயபத--07-மடஙக">பெயர் ஒரு விதியைப் பின்பற்றியபோது — 0.7 மடங்கு<a class="anchor" href="#%e0%ae%aa%e0%ae%af%e0%ae%b0-%e0%ae%92%e0%ae%b0-%e0%ae%b5%e0%ae%a4%e0%ae%af%e0%ae%aa-%e0%ae%aa%e0%ae%a9%e0%ae%aa%e0%ae%b1%e0%ae%b1%e0%ae%af%e0%ae%aa%e0%ae%a4--07-%e0%ae%ae%e0%ae%9f%e0%ae%99%e0%ae%95">#</a></h2>
+<p>Mark Bohr-இன் 2017 கட்டுரையின்படி, தொழில்துறை ஒவ்வொரு புதிய node-க்கும் முந்தையதைவிடத் தோராயமாக 0.7 மடங்கு சிறிய பெயர் வைத்தது — 90, 65, 45, 32 nm. ஏன் 0.7? நீளம் 0.7 மடங்கானால், பரப்பு 0.7 × 0.7 = 0.49 ≈ ½ மடங்கு; அதாவது ஒரே பரப்பில் இரு மடங்கு டிரான்சிஸ்டர்கள்.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Node</th>
+					<th>× 0.7</th>
+					<th>அடுத்த பெயர்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>90 nm</td>
+					<td>63</td>
+					<td>65 nm</td>
+			</tr>
+			<tr>
+					<td>65 nm</td>
+					<td>45.5</td>
+					<td>45 nm</td>
+			</tr>
+			<tr>
+					<td>45 nm</td>
+					<td>31.5</td>
+					<td>32 nm</td>
+			</tr>
+			<tr>
+					<td>32 nm</td>
+					<td>22.4</td>
+					<td>22 nm</td>
+			</tr>
+	</tbody>
+</table>
+<p>அதே கட்டுரை எச்சரித்தது: சில நிறுவனங்கள் அடர்த்தி அதிகரிக்காதபோதும் பெயரை மட்டும் முன்னகர்த்தின, அதனால் node பெயர்கள் Moore&rsquo;s Law வளைவில் ஒரு process எங்கே நிற்கிறது என்பதற்கு &ldquo;மோசமான குறிகாட்டி&rdquo; ஆயின. Intel-இன் 2021 அறிக்கை இன்னும் முன்னே செல்கிறது — மேலே பார்த்தபடி, பொருத்தம் <strong>1997-இலேயே</strong> நின்றுவிட்டது.</p>
+<h2 id="ஏன-ஒறற-எண-பதமல-பனத">ஏன் ஒற்றை எண் போதாமல் போனது<a class="anchor" href="#%e0%ae%8f%e0%ae%a9-%e0%ae%92%e0%ae%b1%e0%ae%b1-%e0%ae%8e%e0%ae%a3-%e0%ae%aa%e0%ae%a4%e0%ae%ae%e0%ae%b2-%e0%ae%aa%e0%ae%a9%e0%ae%a4">#</a></h2>
+<p>FinFET மற்றும் பிந்தைய Gate-All-Around அமைப்புகள் (பதிவுகள் 48–49) gate length-ஐப் பல சுமை தாங்கும் பரிமாணங்களில் ஒன்றாக மட்டும் ஆக்கின. Fin height, fin pitch, gate pitch, மற்றும் interconnect pitch அனைத்தும் சுயாதீனமாக முக்கியம் — மற்றும் வெவ்வேறு foundries (TSMC, Samsung, Intel) அவற்றுக்கிடையே வெவ்வேறு விதமாகச் சமரசம் செய்கின்றன. இரண்டு &ldquo;7nm&rdquo; processes அதே லேபிளின் கீழ் அதே இயற்பியல் அல்ல.</p>
+<h2 id="ஒர-பயர-வற-பரபப--pitch-கணகக">ஒரே பெயர், வேறு பரப்பு — pitch கணக்கு<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%aa%e0%ae%af%e0%ae%b0-%e0%ae%b5%e0%ae%b1-%e0%ae%aa%e0%ae%b0%e0%ae%aa%e0%ae%aa--pitch-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95">#</a></h2>
+<p>Bohr குறிப்பிடும் ஒரு எளிய அளவீடு: gate pitch × குறைந்தபட்ச metal pitch. இது ஒரு அடிப்படை &ldquo;கட்ட&rdquo; பரப்பைக் கொடுக்கிறது. இரண்டு கற்பனை foundry-கள், இரண்டும் தங்கள் process-ஐ &ldquo;7nm&rdquo; என்கின்றன (எடுத்துக்காட்டு மதிப்புகள்):</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>Gate pitch</th>
+					<th>Metal pitch</th>
+					<th>Gate × metal</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Foundry A &ldquo;7nm&rdquo;</td>
+					<td>50 nm</td>
+					<td>34 nm</td>
+					<td>50 × 34 = 1,700 nm²</td>
+			</tr>
+			<tr>
+					<td>Foundry B &ldquo;7nm&rdquo;</td>
+					<td>56 nm</td>
+					<td>40 nm</td>
+					<td>56 × 40 = 2,240 nm²</td>
+			</tr>
+	</tbody>
+</table>
+<p>A-வின் அடிப்படைக் கட்டம் 1 − 1,700 ÷ 2,240 ≈ 0.241, அதாவது சுமார் <strong>24% சிறியது</strong> — லேபிள் ஒன்றே. இரண்டு pitch-களில் எதுவும் 7 nm அருகில் கூட இல்லை என்பதையும் கவனியுங்கள். ஆனால் இந்த அளவீடும் முழுமையல்ல: logic cell உயரம், cell வடிவமைப்பு விதிகள் இதில் இல்லை என்று Bohr-ஏ சுட்டிக்காட்டுகிறார்.</p>
+<h2 id="லபள-இபபத-எனன">லேபிள் இப்போது என்ன<a class="anchor" href="#%e0%ae%b2%e0%ae%aa%e0%ae%b3-%e0%ae%87%e0%ae%aa%e0%ae%aa%e0%ae%a4-%e0%ae%8e%e0%ae%a9%e0%ae%a9">#</a></h2>
+<p>நவீன node பெயர் பெரும்பாலும் தலைமுறைக் குறி — &ldquo;எங்கள் அடுத்த அடர்த்தியான, திறமையான தலைமுறை&rdquo; — foundry-குறுக்கே இயற்பியல் விவரக்குறிப்பு அல்ல. அர்த்தமுள்ள ஒப்பீடு சுயாதீனமாக அளவிடக்கூடிய அளவுகளைப் பயன்படுத்துகிறது: fin pitch, gate pitch, சதுர மில்லிமீட்டருக்கு டிரான்சிஸ்டர்கள். அவை அடிக்கடி ஒரு foundry-இன் &ldquo;7nm&rdquo; மற்றொன்றை விட அடர்த்தியாகக் காட்டுகின்றன, ஏனெனில் branding எந்த ஒற்றை நீளத்திலிருந்தும் பிரிந்தது.</p>
+<h2 id="bohr-இன-அடரததச-சததரம-கயல">Bohr-இன் அடர்த்திச் சூத்திரம், கையால்<a class="anchor" href="#bohr-%e0%ae%87%e0%ae%a9-%e0%ae%85%e0%ae%9f%e0%ae%b0%e0%ae%a4%e0%ae%a4%e0%ae%9a-%e0%ae%9a%e0%ae%a4%e0%ae%a4%e0%ae%b0%e0%ae%ae-%e0%ae%95%e0%ae%af%e0%ae%b2">#</a></h2>
+<p>Bohr முன்மொழிந்த அளவீடு இரண்டு பொதுவான standard cell-களை எடைபோடுகிறது — மிக எளிய NAND2 (4 டிரான்சிஸ்டர்கள்) மற்றும் பெரிய scan flip-flop (SFF):</p>
+<p>அடர்த்தி = 0.6 × (NAND2 டிரான்சிஸ்டர்கள் ÷ NAND2 பரப்பு) + 0.4 × (SFF டிரான்சிஸ்டர்கள் ÷ SFF பரப்பு)</p>
+<p>0.6, 0.4 எடைகள் வழக்கமான வடிவமைப்புகளில் மிகச் சிறிய / மிகப் பெரிய cell-களின் விகிதத்தைக் குறிக்கின்றன (கட்டுரையின் விளக்கம்). SRAM cell அளவைத் தனியாக அறிவிக்க வேண்டும் என்றும் அவர் கூறுகிறார்.</p>
+<p>கணக்கு (cell பரப்புகளும் SFF டிரான்சிஸ்டர் எண்ணிக்கையும் எடுத்துக்காட்டு மதிப்புகள்; 1 mm² = 10⁶ µm²):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Cell</th>
+					<th>டிரான்சிஸ்டர்கள்</th>
+					<th>பரப்பு</th>
+					<th>அடர்த்தி</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>NAND2</td>
+					<td>4</td>
+					<td>0.04 µm²</td>
+					<td>4 ÷ 0.04 = 100 /µm² = 100 MTr/mm²</td>
+			</tr>
+			<tr>
+					<td>SFF</td>
+					<td>30</td>
+					<td>0.5 µm²</td>
+					<td>30 ÷ 0.5 = 60 /µm² = 60 MTr/mm²</td>
+			</tr>
+	</tbody>
+</table>
+<p>0.6 × 100 + 0.4 × 60 = 60 + 24 = <strong>84 MTr/mm²</strong>.</p>
+<p>ஏன் முழு chip-இன் டிரான்சிஸ்டர் எண்ணிக்கையை die பரப்பால் வகுக்கக்கூடாது? Bohr-இன் பதில்: cache அளவு, செயல்திறன் இலக்கு போன்ற வடிவமைப்புத் தேர்வுகள் அந்த எண்ணைப் பெரிதும் மாற்றுகின்றன — அது process-ஐ அல்ல, chip-ஐ அளக்கிறது.</p>
+<p><strong>பெயர்கள் அதிகாரப்பூர்வமாகவே மாறின.</strong> Intel-இன் 26 ஜூலை 2021 SEC 8-K அறிக்கை:</p>
+<table>
+	<thead>
+			<tr>
+					<th>முந்தைய பெயர்</th>
+					<th>புதிய பெயர்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>10nm SuperFin</td>
+					<td>10nm SuperFin (மாற்றமில்லை)</td>
+			</tr>
+			<tr>
+					<td>10nm Enhanced SuperFin</td>
+					<td>Intel 7</td>
+			</tr>
+			<tr>
+					<td>Intel 7nm</td>
+					<td>Intel 4</td>
+			</tr>
+	</tbody>
+</table>
+<p>அதே process, வேறு பெயர் — பெயர் ஒரு நீளம் அல்ல, ஒரு தலைமுறைக் குறி என்பதற்கு நேரடிச் சான்று.</p>
+<h2 id="இடவள-ஏன-மககயம">இடைவெளி ஏன் முக்கியம்<a class="anchor" href="#%e0%ae%87%e0%ae%9f%e0%ae%b5%e0%ae%b3-%e0%ae%8f%e0%ae%a9-%e0%ae%ae%e0%ae%95%e0%ae%95%e0%ae%af%e0%ae%ae">#</a></h2>
+<p>&ldquo;TSMC-இன் 5nm vs Samsung-இன் 5nm&rdquo; சரங்கள் பொருந்துவதால் apples-to-apples அல்ல. பெயரிடல் இடைவெளி planar காலத்திலேயே திறந்தது; வடிவமைப்பு இடம் ஒருபரிமாணமாக இருப்பதை நிறுத்தியபோது அது இன்னும் அகலமானது — planar gate length 3D geometry மற்றும் multi-pitch tradeoffs-க்கு வழிவிட்டது. அது அடுத்த பதிவுகளுக்கான அமைப்பு: அந்த அமைப்புகளை இன்னும் அச்சிடக் கூடிய lithography (பதிவு 48), மற்றும் ஒற்றை நீளத்தை வழக்கற்று ஆக்கிய டிரான்சிஸ்டர் geometry மாற்றங்கள் (பதிவு 49).</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<ol>
+<li>
+<p><strong>90 nm-இலிருந்து தொடங்கி, ஒவ்வொரு தலைமுறையும் பெயரை 0.7 மடங்காக்கினால், நான்கு தலைமுறைக்குப் பின் பெயர்? பரப்பு எத்தனை மடங்கு குறையும்?</strong>
+விடை: 90 × 0.7⁴ = 90 × 0.2401 ≈ <strong>21.6 nm</strong> (அதனால்தான் &ldquo;22 nm&rdquo;). பரப்புக் காரணி 0.49⁴ ≈ 0.0576 — அதாவது அடர்த்தி சுமார் <strong>17 மடங்கு</strong> (தோராயமாக 2⁴ = 16).</p>
+</li>
+<li>
+<p><strong>NAND2: 4 டிரான்சிஸ்டர்கள், 0.05 µm²; SFF: 24 டிரான்சிஸ்டர்கள், 0.4 µm² (எடுத்துக்காட்டு மதிப்புகள்). Bohr அடர்த்தி?</strong>
+விடை: NAND2 4 ÷ 0.05 = 80 MTr/mm²; SFF 24 ÷ 0.4 = 60 MTr/mm². 0.6 × 80 + 0.4 × 60 = 48 + 24 = <strong>72 MTr/mm²</strong>.</p>
+</li>
+<li>
+<p><strong>Gate pitch 48 nm, metal pitch 30 nm எதிர் gate pitch 60 nm, metal pitch 40 nm (எடுத்துக்காட்டு மதிப்புகள்). அடிப்படைக் கட்டப் பரப்புகளின் விகிதம்?</strong>
+விடை: 48 × 30 = 1,440 nm²; 60 × 40 = 2,400 nm². 1,440 ÷ 2,400 = <strong>0.6</strong> — முதலாவது 40% சிறியது.</p>
+</li>
+<li>
+<p><strong>ஒரு chip 10 billion டிரான்சிஸ்டர்கள், 100 mm². இன்னொரு chip அதே process-இல் 5 billion, 100 mm². Process அடர்த்தி பாதியா?</strong>
+விடை: இல்லை. 100 எதிர் 50 MTr/mm² என்பது chip-அளவு சராசரி; cache அளவு, I/O, செயல்திறன் இலக்கு போன்ற வடிவமைப்புத் தேர்வுகளே இந்த வேறுபாட்டை உண்டாக்கலாம். அதனால்தான் Bohr standard cell அடிப்படையிலான அளவீட்டைக் கேட்டார்.</p>
+</li>
+<li>
+<p><strong>Intel 2021-இல் &ldquo;10nm Enhanced SuperFin&rdquo;-க்கு என்ன பெயர் கொடுத்தது? அதன் செய்திக்குறிப்பின்படி nanometer பெயர்கள் gate length-உடன் பொருந்துவது எப்போது நின்றது?</strong>
+விடை: <strong>Intel 7</strong>; <strong>1997</strong>.</p>
+</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>உற்பத்தித் தலைமுறை</td>
+					<td>process node</td>
+			</tr>
+			<tr>
+					<td>gate நீளம்</td>
+					<td>gate length</td>
+			</tr>
+			<tr>
+					<td>இடைவெளி அளவு</td>
+					<td>pitch</td>
+			</tr>
+			<tr>
+					<td>fin உயரம்</td>
+					<td>fin height</td>
+			</tr>
+			<tr>
+					<td>நிலையான cell</td>
+					<td>standard cell</td>
+			</tr>
+			<tr>
+					<td>டிரான்சிஸ்டர் அடர்த்தி</td>
+					<td>transistor density</td>
+			</tr>
+			<tr>
+					<td>தலைமுறைக் குறி</td>
+					<td>generational marker</td>
+			</tr>
+			<tr>
+					<td>சமரசம்</td>
+					<td>trade-off</td>
+			</tr>
+			<tr>
+					<td>பெயர் மாற்றம்</td>
+					<td>renaming</td>
+			</tr>
+			<tr>
+					<td>தட்டை / முப்பரிமாண டிரான்சிஸ்டர்</td>
+					<td>planar / 3D transistor</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/91bfcb84741aa7b3bde9e54c3dadb5e799d4e597" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%277nm%27&#43;%E0%AE%89%E0%AE%A3%E0%AF%8D%E0%AE%AE%E0%AF%88%E0%AE%AF%E0%AE%BF%E0%AE%B2%E0%AF%8D&#43;%E0%AE%8E%E0%AE%A9%E0%AF%8D%E0%AE%A9&#43;%E0%AE%85%E0%AE%B0%E0%AF%8D%E0%AE%A4%E0%AF%8D%E0%AE%A4%E0%AE%AE%E0%AF%8D&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F47-what-7nm-actually-means%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F47-what-7nm-actually-means.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F47-what-7nm-actually-means.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/46-the-machine-learning-software-stack/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Machine Learning மென்பொருள் Stack</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/48-photolithography/" class="flex align-center">
+        <span>Photolithography</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#பயர-ஒர-நளமக-இரநதபத">பெயர் ஒரு நீளமாக இருந்தபோது</a></li>
+    <li><a href="#பயர-ஒர-வதயப-பனபறறயபத--07-மடஙக">பெயர் ஒரு விதியைப் பின்பற்றியபோது — 0.7 மடங்கு</a></li>
+    <li><a href="#ஏன-ஒறற-எண-பதமல-பனத">ஏன் ஒற்றை எண் போதாமல் போனது</a></li>
+    <li><a href="#ஒர-பயர-வற-பரபப--pitch-கணகக">ஒரே பெயர், வேறு பரப்பு — pitch கணக்கு</a></li>
+    <li><a href="#லபள-இபபத-எனன">லேபிள் இப்போது என்ன</a></li>
+    <li><a href="#bohr-இன-அடரததச-சததரம-கயல">Bohr-இன் அடர்த்திச் சூத்திரம், கையால்</a></li>
+    <li><a href="#இடவள-ஏன-மககயம">இடைவெளி ஏன் முக்கியம்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

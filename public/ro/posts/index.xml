@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Capitole on Cum am ajuns acolo</title>
+		<link>http://localhost:1478/ro/posts/</link>
+		<description>Recent content in Capitole on Cum am ajuns acolo</description>
+		<generator>Hugo</generator>
+		<language>ro</language>
+		
+		
+		
+		
+			<atom:link href="http://localhost:1478/ro/posts/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Credite și uși de ieșire</title>
+				<link>http://localhost:1478/ro/posts/00-credits/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/00-credits/</guid>
+				<description>Întâi creditele — surse publicate, laboratoare existente și imagini pe care stă această călătorie</description>
+			</item>
+			<item>
+				<title>Cuvânt înainte</title>
+				<link>http://localhost:1478/ro/posts/00-foreword/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/00-foreword/</guid>
+				<description>Cuvântul înainte al Nayanei (placeholder)</description>
+			</item>
+			<item>
+				<title>Era tuburilor vidate</title>
+				<link>http://localhost:1478/ro/posts/03-the-vacuum-tube-era/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/03-the-vacuum-tube-era/</guid>
+				<description>Tuburile au scos piesele în mișcare — și au schimbat viteza pe căldură, putere și defecte</description>
+			</item>
+			<item>
+				<title>Relee și logica electromecanică</title>
+				<link>http://localhost:1478/ro/posts/02-relays-and-electromechanical-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/02-relays-and-electromechanical-logic/</guid>
+				<description>Releele au dovedit că logica binară funcționează — și că metalul în mișcare nu ține pasul</description>
+			</item>
+			<item>
+				<title>De ce trebuia să apară tranzistorul</title>
+				<link>http://localhost:1478/ro/posts/04-why-the-transistor-had-to-happen/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/04-why-the-transistor-had-to-happen/</guid>
+				<description>Dimensiune, putere, fiabilitate — trei plafoane ale tubului care au făcut comutarea solid-state inevitabilă</description>
+			</item>
+			<item>
+				<title>Semiconductori de la primele principii</title>
+				<link>http://localhost:1478/ro/posts/05-semiconductors-from-first-principles/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/05-semiconductors-from-first-principles/</guid>
+				<description>O bandă interzisă pe care o poți împinge în ambele sensuri — doparea face din siliciu un comutator controlabil</description>
+			</item>
+			<item>
+				<title>Tranzistorul: de la BJT la MOSFET</title>
+				<link>http://localhost:1478/ro/posts/06-the-transistor-bjt-to-mosfet/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/06-the-transistor-bjt-to-mosfet/</guid>
+				<description>Doi tranzistori, două fizici: BJT-ul cere curent de bază, MOSFET-ul se comandă prin câmp, printr-un oxid izolator, și asta a deschis drumul densității</description>
+			</item>
+			<item>
+				<title>Porți logice din tranzistori</title>
+				<link>http://localhost:1478/ro/posts/07-logic-gates-from-transistors/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/07-logic-gates-from-transistors/</guid>
+				<description>CMOS pune în pereche un nMOS și un pMOS, ca o poartă în repaus să nu lase cale de curent între alimentare și masă</description>
+			</item>
+			<item>
+				<title>De la porți la logică combinațională</title>
+				<link>http://localhost:1478/ro/posts/08-from-gates-to-combinational-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/08-from-gates-to-combinational-logic/</guid>
+				<description>Din porți facem sumatoare și un ALU; transportul care se propagă bit cu bit (ripple carry) cere structuri mai bune</description>
+			</item>
+			<item>
+				<title>Logică secvențială</title>
+				<link>http://localhost:1478/ro/posts/09-sequential-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/09-sequential-logic/</guid>
+				<description>Reacția face memorie bistabilă, bistabilul D pe front face proiectarea sincronă posibilă, iar setup/hold pun plafon ceasului</description>
+			</item>
+			<item>
+				<title>Începutul ierarhiei de memorie</title>
+				<link>http://localhost:1478/ro/posts/10-the-memory-hierarchy-begins/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/10-the-memory-hierarchy-begins/</guid>
+				<description>Un bit în bistabile e prea scump: SRAM cumpără viteză, DRAM cumpără densitate, iar ierarhia repetă același compromis</description>
+			</item>
+			<item>
+				<title>Seturi de instrucțiuni</title>
+				<link>http://localhost:1478/ro/posts/11-instruction-sets/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/11-instruction-sets/</guid>
+				<description>ISA e contractul dintre software și hardware; CISC și RISC sunt două răspunsuri la ce ar trebui să conțină</description>
+			</item>
+			<item>
+				<title>Proiectarea căii de date</title>
+				<link>http://localhost:1478/ro/posts/12-datapath-design/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/12-datapath-design/</guid>
+				<description>O cale de date cu un singur ciclu face piesele vizibile și arată de ce ceasul ei e dimensionat după cazul cel mai lent</description>
+			</item>
+			<item>
+				<title>Pipelining</title>
+				<link>http://localhost:1478/ro/posts/13-pipelining/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/13-pipelining/</guid>
+				<description>Suprapui instrucțiunile pentru debit, apoi hazardurile cer redirecționare (forwarding), așteptări (stall) și tot ce urmează</description>
+			</item>
+			<item>
+				<title>Predicția salturilor</title>
+				<link>http://localhost:1478/ro/posts/14-branch-prediction/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/14-branch-prediction/</guid>
+				<description>Golirea pipeline-ului e scumpă — predicția există ca să o facă rară</description>
+			</item>
+			<item>
+				<title>Cache-uri</title>
+				<link>http://localhost:1478/ro/posts/15-caches/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/15-caches/</guid>
+				<description>Localitatea face ierarhia de memorie să meargă; asociativitatea și coerența sunt prețul sincerității</description>
+			</item>
+			<item>
+				<title>Execuția în afara ordinii</title>
+				<link>http://localhost:1478/ro/posts/16-out-of-order-execution/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/16-out-of-order-execution/</guid>
+				<description>Blochezi doar ce trebuie să aștepte — ideea lui Tomasulo: execuți când ești gata, păstrezi precedențele esențiale</description>
+			</item>
+			<item>
+				<title>Superscalar și multicore</title>
+				<link>http://localhost:1478/ro/posts/17-superscalar-multicore/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/17-superscalar-multicore/</guid>
+				<description>ILP și puterea lovesc un plafon — industria a mers pe lățime, nu pe un singur fir mai rapid</description>
+			</item>
+			<item>
+				<title>De la mainframe-uri la minicalculatoare și microprocesoare</title>
+				<link>http://localhost:1478/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/</guid>
+				<description>Trei epoci ale întrebării cine primește un calculator — instituția, departamentul, apoi un cip pentru oricine</description>
+			</item>
+			<item>
+				<title>Ruptura x86 versus RISC</title>
+				<link>http://localhost:1478/ro/posts/19-the-x86-vs-risc-split/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/19-the-x86-vs-risc-split/</guid>
+				<description>RISC arăta mai curat pe hârtie — blocajul softului și traducerea în µop-uri au ținut x86 deasupra</description>
+			</item>
+			<item>
+				<title>ARM și RISC-V: peisajul de arhitecturi azi</title>
+				<link>http://localhost:1478/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/</guid>
+				<description>După ce desktop-ul s-a așezat pe x86, lupta s-a mutat pe putere și pe licențiere — ARM a câștigat mobilul; RISC-V mizează pe deschidere</description>
+			</item>
+			<item>
+				<title>Prelucrarea pe loturi și nașterea sistemului de operare</title>
+				<link>http://localhost:1478/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/</guid>
+				<description>CPU-uri scumpe care stăteau degeaba între joburile pe cartele au forțat primul monitor rezident — software de sistem, nu programul utilizatorului</description>
+			</item>
+			<item>
+				<title>Partajarea timpului și descendența Unix</title>
+				<link>http://localhost:1478/ro/posts/22-time-sharing-and-the-unix-lineage/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/22-time-sharing-and-the-unix-lineage/</guid>
+				<description>Prelucrarea pe loturi ținea procesorul ocupat; partajarea timpului le-a dat mai multor utilizatori impresia că îl au fiecare: ambiția Multics, apoi simplitatea Unix</description>
+			</item>
+			<item>
+				<title>Mișcarea GNU și Linux</title>
+				<link>http://localhost:1478/ro/posts/23-the-gnu-movement-and-linux/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/23-the-gnu-movement-and-linux/</guid>
+				<description>Un sistem compatibil cu Unix, o licență care păstrează libertatea codului și un nucleu pornit ca hobby</description>
+			</item>
+			<item>
+				<title>Memoria virtuală și multitaskingul</title>
+				<link>http://localhost:1478/ro/posts/24-virtual-memory-and-multitasking/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/24-virtual-memory-and-multitasking/</guid>
+				<description>Adresa folosită de program nu mai este locul din memorie: pagini, defecte de pagină, working set și thrashing</description>
+			</item>
+			<item>
+				<title>Containerele și izolarea în sistemele de operare moderne</title>
+				<link>http://localhost:1478/ro/posts/25-containers-and-modern-os-isolation/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/25-containers-and-modern-os-isolation/</guid>
+				<description>Un singur nucleu, mai multe lumi: namespace-uri pentru ce vede un proces, cgroup-uri pentru cât consumă</description>
+			</item>
+			<item>
+				<title>De la codul mașină la limbajul de asamblare</title>
+				<link>http://localhost:1478/ro/posts/26-from-machine-code-to-assembly/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/26-from-machine-code-to-assembly/</guid>
+				<description>Un simbol scurt pentru fiecare cuvânt binar: ce face un asamblor și de ce a contat</description>
+			</item>
+			<item>
+				<title>Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</title>
+				<link>http://localhost:1478/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/</guid>
+				<description>Patru domenii, patru abstracții: formule, proză de afaceri, liste simbolice și programare de sistem aproape de hardware</description>
+			</item>
+			<item>
+				<title>Compilatoare, JIT și medii de rulare moderne</title>
+				<link>http://localhost:1478/ro/posts/28-compilers-jit-and-modern-language-runtimes/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/28-compilers-jit-and-modern-language-runtimes/</guid>
+				<description>Traducerea înainte de rulare, traducerea în timpul rulării și serviciile pe care mediul de rulare le oferă programului</description>
+			</item>
+			<item>
+				<title>Sisteme în timp real și planificarea deterministă</title>
+				<link>http://localhost:1478/ro/posts/29-real-time-systems-and-deterministic-scheduling/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/29-real-time-systems-and-deterministic-scheduling/</guid>
+				<description>Debitul și echitatea nu sunt termene: timpul real dur cere o limită pe cazul cel mai rău, nu o medie bună</description>
+			</item>
+			<item>
+				<title>Sisteme în timp real în practică</title>
+				<link>http://localhost:1478/ro/posts/30-real-time-systems-in-practice/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/30-real-time-systems-in-practice/</guid>
+				<description>Simte–calculează–acționează pe un buget fix: Pathfinder și bucla de control unde trucurile de viteză din faza 3 devin inamici ai timpului</description>
+			</item>
+			<item>
+				<title>Magistrale 101</title>
+				<link>http://localhost:1478/ro/posts/31-buses-101/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/31-buses-101/</guid>
+				<description>O magistrală partajată face o singură tranzacție pe rând — plafonul care forțează tot ce urmează</description>
+			</item>
+			<item>
+				<title>De la magistrala ISA la PCI și la PCIe</title>
+				<link>http://localhost:1478/ro/posts/32-from-isa-bus-to-pci-to-pcie/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/32-from-isa-bus-to-pci-to-pcie/</guid>
+				<description>Dezaxarea a omorât magistrala paralelă lată; serialul punct-la-punct e cum am scăpat</description>
+			</item>
+			<item>
+				<title>PCIe în detaliu</title>
+				<link>http://localhost:1478/ro/posts/33-pcie-deep-dive/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/33-pcie-deep-dive/</guid>
+				<description>Intenția călătorește în TLP; fiabilitatea și semnalizarea stau dedesubt — stiva care a înlocuit magistrala partajată</description>
+			</item>
+			<item>
+				<title>Magistralele de memorie</title>
+				<link>http://localhost:1478/ro/posts/34-memory-buses/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/34-memory-buses/</guid>
+				<description>DDR a cumpărat lățime de bandă; latența primului bit abia s-a mișcat — băncile și canalele ascund așteptarea</description>
+			</item>
+			<item>
+				<title>Zidul memoriei</title>
+				<link>http://localhost:1478/ro/posts/35-the-memory-wall/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/35-the-memory-wall/</guid>
+				<description>Viteza procesoarelor și latența DRAM s-au despărțit timp de decenii: cache-ul ascunde prăpastia, nu o închide, iar în epoca LLM zidul se măsoară în bandwidth</description>
+			</item>
+			<item>
+				<title>Ce înseamnă de fapt „7nm”</title>
+				<link>http://localhost:1478/ro/posts/47-what-7nm-actually-means/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/47-what-7nm-actually-means/</guid>
+				<description>Numele de nod nu mai măsoară nicio lungime de pe tranzistor: fizica stă în pitch-uri și densitate, iar eticheta numește doar o generație</description>
+			</item>
+			<item>
+				<title>Fotolitografia</title>
+				<link>http://localhost:1478/ro/posts/48-photolithography/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/48-photolithography/</guid>
+				<description>Difracția cere lungimi de undă tot mai scurte: oglinzile EUV și plasma de staniu au ținut dimensiunile în scădere</description>
+			</item>
+			<item>
+				<title>De la FinFET la GAA</title>
+				<link>http://localhost:1478/ro/posts/49-finfet-to-gaa/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/49-finfet-to-gaa/</guid>
+				<description>Scurgerea de canal scurt a oprit micșorarea tranzistorului plan: poarta a înfășurat întâi canalul pe trei laturi (FinFET), apoi pe toate (GAA)</description>
+			</item>
+			<item>
+				<title>Nuclee CUDA, warp-uri și ocupare</title>
+				<link>http://localhost:1478/ro/posts/53-cuda-cores-warps-and-occupancy/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/53-cuda-cores-warps-and-occupancy/</guid>
+				<description>SIMT pe SM-uri și warp-uri de 32: pasul comun câștigă până la divergență, iar ocuparea ascunde așteptarea după memorie</description>
+			</item>
+			<item>
+				<title>Ierarhia de memorie a GPU-ului</title>
+				<link>http://localhost:1478/ro/posts/54-gpu-memory-hierarchy/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/54-gpu-memory-hierarchy/</guid>
+				<description>Mii de thread-uri cer lățime de bandă, nu doar capacitate — de la registre și memorie partajată până la HBM lipit lângă cip</description>
+			</item>
+			<item>
+				<title>Tensor Cores</title>
+				<link>http://localhost:1478/ro/posts/55-tensor-cores/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/55-tensor-cores/</guid>
+				<description>Multiply-accumulate pe matrice a devenit operația dominantă în AI — așa că hardware-ul a făcut din ea o primitivă de prim rang</description>
+			</item>
+			<item>
+				<title>De ce înmulțirea de matrice a remodelat proiectarea cipurilor</title>
+				<link>http://localhost:1478/ro/posts/57-why-matrix-multiply-reshaped-chip-design/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/57-why-matrix-multiply-reshaped-chip-design/</guid>
+				<description>La scară, calculul AI se reduce la înmulțiri de matrice — merită să specializezi siliciul pentru această formă</description>
+			</item>
+			<item>
+				<title>Matrice sistolice</title>
+				<link>http://localhost:1478/ro/posts/58-systolic-arrays/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/58-systolic-arrays/</guid>
+				<description>Datele pulsează printr-o grilă de MAC-uri — specializezi tot cipul pentru matmul (TPU)</description>
+			</item>
+			<item>
+				<title>Sparsity în hardware</title>
+				<link>http://localhost:1478/ro/posts/60-sparsity-in-hardware/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/ro/posts/60-sparsity-in-hardware/</guid>
+				<description>Sari peste MAC-urile cu zero știut dinainte — dar numai tiparele structurate sunt ieftin de exploatat pentru hardware-ul MAC dens</description>
+			</item>
+	</channel>
+</rss>

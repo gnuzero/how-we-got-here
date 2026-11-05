@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>手摇计算机 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/%E6%89%8B%E6%91%87%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
+		<description>Recent content in 手摇计算机 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 15:39:52 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/%E6%89%8B%E6%91%87%E8%AE%A1%E7%AE%97%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>齿轮会数数：从记里鼓车到“较数器”</title>
+				<link>http://localhost:1478/zh-hans/posts/01-zh-gears-and-calculators/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/01-zh-gears-and-calculators/</guid>
+				<description>宋代的齿轮已经会十进制计数，苏颂想把人手从仪器里拿走，清宫造出了自己的手摇计算机，1858 年（一说 1859 年）的上海杂志用中文介绍了巴贝奇的差分机。</description>
+			</item>
+			<item>
+				<title>电子管与晶体管：中国第一批计算机，和算盘的真实角色</title>
+				<link>http://localhost:1478/zh-hans/posts/03-zh-first-electronic-computers/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/03-zh-first-electronic-computers/</guid>
+				<description>从 1956 年的“紧急措施”到 DJS-100 系列：中国早期计算机为谁而造、在哪里日夜运转，以及为什么“算盘造原子弹”是误传。</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Foreword on අප එතැනට පැමිණි ආකාරය</title>
+		<link>http://localhost:1478/si/tags/foreword/</link>
+		<description>Recent content in Foreword on අප එතැනට පැමිණි ආකාරය</description>
+		<generator>Hugo</generator>
+		<language>si</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 09 Sep 2026 19:17:22 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/si/tags/foreword/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>පෙරවදන</title>
+				<link>http://localhost:1478/si/posts/00-foreword/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/si/posts/00-foreword/</guid>
+				<description>මෙම මාලාව පවතින්නේ ඇයි — විද්‍යුත් යාන්ත්‍රික රිලේ වල සිට නවීන අවධානය යාන්ත්‍රණ දක්වා</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GPU เดียวมีขอบเขต — อินเตอร์คอนเนกต์ระหว่าง GPU กลายเป็นกำแพงถัดไป">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/56-multi-gpu-scaling/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="การขยายหลาย GPU">
+	<meta property="og:description" content="GPU เดียวมีขอบเขต — อินเตอร์คอนเนกต์ระหว่าง GPU กลายเป็นกำแพงถัดไป">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="การขยายหลาย GPU">
+	<meta itemprop="description" content="GPU เดียวมีขอบเขต — อินเตอร์คอนเนกต์ระหว่าง GPU กลายเป็นกำแพงถัดไป">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1337">
+
+<title>การขยายหลาย GPU • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/56-multi-gpu-scaling/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/56-multi-gpu-scaling/" title="Multi-GPU Scaling">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/56-multi-gpu-scaling/" title="Multi-GPU Scaling">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/56-multi-gpu-scaling/" title="Multi-GPU Scaling">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/56-multi-gpu-scaling/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/56-multi-gpu-scaling/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/56-multi-gpu-scaling/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="active">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>การขยายหลาย GPU</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ทำไม-gpu-เดยวไมพอ-นบไบตกอน">ทำไม GPU เดียวไม่พอ: นับไบต์ก่อน</a></li>
+    <li><a href="#การแบงงานไมฟร">การแบ่งงานไม่ฟรี</a>
+      <ul>
+        <li><a href="#1-การแบงขนานแบบขอมล-data-parallelism">1. การแบ่งขนานแบบข้อมูล (data parallelism)</a></li>
+        <li><a href="#2-การแบงขนานแบบเทนเซอร-tensor-parallelism">2. การแบ่งขนานแบบเทนเซอร์ (tensor parallelism)</a></li>
+        <li><a href="#3-การแบงขนานแบบไปปไลน-pipeline-parallelism">3. การแบ่งขนานแบบไปป์ไลน์ (pipeline parallelism)</a></li>
+      </ul>
+    </li>
+    <li><a href="#เสนทางตรงภายในเซรฟเวอรเดยว">เส้นทางตรงภายในเซิร์ฟเวอร์เดียว</a></li>
+    <li><a href="#เกนหนงกลอง">เกินหนึ่งกล่อง</a></li>
+    <li><a href="#ปรชญาทชดนตงชอซำ">ปรัชญาที่ชุดนี้ตั้งชื่อซ้ำ</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    การขยายหลาย GPU
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>GPU เดียวมี compute และ HBM จำกัด (บทที่ 54) โมเดลใหญ่ที่สุดวันนี้ต้องการหลาย GPU — ในเซิร์ฟเวอร์เดียว แล้วข้ามคลัสเตอร์ — และวิธีที่ GPU เหล่านั้นคุยกันมักตัดสินปริมาณงานจริงไม่น้อยกว่า peak ของ GPU ตัวใดตัวหนึ่ง</p>
+<p>บทนี้จะตอบสามคำถามตามลำดับ: (1) <em>ทำไม</em> GPU เดียวไม่พอ ทั้งในแง่หน่วยความจำและเวลา (2) มีวิธีแบ่งงานกี่แบบ แต่ละแบบต้องส่งข้อมูลอะไร มากเท่าไร และบ่อยแค่ไหน (3) ทำไมระบบจริงจึงผสมทั้งสามแบบ และวางแต่ละแบบไว้บนลิงก์คนละชนิด คำว่า <strong>การประมวลผลแบบขนาน</strong> (parallel processing, ศัพท์บัญญัติ) คือภาพรวม ส่วนคำว่า &ldquo;ความขนาน&rdquo; (parallelism) ในชื่อเทคนิคทั้งสามด้านล่าง ยังไม่พบศัพท์บัญญัติในสาขาคอมพิวเตอร์ บทนี้จึงเรียกว่า &ldquo;การแบ่งขนานแบบ…&rdquo; คู่กับชื่ออังกฤษ</p>
+<h2 id="ทำไม-gpu-เดยวไมพอ-นบไบตกอน">ทำไม GPU เดียวไม่พอ: นับไบต์ก่อน<a class="anchor" href="#%e0%b8%97%e0%b8%b3%e0%b9%84%e0%b8%a1-gpu-%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7%e0%b9%84%e0%b8%a1%e0%b8%9e%e0%b8%ad-%e0%b8%99%e0%b8%9a%e0%b9%84%e0%b8%9a%e0%b8%95%e0%b8%81%e0%b8%ad%e0%b8%99">#</a></h2>
+<p>การฝึกโมเดลต้องเก็บมากกว่าน้ำหนัก บทความ ZeRO (Rajbhandari และคณะ, 2019) แจกแจงไว้สำหรับการฝึกแบบ mixed precision ด้วยตัวปรับค่า Adam โมเดลที่มี Ψ พารามิเตอร์ต้องเก็บ:</p>
+<ul>
+<li>น้ำหนักแบบ FP16: 2Ψ ไบต์</li>
+<li><strong>เกรเดียนต์</strong> (gradient, ศัพท์บัญญัติ &ldquo;เกรเดียนต์&rdquo; หรือ &ldquo;ความชัน&rdquo;) แบบ FP16: 2Ψ ไบต์ — ทิศทางที่น้ำหนักแต่ละตัวควรขยับ คำนวณได้จากการแพร่ย้อนกลับ (บทที่ 46)</li>
+<li><strong>สถานะของตัวปรับค่า</strong> (optimizer state): สำเนาน้ำหนักแบบ FP32, โมเมนตัม, ความแปรปรวน อย่างละ 4Ψ รวม 12Ψ ไบต์</li>
+</ul>
+<p>รวม <strong>16Ψ ไบต์</strong> และยังไม่นับ <em>แอกทิเวชัน</em> (activation — ผลกลางของแต่ละชั้นที่ต้องเก็บไว้ใช้ตอนย้อนกลับ) ซึ่งโตตามขนาดกลุ่มข้อมูล ลองแทนตัวเลข: โมเดล 1.5 พันล้านพารามิเตอร์ (ขนาด GPT-2) ต้องใช้ 16 × 1.5 × 10⁹ = <strong>24 GB</strong> ขณะที่น้ำหนัก FP16 ล้วน ๆ มีแค่ 3 GB (ตัวเลขทั้งสองตรงกับที่บทความ ZeRO ระบุ) โมเดล 7.5 พันล้านพารามิเตอร์ต้องใช้ <strong>120 GB</strong> — เกินหน่วยความจำ 40 GB ของ A100 รุ่นที่เอกสารของ NVIDIA บรรยายไปสามเท่า ถ้าไม่แบ่ง ก็ฝึกไม่ได้เลย</p>
+<p>แม้จะใส่ได้ เวลาก็ยังเป็นปัญหา ภาคผนวกของบทความเรื่องการฝึก Megatron-LM บนคลัสเตอร์ GPU ปี 2021 (Narayanan และคณะ) นับ FLOP ของทรานส์ฟอร์เมอร์จากหลักการพื้นฐาน: การคูณเมทริกซ์ขนาด m×k กับ k×n ใช้ 2mkn FLOP (คูณหนึ่ง บวกหนึ่ง) ชั้นหนึ่งใช้ราว 24Bsh² FLOP ในรอบไปข้างหน้า (B = จำนวนลำดับในกลุ่ม, s = ความยาวลำดับ, h = ขนาดชั้นซ่อน) รอบย้อนกลับใช้เป็นสองเท่า เพราะต้องคำนวณเกรเดียนต์เทียบทั้งอินพุตและน้ำหนัก ถ้าคิดว่าโมเดลมีพารามิเตอร์ราว 12lh² (l = จำนวนชั้น) จะได้ว่า <strong>รอบไปข้างหน้ากิน 2 FLOP ต่อพารามิเตอร์ต่อโทเค็น รอบย้อนกลับกิน 4 รวม 6</strong> (บทความนั้นใช้การคำนวณแอกทิเวชันซ้ำ เพิ่มรอบไปข้างหน้าอีกหนึ่ง จึงเป็น 8) นี่คือที่มาของกฎหัวแม่มือ &ldquo;6 × พารามิเตอร์ × โทเค็น&rdquo; — การอนุมานนี้เป็นของผู้เขียนจากสูตรในภาคผนวก</p>
+<h2 id="การแบงงานไมฟร">การแบ่งงานไม่ฟรี<a class="anchor" href="#%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%81%e0%b8%9a%e0%b8%87%e0%b8%87%e0%b8%b2%e0%b8%99%e0%b9%84%e0%b8%a1%e0%b8%9f%e0%b8%a3">#</a></h2>
+<p>บทที่ 46 ครอบคลุมว่า <em>เหตุใด</em> การแบ่ง data-parallel และ model-parallel จึงมักจำเป็น ประสิทธิภาพขึ้นกับว่า GPU แลกข้อมูลกันเร็วเพียงใด หากการสื่อสารช้าเทียบกับ compute ของแต่ละ GPU เพื่อนจะค้างรอกัน — memory wall (บทที่ 35) อีกครั้ง นำไปใช้กับลิงก์ GPU-ถึง-GPU แทน CPU-ถึง-DRAM</p>
+<p>มีสามวิธีหลักในการแบ่ง ต่างกันที่ <em>อะไร</em> ถูกแบ่ง และ <em>อะไร</em> ต้องวิ่งข้ามลิงก์</p>
+<h3 id="1-การแบงขนานแบบขอมล-data-parallelism">1. การแบ่งขนานแบบข้อมูล (data parallelism)<a class="anchor" href="#1-%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%81%e0%b8%9a%e0%b8%87%e0%b8%82%e0%b8%99%e0%b8%b2%e0%b8%99%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%82%e0%b8%ad%e0%b8%a1%e0%b8%a5-data-parallelism">#</a></h3>
+<p>GPU ทุกตัวถือสำเนาโมเดลเต็ม แต่ละตัวรับ <em>ส่วนต่างกัน</em> ของกลุ่มข้อมูล (batch; ศัพท์บัญญัติสาขาคอมพิวเตอร์ใช้ &ldquo;กลุ่ม&rdquo;) คำนวณเกรเดียนต์ของตัวเอง แล้วทุกตัวต้องได้ <em>ค่าเฉลี่ย</em> ของเกรเดียนต์จากทุกตัวก่อนขยับน้ำหนัก ไม่งั้นสำเนาจะค่อย ๆ แยกทางกัน การรวมแล้วแจกผลกลับให้ทุกตัวแบบนี้เรียกว่า <strong>all-reduce</strong> (บทที่ 61) และมันคือ <strong>การประสานเวลา</strong> (synchronization, ศัพท์บัญญัติ) หนึ่งครั้งต่อหนึ่งขั้นการฝึก</p>
+<p>ต้องส่งเท่าไร? ด้วย ring all-reduce ที่ GPU N ตัวต่อกันเป็นวง แต่ละตัวต้องส่ง (และรับ) ประมาณ 2(N−1)/N × S ไบต์ เมื่อ S คือขนาดเกรเดียนต์ทั้งก้อน — เกือบ 2S ไม่ว่า N จะเท่าไร</p>
+<p><strong>ตัวอย่างในเครื่องเดียว</strong> (ประมาณการของผู้เขียน): โมเดล 1.5 พันล้านพารามิเตอร์ เกรเดียนต์ FP16 S = 3 GB บน GPU 8 ตัว แต่ละตัวส่ง 2 × 7/8 × 3 = <strong>5.25 GB</strong> ต่อขั้น</p>
+<ul>
+<li>ผ่าน NVLink รุ่นที่ 3 ของ A100: เอกสารระบุ 12 ลิงก์ ลิงก์ละ 25 GB/s ต่อทิศทาง รวม 600 GB/s สองทิศ หรือ 300 GB/s ต่อทิศทาง → 5.25/300 ≈ <strong>17.5 ms</strong></li>
+<li>ผ่าน PCIe Gen 4 x16 ที่เอกสารระบุ 31.5 GB/s → 5.25/31.5 ≈ <strong>167 ms</strong></li>
+</ul>
+<p>เทียบกับเวลาคำนวณ: สมมุติแต่ละ GPU ทำ 8 ลำดับ × 1,024 โทเค็นต่อขั้น (ตัวเลขประกอบการอธิบาย) ใช้ 8 FLOP ต่อพารามิเตอร์ต่อโทเค็น (รวมการคำนวณแอกทิเวชันซ้ำ ให้ตรงกับเงื่อนไขที่วัดอัตรา 137 TFLOP/s ด้านล่าง) × 8,192 โทเค็น × 1.5 × 10⁹ พารามิเตอร์ ≈ 9.8 × 10¹³ FLOP ถ้าทำได้ 137 TFLOP/s (อัตราที่ Narayanan และคณะวัดได้จริงต่อ GPU สำหรับโมเดลขนาดใกล้เคียงกัน คือ 1.7 พันล้านพารามิเตอร์) ใช้เวลา ≈ 0.72 วินาที การสื่อสารผ่าน NVLink จึงเพิ่มเวลาราว 2.4% ส่วนผ่าน PCIe เพิ่มราว 23% — และนั่นยังเป็นกรณีที่ไม่มีทราฟฟิกอื่นแย่งลิงก์ (ระบบจริงซ่อนเวลานี้ได้บางส่วนด้วยการเริ่มส่งเกรเดียนต์ของชั้นท้าย ๆ ขณะรอบย้อนกลับยังคำนวณชั้นต้น ๆ อยู่)</p>
+<p><strong>ข้อจำกัดของแบบนี้:</strong> ทุก GPU ยังต้องถือ 16Ψ เต็ม ๆ การแบ่งแบบข้อมูลช่วย <em>เวลา</em> แต่ไม่ช่วย <em>หน่วยความจำ</em> ZeRO แก้ด้วยการกระจายสถานะของตัวปรับค่า เกรเดียนต์ และน้ำหนักไปเก็บคนละส่วนแทนการเก็บซ้ำ สำหรับโมเดล 7.5 พันล้านพารามิเตอร์บน 64 GPU บทความ ZeRO คำนวณว่า: แบบเดิม 120 GB ต่อ GPU; กระจายสถานะตัวปรับค่าอย่างเดียว 4Ψ + 12Ψ/64 ≈ <strong>31.4 GB</strong>; กระจายเกรเดียนต์ด้วย 2Ψ + 14Ψ/64 ≈ <strong>16.6 GB</strong>; กระจายทั้งสามอย่าง 16Ψ/64 ≈ <strong>1.88 GB</strong> (ผู้เขียนคำนวณซ้ำได้ตรงกัน)</p>
+<h3 id="2-การแบงขนานแบบเทนเซอร-tensor-parallelism">2. การแบ่งขนานแบบเทนเซอร์ (tensor parallelism)<a class="anchor" href="#2-%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%81%e0%b8%9a%e0%b8%87%e0%b8%82%e0%b8%99%e0%b8%b2%e0%b8%99%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b9%80%e0%b8%97%e0%b8%99%e0%b9%80%e0%b8%8b%e0%b8%ad%e0%b8%a3-tensor-parallelism">#</a></h3>
+<p>ถ้าแม้แต่ <em>ชั้นเดียว</em> ก็ใหญ่เกิน หรืออยากให้ชั้นเดียวเสร็จเร็วขึ้น ก็ต้องผ่าเมทริกซ์น้ำหนักของชั้นนั้นเอง Megatron-LM (Shoeybi และคณะ, 2019) แสดงวิธีผ่าเครือข่ายป้อนไปข้างหน้าสองชั้นของทรานส์ฟอร์เมอร์ Y = GeLU(XA) แล้วตามด้วย Z = YB ให้สื่อสารน้อยที่สุด ลองทำด้วยตัวเลขเล็ก ๆ ให้เห็นว่าทำไมต้องผ่า <em>แบบนั้น</em> (ใช้ ReLU = max(0, x) แทน GeLU เพื่อให้คิดในใจได้ เหตุผลเหมือนกันเพราะทั้งคู่ไม่เป็นเชิงเส้น)</p>
+<p>ให้ X = [1, 2] และ A มีสองแถว คือ [1, 0, 2, −1] กับ [0, 1, 1, 3]</p>
+<ul>
+<li>XA = 1×[1, 0, 2, −1] + 2×[0, 1, 1, 3] = [1, 2, 4, 5] ดังนั้น Y = ReLU(XA) = [1, 2, 4, 5]</li>
+<li>ให้ B เป็นเมทริกซ์ 4×2 ที่มีแถว [1, 0], [0, 1], [1, 1], [2, −1] จะได้ Z = YB = 1×[1,0] + 2×[0,1] + 4×[1,1] + 5×[2,−1] = <strong>[15, 1]</strong></li>
+</ul>
+<p><strong>ผ่าผิดทาง — ตามแถวของ A:</strong> GPU 1 ถือแถวแรก ได้ผลบางส่วน [1, 0, 2, −1]; GPU 2 ถือแถวที่สอง ได้ [0, 2, 2, 6] ถ้าแต่ละตัวทำ ReLU เองแล้วค่อยบวก จะได้ [1, 0, 2, 0] + [0, 2, 2, 6] = [1, 2, 4, 6] ซึ่ง <strong>ผิด</strong> (ช่องสุดท้ายควรเป็น 5) เพราะ ReLU(a + b) ≠ ReLU(a) + ReLU(b) แบบนี้ต้องประสานเวลา (บวกผลบางส่วน) <em>ก่อน</em> ฟังก์ชันไม่เชิงเส้นทุกครั้ง</p>
+<p><strong>ผ่าถูกทาง — ตามคอลัมน์ของ A:</strong> GPU 1 ถือสองคอลัมน์แรก คำนวณ Y₁ = ReLU([1, 2]) = [1, 2]; GPU 2 ถือสองคอลัมน์หลัง คำนวณ Y₂ = ReLU([4, 5]) = [4, 5] ไม่ต้องคุยกันเลย เพราะแต่ละคอลัมน์ของผลขึ้นกับคอลัมน์ของ A คอลัมน์เดียว แล้วผ่า B <em>ตามแถว</em> ให้สอดคล้อง: GPU 1 คำนวณ Z₁ = Y₁ × (สองแถวแรกของ B) = [1, 2]; GPU 2 คำนวณ Z₂ = Y₂ × (สองแถวหลัง) = 4×[1,1] + 5×[2,−1] = [14, −1] จากนั้น all-reduce หนึ่งครั้ง: Z = [1, 2] + [14, −1] = <strong>[15, 1]</strong> ถูกต้อง</p>
+<p>นี่คือเหตุที่บทความ Megatron-LM ทำได้ด้วย all-reduce เพียง <strong>สองครั้งในรอบไปข้างหน้าและสองครั้งในรอบย้อนกลับ</strong> ต่อชั้นทรานส์ฟอร์เมอร์หนึ่งชั้น (บล็อก attention กับบล็อกป้อนไปข้างหน้า บล็อกละหนึ่งครั้งในแต่ละทิศ)</p>
+<p>แต่ &ldquo;สองครั้งต่อชั้น&rdquo; ถี่มาก ลองประมาณ (การคำนวณของผู้เขียน) สำหรับโมเดลขนาด GPT-3 (h = 12,288, 96 ชั้น) กลุ่มย่อยหนึ่งลำดับยาว 2,048 โทเค็น แต่ละ all-reduce มีขนาด 1 × 2,048 × 12,288 × 2 ไบต์ ≈ 50.3 MB ผ่า 8 ทาง แต่ละ GPU ส่ง 2 × 7/8 × 50.3 ≈ 88 MB ต่อครั้ง × 4 ครั้งต่อชั้น × 96 ชั้น ≈ <strong>33.8 GB ต่อกลุ่มย่อยหนึ่งกลุ่ม</strong> ผ่าน NVLink 300 GB/s ใช้ ≈ 0.11 วินาที ผ่านการ์ด InfiniBand HDR 200 Gb/s (= 25 GB/s ซึ่งเป็นการ์ดที่คลัสเตอร์ในบทความใช้ โหนดละแปดใบ) ใช้ ≈ 1.35 วินาที — ช้ากว่า 12 เท่า และต้องรอทุกครั้ง เพราะชั้นถัดไปเริ่มไม่ได้จนกว่าผลรวมจะมา ข้อสรุปข้อแรกของ Narayanan และคณะจึงตรงไปตรงมา: <em>ใช้การแบ่งแบบเทนเซอร์ได้ถึงจำนวน GPU ในเซิร์ฟเวอร์เดียว (g ตัวในเซิร์ฟเวอร์ g-GPU) แล้วค่อยใช้การแบ่งแบบไปป์ไลน์ข้ามเซิร์ฟเวอร์</em></p>
+<h3 id="3-การแบงขนานแบบไปปไลน-pipeline-parallelism">3. การแบ่งขนานแบบไปป์ไลน์ (pipeline parallelism)<a class="anchor" href="#3-%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%81%e0%b8%9a%e0%b8%87%e0%b8%82%e0%b8%99%e0%b8%b2%e0%b8%99%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b9%84%e0%b8%9b%e0%b8%9b%e0%b9%84%e0%b8%a5%e0%b8%99-pipeline-parallelism">#</a></h3>
+<p>ผ่าโมเดลตาม <em>ชั้น</em>: GPU 1 ถือชั้น 1–12, GPU 2 ถือชั้น 13–24 และต่อไป ข้อมูลที่ข้ามลิงก์มีแค่แอกทิเวชันที่ขอบระหว่างช่วง ส่งแบบจุดต่อจุดครั้งเดียวต่อช่วง จึงทนลิงก์ช้าข้ามเซิร์ฟเวอร์ได้ดีกว่ามาก นี่คือ <strong>การทำงานแบบสายท่อ</strong> (pipeline, ศัพท์บัญญัติ) แบบเดียวกับในบทที่ 13 แต่ขั้นของสายท่อคือ GPU ทั้งตัว</p>
+<p>ปัญหาคือ ถ้าส่งกลุ่มข้อมูลทั้งก้อนเข้าไป GPU 2 ต้องรอ GPU 1 ทำเสร็จ แล้ว GPU 1 ก็ว่างรอรอบย้อนกลับ ทางแก้ของ GPipe (Huang และคณะ, 2018) คือหั่นกลุ่มเป็น <strong>กลุ่มย่อย</strong> (microbatch) m ก้อนแล้วป้อนตามกันเหมือนสายพาน แต่ช่วงต้นและช่วงท้ายของแต่ละรอบยังมีช่วงที่บางขั้นว่าง เรียกว่า <strong>ฟองอากาศของไปป์ไลน์</strong> (pipeline bubble) Narayanan และคณะให้สูตรง่าย ๆ: ถ้ามี p ขั้น เวลาฟองอากาศ = (p − 1) × (t_f + t_b) ขณะที่เวลางานจริง = m × (t_f + t_b) ดังนั้น</p>
+<p><strong>สัดส่วนฟองอากาศ (เทียบกับเวลางานอุดมคติ) = (p − 1) / m</strong></p>
+<p>แทนตัวเลขกับไปป์ไลน์ 8 ขั้น:</p>
+<table>
+	<thead>
+			<tr>
+					<th>กลุ่มย่อย m</th>
+					<th>(p − 1)/m</th>
+					<th>ประสิทธิภาพ = 1/(1 + (p−1)/m)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>8</td>
+					<td>7/8 = 0.875</td>
+					<td>≈ 53%</td>
+			</tr>
+			<tr>
+					<td>32</td>
+					<td>7/32 ≈ 0.219</td>
+					<td>≈ 82%</td>
+			</tr>
+			<tr>
+					<td>64</td>
+					<td>7/64 ≈ 0.109</td>
+					<td>≈ 90%</td>
+			</tr>
+	</tbody>
+</table>
+<p>ตรวจความสอดคล้อง: ถ้าคิดเป็นสัดส่วน <em>ของเวลาทั้งหมด</em> จะได้ (p − 1)/(m + p − 1) ซึ่งตรงกับรูป O((K − 1)/(M + K − 1)) ที่บทความ GPipe เขียนไว้ (K = จำนวนขั้น, M = จำนวนกลุ่มย่อย) บทความ GPipe รายงานว่าในการทดลองของพวกเขา ฟองอากาศแทบไม่มีผลเมื่อ M ≥ 4K บทเรียน: ต้องมีกลุ่มย่อยมากกว่าจำนวนขั้นหลายเท่า — แต่กลุ่มย่อยที่เล็กลงก็ทำให้การคูณเมทริกซ์แต่ละครั้งเล็กลง และใช้ GPU ได้ไม่เต็ม (บทที่ 54 อธิบายด้วยแบบจำลอง roofline ว่าทำไมเมทริกซ์เล็กเสียเปรียบ)</p>
+<h2 id="เสนทางตรงภายในเซรฟเวอรเดยว">เส้นทางตรงภายในเซิร์ฟเวอร์เดียว<a class="anchor" href="#%e0%b9%80%e0%b8%aa%e0%b8%99%e0%b8%97%e0%b8%b2%e0%b8%87%e0%b8%95%e0%b8%a3%e0%b8%87%e0%b8%a0%e0%b8%b2%e0%b8%a2%e0%b9%83%e0%b8%99%e0%b9%80%e0%b8%8b%e0%b8%a3%e0%b8%9f%e0%b9%80%e0%b8%a7%e0%b8%ad%e0%b8%a3%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7">#</a></h2>
+<p>บทที่ 37 แนะนำ NVLink เป็นอินเตอร์คอนเนกต์ GPU-ถึง-GPU แบนด์วิดท์สูงที่ข้ามเส้นทาง PCIe ผ่าน CPU ภายในเซิร์ฟเวอร์ NVSwitch ทำให้เป็น all-to-all: ทุก GPU ถึงทุกตัวอื่นที่แบนด์วิดท์ของ NVLink แทนผ่าน PCIe และโฮสต์ สำหรับ workload ที่แลก gradient ใหญ่ตลอด เส้นทางตรงนั้นมักกำหนดปริมาณงานฝึกที่ได้มากกว่าตัวเลข peak-FLOPS แยกเดี่ยวใด ๆ</p>
+<p>ตัวเลขจากหัวข้อก่อนบอกว่าเส้นทางนี้สำคัญแค่ไหน: <strong>แบนด์วิดท์</strong> (bandwidth, ศัพท์บัญญัติ) ของ NVLink ใน A100 (300 GB/s ต่อทิศทาง) สูงกว่า PCIe Gen 4 x16 (31.5 GB/s) ราว 9.5 เท่า และสูงกว่าการ์ด InfiniBand HDR หนึ่งใบ (25 GB/s) 12 เท่า การแบ่งแบบเทนเซอร์ที่ต้องประสานเวลาทุกชั้นจึงอยู่รอดได้เฉพาะในโดเมนนี้</p>
+<h2 id="เกนหนงกลอง">เกินหนึ่งกล่อง<a class="anchor" href="#%e0%b9%80%e0%b8%81%e0%b8%99%e0%b8%ab%e0%b8%99%e0%b8%87%e0%b8%81%e0%b8%a5%e0%b8%ad%e0%b8%87">#</a></h2>
+<p>การฝึกขนาดใหญ่ครอบหลายเซิร์ฟเวอร์ แนวคิด RDMA ของบทที่ 42 กลับมา: GPUDirect RDMA ให้ตัวปรับเครือข่ายอ่านหรือเขียนหน่วยความจำ GPU ข้ามเซิร์ฟเวอร์โดยไม่ต้องคัดลอกผ่าน DRAM โฮสต์เพิ่ม — เดิมพัน &ldquo;ลดฮอป ทำให้แบนด์วิดท์ตรงสูงสุด&rdquo; เดียวกัน ตอนนี้ที่สเกลคลัสเตอร์</p>
+<p><strong>ประกอบสามแบบเข้าด้วยกัน.</strong> Narayanan และคณะเรียกการผสมว่า PTD-P (ไปป์ไลน์ + เทนเซอร์ + ข้อมูล) ตารางที่ 1 ของบทความรายงานการฝึกโมเดลหนึ่งล้านล้านพารามิเตอร์บน A100 จำนวน 3,072 ตัว: แบ่งแบบเทนเซอร์ 8 ทาง (เท่ากับจำนวน GPU ในหนึ่งเซิร์ฟเวอร์ DGX A100) แบ่งแบบไปป์ไลน์ 64 ขั้น ข้ามเซิร์ฟเวอร์ ที่เหลือเป็นการแบ่งแบบข้อมูล 3,072 / (8 × 64) = <strong>6</strong> สำเนา ได้ 163 TFLOP/s ต่อ GPU หรือ <strong>52%</strong> ของค่ายอด 312 TFLOP/s และรวมทั้งคลัสเตอร์ 502 PFLOP/s (ตรวจ: 3,072 × 163 TFLOP/s ≈ 501 PFLOP/s ต่างจากตารางเพราะการปัดเศษ) แผนผังนี้คือบทเรียนทั้งบทในบรรทัดเดียว: <em>วางการสื่อสารที่ถี่ที่สุดบนลิงก์ที่เร็วที่สุด</em></p>
+<p>อีกตัวอย่างจากตารางเดียวกัน โมเดล 1.7 พันล้านพารามิเตอร์ใช้การแบ่งแบบข้อมูลล้วน 32 GPU ได้ 137 TFLOP/s ต่อ GPU ผู้เขียนแทนค่าในสูตร FLOP ของภาคผนวก (24 ชั้น, h = 2,304, s = 2,048, คลังคำ 51,200 คำ, กลุ่ม 512 ลำดับ) ได้ราว 1.55 × 10¹⁶ FLOP ต่อขั้น หรือราว 3.5 วินาทีต่อขั้นที่อัตรานั้น ส่วน all-reduce ของเกรเดียนต์ FP16 ราว 3.3 GB ข้าม 32 GPU ผ่าน InfiniBand 25 GB/s ต่อ GPU ใช้ราว 0.26 วินาที (ประมาณการ ถ้าไม่ซ้อนกับการคำนวณ) — ราว 7% ซึ่งเป็นเหตุที่โมเดลขนาดนี้ยังฝึกแบบข้อมูลล้วนได้คุ้ม</p>
+<h2 id="ปรชญาทชดนตงชอซำ">ปรัชญาที่ชุดนี้ตั้งชื่อซ้ำ<a class="anchor" href="#%e0%b8%9b%e0%b8%a3%e0%b8%8a%e0%b8%8d%e0%b8%b2%e0%b8%97%e0%b8%8a%e0%b8%94%e0%b8%99%e0%b8%95%e0%b8%87%e0%b8%8a%e0%b8%ad%e0%b8%8b%e0%b8%b3">#</a></h2>
+<p>เส้นทาง GPU-ถึง-GPU ตรง ฮอปที่ไม่จำเป็นน้อยลง อินเตอร์คอนเนกต์เป็นข้อจำกัดชั้นหนึ่ง — ปรัชญาเดียวกันเบื้องหลัง fabric หน่วยความจำ GPU เฉพาะที่ชุดนี้กล่าวถึง: แนวทางเปิดบน PCIe สู่สิ่งที่ fabric กรรมสิทธิ์ทำภายในสแตกของผู้ขายหนึ่งราย เฟส 10 รับเส้นด้ายที่สเกลศูนย์ข้อมูลจริง — ไม่ใช่ GPU กำมือในกล่องเดียว แต่หลายพันข้ามคลัสเตอร์ฝึก เดินสายให้ compute รวมทางทฤษฎีไม่หายไปกับการประสาน</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>จันทนา จันทราพรชัย, <em>สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ</em></li>
+<li>ผศ.ดร. ปัทมา ลงกานี, <em>สถาปัตยกรรมคอมพิวเตอร์</em></li>
+<li>รศ.ดร.เกริก ภิรมย์โสภา, <em>สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์</em></li>
+<li>S. Rajbhandari, J. Rasley, O. Ruwase, Y. He, &ldquo;ZeRO: Memory Optimizations Toward Training Trillion Parameter Models&rdquo; (2019) — การนับ 16Ψ ไบต์ และตัวเลข 31.4 / 16.6 / 1.88 GB: <a href="https://arxiv.org/abs/1910.02054">https://arxiv.org/abs/1910.02054</a></li>
+<li>M. Shoeybi และคณะ, &ldquo;Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism&rdquo; (2019) — การผ่าคอลัมน์แล้วแถว และ all-reduce สองครั้งต่อรอบ: <a href="https://arxiv.org/abs/1909.08053">https://arxiv.org/abs/1909.08053</a></li>
+<li>D. Narayanan และคณะ, &ldquo;Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM&rdquo; (2021) — สูตรฟองอากาศ (p − 1)/m, ภาคผนวกนับ FLOP, ตารางที่ 1 และข้อสรุปเรื่องการวางเทนเซอร์ในเซิร์ฟเวอร์เดียว: <a href="https://arxiv.org/abs/2104.04473">https://arxiv.org/abs/2104.04473</a></li>
+<li>Y. Huang และคณะ, &ldquo;GPipe: Easy Scaling with Micro-Batch Pipeline Parallelism&rdquo; (arXiv 2018; ฉบับแก้ไข 2019) — กลุ่มย่อยและฟองอากาศของไปป์ไลน์: <a href="https://arxiv.org/abs/1811.06965">https://arxiv.org/abs/1811.06965</a></li>
+<li>NVIDIA, <em>NVIDIA A100 Tensor Core GPU Architecture</em> (whitepaper, 2020) — NVLink รุ่นที่ 3 (12 ลิงก์ × 25 GB/s ต่อทิศทาง), PCIe Gen 4 31.5 GB/s, HBM2 40 GB: <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B2%E0%B8%A2%E0%B8%AB%E0%B8%A5%E0%B8%B2%E0%B8%A2&#43;GPU&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F56-multi-gpu-scaling%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F56-multi-gpu-scaling.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F56-multi-gpu-scaling.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/55-tensor-cores/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Tensor Core</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="flex align-center">
+        <span>เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ทำไม-gpu-เดยวไมพอ-นบไบตกอน">ทำไม GPU เดียวไม่พอ: นับไบต์ก่อน</a></li>
+    <li><a href="#การแบงงานไมฟร">การแบ่งงานไม่ฟรี</a>
+      <ul>
+        <li><a href="#1-การแบงขนานแบบขอมล-data-parallelism">1. การแบ่งขนานแบบข้อมูล (data parallelism)</a></li>
+        <li><a href="#2-การแบงขนานแบบเทนเซอร-tensor-parallelism">2. การแบ่งขนานแบบเทนเซอร์ (tensor parallelism)</a></li>
+        <li><a href="#3-การแบงขนานแบบไปปไลน-pipeline-parallelism">3. การแบ่งขนานแบบไปป์ไลน์ (pipeline parallelism)</a></li>
+      </ul>
+    </li>
+    <li><a href="#เสนทางตรงภายในเซรฟเวอรเดยว">เส้นทางตรงภายในเซิร์ฟเวอร์เดียว</a></li>
+    <li><a href="#เกนหนงกลอง">เกินหนึ่งกล่อง</a></li>
+    <li><a href="#ปรชญาทชดนตงชอซำ">ปรัชญาที่ชุดนี้ตั้งชื่อซ้ำ</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

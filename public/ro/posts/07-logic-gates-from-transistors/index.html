@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CMOS pune în pereche un nMOS și un pMOS, ca o poartă în repaus să nu lase cale de curent între alimentare și masă">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/07-logic-gates-from-transistors/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Porți logice din tranzistori">
+	<meta property="og:description" content="CMOS pune în pereche un nMOS și un pMOS, ca o poartă în repaus să nu lase cale de curent între alimentare și masă">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:06:55+05:30">
+
+
+	<meta itemprop="name" content="Porți logice din tranzistori">
+	<meta itemprop="description" content="CMOS pune în pereche un nMOS și un pMOS, ca o poartă în repaus să nu lase cale de curent între alimentare și masă">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:06:55+05:30">
+	<meta itemprop="wordCount" content="783">
+
+<title>Porți logice din tranzistori • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/07-logic-gates-from-transistors/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/07-logic-gates-from-transistors/" title="Logic Gates from Transistors">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/07-logic-gates-from-transistors/" title="เกตตรรกะจากทรานซิสเตอร์">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/07-logic-gates-from-transistors/" title="ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/07-logic-gates-from-transistors/" title="டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/07-logic-gates-from-transistors/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/07-logic-gates-from-transistors/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/07-logic-gates-from-transistors/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/07-logic-gates-from-transistors/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="active">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Porți logice din tranzistori</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#inversorul-cea-mai-mică-unitate-cmos">Inversorul: cea mai mică unitate CMOS</a></li>
+    <li><a href="#de-ce-rezolvă-asta-problema-puterii">De ce rezolvă asta problema puterii</a></li>
+    <li><a href="#o-poartă-reală-din-catalog-nand-ul-ttl-74ls00">O poartă reală, din catalog: NAND-ul TTL 74LS00</a></li>
+    <li><a href="#nand-nor-și-completitudinea-funcțională">NAND, NOR și completitudinea funcțională</a></li>
+    <li><a href="#pasul-următor">Pasul următor</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Porți logice din tranzistori
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 06 ne-a lăsat cu două tipuri de MOSFET, cu canal n și cu canal p. Aici le punem împreună.</p>
+<h2 id="inversorul-cea-mai-mică-unitate-cmos">Inversorul: cea mai mică unitate CMOS<a class="anchor" href="#inversorul-cea-mai-mic%c4%83-unitate-cmos">#</a></h2>
+<p>Un inversor CMOS are un tranzistor pMOS între alimentare și ieșire și un tranzistor nMOS între ieșire și masă, cu grilele legate la aceeași intrare. Când intrarea e „1”, conduce nMOS-ul și trage ieșirea la masă („0”). Când intrarea e „0”, conduce pMOS-ul și trage ieșirea la alimentare („1”). <!-- NEVERIFICAT: descrierea topologiei de inversor de mai sus e cea standard din manuale; nu am deschis textul revendicărilor din brevetul Wanlass sau lucrarea ISSCC 1963 ca să citez schema exactă. Faptul istoric al combinării p/n e sursat mai jos. --></p>
+<p>Faptul istoric e documentat. Computer History Museum scrie că, într-o lucrare de conferință din 1963, C. T. Sah și Frank Wanlass de la Fairchild R&amp;D au arătat că circuitele logice care combină tranzistori MOS cu canal p și cu canal n într-o configurație complementară „drew close to zero power in standby mode” (CHM, <em>The Silicon Engine</em>, „1963: Complementary MOS Circuit Configuration is Invented”, <a href="https://www.computerhistory.org/siliconengine/complementary-mos-circuit-configuration-is-invented/">link</a>, accesat 2026-11-05). Lucrarea citată de CHM este Wanlass &amp; Sah, „Nanowatt Logic Using Field-Effect Metal-Oxide Semiconductor Triodes”, ISSCC Digest, 20 februarie 1963, pp. 32–33 (ibid., „Contemporary Documents”). <!-- NEVERIFICAT: lucrarea ISSCC 1963 nu a fost deschisă; o citez doar prin lista CHM. --> Wanlass a brevetat ideea: US 3,356,858, „Low stand-by power complementary field effect circuitry”, cu data de prioritate 18 iunie 1963 și acordat pe 5 decembrie 1967 (Google Patents, <a href="https://patents.google.com/patent/US3356858A/en">US3356858A</a>, accesat 2026-11-05).</p>
+<h2 id="de-ce-rezolvă-asta-problema-puterii">De ce rezolvă asta problema puterii<a class="anchor" href="#de-ce-rezolv%c4%83-asta-problema-puterii">#</a></h2>
+<p>În oricare stare stabilă a inversorului, unul dintre cei doi tranzistori e blocat, deci între alimentare și masă nu există o cale de conducție continuă. Aceasta e logica din spatele formulei din titlul brevetului, <em>low stand-by power</em> (Google Patents, US3356858A, ibid.), și a observației CHM despre un consum în repaus „close to zero” (CHM 1963, ibid.). Consumul apare mai ales la comutare. <!-- NEVERIFICAT: fraza despre blocarea unui tranzistor în fiecare stare și fraza despre consumul la comutare sunt raționamentul nostru pe topologia standard, nu citate; descompunerea puterii CMOS în componentă dinamică (≈ C·V²·f) și curent de scurgere nu e citată dintr-o sursă deschisă în această sesiune. --></p>
+<p>Adoptarea a fost lentă, iar CHM explică de ce. CMOS a avut la început limitări de performanță (CHM 1963, subtitlul paginii). RCA a introdus în 1968 primele circuite din familia CD4000 de logică de uz general, iar primele aplicații CMOS de volum mare au fost produsele pe baterii, cum ar fi ceasurile digitale, care nu cereau viteză maximă (ibid.). Potrivit aceleiași pagini, abia până în 1978 combinația dintre litografia mai fină și procesul <em>silicon-gate</em> a făcut CMOS competitiv ca performanță cu tehnologiile bipolare și MOS convenționale. Când s-au pus sute de mii de tranzistori pe cip, CMOS a fost cea mai bună soluție pentru densitatea de putere (ibid.).</p>
+<h2 id="o-poartă-reală-din-catalog-nand-ul-ttl-74ls00">O poartă reală, din catalog: NAND-ul TTL 74LS00<a class="anchor" href="#o-poart%c4%83-real%c4%83-din-catalog-nand-ul-ttl-74ls00">#</a></h2>
+<p>Ca să avem cifre măsurabile, luăm o poartă reală, chiar dacă nu e CMOS. Fișa tehnică Texas Instruments SN74LS00 descrie circuitele ca „quadruple, 2-input NAND gates”, adică patru porți NAND cu două intrări într-o capsulă (TI, <em>SNx400, SNx4LS00, and SNx4S00 Quadruple 2-Input Positive-NAND Gates</em>, SDLS025D, dec. 1983, rev. mai 2017, §8.1 „Overview”, <a href="https://www.ti.com/lit/ds/symlink/sn74ls00.pdf">PDF</a>, accesat 2026-11-05). Pentru varianta LS, tabelul <em>Switching Characteristics</em> (§6.9, la VCC = 5 V, TA = 25 °C, RL = 2 kΩ, CL = 15 pF) dă o întârziere de propagare tPLH tipic 9 ns și maximum 15 ns, iar tPHL tipic 10 ns și maximum 15 ns (ibid., §6.9).</p>
+<p>Aceste cifre sunt condiții de test din fișa tehnică, cu o sarcină dată. Nu sunt viteza unei porți dintr-un cip modern, și nici o măsurătoare făcută de noi. Fișa precizează că intrările sunt „TTL compliant” (ibid., §1); familia LS e bipolară, nu CMOS. <!-- NEVERIFICAT: „familia LS e bipolară” nu e formulat explicit în fișa deschisă. --> Exemplul ne servește ca să numim corect mărimea, întârzierea de propagare, pe care o vom aduna în capitolele 08 și 09.</p>
+<h2 id="nand-nor-și-completitudinea-funcțională">NAND, NOR și completitudinea funcțională<a class="anchor" href="#nand-nor-%c8%99i-completitudinea-func%c8%9bional%c4%83">#</a></h2>
+<p>NAND-ul are o proprietate pe care o poți verifica pe tabelul de adevăr: ieșirea e 0 doar când ambele intrări sunt 1.</p>
+<table>
+	<thead>
+			<tr>
+					<th>A</th>
+					<th>B</th>
+					<th>A NAND B</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+	</tbody>
+</table>
+<p>Din el se construiesc toate celelalte funcții. Am verificat noi, rând cu rând, următoarele identități:</p>
+<ul>
+<li>NOT A = A NAND A</li>
+<li>A AND B = (A NAND B) NAND (A NAND B)</li>
+<li>A OR B = (A NAND A) NAND (B NAND B)</li>
+</ul>
+<p>Pentru că NOT, AND și OR acoperă orice funcție booleană, NAND singur e funcțional complet. <!-- NEVERIFICAT: faptul că NOT/AND/OR acoperă orice funcție booleană e un rezultat standard de algebră booleană pe care nu l-am citat dintr-o sursă deschisă. --> Rezultatul are o sursă istorică pentru NOR. În 1913, Henry M. Sheffer definește o operație „neither-nor”, pe care o numește „rejection”, și arată că negația și disjuncția pot fi exprimate prin ea: ~p = p|p și p∨q = (p|q)|(p|q) (Sheffer, H. M., „A set of five independent postulates for Boolean algebras, with application to logical constants”, <em>Transactions of the AMS</em> 14(4), 1913, pp. 481–488, Teorema 1, pp. 487–488; <a href="https://www.ams.org/journals/tran/1913-014-04/S0002-9947-1913-1500960-1/S0002-9947-1913-1500960-1.pdf">PDF ams.org</a>, accesat 2026-11-05). Operația lui Sheffer este deci NOR; varianta NAND decurge prin dualitate, iar identitățile de mai sus le-am verificat noi pe tabelul de adevăr. <!-- NEVERIFICAT: atribuirea către Peirce nu e citată; n-am deschis sursa primară. --></p>
+<h2 id="pasul-următor">Pasul următor<a class="anchor" href="#pasul-urm%c4%83tor">#</a></h2>
+<p>Porțile sunt doar alfabetul. Capitolul 08 le compune în sumatoare și într-un ALU, iar acolo întârzierea de propagare de mai sus nu se mai oprește la o poartă: se adună de-a lungul unui lanț de porți.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/fda917a9de57c81d9cc44247a03a0a49d955181d" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Por%C8%9Bi&#43;logice&#43;din&#43;tranzistori&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F07-logic-gates-from-transistors%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F07-logic-gates-from-transistors.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F07-logic-gates-from-transistors.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Tranzistorul: de la BJT la MOSFET</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="flex align-center">
+        <span>De la porți la logică combinațională</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#inversorul-cea-mai-mică-unitate-cmos">Inversorul: cea mai mică unitate CMOS</a></li>
+    <li><a href="#de-ce-rezolvă-asta-problema-puterii">De ce rezolvă asta problema puterii</a></li>
+    <li><a href="#o-poartă-reală-din-catalog-nand-ul-ttl-74ls00">O poartă reală, din catalog: NAND-ul TTL 74LS00</a></li>
+    <li><a href="#nand-nor-și-completitudinea-funcțională">NAND, NOR și completitudinea funcțională</a></li>
+    <li><a href="#pasul-următor">Pasul următor</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

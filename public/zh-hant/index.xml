@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>我們如何走到那裡</title>
+		<link>http://localhost:1478/zh-hant/</link>
+		<description>Recent content on 我們如何走到那裡</description>
+		<generator>Hugo</generator>
+		<language>zh-Hant</language>
+		
+		
+		
+		
+			<atom:link href="http://localhost:1478/zh-hant/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>致謝與延伸出口</title>
+				<link>http://localhost:1478/zh-hant/posts/00-credits/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/00-credits/</guid>
+				<description>先致謝：本書中文版所依據的已出版資料、機構與影像來源</description>
+			</item>
+			<item>
+				<title>算籌與算盤：數放在手裡，演算法記在口訣裡</title>
+				<link>http://localhost:1478/zh-hant/posts/01-zh-counting-rods-abacus/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/01-zh-counting-rods-abacus/</guid>
+				<description>從《孫子算經》的縱橫擺籌到程大位的珠算口訣：數存在籌和珠裡，演算法存在口訣裡，執行它的是人。</description>
+			</item>
+			<item>
+				<title>花本：程式第一次和機器分開</title>
+				<link>http://localhost:1478/zh-hant/posts/01-zh-drawloom-huaben/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/01-zh-drawloom-huaben/</guid>
+				<description>從老官山漢墓的多綜提花機到《天工開物》的結花本：織出什麼花，記在一束絲線裡，而不在織工腦子裡。</description>
+			</item>
+			<item>
+				<title>齒輪會數數：從記里鼓車到“較數器”</title>
+				<link>http://localhost:1478/zh-hant/posts/01-zh-gears-and-calculators/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/01-zh-gears-and-calculators/</guid>
+				<description>宋代的齒輪已經會十進位制計數，蘇頌想把人手從儀器裡拿走，清宮造出了自己的手搖計算機，1858 年（一說 1859 年）的上海雜誌用中文介紹了巴貝奇的差分機。</description>
+			</item>
+			<item>
+				<title>繼電器與交換機：上海電話局裡的“電腦”</title>
+				<link>http://localhost:1478/zh-hant/posts/02-zh-relays-switching/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/02-zh-relays-switching/</guid>
+				<description>從 1882 年外灘的人工交換所到 1991 年的 HJD04：上海的繼電器交換機一用幾十年，改線就是改程式。</description>
+			</item>
+			<item>
+				<title>真空管與電晶體：中國第一批電腦，和算盤的真實角色</title>
+				<link>http://localhost:1478/zh-hant/posts/03-zh-first-electronic-computers/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/03-zh-first-electronic-computers/</guid>
+				<description>從 1956 年的“緊急措施”到 DJS-100 系列：中國早期電腦為誰而造、在哪裡日夜運轉，以及為什麼“算盤造原子彈”是誤傳。</description>
+			</item>
+			<item>
+				<title>漢字上線：從四位電碼到 GB 18030</title>
+				<link>http://localhost:1478/zh-hant/posts/64-zh-hanzi-encoding/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/64-zh-hanzi-encoding/</guid>
+				<description>電線只認得點和劃：從 1870 年代的四位電報碼到今天強制執行的 GB 18030，每一種把漢字送上線的辦法，背後都有人在決定規則。</description>
+			</item>
+			<item>
+				<title>把漢字敲進機器：打字機、輸入法與雷射照排</title>
+				<link>http://localhost:1478/zh-hant/posts/26-zh-input-and-typesetting/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/26-zh-input-and-typesetting/</guid>
+				<description>英文鍵盤一鍵一個字母，漢字卻有幾千上萬個；從打字機字盤到輸入法、漢卡和王選的字形壓縮，每一步都在繞過同一個瓶頸。</description>
+			</item>
+			<item>
+				<title>越過長城：中文世界接入網路（1986—1995）</title>
+				<link>http://localhost:1478/zh-hant/posts/39-zh-networks-1986-1994/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/39-zh-networks-1986-1994/</guid>
+				<description>中國的第一封電子郵件比通常說的早一年，1987 年那封著名的郵件有兩個日期，.cn 的註冊則走了一個多月：兩岸三地接入網際網路的路，比英文世界記住的兩個年份曲折得多。</description>
+			</item>
+			<item>
+				<title>從豆漿店到晶圓代工：台灣半導體之路</title>
+				<link>http://localhost:1478/zh-hant/posts/47-zh-taiwan-semiconductors/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/47-zh-taiwan-semiconductors/</guid>
+				<description>1974 年 2 月 7 日的一頓豆漿早餐、一次公開招標和一個政府提出的請求，決定了台灣半導體的路，也催生了專業晶圓代工這種模式。</description>
+			</item>
+			<item>
+				<title>規模：從銀河到太湖之光</title>
+				<link>http://localhost:1478/zh-hant/posts/17-zh-supercomputers-cpus/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/17-zh-supercomputers-cpus/</guid>
+				<description>相容別人、手工自造、用商品晶片拼、再自己設計晶片：中國的大型電腦四十年裡換了幾條路，每一次轉向都被一個具體的約束逼出來。</description>
+			</item>
+			<item>
+				<title>從中文信息處理到注意力機制</title>
+				<link>http://localhost:1478/zh-hant/posts/63-zh-road-to-attention/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/63-zh-road-to-attention/</guid>
+				<description>從一台只能輸出電報碼的翻譯機，到首發在中文部落格上的旋轉位置編碼，中文這條線給今天的 Transformer 留下了兩塊實實在在的零件。</description>
+			</item>
+			<item>
+				<title>從一門課到一塊晶片：中國半導體的頭十年</title>
+				<link>http://localhost:1478/zh-hant/posts/05-zh-transistors-semiconductors/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/05-zh-transistors-semiconductors/</guid>
+				<description>1955 年北大開出第一門半導體物理課，十年後北京做出了可實用的矽積體電路，新竹的交大也做出了第一批電晶體：先有人，再有晶體，最後才有晶片。</description>
+			</item>
+			<item>
+				<title>微影：從顯微鏡到掃描機</title>
+				<link>http://localhost:1478/zh-hant/posts/48-zh-lithography-fabs/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/48-zh-lithography-fabs/</guid>
+				<description>1964 年的“土光刻機”是兩台顯微鏡加一盞紫外燈；1980 年清華做出自動對準的分步投影曝光機；1990 年代，摩爾定律成了審批流程的時鐘。</description>
+			</item>
+			<item>
+				<title>從 DianNao 到昇騰：為矩陣乘法造的晶片</title>
+				<link>http://localhost:1478/zh-hant/posts/58-zh-deep-learning-chips/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/58-zh-deep-learning-chips/</guid>
+				<description>2014 年，計算所與法國 Inria 合作的 DianNao 拿下 ASPLOS 最佳論文；三年後，這條路線進了手機，而華為的新聞稿裡沒有提到寒武紀。</description>
+			</item>
+			<item>
+				<title>作業系統：從大慶的“虛擬機”到開源歐拉</title>
+				<link>http://localhost:1478/zh-hant/posts/23-zh-operating-systems/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/23-zh-operating-systems/</guid>
+				<description>1970 年代初，北大的作業系統組在大慶油田的另一台電腦上模擬出 150 機，用 23 天調通了作業系統；半個世紀後，中國的作業系統走進了開源基金會。</description>
+			</item>
+			<item>
+				<title>程式語言與編譯器：從 104 機到倉頡</title>
+				<link>http://localhost:1478/zh-hant/posts/27-zh-languages-compilers/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/27-zh-languages-compilers/</guid>
+				<description>1960 年，兩位程式設計師花三四個月讀懂一個設計者已離開、資料殘缺的編譯程式；此後幾家單位的說法裡都有“第一”或“最早”，各自說的並不是同一件事。</description>
+			</item>
+			<item>
+				<title>香港：打孔卡、主機與天文台的電腦</title>
+				<link>http://localhost:1478/zh-hant/posts/18-zh-hong-kong-computing/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/18-zh-hong-kong-computing/</guid>
+				<description>1960 年代的香港，打孔卡設備和電腦先後進入航空公司、保險公司、銀行和政府部門；天文台三十年間從借用政府電腦，到自購 IBM、Data General，再到克雷超級電腦。</description>
+			</item>
+			<item>
+				<title>擠不進去的廣場：兩岸三地的校園 BBS</title>
+				<link>http://localhost:1478/zh-hant/posts/43-zh-bbs/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/43-zh-bbs/</guid>
+				<description>在入口網站和社群媒體之前，人們先在校園 BBS 上找到彼此，再開始交談；一台伺服器能同時容納多少人，決定了這個廣場有多大。</description>
+			</item>
+			<item>
+				<title>一台伺服器裝不下：中國大陸第一批搜尋引擎</title>
+				<link>http://localhost:1478/zh-hant/posts/44-zh-chinese-search/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/44-zh-chinese-search/</guid>
+				<description>據賽爾網絡的回顧，中國大陸第一批搜尋引擎誕生在三所大學的實驗室裡；它們先撞上中文沒有空格這堵牆，再撞上網頁多到一台機器裝不下這堵牆。</description>
+			</item>
+			<item>
+				<title>從“屬於國家秘密”到國際標準：中國商用密碼的二十年</title>
+				<link>http://localhost:1478/zh-hant/posts/66-zh-commercial-crypto/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/66-zh-commercial-crypto/</guid>
+				<description>1999 年的條例寫明商用密碼技術屬於國家秘密，2006 年起演算法陸續公開，2018 年進入 ISO/IEC 國際標準，2019 年的《密碼法》把密碼分成三類：誰可以造、賣、用密碼，二十年裡被改寫了好幾次。</description>
+			</item>
+			<item>
+				<title>從電腦處理到自動化決策：兩岸三地的個人資料保護法制</title>
+				<link>http://localhost:1478/zh-hant/posts/67-zh-privacy-law/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/67-zh-privacy-law/</guid>
+				<description>1995 年 8 月，香港和台灣相隔八天立下個人資料保護的法律，台灣那部的名字裡還寫著電腦處理；2021 年，大陸的《個人信息保護法》把同意、敏感資訊和演算法推送都寫進了條文。</description>
+			</item>
+			<item>
+				<title>空中的標準之爭：從大哥大到 TD-SCDMA</title>
+				<link>http://localhost:1478/zh-hant/posts/64-zh-mobile-standards/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/64-zh-mobile-standards/</guid>
+				<description>頻率只有一份，制式卻有好幾種：從 1987 年廣州的第一個類比網，到截稿前幾個小時送出的 TD-SCDMA、為它讓路的小靈通和一項強制性的無線區域網國標，空中的規則同樣有人在決定。</description>
+			</item>
+			<item>
+				<title>娃娃與學習機：1984 年以後的電腦熱</title>
+				<link>http://localhost:1478/zh-hant/posts/68-zh-computer-craze/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/68-zh-computer-craze/</guid>
+				<description>1984 年元宵節，一台接著彩色電視的蘋果電腦讓一句話流傳開來，只是那句話的最後兩個字至今有兩種寫法；隨後的十年裡，這個願景變成了中華學習機、偉易達的 Laser 310 和插著學習卡的小霸王。</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Self-attention කශේරුකාව වසා දැමුවේය — මාලාව ගොඩනැගූ matmul දෘඪාංගයට map වන සමාන්තර අනුක්‍රම ආකෘතිකරණය">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/63-attention-is-all-you-need/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="අවධානය පමණක් ප්‍රමාණවත්ය">
+	<meta property="og:description" content="Self-attention කශේරුකාව වසා දැමුවේය — මාලාව ගොඩනැගූ matmul දෘඪාංගයට map වන සමාන්තර අනුක්‍රම ආකෘතිකරණය">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="අවධානය පමණක් ප්‍රමාණවත්ය">
+	<meta itemprop="description" content="Self-attention කශේරුකාව වසා දැමුවේය — මාලාව ගොඩනැගූ matmul දෘඪාංගයට map වන සමාන්තර අනුක්‍රම ආකෘතිකරණය">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1757">
+
+<title>අවධානය පමණක් ප්‍රමාණවත්ය • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/63-attention-is-all-you-need/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/63-attention-is-all-you-need/" title="Attention Is All You Need">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/63-attention-is-all-you-need/" title="Attention Is All You Need">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/63-attention-is-all-you-need/" title="Attention Is All You Need">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/63-attention-is-all-you-need/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/63-attention-is-all-you-need/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/63-attention-is-all-you-need/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="active">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>අවධානය පමණක් ප්‍රමාණවත්ය</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#self-attention-කරනන-කමකද">Self-Attention කරන්නේ කුමක්ද</a></li>
+    <li><a href="#multi-head-attention">Multi-Head Attention</a></li>
+    <li><a href="#එය-පරමඛ-වය-ඇය">එය ප්‍රමුඛ වූයේ ඇයි</a></li>
+    <li><a href="#චපය-වස-දමම">චාපය වසා දැමීම</a></li>
+    <li><a href="#ගඹරන-attention-අකවලන-පයවරන-පයවර">ගැඹුරින්: attention අංකවලින්, පියවරෙන් පියවර</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-softmax-අතන">2. Softmax අතින්</a></li>
+        <li><a href="#3-කඩ-self-attention-උදහරණයක">3. කුඩා self-attention උදාහරණයක්</a></li>
+        <li><a href="#4-එකම-ද-matrix-ලස">4. එකම දේ matrix ලෙස</a></li>
+        <li><a href="#5-d_k-න-බදනන-ඇය">5. √d_k න් බෙදන්නේ ඇයි?</a></li>
+        <li><a href="#6-multi-head-කඩ-attentions-කහපයක-සමනතරව">6. Multi-head: කුඩා attentions කිහිපයක් සමාන්තරව</a></li>
+        <li><a href="#7-causal-mask-අනගතය-නබලම">7. Causal mask: අනාගතය නොබැලීම</a></li>
+        <li><a href="#8-පනසලන-අභයසය-මම-පටවට-lab-එකක-නත">8. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවට lab එකක් නැත)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    අවධානය පමණක් ප්‍රමාණවත්ය
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>මෙම මාලාවේ මාතෘකාව <em>රිලේ සිට අවධානය දක්වා</em> ය. මෙතෙක් ආ සෑම දෙයක්ම විශාල පරිමාණ matrix multiplication ප්‍රායෝගික කළ දිගු භෞතික සහ ගෘහ නිර්මාණ මාර්ගයයි. මෙම පරිච්ඡේදය එම මාර්ගය මඟින් හැකි වූ ඇල්ගොරිතමික ගමනාන්තයයි.</p>
+<p>2017 දී <strong>Vaswani et al.</strong> &ldquo;Attention Is All You Need&rdquo; ප්‍රකාශයට පත් කළහ. එම පත්‍රිකාව Transformer හඳුන්වා දුන් අතර <em>self-attention</em> අනුක්‍රම ආකෘතිකරණය සඳහා ප්‍රාථමික යාන්ත්‍රණය කළේය — RNN සහ LSTM වල අනුක්‍රමික පුනරාවර්තනය වෙනුවට සෑම පිහිටීමක්ම එකවර බලාගත හැකි සම්පූර්ණයෙන් සමාන්තර කළ හැකි මෙහෙයුමක් ඉදිරිපත් කරමින්.</p>
+<h2 id="self-attention-කරනන-කමකද">Self-Attention කරන්නේ කුමක්ද<a class="anchor" href="#self-attention-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1-%e0%b6%9a%e0%b6%b8%e0%b6%9a%e0%b6%af">#</a></h2>
+<p>Token embeddings ලබා දුන් විට, self-attention සෑම පිහිටීමක් සඳහාම සියලු පිහිටීම්වල values වල බර තැබූ සංයෝජනයක් ගණනය කරයි. බර ලැබෙන්නේ <em>query</em> එකක් (වත්මන් පිහිටීම) සහ <em>keys</em> (සෑම පිහිටීමක්ම) අතර සමානතාවයෙනි. අනුකෘති ස්වරූපයෙන්:</p>
+<p>[
+\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
+]</p>
+<ul>
+<li>(Q), (K), සහ (V) යනු ආදානයේ රේඛීය ප්‍රක්ෂේපණයි.</li>
+<li>(\sqrt{d_k}) මඟින් පරිමාණය කිරීම මානය විශාල විට softmax සංතෘප්ත වීම වළක්වයි.</li>
+<li>ප්‍රතිඵලය සමාන දිගක අනුක්‍රමයකි — සෑම පිහිටීමක්ම දත්ත-නිර්භර ආකාරයෙන් අනෙක් සෑම එකකින්ම රැස් කළේය.</li>
+</ul>
+<p>Op එක matmuls එකතුව softmax නිසා, එය පෙර පරිච්ඡේදවල දෘඪාංගයට map වේ: ඉහළ-throughput MAC ඒකක, විශාල on-chip මතක, activations සහ බර චලනය කරන interconnects.</p>
+<h2 id="multi-head-attention">Multi-Head Attention<a class="anchor" href="#multi-head-attention">#</a></h2>
+<p>එක් head එකක් එක් වර්ගයේ සම්බන්ධතාවක් ඉගෙන ගැනීමට නැඹුරු වේ. Multi-head attention කිහිපයක් සමාන්තරව ධාවනය කරයි (විවිධ ඉගෙන ගත් ප්‍රක්ෂේපණ) සහ concatenate කරයි — එකම layer එක තුළ syntactic, semantic, positional, දිගු- සහ කෙටි-පරාස.</p>
+<p>මුල් Transformer heads 8 ක් භාවිතා කළේය. නවීන LLM සාමාන්‍යයෙන් layer එකකට query heads දස ගණන් සිට අඩු සිය ගණන් දක්වා භාවිතා කරයි (උදා. GPT-3: 96; Llama 3 405B: 128) layers දස ගණන් සිට ~100+ දක්වා හරහා (Llama 3 405B: 126) — දෙකෙන් එකක් නිතිපතා &ldquo;සිය ගණන්&rdquo; නොවේ.</p>
+<h2 id="එය-පරමඛ-වය-ඇය">එය ප්‍රමුඛ වූයේ ඇයි<a class="anchor" href="#%e0%b6%91%e0%b6%ba-%e0%b6%b4%e0%b6%bb%e0%b6%b8%e0%b6%9b-%e0%b7%80%e0%b6%ba-%e0%b6%87%e0%b6%ba">#</a></h2>
+<ol>
+<li><strong>සමාන්තරතාව</strong> — RNN මෙන් නොව, සෑම පිහිටීමක්ම එකවර ධාවනය විය හැක. Training throughput අනුක්‍රම දිග සහ දෘඪාංග matmul ධාරිතාව සමඟ පරිමාණය වේ, අනුක්‍රමික පියවර සමඟ නොවේ.</li>
+<li><strong>දිගු-පරාස රඳා පැවැත්ම</strong> — මූලධර්මයෙන් ඕනෑම token එකක් අනෙක් ඕනෑම එකකට සෘජුවම attend කරයි, quadratic attention matrix සහ ප්‍රායෝගික context windows මගින් සීමා වේ.</li>
+<li><strong>දෘඪාංග සම්බන්ධතාව</strong> — ප්‍රමුඛ වැඩ ඝන matrix multiplication ය — ටෙන්සර් cores, systolic arrays, සහ නවීන GPU මතක ධුරාවලි ප්‍රශස්ත කළ දේම (Posts 55–58).</li>
+</ol>
+<p>සම්පූර්ණ attention හි quadratic පිරිවැය තවමත් සැබෑ ය — එබැවින් sparse, linear, sliding-window, සහ අනෙක් ආසන්න කිරීම්. මූලික අවබෝධය තවමත් රැඳේ: සරල, සමාන්තර කළ හැකි attention යාන්ත්‍රණයක් පුනරාවර්තනය ප්‍රතිස්ථාපනය කළ හැකි විය.</p>
+<h2 id="චපය-වස-දමම">චාපය වසා දැමීම<a class="anchor" href="#%e0%b6%a0%e0%b6%b4%e0%b6%ba-%e0%b7%80%e0%b7%83-%e0%b6%af%e0%b6%b8%e0%b6%b8">#</a></h2>
+<p>Boolean තර්කය ක්‍රියාත්මක කළ විද්‍යුත් චුම්බක relays සිට, tubes, ට්‍රාන්සිස්ටර, pipelines, caches, GPU, සහ ටෙන්සර් cores හරහා, දෘඪාංග ගමනාගමනය මාරුව, ගබඩාව, සහ අංක ගණිතය වේගවත්, ඝන, සහ වඩා කාර්යක්ෂම කළේය. Attention යනු අනුක්‍රම ආකෘතිකරණය සඳහා එම දෘඪාංගයෙන් වර්තමානයේ වඩාත්ම වටිනාකම උපුටා ගන්නා ඇල්ගොරිතමික ව්‍යුහයයි.</p>
+<p>භෞතික සීමාවන් වෙනස් වෙමින් පවතී (මතක bandwidth, op එකකට ශක්තිය, interconnect latency). ඉංජිනේරු ප්‍රතිචාරය මෙම මාලාවේ ආරම්භයේ සිටම එම රටාවයි: බඳින සීමාව නිශ්චිතව නම් කරන්න, පසුව එකම බිත්තියට එරෙහිව තදින්ම තල්ලු කිරීම පමණක් නොව ගෘහ නිර්මාණය වෙනස් කරන්න.</p>
+<p>එය රිලේ සිට අවධානය දක්වා අඛණ්ඩ නූලයි.</p>
+<h2 id="ගඹරන-attention-අකවලන-පයවරන-පයවර">ගැඹුරින්: attention අංකවලින්, පියවරෙන් පියවර<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-attention-%e0%b6%85%e0%b6%9a%e0%b7%80%e0%b6%bd%e0%b6%b1-%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb%e0%b6%b1-%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> 2026 සැප්තැම්බර් සමීක්ෂණයේදී Transformers/attention ගැන සිංහල YouTube වීඩියෝ කිහිපයක් (සමහරක් දීර්ඝ; එකක් හැර අනෙක් සියල්ලටම නැරඹුම් 200කට අඩු) හමු වූ නමුත්, attention ගණිතය පියවරෙන් පියවර, වැඩ කළ අංක සමඟ පැහැදිලි කළ <strong>ලිඛිත</strong> සිංහල මූලාශ්‍රයක් (විකිපීඩියා ලිපියක්, පාසල්/විශ්වවිද්‍යාල සටහනක්, බ්ලොග් ලිපියක්) හමු නොවීය. මෙම පොතේ ගමනාන්තය මෙය වන බැවින්, මෙම කොටස හිතාමතාම දිගු ය. පහත අංක <strong>ඉගැන්වීම සඳහා අප විසින් සාදාගත් ඒවා</strong> ය — සැබෑ ආකෘතියක බර නොවේ; නමුත් සියලු ගණනය කිරීම් නිවැරදිව පරීක්ෂා කර ඇත.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>Token (ටෝකනය):</strong> ආකෘතිය සකසන පෙළ කැබැල්ලක් — වචනයක්, වචන කොටසක් හෝ අක්ෂරයක්. මෙහි සරල බව සඳහා වචනයක් = token එකක් ලෙස ගනිමු.</li>
+<li><strong>දෛශිකය (vector):</strong> අංක ලැයිස්තුවක්, උදා. [1, 0].</li>
+<li><strong>Embedding (කාවැද්දීම):</strong> token එකක් නියෝජනය කරන, ඉගෙන ගත් දෛශිකයක්. අර්ථයෙන් සමාන token වලට සමාන දෛශික ලැබීමට නැඹුරු වේ.</li>
+<li><strong>තිත් ගුණිතය (dot product):</strong> [a₁, a₂] · [b₁, b₂] = a₁b₁ + a₂b₂. දෛශික දෙකක් එකම දිශාවට යොමු වන තරමට එය විශාල වේ — &ldquo;සමානතා ලකුණක්&rdquo; ලෙස භාවිත කළ හැක.</li>
+<li><strong>Softmax (සොෆ්ට්මැක්ස්):</strong> ඕනෑම අංක ලැයිස්තුවක් එකතුව 1 වන ධන &ldquo;බර&rdquo; බවට හරවන ශ්‍රිතය: සෑම අංකයකම eˣ (e ≈ 2.718) ගෙන, ඒවායේ එකතුවෙන් බෙදයි.</li>
+<li><strong>Query (විමසුම, q), Key (යතුර, k), Value (අගය, v):</strong> සෑම token එකකටම දෛශික තුනක් සාදනු ලැබේ. පුස්තකාලයක් සිතන්න: query = &ldquo;මම සොයන්නේ කුමක්ද&rdquo;, key = &ldquo;සෑම පොතකම පිටකවරයේ ලේබලය&rdquo;, value = &ldquo;පොතේ අන්තර්ගතය&rdquo;. Query එක සෑම key එකක් සමඟම සසඳා, ගැළපෙන තරමට එම value එකෙන් වැඩි කොටසක් ගනී.</li>
+</ul>
+<h3 id="2-softmax-අතන">2. Softmax අතින්<a class="anchor" href="#2-softmax-%e0%b6%85%e0%b6%ad%e0%b6%b1">#</a></h3>
+<p>ලකුණු [2, 1, 0] softmax කරමු:</p>
+<table>
+	<thead>
+			<tr>
+					<th>පියවර</th>
+					<th>token 1</th>
+					<th>token 2</th>
+					<th>token 3</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ලකුණු x</td>
+					<td>2</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>eˣ</td>
+					<td>7.389</td>
+					<td>2.718</td>
+					<td>1.000</td>
+			</tr>
+			<tr>
+					<td>එකතුව</td>
+					<td>11.107</td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>eˣ ÷ එකතුව</td>
+					<td><strong>0.665</strong></td>
+					<td><strong>0.245</strong></td>
+					<td><strong>0.090</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>බර තුනේ එකතුව 1 යි (0.665 + 0.245 + 0.090 = 1.000). විශාලතම ලකුණට විශාලතම බර ලැබේ, නමුත් අනෙක් ඒවා ශුන්‍ය නොවේ — එය &ldquo;මෘදු&rdquo; (soft) max එකකි.</p>
+<h3 id="3-කඩ-self-attention-උදහරණයක">3. කුඩා self-attention උදාහරණයක්<a class="anchor" href="#3-%e0%b6%9a%e0%b6%a9-self-attention-%e0%b6%8b%e0%b6%af%e0%b7%84%e0%b6%bb%e0%b6%ab%e0%b6%ba%e0%b6%9a">#</a></h3>
+<p>වාක්‍යය: <strong>&ldquo;මම බත් කෑවා&rdquo;</strong> — token 3ක්. සරල බව සඳහා d_k = 2 (එනම් key/query දෛශිකවල අංක 2ක්). ආකෘතිය ඉගෙන ගෙන ඇතැයි සිතමු:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Token</th>
+					<th>Key k</th>
+					<th>Value v</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>මම</td>
+					<td>[1, 0]</td>
+					<td>[10, 0]</td>
+			</tr>
+			<tr>
+					<td>බත්</td>
+					<td>[0, 1]</td>
+					<td>[0, 10]</td>
+			</tr>
+			<tr>
+					<td>කෑවා</td>
+					<td>[1, 1]</td>
+					<td>[5, 5]</td>
+			</tr>
+	</tbody>
+</table>
+<p>&ldquo;කෑවා&rdquo; token එකේ query එක q = [2, 0] යැයි සිතමු. පියවර:</p>
+<ol>
+<li><strong>ලකුණු (scores) = q · k</strong> සෑම token එකකටම:
+<ul>
+<li>මම: 2×1 + 0×0 = <strong>2</strong></li>
+<li>බත්: 2×0 + 0×1 = <strong>0</strong></li>
+<li>කෑවා: 2×1 + 0×1 = <strong>2</strong></li>
+</ul>
+</li>
+<li><strong>√d_k න් බෙදන්න:</strong> √2 ≈ 1.414 → [2/1.414, 0, 2/1.414] = [<strong>1.414</strong>, <strong>0</strong>, <strong>1.414</strong>]</li>
+<li><strong>Softmax:</strong> e^1.414 ≈ 4.113, e⁰ = 1 → [4.113, 1, 4.113], එකතුව 9.227 → බර [<strong>0.446</strong>, <strong>0.108</strong>, <strong>0.446</strong>]</li>
+<li><strong>Values හි බර තැබූ එකතුව:</strong>
+<ul>
+<li>0.446 × [10, 0] + 0.108 × [0, 10] + 0.446 × [5, 5]</li>
+<li>= [4.46, 0] + [0, 1.08] + [2.23, 2.23]</li>
+<li>≈ [<strong>6.69</strong>, <strong>3.31</strong>]</li>
+</ul>
+</li>
+</ol>
+<p>&ldquo;කෑවා&rdquo; සඳහා නව නියෝජනය [6.69, 3.31] — එය &ldquo;මම&rdquo; සහ &ldquo;කෑවා&rdquo; වෙතින් වැඩිපුරත් &ldquo;බත්&rdquo; වෙතින් අඩුවෙනුත් තොරතුරු මිශ්‍ර කළ දෛශිකයකි. වෙනත් query එකක් q = [1, 1] නම්: ලකුණු [1, 1, 2] → පරිමාණය [0.707, 0.707, 1.414] → බර [0.248, 0.248, 0.503] → ප්‍රතිදානය ≈ [5.0, 5.0]. <strong>Query එක වෙනස් වූ විට, &ldquo;අවධානය&rdquo; යොමු වන තැන වෙනස් වේ</strong> — attention යන නම එයයි. සැබෑ ආකෘතියක q, k, v ඉගෙන ගන්නේ training මගිනි (Post 46).</p>
+<h3 id="4-එකම-ද-matrix-ලස">4. එකම දේ matrix ලෙස<a class="anchor" href="#4-%e0%b6%91%e0%b6%9a%e0%b6%b8-%e0%b6%af-matrix-%e0%b6%bd%e0%b7%83">#</a></h3>
+<p>ඉහත ගණනය token එකකට පමණි. සියලු token එකවර ගණනය කිරීමට q දෛශික පේළි ලෙස තබා Q matrix එකක් ද, එලෙසම K සහ V ද සාදයි. එවිට:</p>
+<pre tabindex="0"><code>Attention(Q, K, V) = softmax( Q·Kᵀ / √d_k ) · V</code></pre><ol>
+<li><strong>Q·Kᵀ</strong> — සෑම query එකක් සමඟ සෑම key එකකම තිත් ගුණිතය: token n ක් නම් n × n ලකුණු වගුවක්. (Kᵀ = K හි පේළි සහ තීරු මාරු කිරීම, transpose.)</li>
+<li><strong>/ √d_k</strong> — සෑම ලකුණක්ම බෙදයි.</li>
+<li><strong>softmax</strong> — එක් එක් පේළිය වෙන වෙනම (එක් එක් query එකට බර).</li>
+<li><strong>· V</strong> — බර values සමඟ matrix ගුණ කිරීම.</li>
+</ol>
+<p>Q, K, V එන්නේ කොහෙන්ද? Embeddings matrix එක X නම්: Q = X·W_Q, K = X·W_K, V = X·W_V — ඉගෙන ගත් බර matrices තුනකින් ගුණ කිරීම් තුනක්. එනම් <strong>attention හි බර වැඩ කොටස matrix ගුණ කිරීම්</strong> ය — Post 57 හි MAC සහ Post 58 හි systolic arrays කෙළින්ම යොදා ගත හැකි දේ. මුල් ලිපියම කියන පරිදි, dot-product attention &ldquo;ඉතා ප්‍රශස්ත කළ matrix ගුණ කිරීමේ කේතය&rdquo; භාවිතයෙන් ක්‍රියාත්මක කළ හැකි නිසා ප්‍රායෝගිකව වේගවත් ය (3.2.1 කොටස).</p>
+<p><strong>පිරිවැය ගණන් කිරීම:</strong> n = 1024 token, d_k = 64 නම්, Q·Kᵀ පමණක් = 1024 × 1024 × 64 = <strong>67,108,864 MACs</strong> එක් head එකකට, එක් layer එකකට. ලකුණු වගුවේ අංග 1024² = 1,048,576. Token ගණන දෙගුණ කළ විට මෙම කොටස හතර ගුණයක් වේ — මුල් ලිපියේ Table 1 හි self-attention සඳහා O(n²·d) ලෙස දක්වා ඇත්තේ මෙයයි, සහ ඉහත &ldquo;quadratic පිරිවැය&rdquo; යන්නේ අර්ථයත් එයයි.</p>
+<h3 id="5-d_k-න-බදනන-ඇය">5. √d_k න් බෙදන්නේ ඇයි?<a class="anchor" href="#5-d_k-%e0%b6%b1-%e0%b6%b6%e0%b6%af%e0%b6%b1%e0%b6%b1-%e0%b6%87%e0%b6%ba">#</a></h3>
+<p>ලිපියේ පාදසටහන (footnote 4) තර්කය: q සහ k හි සංරචක මධ්‍යන්‍යය 0 සහ විචලතාව (variance) 1 ඇති ස්වාධීන අහඹු විචල්‍ය නම්, q · k හි මධ්‍යන්‍යය 0 සහ <strong>විචලතාව d_k</strong> වේ. එනම් සම්මත අපගමනය (standard deviation) √d_k. d_k = 64 නම් ලකුණු සාමාන්‍යයෙන් ±8 පමණ පරාසයක පැතිරේ.</p>
+<p>එය වැදගත් වන්නේ ඇයි? ලකුණු [16, 8, 0] softmax කරමු:</p>
+<ul>
+<li>e¹⁶ ≈ 8,886,111, e⁸ ≈ 2,981, e⁰ = 1 → බර ≈ [<strong>0.99966</strong>, 0.00034, 0.0000001]</li>
+</ul>
+<p>එක් token එකකට සියල්ල; අනෙක්වාට කිසිවක් නැත. Softmax මෙසේ &ldquo;සංතෘප්ත&rdquo; (saturated) වූ විට එහි අනුක්‍රමණ (gradients) අතිශයින් කුඩා වන නිසා ආකෘතියට ඉගෙනීම අපහසු වේ (ලිපිය 3.2.1). √64 = 8 න් බෙදූ විට: [16, 8, 0] / 8 = [2, 1, 0] → බර [<strong>0.665</strong>, <strong>0.245</strong>, <strong>0.090</strong>] — 2 වන කොටසේ අප අතින් කළ softmax එකම! පරිමාණය කිරීම ලකුණු නැවත &ldquo;සංවේදී&rdquo; පරාසයකට ගෙන එයි.</p>
+<h3 id="6-multi-head-කඩ-attentions-කහපයක-සමනතරව">6. Multi-head: කුඩා attentions කිහිපයක් සමාන්තරව<a class="anchor" href="#6-multi-head-%e0%b6%9a%e0%b6%a9-attentions-%e0%b6%9a%e0%b7%84%e0%b6%b4%e0%b6%ba%e0%b6%9a-%e0%b7%83%e0%b6%b8%e0%b6%b1%e0%b6%ad%e0%b6%bb%e0%b7%80">#</a></h3>
+<p>මුල් Transformer හි d_model = 512 (token දෛශිකයේ ප්‍රමාණය) සහ <strong>h = 8</strong> heads. සෑම head එකකටම d_k = d_v = 512 / 8 = <strong>64</strong> (ලිපිය 3.2.2). එනම් එක් විශාල attention එකක් වෙනුවට, තමන්ගේම W_Q, W_K, W_V ඇති, 64-මාන attentions 8ක් සමාන්තරව ධාවනය වේ; ප්‍රතිදාන 8 concatenate කර (එකට යා කර) තවත් matrix එකකින් ගුණ කරයි. මානය අඩු කළ නිසා, සම්පූර්ණ ගණනය කිරීමේ පිරිවැය සම්පූර්ණ-මාන තනි head එකකට සමාන වේ. සෑම head එකකටම වෙනස් &ldquo;සම්බන්ධතා&rdquo; (උදා. ක්‍රියාපදය ↔ කර්තෘ) ඉගෙන ගත හැක.</p>
+<h3 id="7-causal-mask-අනගතය-නබලම">7. Causal mask: අනාගතය නොබැලීම<a class="anchor" href="#7-causal-mask-%e0%b6%85%e0%b6%b1%e0%b6%9c%e0%b6%ad%e0%b6%ba-%e0%b6%b1%e0%b6%b6%e0%b6%bd%e0%b6%b8">#</a></h3>
+<p>පෙළ නිපදවන (decoder) ආකෘතියක්, token එකක් පුරෝකථනය කරන විට, ඊට පසු එන token නොබැලිය යුතුය. ලිපිය (3.2.3) මෙය කරන්නේ softmax එකට පෙර &ldquo;නීති විරෝධී&rdquo; සම්බන්ධතාවල ලකුණු <strong>−∞</strong> ලෙස සැකසීමෙනි; e^(−∞) = 0, එබැවින් එම බර හරියටම 0 වේ.</p>
+<p>උදාහරණය: &ldquo;බත්&rdquo; token එක (2 වන ස්ථානය) බැලිය හැක්කේ &ldquo;මම&rdquo; සහ &ldquo;බත්&rdquo; පමණි. එහි query q = [0, 2] නම්:</p>
+<ol>
+<li>ලකුණු: මම 0, බත් 2, කෑවා 2 → පරිමාණය [0, 1.414, 1.414]</li>
+<li>Mask: කෑවා → −∞ → [0, 1.414, −∞]</li>
+<li>Softmax: [1, 4.113, 0] / 5.113 = [<strong>0.196</strong>, <strong>0.804</strong>, <strong>0</strong>]</li>
+<li>ප්‍රතිදානය: 0.196 × [10, 0] + 0.804 × [0, 10] ≈ [<strong>1.96</strong>, <strong>8.04</strong>]</li>
+</ol>
+<p>&ldquo;කෑවා&rdquo; හි value එකෙන් කිසිවක් කාන්දු නොවීය.</p>
+<h3 id="8-පනසලන-අභයසය-මම-පටවට-lab-එකක-නත">8. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවට lab එකක් නැත)<a class="anchor" href="#8-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba-%e0%b6%b8%e0%b6%b8-%e0%b6%b4%e0%b6%a7%e0%b7%80%e0%b6%a7-lab-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%b1%e0%b6%ad">#</a></h3>
+<p>ඉහත වගුවේ K සහ V ම භාවිත කරන්න.</p>
+<ol>
+<li>q = [0, 2] (mask නැතිව) සඳහා බර සහ ප්‍රතිදානය ගණනය කරන්න.</li>
+<li>ඉහත [16, 8, 0] උදාහරණයේ d_k = 64 වෙනුවට d_k = 256 නම්, පරිමාණය කළ ලකුණු මොනවාද?</li>
+<li>n = 2048 token, d_k = 64 නම් එක් head එකක Q·Kᵀ සඳහා MAC කීයද?</li>
+</ol>
+<p>(පිළිතුරු: 1 → ලකුණු [0, 2, 2] → පරිමාණය [0, 1.414, 1.414] → බර [0.108, 0.446, 0.446] → ප්‍රතිදානය ≈ [3.31, 6.69]; 2 → √256 = 16, [1, 0.5, 0]; 3 → 2048 × 2048 × 64 = 268,435,456 — n = 1024 ට වඩා 4 ගුණයක්.)</p>
+<p><strong>මෙම කොටසේ මූලාශ්‍රය:</strong> Vaswani et al., &ldquo;Attention Is All You Need&rdquo; (2017), <a href="https://arxiv.org/abs/1706.03762">https://arxiv.org/abs/1706.03762</a> — 3.2.1 කොටස (Eq. 1, √d_k පරිමාණය, පාදසටහන 4 හි විචලතා තර්කය, matrix ගුණ කිරීමේ කේතය පිළිබඳ සඳහන), 3.2.2 (h = 8, d_k = d_v = 64), 3.2.3 (−∞ mask), Table 1 (O(n²·d)).</p>
+<p><strong>පිටවීමේ දොර:</strong> Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin, &ldquo;Attention Is All You Need&rdquo; (NeurIPS 2017) — Transformer හඳුන්වා දුන් සහ self-attention ප්‍රමුඛ අනුක්‍රම-ආකෘතිකරණ යාන්ත්‍රණය කළ ප්‍රාථමික පත්‍රිකාව.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B6%85%E0%B7%80%E0%B6%B0%E0%B7%8F%E0%B6%B1%E0%B6%BA&#43;%E0%B6%B4%E0%B6%B8%E0%B6%AB%E0%B6%9A%E0%B7%8A&#43;%E0%B6%B4%E0%B7%8A%E2%80%8D%E0%B6%BB%E0%B6%B8%E0%B7%8F%E0%B6%AB%E0%B7%80%E0%B6%AD%E0%B7%8A%E0%B6%BA&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F63-attention-is-all-you-need%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F63-attention-is-all-you-need.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F63-attention-is-all-you-need.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/62-where-it-s-headed/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>එය යන්නේ කොහේටද</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/64-who-decides-the-wire/" class="flex align-center">
+        <span>වයර් එක තීරණය කරන්නේ කවුද</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#self-attention-කරනන-කමකද">Self-Attention කරන්නේ කුමක්ද</a></li>
+    <li><a href="#multi-head-attention">Multi-Head Attention</a></li>
+    <li><a href="#එය-පරමඛ-වය-ඇය">එය ප්‍රමුඛ වූයේ ඇයි</a></li>
+    <li><a href="#චපය-වස-දමම">චාපය වසා දැමීම</a></li>
+    <li><a href="#ගඹරන-attention-අකවලන-පයවරන-පයවර">ගැඹුරින්: attention අංකවලින්, පියවරෙන් පියවර</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-softmax-අතන">2. Softmax අතින්</a></li>
+        <li><a href="#3-කඩ-self-attention-උදහරණයක">3. කුඩා self-attention උදාහරණයක්</a></li>
+        <li><a href="#4-එකම-ද-matrix-ලස">4. එකම දේ matrix ලෙස</a></li>
+        <li><a href="#5-d_k-න-බදනන-ඇය">5. √d_k න් බෙදන්නේ ඇයි?</a></li>
+        <li><a href="#6-multi-head-කඩ-attentions-කහපයක-සමනතරව">6. Multi-head: කුඩා attentions කිහිපයක් සමාන්තරව</a></li>
+        <li><a href="#7-causal-mask-අනගතය-නබලම">7. Causal mask: අනාගතය නොබැලීම</a></li>
+        <li><a href="#8-පනසලන-අභයසය-මම-පටවට-lab-එකක-නත">8. පැන්සලෙන් අභ්‍යාසය (මෙම පිටුවට lab එකක් නැත)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

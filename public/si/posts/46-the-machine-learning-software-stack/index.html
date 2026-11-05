@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Model එකක් සහ සිලිකන් අතර tensors බෙදාහැරුණු training බවට පත් කරන stack එකක් වාඩි වේ — සහ interconnect බිත්තියට හැපේ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/46-the-machine-learning-software-stack/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක">
+	<meta property="og:description" content="Model එකක් සහ සිලිකන් අතර tensors බෙදාහැරුණු training බවට පත් කරන stack එකක් වාඩි වේ — සහ interconnect බිත්තියට හැපේ">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක">
+	<meta itemprop="description" content="Model එකක් සහ සිලිකන් අතර tensors බෙදාහැරුණු training බවට පත් කරන stack එකක් වාඩි වේ — සහ interconnect බිත්තියට හැපේ">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="2191">
+
+<title>යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/46-the-machine-learning-software-stack/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/46-the-machine-learning-software-stack/" title="The Machine Learning Software Stack">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/46-the-machine-learning-software-stack/" title="สแตกซอฟต์แวร์ Machine Learning">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/46-the-machine-learning-software-stack/" title="Machine Learning மென்பொருள் Stack">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/46-the-machine-learning-software-stack/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/46-the-machine-learning-software-stack/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/46-the-machine-learning-software-stack/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="active">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#පළමව-arrays">පළමුව Arrays</a></li>
+    <li><a href="#frameworks-gradients-සහ-දඪගය-එක-ගවසමක-ලස">Frameworks: Gradients සහ දෘඪාංගය එක් ගිවිසුමක් ලෙස</a></li>
+    <li><a href="#graph-එක-පහත-කරම">Graph එක පහත් කිරීම</a></li>
+    <li><a href="#distribution-වයර-එකට-ගට">Distribution වයර් එකට ගැටේ</a></li>
+    <li><a href="#මම-අදයර-loop-එක-වස-දමම">මෙම අදියරේ Loop එක වසා දැමීම</a></li>
+    <li><a href="#ගඹරන-framework-එකක-gradient-ගණනය-කරන-හට--සවයකරය-අවකලනය-graph-fusion-සහ-gradient-ගමනගමනය">ගැඹුරින්: framework එකක් gradient ගණනය කරන හැටි — ස්වයංක්‍රීය අවකලනය, graph fusion සහ gradient ගමනාගමනය</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-perceptron-සට-gradient-දකව-කටයන">2. Perceptron සිට gradient දක්වා (කෙටියෙන්)</a></li>
+        <li><a href="#3-එක-නයරනයක-හරහ-backpropagation-cs231n-අගයන">3. එක් නියුරෝනයක් හරහා backpropagation (CS231n අගයන්)</a></li>
+        <li><a href="#4-සවයකරය-අවකලනය-evaluation-trace-එකක">4. ස්වයංක්‍රීය අවකලනය: evaluation trace එකක්</a></li>
+        <li><a href="#5-deep-learning-reverse-mode-භවත-කරනන-ඇය">5. Deep learning reverse mode භාවිතා කරන්නේ ඇයි</a></li>
+        <li><a href="#6-graph-එක-පහත-කරම-fusion-මතක-ගමනගමනය-කපන-හට">6. Graph එක පහත් කිරීම: fusion මතක ගමනාගමනය කපන හැටි</a></li>
+        <li><a href="#7-distribution-gradients-කයක-ගමන-කළ-යතද">7. Distribution: gradients කීයක් ගමන් කළ යුතුද?</a></li>
+        <li><a href="#8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Phases 9 සහ 10 නවීන AI ගණනයේ දෘඪාංගය ආවරණය කරයි — GPUs, tensor cores, interconnects. බොහෝ ML ඉංජිනේරුවන් කිසිදා එම සිලිකන් සෘජුව ක්‍රමලේඛනය නොකරයි. &ldquo;මෙන්න network architecture එකක්&rdquo; සහ &ldquo;මෙන්න සැබෑ උපාංග මත matrix multiplies&rdquo; අතර මෘදුකාංග stack එකක් වාඩි වී ඇත, සහ එම stack එක මෙම මාලාවේ බෙදාහැරුණු-පද්ධති නූල <em>භාවිතා</em> වන ආකාරයයි.</p>
+<h2 id="පළමව-arrays">පළමුව Arrays<a class="anchor" href="#%e0%b6%b4%e0%b7%85%e0%b6%b8%e0%b7%80-arrays">#</a></h2>
+<p>ප්‍රායෝගික බිම multidimensional arrays (tensors) සහ vectorized ops — Python ලෝකයේ NumPy-පන්තියේ සංඛ්‍යාත්මක පරිගණනය. බර ඔසවීම Python <em>වෙතින් කැඳවන</em> compiled routines වල ධාවනය වේ; interpreter loop එක ගණිතය සඳහා bottleneck එක නොවේ.</p>
+<h2 id="frameworks-gradients-සහ-දඪගය-එක-ගවසමක-ලස">Frameworks: Gradients සහ දෘඪාංගය එක් ගිවිසුමක් ලෙස<a class="anchor" href="#frameworks-gradients-%e0%b7%83%e0%b7%84-%e0%b6%af%e0%b6%aa%e0%b6%9c%e0%b6%ba-%e0%b6%91%e0%b6%9a-%e0%b6%9c%e0%b7%80%e0%b7%83%e0%b6%b8%e0%b6%9a-%e0%b6%bd%e0%b7%83">#</a></h2>
+<p>Deep-learning frameworks (ප්‍රමුඛ උදාහරණ ලෙස PyTorch සහ TensorFlow) arrays මත training ට අවශ්‍ය දේ එකතු කරයි. <strong>Automatic differentiation</strong> computation graph එකක් ගොඩනඟා සෑම architecture එකක් සඳහාම මිනිසෙකු calculus නැවත ව්‍යුත්පන්න නොකර gradients නිපදවයි — gradient descent පර්යේෂණ වේගයෙන් ප්‍රායෝගික කරන සීමාව. <strong>දෘඪාංග abstraction</strong> එකක් එකම model කේතයට CPU, CUDA හරහා NVIDIA GPU (Phase 9), හෝ tensor ops optimized kernels වෙත පහත් කිරීමෙන් අනෙක් accelerators ඉලක්ක කිරීමට ඉඩ දෙයි — Post 11 හි ISA/microarchitecture බෙදීමේ එකම <em>වර්ගයේ</em> ගිවිසුම, එක් මෘදුකාංග ස්ථරයක් ඉහළින්.</p>
+<h2 id="graph-එක-පහත-කරම">Graph එක පහත් කිරීම<a class="anchor" href="#graph-%e0%b6%91%e0%b6%9a-%e0%b6%b4%e0%b7%84%e0%b6%ad-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h2>
+<p>Framework ops සහ device kernels අතර compiler ස්ථරයක් වැඩි වැඩියෙන් වාඩි වේ: operators fuse කරන්න, මතක ගමනාගමනය කපන්න, intermediate representation එකක් ඉලක්කය දෙසට පහත් කරන්න. එය සාමාන්‍ය imperative කේතයට නොව tensor graphs වලට යොදන ලද Post 28 හි compiler අදහසයි — optimize කර පහත් කරන්න, සෑම වරක්ම නැවත-lex නොකරන්න.</p>
+<h2 id="distribution-වයර-එකට-ගට">Distribution වයර් එකට ගැටේ<a class="anchor" href="#distribution-%e0%b7%80%e0%b6%ba%e0%b6%bb-%e0%b6%91%e0%b6%9a%e0%b6%a7-%e0%b6%9c%e0%b6%a7">#</a></h2>
+<p>එක් GPU එකක මතකය (Phase 9 හි HBM) බොහෝ විට නවීන විශාල model එකක් රඳවා ගත නොහැක, එය තනිවම train කිරීම ගැන කියන්නටවත් නැත. <strong>Data parallelism</strong> model එක replicate කරයි, batch එක බෙදයි, සහ gradients සමමුහුර්ත කරයි (all-reduce — Phase 10 / Posts 37 සහ 42). <strong>Model parallelism</strong> එය කොතැනකවත් එකවර නොගැලපෙන විට model එකම උපාංග හරහා බෙදයි. සැබෑ training දෙකම මිශ්‍ර කරයි. Throughput එවිට බොහෝ විට සීමා වන්නේ GPUs gradients සහ activations හුවමාරු කරන වේගයෙනි — ඕනෑම තනි GPU එකක් හුදකලාවෙන් multiply කරන වේගයෙන් නොවේ. පෙර පෝස්ට්වලින් interconnect බිත්තිය training බිත්තිය ලෙස නැවත පැමිණේ.</p>
+<h2 id="මම-අදයර-loop-එක-වස-දමම">මෙම අදියරේ Loop එක වසා දැමීම<a class="anchor" href="#%e0%b6%b8%e0%b6%b8-%e0%b6%85%e0%b6%af%e0%b6%ba%e0%b6%bb-loop-%e0%b6%91%e0%b6%9a-%e0%b7%80%e0%b7%83-%e0%b6%af%e0%b6%b8%e0%b6%b8">#</a></h2>
+<p>නවීන ML training යනු neural-network ඇඳුමක් ඇඳගත් බෙදාහැරුණු-පද්ධති ගැටලුවකි: බොහෝ ගණනය ඒකක සම්බන්ධීකරණය කරන්න, අර්ධ failure අවශෝෂණය කරන්න (GFS, Kubernetes), විශාල අතරමැදි දත්ත කාර්යක්ෂමව ගෙන යන්න. එම මෘදුකාංග භාගය නොමැති දෘඪාංගය — හෝ සිලිකන් සහ fabric නොමැති මෘදුකාංගය — Phase 9 සහ 10 අවසන් කරන කතාවේ භාගයක් පමණි.</p>
+<h2 id="ගඹරන-framework-එකක-gradient-ගණනය-කරන-හට--සවයකරය-අවකලනය-graph-fusion-සහ-gradient-ගමනගමනය">ගැඹුරින්: framework එකක් gradient ගණනය කරන හැටි — ස්වයංක්‍රීය අවකලනය, graph fusion සහ gradient ගමනාගමනය<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-framework-%e0%b6%91%e0%b6%9a%e0%b6%9a-gradient-%e0%b6%9c%e0%b6%ab%e0%b6%b1%e0%b6%ba-%e0%b6%9a%e0%b6%bb%e0%b6%b1-%e0%b7%84%e0%b6%a7--%e0%b7%83%e0%b7%80%e0%b6%ba%e0%b6%9a%e0%b6%bb%e0%b6%ba-%e0%b6%85%e0%b7%80%e0%b6%9a%e0%b6%bd%e0%b6%b1%e0%b6%ba-graph-fusion-%e0%b7%83%e0%b7%84-gradient-%e0%b6%9c%e0%b6%b8%e0%b6%b1%e0%b6%9c%e0%b6%b8%e0%b6%b1%e0%b6%ba">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> Neural networks, backpropagation සහ gradient descent ගැන සිංහලෙන් හොඳ ද්‍රව්‍ය ප්‍රමාණයක් දැන් තිබේ.</p>
+<ul>
+<li><strong>ලිඛිත:</strong> Ashan Priyadarshana ගේ Medium ලිපි මාලාව &ldquo;ANN සිංහලෙන්&rdquo;. එහි තුන්වන ලිපිය &ldquo;<a href="https://ashanpriyadarshana.medium.com/backpropagation-ann-sinhalen-a10fa9986aba">Backpropagation — ANN සිංහලෙන්</a>&rdquo; (2018 මාර්තු 6) chain rule භාවිතයෙන් output සහ hidden නියුරෝනවල delta අගයන් ව්‍යුත්පන්න කරයි. si.wikipedia හි &ldquo;<a href="https://si.wikipedia.org/wiki/%e0%b6%9c%e0%b7%90%e0%b6%b9%e0%b7%94%e0%b6%bb%e0%b7%94_%e0%b6%89%e0%b6%9c%e0%b7%99%e0%b6%b1%e0%b7%93%e0%b6%b8">ගැඹුරු ඉගෙනීම</a>&rdquo; ලිපිය (අක්ෂර ~2.3k) කෙටි හැඳින්වීමකි. NIE A/L ICT සම්පත් පොතේ (<a href="https://nie.lk/pdffiles/other/sOMAL%20ICT%20Resource%20book.pdf">PDF</a>) PDF p.167 &ldquo;යන්ත්‍ර ඉගෙනීම&rdquo; සහ &ldquo;ස්නායුක ජාල&rdquo; පද අර්ථ දක්වයි.</li>
+<li><strong>වීඩියෝ:</strong> CodePRO LK මාලාව (neural network <a href="https://www.youtube.com/watch?v=mntQcINLmoA">YT mntQcINLmoA</a>, perceptron <a href="https://www.youtube.com/watch?v=1NhhuHuCO9Y">YT 1NhhuHuCO9Y</a>, gradient descent <a href="https://www.youtube.com/watch?v=D93YSyprG1s">YT D93YSyprG1s</a> සහ <a href="https://www.youtube.com/watch?v=dGVdGJlhjCw">YT dGVdGJlhjCw</a>, stochastic GD <a href="https://www.youtube.com/watch?v=A4aStcsk9aQ">YT A4aStcsk9aQ</a>); AI with Thakshila මාලාව (Ep1, පැය 2:44 <a href="https://www.youtube.com/watch?v=BCK9BA3erfU">YT BCK9BA3erfU</a>; Ep20 backpropagation <a href="https://www.youtube.com/watch?v=LopFW8nObek">YT LopFW8nObek</a>); Aaivu (<a href="https://www.youtube.com/watch?v=Cck_oubQykE">YT Cck_oubQykE</a>); Wizard LK (<a href="https://www.youtube.com/watch?v=pRJTw1A5EBg">YT pRJTw1A5EBg</a>, gradient descent සමඟ linear regression, මිනිත්තු 42). PyTorch සහ TensorFlow සිංහල tutorials ද ඇත (Haritha Weerathunga, <a href="https://www.youtube.com/watch?v=fjyc3zLgpMw">YT fjyc3zLgpMw</a>, &ldquo;Torch Tensors&rdquo;; CodePRO LK, <a href="https://www.youtube.com/watch?v=7QxmVxmJevE">YT 7QxmVxmJevE</a>). අප වීඩියෝ හඳුනා ගත්තේ මාතෘකාවෙන් පමණි. නැරඹුවේ නැත.</li>
+</ul>
+<p>ඒවා <em>ගණිතය</em> උගන්වයි. නමුත් මෙම පිටුවේ මාතෘකාව වන <em>stack එක</em> ගැන අපට කිසිවක් හමු නොවීය: framework එකක් මිනිසෙකු calculus නොකර gradient සොයන්නේ කෙසේද (ස්වයංක්‍රීය අවකලනය), forward සහ reverse ක්‍රම අතර වියදම් වෙනස, compiler එකක් operations &ldquo;fuse&rdquo; කරන්නේ ඇයි, සහ gradient bytes කීයක් GPUs අතර ගමන් කළ යුතුද. මෙම කොටස ඒවා අංකවලින් පෙන්වයි. Matrix ගුණ කිරීම Post 57 හි ද, all-reduce කාලය Post 56 සහ 61 හි ද, මතක bandwidth Post 54 හි ද ඇත.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>Tensor:</strong> බහු-මාන array එකකි (දෛශිකය 1-D, matrix 2-D, …).</li>
+<li><strong>ගණන ප්‍රස්තාරය (computation graph):</strong> එක් එක් මෙහෙයුම node එකක් වන, දත්ත ගලන දිශාවට ඊතල ඇති ප්‍රස්තාරයයි.</li>
+<li><strong>ස්වයංක්‍රීය අවකලනය (automatic differentiation, AD):</strong> වැඩසටහනක මූලික මෙහෙයුම් එකින් එක chain rule මඟින් අවකලනය කර, නිශ්චිත (සංකේතාත්මක සූත්‍රයක් හෝ ආසන්න අගයක් නොවන) derivative අගයක් ලබා දීම.</li>
+<li><strong>Forward mode:</strong> Derivative අගයන් ගණනය ඉදිරියට ගෙන යයි. එක් ආදානයක් සඳහා එක් වටයක් අවශ්‍ය වේ.</li>
+<li><strong>Reverse mode:</strong> මුලින් ඉදිරි ගණනය කර, ඉන්පසු ප්‍රතිදානයේ සිට ආපසු යයි. Backpropagation යනු reverse mode හි විශේෂ අවස්ථාවකි.</li>
+<li><strong>Adjoint (v̄):</strong> &ldquo;අවසන් ප්‍රතිදානය මෙම අතරමැදි අගයට කොතරම් සංවේදීද&rdquo; යන්න, එනම් ∂y/∂v.</li>
+<li><strong>Kernel:</strong> GPU එකක ධාවනය වන එක් සම්පාදිත ශ්‍රිතයකි.</li>
+<li><strong>මෙහෙයුම් ඒකාබද්ධ කිරීම (operator fusion):</strong> Kernels කිහිපයක් එකකට එකතු කර, අතරමැදි ප්‍රතිඵල මතකයට ලිවීම වැළැක්වීම.</li>
+</ul>
+<h3 id="2-perceptron-සට-gradient-දකව-කටයන">2. Perceptron සිට gradient දක්වා (කෙටියෙන්)<a class="anchor" href="#2-perceptron-%e0%b7%83%e0%b6%a7-gradient-%e0%b6%af%e0%b6%9a%e0%b7%80-%e0%b6%9a%e0%b6%a7%e0%b6%ba%e0%b6%b1">#</a></h3>
+<p>Michael Nielsen ගේ පොතේ පළමු පරිච්ඡේදය perceptron එකකින් NAND ද්වාරයක් සාදයි: ආදාන දෙකකට බර (weights) −2 බැගින්, සහ bias 3.</p>
+<table>
+	<thead>
+			<tr>
+					<th>x₁ x₂</th>
+					<th>(−2)x₁ + (−2)x₂ + 3</th>
+					<th>ප්‍රතිදානය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0 0</td>
+					<td>3</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>0 1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1 0</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1 1</td>
+					<td>−1</td>
+					<td>0</td>
+			</tr>
+	</tbody>
+</table>
+<p>NAND ද්වාර වලින් ඕනෑම තාර්කික පරිපථයක් සෑදිය හැකි නිසා (Post 08), perceptron ජාල වලටද එය කළ හැක. ගැටලුව: perceptron එකේ ප්‍රතිදානය 0 සිට 1 ට <em>පනී</em>. බරක් ඉතා සුළු ප්‍රමාණයකින් වෙනස් කළොත් ප්‍රතිදානය එක්කෝ වෙනස් නොවේ, නැත්නම් සම්පූර්ණයෙන්ම පෙරළේ. එබැවින් &ldquo;කුමන දිශාවට වෙනස් කළ යුතුද&rdquo; යන්න derivative එකකින් කිව නොහැක. Sigmoid වැනි සුමට ශ්‍රිත ඒ නිසා භාවිතා වේ. එවිට gradient descent යෙදිය හැක.</p>
+<p>Nielsen ගේ සමීකරණය (10): <strong>Δv = −η∇C</strong>. මෙහි η යනු ඉගෙනුම් අනුපාතය (learning rate) ය. එවිට ΔC ≈ −η‖∇C‖² ≤ 0 වේ. එනම් පියවර කුඩා නම්, පිරිවැය (cost) සෑම විටම අඩු වේ.</p>
+<h3 id="3-එක-නයරනයක-හරහ-backpropagation-cs231n-අගයන">3. එක් නියුරෝනයක් හරහා backpropagation (CS231n අගයන්)<a class="anchor" href="#3-%e0%b6%91%e0%b6%9a-%e0%b6%b1%e0%b6%ba%e0%b6%bb%e0%b6%b1%e0%b6%ba%e0%b6%9a-%e0%b7%84%e0%b6%bb%e0%b7%84-backpropagation-cs231n-%e0%b6%85%e0%b6%9c%e0%b6%ba%e0%b6%b1">#</a></h3>
+<p>Stanford CS231n සටහන් &ldquo;Backpropagation, Intuitions&rdquo; මෙම sigmoid නියුරෝනය ගනී: w = [2, −3, −3] (අවසාන එක bias), x = [−1, −2].</p>
+<p><strong>ඉදිරි ගමන (forward pass):</strong></p>
+<ul>
+<li>dot = 2 × (−1) + (−3) × (−2) + (−3) = −2 + 6 − 3 = <strong>1</strong></li>
+<li>f = 1/(1 + e⁻¹) ≈ <strong>0.731</strong></li>
+</ul>
+<p><strong>ආපසු ගමන (backward pass):</strong> sigmoid හි derivative එක f(1 − f) = 0.731 × 0.269 ≈ <strong>0.197</strong> වේ. Chain rule අනුව:</p>
+<ul>
+<li>∂f/∂w₀ = x₀ × 0.197 = <strong>−0.197</strong>, ∂f/∂w₁ = x₁ × 0.197 = <strong>−0.393</strong>, ∂f/∂w₂ = 1 × 0.197 = <strong>0.197</strong></li>
+<li>∂f/∂x₀ = w₀ × 0.197 = <strong>0.393</strong>, ∂f/∂x₁ = w₁ × 0.197 = <strong>−0.590</strong></li>
+</ul>
+<p><strong>එක් gradient descent පියවරක් (ආදර්ශ):</strong> f අඩු කිරීමට අවශ්‍ය යැයි සිතමු (f යනු පිරිවැය යැයි සලකමු), η = 0.5:</p>
+<ul>
+<li>w ← w − 0.5 × ∂f/∂w = [2.098, −2.803, −3.098]</li>
+<li>නව dot = 0.410, නව f ≈ <strong>0.601</strong> (0.731 සිට අඩු විය)</li>
+</ul>
+<p>මෙම ගණනය අතින් කිරීම පහසුය. නමුත් පරාමිතීන් බිලියනයක් ඇති model එකක් සඳහා කවුරුවත් derivatives අතින් ලියන්නේ නැත. Framework එක එය ස්වයංක්‍රීයව කරයි.</p>
+<h3 id="4-සවයකරය-අවකලනය-evaluation-trace-එකක">4. ස්වයංක්‍රීය අවකලනය: evaluation trace එකක්<a class="anchor" href="#4-%e0%b7%83%e0%b7%80%e0%b6%ba%e0%b6%9a%e0%b6%bb%e0%b6%ba-%e0%b6%85%e0%b7%80%e0%b6%9a%e0%b6%bd%e0%b6%b1%e0%b6%ba-evaluation-trace-%e0%b6%91%e0%b6%9a%e0%b6%9a">#</a></h3>
+<p>Baydin සහ සගයන් (JMLR 2018) මෙම ශ්‍රිතය ගනී:</p>
+<p><strong>y = f(x₁, x₂) = ln(x₁) + x₁x₂ − sin(x₂)</strong>, (x₁, x₂) = (2, 5) හිදී.</p>
+<p>වැඩසටහන මූලික පියවරවලට කැඩේ (Table 2, PDF p.10):</p>
+<table>
+	<thead>
+			<tr>
+					<th>අතරමැදි අගය</th>
+					<th>ගණනය</th>
+					<th>අගය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>v₋₁ = x₁</td>
+					<td></td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td>v₀ = x₂</td>
+					<td></td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>v₁ = ln v₋₁</td>
+					<td>ln 2</td>
+					<td>0.693</td>
+			</tr>
+			<tr>
+					<td>v₂ = v₋₁ × v₀</td>
+					<td>2 × 5</td>
+					<td>10</td>
+			</tr>
+			<tr>
+					<td>v₃ = sin v₀</td>
+					<td>sin 5</td>
+					<td>−0.959</td>
+			</tr>
+			<tr>
+					<td>v₄ = v₁ + v₂</td>
+					<td>0.693 + 10</td>
+					<td>10.693</td>
+			</tr>
+			<tr>
+					<td>v₅ = v₄ − v₃</td>
+					<td>10.693 + 0.959</td>
+					<td><strong>11.652</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Forward mode (Table 2):</strong> ẋ₁ = 1, ẋ₂ = 0 ලෙස සකසා, සෑම පේළියක් සමඟම derivative එකද ගෙන යයි: v̇₁ = 1/2, v̇₂ = 1 × 5 + 0 × 2 = 5, v̇₃ = 0, v̇₄ = 5.5, v̇₅ = <strong>5.5</strong> = ∂y/∂x₁. ∂y/∂x₂ සඳහා ẋ₁ = 0, ẋ₂ = 1 ලෙස <strong>දෙවන වටයක්</strong> අවශ්‍ය වේ.</p>
+<p><strong>Reverse mode (Table 3, PDF p.13):</strong> ඉදිරි ගණනයෙන් පසු, ȳ = v̄₅ = 1 සිට ආපසු යයි:</p>
+<ul>
+<li>v̄₄ = 1, v̄₃ = −1</li>
+<li>v̄₂ = v̄₄ × 1 = 1, v̄₁ = v̄₄ × 1 = 1</li>
+<li>v̄₀ ට v₃ හරහා: v̄₃ × cos 5 = −1 × 0.284 = <strong>−0.284</strong></li>
+<li>v̄₋₁ ට v₂ හරහා: v̄₂ × v₀ = <strong>5</strong></li>
+<li>v̄₀ ට v₂ හරහා එකතු කරයි: −0.284 + v̄₂ × v₋₁ = −0.284 + 2 = <strong>1.716</strong> = ∂y/∂x₂</li>
+<li>v̄₋₁ ට v₁ හරහා එකතු කරයි: 5 + v̄₁/v₋₁ = 5 + 0.5 = <strong>5.5</strong> = ∂y/∂x₁</li>
+</ul>
+<p><strong>එක්</strong> ආපසු ගමනකින් derivatives <strong>දෙකම</strong> ලැබුණි. පරීක්ෂාව: ∂y/∂x₁ = 1/x₁ + x₂ = 0.5 + 5 = 5.5 ✓ සහ ∂y/∂x₂ = x₁ − cos x₂ = 2 − 0.284 = 1.716 ✓.</p>
+<h3 id="5-deep-learning-reverse-mode-භවත-කරනන-ඇය">5. Deep learning reverse mode භාවිතා කරන්නේ ඇයි<a class="anchor" href="#5-deep-learning-reverse-mode-%e0%b6%b7%e0%b7%80%e0%b6%ad-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1-%e0%b6%87%e0%b6%ba">#</a></h3>
+<p>Baydin et al. (PDF p.13): f : ℝⁿ → ℝᵐ සඳහා, ops(f) යනු ශ්‍රිතය එක් වරක් ගණනය කිරීමේ මෙහෙයුම් ගණන නම්:</p>
+<ul>
+<li>Forward mode මඟින් සම්පූර්ණ Jacobian එකට: <strong>n × c × ops(f)</strong></li>
+<li>Reverse mode මඟින්: <strong>m × c × ops(f)</strong></li>
+<li>මෙහි c &lt; 6 වන අතර සාමාන්‍යයෙන් 2–3 අතර වේ.</li>
+</ul>
+<p>Neural network training දී ප්‍රතිදානය <strong>එක්</strong> අංකයකි (loss, m = 1). ආදාන යනු සියලු පරාමිතීන් ය (n විශාල ය).</p>
+<p><strong>ආදර්ශ ගණනය:</strong> පරාමිතීන් n = 10⁹ නම්, forward mode සඳහා ඉදිරි ගණන වට බිලියනයක් පමණ අවශ්‍ය වේ. Reverse mode සඳහා ඉදිරි ගණනයක වියදම මෙන් 2–3 ගුණයක් පමණි.</p>
+<p>මිල: reverse mode ඉදිරි ගමනේ අතරමැදි අගයන් <em>ගබඩා</em> කළ යුතුය (Baydin: නරකම අවස්ථාවේදී මෙහෙයුම් ගණනට සමානුපාතික ලෙස). PyTorch ලේඛන ද එයම කියයි: autograd යනු &ldquo;reverse automatic differentiation system&rdquo; එකකි. එය ක්‍රියාත්මක වන අතරේ මෙහෙයුම් directed acyclic graph එකක සටහන් කරයි (leaves = ආදාන tensors, roots = ප්‍රතිදාන). උදාහරණයක් ලෙස x ↦ x² ශ්‍රිතය gradient ගණනය සඳහා x ගබඩා කරයි. Training දී GPU මතකය activations වලින් පිරෙන්නේ එබැවිනි.</p>
+<h3 id="6-graph-එක-පහත-කරම-fusion-මතක-ගමනගමනය-කපන-හට">6. Graph එක පහත් කිරීම: fusion මතක ගමනාගමනය කපන හැටි<a class="anchor" href="#6-graph-%e0%b6%91%e0%b6%9a-%e0%b6%b4%e0%b7%84%e0%b6%ad-%e0%b6%9a%e0%b6%bb%e0%b6%b8-fusion-%e0%b6%b8%e0%b6%ad%e0%b6%9a-%e0%b6%9c%e0%b6%b8%e0%b6%b1%e0%b6%9c%e0%b6%b8%e0%b6%b1%e0%b6%ba-%e0%b6%9a%e0%b6%b4%e0%b6%b1-%e0%b7%84%e0%b6%a7">#</a></h3>
+<p>XLA ලේඛනයේ උදාහරණය: <code>tf.reduce_sum(x + y * z)</code>. XLA නැතිව kernels <strong>තුනක්</strong> ධාවනය වේ: ගුණ කිරීම, එකතු කිරීම, reduction. XLA ඒවා <strong>එක</strong> kernel එකකට fuse කරයි. <code>y*z</code> සහ <code>x+y*z</code> අතරමැදි අගයන් මතකයට ලියන්නේ නැත. ඒවා registers තුළම තබා ගනී. ලේඛනය කියන පරිදි: &ldquo;Fusion is XLA&rsquo;s single most important optimization&rdquo;, මන්ද accelerators මත මතක bandwidth බොහෝ විට හිඟම සම්පත වන නිසා.</p>
+<p><strong>Bytes ගණනය කරමු (ආදර්ශ: N = 10⁶ FP32 අගයන්, එකක් bytes 4):</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>Kernel</th>
+					<th>කියවීම</th>
+					<th>ලිවීම</th>
+					<th>එකතුව</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>t₁ = y × z</td>
+					<td>y, z: 8 MB</td>
+					<td>t₁: 4 MB</td>
+					<td>12 MB</td>
+			</tr>
+			<tr>
+					<td>t₂ = x + t₁</td>
+					<td>x, t₁: 8 MB</td>
+					<td>t₂: 4 MB</td>
+					<td>12 MB</td>
+			</tr>
+			<tr>
+					<td>s = sum(t₂)</td>
+					<td>t₂: 4 MB</td>
+					<td>1 අගයක්</td>
+					<td>4 MB</td>
+			</tr>
+			<tr>
+					<td><strong>Fuse නොකළ විට</strong></td>
+					<td></td>
+					<td></td>
+					<td><strong>28 MB</strong></td>
+			</tr>
+			<tr>
+					<td><strong>Fuse කළ විට</strong></td>
+					<td>x, y, z: 12 MB</td>
+					<td>1 අගයක්</td>
+					<td><strong>12 MB</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>එකම ගණිතය, මතක ගමනාගමනය 28/12 ≈ <strong>2.3 ගුණයකින්</strong> අඩු වේ. මෙම මෙහෙයුම් bytes එකකට FLOPs ඉතා අඩු නිසා (Post 54 හි ridge point එකට බොහෝ පහළින්), ධාවන කාලයද ආසන්න වශයෙන් එම අනුපාතයෙන් අඩු විය හැක.</p>
+<h3 id="7-distribution-gradients-කයක-ගමන-කළ-යතද">7. Distribution: gradients කීයක් ගමන් කළ යුතුද?<a class="anchor" href="#7-distribution-gradients-%e0%b6%9a%e0%b6%ba%e0%b6%9a-%e0%b6%9c%e0%b6%b8%e0%b6%b1-%e0%b6%9a%e0%b7%85-%e0%b6%ba%e0%b6%ad%e0%b6%af">#</a></h3>
+<p>Data parallelism දී සෑම GPU එකකටම model එකේ සම්පූර්ණ පිටපතක් ඇත. සෑම පියවරකම, සෑම පරාමිතියකම gradient එක සියලු GPUs අතර සාමාන්‍යය ගත යුතුය.</p>
+<p><strong>ආදර්ශ ගණනය:</strong> පරාමිතීන් 10⁹, FP32 gradients (bytes 4) → පියවරකට gradient දත්ත <strong>4 GB</strong>. Post 56 හි ring all-reduce සූත්‍රය අනුව, සෑම GPU එකක්ම ආසන්න වශයෙන් 2(n − 1)/n × S යවයි. GPUs n = 8 නම්: 2 × 7/8 × 4 GB = <strong>7 GB</strong> එක් GPU එකකින්, <em>සෑම</em> පියවරකම. ඉහත පිටුවේ &ldquo;interconnect බිත්තිය&rdquo; යන්නෙහි අර්ථය මෙයයි. එහි කාලය Post 56 හි ගණනය කර ඇත.</p>
+<h3 id="8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#8-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>Nielsen ගේ NAND perceptron එකට (බර −2, −2, bias 3) ආදාන 1 0 දුන් විට ඇතුළත එකතුව සහ ප්‍රතිදානය කීයද?</li>
+<li>f(x, y, z) = (x + y) × z, x = 1, y = 2, z = 3 (ආදර්ශ). f, ∂f/∂x, ∂f/∂y, ∂f/∂z සොයන්න.</li>
+<li>Baydin ශ්‍රිතය y = ln(x₁) + x₁x₂ − sin(x₂), (x₁, x₂) = (1, 0) හිදී. y, ∂y/∂x₁, ∂y/∂x₂ කීයද?</li>
+<li>ශ්‍රිතයක් ℝ¹⁰⁰⁰ → ℝ වේ. සම්පූර්ණ gradient එක සඳහා forward mode වට කීයක් අවශ්‍යද? Reverse mode වට කීයක්ද?</li>
+<li>z = relu(x + y), N = 10⁶ FP32 (ආදර්ශ). Kernels දෙකක් ලෙස (add, relu) සහ fuse කළ එක kernel එකක් ලෙස මතක ගමනාගමනය කීයද?</li>
+<li>පරාමිතීන් 7 × 10⁹ ක model එකක (ආදර්ශ) FP16 gradients (bytes 2) පියවරකට bytes කීයක්ද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>(−2)(1) + (−2)(0) + 3 = <strong>1</strong> &gt; 0, එබැවින් ප්‍රතිදානය <strong>1</strong>.</li>
+<li>q = x + y = 3, f = 3 × 3 = <strong>9</strong>. ∂f/∂z = q = <strong>3</strong>. ∂f/∂q = z = 3, සහ add ද්වාරය gradient එක වෙනස් නොකර යවයි: ∂f/∂x = ∂f/∂y = <strong>3</strong>.</li>
+<li>y = ln 1 + 0 − sin 0 = <strong>0</strong>. ∂y/∂x₁ = 1/x₁ + x₂ = <strong>1</strong>. ∂y/∂x₂ = x₁ − cos x₂ = 1 − 1 = <strong>0</strong>.</li>
+<li>Forward: <strong>1000</strong> (එක් ආදානයකට එකක්). Reverse: <strong>1</strong> (ප්‍රතිදානය එකක් නිසා).</li>
+<li>Fuse නොකළ විට: add = 8 + 4 = 12 MB, relu = 4 + 4 = 8 MB, එකතුව <strong>20 MB</strong>. Fuse කළ විට: 8 + 4 = <strong>12 MB</strong>. අනුපාතය ≈ 1.7.</li>
+<li>7 × 10⁹ × 2 = <strong>14 × 10⁹ bytes (14 GB)</strong>.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>A. G. Baydin, B. A. Pearlmutter, A. A. Radul, J. M. Siskind, &ldquo;Automatic Differentiation in Machine Learning: a Survey&rdquo;, <em>JMLR</em> 18(153), 2018 (JMLR නිල PDF): Table 2 (PDF p.10), Table 3 සහ n·c·ops / m·c·ops, c &lt; 6 (PDF p.13): <a href="https://www.jmlr.org/papers/volume18/17-468/17-468.pdf">https://www.jmlr.org/papers/volume18/17-468/17-468.pdf</a></li>
+<li>Stanford CS231n, &ldquo;Backpropagation, Intuitions&rdquo; (පාඨමාලා සටහන්; (x + y)z උදාහරණය සහ w = [2, −3, −3] sigmoid නියුරෝනය): <a href="https://cs231n.github.io/optimization-2/">https://cs231n.github.io/optimization-2/</a></li>
+<li>M. Nielsen, <em>Neural Networks and Deep Learning</em>, පරිච්ඡේදය 1 (කතුවරයාගේ වෙබ් අඩවිය; NAND perceptron, සමීකරණය (10)): <a href="http://neuralnetworksanddeeplearning.com/chap1.html">http://neuralnetworksanddeeplearning.com/chap1.html</a></li>
+<li>PyTorch ලේඛන, &ldquo;Autograd mechanics&rdquo; (&ldquo;How autograd encodes the history&rdquo;, &ldquo;Saved tensors&rdquo;): <a href="https://docs.pytorch.org/docs/stable/notes/autograd.html">https://docs.pytorch.org/docs/stable/notes/autograd.html</a></li>
+<li>OpenXLA, &ldquo;XLA: Optimizing Compiler for Machine Learning&rdquo; (<code>reduce_sum(x + y * z)</code> fusion උදාහරණය): <a href="https://openxla.org/xla/tf2xla">https://openxla.org/xla/tf2xla</a></li>
+<li>A. Priyadarshana, &ldquo;Backpropagation — ANN සිංහලෙන්&rdquo;, Medium, 2018: <a href="https://ashanpriyadarshana.medium.com/backpropagation-ann-sinhalen-a10fa9986aba">https://ashanpriyadarshana.medium.com/backpropagation-ann-sinhalen-a10fa9986aba</a></li>
+</ul>
+<p>η = 0.5 පියවර, 10⁹ සහ 7 × 10⁹ පරාමිතීන්, N = 10⁶, 28/12 MB සහ 7 GB ගණනය, සහ අභ්‍යාස 2, 3, 5 හි ආදාන ආදර්ශ අගයන් හෝ අප ගණනය කළ අගයන් වේ.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B6%BA%E0%B6%B1%E0%B7%8A%E0%B6%AD%E0%B7%8A%E2%80%8D%E0%B6%BB&#43;%E0%B6%89%E0%B6%9C%E0%B7%99%E0%B6%B1%E0%B7%94%E0%B6%B8%E0%B7%8A&#43;%E0%B6%B8%E0%B7%98%E0%B6%AF%E0%B7%94%E0%B6%9A%E0%B7%8F%E0%B6%82%E0%B6%9C&#43;Stack&#43;%E0%B6%91%E0%B6%9A&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F46-the-machine-learning-software-stack%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F46-the-machine-learning-software-stack.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F46-the-machine-learning-software-stack.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Kubernetes සහ පරිමාණයේ Container Orchestration</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/47-what-7nm-actually-means/" class="flex align-center">
+        <span>&#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#පළමව-arrays">පළමුව Arrays</a></li>
+    <li><a href="#frameworks-gradients-සහ-දඪගය-එක-ගවසමක-ලස">Frameworks: Gradients සහ දෘඪාංගය එක් ගිවිසුමක් ලෙස</a></li>
+    <li><a href="#graph-එක-පහත-කරම">Graph එක පහත් කිරීම</a></li>
+    <li><a href="#distribution-වයර-එකට-ගට">Distribution වයර් එකට ගැටේ</a></li>
+    <li><a href="#මම-අදයර-loop-එක-වස-දමම">මෙම අදියරේ Loop එක වසා දැමීම</a></li>
+    <li><a href="#ගඹරන-framework-එකක-gradient-ගණනය-කරන-හට--සවයකරය-අවකලනය-graph-fusion-සහ-gradient-ගමනගමනය">ගැඹුරින්: framework එකක් gradient ගණනය කරන හැටි — ස්වයංක්‍රීය අවකලනය, graph fusion සහ gradient ගමනාගමනය</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-perceptron-සට-gradient-දකව-කටයන">2. Perceptron සිට gradient දක්වා (කෙටියෙන්)</a></li>
+        <li><a href="#3-එක-නයරනයක-හරහ-backpropagation-cs231n-අගයන">3. එක් නියුරෝනයක් හරහා backpropagation (CS231n අගයන්)</a></li>
+        <li><a href="#4-සවයකරය-අවකලනය-evaluation-trace-එකක">4. ස්වයංක්‍රීය අවකලනය: evaluation trace එකක්</a></li>
+        <li><a href="#5-deep-learning-reverse-mode-භවත-කරනන-ඇය">5. Deep learning reverse mode භාවිතා කරන්නේ ඇයි</a></li>
+        <li><a href="#6-graph-එක-පහත-කරම-fusion-මතක-ගමනගමනය-කපන-හට">6. Graph එක පහත් කිරීම: fusion මතක ගමනාගමනය කපන හැටි</a></li>
+        <li><a href="#7-distribution-gradients-කයක-ගමන-කළ-යතද">7. Distribution: gradients කීයක් ගමන් කළ යුතුද?</a></li>
+        <li><a href="#8-පනසලන-අභයසය">8. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

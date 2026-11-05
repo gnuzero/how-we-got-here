@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>DJS-130 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/djs-130/</link>
+		<description>Recent content in DJS-130 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:38:43 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/djs-130/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>电子管与晶体管：中国第一批计算机，和算盘的真实角色</title>
+				<link>http://localhost:1478/zh-hans/posts/03-zh-first-electronic-computers/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/03-zh-first-electronic-computers/</guid>
+				<description>从 1956 年的“紧急措施”到 DJS-100 系列：中国早期计算机为谁而造、在哪里日夜运转，以及为什么“算盘造原子弹”是误传。</description>
+			</item>
+			<item>
+				<title>规模：从银河到太湖之光</title>
+				<link>http://localhost:1478/zh-hans/posts/17-zh-supercomputers-cpus/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/17-zh-supercomputers-cpus/</guid>
+				<description>兼容别人、手工自造、用商品芯片拼、再自己设计芯片：中国的大型计算机四十年里换了几条路，每一次转向都被一个具体的约束逼出来。</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>珠算 on 我們如何走到那裡</title>
+		<link>http://localhost:1478/zh-hant/tags/%E7%8F%A0%E7%AE%97/</link>
+		<description>Recent content in 珠算 on 我們如何走到那裡</description>
+		<generator>Hugo</generator>
+		<language>zh-Hant</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hant/tags/%E7%8F%A0%E7%AE%97/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>算籌與算盤：數放在手裡，演算法記在口訣裡</title>
+				<link>http://localhost:1478/zh-hant/posts/01-zh-counting-rods-abacus/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/01-zh-counting-rods-abacus/</guid>
+				<description>從《孫子算經》的縱橫擺籌到程大位的珠算口訣：數存在籌和珠裡，演算法存在口訣裡，執行它的是人。</description>
+			</item>
+	</channel>
+</rss>

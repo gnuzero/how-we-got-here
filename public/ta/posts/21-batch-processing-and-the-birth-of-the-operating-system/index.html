@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Punch-card வேலைகளுக்கு இடையே விலையுயர்ந்த CPU idle ஆனது — முதல் resident monitor-ஐ கட்டாயப்படுத்தியது: பயனர் நிரல் அல்ல, system மென்பொருள்">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Batch Processing மற்றும் Operating System-இன் பிறப்பு">
+	<meta property="og:description" content="Punch-card வேலைகளுக்கு இடையே விலையுயர்ந்த CPU idle ஆனது — முதல் resident monitor-ஐ கட்டாயப்படுத்தியது: பயனர் நிரல் அல்ல, system மென்பொருள்">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Batch Processing மற்றும் Operating System-இன் பிறப்பு">
+	<meta itemprop="description" content="Punch-card வேலைகளுக்கு இடையே விலையுயர்ந்த CPU idle ஆனது — முதல் resident monitor-ஐ கட்டாயப்படுத்தியது: பயனர் நிரல் அல்ல, system மென்பொருள்">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1033">
+
+<title>Batch Processing மற்றும் Operating System-இன் பிறப்பு • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/21-batch-processing-and-the-birth-of-the-operating-system/" title="Batch Processing and the Birth of the Operating System">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" title="Batch Processing และการถือกำเนิดของระบบปฏิบัติการ">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" title="කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" title="Prelucrarea pe loturi și nașterea sistemului de operare">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="active">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Batch Processing மற்றும் Operating System-இன் பிறப்பு</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#idle-நரம-கடடபபட">Idle நேரமே கட்டுப்பாடு</a></li>
+    <li><a href="#idle-நரம-எணகளல">Idle நேரம், எண்களில்</a></li>
+    <li><a href="#scheduling-களகயகறத">Scheduling கொள்கையாகிறது</a></li>
+    <li><a href="#களக-மககயம-ஒர-scheduling-கணகக">கொள்கை முக்கியம்: ஒரு scheduling கணக்கு</a></li>
+    <li><a href="#batch-கடகக-மடயதத">Batch கொடுக்க முடியாதது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Batch Processing மற்றும் Operating System-இன் பிறப்பு
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவு 18-இன் mainframes நாம் அறிந்த அர்த்தத்தில் operating system ஓட்டவில்லை. யாரோ ஒரு நிரலை ஏற்றி, ஓட்டி, காத்திருந்து, அடுத்ததை ஏற்றினர். ஒரு பயனருக்கு முழு அணுகல் இருந்தால் அது வேலை செய்கிறது. பல வேலைகள் விலையுயர்ந்த இயந்திரத்தைப் பகிர வேண்டிய தருணத்தில் — mainframe செலவைக் கொடுத்தால் உடனடியாக நடந்தது — அது உடைகிறது.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> இயக்கு தளம் (operating system) பற்றித் தமிழில் ஒரு கலைக்களஞ்சியக் கட்டுரையும் பாடநூல் அறிமுகமும் உண்டு; batch processing பற்றி எழுத்து விளக்கம் கிடைக்கவில்லை. காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. இங்கே batch ஏன் CPU-வின் பயன்பாட்டை உயர்த்தியது, scheduling கொள்கை எப்படிக் காத்திருப்பு நேரத்தை மாற்றுகிறது என்பதை எண்களுடன் காட்டுகிறோம்; lab முயற்சி கீழே உள்ள அதே VM-இல் ஓட்டிச் சரிபார்க்கப்பட்டது. நேரங்கள் அனைத்தும் &ldquo;எடுத்துக்காட்டு மதிப்பு&rdquo; — வரலாற்று அளவீடுகள் அல்ல.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>இயக்கு தளம் (operating system, OS):</strong> இயந்திரத்தை நிர்வகித்து, பயனர் நிரல்களுக்குச் சேவை தரும், எப்போதும் ஓடிக்கொண்டிருக்கும் அமைப்பு மென்பொருள்.</li>
+<li><strong>Batch processing (தொகுப்புச் செயலாக்கம்):</strong> வேலைகளை (jobs) ஒரு வரிசையாகச் சமர்ப்பித்து, மனிதத் தலையீடு இல்லாமல் ஒன்றன்பின் ஒன்றாக ஓட்டுவது.</li>
+<li><strong>Job (வேலை):</strong> ஒரு முழு நிரல் ஓட்டம் — நிரல், அதன் தரவு, அதற்கான கட்டளைகள்.</li>
+<li><strong>Resident monitor (நிலைத்த கண்காணிப்பி):</strong> நினைவகத்தில் எப்போதும் இருந்து, அடுத்த வேலையை ஏற்றி ஓட்டும் சிறு நிரல் — OS-இன் முன்னோடி.</li>
+<li><strong>Job control language (வேலைக் கட்டுப்பாட்டு மொழி):</strong> ஒரு வேலைக்கு என்ன வளங்கள் தேவை, பிழை வந்தால் என்ன செய்வது போன்றவற்றைச் சொல்லும் கட்டளைகள்.</li>
+<li><strong>CPU பயன்பாடு (utilization):</strong> மொத்த நேரத்தில் CPU உண்மையில் பயனுள்ள வேலை செய்த பங்கு.</li>
+<li><strong>காத்திருப்பு நேரம் / திருப்ப நேரம் (waiting time / turnaround time):</strong> வேலை வரிசையில் காத்திருந்த நேரம் / சமர்ப்பித்ததிலிருந்து முடிவு கிடைக்கும் வரையிலான மொத்த நேரம்.</li>
+</ul>
+<h2 id="idle-நரம-கடடபபட">Idle நேரமே கட்டுப்பாடு<a class="anchor" href="#idle-%e0%ae%a8%e0%ae%b0%e0%ae%ae-%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f">#</a></h2>
+<p>தொடக்க இயக்கம் என்றால் மனிதன் punch-card deck ஏற்றுவது, ஓட்டுவது, வெளியீட்டைச் சேகரிப்பது, அடுத்ததை ஏற்றுவது — ஒவ்வொரு setup மற்றும் teardown-இலும் CPU idle ஆக அமர்ந்திருந்தது. Batch processing <em>வரிசைப்படுத்துதலை</em> தானியக்கமாக்கியது: வேலைகளின் அடுக்கைச் சமர்ப்பியுங்கள், resident நிரல் (தொடக்க &ldquo;monitor&rdquo;) ஒவ்வொன்றையும் மனிதன் இல்லாமல் ஏற்றி ஓட்டும்.</p>
+<p>அந்த resident monitor தான் operating system-இன் நேரடி முன்னோடி. குறுகிய வேலை — ஏற்று, தொடங்கு, முடிவைக் கண்டறி, அடுத்ததை ஏற்று — ஆனால் அது எந்தப் பயனர் நிரலிலிருந்தும் வேறுபட்ட <em>system</em> மென்பொருளின் முதல் துண்டு: எந்த வேலை இயங்குகிறதோ அதன் சார்பாக இயந்திரத்தை நிர்வகிக்கத் தொடர்ந்து ஓடுகிறது.</p>
+<h2 id="idle-நரம-எணகளல">Idle நேரம், எண்களில்<a class="anchor" href="#idle-%e0%ae%a8%e0%ae%b0%e0%ae%ae-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%b2">#</a></h2>
+<p>ஒவ்வொரு வேலையும் 10 நிமிடம் கணக்கிடுகிறது; ஒரு மனிதர் card deck-ஐ ஏற்றி, ஓட்டி, வெளியீட்டை எடுத்து, அடுத்ததை ஏற்ற 5 நிமிடம் ஆகிறது (எடுத்துக்காட்டு மதிப்புகள்).</p>
+<ul>
+<li>கைமுறை: ஒரு வேலைக்கு 10 + 5 = 15 நிமிடம் → CPU பயன்பாடு 10 ÷ 15 ≈ <strong>67%</strong>. மூன்றில் ஒரு பங்கு நேரம் விலையுயர்ந்த இயந்திரம் சும்மா நிற்கிறது.</li>
+<li>Batch monitor: வேலைகள் முன்பே அடுக்கப்பட்டுள்ளன; monitor அடுத்ததை ஏற்ற 30 விநாடி → 10 ÷ 10.5 ≈ <strong>95%</strong>.</li>
+</ul>
+<p>ஒரு நாளுக்கு (24 மணி = 1,440 நிமிடம்): கைமுறையில் 1,440 ÷ 15 = <strong>96</strong> வேலைகள்; batch-இல் 1,440 ÷ 10.5 ≈ <strong>137</strong> வேலைகள் — அதே இயந்திரம், 40%-க்கு மேல் அதிக வேலை. Mainframe-இன் விலையைக் கணக்கில் கொண்டால் இந்த இடைவெளிதான் &ldquo;முதல் அமைப்பு மென்பொருளை&rdquo; எழுதக் காரணம்.</p>
+<h2 id="scheduling-களகயகறத">Scheduling கொள்கையாகிறது<a class="anchor" href="#scheduling-%e0%ae%95%e0%ae%b3%e0%ae%95%e0%ae%af%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>Batch அமைப்புகள் முதிர்ச்சியடைய, job control மொழிகள் சமர்ப்பிக்கப்பட்ட வேலைக்கு வளங்கள், தோல்வி கையாளல், வெளியீட்டு வழிகாட்டலைப் பெயரிட அனுமதித்தன; வரிசைகள் வேலைகளை கண்டிப்பான சமர்ப்பிப்பு வரிசைக்குப் பதிலாக முன்னுரிமைப்படுத்த அனுமதித்தன. Priority, வள ஒதுக்கீடு, மற்றும் scheduling கொள்கை இங்கே உண்மையான OS கவலைகளாகத் தோன்றுகின்றன — உத்தியோகபூர்வமற்ற operator தீர்ப்பு அல்ல.</p>
+<h2 id="களக-மககயம-ஒர-scheduling-கணகக">கொள்கை முக்கியம்: ஒரு scheduling கணக்கு<a class="anchor" href="#%e0%ae%95%e0%ae%b3%e0%ae%95-%e0%ae%ae%e0%ae%95%e0%ae%95%e0%ae%af%e0%ae%ae-%e0%ae%92%e0%ae%b0-scheduling-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95">#</a></h2>
+<p>மூன்று வேலைகள் ஒரே நேரத்தில் (நேரம் 0) சமர்ப்பிக்கப்படுகின்றன: J1 = 30 நிமிடம், J2 = 5, J3 = 10 (எடுத்துக்காட்டு மதிப்புகள்).</p>
+<p><strong>கொள்கை 1 — வந்த வரிசைப்படி (first-come, first-served):</strong> J1, J2, J3</p>
+<table>
+	<thead>
+			<tr>
+					<th>வேலை</th>
+					<th>தொடக்கம்</th>
+					<th>முடிவு</th>
+					<th>காத்திருப்பு</th>
+					<th>திருப்ப நேரம்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>J1 (30)</td>
+					<td>0</td>
+					<td>30</td>
+					<td>0</td>
+					<td>30</td>
+			</tr>
+			<tr>
+					<td>J2 (5)</td>
+					<td>30</td>
+					<td>35</td>
+					<td>30</td>
+					<td>35</td>
+			</tr>
+			<tr>
+					<td>J3 (10)</td>
+					<td>35</td>
+					<td>45</td>
+					<td>35</td>
+					<td>45</td>
+			</tr>
+			<tr>
+					<td>சராசரி</td>
+					<td></td>
+					<td></td>
+					<td>(0 + 30 + 35) ÷ 3 ≈ <strong>21.7</strong></td>
+					<td>(30 + 35 + 45) ÷ 3 ≈ <strong>36.7</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>கொள்கை 2 — குறுகிய வேலை முதலில் (shortest job first):</strong> J2, J3, J1</p>
+<table>
+	<thead>
+			<tr>
+					<th>வேலை</th>
+					<th>தொடக்கம்</th>
+					<th>முடிவு</th>
+					<th>காத்திருப்பு</th>
+					<th>திருப்ப நேரம்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>J2 (5)</td>
+					<td>0</td>
+					<td>5</td>
+					<td>0</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>J3 (10)</td>
+					<td>5</td>
+					<td>15</td>
+					<td>5</td>
+					<td>15</td>
+			</tr>
+			<tr>
+					<td>J1 (30)</td>
+					<td>15</td>
+					<td>45</td>
+					<td>15</td>
+					<td>45</td>
+			</tr>
+			<tr>
+					<td>சராசரி</td>
+					<td></td>
+					<td></td>
+					<td>(0 + 5 + 15) ÷ 3 ≈ <strong>6.7</strong></td>
+					<td>(5 + 15 + 45) ÷ 3 ≈ <strong>21.7</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>இரண்டிலும் கடைசி வேலை 45-இல் முடிகிறது — CPU அதே அளவு வேலை செய்கிறது. ஆனால் சராசரிக் காத்திருப்பு 21.7-இலிருந்து 6.7 நிமிடமாகக் குறைகிறது. வேலைகளை எந்த வரிசையில் ஓட்டுவது என்பது இப்போது ஒரு <em>கொள்கை</em> முடிவு — ஆங்கிலப் பதிவு சொல்லும் &ldquo;scheduling கொள்கையாகிறது&rdquo;. விலை: நீண்ட J1 இப்போது 15 நிமிடம் காத்திருக்கிறது; குறுகிய வேலைகள் தொடர்ந்து வந்தால் அது இன்னும் தள்ளிப்போகலாம். அதனால்தான் முன்னுரிமை (priority) விதிகள் தேவைப்பட்டன.</p>
+<h2 id="batch-கடகக-மடயதத">Batch கொடுக்க முடியாதது<a class="anchor" href="#batch-%e0%ae%95%e0%ae%9f%e0%ae%95%e0%ae%95-%e0%ae%ae%e0%ae%9f%e0%ae%af%e0%ae%a4%e0%ae%a4">#</a></h2>
+<p>ஊடாடுதல் இல்லை. ஒரு வேலை தொடக்கத்திலிருந்து முடிவு வரை இயங்கியது — இடையில் தலையிட, இடைநிலை நிலையை ஆய்வு செய்ய, அல்லது திசை திருப்ப வாய்ப்பில்லை. பிழை பெரும்பாலும் முழு ஓட்டத்திற்குப் பிறகுதான் தெரிந்தது — சில நேரம் மணிக்கணக்கில் பின்னர், விலையுயர்ந்த ஒதுக்கீட்டை எரித்த பிறகு. ஆய்வு வேலைக்கு அந்தத் திரும்பும் நேரம் கடினமான உற்பத்தித்திறன் கூரை.</p>
+<p><strong>திருப்ப நேரத்தின் விலை (எடுத்துக்காட்டு மதிப்புகள்).</strong> ஒரு batch வேலையின் திருப்ப நேரம் 3 மணி. நிரலில் ஒரு பிழை; அதைக் கண்டுபிடித்துச் சரிசெய்ய 5 முயற்சிகள் தேவை. Batch-இல் 5 × 3 = <strong>15 மணி</strong> — பெரும்பகுதி காத்திருப்பு. ஒவ்வொரு முயற்சிக்கும் உடனடிப் பதில் கிடைத்தால் (ஊடாடும் அமைப்பு), அதே 5 முயற்சிகள் நிமிடங்களில். இதே காரணத்தால்தான் அடுத்த பதிவின் time-sharing தேவைப்பட்டது.</p>
+<p><strong>இப்போது முயல்க.</strong> கீழே உள்ள VM-ஐ boot செய்து, திரையைக் கிளிக் செய்து, பிறகு <code>whoami</code>, <code>uname</code>, மற்றும் <code>ls</code> ஓட்டுங்கள். அந்த prompt ஒரு batch deck-இன் எதிர் — நீங்கள் <em>இப்போது</em> தலையிட்டு, நிலையை ஆய்வு செய்து, திசை திருப்புகிறீர்கள். Time-sharing (அடுத்த பதிவு) இந்த மாயையைப் பகிரக்கூடியதாக்கியது.</p>
+<p><strong>இப்போது முயல்க: ஒரு சிறிய batch ஓட்டம்.</strong> அதே VM-இல் மூன்று &ldquo;card deck&rdquo;-களை script கோப்புகளாக எழுதி, ஒரு loop-ஐ &ldquo;resident monitor&rdquo; ஆக்குவோம் (இதே VM-இல் ஓட்டிச் சரிபார்த்தது):</p>
+<ol>
+<li><code>printf 'echo JOB1 start\nls /bin | wc -l\necho JOB1 done\n' &gt; /tmp/job1.sh</code></li>
+<li><code>printf 'echo JOB2 start\nlss /tmp\necho JOB2 done\n' &gt; /tmp/job2.sh</code> — வேண்டுமென்றே ஒரு எழுத்துப் பிழை (<code>lss</code>).</li>
+<li><code>printf 'echo JOB3 start\nseq 1 100000 | tail -1\necho JOB3 done\n' &gt; /tmp/job3.sh</code></li>
+<li>&ldquo;Monitor&rdquo;: <code>for j in /tmp/job1.sh /tmp/job2.sh /tmp/job3.sh; do sh $j &gt;&gt; /tmp/batch.out 2&gt;&amp;1; done</code> — திரையில் எதுவும் தோன்றாது; எல்லா வெளியீடும் கோப்புக்கு, batch வெளியீட்டுத் தாள் போல.</li>
+<li><code>cat /tmp/batch.out</code> — மூன்று வேலைகளின் வெளியீடும் வரிசையாக. JOB2-இன் பகுதியில் <code>/tmp/job2.sh: line 2: lss: not found</code> — பிழை முழு ஓட்டமும் முடிந்த <em>பிறகுதான்</em> உங்களுக்குத் தெரிகிறது, அதுவும் JOB2 &ldquo;done&rdquo; என்று தொடர்ந்துவிட்டது. (எங்கள் ஓட்டத்தில் JOB1 <code>/bin</code>-இல் 73 கோப்புகளை எண்ணியது; JOB3 <code>100000</code> அச்சிட்டது.)</li>
+<li><code>time sh /tmp/job3.sh</code> — ஒரு வேலையின் நேரம் (எங்கள் ஓட்டத்தில் real சுமார் 1.00 s; emulator வேகத்தைப் பொறுத்து உங்களுடையது மாறும்).</li>
+<li><code>ps</code> — PID 1 <code>init</code>: boot முதல் எப்போதும் ஓடிக்கொண்டிருக்கும் அமைப்பு நிரல் — resident monitor-இன் நவீன வாரிசு.</li>
+</ol>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=ta"
+    style="width:100%; height:600px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<p>அதைத் தீர்க்க batch கட்டமைப்பு கொடுக்க முடியாத ஒன்று தேவைப்பட்டது: பல பயனர்கள் <em>ஒரே நேரத்தில்</em> செயலில், ஒவ்வொவருக்கும் தனிப்பட்ட session-இன் மாயை. அதுதான் time-sharing — வேலை வரிசைப்படுத்தலைத் தானியக்கமாக்குவது மட்டும் அல்ல, ஒரே நேரத்தில் செயலில் உள்ள நிரல்களை மாறுதல் கண்ணுக்குத் தெரியாத அளவுக்கு இடைசெருகுதல். அடுத்த பதிவு அங்கிருந்து தொடர்கிறது.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>இயக்கு தளம்</td>
+					<td>operating system (OS)</td>
+			</tr>
+			<tr>
+					<td>தொகுப்புச் செயலாக்கம்</td>
+					<td>batch processing</td>
+			</tr>
+			<tr>
+					<td>வேலை</td>
+					<td>job</td>
+			</tr>
+			<tr>
+					<td>நிலைத்த கண்காணிப்பி</td>
+					<td>resident monitor</td>
+			</tr>
+			<tr>
+					<td>வேலைக் கட்டுப்பாட்டு மொழி</td>
+					<td>job control language (JCL)</td>
+			</tr>
+			<tr>
+					<td>அட்டவணையிடல்</td>
+					<td>scheduling</td>
+			</tr>
+			<tr>
+					<td>வந்த வரிசைப்படி</td>
+					<td>first-come, first-served (FCFS)</td>
+			</tr>
+			<tr>
+					<td>குறுகிய வேலை முதலில்</td>
+					<td>shortest job first (SJF)</td>
+			</tr>
+			<tr>
+					<td>முன்னுரிமை</td>
+					<td>priority</td>
+			</tr>
+			<tr>
+					<td>CPU பயன்பாடு</td>
+					<td>CPU utilization</td>
+			</tr>
+			<tr>
+					<td>காத்திருப்பு நேரம்</td>
+					<td>waiting time</td>
+			</tr>
+			<tr>
+					<td>திருப்ப நேரம்</td>
+					<td>turnaround time</td>
+			</tr>
+			<tr>
+					<td>ஊடாடும்</td>
+					<td>interactive</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ்நாடு அரசு, <em>11ஆம் வகுப்பு கணினி அறிவியல்</em>, அலகு 4: இயக்க அமைப்பின் கோட்பாட்டு கருத்துக்கள் (OS அறிமுகம், செயல் மேலாண்மை, முன்னுரிமை / FIFO scheduling — batch வரலாறு அல்ல)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Batch&#43;Processing&#43;%E0%AE%AE%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AF%81%E0%AE%AE%E0%AF%8D&#43;Operating&#43;System-%E0%AE%87%E0%AE%A9%E0%AF%8D&#43;%E0%AE%AA%E0%AE%BF%E0%AE%B1%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F21-batch-processing-and-the-birth-of-the-operating-system%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F21-batch-processing-and-the-birth-of-the-operating-system.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F21-batch-processing-and-the-birth-of-the-operating-system.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="flex align-center">
+        <span>Time-Sharing மற்றும் Unix வம்சாவளி</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#idle-நரம-கடடபபட">Idle நேரமே கட்டுப்பாடு</a></li>
+    <li><a href="#idle-நரம-எணகளல">Idle நேரம், எண்களில்</a></li>
+    <li><a href="#scheduling-களகயகறத">Scheduling கொள்கையாகிறது</a></li>
+    <li><a href="#களக-மககயம-ஒர-scheduling-கணகக">கொள்கை முக்கியம்: ஒரு scheduling கணக்கு</a></li>
+    <li><a href="#batch-கடகக-மடயதத">Batch கொடுக்க முடியாதது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

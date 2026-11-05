@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Apple II on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/apple-ii/</link>
+		<description>Recent content in Apple II on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/apple-ii/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>娃娃与学习机：1984 年以后的电脑热</title>
+				<link>http://localhost:1478/zh-hans/posts/68-zh-computer-craze/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/68-zh-computer-craze/</guid>
+				<description>1984 年元宵节，一台接着彩电的苹果电脑让一句话流传开来，只是那句话的最后两个字至今有两种写法；随后的十年里，这个愿景变成了中华学习机、伟易达的 Laser 310 和插着学习卡的小霸王。</description>
+			</item>
+	</channel>
+</rss>

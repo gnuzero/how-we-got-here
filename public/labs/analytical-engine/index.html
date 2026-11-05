@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- NOINDEX-PRELAUNCH: remove at announcement -->
+<meta name="robots" content="noindex,nofollow">
+<title>The Analytical Engine Emulator</title>
+<meta charset="utf-8" />
+<link rel="stylesheet"
+    href="https://www.fourmilab.ch/documents/styles/standard_screen.css"
+    type="text/css" />
+<script src="scripts/BigInteger.min.js" type="text/javascript">
+</script>
+<script src="scripts/definitions.js" type="text/javascript">
+</script>
+<script src="scripts/annunciator.js" type="text/javascript">
+</script>
+<script src="scripts/printer.js" type="text/javascript">
+</script>
+<script src="scripts/attendant.js" type="text/javascript">
+</script>
+<script src="scripts/program.js" type="text/javascript">
+</script>
+<script src="scripts/store.js" type="text/javascript">
+</script>
+<script src="scripts/timing.js" type="text/javascript">
+</script>
+<script src="scripts/mill.js" type="text/javascript">
+</script>
+<script src="scripts/engine.js" type="text/javascript">
+</script>
+<script src="scripts/curvedrawing.js" type="text/javascript">
+</script>
+<script src="scripts/webpage.js" type="text/javascript">
+</script>
+<style type="text/css">
+    td.al {
+        text-align: left;
+    }
+
+    h2 {
+        margin-bottom: 0.5ex;
+        text-align: center;
+    }
+
+    h2.em {
+        margin-top: 0px;
+        margin-bottom: 1.5ex;
+        text-align: center;
+    }
+
+    h3.ann {
+        margin-bottom: 0.5ex;
+        text-align: center;
+    }
+</style>
+</head>
+
+<body class="standard" onload="initialise();">
+
+<h1 class="c" style="margin-bottom: 0px;"><a class="i"
+    href="https://www.fourmilab.ch/babbage/"><img class="button"
+    src="figures/aetitlew.png" width="513" height="51"
+    alt="The Analytical Engine" /></a></h1>
+
+<h2 class="em"><img src="figures/t_emulator.png" width="154" height="45"
+    alt="Emulator" /></h2>
+
+<p class="c">
+<img src="figures/scrule.png" width="448" height="16"
+    alt="----------------------------------------" />
+</p>
+
+<h2 style="margin-top: 0px; margin-bottom: 0px;"><img src="figures/t_program.png" width="140" height="51"
+    alt="Program" /></h2>
+
+<div class="c">
+<textarea id="P_cards" cols="80" rows="20"
+    onchange="P_submit.style.color = '#FF0000';"
+    onkeyup="P_submit.style.color = '#FF0000';">
+</textarea>
+<br />
+<input type="button" id="P_submit" value="Submit"
+    onclick="submitProgram();" />
+&nbsp;
+<input type="button" id="P_clear" value="Clear"
+    onclick="prog.clear();" />
+&nbsp;
+<label><input type="checkbox" id="P_comments" value="comments"
+    checked="checked" />&nbsp;Keep comments</label>
+<br />
+<input type="button" id="P_load" value="Load"
+    onclick="prog.load();" />
+<input type="file" id="P_file" size="40" name="myfile.ae" accept=".ae" />
+</div>
+
+<h2><img src="figures/t_printer.png" width="111" height="33"
+    alt="Printer" /></h2>
+
+<div class="c">
+<textarea id="O_output" cols="90" rows="12">
+</textarea>
+<br />
+<input type="button" id="O_erase" value="Erase"
+    onclick="document.getElementById('O_output').value = '';" />
+</div>
+
+<h2><img src="figures/t_attlog.png" width="249" height="53"
+    alt="Attendant's Log" /></h2>
+
+<div class="c">
+<textarea id="L_output" cols="90" rows="12">
+</textarea>
+<br />
+<input type="button" id="L_erase" value="Erase"
+    onclick="document.getElementById('L_output').value = '';" />
+&nbsp;
+<input type="button" id="L_timing" value="Timing"
+    onclick="att.traceLog(tim.report());" />
+</div>
+
+<h2><img src="figures/t_controls.png" width="121" height="43"
+    alt="Controls" /></h2>
+
+<div class="c">
+<label><input type="checkbox" id="C_panel" value="panel"
+    checked="checked"
+    onclick="ann.setPanelShowing(C_panel.checked);" />&nbsp;Panel</label>
+&nbsp;
+<label><input type="checkbox" id="C_trace" value="trace"
+    onclick="Controls_trace()" />&nbsp;Trace</label>
+&nbsp;
+<label><input type="checkbox" id="C_animate" value="animate"
+    onclick="Controls_animate()" />&nbsp;Animate</label>
+&nbsp;
+<input type="button" id="C_reset" value="Reset"
+    onclick="Controls_reset();" />
+&nbsp;
+<input type="button" id="C_step" value="Step"
+    onclick="Controls_step();" />
+&nbsp;
+<input type="button" id="C_start" value="Start"
+    onclick="Controls_start();" />
+</div>
+
+<div id="annunciator">
+    <h2><img src="figures/t_annunciator.png" width="193" height="33"
+    alt="Annunciator" /></h2>
+
+    <h3 class="ann"><img src="figures/t_mill.png"
+        width="63" height="28"
+        alt="Mill" /></h3>
+
+    <div class="c">
+    Operation:&nbsp;<input type="text" id="AM_op" size="1" value=" " />
+    &nbsp;
+    Run-up:&nbsp;<input type="text" id="AM_ru" size="8" value="Not set" />
+    &nbsp;
+    <input type="text" id="AM_run" size="8" value="Stopped" />
+
+    <br />
+
+    <table style="margin-left: auto; margin-right: auto;">
+    <tr>
+        <td class="al">Ingress&nbsp;0:</td>
+    <td><input type="text" id="AM_in0" size="52"
+    class="r" value="0" /></td>
+    </tr>
+    <tr>
+        <td class="al">Ingress&nbsp;0':</td>
+    <td><input type="text" id="AM_in0p" size="52"
+    class="r" value="0" /></td>
+    </tr>
+    <tr>
+        <td class="al">Ingress&nbsp;1:</td>
+    <td><input type="text" id="AM_in1" size="52"
+    class="r" value="0" /></td>
+    </tr>
+    <tr>
+        <td class="al">Egress&nbsp;0:</td>
+    <td><input type="text" id="AM_eg0" size="52"
+    class="r" value="0" /></td>
+    </tr>
+    <tr>
+        <td class="al">Egress&nbsp;0':</td>
+    <td><input type="text" id="AM_eg0p" size="52"
+    class="r" value="0" /></td>
+    </tr>
+    </table>
+    </div>
+
+    <h3 class="ann"><img src="figures/t_cardreader.png"
+        width="147" height="32" alt="Card Reader" /></h3>
+
+    <div class="c">
+    <textarea id="AC_cards" cols="90" rows="6"></textarea>
+    </div>
+
+    <h3 class="ann"><img src="figures/t_store.png"
+        width="62" height="26" alt="Store" /></h3>
+
+    <div class="c">
+    <textarea id="AS_columns" cols="58" rows="8"></textarea>
+    </div>
+</div>
+
+<div id="curve_drawing" style="display: none;">
+    <h2><img src="figures/t_curvedrawing.png"
+        width="399" height="50" alt="Curve Drawing Apparatus" /></h2>
+
+    <div class="c">
+    <canvas id="D_plot" width="512" height="512"
+        style="border: 1px solid black;">
+    <b>Your browser does not support HTML5 canvas.</b>
+    </canvas>
+    <br />
+    <input type="button" value="Erase" onclick="cda.changePaper();" />
+    &nbsp;
+    <input type="button" value="Hide"
+        onclick="document.getElementById('curve_drawing').style.display = 'none';" />
+    </div>
+</div>
+
+<p>
+&nbsp;
+</p>
+
+<p class="c">
+<img src="figures/scrule.png" width="448" height="16"
+    alt="----------------------------------------" />
+</p>
+
+<h3 class="nav"><a href="https://www.fourmilab.ch/babbage/contents.html">Origin: Fourmilab / John Walker</a></h3>
+
+<p></p>
+
+<address>
+by <a href="https://www.fourmilab.ch/">John Walker</a> — public-domain source hosted from <a href="https://www.fourmilab.ch/babbage/release/aemsource.zip">aemsource.zip</a>
+</address>
+
+</body>
+</html>

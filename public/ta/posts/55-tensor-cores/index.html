@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Matrix multiply-accumulate மேலாதிக்க AI op ஆனது — எனவே வன்பொருள் அதை முதல்-தர primitive ஆக்கியது">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/55-tensor-cores/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Tensor Cores">
+	<meta property="og:description" content="Matrix multiply-accumulate மேலாதிக்க AI op ஆனது — எனவே வன்பொருள் அதை முதல்-தர primitive ஆக்கியது">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Tensor Cores">
+	<meta itemprop="description" content="Matrix multiply-accumulate மேலாதிக்க AI op ஆனது — எனவே வன்பொருள் அதை முதல்-தர primitive ஆக்கியது">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1122">
+
+<title>Tensor Cores • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/55-tensor-cores/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/55-tensor-cores/" title="Tensor Cores">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/55-tensor-cores/" title="Tensor Core">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/55-tensor-cores/" title="Tensor Cores">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/55-tensor-cores/" title="Tensor Cores">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/55-tensor-cores/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/55-tensor-cores/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/55-tensor-cores/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/55-tensor-cores/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="active">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Tensor Cores</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#ஏன-matrix-multiply">ஏன் Matrix Multiply</a></li>
+    <li><a href="#ஒர-tensor-core-எனன-சயகறத">ஒரு Tensor Core என்ன செய்கிறது</a></li>
+    <li><a href="#precision-சலகனடன-இணககபபடடளளத">Precision சிலிகானுடன் இணைக்கப்பட்டுள்ளது</a></li>
+    <li><a href="#ஒர-பதல-அலல">ஒரே பதில் அல்ல</a></li>
+    <li><a href="#v100-tensor-core-whitepaper-எனன-சலகறத">V100 tensor core: whitepaper என்ன சொல்கிறது</a></li>
+    <li><a href="#கயல-ஒர-உறபப">கையால் ஒரு உறுப்பு</a></li>
+    <li><a href="#cuda-core-களல-சயதல-எனன-வறபட">CUDA core-களில் செய்தால் என்ன வேறுபாடு?</a></li>
+    <li><a href="#பரய-matrix-கள-tiling">பெரிய matrix-கள்: tiling</a></li>
+    <li><a href="#ஏன-fp32-இல-தரடட-வணடம-ஒர-சதன">ஏன் FP32-இல் திரட்ட வேண்டும்: ஒரு சோதனை</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Tensor Cores
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவு 53 CUDA cores-ஐ உள்ளடக்கியது — பரந்த வரம்பு parallel வேலைக்குப் பொது-நோக்கு SIMT lanes. Tensor cores குறுகியவை: ஒரு செயல்பாட்டிற்கான அர்ப்பணிக்கப்பட்ட வன்பொருள் — matrix multiply-accumulate — நவீன neural-network compute-ஐ ஆதிக்கம் செலுத்துவது. அந்த op-க்குச் சிறப்புப்படுத்துங்கள், பொது CUDA cores மட்டும் அதே வேலையைச் செய்வதை விட வெல்லுங்கள்.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> Tensor core பற்றித் தமிழில் எழுத்து விளக்கமோ காணொளியோ இல்லை. இங்கே ஒரு 4 × 4 matrix பெருக்கல்-கூட்டலைக் கையால் செய்து, NVIDIA Tesla V100-இன் tensor core எண்களை (Volta whitepaper-இலிருந்து சரிபார்த்தவை) வைத்து அதன் வேகத்தைக் கணக்கிடுகிறோம். எடுத்துக்காட்டு மதிப்புகள் அப்படியே குறிக்கப்பட்டுள்ளன.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Matrix (அணி):</strong> எண்களின் செவ்வக அட்டவணை. 4 × 4 matrix = 4 வரிசைகள், 4 நெடுவரிசைகள்.</li>
+<li><strong>Matrix பெருக்கல்:</strong> A (M × K) மற்றும் B (K × N) → C (M × N); C-இன் ஒவ்வொரு உறுப்பும் A-இன் ஒரு வரிசைக்கும் B-இன் ஒரு நெடுவரிசைக்கும் இடையிலான <strong>dot product</strong> (ஒத்த உறுப்புகளைப் பெருக்கிக் கூட்டுவது).</li>
+<li><strong>MAC / FMA (பெருக்கல்-கூட்டல்):</strong> a × b + c என்ற ஒரு செயல். Matrix பெருக்கலின் அடிப்படை அலகு.</li>
+<li><strong>Accumulator (திரட்டி):</strong> பகுதிக் கூட்டுத்தொகைகளைச் சேர்த்து வைத்திருக்கும் இடம்/எண்.</li>
+<li><strong>Precision (துல்லியம்):</strong> ஒரு எண்ணைச் சேமிக்க எத்தனை பிட்கள் — FP32 = 32 பிட், FP16 = 16 பிட். குறைந்த பிட் = குறைந்த துல்லியம், ஆனால் சிறிய, மலிவான வன்பொருள்.</li>
+<li><strong>Tile (துண்டு):</strong> ஒரு பெரிய matrix-இன் சிறிய சதுரப் பகுதி.</li>
+</ul>
+<h2 id="ஏன-matrix-multiply">ஏன் Matrix Multiply<a class="anchor" href="#%e0%ae%8f%e0%ae%a9-matrix-multiply">#</a></h2>
+<p>Fully connected layers, convolutions (matmul-ஆக மறுவடிவமைக்கப்பட்டவை), மற்றும் transformers-இல் attention அனைத்தும், அவற்றின் மையத்தில், matrices-இன் multiply-accumulate-க்குக் குறைகின்றன — அதன் திறன் அமைப்பு செயல்திறனை ஆதிக்கம் செய்யும் அளவில். அந்த செறிவு நோக்கத்துடன் கட்டப்பட்ட சிலிகானை மதிப்புள்ளதாக்குகிறது.</p>
+<h2 id="ஒர-tensor-core-எனன-சயகறத">ஒரு Tensor Core என்ன செய்கிறது<a class="anchor" href="#%e0%ae%92%e0%ae%b0-tensor-core-%e0%ae%8e%e0%ae%a9%e0%ae%a9-%e0%ae%9a%e0%ae%af%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>ஒரு tensor core சிறிய நிலையான-அளவு matrix multiply-accumulate-ஐ — எடுத்துக்காட்டாக இரு 4×4 matrices-ஐ மூன்றாவதாக — பொது CUDA cores வழியாகத் தனி multiply மற்றும் add அறிவுறுத்தல்களின் நீண்ட வரிசைக்குப் பதிலாக ஒரு வன்பொருள் செயல்பாடாக இணைக்கிறது. Fusion பயனுள்ள arithmetic-க்கு ஒப்பீட்டில் per-op overhead (fetch, decode, operand routing) வெட்டும். பெரிய products tiled: துணை-தொகுதிகளை வரிசையாக உணவளித்து, partials குவிக்க — திறமையான deep-learning kernels-ஐத் தன் சொந்த கலையாக்கும் ஒருங்கிணைப்பு வேலை.</p>
+<h2 id="precision-சலகனடன-இணககபபடடளளத">Precision சிலிகானுடன் இணைக்கப்பட்டுள்ளது<a class="anchor" href="#precision-%e0%ae%9a%e0%ae%b2%e0%ae%95%e0%ae%a9%e0%ae%9f%e0%ae%a9-%e0%ae%87%e0%ae%a3%e0%ae%95%e0%ae%95%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%9f%e0%ae%b3%e0%ae%b3%e0%ae%a4">#</a></h2>
+<p>Tensor cores அடிக்கடி குறைந்த precisions-இல் (FP16, BF16, INT8, அதிகரித்து FP8) மிகத் திறமையாக ஓடும். குறுகிய arithmetic ஒரு op-க்குக் குறைந்த பரப்பு மற்றும் ஆற்றல் தேவை, எனவே கொடுக்கப்பட்ட பட்ஜெட் அதிக MAC throughput அடுக்கும். பதிவு 59 இதை முழுமையாகத் திரும்பும்: precision குறைப்பு தூய மென்பொருள் தேர்வு அல்ல — ஒவ்வொரு வடிவத்திலும் அடிப்படை MAC வன்பொருள் எவ்வளவு திறமையாக ஓடுகிறது என்பதோடு இணைக்கப்பட்டுள்ளது.</p>
+<h2 id="ஒர-பதல-அலல">ஒரே பதில் அல்ல<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%aa%e0%ae%a4%e0%ae%b2-%e0%ae%85%e0%ae%b2%e0%ae%b2">#</a></h2>
+<p>Tensor cores இல்லையெனில் பொதுவான GPU-க்குள் NVIDIA-வின் பதில். Phase 10 systolic arrays-ஐ உள்ளடக்கும் — Google-இன் TPU மிகத் தெளிவானது — அதே matmul இலக்கிற்காகக் கட்டப்பட்டவை, வன்பொருள் மட்டத்தில் வேறுபட்ட அமைப்பு. அதே கட்டுப்பாடு; வேறு கட்டமைப்பு.</p>
+<h2 id="v100-tensor-core-whitepaper-எனன-சலகறத">V100 tensor core: whitepaper என்ன சொல்கிறது<a class="anchor" href="#v100-tensor-core-whitepaper-%e0%ae%8e%e0%ae%a9%e0%ae%a9-%e0%ae%9a%e0%ae%b2%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>Volta whitepaper-இன்படி ஒவ்வொரு tensor core-உம் 4 × 4 matrix-களின் மேல் இந்த ஒரு செயலைச் செய்கிறது:</p>
+<p><strong>D = A × B + C</strong></p>
+<p>A, B ஆகியவை FP16 matrix-கள்; C, D ஆகியவை FP16 அல்லது FP32. FP16 பெருக்கலின் முழுத் துல்லிய விளைவு FP32 கூட்டலால் திரட்டப்படுகிறது. ஒரு 4 × 4 × 4 பெருக்கலுக்கு 4 × 4 × 4 = <strong>64 FMA-கள்</strong> — ஒவ்வொரு tensor core-உம் ஒரு clock-க்கு அவ்வளவு. V100-இன் ஒவ்வொரு SM-இலும் 8 tensor core-கள், மொத்தம் 640.</p>
+<h2 id="கயல-ஒர-உறபப">கையால் ஒரு உறுப்பு<a class="anchor" href="#%e0%ae%95%e0%ae%af%e0%ae%b2-%e0%ae%92%e0%ae%b0-%e0%ae%89%e0%ae%b1%e0%ae%aa%e0%ae%aa">#</a></h2>
+<p>D-இன் ஒவ்வொரு உறுப்பும் 4 பெருக்கல்கள் + 4 கூட்டல்கள் (C-இன் உறுப்பையும் சேர்த்து). எடுத்துக்காட்டு மதிப்புகள்: A-இன் வரிசை 0 = [1, 2, 0, −1], B-இன் நெடுவரிசை 0 = [3, 1, 4, 2], C[0][0] = 0.5.</p>
+<ol>
+<li>1 × 3 = 3</li>
+<li>2 × 1 = 2</li>
+<li>0 × 4 = 0</li>
+<li>(−1) × 2 = −2</li>
+<li>கூட்டுத்தொகை = 3 + 2 + 0 − 2 = 3</li>
+<li>D[0][0] = 3 + 0.5 = <strong>3.5</strong></li>
+</ol>
+<p>இதே வேலை 16 உறுப்புகளுக்கும் = 16 × 4 = 64 பெருக்கல்கள். Tensor core இந்த 64-ஐயும் ஒரே வன்பொருள் செயலாக, ஒரு clock-இல் செய்கிறது.</p>
+<h2 id="cuda-core-களல-சயதல-எனன-வறபட">CUDA core-களில் செய்தால் என்ன வேறுபாடு?<a class="anchor" href="#cuda-core-%e0%ae%95%e0%ae%b3%e0%ae%b2-%e0%ae%9a%e0%ae%af%e0%ae%a4%e0%ae%b2-%e0%ae%8e%e0%ae%a9%e0%ae%a9-%e0%ae%b5%e0%ae%b1%e0%ae%aa%e0%ae%9f">#</a></h2>
+<p>அதே 64 FMA-களை பதிவு 53-இன் FP32 CUDA core-களில் செய்ய, ஒவ்வொரு FMA-வும் ஒரு thread-இன் ஒரு அறிவுறுத்தல். 64 FMA = இரண்டு முழு warp அறிவுறுத்தல்கள் — மேலும் ஒவ்வொரு operand-ஐயும் register-களுக்கு இடையே நகர்த்தும் கூடுதல் அறிவுறுத்தல்கள். ஒவ்வொரு அறிவுறுத்தலுக்கும் fetch, decode, register file படிப்பு/எழுத்து. Tensor core-இல் ஒரு அறிவுறுத்தல் பல டஜன் FMA-களைத் தூண்டுகிறது; operand-கள் அலகுக்குள்ளேயே பல பெருக்கிகளுக்குப் பகிரப்படுகின்றன (A-இன் ஒவ்வொரு உறுப்பும் 4 முறை, B-இன் ஒவ்வொன்றும் 4 முறை பயன்படுகிறது).</p>
+<p><strong>ஒரு SM, ஒரு clock:</strong></p>
+<ul>
+<li>FP32 CUDA core-கள்: 64 core × 1 FMA = 64 FMA</li>
+<li>Tensor core-கள்: 8 × 64 = 512 FMA</li>
+<li>விகிதம்: <strong>8 மடங்கு</strong></li>
+</ul>
+<p><strong>முழு GPU உச்சம்:</strong></p>
+<ol>
+<li>640 tensor core × 64 FMA × 2 FLOP × 1.53 × 10⁹ Hz ≈ 125.3 × 10¹² → <strong>125 TFLOPS</strong> (whitepaper சொல்லும் &ldquo;125 Tensor TFLOPS&rdquo;)</li>
+<li>FP32 CUDA core-களின் 15.7 TFLOPS-உடன் ஒப்பிட: 125 ÷ 15.7 ≈ 8 மடங்கு — மேலே உள்ள SM கணக்குடன் பொருந்துகிறது.</li>
+</ol>
+<h2 id="பரய-matrix-கள-tiling">பெரிய matrix-கள்: tiling<a class="anchor" href="#%e0%ae%aa%e0%ae%b0%e0%ae%af-matrix-%e0%ae%95%e0%ae%b3-tiling">#</a></h2>
+<p>64 × 64 matrix-களைப் பெருக்குவோம் (M = N = K = 64):</p>
+<ol>
+<li>மொத்த FMA = 64 × 64 × 64 = 262,144</li>
+<li>4 × 4 × 4 tensor-core செயல்கள் = 262,144 ÷ 64 = 4,096</li>
+<li>ஒரு SM-இன் 8 tensor core-களில், இலட்சியமாக: 4,096 ÷ 8 = <strong>512 clock-கள்</strong> → 1.53 GHz-இல் சுமார் 0.33 µs</li>
+<li>ஒவ்வொரு 4 × 4 வெளியீட்டுத் துண்டும் K திசையில் 64 ÷ 4 = 16 படிகள் திரட்டப்படுகிறது: D₁ = A₁B₁ + C, D₂ = A₂B₂ + D₁, … — முந்தைய D அடுத்த படியின் C ஆகிறது.</li>
+</ol>
+<p><strong>தரவு பக்கம்:</strong> A, B ஒவ்வொன்றும் 64 × 64 × 2 byte (FP16) = 8 KB → மொத்தம் 16 KB. கணக்கு 2 × 262,144 = 524,288 FLOP. 524,288 ÷ 16,384 = <strong>32 FLOP/byte</strong> shared memory-இலிருந்து. 512 clock-களில் அந்த 16 KB தயாராக இருக்க வேண்டும் — அதனால்தான் பதிவு 54-இன் tiling மற்றும் bandwidth கணக்கு tensor core-க்கு இன்னும் கடுமையாகிறது: கணக்கு 8 மடங்கு வேகமானால், தரவும் 8 மடங்கு வேகமாக வர வேண்டும்.</p>
+<h2 id="ஏன-fp32-இல-தரடட-வணடம-ஒர-சதன">ஏன் FP32-இல் திரட்ட வேண்டும்: ஒரு சோதனை<a class="anchor" href="#%e0%ae%8f%e0%ae%a9-fp32-%e0%ae%87%e0%ae%b2-%e0%ae%a4%e0%ae%b0%e0%ae%9f%e0%ae%9f-%e0%ae%b5%e0%ae%a3%e0%ae%9f%e0%ae%ae-%e0%ae%92%e0%ae%b0-%e0%ae%9a%e0%ae%a4%e0%ae%a9">#</a></h2>
+<p>FP16-இல் 1 sign பிட், 5 exponent பிட், 10 fraction பிட். 2048 = 2¹¹ அருகில், அடுத்தடுத்த FP16 எண்களுக்கு இடையிலான இடைவெளி 2^(11 − 10) = <strong>2</strong>. அதனால் 2048 + 1 = 2049 என்பதை FP16-இல் எழுதவே முடியாது; அது 2048-க்கு round ஆகிறது.</p>
+<p>சோதனை: 1-ஐ 4,096 முறை கூட்டுவோம்.</p>
+<ul>
+<li>FP16 திரட்டி: 2048 வரை சரியாக ஏறுகிறது; பிறகு ஒவ்வொரு &ldquo;+1&rdquo;-உம் 2048-க்கே திரும்புகிறது. இறுதி விடை <strong>2048</strong> — பாதி வேலை காணாமல் போனது.</li>
+<li>FP32 திரட்டி (FP16 உள்ளீடுகளுடன்): இறுதி விடை <strong>4096</strong>.</li>
+</ul>
+<p>(இந்த இரண்டு முடிவுகளையும் numpy float16/float32 கொண்டு ஓட்டிச் சரிபார்த்தோம்.) நீண்ட dot product-களில் — ஆயிரக்கணக்கான பெருக்கல்களின் கூட்டு — இதுவே நடக்கும். அதனால்தான் &ldquo;குறைந்த துல்லியத்தில் பெருக்கு, அதிக துல்லியத்தில் திரட்டு&rdquo; என்ற mixed-precision வடிவமைப்பு: பெருக்கிகள் சிறியவை (FP16), திரட்டி அகலமானது (FP32). பதிவு 59 இதை விரிவாகப் பார்க்கிறது.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<p>(பயிற்சிகளில் புதிதாக வரும் உள்ளீட்டு எண்கள், மூலத்துடன் குறிக்கப்பட்டவை தவிர, எடுத்துக்காட்டு மதிப்புகள்.)</p>
+<ol>
+<li>A-இன் வரிசை = [2, −1, 3, 0], B-இன் நெடுவரிசை = [1, 4, 2, 5], C = −1. D உறுப்பு?
+<em>விடை:</em> 2 − 4 + 6 + 0 = 4; 4 + (−1) = 3.</li>
+<li>128 × 128 × 128 matmul-க்கு எத்தனை 4 × 4 × 4 tensor-core செயல்கள்? 640 tensor core-களிலும் இலட்சியமாகப் பகிர்ந்தால் எத்தனை clock?
+<em>விடை:</em> 128³ = 2,097,152 FMA ÷ 64 = 32,768 செயல்கள்; ÷ 640 = 51.2 → சுமார் 52 clock-கள் (நடைமுறையில் தரவு நகர்வு இதைவிடப் பல மடங்கு நேரம் எடுக்கும்).</li>
+<li>FP16-இல் 4096 = 2¹² அருகில் இடைவெளி என்ன? 4096 + 3 என்ன ஆகும்?
+<em>விடை:</em> 2^(12 − 10) = 4. 4099 என்பது 4096-க்கும் 4100-க்கும் இடையே, 4100-க்கு அருகில் → 4100.</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>அணி / அணிப் பெருக்கல்</td>
+					<td>matrix / matrix multiplication</td>
+			</tr>
+			<tr>
+					<td>புள்ளிப் பெருக்கம்</td>
+					<td>dot product</td>
+			</tr>
+			<tr>
+					<td>பெருக்கல்-கூட்டல்</td>
+					<td>multiply-accumulate (MAC) / FMA</td>
+			</tr>
+			<tr>
+					<td>திரட்டி</td>
+					<td>accumulator</td>
+			</tr>
+			<tr>
+					<td>துல்லியம்</td>
+					<td>precision</td>
+			</tr>
+			<tr>
+					<td>அரைத் துல்லியம் / ஒற்றைத் துல்லியம்</td>
+					<td>half precision (FP16) / single precision (FP32)</td>
+			</tr>
+			<tr>
+					<td>கலப்புத் துல்லியம்</td>
+					<td>mixed precision</td>
+			</tr>
+			<tr>
+					<td>துண்டு / துண்டாக்கல்</td>
+					<td>tile / tiling</td>
+			</tr>
+			<tr>
+					<td>அடுக்குக் குறி / பின்னப் பகுதி</td>
+					<td>exponent / fraction (mantissa)</td>
+			</tr>
+			<tr>
+					<td>முழுமையாக்கல்</td>
+					<td>rounding</td>
+			</tr>
+			<tr>
+					<td>டென்சர் கோர்</td>
+					<td>tensor core</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Tensor&#43;Cores&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F55-tensor-cores%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F55-tensor-cores.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F55-tensor-cores.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/54-gpu-memory-hierarchy/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>GPU Memory Hierarchy</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/56-multi-gpu-scaling/" class="flex align-center">
+        <span>Multi-GPU Scaling</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#ஏன-matrix-multiply">ஏன் Matrix Multiply</a></li>
+    <li><a href="#ஒர-tensor-core-எனன-சயகறத">ஒரு Tensor Core என்ன செய்கிறது</a></li>
+    <li><a href="#precision-சலகனடன-இணககபபடடளளத">Precision சிலிகானுடன் இணைக்கப்பட்டுள்ளது</a></li>
+    <li><a href="#ஒர-பதல-அலல">ஒரே பதில் அல்ல</a></li>
+    <li><a href="#v100-tensor-core-whitepaper-எனன-சலகறத">V100 tensor core: whitepaper என்ன சொல்கிறது</a></li>
+    <li><a href="#கயல-ஒர-உறபப">கையால் ஒரு உறுப்பு</a></li>
+    <li><a href="#cuda-core-களல-சயதல-எனன-வறபட">CUDA core-களில் செய்தால் என்ன வேறுபாடு?</a></li>
+    <li><a href="#பரய-matrix-கள-tiling">பெரிய matrix-கள்: tiling</a></li>
+    <li><a href="#ஏன-fp32-இல-தரடட-வணடம-ஒர-சதன">ஏன் FP32-இல் திரட்ட வேண்டும்: ஒரு சோதனை</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

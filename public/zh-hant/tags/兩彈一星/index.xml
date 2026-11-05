@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>兩彈一星 on 我們如何走到那裡</title>
+		<link>http://localhost:1478/zh-hant/tags/%E5%85%A9%E5%BD%88%E4%B8%80%E6%98%9F/</link>
+		<description>Recent content in 兩彈一星 on 我們如何走到那裡</description>
+		<generator>Hugo</generator>
+		<language>zh-Hant</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:38:43 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hant/tags/%E5%85%A9%E5%BD%88%E4%B8%80%E6%98%9F/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>真空管與電晶體：中國第一批電腦，和算盤的真實角色</title>
+				<link>http://localhost:1478/zh-hant/posts/03-zh-first-electronic-computers/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/03-zh-first-electronic-computers/</guid>
+				<description>從 1956 年的“緊急措施”到 DJS-100 系列：中國早期電腦為誰而造、在哪裡日夜運轉，以及為什麼“算盤造原子彈”是誤傳。</description>
+			</item>
+	</channel>
+</rss>

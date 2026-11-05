@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on How We Got There</title>
+		<link>http://localhost:1478/posts/</link>
+		<description>Recent content in Posts on How We Got There</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:59:23 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/posts/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Credits &amp; Doors Out</title>
+				<link>http://localhost:1478/posts/00-credits/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/00-credits/</guid>
+				<description>Credits due first — published sources, existing interactives, and images this journey stands on</description>
+			</item>
+			<item>
+				<title>Foreword</title>
+				<link>http://localhost:1478/posts/00-foreword/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/00-foreword/</guid>
+				<description>An interactive journey from relays to attention — not an encyclopedia</description>
+			</item>
+			<item>
+				<title>Pattern cards on silk</title>
+				<link>http://localhost:1478/posts/01-take-silk-cards/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01-take-silk-cards/</guid>
+				<description>Swap the cards, change the flower — the weaver’s hands stay the same</description>
+			</item>
+			<item>
+				<title>The barrel organ</title>
+				<link>http://localhost:1478/posts/01-take-barrel-organ/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01-take-barrel-organ/</guid>
+				<description>It does not know a hymn — pegs decide the song</description>
+			</item>
+			<item>
+				<title>The caravan</title>
+				<link>http://localhost:1478/posts/01-take-caravan/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01-take-caravan/</guid>
+				<description>Agreed marks on clay or cloth — the marks and stops are clever, not the caravan</description>
+			</item>
+			<item>
+				<title>The desk clerk</title>
+				<link>http://localhost:1478/posts/01-take-clerk/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01-take-clerk/</guid>
+				<description>Marks, a written list of steps — and a person who can tire, skip, or guess</description>
+			</item>
+			<item>
+				<title>The feast scoop</title>
+				<link>http://localhost:1478/posts/01-take-feast-scoop/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01-take-feast-scoop/</guid>
+				<description>Same measure every guest — never a deeper scoop for the tenth plate</description>
+			</item>
+			<item>
+				<title>The player piano</title>
+				<link>http://localhost:1478/posts/01-take-player-piano/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01-take-player-piano/</guid>
+				<description>Holes in a roll; the same roll twice is the same piece</description>
+			</item>
+			<item>
+				<title>The stubborn helper</title>
+				<link>http://localhost:1478/posts/01-take-stubborn-helper/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01-take-stubborn-helper/</guid>
+				<description>Never bored, never guessing, never “improving” the request</description>
+			</item>
+			<item>
+				<title>The water wheel</title>
+				<link>http://localhost:1478/posts/01-take-water-wheel/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01-take-water-wheel/</guid>
+				<description>A fixed chore you can trust — the wheel will not improvise</description>
+			</item>
+			<item>
+				<title>Trays of pebbles</title>
+				<link>http://localhost:1478/posts/01-take-pebbles/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01-take-pebbles/</guid>
+				<description>Three trays, a recipe card one step at a time, and an answer strip</description>
+			</item>
+			<item>
+				<title>What is this thing?</title>
+				<link>http://localhost:1478/posts/01-what-is-this-thing/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01-what-is-this-thing/</guid>
+				<description>Nine doors into the same idea — pick any, then meet the brass engines</description>
+			</item>
+			<item>
+				<title>Babbage&#39;s Engines</title>
+				<link>http://localhost:1478/posts/01a-babbage-engines/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01a-babbage-engines/</guid>
+				<description>Difference Engine and Analytical Engine — store, mill, and a program on cards</description>
+			</item>
+			<item>
+				<title>The Jacquard Loom</title>
+				<link>http://localhost:1478/posts/01b-jacquard-loom/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01b-jacquard-loom/</guid>
+				<description>Punched cards made a program separate from the machine that runs it</description>
+			</item>
+			<item>
+				<title>Why Mechanical Computing Matters</title>
+				<link>http://localhost:1478/posts/01c-why-mechanical-matters/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/01c-why-mechanical-matters/</guid>
+				<description>The logical shape arrived in brass; friction forced electricity</description>
+			</item>
+			<item>
+				<title>Relays and Electromechanical Logic</title>
+				<link>http://localhost:1478/posts/02-relays-and-electromechanical-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/02-relays-and-electromechanical-logic/</guid>
+				<description>Relays proved binary logic works — and that moving metal cannot keep up</description>
+			</item>
+			<item>
+				<title>The Vacuum Tube Era</title>
+				<link>http://localhost:1478/posts/03-the-vacuum-tube-era/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/03-the-vacuum-tube-era/</guid>
+				<description>Tubes removed moving parts — and traded that speed for heat, power, and failure</description>
+			</item>
+			<item>
+				<title>Why the Transistor Had to Happen</title>
+				<link>http://localhost:1478/posts/04-why-the-transistor-had-to-happen/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/04-why-the-transistor-had-to-happen/</guid>
+				<description>Size, power, reliability — three tube ceilings that made solid-state switching inevitable</description>
+			</item>
+			<item>
+				<title>Semiconductors from First Principles</title>
+				<link>http://localhost:1478/posts/05-semiconductors-from-first-principles/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/05-semiconductors-from-first-principles/</guid>
+				<description>A band gap you can push either way — doping turns silicon into a controllable switch</description>
+			</item>
+			<item>
+				<title>The Transistor: BJT to MOSFET</title>
+				<link>http://localhost:1478/posts/06-the-transistor-bjt-to-mosfet/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/06-the-transistor-bjt-to-mosfet/</guid>
+				<description>Current-controlled BJTs burned idle power; voltage-controlled MOSFETs made density possible</description>
+			</item>
+			<item>
+				<title>Logic Gates from Transistors</title>
+				<link>http://localhost:1478/posts/07-logic-gates-from-transistors/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/07-logic-gates-from-transistors/</guid>
+				<description>CMOS pairs NMOS and PMOS so idle gates draw no static path — the topology that scaled</description>
+			</item>
+			<item>
+				<title>From Gates to Combinational Logic</title>
+				<link>http://localhost:1478/posts/08-from-gates-to-combinational-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/08-from-gates-to-combinational-logic/</guid>
+				<description>Compose gates into adders and an ALU — then hit the carry-ripple delay that forces better structures</description>
+			</item>
+			<item>
+				<title>Sequential Logic</title>
+				<link>http://localhost:1478/posts/09-sequential-logic/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/09-sequential-logic/</guid>
+				<description>Feedback makes bistable memory; edge-triggered flip-flops make synchronous design tractable — until setup/hold caps the clock</description>
+			</item>
+			<item>
+				<title>The Memory Hierarchy Begins</title>
+				<link>http://localhost:1478/posts/10-the-memory-hierarchy-begins/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/10-the-memory-hierarchy-begins/</guid>
+				<description>Flip-flops are too expensive per bit — SRAM buys speed, DRAM buys density, and the hierarchy is the tradeoff repeated</description>
+			</item>
+			<item>
+				<title>Instruction Sets</title>
+				<link>http://localhost:1478/posts/11-instruction-sets/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/11-instruction-sets/</guid>
+				<description>The ISA is the software–hardware contract; CISC and RISC are two answers to what that contract should look like</description>
+			</item>
+			<item>
+				<title>Datapath Design</title>
+				<link>http://localhost:1478/posts/12-datapath-design/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/12-datapath-design/</guid>
+				<description>A single-cycle datapath makes the pieces visible — and shows why its clock is sized to the worst case</description>
+			</item>
+			<item>
+				<title>Pipelining</title>
+				<link>http://localhost:1478/posts/13-pipelining/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/13-pipelining/</guid>
+				<description>Overlap instructions for throughput — then hazards force forwarding, stalls, and everything that follows</description>
+			</item>
+			<item>
+				<title>Branch Prediction</title>
+				<link>http://localhost:1478/posts/14-branch-prediction/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/14-branch-prediction/</guid>
+				<description>Pipeline flushes are expensive — prediction exists to make them rare</description>
+			</item>
+			<item>
+				<title>Caches</title>
+				<link>http://localhost:1478/posts/15-caches/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/15-caches/</guid>
+				<description>Locality makes the memory hierarchy work; associativity and coherence are the costs of keeping it honest</description>
+			</item>
+			<item>
+				<title>Out-of-Order Execution</title>
+				<link>http://localhost:1478/posts/16-out-of-order-execution/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/16-out-of-order-execution/</guid>
+				<description>Stall only what must wait — Tomasulo&amp;rsquo;s idea: execute when ready, commit in order</description>
+			</item>
+			<item>
+				<title>Superscalar &amp; Multicore</title>
+				<link>http://localhost:1478/posts/17-superscalar-multicore/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/17-superscalar-multicore/</guid>
+				<description>ILP and power hit walls — so the industry went wide instead of faster per thread</description>
+			</item>
+			<item>
+				<title>Mainframes to Minicomputers to Microprocessors</title>
+				<link>http://localhost:1478/posts/18-mainframes-to-minicomputers-to-microprocessors/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/18-mainframes-to-minicomputers-to-microprocessors/</guid>
+				<description>Three eras of who gets a computer — institutional, departmental, then one chip for everyone</description>
+			</item>
+			<item>
+				<title>The x86 vs RISC Split</title>
+				<link>http://localhost:1478/posts/19-the-x86-vs-risc-split/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/19-the-x86-vs-risc-split/</guid>
+				<description>RISC was cleaner on paper — software lock-in and µop translation kept x86 on top</description>
+			</item>
+			<item>
+				<title>ARM and RISC-V: The Architecture Landscape Today</title>
+				<link>http://localhost:1478/posts/20-arm-and-risc-v-the-architecture-landscape-today/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/20-arm-and-risc-v-the-architecture-landscape-today/</guid>
+				<description>After desktop settled on x86, the fight moved to power and licensing — ARM won mobile; RISC-V bets on open</description>
+			</item>
+			<item>
+				<title>Batch Processing and the Birth of the Operating System</title>
+				<link>http://localhost:1478/posts/21-batch-processing-and-the-birth-of-the-operating-system/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/21-batch-processing-and-the-birth-of-the-operating-system/</guid>
+				<description>Expensive CPUs sitting idle between punch-card jobs forced the first resident monitor — system software, not a user&amp;rsquo;s program</description>
+			</item>
+			<item>
+				<title>Time-Sharing and the Unix Lineage</title>
+				<link>http://localhost:1478/posts/22-time-sharing-and-the-unix-lineage/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/22-time-sharing-and-the-unix-lineage/</guid>
+				<description>Batch kept the CPU busy; time-sharing gave many users the illusion of owning it — Multics ambition, then Unix simplicity</description>
+			</item>
+			<item>
+				<title>The GNU Movement and Linux</title>
+				<link>http://localhost:1478/posts/23-the-gnu-movement-and-linux/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/23-the-gnu-movement-and-linux/</guid>
+				<description>Unix closed; Stallman built free userland; Torvalds filled the kernel gap — GPL kept the combination open</description>
+			</item>
+			<item>
+				<title>Virtual Memory and Multitasking</title>
+				<link>http://localhost:1478/posts/24-virtual-memory-and-multitasking/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/24-virtual-memory-and-multitasking/</guid>
+				<description>Time-sharing needs isolation — virtual memory gives every process the illusion of owning the machine</description>
+			</item>
+			<item>
+				<title>Containers and Modern OS Isolation</title>
+				<link>http://localhost:1478/posts/25-containers-and-modern-os-isolation/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/25-containers-and-modern-os-isolation/</guid>
+				<description>Full VMs buy strong isolation at heavy cost — namespaces and cgroups share one kernel and isolate almost everything else</description>
+			</item>
+			<item>
+				<title>From Machine Code to Assembly</title>
+				<link>http://localhost:1478/posts/26-from-machine-code-to-assembly/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/26-from-machine-code-to-assembly/</guid>
+				<description>Raw binary is what the CPU runs — assembly is the first readability layer, still one instruction per mnemonic</description>
+			</item>
+			<item>
+				<title>High-Level Languages: FORTRAN, COBOL, Lisp, C</title>
+				<link>http://localhost:1478/posts/27-high-level-languages-fortran-cobol-lisp-c/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/27-high-level-languages-fortran-cobol-lisp-c/</guid>
+				<description>Four domains forced four abstractions — formula, business prose, symbolic lists, systems close to the metal</description>
+			</item>
+			<item>
+				<title>Compilers, JIT, and Modern Language Runtimes</title>
+				<link>http://localhost:1478/posts/28-compilers-jit-and-modern-language-runtimes/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/28-compilers-jit-and-modern-language-runtimes/</guid>
+				<description>AOT compiles once without runtime facts; JIT waits for hot paths — and garbage collection shifts cost into the runtime</description>
+			</item>
+			<item>
+				<title>Real-Time Systems and Deterministic Scheduling</title>
+				<link>http://localhost:1478/posts/29-real-time-systems-and-deterministic-scheduling/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/29-real-time-systems-and-deterministic-scheduling/</guid>
+				<description>Throughput and fairness are not deadlines — hard real-time needs bounded worst-case timing, not average speed</description>
+			</item>
+			<item>
+				<title>Real-Time Systems in Practice</title>
+				<link>http://localhost:1478/posts/30-real-time-systems-in-practice/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/30-real-time-systems-in-practice/</guid>
+				<description>Sense–compute–actuate on a fixed budget — avionics and industrial control where Phase 3&amp;rsquo;s speed tricks become timing enemies</description>
+			</item>
+			<item>
+				<title>Buses 101</title>
+				<link>http://localhost:1478/posts/31-buses-101/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/31-buses-101/</guid>
+				<description>A shared bus can do one transaction at a time — that ceiling forces everything after</description>
+			</item>
+			<item>
+				<title>From ISA Bus to PCI to PCIe</title>
+				<link>http://localhost:1478/posts/32-from-isa-bus-to-pci-to-pcie/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/32-from-isa-bus-to-pci-to-pcie/</guid>
+				<description>Skew killed the wide parallel bus; point-to-point serial is how we escaped</description>
+			</item>
+			<item>
+				<title>PCIe Deep Dive</title>
+				<link>http://localhost:1478/posts/33-pcie-deep-dive/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/33-pcie-deep-dive/</guid>
+				<description>Intent rides TLPs; reliability and signaling sit below — the stack that replaced the shared bus</description>
+			</item>
+			<item>
+				<title>Memory Buses</title>
+				<link>http://localhost:1478/posts/34-memory-buses/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/34-memory-buses/</guid>
+				<description>DDR bought bandwidth; latency barely moved — banks and channels hide the wait</description>
+			</item>
+			<item>
+				<title>The Memory Wall</title>
+				<link>http://localhost:1478/posts/35-the-memory-wall/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/35-the-memory-wall/</guid>
+				<description>CPU speed and DRAM latency diverged for decades — caches hide the gap; they do not close it</description>
+			</item>
+			<item>
+				<title>The Clock Speed Wall</title>
+				<link>http://localhost:1478/posts/36-the-clock-speed-wall/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/36-the-clock-speed-wall/</guid>
+				<description>Frequency hit heat — so the industry went wide (cores, then fabrics) instead of faster clocks</description>
+			</item>
+			<item>
+				<title>Interconnects at Scale</title>
+				<link>http://localhost:1478/posts/37-interconnects-at-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/37-interconnects-at-scale/</guid>
+				<description>Once compute is many chips, the path between them is the next wall — dedicated links, fewer copies</description>
+			</item>
+			<item>
+				<title>Serial Links and the First Machine-to-Machine Connections</title>
+				<link>http://localhost:1478/posts/38-serial-links-and-the-first-machine-to-machine-connections/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/38-serial-links-and-the-first-machine-to-machine-connections/</guid>
+				<description>Point-to-point serial links connect exactly two ends — the ceiling that forced packet switching</description>
+			</item>
+			<item>
+				<title>ARPANET and Packet Switching</title>
+				<link>http://localhost:1478/posts/39-arpanet-and-packet-switching/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/39-arpanet-and-packet-switching/</guid>
+				<description>Bursty computer traffic broke circuit switching — ARPANET proved packets and shared links could work</description>
+			</item>
+			<item>
+				<title>Ethernet and the Local Area Network</title>
+				<link>http://localhost:1478/posts/40-ethernet-and-the-local-area-network/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/40-ethernet-and-the-local-area-network/</guid>
+				<description>Shared cable, no central arbiter — CSMA/CD solved the LAN collision constraint; switches later removed it</description>
+			</item>
+			<item>
+				<title>TCP/IP and the Modern Internet Stack</title>
+				<link>http://localhost:1478/posts/41-tcp-ip-and-the-modern-internet-stack/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/41-tcp-ip-and-the-modern-internet-stack/</guid>
+				<description>How internet protocols stacked and why — layers, flag day, apps on an unreliable substrate — not a catalog</description>
+			</item>
+			<item>
+				<title>Datacenter Networking and RDMA</title>
+				<link>http://localhost:1478/posts/42-datacenter-networking-and-rdma/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/42-datacenter-networking-and-rdma/</guid>
+				<description>Inside one controlled fabric, kernel copies become the tax — RDMA and topology buy back the wire</description>
+			</item>
+			<item>
+				<title>Usenet, Archie, Gopher, and the Pre-Web Internet</title>
+				<link>http://localhost:1478/posts/43-usenet-archie-gopher-and-the-pre-web-internet/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/43-usenet-archie-gopher-and-the-pre-web-internet/</guid>
+				<description>Find, then talk — Usenet, Archie, Gopher, IRC, and the consumer portals that packaged both</description>
+			</item>
+			<item>
+				<title>Google&#39;s Big Data Infrastructure — Why They Won</title>
+				<link>http://localhost:1478/posts/44-google-s-big-data-infrastructure-why-they-won/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/44-google-s-big-data-infrastructure-why-they-won/</guid>
+				<description>Web-scale data forced failure-as-normal storage, then a programming model that hid the cluster — GFS, MapReduce, Bigtable</description>
+			</item>
+			<item>
+				<title>Kubernetes and Container Orchestration at Scale</title>
+				<link>http://localhost:1478/posts/45-kubernetes-and-container-orchestration-at-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/45-kubernetes-and-container-orchestration-at-scale/</guid>
+				<description>Thousands of containers failing routinely force declarative desired state and a continuous reconciliation loop</description>
+			</item>
+			<item>
+				<title>The Machine Learning Software Stack</title>
+				<link>http://localhost:1478/posts/46-the-machine-learning-software-stack/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/46-the-machine-learning-software-stack/</guid>
+				<description>Between a model and silicon sits a stack that turns tensors into distributed training — and hits the interconnect wall</description>
+			</item>
+			<item>
+				<title>What &#39;7nm&#39; Actually Means</title>
+				<link>http://localhost:1478/posts/47-what-7nm-actually-means/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/47-what-7nm-actually-means/</guid>
+				<description>Node names stopped tracking one physical length — density and pitch are the physics; the label is a generation</description>
+			</item>
+			<item>
+				<title>Photolithography</title>
+				<link>http://localhost:1478/posts/48-photolithography/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/48-photolithography/</guid>
+				<description>Diffraction forces shorter wavelengths — EUV&amp;rsquo;s mirrors and tin plasma are what kept feature sizes moving</description>
+			</item>
+			<item>
+				<title>FinFET to GAA</title>
+				<link>http://localhost:1478/posts/49-finfet-to-gaa/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/49-finfet-to-gaa/</guid>
+				<description>Short-channel leakage killed planar shrink — wrap the gate (FinFET), then wrap it all around (GAA)</description>
+			</item>
+			<item>
+				<title>Moore&#39;s Law</title>
+				<link>http://localhost:1478/posts/50-moore-s-law/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/50-moore-s-law/</guid>
+				<description>Moore&amp;rsquo;s observation was economic component count — transistor count still climbs; clocks and cost-per-transistor tell different stories</description>
+			</item>
+			<item>
+				<title>Chiplets &amp; Advanced Packaging</title>
+				<link>http://localhost:1478/posts/51-chiplets-advanced-packaging/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/51-chiplets-advanced-packaging/</guid>
+				<description>Yield falls with die area — split into chiplets and buy back bandwidth with advanced packaging</description>
+			</item>
+			<item>
+				<title>Why GPUs Exist</title>
+				<link>http://localhost:1478/posts/52-why-gpus-exist/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/52-why-gpus-exist/</guid>
+				<description>Graphics gave an embarrassingly parallel workload — SIMT hardware followed, then general compute found the same shape</description>
+			</item>
+			<item>
+				<title>CUDA Cores, Warps, and Occupancy</title>
+				<link>http://localhost:1478/posts/53-cuda-cores-warps-and-occupancy/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/53-cuda-cores-warps-and-occupancy/</guid>
+				<description>SIMT maps onto SMs and warps — lockstep wins until divergence, occupancy hides memory stalls</description>
+			</item>
+			<item>
+				<title>GPU Memory Hierarchy</title>
+				<link>http://localhost:1478/posts/54-gpu-memory-hierarchy/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/54-gpu-memory-hierarchy/</guid>
+				<description>Thousands of threads force bandwidth over DDR — HBM stacks memory beside compute</description>
+			</item>
+			<item>
+				<title>Tensor Cores</title>
+				<link>http://localhost:1478/posts/55-tensor-cores/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/55-tensor-cores/</guid>
+				<description>Matrix multiply-accumulate became the dominant AI op — so hardware made it a first-class primitive</description>
+			</item>
+			<item>
+				<title>Multi-GPU Scaling</title>
+				<link>http://localhost:1478/posts/56-multi-gpu-scaling/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/56-multi-gpu-scaling/</guid>
+				<description>One GPU is finite — interconnect between GPUs becomes the next wall</description>
+			</item>
+			<item>
+				<title>Why Matrix Multiply Reshaped Chip Design</title>
+				<link>http://localhost:1478/posts/57-why-matrix-multiply-reshaped-chip-design/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/57-why-matrix-multiply-reshaped-chip-design/</guid>
+				<description>AI compute reduces to matmul at scale — specialize silicon for that shape</description>
+			</item>
+			<item>
+				<title>Systolic Arrays</title>
+				<link>http://localhost:1478/posts/58-systolic-arrays/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/58-systolic-arrays/</guid>
+				<description>Data pulses through a MAC grid — specialize the whole chip for matmul (TPUs)</description>
+			</item>
+			<item>
+				<title>Quantization &amp; Mixed Precision</title>
+				<link>http://localhost:1478/posts/59-quantization-mixed-precision/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/59-quantization-mixed-precision/</guid>
+				<description>Fewer bits per MAC means more MACs in the same power budget — mix precision where accuracy still needs it</description>
+			</item>
+			<item>
+				<title>Sparsity in Hardware</title>
+				<link>http://localhost:1478/posts/60-sparsity-in-hardware/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/60-sparsity-in-hardware/</guid>
+				<description>Skip known-zero MACs — but only structured patterns are cheap for dense MAC hardware to exploit</description>
+			</item>
+			<item>
+				<title>Interconnect at Datacenter Scale</title>
+				<link>http://localhost:1478/posts/61-interconnect-at-datacenter-scale/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/61-interconnect-at-datacenter-scale/</guid>
+				<description>Thousands of GPUs — topology and all-reduce matter as much as any chip&amp;rsquo;s peak FLOPS</description>
+			</item>
+			<item>
+				<title>Where It&#39;s Headed</title>
+				<link>http://localhost:1478/posts/62-where-it-s-headed/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/62-where-it-s-headed/</guid>
+				<description>Same pattern forward — chiplets, optics closer to the package, compute nearer memory</description>
+			</item>
+			<item>
+				<title>Attention Is All You Need</title>
+				<link>http://localhost:1478/posts/63-attention-is-all-you-need/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/63-attention-is-all-you-need/</guid>
+				<description>Self-attention closed the spine — parallel sequence modeling that maps onto the matmul hardware the journey built</description>
+			</item>
+			<item>
+				<title>Who Decides the Wire</title>
+				<link>http://localhost:1478/posts/64-who-decides-the-wire/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/64-who-decides-the-wire/</guid>
+				<description>Who names numbers, names, and encodings so heterogeneous networks can interoperate</description>
+			</item>
+			<item>
+				<title>Wartime Crypto</title>
+				<link>http://localhost:1478/posts/66-wartime-crypto/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/66-wartime-crypto/</guid>
+				<description>Enigma, Bletchley, and Colossus — why breaking ciphers forced electronic computing</description>
+			</item>
+			<item>
+				<title>Privacy, Consent, Identity, Cyber</title>
+				<link>http://localhost:1478/posts/67-privacy-consent-identity-cyber/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/67-privacy-consent-identity-cyber/</guid>
+				<description>Privacy, consent, identity, and cybersecurity as engineering evolution on an open network — not a policy pamphlet</description>
+			</item>
+			<item>
+				<title>Visions That Shipped</title>
+				<link>http://localhost:1478/posts/68-visions-that-shipped/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/68-visions-that-shipped/</guid>
+				<description>Forward links out of the journey — Cisco, Gates, Jobs, GNU+Linus, Elon, Bezos as seeds of kinds that turned stack into lived platforms</description>
+			</item>
+			<item>
+				<title>Platform Synthesis</title>
+				<link>http://localhost:1478/posts/69-platform-synthesis/</link>
+				<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/69-platform-synthesis/</guid>
+				<description>One high-level stop — a large platform is distributed systems, networking, AI infra, privacy engineering, and software engineering composed</description>
+			</item>
+			<item>
+				<title>Timeline</title>
+				<link>http://localhost:1478/posts/98-timeline/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/98-timeline/</guid>
+				<description>A condensed chronology from mechanical calculation to modern attention mechanisms</description>
+			</item>
+			<item>
+				<title>Glossary</title>
+				<link>http://localhost:1478/posts/99-glossary/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/99-glossary/</guid>
+				<description>Key terms used throughout the series, defined precisely</description>
+			</item>
+	</channel>
+</rss>

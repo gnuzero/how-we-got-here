@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>跨境提供 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/%E8%B7%A8%E5%A2%83%E6%8F%90%E4%BE%9B/</link>
+		<description>Recent content in 跨境提供 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/%E8%B7%A8%E5%A2%83%E6%8F%90%E4%BE%9B/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>从电脑处理到自动化决策：两岸三地的个人信息保护法制</title>
+				<link>http://localhost:1478/zh-hans/posts/67-zh-privacy-law/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/67-zh-privacy-law/</guid>
+				<description>1995 年 8 月，香港和台湾相隔八天立下个人资料保护的法律，台湾那部的名字里还写着电脑处理；2021 年，大陆的《个人信息保护法》把同意、敏感信息和算法推送都写进了条文。</description>
+			</item>
+	</channel>
+</rss>

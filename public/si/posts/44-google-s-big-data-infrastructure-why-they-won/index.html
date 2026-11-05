@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Web-පරිමාණ දත්ත failure-as-normal ගබඩාව බල කළේය, පසුව cluster එක සඟවන ක්‍රමලේඛන ආකෘතියක් — GFS, MapReduce, Bigtable">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/44-google-s-big-data-infrastructure-why-they-won/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි">
+	<meta property="og:description" content="Web-පරිමාණ දත්ත failure-as-normal ගබඩාව බල කළේය, පසුව cluster එක සඟවන ක්‍රමලේඛන ආකෘතියක් — GFS, MapReduce, Bigtable">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:16:20+05:30">
+
+
+	<meta itemprop="name" content="Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි">
+	<meta itemprop="description" content="Web-පරිමාණ දත්ත failure-as-normal ගබඩාව බල කළේය, පසුව cluster එක සඟවන ක්‍රමලේඛන ආකෘතියක් — GFS, MapReduce, Bigtable">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:16:20+05:30">
+	<meta itemprop="wordCount" content="1667">
+
+<title>Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/44-google-s-big-data-infrastructure-why-they-won/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/44-google-s-big-data-infrastructure-why-they-won/" title="Google&#39;s Big Data Infrastructure — Why They Won">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/44-google-s-big-data-infrastructure-why-they-won/" title="โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" title="Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/44-google-s-big-data-infrastructure-why-they-won/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="active">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#සමව-web-එක-එක-පටටයක-ඉකමව-ගයය">සීමාව: Web එක එක් පෙට්ටියක් ඉක්මවා ගියේය</a></li>
+    <li><a href="#failure-සමනයය--එබවන-ගබඩව-එය-උපකලපනය-කළ-යත-වය">Failure සාමාන්‍යයි — එබැවින් ගබඩාව එය උපකල්පනය කළ යුතු විය</a></li>
+    <li><a href="#cluster-එක-නවත-සය-නගන-සකසම">Cluster එක නැවත සොයා නොගෙන සැකසීම</a></li>
+    <li><a href="#ලභ-bytes-මත-වයහය">ලාභ Bytes මත ව්‍යුහය</a></li>
+    <li><a href="#මය-moat-එක-වය-ඇය">මෙය Moat එක වූයේ ඇයි</a></li>
+    <li><a href="#ගඹරන-gfs-mapreduce-සහ-bigtable--papers-වල-සඛය-පනසලන">ගැඹුරින්: GFS, MapReduce සහ Bigtable — papers වල සංඛ්‍යා පැන්සලෙන්</a>
+      <ul>
+        <li><a href="#1-gfs-එක-master-කනක-chunk-වශල-කබල">1. GFS: එක් master කෙනෙක්, chunk විශාල කැබලි</a></li>
+        <li><a href="#2-mapreduce-වචන-ගණන-කරම-අතන">2. MapReduce: වචන ගණන් කිරීම අතින්</a></li>
+        <li><a href="#3-bigtable-sort-කළ-බද-සතයමක">3. Bigtable: sort කළ, බෙදූ සිතියමක්</a></li>
+        <li><a href="#පනසල-අභයස">පැන්සල් අභ්‍යාස</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>1990 ගණන්වල අග භාගය වන විට සමාගම් කිහිපයක් web search ගොඩනඟමින් සිටියහ. Google ජයග්‍රහණය කළේ ranking බුද්ධිමත්කමෙන් පමණක් නොවේ — PageRank වැදගත් විය, නමුත් කල් පවතින වාසිය යටිතල පහසුකම විය: එක් යන්ත්‍රයක් කිසිදා ප්‍රමාණවත් නොවන විට අඛණ්ඩව වෙනස් වන web එකක් ගබඩා කර සැකසිය හැකි පද්ධති.</p>
+<h2 id="සමව-web-එක-එක-පටටයක-ඉකමව-ගයය">සීමාව: Web එක එක් පෙට්ටියක් ඉක්මවා ගියේය<a class="anchor" href="#%e0%b7%83%e0%b6%b8%e0%b7%80-web-%e0%b6%91%e0%b6%9a-%e0%b6%91%e0%b6%9a-%e0%b6%b4%e0%b6%a7%e0%b6%a7%e0%b6%ba%e0%b6%9a-%e0%b6%89%e0%b6%9a%e0%b6%b8%e0%b7%80-%e0%b6%9c%e0%b6%ba%e0%b6%ba">#</a></h2>
+<p>&ldquo;සම්පූර්ණ web එක&rdquo; indexing කිරීම යනු ඕනෑම තනි disk එකකට හෝ මතකයකට වඩා විශාල දත්ත කට්ටලයක්, එක්-වරක් snapshot එකක් ලෙස නොව අඛණ්ඩව පැමිණෙන එකකි. Phase 3 <em>එක්</em> යන්ත්‍රයක් වේගවත් කළේය. මෙම ගැටලුව වෙනස්ය: ඕනෑම එකකට වඩා විශාල දෙයක් ඒවා එක්ව රඳවා සැකසන පරිදි <em>බොහෝ</em> යන්ත්‍ර සම්බන්ධීකරණය කරන්න.</p>
+<h2 id="failure-සමනයය--එබවන-ගබඩව-එය-උපකලපනය-කළ-යත-වය">Failure සාමාන්‍යයි — එබැවින් ගබඩාව එය උපකල්පනය කළ යුතු විය<a class="anchor" href="#failure-%e0%b7%83%e0%b6%b8%e0%b6%b1%e0%b6%ba%e0%b6%ba--%e0%b6%91%e0%b6%b6%e0%b7%80%e0%b6%b1-%e0%b6%9c%e0%b6%b6%e0%b6%a9%e0%b7%80-%e0%b6%91%e0%b6%ba-%e0%b6%8b%e0%b6%b4%e0%b6%9a%e0%b6%bd%e0%b6%b4%e0%b6%b1%e0%b6%ba-%e0%b6%9a%e0%b7%85-%e0%b6%ba%e0%b6%ad-%e0%b7%80%e0%b6%ba">#</a></h2>
+<p>Google File System (Ghemawat, Gobioff, සහ Leung, SOSP 2003) බොහෝ filesystems තවමත් ව්‍යතිරේකයක් ලෙස සැලකූ නිර්මාණ උපකල්පනයකින් පටන් ගත්තේය: දහස් ගණනක් commodity යන්ත්‍ර සමඟ, දෘඪාංග failure යනු රුටීනයකි. ගොනු විශාල chunks වලට බෙදන්න, එක් එක් chunk එක chunkservers හරහා replicate කරන්න, සහ chunks ජීවත් වන තැන master එකකට ලුහුබැඳීමට ඉඩ දෙන්න — එවිට යන්ත්‍රයක් අහිමි වීම අර්බුදයක් ලෙස හසුරුවනු වෙනුවට ස්වයංක්‍රීයව අවශෝෂණය වේ. එය Post 42 හි fabric වැඩ දත්ත මධ්‍යස්ථානයක් ඇතුළත ගන්නා එකම <em>වර්ගයේ</em> ඔට්ටුවයි: අර්ධ failure හි සාමාන්‍ය අවස්ථාව සඳහා ඉංජිනේරු කරන්න.</p>
+<h2 id="cluster-එක-නවත-සය-නගන-සකසම">Cluster එක නැවත සොයා නොගෙන සැකසීම<a class="anchor" href="#cluster-%e0%b6%91%e0%b6%9a-%e0%b6%b1%e0%b7%80%e0%b6%ad-%e0%b7%83%e0%b6%ba-%e0%b6%b1%e0%b6%9c%e0%b6%b1-%e0%b7%83%e0%b6%9a%e0%b7%83%e0%b6%b8">#</a></h2>
+<p>ගබඩාව පමණක් ප්‍රමාණවත් නොවීය. එම පරිමාණයේ සැකසීමට සෑම ඉංජිනේරුවෙකුම distribution සහ recovery නැවත සොයා නොගන්නා ක්‍රමලේඛන ආකෘතියක් අවශ්‍ය විය. MapReduce (Dean සහ Ghemawat, OSDI 2004) හූක් දෙකක් දුන්නේය — record එකකින් key-value pairs නිකුත් කරන <strong>map</strong> එකක්, සහ යතුරක් බෙදා ගන්නා අගයන් aggregate කරන <strong>reduce</strong> එකක් — සහ <em>පද්ධතිය</em> split, parallel map, යතුර අනුව shuffle/sort, parallel reduce, සහ අසාර්ථක කාර්යයන් retry කිරීම හැසිරවීය. සීමාව භෞතික තරමටම cognitive විය: cluster එක සඟවන්න එවිට රැකියාවේ තර්කය කුඩාවට රැඳිය හැක.</p>
+<h2 id="ලභ-bytes-මත-වයහය">ලාභ Bytes මත ව්‍යුහය<a class="anchor" href="#%e0%b6%bd%e0%b6%b7-bytes-%e0%b6%b8%e0%b6%ad-%e0%b7%80%e0%b6%ba%e0%b7%84%e0%b6%ba">#</a></h2>
+<p>Bigtable (Chang et al., OSDI 2006) ආශ්‍රිත අවශ්‍යතාවකට පිළිතුරු දුන්නේය: web පරිමාණයේ sparse structured ගබඩාව — URLs ලෙස rows, crawled versions හෝ metadata ලෙස columns, බොහෝ cells හිස් — යටින් GFS මත ගොඩනැගුණු. නිර්මාණය කර්මාන්තය පසුව NoSQL ලෙස හැඳින්වූ බොහෝ දේ හැඩගැස්වීය; සම්බන්ධක පටකය එකමයි: failure-ඉවසන තොග ගබඩාවක් සහ batch ක්‍රමලේඛන ආකෘතියක් පවතින විට, structured ප්‍රවේශය ඊළඟ බල කළ ස්ථරය බවට පත් වේ.</p>
+<h2 id="මය-moat-එක-වය-ඇය">මෙය Moat එක වූයේ ඇයි<a class="anchor" href="#%e0%b6%b8%e0%b6%ba-moat-%e0%b6%91%e0%b6%9a-%e0%b7%80%e0%b6%ba-%e0%b6%87%e0%b6%ba">#</a></h2>
+<p>තරඟකරුවන්ට ranking අදහස් පිටපත් කළ හැකිවිය. Commodity දෘඪාංගය මත සම්පූර්ණ web එක ගබඩා කිරීමට, සැකසීමට, සහ අඛණ්ඩව නැවත-index කිරීමට ඇති ධාරිතාව ප්‍රතිනිර්මාණය කිරීම — යන්ත්‍ර මරණය සාමාන්‍ය ලෙස සැලකීම — බොහෝ දුෂ්කර විය. Hadoop සහ පසුකාලීන &ldquo;big data&rdquo; stack එක Google හි අභ්‍යන්තර කේතයෙන් තොරව පවා <em>ප්‍රකාශිත</em> papers අනුගමනය කළේය: papers පෙන්වූයේ ගැටලු පන්තිය විසඳන ආකාරයයි.</p>
+<p>Batch map/reduce බලවත් සහ දෘඩයි. ඊළඟ පෝස්ට් එක බෙදාහැරුණු දත්ත <em>සැකසීමෙන්</em> පරිණත බෙදාහැරුණු පද්ධතියක් සෑදෙන බොහෝ සේවා <em>යෙදවීම සහ සුව කිරීම</em> වෙත හැරේ.</p>
+<h2 id="ගඹරන-gfs-mapreduce-සහ-bigtable--papers-වල-සඛය-පනසලන">ගැඹුරින්: GFS, MapReduce සහ Bigtable — papers වල සංඛ්‍යා පැන්සලෙන්<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-gfs-mapreduce-%e0%b7%83%e0%b7%84-bigtable--papers-%e0%b7%80%e0%b6%bd-%e0%b7%83%e0%b6%9b%e0%b6%ba-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1">#</a></h2>
+<p>ඉහත කතාව &ldquo;ඇයි&rdquo; යන්න කීවේය. මෙහිදී papers තුනේම ප්‍රකාශිත සංඛ්‍යා ගෙන, පැන්සලක් සහ කඩදාසියක් පමණක් භාවිතයෙන් &ldquo;කෙසේද&rdquo; යන්න ගොඩනඟමු. සෑම සංඛ්‍යාවකටම මූලාශ්‍රයේ පිටුව (PDF පිටුව) දක්වා ඇත; &ldquo;නිදර්ශන&rdquo; ලෙස සලකුණු කළ සංඛ්‍යා අප විසින් පාඩම සඳහා තෝරාගත් ඒවාය.</p>
+<h3 id="1-gfs-එක-master-කනක-chunk-වශල-කබල">1. GFS: එක් master කෙනෙක්, chunk විශාල කැබලි<a class="anchor" href="#1-gfs-%e0%b6%91%e0%b6%9a-master-%e0%b6%9a%e0%b6%b1%e0%b6%9a-chunk-%e0%b7%80%e0%b7%81%e0%b6%bd-%e0%b6%9a%e0%b6%b6%e0%b6%bd">#</a></h3>
+<p>GFS cluster එකක ඇත්තේ <strong>එක් master</strong> (single master) සහ බොහෝ <strong>chunkservers</strong> ය; master සෑම chunkserver එකක් සමඟම <strong>HeartBeat</strong> පණිවිඩ හරහා කතා කරයි, සහ පෙරනිමියෙන් (default) සෑම chunk එකක්ම <strong>පිටපත් තුනක්</strong> (three replicas) ලෙස ගබඩා වේ (GFS paper, p2). ගොනුවක් <strong>64 MB chunks</strong> වලට කැඩේ (p3). Master එක එක් 64 MB chunk එකකට <strong>bytes 64 ට අඩු</strong> metadata ප්‍රමාණයක් තබා ගනී (p4).</p>
+<p>මූලික තර්කය: master එක එකක් පමණක් නම්, එහි මතකය (RAM) මුළු පද්ධතියේම සීමාව විය හැක. chunk විශාල කිරීම එම සීමාව දුරට තල්ලු කරයි.</p>
+<p><strong>විසඳූ උදාහරණය 1 (නිදර්ශන ප්‍රමාණය: 1 PiB):</strong> 1 PiB = 2^50 bytes. 64 MiB = 2^26 bytes. chunks ගණන = 2^50 / 2^26 = 2^24 = 16,777,216. එක් chunk එකකට bytes &lt; 64 = 2^6 නම්, chunk metadata &lt; 2^24 × 2^6 = 2^30 bytes = <strong>1 GiB ට අඩු</strong>. එනම් petabyte එකක දත්ත සිතියම එක් යන්ත්‍රයක RAM එකට ගැළපේ. chunk 64 KB වූවා නම්? chunks 1000 ගුණයක් පමණ (2^34), metadata ~1 TiB — එක් master කෙනෙකුට කළ නොහැක.</p>
+<p><strong>සැබෑ cluster දෙකක් (GFS paper, p11, Table 2):</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>Cluster A</th>
+					<th>Cluster B</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Chunkservers</td>
+					<td>342</td>
+					<td>227</td>
+			</tr>
+			<tr>
+					<td>පවතින ඉඩ / භාවිත ඉඩ</td>
+					<td>72 TB / 55 TB</td>
+					<td>180 TB / 155 TB</td>
+			</tr>
+			<tr>
+					<td>ගොනු</td>
+					<td>735k</td>
+					<td>737k</td>
+			</tr>
+			<tr>
+					<td>Chunks</td>
+					<td>992k</td>
+					<td>1550k</td>
+			</tr>
+			<tr>
+					<td>Chunkservers වල metadata</td>
+					<td>13 GB</td>
+					<td>21 GB</td>
+			</tr>
+			<tr>
+					<td>Master metadata</td>
+					<td>48 MB</td>
+					<td>60 MB</td>
+			</tr>
+	</tbody>
+</table>
+<p>Paper එකම කියන්නේ chunkservers වල metadata බොහෝමයක් <strong>64 KB blocks</strong> සඳහා checksums බවත්, master metadata &ldquo;ගොනුවකට සාමාන්‍යයෙන් bytes 100 පමණ&rdquo; බවත්ය (p11).</p>
+<p><strong>විසඳූ උදාහරණය 2:</strong> Cluster A හි master: 48 MB / 735,000 ගොනු ≈ ගොනුවකට bytes 65. Cluster B: 60 MB / 737,000 ≈ bytes 81. මේ දෙකම paper එකේ &ldquo;~100&rdquo; ට වඩා අඩුය — එය වට කළ (rounded) ඇස්තමේන්තුවක් ලෙස කියවන්න; ප්‍රධාන කාරණය &ldquo;tens of MBs&rdquo; පමණක් බවයි.</p>
+<p><strong>නැවත-පිටපත් කිරීම (re-replication), p12:</strong> Cluster B හි එක් chunkserver එකක් (chunks 15,000, 600 GB) මරා දැමූ විට, ධාවනය වන යෙදුම් ආරක්ෂා කිරීමට cloning <strong>එකවර 91 කට</strong> (chunkservers වලින් 40%) සීමා කර, එක් clone එකකට <strong>උපරිම 6.25 MB/s</strong> (50 Mbps) ලබා දුනි. සියලු chunks <strong>මිනිත්තු 23.2</strong> කින් ප්‍රතිස්ථාපනය විය, &ldquo;effective replication rate&rdquo; <strong>440 MB/s</strong>.</p>
+<p><strong>විසඳූ උදාහරණය 3:</strong> උපරිම සීමාව = 91 × 6.25 = 568.75 MB/s. ලැබුණු 440 MB/s ඊට අඩුය (සියලු clones සෑම මොහොතකම ධාවනය නොවේ). පරීක්ෂාව: 600 GB ÷ (23.2 × 60 s = 1392 s). GB = 1000 MB ලෙස ගතහොත් ≈ 431 MB/s; GB = 1024 MB ලෙස ගතහොත් ≈ 441 MB/s — paper එකේ 440 ට ගැළපෙන්නේ දෙවැන්නයි. ඒකක (units) අර්ථය සංඛ්‍යාව වෙනස් කරයි.</p>
+<p>ද්විත්ව අසාර්ථකත්වයේදී chunks 266 කට ඉතිරි වූයේ එක් පිටපතක් පමණි; ඒවාට ඉහළ ප්‍රමුඛතාවය දී <strong>මිනිත්තු 2 ක් ඇතුළත</strong> අවම වශයෙන් 2× වෙත ගෙන එන ලදී (p12). පාඩම: &ldquo;වඩාත්ම අනතුරේ ඇති&rdquo; දත්ත පළමුව.</p>
+<h3 id="2-mapreduce-වචන-ගණන-කරම-අතන">2. MapReduce: වචන ගණන් කිරීම අතින්<a class="anchor" href="#2-mapreduce-%e0%b7%80%e0%b6%a0%e0%b6%b1-%e0%b6%9c%e0%b6%ab%e0%b6%b1-%e0%b6%9a%e0%b6%bb%e0%b6%b8-%e0%b6%85%e0%b6%ad%e0%b6%b1">#</a></h3>
+<p>Paper එකේ පළමු උදාහරණය වචන ගණනයි: <code>map</code> එක සෑම වචනයක් <code>w</code> සඳහාම <code>EmitIntermediate(w, &quot;1&quot;)</code> කරයි, <code>reduce</code> එක එක් වචනයකට ලැබෙන &ldquo;1&rdquo; සියල්ල එකතු කරයි (MapReduce paper, p2). අතරමැදි යතුරු (intermediate keys) reduce කොටස් R අතර බෙදන්නේ <code>hash(key) mod R</code> මගිනි (p4).</p>
+<p><strong>විසඳූ උදාහරණය 4 (නිදර්ශන දත්ත):</strong> ආදාන පේළි දෙක: &ldquo;the cat sat&rdquo; සහ &ldquo;the cat ran&rdquo;. R = 2. අපි සරල නිදර්ශන hash එකක් ගනිමු: hash = වචනයේ අකුරු ගණන (සැබෑ පද්ධතියක මෙය මෙතරම් සරල නොවේ).</p>
+<ul>
+<li>Map ප්‍රතිදානය: (the,1) (cat,1) (sat,1) (the,1) (cat,1) (ran,1)</li>
+<li>කොටස: සියලු වචනවල අකුරු 3 → 3 mod 2 = 1, සියල්ල reduce 1 වෙත! reduce 0 හිස්. මෙය <strong>නරක hash</strong> එකක අනතුරයි: වැඩ සමව බෙදී නොයයි.</li>
+<li>Reduce 1: the → 1+1 = 2, cat → 2, sat → 1, ran → 1.</li>
+</ul>
+<p><strong>Combiner:</strong> &ldquo;the&rdquo; වැනි නිතර එන වචන <code>&lt;the, 1&gt;</code> වාර දහස් ගණනක් ජාලය හරහා යැවීම අපතේය; එබැවින් map යන්ත්‍රය මතම අර්ධ එකතුවක් කරන <strong>combiner function</strong> එකක් paper එක විස්තර කරයි (p6). ඉහත උදාහරණයේ, පේළි දෙකම එකම map task එකක නම්, combiner එක <code>(the,2)</code> එකක් පමණක් යවයි.</p>
+<p><strong>පරිමාණය (p6, p8):</strong> සාමාන්‍ය ධාවනයක් M = 200,000 map tasks, R = 5,000 සහ workers 2,000. පරීක්ෂණ cluster එක යන්ත්‍ර ~1800 (එකකට 2 GHz Xeon දෙකක්, 4 GB, 160 GB IDE disks දෙකක්). <strong>grep</strong> පරීක්ෂණය: 100-byte records 10^10 (≈ 1 TB) ක් හරහා දුර්ලභ රටාවක් (records 92,337 ක) සෙවීම, M = 15000, R = 1; workers 1764 ක් සමඟ උපරිම <strong>30 GB/s</strong> ඉක්මවූ අතර මුළු කාලය ~150 s.</p>
+<p><strong>Stragglers සහ backup tasks (§3.6, p10):</strong> ~1 TB sort එක backup tasks සමඟ <strong>891 s</strong> (p9; එවකට TeraSort හොඳම ප්‍රතිඵලය 1057 s). Backup tasks අක්‍රිය කළ විට 960 s පසු reduce tasks 5 ක් පමණක් ඉතිරි වූ නමුත් ඒවා අවසන් වූයේ තවත් 300 s පසුවය: මුළු <strong>1283 s</strong>, එනම් <strong>44%</strong> වැඩි.</p>
+<p><strong>විසඳූ උදාහරණය 5:</strong> (1283 − 891) / 891 = 392 / 891 ≈ 0.44. පාඩම: දහස් ගණන් යන්ත්‍ර ඇති විට, <em>මන්දගාමී එක</em> මුළු job එකේ කාලය තීරණය කරයි. අවසාන කොටසේ ඉතිරි tasks වෙනත් යන්ත්‍රයකද ධාවනය කර, පළමුව අවසන් වන එක ගැනීම ලාභදායීය.</p>
+<p>Fault පරීක්ෂණයේදී workers 1746 න් 200 ක් හිතාමතා මරා දැමූ නමුත් job එක අවසන් විය (p10) — master එක ඔවුන්ගේ tasks නැවත ධාවනය කළේය.</p>
+<h3 id="3-bigtable-sort-කළ-බද-සතයමක">3. Bigtable: sort කළ, බෙදූ සිතියමක්<a class="anchor" href="#3-bigtable-sort-%e0%b6%9a%e0%b7%85-%e0%b6%b6%e0%b6%af-%e0%b7%83%e0%b6%ad%e0%b6%ba%e0%b6%b8%e0%b6%9a">#</a></h3>
+<p>Bigtable යනු <code>(row:string, column:string, time:int64) → string</code> සිතියමකි (Bigtable paper, p1). Webtable උදාහරණයේ row key එක URL එක ප්‍රතිලෝම host ආකාරයෙනි: <code>maps.google.com/index.html</code> → <code>com.google.maps/index.html</code> (p2). Rows sort කර ගබඩා වන නිසා, එකම domain එකේ පිටු එකිනෙකට ළඟින් පිහිටයි. Row key උපරිම 64KB, සාමාන්‍යයෙන් bytes 10–100 (p2).</p>
+<p>Rows පරාස <strong>tablets</strong> ලෙස බෙදේ (100–200 MB පමණ), SSTable files 64KB blocks වලින් සෑදේ (p4). Tablet එකක් කොහිදැයි සොයන්නේ <strong>මට්ටම් තුනක</strong> ධුරාවලියකිනි (p4–p5): Chubby ගොනුව → root tablet → METADATA tablets → user tablets.</p>
+<p><strong>විසඳූ උදාහරණය 6 (p5 හි ව්‍යුත්පන්නය):</strong> METADATA row එකක් ≈ 1KB = 2^10; METADATA tablet එකක් 128 MB = 2^27. එක් METADATA tablet එකක rows = 2^27 / 2^10 = 2^17. Root (එක් tablet) → 2^17 METADATA tablets; එක් එකක් → 2^17 user tablets. මුළු user tablets = 2^17 × 2^17 = <strong>2^34</strong>. Tablet එකක් 128 MB = 2^27 නම්, ලිපින ගත කළ හැකි bytes = 2^34 × 2^27 = <strong>2^61</strong>.</p>
+<h3 id="පනසල-අභයස">පැන්සල් අභ්‍යාස<a class="anchor" href="#%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83">#</a></h3>
+<ol>
+<li>64 MB chunks සහ chunk එකකට bytes 64 සමඟ, 4 PiB සඳහා master chunk metadata කොපමණද? (නිදර්ශන)</li>
+<li>Cluster A හි ගොනුවකට සාමාන්‍ය chunks ගණන කීයද? Cluster B හි?</li>
+<li>Clone 91 ක්, එකකට 6.25 MB/s සමඟ, 600 GiB ප්‍රතිස්ථාපනයට <strong>අවම</strong> කාලය කීයද?</li>
+<li>&ldquo;a b a c a&rdquo; (නිදර්ශන), R = 2, hash = අකුරේ ASCII අගය (a=97, b=98, c=99). සෑම reduce කොටසකටම යන යතුරු සහ ගණන්?</li>
+<li>Row keys <code>com.cnn.www/</code> සහ <code>com.cnn.www/world</code> sort කළ පසු කුමක් පළමුවද, ඇයි?</li>
+</ol>
+<p><strong>පිළිතුරු:</strong></p>
+<ol>
+<li>4 PiB / 64 MiB = 2^52 / 2^26 = 2^26 chunks; × 2^6 = 2^32 bytes = 4 GiB ට අඩු.</li>
+<li>A: 992 / 735 ≈ 1.35; B: 1550 / 737 ≈ 2.10 (paper p11: B හි ගොනු විශාලතර යැයි කියයි).</li>
+<li>600 × 1024 MB / 568.75 MB/s ≈ 1080 s ≈ මිනිත්තු 18. සැබෑ කාලය (23.2) ඊට වැඩිය.</li>
+<li>97 mod 2 = 1, 98 mod 2 = 0, 99 mod 2 = 1. Reduce 0: b → 1. Reduce 1: a → 3, c → 1.</li>
+<li><code>com.cnn.www/</code> පළමුව: එය දෙවැන්නේ උපසර්ගයකි (prefix), සහ කෙටි උපසර්ගය lexicographic ලෙස පෙර එයි.</li>
+</ol>
+<p><strong>පිටවීමේ දොර:</strong> Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung, &ldquo;The Google File System&rdquo; (SOSP 2003); Jeffrey Dean and Sanjay Ghemawat, &ldquo;MapReduce: Simplified Data Processing on Large Clusters&rdquo; (OSDI 2004); Fay Chang et al., &ldquo;Bigtable: A Distributed Storage System for Structured Data&rdquo; (OSDI 2006) — මෙම යටිතල-පහසුකම් කතාව පිටුපස ඇති ප්‍රාථමික තුන.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/b4fc5f793820c6f364c3f3d7e68013338f74d6fe" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Google&#43;%E0%B7%84%E0%B7%92&#43;Big&#43;Data&#43;%E0%B6%BA%E0%B6%A7%E0%B7%92%E0%B6%AD%E0%B6%BD&#43;%E0%B6%B4%E0%B7%84%E0%B7%83%E0%B7%94%E0%B6%9A%E0%B6%B8&#43;%E2%80%94&#43;%E0%B6%94%E0%B7%80%E0%B7%94%E0%B6%B1%E0%B7%8A&#43;%E0%B6%A2%E0%B6%BA%E0%B6%9C%E0%B7%8A%E2%80%8D%E0%B6%BB%E0%B7%84%E0%B6%AB%E0%B6%BA&#43;%E0%B6%9A%E0%B7%85%E0%B7%9A&#43;%E0%B6%87%E0%B6%BA%E0%B7%92&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F44-google-s-big-data-infrastructure-why-they-won%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F44-google-s-big-data-infrastructure-why-they-won.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F44-google-s-big-data-infrastructure-why-they-won.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="flex align-center">
+        <span>Kubernetes සහ පරිමාණයේ Container Orchestration</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#සමව-web-එක-එක-පටටයක-ඉකමව-ගයය">සීමාව: Web එක එක් පෙට්ටියක් ඉක්මවා ගියේය</a></li>
+    <li><a href="#failure-සමනයය--එබවන-ගබඩව-එය-උපකලපනය-කළ-යත-වය">Failure සාමාන්‍යයි — එබැවින් ගබඩාව එය උපකල්පනය කළ යුතු විය</a></li>
+    <li><a href="#cluster-එක-නවත-සය-නගන-සකසම">Cluster එක නැවත සොයා නොගෙන සැකසීම</a></li>
+    <li><a href="#ලභ-bytes-මත-වයහය">ලාභ Bytes මත ව්‍යුහය</a></li>
+    <li><a href="#මය-moat-එක-වය-ඇය">මෙය Moat එක වූයේ ඇයි</a></li>
+    <li><a href="#ගඹරන-gfs-mapreduce-සහ-bigtable--papers-වල-සඛය-පනසලන">ගැඹුරින්: GFS, MapReduce සහ Bigtable — papers වල සංඛ්‍යා පැන්සලෙන්</a>
+      <ul>
+        <li><a href="#1-gfs-එක-master-කනක-chunk-වශල-කබල">1. GFS: එක් master කෙනෙක්, chunk විශාල කැබලි</a></li>
+        <li><a href="#2-mapreduce-වචන-ගණන-කරම-අතන">2. MapReduce: වචන ගණන් කිරීම අතින්</a></li>
+        <li><a href="#3-bigtable-sort-කළ-බද-සතයමක">3. Bigtable: sort කළ, බෙදූ සිතියමක්</a></li>
+        <li><a href="#පනසල-අභයස">පැන්සල් අභ්‍යාස</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

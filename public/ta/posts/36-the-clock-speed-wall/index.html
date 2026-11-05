@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="அதிர்வெண் வெப்பத்தை மோதியது — எனவே தொழில் அகலத்திற்குச் சென்றது (cores, பிறகு fabrics) வேகமான clocks-க்குப் பதிலாக">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/36-the-clock-speed-wall/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="The Clock Speed Wall">
+	<meta property="og:description" content="அதிர்வெண் வெப்பத்தை மோதியது — எனவே தொழில் அகலத்திற்குச் சென்றது (cores, பிறகு fabrics) வேகமான clocks-க்குப் பதிலாக">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="The Clock Speed Wall">
+	<meta itemprop="description" content="அதிர்வெண் வெப்பத்தை மோதியது — எனவே தொழில் அகலத்திற்குச் சென்றது (cores, பிறகு fabrics) வேகமான clocks-க்குப் பதிலாக">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1633">
+
+<title>The Clock Speed Wall • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/36-the-clock-speed-wall/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/36-the-clock-speed-wall/" title="The Clock Speed Wall">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/36-the-clock-speed-wall/" title="กำแพงความเร็วคล็อก">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/36-the-clock-speed-wall/" title="Clock Speed බිත්තිය">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/36-the-clock-speed-wall/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/36-the-clock-speed-wall/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/36-the-clock-speed-wall/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="active">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>The Clock Speed Wall</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#வளநத-வளவ">வளைந்த வளைவு</a></li>
+    <li><a href="#p--cvf-மறறம-மனனழததக-கரண">P ≈ CV²f, மற்றும் மின்னழுத்தக் காரணி</a></li>
+    <li><a href="#p--cvf-எணகளடன-ஒர-கணகக">P ≈ CV²f: எண்களுடன் ஒரு கணக்கு</a></li>
+    <li><a href="#dennard-scaling-ஏன-பல-பததணடகள-இத-இலவசமக-இரநதத">Dennard scaling: ஏன் பல பத்தாண்டுகள் இது &ldquo;இலவசமாக&rdquo; இருந்தது</a></li>
+    <li><a href="#dennard-scaling-எஙக-உடநதத">Dennard scaling எங்கே உடைந்தது</a></li>
+    <li><a href="#வபபக-கர-skew-பனற-வக">வெப்பக் கூரை, Skew போன்ற வகை</a></li>
+    <li><a href="#வகததறகப-பதலக-அகலம">வேகத்திற்குப் பதிலாக அகலம்</a></li>
+    <li><a href="#இரணட-சவரகள-ஒர-தரபபம">இரண்டு சுவர்கள், ஒரு திருப்பம்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    The Clock Speed Wall
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவு 35 நினைவகப் பக்கச் சுவர்: DRAM latency CPU-ஐத் தொடரத் தவறியது. இது கிட்டத்தட்ட அதே தருணத்தில் இறங்கிய compute-பக்கச் சுவர். ஒன்றாக — ஒன்று மட்டும் அல்ல — அவை தொழில் ஏன் multicore-க்கு (பதிவு 17) மற்றும், பின்னர், பதிவு 37-இன் fabrics-க்குத் திரும்பியது என்பதற்குக் காரணம்.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> &ldquo;Dennard scaling&rdquo; பற்றி தமிழில் எழுத்து விளக்கமோ காணொளியோ கிட்டத்தட்ட இல்லை; clock-speed/power wall பற்றியும் மிகக் குறைவு. எனவே இந்தப் பதிவில் அடிப்படையிலிருந்து, எண்களுடன் கணக்குகளைச் சேர்த்துள்ளோம். &ldquo;எடுத்துக்காட்டு மதிப்பு&rdquo; என்று குறிக்கப்பட்ட எண்கள் கணக்கைப் புரிந்துகொள்ளத் தேர்ந்தெடுத்தவை; உண்மையான chip அளவீடுகள் அல்ல.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Transistor (டிரான்சிஸ்டர்):</strong> மின்னழுத்தத்தால் கட்டுப்படுத்தப்படும் சுவிட்ச். CMOS chip-களில் MOSFET எனப்படும் வகை பயன்படுகிறது.</li>
+<li><strong>Clock அதிர்வெண் (frequency, f):</strong> ஒரு விநாடியில் chip எத்தனை &ldquo;அடிகள்&rdquo; (cycles) அடிக்கிறது. 3 GHz = விநாடிக்கு 3 × 10⁹ cycles.</li>
+<li><strong>Supply மின்னழுத்தம் (V, V_DD):</strong> chip-இன் சுற்றுகளுக்குக் கொடுக்கப்படும் மின்னழுத்தம்.</li>
+<li><strong>Capacitance (மின்தேக்குத் திறன், C):</strong> ஒரு கம்பி அல்லது transistor gate எவ்வளவு மின்னூட்டத்தைச் சேமிக்கிறது. ஒவ்வொரு முறை ஒரு signal 0-இலிருந்து 1-க்கு மாறும்போதும் இந்த capacitance-ஐ நிரப்ப வேண்டும்; 1-இலிருந்து 0-க்கு மாறும்போது அதைக் காலி செய்ய வேண்டும். அந்த ஆற்றல் வெப்பமாகிறது.</li>
+<li><strong>Dynamic மின்சாரம் (dynamic power):</strong> signal-கள் மாறுவதால் (switching) செலவாகும் மின்சாரம். தோராயமாக P ≈ C·V²·f.</li>
+<li><strong>Leakage / static மின்சாரம் (கசிவு மின்சாரம்):</strong> transistor &ldquo;அணைந்த&rdquo; நிலையில் இருந்தாலும் அதன் வழியே கசியும் சிறிய மின்னோட்டம். எதுவும் மாறாவிட்டாலும் இது செலவாகிறது.</li>
+<li><strong>Threshold மின்னழுத்தம் (V_t, வாசல் மின்னழுத்தம்):</strong> transistor &ldquo;இயங்கத்&rdquo; தொடங்கும் gate மின்னழுத்தம்.</li>
+<li><strong>Power density (மின்சார அடர்த்தி):</strong> ஒரு சதுர சென்டிமீட்டர் silicon-இல் எத்தனை watt வெப்பம் உண்டாகிறது (W/cm²). குளிர்விப்பு அகற்ற வேண்டியது மொத்த watt மட்டுமல்ல, இந்த அடர்த்தியும்தான்.</li>
+<li><strong>Scaling (அளவுக் குறைப்பு):</strong> ஒவ்வொரு புதிய உற்பத்தித் தலைமுறையிலும் (process node) transistor-களைச் சிறிதாக்குதல்.</li>
+</ul>
+<h2 id="வளநத-வளவ">வளைந்த வளைவு<a class="anchor" href="#%e0%ae%b5%e0%ae%b3%e0%ae%a8%e0%ae%a4-%e0%ae%b5%e0%ae%b3%e0%ae%b5">#</a></h2>
+<p>Clock அதிர்வெண் 1980-களிலிருந்து 2000-களின் ஆரம்பம் வரை ஏறியது, பிறகு சுமார் 2004–2005-இல் தட்டையானது. Desktop பாகங்கள் 4 GHz அருகில் இருந்தன; குறுகிய விதிவிலக்குகளுடன், mainstream clocks உயர்வதை நிறுத்தின transistor எண்ணிக்கைகள் (Moore&rsquo;s Law, Phase 8) தொடர்ந்து ஏறும்போதும். பத்தாண்டுகளாக அந்த இரண்டும் ஒன்றாக நகர்ந்தன. பிறகு நகரவில்லை.</p>
+<h2 id="p--cvf-மறறம-மனனழததக-கரண">P ≈ CV²f, மற்றும் மின்னழுத்தக் காரணி<a class="anchor" href="#p--cvf-%e0%ae%ae%e0%ae%b1%e0%ae%b1%e0%ae%ae-%e0%ae%ae%e0%ae%a9%e0%ae%a9%e0%ae%b4%e0%ae%a4%e0%ae%a4%e0%ae%95-%e0%ae%95%e0%ae%b0%e0%ae%a3">#</a></h2>
+<p>CMOS-இல் dynamic மின்சாரம் தோராயமாக capacitance × மின்னழுத்தத்தின் வர்க்கம் × அதிர்வெண். அதிர்வெண் மட்டும் மின்சாரத்தில் நேரியல் — சங்கடமானது, கொல்லும் அல்ல. நிலையான process-இல், வேகமான clock அடிக்கடி நம்பகமாக இருக்க உயர்ந்த supply தேவைப்பட்டது, மற்றும் மின்னழுத்தம் <em>வர்க்கம்</em>. அதிர்வெண்ணும் மின்னழுத்தமும் ஒன்றாக உயர்வது கூட்டுகிறது. 2000-களின் நடுச் சுவர் Dennard scaling உடைந்ததும் leakage மேலும் மின்னழுத்தக் குறைப்புகளை வரம்பிட்டதும். வெப்பம், தவறவிட்ட சுற்றுத் தந்திரம் அல்ல.</p>
+<h2 id="p--cvf-எணகளடன-ஒர-கணகக">P ≈ CV²f: எண்களுடன் ஒரு கணக்கு<a class="anchor" href="#p--cvf-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9-%e0%ae%92%e0%ae%b0-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95">#</a></h2>
+<p>முதலில் சூத்திரம் ஏன் இப்படி இருக்கிறது என்று பார்ப்போம். C அளவுள்ள ஒரு capacitance-ஐ V மின்னழுத்தம் வரை நிரப்பிப் பின் காலி செய்யும் ஒரு முழுச் சுற்றில் supply-இலிருந்து C·V² ஆற்றல் எடுக்கப்பட்டு, அது முழுவதும் வெப்பமாகிறது. இது விநாடிக்கு f முறை நடந்தால், மின்சாரம் (ஆற்றல் ÷ நேரம்) = C·V²·f. (நடைமுறையில் எல்லா முனைகளும் ஒவ்வொரு cycle-இலும் மாறுவதில்லை; அதனால் &ldquo;activity factor&rdquo; எனும் ஒரு பின்னத்தால் பெருக்குவார்கள். கீழே உள்ள C அந்தப் பின்னத்தையும் உள்ளடக்கிய &ldquo;பயனுள்ள&rdquo; capacitance என்று கொள்க.)</p>
+<p><strong>எடுத்துக்காட்டு மதிப்புகள்:</strong> பயனுள்ள switched capacitance C = 20 nF, V = 1.2 V, f = 3 GHz.</p>
+<ol>
+<li>V² = 1.2 × 1.2 = 1.44</li>
+<li>C × f = (20 × 10⁻⁹) × (3 × 10⁹) = 60</li>
+<li>P = 60 × 1.44 = <strong>86.4 W</strong></li>
+</ol>
+<p>இப்போது clock-ஐ 20% உயர்த்தி 3.6 GHz ஆக்க விரும்புகிறோம். அந்த வேகத்தில் சுற்றுகள் நம்பகமாக இயங்க supply-ஐயும் 10% உயர்த்தி 1.32 V ஆக்க வேண்டும் என்று கொள்வோம் (எடுத்துக்காட்டு மதிப்பு).</p>
+<ol>
+<li>V² = 1.32 × 1.32 = 1.7424</li>
+<li>C × f = (20 × 10⁻⁹) × (3.6 × 10⁹) = 72</li>
+<li>P = 72 × 1.7424 ≈ <strong>125.5 W</strong></li>
+</ol>
+<p>விகிதம்: 125.5 ÷ 86.4 ≈ 1.45. அதாவது <strong>20% வேகத்துக்கு 45% கூடுதல் மின்சாரம்</strong> (1.2 × 1.1² = 1.452). அதிர்வெண் நேரியலாகச் சேர்கிறது; மின்னழுத்தம் வர்க்கமாகச் சேர்கிறது; இரண்டும் ஒன்றாக உயரும்போது பெருக்கம் கூட்டாகிறது. இதுதான் மேலே சொன்ன &ldquo;மின்னழுத்தக் காரணி&rdquo;.</p>
+<p><strong>மோசமான எல்லை — &ldquo;cube law&rdquo;:</strong> ஒரு குறிப்பிட்ட வரம்புக்குள், அதிகபட்ச அதிர்வெண் தோராயமாக மின்னழுத்தத்துக்கு நேர்விகிதத்தில் இருக்கும் (f ∝ V) என்று எளிமைப்படுத்தினால், P ∝ V²·f ∝ f³. இந்த இலட்சிய மாதிரியில்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>இலக்கு: இரண்டு மடங்கு வேலை</th>
+					<th>எப்படி</th>
+					<th>மின்சாரம் (இலட்சிய மாதிரி)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ஒரு core, 2× அதிர்வெண்</td>
+					<td>f × 2, V × 2</td>
+					<td>2 × 2² = <strong>8×</strong></td>
+			</tr>
+			<tr>
+					<td>இரண்டு core-கள், அதே அதிர்வெண்</td>
+					<td>core-கள் × 2</td>
+					<td><strong>2×</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>(வேலையை இரண்டாகப் பிரிக்க முடிந்தால் மட்டுமே இரண்டாவது வரி பொருந்தும் — அது பதிவு 17-இன் கதை. இது எளிமைப்படுத்திய மாதிரி; உண்மையான chip-இல் V-ஐ இரண்டு மடங்காக்க முடியாது, அது transistor-ஐயே அழித்துவிடும்.)</p>
+<h2 id="dennard-scaling-ஏன-பல-பததணடகள-இத-இலவசமக-இரநதத">Dennard scaling: ஏன் பல பத்தாண்டுகள் இது &ldquo;இலவசமாக&rdquo; இருந்தது<a class="anchor" href="#dennard-scaling-%e0%ae%8f%e0%ae%a9-%e0%ae%aa%e0%ae%b2-%e0%ae%aa%e0%ae%a4%e0%ae%a4%e0%ae%a3%e0%ae%9f%e0%ae%95%e0%ae%b3-%e0%ae%87%e0%ae%a4-%e0%ae%87%e0%ae%b2%e0%ae%b5%e0%ae%9a%e0%ae%ae%e0%ae%95-%e0%ae%87%e0%ae%b0%e0%ae%a8%e0%ae%a4%e0%ae%a4">#</a></h2>
+<p>1974-இல் IBM-இல் Robert H. Dennard மற்றும் சக ஆசிரியர்கள் <em>IEEE Journal of Solid-State Circuits</em> இதழில் &ldquo;Design of Ion-Implanted MOSFET&rsquo;s with Very Small Physical Dimensions&rdquo; என்ற கட்டுரையை வெளியிட்டனர். அதன் மையக் கருத்து ஒரு எளிய விதி: ஒரு MOSFET-இன் எல்லா நீள அளவுகளையும் (gate நீளம், அகலம், oxide தடிமன்) ஒரு காரணி κ-ஆல் (கிரேக்க எழுத்து &ldquo;kappa&rdquo;) குறைத்து, <strong>மின்னழுத்தத்தையும் அதே κ-ஆல் குறைத்து</strong>, doping அடர்த்தியை κ-ஆல் உயர்த்தினால், transistor-இன் உள்ளே உள்ள மின்புலங்கள் (electric fields) மாறாமல் இருக்கும். அப்போது மற்ற எல்லாம் ஒரு ஒழுங்கான முறையில் மாறுகின்றன:</p>
+<table>
+	<thead>
+			<tr>
+					<th>அளவு</th>
+					<th>எப்படி மாறுகிறது</th>
+					<th>ஏன்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>நீள அளவுகள் (L, W, oxide தடிமன்)</td>
+					<td>1/κ</td>
+					<td>நாமே சிறிதாக்குகிறோம்</td>
+			</tr>
+			<tr>
+					<td>மின்னழுத்தம் V</td>
+					<td>1/κ</td>
+					<td>மின்புலம் = V ÷ நீளம் மாறாமல் இருக்க</td>
+			</tr>
+			<tr>
+					<td>Doping அடர்த்தி</td>
+					<td>κ</td>
+					<td>சிறிய அளவுகளில் சரியாக இயங்க</td>
+			</tr>
+			<tr>
+					<td>மின்னோட்டம் I</td>
+					<td>1/κ</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>Capacitance C (பரப்பு ÷ தடிமன்)</td>
+					<td>(1/κ²) ÷ (1/κ) = 1/κ</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>தாமதம் (delay ≈ C·V ÷ I)</td>
+					<td>(1/κ · 1/κ) ÷ (1/κ) = 1/κ</td>
+					<td>→ அதிர்வெண் κ மடங்கு உயரலாம்</td>
+			</tr>
+			<tr>
+					<td>ஒரு சுற்றின் மின்சாரம் (V·I)</td>
+					<td>1/κ · 1/κ = 1/κ²</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>ஒரு சுற்றின் பரப்பு</td>
+					<td>1/κ²</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><strong>Power density</strong> (மின்சாரம் ÷ பரப்பு)</td>
+					<td>(1/κ²) ÷ (1/κ²) = <strong>1</strong></td>
+					<td>மாறாது!</td>
+			</tr>
+	</tbody>
+</table>
+<p>CV²f வழியாகவும் சரிபார்க்கலாம்: C → 1/κ, V² → 1/κ², f → κ; பெருக்கினால் (1/κ)(1/κ²)(κ) = 1/κ². மேலே உள்ள V·I முடிவுடன் பொருந்துகிறது.</p>
+<p><strong>ஒரு தலைமுறை, எண்களில்.</strong> ஒவ்வொரு process தலைமுறையும் நீள அளவுகளைச் சுமார் 0.7 மடங்காக்குவது வழக்கம், அதாவது κ ≈ 1.4 (√2). தொடக்க நிலை (எடுத்துக்காட்டு மதிப்புகள்): gate நீளம் 100 nm, V = 1.2 V, f = 2 GHz, 1 cm² die-இல் N transistor-கள், மொத்த மின்சாரம் 86.4 W.</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>தொடக்கம்</th>
+					<th>ஒரு தலைமுறைக்குப் பின் (κ = 1.4)</th>
+					<th>மூன்று தலைமுறைகளுக்குப் பின் (κ³ ≈ 2.74)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Gate நீளம்</td>
+					<td>100 nm</td>
+					<td>100 ÷ 1.4 ≈ 71 nm</td>
+					<td>100 ÷ 2.74 ≈ 36 nm</td>
+			</tr>
+			<tr>
+					<td>மின்னழுத்தம்</td>
+					<td>1.2 V</td>
+					<td>1.2 ÷ 1.4 ≈ 0.86 V</td>
+					<td>1.2 ÷ 2.74 ≈ 0.44 V</td>
+			</tr>
+			<tr>
+					<td>அதிர்வெண்</td>
+					<td>2 GHz</td>
+					<td>2 × 1.4 = 2.8 GHz</td>
+					<td>2 × 2.74 ≈ 5.5 GHz</td>
+			</tr>
+			<tr>
+					<td>அதே die-இல் transistor-கள்</td>
+					<td>N</td>
+					<td>1.96 N</td>
+					<td>1.96³ ≈ 7.5 N</td>
+			</tr>
+			<tr>
+					<td>மொத்த மின்சாரம்</td>
+					<td>86.4 W</td>
+					<td>86.4 W</td>
+					<td>86.4 W</td>
+			</tr>
+	</tbody>
+</table>
+<p>ஒவ்வொரு தலைமுறையிலும்: கிட்டத்தட்ட இரண்டு மடங்கு transistor-கள், 40% வேகமான clock, <strong>அதே வெப்பம்</strong>. Moore&rsquo;s Law (transistor எண்ணிக்கை) மற்றும் clock உயர்வு பத்தாண்டுகளாக &ldquo;ஒன்றாக நகர்ந்தது&rdquo; இந்த விதியால்தான். (இது இலட்சிய அட்டவணை; உண்மையான chip-கள் இதை மிகத் துல்லியமாகப் பின்பற்றவில்லை, ஆனால் போக்கு இதுதான்.)</p>
+<h2 id="dennard-scaling-எஙக-உடநதத">Dennard scaling எங்கே உடைந்தது<a class="anchor" href="#dennard-scaling-%e0%ae%8e%e0%ae%99%e0%ae%95-%e0%ae%89%e0%ae%9f%e0%ae%a8%e0%ae%a4%e0%ae%a4">#</a></h2>
+<p>அட்டவணையின் இரண்டாவது வரி — &ldquo;மின்னழுத்தம் 1/κ&rdquo; — தான் பலவீனமான கண்ணி. Supply மின்னழுத்தத்தைக் குறைக்க, threshold மின்னழுத்தம் V_t-ஐயும் குறைக்க வேண்டும்; இல்லையெனில் transistor-ஐ முழுமையாக &ldquo;இயக்க&rdquo; போதுமான இடைவெளி (V − V_t) இருக்காது, சுற்று மெதுவாகிவிடும். ஆனால் V_t-ஐக் குறைப்பதற்கு ஒரு இயற்பியல் விலை உண்டு.</p>
+<p><strong>Subthreshold கசிவு.</strong> V_t-க்குக் கீழே கூட transistor முழுமையாக அணைவதில்லை; வெப்ப ஆற்றலால் சில electron-கள் தடையைத் தாண்டிச் செல்கின்றன. இந்தக் கசிவு மின்னோட்டம் gate மின்னழுத்தத்துடன் <strong>அடுக்குக்குறி (exponential)</strong> முறையில் மாறுகிறது. அறை வெப்பநிலையில் இலட்சிய MOSFET-க்கு, கசிவை 10 மடங்கு மாற்ற எவ்வளவு மின்னழுத்த மாற்றம் தேவை என்பதைக் கணக்கிடலாம்:</p>
+<ol>
+<li>வெப்ப மின்னழுத்தம் kT/q: k = 1.381 × 10⁻²³ J/K, T = 300 K, q = 1.602 × 10⁻¹⁹ C → kT/q ≈ 0.02585 V ≈ 25.9 mV</li>
+<li>ஒரு &ldquo;decade&rdquo; (10 மடங்கு) = ln(10) ≈ 2.303 மடங்கு kT/q</li>
+<li>25.85 mV × 2.303 ≈ <strong>59.5 mV</strong> — அதாவது சுமார் 60 mV</li>
+</ol>
+<p>இதன் பொருள்: V_t-ஐ 60 mV குறைத்தால், அணைந்த நிலைக் கசிவு சுமார் <strong>10 மடங்கு</strong> உயரும் (இது இலட்சிய எல்லை; உண்மையான transistor-கள் இதைவிட மோசம்). V_t-ஐ 180 mV குறைத்தால் 10 × 10 × 10 = 1000 மடங்கு. இந்த 60 mV எண் transistor-இன் அளவைப் பொறுத்ததல்ல — அது வெப்பநிலையிலிருந்து வருகிறது. <strong>Transistor-ஐச் சிறிதாக்கலாம்; kT/q-ஐச் சிறிதாக்க முடியாது.</strong> அதனால்தான் scaling அட்டவணையின் மற்ற வரிகள் தொடர்ந்தாலும் மின்னழுத்த வரி நின்றது.</p>
+<p>இன்னொரு மோசமான சுழல்: kT/q வெப்பநிலையுடன் உயர்கிறது, அதனால் chip சூடாகும்போது கசிவு கூடுகிறது, கசிவு மேலும் வெப்பத்தை உண்டாக்குகிறது. Oxide மிக மெல்லியதானபோது gate வழியாகவும் electron-கள் &ldquo;tunnel&rdquo; செய்து கசியத் தொடங்கின.</p>
+<p><strong>மின்னழுத்தம் நின்றால் என்ன ஆகும்?</strong> அதே அட்டவணையை V மாறாமல் (constant voltage) மீண்டும் செய்வோம்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>அளவு</th>
+					<th>Dennard (V → 1/κ)</th>
+					<th>V மாறாதபோது</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>C</td>
+					<td>1/κ</td>
+					<td>1/κ</td>
+			</tr>
+			<tr>
+					<td>V²</td>
+					<td>1/κ²</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>f</td>
+					<td>κ</td>
+					<td>κ (இலட்சியமாக)</td>
+			</tr>
+			<tr>
+					<td>ஒரு transistor-இன் மின்சாரம் C·V²·f</td>
+					<td>1/κ²</td>
+					<td>(1/κ)(1)(κ) = <strong>1</strong></td>
+			</tr>
+			<tr>
+					<td>ஒரு பரப்பில் transistor-கள்</td>
+					<td>κ²</td>
+					<td>κ²</td>
+			</tr>
+			<tr>
+					<td><strong>Power density</strong></td>
+					<td>1</td>
+					<td><strong>κ²</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>κ = 1.4 என்றால் ஒவ்வொரு தலைமுறையிலும் power density ≈ 1.96 மடங்கு. மூன்று தலைமுறைகளில் 1.96³ ≈ 7.5 மடங்கு. மேலே உள்ள 86.4 W chip, அதே பரப்பில் எல்லா transistor-களையும் முழு வேகத்தில் இயக்கினால், 86.4 × 7.53 ≈ <strong>650 W</strong> ஆகும் (எடுத்துக்காட்டு மதிப்புகளின் இலட்சிய மோசமான நிலை; நடைமுறையில் மின்னழுத்தம் மெதுவாகத் தொடர்ந்து சற்றுக் குறைந்தது). 1 cm² பரப்பிலிருந்து அவ்வளவு வெப்பத்தை மலிவான காற்றுக் குளிர்விப்பால் அகற்ற முடியாது. இதுதான் கீழே வரும் &ldquo;வெப்பக் கூரை&rdquo;.</p>
+<p>தேர்வுகள் மூன்றே: (அ) clock-ஐ உயர்த்துவதை நிறுத்து, (ஆ) எல்லா transistor-களையும் ஒரே நேரத்தில் இயக்காதே, (இ) கூடுதல் transistor-களை வேகத்துக்குப் பதிலாக அகலத்துக்கு — கூடுதல் core-கள், cache, சிறப்பு அலகுகள் — செலவிடு. தொழில் மூன்றையும் செய்தது.</p>
+<h2 id="வபபக-கர-skew-பனற-வக">வெப்பக் கூரை, Skew போன்ற வகை<a class="anchor" href="#%e0%ae%b5%e0%ae%aa%e0%ae%aa%e0%ae%95-%e0%ae%95%e0%ae%b0-skew-%e0%ae%aa%e0%ae%a9%e0%ae%b1-%e0%ae%b5%e0%ae%95">#</a></h2>
+<p>வெப்பமாக மாறும் மின்சாரம் die-ஐ விட்டு வெளியேற வேண்டும் அல்லது chip throttle செய்கிறது (வடிவமைப்பால்) அல்லது, மோசமாக, தோல்வியடைகிறது. 2000-களின் நடுவில், mainstream காற்றுக் குளிர்ச்சி ஏற்கனவே தன் பயனுள்ள வரம்பிற்கு அருகில் இருந்தது. Clocks-ஐ — மற்றும் அவற்றுடன் வந்த மின்னழுத்தத்தை — மேலும் தள்ளுவது பொருளாதாரக் குளிர்ச்சி அகற்ற முடியாத மின்சார அடர்த்திகளைக் குறித்தது. பதிவு 32-இன் parallel-bus skew போன்ற வகை: இயற்பியல் கூரை, சுற்றி வழி நடத்தும் வடிவமைப்பு திறமையின்மை அல்ல.</p>
+<h2 id="வகததறகப-பதலக-அகலம">வேகத்திற்குப் பதிலாக அகலம்<a class="anchor" href="#%e0%ae%b5%e0%ae%95%e0%ae%a4%e0%ae%a4%e0%ae%b1%e0%ae%95%e0%ae%aa-%e0%ae%aa%e0%ae%a4%e0%ae%b2%e0%ae%95-%e0%ae%85%e0%ae%95%e0%ae%b2%e0%ae%ae">#</a></h2>
+<p>குறைந்துவரும் ILP (பதிவு 17) <em>மற்றும்</em> ஒரு core-இல் கடின மின்சாரக் கூரை: ஒரு core-ஐ வேகமாக்குவதை நிறுத்துங்கள்; die-இல் பலவற்றை வையுங்கள், ஒவ்வொன்றும் மிதமான, அதிக திறன்மிக்க clock-இல். Aggregate throughput இன்னும் ஏறலாம். எந்த ஒரு core-ம் அதிர்வெண்ணை நிறுத்திய வெப்பக் கோட்டைக் கடக்கத் தேவையில்லை.</p>
+<h2 id="இரணட-சவரகள-ஒர-தரபபம">இரண்டு சுவர்கள், ஒரு திருப்பம்<a class="anchor" href="#%e0%ae%87%e0%ae%b0%e0%ae%a3%e0%ae%9f-%e0%ae%9a%e0%ae%b5%e0%ae%b0%e0%ae%95%e0%ae%b3-%e0%ae%92%e0%ae%b0-%e0%ae%a4%e0%ae%b0%e0%ae%aa%e0%ae%aa%e0%ae%ae">#</a></h2>
+<p>Memory wall என்பது DRAM latency compute-ஐ இழப்பது. Clock-speed wall என்பது compute தானே வெப்பத்தை மோதுவது. வேறு இயற்பியல், அதே பத்தாண்டு. ஒன்றாக அவை &ldquo;ஒரு core-ஐ வேகமாக்குங்கள்&rdquo; வளர்ச்சிக் கதையாக முடித்து &ldquo;அதிக cores — மற்றும், அதிகரித்து, வேலையைச் சிறப்பு parallel வன்பொருளுக்கு நகர்த்துங்கள், பிறகு அந்த அலகுகளை பொது நோக்க CPU வழியாகத் திரும்பாமல் இணைக்கவும்&rdquo; என்பதைக் கட்டாயப்படுத்தின. அந்தக் கடைசி வாக்கியம் பதிவு 37, மற்றும் பின்னர் GPU-கள் (Phase 9) மற்றும் accelerators (Phase 10).</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<p>(பயிற்சிகளில் புதிதாக வரும் உள்ளீட்டு எண்கள், மூலத்துடன் குறிக்கப்பட்டவை தவிர, எடுத்துக்காட்டு மதிப்புகள்.)</p>
+<ol>
+<li><strong>κ = 2 என்றால்</strong> (நீள அளவுகள் பாதியாக), இலட்சிய Dennard scaling-இல் தாமதம், ஒரு சுற்றின் மின்சாரம், power density எப்படி மாறும்?
+<em>விடை:</em> தாமதம் 1/2 (அதிர்வெண் 2×), ஒரு சுற்றின் மின்சாரம் 1/4, power density 1 (மாறாது).</li>
+<li><strong>V மாறாமல்</strong>, κ = 1.4 உடன் இரண்டு தலைமுறைகள் சென்றால் power density எவ்வளவு மடங்கு?
+<em>விடை:</em> 1.96 × 1.96 ≈ 3.84 மடங்கு.</li>
+<li>அதே அதிர்வெண்ணில் supply-ஐ 1.0 V-இலிருந்து 0.9 V-க்குக் குறைத்தால் dynamic மின்சாரம் எவ்வளவு சேமிக்கப்படும்?
+<em>விடை:</em> 0.9² = 0.81, அதாவது 19% சேமிப்பு — மின்னழுத்தத்தில் 10% குறைப்புக்கு.</li>
+<li>இலட்சிய 60 mV/decade விதியில், V_t-ஐ 120 mV குறைத்தால் அணைந்த நிலைக் கசிவு எத்தனை மடங்கு?
+<em>விடை:</em> 120 ÷ 60 = 2 decades → 10² = 100 மடங்கு.</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>அளவுக் குறைப்பு விதி</td>
+					<td>Dennard scaling</td>
+			</tr>
+			<tr>
+					<td>அளவுக் காரணி κ</td>
+					<td>scaling factor (kappa)</td>
+			</tr>
+			<tr>
+					<td>மாறும் மின்சாரம்</td>
+					<td>dynamic power</td>
+			</tr>
+			<tr>
+					<td>கசிவு / நிலை மின்சாரம்</td>
+					<td>leakage / static power</td>
+			</tr>
+			<tr>
+					<td>வாசல் மின்னழுத்தம்</td>
+					<td>threshold voltage (V_t)</td>
+			</tr>
+			<tr>
+					<td>வாசலுக்குக் கீழ்க் கசிவு</td>
+					<td>subthreshold leakage</td>
+			</tr>
+			<tr>
+					<td>வெப்ப மின்னழுத்தம்</td>
+					<td>thermal voltage (kT/q)</td>
+			</tr>
+			<tr>
+					<td>மின்சார அடர்த்தி</td>
+					<td>power density</td>
+			</tr>
+			<tr>
+					<td>மின்தேக்குத் திறன்</td>
+					<td>capacitance</td>
+			</tr>
+			<tr>
+					<td>செயல்பாட்டுக் காரணி</td>
+					<td>activity factor</td>
+			</tr>
+			<tr>
+					<td>வெப்பக் கூரை</td>
+					<td>thermal ceiling / power wall</td>
+			</tr>
+			<tr>
+					<td>உற்பத்தித் தலைமுறை</td>
+					<td>process node / generation</td>
+			</tr>
+			<tr>
+					<td>மாறா மின்னழுத்த அளவுக் குறைப்பு</td>
+					<td>constant-voltage scaling</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;The&#43;Clock&#43;Speed&#43;Wall&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F36-the-clock-speed-wall%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F36-the-clock-speed-wall.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F36-the-clock-speed-wall.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/35-the-memory-wall/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>The Memory Wall</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/37-interconnects-at-scale/" class="flex align-center">
+        <span>Interconnects at Scale</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#வளநத-வளவ">வளைந்த வளைவு</a></li>
+    <li><a href="#p--cvf-மறறம-மனனழததக-கரண">P ≈ CV²f, மற்றும் மின்னழுத்தக் காரணி</a></li>
+    <li><a href="#p--cvf-எணகளடன-ஒர-கணகக">P ≈ CV²f: எண்களுடன் ஒரு கணக்கு</a></li>
+    <li><a href="#dennard-scaling-ஏன-பல-பததணடகள-இத-இலவசமக-இரநதத">Dennard scaling: ஏன் பல பத்தாண்டுகள் இது &ldquo;இலவசமாக&rdquo; இருந்தது</a></li>
+    <li><a href="#dennard-scaling-எஙக-உடநதத">Dennard scaling எங்கே உடைந்தது</a></li>
+    <li><a href="#வபபக-கர-skew-பனற-வக">வெப்பக் கூரை, Skew போன்ற வகை</a></li>
+    <li><a href="#வகததறகப-பதலக-அகலம">வேகத்திற்குப் பதிலாக அகலம்</a></li>
+    <li><a href="#இரணட-சவரகள-ஒர-தரபபம">இரண்டு சுவர்கள், ஒரு திருப்பம்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

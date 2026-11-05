@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Datele pulsează printr-o grilă de MAC-uri — specializezi tot cipul pentru matmul (TPU)">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/58-systolic-arrays/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Matrice sistolice">
+	<meta property="og:description" content="Datele pulsează printr-o grilă de MAC-uri — specializezi tot cipul pentru matmul (TPU)">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Matrice sistolice">
+	<meta itemprop="description" content="Datele pulsează printr-o grilă de MAC-uri — specializezi tot cipul pentru matmul (TPU)">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="2428">
+
+<title>Matrice sistolice • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/58-systolic-arrays/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/58-systolic-arrays/" title="Systolic Arrays">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/58-systolic-arrays/" title="Systolic Array">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/58-systolic-arrays/" title="Systolic Arrays">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/58-systolic-arrays/" title="Systolic Arrays">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/58-systolic-arrays/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/58-systolic-arrays/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/58-systolic-arrays/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/58-systolic-arrays/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="active">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Matrice sistolice</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-de-unde-vine-cuvântul-sistolic">1. De unde vine cuvântul „sistolic”</a></li>
+    <li><a href="#2-weight-stationary-și-output-stationary">2. Weight-stationary și output-stationary</a></li>
+    <li><a href="#3-exemplu-lucrat-pe-mână-22">3. Exemplu lucrat pe mână: 2×2</a>
+      <ul>
+        <li><a href="#31-varianta-output-stationary-un-pe--un-y_ij">3.1 Varianta output-stationary (un PE = un Y_ij)</a></li>
+        <li><a href="#32-varianta-weight-stationary-aceeași-y-alt-trafic">3.2 Varianta weight-stationary (aceeași Y, alt trafic)</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-tpu-v1-cifre-din-lucrarea-isca-2017">4. TPU v1: cifre din lucrarea ISCA 2017</a></li>
+    <li><a href="#4b-de-ce-inimă-pe-memorie-nu-pe-alu">4b. De ce „inimă” pe memorie, nu pe ALU</a></li>
+    <li><a href="#5-limitele-matricelor-sistolice-din-aceleași-surse">5. Limitele matricelor sistolice (din aceleași surse)</a></li>
+    <li><a href="#6-generații-tpu-ulterioare">6. Generații TPU ulterioare</a></li>
+    <li><a href="#7-ce-să-rețineți">7. Ce să rețineți</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Matrice sistolice
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 57 a arătat de ce înmulțirea de matrice merită siliciu dedicat. Acest capitol arată <em>cum</em> arată o arhitectură organizată în jurul acelei observații: o <strong>matrice sistolică</strong> (<em>systolic array</em>) — o grilă de elemente de procesare (PE) simple, de tip multiply-accumulate, prin care datele curg ritmic. Exemplul industrial cel mai citat este unitatea de înmulțire a matricelor din TPU-ul Google (Jouppi et al., ISCA 2017). Ideea însă e mai veche cu aproape patru decenii.</p>
+<h2 id="1-de-unde-vine-cuvântul-sistolic">1. De unde vine cuvântul „sistolic”<a class="anchor" href="#1-de-unde-vine-cuv%c3%a2ntul-sistolic">#</a></h2>
+<p>În raportul CMU-CS-79-103, H. T. Kung și Charles E. Leiserson definesc un sistem sistolic ca pe o rețea de procesoare care calculează și transmit date ritmic prin sistem (Kung &amp; Leiserson, „Systolic Arrays for (VLSI)”, aprilie 1978, ultima revizie decembrie 1978, Abstract, <a href="https://eecs.harvard.edu/htk/static/files/1978-cmu-cs-report-kung-leiserson.pdf">PDF</a>). Ei preiau termenul medical <em>systole</em> — contracția ritmică a inimii și arterelor care pulsează sângele — și scriu, în abstract: în sistemul sistolic de calcul, „the function of a processor is analogous to that of the heart. Every processor regularly pumps data in and out, each time performing some short computation” (Kung &amp; Leiserson, 1978, Abstract). Raportul anunță că procesorii conectați hexagonal pot face înmulțire de matrice și, surprinzător, aproape aceeași structură poate face descompunere LU (aceleași Abstract și §1). Versiunea publicată în volume apare ca „Systolic Arrays (for VLSI)” în <em>Sparse Matrix Proceedings 1978</em>, SIAM, 1979, pp. 256–282 (citată astfel de Kung, 1982, ref. 5, și de Jouppi et al., 2017, ca [Kun80] sub forma capitolului din Mead &amp; Conway).</p>
+<p>Patru ani mai târziu, Kung publică în <em>IEEE Computer</em> articolul de sinteză „Why Systolic Architectures?” (ianuarie 1982). Motto-ul din antet: arhitecturile sistolice „permit multiple computations for each memory access” și pot accelera probleme compute-bound fără a crește cerințele de I/O (Kung, 1982, p. 37). Metafora cardiacă e reformulată atent. Kung spune că datele curg din memoria calculatorului „in a rhythmic fashion, passing through many processing elements before [they return] to memory, much as blood circulates to and from the heart” (Kung, 1982, p. 37). Lângă Figura 1, subiectul analogiei se mută pe <strong>memorie</strong>: „The function of the memory in the diagram is analogous to that of the heart; it ‘pulses’ data (instead of blood) through the array of cells” (Kung, 1982, p. 39). Cele două formulări nu se contrazic: raportul din 1978 vorbește despre fiecare procesor ca pompă locală; articolul din 1982 pune inima pe memoria care alimentează tabloul. Ambele merită citate corect; parafraza populară care atribuie lui Kung 1982 propoziția „every processor regularly pumps…” e, de fapt, din abstractul Kung–Leiserson 1978.</p>
+<p>Principiul din Figura 1 a lui Kung (1982): înlocuiești un singur PE cu un tablou de celule și obții un <em>throughput</em> mai mare <strong>fără</strong> a crește bandwidth-ul memoriei, cu condiția ca fiecare element de date scos din memorie să fie folosit la fiecare celulă pe care o traversează (Kung, 1982, p. 39). Asta e exact legătura cu capitolul 57 și cu zidul memoriei din capitolul 35.</p>
+<h2 id="2-weight-stationary-și-output-stationary">2. Weight-stationary și output-stationary<a class="anchor" href="#2-weight-stationary-%c8%99i-output-stationary">#</a></h2>
+<p>Înainte de TPU, merită vocabularul modern de <em>dataflow</em>, ca să nu amestecăm ce stă pe loc cu ce curge.</p>
+<p>Chen, Emer și Sze (Eyeriss, ISCA 2016) definesc:</p>
+<ul>
+<li><strong>Weight-stationary (WS):</strong> fiecare pondere rămâne în fișierul de registre al PE-ului; odată adusă din DRAM, PE-ul trece prin toate operațiile care o folosesc (Chen et al., 2016, §IV.A, <a href="https://eems.mit.edu/wp-content/uploads/2016/04/eyeriss_isca_2016.pdf">PDF</a>).</li>
+<li><strong>Output-stationary (OS):</strong> acumularea fiecărui pixel / element de ieșire rămâne în PE, ca să minimizeze costul mișcării sumelor parțiale (Chen et al., 2016, §IV.B).</li>
+</ul>
+<p>TPU v1, în descrierea lui Jouppi et al., încarcă ponderile de sus, le preîncarcă în unitatea de matrice, iar datele (activările) curg din stânga; un MAC pe 256 de elemente se deplasează ca un front diagonal prin matrice (Jouppi et al., 2017, text lângă Fig. 4). Software-ul are iluzia că cele 256 de intrări sunt citite deodată și actualizează instant un loc din fiecare din cele 256 de acumulatori; din perspectiva corectitudinii, software-ul nu „știe” că unitatea e sistolică, dar pentru performanță îi pasă de latența ei (Jouppi et al., 2017, același pasaj). Clasificat în taxonomia Eyeriss, acesta e un dataflow <strong>weight-stationary</strong> pe MXU.</p>
+<h2 id="3-exemplu-lucrat-pe-mână-22">3. Exemplu lucrat pe mână: 2×2<a class="anchor" href="#3-exemplu-lucrat-pe-m%c3%a2n%c4%83-22">#</a></h2>
+<p>Exemplul de mai jos este <strong>ilustrativ</strong> (nu o măsurătoare pe TPU). Verificați aritmetica. Calculăm Y = X · W cu</p>
+<pre tabindex="0"><code>X = | 1  2 |      W = | 5  6 |
+    | 3  4 |          | 7  8 |</code></pre><pre tabindex="0"><code>Y11 = 1·5 + 2·7 =  5 + 14 = 19
+Y12 = 1·6 + 2·8 =  6 + 16 = 22
+Y21 = 3·5 + 4·7 = 15 + 28 = 43
+Y22 = 3·6 + 4·8 = 18 + 32 = 50</code></pre><p>Deci Y = <code>| 19 22 | ; | 43 50 |</code> (confirmat independent cu NumPy pe mașina desk-ului).</p>
+<h3 id="31-varianta-output-stationary-un-pe--un-y_ij">3.1 Varianta output-stationary (un PE = un Y_ij)<a class="anchor" href="#31-varianta-output-stationary-un-pe--un-y_ij">#</a></h3>
+<p>Fiecare PE ține acumularea unei ieșiri. Pe k = 0,1, PE-ul pentru Y₁₁ primește pe rând perechile (x₁ₖ, Wₖ₁) — indexare 1-based pe hârtie, 0-based în tablouri:</p>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: right">k</th>
+					<th style="text-align: right">x (din linia 1 a lui X)</th>
+					<th style="text-align: right">w (din coloana 1 a lui W)</th>
+					<th style="text-align: right">produs</th>
+					<th style="text-align: right">acumulat în PE_Y11</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: right">0</td>
+					<td style="text-align: right">1</td>
+					<td style="text-align: right">5</td>
+					<td style="text-align: right">5</td>
+					<td style="text-align: right">5</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">1</td>
+					<td style="text-align: right">2</td>
+					<td style="text-align: right">7</td>
+					<td style="text-align: right">14</td>
+					<td style="text-align: right"><strong>19</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>La fel: Y₁₂ acumulează 1·6 + 2·8 = <strong>22</strong>; Y₂₁ acumulează 3·5 + 4·7 = <strong>43</strong>; Y₂₂ acumulează 3·6 + 4·8 = <strong>50</strong>. Sumele parțiale nu părăsesc PE-ul — exact definiția OS din Chen et al. (2016, §IV.B).</p>
+<h3 id="32-varianta-weight-stationary-aceeași-y-alt-trafic">3.2 Varianta weight-stationary (aceeași Y, alt trafic)<a class="anchor" href="#32-varianta-weight-stationary-aceea%c8%99i-y-alt-trafic">#</a></h3>
+<p>În WS, ponderile <code>W[k,j]</code> stau în <code>PE(k,j)</code>:</p>
+<pre tabindex="0"><code>          j=0           j=1
+k=0     PE00: 5       PE01: 6
+k=1     PE10: 7       PE11: 8</code></pre><p>Pentru linia <code>i=0</code> a lui X, unda sistolică face ca, pe coloana <code>j=0</code>, suma parțială să vadă pe rând <code>1·5</code> (în PE00) apoi <code>2·7</code> (în PE10, psum coborât), rezultând <strong>19</strong>. Pe coloana <code>j=1</code>: <code>1·6</code> apoi <code>2·8</code> → <strong>22</strong>. Pentru linia <code>i=1</code> (<code>[3,4]</code>): coloana 0 dă <code>3·5+4·7=43</code>, coloana 1 dă <code>3·6+4·8=50</code>.</p>
+<p>Diferența față de OS nu e în Y, ci în ce rămâne pe loc: la OS stă acumularea ieșirii; la WS stă ponderea (Chen et al., 2016, §IV). Pe TPU, alegerea e WS pe o grilă mare: ponderile unei dale 256×256 sunt preîncărcate, activările curg din stânga, un front diagonal de MAC-uri traversează grila, iar acumulatorii de sub MXU țin sumele pe 32 de biți (Jouppi et al., 2017, Fig. 4 și §2). Software-ul „vede” un matmul <code>B×256 · 256×256</code>; hardware-ul e sistolic.</p>
+<h2 id="4-tpu-v1-cifre-din-lucrarea-isca-2017">4. TPU v1: cifre din lucrarea ISCA 2017<a class="anchor" href="#4-tpu-v1-cifre-din-lucrarea-isca-2017">#</a></h2>
+<p>Tot ce urmează e din Jouppi et al., „In-Datacenter Performance Analysis of a Tensor Processing Unit”, ISCA 2017 (arXiv:1704.04760), pe PDF-ul deschis integral pentru acest draft.</p>
+<p><strong>Ce este.</strong> Un ASIC custom, numit Tensor Processing Unit (TPU), desfășurat în centrele de date Google din 2015, care accelerează <em>inferența</em> (nu antrenarea) rețelelor neuronale (Jouppi et al., 2017, Abstract).</p>
+<p><strong>Inima.</strong> O unitate de înmulțire de matrice cu <strong>65 536</strong> MAC-uri pe 8 biți, pe o grilă <strong>256×256</strong>, cu un <em>throughput</em> de vârf de <strong>92 TeraOps/s (TOPS)</strong> și o memorie on-chip gestionată de software de <strong>28 MiB</strong> (Jouppi et al., 2017, Abstract). Verificare aritmetică pe cifrele din Tabelul 2: 256 × 256 MAC/ciclu × 2 operații (înmulțire + adunare) × 700 MHz ≈ 91,75 × 10¹² ops/s ≈ <strong>92 TOPS</strong> (Tabelul 2: 700 MHz, 92 TOPS pe 8 biți).</p>
+<p><strong>Descompunerea celor 28 MiB.</strong> Buffer-ul unificat (<em>Unified Buffer</em>) are <strong>24 MiB</strong>; acumulatorii sub unitatea de matrice au <strong>4 MiB</strong> de acumulatori pe 32 de biți (4096 vectori de 256 elemente) — 24 + 4 = 28 MiB (Jouppi et al., 2017, §2, text lângă Fig. 1–2). Produsele pe 16 biți din MAC-urile pe 8 biți se adună în acești acumulatori pe 32 de biți (aceeași secțiune).</p>
+<p><strong>Proces și putere (Tabelul 2).</strong> TPU: nod <strong>28 nm</strong>, <strong>700 MHz</strong>, TDP <strong>75 W</strong>, putere măsurată idle <strong>28 W</strong> / busy <strong>40 W</strong>, bandwidth către <em>Weight Memory</em> <strong>34 GB/s</strong>, <strong>28 MiB</strong> on-chip; pe serverul măsurat, 4 die-uri TPU, fiecare cu <strong>8 GiB</strong> DRAM de ponderi (Jouppi et al., 2017, Tabelul 2). Die-ul TPU e „≤ half the Haswell die size” (nota Tabelului 2). Haswell contemporan: 22 nm, ~662 mm²; K80: 28 nm (Tabelul 2).</p>
+<p><strong>Dataflow sistolic.</strong> Citirea unui SRAM mare consumă mult mai multă putere decât aritmetica; de aceea unitatea de matrice folosește execuție sistolică pentru a reduce citirile/scrierile în Unified Buffer, citând Kung &amp; Leiserson / Mead–Conway și lucrări ulterioare (Jouppi et al., 2017, §2, refs. [Kun80][Ram91][Ovt15b]). Ponderile se încarcă de sus; datele vin din stânga; un front diagonal de MAC-uri traversează grila (Fig. 4).</p>
+<p><strong>Instrucțiuni.</strong> TPU e mai aproape, ca spirit, de un coprocesor FPU decât de un GPU (Jouppi et al., 2017, §2). Instrucțiunile vin de pe host pe PCIe Gen3 x16. Cinci instrucțiuni-cheie: <code>Read_Host_Memory</code>, <code>Read_Weights</code>, <code>MatrixMultiply/Convolve</code>, <code>Activate</code>, <code>Write_Host_Memory</code> (Jouppi et al., 2017, §2). <code>MatrixMultiply</code> ia o intrare B×256, o înmulțește cu o pondere constantă 256×256 și produce B×256, în B cicluri pipeline (aceeași listă).</p>
+<p><strong>Ceilalți operanzi.</strong> Când ponderile sunt pe 8 biți și activările pe 16 (sau invers), unitatea rulează la jumătate de viteză; când ambele sunt pe 16 biți, la un sfert (Jouppi et al., 2017, §2). Unitatea e proiectată pentru matrici <strong>dense</strong>; suportul arhitectural pentru <em>sparsity</em> a fost omis din motive de timp până la desfășurare, cu prioritate „high” pentru design-uri viitoare (Jouppi et al., 2017, §2).</p>
+<p><strong>Roofline pe TPU.</strong> Punctul de cotitură (<em>ridge point</em>) al unui die TPU e la <strong>~1350</strong> operații pe octet de weight memory — foarte în dreapta față de Haswell (~13) și K80 (~9) din aceleași figuri (Jouppi et al., 2017, Fig. 5–7). CNN0 atinge 86 TOPS; CNN1, deși cu intensitate mare, rulează la doar 14,1 TOPS, iar pe ciclurile active doar ~jumătate din cele 65 536 MAC-uri țin ponderi utile din cauza straturilor „shallow” (Jouppi et al., 2017, §4). Patru din șase aplicații sunt limitate de bandwidth pe TPU; crescând memoria de 4×, performanța medie crește de ~3× (Jouppi et al., 2017, highlights și Fig. 11).</p>
+<p><strong>Față de contemporani.</strong> Pe workload-ul de inferență măsurat, TPU e în medie circa <strong>15×–30×</strong> mai rapid decât GPU-ul K80 sau CPU-ul Haswell din aceleași centre de date, cu TOPS/Watt circa <strong>30×–80×</strong> mai mare; cu memoria GDDR5 a K80 pe TPU, TOPS atins s-ar triple și TOPS/Watt ar urca spre ~70× față de GPU și ~200× față de CPU (Jouppi et al., 2017, Abstract). Acestea sunt cifrele din abstractul ISCA; Tabelul 6 și Fig. 8 detaliază mediile pe die.</p>
+<p><strong>De ce nu „doar un GPU cu mai multe MAC-uri”.</strong> K80, contemporanul din 2015, e subutilizat la inferență din cauza limitelor de latență și e doar puțin mai rapid decât Haswell pe acel regim (Jouppi et al., 2017, highlights). TPU mizează pe determinism și pe o grilă sistolică mare, nu pe cache-uri și multithreading care ajută throughput-ul mediu mai mult decât latența garantată la percentila 99 (Abstract).</p>
+<h2 id="4b-de-ce-inimă-pe-memorie-nu-pe-alu">4b. De ce „inimă” pe memorie, nu pe ALU<a class="anchor" href="#4b-de-ce-inim%c4%83-pe-memorie-nu-pe-alu">#</a></h2>
+<p>Kung (1982, Fig. 1) opune explicit un singur PE legat de memorie — plafonat de I/O — unui tablou de PE-uri prin care același flux de date e „pompat” și refolosit. Dacă memoria livrează 10 milioane de octeți/s și fiecare operație cere cel puțin doi octeți, un singur PE nu poate depăși ~5 milioane de operații/s, „no matter how fast the special-purpose system can operate” (Kung, 1982, p. 38). Cu un tablou sistolic, același bandwidth alimentează multe MAC-uri pentru că fiecare octet e folosit de mai multe ori pe drum. TPU v1 e instanțierea din 2015 a aceleiași diagrame: 34 GB/s spre weight memory, dar 92 TOPS pe die — adică, la vârf, de ordinul a mii de operații pe octet de ponderi, consistent cu ridge-ul de ~1350 (Jouppi et al., 2017, Tabelul 2 și Fig. 5).</p>
+<p>Familia de design-uri pentru convoluție din Kung (1982, §„A family of systolic designs…”) — B1/B2 (broadcast), F (fan-in), R1/R2, W1/W2 — arată că „sistolic” nu e o singură schemă de cablare, ci o familie: ce stă, ce se mișcă, în ce direcție și cu ce viteză. Taxonomia modernă WS/OS (Chen et al., 2016) e nepoata aceleiași întrebări.</p>
+<h2 id="5-limitele-matricelor-sistolice-din-aceleași-surse">5. Limitele matricelor sistolice (din aceleași surse)<a class="anchor" href="#5-limitele-matricelor-sistolice-din-acelea%c8%99i-surse">#</a></h2>
+<ol>
+<li><strong>Utilizare.</strong> Chiar pe un MXU 256×256, straturile a căror dimensiune nu se potrivește cu 256 lasă MAC-uri goale; CNN1 e exemplul din hârtie (Jouppi et al., 2017, §4). Creșterea grilei la 512×512 <em>înrăutățește</em> media pe workload-ul lor — fragmentare internă bidimensională; exemplul LSTM1 cu 600×600: pe 256×256 trebuie 9 pași de tiling (18 µs), pe 512×512 doar 4 pași dar fiecare de 4× mai lung (32 µs) (Jouppi et al., 2017, §7).</li>
+<li><strong>Sparsity.</strong> TPU v1 nu are suport arhitectural pentru sparsitate; e omis intenționat (Jouppi et al., 2017, §2). Pe un tablou sistolic dens, zerourile tot ocupă „bătăi” de ceas dacă nu ai hardware care să le sară.</li>
+<li><strong>Bandwidth.</strong> Roofline-ul TPU are panta lungă: fără destulă intensitate pe octeții de ponderi, cele 92 TOPS rămân pe hârtie (Fig. 5; Fig. 11: memoria e butonul cu cel mai mare impact mediu).</li>
+<li><strong>Flexibilitate.</strong> Kung (1982) avertiza deja: sistemele specializate merită când forma e regulată și compute-bound; sarcinile I/O-bound cer mai mult bandwidth, nu mai multe celule (Kung, 1982, p. 39). Un cip sistolic „pariază” pe matmul. Un GPU cu tensor cores (capitolul 55) păstrează un schelet SIMT general și pune matmul-ul ca unitate specializată <em>înăuntru</em> — alt punct pe axa eficiență ↔ flexibilitate. Nu citez aici TOPS de Tensor Core: cifrele acelea țin de capitolul 55 și de whitepaper-urile NVIDIA (Volta/Hopper), nu de Jouppi et al. Comparația cantitativă din <em>acest</em> capitol rămâne TPU v1 vs Haswell vs K80 din Jouppi et al. (2017).</li>
+</ol>
+<h2 id="6-generații-tpu-ulterioare">6. Generații TPU ulterioare<a class="anchor" href="#6-genera%c8%9bii-tpu-ulterioare">#</a></h2>
+<p>Nu apar în acest capitol. Nu am folosit aici documentații primare (paper / datasheet) pentru TPU v2/v3/v4 etc.; orice cifră din rezumate secundare ar fi fost neverificabilă pe desk. Generațiile ulterioare rămân în afara scopului acestui text — comparația cantitativă din capitol rămâne TPU v1 vs Haswell vs K80 din Jouppi et al. (2017).</p>
+<h2 id="7-ce-să-rețineți">7. Ce să rețineți<a class="anchor" href="#7-ce-s%c4%83-re%c8%9bine%c8%9bi">#</a></h2>
+<ol>
+<li>„Sistolic” vine din <em>systole</em>: Kung &amp; Leiserson (1978) pun inima pe procesor; Kung (1982) pune inima pe memoria care pulsează datele prin tablou — citați sursa exactă.</li>
+<li>Scopul clasic: mai multe calcule pe fiecare acces la memorie, pe probleme compute-bound (Kung, 1982).</li>
+<li>WS vs OS decid ce economisești la energie (Chen et al., 2016); TPU v1 e WS pe MXU (Jouppi et al., 2017).</li>
+<li>Cifrele TPU v1 de reținut din abstract + Tabelul 2: 256×256 MAC pe 8 biți, 65 536 MAC, 92 TOPS @ 700 MHz, 28 MiB on-chip (24+4), 28 nm, ~40 W busy, 34 GB/s spre weight memory, desfășurat din 2015.</li>
+<li>Limitele apar în aceeași lucrare: utilizare, sparsitate absentă, bandwidth, potrivirea dimensiunilor la 256.</li>
+</ol>
+<p><strong>Ușa de ieșire:</strong> Kung &amp; Leiserson, CMU-CS-79-103 (1978/79) și Kung, „Why Systolic Architectures?” (1982), apoi Jouppi et al., ISCA 2017 — citiți §2 (microarhitectura) și Fig. 4–5 (dataflow + roofline) înainte să credeți orice slide de marketing despre „TPU”.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Matrice&#43;sistolice&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F58-systolic-arrays%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F58-systolic-arrays.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F58-systolic-arrays.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>De ce înmulțirea de matrice a remodelat proiectarea cipurilor</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/60-sparsity-in-hardware/" class="flex align-center">
+        <span>Sparsity în hardware</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-de-unde-vine-cuvântul-sistolic">1. De unde vine cuvântul „sistolic”</a></li>
+    <li><a href="#2-weight-stationary-și-output-stationary">2. Weight-stationary și output-stationary</a></li>
+    <li><a href="#3-exemplu-lucrat-pe-mână-22">3. Exemplu lucrat pe mână: 2×2</a>
+      <ul>
+        <li><a href="#31-varianta-output-stationary-un-pe--un-y_ij">3.1 Varianta output-stationary (un PE = un Y_ij)</a></li>
+        <li><a href="#32-varianta-weight-stationary-aceeași-y-alt-trafic">3.2 Varianta weight-stationary (aceeași Y, alt trafic)</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-tpu-v1-cifre-din-lucrarea-isca-2017">4. TPU v1: cifre din lucrarea ISCA 2017</a></li>
+    <li><a href="#4b-de-ce-inimă-pe-memorie-nu-pe-alu">4b. De ce „inimă” pe memorie, nu pe ALU</a></li>
+    <li><a href="#5-limitele-matricelor-sistolice-din-aceleași-surse">5. Limitele matricelor sistolice (din aceleași surse)</a></li>
+    <li><a href="#6-generații-tpu-ulterioare">6. Generații TPU ulterioare</a></li>
+    <li><a href="#7-ce-să-rețineți">7. Ce să rețineți</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

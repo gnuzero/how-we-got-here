@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- NOINDEX-PRELAUNCH: remove at announcement -->
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<script src="../_shared/i18n.js"></script>
+<title data-i18n="page.title">Mini-CPU Lab — 8-bit Toy ISA</title>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --border: #30363d;
+    --text: #c9d1d9; --accent: #58a6ff; --green: #3fb950;
+    --red: #f85149; --amber: #d29922; --mono: 'SF Mono', Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--mono);
+    margin: 0; padding: 16px; font-size: 14px;
+  }
+  h1 { font-size: 16px; color: var(--accent); margin: 0 0 4px; }
+  .sub { color: #8b949e; font-size: 12px; margin-bottom: 12px; }
+  .guide {
+    background: var(--panel); border: 1px solid var(--accent);
+    border-radius: 6px; padding: 12px 14px; margin-bottom: 12px;
+  }
+  .guide h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
+    color: var(--accent); margin: 0 0 8px; }
+  .guide .phase { color: var(--amber); font-size: 12px; margin-bottom: 6px; }
+  .guide .body { color: var(--text); font-size: 13px; line-height: 1.55; }
+  .guide .hint { color: #8b949e; font-size: 11px; margin-top: 8px; }
+  .layout { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 6px; padding: 12px;
+  }
+  .panel h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
+    color: #8b949e; margin: 0 0 8px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  textarea {
+    width: 100%; height: 260px; background: #010409; color: var(--text);
+    border: 1px solid var(--border); border-radius: 4px; padding: 8px;
+    font-family: var(--mono); font-size: 13px; resize: vertical;
+  }
+  .btnrow { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+  button {
+    background: #21262d; color: var(--text); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 4px; cursor: pointer; font-family: var(--mono); font-size: 12px;
+  }
+  button:hover { background: #30363d; }
+  button.primary { background: #238636; border-color: #2ea043; }
+  button.primary:hover { background: #2ea043; }
+  button.danger { background: #3d1418; border-color: var(--red); }
+  .regs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .reg { background: #010409; border: 1px solid var(--border); border-radius: 4px; padding: 8px; text-align: center; }
+  .reg .label { color: #8b949e; font-size: 11px; }
+  .reg .val { font-size: 20px; color: var(--green); margin-top: 2px; }
+  .flags { margin-top: 10px; display: flex; gap: 10px; }
+  .flag { padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); font-size: 11px; }
+  .flag.on { background: #1f3d2b; border-color: var(--green); color: var(--green); }
+  .mem { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 8px; }
+  .cell { background: #010409; border: 1px solid var(--border); border-radius: 3px;
+    padding: 4px; text-align: center; font-size: 11px; }
+  .cell.pc { border-color: var(--amber); color: var(--amber); }
+  .out { font-size: 28px; color: var(--green); text-align: center; padding: 12px;
+    background: #010409; border: 1px solid var(--border); border-radius: 4px; margin-top: 8px; }
+  .log { height: 120px; overflow-y: auto; background: #010409; border: 1px solid var(--border);
+    border-radius: 4px; padding: 6px; font-size: 11px; margin-top: 8px; color: #8b949e; }
+  .err { color: var(--red); }
+  .isa { font-size: 11px; color: #8b949e; line-height: 1.6; margin-top: 8px; }
+  .isa code { color: var(--accent); }
+  .isa .notes { margin: 6px 0 0; padding-left: 16px; }
+  .isa .notes li { margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<h1 data-i18n="page.heading">Mini-CPU Lab</h1>
+<div class="sub" data-i18n="page.subtitle">8-bit toy ISA · 4-bit opcode / 4-bit operand · 16 bytes RAM · A/B registers · Carry/Zero flags</div>
+
+<div class="guide" id="guide">
+  <h2 data-i18n="guide.heading">Guided beat</h2>
+  <div class="phase" id="guidePhase" data-i18n="guide.intro.phase">Fetch → Decode → Execute</div>
+  <div class="body" id="guideBody" data-i18n="guide.intro.body">A canned 8-instruction program is already loaded: load 5, store it at mem[14], load 8, add the stored 5, store the sum at mem[15], reload it, OUT, then HLT. Press Step repeatedly — watch register A and the memory grid light up as PC advances. Edit the source anytime, then Assemble before stepping again.</div>
+  <div class="hint" id="guideHint" data-i18n="guide.intro.hint">Tip: amber border on a memory cell marks the current PC. After each Step, this panel narrates fetch / decode / execute.</div>
+</div>
+
+<div class="layout">
+
+  <div class="panel">
+    <h2 data-i18n="panel.assembly">Assembly</h2>
+    <textarea id="src" data-i18n="src.default">; Guided beat (8 instructions): load 5, store it,
+; load 8, add the stored 5, save result, reload, OUT, HLT
+LDI 5
+STA 14
+LDI 8
+ADD 14
+STA 15
+LDA 15
+OUT
+HLT</textarea>
+    <div class="btnrow">
+      <button class="primary" onclick="assembleAndLoad()" data-i18n="btn.assemble">Assemble</button>
+      <button onclick="step()" data-i18n="btn.step">Step</button>
+      <button onclick="run()" data-i18n="btn.run">Run</button>
+      <button onclick="stop()" data-i18n="btn.stop">Stop</button>
+      <button class="danger" onclick="reset()" data-i18n="btn.reset">Reset</button>
+    </div>
+    <div class="isa">
+      <div data-i18n-html="isa.lead_html"><strong>ISA:</strong> <code>NOP</code> <code>LDA a</code> <code>ADD a</code> <code>SUB a</code>
+      <code>STA a</code> <code>LDI n</code> <code>JMP a</code> <code>JC a</code> <code>JZ a</code>
+      <code>OUT</code> <code>HLT</code> — addresses/immediates 0–15, written in decimal (<code>13</code>) or hex (<code>0xD</code>)</div>
+      <ul class="notes">
+        <li data-i18n-html="isa.note1_html">Operands must be whole numbers 0–15. Anything else (<code>0xZZ</code>, <code>300</code>, a missing address) stops Assemble with an error naming the line — it is never quietly read as 0. <code>NOP</code>, <code>OUT</code> and <code>HLT</code> ignore an operand when they run, so <code>NOP 7</code> is a way to put the value 7 in memory.</li>
+        <li data-i18n-html="isa.note2_html">ZERO lights when A ends up 0 after <code>LDI</code>, <code>LDA</code>, <code>ADD</code> or <code>SUB</code>. <code>STA</code>, <code>OUT</code> and jumps leave it alone. Reset clears it, so a <code>JZ</code> before any of those falls through.</li>
+        <li data-i18n-html="isa.note3_html">Registers are 8-bit: 0 − 1 wraps to 255 (and sets CARRY). A countdown from n=0 runs 256 loops, not zero.</li>
+        <li data-i18n-html="isa.note4_html">Program and values share the same 16 words. A <code>STA</code> can overwrite an instruction — even your final <code>HLT</code>, and then the CPU runs on past it.</li>
+      </ul>
+    </div>
+    <div id="log" class="log"></div>
+  </div>
+
+  <div class="panel">
+    <h2 data-i18n="panel.cpu">CPU State</h2>
+    <div class="regs">
+      <div class="reg"><div class="label" data-i18n="reg.a">A</div><div class="val" id="regA">00</div></div>
+      <div class="reg"><div class="label" data-i18n="reg.b">B</div><div class="val" id="regB">00</div></div>
+      <div class="reg"><div class="label" data-i18n="reg.pc">PC</div><div class="val" id="regPC">0</div></div>
+      <div class="reg"><div class="label" data-i18n="reg.ir">IR</div><div class="val" id="regIR">--</div></div>
+    </div>
+    <div class="flags">
+      <div class="flag" id="flagC" data-i18n="flag.carry">CARRY</div>
+      <div class="flag" id="flagZ" data-i18n="flag.zero">ZERO</div>
+      <div class="flag" id="flagH" data-i18n="flag.halt">HALT</div>
+    </div>
+    <h2 style="margin-top:14px" data-i18n="panel.output">Output Register</h2>
+    <div class="out" id="outReg">0</div>
+  </div>
+
+  <div class="panel">
+    <h2 data-i18n="panel.memory">Memory (16 × 8-bit)</h2>
+    <div class="mem" id="memGrid"></div>
+  </div>
+
+</div>
+
+<script>
+// ---- Mini-CPU: 4-bit opcode, 4-bit operand, 16 bytes RAM, A/B regs ----
+const OPS = {NOP:0x0, LDA:0x1, ADD:0x2, SUB:0x3, STA:0x4, LDI:0x5, JMP:0x6, JC:0x7, JZ:0x8, OUT:0xE, HLT:0xF};
+const OPNAMES = Object.fromEntries(Object.entries(OPS).map(([k,v])=>[v,k]));
+
+let mem = new Uint8Array(16);
+let A=0, B=0, PC=0, IR=0, carry=0, zero=0, halted=false, outReg=0, running=false, timer=null;
+let stepCount = 0;
+
+function setGuide(phase, body, hint) {
+  document.getElementById('guidePhase').textContent = phase;
+  document.getElementById('guideBody').textContent = body;
+  document.getElementById('guideHint').textContent = hint || '';
+}
+
+function explainExecute(op, arg, prevA, prevMem) {
+  switch (op) {
+    case OPS.NOP:
+      return t('exec.nop');
+    case OPS.LDA:
+      return t('exec.lda', { arg: arg, prevA: prevA, A: A, zero: zero });
+    case OPS.ADD:
+      return t('exec.add', { arg: arg, A: A, carry: carry, zero: zero });
+    case OPS.SUB:
+      return t('exec.sub', { arg: arg, A: A, carry: carry, zero: zero });
+    case OPS.STA:
+      return t('exec.sta', { arg: arg, A: A, prevMem: prevMem });
+    case OPS.LDI:
+      return t('exec.ldi', { arg: arg, prevA: prevA, zero: zero });
+    case OPS.JMP:
+      return t('exec.jmp', { arg: arg });
+    case OPS.JC:
+      return carry ? t('exec.jc.taken', { arg: arg }) : t('exec.jc.fall', { arg: arg });
+    case OPS.JZ:
+      return zero ? t('exec.jz.taken', { arg: arg }) : t('exec.jz.fall', { arg: arg });
+    case OPS.OUT:
+      return t('exec.out', { A: A });
+    case OPS.HLT:
+      return t('exec.hlt', { out: outReg });
+    default:
+      return t('exec.unknown');
+  }
+}
+
+function logMsg(msg, isErr) {
+  const log = document.getElementById('log');
+  const line = document.createElement('div');
+  if (isErr) line.className = 'err';
+  line.textContent = msg;
+  log.appendChild(line);
+  log.scrollTop = log.scrollHeight;
+}
+
+// Instructions whose operand is optional and ignored when they run. The
+// assembler still stores it in the low 4 bits (as it always has), so
+// `NOP 7` plants the data word 7. Every other mnemonic needs an operand.
+const NO_OPERAND = new Set(['NOP', 'OUT', 'HLT']);
+
+// Read an operand token: decimal (13) or hex (0xD / 0X0d). Returns NaN for
+// anything else, so a bad token can never slip through as 0.
+function parseOperand(tok) {
+  if (/^0x[0-9a-f]+$/i.test(tok)) return parseInt(tok.slice(2), 16);
+  if (/^[0-9]+$/.test(tok)) return parseInt(tok, 10);
+  return NaN;
+}
+
+function assemble(src) {
+  const bytes = new Uint8Array(16);
+  let count = 0;
+  src.split('\n').forEach((raw, idx) => {
+    const lineNo = idx + 1;                       // line number as shown in the editor
+    const line = raw.replace(/;.*/, '').trim();
+    if (!line) return;
+    const [mnem, argStr, ...extra] = line.split(/\s+/);
+    const name = mnem.toUpperCase();
+    const op = OPS[name];
+    if (op === undefined) throw new Error(t('asm.unknownMnemonic', { line: lineNo, mnem: mnem }));
+    if (count >= 16) throw new Error(t('asm.exceeds', { line: lineNo }));
+    let arg = 0;
+    const optional = NO_OPERAND.has(name);
+    if (optional && argStr === undefined) {
+      // NOP / OUT / HLT on their own: operand 0.
+    } else {
+      const what = optional ? t('asm.what.operand') : name === 'LDI' ? t('asm.what.value') : t('asm.what.address');
+      if (argStr === undefined) throw new Error(t('asm.needsOperand', { line: lineNo, name: name, what: what }));
+      if (extra.length) throw new Error(t('asm.unexpected', { line: lineNo, extra: extra[0], mnem: mnem, arg: argStr }));
+      arg = parseOperand(argStr);
+      if (isNaN(arg)) throw new Error(t('asm.badOperand', { line: lineNo, what: what, arg: argStr }));
+      if (arg > 15) throw new Error(name === 'LDI' || optional
+        ? t('asm.outOfRangeValue', { line: lineNo, what: what, arg: argStr, name: name })
+        : t('asm.outOfRangeAddr', { line: lineNo, arg: argStr }));
+    }
+    bytes[count++] = (op << 4) | arg;
+  });
+  return { bytes, count };
+}
+
+function assembleAndLoad() {
+  document.getElementById('log').innerHTML = '';
+  try {
+    const result = assemble(document.getElementById('src').value);
+    mem = result.bytes;
+    reset(false);
+    logMsg(t('log.assembled', { count: result.count }));
+    setGuide(t('guide.intro.phase'), t('guide.intro.body'), t('guide.intro.hint'));
+  } catch (e) {
+    logMsg(e.message, true);
+    setGuide(t('guide.assembleError.phase'), e.message, t('guide.assembleError.hint'));
+  }
+  render();
+}
+
+function reset(doLog=true) {
+  A=0; B=0; PC=0; IR=0; carry=0; zero=0; halted=false; outReg=0;
+  stepCount = 0;
+  stop();
+  if (doLog) {
+    logMsg(t('log.reset'));
+    setGuide(t('guide.intro.phase'), t('guide.intro.body'), t('guide.reset.hint'));
+  }
+  render();
+}
+
+function step() {
+  if (halted) {
+    logMsg(t('log.halted'), true);
+    setGuide(t('guide.halted.phase'), t('guide.halted.body'), '');
+    return;
+  }
+
+  const fetchPC = PC;
+  const fetched = mem[PC];
+  const op = (fetched >> 4) & 0xF;
+  const arg = fetched & 0xF;
+  const name = OPNAMES[op] || '???';
+  const prevA = A;
+  const prevMem = (op === OPS.STA) ? mem[arg] : undefined;
+
+  // FETCH
+  IR = fetched;
+  PC = (PC + 1) & 0xF;
+
+  // EXECUTE (decode is the op/arg split above)
+  switch (op) {
+    case OPS.NOP: break;
+    case OPS.LDA: A = mem[arg]; zero = A===0?1:0; break;
+    case OPS.ADD: { const r = A + mem[arg]; carry = r > 255 ? 1 : 0; A = r & 0xFF; zero = A===0?1:0; break; }
+    case OPS.SUB: { const r = A - mem[arg]; carry = r < 0 ? 1 : 0; A = (r + 256) & 0xFF; zero = A===0?1:0; break; }
+    case OPS.STA: mem[arg] = A; break;
+    case OPS.LDI: A = arg; zero = A===0?1:0; break;
+    case OPS.JMP: PC = arg; break;
+    case OPS.JC: if (carry) PC = arg; break;
+    case OPS.JZ: if (zero) PC = arg; break;
+    case OPS.OUT: outReg = A; break;
+    case OPS.HLT: halted = true; stop(); logMsg(t('log.hlt', { out: outReg })); break;
+    default: logMsg(t('log.unknownOpcode', { op: op.toString(16), pc: fetchPC }), true); halted = true; stop();
+  }
+
+  stepCount += 1;
+  const fetchText = t('step.fetch', {
+    pc: fetchPC,
+    byte: fetched.toString(16).padStart(2,'0').toUpperCase(),
+    next: (fetchPC + 1) & 0xF
+  });
+  const insn = (name !== 'NOP' && name !== 'OUT' && name !== 'HLT') ? (name + ' ' + arg) : name;
+  const decodeText = t('step.decode', {
+    insn: insn,
+    op: op.toString(16).toUpperCase(),
+    arg: arg
+  });
+  const execText = t('step.execute', { detail: explainExecute(op, arg, prevA, prevMem) });
+  setGuide(
+    t('guide.step.phase', { n: stepCount }),
+    t('guide.body.joined', { fetch: fetchText, decode: decodeText, execute: execText }),
+    halted ? t('guide.step.hintDone') : t('guide.step.hint')
+  );
+
+  render();
+}
+
+function run() {
+  if (running) return;
+  running = true;
+  setGuide(t('guide.run.phase'), t('guide.run.body'), '');
+  timer = setInterval(() => { if (halted) { stop(); return; } step(); }, 250);
+}
+
+function stop() {
+  running = false;
+  if (timer) { clearInterval(timer); timer = null; }
+}
+
+function render() {
+  document.getElementById('regA').textContent = A.toString(16).padStart(2,'0').toUpperCase();
+  document.getElementById('regB').textContent = B.toString(16).padStart(2,'0').toUpperCase();
+  document.getElementById('regPC').textContent = PC;
+  document.getElementById('regIR').textContent = IR ? IR.toString(16).padStart(2,'0').toUpperCase() : '--';
+  document.getElementById('outReg').textContent = outReg;
+  document.getElementById('flagC').className = 'flag' + (carry ? ' on' : '');
+  document.getElementById('flagZ').className = 'flag' + (zero ? ' on' : '');
+  document.getElementById('flagH').className = 'flag' + (halted ? ' on' : '');
+
+  const grid = document.getElementById('memGrid');
+  grid.innerHTML = '';
+  for (let i = 0; i < 16; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cell' + (i === PC ? ' pc' : '');
+    const op = (mem[i] >> 4) & 0xF;
+    const arg = mem[i] & 0xF;
+    const name = OPNAMES[op] !== undefined ? OPNAMES[op] : '?';
+    cell.textContent = i + ': ' + name + (name!=='NOP'&&name!=='OUT'&&name!=='HLT' ? ' '+arg : '');
+    grid.appendChild(cell);
+  }
+}
+
+LabI18n.ready.then(assembleAndLoad);
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>斷詞 on 我們如何走到那裡</title>
+		<link>http://localhost:1478/zh-hant/tags/%E6%96%B7%E8%A9%9E/</link>
+		<description>Recent content in 斷詞 on 我們如何走到那裡</description>
+		<generator>Hugo</generator>
+		<language>zh-Hant</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hant/tags/%E6%96%B7%E8%A9%9E/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>從中文信息處理到注意力機制</title>
+				<link>http://localhost:1478/zh-hant/posts/63-zh-road-to-attention/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/63-zh-road-to-attention/</guid>
+				<description>從一台只能輸出電報碼的翻譯機，到首發在中文部落格上的旋轉位置編碼，中文這條線給今天的 Transformer 留下了兩塊實實在在的零件。</description>
+			</item>
+	</channel>
+</rss>

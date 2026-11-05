@@ -1,0 +1,17 @@
+{
+  "page.title": "VM Terminal Lab",
+  "page.heading": "VM Terminal Lab",
+  "page.subtitle": "Real x86 machine, running client-side in your browser via WASM — boots a real Linux, real shell, real commands",
+  "btn.boot": "Boot VM",
+  "btn.restart": "Restart",
+  "status.idle": "Not started — press Boot VM",
+  "first.heading": "First commands",
+  "first.body_html": "Press <strong>Boot VM</strong>, wait for the login/shell prompt, then <strong>click the black screen</strong> so the keyboard focuses the VM. Try these:",
+  "first.hint": "Type each command and press Enter. Restart returns you to a fresh boot if the session gets stuck.",
+  "note_html": "Powered by <strong>v86</strong> — a full x86 emulator in WebAssembly. Runtime, BIOS, and Linux image are vendored under <code>assets/</code> next to this page (no live CDN required for first boot). <a href=\"ORIGIN.md\">source &amp; licences</a>",
+  "status.already": "Already running — click the screen for keyboard",
+  "status.loading": "Loading local VM image + booting…",
+  "status.booting": "Booting kernel…",
+  "status.running": "Running — click the screen, then try whoami / uname / ls",
+  "status.restarted": "Restarted — click the screen when the prompt returns"
+}

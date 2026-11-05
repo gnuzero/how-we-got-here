@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Viteza procesoarelor și latența DRAM s-au despărțit timp de decenii: cache-ul ascunde prăpastia, nu o închide, iar în epoca LLM zidul se măsoară în bandwidth">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/35-the-memory-wall/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Zidul memoriei">
+	<meta property="og:description" content="Viteza procesoarelor și latența DRAM s-au despărțit timp de decenii: cache-ul ascunde prăpastia, nu o închide, iar în epoca LLM zidul se măsoară în bandwidth">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Zidul memoriei">
+	<meta itemprop="description" content="Viteza procesoarelor și latența DRAM s-au despărțit timp de decenii: cache-ul ascunde prăpastia, nu o închide, iar în epoca LLM zidul se măsoară în bandwidth">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="3690">
+
+<title>Zidul memoriei • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/35-the-memory-wall/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/35-the-memory-wall/" title="The Memory Wall">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/35-the-memory-wall/" title="กำแพงหน่วยความจำ">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/35-the-memory-wall/" title="මතක බිත්තිය">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/35-the-memory-wall/" title="The Memory Wall">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/35-the-memory-wall/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/35-the-memory-wall/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/35-the-memory-wall/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/35-the-memory-wall/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="active">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Zidul memoriei</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-o-notă-scurtă-despre-ceva-evident">1. O notă scurtă despre ceva „evident”</a>
+      <ul>
+        <li><a href="#ecuația-timpului-mediu-de-acces">Ecuația timpului mediu de acces</a></li>
+        <li><a href="#unde-se-lovește-zidul">Unde se lovește zidul</a></li>
+        <li><a href="#de-ce-nu-există-o-ieșire-ușoară">De ce nu există o ieșire ușoară</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-latență-versus-bandwidth-două-probleme-diferite">2. Latență versus bandwidth: două probleme diferite</a>
+      <ul>
+        <li><a href="#de-ce-s-a-mișcat-bandwidth-ul-și-latența-nu">De ce s-a mișcat bandwidth-ul și latența nu</a></li>
+        <li><a href="#calculul-din-spatele-cifrei-hbm3">Calculul din spatele cifrei HBM3</a></li>
+        <li><a href="#legea-lui-little-legătura-dintre-cele-două">Legea lui Little: legătura dintre cele două</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-ce-face-cache-ul-și-unde-se-oprește">3. Ce face cache-ul și unde se oprește</a></li>
+    <li><a href="#4-modelul-roofline-limitat-de-memorie-sau-limitat-de-calcul">4. Modelul roofline: limitat de memorie sau limitat de calcul?</a>
+      <ul>
+        <li><a href="#intensitatea-operațională">Intensitatea operațională</a></li>
+        <li><a href="#acoperișul">Acoperișul</a></li>
+        <li><a href="#ce-au-găsit-autorii">Ce au găsit autorii</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-zidul-memoriei-în-epoca-ai">5. Zidul memoriei în epoca AI</a>
+      <ul>
+        <li><a href="#treizeci-de-ani-mai-târziu-aceeași-poveste-alte-exponente">Treizeci de ani mai târziu, aceeași poveste, alte exponente</a></li>
+        <li><a href="#hbm-răspunsul-hardware">HBM: răspunsul hardware</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-exemplu-numeric-de-ce-generarea-de-text-este-memory-bound">6. Exemplu numeric: de ce generarea de text este memory-bound</a>
+      <ul>
+        <li><a href="#pasul-1-punctul-de-cotitură-al-h100">Pasul 1: punctul de cotitură al H100</a></li>
+        <li><a href="#pasul-2-intensitatea-generării-cu-batch--1">Pasul 2: intensitatea generării cu batch = 1</a></li>
+        <li><a href="#pasul-3-timpul-per-token-după-fiecare-limită">Pasul 3: timpul per token, după fiecare limită</a></li>
+        <li><a href="#pasul-4-de-ce-ajută-batching-ul-și-de-ce-nu-la-nesfârșit">Pasul 4: de ce ajută batching-ul și de ce nu la nesfârșit</a></li>
+        <li><a href="#pasul-5-contrastul-cu-antrenarea-și-cu-prefill">Pasul 5: contrastul cu antrenarea și cu <em>prefill</em></a></li>
+      </ul>
+    </li>
+    <li><a href="#7-cum-se-luptă-industria-cu-zidul-fără-să-l-dărâme">7. Cum se luptă industria cu zidul (fără să-l dărâme)</a></li>
+    <li><a href="#8-ce-să-rețineți">8. Ce să rețineți</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Zidul memoriei
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 34 s-a încheiat cu o ruptură: generațiile DDR au crescut în <em>bandwidth</em> (lățime de bandă, adică câți octeți pe secundă poate livra memoria), dar <em>latența</em> DRAM (cât aștepți până sosește primul octet cerut) aproape că nu s-a mișcat. În acest capitol ne îndepărtăm de detaliile unui modul de memorie și privim întregul sistem. Ruptura aceea, văzută de sus, are un nume: <strong>zidul memoriei</strong> (în engleză, <em>memory wall</em>). Nu e o curiozitate istorică. Este, foarte probabil, principalul motiv pentru care un model de limbaj mare (LLM) generează text cu viteza pe care o vedeți și nu de zeci de ori mai repede.</p>
+<p>Vom merge în patru pași: (1) ce au observat Wulf și McKee în 1995 și de ce argumentul lor e aproape aritmetic; (2) diferența dintre latență și bandwidth și de ce o problemă nu se rezolvă cu leacul celeilalte; (3) modelul <em>roofline</em>, care împarte orice program în „limitat de memorie” sau „limitat de calcul”; (4) ce înseamnă toate acestea pentru GPU-uri, HBM și inferența LLM, cu un exemplu numeric construit doar din cifre de catalog și din presupuneri marcate explicit.</p>
+<hr>
+<h2 id="1-o-notă-scurtă-despre-ceva-evident">1. O notă scurtă despre ceva „evident”<a class="anchor" href="#1-o-not%c4%83-scurt%c4%83-despre-ceva-evident">#</a></h2>
+<p>În decembrie 1994, Wm. A. Wulf și Sally A. McKee, de la University of Virginia, au scris o notă de cinci pagini publicată în martie 1995 în <em>ACM SIGARCH Computer Architecture News</em>, vol. 23, nr. 1, pp. 20–24, sub titlul „Hitting the Memory Wall: Implications of the Obvious” (Wulf &amp; McKee, 1995, <a href="https://doi.org/10.1145/216585.216588">doi:10.1145/216585.216588</a>). Chiar autorii o prezintă, în primul paragraf, ca pe o observație despre ceva ce „știau” fără să înțeleagă cu adevărat (Wulf &amp; McKee, 1995, <a href="https://intranet.di.unisa.it/~vitsca/SC-2011/DesignPrinciplesMulticoreProcessors/Wulf1995.pdf">PDF</a>).</p>
+<p>Ideea lor centrală: atât viteza microprocesoarelor, cât și viteza DRAM cresc exponențial, dar exponentul procesoarelor e mult mai mare, iar diferența dintre două exponențiale divergente crește și ea exponențial (Wulf &amp; McKee, 1995). Altfel spus, nu e vorba de o prăpastie care se lărgește liniar, pe care o poți astupa cu ceva mai mult efort ingineresc în fiecare an. E o prăpastie care se dublează mereu.</p>
+<h3 id="ecuația-timpului-mediu-de-acces">Ecuația timpului mediu de acces<a class="anchor" href="#ecua%c8%9bia-timpului-mediu-de-acces">#</a></h3>
+<p>Pentru a cuantifica, autorii pornesc de la o formulă clasică din arhitectura calculatoarelor, timpul mediu de acces la memorie (Wulf &amp; McKee, 1995):</p>
+<pre tabindex="0"><code>t_avg = p × t_c + (1 − p) × t_m</code></pre><p>unde <code>t_c</code> este timpul de acces la cache, <code>t_m</code> timpul de acces la DRAM, iar <code>p</code> probabilitatea ca datele să fie găsite în cache (rata de <em>hit</em>) (Wulf &amp; McKee, 1995). Formula pare banală. Capcana stă în termenul <code>(1 − p) × t_m</code>: oricât de mic ar fi <code>(1 − p)</code>, el nu este zero, așa că, pe măsură ce <code>t_c</code> și <code>t_m</code> se depărtează, <code>t_avg</code> crește și performanța sistemului se degradează (Wulf &amp; McKee, 1995).</p>
+<h3 id="unde-se-lovește-zidul">Unde se lovește zidul<a class="anchor" href="#unde-se-love%c8%99te-zidul">#</a></h3>
+<p>Wulf și McKee fixează și pragul. Ei preiau din manualul lui Hennessy și Patterson estimarea că 20–40% dintre instrucțiuni accesează memoria și aleg, conservator, 20%, adică o instrucțiune din cinci (Wulf &amp; McKee, 1995, citând [Hen90]). Prin urmare, zidul este atins când <code>t_avg</code> depășește timpul a cinci instrucțiuni: din acel moment performanța e determinată în întregime de viteza memoriei, iar un procesor mai rapid nu mai scurtează timpul real de execuție (Wulf &amp; McKee, 1995).</p>
+<p>Apoi fac o proiecție. Presupun o rată de <em>miss</em> obligatorie (<em>compulsory miss</em>) de cel mult 1%, un nivel următor de memorie de patru ori mai lent decât cache-ul, o creștere a vitezei DRAM de 7% pe an și estimarea lui Baskett de 80% pe an pentru performanța microprocesoarelor (Wulf &amp; McKee, 1995). Cu aceste ipoteze, numărul mediu de cicluri per acces la memorie ar fi 1,52 în 2000, 8,25 în 2005 și 98,8 în 2010, deci zidul ar fi la „mai puțin de un deceniu” distanță (Wulf &amp; McKee, 1995).</p>
+<p>Merită subliniat ce <em>nu</em> spun aceste cifre. Sunt proiecții construite pe ipoteze declarate, nu măsurători, iar autorii insistă că valorile exacte nu schimbă concluzia de bază (Wulf &amp; McKee, 1995). Rata de 80% pe an pentru procesoare nu s-a menținut după mijlocul anilor 2000, odată cu sfârșitul creșterii frecvenței pe un singur nucleu (capitolul 36 al cărții tratează acest „zid al frecvenței de ceas”). Valoarea notei nu stă în predicția anului 2010, ci în forma argumentului.</p>
+<h3 id="de-ce-nu-există-o-ieșire-ușoară">De ce nu există o ieșire ușoară<a class="anchor" href="#de-ce-nu-exist%c4%83-o-ie%c8%99ire-u%c8%99oar%c4%83">#</a></h3>
+<p>Partea cea mai incomodă a notei este lista de remedii pe care autorii le resping. Ei calculaseră deja cu un cache perfect, deci un cache mai mare sau mai inteligent nu ajută. Presupuseseră deja că bandwidth-ul memoriei e folosit complet, deci nici prefetching-ul nu ajută (Wulf &amp; McKee, 1995). Concluzia lor: vom lovi un zid în îmbunătățirea performanței „dacă nu se schimbă ceva fundamental” (Wulf &amp; McKee, 1995).</p>
+<hr>
+<h2 id="2-latență-versus-bandwidth-două-probleme-diferite">2. Latență versus bandwidth: două probleme diferite<a class="anchor" href="#2-laten%c8%9b%c4%83-versus-bandwidth-dou%c4%83-probleme-diferite">#</a></h2>
+<p>În limbajul de zi cu zi, „memorie rapidă” amestecă două mărimi distincte, iar zidul memoriei nu poate fi înțeles fără să le separăm.</p>
+<ul>
+<li><strong>Latența</strong> este timpul dintre momentul în care procesorul cere o adresă și momentul în care primul octet ajunge înapoi. Se măsoară în nanosecunde sau în cicluri de ceas.</li>
+<li><strong>Bandwidth-ul</strong> este debitul susținut: câți octeți pe secundă pot curge între memorie și procesor odată ce transferurile sunt în curs. Se măsoară în GB/s sau TB/s.</li>
+</ul>
+<p>O analogie utilă, pur didactică: latența este timpul în care un camion parcurge drumul de la depozit la fabrică, iar bandwidth-ul este numărul de camioane care sosesc pe oră. Poți lărgi autostrada la zece benzi (mai mult bandwidth) fără ca vreun camion să ajungă mai repede (aceeași latență).</p>
+<h3 id="de-ce-s-a-mișcat-bandwidth-ul-și-latența-nu">De ce s-a mișcat bandwidth-ul și latența nu<a class="anchor" href="#de-ce-s-a-mi%c8%99cat-bandwidth-ul-%c8%99i-laten%c8%9ba-nu">#</a></h3>
+<p>Capitolul 10 al cărții a descris celula DRAM 1T1C: un tranzistor și un condensator care păstrează o sarcină electrică foarte mică. Citirea cere un amplificator de sens (<em>sense amplifier</em>) care detectează diferența minusculă de tensiune pe <em>bitline</em> și o amplifică până la un nivel logic. Lee et al. (HPCA 2013) arată de ce latența DRAM a rămas aproape constantă în timp ce capacitatea a crescut: pentru a ține jos costul pe bit, multe celule împart același amplificator de sens printr-un bitline lung, iar capacitatea parazită a bitline-ului este „sursa dominantă” a latenței de acces (<a href="https://users.ece.cmu.edu/~omutlu/pub/tldram_hpca13.pdf">Lee et al., „Tiered-Latency DRAM…”, HPCA 2013</a>). Patterson (CACM 2004) rezumă tiparul pe patru tehnologii — inclusiv DRAM — prin regula empirică: în timpul în care bandwidth-ul se dublează, latența se îmbunătățește cel mult de 1,2–1,4 ori (<a href="https://doi.org/10.1145/1022594.1022596">Patterson, „Latency lags bandwidth”, CACM 47(10), 2004</a>).</p>
+<p>Bandwidth-ul, în schimb, se poate crește <em>fără</em> să învingi această limită: mai multe bănci care lucrează în paralel, mai multe canale, prefetch mai lat, transfer pe ambele fronturi ale ceasului (<em>double data rate</em>). Standardele JEDEC arată această strategie la vedere. Pentru DDR5 (JESD79-5), comunicatul JEDEC din 14 iulie 2020 anunța lansarea la <strong>4,8 Gb/s</strong> pe pin — cu 50% peste viteza de sfârșit de viață a DDR4, de 3,2 Gb/s — și spunea că DDR5 „suportă dublul bandwidth-ului” față de DDR4 (<a href="https://www.jedec.org/news/pressreleases/jedec-publishes-new-ddr5-standard-advancing-next-generation-high-performance">JEDEC, 2020</a>). (Cifra de 6,4 Gb/s pe pin apare la HBM3 în același an calendaristic, nu ca viteză de lansare a DDR5; amendamentele ulterioare ale JESD79-5 au definit viteze mai mari, inclusiv 6,4 Gb/s.) Pentru HBM3 (JESD238), comunicatul JEDEC din 27 ianuarie 2022 descrie dublarea ratei pe pin față de HBM2, până la 6,4 Gb/s, „echivalentul a 819 GB/s per dispozitiv”, și dublarea numărului de canale independente de la 8 la 16 (<a href="https://www.jedec.org/news/pressreleases/jedec-publishes-hbm3-update-high-bandwidth-memory-hbm-standard">JEDEC, 2022</a>).</p>
+<p>Observați ce lipsește din ambele comunicate: o promisiune de latență mai mică pentru primul acces. Industria a vândut bandwidth, pentru că pe acela îl putea livra.</p>
+<h3 id="calculul-din-spatele-cifrei-hbm3">Calculul din spatele cifrei HBM3<a class="anchor" href="#calculul-din-spatele-cifrei-hbm3">#</a></h3>
+<p>Cifra de 819 GB/s nu e magie. Interfața HBM3 păstrează lățimea de 1024 de biți a generațiilor anterioare, iar 6,4 Gb/s × 1024 biți / 8 biți pe octet ≈ 819 GB/s (Semiconductor Engineering, <a href="https://semiengineering.com/its-official-hbm3-dons-the-crown-of-bandwidth-king/">„It&rsquo;s Official: HBM3 Dons The Crown Of Bandwidth King”</a>, care detaliază aceeași aritmetică). E exemplul perfect pentru „lățește autostrada”: HBM nu face un singur acces mai rapid, ci pune 1024 de fire de date în paralel, foarte aproape de procesor, pe un <em>interposer</em> de siliciu (Semiconductor Engineering, op. cit.).</p>
+<h3 id="legea-lui-little-legătura-dintre-cele-două">Legea lui Little: legătura dintre cele două<a class="anchor" href="#legea-lui-little-leg%c4%83tura-dintre-cele-dou%c4%83">#</a></h3>
+<p>Între latență și bandwidth există o relație simplă din teoria cozilor. Legea lui Little spune că numărul mediu de clienți într-un sistem stabil este egal cu rata de sosire înmulțită cu timpul mediu de așteptare, L = λW (Little, <em>Operations Research</em> 9(3):383–387, 1961, <a href="https://doi.org/10.1287/opre.9.3.383">doi:10.1287/opre.9.3.383</a>). Aplicată la magistrala de memorie, ea dă produsul bandwidth–latență: ca să menții un anumit bandwidth în ciuda unei latențe date, trebuie să ai în zbor, simultan, un număr de octeți egal cu bandwidth × latență. (Williams, Waterman și Patterson, 2009, o folosesc în același sens când discută concurența necesară pentru a satura memoria.)</p>
+<pre tabindex="0"><code>octeți în zbor = bandwidth × latență</code></pre><p>Un exemplu <em>ilustrativ</em> (ipoteze, nu date de catalog): dacă latența ar fi 100 ns și ținta ar fi 1 TB/s, ar trebui să ai în permanență 10¹² B/s × 10⁻⁷ s = 100 000 de octeți cereri în curs. Un singur fir de execuție care așteaptă cuminte fiecare rezultat nu va ajunge niciodată acolo. De aici vin execuția <em>out-of-order</em> (capitolul 16), prefetching-ul hardware și, la extrem, modelul GPU cu zeci de mii de fire care se ascund reciproc latența (capitolele 53–55).</p>
+<hr>
+<h2 id="3-ce-face-cache-ul-și-unde-se-oprește">3. Ce face cache-ul și unde se oprește<a class="anchor" href="#3-ce-face-cache-ul-%c8%99i-unde-se-opre%c8%99te">#</a></h2>
+<p>Ierarhia de cache (capitolul 15) este răspunsul principal al industriei la zidul memoriei: păstrezi <em>working set</em>-ul (datele folosite des) în SRAM mic și rapid, lângă nucleu, ca procesorul să plătească rar latența completă a DRAM. Funcționează pentru că majoritatea programelor au <em>localitate</em>: localitate temporală (folosești din nou ce ai folosit recent) și localitate spațială (folosești ce e lângă ce ai folosit).</p>
+<p>Formula lui Wulf și McKee arată însă și limita: cache-ul crește <code>p</code>, nu micșorează <code>t_m</code> (Wulf &amp; McKee, 1995). Dacă <code>t_m</code>, măsurat în cicluri de procesor, crește mai repede decât poate crește <code>p</code>, termenul <code>(1 − p) × t_m</code> câștigă până la urmă (Wulf &amp; McKee, 1995).</p>
+<p>Cache-ul încetează să ajute în trei situații tipice:</p>
+<ol>
+<li><strong>Working set mai mare decât cache-ul.</strong> Datele nu încap, deci sunt evacuate înainte de reutilizare.</li>
+<li><strong>Acces fără localitate.</strong> Grafuri mari, tabele de dispersie (<em>hash tables</em>), căutări aleatoare în baze de date: fiecare acces poate fi un <em>miss</em>.</li>
+<li><strong>Date folosite o singură dată.</strong> Dacă fiecare octet adus din DRAM e folosit într-o singură operație, nu există nimic de „reutilizat”, iar cache-ul devine doar o stație de tranzit. Acesta este, după cum vom vedea, exact cazul generării de text de către un LLM.</li>
+</ol>
+<p>Execuția out-of-order ascunde o parte din rest, suprapunând lucru independent peste un <em>miss</em>. Nici ea nu închide prăpastia. Ambele tehnici o <em>ascund</em> pentru programele prietenoase cu cache-ul sau care au destul lucru independent.</p>
+<hr>
+<h2 id="4-modelul-roofline-limitat-de-memorie-sau-limitat-de-calcul">4. Modelul roofline: limitat de memorie sau limitat de calcul?<a class="anchor" href="#4-modelul-roofline-limitat-de-memorie-sau-limitat-de-calcul">#</a></h2>
+<p>În 2009, Samuel Williams, Andrew Waterman și David Patterson au publicat în <em>Communications of the ACM</em>, vol. 52, nr. 4, „Roofline: An Insightful Visual Performance Model for Multicore Architectures” (Williams, Waterman &amp; Patterson, 2009, <a href="https://doi.org/10.1145/1498765.1498785">doi:10.1145/1498765.1498785</a>). Premisa lor reia direct zidul memoriei: în viitorul previzibil, bandwidth-ul memoriei din afara cipului va fi adesea resursa care limitează performanța sistemului (<a href="https://cacm.acm.org/research/roofline-an-insightful-visual-performance-model-for-multicore-architectures/">CACM, 2009</a>).</p>
+<h3 id="intensitatea-operațională">Intensitatea operațională<a class="anchor" href="#intensitatea-opera%c8%9bional%c4%83">#</a></h3>
+<p>Mărimea cheie e <strong>intensitatea operațională</strong>, definită de autori ca numărul de operații per octet de trafic DRAM, unde octeții numărați sunt cei care ajung la memoria principală <em>după</em> filtrarea prin ierarhia de cache (Williams et al., 2009). Autorii preferă intenționat acest termen în locul lui „arithmetic intensity”, pentru că acela măsura de obicei traficul dintre procesor și cache, nu dintre cache și DRAM (Williams et al., 2009). În practică, multe texte despre GPU-uri folosesc „arithmetic intensity” cu sensul lui Williams. Mai jos folosim <em>intensitate</em> în sensul roofline.</p>
+<pre tabindex="0"><code>intensitate (FLOP/octet) = operații efectuate / octeți transferați din DRAM</code></pre><h3 id="acoperișul">Acoperișul<a class="anchor" href="#acoperi%c8%99ul">#</a></h3>
+<p>Modelul leagă într-un grafic bidimensional performanța în virgulă mobilă, intensitatea operațională și performanța memoriei (Williams et al., 2009). Performanța atinsă e mărginită de minimul dintre două limite:</p>
+<pre tabindex="0"><code>performanța_max = min( vârful_de_calcul ,  bandwidth_DRAM × intensitate )</code></pre><p>Pe un grafic log–log, a doua limită e o linie înclinată, iar prima una orizontală. Împreună formează „acoperișul” care dă numele modelului (Williams et al., 2009):</p>
+<pre tabindex="0"><code> FLOP/s (log)
+   ^
+   |                 ______________________  ← vârful de calcul (plafonul plat)
+   |                /
+   |               /   zona compute-bound
+   |              /
+   |             /  ← panta = bandwidth DRAM
+   |            /
+   |  zona     /
+   |  memory- /
+   |  bound  /
+   |        /
+   +-------+----------------------------------&gt; intensitate (FLOP/octet, log)
+           ^
+     punctul de cotitură (ridge point)</code></pre><p><em>(Schemă calitativă, fără valori; forma urmează descrierea din Williams et al., 2009.)</em></p>
+<p>Un <em>kernel</em> (o rutină de calcul) cu intensitatea la stânga punctului de cotitură „lovește” partea înclinată a acoperișului și este <strong>memory-bound</strong>. La dreapta, lovește plafonul plat și este <strong>compute-bound</strong> (Williams et al., 2009). <strong>Punctul de cotitură</strong> (<em>ridge point</em>) este intensitatea minimă necesară pentru a atinge performanța maximă a mașinii (Williams et al., 2009, <a href="https://mags.acm.org/communications/200904?pg=78">CACM aprilie 2009, p. 78</a>).</p>
+<h3 id="ce-au-găsit-autorii">Ce au găsit autorii<a class="anchor" href="#ce-au-g%c4%83sit-autorii">#</a></h3>
+<p>Rezultatul cel mai grăitor e aproape o confirmare empirică a lui Wulf și McKee. Pentru cele două sisteme x86 studiate, punctele de cotitură erau 4,4 și 6,7 FLOP/octet, însă intensitățile operaționale ale celor 16 combinații kernel–calculator variau între 0,25 și 1,64, cu mediana 0,60 FLOP/octet (Williams et al., 2009, <a href="https://mags.acm.org/communications/200904?pg=78">CACM, p. 78</a>). Cu alte cuvinte, toate programele reale analizate stăteau sub panta memoriei, nu sub plafonul de calcul. Autorii mai notează că punctul de cotitură a prezis performanța mai bine decât frecvența de ceas sau performanța de vârf (Williams et al., 2009, op. cit.).</p>
+<p>Lecția practică: înainte să întrebi „câte TFLOPS are cipul?”, întreabă „câte FLOP face programul meu pentru fiecare octet adus din memorie?”.</p>
+<hr>
+<h2 id="5-zidul-memoriei-în-epoca-ai">5. Zidul memoriei în epoca AI<a class="anchor" href="#5-zidul-memoriei-%c3%aen-epoca-ai">#</a></h2>
+<h3 id="treizeci-de-ani-mai-târziu-aceeași-poveste-alte-exponente">Treizeci de ani mai târziu, aceeași poveste, alte exponente<a class="anchor" href="#treizeci-de-ani-mai-t%c3%a2rziu-aceea%c8%99i-poveste-alte-exponente">#</a></h3>
+<p>În 2024, Amir Gholami și coautorii (printre ei Michael W. Mahoney și Kurt Keutzer) au publicat în <em>IEEE Micro</em> „AI and Memory Wall”, o reluare explicită a argumentului din 1995 pentru hardware-ul de AI (Gholami et al., 2024, <a href="https://doi.org/10.1109/mm.2024.3373763">doi:10.1109/MM.2024.3373763</a>; versiune extinsă <a href="https://arxiv.org/abs/2403.14123">arXiv:2403.14123</a>). Ei raportează că, în ultimii 20 de ani, performanța de vârf (FLOPS) a hardware-ului de server a crescut cu 3,0× la fiecare doi ani, în timp ce bandwidth-ul DRAM a crescut doar cu 1,6× și cel al interconexiunilor cu 1,4× la fiecare doi ani (Gholami et al., 2024). Cumulat, asta înseamnă aproximativ 60 000× pentru FLOPS față de 100× pentru bandwidth-ul DRAM și 30× pentru interconexiuni în aceeași perioadă (Gholami et al., 2024, arXiv).</p>
+<p>Același articol arată că numărul de parametri ai modelelor Transformer de top a crescut cu aproximativ 410× la doi ani, iar memoria unui singur accelerator doar cu aproximativ 2× la doi ani (Gholami et al., 2024, arXiv, Fig. 2a). Concluzia autorilor: lățimea de bandă a memoriei, nu calculul, a devenit principalul blocaj în aplicațiile de AI, mai ales la <em>serving</em> (rularea modelului pentru utilizatori), și poate deveni blocajul dominant pentru modelele de tip <em>decoder</em> (Gholami et al., 2024).</p>
+<h3 id="hbm-răspunsul-hardware">HBM: răspunsul hardware<a class="anchor" href="#hbm-r%c4%83spunsul-hardware">#</a></h3>
+<p>High Bandwidth Memory este răspunsul industriei pe latura de bandwidth: stive de cipuri DRAM legate vertical prin TSV (<em>through-silicon vias</em>), puse lângă procesor pe un interposer, cu o interfață foarte lată. Standardul HBM3 prevede stive de 4, 8 și 12 straturi, cu o extensie viitoare la 16 (<a href="https://www.jedec.org/news/pressreleases/jedec-publishes-hbm3-update-high-bandwidth-memory-hbm-standard">JEDEC, 2022</a>). Concret, pagina de produs NVIDIA declară pentru H100 SXM 80 GB de memorie GPU cu un bandwidth de <strong>3,35 TB/s</strong> (<a href="https://www.nvidia.com/en-us/data-center/h100/">NVIDIA, pagina produsului H100</a>). Whitepaper-ul arhitecturii Hopper descrie H100 SXM5 drept primul GPU cu memorie HBM3, menționează un cache L2 de 50 MB și dă bandwidth-ul ca „peste 3 TB/s” / „3 TB/s” de clasă, nu 3,35 (<a href="https://resources.nvidia.com/en-us-hopper-architecture">NVIDIA, <em>H100 Tensor Core GPU Architecture</em></a>). În exemplul de mai jos folosim cifra de pe pagina de produs (3,35 TB/s) împreună cu vârful dens din Tabelul 1 al whitepaper-ului; diferența față de ~3 TB/s schimbă punctul de cotitură, nu concluzia.</p>
+<p>Aici apare zidul în forma lui modernă. Tabelul 1 din whitepaper dă pentru H100 SXM5 un vârf de <strong>989,4 TFLOPS dens</strong> în FP16 pe Tensor Cores și <strong>1978,9 TFLOPS</strong> cu funcția de <em>sparsity</em> (nota 1 a tabelului: „Effective TFLOPS / TOPS using the Sparsity feature”). Pagina de produs listează 1 979 TFLOPS pentru FP16 Tensor Core cu asterisc — este cifra <em>cu</em> sparsity, nu cea densă. Raportul dintre calculul dens și bandwidth este enorm, iar exemplul de mai jos îl transformă într-un număr.</p>
+<hr>
+<h2 id="6-exemplu-numeric-de-ce-generarea-de-text-este-memory-bound">6. Exemplu numeric: de ce generarea de text este memory-bound<a class="anchor" href="#6-exemplu-numeric-de-ce-generarea-de-text-este-memory-bound">#</a></h2>
+<p><strong>Date de catalog (verificate):</strong></p>
+<ul>
+<li>Vârf FP16 Tensor Core, dens, H100 SXM5: <strong>989,4 TFLOPS</strong> (NVIDIA, <em>H100 Tensor Core GPU Architecture</em>, Tabelul 1; coloana fără sparsity). Cu sparsity: 1978,9 TFLOPS.</li>
+<li>Bandwidth memorie GPU, H100 SXM: <strong>3,35 TB/s</strong> (<a href="https://www.nvidia.com/en-us/data-center/h100/">NVIDIA, pagina H100</a>); whitepaper-ul Hopper rotunjește la „~3 TB/s”.</li>
+</ul>
+<p><strong>Presupuneri ilustrative (NU sunt fapte despre vreun model anume):</strong></p>
+<ul>
+<li>(P1) Un model ipotetic cu <strong>7 miliarde</strong> de parametri, stocați în FP16, deci 2 octeți per parametru: 14 GB de ponderi. Cifra 7 miliarde e aleasă doar pentru aritmetică ușoară.</li>
+<li>(P2) Regula aproximativă larg folosită: un <em>forward pass</em> costă cam <strong>2 FLOP per parametru per token</strong> (o înmulțire și o adunare). Kaplan et al. (2020) estimează costul unui forward pass ca <code>C_forward ≈ 2N + 2·n_layer·n_ctx·d_model</code>; pentru modele mari termenul <code>2N</code> domină, deci ~2 FLOP per parametru per token (<a href="https://arxiv.org/abs/2001.08361">Kaplan et al., „Scaling Laws for Neural Language Models”, arXiv:2001.08361</a>, ec. 2.2 și Tabelul 1).</li>
+<li>(P3) La generare (<em>decode</em>), cu un singur utilizator (<em>batch</em> = 1), fiecare token nou cere citirea tuturor ponderilor din HBM o dată. Ignorăm KV-cache-ul, activările, overhead-ul și faptul că bandwidth-ul real atins e sub cel de catalog.</li>
+</ul>
+<h3 id="pasul-1-punctul-de-cotitură-al-h100">Pasul 1: punctul de cotitură al H100<a class="anchor" href="#pasul-1-punctul-de-cotitur%c4%83-al-h100">#</a></h3>
+<pre tabindex="0"><code>ridge = 989,4 × 10¹² FLOP/s  ÷  3,35 × 10¹² B/s  ≈  295 FLOP/octet</code></pre><p>Ca un kernel să atingă plafonul de calcul pe H100, trebuie să facă aproximativ 295 de operații în virgulă mobilă pentru fiecare octet adus din HBM. (Dacă am folosi ~3 TB/s din whitepaper în loc de 3,35, punctul de cotitură ar fi ≈ 330 FLOP/octet — tot cu două ordine de mărime peste intensitatea de la Pasul 2.) Pentru comparație, punctele de cotitură ale sistemelor x86 din 2009 erau 4,4 și 6,7 FLOP/octet (Williams et al., 2009). Nu putem trage din aceste două puncte o lege de creștere, dar direcția e aceeași pe care o descriu Gholami et al. (2024).</p>
+<h3 id="pasul-2-intensitatea-generării-cu-batch--1">Pasul 2: intensitatea generării cu batch = 1<a class="anchor" href="#pasul-2-intensitatea-gener%c4%83rii-cu-batch--1">#</a></h3>
+<pre tabindex="0"><code>FLOP per token  = 2 × 7×10⁹       = 14 × 10⁹ FLOP     (P1, P2)
+octeți per token = 14 × 10⁹ B (toate ponderile)        (P1, P3)
+intensitate     = 14×10⁹ / 14×10⁹ = 1 FLOP/octet</code></pre><p>Un FLOP per octet, față de un prag de aproximativ 295. Suntem adânc în zona înclinată a acoperișului.</p>
+<h3 id="pasul-3-timpul-per-token-după-fiecare-limită">Pasul 3: timpul per token, după fiecare limită<a class="anchor" href="#pasul-3-timpul-per-token-dup%c4%83-fiecare-limit%c4%83">#</a></h3>
+<pre tabindex="0"><code>limita de memorie: 14×10⁹ B ÷ 3,35×10¹² B/s   ≈ 4,18 ms / token  → ≈ 239 tokeni/s
+limita de calcul : 14×10⁹ FLOP ÷ 989,4×10¹² FLOP/s ≈ 0,014 ms / token</code></pre><p>În acest scenariu idealizat, Tensor Core-urile ar termina aritmetica unui token de aproximativ 295 de ori mai repede decât poate memoria să le livreze ponderile. Ele stau, în cea mai mare parte a timpului, și așteaptă. Plafonul teoretic de aproximativ 239 de tokeni pe secundă vine din bandwidth, nu din TFLOPS. Cifra reală ar fi mai mică, din cauza simplificărilor din (P3).</p>
+<h3 id="pasul-4-de-ce-ajută-batching-ul-și-de-ce-nu-la-nesfârșit">Pasul 4: de ce ajută batching-ul și de ce nu la nesfârșit<a class="anchor" href="#pasul-4-de-ce-ajut%c4%83-batching-ul-%c8%99i-de-ce-nu-la-nesf%c3%a2r%c8%99it">#</a></h3>
+<p>Dacă servim <code>B</code> utilizatori simultan, ponderile sunt citite o singură dată, dar folosite pentru <code>B</code> tokeni, deci intensitatea crește aproximativ proporțional cu <code>B</code> (în modelul simplificat de mai sus):</p>
+<pre tabindex="0"><code>intensitate ≈ B FLOP/octet   →   compute-bound abia pe la B ≈ 295</code></pre><p>Asta explică de ce furnizorii de inferență grupează cererile. Totuși, fiecare cerere are propriul KV-cache (stările de atenție memorate pentru tokenii anteriori), care trebuie și el citit din HBM la fiecare pas și crește cu lungimea contextului. Batch-urile mari sunt limitate astfel atât de capacitatea memoriei, cât și de traficul suplimentar. <!-- Afirmație calitativă; sprijin general în Gholami et al., 2024 (analiza modelelor decoder). Cifre despre KV-cache: omise intenționat, neverificate. --></p>
+<h3 id="pasul-5-contrastul-cu-antrenarea-și-cu-prefill">Pasul 5: contrastul cu antrenarea și cu <em>prefill</em><a class="anchor" href="#pasul-5-contrastul-cu-antrenarea-%c8%99i-cu-prefill">#</a></h3>
+<p>Când modelul procesează un prompt lung dintr-odată (<em>prefill</em>) sau în antrenare, ponderile sunt reutilizate pe multe poziții în aceeași înmulțire de matrice, iar intensitatea poate fi mult mai mare. De aceea Gholami et al. (2024) disting între modelele <em>encoder</em> și <em>decoder</em> și arată că blocajul de bandwidth devine dominant tocmai la <em>decoder</em>-e (Gholami et al., 2024). Același cip, același model, două regimuri: unul aproape de plafonul de calcul, celălalt lipit de panta memoriei.</p>
+<hr>
+<h2 id="7-cum-se-luptă-industria-cu-zidul-fără-să-l-dărâme">7. Cum se luptă industria cu zidul (fără să-l dărâme)<a class="anchor" href="#7-cum-se-lupt%c4%83-industria-cu-zidul-f%c4%83r%c4%83-s%c4%83-l-d%c4%83r%c3%a2me">#</a></h2>
+<p>Toate tehnicile de mai jos atacă una dintre cele două variabile ale roofline: fie mută programul spre dreapta (mai multe FLOP per octet), fie ridică panta (mai mult bandwidth). Niciuna nu scurtează latența primului acces.</p>
+<ul>
+<li><strong>Mai mult bandwidth:</strong> HBM, ilustrat aici prin dublarea ratei pe pin la HBM3 față de HBM2 (<a href="https://www.jedec.org/news/pressreleases/jedec-publishes-hbm3-update-high-bandwidth-memory-hbm-standard">JEDEC, 2022</a>).</li>
+<li><strong>Mai puțini octeți per parametru:</strong> cuantizarea (capitolul 59 al cărții). Dacă ponderile trec de la 2 octeți la 1 octet, în exemplul de mai sus traficul se înjumătățește și plafonul teoretic de tokeni pe secundă se dublează, cu aceleași presupuneri (P1–P3). Aceasta este aritmetica exemplului, nu o măsurătoare.</li>
+<li><strong>Mai puțini octeți în total:</strong> <em>sparsity</em> structurată (capitolul 60).</li>
+<li><strong>Reutilizare mai bună on-chip:</strong> cache L2 mare, ca cei 50 MB de pe H100 (NVIDIA, whitepaper Hopper), și kernel-uri care țin datele în memoria partajată (<em>shared memory</em>) cât mai mult.</li>
+<li><strong>Batching:</strong> crește intensitatea, ca în Pasul 4.</li>
+</ul>
+<p>Gholami et al. (2024) cer explicit o regândire a arhitecturii modelelor, a antrenării și a modului de implementare pentru a ocoli această limită (Gholami et al., 2024, rezumat).</p>
+<hr>
+<h2 id="8-ce-să-rețineți">8. Ce să rețineți<a class="anchor" href="#8-ce-s%c4%83-re%c8%9bine%c8%9bi">#</a></h2>
+<ol>
+<li>Zidul memoriei nu înseamnă că memoria e lentă. Înseamnă că memoria se îmbunătățește <em>mai încet</em> decât calculul, iar diferența dintre două exponențiale crește exponențial (Wulf &amp; McKee, 1995).</li>
+<li>Latența și bandwidth-ul sunt probleme diferite. Industria a crescut masiv bandwidth-ul (DDR5, HBM3; JEDEC 2020, 2022), dar latența primului acces nu a ținut pasul.</li>
+<li>Cache-ul crește rata de hit, nu scurtează drumul până la DRAM (Wulf &amp; McKee, 1995). Când datele sunt folosite o singură dată, cache-ul nu are ce salva.</li>
+<li>Modelul roofline transformă discuția în aritmetică: comparați intensitatea programului cu punctul de cotitură al mașinii (Williams et al., 2009).</li>
+<li>Pe un H100, punctul de cotitură calculat din cifrele de catalog este de aproximativ 295 FLOP/octet, în timp ce generarea de text cu batch = 1 are, în exemplul nostru simplificat, o intensitate de aproximativ 1 FLOP/octet. De aceea inferența LLM este memory-bound (exemplul de mai sus; context în Gholami et al., 2024).</li>
+</ol>
+<p><strong>Ușa de ieșire:</strong> citiți nota originală de cinci pagini a lui Wulf și McKee (<a href="https://doi.org/10.1145/216585.216588">doi:10.1145/216585.216588</a>), apoi articolul roofline (<a href="https://cacm.acm.org/research/roofline-an-insightful-visual-performance-model-for-multicore-architectures/">CACM, 2009</a>) și, pentru epoca LLM, „AI and Memory Wall” (<a href="https://arxiv.org/abs/2403.14123">arXiv:2403.14123</a>). Următorul capitol: un zid înrudit, pe latura calculului, apărut aproape în același moment istoric.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Zidul&#43;memoriei&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F35-the-memory-wall%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F35-the-memory-wall.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F35-the-memory-wall.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/34-memory-buses/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Magistralele de memorie</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/47-what-7nm-actually-means/" class="flex align-center">
+        <span>Ce înseamnă de fapt „7nm”</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-o-notă-scurtă-despre-ceva-evident">1. O notă scurtă despre ceva „evident”</a>
+      <ul>
+        <li><a href="#ecuația-timpului-mediu-de-acces">Ecuația timpului mediu de acces</a></li>
+        <li><a href="#unde-se-lovește-zidul">Unde se lovește zidul</a></li>
+        <li><a href="#de-ce-nu-există-o-ieșire-ușoară">De ce nu există o ieșire ușoară</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-latență-versus-bandwidth-două-probleme-diferite">2. Latență versus bandwidth: două probleme diferite</a>
+      <ul>
+        <li><a href="#de-ce-s-a-mișcat-bandwidth-ul-și-latența-nu">De ce s-a mișcat bandwidth-ul și latența nu</a></li>
+        <li><a href="#calculul-din-spatele-cifrei-hbm3">Calculul din spatele cifrei HBM3</a></li>
+        <li><a href="#legea-lui-little-legătura-dintre-cele-două">Legea lui Little: legătura dintre cele două</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-ce-face-cache-ul-și-unde-se-oprește">3. Ce face cache-ul și unde se oprește</a></li>
+    <li><a href="#4-modelul-roofline-limitat-de-memorie-sau-limitat-de-calcul">4. Modelul roofline: limitat de memorie sau limitat de calcul?</a>
+      <ul>
+        <li><a href="#intensitatea-operațională">Intensitatea operațională</a></li>
+        <li><a href="#acoperișul">Acoperișul</a></li>
+        <li><a href="#ce-au-găsit-autorii">Ce au găsit autorii</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-zidul-memoriei-în-epoca-ai">5. Zidul memoriei în epoca AI</a>
+      <ul>
+        <li><a href="#treizeci-de-ani-mai-târziu-aceeași-poveste-alte-exponente">Treizeci de ani mai târziu, aceeași poveste, alte exponente</a></li>
+        <li><a href="#hbm-răspunsul-hardware">HBM: răspunsul hardware</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-exemplu-numeric-de-ce-generarea-de-text-este-memory-bound">6. Exemplu numeric: de ce generarea de text este memory-bound</a>
+      <ul>
+        <li><a href="#pasul-1-punctul-de-cotitură-al-h100">Pasul 1: punctul de cotitură al H100</a></li>
+        <li><a href="#pasul-2-intensitatea-generării-cu-batch--1">Pasul 2: intensitatea generării cu batch = 1</a></li>
+        <li><a href="#pasul-3-timpul-per-token-după-fiecare-limită">Pasul 3: timpul per token, după fiecare limită</a></li>
+        <li><a href="#pasul-4-de-ce-ajută-batching-ul-și-de-ce-nu-la-nesfârșit">Pasul 4: de ce ajută batching-ul și de ce nu la nesfârșit</a></li>
+        <li><a href="#pasul-5-contrastul-cu-antrenarea-și-cu-prefill">Pasul 5: contrastul cu antrenarea și cu <em>prefill</em></a></li>
+      </ul>
+    </li>
+    <li><a href="#7-cum-se-luptă-industria-cu-zidul-fără-să-l-dărâme">7. Cum se luptă industria cu zidul (fără să-l dărâme)</a></li>
+    <li><a href="#8-ce-să-rețineți">8. Ce să rețineți</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

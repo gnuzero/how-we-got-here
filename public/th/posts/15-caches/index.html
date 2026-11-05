@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Locality ทำให้ลำดับชั้นหน่วยความจำใช้ได้; associativity และ coherence คือต้นทุนของการทำให้มันซื่อสัตย์">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/15-caches/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="แคช">
+	<meta property="og:description" content="Locality ทำให้ลำดับชั้นหน่วยความจำใช้ได้; associativity และ coherence คือต้นทุนของการทำให้มันซื่อสัตย์">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="แคช">
+	<meta itemprop="description" content="Locality ทำให้ลำดับชั้นหน่วยความจำใช้ได้; associativity และ coherence คือต้นทุนของการทำให้มันซื่อสัตย์">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="930">
+
+<title>แคช • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/15-caches/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/15-caches/" title="Caches">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/15-caches/" title="Caches">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/15-caches/" title="Caches">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/15-caches/" title="Cache-uri">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/15-caches/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/15-caches/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/15-caches/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/15-caches/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="active">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>แคช</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#เหตใดแคชจงใชไดเลย">เหตุใดแคชจึงใช้ได้เลย</a></li>
+    <li><a href="#ถามแคชอยางไร-tag-index-offset">ถามแคชอย่างไร: tag, index, offset</a>
+      <ul>
+        <li><a href="#ตวอยางคำนวณ">ตัวอย่างคำนวณ</a></li>
+      </ul>
+    </li>
+    <li><a href="#line-อยไดทไหน">Line อยู่ได้ที่ไหน</a>
+      <ul>
+        <li><a href="#ตวอยาง-ชนกนแบบ-direct-mapped">ตัวอย่าง: ชนกันแบบ direct-mapped</a></li>
+        <li><a href="#ตวอยาง-ลำดบการวนลปเปลยนทกอยาง">ตัวอย่าง: ลำดับการวนลูปเปลี่ยนทุกอย่าง</a></li>
+      </ul>
+    </li>
+    <li><a href="#เวลาเขาถงเฉลย-amat">เวลาเข้าถึงเฉลี่ย (AMAT)</a></li>
+    <li><a href="#เมอเตมตองไลใครออก-และเขยนแลวทำอยางไร">เมื่อเต็มต้องไล่ใครออก และเขียนแล้วทำอย่างไร</a></li>
+    <li><a href="#multicore-coherence-เปนขอจำกดใหม">Multicore: Coherence เป็นข้อจำกัดใหม่</a>
+      <ul>
+        <li><a href="#false-sharing-ไมไดแชร-แตจายเหมอนแชร">False sharing: ไม่ได้แชร์ แต่จ่ายเหมือนแชร์</a></li>
+        <li><a href="#ลองบนเครองตวเอง">ลองบนเครื่องตัวเอง</a></li>
+      </ul>
+    </li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    แคช
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>บทที่ 10 วางลำดับชั้นหน่วยความจำไว้แล้ว: รีจิสเตอร์, แคช SRAM, DRAM, ดิสก์ — แลกความจุกับความเร็วทุกขั้น แคชคือจุดที่การแลกเปลี่ยนนั้นแบกรับประสิทธิภาพของ CPU ทุกตัว สมมติฐานวางบนข้อเท็จจริงเชิงประจักษ์เกี่ยวกับโปรแกรมจริงข้อเดียว: <strong>locality</strong></p>
+<p>บทนี้จะไล่ตั้งแต่ต้น ว่าแคชตัดสินใจอย่างไรว่าข้อมูลอยู่ในแคชหรือไม่ วางข้อมูลไว้ช่องไหน ไล่อะไรออกเมื่อเต็ม และหลายคอร์ตกลงกันอย่างไรว่าค่าไหนคือค่าล่าสุด ทุกขั้นมีตัวเลขให้คำนวณตามได้</p>
+<p><strong>หน่วยความจำแคช</strong> (cache memory, ศัพท์บัญญัติ; ในบทนี้เรียกสั้น ๆ ว่า <em>แคช</em>) คือหน่วยความจำขนาดเล็กที่เร็วมาก วางอยู่ระหว่างตัวประมวลผลกับหน่วยความจำหลัก (DRAM) เก็บสำเนาของข้อมูลบางส่วนจากหน่วยความจำหลัก ถ้าข้อมูลที่ต้องการอยู่ในแคช เรียกว่า <strong>hit</strong> (พบ) ถ้าไม่อยู่ เรียกว่า <strong>miss</strong> (พลาด) และต้องไปดึงจากชั้นที่ช้ากว่า</p>
+<h2 id="เหตใดแคชจงใชไดเลย">เหตุใดแคชจึงใช้ได้เลย<a class="anchor" href="#%e0%b9%80%e0%b8%ab%e0%b8%95%e0%b9%83%e0%b8%94%e0%b9%81%e0%b8%84%e0%b8%8a%e0%b8%88%e0%b8%87%e0%b9%83%e0%b8%8a%e0%b9%84%e0%b8%94%e0%b9%80%e0%b8%a5%e0%b8%a2">#</a></h2>
+<p><strong>Temporal locality</strong> (ความใกล้เชิงเวลา) — ตำแหน่งที่เพิ่งแตะมีแนวโน้มจะถูกแตะอีกในไม่ช้า (ตัวแปรลูป โค้ดร้อน) <strong>Spatial locality</strong> (ความใกล้เชิงพื้นที่) — ตำแหน่งใกล้เคียงมีแนวโน้มถูกแตะถัดไป (อาร์เรย์ การดึงคำสั่งตามลำดับ) แคชเก็บข้อมูลที่ใช้ล่าสุดไว้ใกล้ และเมื่อ miss จะดึง <strong>line</strong> (บางตำราเรียก <em>block</em>) ทั้งก้อน มักขนาด 64 ไบต์ เดิมพันว่าข้อมูลข้างเคียงจะถูกใช้ในไม่ช้า</p>
+<p>ตัวอย่างแรก วนอ่านอาร์เรย์ <code>int</code> (ตัวละ 4 ไบต์) เรียงกันไปทีละตัว line 64 ไบต์บรรจุได้ 16 ตัว การอ่านตัวแรกของแต่ละ line จะ miss แล้วดึง line ทั้งก้อนมา อีก 15 ตัวถัดไป hit หมด อัตรา hit จึงเป็น 15/16 = <strong>93.75%</strong> ทั้งที่โปรแกรมไม่เคยอ่านซ้ำตัวไหนเลย spatial locality ล้วน ๆ</p>
+<h2 id="ถามแคชอยางไร-tag-index-offset">ถามแคชอย่างไร: tag, index, offset<a class="anchor" href="#%e0%b8%96%e0%b8%b2%e0%b8%a1%e0%b9%81%e0%b8%84%e0%b8%8a%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b9%84%e0%b8%a3-tag-index-offset">#</a></h2>
+<p>แคชต้องตอบให้ได้ในหนึ่งถึงไม่กี่รอบว่าเลขที่อยู่ที่ส่งมาอยู่ในแคชหรือไม่ มันจึงแบ่งเลขที่อยู่เป็นสามท่อน</p>
+<ul>
+<li><strong>offset</strong> (ระยะเลื่อน) — ไบต์ไหนภายใน line</li>
+<li><strong>index</strong> (ดรรชนี) — line นี้ต้องอยู่ใน <em>set</em> ไหน (set คือกลุ่มช่องที่ line หนึ่งมีสิทธิ์ลงได้)</li>
+<li><strong>tag</strong> (ป้ายระบุ) — บิตที่เหลือด้านบน เก็บไว้คู่กับข้อมูล ใช้ตรวจว่า line ที่อยู่ใน set นั้นเป็น line ที่เราต้องการจริง ไม่ใช่ line อื่นที่ดรรชนีตรงกัน</li>
+</ul>
+<p>แต่ละช่องมี <strong>valid bit</strong> (บิตบอกว่าช่องนี้มีข้อมูลจริง) และถ้าเป็นแคชแบบ write-back ก็มี <strong>dirty bit</strong> (บิตบอกว่าข้อมูลถูกแก้ไขแล้วแต่ยังไม่ได้เขียนกลับ)</p>
+<h3 id="ตวอยางคำนวณ">ตัวอย่างคำนวณ<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b8%84%e0%b8%b3%e0%b8%99%e0%b8%a7%e0%b8%93">#</a></h3>
+<p>แคชข้อมูลระดับ 1 ขนาด 32 KiB, line 64 ไบต์, <strong>8-way set associative</strong> (set ละ 8 ช่อง), เลขที่อยู่ 32 บิต</p>
+<ol>
+<li>จำนวน line ทั้งหมด = 32,768 ÷ 64 = <strong>512 line</strong></li>
+<li>จำนวน set = 512 ÷ 8 = <strong>64 set</strong></li>
+<li>offset ต้องชี้ได้ 64 ไบต์ → log₂ 64 = <strong>6 บิต</strong></li>
+<li>index ต้องชี้ได้ 64 set → log₂ 64 = <strong>6 บิต</strong></li>
+<li>tag = 32 − 6 − 6 = <strong>20 บิต</strong></li>
+</ol>
+<p>ลองแยกเลขที่อยู่ <code>0x12345678</code></p>
+<ul>
+<li>offset = 6 บิตล่าง = 0x38 = <strong>56</strong> (ไบต์ที่ 56 ของ line)</li>
+<li>index = 6 บิตถัดไป = <strong>25</strong> (ไปดู set ที่ 25)</li>
+<li>tag = 20 บิตบน = <strong>0x12345</strong></li>
+</ul>
+<p>ฮาร์ดแวร์อ่านทั้ง 8 ช่องของ set 25 พร้อมกัน เทียบ tag ทั้ง 8 ตัวกับ 0x12345 พร้อมกันด้วยวงจรเปรียบเทียบ 8 ชุด ถ้าตัวไหนตรงและ valid = 1 ก็คือ hit แล้วใช้มัลติเพล็กเซอร์ (อุปกรณ์สหสัญญาณ) เลือกข้อมูลจากช่องนั้นออกมา</p>
+<p>ราคาของการเก็บ tag: แต่ละช่องต้องเก็บ tag 20 บิต + valid 1 บิต + dirty 1 บิต = 22 บิต × 512 ช่อง = 11,264 บิต = <strong>1,408 ไบต์</strong> คิดเป็นราว <strong>4.3%</strong> ของความจุข้อมูล 32 KiB นี่คือต้นทุนแฝงที่ตัวเลข &ldquo;32 KiB&rdquo; บนสเปกไม่ได้บอก</p>
+<p>ข้อสังเกตที่จะสำคัญในบทที่ 24: index + offset = 12 บิต = 4 KiB พอดีกับขนาด <em>หน้า</em> (page) ของหน่วยความจำเสมือน แปลว่าแคชเลือก set ได้จากบิตที่ไม่ถูกแปลงเลขที่อยู่ จึงอ่าน set ไปพร้อมกับที่ TLB กำลังแปลงเลขที่อยู่ได้ ไม่ต้องรอ เป็นเหตุผลหนึ่งที่แคช L1 จำนวนมากมีขนาดเท่ากับ (ขนาดหน้า × จำนวน way)</p>
+<h2 id="line-อยไดทไหน">Line อยู่ได้ที่ไหน<a class="anchor" href="#line-%e0%b8%ad%e0%b8%a2%e0%b9%84%e0%b8%94%e0%b8%97%e0%b9%84%e0%b8%ab%e0%b8%99">#</a></h2>
+<p><strong>Direct-mapped</strong> (จับคู่ตรง) — หนึ่งช่องที่เป็นไปได้ต่อเลขที่อยู่ ตรวจเร็วเพราะเทียบ tag แค่ตัวเดียว แต่เกิด <strong>conflict miss</strong> (miss จากการชนกัน) เมื่อเลขที่อยู่ที่ใช้บ่อยสองตำแหน่งได้ index เดียวกันแล้วไล่กันออกไปมา</p>
+<p><strong>Fully associative</strong> (เชื่อมโยงเต็ม) — line ใดลงช่องใดก็ได้ ไม่มี conflict miss แต่ทุกการค้นต้องเทียบ tag ทุกช่อง วงจรเปรียบเทียบจึงบานตามจำนวนช่อง ใช้ได้แค่กับโครงสร้างเล็กมาก เช่น TLB บางระดับ</p>
+<p><strong>Set-associative</strong> (เชื่อมโยงแบบกลุ่ม) — จุดกลางเชิงปฏิบัติ: index เลือก set เล็ก ๆ (เช่น 8 way) แล้วตรวจ tag เฉพาะในนั้น ได้ความยืดหยุ่นเกือบทั้งหมด ด้วยฮาร์ดแวร์น้อยกว่าการสแกนเต็มมาก แคชจริงเกือบทุกตัวอยู่ตรงนี้ direct-mapped คือกรณี 1-way และ fully associative คือกรณีที่มี set เดียว</p>
+<h3 id="ตวอยาง-ชนกนแบบ-direct-mapped">ตัวอย่าง: ชนกันแบบ direct-mapped<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87-%e0%b8%8a%e0%b8%99%e0%b8%81%e0%b8%99%e0%b9%81%e0%b8%9a%e0%b8%9a-direct-mapped">#</a></h3>
+<p>แคช 32 KiB line 64 ไบต์แบบ direct-mapped มี 512 ช่อง ดรรชนี = (เลขที่อยู่ ÷ 64) mod 512 เลขที่อยู่ <code>0x10000</code> ได้ดรรชนี 1024 mod 512 = <strong>0</strong> และ <code>0x18000</code> ได้ 1536 mod 512 = <strong>0</strong> เช่นกัน เพราะทั้งคู่ห่างกัน 0x8000 = 32 KiB พอดี ถ้าลูปอ่านสองตำแหน่งนี้สลับกัน ทุกการอ่านจะ miss เพราะแต่ละตัวเตะอีกตัวออก แคชแบบ 8-way ขนาดเท่ากันก็ส่งทั้งคู่ไป set 0 เหมือนกัน แต่ set นั้นมี 8 ช่อง จึงเก็บได้ทั้งสองตัว หลังโหลดครั้งแรกทุกการอ่านจะ hit</p>
+<h3 id="ตวอยาง-ลำดบการวนลปเปลยนทกอยาง">ตัวอย่าง: ลำดับการวนลูปเปลี่ยนทุกอย่าง<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87-%e0%b8%a5%e0%b8%b3%e0%b8%94%e0%b8%9a%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%a7%e0%b8%99%e0%b8%a5%e0%b8%9b%e0%b9%80%e0%b8%9b%e0%b8%a5%e0%b8%a2%e0%b8%99%e0%b8%97%e0%b8%81%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87">#</a></h3>
+<p>อาร์เรย์ <code>int a[1024][1024]</code> เก็บแบบแถวต่อแถว (row-major แบบภาษา C) หนึ่งแถวยาว 1024 × 4 = 4,096 ไบต์</p>
+<ul>
+<li>วน <strong>ตามแถว</strong> (<code>for i … for j … a[i][j]</code>): อ่านเรียงติดกัน miss หนึ่งครั้งทุก 16 ตัว hit <strong>93.75%</strong></li>
+<li>วน <strong>ตามคอลัมน์</strong> (<code>for j … for i … a[i][j]</code>): แต่ละครั้งกระโดดไป 4,096 ไบต์ ได้ line ใหม่ทุกครั้ง ยิ่งกว่านั้น 4,096 ÷ 64 = 64 line ซึ่งเท่ากับจำนวน set พอดี ทุกตัวในคอลัมน์จึงลง <strong>set เดียวกัน</strong> ที่มีแค่ 8 ช่อง พอวนกลับมาคอลัมน์ถัดไป line เก่าถูกไล่ออกไปนานแล้ว ผลคือ <strong>miss ทุกครั้ง</strong></li>
+</ul>
+<p>โค้ดสองแบบนี้คำนวณผลเดียวกันทุกประการ แต่ต่างกันที่ว่ารู้จักแคชหรือไม่</p>
+<h2 id="เวลาเขาถงเฉลย-amat">เวลาเข้าถึงเฉลี่ย (AMAT)<a class="anchor" href="#%e0%b9%80%e0%b8%a7%e0%b8%a5%e0%b8%b2%e0%b9%80%e0%b8%82%e0%b8%b2%e0%b8%96%e0%b8%87%e0%b9%80%e0%b8%89%e0%b8%a5%e0%b8%a2-amat">#</a></h2>
+<p>ตัวชี้วัดหลักคือ <strong>เวลาเข้าถึงหน่วยความจำเฉลี่ย</strong> (average memory access time, AMAT)</p>
+<p>AMAT = เวลา hit + อัตรา miss × ค่าปรับเมื่อ miss</p>
+<p>ตัวอย่าง: L1 hit ใช้ 1 ns, miss 5%, ไปถึง DRAM ใช้ 80 ns → AMAT = 1 + 0.05 × 80 = <strong>5 ns</strong> แม้ 95% ของการเข้าถึงจะใช้แค่ 1 ns แต่ค่าเฉลี่ยกลับเป็นห้าเท่า เพราะ miss ส่วนน้อยนั้นแพงมาก</p>
+<p>เติม L2 ที่ hit ใน 4 ns และพลาด 20% ของการเข้าถึงที่มาถึงมัน (local miss rate) ค่าปรับของ L1 ตอนนี้คือ AMAT ของ L2 เอง = 4 + 0.20 × 80 = 20 ns ดังนั้น AMAT รวม = 1 + 0.05 × 20 = <strong>2 ns</strong> ลดลงเหลือ 40% ของเดิม นี่คือเหตุผลที่ชิปยอมเสียพื้นที่มหาศาลให้แคชหลายชั้น</p>
+<h2 id="เมอเตมตองไลใครออก-และเขยนแลวทำอยางไร">เมื่อเต็มต้องไล่ใครออก และเขียนแล้วทำอย่างไร<a class="anchor" href="#%e0%b9%80%e0%b8%a1%e0%b8%ad%e0%b9%80%e0%b8%95%e0%b8%a1%e0%b8%95%e0%b8%ad%e0%b8%87%e0%b9%84%e0%b8%a5%e0%b9%83%e0%b8%84%e0%b8%a3%e0%b8%ad%e0%b8%ad%e0%b8%81-%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b9%80%e0%b8%82%e0%b8%a2%e0%b8%99%e0%b9%81%e0%b8%a5%e0%b8%a7%e0%b8%97%e0%b8%b3%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b9%84%e0%b8%a3">#</a></h2>
+<p><strong>นโยบายแทนที่</strong> (replacement policy) — เมื่อ set เต็มและต้องนำ line ใหม่เข้า ต้องเลือกเหยื่อ วิธีคลาสสิกคือ <strong>LRU</strong> (least recently used) ไล่ตัวที่ไม่ได้ใช้นานที่สุด ซึ่งอาศัย temporal locality ตรง ๆ แต่การจำลำดับที่แท้จริงของ 8 ช่องแพง ฮาร์ดแวร์จริงจึงมักใช้ตัวประมาณ (pseudo-LRU) ที่ใช้บิตน้อยกว่า</p>
+<p><strong>นโยบายการเขียน</strong> มีสองแบบหลัก</p>
+<ul>
+<li><strong>Write-through</strong> (เขียนทะลุ) — เขียนทั้งในแคชและชั้นล่างทุกครั้ง ชั้นล่างมีค่าล่าสุดเสมอ แต่กินแบนด์วิดท์มาก มักใช้คู่กับที่พักข้อมูลการเขียน (write buffer)</li>
+<li><strong>Write-back</strong> (เขียนกลับ) — เขียนเฉพาะในแคชแล้วตั้ง dirty bit จะเขียนกลับลงชั้นล่างเมื่อ line นั้นถูกไล่ออกเท่านั้น ถ้าลูปเขียนตัวแปรเดิมหนึ่งล้านครั้ง ก็เขียนกลับ DRAM แค่ครั้งเดียว แคชระดับบนของซีพียูสมัยใหม่ส่วนใหญ่เป็นแบบนี้</li>
+</ul>
+<h2 id="multicore-coherence-เปนขอจำกดใหม">Multicore: Coherence เป็นข้อจำกัดใหม่<a class="anchor" href="#multicore-coherence-%e0%b9%80%e0%b8%9b%e0%b8%99%e0%b8%82%e0%b8%ad%e0%b8%88%e0%b8%b3%e0%b8%81%e0%b8%94%e0%b9%83%e0%b8%ab%e0%b8%a1">#</a></h2>
+<p>คอร์เดียว แคชส่วนตัวหนึ่ง: ใช้ได้ หลายคอร์ แต่ละตัวมีแคช: คอร์ A เขียน line ที่คอร์ B ยังถือ — หากไม่มีโปรโตคอล B อ่านค่าเก่าตลอดไป <strong>ความสอดคล้องของแคช</strong> (cache coherence) คือข้อตกลงว่า การอ่านต้องเห็นค่าที่เขียนล่าสุด ไม่ว่าจะเขียนจากคอร์ไหน</p>
+<p>MESI คือคำตอบคลาสสิก ทุก line ในทุกแคชติดสถานะหนึ่งในสี่</p>
+<table>
+	<thead>
+			<tr>
+					<th>สถานะ</th>
+					<th>ความหมาย</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>M</strong> (Modified)</td>
+					<td>มีที่นี่ที่เดียว และถูกแก้แล้ว หน่วยความจำหลักถือค่าเก่า</td>
+			</tr>
+			<tr>
+					<td><strong>E</strong> (Exclusive)</td>
+					<td>มีที่นี่ที่เดียว ค่าตรงกับหน่วยความจำหลัก</td>
+			</tr>
+			<tr>
+					<td><strong>S</strong> (Shared)</td>
+					<td>อาจมีหลายแคชถือสำเนา ทุกสำเนาตรงกัน อ่านได้อย่างเดียว</td>
+			</tr>
+			<tr>
+					<td><strong>I</strong> (Invalid)</td>
+					<td>ใช้ไม่ได้ ถือว่าไม่มี</td>
+			</tr>
+	</tbody>
+</table>
+<p>ไล่ตามทีละขั้น กับตัวแปร X ใน line เดียว</p>
+<ol>
+<li>คอร์ A อ่าน X ไม่มีใครถือ → A ได้ <strong>E</strong></li>
+<li>คอร์ B อ่าน X → A เห็นคำขอ (ผ่านการสอดแนมบัส หรือ bus snooping หรือผ่าน directory) ทั้งสองลดเป็น <strong>S</strong></li>
+<li>คอร์ B เขียน X → B ต้องประกาศขอสิทธิ์เขียน ทำให้สำเนาของ A กลายเป็น <strong>I</strong> และ B เป็น <strong>M</strong></li>
+<li>คอร์ A อ่าน X อีก → miss เพราะเป็น I B ส่งค่าล่าสุดมาให้ (และเขียนกลับหน่วยความจำหลัก) ทั้งคู่กลับเป็น <strong>S</strong></li>
+</ol>
+<p>ประโยชน์ของ E: ถ้าคอร์ A ใน E เขียน X มันเปลี่ยนเป็น M ได้เองเงียบ ๆ ไม่ต้องประกาศบนบัส เพราะรู้อยู่แล้วว่าไม่มีใครถือสำเนา โปรแกรมแบบเธรดเดียวจึงไม่เสียค่าโปรโตคอลเลย</p>
+<h3 id="false-sharing-ไมไดแชร-แตจายเหมอนแชร">False sharing: ไม่ได้แชร์ แต่จ่ายเหมือนแชร์<a class="anchor" href="#false-sharing-%e0%b9%84%e0%b8%a1%e0%b9%84%e0%b8%94%e0%b9%81%e0%b8%8a%e0%b8%a3-%e0%b9%81%e0%b8%95%e0%b8%88%e0%b8%b2%e0%b8%a2%e0%b9%80%e0%b8%ab%e0%b8%a1%e0%b8%ad%e0%b8%99%e0%b9%81%e0%b8%8a%e0%b8%a3">#</a></h3>
+<p>coherence ทำงานระดับ <em>line</em> ไม่ใช่ระดับตัวแปร ถ้าเธรดสองตัวบนสองคอร์ต่างเพิ่มค่าตัวนับของตัวเอง แต่ตัวนับทั้งสองบังเอิญอยู่ใน line 64 ไบต์เดียวกัน ทุกการเขียนของ A จะทำให้สำเนาของ B เป็น I และกลับกัน line นี้เด้งไปมาระหว่างสองคอร์ตลอดเวลา ทั้งที่ข้อมูลไม่ได้แชร์กันจริงเลย เรียกว่า <strong>false sharing</strong> ทางแก้คือจัดให้ตัวแปรที่เธรดต่างกันเขียนอยู่คนละ line (เช่น เติมช่องว่างให้ครบ 64 ไบต์)</p>
+<p>Coherence ไม่ฟรี และต้นทุนโตตามจำนวนคอร์ — เหตุผลหนึ่งที่ &ldquo;แค่เพิ่มคอร์&rdquo; (บทที่ 17) มีผลตอบแทนลดลงของตัวเอง แยกจากขีดจำกัด ILP</p>
+<h3 id="ลองบนเครองตวเอง">ลองบนเครื่องตัวเอง<a class="anchor" href="#%e0%b8%a5%e0%b8%ad%e0%b8%87%e0%b8%9a%e0%b8%99%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%ad%e0%b8%87%e0%b8%95%e0%b8%a7%e0%b9%80%e0%b8%ad%e0%b8%87">#</a></h3>
+<p>บนลินุกซ์ส่วนใหญ่ คำสั่ง <code>getconf LEVEL1_DCACHE_LINESIZE</code> บอกขนาด line ของแคชข้อมูล L1 และ <code>lscpu</code> บอกขนาดแคชแต่ละระดับ ลองนำตัวเลขจริงของเครื่องคุณมาคำนวณจำนวน set และความยาวของ tag ตามตัวอย่างข้างบน (บางเครื่องหรือบางเวอร์ชันอาจแสดงค่า 0 หรือไม่รองรับบางตัวแปร)</p>
+<p><strong>ประตูออก:</strong> M. V. Wilkes, &ldquo;Slave Memories and Dynamic Storage Allocation&rdquo; (<em>IEEE Transactions on Electronic Computers</em>, 1965) — คำแถลงยุคแรกของแนวคิดแคชในฐานะ slave store ที่เร็วข้างหน่วยความจำหลักที่ช้ากว่า</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>จันทนา จันทราพรชัย, <em>สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ</em></li>
+<li>ผศ.ดร. ปัทมา ลงกานี, <em>สถาปัตยกรรมคอมพิวเตอร์</em></li>
+<li>รศ.ดร.เกริก ภิรมย์โสภา, <em>สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์</em></li>
+<li>John L. Hennessy และ David A. Patterson, <em>Computer Architecture: A Quantitative Approach</em> — ภาคผนวกและบทว่าด้วยลำดับชั้นหน่วยความจำ</li>
+<li>ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, <a href="https://coined-word.orst.go.th/">coined-word.orst.go.th</a> — <em>หน่วยความจำแคช</em> (cache memory), <em>ป้ายระบุ</em> (tag), <em>ดรรชนี</em> (index)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B9%81%E0%B8%84%E0%B8%8A&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F15-caches%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F15-caches.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F15-caches.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/14-branch-prediction/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>การทำนาย Branch</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/16-out-of-order-execution/" class="flex align-center">
+        <span>การประมวลผลนอกลำดับ</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#เหตใดแคชจงใชไดเลย">เหตุใดแคชจึงใช้ได้เลย</a></li>
+    <li><a href="#ถามแคชอยางไร-tag-index-offset">ถามแคชอย่างไร: tag, index, offset</a>
+      <ul>
+        <li><a href="#ตวอยางคำนวณ">ตัวอย่างคำนวณ</a></li>
+      </ul>
+    </li>
+    <li><a href="#line-อยไดทไหน">Line อยู่ได้ที่ไหน</a>
+      <ul>
+        <li><a href="#ตวอยาง-ชนกนแบบ-direct-mapped">ตัวอย่าง: ชนกันแบบ direct-mapped</a></li>
+        <li><a href="#ตวอยาง-ลำดบการวนลปเปลยนทกอยาง">ตัวอย่าง: ลำดับการวนลูปเปลี่ยนทุกอย่าง</a></li>
+      </ul>
+    </li>
+    <li><a href="#เวลาเขาถงเฉลย-amat">เวลาเข้าถึงเฉลี่ย (AMAT)</a></li>
+    <li><a href="#เมอเตมตองไลใครออก-และเขยนแลวทำอยางไร">เมื่อเต็มต้องไล่ใครออก และเขียนแล้วทำอย่างไร</a></li>
+    <li><a href="#multicore-coherence-เปนขอจำกดใหม">Multicore: Coherence เป็นข้อจำกัดใหม่</a>
+      <ul>
+        <li><a href="#false-sharing-ไมไดแชร-แตจายเหมอนแชร">False sharing: ไม่ได้แชร์ แต่จ่ายเหมือนแชร์</a></li>
+        <li><a href="#ลองบนเครองตวเอง">ลองบนเครื่องตัวเอง</a></li>
+      </ul>
+    </li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="频率只有一份，制式却有好几种：从 1987 年广州的第一个模拟网，到截稿前几个小时送出的 TD-SCDMA、为它让路的小灵通和一项强制性的无线局域网国标，空中的规则同样有人在决定。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hans/posts/64-zh-mobile-standards/">
+	<meta property="og:site_name" content="我们如何走到那里">
+	<meta property="og:title" content="空中的标准之争：从大哥大到 TD-SCDMA">
+	<meta property="og:description" content="频率只有一份，制式却有好几种：从 1987 年广州的第一个模拟网，到截稿前几个小时送出的 TD-SCDMA、为它让路的小灵通和一项强制性的无线局域网国标，空中的规则同样有人在决定。">
+	<meta property="og:locale" content="zh_Hans">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+		<meta property="article:tag" content="移动通信">
+		<meta property="article:tag" content="TACS">
+		<meta property="article:tag" content="大哥大">
+		<meta property="article:tag" content="GSM">
+		<meta property="article:tag" content="TD-SCDMA">
+		<meta property="article:tag" content="小灵通">
+
+
+	<meta itemprop="name" content="空中的标准之争：从大哥大到 TD-SCDMA">
+	<meta itemprop="description" content="频率只有一份，制式却有好几种：从 1987 年广州的第一个模拟网，到截稿前几个小时送出的 TD-SCDMA、为它让路的小灵通和一项强制性的无线局域网国标，空中的规则同样有人在决定。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="382">
+	<meta itemprop="keywords" content="移动通信,TACS,大哥大,GSM,TD-SCDMA,小灵通,WAPI,WiMAX,频率,标准必要专利">
+
+<title>空中的标准之争：从大哥大到 TD-SCDMA • 我们如何走到那里</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hans/posts/64-zh-mobile-standards/">
+  <link rel="alternate" hreflang="zh-hant" href="http://localhost:1478/zh-hant/posts/64-zh-mobile-standards/" title="空中的標準之爭：從大哥大到 TD-SCDMA">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hans.search.min.d369906e95123348f130fcf51e745dc120f1a18f8009278172e975f6091f5a95.js" integrity="sha256-02mQbpUSM0jxMPz1HnRdwSDxoY&#43;ACSeBcul19gkfWpU=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hans/"><span>我们如何走到那里</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜索"
+    aria-label="搜索"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="语言" />
+        简体中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展开" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hant/posts/64-zh-mobile-standards/" class="flex flex-auto">
+          繁體中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/00-credits/" class="">
+      致谢与延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-counting-rods-abacus/" class="">
+      算筹与算盘：数放在手里，算法记在口诀里</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-drawloom-huaben/" class="">
+      花本：程序第一次和机器分开</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-gears-and-calculators/" class="">
+      齿轮会数数：从记里鼓车到“较数器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/02-zh-relays-switching/" class="">
+      继电器与交换机：上海电话局里的“计算机”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/03-zh-first-electronic-computers/" class="">
+      电子管与晶体管：中国第一批计算机，和算盘的真实角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-hanzi-encoding/" class="">
+      汉字上线：从四位电码到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/26-zh-input-and-typesetting/" class="">
+      把汉字敲进机器：打字机、输入法与激光照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/39-zh-networks-1986-1994/" class="">
+      越过长城：中文世界接入网络（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/47-zh-taiwan-semiconductors/" class="">
+      从豆浆店到晶圆代工：台湾半导体之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/17-zh-supercomputers-cpus/" class="">
+      规模：从银河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/63-zh-road-to-attention/" class="">
+      从中文信息处理到注意力机制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/05-zh-transistors-semiconductors/" class="">
+      从一门课到一块芯片：中国半导体的头十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/48-zh-lithography-fabs/" class="">
+      光刻：从显微镜到扫描机</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/58-zh-deep-learning-chips/" class="">
+      从 DianNao 到昇腾：为矩阵乘法造的芯片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/23-zh-operating-systems/" class="">
+      操作系统：从大庆的“虚拟机”到开源欧拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/27-zh-languages-compilers/" class="">
+      编程语言与编译器：从 104 机到仓颉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主机与天文台的电脑</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/43-zh-bbs/" class="">
+      挤不进去的广场：两岸三地的校园 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/44-zh-chinese-search/" class="">
+      一台服务器装不下：中国大陆第一批搜索引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/66-zh-commercial-crypto/" class="">
+      从“属于国家秘密”到国际标准：中国商用密码的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/67-zh-privacy-law/" class="">
+      从电脑处理到自动化决策：两岸三地的个人信息保护法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-mobile-standards/" class="active">
+      空中的标准之争：从大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/68-zh-computer-craze/" class="">
+      娃娃与学习机：1984 年以后的电脑热</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="菜单" />
+  </label>
+
+  <h3>空中的标准之争：从大哥大到 TD-SCDMA</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目录" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1987大哥大">1987：大哥大</a></li>
+    <li><a href="#换成数字">换成数字</a></li>
+    <li><a href="#1998-年-6-月-30-日截稿前几个小时">1998 年 6 月 30 日：截稿前几个小时</a></li>
+    <li><a href="#2009一家一制式小灵通让路">2009：一家一制式，小灵通让路</a></li>
+    <li><a href="#wapi一项强制性的无线局域网国标">WAPI：一项强制性的无线局域网国标</a></li>
+    <li><a href="#台湾2600-mhz-从-wimax-手里拿走">台湾：2600 MHz 从 WiMAX 手里拿走</a></li>
+    <li><a href="#谁决定空中的规则">谁决定空中的规则</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    空中的标准之争：从大哥大到 TD-SCDMA
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>九月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hans/tags/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/">移动通信</a>, 
+      <a href="/zh-hans/tags/tacs/">TACS</a>, 
+      <a href="/zh-hans/tags/%E5%A4%A7%E5%93%A5%E5%A4%A7/">大哥大</a>, 
+      <a href="/zh-hans/tags/gsm/">GSM</a>, 
+      <a href="/zh-hans/tags/td-scdma/">TD-SCDMA</a>, 
+      <a href="/zh-hans/tags/%E5%B0%8F%E7%81%B5%E9%80%9A/">小灵通</a>, 
+      <a href="/zh-hans/tags/wapi/">WAPI</a>, 
+      <a href="/zh-hans/tags/wimax/">WiMAX</a>, 
+      <a href="/zh-hans/tags/%E9%A2%91%E7%8E%87/">频率</a>, 
+      <a href="/zh-hans/tags/%E6%A0%87%E5%87%86%E5%BF%85%E8%A6%81%E4%B8%93%E5%88%A9/">标准必要专利</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F17-01, F17-02, F17-03, F17-04, F17-05, F17-06, F17-07, F17-08, F17-09, F17-10, F17-11, F17-12 -->
+<p>电线上的规则，是本章另一篇中文页讲的汉字编码。空中也要有规则：频率只有一份，制式却有好几种。谁来挑？挑中的是谁家的？</p>
+<h2 id="1987大哥大">1987：大哥大<a class="anchor" href="#1987%e5%a4%a7%e5%93%a5%e5%a4%a7">#</a></h2>
+<p>据科普中国，“1987年，我国确定了以TACS制式作为我国模拟制式蜂窝移动电话的标准”。同年 11 月 18 日，第六届全运会召开前夕，广州开通我国第一个 TACS 模拟蜂窝移动电话系统，首批用户 700 个。据《广州日报》，原邮电部部长杨泰芳在珠江三角洲移动电话网首期工程的开通仪式上，给远在北京的同事拨通了电话。中国电信博物馆的大事记记载，1987 年，摩托罗拉 3200 手机进入中国市场，俗称“大哥大”；1989 年 6 月，珠三角首先实现移动电话自动漫游。</p>
+<p>香港更早，而且同时跑着几种制式。据香港通讯事务管理局办公室的里程碑，1984 年香港电话公司的全资附属公司 CSL 采用 NEC 的高级流动电话系统（NAMTS），推出首个公共流动无线电话服务；同年，和记电话获发牌照经营 AMPS 网络；1987 年，CSL 又获发牌照经营 TACS 网络，称为 UNITACS。</p>
+<h2 id="换成数字">换成数字<a class="anchor" href="#%e6%8d%a2%e6%88%90%e6%95%b0%e5%ad%97">#</a></h2>
+<p>据中国电信博物馆的大事记，1993 年 9 月 19 日，我国第一个 GSM 数字移动电话网在浙江嘉兴开通；2001 年 12 月 31 日，模拟移动电话网关闭，大事记写道：“我们关闭模拟移动电话网”。香港的 CDMA 也来得早：中国电信博物馆的大事记写“1995年9月，世界上第一个商用CDMA移动通信网在香港开通”；通讯办的里程碑记和记电话在 1995 年 6 月和 10 月分别推出 GSM 和 CDMA 服务。</p>
+<h2 id="1998-年-6-月-30-日截稿前几个小时">1998 年 6 月 30 日：截稿前几个小时<a class="anchor" href="#1998-%e5%b9%b4-6-%e6%9c%88-30-%e6%97%a5%e6%88%aa%e7%a8%bf%e5%89%8d%e5%87%a0%e4%b8%aa%e5%b0%8f%e6%97%b6">#</a></h2>
+<p>国际电联把第三代移动通信（3G）提案的截止日定在 1998 年 6 月 30 日。据曹煦在中国工程院网站发表的回顾：「直到6月29日下午，时任信息产业部部长的吴基传才在这份名为“TD-SCDMA第三代移动通信标准建议”的文件上签名。6月30日下午，在截稿前的几个小时，大唐将这份代表中国3G方案的标准发送到国际电联」。各国一共提出了 15 个技术方案。2000 年 5 月 5 日，在土耳其举行的国际电联全会上，TD-SCDMA 被采纳为国际 3G 标准之一。同一篇文章记下了一句话：美国代表团的一位成员握住大唐代表的手说，“中国终于有一家公司可以拿着口袋向全世界收知识产权费用了！”标准背后是专利费，这句话说得很直白。</p>
+<h2 id="2009一家一制式小灵通让路">2009：一家一制式，小灵通让路<a class="anchor" href="#2009%e4%b8%80%e5%ae%b6%e4%b8%80%e5%88%b6%e5%bc%8f%e5%b0%8f%e7%81%b5%e9%80%9a%e8%ae%a9%e8%b7%af">#</a></h2>
+<p>据中国政府网转发的工信部消息，2009 年 1 月 7 日，工业和信息化部发放 3G 牌照：中国移动获得 TD-SCDMA，中国电信获得 CDMA2000，中国联通获得 WCDMA。</p>
+<p>两天后，工信部无〔2009〕11 号通知指出，1900—1920 MHz 是我国第三代公众移动通信系统（TDD 方式）的主要工作频段，为“支持具有我国自主知识产权的TD-SCDMA技术的发展和应用”，“1900-1920MHz频段无线接入系统应在2011年底前完成清频退网工作，其所用频率无条件收回”；自发文之日起，这些系统停止扩容和发展新用户。通知本身没有点小灵通的名。据新华社 2009 年 2 月 14 日的报道，工业和信息化部相关司局负责人 13 日就社会关注的“涉及小灵通使用频段清频问题”接受了新华社记者采访，谈的正是这份通知部署的 1900—1920 MHz 清频工作；据中国电信博物馆的大事记，1998 年 1 月，浙江余杭电信局正式开通小灵通业务。</p>
+<figure><img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/3G_Mobile_Phones_fot_China_Mobile.jpg" alt="中国移动的 TD-SCDMA 3G 手机，2010 年摄于大连" loading="lazy" width="640"><figcaption>2010 年 2 月，大连，中国移动的 TD-SCDMA 3G 手机。图片：<a href="https://commons.wikimedia.org/wiki/File:3G_Mobile_Phones_fot_China_Mobile.jpg">Yoshi Canopus</a> / Wikimedia Commons，<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>。</figcaption></figure>
+<h2 id="wapi一项强制性的无线局域网国标">WAPI：一项强制性的无线局域网国标<a class="anchor" href="#wapi%e4%b8%80%e9%a1%b9%e5%bc%ba%e5%88%b6%e6%80%a7%e7%9a%84%e6%97%a0%e7%ba%bf%e5%b1%80%e5%9f%9f%e7%bd%91%e5%9b%bd%e6%a0%87">#</a></h2>
+<p>同样的争夺也发生在无线局域网上。2003 年 5 月 12 日发布的 GB 15629.11-2003 等两项无线局域网国家标准，按国家质检总局、国家标准委 2003 年第 110 号公告，自 2003 年 12 月 1 日起实施，“即日起禁止进口、生产和销售不符合强制性国家标准的无线局域网产品”；2003 年 12 月 1 日前已进口、生产或已签订有效合同的产品，允许在 2004 年 6 月 1 日之前进口、生产和销售；来料加工用于出口的产品不受约束。</p>
+<p>据最高人民法院 2022 年的判决书回顾，2004 年 4 月 29 日的公告宣布“2004年6月1日将延期强制实施上述标准”；2006 年 1 月 27 日，国家质检总局、国家标准委发布了修改单 GB15629.11-2003/XG1-2006。据吕述望的综述，2006 年公开发布的 SM4 分组密码算法，是为配合 WAPI 的推广应用而发布的，见<a href="/zh-hans/posts/66-zh-commercial-crypto/">《从“属于国家秘密”到国际标准：中国商用密码的二十年》</a>。</p>
+<p>2022 年，最高人民法院在（2022）最高法知民终 817 号判决中认为，涉案的 WAPI 专利“不仅是标准必要专利，而且是实施强制性标准所无法避开的必要专利”，因此具有更多社会公共利益的因素，是否判令停止侵害，要综合考虑当事人的过错等因素。</p>
+<h2 id="台湾2600-mhz-从-wimax-手里拿走">台湾：2600 MHz 从 WiMAX 手里拿走<a class="anchor" href="#%e5%8f%b0%e6%b9%be2600-mhz-%e4%bb%8e-wimax-%e6%89%8b%e9%87%8c%e6%8b%bf%e8%b5%b0">#</a></h2>
+<p>在台湾，争的也是频率。据 iThome 2014 年 3 月 31 日的报道，台湾通讯传播委员会（NCC）与交通部在说明会上宣布，要把 WiMAX 正在使用的 2600 MHz 频段拿出来公开竞标，释出 190 MHz 给 4G LTE 使用，其中 FDD-LTE 占 140 MHz、TDD-LTE 占 50 MHz。WiMAX 业者当场批评：“政府頻譜政策制定程序不當，忽視WiMAX產業努力及現況，政府偏向支持FDD-LTE”。</p>
+<p>**出处：**科普中国，2016；中国电信博物馆大事记；香港通讯办《电讯发展里程碑》；曹煦，中国工程院网站；工信部无〔2009〕11 号；国家质检总局、国家标准委 2003 年第 110 号公告；最高人民法院（2022）最高法知民终 817 号（最高人民法院知识产权法庭网站）；新华网，2009；吕述望，2016；iThome，2014。</p>
+<h2 id="谁决定空中的规则">谁决定空中的规则<a class="anchor" href="#%e8%b0%81%e5%86%b3%e5%ae%9a%e7%a9%ba%e4%b8%ad%e7%9a%84%e8%a7%84%e5%88%99">#</a></h2>
+<p>一路看下来：频率由政府分配和收回；制式可以由部委按运营商逐家指定；国际标准由国际电联在十几个方案里挑；国家标准可以是强制性的，而强制性标准里的专利，到了法院又多了一层公共利益的分量。</p>
+<p>在西方，本书英文版第 64 章讲的是谁来分配号码、名字和编码，好让不同的网络彼此相通。空中的频率和制式，是同一个问题的另一面。</p>
+<h2 id="延伸阅读">延伸阅读<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb">#</a></h2>
+<ul>
+<li>科普中国，《1987年11月18日 移动电话网“大哥大”开始使用》（English: 18 Nov 1987: the &ldquo;big brother&rdquo; mobile network goes into service），中国科协科普中国网，2016-11-18。<a href="https://www.kepuchina.cn/kpcs/lcb/lcb5/201611/t20161118_46104.shtml">链接</a></li>
+<li>《广州日报》，2023-12-18 报道（English: Guangzhou Daily report recalling the 1987 inaugural mobile call），大洋网。<a href="https://gzdaily.dayoo.com/h5/html5/2023-12/18/content_633_844644.htm">链接</a></li>
+<li>中国电信博物馆，移动通信大事记（English: China Telecom Museum, chronology of mobile communications, reposted from C114），2019-10-12。<a href="http://museum.chinatelecom.com.cn/yj/txkp/202107/t20210715_63084.html">链接</a></li>
+<li>香港通訊事務管理局辦公室，《電訊發展里程碑（2012年前）》（English: OFCA, telecommunications milestones before 2012）。<a href="https://www.ofca.gov.hk/tc/news_info/milestones/telecommunications_milestones_before_2012/index.html">链接</a></li>
+<li>曹煦，《1998年：第一个中国3G标准》（English: 1998: the first Chinese 3G standard），中国工程院网站“院士自述·亲历改革开放30年”栏目，原文 2008-12-18。<a href="https://www.cae.cn/cae/html/main/col278/2012-02/27/20120227140259086585847_1.html">链接</a></li>
+<li>中国政府网，2009-01-07 3G 牌照发放报道（English: gov.cn report on the issue of 3G licences, Wayback Machine copy）。<a href="https://web.archive.org/web/20090114095316/http:/www.gov.cn/jrzg/2009-01/07/content_1198562.htm">链接</a></li>
+<li>工业和信息化部，《关于1900—1920MHz频段无线接入系统相关事宜的通知》（工信部无〔2009〕11号）（English: MIIT notice on wireless access systems in the 1900–1920 MHz band），维基文库全文，2009-01-09。<a href="https://zh.wikisource.org/wiki/%e5%85%b3%e4%ba%8e1900%e2%80%941920MHz%e9%a2%91%e6%ae%b5%e6%97%a0%e7%ba%bf%e6%8e%a5%e5%85%a5%e7%b3%bb%e7%bb%9f%e7%9b%b8%e5%85%b3%e4%ba%8b%e5%ae%9c%e7%9a%84%e9%80%9a%e7%9f%a5">链接</a></li>
+<li>国家质检总局、国家标准委，《关于无线局域网强制性国家标准实施的公告》（2003年第110号）（English: AQSIQ/SAC announcement on implementing the mandatory WLAN national standards），维基文库全文。<a href="https://zh.wikisource.org/wiki/%e5%85%b3%e4%ba%8e%e6%97%a0%e7%ba%bf%e5%b1%80%e5%9f%9f%e7%bd%91%e5%bc%ba%e5%88%b6%e6%80%a7%e5%9b%bd%e5%ae%b6%e6%a0%87%e5%87%86%e5%ae%9e%e6%96%bd%e7%9a%84%e5%85%ac%e5%91%8a">链接</a></li>
+<li>国家标准全文公开系统，GB 15629.11-2003 记录（English: GB 15629.11-2003 official record），openstd.samr.gov.cn。<a href="https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=74B9DD11287E72408C19C4D3A360D1BD">链接</a></li>
+<li>最高人民法院知识产权法庭，（2022）最高法知民终817号民事判决书（English: Supreme People&rsquo;s Court civil judgment (2022) Zui Gao Fa Zhi Min Zhong No. 817, published by the SPC IP Tribunal），2024-03-25 刊于法庭网站“精品裁判”栏目。<a href="https://ipc.court.gov.cn/zh-cn/news/view-2906.html">链接</a>（另有 WIPO Lex 转录本：<a href="https://www.wipo.int/wipolex/ar/text/594162">链接</a>）</li>
+<li>吕述望，《SM4分组密码算法综述》（English: A survey of the SM4 block cipher），《信息安全研究》2016 年第 2 卷第 11 期（摘要）。<a href="http://www.sicris.cn/CN/Y2016/V2/I11/995">链接</a></li>
+<li>新华网（中新网转载），刘菊花、冯晓芳，《工信部要求运营商做好小灵通使用频段清频工作》（English: MIIT asks operators to clear the band used by PHS (Xiaolingtong)），2009-02-14。<a href="http://www.chinanews.com.cn/it/txxw/news/2009/02-14/1563128.shtml">链接</a></li>
+<li>蘇文彬，《政府將把2600MHz 釋放給4G LTE，政策規劃WiMAX業者反彈》（English: Government to release 2600 MHz for 4G LTE; WiMAX operators push back），iThome，2014-03-31。<a href="https://www.ithome.com.tw/news/86298">链接</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='最后修改者 Nayana | 十一月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>十一月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E7%A9%BA%E4%B8%AD%E7%9A%84%E6%A0%87%E5%87%86%E4%B9%8B%E4%BA%89%EF%BC%9A%E4%BB%8E%E5%A4%A7%E5%93%A5%E5%A4%A7%E5%88%B0&#43;TD-SCDMA&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hans%2Fposts%2F64-zh-mobile-standards%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hans%2Fposts%2F64-zh-mobile-standards.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hans%2Fposts%2F64-zh-mobile-standards.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hans/posts/67-zh-privacy-law/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一页" />
+        <span>从电脑处理到自动化决策：两岸三地的个人信息保护法制</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hans/posts/68-zh-computer-craze/" class="flex align-center">
+        <span>娃娃与学习机：1984 年以后的电脑热</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一页" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1987大哥大">1987：大哥大</a></li>
+    <li><a href="#换成数字">换成数字</a></li>
+    <li><a href="#1998-年-6-月-30-日截稿前几个小时">1998 年 6 月 30 日：截稿前几个小时</a></li>
+    <li><a href="#2009一家一制式小灵通让路">2009：一家一制式，小灵通让路</a></li>
+    <li><a href="#wapi一项强制性的无线局域网国标">WAPI：一项强制性的无线局域网国标</a></li>
+    <li><a href="#台湾2600-mhz-从-wimax-手里拿走">台湾：2600 MHz 从 WiMAX 手里拿走</a></li>
+    <li><a href="#谁决定空中的规则">谁决定空中的规则</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

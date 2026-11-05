@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>銀河-I on 我們如何走到那裡</title>
+		<link>http://localhost:1478/zh-hant/tags/%E9%8A%80%E6%B2%B3-i/</link>
+		<description>Recent content in 銀河-I on 我們如何走到那裡</description>
+		<generator>Hugo</generator>
+		<language>zh-Hant</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:38:43 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hant/tags/%E9%8A%80%E6%B2%B3-i/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>規模：從銀河到太湖之光</title>
+				<link>http://localhost:1478/zh-hant/posts/17-zh-supercomputers-cpus/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/17-zh-supercomputers-cpus/</guid>
+				<description>相容別人、手工自造、用商品晶片拼、再自己設計晶片：中國的大型電腦四十年裡換了幾條路，每一次轉向都被一個具體的約束逼出來。</description>
+			</item>
+	</channel>
+</rss>

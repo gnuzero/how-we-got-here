@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="2014 年，计算所与法国 Inria 合作的 DianNao 拿下 ASPLOS 最佳论文；三年后，这条路线进了手机，而华为的发布稿里没有提到寒武纪。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hans/posts/58-zh-deep-learning-chips/">
+	<meta property="og:site_name" content="我们如何走到那里">
+	<meta property="og:title" content="从 DianNao 到昇腾：为矩阵乘法造的芯片">
+	<meta property="og:description" content="2014 年，计算所与法国 Inria 合作的 DianNao 拿下 ASPLOS 最佳论文；三年后，这条路线进了手机，而华为的发布稿里没有提到寒武纪。">
+	<meta property="og:locale" content="zh_Hans">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:38:43+05:30">
+		<meta property="article:tag" content="深度学习处理器">
+		<meta property="article:tag" content="DianNao">
+		<meta property="article:tag" content="寒武纪">
+		<meta property="article:tag" content="计算所">
+		<meta property="article:tag" content="TPU">
+		<meta property="article:tag" content="NPU">
+
+
+	<meta itemprop="name" content="从 DianNao 到昇腾：为矩阵乘法造的芯片">
+	<meta itemprop="description" content="2014 年，计算所与法国 Inria 合作的 DianNao 拿下 ASPLOS 最佳论文；三年后，这条路线进了手机，而华为的发布稿里没有提到寒武纪。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:38:43+05:30">
+	<meta itemprop="wordCount" content="294">
+	<meta itemprop="keywords" content="深度学习处理器,DianNao,寒武纪,计算所,TPU,NPU,麒麟970,昇腾">
+
+<title>从 DianNao 到昇腾：为矩阵乘法造的芯片 • 我们如何走到那里</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hans/posts/58-zh-deep-learning-chips/">
+  <link rel="alternate" hreflang="zh-hant" href="http://localhost:1478/zh-hant/posts/58-zh-deep-learning-chips/" title="從 DianNao 到昇騰：為矩陣乘法造的晶片">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hans.search.min.d369906e95123348f130fcf51e745dc120f1a18f8009278172e975f6091f5a95.js" integrity="sha256-02mQbpUSM0jxMPz1HnRdwSDxoY&#43;ACSeBcul19gkfWpU=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hans/"><span>我们如何走到那里</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜索"
+    aria-label="搜索"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="语言" />
+        简体中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展开" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hant/posts/58-zh-deep-learning-chips/" class="flex flex-auto">
+          繁體中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/00-credits/" class="">
+      致谢与延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-counting-rods-abacus/" class="">
+      算筹与算盘：数放在手里，算法记在口诀里</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-drawloom-huaben/" class="">
+      花本：程序第一次和机器分开</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/01-zh-gears-and-calculators/" class="">
+      齿轮会数数：从记里鼓车到“较数器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/02-zh-relays-switching/" class="">
+      继电器与交换机：上海电话局里的“计算机”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/03-zh-first-electronic-computers/" class="">
+      电子管与晶体管：中国第一批计算机，和算盘的真实角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-hanzi-encoding/" class="">
+      汉字上线：从四位电码到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/26-zh-input-and-typesetting/" class="">
+      把汉字敲进机器：打字机、输入法与激光照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/39-zh-networks-1986-1994/" class="">
+      越过长城：中文世界接入网络（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/47-zh-taiwan-semiconductors/" class="">
+      从豆浆店到晶圆代工：台湾半导体之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/17-zh-supercomputers-cpus/" class="">
+      规模：从银河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/63-zh-road-to-attention/" class="">
+      从中文信息处理到注意力机制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/05-zh-transistors-semiconductors/" class="">
+      从一门课到一块芯片：中国半导体的头十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/48-zh-lithography-fabs/" class="">
+      光刻：从显微镜到扫描机</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/58-zh-deep-learning-chips/" class="active">
+      从 DianNao 到昇腾：为矩阵乘法造的芯片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/23-zh-operating-systems/" class="">
+      操作系统：从大庆的“虚拟机”到开源欧拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/27-zh-languages-compilers/" class="">
+      编程语言与编译器：从 104 机到仓颉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主机与天文台的电脑</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/43-zh-bbs/" class="">
+      挤不进去的广场：两岸三地的校园 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/44-zh-chinese-search/" class="">
+      一台服务器装不下：中国大陆第一批搜索引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/66-zh-commercial-crypto/" class="">
+      从“属于国家秘密”到国际标准：中国商用密码的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/67-zh-privacy-law/" class="">
+      从电脑处理到自动化决策：两岸三地的个人信息保护法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/64-zh-mobile-standards/" class="">
+      空中的标准之争：从大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hans/posts/68-zh-computer-craze/" class="">
+      娃娃与学习机：1984 年以后的电脑热</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="菜单" />
+  </label>
+
+  <h3>从 DianNao 到昇腾：为矩阵乘法造的芯片</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目录" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#20122016一个中法合作的芯片家族">2012—2016：一个中法合作的芯片家族</a></li>
+    <li><a href="#tpu-论文怎么写">TPU 论文怎么写</a></li>
+    <li><a href="#从论文到手机">从论文到手机</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    从 DianNao 到昇腾：为矩阵乘法造的芯片
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>九月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hans/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%A4%84%E7%90%86%E5%99%A8/">深度学习处理器</a>, 
+      <a href="/zh-hans/tags/diannao/">DianNao</a>, 
+      <a href="/zh-hans/tags/%E5%AF%92%E6%AD%A6%E7%BA%AA/">寒武纪</a>, 
+      <a href="/zh-hans/tags/%E8%AE%A1%E7%AE%97%E6%89%80/">计算所</a>, 
+      <a href="/zh-hans/tags/tpu/">TPU</a>, 
+      <a href="/zh-hans/tags/npu/">NPU</a>, 
+      <a href="/zh-hans/tags/%E9%BA%92%E9%BA%9F970/">麒麟970</a>, 
+      <a href="/zh-hans/tags/%E6%98%87%E8%85%BE/">昇腾</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F08-01, F08-02, F08-03, F08-04, F08-06, F08-07, F08-08, F08-09, F08-10, F08-11, F08-12 -->
+<p>神经网络的一层，算的几乎全是乘加。华为 2019 年解读自家达芬奇架构时说，典型神经网络里“99%的计算都需要用到矩阵乘”。如果计算这么单一，为什么不给它专门造一块芯片？2014 年前后，北京的一个团队给出了自己的答案。</p>
+<h2 id="20122016一个中法合作的芯片家族">2012—2016：一个中法合作的芯片家族<a class="anchor" href="#20122016%e4%b8%80%e4%b8%aa%e4%b8%ad%e6%b3%95%e5%90%88%e4%bd%9c%e7%9a%84%e8%8a%af%e7%89%87%e5%ae%b6%e6%97%8f">#</a></h2>
+<p>据中科院计算所 DianNao 项目主页的中英双语介绍，“本项目是中科院计算所的陈云霁教授和法国Inria的Olivier Temam间的一个学术合作项目，双方为此设立了联合实验室”。起点是 Temam 在 2012 年 ISCA 上提出的第一个机器学习加速器设计，它的瓶颈在内存带宽。</p>
+<p>主页把之后的工作排成一个家族。DianNao 在加速器旁加上片上存储，缓解带宽问题，2014 年获 ASPLOS 最佳论文；多芯片的 DaDianNao 把整个模型放在片上，获 MICRO 2014 最佳论文；ShiDianNao 直接接在视觉传感器上（ISCA 2015）；面向通用机器学习的 PuDianNao 是家族的最后一个成员（ASPLOS 2015）。之后团队设计了神经网络加速器指令集 Cambricon，在 ISCA 2016 上获得评审最高分。计算所当年的新闻称，DianNao 论文的第一作者是陈天石，这是亚洲首次、美国之外第二次获 ASPLOS 最佳论文；中科院 2024 年的专题还称，DaDianNao 是 MICRO 自 1963 年创办以来首次由美国以外的学者获奖。</p>
+<p>同一专题讲了一个细节：陈云霁读研究生时被龙芯 1 号研制组组长胡伟武招进团队，在验证组写测试程序。它还写道，2015 年，“国际上第一颗深度学习处理器原型芯片的一次流片成功”，是在计算所一间不足 30 平方米、被戏称为“小黑屋”的玻璃房里揭晓的；专题称陈云霁、陈天石为兄弟。</p>
+<h2 id="tpu-论文怎么写">TPU 论文怎么写<a class="anchor" href="#tpu-%e8%ae%ba%e6%96%87%e6%80%8e%e4%b9%88%e5%86%99">#</a></h2>
+<p>谷歌 Jouppi 等人 2017 年的 TPU 论文在相关工作里专门讨论了 DianNao 家族：“All use 16-bit integer operations and all designs dove down to layout, but no chips were fabricated.”（它们都用 16 位整数运算，设计都做到了版图，但没有制造芯片。）论文还写道，原版 DianNao 有 64 个 16 位整数乘加单元和 44 KB 片上存储，估计面积 3 平方毫米（65 纳米）、1 GHz、0.5 瓦；后继的 DaDianNao 用 eDRAM 在片上存放 36 MiB 权重。</p>
+<p>这句话要和中科院的说法分开读。TPU 论文说的是 DianNao 家族已发表的那几种设计；中科院专题说的是 2015 年另一颗原型芯片流片成功，而且没有说明它实现的是哪一种设计。两句话讲的对象不同，并不互相否定。</p>
+<h2 id="从论文到手机">从论文到手机<a class="anchor" href="#%e4%bb%8e%e8%ae%ba%e6%96%87%e5%88%b0%e6%89%8b%e6%9c%ba">#</a></h2>
+<p>据寒武纪的招股书，公司成立于 2016 年 3 月 15 日；中国科学院的专题文章说，它是在计算所和风险投资机构的支持下成立的。2017 年 9 月，华为在 IFA 上发布麒麟 970，称它“首次集成NPU”，新的异构计算架构相较于四个 Cortex-A73 核心有大约 50 倍能效和 25 倍性能优势，芯片集成 55 亿个晶体管。那份发布稿通篇没有提到寒武纪。据驱动中国的报道，计算所随后致华为、海思的贺信写明，麒麟 970 集成寒武纪 1A 处理器作为核心人工智能处理单元，“即余承东总在发布会中所述NPU”，并称 1A 是“国际上首个商用深度学习处理器产品”。</p>
+<p>最具体的记录在寒武纪 2020 年的科创板招股书里：2017—2019 年，华为海思占公司终端智能处理器 IP 授权收入的 100.00%、97.94% 和 92.56%；2019 年这项收入下滑 41.23%，主要是因为华为海思选择自研终端智能芯片，未再合作。招股书还说，1A、1H 已集成于超过 1 亿台智能手机及其他智能终端设备。</p>
+<p>华为自己的路线叫达芬奇。据它的官方解读（IT之家转载），2018 年全联接大会上推出的昇腾 310 是达芬奇架构的首次亮相；每个 AI Core 的 3D Cube 用 16×16×16 的结构，一个时钟周期完成 4096 次乘加。2019 年 8 月，华为发布训练芯片昇腾 910，央视网报道，它达到规格算力时的实测功耗为 310 瓦，低于 350 瓦的设计规格。</p>
+<p>英文版第 57、58 章讲的是同一个逻辑：计算收缩成矩阵乘法，芯片就按矩阵的形状去造，TPU 的脉动阵列是其中一种做法。这一页补上的是 2014 年前后北京的那一段，以及它进入商用时的署名之争。</p>
+<p>**出处：**中科院计算所 DianNao 项目主页；Jouppi 等，TPU 论文（ISCA 2017）；《中科寒武纪科技股份有限公司首次公开发行股票并在科创板上市招股说明书》。</p>
+<h2 id="延伸阅读">延伸阅读<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb">#</a></h2>
+<ul>
+<li>中国科学院计算技术研究所，《A Brief Introduction to The DianNao Project / 中法联合DianNao项目简介》（English: the DianNao project page, bilingual），novel.ict.ac.cn。<a href="https://novel.ict.ac.cn/diannao/">链接</a></li>
+<li>中国科学院计算技术研究所，《计算所国重未来计算团队喜获ASPLOS最佳论文奖》（English: ICT team wins the ASPLOS best paper award），2014 年新闻，中国科学院网信工作网转载。<a href="http://www.ecas.cas.cn/dtfb/ysdt/201802/t20180206_4934055.html">链接</a></li>
+<li>中国科学院，《开创“寒武纪”》（English: Founding &ldquo;Cambricon&rdquo;, CAS feature on self-reliance in science and technology），2024-09-19。<a href="https://www.cas.cn/zt/kjzt/kjzlzqzl/kjzlzq/202409/t20240919_5032328.shtml">链接</a></li>
+<li>Norman P. Jouppi et al.，“In-Datacenter Performance Analysis of a Tensor Processing Unit”（中文：数据中心内张量处理单元的性能分析），ISCA 2017，arXiv:1704.04760。<a href="https://arxiv.org/abs/1704.04760">链接</a></li>
+<li>华为，麒麟 970 IFA 2017 发布新闻（English: Huawei press release on the Kirin 970 launch at IFA 2017），2017-09。<a href="https://www.huawei.com/cn/news/2017/9/mobile-ai-ifa-2017">链接</a></li>
+<li>驱动中国，《中科院贺信柔中有刚，强调Kirin NPU并非华为所有》（English: CAS congratulatory letter stresses that the Kirin NPU is not Huawei&rsquo;s own），2017-09-08。<a href="https://www.qudong.com/article/301101.html">链接</a></li>
+<li>中科寒武纪科技股份有限公司，《首次公开发行股票并在科创板上市招股说明书（注册稿）》（English: Cambricon STAR Market IPO prospectus, registration draft），上海证券交易所披露，2020-06-22。<a href="https://static.sse.com.cn/stock/disclosure/announcement/c/202006/000354_20200622_AWSW.pdf">链接</a></li>
+<li>IT之家，《华为深度解读达芬奇架构：3D Cube计算引擎加速运算》（English: Huawei explains the Da Vinci architecture and its 3D Cube engine），2019-08-22。<a href="https://www.ithome.com/0/440/590.htm">链接</a></li>
+<li>央视网，《华为正式发布最新AI处理器昇腾910及全场景AI计算框架MindSpore》（English: Huawei launches the Ascend 910 AI processor and the MindSpore framework），2019-08-23。<a href="http://news.cctv.com/2019/08/23/ARTI2cqgeaCmXn6WauhnfNyy190823.shtml">链接</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/b143baf811dd934626f3160e8260e5d48395b1f1" title='最后修改者 Nayana | 十一月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日历" />
+    <span>十一月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E4%BB%8E&#43;DianNao&#43;%E5%88%B0%E6%98%87%E8%85%BE%EF%BC%9A%E4%B8%BA%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E9%80%A0%E7%9A%84%E8%8A%AF%E7%89%87&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hans%2Fposts%2F58-zh-deep-learning-chips%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hans%2Fposts%2F58-zh-deep-learning-chips.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hans%2Fposts%2F58-zh-deep-learning-chips.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hans/posts/48-zh-lithography-fabs/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一页" />
+        <span>光刻：从显微镜到扫描机</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hans/posts/23-zh-operating-systems/" class="flex align-center">
+        <span>操作系统：从大庆的“虚拟机”到开源欧拉</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一页" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#20122016一个中法合作的芯片家族">2012—2016：一个中法合作的芯片家族</a></li>
+    <li><a href="#tpu-论文怎么写">TPU 论文怎么写</a></li>
+    <li><a href="#从论文到手机">从论文到手机</a></li>
+    <li><a href="#延伸阅读">延伸阅读</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

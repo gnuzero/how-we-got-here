@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ILP மற்றும் மின்சாரம் சுவர்களை மோதின — எனவே தொழில் ஒரு thread-க்கு வேகத்திற்குப் பதிலாக அகலத்திற்குச் சென்றது">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/17-superscalar-multicore/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Superscalar & Multicore">
+	<meta property="og:description" content="ILP மற்றும் மின்சாரம் சுவர்களை மோதின — எனவே தொழில் ஒரு thread-க்கு வேகத்திற்குப் பதிலாக அகலத்திற்குச் சென்றது">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Superscalar & Multicore">
+	<meta itemprop="description" content="ILP மற்றும் மின்சாரம் சுவர்களை மோதின — எனவே தொழில் ஒரு thread-க்கு வேகத்திற்குப் பதிலாக அகலத்திற்குச் சென்றது">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="962">
+
+<title>Superscalar &amp; Multicore • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/17-superscalar-multicore/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/17-superscalar-multicore/" title="Superscalar &amp; Multicore">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/17-superscalar-multicore/" title="Superscalar และ Multicore">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/17-superscalar-multicore/" title="Superscalar සහ Multicore">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/17-superscalar-multicore/" title="Superscalar și multicore">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/17-superscalar-multicore/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/17-superscalar-multicore/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/17-superscalar-multicore/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/17-superscalar-multicore/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="active">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Superscalar &amp; Multicore</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#superscalar-எனறல-எனன">Superscalar என்றால் என்ன?</a></li>
+    <li><a href="#அகலம-பயனபடவத-சதநதரமன-வல-இரககமபத-மடடம">அகலம் பயன்படுவது சுதந்திரமான வேலை இருக்கும்போது மட்டும்</a></li>
+    <li><a href="#அகலம-ஏன-வல-உயரகறத">அகலம் ஏன் விலை உயர்கிறது</a></li>
+    <li><a href="#ஒர-நரததல-இரணட-சவரகள">ஒரே நேரத்தில் இரண்டு சுவர்கள்</a></li>
+    <li><a href="#வகததறகப-பதலக-அகலம">வேகத்திற்குப் பதிலாக அகலம்</a></li>
+    <li><a href="#தரபபம-எஙக-சடடகறத">திருப்பம் எங்கு சுட்டுகிறது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Superscalar &amp; Multicore
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Out-of-order issue, ஆழமான pipeline-கள், அகலமான superscalar அகலம் — இந்தக் கட்டத்தில் இதுவரை உள்ள அனைத்தும் <em>ஒரு</em> அறிவுறுத்தல் ஓடையிலிருந்து அதிக Instruction-Level Parallelism (ILP) பிரித்தெடுக்கிறது. 2000-களின் நடுவில் அந்த அணுகுமுறை உத்தியை மாற்றும் அளவுக்குக் கடினமாக ஒரு கூரையை மோதியது.</p>
+<p>&ldquo;Superscalar&rdquo; என்ற சொல்லுக்குத் தமிழ் விக்கிப்பீடியாவில் கட்டுரையும் இல்லை, தமிழ் YouTube விளக்கமும் இந்தத் தணிக்கையில் கிடைக்கவில்லை; multicore-க்குச் சில பாடத்திட்டக் காணொளிகள் மட்டுமே. எனவே கூரையை மோதுவதற்கு முன், அந்த அகலம் என்றால் என்ன, அது ஏன் தீர்ந்துபோகிறது என்பதை எண்களோடு பார்ப்போம்.</p>
+<h2 id="superscalar-எனறல-எனன">Superscalar என்றால் என்ன?<a class="anchor" href="#superscalar-%e0%ae%8e%e0%ae%a9%e0%ae%b1%e0%ae%b2-%e0%ae%8e%e0%ae%a9%e0%ae%a9">#</a></h2>
+<p>பதிவு 13-இன் pipeline இலட்சியமாக ஒரு சுழற்சிக்கு <strong>ஒரு</strong> அறிவுறுத்தலை முடிக்கிறது (CPI = 1). <strong>Superscalar</strong> செயலி ஒரு சுழற்சிக்கு <strong>பல</strong> அறிவுறுத்தல்களை fetch, decode, issue செய்கிறது — ஒவ்வொரு நிலையையும் அகலமாக்கி, பல ALU-களை இணையாக வைத்து. ஒரு சுழற்சிக்கு அதிகபட்சம் எத்தனை அறிவுறுத்தல்கள் என்பது <strong>issue அகலம்</strong> (issue width): &ldquo;4-wide&rdquo; என்றால் 4.</p>
+<p>இங்கே CPI-க்குப் பதிலாக அதன் தலைகீழ் பயனுள்ளது: <strong>IPC</strong> (instructions per cycle, ஒரு சுழற்சிக்கான அறிவுறுத்தல்கள்) = 1 / CPI. 4-wide செயலியின் உச்ச IPC = 4. 3 GHz-இல் அது கோட்பாட்டளவில் ஒரு விநாடிக்கு 12 பில்லியன் அறிவுறுத்தல்கள். உண்மையான நிரல்களில் அடையும் IPC அதைவிட மிகக் குறைவு — ஏன் என்பதே இந்தப் பகுதியின் கதை.</p>
+<h2 id="அகலம-பயனபடவத-சதநதரமன-வல-இரககமபத-மடடம">அகலம் பயன்படுவது சுதந்திரமான வேலை இருக்கும்போது மட்டும்<a class="anchor" href="#%e0%ae%85%e0%ae%95%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%af%e0%ae%a9%e0%ae%aa%e0%ae%9f%e0%ae%b5%e0%ae%a4-%e0%ae%9a%e0%ae%a4%e0%ae%a8%e0%ae%a4%e0%ae%b0%e0%ae%ae%e0%ae%a9-%e0%ae%b5%e0%ae%b2-%e0%ae%87%e0%ae%b0%e0%ae%95%e0%ae%95%e0%ae%ae%e0%ae%aa%e0%ae%a4-%e0%ae%ae%e0%ae%9f%e0%ae%9f%e0%ae%ae">#</a></h2>
+<p>இரண்டு குறியீட்டுத் துண்டுகளை 4-wide இயந்திரத்தில் ஓட்டுவோம் (ஒவ்வொரு கூட்டலும் 1 சுழற்சி):</p>
+<pre tabindex="0"><code>// துண்டு 1: சங்கிலி            // துண்டு 2: சுதந்திரம்
+a = x + y;                     a = x + y;
+b = a + z;                     b = z + w;
+c = b + w;                     c = p + q;
+d = c + v;                     d = r + s;</code></pre><p>துண்டு 1-இல் ஒவ்வொரு வரியும் முந்தையதன் முடிவுக்குக் காத்திருக்கிறது (பதிவு 16-இன் RAW சார்பு) — 4 சுழற்சிகள், IPC = 1; மற்ற மூன்று ALU-களும் சும்மா. துண்டு 2-இல் நான்கும் சுதந்திரம் — <strong>1 சுழற்சி</strong>, IPC = 4. வன்பொருள் ஒன்றே; வேறுபாடு நிரலின் <strong>சார்பு வரைபடத்தில்</strong> (dependency graph).</p>
+<p><strong>Worked example — எட்டு எண்களின் கூட்டுத்தொகை.</strong> <code>s = s + a[i]</code> என்ற loop 7 சார்ந்த கூட்டல்கள் → 7 சுழற்சிகள், அகலம் எதுவானாலும். மரக் குறைப்பு (tree reduction): முதல் சுற்றில் (a0+a1), (a2+a3), (a4+a5), (a6+a7) — 4 சுதந்திரக் கூட்டல்கள், 1 சுழற்சி; இரண்டாம் சுற்றில் 2; மூன்றாம் சுற்றில் 1. மொத்தம் <strong>3 சுழற்சிகள்</strong> (அதே 7 கூட்டல்கள்). Compiler-களும் programmer-களும் அகலமான இயந்திரங்களுக்கு வேலையை இப்படி மறுசீரமைக்கின்றன. (மிதப்புப் புள்ளி எண்களில் கூட்டல் வரிசையை மாற்றுவது rounding-ஐச் சற்று மாற்றலாம் — அதனால் compiler-கள் அனுமதி இல்லாமல் இதைத் தானாகச் செய்வதில்லை.)</p>
+<h2 id="அகலம-ஏன-வல-உயரகறத">அகலம் ஏன் விலை உயர்கிறது<a class="anchor" href="#%e0%ae%85%e0%ae%95%e0%ae%b2%e0%ae%ae-%e0%ae%8f%e0%ae%a9-%e0%ae%b5%e0%ae%b2-%e0%ae%89%e0%ae%af%e0%ae%b0%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<ol>
+<li><strong>கிளைகள்</strong> — ஒவ்வொரு சில அறிவுறுத்தல்களுக்கும் ஒரு கிளை வருவதால், ஒரு சுழற்சியில் 4 அல்லது 8 அறிவுறுத்தல்களை fetch செய்ய, ஒரே சுழற்சியில் பல கிளைகளைக் கடந்து ஊகிக்க வேண்டும் (பதிவு 14). ஒவ்வொரு தவறான ஊகமும் இப்போது 4 மடங்கு அதிக வேலையை வீணாக்குகிறது.</li>
+<li><strong>சார்புச் சரிபார்ப்பு</strong> — ஒரே சுழற்சியில் decode ஆகும் N அறிவுறுத்தல்களில், ஒவ்வொன்றின் மூலப் பதிவேடுகளும் அதற்கு முந்தைய ஒவ்வொன்றின் இலக்குடன் ஒப்பிடப்பட வேண்டும் (renaming-க்காக). ஒப்பீடுகளின் எண்ணிக்கை தோராயமாக N²-உடன் வளர்கிறது: அகலத்தை இரட்டித்தால் அந்த வன்பொருள் சுமார் நான்கு மடங்கு.</li>
+<li><strong>நினைவக latency</strong> — ஒரு cache miss (பதிவு 15) நூற்றுக்கணக்கான சுழற்சிகள் எடுத்தால், அகலமான இயந்திரமும் காத்திருக்கிறது; அதை மறைக்கப் பெரிய ROB (பதிவு 16) தேவை, அதுவும் பரப்பும் மின்சாரமும்.</li>
+</ol>
+<h2 id="ஒர-நரததல-இரணட-சவரகள">ஒரே நேரத்தில் இரண்டு சுவர்கள்<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%a8%e0%ae%b0%e0%ae%a4%e0%ae%a4%e0%ae%b2-%e0%ae%87%e0%ae%b0%e0%ae%a3%e0%ae%9f-%e0%ae%9a%e0%ae%b5%e0%ae%b0%e0%ae%95%e0%ae%b3">#</a></h2>
+<p>உண்மையான நிரல்கள் வரம்பற்ற சுதந்திரமான வேலையை வழங்குவதில்லை. கிளைகள், உண்மையான data dependencies, மற்றும் நினைவக latency ஒரே ஓடையிலிருந்து எத்தனை அறிவுறுத்தல்கள் இணையாக ஓட முடியும் என்பதை வரம்பிடுகின்றன. பெரிய ROB-கள், அதிக reservation stations, அகலமான issue: வளரும் பரப்பு மற்றும் மின்சாரத்திற்குக் குறைந்துவரும் வருவாய். அது ஒரு கட்டமைப்புச் சுவர்.</p>
+<p>அதே நேரத்தில், dynamic மின்சாரம் தோராயமாக capacitance, அதிர்வெண், மற்றும் மின்னழுத்தத்தின் வர்க்கத்துடன் அளவிடுகிறது (P ≈ CV²f). ILP-இன் குறைந்துவரும் ஆதாயங்களுக்கு ஈடுசெய்ய clocks-ஐ உயர்த்துவது வெப்பத்தை மோதியது — பதிவு 36 விரிவாக உள்ளடக்கும் clock-speed சுவர். இரண்டு சுதந்திரமான கூரைகள், 2000-களின் நடுவில், எதுவுக்கும் சுத்தமான தனித் தீர்வு இல்லை.</p>
+<h2 id="வகததறகப-பதலக-அகலம">வேகத்திற்குப் பதிலாக அகலம்<a class="anchor" href="#%e0%ae%b5%e0%ae%95%e0%ae%a4%e0%ae%a4%e0%ae%b1%e0%ae%95%e0%ae%aa-%e0%ae%aa%e0%ae%a4%e0%ae%b2%e0%ae%95-%e0%ae%85%e0%ae%95%e0%ae%b2%e0%ae%ae">#</a></h2>
+<p>திருப்பம்: ஒரு core ஒரு சுழற்சிக்கு அதிகம் செய்யச் செய்வதை நிறுத்துங்கள்; அதே die-இல் பல, சற்று எளிமையான cores வையுங்கள், ஒவ்வொன்றும் தன் சொந்த ஓடையுடன். Chip throughput ஏறத் தொடரலாம், per-core சிக்கலும் clocks-ம் நிலைபெறும்போது — அந்த cores-க்குக் கொடுக்க இணையான வேலை இருந்தால்.</p>
+<p><strong>மின்சாரக் கணக்கு</strong> (எளிமைப்படுத்திய மாதிரி — மின்னழுத்தம் அதிர்வெண்ணுடன் சேர்ந்து குறைக்கப்படலாம் என்று அனுமானித்து): ஒரு core, மின்னழுத்தம் V, அதிர்வெண் f: P = CV²f. இரண்டு core-கள், ஒவ்வொன்றும் 0.8V, 0.8f:</p>
+<ul>
+<li>ஒவ்வொன்றின் மின்சாரம் = C × (0.8V)² × 0.8f = 0.512 × CV²f</li>
+<li>இரண்டின் மொத்தம் = 1.024 × P — ஏறக்குறைய அதே மின்சாரம்</li>
+<li>வேலை முழுமையாக இணையாகும் என்றால் throughput = 2 × 0.8 = <strong>1.6 மடங்கு</strong></li>
+</ul>
+<p>அதே வெப்ப வரவுசெலவில் 60% அதிக வேலை — ஒரு core-ஐ வேகமாக்க முயல்வதை விட இது மலிவு. அதுதான் multicore திருப்பத்தின் பொருளாதாரம்.</p>
+<p><strong>ஆனால் Amdahl விதி.</strong> ஒரு நிரலின் p பங்கு மட்டுமே இணையாக ஓட முடியும் என்றால், n core-களில் அதிகபட்ச வேகம்:</p>
+<blockquote class='book-hint '>
+<p>வேகம் = 1 / ((1 − p) + p / n)</p>
+</blockquote><p>p = 0.9, n = 8: 1 / (0.1 + 0.1125) ≈ <strong>4.7 மடங்கு</strong> — 8 அல்ல. n → ∞ ஆனாலும் 1 / 0.1 = <strong>10 மடங்கு</strong>தான் உச்சம். தொடர்நிலையில் மிஞ்சும் 10% எல்லாவற்றையும் கட்டுப்படுத்துகிறது.</p>
+<p>&ldquo;வேகமானது&rdquo; பொருள் மாறியது. ஒரு single-threaded நிரல் நான்கு cores-க்கு எதிராக எட்டு cores-இல் தானாக வெல்வதில்லை; அது இன்னும் ஒரு core-இல் தோராயமாக அதே clock-இல் ஓடுகிறது. Multicore ஆதாயம் பல threads-க்கு எழுதப்பட்ட (அல்லது தொகுக்கப்பட்ட) workloads-க்கு மட்டுமே தோன்றுகிறது. ILP காலம் பெரும்பாலும் ஒவ்வொரு தலைமுறையும் single-thread வேக உயர்வுகளை &ldquo;இலவசமாக&rdquo; கொடுத்தது; இந்தக் காலம் parallel-அறிந்த மென்பொருளைக் கோருகிறது. பல core-கள் ஒரே தரவைப் பகிரும்போது cache coherence (பதிவு 15) கூடுதல் செலவாகச் சேர்கிறது.</p>
+<p><strong>கையால் முயல்க.</strong> (இந்தப் பதிவுக்கு lab இல்லை.)</p>
+<ol>
+<li><code>s = ((a + b) + c) + d</code> மற்றும் <code>s = (a + b) + (c + d)</code> — 2-wide இயந்திரத்தில் ஒவ்வொன்றுக்கும் எத்தனை சுழற்சிகள்? (விடை: 3 மற்றும் 2.)</li>
+<li>16 எண்களின் கூட்டுத்தொகை: சங்கிலியாக எத்தனை சுழற்சிகள், 8-wide இயந்திரத்தில் மரமாக எத்தனை? (விடை: 15; 4 சுற்றுகள் = 4 சுழற்சிகள்.)</li>
+<li>p = 0.95 என்றால் 16 core-களில் Amdahl வேகம் என்ன? (விடை: 1 / (0.05 + 0.059375) ≈ 9.1.)</li>
+<li>உங்கள் சொந்த Linux கணினியில் <code>nproc</code> ஓட்டி எத்தனை core-கள் (hardware threads) உள்ளன என்று பாருங்கள்.</li>
+</ol>
+<h2 id="தரபபம-எஙக-சடடகறத">திருப்பம் எங்கு சுட்டுகிறது<a class="anchor" href="#%e0%ae%a4%e0%ae%b0%e0%ae%aa%e0%ae%aa%e0%ae%ae-%e0%ae%8e%e0%ae%99%e0%ae%95-%e0%ae%9a%e0%ae%9f%e0%ae%9f%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>அதே விசை — ஒரு சிக்கலான ஒன்றுக்குப் பதிலாக பல எளிமையான அலகுகள் — GPU-களுக்குப் (Phase 9) பின்னால் உள்ள தத்துவம் மேலும் எடுக்கப்பட்டது. Parallel வேலையைச் சரியாக ஒருங்கிணைப்பது ஏன் real-time அமைப்புகளில் (Phase 4) மற்றும் விநியோகிக்கப்பட்ட அமைப்புகளில் (Phase 7) முதன்மைப் பிரச்சனையாகிறது என்பதற்குக் காரணமும் இது: அடுத்த சிப் ஒரு thread-ஐ வேகமாக்கும் வரை காத்திருப்பது இனி முக்கிய வளர்ச்சிப் பாதை அல்ல.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>அறிவுறுத்தல் நிலை இணைமை</td>
+					<td>instruction-level parallelism (ILP)</td>
+			</tr>
+			<tr>
+					<td>வெளியிடும் அகலம்</td>
+					<td>issue width</td>
+			</tr>
+			<tr>
+					<td>ஒரு சுழற்சிக்கான அறிவுறுத்தல்கள்</td>
+					<td>IPC</td>
+			</tr>
+			<tr>
+					<td>சார்பு வரைபடம்</td>
+					<td>dependency graph</td>
+			</tr>
+			<tr>
+					<td>மரக் குறைப்பு</td>
+					<td>tree reduction</td>
+			</tr>
+			<tr>
+					<td>பல்லகச் செயலி</td>
+					<td>multicore processor</td>
+			</tr>
+			<tr>
+					<td>Amdahl விதி</td>
+					<td>Amdahl&rsquo;s law</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Door out:</strong> Kunle Olukotun, Basem A. Nayfeh, Lance Hammond, Ken Wilson, and Kunyung Chang, &ldquo;The Case for a Single-Chip Multiprocessor&rdquo; (ASPLOS 1996) — ILP வருவாய் தட்டையாகும்போது ஒரு die-இல் பல cores வைப்பதற்கான ஆரம்ப, வெளிப்படையான வாதம். மேலும்: G. M. Amdahl, &ldquo;Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities&rdquo; (AFIPS Spring Joint Computer Conference, 1967).</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Superscalar&#43;%26&#43;Multicore&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F17-superscalar-multicore%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F17-superscalar-multicore.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F17-superscalar-multicore.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/16-out-of-order-execution/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Out-of-Order Execution</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="flex align-center">
+        <span>Mainframes முதல் Minicomputers முதல் Microprocessors வரை</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#superscalar-எனறல-எனன">Superscalar என்றால் என்ன?</a></li>
+    <li><a href="#அகலம-பயனபடவத-சதநதரமன-வல-இரககமபத-மடடம">அகலம் பயன்படுவது சுதந்திரமான வேலை இருக்கும்போது மட்டும்</a></li>
+    <li><a href="#அகலம-ஏன-வல-உயரகறத">அகலம் ஏன் விலை உயர்கிறது</a></li>
+    <li><a href="#ஒர-நரததல-இரணட-சவரகள">ஒரே நேரத்தில் இரண்டு சுவர்கள்</a></li>
+    <li><a href="#வகததறகப-பதலக-அகலம">வேகத்திற்குப் பதிலாக அகலம்</a></li>
+    <li><a href="#தரபபம-எஙக-சடடகறத">திருப்பம் எங்கு சுட்டுகிறது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

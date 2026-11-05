@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="இணைய நெறிமுறைகள் எப்படி அடுக்கியன, ஏன் — அடுக்குகள், flag day, நம்பகமற்ற substrate மீது apps — ஒரு பட்டியல் அல்ல">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/41-tcp-ip-and-the-modern-internet-stack/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="TCP/IP மற்றும் நவீன இணைய Stack">
+	<meta property="og:description" content="இணைய நெறிமுறைகள் எப்படி அடுக்கியன, ஏன் — அடுக்குகள், flag day, நம்பகமற்ற substrate மீது apps — ஒரு பட்டியல் அல்ல">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="TCP/IP மற்றும் நவீன இணைய Stack">
+	<meta itemprop="description" content="இணைய நெறிமுறைகள் எப்படி அடுக்கியன, ஏன் — அடுக்குகள், flag day, நம்பகமற்ற substrate மீது apps — ஒரு பட்டியல் அல்ல">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1510">
+
+<title>TCP/IP மற்றும் நவீன இணைய Stack • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/41-tcp-ip-and-the-modern-internet-stack/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/41-tcp-ip-and-the-modern-internet-stack/" title="TCP/IP and the Modern Internet Stack">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/41-tcp-ip-and-the-modern-internet-stack/" title="TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/41-tcp-ip-and-the-modern-internet-stack/" title="TCP/IP සහ නවීන අන්තර්ජාල Stack එක">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/41-tcp-ip-and-the-modern-internet-stack/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="active">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>TCP/IP மற்றும் நவீன இணைய Stack</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#அடகக-மதர">அடுக்கு மாதிரி</a></li>
+    <li><a href="#encapsulation">Encapsulation</a></li>
+    <li><a href="#உறயடல-byte-களல">உறையிடல், byte-களில்</a></li>
+    <li><a href="#நமபகமறற-substrate-மத-tcp">நம்பகமற்ற Substrate மீது TCP</a></li>
+    <li><a href="#handshake-எணகளடன">Handshake, எண்களுடன்</a></li>
+    <li><a href="#window-வகததன-மறநத-வரமப">Window: வேகத்தின் மறைந்த வரம்பு</a></li>
+    <li><a href="#ஒர-வலயமபபன-நறமறகளலரநத-ஒர-stack-கக">ஒரு வலையமைப்பின் நெறிமுறைகளிலிருந்து ஒரு Stack-க்கு</a></li>
+    <li><a href="#இநத-வடவமபப-ஏன-வனறத">இந்த வடிவமைப்பு ஏன் வென்றது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    TCP/IP மற்றும் நவீன இணைய Stack
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>ARPANET (பதிவு 39) packet switching-ஐ நிரூபித்தது. Ethernet (பதிவு 40) உள்ளூர் கம்பியைத் தரநிலைப்படுத்தியது. எதுவும் தனியாக <em>வெவ்வேறு</em> வலையமைப்புகளை — வெவ்வேறு ஊடகங்கள், வெவ்வேறு முகவரி — எந்த இரண்டு இயந்திரங்களும் பயன்படுத்தக்கூடிய ஒரே internetwork-ஆக எப்படித் தைக்க வேண்டும் எனச் சொல்லாது. Vint Cerf மற்றும் Bob Kahn-இன் TCP/IP suite அதைத் தீர்த்தது; நவீன இணையம் இன்னும் ஓடும் அடித்தளம் அது.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> TCP/IP அடுக்குகள் பற்றித் தமிழில் பாடநூல் அறிமுகமும் ஒரு நூலும் உண்டு (கீழே மேலும் படிக்க); காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. Header-களின் byte கணக்கு, sequence எண்கள் handshake-இல் எப்படி நகர்கின்றன, window அளவு வேகத்தை எப்படிக் கட்டுப்படுத்துகிறது — இவை எண்களுடன் விளக்கப்பட்டதாகத் தெரியவில்லை. Header அளவுகளும் handshake விதிகளும் RFC 791, RFC 793 உரைகளிலிருந்து சரிபார்க்கப்பட்டவை; lab முயற்சி கீழே உள்ள அதே Linux VM-இல் ஓட்டிச் சரிபார்க்கப்பட்டது. &ldquo;எடுத்துக்காட்டு மதிப்பு&rdquo; என்று குறிக்கப்பட்டவை கணக்குக்காகத் தேர்ந்தெடுத்தவை.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>நெறிமுறை (protocol):</strong> இரண்டு தரப்பும் ஒப்புக்கொண்ட செய்தி வடிவமும் நடத்தை விதிகளும்.</li>
+<li><strong>அடுக்கு (layer):</strong> ஒரு வேலையை மட்டும் செய்து, மேலே உள்ள அடுக்குக்கு ஒரு சேவை தரும் பகுதி.</li>
+<li><strong>Header (தலைப்பு):</strong> ஒவ்வொரு அடுக்கும் தரவுக்கு முன் சேர்க்கும் கட்டுப்பாட்டுத் தகவல் (முகவரிகள், port-கள், எண்கள்).</li>
+<li><strong>Encapsulation (உறையிடல்):</strong> மேல் அடுக்கின் முழுச் செய்தியையும் கீழ் அடுக்கு தன் payload ஆக வைத்து, தன் header-ஐச் சேர்ப்பது.</li>
+<li><strong>Segment / packet / frame:</strong> முறையே TCP, IP, link அடுக்குகளின் தரவு அலகுகள்.</li>
+<li><strong>Port:</strong> ஒரே கணினிக்குள் எந்த நிரலுக்குத் தரவு போக வேண்டும் என்று சொல்லும் 16-பிட் எண்.</li>
+<li><strong>Sequence number (வரிசை எண்):</strong> TCP ஒவ்வொரு byte-க்கும் தரும் எண்; வரிசையைச் சரிசெய்யவும் இழப்பைக் கண்டுபிடிக்கவும்.</li>
+<li><strong>ACK (acknowledgment, ஒப்புகை):</strong> &ldquo;இந்த எண் வரை பெற்றேன்; அடுத்தது இதை எதிர்பார்க்கிறேன்&rdquo; என்ற செய்தி.</li>
+<li><strong>Window (சாளரம்):</strong> ACK வரும் முன் அனுப்பலாம் என்று பெறுநர் அனுமதிக்கும் byte-களின் எண்ணிக்கை.</li>
+<li><strong>RTT (round-trip time, சுற்றுப் பயண நேரம்):</strong> ஒரு செய்தி போய் அதன் பதில் திரும்பும் நேரம்.</li>
+</ul>
+<h2 id="அடகக-மதர">அடுக்கு மாதிரி<a class="anchor" href="#%e0%ae%85%e0%ae%9f%e0%ae%95%e0%ae%95-%e0%ae%ae%e0%ae%a4%e0%ae%b0">#</a></h2>
+<p>TCP/IP கவலைகளை PCIe-இன் stack பிரிக்கும் விதத்தில் பிரிக்கிறது (பதிவு 33), internetworking அளவில். <strong>Link</strong> உள்ளூர் hop-ஐக் கையாளும் — Ethernet, Wi-Fi, fiber. <strong>Internet (IP)</strong> அந்த இணைப்புகளுக்கு <em>குறுக்கே</em> உலகளாவிய முகவரி மற்றும் routing தரும்; ஒரு IP packet அதைச் சுமக்கும் ஊடகம் என்னவெனப் பொருட்படுத்தாது. <strong>Transport (TCP அல்லது UDP)</strong> IP மீது நம்பக வரிசைப்படுத்தப்பட்ட வழங்கல் (TCP) அல்லது குறைந்த-overhead best-effort (UDP) வழங்குகிறது. <strong>Application</strong> HTTP, DNS, SMTP மற்றும் உறவினர்கள் அமர்வது, பொருத்தமான transport-ஐத் தேர்ந்தெடுத்து.</p>
+<h2 id="encapsulation">Encapsulation<a class="anchor" href="#encapsulation">#</a></h2>
+<p>கீழே நகரும் தரவு ஒவ்வொரு அடுக்கிலும் ஒரு header பெறுகிறது — application bytes TCP/UDP கீழ், அந்த segment IP கீழ், அந்த packet ஒரு link header (மற்றும் அடிக்கடி trailer) கீழ். தொலை முனையில் செயல்முறை தலைகீழ்: ஒவ்வொரு அடுக்கும் தன் header-ஐ உரித்து, அது படித்ததை (ports, முகவரிகள்) பயன்படுத்தி மீதியை மேலே ஒப்படைக்கும்.</p>
+<h2 id="உறயடல-byte-களல">உறையிடல், byte-களில்<a class="anchor" href="#%e0%ae%89%e0%ae%b1%e0%ae%af%e0%ae%9f%e0%ae%b2-byte-%e0%ae%95%e0%ae%b3%e0%ae%b2">#</a></h2>
+<p>RFC 791-இன்படி IPv4 header குறைந்தது 5 × 32-பிட் word-கள் = <strong>20 byte</strong>; RFC 793-இன்படி TCP header-உம் குறைந்தது 5 word-கள் = <strong>20 byte</strong> (options இருந்தால் அதிகம்).</p>
+<table>
+	<thead>
+			<tr>
+					<th>அடுக்கு</th>
+					<th>அது சேர்ப்பது</th>
+					<th>அதன் முக்கிய முகவரி / எண்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Application</td>
+					<td>தரவு (எ.கா. HTTP கோரிக்கை)</td>
+					<td>—</td>
+			</tr>
+			<tr>
+					<td>Transport (TCP)</td>
+					<td>20+ byte header</td>
+					<td>port-கள் (16 பிட் → 2^16 = 65,536 மதிப்புகள்), sequence, ACK, window</td>
+			</tr>
+			<tr>
+					<td>Internet (IP)</td>
+					<td>20+ byte header</td>
+					<td>IPv4 முகவரிகள் (32 பிட் → 2^32 = 4,294,967,296 மதிப்புகள்)</td>
+			</tr>
+			<tr>
+					<td>Link (எ.கா. Ethernet)</td>
+					<td>தன் header, trailer (பதிவு 40)</td>
+					<td>MAC முகவரி (48 பிட்)</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>எடுத்துக்காட்டு 1 — சிறிய கோரிக்கை.</strong> 100 byte HTTP கோரிக்கை (எடுத்துக்காட்டு மதிப்பு):</p>
+<ol>
+<li>TCP: 100 + 20 = 120 byte segment</li>
+<li>IP: 120 + 20 = <strong>140 byte</strong> packet</li>
+<li>பயனுள்ள பங்கு: 100 ÷ 140 ≈ <strong>71%</strong> — link header சேர்க்கும் முன்பே 29% header.</li>
+</ol>
+<p><strong>எடுத்துக்காட்டு 2 — முழு packet.</strong> இந்தப் பதிவின் lab VM-இன் Ethernet இடைமுகம் <code>MTU:1500</code> காட்டுகிறது: ஒரு IP packet அதிகபட்சம் 1,500 byte.</p>
+<ol>
+<li>1,500 − 20 (IP) − 20 (TCP) = <strong>1,460 byte</strong> தரவு ஒரு packet-இல்</li>
+<li>பயனுள்ள பங்கு: 1,460 ÷ 1,500 ≈ <strong>97.3%</strong></li>
+</ol>
+<p>சிறிய செய்திகளுக்கு header செலவு பெரியது; பெரிய பரிமாற்றங்களுக்குச் சிறியது. பெறும் முனையில் IP header-இன் &ldquo;protocol&rdquo; புலம் &ldquo;இது TCP&rdquo; என்றும், TCP header-இன் இலக்கு port &ldquo;இது port 5000-இல் கேட்கும் நிரலுக்கு&rdquo; என்றும் சொல்லி, ஒவ்வொரு அடுக்கும் தன் header-ஐ உரித்து மேலே அனுப்புகிறது.</p>
+<h2 id="நமபகமறற-substrate-மத-tcp">நம்பகமற்ற Substrate மீது TCP<a class="anchor" href="#%e0%ae%a8%e0%ae%ae%e0%ae%aa%e0%ae%95%e0%ae%ae%e0%ae%b1%e0%ae%b1-substrate-%e0%ae%ae%e0%ae%a4-tcp">#</a></h2>
+<p>IP வெளிப்படையாக best-effort — வழங்கல் வாக்குறுதி இல்லை, வரிசை வாக்குறுதி இல்லை, drops அனுமதிக்கப்பட்டவை. TCP sequence numbers மற்றும் acknowledgments (மற்றும் ACK-கள் வராதபோது retransmission) மூலம் மீது ஒரு நம்பக வரிசைப்படுத்தப்பட்ட byte stream கட்டுகிறது — பதிவு 33-இன் PCIe data-link அடுக்கின் அதே நம்பகத்தன்மை <em>வகை</em>, ஒரே அர்ப்பணிக்கப்பட்ட இணைப்புக்குப் பதிலாக முழு நம்பகமற்ற internetwork குறுக்கே நீட்டப்பட்டது.</p>
+<p>ஒரு connection மூன்று-வழி handshake-ஆல் தொடங்குகிறது: SYN (client ஒரு sequence number முன்மொழிகிறது), SYN-ACK (server ஒப்புக்கொண்டு தன் சொந்தத்தை முன்மொழிகிறது), இறுதி ACK. அதற்குப் பிறகுதான் application தரவு ஓடும் — இரு பக்கங்களும் முதலில் ஒத்திசைக்கப்பட்ட நிலையைப் பகிரும் சிறிய வேண்டுமென்ற செலவு.</p>
+<h2 id="handshake-எணகளடன">Handshake, எண்களுடன்<a class="anchor" href="#handshake-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<p>RFC 793-இன் Figure 7 அதே எண்களைப் பயன்படுத்துகிறது: A தன் தொடக்க வரிசை எண்ணாக 100, B 300.</p>
+<table>
+	<thead>
+			<tr>
+					<th>படி</th>
+					<th>திசை</th>
+					<th>கொடிகள்</th>
+					<th>SEQ</th>
+					<th>ACK</th>
+					<th>பொருள்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>A → B</td>
+					<td>SYN</td>
+					<td>100</td>
+					<td>—</td>
+					<td>&ldquo;என் byte-கள் 100-இலிருந்து எண்ணப்படும்&rdquo;</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>B → A</td>
+					<td>SYN, ACK</td>
+					<td>300</td>
+					<td>101</td>
+					<td>&ldquo;உன் 100 கிடைத்தது; 101 எதிர்பார்க்கிறேன். என்னுடையது 300-இலிருந்து&rdquo;</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>A → B</td>
+					<td>ACK</td>
+					<td>101</td>
+					<td>301</td>
+					<td>&ldquo;உன் 300 கிடைத்தது; 301 எதிர்பார்க்கிறேன்&rdquo;</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>A → B</td>
+					<td>ACK + தரவு</td>
+					<td>101</td>
+					<td>301</td>
+					<td>முதல் தரவு byte-இன் எண் 101</td>
+			</tr>
+	</tbody>
+</table>
+<p>ACK 101 ஏன், 100 அல்ல? RFC 793: SYN ஒரு வரிசை எண்ணை &ldquo;ஆக்கிரமிக்கிறது&rdquo; — அது முதல் உண்மைத் தரவு byte-க்கு முன் நிகழ்வதாகக் கருதப்படுகிறது. அதனால் SYN = 100 என்றால் முதல் தரவு byte = 101.</p>
+<p><strong>தரவு நகர்வு (எடுத்துக்காட்டு மதிப்புகள்):</strong> படி 4-இல் A 200 byte அனுப்பினால், அவை 101 முதல் 300 வரை எண்ணப்படுகின்றன. B-இன் ACK = 301 (&ldquo;300 வரை எல்லாம் வந்தது&rdquo;). அடுத்து A-வின் SEQ = 301.</p>
+<p><strong>இழப்பு, ஒரு கணக்கில்:</strong> A மூன்று segment-கள் அனுப்புகிறது: 101–300, 301–500, 501–700. இரண்டாவது தொலைகிறது. B-க்கு 101–300 வந்தது, பிறகு 501–700 — இடைவெளி. B-இன் ACK 301-இலேயே நிற்கிறது. 301-க்கான ACK நேரத்துக்குள் முன்னேறாததால் A 301–500-ஐ மீண்டும் அனுப்புகிறது; அது வந்ததும் B ACK 701 அனுப்புகிறது — எல்லாம் வரிசைப்படி. IP இதில் எதையும் அறியாது; முழு நம்பகத்தன்மையும் இரண்டு முனைகளின் TCP-இல்.</p>
+<h2 id="window-வகததன-மறநத-வரமப">Window: வேகத்தின் மறைந்த வரம்பு<a class="anchor" href="#window-%e0%ae%b5%e0%ae%95%e0%ae%a4%e0%ae%a4%e0%ae%a9-%e0%ae%ae%e0%ae%b1%e0%ae%a8%e0%ae%a4-%e0%ae%b5%e0%ae%b0%e0%ae%ae%e0%ae%aa">#</a></h2>
+<p>RFC 793-இல் window புலம் 16 பிட் → அதிகபட்சம் 65,535 byte. அனுப்புநர் ACK வராமல் அதற்கு மேல் அனுப்ப முடியாது. அதனால் ஒரு RTT-க்கு அதிகபட்சம் ஒரு window:</p>
+<p>அதிகபட்ச வேகம் ≈ window ÷ RTT</p>
+<table>
+	<thead>
+			<tr>
+					<th>RTT (எடுத்துக்காட்டு மதிப்பு)</th>
+					<th>கணக்கு</th>
+					<th>அதிகபட்சம்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>100 ms (கண்டம் தாண்டி)</td>
+					<td>65,535 byte ÷ 0.1 s</td>
+					<td>655,350 byte/s ≈ <strong>5.2 Mbit/s</strong></td>
+			</tr>
+			<tr>
+					<td>10 ms (அதே நகரம்)</td>
+					<td>65,535 byte ÷ 0.01 s</td>
+					<td>≈ <strong>52 Mbit/s</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>Link 1 Gbit/s ஆக இருந்தாலும், 100 ms தூரத்தில் இந்த 16-பிட் window-உடன் ஒரு TCP இணைப்பு சுமார் 5 Mbit/s-ஐத் தாண்டாது. தூரம் (RTT) வேகத்தின் பகுதி — அதனால்தான் பிற்கால TCP நீட்டிப்புகள் window-ஐப் பெரிதாக்கும் வழிகளைச் சேர்த்தன.</p>
+<h2 id="ஒர-வலயமபபன-நறமறகளலரநத-ஒர-stack-கக">ஒரு வலையமைப்பின் நெறிமுறைகளிலிருந்து ஒரு Stack-க்கு<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%b5%e0%ae%b2%e0%ae%af%e0%ae%ae%e0%ae%aa%e0%ae%aa%e0%ae%a9-%e0%ae%a8%e0%ae%b1%e0%ae%ae%e0%ae%b1%e0%ae%95%e0%ae%b3%e0%ae%b2%e0%ae%b0%e0%ae%a8%e0%ae%a4-%e0%ae%92%e0%ae%b0-stack-%e0%ae%95%e0%ae%95">#</a></h2>
+<p>ARPANET முதலில் தன் சொந்த host-to-host நெறிமுறையை (NCP) பேசியது, TCP/IP அல்ல. Cerf மற்றும் Kahn-இன் பந்தயம் பெரியது: <em>பல</em> packet வலையமைப்புகளை internet செய்யக்கூடிய ஒரு <em>protocol stack</em> — எனவே transport மற்றும் உள்ளூர் கம்பி தனித்தனியாக பரிணமிக்க முடியும். ARPANET-இல் நடைமுறை மாற்றம் ஜனவரி 1, 1983 &ldquo;flag day&rdquo; — NCP அணைக்கப்பட்டு TCP/IP கட்டாயமானது — அடுக்குக் கதையை கட்டமைப்பு மட்டும் அல்லாமல் செயல்பாட்டுக்குக் கொண்டுவந்த அரிதான கடின வெட்டு.</p>
+<p>Application நெறிமுறைகள் பிறகு அடுக்கியது அந்த substrate இருந்ததால். DNS (பதிவு 64-இன் கதவுகள்: <a href="https://www.rfc-editor.org/rfc/rfc1034">RFC 1034</a> / <a href="https://www.rfc-editor.org/rfc/rfc1035">RFC 1035</a>) பெயர்களை அளவில் பயன்படுத்தக்கூடியதாக்கியது; mail மற்றும் வலை (SMTP, HTTP மற்றும் உறவினர்கள்) முகவரி மற்றும் retransmission-ஐ மீண்டும் கண்டுபிடிக்காமல் நம்பக stream-இன் clients ஆக TCP மீது ஏறின. முறைதான் பொருள்: ஒவ்வொரு அடுக்கும் ஒரு கட்டுப்பாட்டை வாங்கி மேலே உள்ளது அதைக் கருத அனுமதிக்கிறது. அது அடுக்குதல் பற்றிய கதை, ஒவ்வொரு RFC-இன் பட்டியல் அல்ல.</p>
+<h2 id="இநத-வடவமபப-ஏன-வனறத">இந்த வடிவமைப்பு ஏன் வென்றது<a class="anchor" href="#%e0%ae%87%e0%ae%a8%e0%ae%a4-%e0%ae%b5%e0%ae%9f%e0%ae%b5%e0%ae%ae%e0%ae%aa%e0%ae%aa-%e0%ae%8f%e0%ae%a9-%e0%ae%b5%e0%ae%a9%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>சுமை தாங்கும் கருதுகோள் அடிப்படை வலையமைப்பு பன்முகமும் நம்பகமற்றதும், எனவே உத்தரவாதங்கள் ஒவ்வொரு இயற்பியல் இணைப்பிலும் அல்லாமல் உயர் அடுக்கில் இருக்க வேண்டும். அது பத்தாண்டுகளாக வெவ்வேறு தொழில்நுட்பங்களிலிருந்து, ஒரு இயற்பியல் தரநிலையில் ஒருபோதும் ஒப்புக்கொள்ளாத நிறுவனங்களால் தைக்கப்பட்ட உலகளாவிய internetwork-க்குப் பொருந்தியது — அதனால்தான் TCP/IP இன்னும் கிட்டத்தட்ட முழு நவீன இணையத்திற்கும் கீழே அமர்ந்திருக்கிறது, அடுத்த datacenter வலையமைப்புகள் உட்பட.</p>
+<p><strong>Door out:</strong> <a href="https://www.rfc-editor.org/rfc/rfc791">RFC 791</a> (Internet Protocol) மற்றும் <a href="https://www.rfc-editor.org/rfc/rfc793">RFC 793</a> (Transmission Control Protocol) — இந்த stack-இன் முகவரி/routing மற்றும் நம்பக-transport பாதிகளுக்கான முதன்மை விவரக்குறிப்புகள் (Cerf/Kahn வம்சாவளி; இந்த செப்டம்பர் 1981 உரைகளுக்கு RFC editor ஆக Postel).</p>
+<p><strong>இப்போது முயல்க: ஒரு TCP இணைப்பை எண்ணுங்கள்.</strong> கீழே உள்ள terminal-இல் ஒரு சிறிய Linux கணினி. அதற்குள்ளேயே (loopback, 127.0.0.1) ஒரு server-ஐயும் client-ஐயும் ஓட்டி, kernel-இன் TCP எண்ணிகளைப் பார்க்கலாம். (எல்லாப் படிகளும் இதே VM-இல் ஓட்டிச் சரிபார்க்கப்பட்டவை; port எண் 45324 போன்ற client port ஓட்டத்துக்கு ஓட்டம் மாறும்.)</p>
+<ol>
+<li>Loopback-ஐ இயக்குங்கள்: <code>ifconfig lo 127.0.0.1 up</code></li>
+<li>ஒரு echo server: <code>echo &quot;5000 stream tcp nowait root /bin/cat cat&quot; &gt; /tmp/inetd.conf</code> பிறகு <code>inetd /tmp/inetd.conf</code>. இப்போது port 5000-க்கு வரும் ஒவ்வொரு இணைப்பும் <code>cat</code> நிரலுடன் இணைக்கப்படும் — அனுப்பியதைத் திருப்பி அனுப்பும்.</li>
+<li><code>netstat -tln</code> → <code>0.0.0.0:5000 … LISTEN</code></li>
+<li><code>grep Tcp: /proc/net/snmp</code> — இரண்டு வரிகள்: பெயர்கள், எண்கள். முதல் நான்கு (RtoAlgorithm 1, RtoMin 200, RtoMax 120000, MaxConn -1) அமைப்பு மதிப்புகள், எண்ணிகள் அல்ல; ActiveOpens முதல் மீதி எல்லா எண்ணிகளும் 0 — இன்னும் எந்த TCP இணைப்பும் இல்லை.</li>
+<li>இணையுங்கள்: <code>(echo hello-tcp; sleep 4) | telnet 127.0.0.1 5000 &amp;</code> → <code>hello-tcp</code> திரும்பி வரும் (server-இன் echo).</li>
+<li>உடனே <code>netstat -tn</code> → <strong>இரண்டு</strong> ESTABLISHED வரிகள்: <code>127.0.0.1:45324 → 127.0.0.1:5000</code>, <code>127.0.0.1:5000 → 127.0.0.1:45324</code>. ஒரே இணைப்பின் இரண்டு முனைகள், இரண்டும் இந்தக் கணினியில்.</li>
+<li>மீண்டும் <code>grep Tcp: /proc/net/snmp</code> → எங்கள் ஓட்டத்தில் ActiveOpens 1 (client பக்கம் SYN அனுப்பியது), PassiveOpens 1 (server பக்கம் SYN ஏற்றது), CurrEstab 2, InSegs 7, OutSegs 7.</li>
+<li>நான்கு விநாடி கழித்து (telnet முடிந்ததும்) <code>netstat -tn -a</code> → client வரி இப்போது <code>TIME_WAIT</code> — முதலில் மூடிய பக்கம் சற்று நேரம் பழைய segment-களுக்காகக் காத்திருக்கிறது. <code>grep Tcp: /proc/net/snmp</code> → CurrEstab 0, InSegs 10, OutSegs 10.</li>
+<li><code>ifconfig lo | grep packets</code> → எங்கள் ஓட்டத்தில் RX/TX packets 10, bytes 558.</li>
+</ol>
+<p><strong>எண்ணிப் பாருங்கள்:</strong> 10 segment-களில் 3 handshake (SYN, SYN-ACK, ACK), 3 மூடல் (படி 7-இன் 7-இலிருந்து 10 வரை). மீதி 4 தரவையும் அதன் echo-வையும் அவற்றின் ஒப்புகைகளையும் சுமந்தன (இந்தப் பிரிவு ஓட்டத்துக்கு ஓட்டம் சற்று மாறலாம்). 558 ÷ 10 ≈ 56 byte சராசரி — IP 20 + TCP 20 = 40 byte header மட்டுமே பெரும்பகுதி; &ldquo;hello-tcp&rdquo; போன்ற சிறு தரவுக்கு header-தான் பெரிய செலவு (மேலே உள்ள எடுத்துக்காட்டு 1).</p>
+<p>மூடிய port-ஐ முயன்றால்? <code>telnet 127.0.0.1 6000</code> → <code>Connection refused</code>; எண்ணிகளில் AttemptFails, OutRsts ஒவ்வொன்றும் 1 ஏறும் — kernel SYN-க்கு RST (reset) மூலம் &ldquo;இங்கே யாரும் கேட்கவில்லை&rdquo; என்று பதிலளித்தது.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=ta"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>நெறிமுறை</td>
+					<td>protocol</td>
+			</tr>
+			<tr>
+					<td>அடுக்கு</td>
+					<td>layer</td>
+			</tr>
+			<tr>
+					<td>தலைப்பு</td>
+					<td>header</td>
+			</tr>
+			<tr>
+					<td>உறையிடல்</td>
+					<td>encapsulation</td>
+			</tr>
+			<tr>
+					<td>வரிசை எண்</td>
+					<td>sequence number</td>
+			</tr>
+			<tr>
+					<td>ஒப்புகை</td>
+					<td>acknowledgment (ACK)</td>
+			</tr>
+			<tr>
+					<td>சாளரம்</td>
+					<td>window</td>
+			</tr>
+			<tr>
+					<td>சுற்றுப் பயண நேரம்</td>
+					<td>round-trip time (RTT)</td>
+			</tr>
+			<tr>
+					<td>மீளனுப்புதல்</td>
+					<td>retransmission</td>
+			</tr>
+			<tr>
+					<td>மூன்று-வழிக் கைகுலுக்கல்</td>
+					<td>three-way handshake</td>
+			</tr>
+			<tr>
+					<td>கேட்கும் நிலை</td>
+					<td>LISTEN state</td>
+			</tr>
+			<tr>
+					<td>மீட்டமைப்பு</td>
+					<td>reset (RST)</td>
+			</tr>
+			<tr>
+					<td>அதிகபட்ச அனுப்பு அலகு</td>
+					<td>maximum transmission unit (MTU)</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ்நாடு அரசு, <em>12ஆம் வகுப்பு கணினி பயன்பாடுகள்</em>, பாடம் 11: வலையமைப்பு எடுத்துக்காட்டுகள் மற்றும் நெறிமுறைகள் (TCP/IP நான்கு அடுக்குகள்; IP best-effort; TCP நம்பக connection-oriented; UDP; Ethernet 802.3)</li>
+<li>மு. சிவலிங்கம், <em>நெட்வொர்க் தொழில்நுட்பம்</em> (பாரதி பகத் பதிப்பகம்; TCP/IP அடுக்குகள், IPv4/IPv6, application நெறிமுறைகள் — three-way handshake ஆழம் பள்ளிப் பாடத்திற்கு அப்பால்)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;TCP%2FIP&#43;%E0%AE%AE%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AF%81%E0%AE%AE%E0%AF%8D&#43;%E0%AE%A8%E0%AE%B5%E0%AF%80%E0%AE%A9&#43;%E0%AE%87%E0%AE%A3%E0%AF%88%E0%AE%AF&#43;Stack&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F41-tcp-ip-and-the-modern-internet-stack%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F41-tcp-ip-and-the-modern-internet-stack.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F41-tcp-ip-and-the-modern-internet-stack.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Ethernet மற்றும் Local Area Network</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="flex align-center">
+        <span>Datacenter Networking மற்றும் RDMA</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#அடகக-மதர">அடுக்கு மாதிரி</a></li>
+    <li><a href="#encapsulation">Encapsulation</a></li>
+    <li><a href="#உறயடல-byte-களல">உறையிடல், byte-களில்</a></li>
+    <li><a href="#நமபகமறற-substrate-மத-tcp">நம்பகமற்ற Substrate மீது TCP</a></li>
+    <li><a href="#handshake-எணகளடன">Handshake, எண்களுடன்</a></li>
+    <li><a href="#window-வகததன-மறநத-வரமப">Window: வேகத்தின் மறைந்த வரம்பு</a></li>
+    <li><a href="#ஒர-வலயமபபன-நறமறகளலரநத-ஒர-stack-கக">ஒரு வலையமைப்பின் நெறிமுறைகளிலிருந்து ஒரு Stack-க்கு</a></li>
+    <li><a href="#இநத-வடவமபப-ஏன-வனறத">இந்த வடிவமைப்பு ஏன் வென்றது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

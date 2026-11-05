@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>敏感個人信息 on 我們如何走到那裡</title>
+		<link>http://localhost:1478/zh-hant/tags/%E6%95%8F%E6%84%9F%E5%80%8B%E4%BA%BA%E4%BF%A1%E6%81%AF/</link>
+		<description>Recent content in 敏感個人信息 on 我們如何走到那裡</description>
+		<generator>Hugo</generator>
+		<language>zh-Hant</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hant/tags/%E6%95%8F%E6%84%9F%E5%80%8B%E4%BA%BA%E4%BF%A1%E6%81%AF/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>從電腦處理到自動化決策：兩岸三地的個人資料保護法制</title>
+				<link>http://localhost:1478/zh-hant/posts/67-zh-privacy-law/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/67-zh-privacy-law/</guid>
+				<description>1995 年 8 月，香港和台灣相隔八天立下個人資料保護的法律，台灣那部的名字裡還寫著電腦處理；2021 年，大陸的《個人信息保護法》把同意、敏感資訊和演算法推送都寫進了條文。</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="După ce desktop-ul s-a așezat pe x86, lupta s-a mutat pe putere și pe licențiere — ARM a câștigat mobilul; RISC-V mizează pe deschidere">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="ARM și RISC-V: peisajul de arhitecturi azi">
+	<meta property="og:description" content="După ce desktop-ul s-a așezat pe x86, lupta s-a mutat pe putere și pe licențiere — ARM a câștigat mobilul; RISC-V mizează pe deschidere">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:19:02+05:30">
+
+
+	<meta itemprop="name" content="ARM și RISC-V: peisajul de arhitecturi azi">
+	<meta itemprop="description" content="După ce desktop-ul s-a așezat pe x86, lupta s-a mutat pe putere și pe licențiere — ARM a câștigat mobilul; RISC-V mizează pe deschidere">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:19:02+05:30">
+	<meta itemprop="wordCount" content="432">
+
+<title>ARM și RISC-V: peisajul de arhitecturi azi • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/20-arm-and-risc-v-the-architecture-landscape-today/" title="ARM and RISC-V: The Architecture Landscape Today">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" title="ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" title="ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" title="ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="active">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>ARM și RISC-V: peisajul de arhitecturi azi</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#arm-licențiezi-arhitectura-nu-construiești-neapărat-fabrica">ARM: licențiezi arhitectura, nu construiești neapărat fabrica</a></li>
+    <li><a href="#risc-v-isa-deschis-specificat-public">RISC-V: ISA deschis, specificat public</a></li>
+    <li><a href="#ce-s-a-mutat-de-fapt">Ce s-a mutat, de fapt</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    ARM și RISC-V: peisajul de arhitecturi azi
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Ruptura x86/RISC (capitolul 19) a așezat în mare desktop-ul și serverul clasic. Competiția nu s-a oprit: s-a mutat. Mobilul, embedded-ul și edge-ul pun wații înaintea vârfului pe un singur fir, iar <strong>modelul de afaceri</strong> din jurul unui ISA contează cât encoding-ul.</p>
+<h2 id="arm-licențiezi-arhitectura-nu-construiești-neapărat-fabrica">ARM: licențiezi arhitectura, nu construiești neapărat fabrica<a class="anchor" href="#arm-licen%c8%9biezi-arhitectura-nu-construie%c8%99ti-neap%c4%83rat-fabrica">#</a></h2>
+<p>Pagina de arhitectură Arm descrie contractul clar: „Arm’s architecture specifications are licensed by partners, who create compliant silicon chips based on them” (Arm, „Arm Architecture”, <a href="https://www.arm.com/architecture">arm.com/architecture</a>, accesat 2026-11-05). Arm pretinde „more than 375+ billion devices containing Arm-based chips” și că arhitectura „prevails in the mobile market, powering most smartphones”, aparând și în IoT și în aplicații de învățare automată (ibid.). Cifrele de dispozitive și cota de piață mobilă sunt <strong>afirmații ale vânzătorului</strong>; pe pagină le marcăm ca atare, nu ca măsurătoare independentă.</p>
+<p>Despre ce e un ISA, Arm folosește același limbaj pe care l-am văzut la System/360: arhitectura „specifies a set of rules that dictate how the hardware works when a particular instruction is executed. It is a contract between the hardware and the software”; software-ul scris conform specificației rulează la fel pe orice procesor Arm compliant — „the foundation of the portability and compatibility promise” (ibid.). Există și oferte de acces cu „license fees due only when you tape-out” (ibid., secțiunea de oferte / DesignStart pe aceeași pagină).</p>
+<!-- NEVERIFICAT (sursele găsite sunt doar secundare: Android Authority, SemiAccurate 2013, Bootlin 2017): distincția detaliată „core license” vs „architecture license” (Apple Silicon etc.) ca taxonomie de business; pagina Arm pe care am deschis-o vorbește despre licențierea specificațiilor și despre parteneri care fac siliciu compliant, fără tabelul de tipuri de licență pe care îl folosesc uneori articolele de presă. -->
+<h2 id="risc-v-isa-deschis-specificat-public">RISC-V: ISA deschis, specificat public<a class="anchor" href="#risc-v-isa-deschis-specificat-public">#</a></h2>
+<p>Manualul RISC-V e publicat sub Creative Commons Attribution 4.0 International; versiunea 20240411 pe care o citim e un derivat al versiunilor anterioare Waterman–Lee–Patterson–Asanović, tot sub CC BY 4.0 (<em>The RISC-V Instruction Set Manual, Volume I: Unprivileged ISA</em>, versiunea 20240411, pagina de copyright; <a href="https://github.com/riscv/riscv-isa-manual/releases/download/20240411/unpriv-isa-asciidoc.pdf">PDF</a>, accesat 2026-11-05). Spre deosebire de un ISA licențiat comercial, textul normativ e liber de citit, de implementat și de citat cu atribuire.</p>
+<p>Tehnic, RV32I rămâne load/store, cu 32 de registre <code>x</code> (x0 cablat la zero), formate fixe de 32 de biți și câmpuri de registru în poziții stabile pentru decode (ibid., §2.1–2.2) — continuitatea argumentului RISC din capitolul 19, acum ca specificație pe care o poate implementa oricine.</p>
+<h2 id="ce-s-a-mutat-de-fapt">Ce s-a mutat, de fapt<a class="anchor" href="#ce-s-a-mutat-de-fapt">#</a></h2>
+<p>Pe desktop, compatibilitatea binară a cântărit greu (capitolul 19, lecția System/360). Pe mobil, Arm vine cu un ISA licențiat unui ecosistem de parteneri și cu afirmația, a vânzătorului, că domină piața smartphone-urilor (Arm, ibid.). RISC-V mizează pe alt ax: costul zero al citirii specificației și libertatea de a face un nucleu fără un contract de ISA cu un singur proprietar (manualul RISC-V, copyright CC BY 4.0).</p>
+<p>Capitolul 21 lasă hardware-ul pe masă și coboară în software-ul de sistem: de ce a apărut primul monitor rezident când CPU-ul scump stătea degeaba între pachetele de cartele.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/0447627905441d485654627b2fb0003b508288ad" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;ARM&#43;%C8%99i&#43;RISC-V%3A&#43;peisajul&#43;de&#43;arhitecturi&#43;azi&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F20-arm-and-risc-v-the-architecture-landscape-today%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F20-arm-and-risc-v-the-architecture-landscape-today.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F20-arm-and-risc-v-the-architecture-landscape-today.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/19-the-x86-vs-risc-split/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Ruptura x86 versus RISC</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="flex align-center">
+        <span>Prelucrarea pe loturi și nașterea sistemului de operare</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#arm-licențiezi-arhitectura-nu-construiești-neapărat-fabrica">ARM: licențiezi arhitectura, nu construiești neapărat fabrica</a></li>
+    <li><a href="#risc-v-isa-deschis-specificat-public">RISC-V: ISA deschis, specificat public</a></li>
+    <li><a href="#ce-s-a-mutat-de-fapt">Ce s-a mutat, de fapt</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

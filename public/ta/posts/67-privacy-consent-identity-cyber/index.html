@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="திறந்த வலையமைப்பில் பொறியியல் பரிணாமமாகத் தனியுரிமை, ஒப்புதல், அடையாளம் மற்றும் cybersecurity — கொள்கைப் பிரசுரம் அல்ல">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/67-privacy-consent-identity-cyber/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="தனியுரிமை, ஒப்புதல், அடையாளம், Cyber">
+	<meta property="og:description" content="திறந்த வலையமைப்பில் பொறியியல் பரிணாமமாகத் தனியுரிமை, ஒப்புதல், அடையாளம் மற்றும் cybersecurity — கொள்கைப் பிரசுரம் அல்ல">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-06T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="தனியுரிமை, ஒப்புதல், அடையாளம், Cyber">
+	<meta itemprop="description" content="திறந்த வலையமைப்பில் பொறியியல் பரிணாமமாகத் தனியுரிமை, ஒப்புதல், அடையாளம் மற்றும் cybersecurity — கொள்கைப் பிரசுரம் அல்ல">
+	<meta itemprop="datePublished" content="2026-09-06T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1707">
+
+<title>தனியுரிமை, ஒப்புதல், அடையாளம், Cyber • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/67-privacy-consent-identity-cyber/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/67-privacy-consent-identity-cyber/" title="Privacy, Consent, Identity, Cyber">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/67-privacy-consent-identity-cyber/" title="ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/67-privacy-consent-identity-cyber/" title="රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/67-privacy-consent-identity-cyber/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/67-privacy-consent-identity-cyber/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/67-privacy-consent-identity-cyber/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="active">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#isolation-மதலல-வநதத">Isolation முதலில் வந்தது</a></li>
+    <li><a href="#பத-வலயமபபல-crypto">பொது வலையமைப்பில் Crypto</a></li>
+    <li><a href="#diffiehellman--சறய-எணகளல">Diffie–Hellman — சிறிய எண்களில்</a></li>
+    <li><a href="#rsa--கடடரயன-சநத-சறய-எடததககடட">RSA — கட்டுரையின் சொந்த &ldquo;சிறிய எடுத்துக்காட்டு&rdquo;</a></li>
+    <li><a href="#அடயளம-ஒர-நறமறப-பரசசன">அடையாளம் ஒரு நெறிமுறைப் பிரச்சினை</a></li>
+    <li><a href="#அதகரததறகன-இடமகமக-ஒபபதல">அதிகாரத்திற்கான இடைமுகமாக ஒப்புதல்</a></li>
+    <li><a href="#cybersecurity-வரத-அமபபகள-பறயயல">Cybersecurity: விரோத அமைப்புகள் பொறியியல்</a></li>
+    <li><a href="#இத-ஏன-பயணததன-பறபகதயல-சரகறத">இது ஏன் பயணத்தின் பிற்பகுதியில் சேர்கிறது</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    தனியுரிமை, ஒப்புதல், அடையாளம், Cyber
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>செப்டம்பர் 6, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>போர்க்கால crypto (பதிவு 66) அர்ப்பணிக்கப்பட்ட machine room கொண்ட அரசு எதிரிக்கு எதிரான இரகசியம். திறந்த இணையம் வேறு பொறியியல் பிரச்சினையை எழுப்புகிறது: <em>பல</em> தரப்பினர் கம்பி, hosts மற்றும் platforms-ஐப் பகிர்கின்றனர் — அவர்களில் சிலர் விரோதமானவர்கள், துருவிப் பார்ப்பவர்கள், அல்லது பயனரை விடப் பெரியவர்கள். தனியுரிமை, ஒப்புதல், அடையாளம் மற்றும் cybersecurity அந்தப் பிரச்சினை code மற்றும் நெறிமுறைகளில் பரிணமித்ததற்கான பெயர்கள். இது கொள்கைப் பிரசுரம் அல்ல.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> gaps.md மதிப்பீடு: public-key crypto — தமிழ் எழுத்து இல்லை, காணொளி போதுமானது; தகவல் தனியுரிமை — எழுத்து இல்லை, காணொளி குறைவு; digital identity / authentication — எழுத்து குறைவு, காணொளி குறைவு (காணொளித் தேடல்: YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை). அதனால் இந்தச் சேர்க்கை public-key கணிதத்தைச் சிறிய எண்களில், கையால் சரிபார்க்கக்கூடிய படிகளாகக் காட்டுகிறது. சரிபார்த்த மூலங்கள் (அனைத்தும் இந்தப் பதிவே இணைக்கும் முதன்மை ஆவணங்கள்): Saltzer &amp; Schroeder (1975, MIT பக்கம்), Diffie &amp; Hellman, &ldquo;New Directions in Cryptography&rdquo; (1976, Stanford PDF), Rivest, Shamir &amp; Adleman, &ldquo;A Method for Obtaining Digital Signatures and Public-Key Cryptosystems&rdquo; (MIT PDF, அதன் &ldquo;A Small Example&rdquo; பகுதி), RFC 6749 (OAuth 2.0). எல்லாக் கணக்குகளும் Python-இல் சரிபார்க்கப்பட்டன; கடவுச்சொல் ஊக வேகம் போன்றவை &ldquo;எடுத்துக்காட்டு மதிப்புகள்&rdquo;. இந்தச் சிறிய எண்கள் கற்பிக்க மட்டுமே — உண்மையான பாதுகாப்புக்கு அல்ல. இந்தப் பதிவுக்கு lab இல்லை; காகிதப் பயிற்சிகள் கீழே.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Modular arithmetic (மட்டு எண்கணிதம்):</strong> &ldquo;mod n&rdquo; — n-ஆல் வகுத்த மீதி மட்டும்; 17 mod 5 = 2.</li>
+<li><strong>Public key / private key (பொதுச் சாவி / தனிச் சாவி):</strong> யாருக்கும் தரக்கூடியது / உரிமையாளர் மட்டும் வைத்திருப்பது.</li>
+<li><strong>Key agreement (சாவி உடன்படிக்கை):</strong> ஒட்டுக்கேட்பவர் முன்னிலையிலும் இருவர் ஒரு பொது இரகசியத்தை உருவாக்குவது (Diffie–Hellman).</li>
+<li><strong>Discrete logarithm (தனி மடக்கை):</strong> Y = α^X mod q தெரிந்தால் X-ஐக் கண்டுபிடித்தல் — பெரிய q-க்குக் கடினம் என்பதே பாதுகாப்பின் அடிப்படை.</li>
+<li><strong>Digital signature (இலக்கக் கையொப்பம்):</strong> தனிச் சாவியால் மட்டுமே உருவாக்கக்கூடிய, பொதுச் சாவியால் யாரும் சரிபார்க்கக்கூடிய குறி.</li>
+<li><strong>Authentication / authorization (அடையாளச் சரிபார்ப்பு / அனுமதி வழங்கல்):</strong> &ldquo;நீ யார்?&rdquo; / &ldquo;நீ என்ன செய்யலாம்?&rdquo;</li>
+<li><strong>Scope (வரம்பு):</strong> ஒரு access token அனுமதிக்கும் குறிப்பிட்ட செயல்களின் பட்டியல் (OAuth).</li>
+</ul>
+<h2 id="isolation-மதலல-வநதத">Isolation முதலில் வந்தது<a class="anchor" href="#isolation-%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%b5%e0%ae%a8%e0%ae%a4%e0%ae%a4">#</a></h2>
+<p>&ldquo;தனியுரிமைப் பொருள்&quot;க்கு முன், <strong>பாதுகாப்பு</strong> இருந்தது. Jerome Saltzer மற்றும் Michael Schroeder-இன் 1975 மதிப்பாய்வுக் கட்டுரை, <a href="https://web.mit.edu/Saltzer/www/publications/protection/"><em>The Protection of Information in Computer Systems</em></a>, இன்றும் பொறியியல் சட்டமாகப் படிக்கும் வடிவமைப்புக் கொள்கைகளை வரைந்தது: least privilege, complete mediation, fail-safe defaults, economy of mechanism. Virtual memory (பதிவு 24) மற்றும் containers (பதிவு 25) அதே பந்தயத்தின் பிந்தைய நிகழ்வுகள் — வன்பொருளும் kernel-உம் அமல்படுத்தும் எல்லையை வரையுங்கள், அதனால் ஒரு நிரல் மற்றொன்றை எளிதாகப் படிக்க முடியாது.</p>
+<p>Saltzer &amp; Schroeder தரும் எட்டு வடிவமைப்புக் கொள்கைகள் (அவர்களின் சொற்களின் சுருக்கம்):</p>
+<table>
+	<thead>
+			<tr>
+					<th>கொள்கை</th>
+					<th>பொருள்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Economy of mechanism</td>
+					<td>வடிவமைப்பை முடிந்தவரை எளிமையாகவும் சிறியதாகவும் வைத்தல் — தேவையற்ற அணுகல் பாதைகள் சாதாரணப் பயன்பாட்டில் தெரிவதில்லை</td>
+			</tr>
+			<tr>
+					<td>Fail-safe defaults</td>
+					<td>அணுகல் முடிவுகள் விலக்கலின் மீது அல்ல, அனுமதியின் மீது — இயல்புநிலை &ldquo;அணுகல் இல்லை&rdquo;</td>
+			</tr>
+			<tr>
+					<td>Complete mediation</td>
+					<td>ஒவ்வொரு பொருளுக்கான ஒவ்வொரு அணுகலும் அதிகாரத்துக்காகச் சரிபார்க்கப்பட வேண்டும்</td>
+			</tr>
+			<tr>
+					<td>Open design</td>
+					<td>வடிவமைப்பு இரகசியமாக இருக்கக்கூடாது; பாதுகாப்பு சாவிகள் / கடவுச்சொற்களைச் சார்ந்திருக்க வேண்டும்</td>
+			</tr>
+			<tr>
+					<td>Separation of privilege</td>
+					<td>இரண்டு சாவிகள் தேவைப்படும் பொறிமுறை ஒரு சாவியை விட வலுவானது</td>
+			</tr>
+			<tr>
+					<td>Least privilege</td>
+					<td>ஒவ்வொரு நிரலும் பயனரும் வேலைக்குத் தேவையான குறைந்தபட்ச உரிமைகளுடன் மட்டும்</td>
+			</tr>
+			<tr>
+					<td>Least common mechanism</td>
+					<td>பல பயனர்கள் பகிரும், அனைவரும் சார்ந்திருக்கும் பொறிமுறையைக் குறைத்தல்</td>
+			</tr>
+			<tr>
+					<td>Psychological acceptability</td>
+					<td>மனித இடைமுகம் எளிதாக இருந்தால்தான் பயனர்கள் பாதுகாப்பைத் தானாகச் சரியாகப் பயன்படுத்துவார்கள்</td>
+			</tr>
+	</tbody>
+</table>
+<p>&ldquo;Open design&rdquo; தான் கீழே உள்ள crypto-வின் அடிப்படை: கணிதம் அனைவருக்கும் தெரியும்; இரகசியம் சாவியில் மட்டும்.</p>
+<p>Door out: Saltzer &amp; Schroeder (1975).</p>
+<h2 id="பத-வலயமபபல-crypto">பொது வலையமைப்பில் Crypto<a class="anchor" href="#%e0%ae%aa%e0%ae%a4-%e0%ae%b5%e0%ae%b2%e0%ae%af%e0%ae%ae%e0%ae%aa%e0%ae%aa%e0%ae%b2-crypto">#</a></h2>
+<p>பகிரப்பட்ட வலையமைப்புகள் பழைய courier-key மாதிரியை வீழ்த்தின. Whitfield Diffie மற்றும் Martin Hellman-இன் 1976 கட்டுரை <a href="https://ee.stanford.edu/~hellman/publications/24.pdf"><em>New Directions in Cryptography</em></a> public-key உடன்படிக்கையை ஆராய்ச்சிப் பொருளாக்கியது: eavesdroppers பரிமாற்றத்தைக் கேட்கும்போதும் இரு தரப்பினர் பகிரப்பட்ட இரகசியத்தை நிறுவ முடியும். Ronald Rivest, Adi Shamir மற்றும் Leonard Adleman RSA-வை (1977/78) தொடர்ந்தனர் — செய்தியுடன் பயணிக்கக்கூடிய பொது encryption மற்றும் signatures. இன்றைய வலையில் TLS அந்த வரியின் deployed வழித்தோன்றல் (நெறிமுறை திருத்தங்களின் நீண்ட தடத்துடன்), தனி ஒழுக்க வகை அல்ல.</p>
+<h2 id="diffiehellman--சறய-எணகளல">Diffie–Hellman — சிறிய எண்களில்<a class="anchor" href="#diffiehellman--%e0%ae%9a%e0%ae%b1%e0%ae%af-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%b2">#</a></h2>
+<p>Diffie &amp; Hellman கட்டுரையின் முறை: q ஒரு பகா எண், α அதன் primitive element. ஒவ்வொரு பயனரும் 1 முதல் q − 1 வரை ஒரு சீரற்ற X-ஐத் தேர்ந்து இரகசியமாக வைத்து, Y = α^X mod q-ஐப் பொதுக் கோப்பில் வைக்கிறார். இருவரும் K = α^(Xi·Xj) mod q-ஐத் தனித்தனியாகக் கணக்கிடுகிறார்கள்.</p>
+<p><strong>எடுத்துக்காட்டு மதிப்புகள்:</strong> q = 23, α = 5 (5-இன் அடுக்குகள் 1 முதல் 22 வரை எல்லா மீதிகளையும் தருகின்றன — Python-இல் சரிபார்த்தோம்). Xi = 6, Xj = 15.</p>
+<p>5-இன் அடுக்குகள் mod 23, படிப்படியாக (ஒவ்வொரு முறையும் முந்தையதை 5-ஆல் பெருக்கி மீதி):</p>
+<table>
+	<thead>
+			<tr>
+					<th>k</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>5^k mod 23</td>
+					<td>5</td>
+					<td>25 → 2</td>
+					<td>10</td>
+					<td>50 → 4</td>
+					<td>20</td>
+					<td>100 → 8</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>படி</th>
+					<th>i</th>
+					<th>j</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>இரகசியம்</td>
+					<td>Xi = 6</td>
+					<td>Xj = 15</td>
+			</tr>
+			<tr>
+					<td>பொதுவில் அனுப்புவது</td>
+					<td>Yi = 5⁶ mod 23 = <strong>8</strong></td>
+					<td>Yj = 5¹⁵ mod 23 = <strong>19</strong></td>
+			</tr>
+			<tr>
+					<td>பெற்றதிலிருந்து கணக்கு</td>
+					<td>K = 19⁶ mod 23 = <strong>2</strong></td>
+					<td>K = 8¹⁵ mod 23 = <strong>2</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>ஒட்டுக்கேட்பவர் 23, 5, 8, 19 அனைத்தையும் கேட்கிறார்; K-ஐப் பெற அவர் 5^X ≡ 8 (mod 23) ஆகும் X-ஐக் கண்டுபிடிக்க வேண்டும். இங்கே 22 முயற்சிகளில் X = 6 கிடைத்துவிடும் — அதனால்தான் உண்மையில் q மிகப் பெரியது.</p>
+<p><strong>ஏன் பெரிய q காப்பாற்றுகிறது.</strong> கட்டுரையின் சொந்தக் கணக்கு: q சுமார் 2^b என்றால், அடுக்கேற்றம் அதிகபட்சம் 2b பெருக்கல்கள்; மடக்கை எடுக்கச் சுமார் q^(1/2) = 2^(b/2) செயல்கள். b = 200 என்றால் முறையான பயனருக்கு அதிகபட்சம் <strong>400</strong> பெருக்கல்கள்; தாக்குபவருக்கு 2¹⁰⁰ ≈ <strong>1.27 × 10³⁰</strong> செயல்கள் (கட்டுரை: &ldquo;approximately 10³⁰&rdquo;). முறையான உழைப்பு நேரியலாக வளர்கிறது, தாக்குதல் உழைப்பு அடுக்குக்குறியாக.</p>
+<h2 id="rsa--கடடரயன-சநத-சறய-எடததககடட">RSA — கட்டுரையின் சொந்த &ldquo;சிறிய எடுத்துக்காட்டு&rdquo;<a class="anchor" href="#rsa--%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%b0%e0%ae%af%e0%ae%a9-%e0%ae%9a%e0%ae%a8%e0%ae%a4-%e0%ae%9a%e0%ae%b1%e0%ae%af-%e0%ae%8e%e0%ae%9f%e0%ae%a4%e0%ae%a4%e0%ae%95%e0%ae%95%e0%ae%9f%e0%ae%9f">#</a></h2>
+<p>RSA கட்டுரையின் பகுதி VIII:</p>
+<table>
+	<thead>
+			<tr>
+					<th>படி</th>
+					<th>கணக்கு</th>
+					<th>மதிப்பு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>இரு பகா எண்கள்</td>
+					<td>p, q</td>
+					<td>47, 59</td>
+			</tr>
+			<tr>
+					<td>Modulus</td>
+					<td>n = p × q</td>
+					<td>2,773</td>
+			</tr>
+			<tr>
+					<td>φ(n)</td>
+					<td>(p − 1)(q − 1) = 46 × 58</td>
+					<td>2,668</td>
+			</tr>
+			<tr>
+					<td>தனி அடுக்கு</td>
+					<td>d</td>
+					<td>157</td>
+			</tr>
+			<tr>
+					<td>பொது அடுக்கு</td>
+					<td>e × d ≡ 1 (mod 2,668)</td>
+					<td>e = <strong>17</strong></td>
+			</tr>
+			<tr>
+					<td>சரிபார்ப்பு</td>
+					<td>17 × 157 = 2,669 = 2,668 + 1</td>
+					<td>✓</td>
+			</tr>
+	</tbody>
+</table>
+<p>பொதுச் சாவி (e, n) = (17, 2,773); தனிச் சாவி d = 157. கட்டுரை எழுத்துகளை இரண்டு இலக்கங்களாக மாற்றுகிறது (இடைவெளி = 00, A = 01, …, Z = 26): &ldquo;ITS ALL GREEK TO ME&rdquo; → 0920 1900 0112 …</p>
+<p><strong>முதல் தொகுதி M = 920-ஐக் குறியாக்குதல்.</strong> 17 = 10001 (இருமம்). இடமிருந்து: ஒவ்வொரு bit-க்கும் வர்க்கம், bit 1 என்றால் M-ஆல் பெருக்கல், ஒவ்வொரு படியிலும் mod 2,773:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>செயல்</th>
+					<th>முடிவு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>1² × 920</td>
+					<td>920</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>920² mod 2,773</td>
+					<td>635</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>635² mod 2,773</td>
+					<td>1,140</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>1,140² mod 2,773</td>
+					<td>1,836</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1,836² × 920 mod 2,773</td>
+					<td><strong>948</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>C = 948 — கட்டுரை தரும் அதே எண். குறிவிலக்கம்: 948¹⁵⁷ mod 2,773 = <strong>920</strong> (கட்டுரை: &ldquo;The reader can check…&rdquo;; Python-இல் சரிபார்த்தோம், முழுச் செய்தியின் பத்துத் தொகுதிகளும் சேர்த்து).</p>
+<p><strong>கையொப்பம், அதே எண்களில்.</strong> தனிச் சாவியால்: S = 920¹⁵⁷ mod 2,773 = <strong>192</strong>. யாரும் பொதுச் சாவியால் சரிபார்க்கலாம்: 192¹⁷ mod 2,773 = <strong>920</strong>. பதிவு சொல்லும் &ldquo;செய்தியுடன் பயணிக்கக்கூடிய signatures&rdquo; இதுதான் — d தெரியாமல் 192-ஐ உருவாக்க முடியாது.</p>
+<p><strong>பாதுகாப்பு எங்கே.</strong> n = 2,773-ஐ 47 × 59 எனப் பிரித்தால் φ(n), பிறகு d உடனே கிடைக்கும். சிறிய n-ஐ நொடியில் காரணிப்படுத்தலாம்; உண்மையான RSA-வில் n நூற்றுக்கணக்கான இலக்கங்கள் நீளமானது.</p>
+<p>Door out: Diffie–Hellman (1976); RSA கட்டுரை; நவீன கதவாக <a href="https://www.rfc-editor.org/rfc/rfc8446">RFC 8446</a> (TLS 1.3).</p>
+<h2 id="அடயளம-ஒர-நறமறப-பரசசன">அடையாளம் ஒரு நெறிமுறைப் பிரச்சினை<a class="anchor" href="#%e0%ae%85%e0%ae%9f%e0%ae%af%e0%ae%b3%e0%ae%ae-%e0%ae%92%e0%ae%b0-%e0%ae%a8%e0%ae%b1%e0%ae%ae%e0%ae%b1%e0%ae%aa-%e0%ae%aa%e0%ae%b0%e0%ae%9a%e0%ae%9a%e0%ae%a9">#</a></h2>
+<p>வலையமைப்பில் &ldquo;நீங்கள் யார்?&rdquo; என்பது மனநிலை அல்ல — அது authentication மற்றும் authorization இயந்திரம். Passwords ஆரம்ப மலிவான authenticator மற்றும் இன்னும் breach மேற்பரப்பு. Needham மற்றும் Schroeder-இன் authentication வேலை, Kerberos (MIT Project Athena; Steve Miller, Clifford Neuman மற்றும் சகாக்கள்), மற்றும் பின்னர் public-key certificates அடையாளத்தை இயந்திரங்கள் சரிபார்க்கக்கூடிய <em>சரிபார்க்கக்கூடிய கூற்றுகளாக</em> மாற்றின. OAuth மற்றும் OpenID Connect (IETF / OpenID Foundation specs) பின்னர் &ldquo;நீங்கள் யார் என நிரூபிக்கவும்&rdquo; மற்றும் &ldquo;இந்த app-க்குக் குறுகிய திறனை வழங்கவும்&rdquo; — ஒப்புதலை தெளிவற்ற வாக்குறுதியாக அல்ல, scoped token ஆக — பிரித்தன.</p>
+<p><strong>கடவுச்சொல் ஏன் breach மேற்பரப்பு (எடுத்துக்காட்டு மதிப்புகள்).</strong> ஒரு தாக்குபவர் திருடிய hash-களுக்கு எதிராக வினாடிக்கு 10¹⁰ ஊகங்கள் செய்ய முடியும் என்று வைப்போம்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>கடவுச்சொல்</th>
+					<th>சாத்தியங்கள்</th>
+					<th>எல்லாவற்றையும் முயல</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>8 சிறிய எழுத்துகள் (26)</td>
+					<td>26⁸ ≈ 2.09 × 10¹¹</td>
+					<td>≈ <strong>21 வினாடி</strong></td>
+			</tr>
+			<tr>
+					<td>8 எழுத்துகள், 95 அச்சிடக்கூடிய குறிகள்</td>
+					<td>95⁸ ≈ 6.63 × 10¹⁵</td>
+					<td>≈ <strong>7.7 நாள்</strong></td>
+			</tr>
+			<tr>
+					<td>12 எழுத்துகள், 62 (a–z, A–Z, 0–9)</td>
+					<td>62¹² ≈ 3.2 × 10²¹</td>
+					<td>≈ <strong>10,000 ஆண்டுகள்</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>நீளம் அடுக்கில் இருக்கிறது — ஆனால் மக்கள் சீரற்ற கடவுச்சொற்களைத் தேர்வதில்லை; அதனால்தான் அடையாளம் &ldquo;சரிபார்க்கக்கூடிய கூற்றுகளாக&rdquo; (certificates, tokens) நகர்ந்தது.</p>
+<p><strong>Token-இல் என்ன இருக்கிறது.</strong> RFC 6749: access token என்பது பாதுகாக்கப்பட்ட வளங்களை அணுகப் பயன்படும் credential; அது &ldquo;specific scopes and durations of access&rdquo; — வள உரிமையாளர் வழங்கியது, resource server அமல்படுத்துவது. Scope என்பது இடைவெளியால் பிரிக்கப்பட்ட, case-sensitive சரங்களின் பட்டியல். எடுத்துக்காட்டாக (சர மதிப்புகள் கற்பனை) <code>scope=&quot;photos.read&quot;</code> பெற்ற app படங்களைப் படிக்கலாம், அழிக்க முடியாது — Saltzer &amp; Schroeder-இன் least privilege, ஒரு HTTP header-ஆக.</p>
+<p>பெயரிடப்பட்ட கட்டுப்பாடு: verifier, credential அல்லது recovery path அவை காக்கும் சொத்தை விட வலுவற்றதாக இருக்கும்போது அடையாள அமைப்புகள் பொறியியலாகத் தோல்வியடைகின்றன. Door out: MIT-இலிருந்து Kerberos வரலாறுகள்; <a href="https://www.rfc-editor.org/rfc/rfc6749">RFC 6749</a> (OAuth 2.0).</p>
+<h2 id="அதகரததறகன-இடமகமக-ஒபபதல">அதிகாரத்திற்கான இடைமுகமாக ஒப்புதல்<a class="anchor" href="#%e0%ae%85%e0%ae%a4%e0%ae%95%e0%ae%b0%e0%ae%a4%e0%ae%a4%e0%ae%b1%e0%ae%95%e0%ae%a9-%e0%ae%87%e0%ae%9f%e0%ae%ae%e0%ae%95%e0%ae%ae%e0%ae%95-%e0%ae%92%e0%ae%aa%e0%ae%aa%e0%ae%a4%e0%ae%b2">#</a></h2>
+<p>ஒரு அமைப்பு எல்லையைக் கடந்து செயல்பட அனுமதி தேவைப்படும் இடமெல்லாம் stack-இல் ஒப்புதல் தோன்றும்: browsers-இல் cookie jars மற்றும் same-origin policy (web platform-இன் isolation கதை), சாதனங்களில் அனுமதி prompts, மற்றும் platforms-இல் scoped API tokens. பொறியியல் கேள்வி எப்போதும் ஒன்றுதான் — <em>எந்தத் திறன் வழங்கப்பட்டது, யாருக்கு, எவ்வளவு காலம், மற்றும் அதை திரும்பப் பெற முடியுமா?</em> — UI உரை &ldquo;Accept&rdquo; என்றாலும் header <code>Authorization</code> என்றாலும். பதிவு 64-இன் ஆளுமை அடுக்கு பெயர்களும் எண்களும் முடிவெடுக்கிறது; இந்த அடுக்கு <em>உங்கள் சார்பாக அவற்றை யார் பயன்படுத்தலாம்</em> என முடிவெடுக்கிறது.</p>
+<h2 id="cybersecurity-வரத-அமபபகள-பறயயல">Cybersecurity: விரோத அமைப்புகள் பொறியியல்<a class="anchor" href="#cybersecurity-%e0%ae%b5%e0%ae%b0%e0%ae%a4-%e0%ae%85%e0%ae%ae%e0%ae%aa%e0%ae%aa%e0%ae%95%e0%ae%b3-%e0%ae%aa%e0%ae%b1%e0%ae%af%e0%ae%af%e0%ae%b2">#</a></h2>
+<p>வலையமைப்பு, supply chain, மற்றும் சில நேரங்களில் இயக்குநர் விரோதமானவர் என நீங்கள் கருதும்போது நடப்பது cybersecurity. அது மேலே உள்ள அனைத்தையும் மீண்டும் பயன்படுத்துகிறது — isolation, crypto, அடையாளம் — attacker மாதிரியின் கீழ்: malware, phishing, side channels, பாதிக்கப்படக்கூடிய dependencies, அளவில் misconfiguration. துறையின் இணைப்புத் திசு பயம் அல்ல; அது பின்னூட்டம். பாதிப்புகள் பெயரிடப்படுகின்றன (CVE), patched, மற்றும் regress-tested; துஷ்பிரயோகம் rate limits, sandboxing மற்றும் monitoring-ஆல் எதிர்கொள்ளப்படுகிறது. Dorothy Denning-இன் ஆரம்ப intrusion-detection வேலையும் பிந்தைய CERT ஒருங்கிணைப்பு மாதிரியும் ஒரு <em>வகையின்</em> விதைகள்: தாக்குதல்களை அமைப்பை மறுவடிவமைக்கும் சமிக்ஞைகளாகக் கருதுங்கள்.</p>
+<p>Door out: CVE நிரல் ஆவணம்; Saltzer/Schroeder-ஐ அடித்தளமாக மேற்கோள் காட்டும் செவ்வியல் security-engineering நூல்கள்.</p>
+<h2 id="இத-ஏன-பயணததன-பறபகதயல-சரகறத">இது ஏன் பயணத்தின் பிற்பகுதியில் சேர்கிறது<a class="anchor" href="#%e0%ae%87%e0%ae%a4-%e0%ae%8f%e0%ae%a9-%e0%ae%aa%e0%ae%af%e0%ae%a3%e0%ae%a4%e0%ae%a4%e0%ae%a9-%e0%ae%aa%e0%ae%b1%e0%ae%aa%e0%ae%95%e0%ae%a4%e0%ae%af%e0%ae%b2-%e0%ae%9a%e0%ae%b0%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>OS isolation, வலையமைப்புகள், விநியோகிக்கப்பட்ட அமைப்புகள் மற்றும் AI infra புத்தகம் கட்டிய பிறகுதான் ஒரு platform-இல் தனியுரிமையை நேர்மையாகப் பேச முடியும். அந்த அத்தியாயங்கள் substrate. இது மேலே சவாரி செய்யும் விரோத மற்றும் ஒப்புதல்-வடிவ கட்டுப்பாடுகளைப் பெயரிடுகிறது — அதனால் பதிவு 69-இன் platform தொகுப்பு தனியுரிமை பொறியியலை முதல்-தர அடுக்காகக் கருத முடியும், பின்னிணைப்பாக அல்ல.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<ol>
+<li>
+<p><strong>Diffie–Hellman, q = 23, α = 5, Xi = 3, Xj = 7 (எடுத்துக்காட்டு மதிப்புகள்). Yi, Yj, K?</strong>
+விடை: Yi = 5³ mod 23 = 125 mod 23 = <strong>10</strong>. Yj = 5⁷ mod 23 = <strong>17</strong>. K = 17³ mod 23 = 10⁷ mod 23 = <strong>14</strong>.</p>
+</li>
+<li>
+<p><strong>RSA, p = 5, q = 11, e = 3 (எடுத்துக்காட்டு மதிப்புகள்). n, φ(n), d?</strong>
+விடை: n = <strong>55</strong>; φ = 4 × 10 = <strong>40</strong>; 3 × d ≡ 1 (mod 40) → d = <strong>27</strong> (3 × 27 = 81 = 2 × 40 + 1).</p>
+</li>
+<li>
+<p><strong>மேலே உள்ள சாவியால் M = 2-ஐக் குறியாக்கி, குறிவிலக்குக.</strong>
+விடை: C = 2³ mod 55 = <strong>8</strong>. 8²⁷ mod 55 = <strong>2</strong> ✓.</p>
+</li>
+<li>
+<p><strong>17-ஐ இருமத்தில் எழுதுக; square-and-multiply-இல் எத்தனை வர்க்கங்கள், எத்தனை பெருக்கல்கள் (முதல் &ldquo;1² × M&rdquo; படியைச் சேர்த்து)?</strong>
+விடை: 10001; 5 bits → 5 வர்க்கங்கள் (முதலாவது 1² என்ற வெற்றுப் படி), 2 பெருக்கல்கள் (இரண்டு &ldquo;1&rdquo; bits).</p>
+</li>
+<li>
+<p><strong>கடவுச்சொல், 10 சிறிய எழுத்துகள், வினாடிக்கு 10¹⁰ ஊகங்கள் (எடுத்துக்காட்டு மதிப்புகள்). எல்லாவற்றையும் முயல எவ்வளவு நேரம்?</strong>
+விடை: 26¹⁰ ≈ 1.41 × 10¹⁴; ÷ 10¹⁰ ≈ 14,100 வினாடி ≈ <strong>3.9 மணி</strong>.</p>
+</li>
+<li>
+<p><strong>ஒரு app-க்கு &ldquo;படிக்க&rdquo; மட்டும் தேவை; அது &ldquo;படி + எழுது + அழி&rdquo; scope கேட்கிறது. எந்த Saltzer &amp; Schroeder கொள்கை மீறப்படுகிறது?</strong>
+விடை: <strong>Least privilege</strong> — வேலைக்குத் தேவையானதை விட அதிக உரிமைகள்.</p>
+</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>மட்டு எண்கணிதம்</td>
+					<td>modular arithmetic</td>
+			</tr>
+			<tr>
+					<td>பகா எண்</td>
+					<td>prime number</td>
+			</tr>
+			<tr>
+					<td>பொதுச் சாவி / தனிச் சாவி</td>
+					<td>public key / private key</td>
+			</tr>
+			<tr>
+					<td>சாவி உடன்படிக்கை</td>
+					<td>key agreement</td>
+			</tr>
+			<tr>
+					<td>தனி மடக்கை</td>
+					<td>discrete logarithm</td>
+			</tr>
+			<tr>
+					<td>அடுக்கேற்றம்</td>
+					<td>exponentiation</td>
+			</tr>
+			<tr>
+					<td>காரணிப்படுத்தல்</td>
+					<td>factoring</td>
+			</tr>
+			<tr>
+					<td>இலக்கக் கையொப்பம்</td>
+					<td>digital signature</td>
+			</tr>
+			<tr>
+					<td>அடையாளச் சரிபார்ப்பு</td>
+					<td>authentication</td>
+			</tr>
+			<tr>
+					<td>அனுமதி வழங்கல்</td>
+					<td>authorization</td>
+			</tr>
+			<tr>
+					<td>குறைந்தபட்ச உரிமை</td>
+					<td>least privilege</td>
+			</tr>
+			<tr>
+					<td>வரம்பு</td>
+					<td>scope</td>
+			</tr>
+			<tr>
+					<td>ஒட்டுக்கேட்பவர்</td>
+					<td>eavesdropper</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%AE%A4%E0%AE%A9%E0%AE%BF%E0%AE%AF%E0%AF%81%E0%AE%B0%E0%AE%BF%E0%AE%AE%E0%AF%88%2C&#43;%E0%AE%92%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%A4%E0%AE%B2%E0%AF%8D%2C&#43;%E0%AE%85%E0%AE%9F%E0%AF%88%E0%AE%AF%E0%AE%BE%E0%AE%B3%E0%AE%AE%E0%AF%8D%2C&#43;Cyber&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F67-privacy-consent-identity-cyber%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F67-privacy-consent-identity-cyber.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F67-privacy-consent-identity-cyber.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/66-wartime-crypto/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>போர்க்கால Crypto</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/68-visions-that-shipped/" class="flex align-center">
+        <span>நடைமுறைக்கு வந்த பார்வைகள்</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#isolation-மதலல-வநதத">Isolation முதலில் வந்தது</a></li>
+    <li><a href="#பத-வலயமபபல-crypto">பொது வலையமைப்பில் Crypto</a></li>
+    <li><a href="#diffiehellman--சறய-எணகளல">Diffie–Hellman — சிறிய எண்களில்</a></li>
+    <li><a href="#rsa--கடடரயன-சநத-சறய-எடததககடட">RSA — கட்டுரையின் சொந்த &ldquo;சிறிய எடுத்துக்காட்டு&rdquo;</a></li>
+    <li><a href="#அடயளம-ஒர-நறமறப-பரசசன">அடையாளம் ஒரு நெறிமுறைப் பிரச்சினை</a></li>
+    <li><a href="#அதகரததறகன-இடமகமக-ஒபபதல">அதிகாரத்திற்கான இடைமுகமாக ஒப்புதல்</a></li>
+    <li><a href="#cybersecurity-வரத-அமபபகள-பறயயல">Cybersecurity: விரோத அமைப்புகள் பொறியியல்</a></li>
+    <li><a href="#இத-ஏன-பயணததன-பறபகதயல-சரகறத">இது ஏன் பயணத்தின் பிற்பகுதியில் சேர்கிறது</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

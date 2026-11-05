@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="වසම් හතරක් abstractions හතරක් බල කළේය — සූත්‍ර, ව්‍යාපාර ගද්‍ය, සංකේතාත්මක ලැයිස්තු, ලෝහයට සමීප පද්ධති">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/27-high-level-languages-fortran-cobol-lisp-c/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C">
+	<meta property="og:description" content="වසම් හතරක් abstractions හතරක් බල කළේය — සූත්‍ර, ව්‍යාපාර ගද්‍ය, සංකේතාත්මක ලැයිස්තු, ලෝහයට සමීප පද්ධති">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:56:44+05:30">
+
+
+	<meta itemprop="name" content="ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C">
+	<meta itemprop="description" content="වසම් හතරක් abstractions හතරක් බල කළේය — සූත්‍ර, ව්‍යාපාර ගද්‍ය, සංකේතාත්මක ලැයිස්තු, ලෝහයට සමීප පද්ධති">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:56:44+05:30">
+	<meta itemprop="wordCount" content="2199">
+
+<title>ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/27-high-level-languages-fortran-cobol-lisp-c/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/27-high-level-languages-fortran-cobol-lisp-c/" title="High-Level Languages: FORTRAN, COBOL, Lisp, C">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" title="ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" title="உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" title="Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="active">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#fortran-formula-translation">FORTRAN: Formula Translation</a></li>
+    <li><a href="#cobol-වදයව-නව-වයපරය">COBOL: විද්‍යාව නොව ව්‍යාපාරය</a></li>
+    <li><a href="#lisp-වනස-ආකතයක">Lisp: වෙනස් ආකෘතියක්</a></li>
+    <li><a href="#c-පදධත-කරමලඛනය-යනතරයට-සමප">C: පද්ධති ක්‍රමලේඛනය, යන්ත්‍රයට සමීප</a></li>
+    <li><a href="#පද-නල">පොදු නූල</a></li>
+    <li><a href="#ගඹරන-compiler-එකක-ඔබ-වනවන-කරන-වඩය--එක-පරකශනයක-අතන-compile-කරම-fortran-හ-අභයගය-lisp-හ-list-සහ-c-හ-pointer">ගැඹුරින්: compiler එකක් ඔබ වෙනුවෙන් කරන වැඩය — එක් ප්‍රකාශනයක් අතින් compile කිරීම, FORTRAN හි අභියෝගය, Lisp හි list සහ C හි pointer</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-එක-fortran-පළයක-අතන-compile-කරම">2. එක් FORTRAN පේළියක් අතින් compile කිරීම</a></li>
+        <li><a href="#3-fortran-කණඩයම-සබ-පරශනය-කරයකෂමතව">3. FORTRAN කණ්ඩායමේ සැබෑ ප්‍රශ්නය: කාර්යක්ෂමතාව</a></li>
+        <li><a href="#4-lisp-code-සහ-data-එකම-වයහය">4. Lisp: code සහ data එකම ව්‍යුහය</a></li>
+        <li><a href="#5-c-pointer-එකක-byte-ලපනයක-ව-හට">5. C: pointer එකක් byte ලිපිනයක් වූ හැටි</a></li>
+        <li><a href="#6-cobol-ගන">6. COBOL ගැන</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Assembly (Post 26) යනු යන්ත්‍ර කේතය උඩ එකට-එක තට්ටුවකි — අමු binary ට වඩා හොඳය, තවමත් ක්‍රමලේඛකයාට උපදෙස්, registers, සහ අතින් layout ගැන සිතීමට බල කරයි. ඉහළ-මට්ටමේ භාෂා වෙනස් දෙයක් හඳුන්වා දුන්නේය: දෘඪාංගයට එකට-එක map නොවන abstractions. <em>කුමක්</em> ගණනය කළ යුතුද යන්න ප්‍රකාශ කරන්න; compiler එකක් (Post 28) <em>කෙසේද</em> යන්න සොයා ගනී.</p>
+<h2 id="fortran-formula-translation">FORTRAN: Formula Translation<a class="anchor" href="#fortran-formula-translation">#</a></h2>
+<p>FORTRAN (1957, IBM) විද්‍යාත්මක සහ ඉංජිනේරු ගණනය සඳහා ගොඩනැගුණේය — නමෙහි අර්ථය &ldquo;Formula Translation&rdquo; ය. පැහැදිලි register allocation සමඟ අංක ගණිත උපදෙස් අනුපිළිවෙලකට වඩා <code>X = A * B + C</code> ලියන්න. ඒ සඳහා සැබෑ compiler බුද්ධිය අවශ්‍ය විය. මුල් සැකය වූයේ compiled කේතයට අතින් ලියන ලද assembly සමඟ තරඟ කළ නොහැකි බවයි; FORTRAN හි compiler එකට ආක්‍රමණශීලී ප්‍රශස්තකරණය හරහා එය වැරදි බව ඔප්පු කිරීමට සිදු විය, සහ බොහෝ දුරට එසේ කළේය.</p>
+<h2 id="cobol-වදයව-නව-වයපරය">COBOL: විද්‍යාව නොව ව්‍යාපාරය<a class="anchor" href="#cobol-%e0%b7%80%e0%b6%af%e0%b6%ba%e0%b7%80-%e0%b6%b1%e0%b7%80-%e0%b7%80%e0%b6%ba%e0%b6%b4%e0%b6%bb%e0%b6%ba">#</a></h2>
+<p>COBOL (1959–60, CODASYL) වෙනස් වසමක් ඉලක්ක කළේය: වැටුප්, ගිණුම්කරණය, තොග — විද්‍යාව නොව ව්‍යාපාර දත්ත සැකසුම. Grace Hopper තමන් විසින්ම COBOL නොලිව්වේය, නමුත් ඇගේ පෙර FLOW-MATIC ප්‍රාථමික බලපෑමක් වූ අතර, එම බලපෑම සහ ඇගේ අනුග්‍රහය සඳහා ඇය බොහෝ විට &ldquo;COBOL හි මව&rdquo; ලෙස ගෞරවයට පාත්‍ර වේ. නිර්මාණ තේරීම: විස්තීර්ණ, ඉංග්‍රීසි-වැනි syntax (<code>ADD SALARY TO TOTAL-PAY</code>), ක්‍රමලේඛක නොවන විශ්ලේෂකයන් සහ විගණකයන්ට කියවිය හැකි වීමට අදහස් කළේය. Legacy අතිමහත් සහ තවමත් අවතක්සේරු කර ඇත: මූලික බැංකුකරණය, රක්ෂණය, සහ රජයේ පද්ධතිවලින් සැලකිය යුතු කොටසක් තවමත් දශක ගණනකට පෙර ලියන ලද COBOL ධාවනය කරයි — මෙහෙවර-විවේචනාත්මක මූල්‍ය පද්ධති නැවත ලිවීම මිල අධික සහ අවදානම් සහිත තරමට බොහෝ සංවිධාන මුල් එක පවත්වාගෙන යයි.</p>
+<h2 id="lisp-වනස-ආකතයක">Lisp: වෙනස් ආකෘතියක්<a class="anchor" href="#lisp-%e0%b7%80%e0%b6%b1%e0%b7%83-%e0%b6%86%e0%b6%9a%e0%b6%ad%e0%b6%ba%e0%b6%9a">#</a></h2>
+<p>Lisp (1958, John McCarthy) FORTRAN සහ COBOL හි imperative විලාසය සම්පූර්ණයෙන්ම අත්හැරියේය — පළමු-පන්ති අගයන් ලෙස functions, සහ කේතය සහ දත්ත එකම ලැයිස්තු ව්‍යුහය බෙදා ගන්නා අවම ඒකාකාර syntax එකක්. විලාසය පමණක් නොවේ: runtime දී අනෙක් වැඩසටහන් ගොඩනඟා ක්‍රියාත්මක කරන වැඩසටහන් දශක ගණනක AI සහ සංකේතාත්මක ගණනයට පදනම් වූ අතර, අද ප්‍රධාන ධාරාවේ භාෂාවල functional විශේෂාංගවලට තවමත් බලපායි.</p>
+<h2 id="c-පදධත-කරමලඛනය-යනතරයට-සමප">C: පද්ධති ක්‍රමලේඛනය, යන්ත්‍රයට සමීප<a class="anchor" href="#c-%e0%b6%b4%e0%b6%af%e0%b6%b0%e0%b6%ad-%e0%b6%9a%e0%b6%bb%e0%b6%b8%e0%b6%bd%e0%b6%9b%e0%b6%b1%e0%b6%ba-%e0%b6%ba%e0%b6%b1%e0%b6%ad%e0%b6%bb%e0%b6%ba%e0%b6%a7-%e0%b7%83%e0%b6%b8%e0%b6%b4">#</a></h2>
+<p>C (1972, Dennis Ritchie, Unix සමඟ සංවර්ධනය විය — Post 22) තවත් හුවමාරුවක් ගත්තේය: assembly උඩ සැබෑ ඵලදායිතාව සඳහා තරම් ඉහළ-මට්ටමේ, සම්පූර්ණ OS kernel එකක් එයින් ලිවිය හැකි තරම් දෘඪාංගයට සමීප — එකල අසාමාන්‍යය. Pointer arithmetic, අවම runtime, යන්ත්‍ර ops වෙත පුරෝකථනය කළ හැකි mapping Unix portable කළේය: එක් එක් ඉලක්කයේ assembly වලින් OS නැවත නොලියා, නව යන්ත්‍රයකට C compiler එක port කරන්න.</p>
+<h2 id="පද-නල">පොදු නූල<a class="anchor" href="#%e0%b6%b4%e0%b6%af-%e0%b6%b1%e0%b6%bd">#</a></h2>
+<p>එක් එක් භාෂාව වෙනස් ප්‍රමුඛතාවක් සඳහා ප්‍රශස්තකරණය කළේය — FORTRAN සංඛ්‍යාත්මක ප්‍රකාශනය සඳහා, COBOL ව්‍යාපාර කියවිය හැකි බව සඳහා, Lisp සංකේතාත්මක abstraction සඳහා, C පද්ධති-මට්ටමේ පාලනය සඳහා — සහ එක් එක් එක තවමත් අද නිර්මාණය හැඩගස්වයි. ඔවුන් බෙදා ගන්නා දේ, සහ ඒවායින් ඕනෑම එකක් භාවිතා කළ හැකි කරන දේ, යනු ක්‍රමලේඛකයා එම පරිවර්තනය අතින් නොකර abstraction එක කාර්යක්ෂම යන්ත්‍ර කේතයට හරවන compiler එකකි. එම ක්‍රියාවලිය — සහ &ldquo;ප්‍රශස්තකරණය&rdquo; නිශ්චිතව කුමක්ද යන්න — ඊළඟ පෝස්ට් එකයි.</p>
+<h2 id="ගඹරන-compiler-එකක-ඔබ-වනවන-කරන-වඩය--එක-පරකශනයක-අතන-compile-කරම-fortran-හ-අභයගය-lisp-හ-list-සහ-c-හ-pointer">ගැඹුරින්: compiler එකක් ඔබ වෙනුවෙන් කරන වැඩය — එක් ප්‍රකාශනයක් අතින් compile කිරීම, FORTRAN හි අභියෝගය, Lisp හි list සහ C හි pointer<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-compiler-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%94%e0%b6%b6-%e0%b7%80%e0%b6%b1%e0%b7%80%e0%b6%b1-%e0%b6%9a%e0%b6%bb%e0%b6%b1-%e0%b7%80%e0%b6%a9%e0%b6%ba--%e0%b6%91%e0%b6%9a-%e0%b6%b4%e0%b6%bb%e0%b6%9a%e0%b7%81%e0%b6%b1%e0%b6%ba%e0%b6%9a-%e0%b6%85%e0%b6%ad%e0%b6%b1-compile-%e0%b6%9a%e0%b6%bb%e0%b6%b8-fortran-%e0%b7%84-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b6%9c%e0%b6%ba-lisp-%e0%b7%84-list-%e0%b7%83%e0%b7%84-c-%e0%b7%84-pointer">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> si.wikipedia හි FORTRAN, COBOL හෝ Lisp ගැන ලිපියක් අපගේ සෙවීමේදී හමු නොවීය.</p>
+<p>සිංහලෙන් අපට හමු නොවූ දේ: &ldquo;උසස් මට්ටමේ&rdquo; (high-level) ප්‍රකාශනයක් යන්ත්‍ර උපදෙස් බවට පත් වන්නේ කෙසේද, FORTRAN කණ්ඩායමට කාර්යක්ෂමතාව ජීවන මරණ ප්‍රශ්නයක් වූයේ ඇයි, Lisp හි &ldquo;code සහ data එකම list ව්‍යුහය&rdquo; යන්නෙහි තේරුම, සහ C හි pointer එකක් byte ලිපිනයක් වීමේ වැදගත්කම. මෙම කොටස ඒවා අතින් ගණනය කරයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>උසස් මට්ටමේ භාෂාව (high-level language):</strong> යන්ත්‍රයේ උපදෙස් සහ registers වෙනුවට ගණිතමය ප්‍රකාශන, විචල්‍ය (variables) සහ loops ලිවීමට ඉඩ දෙන භාෂාව.</li>
+<li><strong>Compiler (compiler):</strong> එවැනි වැඩසටහනක් යන්ත්‍ර කේතයට පරිවර්තනය කරන වැඩසටහන.</li>
+<li><strong>ප්‍රකාශනය (expression):</strong> <code>X = A * B + C</code> වැනි ගණනය.</li>
+<li><strong>Code generation (code generation):</strong> compiler එක ප්‍රකාශනයකට උපදෙස් අනුපිළිවෙලක් තෝරන අදියර.</li>
+<li><strong>S-expression (symbolic expression):</strong> Lisp හි මූලික දත්ත ආකාරය; පරමාණුවක් (atom) හෝ යුගලයක් (pair).</li>
+<li><strong>Pointer (pointer):</strong> මතක ලිපිනයක් අගය ලෙස දරන විචල්‍යය.</li>
+</ul>
+<h3 id="2-එක-fortran-පළයක-අතන-compile-කරම">2. එක් FORTRAN පේළියක් අතින් compile කිරීම<a class="anchor" href="#2-%e0%b6%91%e0%b6%9a-fortran-%e0%b6%b4%e0%b7%85%e0%b6%ba%e0%b6%9a-%e0%b6%85%e0%b6%ad%e0%b6%b1-compile-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h3>
+<p>FORTRAN ලියන්නාට <code>X = A * B + C</code> පමණක් ලිවිය හැකිය. මෙම පිටුවේ lab එකක් නැති නිසා අපි Post 11 හි mini-CPU lab එක භාවිත කරමු. එහි ගුණ කිරීමේ (multiply) උපදෙසක් <strong>නැත</strong>. ඇත්තේ LDA, ADD, SUB, STA, LDI, JMP, JC, JZ, OUT, HLT පමණි. එබැවින් compiler එකකට <code>A * B</code> &ldquo;A, B වාරයක් එකතු කිරීම&rdquo; ලෙස loop එකක් බවට හැරවිය යුතුය.</p>
+<p>ආදර්ශ (illustrative) අගයන්: A = 3, B = 4, C = 5. අපේක්ෂිත X = 3 × 4 + 5 = <strong>17</strong>.</p>
+<p>මතක සැලැස්ම (compiler එක විචල්‍යවලට ලිපින තෝරයි):</p>
+<table>
+	<thead>
+			<tr>
+					<th>ලිපිනය</th>
+					<th>අර්ථය</th>
+					<th>ආරම්භක අගය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>12</td>
+					<td>X (C = 5 න් ආරම්භ කර A එකතු කරමින්)</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>13</td>
+					<td>A</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td>14</td>
+					<td>B (ඉතිරි වාර ගණන)</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>15</td>
+					<td>නියතය 1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<p>වැඩසටහන (lab එකේ assembler එකට ලේබල නැති නිසා ලිපින අංකවලින් පමණි; <code>NOP n</code> යනු &ldquo;අගය n මතකයේ තබන්න&rdquo; යන්නයි):</p>
+<pre tabindex="0"><code>LDA 12    ; 0: A = X
+ADD 13    ; 1: A = X + A
+STA 12    ; 2: X = A
+LDA 14    ; 3: A = B
+SUB 15    ; 4: A = B - 1   (0 වූ විට Zero = 1)
+STA 14    ; 5: B = A       (STA flags වෙනස් නොකරයි)
+JZ 8      ; 6: B = 0 නම් අවසානයට
+JMP 0     ; 7: නැතිනම් නැවත
+LDA 12    ; 8: A = X
+OUT       ; 9: පෙන්වන්න
+HLT       ; 10
+NOP       ; 11: භාවිත නොවේ
+NOP 5     ; 12: X = C = 5
+NOP 3     ; 13: A = 3
+NOP 4     ; 14: B = 4
+NOP 1     ; 15: නියතය 1</code></pre><p>Assemble කළ විට bytes: <code>1C 2D 4C 1E 3F 4E 88 60 1C E0 F0 00 05 03 04 01</code>. Output <strong>17</strong>, steps <strong>34</strong>. (අපි මෙය lab එකේ මූලාශ්‍ර කේතයම ධාවනය කර පරීක්ෂා කළෙමු.)</p>
+<p>Steps ගණන් කරමු: loop එකේ එක් වටයක් උපදෙස් 8 කි (0–7). අවසාන වටයේ JZ පනින නිසා <code>JMP 0</code> ධාවනය නොවේ: 7. අවසානය 8, 9, 10: 3. එබැවින් B = 4 සඳහා 8 + 8 + 8 + 7 + 3 = <strong>34</strong>, සාමාන්‍යයෙන් <strong>8B + 2</strong>.</p>
+<p><strong>කුඩා උගුලක්:</strong> ධාවනයෙන් පසු <strong>Reset</strong> පමණක් ඔබා නැවත Run කළොත් කුමක් වේද? Lab එකේ Reset registers පමණක් හිස් කරයි. මතකය එලෙසම පවතී (lab මූලාශ්‍රයේ <code>reset()</code>). දැන් mem[12] = 17, mem[14] = 0. B = 0 − 1 = 255 (bits 8 වට වීම) වී loop එක <strong>256</strong> වාරයක් යයි. Output යළිත් 17 ය (17 + 3 × 256 = 785, 785 mod 256 = 17), නමුත් steps <strong>2,050</strong> කි. පිළිතුර &ldquo;හරි&rdquo; ලෙස පෙනුනද, වැඩසටහන කලින් අගයන් මත රඳා පවතී. Compiler එකක් විචල්‍ය ආරම්භ කිරීම (initialization) ගැන සැලකිලිමත් විය යුත්තේ මේ නිසාය. නැවත ආරම්භ කිරීමට <strong>Assemble</strong> නැවත ඔබන්න.</p>
+<h3 id="3-fortran-කණඩයම-සබ-පරශනය-කරයකෂමතව">3. FORTRAN කණ්ඩායමේ සැබෑ ප්‍රශ්නය: කාර්යක්ෂමතාව<a class="anchor" href="#3-fortran-%e0%b6%9a%e0%b6%ab%e0%b6%a9%e0%b6%ba%e0%b6%b8-%e0%b7%83%e0%b6%b6-%e0%b6%b4%e0%b6%bb%e0%b7%81%e0%b6%b1%e0%b6%ba-%e0%b6%9a%e0%b6%bb%e0%b6%ba%e0%b6%9a%e0%b7%82%e0%b6%b8%e0%b6%ad%e0%b7%80">#</a></h3>
+<p>John Backus ගේ &ldquo;The History of FORTRAN I, II, and III&rdquo; (ACM SIGPLAN Notices, 1978) කියවූ විට, ඉහත ආකාරයේ පරිවර්තනය <em>කළ හැකිද</em> යන්න ප්‍රශ්නය නොවීය. ප්‍රශ්නය වූයේ එය <em>අතින් ලියූ කේතය තරම් වේගවත්ද</em> යන්නයි:</p>
+<ul>
+<li>Backus ගේ යෝජනාව Cuthbert Hurd අනුමත කළේ IBM 704 සඳහා &ldquo;practical automatic programming system&rdquo; එකක් ලෙස <strong>1953 දෙසැම්බර්</strong> හෝ 1954 ජනවාරියේ ය (පිටු 167–168).</li>
+<li>එම පිටුවේම: භාෂාව බහුලව භාවිත වනු ඇත්තේ එය &ldquo;almost as efficient as hand coded&rdquo; වැඩසටහන් නිපදවිය හැකි බව පෙන්විය හැකි නම් පමණක් බව කණ්ඩායම විශ්වාස කළේය (පිටුව 167).</li>
+<li>704 භාවිත කරන්නන්ගේ හැම ස්ථානයකටම පද්ධතිය බෙදා හැරීමට තරම් දෝෂ රහිත බව ඔවුන්ට හැඟුණේ &ldquo;Sometime in early April 1957&rdquo; ය. Programmer&rsquo;s Reference Manual එකේ දිනය 1956 ඔක්තෝබර් 15 ය. එය පිටු 51 ක් පමණි (පිටුව 173).</li>
+<li>Array එකක subscripts <strong>තුනකට</strong> සීමා කිරීම ගැන: Backus ලියන්නේ &ldquo;the fact that the 704 had only three index registers was not a factor&rdquo; යනුවෙනි (පිටුව 171). හේතුව: ප්‍රශස්ත (optimal) කේතය සඳහා compiler එකට විශ්ලේෂණය කළ යුතු අවස්ථා ගණන subscripts ගණන සමඟ &ldquo;increased exponentially&rdquo; විය. එය &ldquo;a prime factor&rdquo; විය. එනම් සීමාව දෘඪාංගය පිටපත් කිරීමක් නොව compiler එකේ කාර්යක්ෂමතාව ආරක්ෂා කිරීමකි. Compiler එක &ldquo;one pass&rdquo; විය, එනම් මූලාශ්‍ර වැඩසටහන &ldquo;saw … only once&rdquo; (පිටුව 171).</li>
+</ul>
+<p>ඉහත අපේ mini-CPU උදාහරණයෙන් මෙහි අර්ථය පෙනේ: එකම <code>A * B</code> සඳහා compiler එක තෝරන උපදෙස් අනුපිළිවෙල වේගය තීරණය කරයි. Mini-CPU හි B = 4 ට steps 34 ක් ගියේ ගුණ කිරීමේ උපදෙසක් නැති නිසාය. Compiler එකක් යන්ත්‍රය දන්නා දක්ෂ programmer කෙනෙකු තරම් හොඳ තේරීම් නොකරන්නේ නම්, එහි කේතය මන්දගාමී වන අතර භාෂාව භාවිත නොවේ. Backus ගේ කණ්ඩායම බිය වූයේ එයටයි.</p>
+<h3 id="4-lisp-code-සහ-data-එකම-වයහය">4. Lisp: code සහ data එකම ව්‍යුහය<a class="anchor" href="#4-lisp-code-%e0%b7%83%e0%b7%84-data-%e0%b6%91%e0%b6%9a%e0%b6%b8-%e0%b7%80%e0%b6%ba%e0%b7%84%e0%b6%ba">#</a></h3>
+<p>John McCarthy ගේ &ldquo;Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I&rdquo; (CACM, 1960; කතුවරයාගේ වෙබ් පිටපත) මූලික කාර්යයන් (functions) පහක් අර්ථ දක්වයි (§c, පිටු 10–11):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Function</th>
+					<th>අර්ථය</th>
+					<th>උදාහරණය (පත්‍රිකාවෙන්)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>atom[x]</code></td>
+					<td>x පරමාණුවක් නම් T, නැතිනම් F</td>
+					<td><code>atom[X] = T</code>, <code>atom[(X · A)] = F</code></td>
+			</tr>
+			<tr>
+					<td><code>eq[x; y]</code></td>
+					<td>පරමාණු දෙක එකම සංකේතය නම් T</td>
+					<td><code>eq[X; X] = T</code>, <code>eq[X; A] = F</code></td>
+			</tr>
+			<tr>
+					<td><code>car[x]</code></td>
+					<td>යුගලයේ පළමු කොටස</td>
+					<td><code>car[(X · A)] = X</code></td>
+			</tr>
+			<tr>
+					<td><code>cdr[x]</code></td>
+					<td>යුගලයේ දෙවන කොටස</td>
+					<td><code>cdr[(X · A)] = A</code></td>
+			</tr>
+			<tr>
+					<td><code>cons[x; y]</code></td>
+					<td>නව යුගලයක් සෑදීම</td>
+					<td><code>cons[X; A] = (X · A)</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>List එකක් යනු යුගල දාමයකි: පත්‍රිකාවට අනුව <code>(m1, ···, mn)</code> යනු <code>(m1 · (··· (mn · NIL) ···))</code> සඳහා කෙටි ලිවීමකි (පිටුව 10). එබැවින් <code>(A, B, C)</code> = <code>(A · (B · (C · NIL)))</code>.</p>
+<p><strong>වැඩ කළ උදාහරණය 1:</strong> <code>car[cdr[(A, B, C)]]</code></p>
+<ol>
+<li><code>cdr[(A · (B · (C · NIL)))]</code> = <code>(B · (C · NIL))</code> = <code>(B, C)</code></li>
+<li><code>car[(B, C)]</code> = <strong>B</strong></li>
+</ol>
+<p><strong>වැඩ කළ උදාහරණය 2 (පත්‍රිකාවේම, පිටුව 12):</strong> <code>ff[x]</code> යනු S-expression එකේ පළමු පරමාණුවයි:</p>
+<p><code>ff[x] = [atom[x] → x; T → ff[car[x]]]</code></p>
+<p><code>ff[((A · B) · C)]</code> → atom නොවේ → <code>ff[car[((A · B) · C)]]</code> = <code>ff[(A · B)]</code> → atom නොවේ → <code>ff[car[(A · B)]]</code> = <code>ff[A]</code> → atom → <strong>A</strong>.</p>
+<p>වැදගත් කරුණ: <code>ff</code> හි අර්ථ දැක්වීම <em>කොන්දේසි සහ තමාවම ඇමතීම</em> (recursion) පමණි. Loop එකක්, ලිපිනයක්, register එකක් නැත. McCarthy එම පත්‍රිකාවේම පෙන්වන්නේ Lisp ප්‍රකාශනද S-expressions ලෙස නිරූපණය කර, ඒවා ධාවනය කරන <code>eval</code> function එකක් Lisp වලින්ම ලිවිය හැකි බවයි. &ldquo;Code සහ data එකම ව්‍යුහය&rdquo; යන්නෙහි තේරුම එයයි. පත්‍රිකාවේ උදාහරණය: <code>apply[(LAMBDA, (X, Y), (CONS, (CAR, X), Y)); ((A, B), (C, D))] = (A, C, D)</code> (එම පිටපතේ පිටුව 16). මෙහි function එකද <code>(LAMBDA, …)</code> නම් list එකකි.</p>
+<h3 id="5-c-pointer-එකක-byte-ලපනයක-ව-හට">5. C: pointer එකක් byte ලිපිනයක් වූ හැටි<a class="anchor" href="#5-c-pointer-%e0%b6%91%e0%b6%9a%e0%b6%9a-byte-%e0%b6%bd%e0%b6%b4%e0%b6%b1%e0%b6%ba%e0%b6%9a-%e0%b7%80-%e0%b7%84%e0%b6%a7">#</a></h3>
+<p>Dennis Ritchie ගේ &ldquo;The Development of the C Language&rdquo; (Bell Labs වෙබ් පිටපත) C ට පෙර තිබූ B සහ BCPL ගැන මෙසේ කියයි: ඒවා ධාවනය වූ යන්ත්‍ර &ldquo;word-addressed&rdquo; ය. B හි තනි දත්ත වර්ගය වූ &ldquo;cell&rdquo; යන්ත්‍ර word එකට සමාන විය. PDP-11 byte-addressed ය. B හි නීති pointer එකක් &ldquo;an index in an array of words&rdquo; ලෙස අර්ථ දැක්වූ නිසා &ldquo;Each pointer reference generated a run-time scale conversion&rdquo; විය (&ldquo;The Problems of B&rdquo;).</p>
+<p>C හි විසඳුම: pointer එකක අගය byte ලිපිනයමයි. නමුත් ඉන් පසු &ldquo;to compute iarray[i] or ipointer+i implied scaling the addend i by the size of the object referred to.&rdquo; එනම් පරිමාණ කිරීම (scaling) compile වන විට, වර්ගය (type) දැනගෙනම compiler එක කරයි.</p>
+<p><strong>වැඩ කළ උදාහරණය (ආදර්ශ අංක):</strong> <code>int</code> එකක් bytes 2 ක් යැයි ද, <code>iarray</code> ලිපිනය 1000 යැයි ද සිතමු.</p>
+<ul>
+<li><code>iarray[0]</code> → 1000</li>
+<li><code>iarray[3]</code> → 1000 + 3 × 2 = <strong>1006</strong></li>
+<li><code>char</code> array එකක් 1000 දී ආරම්භ නම් <code>carray[3]</code> → 1000 + 3 × 1 = <strong>1003</strong></li>
+</ul>
+<p>Programmer ලියන්නේ <code>[3]</code> පමණි. &ldquo;× 2&rdquo; හෝ &ldquo;× 1&rdquo; තෝරන්නේ compiler එකයි. ධාවන කාලයේ (run time) අමතර පරිවර්තනයක් නැත. Ritchie ට අනුව 1973 මුල් භාගය වන විට නවීන C හි මූලිකාංග සම්පූර්ණ විය. Unix kernel එක PDP-11 සඳහා C වලින් නැවත ලියූයේ එම වසරේ ගිම්හානයේ ය (&ldquo;Portability&rdquo; කොටස).</p>
+<h3 id="6-cobol-ගන">6. COBOL ගැන<a class="anchor" href="#6-cobol-%e0%b6%9c%e0%b6%b1">#</a></h3>
+<p>COBOL ගැන මෙම කොටස අමතර කරුණු එකතු නොකරයි. මෙම වටයේදී අපි COBOL හි මුල් ලේඛනයක් විවෘත කළේ නැත. ප්‍රධාන පෙළේ COBOL කොටස එලෙසම පවතී.</p>
+<h3 id="7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#7-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>§2 වැඩසටහනේ A = 2, B = 6, C = 1 ලෙස වෙනස් කරන්න (ලිපින 12, 13, 14 හි <code>NOP</code> අගයන්). Output සහ steps කීයද?</li>
+<li>B = 0 ලෙස (<code>NOP 0</code> ලිපිනය 14 හි) Assemble කළොත් loop එක කීවරක් ධාවනය වේද? Output කුමක්ද?</li>
+<li><code>cdr[cdr[(A, B, C)]]</code> සහ <code>car[cons[X; (Y, Z)]]</code> ගණනය කරන්න.</li>
+<li>4-byte <code>int</code> array එකක් 2000 දී ආරම්භ වේ. <code>ipointer = iarray + 5</code> හි byte ලිපිනය කුමක්ද?</li>
+<li>FORTRAN කණ්ඩායමේ ප්‍රධාන අවදානම ලෙස Backus දකින්නේ කුමක්ද? එක් වාක්‍යයකින්.</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>X = 2 × 6 + 1 = <strong>13</strong>. Steps = 8 × 6 + 2 = <strong>50</strong>. (Lab මූලාශ්‍රය මත පරීක්ෂා කළා: bytes <code>... 01 02 06 01</code>, Output 13, steps 50.)</li>
+<li>0 − 1 = 255, එබැවින් <strong>256</strong> වාරයක්. X = 5 + 3 × 256 = 773 → 773 mod 256 = <strong>5</strong>. Steps 8 × 256 + 2 = <strong>2,050</strong>.</li>
+<li><code>cdr[(B, C)]</code> = <strong>(C)</strong> = <code>(C · NIL)</code>. <code>cons[X; (Y, Z)]</code> = <code>(X, Y, Z)</code>, එහි car = <strong>X</strong>.</li>
+<li>2000 + 5 × 4 = <strong>2020</strong>.</li>
+<li>Compiler එක අතින් ලියූ කේතය තරම් කාර්යක්ෂම කේතයක් නිපදවිය නොහැකි නම් කිසිවෙකු FORTRAN භාවිත නොකරනු ඇත (පිටුව 167).)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>John Backus, &ldquo;The History of FORTRAN I, II, and III&rdquo;, <em>ACM SIGPLAN Notices</em> 13(8), 1978, pp. 165–180. Software Preservation Group (Computer History Museum) පිටපත: <a href="https://www.softwarepreservation.org/projects/FORTRAN/paper/p165-backus.pdf">https://www.softwarepreservation.org/projects/FORTRAN/paper/p165-backus.pdf</a> (පිටු 167, 171, 173).</li>
+<li>John McCarthy, &ldquo;Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I&rdquo;, <em>CACM</em> 3(4), 1960. කතුවරයාගේ වෙබ් පිටපත: <a href="https://www-formal.stanford.edu/jmc/recursive.pdf">https://www-formal.stanford.edu/jmc/recursive.pdf</a> (එම පිටපතේ පිටු 10–12, 16).</li>
+<li>Dennis M. Ritchie, &ldquo;The Development of the C Language&rdquo; (HOPL-II, 1993). Bell Labs වෙබ් පිටපත: <a href="https://www.bell-labs.com/usr/dmr/www/chist.html">https://www.bell-labs.com/usr/dmr/www/chist.html</a> (&ldquo;The Problems of B&rdquo;, &ldquo;Portability&rdquo; කොටස්).</li>
+<li>මෙම පොතේ mini-CPU lab එකේ මූලාශ්‍ර කේතය (<code>static/labs/mini-cpu/index.html</code>): opcode වගුව, ගුණ කිරීමේ උපදෙසක් නැත, Reset මතකය හිස් නොකරයි. §2 සහ අභ්‍යාස 1–2 හි වැඩසටහන් එම කේතයම ධාවනය කර පරීක්ෂා කළෙමු.</li>
+<li>§2 හි A, B, C සහ §5 හි ලිපින ආදර්ශ (illustrative) අංක වේ.</li>
+</ul>
+<p><strong>පිටවීමේ දොර:</strong> Dennis M. Ritchie, &ldquo;The Development of the C Language&rdquo; (HOPL-II / ACM) — Unix අසල C හි නිර්මාණය පිළිබඳ ප්‍රාථමික ගිණුම; Lisp හි ආරම්භක ප්‍රකාශය සඳහා, සංකේතාත්මක ප්‍රකාශනවල recursive functions පිළිබඳ John McCarthy ගේ මුල් CACM පත්‍රිකා බලන්න.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/1cf670626f822b4547df333e753a35b808627aa1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B6%89%E0%B7%84%E0%B7%85-%E0%B6%B8%E0%B6%A7%E0%B7%8A%E0%B6%A7%E0%B6%B8%E0%B7%9A&#43;%E0%B6%B7%E0%B7%8F%E0%B7%82%E0%B7%8F%3A&#43;FORTRAN%2C&#43;COBOL%2C&#43;Lisp%2C&#43;C&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F27-high-level-languages-fortran-cobol-lisp-c%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F27-high-level-languages-fortran-cobol-lisp-c.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F27-high-level-languages-fortran-cobol-lisp-c.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/26-from-machine-code-to-assembly/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>යන්ත්‍ර කේතයේ සිට Assembly දක්වා</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex align-center">
+        <span>Compilers, JIT, සහ නවීන භාෂා Runtimes</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#fortran-formula-translation">FORTRAN: Formula Translation</a></li>
+    <li><a href="#cobol-වදයව-නව-වයපරය">COBOL: විද්‍යාව නොව ව්‍යාපාරය</a></li>
+    <li><a href="#lisp-වනස-ආකතයක">Lisp: වෙනස් ආකෘතියක්</a></li>
+    <li><a href="#c-පදධත-කරමලඛනය-යනතරයට-සමප">C: පද්ධති ක්‍රමලේඛනය, යන්ත්‍රයට සමීප</a></li>
+    <li><a href="#පද-නල">පොදු නූල</a></li>
+    <li><a href="#ගඹරන-compiler-එකක-ඔබ-වනවන-කරන-වඩය--එක-පරකශනයක-අතන-compile-කරම-fortran-හ-අභයගය-lisp-හ-list-සහ-c-හ-pointer">ගැඹුරින්: compiler එකක් ඔබ වෙනුවෙන් කරන වැඩය — එක් ප්‍රකාශනයක් අතින් compile කිරීම, FORTRAN හි අභියෝගය, Lisp හි list සහ C හි pointer</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-එක-fortran-පළයක-අතන-compile-කරම">2. එක් FORTRAN පේළියක් අතින් compile කිරීම</a></li>
+        <li><a href="#3-fortran-කණඩයම-සබ-පරශනය-කරයකෂමතව">3. FORTRAN කණ්ඩායමේ සැබෑ ප්‍රශ්නය: කාර්යක්ෂමතාව</a></li>
+        <li><a href="#4-lisp-code-සහ-data-එකම-වයහය">4. Lisp: code සහ data එකම ව්‍යුහය</a></li>
+        <li><a href="#5-c-pointer-එකක-byte-ලපනයක-ව-හට">5. C: pointer එකක් byte ලිපිනයක් වූ හැටි</a></li>
+        <li><a href="#6-cobol-ගන">6. COBOL ගැන</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

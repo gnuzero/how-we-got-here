@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="โปรโตคอลอินเทอร์เน็ตซ้อนกันอย่างไรและเหตุใด — ชั้น, flag day, แอปบนพื้นผิวที่ไม่เชื่อถือได้ — ไม่ใช่แคตตาล็อก">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/41-tcp-ip-and-the-modern-internet-stack/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่">
+	<meta property="og:description" content="โปรโตคอลอินเทอร์เน็ตซ้อนกันอย่างไรและเหตุใด — ชั้น, flag day, แอปบนพื้นผิวที่ไม่เชื่อถือได้ — ไม่ใช่แคตตาล็อก">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่">
+	<meta itemprop="description" content="โปรโตคอลอินเทอร์เน็ตซ้อนกันอย่างไรและเหตุใด — ชั้น, flag day, แอปบนพื้นผิวที่ไม่เชื่อถือได้ — ไม่ใช่แคตตาล็อก">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1160">
+
+<title>TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่ • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/41-tcp-ip-and-the-modern-internet-stack/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/41-tcp-ip-and-the-modern-internet-stack/" title="TCP/IP and the Modern Internet Stack">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/41-tcp-ip-and-the-modern-internet-stack/" title="TCP/IP සහ නවීන අන්තර්ජාල Stack එක">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" title="TCP/IP மற்றும் நவீன இணைய Stack">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/41-tcp-ip-and-the-modern-internet-stack/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="active">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#แบบจำลองแบบชน">แบบจำลองแบบชั้น</a></li>
+    <li><a href="#encapsulation">Encapsulation</a></li>
+    <li><a href="#tcp-บนพนผวทไมเชอถอได">TCP บนพื้นผิวที่ไม่เชื่อถือได้</a></li>
+    <li><a href="#เมอเครอขายแนน-การควบคมความคบคง">เมื่อเครือข่ายแน่น: การควบคุมความคับคั่ง</a>
+      <ul>
+        <li><a href="#ทำไมตองเปนหนาตาง-ผลคณแบนดวดทกบเวลาแฝง">ทำไมต้องเป็นหน้าต่าง: ผลคูณแบนด์วิดท์กับเวลาแฝง</a></li>
+        <li><a href="#เรมชา-คนหาความจแบบทวคณ">เริ่มช้า: ค้นหาความจุแบบทวีคูณ</a></li>
+        <li><a href="#หลกเลยงความคบคง-บวกทละหนง-หารครง">หลีกเลี่ยงความคับคั่ง: บวกทีละหนึ่ง หารครึ่ง</a></li>
+        <li><a href="#ทำไม-aimd-แบบเดมไมพอ-ทอยาวและอวน">ทำไม AIMD แบบเดิมไม่พอ: ท่อยาวและอ้วน</a></li>
+      </ul>
+    </li>
+    <li><a href="#จากโปรโตคอลของเครอขายเดยวสสแตก">จากโปรโตคอลของเครือข่ายเดียวสู่สแตก</a></li>
+    <li><a href="#เหตใดการออกแบบนชนะ">เหตุใดการออกแบบนี้ชนะ</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>ARPANET (บทที่ 39) พิสูจน์ packet switching Ethernet (บทที่ 40) ทำให้สายท้องถิ่นเป็นมาตรฐาน ไม่มีอย่างใดเพียงอย่างเดียวที่บอกวิธีเย็บเครือข่าย <em>ต่างกัน</em> — สื่อต่างกัน addressing ต่างกัน — ให้เป็นอินเตอร์เน็ตเวิร์กเดียวที่เครื่องสองเครื่องใด ๆ ใช้ได้ ชุด TCP/IP ของ Vint Cerf และ Bob Kahn แก้ปัญหานั้น; มันยังเป็นรากฐานที่อินเทอร์เน็ตสมัยใหม่รันอยู่</p>
+<h2 id="แบบจำลองแบบชน">แบบจำลองแบบชั้น<a class="anchor" href="#%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%88%e0%b8%b3%e0%b8%a5%e0%b8%ad%e0%b8%87%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%8a%e0%b8%99">#</a></h2>
+<p>TCP/IP แยกข้อกังวลแบบที่สแตกของ PCIe ทำ (บทที่ 33) ในระดับอินเตอร์เน็ตเวิร์ก <strong>Link</strong> จัดการฮอปท้องถิ่น — Ethernet, Wi-Fi, ไฟเบอร์ <strong>Internet (IP)</strong> ให้ addressing และ routing สากล <em>ข้าม</em> ลิงก์เหล่านั้น; แพ็กเก็ต IP ไม่สนใจว่าสื่ออะไรพา <strong>Transport (TCP หรือ UDP)</strong> ให้การส่งมอบที่เชื่อถือได้มีลำดับ (TCP) หรือ best-effort overhead ต่ำ (UDP) ทับ IP <strong>Application</strong> คือที่ HTTP, DNS, SMTP และเครือญาติอยู่ เลือก transport ที่เหมาะ</p>
+<h2 id="encapsulation">Encapsulation<a class="anchor" href="#encapsulation">#</a></h2>
+<p>ข้อมูลที่เคลื่อนลงได้ header ในแต่ละชั้น — ไบต์แอปใต้ TCP/UDP, segment นั้นใต้ IP, แพ็กเก็ตนั้นใต้ link header (และมัก trailer) ที่ปลายทางกระบวนการย้อนกลับ: แต่ละชั้นลอก header ของตัวเองและใช้สิ่งที่เพิ่งอ่าน (พอร์ต, ที่อยู่) เพื่อส่งส่วนที่เหลือขึ้น</p>
+<h2 id="tcp-บนพนผวทไมเชอถอได">TCP บนพื้นผิวที่ไม่เชื่อถือได้<a class="anchor" href="#tcp-%e0%b8%9a%e0%b8%99%e0%b8%9e%e0%b8%99%e0%b8%9c%e0%b8%a7%e0%b8%97%e0%b9%84%e0%b8%a1%e0%b9%80%e0%b8%8a%e0%b8%ad%e0%b8%96%e0%b8%ad%e0%b9%84%e0%b8%94">#</a></h2>
+<p>IP เป็น best-effort อย่างชัด — ไม่มีสัญญาการส่งมอบ ไม่มีสัญญาลำดับ ทิ้งได้ TCP สร้างกระแสไบต์ที่เชื่อถือได้มีลำดับทับด้วยหมายเลขลำดับและการยืนยัน (และการส่งซ้ำเมื่อ ACK ไม่มา) — <em>ชนิด</em> ความเชื่อถือได้เดียวกับ data-link ของ PCIe (บทที่ 33) ยืดข้ามอินเตอร์เน็ตเวิร์กที่ไม่เชื่อถือได้ทั้งก้อนแทนลิงก์เฉพาะเส้น</p>
+<p>การเชื่อมต่อเริ่มด้วย three-way handshake: SYN (ไคลเอนต์เสนอหมายเลขลำดับ), SYN-ACK (เซิร์ฟเวอร์ยืนยันและเสนอของตัวเอง), ACK สุดท้าย แล้วข้อมูลแอปจึงไหล — ต้นทุนเล็กน้อยโดยเจตนาเพื่อให้ทั้งสองฝั่งมีสถานะซิงค์ก่อน</p>
+<h2 id="เมอเครอขายแนน-การควบคมความคบคง">เมื่อเครือข่ายแน่น: การควบคุมความคับคั่ง<a class="anchor" href="#%e0%b9%80%e0%b8%a1%e0%b8%ad%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%ad%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b9%81%e0%b8%99%e0%b8%99-%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%84%e0%b8%a7%e0%b8%9a%e0%b8%84%e0%b8%a1%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%84%e0%b8%9a%e0%b8%84%e0%b8%87">#</a></h2>
+<p>ความเชื่อถือได้ของ TCP ตอบคำถามว่า &ldquo;ข้อมูลถึงครบไหม&rdquo; แต่ยังมีอีกคำถามที่สำคัญพอกัน: <em>ควรส่งเร็วแค่ไหน</em> ถ้าผู้ส่งทุกรายอัดข้อมูลเต็มที่ เราเตอร์ตรงกลางจะล้น ทิ้งแพ็กเก็ต ผู้ส่งก็ส่งซ้ำ เครือข่ายยิ่งแน่น — วงจรป้อนกลับที่พังตัวเอง</p>
+<p>นี่ไม่ใช่ทฤษฎี Van Jacobson เล่าไว้ในบทความปี 1988 ว่าในเดือนตุลาคม 1986 อินเทอร์เน็ตเกิด &ldquo;การล่มจากความคับคั่ง&rdquo; (congestion collapse) ครั้งแรกในชุดหนึ่ง: ปริมาณข้อมูลระหว่าง LBL กับ UC Berkeley ซึ่งห่างกันราว 400 หลาและผ่าน IMP สองฮอป ตกจาก <strong>32 kbps เหลือ 40 bps</strong> — ลดลงราวพันเท่า สาเหตุไม่ใช่สายเสีย แต่เป็น TCP เองที่ส่งซ้ำอย่างไม่ยั้งเข้าไปในเครือข่ายที่แน่นอยู่แล้ว</p>
+<p>คำว่า congestion ยังไม่พบศัพท์บัญญัติ บทนี้เรียก <strong>ความคับคั่ง</strong> และ <strong>การควบคุมความคับคั่ง</strong> (congestion control) ขอนิยามคำอื่นที่ต้องใช้ก่อน:</p>
+<ul>
+<li><strong>กลุ่มข้อมูล</strong> (packet, ศัพท์บัญญัติ; ทับศัพท์ว่าแพ็กเก็ต) และ <strong>ส่วน</strong> (segment, ศัพท์บัญญัติ &ldquo;ส่วน, เซกเมนต์&rdquo;) — หน่วยข้อมูลของชั้น IP และชั้น TCP ตามลำดับ ขนาดข้อมูลสูงสุดต่อ segment เรียกว่า MSS ในตัวอย่างใช้ 1,460 ไบต์ (ขนาดที่พบบ่อยบน Ethernet เป็นตัวเลขประกอบการอธิบาย)</li>
+<li><strong>การตอบรับ</strong> (acknowledgement: ACK, ศัพท์บัญญัติ) — ข้อความจากผู้รับว่า &ldquo;ได้ถึงไบต์นี้แล้ว&rdquo;</li>
+<li><strong>เวลาไปกลับ</strong> (round-trip time: RTT; ยังไม่พบศัพท์บัญญัติ) — เวลาตั้งแต่ส่ง segment จนได้ ACK ของมันกลับมา</li>
+<li><strong>หน้าต่าง</strong> (window, ศัพท์บัญญัติ) — จำนวนไบต์ที่ส่งออกไปแล้วแต่ยังไม่ได้ ACK ได้มากที่สุด TCP มีหน้าต่างสองบาน: บานที่ <em>ผู้รับ</em> ประกาศว่ามีที่พักข้อมูล (buffer, ศัพท์บัญญัติ &ldquo;ที่พัก(ข้อมูล)&rdquo;) เหลือเท่าไร ซึ่งเป็น <strong>การควบคุมสายงาน</strong> (flow control, ศัพท์บัญญัติ) กับบานที่ <em>ผู้ส่ง</em> ประเมินเองว่าเครือข่ายรับไหวเท่าไร เรียกว่า <strong>หน้าต่างความคับคั่ง</strong> (congestion window: cwnd) ผู้ส่งใช้บานที่เล็กกว่า</li>
+</ul>
+<h3 id="ทำไมตองเปนหนาตาง-ผลคณแบนดวดทกบเวลาแฝง">ทำไมต้องเป็นหน้าต่าง: ผลคูณแบนด์วิดท์กับเวลาแฝง<a class="anchor" href="#%e0%b8%97%e0%b8%b3%e0%b9%84%e0%b8%a1%e0%b8%95%e0%b8%ad%e0%b8%87%e0%b9%80%e0%b8%9b%e0%b8%99%e0%b8%ab%e0%b8%99%e0%b8%b2%e0%b8%95%e0%b8%b2%e0%b8%87-%e0%b8%9c%e0%b8%a5%e0%b8%84%e0%b8%93%e0%b9%81%e0%b8%9a%e0%b8%99%e0%b8%94%e0%b8%a7%e0%b8%94%e0%b8%97%e0%b8%81%e0%b8%9a%e0%b9%80%e0%b8%a7%e0%b8%a5%e0%b8%b2%e0%b9%81%e0%b8%9d%e0%b8%87">#</a></h3>
+<p>ผู้ส่งที่มีหน้าต่าง W ไบต์ ส่ง W ไบต์ออกไป แล้วต้องรอ ACK ซึ่งใช้เวลาหนึ่ง RTT ปริมาณงานสูงสุดจึงเป็น <strong>W / RTT</strong> กลับด้าน: ถ้าจะใช้ลิงก์ความจุ B ให้เต็ม หน้าต่างต้องใหญ่อย่างน้อย <strong>B × RTT</strong> ค่านี้เรียกว่า <strong>ผลคูณแบนด์วิดท์กับเวลาแฝง</strong> (bandwidth-delay product: BDP) — คือจำนวนไบต์ที่ &ldquo;ลอยอยู่ในสาย&rdquo; ได้พร้อมกัน</p>
+<p>ตัวอย่าง (ตัวเลขประกอบการอธิบาย): ลิงก์ 100 Mb/s, RTT 40 ms</p>
+<ul>
+<li>BDP = 100 × 10⁶ × 0.040 / 8 = <strong>500,000 ไบต์</strong> ≈ 342 segment ขนาด 1,460 ไบต์</li>
+<li>ถ้าหน้าต่างติดที่ 65,535 ไบต์ (ค่าสูงสุดของช่อง Window ขนาด 16 บิตในส่วนหัวของ TCP ตาม RFC 793 ในประตูออกด้านล่าง) ปริมาณงานสูงสุด = 65,535 / 0.040 ≈ 1.64 MB/s ≈ <strong>13 Mb/s</strong> — ใช้ลิงก์ได้แค่ 13% ไม่ว่าลิงก์จะว่างแค่ไหน</li>
+</ul>
+<p>ข้อสรุปแรก: บนเส้นทางไกลและเร็ว <em>หน้าต่าง</em> ไม่ใช่ความเร็วสาย คือสิ่งที่จำกัดปริมาณงาน และคำถามของการควบคุมความคับคั่งจึงกลายเป็น: ผู้ส่งจะหาค่า cwnd ที่ถูกต้องได้อย่างไร ในเมื่อไม่มีใครบอก BDP ของเส้นทางให้</p>
+<h3 id="เรมชา-คนหาความจแบบทวคณ">เริ่มช้า: ค้นหาความจุแบบทวีคูณ<a class="anchor" href="#%e0%b9%80%e0%b8%a3%e0%b8%a1%e0%b8%8a%e0%b8%b2-%e0%b8%84%e0%b8%99%e0%b8%ab%e0%b8%b2%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%88%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%97%e0%b8%a7%e0%b8%84%e0%b8%93">#</a></h3>
+<p>คำตอบของ Jacobson ซึ่ง RFC 5681 เขียนเป็นมาตรฐาน มีสองโหมด โหมดแรกเรียกว่า <strong>slow start</strong> (ยังไม่พบศัพท์บัญญัติ แปลตามตัวว่า &ldquo;เริ่มช้า&rdquo;) เริ่มจากหน้าต่างเริ่มต้น (initial window: IW) แล้ว <strong>เพิ่ม cwnd หนึ่ง segment ต่อทุก ACK</strong> ที่ได้รับ เพราะในหนึ่ง RTT จะมี ACK กลับมาเท่ากับจำนวน segment ที่ส่งไป ผลคือ cwnd <strong>เพิ่มเป็นสองเท่าทุก RTT</strong> ชื่อ &ldquo;ช้า&rdquo; ฟังดูขัดกับการโตแบบทวีคูณ แต่มันช้าเมื่อเทียบกับของเดิมก่อนปี 1988 ที่ส่งหน้าต่างเต็มออกไปทันที</p>
+<p>RFC 5681 กำหนดเพดาน IW ไว้ 2–4 segment ตามขนาด segment ต่อมา RFC 6928 (ฉบับทดลอง) เสนอให้เพิ่มเป็น <strong>10 segment</strong> (ไม่เกิน 14,600 ไบต์) ลองไล่ด้วย IW = 10 บนลิงก์ตัวอย่างเดิม ส่งไฟล์ 1 MB (≈ 685 segment) โดยสมมุติว่าไม่มีการสูญหาย:</p>
+<table>
+	<thead>
+			<tr>
+					<th>RTT ที่</th>
+					<th>ส่งในรอบนี้ (segment)</th>
+					<th>สะสม</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>10</td>
+					<td>10</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>20</td>
+					<td>30</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>40</td>
+					<td>70</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>80</td>
+					<td>150</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>160</td>
+					<td>310</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>320</td>
+					<td>630</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>342 (ชนเพดาน BDP)</td>
+					<td>972 ≥ 685 เสร็จ</td>
+			</tr>
+	</tbody>
+</table>
+<p>รวม 7 RTT บวก three-way handshake อีกหนึ่ง RTT = 8 × 40 ms = <strong>320 ms</strong> ทั้งที่เวลาส่งบิตล้วน ๆ ที่ 100 Mb/s คือ 8 × 10⁶ / 10⁸ = 80 ms สำหรับไฟล์ขนาดเล็กถึงกลาง <strong>เวลาแฝง ไม่ใช่แบนด์วิดท์ คือคอขวด</strong> นี่คือเหตุที่การเพิ่ม IW จาก 3 เป็น 10 ถูกผลักดัน และเหตุที่การเปิดการเชื่อมต่อใหม่บ่อย ๆ นั้นแพง</p>
+<h3 id="หลกเลยงความคบคง-บวกทละหนง-หารครง">หลีกเลี่ยงความคับคั่ง: บวกทีละหนึ่ง หารครึ่ง<a class="anchor" href="#%e0%b8%ab%e0%b8%a5%e0%b8%81%e0%b9%80%e0%b8%a5%e0%b8%a2%e0%b8%87%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%84%e0%b8%9a%e0%b8%84%e0%b8%87-%e0%b8%9a%e0%b8%a7%e0%b8%81%e0%b8%97%e0%b8%a5%e0%b8%b0%e0%b8%ab%e0%b8%99%e0%b8%87-%e0%b8%ab%e0%b8%b2%e0%b8%a3%e0%b8%84%e0%b8%a3%e0%b8%87">#</a></h3>
+<p>เมื่อ cwnd ถึงเกณฑ์ที่เรียกว่า ssthresh (slow start threshold) ผู้ส่งเปลี่ยนเป็นโหมด <strong>congestion avoidance</strong> ซึ่ง RFC 5681 ให้เพิ่ม cwnd ราว <strong>หนึ่ง segment ต่อ RTT</strong> (สูตรต่อ ACK คือ cwnd += SMSS × SMSS / cwnd) — โตแบบเส้นตรงแทนทวีคูณ</p>
+<p>แล้วรู้ได้อย่างไรว่าแน่นแล้ว? อินเทอร์เน็ตไม่มีใครส่งสัญญาณบอก TCP จึงถือว่า <strong>การสูญหายของแพ็กเก็ตคือสัญญาณความคับคั่ง</strong> (เราเตอร์ทิ้งแพ็กเก็ตเมื่อที่พักข้อมูลเต็ม) มีสองระดับ:</p>
+<ul>
+<li>ได้ <strong>ACK ซ้ำ 3 ครั้ง</strong> (duplicate ACK) — ผู้รับยังได้ segment หลังจากช่องที่หายไป แปลว่าเครือข่ายยังส่งได้ แค่หายไปตัวหนึ่ง RFC 5681 ให้ส่ง segment นั้นซ้ำทันที (fast retransmit) และตั้ง <strong>ssthresh = max(FlightSize/2, 2 × SMSS)</strong> โดย FlightSize คือข้อมูลที่ยังไม่ได้ ACK — คือ <em>ลดหน้าต่างลงครึ่งหนึ่ง</em></li>
+<li><strong>หมดเวลารอ</strong> (timeout, ศัพท์บัญญัติ) ACK ไม่มาเลย — สัญญาณหนักกว่า RFC 5681 ให้ลด cwnd เหลือไม่เกิน &ldquo;หน้าต่างสูญหาย&rdquo; (loss window) ซึ่งเท่ากับ 1 segment เต็ม แล้วเริ่ม slow start ใหม่</li>
+</ul>
+<p>กติกา &ldquo;บวกทีละน้อยเมื่อทุกอย่างดี ลดแบบคูณเมื่อเจอสัญญาณ&rdquo; เรียกว่า <strong>AIMD</strong> (additive increase, multiplicative decrease) ทำให้ cwnd เป็นรูปฟันเลื่อย ถ้าหน้าต่างสูงสุดก่อนสูญหายคือ W มันจะไต่จาก W/2 ขึ้นไป W เป็นเส้นตรง ค่าเฉลี่ยของฟันเลื่อยจึงอยู่ที่ราว 3W/4 (การคำนวณของผู้เขียนจากรูปทรง) เหตุผลที่ต้องลด <em>แบบคูณ</em> ไม่ใช่ลบทีละน้อย: เมื่อมีหลายการเชื่อมต่อแชร์ลิงก์เดียว การลดตามสัดส่วนทำให้ตัวที่ใหญ่ลดมากกว่าตัวที่เล็ก การเชื่อมต่อจึงค่อย ๆ ลู่เข้าหาส่วนแบ่งที่ใกล้เคียงกัน</p>
+<h3 id="ทำไม-aimd-แบบเดมไมพอ-ทอยาวและอวน">ทำไม AIMD แบบเดิมไม่พอ: ท่อยาวและอ้วน<a class="anchor" href="#%e0%b8%97%e0%b8%b3%e0%b9%84%e0%b8%a1-aimd-%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b9%80%e0%b8%94%e0%b8%a1%e0%b9%84%e0%b8%a1%e0%b8%9e%e0%b8%ad-%e0%b8%97%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%a7%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%ad%e0%b8%a7%e0%b8%99">#</a></h3>
+<p>การฟื้นหลังสูญหายหนึ่งครั้งใช้ W/2 RTT บนลิงก์ตัวอย่าง (W ≈ 342) ใช้ 171 RTT × 40 ms ≈ <strong>6.8 วินาที</strong> พอรับได้ แต่ RFC 9438 (CUBIC, 2023) ยกกรณีลิงก์ 10 Gb/s ที่ RTT 0.1 วินาที แพ็กเก็ต 1,500 ไบต์: หน้าต่างเฉลี่ยต้องเป็น 10¹⁰ × 0.1 / (1,500 × 8) ≈ <strong>83,333 แพ็กเก็ต</strong> และตารางใน RFC บอกว่า Reno (AIMD แบบเดิม) จะทำความเร็วนี้ได้ก็ต่อเมื่ออัตราสูญหายไม่เกิน <strong>2 × 10⁻¹⁰</strong> — หายไม่เกินหนึ่งแพ็กเก็ตในห้าพันล้าน ผู้เขียนคำนวณต่อ: ถ้าหายครั้งเดียว การไต่กลับจาก 41,667 ไป 83,333 ทีละหนึ่งต่อ RTT ใช้ 41,667 × 0.1 ≈ 4,167 วินาที หรือราว <strong>69 นาที</strong></p>
+<p><strong>CUBIC</strong> ซึ่งเป็นอัลกอริทึมที่เคอร์เนล Linux ในแล็บด้านล่างใช้อยู่ แก้ด้วยการให้หน้าต่างเป็นฟังก์ชันของ <em>เวลา</em> ตั้งแต่การสูญหายครั้งล่าสุด ไม่ใช่จำนวน RTT:</p>
+<p><strong>W(t) = C × (t − K)³ + W_max</strong></p>
+<p>โดย W_max คือหน้าต่างก่อนสูญหาย RFC 9438 ให้ลดหน้าต่างเหลือ β = 0.7 ของเดิมเมื่อสูญหาย (ไม่ใช่ 0.5) และ C = 0.4 ส่วน K คือเวลาที่ใช้ไต่กลับถึง W_max ได้จาก K = ∛(W_max × (1 − β) / C) รูปกราฟลูกบาศก์ทำให้หน้าต่างโตเร็วตอนไกลจาก W_max ชะลอ <em>ใกล้</em> W_max (ซึ่งเป็นระดับที่เคยแน่น) แล้วค่อยเร่งอีกครั้งถ้าผ่านไปได้โดยไม่สูญหาย แทนตัวเลข (การคำนวณของผู้เขียน):</p>
+<ul>
+<li>W_max = 342: K = ∛(342 × 0.3 / 0.4) ≈ <strong>6.4 วินาที</strong> — ใกล้กับ 6.8 วินาทีของ Reno บนลิงก์ขนาดนี้ทั้งสองแบบพอ ๆ กัน</li>
+<li>W_max = 83,333: K = ∛(83,333 × 0.3 / 0.4) = ∛62,500 ≈ <strong>40 วินาที</strong> เทียบกับ 69 นาทีของ Reno</li>
+</ul>
+<p>K ไม่ขึ้นกับ RTT นี่คือทางเลือกออกแบบที่ทำให้ CUBIC ใช้ท่อยาวได้ดี และ RFC ยังมี &ldquo;ช่วงเป็นมิตรกับ Reno&rdquo; (Reno-friendly region) ที่ทำให้ CUBIC ได้ปริมาณงานใกล้เคียง Reno ในสภาพที่ Reno ทำงานได้ดีอยู่แล้ว (RTT สั้น BDP เล็ก)</p>
+<h2 id="จากโปรโตคอลของเครอขายเดยวสสแตก">จากโปรโตคอลของเครือข่ายเดียวสู่สแตก<a class="anchor" href="#%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%82%e0%b8%95%e0%b8%84%e0%b8%ad%e0%b8%a5%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%ad%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7%e0%b8%aa%e0%b8%aa%e0%b9%81%e0%b8%95%e0%b8%81">#</a></h2>
+<p>ARPANET เดิมพูดโปรโตคอล host-to-host ของตัวเอง (NCP) ไม่ใช่ TCP/IP เดิมพันของ Cerf และ Kahn ใหญ่กว่า: <em>สแตกโปรโตคอล</em> ที่อินเตอร์เน็ตเครือข่ายแพ็กเก็ต <em>หลาย</em> เครือข่ายได้ เพื่อให้ transport กับสายท้องถิ่นวิวัฒนาการแยกกัน การตัดจริงบน ARPANET เองคือ &ldquo;flag day&rdquo; 1 มกราคม 1983 เมื่อ NCP ถูกปิดและ TCP/IP กลายเป็นบังคับ — การตัดแข็งที่หายากซึ่งทำให้เรื่องแบบชั้นเป็นปฏิบัติการ ไม่ใช่แค่สถาปัตยกรรม</p>
+<p>โปรโตคอลแอปแล้วซ้อน <em>เพราะ</em> พื้นผิวนี้มีอยู่ DNS (ประตูในบทที่ 64: <a href="https://www.rfc-editor.org/rfc/rfc1034">RFC 1034</a> / <a href="https://www.rfc-editor.org/rfc/rfc1035">RFC 1035</a>) ทำให้ชื่อใช้ได้ในระดับใหญ่; เมลและเว็บ (SMTP, HTTP และเครือญาติ) ขี่ TCP ในฐานะไคลเอนต์ของกระแสที่เชื่อถือได้ แทนการประดิษฐ์ addressing และการส่งซ้ำใหม่ รูปแบบคือจุดสำคัญ: แต่ละชั้นซื้อข้อจำกัดหนึ่งอย่างเพื่อให้ชั้นบนสมมติได้ นั่นคือเรื่องของการซ้อน ไม่ใช่แคตตาล็อกทุก RFC</p>
+<h2 id="เหตใดการออกแบบนชนะ">เหตุใดการออกแบบนี้ชนะ<a class="anchor" href="#%e0%b9%80%e0%b8%ab%e0%b8%95%e0%b9%83%e0%b8%94%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%ad%e0%b8%ad%e0%b8%81%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%99%e0%b8%8a%e0%b8%99%e0%b8%b0">#</a></h2>
+<p>สมมติฐานรับน้ำหนักคือเครือข่ายพื้นฐานต่างชนิดและไม่เชื่อถือได้ ดังนั้นการรับประกันอยู่ชั้นสูงกว่า แทนที่จะอยู่ในทุกลิงก์กายภาพ นั่นเข้ากับอินเตอร์เน็ตเวิร์กโลกที่เย็บมานานหลายทศวรรษจากเทคโนโลยีต่างกันโดยองค์กรที่ไม่เคยตกลงมาตรฐานกายภาพเดียว — ซึ่งคือเหตุผลที่ TCP/IP ยังนั่งใต้เกือบทั้งอินเทอร์เน็ตสมัยใหม่ รวมเครือข่ายศูนย์ข้อมูลถัดไป</p>
+<p><strong>ประตูออก:</strong> <a href="https://www.rfc-editor.org/rfc/rfc791">RFC 791</a> (Internet Protocol) และ <a href="https://www.rfc-editor.org/rfc/rfc793">RFC 793</a> (Transmission Control Protocol) — สเปกหลักสำหรับครึ่ง addressing/routing และครึ่ง reliable-transport ของสแตกนี้ (สายเลือด Cerf/Kahn; Postel เป็นบรรณาธิการ RFC ของข้อความกันยายน 1981 เหล่านี้)</p>
+<p><strong>ลองตอนนี้.</strong> แล็บด้านล่างบูต Linux จริง (เคอร์เนล 4.16) ในเบราว์เซอร์ เครื่องจำลองมีการ์ด Ethernet จำลอง (<code>eth0</code>) แต่ไม่ได้ต่อกับเครือข่ายภายนอก จึงส่งข้อมูลออกนอกเครื่องไม่ได้ และตอนบูตแม้แต่อินเทอร์เฟซวนกลับ (loopback, <code>lo</code>) ก็ยังไม่เปิด (<code>ping 127.0.0.1</code> จึงตอบว่า Network is unreachable จนกว่าจะสั่ง <code>ifconfig lo 127.0.0.1 up</code> หลังจากนั้นจึงตอบกลับตามปกติ) แต่ส่วน TCP ของเคอร์เนลยังอยู่ครบ และเปิดให้ดูผ่าน <code>/proc</code> ได้ ผู้เขียนลองคำสั่งต่อไปนี้ในอิมเมจของแล็บนี้แล้ว:</p>
+<ul>
+<li><code>cat /proc/sys/net/ipv4/tcp_congestion_control</code> — ได้ <code>cubic</code> คืออัลกอริทึมที่ใช้อยู่</li>
+<li><code>cat /proc/sys/net/ipv4/tcp_available_congestion_control</code> — ได้ <code>reno cubic</code> คือสองอัลกอริทึมที่เคอร์เนลนี้มี</li>
+<li><code>sysctl -w net.ipv4.tcp_congestion_control=reno</code> — เปลี่ยนเป็น AIMD แบบเดิม แล้ว <code>cat</code> ซ้ำเพื่อยืนยัน (การเปลี่ยนมีผลในเครื่องจำลองเท่านั้น กด Restart เพื่อกลับสภาพเดิม)</li>
+<li><code>cat /proc/sys/net/ipv4/tcp_rmem</code> — ได้ค่าทำนอง <code>4096 87380 908384</code> คือขนาดที่พักข้อมูลขารับ ต่ำสุด ตั้งต้น และสูงสุด เป็นไบต์ (ค่าสูงสุดเปลี่ยนเล็กน้อยทุกครั้งที่บูต เพราะเคอร์เนลคำนวณจากหน่วยความจำว่างตอนบูต ผู้ตรวจบูตสามครั้งได้ 908,288 ถึง 908,544 ไบต์ แต่ราว 908 KB เสมอ) ลองคิด: ถ้าหน้าต่างขารับถูกจำกัดที่ราว 908 KB บนเส้นทาง RTT 40 ms ปริมาณงานสูงสุดคือ 908,384 / 0.040 ≈ 22.7 MB/s หรือราว 182 Mb/s — สูตร W / RTT เดียวกับข้างบน (เป็นขอบบนคร่าว ๆ ค่าที่ใช้ได้จริงขึ้นกับการตั้งค่าอื่นของเคอร์เนลด้วย)</li>
+</ul>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=th"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="แล็บเชิงโต้ตอบ: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=th" target="_blank" rel="noopener">เปิดแล็บในแท็บใหม่ ↗</a>
+  </div>
+</div>
+
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>โอภาส เอี่ยมสิริวงศ์, <em>เครือข่ายคอมพิวเตอร์และการสื่อสาร</em></li>
+<li>สุวัฒน์ ปุณณชัยยะ และคณะ, <em>เปิดโลก TCP/IP และโปรโตคอลของอินเตอร์เน็ต</em></li>
+<li>ภัทรสินี ภัทรโกศล, <em>เครือข่ายคอมพิวเตอร์</em></li>
+<li>Van Jacobson, Michael J. Karels, &ldquo;Congestion Avoidance and Control&rdquo; (SIGCOMM 1988; ฉบับแก้ไขพฤศจิกายน 1988) — การล่มจากความคับคั่งเดือนตุลาคม 1986 (32 kbps → 40 bps) และหลักการอนุรักษ์แพ็กเก็ต: <a href="https://ee.lbl.gov/papers/congavoid.pdf">https://ee.lbl.gov/papers/congavoid.pdf</a></li>
+<li>M. Allman, V. Paxson, E. Blanton, <a href="https://www.rfc-editor.org/rfc/rfc5681">RFC 5681</a> &ldquo;TCP Congestion Control&rdquo; (2009) — slow start, congestion avoidance, IW, สูตร ssthresh และ ACK ซ้ำ 3 ครั้ง</li>
+<li>J. Chu และคณะ, <a href="https://www.rfc-editor.org/rfc/rfc6928">RFC 6928</a> &ldquo;Increasing TCP&rsquo;s Initial Window&rdquo; (2013, ฉบับทดลอง) — IW 10 segment</li>
+<li>L. Xu และคณะ, <a href="https://www.rfc-editor.org/rfc/rfc9438">RFC 9438</a> &ldquo;CUBIC for Fast and Long-Distance Networks&rdquo; (2023) — ฟังก์ชัน W(t), β = 0.7, C = 0.4 และตารางอัตราสูญหายที่ 10 Gb/s</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;TCP%2FIP&#43;%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%AA%E0%B9%81%E0%B8%95%E0%B8%81%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%80%E0%B8%99%E0%B9%87%E0%B8%95%E0%B8%AA%E0%B8%A1%E0%B8%B1%E0%B8%A2%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F41-tcp-ip-and-the-modern-internet-stack%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F41-tcp-ip-and-the-modern-internet-stack.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F41-tcp-ip-and-the-modern-internet-stack.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Ethernet และเครือข่ายท้องถิ่น</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/42-datacenter-networking-and-rdma/" class="flex align-center">
+        <span>เครือข่ายศูนย์ข้อมูลและ RDMA</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#แบบจำลองแบบชน">แบบจำลองแบบชั้น</a></li>
+    <li><a href="#encapsulation">Encapsulation</a></li>
+    <li><a href="#tcp-บนพนผวทไมเชอถอได">TCP บนพื้นผิวที่ไม่เชื่อถือได้</a></li>
+    <li><a href="#เมอเครอขายแนน-การควบคมความคบคง">เมื่อเครือข่ายแน่น: การควบคุมความคับคั่ง</a>
+      <ul>
+        <li><a href="#ทำไมตองเปนหนาตาง-ผลคณแบนดวดทกบเวลาแฝง">ทำไมต้องเป็นหน้าต่าง: ผลคูณแบนด์วิดท์กับเวลาแฝง</a></li>
+        <li><a href="#เรมชา-คนหาความจแบบทวคณ">เริ่มช้า: ค้นหาความจุแบบทวีคูณ</a></li>
+        <li><a href="#หลกเลยงความคบคง-บวกทละหนง-หารครง">หลีกเลี่ยงความคับคั่ง: บวกทีละหนึ่ง หารครึ่ง</a></li>
+        <li><a href="#ทำไม-aimd-แบบเดมไมพอ-ทอยาวและอวน">ทำไม AIMD แบบเดิมไม่พอ: ท่อยาวและอ้วน</a></li>
+      </ul>
+    </li>
+    <li><a href="#จากโปรโตคอลของเครอขายเดยวสสแตก">จากโปรโตคอลของเครือข่ายเดียวสู่สแตก</a></li>
+    <li><a href="#เหตใดการออกแบบนชนะ">เหตุใดการออกแบบนี้ชนะ</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

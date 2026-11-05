@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Throughput සහ සාධාරණත්වය deadlines නොවේ — දැඩි තත්‍ය කාලයට සාමාන්‍ය වේගය නොව බැඳුණු නරකම-අවස්ථා කාලය අවශ්‍යය">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/29-real-time-systems-and-deterministic-scheduling/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling">
+	<meta property="og:description" content="Throughput සහ සාධාරණත්වය deadlines නොවේ — දැඩි තත්‍ය කාලයට සාමාන්‍ය වේගය නොව බැඳුණු නරකම-අවස්ථා කාලය අවශ්‍යය">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:08:43+05:30">
+
+
+	<meta itemprop="name" content="තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling">
+	<meta itemprop="description" content="Throughput සහ සාධාරණත්වය deadlines නොවේ — දැඩි තත්‍ය කාලයට සාමාන්‍ය වේගය නොව බැඳුණු නරකම-අවස්ථා කාලය අවශ්‍යය">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:08:43+05:30">
+	<meta itemprop="wordCount" content="1510">
+
+<title>තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/29-real-time-systems-and-deterministic-scheduling/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/29-real-time-systems-and-deterministic-scheduling/" title="Real-Time Systems and Deterministic Scheduling">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/29-real-time-systems-and-deterministic-scheduling/" title="ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/29-real-time-systems-and-deterministic-scheduling/" title="Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/29-real-time-systems-and-deterministic-scheduling/" title="Sisteme în timp real și planificarea deterministă">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="active">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#වගවත-යන-නශචයතමක-නව">වේගවත් යනු නිශ්චයාත්මක නොවේ</a></li>
+    <li><a href="#දඩ-එදරව-මද">දැඩි එදිරිව මෘදු</a></li>
+    <li><a href="#rate-monotonic-scheduling">Rate-Monotonic Scheduling</a></li>
+    <li><a href="#වනස-වරගය-os-එකක-ඇය">වෙනස් වර්ගයේ OS එකක් ඇයි</a></li>
+    <li><a href="#ගඹරන-deadline-සහතක-කරම-අතන--rate-monotonic-බඳම-edf-සහ-උපදස-ගණන-කරම">ගැඹුරින්: deadline සහතික කිරීම අතින් — rate-monotonic බැඳීම, EDF, සහ උපදෙස් ගණන් කිරීම</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-liu-සහ-layland-ඔපප-කළ-ද">2. Liu සහ Layland ඔප්පු කළ දේ</a></li>
+        <li><a href="#3-වඩ-කළ-උදහරණ-ආදරශ-කරය-කටටල">3. වැඩ කළ උදාහරණ (ආදර්ශ කාර්ය කට්ටල)</a></li>
+        <li><a href="#4-c-wcet-ලබනන-කහනද-mini-cpu-මත-උපදස-ගණන-කරම">4. C (WCET) ලැබෙන්නේ කොහෙන්ද: mini-CPU මත උපදෙස් ගණන් කිරීම</a></li>
+        <li><a href="#5-priority-inversion-ආදරශ-කලරඛවක">5. Priority inversion: ආදර්ශ කාලරේඛාවක්</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Phase 4 හි මෙතෙක් සියල්ල — batch, time-sharing, අතථ්‍ය මතකය, containers — throughput, සාධාරණත්වය, හෝ කාර්යක්ෂම බෙදාගැනීම සඳහා ප්‍රශස්තකරණය කරයි. ඒවායින් කිසිවක් දී ඇති කාර්ය කොටසක් <em>කවදාද</em> අවසන් වේද යන්න දැඩිව සහතික නොකරයි. තත්‍ය කාල පද්ධති එම සහතිකය ගැන සැලකිලිමත් වේ. &ldquo;වේගවත්&rdquo; යනු &ldquo;තත්‍ය කාල&rdquo; ට වඩා වෙනස් ගුණයකි — මිනිසුන් නිරන්තරයෙන් පැටලෙන වෙනස්කමකි.</p>
+<h2 id="වගවත-යන-නශචයතමක-නව">වේගවත් යනු නිශ්චයාත්මක නොවේ<a class="anchor" href="#%e0%b7%80%e0%b6%9c%e0%b7%80%e0%b6%ad-%e0%b6%ba%e0%b6%b1-%e0%b6%b1%e0%b7%81%e0%b6%a0%e0%b6%ba%e0%b6%ad%e0%b6%b8%e0%b6%9a-%e0%b6%b1%e0%b7%80">#</a></h2>
+<p>සාමාන්‍ය-අරමුණු scheduler එකක් (Posts 21–25) හොඳ <em>සාමාන්‍ය-අවස්ථා</em> ප්‍රතිචාරශීලීත්වය සහ සාධාරණ බෙදාගැනීම සඳහා ප්‍රශස්තකරණය කරයි — සාමාන්‍ය අවස්ථාවේදී බොහෝ විට තරමක් වේගවත්ය. &ldquo;සාමාන්‍යයෙන් වේගවත්&rdquo; යනු &ldquo;සෑම විටම නිශ්චිත deadline එකක් ඇතුළත අවසන් වේ, ව්‍යතිරේක නැත&rdquo; නොවේ. Cache බලපෑම්, interrupt හැසිරවීම, හෝ garbage-collection pauses (Post 28) ප්‍රමාදයක් දිගු කළ හැක. බොහෝ apps සඳහා, ඉඳහිට විචලනය වැදගත් නොවේ. තත්‍ය කාල පද්ධතියක් සඳහා, එය සම්පූර්ණ ක්‍රීඩාව විය හැක.</p>
+<h2 id="දඩ-එදරව-මද">දැඩි එදිරිව මෘදු<a class="anchor" href="#%e0%b6%af%e0%b6%a9-%e0%b6%91%e0%b6%af%e0%b6%bb%e0%b7%80-%e0%b6%b8%e0%b6%af">#</a></h2>
+<p><strong>දැඩි</strong> deadline එකක්: එය මග හැරීම සම්පූර්ණ පද්ධති අසාර්ථකත්වයකි — පහත වැටුණු කාර්ය සාධනය නොවේ. ගුවන්-පාලන ස්ථායීකරණය, airbag යෙදවීම — සෑම විටම, කවුළුව ඇතුළත, නැතහොත් අසාර්ථකත්වය විනාශකාරී විය හැක.</p>
+<p><strong>මෘදු</strong> deadline එකක්: එය මග හැරීම ගුණාත්මකභාවය පහත හෙළයි නමුත් සෘජු අසාර්ථකත්වයක් නොවේ — බර යටතේ මඟ හැරුණු වීඩියෝ frame එකක් අප්‍රසන්නය, සහතික අර්බුදයක් නොවේ. Deadlines වෙත ළඟා වීමට ශක්තිමත් ප්‍රායෝගික ප්‍රවණතාවයක්; දෘඪාංග-බලාත්මක සහතිකයක් නොවේ.</p>
+<h2 id="rate-monotonic-scheduling">Rate-Monotonic Scheduling<a class="anchor" href="#rate-monotonic-scheduling">#</a></h2>
+<p>දැඩි තත්‍ය කාලය සඳහා එක් සම්භාව්‍ය ප්‍රවේශයක්: rate-monotonic scheduling — එක් එක් ආවර්තිත කාර්යයට එය කොපමණ නිතර ධාවනය විය යුතුද යන්නෙන් ස්ථිර priority එකක් පවරන්න; කෙටි කාල පරිච්ඡේදය → ඉහළ priority. ආවර්තිත කාර්ය කට්ටලවල හොඳින් අර්ථ දක්වන ලද පන්තියක් සඳහා ස්ථිර-priority ඇල්ගොරිතම අතර ඔප්පු කළ හැකි ලෙස ප්‍රශස්තය: එම workload සඳහා <em>කිසියම්</em> ස්ථිර-priority පැවරුමකට සෑම deadline එකක්ම සපුරාලිය හැකි නම්, rate-monotonic ද එසේ කරයි. ගණිතමය schedulability බැඳීමක් — දැඩි තත්‍ය කාල පද්ධති සහතික කිරීමට අවශ්‍ය ආකාරයේ විධිමත් ගුණයම.</p>
+<h2 id="වනස-වරගය-os-එකක-ඇය">වෙනස් වර්ගයේ OS එකක් ඇයි<a class="anchor" href="#%e0%b7%80%e0%b6%b1%e0%b7%83-%e0%b7%80%e0%b6%bb%e0%b6%9c%e0%b6%ba-os-%e0%b6%91%e0%b6%9a%e0%b6%9a-%e0%b6%87%e0%b6%ba">#</a></h2>
+<p>මෙම සහතික සපුරාලීමට බැඳුණු නරකම-අවස්ථා කාලය වටා නිර්මාණය කළ OS එකක් අවශ්‍යය — Real-Time Operating System (RTOS) — Posts 21–25 හි throughput/සාධාරණත්ව පෙළපත නොවේ. Interrupt latency බැඳුණු සහ දන්නා විය යුතුය. මතක allocation සාමාන්‍යයෙන් සාමාන්‍ය-අරමුණු GC වැනි පුරෝකථනය කළ නොහැකි-latency යාන්ත්‍රණ මත රඳා නොපවතී. Mutex එකකටත් ප්‍රවේශම් සහගත නිර්මාණය අවශ්‍යය (priority inheritance) එවිට අඩු-priority කාර්යයකට ඉහළ-priority එකක් අසීමිත කාලයක් අවහිර කළ නොහැක — priority inversion, සම්භාව්‍ය තත්‍ය කාල අන්තරායක්.</p>
+<p>මෙම කාචය හරහා mini-CPU lab එක නැවත බලන්න: සරල දෘඪාංගය මත, සෑම උපදෙසක කාලය නිශ්චයාත්මක සහ ගණන් කළ හැකිය — පද්ධති වඩාත් සංකීර්ණ වන විට RTOS නිර්මාණය සුරැකීමට සටන් කරන පුරෝකථනය කළ හැකි බව. ඊළඟ පෝස්ට් එක මෙම මූලධර්ම avionics, කාර්මික පාලනය, සහ සහතික බර දරන embedded යෙදවුම් වෙත ගෙන යයි.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=si"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="අන්තර්ක්‍රියාකාරී lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=si" target="_blank" rel="noopener">Lab එක නව tab එකක විවෘත කරන්න ↗</a>
+  </div>
+</div>
+
+<h2 id="ගඹරන-deadline-සහතක-කරම-අතන--rate-monotonic-බඳම-edf-සහ-උපදස-ගණන-කරම">ගැඹුරින්: deadline සහතික කිරීම අතින් — rate-monotonic බැඳීම, EDF, සහ උපදෙස් ගණන් කිරීම<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-deadline-%e0%b7%83%e0%b7%84%e0%b6%ad%e0%b6%9a-%e0%b6%9a%e0%b6%bb%e0%b6%b8-%e0%b6%85%e0%b6%ad%e0%b6%b1--rate-monotonic-%e0%b6%b6%e0%b6%b3%e0%b6%b8-edf-%e0%b7%83%e0%b7%84-%e0%b6%8b%e0%b6%b4%e0%b6%af%e0%b7%83-%e0%b6%9c%e0%b6%ab%e0%b6%b1-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> si.wikipedia හි &ldquo;තථ්‍ය කාල මෙහෙයුම් පද්ධති&rdquo; ලිපිය (~6.6 KB) RTOS සංකල්පය හඳුන්වා දෙයි. එහි schedulability බැඳීම, වැඩ කළ උදාහරණ හෝ EDF ගණනය කිරීම් නැත. මෙම කොටස ඒවා Liu සහ Layland ගේ මුල් පත්‍රිකාවෙන් අතින් ගණනය කරයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>ආවර්තිත කාර්යය (periodic task):</strong> සෑම T කාල ඒකකයකටම වරක් නැවත පැමිණෙන වැඩය. τ (tau) ලෙස ලියයි.</li>
+<li><strong>කාල පරිච්ඡේදය (period) T:</strong> නැවත පැමිණීම් අතර කාලය. මෙහිදී deadline එකද ඊළඟ පැමිණීමයි.</li>
+<li><strong>ධාවන කාලය (execution time) C:</strong> එක් වටයකට අවශ්‍ය CPU කාලය. සහතික කිරීම සඳහා <strong>නරකම අවස්ථාවේ ධාවන කාලය (worst-case execution time, WCET)</strong> යොදයි.</li>
+<li><strong>භාවිතය (utilization) U:</strong> U = Σ Cᵢ / Tᵢ. CPU කාලයෙන් කොටස.</li>
+<li><strong>Rate-monotonic (RM):</strong> කෙටි T → ඉහළ ස්ථිර priority.</li>
+<li><strong>Earliest deadline first (EDF):</strong> එම මොහොතේ ළඟම deadline ඇති කාර්යය ධාවනය කිරීම (priority වෙනස් වේ).</li>
+<li><strong>Preemption (preemption):</strong> ඉහළ priority කාර්යයක් පැමිණි විට පහළ එක නවතා එය ධාවනය කිරීම.</li>
+</ul>
+<h3 id="2-liu-සහ-layland-ඔපප-කළ-ද">2. Liu සහ Layland ඔප්පු කළ දේ<a class="anchor" href="#2-liu-%e0%b7%83%e0%b7%84-layland-%e0%b6%94%e0%b6%b4%e0%b6%b4-%e0%b6%9a%e0%b7%85-%e0%b6%af">#</a></h3>
+<p>C. L. Liu සහ James W. Layland, <em>Journal of the ACM</em> 20(1), 1973 ජනවාරි (පිටු 46–61):</p>
+<ul>
+<li><strong>ප්‍රමේයය 2 (Theorem 2), පිටුව 51:</strong> කාර්ය කට්ටලයකට කිසියම් ස්ථිර priority පැවරුමක් ක්‍රියා කරයි නම්, rate-monotonic පැවරුමද ක්‍රියා කරයි.</li>
+<li><strong>ප්‍රමේයය 5, පිටුව 54:</strong> කාර්ය m ක් සඳහා RM ට සහතික කළ හැකි අවම භාවිත බැඳීම <strong>U = m(2^{1/m} − 1)</strong>. m = 3 විට ≈ 0.78 බවත්, m විශාල වන විට ln 2 වෙත ළඟා වන බවත් පත්‍රිකාව කියයි.</li>
+<li><strong>ප්‍රමේයය 7, පිටුව 56:</strong> deadline ගතික ලෙස පවරන (EDF) ඇල්ගොරිතමයට කට්ටලය schedule කළ හැක්කේ <strong>Σ C/T ≤ 1</strong> නම් සහ එසේ නම් පමණි.</li>
+</ul>
+<p>බැඳීම අතින් ගණනය කරමු:</p>
+<table>
+	<thead>
+			<tr>
+					<th>m</th>
+					<th>m(2^{1/m} − 1)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>1.0000</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>2(√2 − 1) = <strong>0.8284</strong></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><strong>0.7798</strong></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>0.7568</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td>0.7177</td>
+			</tr>
+			<tr>
+					<td>∞</td>
+					<td>ln 2 = <strong>0.6931</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>අර්ථය: කාර්ය කීයක් තිබුණත්, U ≤ 0.693 නම් RM සෑම deadline එකක්ම සපුරාලයි. මෙය <strong>ප්‍රමාණවත් (sufficient)</strong> කොන්දේසියකි, <strong>අවශ්‍ය (necessary)</strong> නොවේ.</p>
+<h3 id="3-වඩ-කළ-උදහරණ-ආදරශ-කරය-කටටල">3. වැඩ කළ උදාහරණ (ආදර්ශ කාර්ය කට්ටල)<a class="anchor" href="#3-%e0%b7%80%e0%b6%a9-%e0%b6%9a%e0%b7%85-%e0%b6%8b%e0%b6%af%e0%b7%84%e0%b6%bb%e0%b6%ab-%e0%b6%86%e0%b6%af%e0%b6%bb%e0%b7%81-%e0%b6%9a%e0%b6%bb%e0%b6%ba-%e0%b6%9a%e0%b6%a7%e0%b6%a7%e0%b6%bd">#</a></h3>
+<p>පහත කාර්ය කට්ටල අපි ගොඩනැගූ ආදර්ශ (illustrative) අංක වේ. කාලරේඛාවේ එක් අක්ෂරයක් = කාල ඒකක 1. අංකය = ධාවනය වන කාර්යය, <code>-</code> = CPU නිෂ්ක්‍රීය (idle).</p>
+<p><strong>උදාහරණය A — බැඳීමට පහළින්:</strong> τ1 = (C 1, T 3), τ2 = (C 2, T 5).
+U = 1/3 + 2/5 = 0.7333 &lt; 0.8284 → RM සහතිකයි. ගණනය නොකර පවා.
+කාලරේඛාව (0–15): <code>1221-212-1221--</code>. සෑම deadline එකක්ම සපුරයි.</p>
+<p><strong>උදාහරණය B — බැඳීමට ඉහළින්, නමුත් සාර්ථකයි:</strong> τ1 = (1, 4), τ2 = (2, 6), τ3 = (3, 12).
+U = 0.25 + 0.3333 + 0.25 = 0.8333 &gt; 0.7798. බැඳීම සහතිකයක් නොදෙයි. එබැවින් පොදු කාල පරිච්ඡේදය (hyperperiod) H = 12 තෙක් කාලරේඛාව ඇඳිය යුතුය:
+<code>1223132213--</code>. τ3 t = 9 දී අවසන් වේ (deadline 12). <strong>සාර්ථකයි.</strong> බැඳීම &ldquo;අවශ්‍ය&rdquo; නොවන බව මෙයින් පෙනේ.</p>
+<p><strong>උදාහරණය C — RM අසාර්ථක, EDF සාර්ථක:</strong> τ1 = (2, 5), τ2 = (4, 7).
+U = 0.4 + 0.5714 = 0.9714 ≤ 1 → ප්‍රමේයය 7 අනුව EDF සාර්ථක විය යුතුය.</p>
+<ul>
+<li><strong>RM</strong> (τ1 ට ඉහළ priority): <code>1122211</code>. t = 5 දී τ1 නැවත පැමිණ τ2 නවතයි. t = 7 වන විට τ2 ධාවනය කළේ ඒකක 3 ක් පමණි → <strong>deadline 7 මග හැරේ.</strong></li>
+<li><strong>EDF:</strong> t = 5 දී τ1 හි deadline 10, τ2 හි deadline 7 → τ2 දිගටම යයි: <code>1122221…</code>. t = 6 දී τ2 අවසන්. <strong>සාර්ථකයි.</strong></li>
+</ul>
+<p>(අපි මෙම කාලරේඛා කුඩා simulator එකකින්ද පරීක්ෂා කළෙමු.)</p>
+<h3 id="4-c-wcet-ලබනන-කහනද-mini-cpu-මත-උපදස-ගණන-කරම">4. C (WCET) ලැබෙන්නේ කොහෙන්ද: mini-CPU මත උපදෙස් ගණන් කිරීම<a class="anchor" href="#4-c-wcet-%e0%b6%bd%e0%b6%b6%e0%b6%b1%e0%b6%b1-%e0%b6%9a%e0%b7%84%e0%b6%b1%e0%b6%af-mini-cpu-%e0%b6%b8%e0%b6%ad-%e0%b6%8b%e0%b6%b4%e0%b6%af%e0%b7%83-%e0%b6%9c%e0%b6%ab%e0%b6%b1-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h3>
+<p>ඉහත සියල්ල C දන්නා බව උපකල්පනය කරයි. සරල දෘඪාංගයක C <em>ගණන් කළ හැකිය</em>. ඉහත lab එකේ මෙම countdown වැඩසටහන ටයිප් කරන්න (ලේබල නැත, ලිපින අංක පමණි):</p>
+<pre tabindex="0"><code>LDI 1     ; 0
+STA 15    ; 1: mem[15] = 1
+LDI 5     ; 2: n = 5
+OUT       ; 3
+SUB 15    ; 4: A = A - 1
+JZ 7      ; 5
+JMP 3     ; 6
+OUT       ; 7: 0 පෙන්වයි
+HLT       ; 8</code></pre><p>Output 5, 4, 3, 2, 1, 0. Steps <strong>24</strong> (lab එකේ මූලාශ්‍ර කේතය ධාවනය කර පරීක්ෂා කළා). සාමාන්‍යයෙන් steps = <strong>4n + 4</strong> (n = 1: 8, n = 3: 16, n = 15: 64). n ⩽ 15 නම් නරකම අවස්ථාව n = 15: <strong>64 steps</strong>. එය WCET වේ.</p>
+<p><strong>උගුලක්:</strong> <code>LDI 0</code> (n = 0) දුන්නොත්, පළමු SUB එක 0 − 1 = 255 කරයි. Loop එක 255 සිට 0 දක්වා ගොස් steps <strong>1,028</strong> ක් ගනී. වලංගු නොවන ආදානයක් (invalid input) WCET 16 ගුණයකින් වැඩි කරයි. සහතික කිරීමේදී ආදාන පරාසය (input range) සීමා කළ යුත්තේ මේ නිසාය.</p>
+<p>Cache, pipeline සහ interrupts ඇති නූතන CPU එකක මෙතරම් සරල ගණනයක් කළ නොහැක. මෙම පිටුවේ ප්‍රධාන පෙළ කියන &ldquo;සරල දෘඪාංගය මත ගණන් කළ හැකි&rdquo; කාලය යන්නෙහි තේරුම මෙයයි.</p>
+<h3 id="5-priority-inversion-ආදරශ-කලරඛවක">5. Priority inversion: ආදර්ශ කාලරේඛාවක්<a class="anchor" href="#5-priority-inversion-%e0%b6%86%e0%b6%af%e0%b6%bb%e0%b7%81-%e0%b6%9a%e0%b6%bd%e0%b6%bb%e0%b6%9b%e0%b7%80%e0%b6%9a">#</a></h3>
+<p>ඉහළ (H), මධ්‍යම (M) සහ පහළ (L) priority කාර්ය තුනක්. L සහ H එකම <strong>mutex</strong> (අන්‍යෝන්‍ය බැහැර කිරීමේ lock) එකක් භාවිත කරයි. ආදර්ශ අනුපිළිවෙල:</p>
+<ol>
+<li>t = 0: L mutex එක ගනී.</li>
+<li>t = 1: H පැමිණ, L නවතා, mutex ඉල්ලයි → <strong>අවහිරයි (blocked)</strong>. L ට නැවත ධාවනය කළ යුතුය.</li>
+<li>t = 2: M පැමිණේ. M &gt; L නිසා M ධාවනය වේ. L ට mutex මුදා හැරිය නොහැක. <strong>H, M සඳහා බලා සිටී</strong>, M H හා කිසිදු සම්බන්ධයක් නැතත්.</li>
+</ol>
+<p>විසඳුම <strong>priority inheritance (priority උරුම කිරීම)</strong>: H අවහිර වූ විට, L තාවකාලිකව H හි priority ලබයි. M ට L නවතා දැමිය නොහැක. L mutex මුදා හරියි, H වහාම ධාවනය වේ. මෙය සැබෑ ලෝකයේ සිදු වූ ආකාරය ඊළඟ පෝස්ට් එකේ (Pathfinder) පෙනේ.</p>
+<h3 id="6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#6-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>τ1 = (1, 2), τ2 = (1, 5). U සොයා RM බැඳීමෙන් සහතිකද කියන්න.</li>
+<li>කාර්ය 5 ක් සඳහා RM බැඳීම දශමස්ථාන 2 කට ගණනය කරන්න (2^{0.2} ≈ 1.1487).</li>
+<li>උදාහරණය C හි τ2 = (3, 7) ලෙස වෙනස් කළොත් RM සාර්ථකද? කාලරේඛාව (0–7) අඳින්න.</li>
+<li>Countdown වැඩසටහනේ n = 10 ට steps කීයද?</li>
+<li>U = 1.05 ක කාර්ය කට්ටලයක් EDF මගින් schedule කළ හැකිද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>U = 0.5 + 0.2 = 0.7 &lt; 0.8284 → <strong>සහතිකයි.</strong></li>
+<li>5 × 0.1487 = <strong>0.74</strong>.</li>
+<li>U = 0.4 + 0.4286 = 0.8286. මෙය 0.8284 ට මඳක් ඉහළින් ඇති නිසා බැඳීම සහතිකයක් නොදෙයි. කාලරේඛාව: <code>1122211</code>, τ2 t = 5 දී අවසන් වේ (deadline 7) → <strong>සාර්ථකයි.</strong></li>
+<li>4 × 10 + 4 = <strong>44</strong>.</li>
+<li><strong>නැත.</strong> U &gt; 1 නම් කිසිම ඇල්ගොරිතමයකට නොහැකිය, ප්‍රමේයය 7 අනුවද.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>C. L. Liu සහ J. W. Layland, &ldquo;Scheduling Algorithms for Multiprogramming in a Hard-Real-Time Environment&rdquo;, <em>Journal of the ACM</em> 20(1), 1973, pp. 46–61 (ප්‍රමේය 2 p. 51, 5 p. 54, 7 p. 56). අපි කියවූයේ Radboud University පාඨමාලා පිටපත: <a href="https://www.cs.ru.nl/~hooman/DES/liu-layland.pdf">https://www.cs.ru.nl/~hooman/DES/liu-layland.pdf</a> (නිල නොවන පිටපත; ACM DL: <a href="https://doi.org/10.1145/321738.321743%29">https://doi.org/10.1145/321738.321743)</a>.</li>
+<li>මෙම පොතේ mini-CPU lab එකේ මූලාශ්‍ර කේතය (<code>static/labs/mini-cpu/index.html</code>). §4 හි step ගණන් එම කේතයම ධාවනය කර පරීක්ෂා කළෙමු.</li>
+<li>§3 සහ §5 හි කාර්ය කට්ටල සහ කාලරේඛා ආදර්ශ (illustrative) වේ.</li>
+</ul>
+<p><strong>පිටවීමේ දොර:</strong> C. L. Liu and James W. Layland, &ldquo;Scheduling Algorithms for Multiprogramming in a Hard-Real-Time Environment&rdquo; (<em>Journal of the ACM</em>, 1973) — rate-monotonic scheduling සහ සම්භාව්‍ය දැඩි-තත්‍ය-කාල schedulability පිටුපස ප්‍රාථමික පත්‍රිකාව.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/453b3f22c5934f1acbd68d680dc1c84f028b9d9d" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B6%AD%E0%B6%AD%E0%B7%8A%E2%80%8D%E0%B6%BA&#43;%E0%B6%9A%E0%B7%8F%E0%B6%BD&#43;%E0%B6%B4%E0%B6%AF%E0%B7%8A%E0%B6%B0%E0%B6%AD%E0%B7%92&#43;%E0%B7%83%E0%B7%84&#43;%E0%B6%B1%E0%B7%92%E0%B7%81%E0%B7%8A%E0%B6%A0%E0%B6%BA%E0%B7%8F%E0%B6%AD%E0%B7%8A%E0%B6%B8%E0%B6%9A&#43;Scheduling&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F29-real-time-systems-and-deterministic-scheduling%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F29-real-time-systems-and-deterministic-scheduling.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F29-real-time-systems-and-deterministic-scheduling.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Compilers, JIT, සහ නවීන භාෂා Runtimes</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/30-real-time-systems-in-practice/" class="flex align-center">
+        <span>ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#වගවත-යන-නශචයතමක-නව">වේගවත් යනු නිශ්චයාත්මක නොවේ</a></li>
+    <li><a href="#දඩ-එදරව-මද">දැඩි එදිරිව මෘදු</a></li>
+    <li><a href="#rate-monotonic-scheduling">Rate-Monotonic Scheduling</a></li>
+    <li><a href="#වනස-වරගය-os-එකක-ඇය">වෙනස් වර්ගයේ OS එකක් ඇයි</a></li>
+    <li><a href="#ගඹරන-deadline-සහතක-කරම-අතන--rate-monotonic-බඳම-edf-සහ-උපදස-ගණන-කරම">ගැඹුරින්: deadline සහතික කිරීම අතින් — rate-monotonic බැඳීම, EDF, සහ උපදෙස් ගණන් කිරීම</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-liu-සහ-layland-ඔපප-කළ-ද">2. Liu සහ Layland ඔප්පු කළ දේ</a></li>
+        <li><a href="#3-වඩ-කළ-උදහරණ-ආදරශ-කරය-කටටල">3. වැඩ කළ උදාහරණ (ආදර්ශ කාර්ය කට්ටල)</a></li>
+        <li><a href="#4-c-wcet-ලබනන-කහනද-mini-cpu-මත-උපදස-ගණන-කරම">4. C (WCET) ලැබෙන්නේ කොහෙන්ද: mini-CPU මත උපදෙස් ගණන් කිරීම</a></li>
+        <li><a href="#5-priority-inversion-ආදරශ-කලරඛවක">5. Priority inversion: ආදර්ශ කාලරේඛාවක්</a></li>
+        <li><a href="#6-පනසලන-අභයසය">6. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

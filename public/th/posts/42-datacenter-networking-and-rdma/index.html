@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ในผ้าใบที่ควบคุมได้ การคัดลอกผ่านเคอร์เนลคือภาษี — RDMA และทอโพโลยีซื้อสายกลับ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/42-datacenter-networking-and-rdma/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="เครือข่ายศูนย์ข้อมูลและ RDMA">
+	<meta property="og:description" content="ในผ้าใบที่ควบคุมได้ การคัดลอกผ่านเคอร์เนลคือภาษี — RDMA และทอโพโลยีซื้อสายกลับ">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="เครือข่ายศูนย์ข้อมูลและ RDMA">
+	<meta itemprop="description" content="ในผ้าใบที่ควบคุมได้ การคัดลอกผ่านเคอร์เนลคือภาษี — RDMA และทอโพโลยีซื้อสายกลับ">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="792">
+
+<title>เครือข่ายศูนย์ข้อมูลและ RDMA • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/42-datacenter-networking-and-rdma/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/42-datacenter-networking-and-rdma/" title="Datacenter Networking and RDMA">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/42-datacenter-networking-and-rdma/" title="දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/42-datacenter-networking-and-rdma/" title="Datacenter Networking மற்றும் RDMA">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/42-datacenter-networking-and-rdma/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/42-datacenter-networking-and-rdma/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="active">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>เครือข่ายศูนย์ข้อมูลและ RDMA</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#overhead-มาจากไหน">Overhead มาจากไหน</a></li>
+    <li><a href="#rdma-เอาเคอรเนลและ-cpu-ออกจากเสนทางขอมล">RDMA: เอาเคอร์เนลและ CPU ออกจากเส้นทางข้อมูล</a>
+      <ul>
+        <li><a href="#ตนทนของเสนทางผานเคอรเนล-เปนตวเลข">ต้นทุนของเส้นทางผ่านเคอร์เนล เป็นตัวเลข</a></li>
+        <li><a href="#ภาษาของ-rdma-verbs">ภาษาของ RDMA: verbs</a></li>
+        <li><a href="#infiniband-กบ-roce-และราคาของเครอขาย-ไมทงแพกเกต">InfiniBand กับ RoCE และราคาของเครือข่าย &ldquo;ไม่ทิ้งแพ็กเก็ต&rdquo;</a></li>
+      </ul>
+    </li>
+    <li><a href="#fat-tree-เดนสายเครองนบพนอยางสมำเสมอ">Fat-Tree: เดินสายเครื่องนับพันอย่างสม่ำเสมอ</a></li>
+    <li><a href="#ปรชญาเดยวกบงานผาใบในชดน">ปรัชญาเดียวกับงานผ้าใบในชุดนี้</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    เครือข่ายศูนย์ข้อมูลและ RDMA
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>TCP/IP (บทที่ 41) เป็นกระดูกสันหลังที่ถูกสำหรับเครือข่ายโลกที่ต่างชนิด ไม่เชื่อถือได้ และกระจาย ภายในศูนย์ข้อมูลเดียว — เจ้าของเดียว ระยะสั้น ผ้าใบที่ออกแบบไว้ — เส้นทางผ่านเคอร์เนลชุดเดียวกันเริ่มดูเหมือน overhead สำหรับ workload ที่ใช้ทุกไมโครวินาทีและทุกไบต์ของแบนด์วิดท์</p>
+<h2 id="overhead-มาจากไหน">Overhead มาจากไหน<a class="anchor" href="#overhead-%e0%b8%a1%e0%b8%b2%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b9%84%e0%b8%ab%e0%b8%99">#</a></h2>
+<p>การส่ง TCP/IP แบบดั้งเดิมคัดลอกข้อมูลแอปเข้าบัฟเฟอร์เคอร์เนล รันสแตก แล้วให้ NIC ส่ง — สะท้อนที่ฝั่งรับ แต่ละขั้นใช้อรอบ CPU และ ที่แย่กว่าสำหรับ latency คือการ <em>คัดลอก</em> จริงระหว่างตำแหน่งหน่วยความจำ พอใช้ได้สำหรับทราฟฟิกเว็บทั่วไป แพงสำหรับ HPC หรือการฝึก ML แบบกระจายที่แลก gradient หลายครั้งต่อวินาที</p>
+<h2 id="rdma-เอาเคอรเนลและ-cpu-ออกจากเสนทางขอมล">RDMA: เอาเคอร์เนลและ CPU ออกจากเส้นทางข้อมูล<a class="anchor" href="#rdma-%e0%b9%80%e0%b8%ad%e0%b8%b2%e0%b9%80%e0%b8%84%e0%b8%ad%e0%b8%a3%e0%b9%80%e0%b8%99%e0%b8%a5%e0%b9%81%e0%b8%a5%e0%b8%b0-cpu-%e0%b8%ad%e0%b8%ad%e0%b8%81%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b9%80%e0%b8%aa%e0%b8%99%e0%b8%97%e0%b8%b2%e0%b8%87%e0%b8%82%e0%b8%ad%e0%b8%a1%e0%b8%a5">#</a></h2>
+<p>RDMA (Remote Direct Memory Access) ให้เครื่องหนึ่งอ่านหรือเขียนหน่วยความจำของอีกเครื่องโดยไม่ต้องให้ CPU หรือเคอร์เนลของฝั่งรับเฝ้าการถ่ายโอน อะแดปเตอร์ที่รองรับ RDMA เคลื่อนไบต์หน่วยความจำ-ถึง-หน่วยความจำข้ามเครือข่าย แนวคิดเดียวกับ GPUDirect RDMA ในบทที่ 37 — คัดลอกน้อยลง CPU ว่างสำหรับคำนวณ — นำไปใช้ระหว่างเครื่องทั้งเครื่อง ไม่ใช่แค่ระหว่าง GPU บนโหนด</p>
+<h3 id="ตนทนของเสนทางผานเคอรเนล-เปนตวเลข">ต้นทุนของเส้นทางผ่านเคอร์เนล เป็นตัวเลข<a class="anchor" href="#%e0%b8%95%e0%b8%99%e0%b8%97%e0%b8%99%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b9%80%e0%b8%aa%e0%b8%99%e0%b8%97%e0%b8%b2%e0%b8%87%e0%b8%9c%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%84%e0%b8%ad%e0%b8%a3%e0%b9%80%e0%b8%99%e0%b8%a5-%e0%b9%80%e0%b8%9b%e0%b8%99%e0%b8%95%e0%b8%a7%e0%b9%80%e0%b8%a5%e0%b8%82">#</a></h3>
+<p><strong>เคอร์เนล</strong> (kernel; ศัพท์บัญญัติสาขาคอมพิวเตอร์คือ &ldquo;ใจกลาง&rdquo;) คือส่วนของ <strong>ระบบปฏิบัติการ</strong> (operating system) ที่ถือทรัพยากรร่วม รวมถึงการ์ดเครือข่าย โปรแกรมทั่วไปแตะการ์ดเองไม่ได้ ต้องขอเคอร์เนลทุกครั้ง คู่มือการเขียนโปรแกรม RDMA ของ NVIDIA อธิบายเส้นทางแบบเดิมว่า TCP/IP ต้องให้ระบบปฏิบัติการเข้ามาเกี่ยว &ldquo;ในทุกการดำเนินการ&rdquo; รวมถึงการคัดลอกบัฟเฟอร์ทั้งสองฝั่งสาย: ขาส่งคัดลอกไบต์จากโปรแกรมไปไว้ในบัฟเฟอร์ของระบบปฏิบัติการ ขารับคัดลอกจากบัฟเฟอร์ของระบบปฏิบัติการเข้าบัฟเฟอร์ของโปรแกรม ทำซ้ำทุกครั้งที่แพ็กเก็ตมาถึง</p>
+<p>ลองตีเป็นตัวเลขจากหลักการพื้นฐาน: 40 Gb/s คือ 5 GB/s การคัดลอกหนึ่งครั้งต้อง <em>อ่าน</em> หนึ่งไบต์และ <em>เขียน</em> หนึ่งไบต์ จึงเพิ่มทราฟฟิกหน่วยความจำ 10 GB/s ต่อการคัดลอกหนึ่งทอด — ไปแย่งแบนด์วิดท์กับงานคำนวณจริง (กำแพงหน่วยความจำของบทที่ 35 อีกครั้ง)</p>
+<p>ตัวเลขที่วัดจริงมาจากบทความของ Guo และคณะ (Microsoft, SIGCOMM 2016): ในศูนย์ข้อมูลของพวกเขา การ <em>ส่ง</em> ที่ 40 Gb/s ด้วย TCP 8 การเชื่อมต่อ กินเวลา CPU รวม 6% ของเซิร์ฟเวอร์ 32 คอร์ และการ <em>รับ</em> ที่ 40 Gb/s กิน 12% คิดต่อ (การคำนวณของผู้เขียน): 12% × 32 = <strong>ราว 3.8 คอร์</strong> เพื่อรับข้อมูลเฉย ๆ หรือราว 10 Gb/s ต่อคอร์ บทความยังระบุว่าซอฟต์แวร์ในเคอร์เนลเพิ่มเวลาแฝงได้สูงถึง &ldquo;หลายสิบมิลลิวินาที&rdquo; และการสูญหายของแพ็กเก็ตจากการจราจรที่มาเป็นระลอกทำให้ TCP ต้องรอหมดเวลาหรือส่งซ้ำ (กลไกในบทที่ 41) ผลการวัดกับบริการจริงที่ไวต่อเวลาแฝง: เวลาแฝงที่เปอร์เซ็นไทล์ 99 ของ TCP อยู่ที่ <strong>700 µs</strong> (มีพุ่งถึงหลายมิลลิวินาที) ของ RDMA อยู่ที่ <strong>90 µs</strong> และแม้เปอร์เซ็นไทล์ 99.9 ของ RDMA ก็ยังราว 200 µs</p>
+<h3 id="ภาษาของ-rdma-verbs">ภาษาของ RDMA: verbs<a class="anchor" href="#%e0%b8%a0%e0%b8%b2%e0%b8%a9%e0%b8%b2%e0%b8%82%e0%b8%ad%e0%b8%87-rdma-verbs">#</a></h3>
+<p>โปรแกรมคุยกับการ์ด RDMA ผ่านชุดฟังก์ชันที่เรียกว่า <strong>verbs</strong> นิยามจากคู่มือของ NVIDIA:</p>
+<ul>
+<li><strong>คู่แถวคอย</strong> (queue pair: QP; ศัพท์บัญญัติของ queue คือ &ldquo;แถวคอย&rdquo;) — แถวคอยส่งกับแถวคอยรับคู่หนึ่ง คู่มือเปรียบว่า &ldquo;เทียบได้คร่าว ๆ กับซ็อกเก็ต&rdquo; ต้องตั้งค่าทั้งสองฝั่งก่อนคุยกัน</li>
+<li><strong>คำของาน</strong> (work request: WR) — โปรแกรม &ldquo;วาง&rdquo; คำขอลงในแถวคอย เช่น &ldquo;ส่ง 1 MB จากที่อยู่นี้&rdquo; แล้วกลับไปทำงานอื่นทันที การ์ดเป็นผู้ทำงานนั้นเอง</li>
+<li><strong>แถวคอยงานเสร็จ</strong> (completion queue: CQ) — การ์ดเขียนรายการ &ldquo;งานนี้เสร็จแล้ว (สำเร็จหรือไม่)&rdquo; ลงที่นี่ โปรแกรมคอยตรวจเอง ซึ่งคือ <strong>การหยั่งสัญญาณ</strong> (polling, ศัพท์บัญญัติ) แทนการรอ <strong>สัญญาณขัดจังหวะ</strong> (interrupt, ศัพท์บัญญัติ) ทุกแพ็กเก็ต</li>
+<li><strong>บริเวณหน่วยความจำ</strong> (memory region: MR) — ก้อนหน่วยความจำที่ต้อง <em>ลงทะเบียน</em> ก่อนการ์ดจะใช้ได้ คู่มือบอกว่าการลงทะเบียนจะตรึงหน้าหน่วยความจำไว้ไม่ให้ถูกย้าย และเขียนตาราง <strong>เลขที่อยู่เสมือน</strong> (virtual address, ศัพท์บัญญัติ) → ที่อยู่จริงลงในการ์ด (การแปลงแบบเดียวกับตารางหน้าในบทที่ 24 แต่คราวนี้การ์ดถือสำเนาเอง) การลงทะเบียนได้กุญแจสองดอก: <strong>lkey</strong> ให้การ์ดฝั่งตัวเองใช้ และ <strong>rkey</strong> ที่มอบให้อีกฝั่งเพื่ออนุญาตให้เข้าถึงจากระยะไกล</li>
+</ul>
+<p>การดำเนินการแบ่งเป็นสองแบบ:</p>
+<ul>
+<li><strong>สองฝ่าย</strong> (send/receive) — ผู้รับต้องวางบัฟเฟอร์รับไว้ล่วงหน้า ผู้ส่งไม่มีสิทธิ์เลือกว่าข้อมูลจะไปลงที่ไหน ผู้รับได้รับแจ้งเมื่อข้อมูลมาถึง</li>
+<li><strong>ฝ่ายเดียว</strong> (RDMA read/write) — ผู้เรียกระบุ <em>เลขที่อยู่เสมือนของอีกเครื่อง</em> ได้เลย คู่มือเขียนว่า RDMA read &ldquo;ทำโดยไม่มีการแจ้งใด ๆ ต่อเครื่องปลายทาง&rdquo; และฝั่งปลายทาง &ldquo;ไม่รู้ว่ากำลังเกิดการดำเนินการนี้&rdquo; นอกจากการเตรียมสิทธิ์ไว้ก่อน มีการดำเนินการแบบอะตอมด้วย เช่น fetch-and-add และ compare-and-swap บนที่อยู่ระยะไกล</li>
+</ul>
+<p>คู่มือยังแสดงว่าโหมดการขนส่งกำหนดว่าทำอะไรได้บ้าง: แบบเชื่อมต่อเชื่อถือได้ (RC) ทำได้ครบทุกอย่างและส่งข้อความได้ถึง 1 GB ส่วนแบบดาตาแกรมไม่เชื่อถือได้ (UD) ทำได้แค่ send/receive และข้อความใหญ่ได้ไม่เกินหนึ่ง MTU</p>
+<p><strong>ไล่ RDMA write หนึ่งครั้ง</strong> (สถานการณ์ประกอบการอธิบาย):</p>
+<ol>
+<li>เครื่อง B ลงทะเบียนบัฟเฟอร์ 1 MB ได้ที่อยู่เสมือนกับ rkey แล้วส่งสองค่านี้ให้เครื่อง A ผ่านช่องทางอื่น (เช่น การเชื่อมต่อ TCP ธรรมดาตอนเริ่มต้น)</li>
+<li>A วาง WR แบบ RDMA write ลง QP: ข้อมูลต้นทางคือ (ที่อยู่, ความยาว, lkey) ของตัวเอง ปลายทางคือ (ที่อยู่ของ B, rkey ของ B)</li>
+<li>การ์ดของ A อ่านหน่วยความจำของ A เองโดยตรง หั่นเป็นแพ็กเก็ตตาม MTU ของเส้นทาง (สมมุติ MTU 4 KB จะได้ 1 MB / 4 KB = 256 แพ็กเก็ต) แล้วส่งออก</li>
+<li>การ์ดของ B ตรวจ rkey แล้วเขียนแต่ละแพ็กเก็ตลงหน่วยความจำของ B ตรง ๆ — <strong>CPU ของ B ไม่ทำอะไรเลย</strong> ไม่มีการคัดลอก ไม่มีสัญญาณขัดจังหวะ</li>
+<li>การ์ดของ A เขียนรายการลง CQ เมื่อได้การตอบรับครบ โปรแกรมของ A หยั่งสัญญาณเจอแล้วจึงรู้ว่าใช้บัฟเฟอร์ซ้ำได้</li>
+</ol>
+<p>เทียบกับเส้นทางของ TCP ที่ CPU ฝั่งรับต้องรับรู้ทุกแพ็กเก็ตและคัดลอกทุกไบต์ นี่คือความหมายของ &ldquo;เอาเคอร์เนลและ CPU ออกจากเส้นทางข้อมูล&rdquo;</p>
+<h3 id="infiniband-กบ-roce-และราคาของเครอขาย-ไมทงแพกเกต">InfiniBand กับ RoCE และราคาของเครือข่าย &ldquo;ไม่ทิ้งแพ็กเก็ต&rdquo;<a class="anchor" href="#infiniband-%e0%b8%81%e0%b8%9a-roce-%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%a3%e0%b8%b2%e0%b8%84%e0%b8%b2%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%ad%e0%b8%82%e0%b8%b2%e0%b8%a2-%e0%b9%84%e0%b8%a1%e0%b8%97%e0%b8%87%e0%b9%81%e0%b8%9e%e0%b8%81%e0%b9%80%e0%b8%81%e0%b8%95">#</a></h3>
+<p>คู่มือของ NVIDIA ระบุเทคโนโลยีที่รองรับ RDMA ไว้สามแบบ: InfiniBand, RoCE (RDMA over Converged Ethernet) และ iWARP บทความของ Guo และคณะอธิบายว่า <strong>RoCEv2</strong> ห่อแพ็กเก็ตการขนส่งของ RDMA ไว้ในแพ็กเก็ต Ethernet/IPv4/UDP พอร์ตปลายทาง UDP เป็น <strong>4791</strong> เสมอ ส่วนพอร์ตต้นทางสุ่มต่อ QP เพื่อให้สวิตช์ที่ใช้การแฮชห้าค่ากระจาย QP ต่าง ๆ ไปคนละเส้นทางในเครือข่าย Clos ขณะที่แพ็กเก็ตของ QP เดียวกันยังเดินเส้นเดียวกัน (ไม่สลับลำดับ)</p>
+<p>ข้อแตกต่างใหญ่จาก TCP: บทความระบุว่า RDMA <strong>ต้องการเครือข่ายที่ไม่ทิ้งแพ็กเก็ต</strong> เพราะตัวขนส่งในการ์ดถูกออกแบบให้เรียบง่าย ตัวอย่างที่บทความเล่า: การ์ดของผู้ขายรายหนึ่งใช้วิธี <em>go-back-0</em> คือถ้าแพ็กเก็ตใดหาย ให้เริ่มส่งข้อความใหม่ตั้งแต่แพ็กเก็ตแรก ลองคำนวณผลกระทบ (การคำนวณของผู้เขียน): ถ้าโอกาสหายคือ 1 ใน 256 ต่อแพ็กเก็ต ข้อความ 256 แพ็กเก็ตจะผ่านครบในรอบเดียวด้วยความน่าจะเป็น (255/256)²⁵⁶ ≈ 0.37 ต้องส่งเฉลี่ยราว 2.7 รอบ แต่ข้อความ 1 GB ที่ MTU 4 KB มี 262,144 แพ็กเก็ต ความน่าจะเป็นที่จะผ่านครบในรอบเดียวคือราว e⁻¹⁰²⁴ ซึ่งเท่ากับศูนย์ในทางปฏิบัติ — ส่งซ้ำไม่รู้จบทั้งที่ลิงก์ยุ่งตลอด บทความเรียกอาการนี้ว่า <strong>livelock</strong> และแก้ด้วย <em>go-back-N</em> (เริ่มส่งใหม่ตั้งแต่แพ็กเก็ตที่หาย ไม่ใช่ตั้งแต่ต้น)</p>
+<p>แล้วทำให้ Ethernet ไม่ทิ้งแพ็กเก็ตได้อย่างไร? RoCEv2 ใช้ <strong>PFC</strong> (priority-based flow control): เมื่อแถวคอยขาเข้าของสวิตช์เกินเกณฑ์ สวิตช์ส่ง &ldquo;เฟรมหยุด&rdquo; ย้อนกลับไปบอกพอร์ตต้นทางให้หยุดส่งชั่วคราว แต่ระหว่างที่เฟรมหยุดเดินทางไปและต้นทางตอบสนอง ข้อมูลที่ลอยอยู่ในสายยังไหลเข้ามา สวิตช์จึงต้องกันที่พักสำรองที่เรียกว่า <strong>headroom</strong> ไว้ บทความระบุว่าขนาดของมันขึ้นกับ MTU เวลาตอบสนองของพอร์ต และ &ldquo;ที่สำคัญที่สุด&rdquo; คือระยะทาง ซึ่งในเครือข่ายของพวกเขายาวได้ถึง 300 เมตร ลองประมาณ (ผู้เขียนคำนวณ โดยสมมุติว่าสัญญาณเดินราว 2 × 10⁸ m/s): ไปกลับ 600 เมตรใช้ราว 3 µs ที่ 40 Gb/s มีข้อมูลลอยอยู่ 40 × 10⁹ × 3 × 10⁻⁶ / 8 = <strong>15,000 ไบต์</strong> ต่อพอร์ต ต่อระดับความสำคัญ ก่อนบวก MTU และเวลาตอบสนอง — คูณด้วยจำนวนพอร์ตและจำนวนระดับ บทความจึงบอกว่าด้วยบัฟเฟอร์สวิตช์ที่ตื้น (9 หรือ 12 MB) พวกเขากัน headroom ได้พอสำหรับเพียง <strong>สองคลาสที่ไม่ทิ้งแพ็กเก็ต</strong> จากแปดคลาสที่สวิตช์รองรับ</p>
+<p>PFC เองก็มีราคา: เฟรมหยุดแพร่ย้อนกลับไปได้หลายฮอปและหยุดการจราจรที่ไม่เกี่ยวข้อง บทความรายงานปัญหา deadlock ที่เกิดจาก PFC (&ldquo;ใช่ มันเกิดขึ้นจริง!&rdquo;) และพายุเฟรมหยุดจากการ์ดเครือข่ายที่ทำงานผิดปกติจนสวิตช์หยุดพอร์ตอื่นต่อเป็นทอด ๆ และใช้การควบคุมความคับคั่งชื่อ DCQCN (ใช้ ECN แจ้งความคับคั่ง) เพื่อลดจำนวนครั้งที่ PFC ต้องทำงาน ข้อสรุปของบทความคือ ปัญหาด้านความปลอดภัยและการขยายขนาดของ RoCEv2 แก้ได้ และ RDMA แทน TCP สำหรับการสื่อสารภายในศูนย์ข้อมูลได้ — แต่ต้องแลกด้วยวิศวกรรมเครือข่ายที่ละเอียดกว่ามาก นี่คือการแลกเปลี่ยนตรงข้ามกับปรัชญาของบทที่ 41: TCP/IP ย้ายความเชื่อถือได้ขึ้นไปไว้ปลายทางเพราะเครือข่ายไว้ใจไม่ได้ RDMA ย้ายความเชื่อถือได้กลับลงมาไว้ในเครือข่าย เพราะในศูนย์ข้อมูลเจ้าของเดียว เราคุมเครือข่ายได้</p>
+<h2 id="fat-tree-เดนสายเครองนบพนอยางสมำเสมอ">Fat-Tree: เดินสายเครื่องนับพันอย่างสม่ำเสมอ<a class="anchor" href="#fat-tree-%e0%b9%80%e0%b8%94%e0%b8%99%e0%b8%aa%e0%b8%b2%e0%b8%a2%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%ad%e0%b8%87%e0%b8%99%e0%b8%9a%e0%b8%9e%e0%b8%99%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b8%aa%e0%b8%a1%e0%b8%b3%e0%b9%80%e0%b8%aa%e0%b8%a1%e0%b8%ad">#</a></h2>
+<p>ที่เครื่องนับพัน ทอโพโลยีตัดสินว่าแบนด์วิดท์จริงหรือแค่โฆษณา Fat-tree จัดสวิตช์ให้ความจุสเกลได้คาดการณ์ขึ้นลำดับชั้น แทนการซ่อนลิงก์คอขวดที่โผล่เฉพาะใต้โหลด คลัสเตอร์ฝึกขนาดใหญ่ (เฟส 10) ถูกเดินสายด้วยความตั้งใจนั้นโดยเจตนา — ไม่ใช่ความสะดวกเฉพาะกิจ</p>
+<h2 id="ปรชญาเดยวกบงานผาใบในชดน">ปรัชญาเดียวกับงานผ้าใบในชุดนี้<a class="anchor" href="#%e0%b8%9b%e0%b8%a3%e0%b8%8a%e0%b8%8d%e0%b8%b2%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7%e0%b8%81%e0%b8%9a%e0%b8%87%e0%b8%b2%e0%b8%99%e0%b8%9c%e0%b8%b2%e0%b9%83%e0%b8%9a%e0%b9%83%e0%b8%99%e0%b8%8a%e0%b8%94%e0%b8%99">#</a></h2>
+<p>ลบการคัดลอกที่ไม่จำเป็น; ข้ามเคอร์เนลเมื่อไม่จำเป็น; ให้ฮาร์ดแวร์เคลื่อนข้อมูลตรงเท่าที่ทอโพโลยีอนุญาต บทที่ 37 ใช้สิ่งนั้นภายในและข้ามโหนด GPU; บทนี้ใช้กับการสื่อสารเครื่อง-ถึง-เครื่อง รวมกันแล้วส่งต่อสู่ระบบกระจายของเฟส 7 — เริ่มด้วยระบบหา-แล้ว-พูดยุคก่อนเว็บของอินเทอร์เน็ตเอง</p>
+<p><strong>ลองตอนนี้.</strong> เครื่องจำลองในแล็บด้านล่างมีการ์ด Ethernet จำลองหนึ่งใบ (<code>eth0</code> ปิดอยู่ตอนบูตและไม่ได้ต่อกับเครือข่ายภายนอก) และไม่มีการ์ด RDMA แต่ใช้ดูฝั่ง &ldquo;เคอร์เนลเป็นเจ้าของเครือข่าย&rdquo; ได้ ผู้เขียนลองในอิมเมจนี้แล้ว:</p>
+<ul>
+<li><code>grep Tcp: /proc/net/snmp</code> — ตัวนับของสแตก TCP ในเคอร์เนล เช่น <code>InSegs</code>, <code>OutSegs</code> และ <code>RetransSegs</code> (จำนวน segment ที่ส่งซ้ำ) หลังบูตใหม่ ๆ ตัวนับทราฟฟิกทุกตัวเป็น 0 เพราะยังไม่มีการเชื่อมต่อ TCP ใด ๆ (สี่ค่าแรกของแถว เช่น RtoMin = 200 เป็นค่าตั้ง ไม่ใช่ตัวนับ) แต่บนเซิร์ฟเวอร์จริง ตัวนับเหล่านี้คือร่องรอยว่าทุก segment ผ่านมือเคอร์เนล</li>
+<li><code>cat /proc/interrupts</code> — รายการสัญญาณขัดจังหวะที่ CPU รับ ตอนบูตมีแต่ตัวจับเวลา นาฬิกา แป้นพิมพ์ พอร์ตอนุกรม และดิสก์ ลองสั่ง <code>ifconfig eth0 up</code> แล้ว <code>cat /proc/interrupts</code> ซ้ำ จะเห็นแถวใหม่ <code>10: … eth0</code> ซึ่งเป็นสายสัญญาณขัดจังหวะของการ์ดเครือข่าย บนเซิร์ฟเวอร์จริงตัวนับของแถวนี้วิ่งขึ้นตามจำนวนแพ็กเก็ต นั่นคือค่าใช้จ่ายที่ RDMA หลีกเลี่ยงด้วยการให้โปรแกรมหยั่งสัญญาณ CQ เอง</li>
+</ul>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=th"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="แล็บเชิงโต้ตอบ: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=th" target="_blank" rel="noopener">เปิดแล็บในแท็บใหม่ ↗</a>
+  </div>
+</div>
+
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>โอภาส เอี่ยมสิริวงศ์, <em>เครือข่ายคอมพิวเตอร์และการสื่อสาร</em></li>
+<li>จตุชัย แพงจันทร์ และ อนุโชต วุฒิพรพงษ์, <em>เจาะระบบ Network</em></li>
+<li>ภัทรสินี ภัทรโกศล, <em>เครือข่ายคอมพิวเตอร์</em></li>
+<li>Chuanxiong Guo และคณะ, &ldquo;RDMA over Commodity Ethernet at Scale&rdquo; (ACM SIGCOMM 2016) — ต้นทุน CPU ของ TCP ที่ 40 Gb/s, เวลาแฝง 700 µs เทียบ 90 µs, RoCEv2 บน UDP พอร์ต 4791, PFC และ headroom, go-back-0 livelock, deadlock: <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/rdma_sigcomm2016.pdf">https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/rdma_sigcomm2016.pdf</a></li>
+<li>NVIDIA (Mellanox), <em>RDMA Aware Networks Programming User Manual</em> (Rev 1.7, สิงหาคม 2020) — QP, WR, CQ, MR, lkey/rkey, send/receive เทียบ RDMA read/write, โหมด RC/UC/UD: <a href="https://docs.nvidia.com/rdma-aware-networks-programming-user-manual-1-7.pdf">https://docs.nvidia.com/rdma-aware-networks-programming-user-manual-1-7.pdf</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%82%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B9%81%E0%B8%A5%E0%B8%B0&#43;RDMA&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F42-datacenter-networking-and-rdma%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F42-datacenter-networking-and-rdma.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F42-datacenter-networking-and-rdma.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="flex align-center">
+        <span>Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#overhead-มาจากไหน">Overhead มาจากไหน</a></li>
+    <li><a href="#rdma-เอาเคอรเนลและ-cpu-ออกจากเสนทางขอมล">RDMA: เอาเคอร์เนลและ CPU ออกจากเส้นทางข้อมูล</a>
+      <ul>
+        <li><a href="#ตนทนของเสนทางผานเคอรเนล-เปนตวเลข">ต้นทุนของเส้นทางผ่านเคอร์เนล เป็นตัวเลข</a></li>
+        <li><a href="#ภาษาของ-rdma-verbs">ภาษาของ RDMA: verbs</a></li>
+        <li><a href="#infiniband-กบ-roce-และราคาของเครอขาย-ไมทงแพกเกต">InfiniBand กับ RoCE และราคาของเครือข่าย &ldquo;ไม่ทิ้งแพ็กเก็ต&rdquo;</a></li>
+      </ul>
+    </li>
+    <li><a href="#fat-tree-เดนสายเครองนบพนอยางสมำเสมอ">Fat-Tree: เดินสายเครื่องนับพันอย่างสม่ำเสมอ</a></li>
+    <li><a href="#ปรชญาเดยวกบงานผาใบในชดน">ปรัชญาเดียวกับงานผ้าใบในชุดนี้</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

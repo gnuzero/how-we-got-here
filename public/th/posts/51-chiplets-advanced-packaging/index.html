@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Yield ตกตามพื้นที่ได — แยกเป็น chiplets แล้วซื้อแบนด์วิดท์คืนด้วยการบรรจุขั้นสูง">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/51-chiplets-advanced-packaging/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="Chiplets และการบรรจุขั้นสูง">
+	<meta property="og:description" content="Yield ตกตามพื้นที่ได — แยกเป็น chiplets แล้วซื้อแบนด์วิดท์คืนด้วยการบรรจุขั้นสูง">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Chiplets และการบรรจุขั้นสูง">
+	<meta itemprop="description" content="Yield ตกตามพื้นที่ได — แยกเป็น chiplets แล้วซื้อแบนด์วิดท์คืนด้วยการบรรจุขั้นสูง">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="866">
+
+<title>Chiplets และการบรรจุขั้นสูง • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/51-chiplets-advanced-packaging/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/51-chiplets-advanced-packaging/" title="Chiplets &amp; Advanced Packaging">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/51-chiplets-advanced-packaging/" title="Chiplets සහ Advanced Packaging">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/51-chiplets-advanced-packaging/" title="Chiplets மற்றும் Advanced Packaging">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/51-chiplets-advanced-packaging/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/51-chiplets-advanced-packaging/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/51-chiplets-advanced-packaging/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="active">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Chiplets และการบรรจุขั้นสูง</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ไดมอนอลธกและกำแพง-yield">ไดมอนอลิธิกและกำแพง Yield</a>
+      <ul>
+        <li><a href="#ผลไดคำนวณอยางไร-แบบจำลองทโรงงานใช">ผลได้คำนวณอย่างไร: แบบจำลองที่โรงงานใช้</a></li>
+      </ul>
+    </li>
+    <li><a href="#แยกซลคอน-คงฟงกชน">แยกซิลิคอน คงฟังก์ชัน</a>
+      <ul>
+        <li><a href="#ชปเลตคมเมอไร-คำนวณจากหลกการแรก-ตวอยางสมมต">ชิปเล็ตคุ้มเมื่อไร: คำนวณจากหลักการแรก (ตัวอย่างสมมติ)</a></li>
+      </ul>
+    </li>
+    <li><a href="#การบรรจตองซอสายคน">การบรรจุต้องซื้อสายคืน</a>
+      <ul>
+        <li><a href="#ตวเลขของสายทซอคน-ucie-10">ตัวเลขของสายที่ซื้อคืน: UCIe 1.0</a></li>
+      </ul>
+    </li>
+    <li><a href="#การบรรจเดยวกน-หนวยความจำของเฟสถดไป">การบรรจุเดียวกัน หน่วยความจำของเฟสถัดไป</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Chiplets และการบรรจุขั้นสูง
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>บทที่ 49 ย้ำแบบแผน: เมื่อการสเกลภายในเรขาคณิตหนึ่งชนกำแพง ให้เปลี่ยนโครงสร้าง Chiplets ใช้แบบแผนนั้นสูงขึ้นหนึ่งขั้นจากทรานซิสเตอร์ — ไม่ใช่ฟิสิกส์อุปกรณ์ใหม่ แต่คำตอบใหม่ว่าชิปทั้งก้อนประกอบอย่างไรเมื่อไดมอนอลิธิกใหญ่เกินกว่าจะมี yield</p>
+<h2 id="ไดมอนอลธกและกำแพง-yield">ไดมอนอลิธิกและกำแพง Yield<a class="anchor" href="#%e0%b9%84%e0%b8%94%e0%b8%a1%e0%b8%ad%e0%b8%99%e0%b8%ad%e0%b8%a5%e0%b8%98%e0%b8%81%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%81%e0%b8%b3%e0%b9%81%e0%b8%9e%e0%b8%87-yield">#</a></h2>
+<p>ชิปดั้งเดิมเป็นซิลิคอนชิ้นเดียว: คอร์ ตัวควบคุมหน่วยความจำ I/O ผลิตด้วยกัน ข้อบกพร่องร้ายแรงที่ใดก็ได้ทำลายไดทั้งก้อน และโอกาสของข้อบกพร่องนั้นโตตามพื้นที่ — ไดใหญ่ yield แย่แม้เมื่อชิปใหญ่กว่ามีความสามารถกว่าจะพึงประสงค์ทางสถาปัตยกรรม นั่นคือข้อจำกัดเศรษฐกิจ/ฟิสิกส์ ไม่ใช่ทางเลือกแบรนด์: อย่าให้ไดเดียวโตโดยไร้ขอบเขต</p>
+<p><strong>คำศัพท์</strong> (ศัพท์บัญญัติราชบัณฑิตยสภา; สาขาระบุในวงเล็บเมื่อไม่ใช่คอมพิวเตอร์และเทคโนโลยีสารสนเทศ): <strong>การบรรจุ</strong> (packaging); <strong>แว่นผลึก</strong> (wafer); <strong>ชิป</strong> (chip); <strong>ตำหนิ, ข้อบกพร่อง</strong> (defect); <strong>ผลได้</strong> (yield — วิทยาศาสตร์; ในบทนี้คือสัดส่วนไดที่ใช้งานได้); <strong>ความหนาแน่น</strong> (density — วิทยาศาสตร์); <strong>แผ่นฐาน</strong> (substrate — วิศวกรรมไฟฟ้า); <strong>แบนด์วิดท์</strong> (bandwidth); <strong>เวลาแฝง</strong> (latency) ไม่พบศัพท์บัญญัติสำหรับ die ในความหมายนี้ (สาขาวิทยาศาสตร์บัญญัติ die ว่า แม่แบบ ซึ่งคนละความหมาย), chiplet และ interposer บทนี้จึงทับศัพท์ว่า ได (ซิลิคอนหนึ่งชิ้นที่ตัดจากแว่นผลึก), ชิปเล็ต และ interposer (แผ่นซิลิคอนหรือวัสดุที่มีสายไฟละเอียดวางใต้ไดหลายชิ้นเพื่อเชื่อมถึงกัน)</p>
+<h3 id="ผลไดคำนวณอยางไร-แบบจำลองทโรงงานใช">ผลได้คำนวณอย่างไร: แบบจำลองที่โรงงานใช้<a class="anchor" href="#%e0%b8%9c%e0%b8%a5%e0%b9%84%e0%b8%94%e0%b8%84%e0%b8%b3%e0%b8%99%e0%b8%a7%e0%b8%93%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b9%84%e0%b8%a3-%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%88%e0%b8%b3%e0%b8%a5%e0%b8%ad%e0%b8%87%e0%b8%97%e0%b9%82%e0%b8%a3%e0%b8%87%e0%b8%87%e0%b8%b2%e0%b8%99%e0%b9%83%e0%b8%8a">#</a></h3>
+<p>บันทึกการสอนเรื่อง &ldquo;Yield Modeling and Analysis&rdquo; ของ Robert C. Leachman (วิชา IEOR 130, UC Berkeley, ภาคฤดูใบไม้ผลิ 2014) เริ่มจากสมมติฐานง่ายที่สุด: ถ้าจำนวนตำหนิร้ายแรงบนไดหนึ่งชิ้นมีการแจกแจงแบบปัวซองด้วยค่าเฉลี่ย A × D₀ (A คือพื้นที่ได, D₀ คือความหนาแน่นของตำหนิต่อหน่วยพื้นที่) ความน่าจะเป็นที่ไดไม่มีตำหนิเลยคือ</p>
+<p><strong>Y = e^(−A·D₀)</strong> (แบบจำลองปัวซอง)</p>
+<p>กลับสมการได้ D₀ = −ln Y / A ซึ่งเป็นวิธีที่โรงงานประเมินความหนาแน่นของตำหนิจากผลได้ที่วัดจริง เช่น ถ้าไดขนาด 6 cm² ได้ผลได้ 50% จะได้ D₀ = ln 2 / 6 ≈ 0.116 ตำหนิต่อ cm² บันทึกระบุว่าแบบจำลองปัวซองแม่นสำหรับไดเล็ก (A ≤ 0.25 cm²) หรือเมื่อ A·D₀ &lt; 1 และมักประเมินผลได้ของไดใหญ่ <em>ต่ำเกินจริง</em> เพราะตำหนิจริงเกาะกลุ่มกัน แบบจำลองอื่นในบันทึกเดียวกัน:</p>
+<table>
+	<thead>
+			<tr>
+					<th>แบบจำลอง</th>
+					<th>สูตร</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ปัวซอง</td>
+					<td>e^(−AD₀)</td>
+			</tr>
+			<tr>
+					<td>Murphy (สามเหลี่ยม)</td>
+					<td>((1 − e^(−AD₀)) / (AD₀))²</td>
+			</tr>
+			<tr>
+					<td>Seeds</td>
+					<td>1 / (1 + AD₀)</td>
+			</tr>
+			<tr>
+					<td>ทวินามลบ (negative binomial)</td>
+					<td>(1 + AD₀/α)^(−α)</td>
+			</tr>
+	</tbody>
+</table>
+<p>ตัวแปร α ของแบบทวินามลบประเมินจากข้อมูลด้วย α = μ² / (σ² − μ) (μ และ σ² คือค่าเฉลี่ยและความแปรปรวนของจำนวนตำหนิต่อได) บันทึกระบุว่า α ≥ 10 แทบเหมือนปัวซอง, α = 5 ใกล้ Murphy และ α = 1 ใกล้ Seeds กรณีขอบของสูตรนี้: ถ้า σ² = μ (ตำหนิไม่เกาะกลุ่มเลย) ตัวหารเป็นศูนย์ α เป็นอนันต์ ซึ่งคือปัวซองพอดี และถ้า σ² &lt; μ α ติดลบ แบบจำลองใช้ไม่ได้ (ข้อสังเกตของผู้เขียนจากพีชคณิต)</p>
+<p><strong>ข้อผิดพลาดในแหล่ง:</strong> ข้อความในบันทึกเรียกแบบจำลองทวินามลบว่า &ldquo;(11)&rdquo; ในสองที่ แต่สมการ (11) ในเอกสารคือแบบจำลอง Bose-Einstein ส่วนทวินามลบคือสมการ (12) (และตัวประเมิน α ก็ใช้หมายเลข (12) ซ้ำอีก) เนื้อหาของสูตรไม่ผิด ผิดเฉพาะหมายเลขอ้างอิง</p>
+<p>ตัวเลขตัวอย่าง (ผู้เขียนคำนวณ; D₀ เป็นค่าสมมติ ไม่ใช่ข้อมูลของโรงงานใด):</p>
+<table>
+	<thead>
+			<tr>
+					<th>D₀ (ต่อ cm²)</th>
+					<th>ได (mm²)</th>
+					<th>A·D₀</th>
+					<th>ปัวซอง</th>
+					<th>Murphy</th>
+					<th>Seeds</th>
+					<th>ทวินามลบ α = 3</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>600 หรือ 150</td>
+					<td>0</td>
+					<td>1.000</td>
+					<td>1.000</td>
+					<td>1.000</td>
+					<td>1.000</td>
+			</tr>
+			<tr>
+					<td>0.05</td>
+					<td>600</td>
+					<td>0.30</td>
+					<td>0.741</td>
+					<td>0.746</td>
+					<td>0.769</td>
+					<td>0.751</td>
+			</tr>
+			<tr>
+					<td>0.1</td>
+					<td>600</td>
+					<td>0.60</td>
+					<td>0.549</td>
+					<td>0.565</td>
+					<td>0.625</td>
+					<td>0.579</td>
+			</tr>
+			<tr>
+					<td>0.1</td>
+					<td>150</td>
+					<td>0.15</td>
+					<td>0.861</td>
+					<td>0.862</td>
+					<td>0.870</td>
+					<td>0.864</td>
+			</tr>
+			<tr>
+					<td>0.2</td>
+					<td>600</td>
+					<td>1.20</td>
+					<td>0.301</td>
+					<td>0.339</td>
+					<td>0.455</td>
+					<td>0.364</td>
+			</tr>
+			<tr>
+					<td>0.2</td>
+					<td>150</td>
+					<td>0.30</td>
+					<td>0.741</td>
+					<td>0.746</td>
+					<td>0.769</td>
+					<td>0.751</td>
+			</tr>
+	</tbody>
+</table>
+<p>ที่ A·D₀ เล็ก แบบจำลองทั้งหมดให้ค่าใกล้กัน ที่ A·D₀ = 1.2 ต่างกันถึง 0.30 กับ 0.46 การเลือกแบบจำลองจึงสำคัญที่สุดสำหรับไดใหญ่ ซึ่งคือกรณีที่คิดจะแบ่งเป็นชิปเล็ตพอดี</p>
+<h2 id="แยกซลคอน-คงฟงกชน">แยกซิลิคอน คงฟังก์ชัน<a class="anchor" href="#%e0%b9%81%e0%b8%a2%e0%b8%81%e0%b8%8b%e0%b8%a5%e0%b8%84%e0%b8%ad%e0%b8%99-%e0%b8%84%e0%b8%87%e0%b8%9f%e0%b8%87%e0%b8%81%e0%b8%8a%e0%b8%99">#</a></h2>
+<p>Chiplets ตัดสิ่งที่จะเป็นไดใหญ่หนึ่งชิ้นเป็นไดเล็กที่ผลิตแยก แต่ละชิ้นถือฟังก์ชัน แล้วเชื่อมกลับในแพ็กเกจเดียวด้วยอินเตอร์คอนเนกต์ความหนาแน่นสูง (interposer หรือ substrate ขั้นสูง) ข้อบกพร่องฆ่าแค่ chiplet เล็กนั้น; ไดเล็ก yield ดีกว่าสำหรับฟังก์ชันรวมเท่าเดิม คุณยังผสมโหนดกระบวนการในแพ็กเกจเดียวได้ — ซิลิคอนเก่าถูกกว่าสำหรับ I/O; ชั้นนำเฉพาะที่ความหนาแน่นคำนวณคุ้ม — ความยืดหยุ่นที่มอนอลิธกระบวนการเดียวให้ไม่ได้</p>
+<h3 id="ชปเลตคมเมอไร-คำนวณจากหลกการแรก-ตวอยางสมมต">ชิปเล็ตคุ้มเมื่อไร: คำนวณจากหลักการแรก (ตัวอย่างสมมติ)<a class="anchor" href="#%e0%b8%8a%e0%b8%9b%e0%b9%80%e0%b8%a5%e0%b8%95%e0%b8%84%e0%b8%a1%e0%b9%80%e0%b8%a1%e0%b8%ad%e0%b9%84%e0%b8%a3-%e0%b8%84%e0%b8%b3%e0%b8%99%e0%b8%a7%e0%b8%93%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%ab%e0%b8%a5%e0%b8%81%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%81%e0%b8%a3%e0%b8%81-%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b8%aa%e0%b8%a1%e0%b8%a1%e0%b8%95">#</a></h3>
+<p><strong>ขั้นที่ 1: นับไดต่อแว่นผลึก.</strong> ผู้เขียนนับด้วยโปรแกรมว่าไดสี่เหลี่ยมจัตุรัสวางเป็นตารางได้กี่ชิ้นภายในวงกลมเส้นผ่านศูนย์กลาง 300 mm ที่เว้นขอบ 3 mm (รัศมีใช้งาน 147 mm; ขอบที่เว้นเป็นค่าสมมติ ไม่นับเส้นตัด) โดยเลื่อนตารางหาตำแหน่งที่ได้มากที่สุด:</p>
+<table>
+	<thead>
+			<tr>
+					<th>ได (mm²)</th>
+					<th>ด้าน (mm)</th>
+					<th>ไดเต็มชิ้นต่อแว่น</th>
+					<th>พื้นที่ใช้งาน / พื้นที่ได</th>
+					<th>สัดส่วนพื้นที่ที่ใช้ได้</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>800</td>
+					<td>28.3</td>
+					<td>69</td>
+					<td>84.9</td>
+					<td>81%</td>
+			</tr>
+			<tr>
+					<td>600</td>
+					<td>24.5</td>
+					<td>93</td>
+					<td>113.1</td>
+					<td>82%</td>
+			</tr>
+			<tr>
+					<td>300</td>
+					<td>17.3</td>
+					<td>198</td>
+					<td>226.3</td>
+					<td>87%</td>
+			</tr>
+			<tr>
+					<td>165</td>
+					<td>12.8</td>
+					<td>376</td>
+					<td>411.4</td>
+					<td>91%</td>
+			</tr>
+			<tr>
+					<td>150</td>
+					<td>12.2</td>
+					<td>411</td>
+					<td>452.6</td>
+					<td>91%</td>
+			</tr>
+	</tbody>
+</table>
+<p>ไดเล็กเสียพื้นที่ที่ขอบวงกลมน้อยกว่า ไดเล็กสี่ชิ้นจึงได้ซิลิคอนใช้งานมากกว่าไดใหญ่หนึ่งชิ้นอยู่แล้วก่อนคิดเรื่องตำหนิ (411 ชิ้นขนาด 150 mm² เทียบกับ 93 × 4 = 372; ค่าสูงสุดของไดเล็กไวต่อตำแหน่งตารางมาก ที่ 411 ชิ้นมุมของไดห่างขอบไม่ถึง 0.01 mm เลื่อนตารางนิดเดียวก็ได้ 409–410) กรณีขอบ: ไดที่ใหญ่กว่าพื้นที่ใช้งานวางไม่ได้เลย (ศูนย์ชิ้น)</p>
+<p><strong>ขั้นที่ 2: ไดดีต่อแว่น.</strong> ใช้ปัวซองที่ D₀ = 0.1 ต่อ cm²: ได 600 mm² ได้ 93 × 0.549 ≈ 51 ชิ้นดีต่อแว่น ได 150 mm² ได้ 411 × 0.861 ≈ 354 ชิ้นดี พอทำชิปสี่ชิ้นได้ราว 88 ชุด</p>
+<p><strong>ขั้นที่ 3: ต้นทุนซิลิคอนต่อผลิตภัณฑ์ดีหนึ่งชิ้น</strong> (หน่วยเป็นต้นทุนแว่นผลึก ไม่รวมค่าการบรรจุ):</p>
+<table>
+	<thead>
+			<tr>
+					<th>แบบ</th>
+					<th>ต้นทุนซิลิคอน เทียบไดเดียว</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ไดเดียว 600 mm²</td>
+					<td>1.00</td>
+			</tr>
+			<tr>
+					<td>ชิปเล็ต 4 × 150 mm² ทดสอบก่อนประกอบ</td>
+					<td>0.58</td>
+			</tr>
+			<tr>
+					<td>ชิปเล็ต 4 × 165 mm² (เพิ่มพื้นที่ 10% ให้วงจรเชื่อมระหว่างได, สมมติ)</td>
+					<td>0.64</td>
+			</tr>
+			<tr>
+					<td>เหมือนแถวบน และการประกอบแต่ละชิ้นสำเร็จ 99% (ชุดสำเร็จ 0.99⁴ = 96%)</td>
+					<td>0.67</td>
+			</tr>
+			<tr>
+					<td>เหมือนแถวบน แต่การประกอบสำเร็จชิ้นละ 95% (ชุด 81%)</td>
+					<td>0.79</td>
+			</tr>
+			<tr>
+					<td>เหมือนแถวบน แต่การประกอบสำเร็จชิ้นละ 90% (ชุด 66%)</td>
+					<td>0.98</td>
+			</tr>
+	</tbody>
+</table>
+<p>(แถวที่มีความล้มเหลวในการประกอบสมมติว่าชุดที่ประกอบพังต้องทิ้งไดดีทั้งสี่ชิ้น)</p>
+<p><strong>กรณีขอบที่บอกว่าชัยชนะมาจากไหน:</strong></p>
+<ul>
+<li><em>ไม่ทดสอบก่อนประกอบ:</em> ภายใต้ปัวซอง ผลได้ของชุดสี่ชิ้นคือ (e^(−0.15))⁴ = e^(−0.6) = 0.549 เท่ากับไดเดียวพอดี เพราะ e^(−a)·e^(−b) = e^(−(a+b)) ส่วนที่ดีขึ้นเหลือเพียงการใช้ขอบแว่นดีกว่า (0.91) ชัยชนะหลักของชิปเล็ตจึงมาจากการ <em>ทดสอบแล้วเลือกเฉพาะไดดี</em> (known-good die) ก่อนประกอบ ไม่ใช่จากการแบ่งเฉย ๆ (ข้อสรุปของผู้เขียนจากพีชคณิตของแบบจำลอง)</li>
+<li><em>D₀ = 0:</em> ผลได้เป็น 1 ทุกขนาด ที่เหลือคือขอบแว่น (0.91) และถ้าเพิ่มพื้นที่เชื่อมต่อ 10% ก็เกือบเสมอ (0.99) บวกค่าการบรรจุแล้วชิปเล็ตแพงกว่า การแบ่งไม่มีประโยชน์ด้านผลได้เมื่อไม่มีตำหนิ</li>
+<li><em>n = 1:</em> แบ่งเป็นหนึ่งชิ้นคือไดเดียว ทุกสูตรกลับไปที่เดิม</li>
+<li><em>การประกอบ:</em> ผลได้ของการประกอบคูณสะสมตามจำนวนชิ้น ที่ 90% ต่อชิ้น ข้อได้เปรียบเกือบหายหมด (0.98) ชิปเล็ตจึงคุ้มก็ต่อเมื่อการบรรจุเชื่อถือได้สูงมาก</li>
+<li><em>แบบจำลองที่เลือก:</em> ปัวซองประเมินผลได้ของไดใหญ่ต่ำเกินจริง ถ้าใช้ทวินามลบ α = 3 ได 600 mm² ได้ 0.579 แทน 0.549 ข้อได้เปรียบของชิปเล็ตจะเล็กลงบ้าง ตัวเลขในตารางจึงเป็นขอบบนของประโยชน์ภายใต้สมมติฐานนี้</li>
+</ul>
+<h2 id="การบรรจตองซอสายคน">การบรรจุต้องซื้อสายคืน<a class="anchor" href="#%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%9a%e0%b8%a3%e0%b8%a3%e0%b8%88%e0%b8%95%e0%b8%ad%e0%b8%87%e0%b8%8b%e0%b8%ad%e0%b8%aa%e0%b8%b2%e0%b8%a2%e0%b8%84%e0%b8%99">#</a></h2>
+<p>การแยกส่วนใช้ได้ก็ต่อเมื่อแบนด์วิดท์และ latency ระหว่าง chiplet ใกล้ลิงก์บนไดพอ Silicon interposer และการซ้อน 3D มีอยู่เพื่อให้ความหนาแน่นนั้น — ไกลเกินการรูทสัญญาณเดียวกันออกผ่าน PCB แบบเดิม หากไม่มีขั้นบรรจุนั้น ชัยชนะด้าน yield จะถูกจ่ายด้วยกำแพงอินเตอร์คอนเนกต์ใหม่</p>
+<h3 id="ตวเลขของสายทซอคน-ucie-10">ตัวเลขของสายที่ซื้อคืน: UCIe 1.0<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b9%80%e0%b8%a5%e0%b8%82%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b8%aa%e0%b8%b2%e0%b8%a2%e0%b8%97%e0%b8%8b%e0%b8%ad%e0%b8%84%e0%b8%99-ucie-10">#</a></h3>
+<p>UCIe (Universal Chiplet Interconnect Express) เป็นมาตรฐานเปิดสำหรับเชื่อมไดในแพ็กเกจเดียว สไลด์ของ UCIe Consortium ชื่อ &ldquo;Building an open ecosystem of chiplets for on-package innovations&rdquo; (นำเสนอโดย Debendra Das Sharma, ไฟล์สร้างเดือนกุมภาพันธ์ 2023) ให้ตัวเลขเป้าหมายของ UCIe 1.0:</p>
+<table>
+	<thead>
+			<tr>
+					<th>คุณลักษณะ</th>
+					<th>แพ็กเกจมาตรฐาน</th>
+					<th>แพ็กเกจขั้นสูง</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>อัตราข้อมูล (GT/s)</td>
+					<td>4, 8, 12, 16, 24, 32</td>
+					<td>เหมือนกัน</td>
+			</tr>
+			<tr>
+					<td>ความกว้างต่อคลัสเตอร์ (lane)</td>
+					<td>16</td>
+					<td>64</td>
+			</tr>
+			<tr>
+					<td>ระยะห่าง bump (µm)</td>
+					<td>100–130</td>
+					<td>25–55</td>
+			</tr>
+			<tr>
+					<td>ระยะสาย (mm)</td>
+					<td>≤ 25</td>
+					<td>≤ 2</td>
+			</tr>
+			<tr>
+					<td>แบนด์วิดท์ต่อความยาวขอบได (GB/s/mm)</td>
+					<td>28–224</td>
+					<td>165–1317</td>
+			</tr>
+			<tr>
+					<td>แบนด์วิดท์ต่อพื้นที่ (GB/s/mm²)</td>
+					<td>22–125</td>
+					<td>188–1350</td>
+			</tr>
+			<tr>
+					<td>เป้าประสิทธิภาพพลังงาน (pJ/b)</td>
+					<td>0.5</td>
+					<td>0.25</td>
+			</tr>
+			<tr>
+					<td>เวลาแฝง (Tx + Rx)</td>
+					<td>&lt; 2 ns</td>
+					<td>&lt; 2 ns</td>
+			</tr>
+	</tbody>
+</table>
+<p>สไลด์เดียวกันอ้างว่าได้ &ldquo;สมรรถนะ I/O 20 เท่าที่พลังงาน 1/20&rdquo; เมื่อเทียบกับ SerDes นอกแพ็กเกจ และว่า UCIe &ldquo;ทำให้สร้าง SoC ที่ใหญ่เกินขนาดเรติเคิลสูงสุดได้&rdquo;</p>
+<p><strong>ตรวจตัวเลขเอง:</strong> สไลด์หมายเหตุว่าแบนด์วิดท์ต่อขอบ &ldquo;เป็นสัดส่วนกับอัตราข้อมูล&rdquo; ตรวจได้: 224 / 32 = 28 / 4 = 7 GB/s/mm ต่อ GT/s สำหรับแพ็กเกจมาตรฐาน และ 1317 / 32 ≈ 165 / 4 ≈ 41.2 สำหรับแพ็กเกจขั้นสูง แพ็กเกจขั้นสูงจึงให้แบนด์วิดท์ต่อขอบมากกว่าราว 5.9 เท่าที่อัตราเดียวกัน ส่วนใหญ่มาจาก bump ที่ถี่กว่า</p>
+<p><strong>ตัวอย่างสมมติ: ลิงก์ระหว่างไดของ Blackwell.</strong> ข่าวของ NVIDIA ระบุว่าไดสองชิ้นของ Blackwell เชื่อมกันด้วยลิงก์ 10 TB/s ถ้าลิงก์ขนาดนี้ทำงานที่เป้าพลังงานของ UCIe (NVIDIA ไม่ได้บอกว่าใช้ UCIe และไม่ได้ให้ตัวเลขพลังงาน) จะต้องใช้</p>
+<ul>
+<li>10 × 10¹² ไบต์/วินาที × 8 = 8 × 10¹³ บิต/วินาที</li>
+<li>ที่ 0.25 pJ/b: 8 × 10¹³ × 0.25 × 10⁻¹² = 20 W; ที่ 0.5 pJ/b: 40 W</li>
+<li>ความยาวขอบได: 10,000 GB/s ÷ 1317 GB/s/mm ≈ 7.6 mm สำหรับแพ็กเกจขั้นสูง เทียบกับ 10,000 ÷ 224 ≈ 44.6 mm สำหรับแพ็กเกจมาตรฐาน ซึ่งเกินความยาวด้านของไดขนาดเรติเคิล (ได 800 mm² ในตารางข้างบนมีด้านราว 28 mm)</li>
+</ul>
+<p>ข้อสรุปของตัวอย่าง (อนุมาน): ที่แบนด์วิดท์ระดับนี้ ความหนาแน่นของ bump ตัดสินว่าจะ &ldquo;ซื้อสายคืน&rdquo; ได้หรือไม่ ซึ่งคือเหตุผลที่ย่อหน้าข้างบนพูดถึง silicon interposer แทน PCB</p>
+<h2 id="การบรรจเดยวกน-หนวยความจำของเฟสถดไป">การบรรจุเดียวกัน หน่วยความจำของเฟสถัดไป<a class="anchor" href="#%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%9a%e0%b8%a3%e0%b8%a3%e0%b8%88%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7%e0%b8%81%e0%b8%99-%e0%b8%ab%e0%b8%99%e0%b8%a7%e0%b8%a2%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%88%e0%b8%b3%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b9%80%e0%b8%9f%e0%b8%aa%e0%b8%96%e0%b8%94%e0%b9%84%e0%b8%9b">#</a></h2>
+<p>ตระกูลการบรรจุขั้นสูงเดียวกันนี้เปิด HBM ในเฟส 9: ซ้อนไดหน่วยความจำ ติดกับไดคำนวณผ่าน interposer ความหนาแน่นสูง และมองซิลิคอนแยกทางกายภาพเกือบเป็นชิ้นเดียวจากมุมแบนด์วิดท์ Chiplet สำหรับคำนวณกับ HBM สำหรับหน่วยความจำคือสองอินสแตนซ์ของข้อจำกัดเดียว — ได้แบนด์วิดท์พอระหว่างไดแยกจนการแยกหยุดเป็นบทลงโทษสมรรถนะ</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>ทรงพล กาญจนชูชัย, <em>อุปกรณ์สารกึ่งตัวนำ</em></li>
+<li>Robert C. Leachman, &ldquo;Yield Modeling and Analysis&rdquo;, IEOR 130 lecture notes, UC Berkeley, Spring 2014 (สำเนาในหน้าวิชาที่ fog.misty.com): <a href="https://fog.misty.com/perry/cod/references/yield_models.pdf">https://fog.misty.com/perry/cod/references/yield_models.pdf</a></li>
+<li>UCIe Consortium (D. Das Sharma), &ldquo;Building an open ecosystem of chiplets for on-package innovations&rdquo; (2023) สไลด์ 24 &ldquo;UCIe 1.0: Characteristics and Key Metrics&rdquo;: <a href="https://www.uciexpress.org/_files/ugd/0c1418_064d8c3247284b8da8a09674714a2c78.pdf">https://www.uciexpress.org/_files/ugd/0c1418_064d8c3247284b8da8a09674714a2c78.pdf</a></li>
+<li>NVIDIA, &ldquo;NVIDIA Blackwell Platform Arrives to Power a New Era of Computing&rdquo; (18 March 2024): <a href="https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing">https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Chiplets&#43;%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%82%E0%B8%B1%E0%B9%89%E0%B8%99%E0%B8%AA%E0%B8%B9%E0%B8%87&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F51-chiplets-advanced-packaging%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F51-chiplets-advanced-packaging.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F51-chiplets-advanced-packaging.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/50-moore-s-law/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>กฎของมัวร์</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/52-why-gpus-exist/" class="flex align-center">
+        <span>เหตุใด GPU จึงมีอยู่</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ไดมอนอลธกและกำแพง-yield">ไดมอนอลิธิกและกำแพง Yield</a>
+      <ul>
+        <li><a href="#ผลไดคำนวณอยางไร-แบบจำลองทโรงงานใช">ผลได้คำนวณอย่างไร: แบบจำลองที่โรงงานใช้</a></li>
+      </ul>
+    </li>
+    <li><a href="#แยกซลคอน-คงฟงกชน">แยกซิลิคอน คงฟังก์ชัน</a>
+      <ul>
+        <li><a href="#ชปเลตคมเมอไร-คำนวณจากหลกการแรก-ตวอยางสมมต">ชิปเล็ตคุ้มเมื่อไร: คำนวณจากหลักการแรก (ตัวอย่างสมมติ)</a></li>
+      </ul>
+    </li>
+    <li><a href="#การบรรจตองซอสายคน">การบรรจุต้องซื้อสายคืน</a>
+      <ul>
+        <li><a href="#ตวเลขของสายทซอคน-ucie-10">ตัวเลขของสายที่ซื้อคืน: UCIe 1.0</a></li>
+      </ul>
+    </li>
+    <li><a href="#การบรรจเดยวกน-หนวยความจำของเฟสถดไป">การบรรจุเดียวกัน หน่วยความจำของเฟสถัดไป</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

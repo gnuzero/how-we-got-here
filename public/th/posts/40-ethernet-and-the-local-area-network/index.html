@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="สายร่วม ไม่มีผู้ตัดสินศูนย์กลาง — CSMA/CD แก้ข้อจำกัดการชนของ LAN; สวิตช์ภายหลังลบมัน">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/40-ethernet-and-the-local-area-network/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="Ethernet และเครือข่ายท้องถิ่น">
+	<meta property="og:description" content="สายร่วม ไม่มีผู้ตัดสินศูนย์กลาง — CSMA/CD แก้ข้อจำกัดการชนของ LAN; สวิตช์ภายหลังลบมัน">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Ethernet และเครือข่ายท้องถิ่น">
+	<meta itemprop="description" content="สายร่วม ไม่มีผู้ตัดสินศูนย์กลาง — CSMA/CD แก้ข้อจำกัดการชนของ LAN; สวิตช์ภายหลังลบมัน">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1490">
+
+<title>Ethernet และเครือข่ายท้องถิ่น • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/40-ethernet-and-the-local-area-network/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/40-ethernet-and-the-local-area-network/" title="Ethernet and the Local Area Network">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/40-ethernet-and-the-local-area-network/" title="Ethernet සහ Local Area Network">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/40-ethernet-and-the-local-area-network/" title="Ethernet மற்றும் Local Area Network">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/40-ethernet-and-the-local-area-network/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="active">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Ethernet และเครือข่ายท้องถิ่น</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ปญหาสอรวม">ปัญหาสื่อร่วม</a></li>
+    <li><a href="#csmacd-ฟง-สง-ตรวจ-ถอย">CSMA/CD: ฟัง ส่ง ตรวจ ถอย</a></li>
+    <li><a href="#ทำไมเฟรมตองยาวอยางนอย-512-บต">ทำไมเฟรมต้องยาวอย่างน้อย 512 บิต</a></li>
+    <li><a href="#backoff-แบบเลขชกำลงค-ตวเลขและกรณขอบ">Backoff แบบเลขชี้กำลังคู่: ตัวเลขและกรณีขอบ</a></li>
+    <li><a href="#ประสทธภาพตามแบบจำลองของ-metcalfe-และ-boggs">ประสิทธิภาพตามแบบจำลองของ Metcalfe และ Boggs</a></li>
+    <li><a href="#เฟรม">เฟรม</a></li>
+    <li><a href="#เฟรมเปนไบต">เฟรมเป็นไบต์</a></li>
+    <li><a href="#จากบสรวมสดาวแบบสวตช">จากบัสร่วมสู่ดาวแบบสวิตช์</a></li>
+    <li><a href="#สงนนำไปทใด">สิ่งนี้นำไปที่ใด</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Ethernet และเครือข่ายท้องถิ่น
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>ARPANET (บทที่ 39) แก้การสลับแพ็กเก็ตระยะไกลระหว่างไซต์ห่าง ในอาคารเดียว การ routing แบบ IMP สำหรับสายไม่กี่สิบเมตรคือเครื่องมือผิด Ethernet ที่เริ่มที่ Xerox PARC ปี 1973 โดย Robert Metcalfe และ David Boggs กลายเป็นคำตอบท้องถิ่นที่ครอง</p>
+<p>คำศัพท์ก่อนเริ่ม (ศัพท์บัญญัติราชบัณฑิตยสภา สาขาคอมพิวเตอร์และเทคโนโลยีสารสนเทศ เว้นแต่ระบุ): <strong>อีเทอร์เน็ต</strong> (Ethernet); <strong>บัส</strong> (bus); <strong>ทอพอโลยี</strong> (topology); <strong>กลุ่มข้อมูล</strong> (packet); <strong>กรอบ</strong> หรือ <strong>กรอบความ</strong> (frame — ในบทนี้ใช้คู่กับคำทับศัพท์ &ldquo;เฟรม&rdquo;); <strong>ส่วนหัว</strong> (header); <strong>เลขที่อยู่</strong> (address); <strong>เกณฑ์วิธี</strong> หรือ <strong>โพรโทคอล</strong> (protocol); <strong>การแพร่สัญญาณ</strong> (broadcast); <strong>แพร่สัญญาณเฉพาะกลุ่ม</strong> (multicast); <strong>คลื่นพาห์</strong> (carrier); <strong>สายโคแอ็กซ์</strong> (coaxial cable); <strong>เครื่องรับส่ง</strong> (transceiver); <strong>เครื่องทวนสัญญาณ</strong> (repeater); <strong>ฮับ</strong> (hub); <strong>บริดจ์</strong> (bridge); <strong>สวิตช์</strong> (switch); และ <strong>แผ่นวงจรต่อประสานเครือข่าย</strong> (network interface card — การ์ดเครือข่าย) จากสาขาวิทยาศาสตร์และคณิตศาสตร์: <strong>สุ่ม</strong> (random) และ <strong>ความน่าจะเป็น</strong> (probability) คำต่อไปนี้ยังไม่พบศัพท์บัญญัติในความหมายนี้ จึงใช้คำอธิบายพร้อมคำอังกฤษ: local area network หรือ LAN (เครือข่ายท้องถิ่น), collision (การชน — ศัพท์บัญญัติ &ldquo;การโดนกัน&rdquo; มีเฉพาะสาขาประกันภัยและนิติศาสตร์), carrier sense (การฟังคลื่นพาห์), unicast (ส่งถึงปลายทางเดียว), preamble (ส่วนนำ), backoff (การถอยรอ), slot time (ช่วงเวลาหนึ่งช่อง) และ cyclic redundancy check หรือ CRC (รหัสตรวจสอบส่วนซ้ำแบบวน)</p>
+<h2 id="ปญหาสอรวม">ปัญหาสื่อร่วม<a class="anchor" href="#%e0%b8%9b%e0%b8%8d%e0%b8%ab%e0%b8%b2%e0%b8%aa%e0%b8%ad%e0%b8%a3%e0%b8%a7%e0%b8%a1">#</a></h2>
+<p>Ethernet ยุคแรกวางหลายสถานีบนสายร่วมหนึ่งเส้น — ทอโพโลยีบัส <em>ชนิด</em> ความแย่งเดียวกับที่บทที่ 31 เผชิญในเครื่อง ตอนนี้บน LAN ทุกสถานีส่งได้; ทุกสถานีได้ยินทุกการส่ง สองตัวส่งพร้อมกันแล้วทั้งสองเสีย</p>
+<p>บทความของ Metcalfe และ Boggs (1976) ที่ประตูออกของบทนี้บรรยายระบบทดลองที่ใช้งานอยู่จริงในตอนนั้น: 100 สถานีบนสายโคแอ็กซ์ยาวราวหนึ่งกิโลเมตร &ldquo;Ether&rdquo; เป็นสื่อแพร่สัญญาณแบบพาสซีฟที่ไม่มีการควบคุมจากศูนย์กลาง ผู้เขียนบทความเลือกพารามิเตอร์ 1 กิโลเมตร 3 เมกะบิตต่อวินาที และ 256 สถานี (เลขที่อยู่ปลายทางและต้นทางยาวอย่างละ 8 บิต = 256 ค่า) และย้ำว่าพารามิเตอร์สามตัวนี้ &ldquo;ไม่ใช่ข้อจำกัดตายตัวที่จำเป็นต่อแนวคิด Ethernet&rdquo; นอกจากนี้ระบบทดลองมี CRC 16 บิตต่อท้าย และจำกัดความยาวกลุ่มข้อมูลในซอฟต์แวร์ไว้ราว 4,000 บิต — Ethernet ปัจจุบันเปลี่ยนเกือบทุกตัว แต่หลักการยังเหมือนเดิม</p>
+<h2 id="csmacd-ฟง-สง-ตรวจ-ถอย">CSMA/CD: ฟัง ส่ง ตรวจ ถอย<a class="anchor" href="#csmacd-%e0%b8%9f%e0%b8%87-%e0%b8%aa%e0%b8%87-%e0%b8%95%e0%b8%a3%e0%b8%a7%e0%b8%88-%e0%b8%96%e0%b8%ad%e0%b8%a2">#</a></h2>
+<p>คำตอบของ Ethernet คือ CSMA/CD <strong>Carrier Sense:</strong> ฟังก่อน; ส่งเฉพาะเมื่อสื่อดูว่าง <strong>Multiple Access:</strong> สถานีใดก็ได้ลอง — ไม่มี grant ศูนย์กลาง ต่างจาก request/grant บนบัสระบบ (บทที่ 31) <strong>Collision Detection:</strong> ฟังต่อขณะส่ง; หากมีการชน หยุด รอ backoff <em>สุ่ม</em> แล้วลองใหม่</p>
+<p>การสุ่มคือกลเม็ดที่รับน้ำหนัก Backoff คงที่เหมือนกันจะชนตลอด การรอสุ่มต่างกันให้สถานีหนึ่งสำเร็จก่อนอีกตัวลองใหม่ — ความแย่งแบบกระจายโดยไม่มีผู้ตัดสิน</p>
+<h2 id="ทำไมเฟรมตองยาวอยางนอย-512-บต">ทำไมเฟรมต้องยาวอย่างน้อย 512 บิต<a class="anchor" href="#%e0%b8%97%e0%b8%b3%e0%b9%84%e0%b8%a1%e0%b9%80%e0%b8%9f%e0%b8%a3%e0%b8%a1%e0%b8%95%e0%b8%ad%e0%b8%87%e0%b8%a2%e0%b8%b2%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b8%99%e0%b8%ad%e0%b8%a2-512-%e0%b8%9a%e0%b8%95">#</a></h2>
+<p>การตรวจการชนมีเงื่อนไขซ่อนอยู่: ผู้ส่งต้อง <em>ยังส่งอยู่</em> ตอนที่สัญญาณชนเดินทางกลับมาถึง คิดกรณีเลวที่สุดจากหลักการแรก (ตามหนังสือ <em>Computer Networks: A Systems Approach</em> ของ Peterson และ Davie): สถานี A กับ B อยู่คนละปลายสาย ให้ d คือเวลาที่สัญญาณเดินทางจากปลายหนึ่งไปอีกปลาย</p>
+<ul>
+<li>เวลา t: A เริ่มส่ง</li>
+<li>เวลาเกือบ t + d: บิตแรกของ A ยังไม่ถึง B ฝั่ง B เห็นสายว่างจึงเริ่มส่ง แล้วชนทันที B ส่งสัญญาณรบกวน (jam) 32 บิตแล้วหยุด</li>
+<li>เวลา t + 2d: สัญญาณชนจาก B เดินทางกลับถึง A</li>
+</ul>
+<p>A จึงต้องส่งต่อเนื่องอย่างน้อย 2d ถ้าเฟรมสั้นกว่านั้น A ส่งจบไปแล้วก่อนรู้ว่าชน และจะเข้าใจผิดว่าส่งสำเร็จ หนังสือระบุว่า Ethernet 10 Mb/s ที่ยาวสูงสุด 2,500 เมตร มีเครื่องทวนสัญญาณได้ถึงสี่ตัว กำหนดเวลาไปกลับไว้ที่ 51.2 µs ซึ่งที่ 10 Mb/s เท่ากับ 512 บิต เฟรมทุกเฟรมจึงต้องยาวอย่างน้อย 512 บิต = 64 ไบต์ = ส่วนหัว 14 + ข้อมูล 46 + CRC 4 และผู้ส่งที่ชนจะส่งออกไปอย่างน้อย 96 บิต (ส่วนนำ 64 + jam 32)</p>
+<p>ผู้เขียนตรวจตัวเลข: 512 บิต ÷ 10⁷ บิต/วินาที = 51.2 µs ถ้าสมมุติว่าสัญญาณในสายวิ่งราว 2 × 10⁸ m/s (ค่าประกอบการอธิบาย ความเร็วจริงขึ้นกับชนิดสาย) เวลาเที่ยวเดียว 25.6 µs เท่ากับสายเปล่า ๆ ราว 5,120 เมตร ตัวเลข 2,500 เมตรจึงเหลือเวลาไว้ให้ความหน่วงของเครื่องทวนสัญญาณและเครื่องรับส่ง (ข้อนี้เป็นการอนุมานของผู้เขียน)</p>
+<p><strong>กรณีขอบเมื่อความเร็วเพิ่ม:</strong> ถ้ายังใช้เฟรมขั้นต่ำ 512 บิตเท่าเดิม ที่ 100 Mb/s เวลาส่ง 512 บิตเหลือ 5.12 µs และที่ 1 Gb/s เหลือ 0.512 µs — ความยาวเครือข่ายที่ตรวจการชนได้จะหดลงราวสิบเท่าในแต่ละขั้น (อนุมานจากสูตรเดียวกัน ผู้เขียนไม่ได้เปิดมาตรฐานของความเร็วเหล่านั้น) นี่เป็นอีกเหตุผลที่ย่อหน้า &ldquo;จากบัสร่วมสู่ดาวแบบสวิตช์&rdquo; ข้างล่างพูดถึง: เมื่อลิงก์มีแค่สองปลายและส่งสวนกันได้ ปัญหานี้หายไปทั้งหมด</p>
+<h2 id="backoff-แบบเลขชกำลงค-ตวเลขและกรณขอบ">Backoff แบบเลขชี้กำลังคู่: ตัวเลขและกรณีขอบ<a class="anchor" href="#backoff-%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b9%80%e0%b8%a5%e0%b8%82%e0%b8%8a%e0%b8%81%e0%b8%b3%e0%b8%a5%e0%b8%87%e0%b8%84-%e0%b8%95%e0%b8%a7%e0%b9%80%e0%b8%a5%e0%b8%82%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%81%e0%b8%a3%e0%b8%93%e0%b8%82%e0%b8%ad%e0%b8%9a">#</a></h2>
+<p>&ldquo;การรอสุ่มต่างกัน&rdquo; ในย่อหน้าข้างบนมีสูตรชัดเจน หนังสือของ Peterson และ Davie ระบุว่า หลังการชนครั้งที่ n ตัวส่งสุ่ม k จาก 0 ถึง 2ⁿ − 1 แล้วรอ k × 51.2 µs โดย n ถูกจำกัดไม่เกิน 10 และตัวส่งมักลองได้ไม่เกิน 16 ครั้งก่อนรายงานข้อผิดพลาด:</p>
+<table>
+	<thead>
+			<tr>
+					<th>การชนครั้งที่ n</th>
+					<th>k สุ่มจาก</th>
+					<th>รอนานสุด</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>0–1</td>
+					<td>51.2 µs</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>0–3</td>
+					<td>153.6 µs</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>0–7</td>
+					<td>358.4 µs</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td>0–1023</td>
+					<td>52.38 ms</td>
+			</tr>
+			<tr>
+					<td>11–15 (กรณีขอบ: ช่วงไม่ขยายอีก)</td>
+					<td>0–1023</td>
+					<td>52.38 ms</td>
+			</tr>
+			<tr>
+					<td>16</td>
+					<td>—</td>
+					<td>เลิกและรายงานข้อผิดพลาด</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>สองสถานี:</strong> ถ้าสองสถานีชนกันและอยู่ที่ครั้งที่ n เท่ากัน จะชนซ้ำเมื่อสุ่มได้ k เท่ากัน ความน่าจะเป็น 1/2ⁿ: ครั้งแรก 1/2 ครั้งที่สอง 1/4 … ผู้เขียนคูณความน่าจะเป็นที่ชนซ้ำทุกครั้งจนถึงครั้งที่ 15 (ช่วงหยุดขยายที่ n = 10) ได้ราว 2⁻¹⁰⁵ — สองสถานีแทบไม่มีทางเลิกเพราะชนกันเอง</p>
+<p><strong>หลายสถานี:</strong> ผู้เขียนจำลองแบบง่าย (ทุกสถานีเริ่มส่งพร้อมกันแล้วชน จากนั้นใช้ backoff ข้างบน นับช่องเวลาจนมีสถานีแรกส่งสำเร็จ แบบจำลองอุดมคติ ไม่ใช่การวัดจริง):</p>
+<table>
+	<thead>
+			<tr>
+					<th>จำนวนสถานีที่พร้อมส่ง</th>
+					<th>ช่องเวลาเฉลี่ยจนมีผู้สำเร็จคนแรก</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 (กรณีขอบ: ไม่มีใครชน)</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>2.7</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td>6.6</td>
+			</tr>
+			<tr>
+					<td>50</td>
+					<td>22.5</td>
+			</tr>
+			<tr>
+					<td>200</td>
+					<td>64.6</td>
+			</tr>
+	</tbody>
+</table>
+<p>ในการจำลองนี้ไม่มีสถานีใดถึงขีด 16 ครั้งก่อนมีคนแรกสำเร็จ แต่เวลารอโตตามจำนวนผู้แย่ง — ไม่มีผู้ตัดสินกลาง ราคาที่จ่ายคือช่องเวลาที่เสียไปกับการชน</p>
+<p><strong>ต้นฉบับปี 1976:</strong> Metcalfe และ Boggs บรรยายหลักเดียวกันด้วยคำอื่น: ช่วงรอเป็นจำนวนเท่าของ &ldquo;ช่อง&rdquo; (slot) ซึ่งเท่ากับเวลาไปกลับหนึ่งรอบ ครั้งแรกค่าเฉลี่ยของช่วงรอคือหนึ่งช่อง และทุกครั้งที่ชน ค่าเฉลี่ยเพิ่มเป็นสองเท่า — ที่บทความเรียกว่า Binary Exponential Backoff</p>
+<h2 id="ประสทธภาพตามแบบจำลองของ-metcalfe-และ-boggs">ประสิทธิภาพตามแบบจำลองของ Metcalfe และ Boggs<a class="anchor" href="#%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%aa%e0%b8%97%e0%b8%98%e0%b8%a0%e0%b8%b2%e0%b8%9e%e0%b8%95%e0%b8%b2%e0%b8%a1%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%88%e0%b8%b3%e0%b8%a5%e0%b8%ad%e0%b8%87%e0%b8%82%e0%b8%ad%e0%b8%87-metcalfe-%e0%b9%81%e0%b8%a5%e0%b8%b0-boggs">#</a></h2>
+<p>บทความให้สูตรสำหรับเครือข่ายที่มี Q สถานีพร้อมส่งตลอด แต่ละช่องทุกสถานีส่งด้วยความน่าจะเป็น 1/Q:</p>
+<ul>
+<li>ความน่าจะเป็นที่ช่องหนึ่งมีผู้ส่งคนเดียว (ยึดสายได้): A = (1 − 1/Q)^(Q−1)</li>
+<li>จำนวนช่องเฉลี่ยที่เสียไปก่อนยึดได้: W = (1 − A) / A</li>
+<li>ประสิทธิภาพ: E = (P/C) / ((P/C) + W·T) เมื่อ P คือความยาวกลุ่มข้อมูลเป็นบิต C = 3 Mb/s และ T = 16 µs</li>
+</ul>
+<p>ผู้เขียนคำนวณซ้ำด้วยค่าเหล่านี้ ได้ตรงกับตาราง I ของบทความ (Q = 1 ถึง 256) ถึงทศนิยมตำแหน่งที่สี่ในทุกช่องที่อ่านได้จากสำเนา ยกเว้นช่องเดียวคือ Q = 3, P = 4096 ที่ต่างกันหนึ่งหน่วยในหลักที่สี่ (ผู้เขียนได้ 0.98556 ปัดเป็น 0.9856 ขณะที่ตารางพิมพ์ 0.9857 ส่วนช่องอื่นของแถว Q = 3 ตรงกัน):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Q</th>
+					<th>P = 4096</th>
+					<th>P = 1024</th>
+					<th>P = 512</th>
+					<th>P = 48</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>1.0000</td>
+					<td>1.0000</td>
+					<td>1.0000</td>
+					<td>1.0000</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>0.9884</td>
+					<td>0.9552</td>
+					<td>0.9143</td>
+					<td>0.5000</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>0.9842</td>
+					<td>0.9396</td>
+					<td>0.8862</td>
+					<td>0.4219</td>
+			</tr>
+			<tr>
+					<td>1000 (ผู้เขียนคำนวณเพิ่ม ไม่มีในตาราง I)</td>
+					<td>0.9803</td>
+					<td>0.9255</td>
+					<td>0.8614</td>
+					<td>0.3681</td>
+			</tr>
+	</tbody>
+</table>
+<p>กรณีขอบสามข้อ: <strong>Q = 1</strong> สูตรกลายเป็น 0⁰ ซึ่งต้องตีความเป็น 1 จึงได้ A = 1 W = 0 และ E = 1 (สถานีเดียวไม่มีใครชนด้วย) <strong>P = 48</strong> คือกลุ่มข้อมูลที่ยาวเท่าหนึ่งช่องพอดี (3 × 10⁶ × 16 × 10⁻⁶ = 48 บิต) เมื่อ Q โตขึ้น A เข้าใกล้ 1/e จึงได้ E เข้าใกล้ 1/e ≈ 0.368 ตามที่บทความเขียนว่าเข้าใกล้ &ldquo;ประสิทธิภาพเชิงเส้นกำกับของเครือข่าย slotted Aloha&rdquo; และ <strong>P ยาว</strong> บทความรายงานว่ากลุ่มข้อมูลยาวเกิน 4,000 บิตให้ประสิทธิภาพ &ldquo;สูงกว่า 95 เปอร์เซ็นต์&rdquo; — เวลาที่เสียไปกับการแย่งคงที่ ยิ่งส่งนานต่อครั้งยิ่งคุ้ม นี่คือเหตุผลเชิงตัวเลขของเฟรมยาวสูงสุด 1,500 ไบต์กับเฟรมสั้นที่ไม่ควรสั้นเกินไป</p>
+<h2 id="เฟรม">เฟรม<a class="anchor" href="#%e0%b9%80%e0%b8%9f%e0%b8%a3%e0%b8%a1">#</a></h2>
+<p>Ethernet พกข้อมูลในเฟรม: ที่อยู่ MAC ต้นทางและปลายทาง (ที่อยู่ฮาร์ดแวร์ ต่ำกว่ที่อยู่ IP ในบทที่ 41) ฟิลด์ type สำหรับโปรโตคอลชั้นสูง payload และ CRC — <em>ชนิด</em> ความเชื่อถือได้เดียวกับการตรวจ data-link ของ PCIe (บทที่ 33) บนสื่อต่างกัน</p>
+<h2 id="เฟรมเปนไบต">เฟรมเป็นไบต์<a class="anchor" href="#%e0%b9%80%e0%b8%9f%e0%b8%a3%e0%b8%a1%e0%b9%80%e0%b8%9b%e0%b8%99%e0%b9%84%e0%b8%9a%e0%b8%95">#</a></h2>
+<p>ตามหนังสือของ Peterson และ Davie: ส่วนนำ 64 บิต (8 ไบต์ สลับ 0 กับ 1 ให้ผู้รับจับจังหวะ) เลขที่อยู่ปลายทาง 6 ไบต์ เลขที่อยู่ต้นทาง 6 ไบต์ type 2 ไบต์ ข้อมูล 46–1500 ไบต์ (สั้นกว่า 46 ต้องเติมให้ครบ) CRC 32 บิต และทุกสถานีรอ 9.6 µs หลังจบเฟรมก่อนส่งเฟรมถัดไป ซึ่งที่ 10 Mb/s เท่ากับ 96 บิต = 12 ไบต์ ส่วนหัว 14 ไบต์ที่โฮสต์เห็นจึงเป็นเพียงส่วนหนึ่งของสิ่งที่วิ่งบนสาย ผู้เขียนคำนวณประสิทธิภาพ (ข้อมูลที่ต้องการส่ง ÷ ไบต์ทั้งหมดบนสาย):</p>
+<table>
+	<thead>
+			<tr>
+					<th>ข้อมูลที่ต้องการส่ง (ไบต์)</th>
+					<th>ข้อมูลในเฟรมหลังเติม</th>
+					<th>ไบต์บนสายต่อเฟรม</th>
+					<th>ประสิทธิภาพ</th>
+					<th>เฟรมต่อวินาทีที่ 10 Mb/s</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0 (กรณีขอบ)</td>
+					<td>46</td>
+					<td>84</td>
+					<td>0%</td>
+					<td>14,881</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>46</td>
+					<td>84</td>
+					<td>1.2%</td>
+					<td>14,881</td>
+			</tr>
+			<tr>
+					<td>45</td>
+					<td>46</td>
+					<td>84</td>
+					<td>53.6%</td>
+					<td>14,881</td>
+			</tr>
+			<tr>
+					<td>46 (ขอบพอดี ไม่ต้องเติม)</td>
+					<td>46</td>
+					<td>84</td>
+					<td>54.8%</td>
+					<td>14,881</td>
+			</tr>
+			<tr>
+					<td>47</td>
+					<td>47</td>
+					<td>85</td>
+					<td>55.3%</td>
+					<td>14,706</td>
+			</tr>
+			<tr>
+					<td>1500 (สูงสุด)</td>
+					<td>1500</td>
+					<td>1538</td>
+					<td>97.5%</td>
+					<td>813</td>
+			</tr>
+	</tbody>
+</table>
+<p>ข้อมูล 0 ถึง 46 ไบต์ใช้เวลาบนสายเท่ากันทุกประการ — ส่งหนึ่งไบต์ก็จ่ายเท่ากับส่ง 46 ไบต์</p>
+<p><strong>ขอบเขตในเคอร์เนล Linux:</strong> ไฟล์ <code>include/uapi/linux/if_ether.h</code> กำหนด <code>ETH_ZLEN</code> = 60 (เฟรมสั้นสุดไม่นับ FCS = 64 − 4), <code>ETH_DATA_LEN</code> = 1500, <code>ETH_FRAME_LEN</code> = 1514 (สูงสุดไม่นับ FCS = 14 + 1500), <code>ETH_FCS_LEN</code> = 4 และ <code>ETH_MIN_MTU</code> = 68 พร้อมคำอธิบายว่ามาจาก RFC 791 ซึ่งกำหนดว่าทุกโมดูลอินเทอร์เน็ตต้องส่งต่อ datagram ขนาด 68 octet ได้โดยไม่ต้องแบ่งเพิ่ม เพราะส่วนหัว IP ยาวได้ถึง 60 octet และชิ้นส่วนที่เล็กที่สุดคือ 8 octet (60 + 8 = 68)</p>
+<p><strong>เลขที่อยู่ MAC 48 บิต:</strong> หนังสือของ Peterson และ Davie อธิบายว่าผู้ผลิตแต่ละรายได้รับคำนำหน้า 24 บิตไม่ซ้ำกัน เลขที่อยู่ที่เป็น 1 ทุกบิตคือการแพร่สัญญาณถึงทุกสถานี และเลขที่อยู่ที่บิตแรกเป็น 1 (แต่ไม่ใช่ 1 ทุกบิต) คือการแพร่สัญญาณเฉพาะกลุ่ม ในโค้ดของ Linux (<code>include/linux/etherdevice.h</code>) &ldquo;บิตแรก&rdquo; นี้คือบิต <code>0x01</code> ของไบต์แรก และบิต <code>0x02</code> ของไบต์แรกหมายถึงเลขที่อยู่ที่กำหนดเองในท้องถิ่น (ไม่ได้มาจากผู้ผลิต) ตัวอย่างที่ผู้เขียนคำนวณ:</p>
+<table>
+	<thead>
+			<tr>
+					<th>เลขที่อยู่</th>
+					<th>บิต 0x01 (กลุ่ม)</th>
+					<th>บิต 0x02 (ท้องถิ่น)</th>
+					<th>ความหมาย</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>00:22:15:cf:be:a9</td>
+					<td>0</td>
+					<td>0</td>
+					<td>ส่งถึงปลายทางเดียว แบบที่ผู้ผลิตกำหนด</td>
+			</tr>
+			<tr>
+					<td>02:00:00:00:00:01</td>
+					<td>0</td>
+					<td>1</td>
+					<td>ส่งถึงปลายทางเดียว กำหนดเองในท้องถิ่น</td>
+			</tr>
+			<tr>
+					<td>01:00:5e:00:00:01</td>
+					<td>1</td>
+					<td>0</td>
+					<td>แพร่สัญญาณเฉพาะกลุ่ม</td>
+			</tr>
+			<tr>
+					<td>ff:ff:ff:ff:ff:ff</td>
+					<td>1</td>
+					<td>1</td>
+					<td>แพร่สัญญาณถึงทุกสถานี (ตามคำอธิบายในโค้ด ถือเป็นกลุ่มด้วย)</td>
+			</tr>
+	</tbody>
+</table>
+<p>กรณีขอบในโค้ดเดียวกัน: <code>is_valid_ether_addr</code> ถือว่า 00:00:00:00:00:00 <em>ไม่ใช่</em> เลขที่อยู่ที่ใช้ได้ เช่นเดียวกับเลขที่อยู่กลุ่มและ ff:ff:ff:ff:ff:ff และ <code>eth_random_addr</code> ที่สุ่มเลขที่อยู่ให้การ์ดจะล้างบิต 0x01 และตั้งบิต 0x02 เสมอ</p>
+<p><strong>CRC-32 ตรวจอะไรได้:</strong> หนังสือเล่มเดียวกันให้พหุนาม CRC-32 ที่ Ethernet ใช้ (x³² + x²⁶ + x²³ + x²² + x¹⁶ + x¹² + x¹¹ + x¹⁰ + x⁸ + x⁷ + x⁵ + x⁴ + x² + x + 1) และระบุว่าจับได้ทุกความผิดพลาดบิตเดียว และทุกความผิดพลาดต่อเนื่องที่สั้นกว่า 32 บิต ผู้เขียนเขียนการหารพหุนามนี้เองใน Python แล้วได้ค่าตรงกับ <code>zlib.crc32</code> (เช่น &ldquo;123456789&rdquo; ได้ 0xCBF43926) จากนั้นทดลองกับเฟรม 60 ไบต์บวก CRC 4 ไบต์ = 512 บิต:</p>
+<ul>
+<li>พลิกบิตทีละหนึ่งบิต ครบ 512 แบบ: ตรวจพบทั้ง 512</li>
+<li>พลิกสองบิตพร้อมกัน ครบ 130,816 คู่: ตรวจพบทั้งหมด</li>
+<li>สุ่มทำให้เสีย 200,000 แบบ: ตรวจพบทั้งหมด (คาดว่าจะหลุดราว 200,000 / 2³² ≈ 0.00005 ครั้ง)</li>
+<li><strong>กรณีขอบ:</strong> CRC ของข้อมูลว่างคือ 0 และถ้าคำนวณ CRC ของ &ldquo;ข้อมูล + CRC ของมัน&rdquo; จะได้ 0x2144DF1C เสมอไม่ว่าข้อมูลเป็นอะไร (ผู้เขียนลองข้อมูลว่าง 60 ไบต์ศูนย์ 768 ไบต์ และ &ldquo;hello&rdquo;) ผู้รับจึงตรวจทั้งเฟรมรวม CRC แล้วเทียบกับค่าคงที่ค่าเดียวได้</li>
+</ul>
+<p>CRC ตรวจได้ แต่แก้ไม่ได้ และตรวจเฉพาะความเสียหายบนสาย Metcalfe และ Boggs เขียนไว้ตั้งแต่ปี 1976 ว่า CRC ของฮาร์ดแวร์ &ldquo;ป้องกันเฉพาะความผิดพลาดใน Ether&rdquo; ไม่ป้องกันส่วนขนานภายในสถานี และแนะนำให้มี checksum ในซอฟต์แวร์เพิ่มเมื่อต้องการความน่าเชื่อถือสูงกว่า</p>
+<h2 id="จากบสรวมสดาวแบบสวตช">จากบัสร่วมสู่ดาวแบบสวิตช์<a class="anchor" href="#%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%9a%e0%b8%aa%e0%b8%a3%e0%b8%a7%e0%b8%a1%e0%b8%aa%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%aa%e0%b8%a7%e0%b8%95%e0%b8%8a">#</a></h2>
+<p>Ethernet มีสายสมัยใหม่ส่วนใหญ่ทิ้งสายร่วมไปหาสวิตช์ที่ให้แต่ละสถานีมีลิงก์จุดต่อจุดของตัวเอง — ทางหนีจากร่วมสู่จุดต่อจุดเดียวกับที่ PCIe ทำเทียบกับบัสขนานเก่า (บทที่ 32) บนสวิตช์ที่เหมาะสม การชน CSMA/CD คลาสสิกหายเกือบหมด: แต่ละลิงก์มีสองปลาย ไอเดียยังสำคัญทางประวัติศาสตร์ และ Wi-Fi ยุคแรก — ยังเป็นสื่อวิทยุร่วม — ต้องแก้ข้อจำกัดการชนเดียวกัน</p>
+<h2 id="สงนนำไปทใด">สิ่งนี้นำไปที่ใด<a class="anchor" href="#%e0%b8%aa%e0%b8%87%e0%b8%99%e0%b8%99%e0%b8%b3%e0%b9%84%e0%b8%9b%e0%b8%97%e0%b9%83%e0%b8%94">#</a></h2>
+<p>Ethernet ท้องถิ่นบวกการกำหนดเส้นทางแพ็กเก็ตระยะไกลยังทิ้งช่องว่าง: แบบแผน addressing และ routing <em>สากล</em> ที่มัดเทคโนโลยีพื้นฐานต่างกันเข้าเป็นอินเตอร์เน็ตเวิร์กเดียว นั่นคือ TCP/IP — ถัดไป</p>
+<p><strong>ประตูออก:</strong> Robert M. Metcalfe และ David R. Boggs, &ldquo;Ethernet: Distributed Packet Switching for Local Computer Networks&rdquo; (<em>Communications of the ACM</em>, 1976) — เปเปอร์ปฐมภูมิที่ระบุ LAN สื่อร่วมและการออกแบบ CSMA/CD</p>
+<p><strong>ลองในเทอร์มินัล VM ด้านล่าง:</strong> เครื่องในแล็บมีการ์ดเครือข่าย <code>eth0</code> (ไดรเวอร์ ne2k-pci เลียนแบบการ์ด NE2000) ผู้เขียนบูตอิมเมจแล้วสั่งตามนี้ ผลที่ได้:</p>
+<ul>
+<li><code>cat /sys/class/net/eth0/address</code> ได้เลขที่อยู่ที่ขึ้นต้นด้วย <code>00:22:15</code> เสมอ แต่สามไบต์ท้ายเปลี่ยนทุกครั้งที่บูต — สี่ครั้งที่ผู้เขียนบูตได้ <code>…:1d:f1:2a</code>, <code>…:cf:be:a9</code>, <code>…:98:50:52</code> และ <code>…:24:af:e8</code> ซอร์สของตัวจำลองในแล็บสร้างเลขที่อยู่เป็น <code>[0, 34, 21, 255*Math.random()|0, …]</code> (34 = 0x22, 21 = 0x15) กรณีขอบในบรรทัดนั้น: <code>255*Math.random()|0</code> ให้ค่า 0 ถึง 254 จึง <em>ไม่มีวัน</em> ได้ 0xFF ในสามไบต์ท้าย และมีเลขที่อยู่ที่เป็นไปได้ 255³ = 16,581,375 แบบ ถ้าเปิดแล็บพร้อมกันหลายเครื่องบนเครือข่ายเดียว โอกาสที่สองเครื่องได้เลขซ้ำ (ปัญหาวันเกิด ผู้เขียนประมาณด้วย 1 − e^(−n(n−1)/2N)) คือ 0 เมื่อ n = 1, ราว 0.03% เมื่อ n = 100, ราว 3% เมื่อ n = 1,000 และถึง 50% ที่ราว 4,795 เครื่อง บิต 0x02 ของไบต์แรกเป็น 0 แม้เลขจะสุ่มขึ้น ต่างจาก <code>eth_random_addr</code> ของ Linux ข้างบน</li>
+<li><code>cat /sys/class/net/eth0/mtu</code> ได้ 1500 ลอง <code>ip link set eth0 mtu 1501</code> ถูกปฏิเสธ (เคอร์เนลรายงาน hw max 1500) <code>mtu 9000</code> ถูกปฏิเสธเช่นกัน <code>mtu 67</code> ถูกปฏิเสธ (hw min 68) และ <code>mtu 68</code> ผ่าน — ตรงกับ <code>ETH_MIN_MTU</code> และ <code>ETH_DATA_LEN</code> ข้างบนทุกขอบ อย่าลืมตั้งกลับเป็น 1500</li>
+<li>ก่อนเปิดใช้ <code>operstate</code> เป็น <code>down</code> และ <code>statistics/tx_packets</code> กับ <code>rx_packets</code> เป็น 0 หลัง <code>ip link set eth0 up</code> อ่าน <code>carrier</code> ได้ 1 และ <code>operstate</code> เป็น <code>unknown</code> แต่ <code>speed</code> และ <code>duplex</code> อ่านไม่ได้ (&ldquo;Invalid argument&rdquo;) — ผู้เขียนอนุมานว่าไดรเวอร์ของการ์ดจำลองไม่รายงานความเร็วลิงก์ และในการทดลองนี้การ์ดไม่ได้ต่อกับเครือข่ายภายนอก</li>
+</ul>
+<p>ในซอร์สเดียวกัน ฟังก์ชันรับเฟรมของการ์ดจำลองรับเฟรมเมื่อ (1) เปิดโหมดรับทุกเฟรม หรือ (2) เป็นเลขที่อยู่ ff:ff:ff:ff:ff:ff และเปิดรับการแพร่สัญญาณ หรือ (3) ตรงกับเลขที่อยู่ของตัวเองทั้งหกไบต์ ส่วนเฟรมที่บิต 0x01 ของไบต์แรกเป็น 1 (แพร่สัญญาณเฉพาะกลุ่ม) เมื่อเปิดรับกลุ่มไว้ ตัวจำลองกลับ <em>ทิ้ง</em> เฟรมนั้น (ซอร์สต้นฉบับของ v86 ใน <code>src/ne2k.js</code> มีหมายเหตุ <code>XXX</code> ตรงนั้น แสดงว่ายังทำไม่เสร็จ) — จึงตรงกับกฎของหนังสือ Peterson และ Davie สามข้อจากสี่ ยกเว้นข้อ multicast และเฟรมที่สั้นกว่า 60 ไบต์จะถูกจองที่ในบัฟเฟอร์อย่างน้อย 60 ไบต์ (<code>Math.max(60, a.length)</code> บวกส่วนหัว 4 ไบต์ของบัฟเฟอร์รับ) ซึ่ง 60 คือ <code>ETH_ZLEN</code> นั่นเอง</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=th"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="แล็บเชิงโต้ตอบ: vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=th" target="_blank" rel="noopener">เปิดแล็บในแท็บใหม่ ↗</a>
+  </div>
+</div>
+
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>โอภาส เอี่ยมสิริวงศ์, <em>เครือข่ายคอมพิวเตอร์และการสื่อสาร</em></li>
+<li>จตุชัย แพงจันทร์ และ อนุโชต วุฒิพรพงษ์, <em>เจาะระบบ Network</em></li>
+<li>ภัทรสินี ภัทรโกศล, <em>เครือข่ายคอมพิวเตอร์</em></li>
+<li>Robert M. Metcalfe, David R. Boggs, &ldquo;Ethernet: Distributed Packet Switching for Local Computer Networks&rdquo;, <em>Communications of the ACM</em> 19(7), 1976 — ระบบทดลอง 100 สถานี 1 กม. 3 Mb/s, เลขที่อยู่ 8 บิต, CRC 16 บิต, Binary Exponential Backoff, สูตร A/W/E และตาราง I (สำเนาที่มหาวิทยาลัยเคมบริดจ์): <a href="https://www.cl.cam.ac.uk/teaching/2425/CompNet/files/p395-metcalfe.pdf">https://www.cl.cam.ac.uk/teaching/2425/CompNet/files/p395-metcalfe.pdf</a></li>
+<li>Larry L. Peterson, Bruce S. Davie, <em>Computer Networks: A Systems Approach</em> หัวข้อ 2.6 Multi-Access Networks — รูปแบบเฟรม, เลขที่อยู่, 9.6 µs, 512 บิต/51.2 µs/2,500 ม., backoff สูงสุด 16 ครั้งและ n ≤ 10: <a href="https://book.systemsapproach.org/direct/ethernet.html">https://book.systemsapproach.org/direct/ethernet.html</a></li>
+<li>Larry L. Peterson, Bruce S. Davie, <em>Computer Networks: A Systems Approach</em> หัวข้อ Error Detection — พหุนาม CRC-32 และชนิดความผิดพลาดที่ตรวจได้: <a href="https://book.systemsapproach.org/direct/error.html">https://book.systemsapproach.org/direct/error.html</a></li>
+<li>Linux kernel, <code>include/uapi/linux/if_ether.h</code> และ <code>include/linux/etherdevice.h</code> (สาขา master) — ETH_ZLEN, ETH_DATA_LEN, ETH_MIN_MTU, บิตกลุ่ม/ท้องถิ่น, <code>is_valid_ether_addr</code>, <code>eth_random_addr</code>: <a href="https://raw.githubusercontent.com/torvalds/linux/master/include/uapi/linux/if_ether.h">https://raw.githubusercontent.com/torvalds/linux/master/include/uapi/linux/if_ether.h</a> และ <a href="https://raw.githubusercontent.com/torvalds/linux/master/include/linux/etherdevice.h">https://raw.githubusercontent.com/torvalds/linux/master/include/linux/etherdevice.h</a></li>
+<li>Jon Postel (บรรณาธิการ, Information Sciences Institute), RFC 791 <em>Internet Protocol</em> (1981) — datagram 68 octet: <a href="https://www.rfc-editor.org/rfc/rfc791.txt">https://www.rfc-editor.org/rfc/rfc791.txt</a></li>
+<li>v86 (โครงการโอเพนซอร์ส github.com/copy/v86), <code>src/ne2k.js</code> (สาขา master) — ฟังก์ชันรับเฟรมของการ์ด NE2000 จำลอง รวมทั้งกรณี multicast ที่ถูกทิ้ง (ในแล็บเป็นไฟล์ย่อขนาด <code>libv86.js</code>): <a href="https://github.com/copy/v86/blob/master/src/ne2k.js">https://github.com/copy/v86/blob/master/src/ne2k.js</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Ethernet&#43;%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%82%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B8%97%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%96%E0%B8%B4%E0%B9%88%E0%B8%99&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F40-ethernet-and-the-local-area-network%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F40-ethernet-and-the-local-area-network.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F40-ethernet-and-the-local-area-network.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/39-arpanet-and-packet-switching/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>ARPANET และการสลับแพ็กเก็ต</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="flex align-center">
+        <span>TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ปญหาสอรวม">ปัญหาสื่อร่วม</a></li>
+    <li><a href="#csmacd-ฟง-สง-ตรวจ-ถอย">CSMA/CD: ฟัง ส่ง ตรวจ ถอย</a></li>
+    <li><a href="#ทำไมเฟรมตองยาวอยางนอย-512-บต">ทำไมเฟรมต้องยาวอย่างน้อย 512 บิต</a></li>
+    <li><a href="#backoff-แบบเลขชกำลงค-ตวเลขและกรณขอบ">Backoff แบบเลขชี้กำลังคู่: ตัวเลขและกรณีขอบ</a></li>
+    <li><a href="#ประสทธภาพตามแบบจำลองของ-metcalfe-และ-boggs">ประสิทธิภาพตามแบบจำลองของ Metcalfe และ Boggs</a></li>
+    <li><a href="#เฟรม">เฟรม</a></li>
+    <li><a href="#เฟรมเปนไบต">เฟรมเป็นไบต์</a></li>
+    <li><a href="#จากบสรวมสดาวแบบสวตช">จากบัสร่วมสู่ดาวแบบสวิตช์</a></li>
+    <li><a href="#สงนนำไปทใด">สิ่งนี้นำไปที่ใด</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

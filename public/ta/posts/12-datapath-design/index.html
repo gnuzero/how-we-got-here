@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Single-cycle CPU நடை">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/12-datapath-design/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Datapath வடிவமைப்பு">
+	<meta property="og:description" content="Single-cycle CPU நடை">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Datapath வடிவமைப்பு">
+	<meta itemprop="description" content="Single-cycle CPU நடை">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1394">
+
+<title>Datapath வடிவமைப்பு • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/12-datapath-design/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/12-datapath-design/" title="Datapath Design">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/12-datapath-design/" title="การออกแบบ Datapath">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/12-datapath-design/" title="Datapath නිර්මාණය">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/12-datapath-design/" title="Proiectarea căii de date">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/12-datapath-design/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/12-datapath-design/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/12-datapath-design/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/12-datapath-design/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="active">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Datapath வடிவமைப்பு</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#மயக-கறகள">மையக் கூறுகள்</a></li>
+    <li><a href="#ஒர-அறவறததலத-தடரநத">ஒரு அறிவுறுத்தலைத் தொடர்ந்து</a></li>
+    <li><a href="#ஒர-instruction-எணகளடன-add-14">ஒரு instruction, எண்களுடன்: <code>ADD 14</code></a></li>
+    <li><a href="#கடடபபடட-சமகஞ-அடடவண">கட்டுப்பாட்டு சமிக்ஞை அட்டவணை</a></li>
+    <li><a href="#single-cycle-ஏன-கறபததல-கரவ-உணமயன-வடவமபப-அலல">&ldquo;Single-Cycle&rdquo; ஏன் கற்பித்தல் கருவி, உண்மையான வடிவமைப்பு அல்ல</a></li>
+    <li><a href="#single-cycle-clock-கலம-கணககல">Single-cycle clock காலம், கணக்கில்</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Datapath வடிவமைப்பு
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>ஒரு ISA (பதிவு 11) ஒரு விவரக்குறிப்பு. ஒரு datapath அதைச் செயல்படுத்தும் இயற்பியல் வன்பொருள். மிக எளிய பதிப்பு — ஒரு single-cycle datapath — ஒரு முழு அறிவுறுத்தலை ஒரு clock சுழற்சிக்கு, தொடக்கம் முதல் முடிவு வரை, pipelining இல்லாமல் செயல்படுத்துகிறது. இன்றைய உண்மையான CPU-கள் இப்படிக் கட்டப்படுவதில்லை, ஆனால் முந்தைய கட்டங்களின் துண்டுகள் எப்படி இணைகின்றன என்பதைக் காண மிகத் தெளிவான வழி இது.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> Datapath பற்றித் தமிழில் எழுத்து விளக்கம் கிடைக்கவில்லை; fetch-decode-execute, கட்டுப்பாட்டகம் பற்றி 11ஆம் வகுப்புப் பாடநூலில் சுருக்கமான அறிமுகம் மட்டும். காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. இங்கே ஒரு instruction-ஐ datapath வழியாக எண்களுடன் பின்தொடர்கிறோம், கட்டுப்பாட்டு சமிக்ஞை அட்டவணையை எழுதுகிறோம், single-cycle clock காலத்தைக் கணக்கிடுகிறோம். Mini-CPU எண்கள் lab-இன் மூலக் குறியீடு மற்றும் அதன் simulator ஓட்டங்களிலிருந்து; தாமத (delay) எண்கள் &ldquo;எடுத்துக்காட்டு மதிப்பு&rdquo; — உண்மையான chip அளவீடுகள் அல்ல.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Datapath (தரவுப்பாதை):</strong> தரவு பாயும் வன்பொருள் — பதிவேடுகள், ALU, நினைவகம், அவற்றை இணைக்கும் கம்பிகளும் multiplexer-களும்.</li>
+<li><strong>Control unit (கட்டுப்பாட்டகம்):</strong> opcode-ஐப் படித்து, datapath-இன் ஒவ்வொரு தேர்வியையும் (mux) எழுதும்-அனுமதியையும் (enable) அமைக்கும் பகுதி.</li>
+<li><strong>கட்டுப்பாட்டு சமிக்ஞை (control signal):</strong> ஒரு mux எந்த உள்ளீட்டைத் தேர்ந்தெடுக்க வேண்டும், ஒரு பதிவேடு இந்த clock-இல் எழுதப்பட வேண்டுமா போன்றவற்றைச் சொல்லும் ஒற்றைப் பிட் அல்லது சிறு பிட் தொகுதி.</li>
+<li><strong>IR (Instruction Register, அறிவுறுத்தல் பதிவேடு):</strong> fetch செய்த instruction byte-ஐ வைத்திருக்கும் பதிவேடு.</li>
+<li><strong>கொடிகள் (flags):</strong> கடைசி கணக்கின் பண்புகளைச் சொல்லும் பிட்கள் — carry (வரம்பு மீறல்), zero (முடிவு பூஜ்ஜியம்).</li>
+<li><strong>Critical path (மிக நீண்ட பாதை):</strong> ஒரு clock சுழற்சிக்குள் சமிக்ஞை கடக்க வேண்டிய மிக நீண்ட தாமதச் சங்கிலி; clock காலம் இதைவிடக் குறைவாக இருக்க முடியாது.</li>
+<li><strong>Single-cycle:</strong> ஒவ்வொரு instruction-உம் சரியாக ஒரு clock சுழற்சியில் முடியும் வடிவமைப்பு.</li>
+</ul>
+<h2 id="மயக-கறகள">மையக் கூறுகள்<a class="anchor" href="#%e0%ae%ae%e0%ae%af%e0%ae%95-%e0%ae%95%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<p><strong>நிரல் கவுண்டர் (PC):</strong> தற்போதைய அறிவுறுத்தலின் முகவரியை வைத்திருக்கும் ஒரு பதிவேடு (பதிவு 9-இன் flip-flop-கள்). <strong>அறிவுறுத்தல் நினைவகம்:</strong> datapath-இன் பார்வையில் படிக்க-மட்டும், PC-ஆல் அட்டவணைப்படுத்தப்பட்டது, மூல அறிவுறுத்தல் பிட்களைத் திருப்பும். <strong>Register File:</strong> பதிவேடுகளின் சிறிய, வேகமான அணி (பதிவு 10-இன் cache விவாதத்தின் அதே SRAM-குடும்பக் கலங்களிலிருந்து கட்டப்பட்டது, வேறுவிதமாக அமைக்கப்பட்டது) டிகோட் செய்யப்பட்ட அறிவுறுத்தல் தன் operands-ஐப் படித்து முடிவை எழுதும் இடம். <strong>ALU:</strong> பதிவு 8-இன் எண்கணித/தர்க்க அலகு, அறிவுறுத்தல் குறிப்பிடும் செயல்பாட்டைச் செய்கிறது. <strong>தரவு நினைவகம்:</strong> load/store அறிவுறுத்தல்களுக்கு, முதன்மை நினைவகத்திற்கான பாதை. <strong>கட்டுப்பாட்டகம்:</strong> opcode-ஐ டிகோட் செய்து ஒவ்வொரு கட்டுப்பாட்டு சமிக்ஞையையும் உருவாக்குகிறது — எந்த ALU செயல்பாட்டைச் செய்ய வேண்டும், register file-க்கு எழுத வேண்டுமா, இது நினைவக அணுகலா, மற்றும் பல.</p>
+<h2 id="ஒர-அறவறததலத-தடரநத">ஒரு அறிவுறுத்தலைத் தொடர்ந்து<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%85%e0%ae%b1%e0%ae%b5%e0%ae%b1%e0%ae%a4%e0%ae%a4%e0%ae%b2%e0%ae%a4-%e0%ae%a4%e0%ae%9f%e0%ae%b0%e0%ae%a8%e0%ae%a4">#</a></h2>
+<p>ஒரு எளிய ADD-ஐ எடுங்கள். சுழற்சி தொடங்குகிறது: PC அறிவுறுத்தல் நினைவகத்தை அட்டவணைப்படுத்துகிறது, அறிவுறுத்தல் பிட்கள் வெளிவருகின்றன. கட்டுப்பாட்டகம் opcode-ஐ டிகோட் செய்து இது பதிவேடு-பதிவேடு வடிவத்தில் ஒரு ADD என்று தீர்மானிக்கிறது. Register file இரு மூல-பதிவேட்டுப் புலங்களைப் பயன்படுத்திப் படிக்கப்படுகிறது. அந்த மதிப்புகள் ALU-க்குள் நுழைகின்றன, கட்டுப்பாட்டகம் அதைக் கூட்டலுக்கு அமைத்துள்ளது. ALU முடிவு register file-இன் write-data உள்ளீட்டிற்குச் செல்கிறது, இலக்கு-பதிவேட்டுப் புலம் அது எங்கே எழுதப்படுகிறது என்பதைத் தேர்ந்தெடுக்கிறது. அதே நேரத்தில், PC அடுத்த அறிவுறுத்தலைச் சுட்ட அதிகரிக்கப்படுகிறது (அல்லது, ஒரு கிளைக்கு, வேறுவிதமாகக் கணிக்கப்படுகிறது). Fetch, decode, பதிவேட்டுப் படிப்பு, ALU செயல்பாடு, பதிவேட்டு எழுத்து, மற்றும் PC புதுப்பிப்பு அனைத்தும் <em>ஒரே</em> clock சுழற்சிக்குள் நடக்கின்றன.</p>
+<h2 id="ஒர-instruction-எணகளடன-add-14">ஒரு instruction, எண்களுடன்: <code>ADD 14</code><a class="anchor" href="#%e0%ae%92%e0%ae%b0-instruction-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9-add-14">#</a></h2>
+<p>Mini-CPU-இன் வழிகாட்டும் நிரலில் நான்காவது instruction <code>ADD 14</code>. அதற்கு முன் நிலை (simulator ஓட்டம்): A = 8, mem[14] = 5, PC = 3.</p>
+<table>
+	<thead>
+			<tr>
+					<th>படி</th>
+					<th>என்ன நடக்கிறது</th>
+					<th>மதிப்புகள்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Fetch</td>
+					<td>IR ← mem[PC]; PC ← PC + 1</td>
+					<td>IR ← mem[3] = 0x2E; PC ← 4</td>
+			</tr>
+			<tr>
+					<td>Decode</td>
+					<td>IR-இன் மேல் 4 பிட் → opcode, கீழ் 4 பிட் → operand</td>
+					<td>0010 → ADD; 1110 → 14</td>
+			</tr>
+			<tr>
+					<td>Operand படிப்பு</td>
+					<td>operand-ஐ நினைவக முகவரியாகப் பயன்படுத்து</td>
+					<td>mem[14] = 5</td>
+			</tr>
+			<tr>
+					<td>Execute</td>
+					<td>ALU: A + mem[14]</td>
+					<td>8 + 5 = 13</td>
+			</tr>
+			<tr>
+					<td>கொடிகள்</td>
+					<td>carry = (முடிவு &gt; 255); zero = (முடிவு = 0)</td>
+					<td>13 ≤ 255 → carry 0; 13 ≠ 0 → zero 0</td>
+			</tr>
+			<tr>
+					<td>Write-back</td>
+					<td>A ← முடிவு (8 பிட்டுக்குக் குறைத்து)</td>
+					<td>A ← 13 = 0x0D</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>வரம்பு மீறல், ஒரு கணக்கில்</strong> (காகிதத்தில்; எடுத்துக்காட்டு மதிப்புகள்): A = 200, mem[a] = 100 என்றால் 200 + 100 = 300. 8 பிட் அதிகபட்சம் 255. lab-இன் விதி: A ← 300 AND 0xFF = 300 − 256 = <strong>44</strong>, carry = <strong>1</strong>. அடுத்த <code>JC</code> instruction அந்த carry-ஐப் பார்த்துத் தாவும் — இப்படித்தான் 8-பிட் இயந்திரம் பெரிய எண்களைக் கையாள்கிறது.</p>
+<h2 id="கடடபபடட-சமகஞ-அடடவண">கட்டுப்பாட்டு சமிக்ஞை அட்டவணை<a class="anchor" href="#%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%9f-%e0%ae%9a%e0%ae%ae%e0%ae%95%e0%ae%9e-%e0%ae%85%e0%ae%9f%e0%ae%9f%e0%ae%b5%e0%ae%a3">#</a></h2>
+<p>கட்டுப்பாட்டகம் உண்மையில் ஒரு பெரிய உண்மை அட்டவணை (truth table, பதிவு 8): உள்ளீடு opcode (மற்றும் கொடிகள்), வெளியீடு ஒவ்வொரு சமிக்ஞையும். Mini-CPU-இன் நடத்தையை (lab மூலக் குறியீட்டின் execute பகுதி) ஒரு வன்பொருள் கட்டுப்பாட்டகமாக எழுதினால் இப்படி ஒரு அட்டவணை வரும். சமிக்ஞைப் பெயர்கள் நம் விளக்கத்துக்காகத் தேர்ந்தவை; lab JavaScript-இல் இயங்குகிறது, கம்பிகளில் அல்ல.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Instruction</th>
+					<th>A_எழுது</th>
+					<th>A_மூலம்</th>
+					<th>ALU_செயல்</th>
+					<th>Mem_எழுது</th>
+					<th>கொடிகள்_புதுப்பி</th>
+					<th>PC_மூலம்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>NOP</td>
+					<td>0</td>
+					<td>—</td>
+					<td>—</td>
+					<td>0</td>
+					<td>0</td>
+					<td>PC+1</td>
+			</tr>
+			<tr>
+					<td>LDA a</td>
+					<td>1</td>
+					<td>நினைவகம்</td>
+					<td>—</td>
+					<td>0</td>
+					<td>zero மட்டும்</td>
+					<td>PC+1</td>
+			</tr>
+			<tr>
+					<td>ADD a</td>
+					<td>1</td>
+					<td>ALU</td>
+					<td>கூட்டல்</td>
+					<td>0</td>
+					<td>1</td>
+					<td>PC+1</td>
+			</tr>
+			<tr>
+					<td>SUB a</td>
+					<td>1</td>
+					<td>ALU</td>
+					<td>கழித்தல்</td>
+					<td>0</td>
+					<td>1</td>
+					<td>PC+1</td>
+			</tr>
+			<tr>
+					<td>STA a</td>
+					<td>0</td>
+					<td>—</td>
+					<td>—</td>
+					<td>1</td>
+					<td>0</td>
+					<td>PC+1</td>
+			</tr>
+			<tr>
+					<td>LDI n</td>
+					<td>1</td>
+					<td>operand புலம்</td>
+					<td>—</td>
+					<td>0</td>
+					<td>zero மட்டும்</td>
+					<td>PC+1</td>
+			</tr>
+			<tr>
+					<td>JMP a</td>
+					<td>0</td>
+					<td>—</td>
+					<td>—</td>
+					<td>0</td>
+					<td>0</td>
+					<td>operand</td>
+			</tr>
+			<tr>
+					<td>JC a</td>
+					<td>0</td>
+					<td>—</td>
+					<td>—</td>
+					<td>0</td>
+					<td>0</td>
+					<td>carry ? operand : PC+1</td>
+			</tr>
+			<tr>
+					<td>JZ a</td>
+					<td>0</td>
+					<td>—</td>
+					<td>—</td>
+					<td>0</td>
+					<td>0</td>
+					<td>zero ? operand : PC+1</td>
+			</tr>
+			<tr>
+					<td>OUT</td>
+					<td>0</td>
+					<td>—</td>
+					<td>—</td>
+					<td>0</td>
+					<td>0</td>
+					<td>PC+1 (Output ← A)</td>
+			</tr>
+			<tr>
+					<td>HLT</td>
+					<td>0</td>
+					<td>—</td>
+					<td>—</td>
+					<td>0</td>
+					<td>0</td>
+					<td>நிறுத்து</td>
+			</tr>
+	</tbody>
+</table>
+<p>&ldquo;A_மூலம்&rdquo; என்பது A-க்கு முன் உள்ள ஒரு 3-உள்ளீட்டு mux (நினைவகம் / ALU / operand புலம்). &ldquo;PC_மூலம்&rdquo; என்பது PC-க்கு முன் உள்ள 2-உள்ளீட்டு mux; அதன் தேர்வுப் பிட் = (JMP) OR (JC AND carry) OR (JZ AND zero) — மூன்று gate-களில் எழுதக்கூடிய தர்க்கம். ஒவ்வொரு வரிசையும் ஒரு instruction-இன் &ldquo;பொருள்&rdquo; (பதிவு 11-இன் ISA ஒப்பந்தம்) வன்பொருள் சமிக்ஞைகளாக மாறிய வடிவம்.</p>
+<p><strong>இப்போது முயல்க.</strong> கீழே உள்ள mini-CPU-வை அதன் வழிகாட்டும் நிரல் வழியாக Step செய்யுங்கள். ஒவ்வொரு Step-உம் அந்தத் துண்டுகளில் ஒன்று மெதுவான இயக்கத்தில் — IR-க்குள் fetch, opcode-ஐ decode, A மற்றும் நினைவகத்திற்குள் execute — இந்தப் பதிவு இப்போது பெயரிட்ட அதே பாதை, பார்க்கும் அளவுக்குச் சிறியது.</p>
+<p><strong>இப்போது முயல்க: ஒரு trace அட்டவணையை நிரப்புங்கள்.</strong> Lab-இல் <strong>Reset</strong> அழுத்தி, ஒவ்வொரு <strong>Step</strong>-க்குப் பிறகும் PC (பதின்மம்), IR (hex), A (hex) ஆகியவற்றை எழுதுங்கள். lab-இன் வழிகாட்டிப் பலகம் ஒவ்வொரு படியிலும் &ldquo;FETCH: IR ← mem[…]&rdquo;, &ldquo;DECODE: … (opcode 0x…, operand …)&rdquo; என்று விவரிக்கும். உங்கள் அட்டவணை இதோடு பொருந்த வேண்டும் (simulator ஓட்டத்தால் சரிபார்த்தது):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Step</th>
+					<th>PC</th>
+					<th>IR</th>
+					<th>A</th>
+					<th>குறிப்பு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>55</td>
+					<td>05</td>
+					<td>LDI 5</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>4E</td>
+					<td>05</td>
+					<td>STA 14 — mem[14] = 5</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>3</td>
+					<td>58</td>
+					<td>08</td>
+					<td>LDI 8</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>4</td>
+					<td>2E</td>
+					<td>0D</td>
+					<td>ADD 14 — 8 + 5 = 13</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>5</td>
+					<td>4F</td>
+					<td>0D</td>
+					<td>STA 15 — mem[15] = 13</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>6</td>
+					<td>1F</td>
+					<td>0D</td>
+					<td>LDA 15</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>7</td>
+					<td>E0</td>
+					<td>0D</td>
+					<td>OUT — Output 13</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>8</td>
+					<td>F0</td>
+					<td>0D</td>
+					<td>HLT — HALT கொடி ஒளிரும்</td>
+			</tr>
+	</tbody>
+</table>
+<p>A எந்தப் படிகளில் மாறுகிறது (1, 3, 4), நினைவகம் எந்தப் படிகளில் மாறுகிறது (2, 5) என்பதைக் கவனியுங்கள் — மேலே உள்ள அட்டவணையின் A_எழுது, Mem_எழுது நெடுவரிசைகள் சரியாக அதைக் கணிக்கின்றன.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=ta"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<h2 id="single-cycle-ஏன-கறபததல-கரவ-உணமயன-வடவமபப-அலல">&ldquo;Single-Cycle&rdquo; ஏன் கற்பித்தல் கருவி, உண்மையான வடிவமைப்பு அல்ல<a class="anchor" href="#single-cycle-%e0%ae%8f%e0%ae%a9-%e0%ae%95%e0%ae%b1%e0%ae%aa%e0%ae%a4%e0%ae%a4%e0%ae%b2-%e0%ae%95%e0%ae%b0%e0%ae%b5-%e0%ae%89%e0%ae%a3%e0%ae%ae%e0%ae%af%e0%ae%a9-%e0%ae%b5%e0%ae%9f%e0%ae%b5%e0%ae%ae%e0%ae%aa%e0%ae%aa-%e0%ae%85%e0%ae%b2%e0%ae%b2">#</a></h2>
+<p>கட்டுப்பாட்டைக் கவனியுங்கள்: clock காலம் <em>மிக மெதுவான</em> சாத்தியமான அறிவுறுத்தலின் ஒவ்வொரு நிலை வழியாகவும் முழுப் பாதைக்குப் போதுமான நீளமாக இருக்க வேண்டும் — ஒவ்வொரு நிலையும் தேவைப்படாத அறிவுறுத்தல்களுக்கும் கூட. ஒரு எளிய பதிவேடு-க்கு-பதிவேடு ADD தரவு நினைவகத்தை ஒருபோதும் தொடுவதில்லை, ஆயினும் clock காலம் தொடும் அறிவுறுத்தல்களையும் இன்னும் இடமளிக்க வேண்டும். எனவே ஒவ்வொரு அறிவுறுத்தலும் மோசமான நிலையின் வேகத்தில் ஓடுகிறது, அது சாத்தியமான throughput-ஐ வீணாக்குகிறது.</p>
+<p>அதுவே pipelining தீர்க்கும் பிரச்சனை: மோசமான நிலைக்கு அளவிடப்பட்ட ஒரு நீண்ட clock காலத்திற்குப் பதிலாக, செயல்பாட்டை நிலைகளாக உடைத்து, ஒவ்வொன்றும் <em>தன் சொந்த</em> மோசமான நிலைக்கு அளவிடப்பட்டது, மற்றும் வெவ்வேறு அறிவுறுத்தல்கள் ஒரே நேரத்தில் வெவ்வேறு நிலைகளை ஆக்கிரமிக்க விடுங்கள். அது அடுத்த பதிவின் பொருள் — மேலும் செவ்வியல் CPU நுண்கட்டமைப்பில் ஒருவேளை மிக முக்கியமான ஒற்றை யோசனை.</p>
+<h2 id="single-cycle-clock-கலம-கணககல">Single-cycle clock காலம், கணக்கில்<a class="anchor" href="#single-cycle-clock-%e0%ae%95%e0%ae%b2%e0%ae%ae-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95%e0%ae%b2">#</a></h2>
+<p>ஒவ்வொரு கூறுக்கும் ஒரு தாமதம் (எல்லாம் எடுத்துக்காட்டு மதிப்புகள்; picosecond, ps):</p>
+<table>
+	<thead>
+			<tr>
+					<th>கூறு</th>
+					<th>தாமதம்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Instruction நினைவகம்</td>
+					<td>200 ps</td>
+			</tr>
+			<tr>
+					<td>Register file படிப்பு</td>
+					<td>100 ps</td>
+			</tr>
+			<tr>
+					<td>ALU</td>
+					<td>150 ps</td>
+			</tr>
+			<tr>
+					<td>தரவு நினைவகம்</td>
+					<td>200 ps</td>
+			</tr>
+			<tr>
+					<td>Register file எழுத்து</td>
+					<td>100 ps</td>
+			</tr>
+	</tbody>
+</table>
+<p>ஒவ்வொரு instruction வகையும் எந்தக் கூறுகளைக் கடக்கிறது:</p>
+<table>
+	<thead>
+			<tr>
+					<th>வகை</th>
+					<th>பாதை</th>
+					<th>மொத்தம்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>பதிவேடு-பதிவேடு (ADD)</td>
+					<td>Inst + RegRd + ALU + RegWr</td>
+					<td>200 + 100 + 150 + 100 = <strong>550 ps</strong></td>
+			</tr>
+			<tr>
+					<td>Load</td>
+					<td>Inst + RegRd + ALU + DataMem + RegWr</td>
+					<td>200 + 100 + 150 + 200 + 100 = <strong>750 ps</strong></td>
+			</tr>
+			<tr>
+					<td>Store</td>
+					<td>Inst + RegRd + ALU + DataMem</td>
+					<td>200 + 100 + 150 + 200 = <strong>650 ps</strong></td>
+			</tr>
+			<tr>
+					<td>Branch</td>
+					<td>Inst + RegRd + ALU</td>
+					<td>200 + 100 + 150 = <strong>450 ps</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Single-cycle விதி:</strong> clock காலம் ≥ மிக நீண்ட பாதை = 750 ps (load). அதிர்வெண் = 1 ÷ 750 ps ≈ <strong>1.33 GHz</strong>. ADD-க்கு 550 ps போதும், ஆனால் அதுவும் 750 ps காத்திருக்கிறது.</p>
+<p><strong>எவ்வளவு வீணாகிறது?</strong> Instruction கலவை (எடுத்துக்காட்டு மதிப்பு): 45% பதிவேடு-பதிவேடு, 25% load, 10% store, 20% branch. ஒவ்வொன்றும் தனக்குத் தேவையான நேரம் மட்டும் எடுத்தால் சராசரி:</p>
+<ul>
+<li>0.45 × 550 + 0.25 × 750 + 0.10 × 650 + 0.20 × 450</li>
+<li>= 247.5 + 187.5 + 65 + 90 = <strong>590 ps</strong></li>
+<li>Single-cycle எல்லாவற்றுக்கும் 750 ps → 750 ÷ 590 ≈ <strong>1.27 மடங்கு</strong> மெதுவு.</li>
+</ul>
+<p><strong>Pipelining-இன் முன்னோட்டம்:</strong> அதே பாதையை ஐந்து நிலைகளாக (Inst, RegRd, ALU, DataMem, RegWr) வெட்டினால், clock = மிக மெதுவான <em>நிலை</em> = 200 ps. ஒவ்வொரு நிலையிலும் ஒரு instruction இருந்தால், நிலையான நிலையில் ஒவ்வொரு 200 ps-க்கும் ஒரு instruction முடிகிறது: 750 ÷ 200 = <strong>3.75 மடங்கு</strong> அதிக throughput (hazard-கள், பதிவேட்டுச் செலவு இல்லாத இலட்சிய நிலை). ஆங்கிலப் பதிவின் &ldquo;அதே ISA; வினாடிக்கு மிக அதிக வேலை&rdquo; என்பதன் எண் வடிவம் இது. அந்த இலட்சியத்தை எது தடுக்கிறது என்பது அடுத்த பதிவு.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>தரவுப்பாதை</td>
+					<td>datapath</td>
+			</tr>
+			<tr>
+					<td>கட்டுப்பாட்டகம்</td>
+					<td>control unit</td>
+			</tr>
+			<tr>
+					<td>கட்டுப்பாட்டு சமிக்ஞை</td>
+					<td>control signal</td>
+			</tr>
+			<tr>
+					<td>நிரல் கவுண்டர்</td>
+					<td>program counter (PC)</td>
+			</tr>
+			<tr>
+					<td>அறிவுறுத்தல் பதிவேடு</td>
+					<td>instruction register (IR)</td>
+			</tr>
+			<tr>
+					<td>பதிவேட்டுக் கோப்பு</td>
+					<td>register file</td>
+			</tr>
+			<tr>
+					<td>தேர்வி</td>
+					<td>multiplexer (mux)</td>
+			</tr>
+			<tr>
+					<td>எழுதும் அனுமதி</td>
+					<td>write enable</td>
+			</tr>
+			<tr>
+					<td>கொடிகள்</td>
+					<td>flags (carry, zero)</td>
+			</tr>
+			<tr>
+					<td>மிக நீண்ட பாதை</td>
+					<td>critical path</td>
+			</tr>
+			<tr>
+					<td>தாமதம்</td>
+					<td>delay / latency</td>
+			</tr>
+			<tr>
+					<td>திரும்ப எழுதுதல்</td>
+					<td>write-back</td>
+			</tr>
+			<tr>
+					<td>உண்மை அட்டவணை</td>
+					<td>truth table</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ்நாடு அரசு, <em>11ஆம் வகுப்பு கணினி அறிவியல்</em>, அலகு 3: கணினி அமைப்பு (மையச் செயலகம், ALU, கட்டுப்பாட்டகம்)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Datapath&#43;%E0%AE%B5%E0%AE%9F%E0%AE%BF%E0%AE%B5%E0%AE%AE%E0%AF%88%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F12-datapath-design%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F12-datapath-design.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F12-datapath-design.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/11-instruction-sets/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>அறிவுறுத்தல் தொகுப்புகள்</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/13-pipelining/" class="flex align-center">
+        <span>Pipelining</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#மயக-கறகள">மையக் கூறுகள்</a></li>
+    <li><a href="#ஒர-அறவறததலத-தடரநத">ஒரு அறிவுறுத்தலைத் தொடர்ந்து</a></li>
+    <li><a href="#ஒர-instruction-எணகளடன-add-14">ஒரு instruction, எண்களுடன்: <code>ADD 14</code></a></li>
+    <li><a href="#கடடபபடட-சமகஞ-அடடவண">கட்டுப்பாட்டு சமிக்ஞை அட்டவணை</a></li>
+    <li><a href="#single-cycle-ஏன-கறபததல-கரவ-உணமயன-வடவமபப-அலல">&ldquo;Single-Cycle&rdquo; ஏன் கற்பித்தல் கருவி, உண்மையான வடிவமைப்பு அல்ல</a></li>
+    <li><a href="#single-cycle-clock-கலம-கணககல">Single-cycle clock காலம், கணக்கில்</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

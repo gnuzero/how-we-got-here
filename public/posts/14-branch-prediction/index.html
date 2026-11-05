@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pipeline flushes are expensive — prediction exists to make them rare">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/posts/14-branch-prediction/">
+	<meta property="og:site_name" content="How We Got There">
+	<meta property="og:title" content="Branch Prediction">
+	<meta property="og:description" content="Pipeline flushes are expensive — prediction exists to make them rare">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Branch Prediction">
+	<meta itemprop="description" content="Pipeline flushes are expensive — prediction exists to make them rare">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="335">
+
+<title>Branch Prediction • How We Got There</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/posts/14-branch-prediction/">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/14-branch-prediction/" title="การทำนาย Branch">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/14-branch-prediction/" title="Branch Prediction">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/14-branch-prediction/" title="Branch Prediction">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/14-branch-prediction/" title="Predicția salturilor">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/en.search.min.af7193c72753d54704863efe2f7d52d8f2f0372194f0c1e8b8fc8ef690ede7dd.js" integrity="sha256-r3GTxydT1UcEhj7&#43;L31S2PLwNyGU8MHouPyO9pDt590=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>How We Got There</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        English</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/th/posts/14-branch-prediction/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/14-branch-prediction/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/14-branch-prediction/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/14-branch-prediction/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/00-credits/" class="">
+      Credits &amp; Doors Out</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/00-foreword/" class="">
+      Foreword</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/01-what-is-this-thing/" class="">
+      What is this thing?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/01a-babbage-engines/" class="">
+      Babbage&#39;s Engines</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/01b-jacquard-loom/" class="">
+      The Jacquard Loom</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/01c-why-mechanical-matters/" class="">
+      Why Mechanical Computing Matters</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays and Electromechanical Logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/03-the-vacuum-tube-era/" class="">
+      The Vacuum Tube Era</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/04-why-the-transistor-had-to-happen/" class="">
+      Why the Transistor Had to Happen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductors from First Principles</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      The Transistor: BJT to MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/07-logic-gates-from-transistors/" class="">
+      Logic Gates from Transistors</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/08-from-gates-to-combinational-logic/" class="">
+      From Gates to Combinational Logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/09-sequential-logic/" class="">
+      Sequential Logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/10-the-memory-hierarchy-begins/" class="">
+      The Memory Hierarchy Begins</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/11-instruction-sets/" class="">
+      Instruction Sets</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/12-datapath-design/" class="">
+      Datapath Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/14-branch-prediction/" class="active">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes to Minicomputers to Microprocessors</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/19-the-x86-vs-risc-split/" class="">
+      The x86 vs RISC Split</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM and RISC-V: The Architecture Landscape Today</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing and the Birth of the Operating System</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing and the Unix Lineage</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/23-the-gnu-movement-and-linux/" class="">
+      The GNU Movement and Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory and Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers and Modern OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/26-from-machine-code-to-assembly/" class="">
+      From Machine Code to Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      High-Level Languages: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, and Modern Language Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time Systems and Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/30-real-time-systems-in-practice/" class="">
+      Real-Time Systems in Practice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      From ISA Bus to PCI to PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial Links and the First Machine-to-Machine Connections</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET and Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet and the Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP and the Modern Internet Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking and RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher, and the Pre-Web Internet</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google&#39;s Big Data Infrastructure — Why They Won</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes and Container Orchestration at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/46-the-machine-learning-software-stack/" class="">
+      The Machine Learning Software Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/47-what-7nm-actually-means/" class="">
+      What &#39;7nm&#39; Actually Means</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/49-finfet-to-gaa/" class="">
+      FinFET to GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets &amp; Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/52-why-gpus-exist/" class="">
+      Why GPUs Exist</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps, and Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Why Matrix Multiply Reshaped Chip Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/59-quantization-mixed-precision/" class="">
+      Quantization &amp; Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/60-sparsity-in-hardware/" class="">
+      Sparsity in Hardware</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/61-interconnect-at-datacenter-scale/" class="">
+      Interconnect at Datacenter Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/62-where-it-s-headed/" class="">
+      Where It&#39;s Headed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/64-who-decides-the-wire/" class="">
+      Who Decides the Wire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/66-wartime-crypto/" class="">
+      Wartime Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/67-privacy-consent-identity-cyber/" class="">
+      Privacy, Consent, Identity, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/68-visions-that-shipped/" class="">
+      Visions That Shipped</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/69-platform-synthesis/" class="">
+      Platform Synthesis</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/98-timeline/" class="">
+      Timeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/99-glossary/" class="">
+      Glossary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Branch Prediction</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#static-guessing-is-not-enough">Static Guessing Is Not Enough</a></li>
+    <li><a href="#the-2-bit-saturating-counter">The 2-Bit Saturating Counter</a></li>
+    <li><a href="#where-to-fetch-next">Where to Fetch Next</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Branch Prediction
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>January 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>A mispredicted branch flushes everything fetched down the wrong path. On a deep pipeline that can cost well over ten cycles. Post 13 left that cost on the table; this post is the answer: guess direction (and target) early enough that flushes become rare.</p>
+<h2 id="static-guessing-is-not-enough">Static Guessing Is Not Enough<a class="anchor" href="#static-guessing-is-not-enough">#</a></h2>
+<p>Static rules — always not-taken, or &ldquo;backward branches (loops) are taken&rdquo; — cost no hardware and miss a lot of real code. Branch behavior depends on history a fixed rule cannot see.</p>
+<p>Dynamic predictors track outcomes at runtime. A loop that runs 100 times takes its backward branch 99 times; a predictor that remembers &ldquo;taken last time&rdquo; gets almost every iteration right.</p>
+<h2 id="the-2-bit-saturating-counter">The 2-Bit Saturating Counter<a class="anchor" href="#the-2-bit-saturating-counter">#</a></h2>
+<p>The classic building block: four states — strongly/weakly not-taken, weakly/strongly taken. Each resolved outcome nudges the counter one step toward what actually happened (saturating at the ends). Prediction is the top bit.</p>
+<p>Why not one bit? A 1-bit &ldquo;last outcome&rdquo; flips after a single anomaly — then mispredicts the next <em>normal</em> iteration too. Two bits need two consecutive anomalies before flipping, so a loop&rsquo;s final not-taken exit does not poison the next run of the loop.</p>
+<h2 id="where-to-fetch-next">Where to Fetch Next<a class="anchor" href="#where-to-fetch-next">#</a></h2>
+<p>Direction is only half. For a taken branch, fetch also needs a <em>target</em> before the branch is fully decoded. A Branch Target Buffer (BTB) is a small cache, indexed by instruction address, remembering the last resolved target. On a hit, fetch can jump speculatively next cycle.</p>
+<p>Real predictors combine counter tables (often with global history) and a BTB; high-end chips go further. The 2-bit counter is still the conceptual core — and small enough to trace by hand. The mini-CPU lab below has no predictor, pipeline or cache, but you can step a loop&rsquo;s <code>JZ</code> and, on paper, move a 2-bit counter for that branch each iteration.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=en"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=en" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<p><strong>Door out:</strong> James E. Smith, &ldquo;A Study of Branch Prediction Strategies&rdquo; (ISCA 1981) — early systematic treatment of dynamic branch prediction, including saturating-counter ideas that became textbook.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | November 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>November 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Branch&#43;Prediction&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fposts%2F14-branch-prediction%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content%2Fposts%2F14-branch-prediction.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent%2Fposts%2F14-branch-prediction.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/posts/13-pipelining/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Pipelining</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/posts/15-caches/" class="flex align-center">
+        <span>Caches</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#static-guessing-is-not-enough">Static Guessing Is Not Enough</a></li>
+    <li><a href="#the-2-bit-saturating-counter">The 2-Bit Saturating Counter</a></li>
+    <li><a href="#where-to-fetch-next">Where to Fetch Next</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

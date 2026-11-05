@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Patru domenii, patru abstracții: formule, proză de afaceri, liste simbolice și programare de sistem aproape de hardware">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C">
+	<meta property="og:description" content="Patru domenii, patru abstracții: formule, proză de afaceri, liste simbolice și programare de sistem aproape de hardware">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T15:25:24+05:30">
+
+
+	<meta itemprop="name" content="Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C">
+	<meta itemprop="description" content="Patru domenii, patru abstracții: formule, proză de afaceri, liste simbolice și programare de sistem aproape de hardware">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T15:25:24+05:30">
+	<meta itemprop="wordCount" content="981">
+
+<title>Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/27-high-level-languages-fortran-cobol-lisp-c/" title="High-Level Languages: FORTRAN, COBOL, Lisp, C">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" title="ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" title="ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" title="உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="active">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#fortran-formule-în-loc-de-instrucțiuni">FORTRAN: formule în loc de instrucțiuni</a></li>
+    <li><a href="#cobol-un-limbaj-comun-pentru-afaceri">COBOL: un limbaj comun pentru afaceri</a></li>
+    <li><a href="#lisp-liste-recursivitate-și-memorie-recuperată-automat">Lisp: liste, recursivitate și memorie recuperată automat</a></li>
+    <li><a href="#c-un-limbaj-pentru-a-rescrie-un-sistem-de-operare">C: un limbaj pentru a rescrie un sistem de operare</a></li>
+    <li><a href="#ce-au-în-comun">Ce au în comun</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 26 s-a oprit la asamblare: un simbol scurt pentru fiecare instrucțiune. Între 1954 și 1973, patru limbaje au urcat mai sus de acest nivel, fiecare pentru alt tip de problemă: FORTRAN pentru calcul științific, COBOL pentru prelucrarea datelor comerciale, Lisp pentru calcul simbolic și C pentru programarea de sistem.</p>
+<h2 id="fortran-formule-în-loc-de-instrucțiuni">FORTRAN: formule în loc de instrucțiuni<a class="anchor" href="#fortran-formule-%c3%aen-loc-de-instruc%c8%9biuni">#</a></h2>
+<p>Raportul echipei FORTRAN, prezentat în 1957, pornește de la o socoteală economică: aproximativ două treimi din costul rezolvării celor mai multe probleme științifice și inginerești pe calculatoare mari era pregătirea problemei, iar peste 90% din timpul total se ducea pe planificarea, scrierea și depanarea programului (Backus, J. W. et al., „The FORTRAN Automatic Coding System”, <em>Proc. Western Joint Computer Conference</em>, 1957, pp. 188–198, aici p. 188; copie: <a href="https://www.softwarepreservation.org/projects/FORTRAN/paper/BackusEtAl-FortranAutomaticCodingSystem-1957.pdf">softwarepreservation.org</a>, accesat 2026-11-05). Scopul proiectului era ca programatorul să descrie o procedură numerică într-un limbaj concis, asemănător matematicii, și să obțină automat un program eficient pentru IBM 704; echipa se aștepta să reducă munca de programare și depanare la mai puțin de o cincime (ibid., p. 188).</p>
+<p>Autorii notează că trecuseră doi ani și jumătate și 18 ani-om de la începutul proiectului (ibid., p. 188). Ca exemplu, ei relatează un program de 47 de instrucțiuni FORTRAN compilat de 704 în șase minute, cu un rezultat de aproximativ 1.000 de instrucțiuni mașină, pe care programatorul estimase că l-ar fi scris de mână în trei zile (ibid., p. 188). Este un singur caz, raportat chiar de autorii sistemului, nu o măsurătoare sistematică.</p>
+<h2 id="cobol-un-limbaj-comun-pentru-afaceri">COBOL: un limbaj comun pentru afaceri<a class="anchor" href="#cobol-un-limbaj-comun-pentru-afaceri">#</a></h2>
+<p>Raportul COBOL din aprilie 1960, publicat de Departamentul Apărării al SUA, își descrie istoria: la 28–29 mai 1959, o întâlnire convocată la Pentagon a discutat dacă e de dorit și posibil un limbaj comun pentru programarea calculatoarelor în prelucrarea datelor comerciale, iar participanții au fost aproape unanim de acord că da (U.S. Department of Defense, <em>COBOL: Initial Specifications for a Common Business Oriented Language</em>, aprilie 1960, Partea I, §2 „History”, pp. I-1–I-2; text OCR: <a href="https://archive.org/download/bitsavers_codasylCOB_6843924/COBOL_Report_Apr60_djvu.txt">archive.org/download/bitsavers_codasylCOB_6843924/COBOL_Report_Apr60_djvu.txt</a>, accesat 2026-11-05). Comitetul „Short Range”, format din șase producători și trei reprezentanți ai guvernului, s-a întâlnit prima oară la 23 iunie 1959, iar raportul lui către comitetul executiv a fost finalizat la 17 decembrie 1959; comitetul executiv l-a acceptat la 7–8 ianuarie 1960 (ibid., Partea I, §2, și nota introductivă). Ținta declarată era un limbaj comun, „basically in English”, orientat spre prelucrarea datelor comerciale (ibid., Partea I).</p>
+<!-- NEVERIFICAT: copia PDF de pe bitsavers a întors 403/500; am lucrat pe textul OCR de la archive.org. Numele Gracei Hopper nu apare nicăieri în textul OCR al raportului (căutare completă); rolul ei nu este afirmat aici. -->
+<p>Raportul împarte un program sursă în trei părți, câte o „divizie” pentru fiecare: procedurile care spun cum se prelucrează datele, descrierea datelor și descrierea echipamentului; numele lor sunt PROCEDURE, DATA și ENVIRONMENT (ibid., Partea II, §1–2, pp. II-1–II-2). Ordinea lor reflectă cât de bine se pot transfera de la un calculator la altul: procedurile cel mai bine, descrierea mediului deloc (ibid., Partea II, §1). Tot acolo e definit vocabularul pe care îl folosim și azi: programul sursă scris în COBOL și compilatorul care îl traduce într-un program obiect (ibid., Partea II, §2).</p>
+<h2 id="lisp-liste-recursivitate-și-memorie-recuperată-automat">Lisp: liste, recursivitate și memorie recuperată automat<a class="anchor" href="#lisp-liste-recursivitate-%c8%99i-memorie-recuperat%c4%83-automat">#</a></h2>
+<p>John McCarthy descrie Lisp ca pe un sistem de programare dezvoltat pentru IBM 704 de grupul de inteligență artificială al MIT, pornit din nevoile proiectului Advice Taker, propus în noiembrie 1958 (McCarthy, J., „Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I”, <em>CACM</em>, aprilie 1960; retipărire LaTeX: <a href="https://www-formal.stanford.edu/jmc/recursive.pdf">www-formal.stanford.edu/jmc/recursive.pdf</a>, accesat 2026-11-05, §1). Datele lui Lisp sunt expresiile simbolice (S-expresii), iar operațiile de bază pe ele includ <code>car</code> și <code>cdr</code> (ibid., §3c).</p>
+<p>Cea mai importantă idee de implementare se află în §4c. Memoria liberă era organizată într-o listă, inițial de aproximativ 15.000 de registre, iar utilizatorul nu trebuia să programeze returnarea registrelor în listă: returnarea se făcea automat (ibid., §4c, pp. 25–26 în retipărire). Când lista se golea, pornea un ciclu de „reclamation”: programul marca toate registrele accesibile din registrele de bază prin lanțuri de <code>car</code> și <code>cdr</code>, iar restul, abandonate de program, erau readuse în lista liberă (ibid., §4c, p. 26). Mecanismul descris este ceea ce numim astăzi <em>garbage collection</em> (colectarea automată a memoriei nefolosite); În corpul articolului McCarthy nu folosește termenul; nota de subsol 7 din retipărire spune: „We already called this process “garbage collection”, but I guess I chickened out of using it in the paper” (ibid., nota 7).</p>
+<h2 id="c-un-limbaj-pentru-a-rescrie-un-sistem-de-operare">C: un limbaj pentru a rescrie un sistem de operare<a class="anchor" href="#c-un-limbaj-pentru-a-rescrie-un-sistem-de-operare">#</a></h2>
+<p>Ritchie scrie că C a apărut între 1969 și 1973, în paralel cu primele versiuni Unix, cu perioada cea mai creativă în 1972 (Ritchie, D. M., „The Development of the C Language”, <em>HOPL-II</em>, aprilie 1993, publicat ACM 1996, „Introduction”; <a href="https://www.nokia.com/bell-labs/about/dennis-m-ritchie/chist.html">nokia.com/bell-labs/about/dennis-m-ritchie/chist.html</a>, accesat 2026-11-05).</p>
+<p>Motivul a fost hardware-ul. Mașinile pe care rulaseră BCPL și B adresau cuvinte, iar singurul tip de date al acestor limbaje, celula (<em>cell</em>), corespundea cuvântului mașinii; PDP-11 adresa octeți, iar modelul lui B a devenit stângaci pentru caractere, nepotrivit pentru virgula mobilă pe 16 biți și costisitor pentru pointeri (ibid., „The Problems of B”). În plus, compilatorul B producea <em>threaded code</em>, o schemă interpretativă, iar programele rezultate erau atât de lente față de cele scrise în asamblare încât rescrierea sistemului în B nu intra în discuție (ibid.). În 1971, Ritchie a adăugat un tip caracter și a rescris compilatorul să genereze instrucțiuni PDP-11; limbajul intermediar s-a numit NB, „new B” (ibid.).</p>
+<p>În 1978, Kernighan și Ritchie au publicat <em>The C Programming Language</em> (ibid., „Introduction” și „Portability”). Standardizarea a urmat: comitetul ANSI X3J11 a început lucrul în vara lui 1983, și-a prezentat raportul la sfârșitul lui 1989, iar standardul a fost acceptat de ISO ca ISO/IEC 9899-1990 (ibid., „Standardization”).</p>
+<h2 id="ce-au-în-comun">Ce au în comun<a class="anchor" href="#ce-au-%c3%aen-comun">#</a></h2>
+<p>Fiecare dintre aceste limbaje mută o decizie de la programator la un program: FORTRAN, traducerea formulelor (Backus et al., 1957, p. 188); COBOL, adaptarea la echipament, izolată într-o singură divizie (DoD, 1960, Partea II, §1); Lisp, eliberarea memoriei (McCarthy, 1960, §4c); C, adresarea octeților și a tipurilor, cu un compilator destul de bun ca să înlocuiască asamblarea (Ritchie, 1993, „The Problems of B”). Capitolul 28 se ocupă de programul care face această traducere: compilatorul.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9b17a0270323d6e8d6f80d4dde73cb1f8612bcaa" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Limbaje&#43;de&#43;nivel&#43;%C3%AEnalt%3A&#43;FORTRAN%2C&#43;COBOL%2C&#43;Lisp%2C&#43;C&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F27-high-level-languages-fortran-cobol-lisp-c%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F27-high-level-languages-fortran-cobol-lisp-c.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F27-high-level-languages-fortran-cobol-lisp-c.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/26-from-machine-code-to-assembly/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>De la codul mașină la limbajul de asamblare</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="flex align-center">
+        <span>Compilatoare, JIT și medii de rulare moderne</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#fortran-formule-în-loc-de-instrucțiuni">FORTRAN: formule în loc de instrucțiuni</a></li>
+    <li><a href="#cobol-un-limbaj-comun-pentru-afaceri">COBOL: un limbaj comun pentru afaceri</a></li>
+    <li><a href="#lisp-liste-recursivitate-și-memorie-recuperată-automat">Lisp: liste, recursivitate și memorie recuperată automat</a></li>
+    <li><a href="#c-un-limbaj-pentru-a-rescrie-un-sistem-de-operare">C: un limbaj pentru a rescrie un sistem de operare</a></li>
+    <li><a href="#ce-au-în-comun">Ce au în comun</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

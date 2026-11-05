@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>署名 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/%E7%BD%B2%E5%90%8D/</link>
+		<description>Recent content in 署名 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:38:43 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/%E7%BD%B2%E5%90%8D/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>致谢与延伸出口</title>
+				<link>http://localhost:1478/zh-hans/posts/00-credits/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/00-credits/</guid>
+				<description>先致谢：本书中文版所依据的已出版资料、机构与图像来源</description>
+			</item>
+	</channel>
+</rss>

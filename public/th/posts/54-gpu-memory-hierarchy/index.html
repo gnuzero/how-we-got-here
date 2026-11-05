@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="เธรดนับพันบังคับแบนด์วิดท์เหนือ DDR — HBM ซ้อนหน่วยความจำข้าง compute">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/54-gpu-memory-hierarchy/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="ลำดับชั้นหน่วยความจำ GPU">
+	<meta property="og:description" content="เธรดนับพันบังคับแบนด์วิดท์เหนือ DDR — HBM ซ้อนหน่วยความจำข้าง compute">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="ลำดับชั้นหน่วยความจำ GPU">
+	<meta itemprop="description" content="เธรดนับพันบังคับแบนด์วิดท์เหนือ DDR — HBM ซ้อนหน่วยความจำข้าง compute">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1161">
+
+<title>ลำดับชั้นหน่วยความจำ GPU • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/54-gpu-memory-hierarchy/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/54-gpu-memory-hierarchy/" title="GPU Memory Hierarchy">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/54-gpu-memory-hierarchy/" title="GPU මතක ධුරාවලිය">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/54-gpu-memory-hierarchy/" title="GPU Memory Hierarchy">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/54-gpu-memory-hierarchy/" title="Ierarhia de memorie a GPU-ului">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/54-gpu-memory-hierarchy/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="active">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>ลำดับชั้นหน่วยความจำ GPU</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#เหตใด-gpu-จงอดบนหนวยความจำแบบ-cpu">เหตุใด GPU จึงอดบนหน่วยความจำแบบ CPU</a></li>
+    <li><a href="#hbm-ซอนขางได">HBM: ซ้อนข้างได</a>
+      <ul>
+        <li><a href="#แบนดวดท--ความกวาง--อตราตอขา">แบนด์วิดท์ = ความกว้าง × อัตราต่อขา</a></li>
+      </ul>
+    </li>
+    <li><a href="#ลำดบชนภายใน-gpu">ลำดับชั้นภายใน GPU</a></li>
+    <li><a href="#roofline-การคำนวณหรอหนวยความจำ-อะไรเปนเพดาน">Roofline: การคำนวณหรือหน่วยความจำ อะไรเป็นเพดาน</a>
+      <ul>
+        <li><a href="#ความเขมเชงคำนวณ">ความเข้มเชิงคำนวณ</a></li>
+        <li><a href="#สองเพดาน-หนงสมการ">สองเพดาน หนึ่งสมการ</a></li>
+        <li><a href="#ตวอยางท-1-บวกเวกเตอร">ตัวอย่างที่ 1: บวกเวกเตอร์</a></li>
+        <li><a href="#ตวอยางท-2-เมทรกซคณเวกเตอร-และทำไมขนาดกลมสำคญ">ตัวอย่างที่ 2: เมทริกซ์คูณเวกเตอร์ และทำไมขนาดกลุ่มสำคัญ</a></li>
+        <li><a href="#ตวอยางท-3-เมทรกซคณเมทรกซ-และบทบาทของหนวยความจำรวม">ตัวอย่างที่ 3: เมทริกซ์คูณเมทริกซ์ และบทบาทของหน่วยความจำร่วม</a></li>
+        <li><a href="#roofline-บอกอะไร-และไมบอกอะไร">roofline บอกอะไร และไม่บอกอะไร</a></li>
+      </ul>
+    </li>
+    <li><a href="#ปอนสงทมาถดไป">ป้อนสิ่งที่มาถัดไป</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    ลำดับชั้นหน่วยความจำ GPU
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>บทที่ 35 ตั้งชื่อ memory wall: latency ของ DRAM ตาม compute ไม่ทัน อุตสาหกรรมจึงไล่ <em>แบนด์วิดท์</em> ในที่ที่ latency ดื้อ ไม่มีที่ไหนที่การตอบนั้นมีผลมากกว่าหน่วยความจำ GPU — ปริมาณงานขนานของบทที่ 52–53 สร้างความอยากที่ DDR ทั่วไป (บทที่ 34) ป้อนไม่ได้</p>
+<p>บทนี้จะทำสามอย่าง: แกะว่า HBM ได้แบนด์วิดท์มาจากไหนด้วยเลขคณิตง่าย ๆ ไล่ลำดับชั้นภายใน GPU พร้อมขนาดจริงของแต่ละชั้น แล้วสร้าง <strong>แบบจำลอง roofline</strong> (roofline model) — เครื่องมือหนึ่งบรรทัดที่ตอบว่าโปรแกรมหนึ่ง ๆ ถูกจำกัดด้วยการคำนวณหรือด้วยหน่วยความจำ คำศัพท์พื้นฐาน: <strong>แบนด์วิดท์</strong> (bandwidth, ศัพท์บัญญัติ) ในบทนี้หมายถึงจำนวนไบต์ที่ย้ายได้ต่อวินาที ส่วน <strong>เวลาแฝง</strong> (latency, ศัพท์บัญญัติ) คือเวลาที่ต้องรอไบต์แรก</p>
+<h2 id="เหตใด-gpu-จงอดบนหนวยความจำแบบ-cpu">เหตุใด GPU จึงอดบนหน่วยความจำแบบ CPU<a class="anchor" href="#%e0%b9%80%e0%b8%ab%e0%b8%95%e0%b9%83%e0%b8%94-gpu-%e0%b8%88%e0%b8%87%e0%b8%ad%e0%b8%94%e0%b8%9a%e0%b8%99%e0%b8%ab%e0%b8%99%e0%b8%a7%e0%b8%a2%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%88%e0%b8%b3%e0%b9%81%e0%b8%9a%e0%b8%9a-cpu">#</a></h2>
+<p>CPU รันสตรีมคำสั่งจำนวนพอประมาณ; แคช (บทที่ 15) มักดูดซับ working set GPU อาจมีเธรดนับพันข้ามหลาย SM ที่ต้องการหน่วยความจำพร้อมกัน การแคชบนชิปช่วย แต่ความต้องการแบนด์วิดท์รวมสูงกว่าระบบหน่วยความจำของ CPU ที่พลังงานใกล้เคียงมาก — ข้อจำกัดที่บังคับคำตอบทางกายภาพต่าง</p>
+<h2 id="hbm-ซอนขางได">HBM: ซ้อนข้างได<a class="anchor" href="#hbm-%e0%b8%8b%e0%b8%ad%e0%b8%99%e0%b8%82%e0%b8%b2%e0%b8%87%e0%b9%84%e0%b8%94">#</a></h2>
+<p>High Bandwidth Memory ซ้อนได DRAM ในแนวตั้ง เชื่อมผ่าน through-silicon via (TSV) แทนรอย PCB ยาวไปยัง DIMM แยก รวมกับอินเทอร์เฟซกว้างมาก ให้แบนด์วิดท์สูงกว่า DDR เทียบเท่ามาก — จ่ายด้วยการบรรจุขั้นสูงของบทที่ 51 HBM กับไดคำนวณ GPU โดยปกติแชร์ silicon interposer: ตระกูลการบรรจุเดียวกับ chiplets นำไปใช้ที่นี่เพื่อวางหน่วยความจำ <em>ข้าง</em> compute แทนการแยกไดเชิงหน้าที่</p>
+<p>คำศัพท์ในย่อหน้านั้นยังไม่พบศัพท์บัญญัติทั้งคู่ จึงขอนิยามตามความ: <strong>TSV</strong> (through-silicon via) คือรูที่เจาะทะลุแผ่นซิลิคอนแล้วเติมโลหะ ทำหน้าที่เป็นสายไฟแนวตั้งที่ต่อไดชั้นบนกับชั้นล่างโดยตรง ส่วน <strong>interposer</strong> คือแผ่นซิลิคอนรองที่มีสายไฟละเอียดจำนวนมาก วางใต้ทั้งได GPU และกองหน่วยความจำ ให้ทั้งสองต่อกันด้วยสายสั้นและถี่กว่าที่แผงวงจรพิมพ์ทำได้มาก</p>
+<h3 id="แบนดวดท--ความกวาง--อตราตอขา">แบนด์วิดท์ = ความกว้าง × อัตราต่อขา<a class="anchor" href="#%e0%b9%81%e0%b8%9a%e0%b8%99%e0%b8%94%e0%b8%a7%e0%b8%94%e0%b8%97--%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%81%e0%b8%a7%e0%b8%b2%e0%b8%87--%e0%b8%ad%e0%b8%95%e0%b8%a3%e0%b8%b2%e0%b8%95%e0%b8%ad%e0%b8%82%e0%b8%b2">#</a></h3>
+<p>แบนด์วิดท์ของหน่วยความจำใด ๆ คำนวณได้จากสองตัวเลข: มีสายข้อมูลกี่เส้น (ความกว้างบัส) และแต่ละเส้นส่งได้กี่บิตต่อวินาที หารด้วย 8 ให้เป็นไบต์ ลองกับ A100 ตามเอกสารสถาปัตยกรรมของ NVIDIA:</p>
+<ol>
+<li>เอกสารระบุว่า A100 มี HBM2 ที่ทำงาน <strong>5 กอง</strong> (stack) แต่ละกองซ้อน <strong>8 ได</strong> และมีตัวควบคุมหน่วยความจำ 512 บิต <strong>10 ตัว</strong> — หรือสองตัวต่อกอง แปลว่าแต่ละกองกว้าง 2 × 512 = <strong>1,024 บิต</strong> รวมทั้งชิป 5 × 1,024 = <strong>5,120 บิต</strong></li>
+<li>อัตราข้อมูลระบุว่า 1,215 MHz แบบ DDR (ส่งทั้งขาขึ้นและขาลงของคล็อก จากบทที่ 34) → 2 × 1,215 × 10⁶ = <strong>2.43 Gb/s ต่อขา</strong></li>
+<li>แบนด์วิดท์ = 5,120 × 2.43 × 10⁹ / 8 = <strong>1,555.2 GB/s</strong> — ตรงกับ 1,555 GB/s ที่เอกสารประกาศ (กองละราว 311 GB/s)</li>
+</ol>
+<p>สังเกตว่า 2.43 Gb/s ต่อขา <em>ไม่ได้เร็ว</em> เลย เคล็ดลับของ HBM คือ <em>กว้าง</em> ไม่ใช่ <em>เร็ว</em> เทียบกับช่องหน่วยความจำ DDR4-3200 ของพีซี (ตามชื่อรุ่น คือ 3,200 ล้านการโอนต่อวินาที บนช่องกว้าง 64 บิต): 64 × 3.2 × 10⁹ / 8 = 25.6 GB/s ต่อช่อง ต้องใช้ราว <strong>61 ช่อง</strong> จึงจะเท่า A100 หนึ่งตัว การเดินสาย 5,120 เส้นบนแผงวงจรพิมพ์ไปยังโมดูลที่อยู่ห่างออกไปหลายเซนติเมตรนั้นเป็นไปไม่ได้ในทางปฏิบัติ แต่บน interposer ที่สายยาวเพียงระยะระหว่างไดที่วางชิดกัน มันทำได้ เอกสารของ NVIDIA สรุปว่าการวางกองหน่วยความจำไว้บนแพ็กเกจเดียวกับ GPU &ldquo;ประหยัดพลังงานและพื้นที่อย่างมาก&rdquo; เมื่อเทียบกับ GDDR5/6 แบบดั้งเดิม</p>
+<p><strong>ตรวจความจุ:</strong> 40 GB ÷ 5 กอง = 8 GB ต่อกอง ÷ 8 ได = 1 GB (8 กิกะบิต) ต่อได สอดคล้องกัน รายละเอียดเล็ก ๆ อีกข้อ: ชิป GA100 เต็มตัวออกแบบมาให้มี HBM2 <strong>6</strong> กอง แต่ผลิตภัณฑ์ A100 เปิดใช้ 5 — ตัวเลขในโฆษณาจึงมาจาก 5 กอง ไม่ใช่ 6</p>
+<h2 id="ลำดบชนภายใน-gpu">ลำดับชั้นภายใน GPU<a class="anchor" href="#%e0%b8%a5%e0%b8%b3%e0%b8%94%e0%b8%9a%e0%b8%8a%e0%b8%99%e0%b8%a0%e0%b8%b2%e0%b8%a2%e0%b9%83%e0%b8%99-gpu">#</a></h2>
+<p>นอกจาก HBM-กับ-DDR GPU มีพีระมิดของตัวเอง สะท้อนรูปทรง register–cache–main-memory ของบทที่ 10 ด้วยชั้นเฉพาะ GPU Register file ของแต่ละ SM คือที่เก็บท้องถิ่นเร็วที่สุด Shared memory — scratchpad ที่โปรแกรมเมอร์จัดการบน SM — ให้เธรดในบล็อกแชร์ข้อมูลโดยไม่ต้องวนไกล L2 cache ครอบ GPU ทั้งก้อน HBM คือชั้น &ldquo;หน่วยความจำหลัก&rdquo;: แบนด์วิดท์สูงกว่า DRAM ของ CPU มาก ยังมี latency สูงกว่าอะไรบนชิป — tradeoff ระหว่าง latency กับความจุเดิม ที่สเกล GPU</p>
+<p>ใส่ตัวเลขของ A100 ตามเอกสารของ NVIDIA ลงในพีระมิด (จากบนลงล่าง ยิ่งล่างยิ่งใหญ่ ยิ่งไกล):</p>
+<table>
+	<thead>
+			<tr>
+					<th>ชั้น</th>
+					<th>ขนาดใน A100</th>
+					<th>ใครจัดการ</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>แฟ้มเรจิสเตอร์ (register file)</td>
+					<td>256 KB ต่อ SM รวม 27,648 KB ทั้งชิป</td>
+					<td>คอมไพเลอร์ (แต่ละเธรดเห็นเฉพาะของตัวเอง)</td>
+			</tr>
+			<tr>
+					<td>L1 + หน่วยความจำร่วม (shared memory)</td>
+					<td>192 KB ต่อ SM (แบ่งสัดส่วนได้) × 108 SM</td>
+					<td>โปรแกรมเมอร์ (ส่วน shared)</td>
+			</tr>
+			<tr>
+					<td>L2</td>
+					<td>40 MB ทั้งชิป</td>
+					<td>ฮาร์ดแวร์</td>
+			</tr>
+			<tr>
+					<td>HBM2</td>
+					<td>40 GB, 1,555 GB/s</td>
+					<td>โปรแกรมเมอร์ย้ายข้อมูลเข้า-ออกเอง</td>
+			</tr>
+	</tbody>
+</table>
+<p>คำว่า <strong>หน่วยความจำหลัก</strong> (main memory) และ <strong>หน่วยความจำแคช</strong> (cache memory) เป็นศัพท์บัญญัติ ส่วน &ldquo;shared memory&rdquo; ของ GPU ยังไม่พบศัพท์บัญญัติ บทนี้เรียก &ldquo;หน่วยความจำร่วม&rdquo; มันต่างจากแคชตรงที่ <em>ไม่มีใครเดาให้</em> ว่าจะเก็บอะไร โปรแกรมต้องสั่งโหลดข้อมูลเข้ามาเอง — ข้อเสียคือเขียนยากขึ้น ข้อดีคือโปรแกรมเมอร์รู้ว่าข้อมูลจะถูกใช้ซ้ำกี่ครั้ง ซึ่งเป็นกุญแจของหัวข้อถัดไป</p>
+<h2 id="roofline-การคำนวณหรอหนวยความจำ-อะไรเปนเพดาน">Roofline: การคำนวณหรือหน่วยความจำ อะไรเป็นเพดาน<a class="anchor" href="#roofline-%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%84%e0%b8%b3%e0%b8%99%e0%b8%a7%e0%b8%93%e0%b8%ab%e0%b8%a3%e0%b8%ad%e0%b8%ab%e0%b8%99%e0%b8%a7%e0%b8%a2%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%88%e0%b8%b3-%e0%b8%ad%e0%b8%b0%e0%b9%84%e0%b8%a3%e0%b9%80%e0%b8%9b%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%94%e0%b8%b2%e0%b8%99">#</a></h2>
+<h3 id="ความเขมเชงคำนวณ">ความเข้มเชิงคำนวณ<a class="anchor" href="#%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b9%80%e0%b8%82%e0%b8%a1%e0%b9%80%e0%b8%8a%e0%b8%87%e0%b8%84%e0%b8%b3%e0%b8%99%e0%b8%a7%e0%b8%93">#</a></h3>
+<p>นิยาม <strong>ความเข้มเชิงคำนวณ</strong> (arithmetic intensity; ยังไม่พบศัพท์บัญญัติ ศัพท์บัญญัติของ intensity ในสาขาวิทยาศาสตร์คือ &ldquo;ความเข้ม&rdquo;) ของงานชิ้นหนึ่งว่า</p>
+<p><strong>I = จำนวนการดำเนินการจุดลอยตัว (FLOP) ÷ จำนวนไบต์ที่ต้องย้ายจากหน่วยความจำ</strong></p>
+<p>หน่วยคือ FLOP ต่อไบต์ มันเป็นคุณสมบัติของ <em>อัลกอริทึมกับการจัดข้อมูล</em> ไม่ใช่ของเครื่อง บทความต้นฉบับของ Williams, Waterman และ Patterson ใช้คำว่า <em>operational intensity</em> และระบุชัดว่านับเฉพาะไบต์ที่วิ่งระหว่างแคชกับ DRAM &ldquo;หลังจากถูกกรองด้วยลำดับชั้นแคชแล้ว&rdquo; โดยจงใจแยกจากคำว่า arithmetic intensity ในงานก่อนหน้าที่นับทราฟฟิกระหว่างโพรเซสเซอร์กับแคช ในบทนี้เราจะนับไบต์ที่วิ่งจาก HBM ตามความหมายแบบ Williams</p>
+<h3 id="สองเพดาน-หนงสมการ">สองเพดาน หนึ่งสมการ<a class="anchor" href="#%e0%b8%aa%e0%b8%ad%e0%b8%87%e0%b9%80%e0%b8%9e%e0%b8%94%e0%b8%b2%e0%b8%99-%e0%b8%ab%e0%b8%99%e0%b8%87%e0%b8%aa%e0%b8%a1%e0%b8%81%e0%b8%b2%e0%b8%a3">#</a></h3>
+<p>เครื่องมีขีดจำกัดสองอย่าง: คำนวณได้เร็วสุด P FLOP/s (เพดานการคำนวณ) และดึงข้อมูลได้เร็วสุด B ไบต์ต่อวินาที ถ้างานมีความเข้ม I ข้อมูลที่มาถึงทุกวินาทีจะเลี้ยงการคำนวณได้แค่ B × I FLOP/s ดังนั้น</p>
+<p><strong>สมรรถนะที่ทำได้ ≤ min(P, B × I)</strong></p>
+<p>นี่คือสมการเดียวกับในบทความของ Williams และคณะ บนกราฟที่แกนนอนเป็น I และแกนตั้งเป็น FLOP/s (สเกลลอการิทึมทั้งคู่) เพดาน B × I เป็นเส้นเฉียงขึ้น เพดาน P เป็นเส้นแนวนอน ได้รูปหลังคา — จึงชื่อ roofline จุดที่สองเส้นตัดกันเรียกว่า <strong>จุดสัน</strong> (ridge point) อยู่ที่ I* = P / B ซึ่งบทความนิยามว่าเป็น &ldquo;ความเข้มขั้นต่ำที่ต้องมีเพื่อจะได้สมรรถนะสูงสุด&rdquo; งานที่ I &lt; I* ติดหลังคาเฉียง เรียกว่า <strong>ถูกจำกัดด้วยหน่วยความจำ</strong> (memory-bound) งานที่ I &gt; I* ติดหลังคาแบน เรียกว่า <strong>ถูกจำกัดด้วยการคำนวณ</strong> (compute-bound) (ศัพท์บัญญัติของ bound ในคณิตศาสตร์คือ &ldquo;ขอบเขต&rdquo;)</p>
+<p><strong>จุดสันของ A100</strong> (จากตัวเลขในเอกสาร):</p>
+<ul>
+<li>Tensor Core FP16: 312 × 10¹² ÷ 1,555 × 10⁹ ≈ <strong>201 FLOP ต่อไบต์</strong></li>
+<li>FP32 แบบธรรมดา (ไม่ใช้ Tensor Core): 19.5 × 10¹² ÷ 1,555 × 10⁹ ≈ <strong>12.5 FLOP ต่อไบต์</strong></li>
+</ul>
+<p>อ่านว่า: ถ้าจะใช้ Tensor Core ให้เต็ม ทุกไบต์ที่ดึงจาก HBM ต้องถูกใช้ในการคำนวณราว 200 ครั้ง เทียบกับตัวอย่างในบทความของ Williams และคณะ ที่เครื่อง Opteron X2 มีค่ายอด 17.6 GFLOP/s กับแบนด์วิดท์ที่วัดได้ 15 GB/s จุดสันคำนวณได้ราว 17.6/15 ≈ 1.2 (ตัวบทความเองระบุไว้ว่า 1.0; เป็นค่าจุดลอยตัวความแม่นยำสองเท่า จึงเทียบกับ FP16 ตรง ๆ ไม่ได้ แต่แม้เทียบกับ FP32 ธรรมดาของ A100 ที่ 12.5 จุดสันก็ยังเลื่อนไปทางขวาราว 10 เท่าขึ้นไปในเวลาสิบกว่าปี) — นี่คือกำแพงหน่วยความจำของบทที่ 35 ในรูปตัวเลขเดียว</p>
+<h3 id="ตวอยางท-1-บวกเวกเตอร">ตัวอย่างที่ 1: บวกเวกเตอร์<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b8%97-1-%e0%b8%9a%e0%b8%a7%e0%b8%81%e0%b9%80%e0%b8%a7%e0%b8%81%e0%b9%80%e0%b8%95%e0%b8%ad%e0%b8%a3">#</a></h3>
+<p>c[i] = a[i] + b[i] ด้วย FP32: ต่อหนึ่งช่อง อ่าน 4 + 4 ไบต์ เขียน 4 ไบต์ รวม 12 ไบต์ ทำ 1 FLOP ดังนั้น I = 1/12 ≈ 0.083 FLOP/ไบต์ ห่างจากจุดสัน FP32 (12.5) ราว 150 เท่า สมรรถนะสูงสุด = 1,555 × 0.083 ≈ <strong>130 GFLOP/s</strong> ไม่ถึง 1% ของ 19.5 TFLOP/s ถ้าเวกเตอร์ยาว 100 ล้านช่อง ต้องย้าย 1.2 GB ใช้เวลาอย่างน้อย 1.2 / 1,555 ≈ <strong>0.77 ms</strong> ไม่ว่า GPU จะมีคอร์มากเท่าไร การเพิ่มพลังคำนวณให้งานนี้ไม่ช่วยเลย มีแต่แบนด์วิดท์ที่ช่วย</p>
+<h3 id="ตวอยางท-2-เมทรกซคณเวกเตอร-และทำไมขนาดกลมสำคญ">ตัวอย่างที่ 2: เมทริกซ์คูณเวกเตอร์ และทำไมขนาดกลุ่มสำคัญ<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b8%97-2-%e0%b9%80%e0%b8%a1%e0%b8%97%e0%b8%a3%e0%b8%81%e0%b8%8b%e0%b8%84%e0%b8%93%e0%b9%80%e0%b8%a7%e0%b8%81%e0%b9%80%e0%b8%95%e0%b8%ad%e0%b8%a3-%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%97%e0%b8%b3%e0%b9%84%e0%b8%a1%e0%b8%82%e0%b8%99%e0%b8%b2%e0%b8%94%e0%b8%81%e0%b8%a5%e0%b8%a1%e0%b8%aa%e0%b8%b3%e0%b8%84%e0%b8%8d">#</a></h3>
+<p>น้ำหนัก W ขนาด n × n แบบ FP16 คูณกับอินพุต b คอลัมน์ (b = ขนาดกลุ่ม) FLOP = 2n²b ไบต์ ≈ 2n² (น้ำหนัก) + 4nb (อินพุตและเอาต์พุต) เมื่อ b เล็กกว่า n มาก ไบต์ถูกครองด้วยน้ำหนัก ได้ <strong>I ≈ b</strong> — ทุกน้ำหนักที่ดึงมาใช้ซ้ำหนึ่งครั้งต่อหนึ่งตัวอย่างในกลุ่ม ผู้เขียนคำนวณด้วย n = 8,192 บน A100:</p>
+<table>
+	<thead>
+			<tr>
+					<th>b</th>
+					<th>I (FLOP/ไบต์)</th>
+					<th>เพดาน min(P, B × I)</th>
+					<th>% ของค่ายอด FP16</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>1.0</td>
+					<td>1.6 TFLOP/s</td>
+					<td>0.5%</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>8.0</td>
+					<td>12.4 TFLOP/s</td>
+					<td>4%</td>
+			</tr>
+			<tr>
+					<td>64</td>
+					<td>63</td>
+					<td>98 TFLOP/s</td>
+					<td>31%</td>
+			</tr>
+			<tr>
+					<td>256</td>
+					<td>241</td>
+					<td>312 TFLOP/s</td>
+					<td>100%</td>
+			</tr>
+	</tbody>
+</table>
+<p>ข้อสรุป: การประมวลผลทีละตัวอย่าง (b = 1) บนเครื่องที่มีจุดสัน 200 ใช้เครื่องได้ครึ่งเปอร์เซ็นต์ นี่คือเหตุผลเชิงตัวเลขที่ระบบฝึกและระบบให้บริการโมเดลพยายามรวมคำขอเป็นกลุ่ม และเป็นเหตุที่บทที่ 56 เตือนว่ากลุ่มย่อยที่เล็กเกินไปในไปป์ไลน์ทำให้การคูณเมทริกซ์ &ldquo;ใช้ GPU ได้ไม่เต็ม&rdquo;</p>
+<h3 id="ตวอยางท-3-เมทรกซคณเมทรกซ-และบทบาทของหนวยความจำรวม">ตัวอย่างที่ 3: เมทริกซ์คูณเมทริกซ์ และบทบาทของหน่วยความจำร่วม<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b8%97-3-%e0%b9%80%e0%b8%a1%e0%b8%97%e0%b8%a3%e0%b8%81%e0%b8%8b%e0%b8%84%e0%b8%93%e0%b9%80%e0%b8%a1%e0%b8%97%e0%b8%a3%e0%b8%81%e0%b8%8b-%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%9a%e0%b8%97%e0%b8%9a%e0%b8%b2%e0%b8%97%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b8%ab%e0%b8%99%e0%b8%a7%e0%b8%a2%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%88%e0%b8%b3%e0%b8%a3%e0%b8%a7%e0%b8%a1">#</a></h3>
+<p>คูณเมทริกซ์จัตุรัส n × n สองตัวด้วย FP16: FLOP = 2n³ ถ้าอ่าน A กับ B และเขียน C อย่างละครั้งเดียว ไบต์ = 3 × 2n² = 6n² ได้ I = n/3 — <strong>ความเข้มโตตาม n</strong> ที่ n = 4,096 ได้ I ≈ 1,365 เกินจุดสันไปไกล ถูกจำกัดด้วยการคำนวณ (จุดตัดอยู่ที่ n ≈ 602) นี่คือเหตุผลเชิงโครงสร้างที่ทำให้การคูณเมทริกซ์ถูกยกเป็นศูนย์กลางของฮาร์ดแวร์ AI ในบทที่ 57: มันเป็นงานไม่กี่ชนิดที่ <em>ยิ่งใหญ่ยิ่งใช้ข้อมูลซ้ำ</em></p>
+<p>แต่ I = n/3 สมมุติว่า &ldquo;อ่านครั้งเดียว&rdquo; ซึ่งต้องมีที่เก็บบนชิปใหญ่พอจะถือทั้งเมทริกซ์ — ไม่มี ในความเป็นจริงต้องแบ่งเป็น <strong>แผ่นย่อย</strong> (tile) ลองดูแบบจำลองง่าย ๆ ที่ผู้เขียนสร้างขึ้นเพื่ออธิบาย (ละเลยแคช L2):</p>
+<ul>
+<li><strong>ไม่ใช้ซ้ำเลย:</strong> ทุกการคูณ-บวก (2 FLOP) ดึง A หนึ่งตัวกับ B หนึ่งตัวจาก HBM (4 ไบต์) → I = 0.5 ติดหลังคาเฉียงที่ 1,555 × 0.5 ≈ 0.78 TFLOP/s</li>
+<li><strong>แบ่งแผ่นย่อย T × T ในหน่วยความจำร่วม:</strong> เพื่อคำนวณแผ่น T × T ของ C เราเดินไปตามมิติร่วม ทีละก้าว แต่ละก้าวโหลดแผ่นของ A และแผ่นของ B อย่างละ T² ตัว (2T² × 2 = 4T² ไบต์) แล้วทำ 2T³ FLOP ได้ <strong>I = T/2</strong></li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>T</th>
+					<th>I = T/2</th>
+					<th>เพดาน</th>
+					<th>หน่วยความจำร่วมที่ใช้ (สองแผ่น FP16)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>32</td>
+					<td>16</td>
+					<td>25 TFLOP/s</td>
+					<td>4 KB</td>
+			</tr>
+			<tr>
+					<td>64</td>
+					<td>32</td>
+					<td>50 TFLOP/s</td>
+					<td>16 KB</td>
+			</tr>
+			<tr>
+					<td>128</td>
+					<td>64</td>
+					<td>100 TFLOP/s</td>
+					<td>64 KB</td>
+			</tr>
+			<tr>
+					<td>256</td>
+					<td>128</td>
+					<td>199 TFLOP/s</td>
+					<td>256 KB — ไม่พอดี 192 KB</td>
+			</tr>
+	</tbody>
+</table>
+<p>จะถึงจุดสัน 201 ต้องใช้ T ≈ 400 ซึ่งใหญ่เกินหน่วยความจำร่วมของ SM หนึ่งตัว ในแบบจำลองนี้ หน่วยความจำร่วมอย่างเดียวจึงพาไปได้ราวหนึ่งในสามของค่ายอด ส่วนที่เหลือต้องมาจาก <em>ชั้นอื่นของพีระมิด</em>: แคช L2 ขนาด 40 MB ที่ให้หลาย SM ใช้แผ่นเดียวกันซ้ำโดยไม่ต้องไป HBM อีก และแฟ้มเรจิสเตอร์ที่ให้แต่ละเธรดใช้ค่าซ้ำภายใน นี่คือความหมายเชิงปริมาณของพีระมิด: <strong>แต่ละชั้นคูณการใช้ซ้ำเข้าไปอีกทอด จนความเข้มที่มองจาก HBM สูงพอข้ามจุดสัน</strong> (ตัวเลขในตารางนี้เป็นแบบจำลองเพื่อการสอน ไลบรารีจริงอย่าง cuBLAS จัดแผ่นซับซ้อนกว่านี้มาก)</p>
+<h3 id="roofline-บอกอะไร-และไมบอกอะไร">roofline บอกอะไร และไม่บอกอะไร<a class="anchor" href="#roofline-%e0%b8%9a%e0%b8%ad%e0%b8%81%e0%b8%ad%e0%b8%b0%e0%b9%84%e0%b8%a3-%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b9%84%e0%b8%a1%e0%b8%9a%e0%b8%ad%e0%b8%81%e0%b8%ad%e0%b8%b0%e0%b9%84%e0%b8%a3">#</a></h3>
+<p>roofline เป็น <em>ขอบบน</em> ไม่ใช่การทำนาย งานที่อยู่ใต้หลังคามากแปลว่ามีคอขวดอื่น เช่น การกระจายงานไม่ทั่ว การแตกแขนงในวาร์ป (บทที่ 53) หรือการเข้าถึงหน่วยความจำแบบกระจัดกระจาย บทความต้นฉบับจึงเพิ่ม &ldquo;เพดานย่อย&rdquo; (ceilings) ใต้หลังคาหลักสำหรับการปรับแต่งแต่ละชนิด แต่คำถามแรกที่ roofline ตอบได้ทันทีด้วยการคูณหารสองครั้งนั้นมีค่ามาก: <em>งานนี้ควรลงทุนเพิ่มการคำนวณ หรือเพิ่มการใช้ข้อมูลซ้ำ</em></p>
+<h2 id="ปอนสงทมาถดไป">ป้อนสิ่งที่มาถัดไป<a class="anchor" href="#%e0%b8%9b%e0%b8%ad%e0%b8%99%e0%b8%aa%e0%b8%87%e0%b8%97%e0%b8%a1%e0%b8%b2%e0%b8%96%e0%b8%94%e0%b9%84%e0%b8%9b">#</a></h2>
+<p>สถาปัตยกรรมนี้มีอยู่เพื่อเลี้ยงความอยาก compute มหาศาล Peak FLOPS ไร้ความหมายหาก operand มาไม่ทันและผลออกไม่ได้ Tensor core ในบทถัดไปคือโครงสร้าง compute ที่แบนด์วิดท์ของ HBM ถูกสร้างมาป้อน — พากรอบแบนด์วิดท์ไปด้วย: peak ของ tensor core มีความหมายเฉพาะเมื่อเทียบกับระบบหน่วยความจำที่ค้ำจุนมันได้</p>
+<p>ประโยคสุดท้ายนั้นคือ roofline ในรูปคำพูด: tensor core ยกหลังคาแบน (P) ขึ้นอีกหลายเท่า แต่ไม่ได้ขยับหลังคาเฉียง (B) จุดสันจึงเลื่อนไปทางขวา และงานที่เคยถูกจำกัดด้วยการคำนวณอาจกลายเป็นถูกจำกัดด้วยหน่วยความจำได้ทันทีเมื่อย้ายขึ้นเครื่องใหม่</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>จันทนา จันทราพรชัย, <em>สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ</em></li>
+<li>ผศ.ดร. ปัทมา ลงกานี, <em>สถาปัตยกรรมคอมพิวเตอร์</em></li>
+<li>รศ.ดร.เกริก ภิรมย์โสภา, <em>สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์</em></li>
+<li>Samuel Williams, Andrew Waterman, David Patterson, &ldquo;Roofline: An Insightful Visual Performance Model for Multicore Architectures&rdquo;, <em>Communications of the ACM</em> 52(4): 65–76, เมษายน 2009, doi:10.1145/1498765.1498785 (<a href="https://doi.org/10.1145/1498765.1498785">https://doi.org/10.1145/1498765.1498785</a>) — สมการ min(P, B × I), นิยาม operational intensity, จุดสัน และตัวอย่าง Opteron; คำพูดที่ยกมาในบทนี้ตรวจกับฉบับร่างที่เปิดอ่านได้ฟรี ชื่อ &ldquo;Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures&rdquo; (แก้ไขเดือนสิงหาคมและตุลาคม 2008; ถ้อยคำอาจต่างจากฉบับตีพิมพ์เล็กน้อย): <a href="https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf">https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf</a></li>
+<li>NVIDIA, <em>NVIDIA A100 Tensor Core GPU Architecture</em> (whitepaper, 2020) — HBM2 5 กอง × 8 ได, ตัวควบคุม 512 บิต 10 ตัว, 1,215 MHz DDR, 1,555 GB/s, L2 40 MB, L1/shared 192 KB ต่อ SM, แฟ้มเรจิสเตอร์ 256 KB ต่อ SM, 108 SM, ค่ายอด FP16/FP32: <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%B8%A5%E0%B8%B3%E0%B8%94%E0%B8%B1%E0%B8%9A%E0%B8%8A%E0%B8%B1%E0%B9%89%E0%B8%99%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%88%E0%B8%B3&#43;GPU&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F54-gpu-memory-hierarchy%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F54-gpu-memory-hierarchy.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F54-gpu-memory-hierarchy.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>CUDA Core, Warp และ Occupancy</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/55-tensor-cores/" class="flex align-center">
+        <span>Tensor Core</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#เหตใด-gpu-จงอดบนหนวยความจำแบบ-cpu">เหตุใด GPU จึงอดบนหน่วยความจำแบบ CPU</a></li>
+    <li><a href="#hbm-ซอนขางได">HBM: ซ้อนข้างได</a>
+      <ul>
+        <li><a href="#แบนดวดท--ความกวาง--อตราตอขา">แบนด์วิดท์ = ความกว้าง × อัตราต่อขา</a></li>
+      </ul>
+    </li>
+    <li><a href="#ลำดบชนภายใน-gpu">ลำดับชั้นภายใน GPU</a></li>
+    <li><a href="#roofline-การคำนวณหรอหนวยความจำ-อะไรเปนเพดาน">Roofline: การคำนวณหรือหน่วยความจำ อะไรเป็นเพดาน</a>
+      <ul>
+        <li><a href="#ความเขมเชงคำนวณ">ความเข้มเชิงคำนวณ</a></li>
+        <li><a href="#สองเพดาน-หนงสมการ">สองเพดาน หนึ่งสมการ</a></li>
+        <li><a href="#ตวอยางท-1-บวกเวกเตอร">ตัวอย่างที่ 1: บวกเวกเตอร์</a></li>
+        <li><a href="#ตวอยางท-2-เมทรกซคณเวกเตอร-และทำไมขนาดกลมสำคญ">ตัวอย่างที่ 2: เมทริกซ์คูณเวกเตอร์ และทำไมขนาดกลุ่มสำคัญ</a></li>
+        <li><a href="#ตวอยางท-3-เมทรกซคณเมทรกซ-และบทบาทของหนวยความจำรวม">ตัวอย่างที่ 3: เมทริกซ์คูณเมทริกซ์ และบทบาทของหน่วยความจำร่วม</a></li>
+        <li><a href="#roofline-บอกอะไร-และไมบอกอะไร">roofline บอกอะไร และไม่บอกอะไร</a></li>
+      </ul>
+    </li>
+    <li><a href="#ปอนสงทมาถดไป">ป้อนสิ่งที่มาถัดไป</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1970 年代初，北大的作業系統組在大慶油田的另一台電腦上模擬出 150 機，用 23 天調通了作業系統；半個世紀後，中國的作業系統走進了開源基金會。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/zh-hant/posts/23-zh-operating-systems/">
+	<meta property="og:site_name" content="我們如何走到那裡">
+	<meta property="og:title" content="作業系統：從大慶的“虛擬機”到開源歐拉">
+	<meta property="og:description" content="1970 年代初，北大的作業系統組在大慶油田的另一台電腦上模擬出 150 機，用 23 天調通了作業系統；半個世紀後，中國的作業系統走進了開源基金會。">
+	<meta property="og:locale" content="zh_Hant">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+		<meta property="article:tag" content="作業系統">
+		<meta property="article:tag" content="楊芙清">
+		<meta property="article:tag" content="150機">
+		<meta property="article:tag" content="虛擬機器">
+		<meta property="article:tag" content="紅旗Linux">
+		<meta property="article:tag" content="銀河麒麟">
+
+
+	<meta itemprop="name" content="作業系統：從大慶的“虛擬機”到開源歐拉">
+	<meta itemprop="description" content="1970 年代初，北大的作業系統組在大慶油田的另一台電腦上模擬出 150 機，用 23 天調通了作業系統；半個世紀後，中國的作業系統走進了開源基金會。">
+	<meta itemprop="datePublished" content="2026-09-26T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="251">
+	<meta itemprop="keywords" content="作業系統,楊芙清,150機,虛擬機器,紅旗Linux,銀河麒麟,OpenEuler,CLE">
+
+<title>作業系統：從大慶的“虛擬機”到開源歐拉 • 我們如何走到那裡</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/zh-hant/posts/23-zh-operating-systems/">
+  <link rel="alternate" hreflang="zh-hans" href="http://localhost:1478/zh-hans/posts/23-zh-operating-systems/" title="操作系统：从大庆的“虚拟机”到开源欧拉">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/zh-hant.search.min.fa14ded62159ba6cbd0e4fab41da826a3888ed10f3c3ce0e2671b6ad687c6ff9.js" integrity="sha256-&#43;hTe1iFZumy9Dk&#43;rQdqCajiI7RDzw84OJnG2rWh8b/k=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-hant/"><span>我們如何走到那裡</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="搜尋"
+    aria-label="搜尋"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="語言" />
+        繁體中文</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="展開" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/zh-hans/posts/23-zh-operating-systems/" class="flex flex-auto">
+          简体中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/00-credits/" class="">
+      致謝與延伸出口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-counting-rods-abacus/" class="">
+      算籌與算盤：數放在手裡，演算法記在口訣裡</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-drawloom-huaben/" class="">
+      花本：程式第一次和機器分開</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/01-zh-gears-and-calculators/" class="">
+      齒輪會數數：從記里鼓車到“較數器”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/02-zh-relays-switching/" class="">
+      繼電器與交換機：上海電話局裡的“電腦”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/03-zh-first-electronic-computers/" class="">
+      真空管與電晶體：中國第一批電腦，和算盤的真實角色</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/64-zh-hanzi-encoding/" class="">
+      漢字上線：從四位電碼到 GB 18030</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/26-zh-input-and-typesetting/" class="">
+      把漢字敲進機器：打字機、輸入法與雷射照排</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/39-zh-networks-1986-1994/" class="">
+      越過長城：中文世界接入網路（1986—1995）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/47-zh-taiwan-semiconductors/" class="">
+      從豆漿店到晶圓代工：台灣半導體之路</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/17-zh-supercomputers-cpus/" class="">
+      規模：從銀河到太湖之光</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/63-zh-road-to-attention/" class="">
+      從中文信息處理到注意力機制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/05-zh-transistors-semiconductors/" class="">
+      從一門課到一塊晶片：中國半導體的頭十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/48-zh-lithography-fabs/" class="">
+      微影：從顯微鏡到掃描機</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/58-zh-deep-learning-chips/" class="">
+      從 DianNao 到昇騰：為矩陣乘法造的晶片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/23-zh-operating-systems/" class="active">
+      作業系統：從大慶的“虛擬機”到開源歐拉</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/27-zh-languages-compilers/" class="">
+      程式語言與編譯器：從 104 機到倉頡</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/18-zh-hong-kong-computing/" class="">
+      香港：打孔卡、主機與天文台的電腦</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/43-zh-bbs/" class="">
+      擠不進去的廣場：兩岸三地的校園 BBS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/44-zh-chinese-search/" class="">
+      一台伺服器裝不下：中國大陸第一批搜尋引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/66-zh-commercial-crypto/" class="">
+      從“屬於國家秘密”到國際標準：中國商用密碼的二十年</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/67-zh-privacy-law/" class="">
+      從電腦處理到自動化決策：兩岸三地的個人資料保護法制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/64-zh-mobile-standards/" class="">
+      空中的標準之爭：從大哥大到 TD-SCDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-hant/posts/68-zh-computer-craze/" class="">
+      娃娃與學習機：1984 年以後的電腦熱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="選單" />
+  </label>
+
+  <h3>作業系統：從大慶的“虛擬機”到開源歐拉</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="目錄" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#150-機先在別的機器上模擬出它來">150 機：先在別的機器上模擬出它來</a></li>
+    <li><a href="#從微核心到紅旗-linux">從微核心到紅旗 Linux</a></li>
+    <li><a href="#銀河麒麟自己的核心層freebsd-的服務層">銀河麒麟：自己的核心層，FreeBSD 的服務層</a></li>
+    <li><a href="#2019開源並把程式碼交出去">2019：開源，並把程式碼交出去</a></li>
+    <li><a href="#台灣從-cle-到自由軟體鑄造場">台灣：從 CLE 到自由軟體鑄造場</a></li>
+    <li><a href="#延伸閱讀">延伸閱讀</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    作業系統：從大慶的“虛擬機”到開源歐拉
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日曆" />
+    <span>9月 26, 2026</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/zh-hant/tags/%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1/">作業系統</a>, 
+      <a href="/zh-hant/tags/%E6%A5%8A%E8%8A%99%E6%B8%85/">楊芙清</a>, 
+      <a href="/zh-hant/tags/150%E6%A9%9F/">150機</a>, 
+      <a href="/zh-hant/tags/%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/">虛擬機器</a>, 
+      <a href="/zh-hant/tags/%E7%B4%85%E6%97%97linux/">紅旗Linux</a>, 
+      <a href="/zh-hant/tags/%E9%8A%80%E6%B2%B3%E9%BA%92%E9%BA%9F/">銀河麒麟</a>, 
+      <a href="/zh-hant/tags/openeuler/">OpenEuler</a>, 
+      <a href="/zh-hant/tags/cle/">CLE</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><!-- sources: F10-01, F10-02, F10-03, F10-04, F10-05, F10-06, F10-07, F10-08, F10-09, F10-10, F10-11, F10-12 -->
+<p>假設你要給一台還沒造好的電腦寫作業系統。硬體沒調通，你手裡的程式沒地方跑。怎麼辦？1970 年代初，北京大學的一群年輕人給出的辦法，今天我們叫它虛擬機器。</p>
+<h2 id="150-機先在別的機器上模擬出它來">150 機：先在別的機器上模擬出它來<a class="anchor" href="#150-%e6%a9%9f%e5%85%88%e5%9c%a8%e5%88%a5%e7%9a%84%e6%a9%9f%e5%99%a8%e4%b8%8a%e6%a8%a1%e6%93%ac%e5%87%ba%e5%ae%83%e4%be%86">#</a></h2>
+<p>1969 年 12 月，國務院向北京大學下達研製每秒百萬次積體電路大型電腦 150 機的任務。楊芙清任組長，負責 150 機的多道執行作業系統。楊芙清在回憶中寫道，組員是青年教師、留校學生和工廠、用戶單位的人員，“他們都沒有見過計算機，也不知什麼是操作系統”。</p>
+<p>一年多後，整套作業系統軟體設計出來了，150 機的硬體卻還沒調校完成。據楊芙清回憶，作業系統組和編譯系統組一起去了大慶油田，在那裡的 108乙機上編寫了一套模擬 150 機指令集的程式，模擬 150 機的硬體，然後在模擬得到的“虛擬機”上除錯 150 機的作業系統和編譯系統。十幾個人晝夜倒班，23 天就把多道執行作業系統除錯成功，並完成了與編譯系統的聯調。回到北京，他們再用軟體幫助硬體調校。</p>
+<p>機器造好後怎麼宣布？每條指令的微程式不同，執行起來就是不同的頻率。他們接上喇叭，挑出合適的指令組成音階，寫出《東方紅》的曲譜程式。據楊芙清回憶，1973 年的一個晚上通宵除錯，第二天早晨樂曲放了出來，“這首《東方紅》宣告我國第一台百萬次集成電路計算機研製成功”。</p>
+<p>下面這個實驗室做的是同一件事：你的瀏覽器用軟體模擬一台 x86 電腦，上面跑著真正的 Linux。你在螢幕裡敲下的每條命令，都由軟體模擬出來的硬體執行。</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/vm-terminal/?lang=zh-hant"
+    style="width:100%; height:720px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="互動實驗：vm-terminal">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/vm-terminal/?lang=zh-hant" target="_blank" rel="noopener">在新分頁開啟實驗 ↗</a>
+  </div>
+</div>
+
+<p>之後，楊芙清參加 200 系列機的軟體總體設計，負責 240 機作業系統。1981 年，這個採用層次管程結構、PCM 方法設計的作業系統完成，有批次處理和即時兩個版本。楊芙清稱之為“我國第一個用高級語言書寫的大型操作系統”；用的是哪種語言，回憶裡沒有寫明。同一時期的系統程式設計語言，見<a href="/zh-hant/posts/27-zh-languages-compilers/">《程式語言與編譯器》</a>。</p>
+<h2 id="從微核心到紅旗-linux">從微核心到紅旗 Linux<a class="anchor" href="#%e5%be%9e%e5%be%ae%e6%a0%b8%e5%bf%83%e5%88%b0%e7%b4%85%e6%97%97-linux">#</a></h2>
+<p>1997 年《軟件學報》的一篇論文討論了國產作業系統 COSIX V2.0 的安全設計。據論文摘要頁，COSIX V2.0 採用基於微核心的多伺服器結構，課題來自“八五”國家計畫。</p>
+<p>據《南方都市報》2005 年的報導，1999 年 8 月 10 日，孫玉芳（2005 年去世時任中國科學院軟件研究所副所長）帶領的團隊釋出紅旗 Linux；2000 年，孫玉芳創立北京中科紅旗軟件技術有限公司。該報導還說，從 1999 年起，孫玉芳與香港文化傳信集團的朱邦復合作籌建北京紅旗中文貳仟軟件技術有限公司（簡稱中文2000），2001 年推出 RedOffice 辦公套件，與紅旗 Linux 一起中標北京市政府採購，報導稱這是“我國第一次政府軟件正版化採購”。</p>
+<h2 id="銀河麒麟自己的核心層freebsd-的服務層">銀河麒麟：自己的核心層，FreeBSD 的服務層<a class="anchor" href="#%e9%8a%80%e6%b2%b3%e9%ba%92%e9%ba%9f%e8%87%aa%e5%b7%b1%e7%9a%84%e6%a0%b8%e5%bf%83%e5%b1%a4freebsd-%e7%9a%84%e6%9c%8d%e5%8b%99%e5%b1%a4">#</a></h2>
+<p>據中國教育和科研計算機網的報導，2001 年，國家把研製擁有自主智慧財產權的作業系統列為 863 重大專項，由國防科技大學計算機學院承擔。據《光明日報》2006 年的報導，“銀河麒麟”伺服器作業系統於當年 12 月 4 日通過 863 計畫信息領域辦公室組織的專家驗收，它“由自主研發的基本內核層和基於FreeBSD(一種Unix操作系統)改造的系統服務層組成”。也就是說，它的系統服務層來自英文版第 22 章講到的 BSD 一支。該報導還稱，它是“我國第一個高安全等級(B2級)的64位操作系統”。</p>
+<h2 id="2019開源並把程式碼交出去">2019：開源，並把程式碼交出去<a class="anchor" href="#2019%e9%96%8b%e6%ba%90%e4%b8%a6%e6%8a%8a%e7%a8%8b%e5%bc%8f%e7%a2%bc%e4%ba%a4%e5%87%ba%e5%8e%bb">#</a></h2>
+<p>2019 年 12 月 31 日，華為宣布 openEuler 開源社群正式開放原始碼、映像及開發測試環境；2021 年 11 月，華為宣布把歐拉的全量程式碼、品牌商標、社群基礎設施等資產捐贈給開放原子開源基金會。同在 2019 年，華為香港發布的開發者大會新聞稿引述華為消費者業務 CEO 余承東的話說，鴻蒙 OS 是“一款建基於微內核、以全場景應用為中心的分佈式操作系統”。微核心的思路，在 1990 年代的 COSIX 和 2019 年的鴻蒙上都出現過。</p>
+<h2 id="台灣從-cle-到自由軟體鑄造場">台灣：從 CLE 到自由軟體鑄造場<a class="anchor" href="#%e5%8f%b0%e7%81%a3%e5%be%9e-cle-%e5%88%b0%e8%87%aa%e7%94%b1%e8%bb%9f%e9%ab%94%e9%91%84%e9%80%a0%e5%a0%b4">#</a></h2>
+<p>台灣的起點是一個開放原始碼社群專案。據 CLE 協調人黃志偉 2004 年接受 ZDNet 台灣的訪談，CLE（中文 Linux 延伸套件）由鄭原忠（小虫）大約在 1998 年中發起；1999 年 1 月的 v0.7 是第一個眾人通力合作的版本；2000 年 3 月的 v0.9 第一次以完整的 I18N 架構為主軸進行中文化。黃志偉說：“我想最重要的是促進了國際化(I18N)與本土化(L10N)設計的風潮”。2003 年，中央研究院資訊科學研究所接受經濟部工業局“自由軟體產業推動計畫”的補助，成立自由軟體鑄造場（OpenFoundry）。</p>
+<p>英文版第 22、23 章講分時、Unix、GNU 和 Linux 的來歷；這一頁講的是這些思想到了中文世界以後，由誰、為了什麼接手。</p>
+<p>**出處：**楊芙清《七十年，我始終和祖國在一起》；《“銀河麒麟”服務器操作系統通過驗收》（《光明日報》，中國政府網轉載）；ZDNet 台灣《黃志偉專訪問答實錄》。</p>
+<h2 id="延伸閱讀">延伸閱讀<a class="anchor" href="#%e5%bb%b6%e4%bc%b8%e9%96%b1%e8%ae%80">#</a></h2>
+<ul>
+<li>楊芙清，《我和我的祖國｜七十年，我始終和祖國在一起》（English: Seventy years with my country, Yang Fuqing&rsquo;s memoir），北京大學計算機學院網站。<a href="https://cs.pku.edu.cn/info/1263/2373.htm">連結</a></li>
+<li>李軍、孫玉方，《基於微核心的國產操作系統安全性研究》（English: Security of a microkernel-based domestic operating system），《軟件學報》1997, 8(2): 99–106。<a href="https://jos.org.cn/jos/article/abstract/19970204">連結</a></li>
+<li>《南方都市報》，《紅旗Linux痛失旗手 董事長孫玉芳辭世》（English: Red Flag Linux loses its standard-bearer: chair Sun Yufang dies），新浪科技轉載，2005-01-14。<a href="http://tech.sina.com.cn/it/2005-01-14/1204504579.shtml">連結</a></li>
+<li>中國教育和科研計算機網，《國防科技大學研製成功“銀河麒麟”操作系統》（English: NUDT develops the Kylin operating system），2006-03-23。<a href="https://www.edu.cn/gao_xiao_zi_xun_1091/20060323/t20060323_161429.shtml">連結</a></li>
+<li>《光明日報》，《我國研製成功具有自主知識產權的服務器操作系統》（English: China develops a server OS with its own intellectual property, on Kylin&rsquo;s acceptance），中國政府網轉載，2006-12-05（Wayback Machine 存檔）。<a href="https://web.archive.org/web/20190204014734/http:/www.gov.cn/fwxx/kp/2006-12/05/content_461334.htm">連結</a></li>
+<li>華為，《openEuler操作系統源代碼正式開放》（English: openEuler source code formally opened），2019-12-31。<a href="https://www.huawei.com/cn/news/2019/12/huawei-openeuler">連結</a></li>
+<li>華為，《華為捐贈歐拉 共建數字基礎設施開源操作系統》（English: Huawei donates openEuler to build an open-source OS for digital infrastructure），2021-11。<a href="https://www.huawei.com/cn/news/2021/11/huawei-openeuler-openatom-foundation">連結</a></li>
+<li>華為消費者業務（香港），《華為發布全新分佈式鴻蒙 OS 打造全場景智能生活新體驗》（English: Huawei launches the distributed HarmonyOS, HDC 2019 Hong Kong release），2019。<a href="https://consumer.huawei.com/hk/press/news/2019/hdc2019/">連結</a></li>
+<li>ZDNet Taiwan，《尋找台灣自由軟體力量：黃志偉專訪問答實錄》（English: Looking for Taiwan&rsquo;s free-software strength: interview with CLE coordinator Huang Chih-wei），2004-03-04（Wayback Machine 存檔）。<a href="https://web.archive.org/web/20080604032823/http:/www.zdnet.com.tw/enterprise/feature/0,2000085762,20087861-7,00.htm">連結</a></li>
+<li>自由軟體鑄造場，〈關於 OpenFoundry &amp; OSSF〉（English: About OpenFoundry and the OSSF），2025 年存檔。<a href="https://web-archive-2025.openfoundry.org/tw/about-openfoundry.html">連結</a></li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='最後修改者 Nayana | 11月 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="日曆" />
+    <span>11月 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1%EF%BC%9A%E5%BE%9E%E5%A4%A7%E6%85%B6%E7%9A%84%E2%80%9C%E8%99%9B%E6%93%AC%E6%A9%9F%E2%80%9D%E5%88%B0%E9%96%8B%E6%BA%90%E6%AD%90%E6%8B%89&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fzh-hant%2Fposts%2F23-zh-operating-systems%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.zh-hant%2Fposts%2F23-zh-operating-systems.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.zh-hant%2Fposts%2F23-zh-operating-systems.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/zh-hant/posts/58-zh-deep-learning-chips/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="上一頁" />
+        <span>從 DianNao 到昇騰：為矩陣乘法造的晶片</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/zh-hant/posts/27-zh-languages-compilers/" class="flex align-center">
+        <span>程式語言與編譯器：從 104 機到倉頡</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="下一頁" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#150-機先在別的機器上模擬出它來">150 機：先在別的機器上模擬出它來</a></li>
+    <li><a href="#從微核心到紅旗-linux">從微核心到紅旗 Linux</a></li>
+    <li><a href="#銀河麒麟自己的核心層freebsd-的服務層">銀河麒麟：自己的核心層，FreeBSD 的服務層</a></li>
+    <li><a href="#2019開源並把程式碼交出去">2019：開源，並把程式碼交出去</a></li>
+    <li><a href="#台灣從-cle-到自由軟體鑄造場">台灣：從 CLE 到自由軟體鑄造場</a></li>
+    <li><a href="#延伸閱讀">延伸閱讀</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

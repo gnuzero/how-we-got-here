@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Scurgerea de canal scurt a oprit micșorarea tranzistorului plan: poarta a înfășurat întâi canalul pe trei laturi (FinFET), apoi pe toate (GAA)">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/49-finfet-to-gaa/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="De la FinFET la GAA">
+	<meta property="og:description" content="Scurgerea de canal scurt a oprit micșorarea tranzistorului plan: poarta a înfășurat întâi canalul pe trei laturi (FinFET), apoi pe toate (GAA)">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T13:48:29+05:30">
+
+
+	<meta itemprop="name" content="De la FinFET la GAA">
+	<meta itemprop="description" content="Scurgerea de canal scurt a oprit micșorarea tranzistorului plan: poarta a înfășurat întâi canalul pe trei laturi (FinFET), apoi pe toate (GAA)">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T13:48:29+05:30">
+	<meta itemprop="wordCount" content="4218">
+
+<title>De la FinFET la GAA • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/49-finfet-to-gaa/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/49-finfet-to-gaa/" title="FinFET to GAA">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/49-finfet-to-gaa/" title="จาก FinFET ถึง GAA">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/49-finfet-to-gaa/" title="FinFET සිට GAA දක්වා">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/49-finfet-to-gaa/" title="FinFET முதல் GAA வரை">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/49-finfet-to-gaa/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/49-finfet-to-gaa/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/49-finfet-to-gaa/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/49-finfet-to-gaa/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="active">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>De la FinFET la GAA</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ce-înseamnă-oprit-pentru-un-tranzistor">1. Ce înseamnă „oprit” pentru un tranzistor</a></li>
+    <li><a href="#2-cei-60-mv-pe-decadă-de-unde-vin-și-verificarea-lor">2. Cei 60 mV pe decadă: de unde vin și verificarea lor</a></li>
+    <li><a href="#3-efectele-de-canal-scurt-drena-începe-să-comande">3. Efectele de canal scurt: drena începe să comande</a></li>
+    <li><a href="#4-prima-ieșire-corpul-subțire">4. Prima ieșire: corpul subțire</a></li>
+    <li><a href="#5-a-doua-ieșire-mai-multe-porți-adică-finfet">5. A doua ieșire: mai multe porți, adică FinFET</a>
+      <ul>
+        <li><a href="#lucrarea-din-2000">Lucrarea din 2000</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-din-laborator-în-fabrică-intel-22-nm-tri-gate">6. Din laborator în fabrică: Intel 22 nm „Tri-Gate”</a></li>
+    <li><a href="#7-de-ce-nu-ajunge-nici-finfet">7. De ce nu ajunge nici FinFET</a></li>
+    <li><a href="#8-gaa-poarta-pe-toate-laturile">8. GAA: poarta pe toate laturile</a>
+      <ul>
+        <li><a href="#ce-face-gaa-mai-greu">Ce face GAA mai greu</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-producția-samsung-ibm-și-calendarul-irds">9. Producția: Samsung, IBM și calendarul IRDS</a></li>
+    <li><a href="#10-ce-urmează-cfet">10. Ce urmează: CFET</a></li>
+    <li><a href="#11-rezumat">11. Rezumat</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    De la FinFET la GAA
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Capitolul 6 a prezentat MOSFET-ul plan: sursă, drenă și o poartă așezată deasupra unui canal din siliciu. Capitolul 47 a arătat că numele de nod nu mai spun cât de mic e tranzistorul. Capitolul acesta răspunde la o întrebare mai fizică: de ce nu s-a putut continua pur și simplu cu tranzistorul plan, tot mai mic, și ce s-a schimbat în geometrie ca să meargă mai departe. Folosesc termenii pe care îi folosesc și inginerii români: <strong>FinFET</strong> (tranzistor cu „aripioară”, <em>fin</em>), <strong>GAA</strong> (<em>gate-all-around</em>, poartă de jur împrejur), <strong>nanosheet</strong> (foaie de siliciu de câțiva nanometri grosime), <strong>DIBL</strong> (<em>drain-induced barrier lowering</em>, coborârea barierei indusă de drenă) și <strong>subthreshold swing</strong> (panta subprag).</p>
+<p>Sursele deschise integral pentru acest capitol sunt: capitolul 7 din manualul lui Chenming Hu, <em>Modern Semiconductor Devices for Integrated Circuits</em> (Pearson, 2010, „MOSFETs in ICs—Scaling, Leakage, and Other Topics”, <a href="https://www.chu.berkeley.edu/wp-content/uploads/2020/01/Chenming-Hu_ch7.pdf">PDF pe site-ul autorului</a>, accesat 2026-11-05); lucrarea Hisamoto, Lee, Kedzierski, Takeuchi, Asano, Kuo, Anderson, King, Bokor și Hu, „FinFET—A Self-Aligned Double-Gate MOSFET Scalable to 20 nm” (<em>IEEE Transactions on Electron Devices</em>, vol. 47, nr. 12, decembrie 2000, pp. 2320–2325, <a href="https://doi.org/10.1109/16.887014">DOI 10.1109/16.887014</a>); Auth et al., „A 22nm High Performance and Low-Power CMOS Technology Featuring Fully-Depleted Tri-Gate Transistors, Softened Dual-Epitaxy Source/Drain, and Dual Work Function Metal Gates”, Symp. VLSI Technology, 2012 (<a href="https://xdevs.com/doc/Intel/22nm/Auth%20VLSI%202012.pdf">copie PDF</a>, accesat 2026-11-05); prezentarea Intel „Intel’s Revolutionary 22 nm Transistor Technology” (Mark Bohr și Kaizad Mistry, mai 2011, <a href="https://download.intel.com/newsroom/kits/22nm/pdfs/22nm-Details_Presentation.pdf">PDF</a>, accesat 2026-11-05); prezentarea Intel „Advancing Moore’s Law in 2014!” (Bohr, 11 august 2014, <a href="https://web.archive.org/web/2018/https://www.intel.com/content/dam/www/public/us/en/documents/presentation/advancing-moores-law-in-2014-presentation.pdf">PDF arhivat</a>, accesat 2026-11-05); capitolul <em>More Moore</em> din IRDS 2022 (IEEE, <a href="https://irds.ieee.org/images/files/pdf/2022/2022IRDS_MM.pdf">PDF</a>, accesat 2026-11-05); comunicatele Samsung (30 iunie 2022) și IBM (6 mai 2021); și valorile CODATA ale constantelor fizice de la NIST (<a href="https://physics.nist.gov/cgi-bin/cuu/Value?k">constanta Boltzmann</a>, <a href="https://physics.nist.gov/cgi-bin/cuu/Value?e">sarcina elementară</a>, accesate 2026-11-05). Copia lucrării Hisamoto pe care am deschis-o este exponatul public „TSMC Exhibit 1015” dintr-un dosar al Oficiului de Brevete al SUA (USPTO PTAB); textul este cel al articolului IEEE, cu paginile 2320–2325.</p>
+<p>Am deschis Auth et al., Symp. VLSI Technology 2012 (copie PDF publică), pe lângă prezentarea Bohr–Mistry 2011; cifrele de acolo rămân <strong>afirmații ale producătorului</strong> Intel. Nu am deschis integral lucrările de proces Samsung 3 nm GAA sau Loubet/IBM nanosheet (VLSI 2017), așa că pentru Samsung și IBM mă bazez pe comunicatele din 2022 și 2021; cifrele lor de performanță sunt tot <strong>afirmații ale producătorului</strong>.</p>
+<h2 id="1-ce-înseamnă-oprit-pentru-un-tranzistor">1. Ce înseamnă „oprit” pentru un tranzistor<a class="anchor" href="#1-ce-%c3%aenseamn%c4%83-oprit-pentru-un-tranzistor">#</a></h2>
+<p>Un tranzistor ideal ar conduce când e pornit și n-ar lăsa să treacă niciun curent când e oprit. Un MOSFET real lasă să treacă un curent și sub tensiunea de prag <em>Vt</em>; Hu îl numește curent subprag (<em>subthreshold current</em>) și arată că el este principala componentă a curentului în stare oprită, <em>Ioff</em> (Hu, 2010, §7.2, p. 263). Hu dă și un exemplu de ordine de mărime: dacă <em>Ioff</em> ar fi de doar 100 nA pe tranzistor, un cip de telefon cu o sută de milioane de tranzistori ar consuma 10 A chiar și în așteptare (Hu, 2010, §7.2, p. 263). Verific aritmetica: 100 × 10⁻⁹ A × 10⁸ = 10 A (calculul meu, care confirmă cifra lui Hu). Exemplul e ilustrativ, al lui Hu, nu o măsurătoare pe un telefon real.</p>
+<p>Sub prag, curentul de drenă depinde exponențial de tensiunea poartă-sursă: pe un grafic semilogaritmic, <em>Ids</em> față de <em>Vgs</em> este o linie dreaptă (Hu, 2010, §7.2, Fig. 7–2a și textul aferent, p. 263). Explicația lui Hu folosește un divizor capacitiv: potențialul de suprafață al canalului, φs, nu urmărește tensiunea porții unu-la-unu, ci cu factorul 1/η, unde η = 1 + C_dep / C_oxe (Hu, 2010, ec. 7.2.1–7.2.2, p. 263). Aici C_oxe este capacitatea oxidului de poartă, iar C_dep este capacitatea stratului sărăcit de sub canal (Hu, 2010, §7.2). Cu alte cuvinte, poarta trebuie să „împartă” controlul canalului cu substratul de dedesubt.</p>
+<h2 id="2-cei-60-mv-pe-decadă-de-unde-vin-și-verificarea-lor">2. Cei 60 mV pe decadă: de unde vin și verificarea lor<a class="anchor" href="#2-cei-60-mv-pe-decad%c4%83-de-unde-vin-%c8%99i-verificarea-lor">#</a></h2>
+<p>Hu scrie că, la temperatura camerei, funcția exp(qVgs/kT) crește de 10 ori pentru fiecare 60 mV de variație a lui Vgs, deci exp(qVgs/ηkT) crește de 10 ori la fiecare η × 60 mV (Hu, 2010, §7.2, p. 265). Mărimea η × 60 mV se numește <strong>subthreshold swing</strong> și se notează S (Hu, 2010, §7.2, ec. 7.2.6, p. 265). Hu dă și dependența de temperatură: S = η · 60 mV · T/300 K (Hu, 2010, ec. 7.2.6).</p>
+<p>De unde vin cei 60 mV? Pentru ca exp(qV/kT) să crească de 10 ori, exponentul trebuie să crească cu ln 10, deci V = (kT/q) · ln 10 (derivarea mea, din forma exponențială dată de Hu în ec. 7.2.4). Folosesc valorile CODATA de la NIST: constanta Boltzmann k = 1,380649 × 10⁻²³ J/K și sarcina elementară q = 1,602176634 × 10⁻¹⁹ C, ambele exacte în SI-ul actual (NIST, CODATA, paginile „Boltzmann constant” și „elementary charge”, accesate 2026-11-05). Calculul meu, pas cu pas:</p>
+<ul>
+<li>kT/q la T = 300 K: 1,380649 × 10⁻²³ × 300 / 1,602176634 × 10⁻¹⁹ = 0,025852 V, adică 25,85 mV (calculul meu);</li>
+<li>ln 10 = 2,302585 (constantă matematică);</li>
+<li>(kT/q) · ln 10 = 25,852 mV × 2,302585 = 59,53 mV (calculul meu).</li>
+</ul>
+<p>Deci „60 mV pe decadă” este rotunjirea lui 59,5 mV la 300 K, iar cifra lui Hu se confirmă (calculul meu). La 300,15 K (27 °C), același calcul dă 59,56 mV, deci rotunjirea rămâne aceeași (calculul meu).</p>
+<p>Ce înseamnă practic: η nu poate fi mai mic decât 1, pentru că C_dep/C_oxe nu e negativ, deci un MOSFET obișnuit la temperatura camerei nu poate avea o pantă mai bună de circa 60 mV pe decadă (deducția mea din ec. 7.2.2 și 7.2.6 ale lui Hu). Hu dă un exemplu: cu η = 1,5, curentul scade de zece ori la fiecare 90 mV sub prag (Hu, 2010, §7.2, p. 265). Hu dă și consecința de proiectare: pentru W și L date, <em>Ioff</em> se micșorează fie alegând un <em>Vt</em> mai mare, ceea ce scade curentul de pornire și viteza, fie reducând S; calea preferabilă este reducerea lui S (Hu, 2010, §7.2, ec. 7.2.8 și textul, p. 265).</p>
+<p>Un exemplu ilustrativ al meu, cu cifre alese doar pentru claritate: dacă vreți ca <em>Ioff</em> să fie de 10⁴ ori mai mic decât curentul la prag (patru decade), aveți nevoie de 4 × S sub prag. Cu S = 60 mV, asta înseamnă <em>Vt</em> ≈ 240 mV; cu S = 90 mV, înseamnă 360 mV (calculul meu ilustrativ, folosind ec. 7.2.8 a lui Hu). Diferența de 120 mV se pierde din tensiunea de alimentare disponibilă pentru comutare, ceea ce arată de ce o pantă bună contează atât de mult când tensiunea de alimentare scade (deducția mea).</p>
+<h2 id="3-efectele-de-canal-scurt-drena-începe-să-comande">3. Efectele de canal scurt: drena începe să comande<a class="anchor" href="#3-efectele-de-canal-scurt-drena-%c3%aencepe-s%c4%83-comande">#</a></h2>
+<p>Problema tranzistorului plan nu e doar η. Când lungimea canalului scade, <em>Vt</em> scade și el; Hu numește fenomenul <strong>Vt roll-off</strong> și arată că el determină lungimea minimă acceptabilă a porții, pentru că <em>Ioff</em> devine prea mare când <em>Vt</em> e prea mic sau prea sensibil la variațiile lui L (Hu, 2010, §7.3, Fig. 7–4, p. 267). Modelul lui Hu adaugă o a doua capacitate, C_d, care cuplează electrostatic drena cu canalul; pe măsură ce canalul se scurtează, drena se apropie de canal și C_d crește (Hu, 2010, Fig. 7–6, p. 268). Prima formă a modelului este Vt = Vt-long − Vds · C_d/C_oxe (Hu, 2010, ec. 7.3.1).</p>
+<p>Rezolvarea ecuației lui Poisson arată că C_d variază exponențial cu L, de unde forma semicantitativă (Hu, 2010, ec. 7.3.3, p. 268):</p>
+<pre tabindex="0"><code>Vt = Vt-long − (Vds + 0,4 V) · exp(−L / l_d)</code></pre><p>unde l_d, numită lungimea caracteristică DIBL, este proporțională cu rădăcina cubică a produsului T_oxe · W_dep · X_j (Hu, 2010, ec. 7.3.4, p. 268). T_oxe este grosimea electrică a oxidului, W_dep adâncimea stratului sărăcit, iar X_j adâncimea joncțiunii de drenă (Hu, 2010, §7.3). Hu numește fenomenul prin care drena coboară bariera sursă-canal și reduce <em>Vt</em> <strong>drain-induced barrier lowering</strong>, sau DIBL (Hu, 2010, §7.3, p. 269). Mesajul de bază al ecuației, în cuvintele lui Hu, este că dimensiunile verticale ale MOSFET-ului (T_ox, W_dep, X_j) trebuie reduse ca să poți reduce lungimea porții (Hu, 2010, §7.3, p. 269).</p>
+<p>Intuiția, pe care o formulez eu pe baza modelului lui Hu: în tranzistorul plan, poarta și drena se luptă pentru controlul aceleiași bariere de potențial. Poarta vine de sus, printr-un oxid subțire; drena vine din lateral, prin siliciu. Când L se micșorează la ordinul lui l_d, drena câștigă tot mai mult teren, iar tranzistorul nu se mai poate opri curat.</p>
+<p>Hu adaugă un detaliu decisiv. Chiar dacă oxidul ar fi infinit de subțire, poarta ar controla perfect bariera doar la suprafața siliciului; mai jos, la o oarecare adâncime, drena poate avea mai mult control decât poarta, iar curentul de scurgere găsește un drum „scufundat” (Hu, 2010, §7.8, Fig. 7–13, pp. 277–278). Iar W_dep nu se poate micșora oricât: crescând doparea substratului, W_dep scade, dar ca <em>Vt</em> să nu crească, doparea nu poate crește decât dacă se subțiază și oxidul, astfel încât W_dep se poate reduce doar proporțional cu T_ox (Hu, 2010, §7.5, ec. 7.5.1–7.5.2, p. 272). Hisamoto și colaboratorii descriu aceeași fundătură din partea tehnologică: la MOSFET-urile convenționale pe siliciu masiv, un dopaj foarte mare care oprește <em>punch-through</em>-ul devine indispensabil, dar degradează sever curentul de comandă și scurgerea (Hisamoto et al., 2000, §I, p. 2320).</p>
+<h2 id="4-prima-ieșire-corpul-subțire">4. Prima ieșire: corpul subțire<a class="anchor" href="#4-prima-ie%c8%99ire-corpul-sub%c8%9bire">#</a></h2>
+<p>Hu descrie două structuri care elimină drumurile de scurgere aflate departe de poartă: MOSFET-ul cu corp ultrasubțire (<em>ultra-thin-body</em>, UTB) și MOSFET-ul cu mai multe porți (<em>multigate</em>) (Hu, 2010, §7.8, p. 278). În UTB, tranzistorul e construit într-un film subțire de siliciu pe un izolator (SOI), poate sub 10 nm grosime, astfel încât niciun drum de scurgere nu e departe de poartă (Hu, 2010, §7.8.1, p. 278). Grosimea filmului, T_Si, ia locul lui W_dep și X_j în ec. 7.3.4, iar Hu dă regula practică: T_Si ar trebui să fie mai mică decât aproximativ jumătate din lungimea porții (Hu, 2010, §7.8.1, p. 278).</p>
+<p>Intel a explicat în 2011 de ce nu a ales această cale pentru producție. Prezentarea Intel spune că varianta <em>fully depleted SOI</em> (FDSOI) elimină corpul flotant și îmbunătățește panta subprag, dar cere plachete SOI foarte subțiri și scumpe, care adaugă aproximativ 10% la costul total al procesului (Bohr și Mistry, 2011, slide 13). Este o estimare a Intel, într-o prezentare care își argumentează propria alegere; nu am o sursă independentă pentru cei 10%.</p>
+<h2 id="5-a-doua-ieșire-mai-multe-porți-adică-finfet">5. A doua ieșire: mai multe porți, adică FinFET<a class="anchor" href="#5-a-doua-ie%c8%99ire-mai-multe-por%c8%9bi-adic%c4%83-finfet">#</a></h2>
+<p>A doua cale este să controlezi canalul din mai multe părți. Hu descrie MOSFET-ul cu poartă dublă: un film de siliciu foarte subțire, cu o poartă deasupra și una dedesubt, astfel încât niciun drum de scurgere nu e departe de vreuna dintre porți; cel mai rău drum trece prin mijlocul filmului (Hu, 2010, §7.8.2, pp. 280–281). Micșorând T_Si se reduc automat W_dep și X_j, iar <em>Vt roll-off</em> poate fi suprimat astfel încât L_g să coboare până la câțiva nanometri (Hu, 2010, §7.8.2, p. 281). Pentru că ambele porți au aceeași tensiune și filmul e complet sărăcit, potențialul de suprafață urmărește tensiunea porții „milivolt cu milivolt” în regiunea subprag; divizorul capacitiv dispare, iar η devine unitar, adică valoarea ideală (Hu, 2010, §7.8.2, p. 281). Hu enumeră și alte avantaje: nu mai e nevoie de dopaj mare în canal, de aici câmp vertical mai mic, mai puțină împrăștiere pe impurități și mobilitate mai mare, plus două canale care conduc în loc de unul (Hu, 2010, §7.8.2, p. 281).</p>
+<p>Legând asta de Secțiunea 2: η = 1 înseamnă că dispozitivul poate atinge, în principiu, limita de ~60 mV pe decadă la 300 K, dar nu o poate depăși (deducția mea din ec. 7.2.6 a lui Hu și din §7.8.2). FinFET-ul nu „învinge” fizica lui kT/q; doar elimină pierderea din divizorul capacitiv.</p>
+<p>Problema rămasă, scrie Hu, era una de fabricație: cum faci concret o structură cu poartă dublă (Hu, 2010, §7.8.2, p. 281). Hisamoto et al. spun același lucru: complexitatea fabricației era o problemă severă a structurilor cu poartă dublă, pentru că tehnologia planară nu se potrivește cu stiva poartă–canal–poartă (Hisamoto et al., 2000, §I, p. 2320).</p>
+<h3 id="lucrarea-din-2000">Lucrarea din 2000<a class="anchor" href="#lucrarea-din-2000">#</a></h3>
+<p>Răspunsul grupului de la Berkeley și Hitachi a fost să întoarcă filmul pe muchie. Hisamoto et al. descriu FinFET-ul ca pe un MOSFET cu poartă dublă auto-aliniat, în care canalul se formează pe suprafețele laterale „verticale” ale unei aripioare de siliciu, iar curentul curge paralel cu suprafața plachetei (Hisamoto et al., 2000, Abstract și §II, p. 2320). Inima dispozitivului este o aripioară subțire de siliciu care servește drept corp al MOSFET-ului; lățimea canalului este practic de două ori înălțimea aripioarei, plus lățimea ei, iar de aici vine și numele, FinFET (Hisamoto et al., 2000, §II, p. 2320). Autorii numesc structura „cvasi-plană”, pentru că sursa, drena și poarta sunt mult mai groase decât aripioara, și subliniază că ea se poate fabrica relativ ușor cu tehnologiile planare convenționale (Hisamoto et al., 2000, Abstract și §II).</p>
+<p>Câteva cifre din lucrare, toate ale autorilor: placheta de pornire era SOI, cu oxid îngropat de 400 nm și film de siliciu de 50 nm (Hisamoto et al., 2000, §II, p. 2320). Aripioara a fost definită prin litografie cu fascicul de electroni la 100 keV (Hisamoto et al., 2000, §II, p. 2320). Fotografia SEM din Fig. 3(a) arată o aripioară de 15 nm lățime și 50 nm înălțime (Hisamoto et al., 2000, Fig. 3 și §II, p. 2321). Oxidul de poartă crescut a fost de doar 2,5 nm, iar materialul porții a fost Si₀.₄Ge₀.₆ dopat cu bor, ales ca să obțină tensiunea de prag dorită pentru corpul ultrasubțire (Hisamoto et al., 2000, Abstract și §II, p. 2322). Autorii precizează că lățimea canalului dispozitivelor era de circa 100 nm, adică de două ori înălțimea aripioarei (Hisamoto et al., 2000, §II, p. 2322).</p>
+<p>Rezultatele: cel mai mic dispozitiv fabricat avea o lungime de poartă de 17 nm, pe care autorii o descriu drept, după cunoștința lor, cea mai mică lungime de poartă demonstrată vreodată pentru un MOSFET (Hisamoto et al., 2000, §III-A, p. 2322). Pentru acest dispozitiv, aripioara avea 15 nm lățime (Hisamoto et al., 2000, §III-A). Autorii notează că panta subprag a acestui dispozitiv este relativ mare din cauza efectului de canal scurt, dar că scurgerea subprag e totuși suprimată eficient, în ciuda dopajului foarte mic al canalului (Hisamoto et al., 2000, §III-A și Fig. 9). Pentru dispozitive de 30 nm, autorii arată că aripioarele mai late produc un DIBL mai puternic și că o aripioară puțin mai îngustă decât lungimea porții pare suficientă pentru a suprima DIBL (Hisamoto et al., 2000, §III-A, Fig. 7, p. 2322). Aceasta este, în date experimentale, aceeași regulă ca la Hu: grosimea corpului trebuie să fie mai mică decât lungimea porții (comparația mea între Hisamoto, §III-A, și Hu, §7.8.1).</p>
+<p>Figurile din copia PTAB (TSMC Exhibit 1015), randate ca imagini, dau totuși câteva ancore: Fig. 9 e măsurată la Lg = 17 nm cu dopaj de canal <strong>N_B = 10¹⁵ cm⁻³</strong>; textul aferent menționează și un dispozitiv de 30 nm cu dopaj scăzut <strong>2×10¹⁶ cm⁻³</strong>; Fig. 10 (Lg = 50 nm, N_B = 10¹⁶ cm⁻³, V_ds = 1,0 V) arată o pantă subprag care crește cu lățimea aripioarei — aproximativ <strong>~70 mV/dec</strong> la ~20 nm lățime și ~100 mV/dec la ~60 nm (Hisamoto et al., IEEE TED 47(12), 2000, Fig. 9–10 și textul de pe p. 2322–2323; valori citite din figurile randate, nu din tabel).</p>
+<h2 id="6-din-laborator-în-fabrică-intel-22-nm-tri-gate">6. Din laborator în fabrică: Intel 22 nm „Tri-Gate”<a class="anchor" href="#6-din-laborator-%c3%aen-fabric%c4%83-intel-22-nm-tri-gate">#</a></h2>
+<p>În mai 2011, Intel a anunțat că introduce tranzistori <strong>Tri-Gate</strong> în tehnologia sa de 22 nm și că producția era programată pentru a doua jumătate a lui 2011 (Bohr și Mistry, 2011, slide 2 „Key Messages”). Prezentarea descrie tranzistorul Tri-Gate ca formând canale conductoare pe trei laturi ale unei aripioare verticale, cu funcționare „complet sărăcită” (Bohr și Mistry, 2011, slide 5). Intel nu folosește în prezentarea din 2011 cuvântul „FinFET”, dar prezentarea Intel din 2014 vorbește explicit de „2nd generation Tri-gate (FinFET) transistors” (Bohr, 2014, slide 15). Prezentarea din 2011 mai spune că mai multe aripioare pot fi conectate împreună pentru a crește curentul de comandă total (Bohr și Mistry, 2011, slide 6).</p>
+<p>Argumentele Intel sunt exact cele din Secțiunile 2–5. Prezentarea explică faptul că în tranzistorul plan pe siliciu masiv, tensiunea substratului influențează stratul de inversie și degradează panta subprag (Bohr și Mistry, 2011, slide 11). La Tri-Gate, poarta controlează aripioara din trei părți și oferă o pantă subprag îmbunătățită, cu un cost adăugat al procesului de doar 2–3%, comparativ cu ~10% pentru FDSOI (Bohr și Mistry, 2011, slide 14). Intel arată apoi două moduri de a folosi panta mai abruptă: scurgere mai mică la același prag sau prag mai mic, care permite funcționarea la tensiune mai mică (Bohr și Mistry, 2011, slide-urile 16–17).</p>
+<p>Cifrele de performanță din prezentarea din 2011 sunt <strong>afirmații ale producătorului</strong>, cu grafice normalizate fără valori absolute: 37% performanță mai mare la tensiune joasă și 18% la tensiune înaltă față de tranzistorii plani Intel de 32 nm, plus o reducere de peste 50% a puterii active la performanță constantă (Bohr și Mistry, 2011, slide-urile 20–22). Lucrarea tehnică de la VLSI 2012 raportează pante subprag <strong>~70 mV/dec</strong> și DIBL <strong>~50 mV/V</strong> pentru dispozitivele Tri-Gate de 22 nm, plus o lățime de aripioară de 8 nm și o înălțime de 34 nm (Auth et al., „A 22nm High Performance and Low-Power CMOS Technology Featuring Fully-Depleted Tri-Gate Transistors…”, Symp. VLSI Technology, 2012, Abstract și corpul lucrării — tot afirmații Intel).</p>
+<p>Geometria a evoluat apoi în generația următoare. Intel dă pentru aripioarele de 22 nm un pitch de 60 nm și o înălțime de 34 nm, iar pentru cele de 14 nm un pitch de 42 nm și o înălțime de 42 nm (Bohr, 2014, slide-urile 16–17). Aripioarele mai înalte și mai dese sunt exact ce numește IRDS <em>fin depopulation</em>: crești înălțimea fin-ului și reduci numărul de fin-uri pe aceeași arie (IRDS 2022 More Moore, §4.2, p. 9).</p>
+<h2 id="7-de-ce-nu-ajunge-nici-finfet">7. De ce nu ajunge nici FinFET<a class="anchor" href="#7-de-ce-nu-ajunge-nici-finfet">#</a></h2>
+<p>IRDS 2022 scrie că FinFET rămâne arhitectura principală care ar putea susține scalarea până în 2025 (IRDS 2022 More Moore, §4.2, p. 9). Tot acolo spune că, pentru tensiuni de alimentare mai mici, trecerea la structuri GAA precum <em>nanosheet</em>-urile laterale ar fi necesară pentru a păstra curentul de comandă prin electrostatică mai bună (IRDS 2022 More Moore, §4.2, p. 9). IRDS dă două motive pentru tranziție: limitele scalării lățimii fin-ului, care saturează scalarea lungimii porții dacă vrei să păstrezi controlul electrostatic, și lățimea contactului (IRDS 2022 More Moore, §4.2.1, p. 9). Tabelul MM-7 dă pentru 2022 o lățime a fin-ului de doar 5,0 nm (IRDS 2022 More Moore, Tabelul MM-7, p. 7); de aici se vede cât de puțin spațiu mai rămânea (observația mea).</p>
+<p>Mai e și o problemă de cuantizare a lățimii, pe care o explic cu definiția lui Hisamoto: la FinFET, lățimea efectivă a canalului e aproximativ de două ori înălțimea aripioarei plus lățimea ei (Hisamoto et al., 2000, §II). Dacă vrei mai mult curent, adaugi aripioare întregi, așa cum spune și Intel (Bohr și Mistry, 2011, slide 6); nu poți adăuga „jumătate de aripioară”. Prin urmare, la FinFET, lățimea efectivă crește în trepte (deducția mea din cele două surse). Samsung prezintă exact contrariul ca avantaj al nanosheet-urilor: cu tehnologia sa GAA, poate ajusta lățimea canalului nanosheet-ului pentru a optimiza consumul și performanța (Samsung Newsroom, 30 iunie 2022).</p>
+<p>Pot verifica această logică pe tabelul IRDS. Pentru FinFET-ul din 2022, IRDS dă înălțimea dispozitivului de 48 nm, lățimea fin-ului de 5,0 nm și lățimea efectivă a dispozitivului de 101,0 nm (IRDS 2022 More Moore, Tabelul MM-7, p. 7). Calculul meu: 2 × 48 + 5 = 101 nm, exact formula lui Hisamoto pentru o singură aripioară. Pentru GAA-ul din 2025, IRDS dă trei nanosheet-uri stivuite, grosime de 6,0 nm, lățime de 30 nm pentru varianta HP și 15 nm pentru HD, iar lățimea efectivă este 216,0 nm (HP) și 126,0 nm (HD) (IRDS 2022 More Moore, Tabelul MM-7, p. 7). Calculul meu: perimetrul unei foi este 2 × (30 + 6) = 72 nm, iar trei foi dau 216 nm; pentru HD, 3 × 2 × (15 + 6) = 126 nm. Ambele coincid cu IRDS, ceea ce confirmă că IRDS calculează lățimea efectivă ca perimetrul total al canalelor înconjurate de poartă (deducția mea din coincidența numerelor; IRDS nu dă formula explicit în textul deschis).</p>
+<h2 id="8-gaa-poarta-pe-toate-laturile">8. GAA: poarta pe toate laturile<a class="anchor" href="#8-gaa-poarta-pe-toate-laturile">#</a></h2>
+<p>Hu ilustra deja în 2010 varianta-limită a familiei FinFET: tranzistorul cu nanofir (<em>nanowire FET</em>), în care poarta înconjoară complet corpul tranzistorului și îi dă și mai mult control (Hu, 2010, §7.8.2, Fig. 7–19, p. 281). IRDS spune același lucru în limbajul foii de parcurs: FinFET oferă o bună integritate electrostatică datorită canalului înalt și îngust, controlat de poartă din trei părți, iar dispozitivele GAA laterale oferă o electrostatică mai bună decât FinFET, prin control al porții din toate părțile canalului (IRDS 2022 More Moore, §4.2.7 „Improving electrostatics”, p. 10).</p>
+<p>Diferența dintre nanofir și nanosheet este forma secțiunii. Samsung afirmă că tehnologia sa folosește nanosheet-uri cu canale mai late, care permit performanță mai mare și eficiență energetică mai bună decât tehnologiile GAA cu nanofire mai înguste (Samsung Newsroom, 30 iunie 2022). Este o afirmație a Samsung despre propria alegere de proiectare.</p>
+<h3 id="ce-face-gaa-mai-greu">Ce face GAA mai greu<a class="anchor" href="#ce-face-gaa-mai-greu">#</a></h3>
+<p>IRDS listează provocările adoptării GAA: penalitatea de capacitate parazită, lățimea efectivă de comandă (W_eff) și integrarea porții metalice de înlocuire (<em>replacement metal gate</em>, RMG) (IRDS 2022 More Moore, §4.2.1, p. 9). Pentru că foile sunt stivuite una peste alta, distanța dintre ele trebuie ținută mică ca să reduci capacitatea parazită dintre sursă/drenă și poartă, dar trebuie să lase totuși loc pentru dielectricul porții și pentru metalele care reglează tensiunea de prag — formularea IRDS: „leaving adequate space for the gate dielectric and Vt-tuning work function” (IRDS 2022 More Moore, §4.2.7, p. 10). Tabelul MM-7 cuantifică acest compromis pentru 2025: pitch vertical al foilor de 18,0 nm la o grosime a foii de 6,0 nm (IRDS 2022 More Moore, Tabelul MM-7, p. 7). Diferența <strong>18 − 6 = 12 nm</strong> (calcul propriu) e spațiul vertical rămas între fețele a două foi consecutive, în care trebuie să încapă stiva porții de pe ambele fețe — citire geometrică pe baza §4.2.7, nu o cifră tipărită separat în tabel.</p>
+<h2 id="9-producția-samsung-ibm-și-calendarul-irds">9. Producția: Samsung, IBM și calendarul IRDS<a class="anchor" href="#9-produc%c8%9bia-samsung-ibm-%c8%99i-calendarul-irds">#</a></h2>
+<p>Samsung a anunțat la 30 iunie 2022 începerea producției inițiale pe procesul de 3 nm cu arhitectură GAA, pe care o numește <strong>Multi-Bridge-Channel FET (MBCFET)</strong>, și a descris-o drept prima implementare a tehnologiei sale GAA (Samsung Newsroom, 30 iunie 2022). Comunicatul spune că MBCFET îmbunătățește eficiența energetică prin reducerea tensiunii de alimentare și crește performanța prin creșterea curentului de comandă, depășind limitele de performanță ale FinFET (Samsung, 2022). Samsung declară, pentru prima generație de 3 nm față de 5 nm, până la 45% consum mai mic, 23% performanță mai mare și 16% arie mai mică (Samsung, 2022). Sunt <strong>afirmații ale producătorului</strong>; comunicatul nu precizează pe ce circuit și în ce condiții au fost măsurate.</p>
+<p>IBM anunțase cu un an înainte, la 6 mai 2021, un cip demonstrativ „de 2 nm” cu tehnologie nanosheet, dezvoltat la laboratorul său din Albany, New York (IBM Newsroom, 6 mai 2021). IBM proiectează pentru el o performanță cu 45% mai mare sau un consum cu 75% mai mic decât cele mai avansate cipuri de 7 nm ale momentului (IBM, 2021). Este un anunț de cercetare, cu proiecții, nu de producție.</p>
+<p>Calendarul IRDS 2022 se potrivește cu aceste anunțuri: tranziția la dispozitive GAA laterale era așteptată să înceapă după 2022, iar Tabelul MM-7 trece platforma logică de la finFET în 2022 la LGAA (GAA lateral) în 2025 (IRDS 2022 More Moore, §4.2.1, p. 9, și Tabelul MM-7, p. 7). Pentru 2022, tabelul listează ca opțiuni atât finFET, cât și LGAA (IRDS 2022 More Moore, Tabelul MM-7), ceea ce e compatibil cu faptul că Samsung a început GAA în 2022. <strong>Nu</strong> deschid aici arhitecturile TSMC N3/N2 sau Intel 20A/18A (RibbonFET): nu am avut lucrări de proces primare deschise integral pentru ele la această verificare, așa că nu le dau ca fapte de geometrie.</p>
+<h2 id="10-ce-urmează-cfet">10. Ce urmează: CFET<a class="anchor" href="#10-ce-urmeaz%c4%83-cfet">#</a></h2>
+<p>IRDS proiectează că <strong>CFET</strong> (<em>complementary FET</em>) va fi evoluția următoare a GAA-ului lateral, în formă 3D, cu dispozitivele de tip P stivuite peste cele de tip N (IRDS 2022 More Moore, §4.2.1, p. 9). Tabelul MM-7 listează CFET pentru SRAM din 2028 și integrare 3D VLSI din 2031 (IRDS 2022 More Moore, Tabelul MM-7, p. 7). Argumentul IRDS este că, stivuind P peste N, crește curentul de comandă pe unitate de arie și numărul de dispozitive pe aceeași amprentă (IRDS 2022 More Moore, §4.2, p. 10). E o proiecție a foii de parcurs, nu o tehnologie în producție în documentele pe care le-am deschis.</p>
+<h2 id="11-rezumat">11. Rezumat<a class="anchor" href="#11-rezumat">#</a></h2>
+<p>Povestea are o singură logică, pe care o rezum eu pe baza surselor de mai sus. Un tranzistor e bun în măsura în care poarta, și nu drena, controlează bariera din canal (Hu, 2010, §7.3). La tranzistorul plan, drena câștigă teren când canalul se scurtează, iar dopajul mare care ar compensa strică mobilitatea și scurgerea (Hu, 2010, §7.3 și §7.5; Hisamoto et al., 2000, §I). Soluția a fost să faci corpul subțire și să-l înconjori cu poartă: din două părți la FinFET-ul din 2000 (Hisamoto et al., 2000), din trei părți la Tri-Gate-ul Intel din 2011 (Bohr și Mistry, 2011), din toate părțile la nanosheet-urile GAA (IRDS 2022 More Moore, §4.2.7; Samsung, 2022). Limita fundamentală de ~60 mV pe decadă la 300 K rămâne aceeași pentru toate aceste structuri; geometria nouă doar le permite să se apropie de ea (calculul din Secțiunea 2 și Hu, 2010, §7.8.2).</p>
+<!--
+Surse și note: vezi SOURCES-47-49.md și NOTES-47-49.md în /workspace/freebook/ro-desk/.
+-->
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/b39c07659633978a214896707836a009f0be4cc5" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;De&#43;la&#43;FinFET&#43;la&#43;GAA&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F49-finfet-to-gaa%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F49-finfet-to-gaa.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F49-finfet-to-gaa.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/48-photolithography/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Fotolitografia</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="flex align-center">
+        <span>Nuclee CUDA, warp-uri și ocupare</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ce-înseamnă-oprit-pentru-un-tranzistor">1. Ce înseamnă „oprit” pentru un tranzistor</a></li>
+    <li><a href="#2-cei-60-mv-pe-decadă-de-unde-vin-și-verificarea-lor">2. Cei 60 mV pe decadă: de unde vin și verificarea lor</a></li>
+    <li><a href="#3-efectele-de-canal-scurt-drena-începe-să-comande">3. Efectele de canal scurt: drena începe să comande</a></li>
+    <li><a href="#4-prima-ieșire-corpul-subțire">4. Prima ieșire: corpul subțire</a></li>
+    <li><a href="#5-a-doua-ieșire-mai-multe-porți-adică-finfet">5. A doua ieșire: mai multe porți, adică FinFET</a>
+      <ul>
+        <li><a href="#lucrarea-din-2000">Lucrarea din 2000</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-din-laborator-în-fabrică-intel-22-nm-tri-gate">6. Din laborator în fabrică: Intel 22 nm „Tri-Gate”</a></li>
+    <li><a href="#7-de-ce-nu-ajunge-nici-finfet">7. De ce nu ajunge nici FinFET</a></li>
+    <li><a href="#8-gaa-poarta-pe-toate-laturile">8. GAA: poarta pe toate laturile</a>
+      <ul>
+        <li><a href="#ce-face-gaa-mai-greu">Ce face GAA mai greu</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-producția-samsung-ibm-și-calendarul-irds">9. Producția: Samsung, IBM și calendarul IRDS</a></li>
+    <li><a href="#10-ce-urmează-cfet">10. Ce urmează: CFET</a></li>
+    <li><a href="#11-rezumat">11. Rezumat</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

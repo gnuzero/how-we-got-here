@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SIMT, SM-கள் மற்றும் warps மீது வரைபடமாகிறது — divergence வரை lockstep வெல்லும்; occupancy memory stall-களை மறைக்கும்">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/53-cuda-cores-warps-and-occupancy/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="CUDA Cores, Warps மற்றும் Occupancy">
+	<meta property="og:description" content="SIMT, SM-கள் மற்றும் warps மீது வரைபடமாகிறது — divergence வரை lockstep வெல்லும்; occupancy memory stall-களை மறைக்கும்">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="CUDA Cores, Warps மற்றும் Occupancy">
+	<meta itemprop="description" content="SIMT, SM-கள் மற்றும் warps மீது வரைபடமாகிறது — divergence வரை lockstep வெல்லும்; occupancy memory stall-களை மறைக்கும்">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1426">
+
+<title>CUDA Cores, Warps மற்றும் Occupancy • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/53-cuda-cores-warps-and-occupancy/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/53-cuda-cores-warps-and-occupancy/" title="CUDA Cores, Warps, and Occupancy">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/53-cuda-cores-warps-and-occupancy/" title="CUDA Core, Warp และ Occupancy">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/53-cuda-cores-warps-and-occupancy/" title="CUDA Cores, Warps සහ Occupancy">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/53-cuda-cores-warps-and-occupancy/" title="Nuclee CUDA, warp-uri și ocupare">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="active">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>CUDA Cores, Warps மற்றும் Occupancy</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#streaming-multiprocessor">Streaming Multiprocessor</a></li>
+    <li><a href="#warps-lockstep-அலகக">Warps: Lockstep அலகாக</a></li>
+    <li><a href="#branch-divergence-lockstep-சலவகம-இடம">Branch Divergence: Lockstep செலவாகும் இடம்</a></li>
+    <li><a href="#occupancy-தயரன-வலயல-latency-மறததல">Occupancy: தயாரான வேலையால் Latency மறைத்தல்</a></li>
+    <li><a href="#ஒர-உணமயன-sm-v100-இன-எணகள">ஒரு உண்மையான SM: V100-இன் எண்கள்</a></li>
+    <li><a href="#thread-கள-தஙகள-இடதத-எபபட-அறகனறன">Thread-கள் தங்கள் இடத்தை எப்படி அறிகின்றன</a></li>
+    <li><a href="#branch-divergence-எணகளல">Branch divergence, எண்களில்</a></li>
+    <li><a href="#occupancy-register-கள-எபபட-warp-எணணககய-வரமபடகனறன">Occupancy: register-கள் எப்படி warp எண்ணிக்கையை வரம்பிடுகின்றன</a></li>
+    <li><a href="#எததன-warp-கள-பதம-littles-law-கணகக">எத்தனை warp-கள் &ldquo;போதும்&rdquo;? Little&rsquo;s law கணக்கு</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    CUDA Cores, Warps மற்றும் Occupancy
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவு 52 GPU-கள் ஏன் மிகப் பெரிய parallel SIMT மீது பந்தயம் கட்டுகின்றன என்பதை உள்ளடக்கியது. இந்தப் பதிவு உறுதியான வரைபடம்: Streaming Multiprocessors, warps மற்றும் occupancy — அந்த parallel வன்பொருள் உண்மையில் எவ்வளவு முழுமையாகப் பயன்படுத்தப்படுகிறது.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> CUDA, SIMT/warps, occupancy பற்றித் தமிழில் எழுத்து விளக்கமோ காணொளியோ கிட்டத்தட்ட இல்லை. இங்கே ஒரு உண்மையான GPU-வின் (NVIDIA Tesla V100, 2017) SM எண்களை — NVIDIA-வின் Volta whitepaper-இலிருந்து சரிபார்த்தவை — வைத்து thread எண்ணிடல், divergence, occupancy ஆகியவற்றைக் கணக்கிடுகிறோம். பிற எண்கள் &ldquo;எடுத்துக்காட்டு மதிப்பு&rdquo;.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>SM (Streaming Multiprocessor):</strong> GPU-வின் அடிப்படைக் கட்டுமானத் தொகுதி; தனக்கென scheduler-கள், register file, கணக்கு அலகுகள், shared memory கொண்டது.</li>
+<li><strong>CUDA core:</strong> NVIDIA-வின் பெயர் — ஒரு எளிய கணக்கு lane (எ.கா. ஒரு FP32 கூட்டல்/பெருக்கல் அலகு). CPU &ldquo;core&rdquo; போன்ற முழுமையான செயலி அல்ல.</li>
+<li><strong>Warp (வார்ப்):</strong> lockstep-ஆக ஒரே அறிவுறுத்தலை ஓட்டும் 32 thread-களின் குழு (NVIDIA). AMD-இல் இதற்கு இணையானது &ldquo;wavefront&rdquo; (வரலாற்று ரீதியாக 64).</li>
+<li><strong>Thread block (இழைத் தொகுதி):</strong> ஒரே SM-இல் ஒன்றாக ஓடி, shared memory-ஐப் பகிரக்கூடிய thread-களின் குழு.</li>
+<li><strong>Grid (வலை):</strong> ஒரு kernel-க்காகத் தொடங்கப்படும் எல்லா block-களின் தொகுப்பு.</li>
+<li><strong>Register file (பதிவேட்டுக் கோப்பு):</strong> SM-இல் உள்ள எல்லா thread-களின் register-களும் சேமிக்கப்படும் பெரிய, வேகமான நினைவகம்.</li>
+<li><strong>Shared memory (பகிர் நினைவகம்):</strong> ஒரு block-இன் thread-கள் பகிரும், நிரலாளர் கட்டுப்படுத்தும் சிறிய on-chip நினைவகம்.</li>
+<li><strong>Divergence (பிரிதல்):</strong> ஒரு warp-க்குள் thread-கள் வெவ்வேறு branch-களை எடுப்பது.</li>
+<li><strong>Occupancy (நிறைவு விகிதம்):</strong> ஒரு SM-இல் உண்மையில் குடியிருக்கும் warp-கள் ÷ அது அதிகபட்சம் தாங்கக்கூடிய warp-கள்.</li>
+</ul>
+<h2 id="streaming-multiprocessor">Streaming Multiprocessor<a class="anchor" href="#streaming-multiprocessor">#</a></h2>
+<p>ஒரு GPU பல Streaming Multiprocessors (SM-கள்) — ஒவ்வொன்றும் பெரும்பாலும் தன்னிறைவான parallel அலகு, பல எளிய CUDA cores (ALU-பாணி lanes, Phase 3 CPU core-ஐ விட வேண்டுமென்றே மிகக் குறைந்த சிக்கலானவை: out-of-order execution இல்லை, பதிவு 14 வகை refined branch prediction இல்லை), ஒரு warp scheduler, மற்றும் resident threads பகிரும் register file. பெரும்பாலும் சுயாதீனமாக ஓடும் பத்துக்கணக்கான SM-கள் ஒரு GPU-வின் மொத்த parallelism-இன் மூலம் — ஒரு CPU-வின் சில சிக்கலான cores-க்கு எதிராக.</p>
+<h2 id="warps-lockstep-அலகக">Warps: Lockstep அலகாக<a class="anchor" href="#warps-lockstep-%e0%ae%85%e0%ae%b2%e0%ae%95%e0%ae%95">#</a></h2>
+<p>ஒரு SM-இல் threads warps-ஆகக் குழுவாக்கப்படும் — NVIDIA வன்பொருளில் எப்போதும் 32 threads (AMD wavefronts வரலாற்றில் 64 பயன்படுத்தியது). ஒரு warp பதிவு 52-இன் SIMT அமல்படுத்தப்படும் நுணுக்கம்: எல்லா 32-உம் <em>அதே</em> அறிவுறுத்தலை <em>அதே</em> cycle-இல் இயக்கும், ஒவ்வொன்றும் தன் தரவில். அதுதான் &ldquo;ஒரு பகிரப்பட்ட கட்டுப்பாட்டு அலகு, பல lanes&rdquo; என்பதன் வன்பொருள் வடிவம்.</p>
+<h2 id="branch-divergence-lockstep-சலவகம-இடம">Branch Divergence: Lockstep செலவாகும் இடம்<a class="anchor" href="#branch-divergence-lockstep-%e0%ae%9a%e0%ae%b2%e0%ae%b5%e0%ae%95%e0%ae%ae-%e0%ae%87%e0%ae%9f%e0%ae%ae">#</a></h2>
+<p>ஒரு warp-<em>க்குள்</em> threads வெவ்வேறு branches எடுக்கும்போது, வன்பொருள் இரு பாதைகளையும் வரிசையாக இயக்கி செயலற்ற பாதியை mask செய்யும். ஒவ்வொரு thread-க்கும் ஒன்று மட்டுமே தேவைப்பட்டாலும் warp இரு பாதைகளின் நீளம் எடுக்கும் — non-divergent வழக்கை மலிவாக்கும் அதே lockstep-இன் நேரடி வரி. ஒரு warp-இல் threads-ஐ அதே பாதையில் வைத்திருப்பது எனவே உண்மையான மேம்படுத்தல், பாணி விருப்பம் அல்ல.</p>
+<h2 id="occupancy-தயரன-வலயல-latency-மறததல">Occupancy: தயாரான வேலையால் Latency மறைத்தல்<a class="anchor" href="#occupancy-%e0%ae%a4%e0%ae%af%e0%ae%b0%e0%ae%a9-%e0%ae%b5%e0%ae%b2%e0%ae%af%e0%ae%b2-latency-%e0%ae%ae%e0%ae%b1%e0%ae%a4%e0%ae%a4%e0%ae%b2">#</a></h2>
+<p>ஒரு SM-க்கு வரையறுக்கப்பட்ட registers மற்றும் shared memory உண்டு; ஒவ்வொரு resident warp-உம் ஒரு பங்கை நுகரும். Occupancy என்பது வன்பொருள் ஆதரிக்கக்கூடியதற்கு ஒப்பீட்டில் எத்தனை warps resident மற்றும் தகுதியானவை. உயர் occupancy memory latency மறைக்க உதவும் (பதிவு 35 மீண்டும்): ஒரு warp மெதுவான அணுகலில் stall ஆகும்போது, scheduler தயாரான warp-க்கு மாறி lanes-ஐ வேலையில் வைக்கும்.</p>
+<p>அது &ldquo;அதிகரித்து நிறுத்துங்கள்&rdquo; அல்ல. ஒரு thread-க்கு அதிக registers அல்லது shared memory பயன்படுத்தும் kernel குறைவான warps ஓட்டினாலும், அந்த வளங்கள் தேவையற்ற வேலை அல்லது memory போக்கை வெட்டினால் வேகமாக முடியலாம். Occupancy மற்றும் per-thread வளங்கள் உண்மையான tradeoff — சுருக்கத்தில் மட்டும் அல்ல, kernels உண்மையான சிலிகானைச் சந்திக்கும்போது தோன்றும் ஒன்று.</p>
+<h2 id="ஒர-உணமயன-sm-v100-இன-எணகள">ஒரு உண்மையான SM: V100-இன் எண்கள்<a class="anchor" href="#%e0%ae%92%e0%ae%b0-%e0%ae%89%e0%ae%a3%e0%ae%ae%e0%ae%af%e0%ae%a9-sm-v100-%e0%ae%87%e0%ae%a9-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3">#</a></h2>
+<p>NVIDIA Volta whitepaper-இன்படி Tesla V100:</p>
+<table>
+	<thead>
+			<tr>
+					<th>அளவு</th>
+					<th>மதிப்பு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>SM-கள்</td>
+					<td>80</td>
+			</tr>
+			<tr>
+					<td>ஒரு SM-இல் FP32 core-கள்</td>
+					<td>64 (மொத்தம் 5,120)</td>
+			</tr>
+			<tr>
+					<td>ஒரு SM-இன் பிரிவுகள் (processing blocks)</td>
+					<td>4 — ஒவ்வொன்றிலும் 16 FP32 core-கள், ஒரு warp scheduler, 64 KB register file</td>
+			</tr>
+			<tr>
+					<td>ஒரு warp-இல் thread-கள்</td>
+					<td>32</td>
+			</tr>
+			<tr>
+					<td>ஒரு SM-இல் அதிகபட்ச warp-கள்</td>
+					<td>64 (= 2,048 thread-கள்)</td>
+			</tr>
+			<tr>
+					<td>ஒரு SM-இல் 32-bit register-கள்</td>
+					<td>65,536 (= 256 KB)</td>
+			</tr>
+			<tr>
+					<td>ஒரு thread-க்கு அதிகபட்ச register-கள்</td>
+					<td>255</td>
+			</tr>
+			<tr>
+					<td>ஒரு SM-இல் அதிகபட்ச block-கள்</td>
+					<td>32</td>
+			</tr>
+			<tr>
+					<td>Shared memory ஒரு SM-க்கு</td>
+					<td>96 KB வரை (அமைக்கக்கூடியது)</td>
+			</tr>
+	</tbody>
+</table>
+<p>ஒரு எண்ணைக் கவனியுங்கள்: 256 KB register file <strong>ஒவ்வொரு SM-க்கும்</strong>. 80 SM-களில் அது 20 MB — பல CPU-களின் முழு L2 cache-ஐ விட அதிகம், register-களுக்கு மட்டும். ஏன்? ஒரு warp நினைவகத்துக்காகக் காத்திருக்கும்போது வேறு warp-க்கு மாற, <strong>எல்லா</strong> குடியிருக்கும் warp-களின் register-களும் ஒரே நேரத்தில் chip-இல் இருக்க வேண்டும். CPU-வின் context switch (பதிவு 24) register-களை நினைவகத்தில் சேமித்து மீட்கிறது; GPU அதைச் செய்வதில்லை — ஒரு cycle-இல் warp மாற்றம் &ldquo;இலவசம்&rdquo;, ஏனெனில் எதையும் நகர்த்த வேண்டியதில்லை.</p>
+<h2 id="thread-கள-தஙகள-இடதத-எபபட-அறகனறன">Thread-கள் தங்கள் இடத்தை எப்படி அறிகின்றன<a class="anchor" href="#thread-%e0%ae%95%e0%ae%b3-%e0%ae%a4%e0%ae%99%e0%ae%95%e0%ae%b3-%e0%ae%87%e0%ae%9f%e0%ae%a4%e0%ae%a4-%e0%ae%8e%e0%ae%aa%e0%ae%aa%e0%ae%9f-%e0%ae%85%e0%ae%b1%e0%ae%95%e0%ae%a9%e0%ae%b1%e0%ae%a9">#</a></h2>
+<p>CUDA-வில் ஒவ்வொரு thread-உம் தன் block எண் (blockIdx), block-க்குள் தன் எண் (threadIdx), block-இன் அளவு (blockDim) ஆகியவற்றைப் பார்க்க முடியும். ஒரு நீண்ட array-இல் அதன் இடம்:</p>
+<p><strong>i = blockIdx.x × blockDim.x + threadIdx.x</strong></p>
+<p><strong>எடுத்துக்காட்டு:</strong> blockDim = 256, blockIdx = 3, threadIdx = 17 → i = 3 × 256 + 17 = <strong>785</strong>.</p>
+<p>அதே thread எந்த warp-இல்? Block-க்குள் thread-கள் 32-ஆகத் தொடர்ச்சியாகப் பிரிக்கப்படுகின்றன:</p>
+<ul>
+<li>warp எண் = threadIdx ÷ 32 (முழு எண் வகுத்தல்); lane = threadIdx mod 32</li>
+<li>threadIdx = 17 → warp 0, lane 17</li>
+<li>threadIdx = 200 → 200 ÷ 32 = 6 மீதி 8 → warp 6, lane 8</li>
+<li>256 thread block = 256 ÷ 32 = <strong>8 warp-கள்</strong></li>
+</ul>
+<p><strong>N = 10,00,000 உறுப்புகளுக்கு எத்தனை block?</strong> ⌈1,000,000 ÷ 256⌉ = 3,907 block-கள் → 3,907 × 256 = 1,000,192 thread-கள். 192 thread-களுக்கு வேலை இல்லை; அதனால் kernel-இல் <code>if (i &lt; N)</code> என்ற காவல் வரி அவசியம்.</p>
+<p><strong>Block அளவு ஏன் 32-இன் மடங்காக இருக்க வேண்டும்?</strong> 100 thread block → ⌈100 ÷ 32⌉ = 4 warp-கள் = 128 lane இடங்கள். 28 lane-கள் ஒவ்வொரு அறிவுறுத்தலிலும் வீணாகின்றன: 28 ÷ 128 ≈ <strong>21.9%</strong> இழப்பு, எந்தக் கணக்கும் இல்லாமலே.</p>
+<h2 id="branch-divergence-எணகளல">Branch divergence, எண்களில்<a class="anchor" href="#branch-divergence-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%b2">#</a></h2>
+<p>ஒரு kernel-இல் இப்படி ஒரு branch (அறிவுறுத்தல் எண்ணிக்கைகள் எடுத்துக்காட்டு மதிப்புகள்):</p>
+<pre tabindex="0"><code>if (நிபந்தனை)  { பாதை A — 10 அறிவுறுத்தல்கள் }
+else           { பாதை B — 20 அறிவுறுத்தல்கள் }</code></pre><p><strong>வழக்கு 1 — நிபந்தனை = &ldquo;threadIdx இரட்டைப்படை எண்&rdquo;:</strong> ஒவ்வொரு warp-இலும் 16 thread-கள் A, 16 thread-கள் B. Warp இரண்டு பாதைகளையும் ஒன்றன்பின் ஒன்றாக ஓட்டுகிறது; ஒவ்வொரு பாதையின்போதும் மற்ற பாதி &ldquo;mask&rdquo; செய்யப்பட்டு சும்மா இருக்கிறது.</p>
+<ol>
+<li>Warp எடுக்கும் நேரம் = 10 + 20 = 30 அறிவுறுத்தல் படிகள்</li>
+<li>கிடைக்கும் lane-படிகள் = 32 × 30 = 960</li>
+<li>பயனுள்ள lane-படிகள் = 16 × 10 + 16 × 20 = 160 + 320 = 480</li>
+<li>செயல்திறன் = 480 ÷ 960 = <strong>50%</strong></li>
+</ol>
+<p><strong>வழக்கு 2 — நிபந்தனை = &ldquo;(threadIdx ÷ 32) இரட்டைப்படை எண்&rdquo;:</strong> இப்போது ஒரு warp-இன் 32 thread-களும் ஒரே பாதை. A-வை எடுக்கும் warp 10 படிகள், B-யை எடுக்கும் warp 20 படிகள் — எதுவும் mask செய்யப்படவில்லை. செயல்திறன் <strong>100%</strong>. வேலை அதே; எந்த thread-கள் எந்தப் பாதையை எடுக்கின்றன என்ற <strong>அமைப்பு</strong> மட்டும் மாறியது.</p>
+<p>(Volta-விலிருந்து NVIDIA &ldquo;independent thread scheduling&rdquo; சேர்த்தது: பிரிந்த பாதைகளின் அறிவுறுத்தல்களை நேரத்தில் இடைக்கலக்கலாம். ஆனால் whitepaper-ஏ சொல்வதுபோல், எந்த ஒரு clock cycle-இலும் ஒரு warp-இன் செயலில் உள்ள thread-களுக்கு ஒரே அறிவுறுத்தல்தான் ஓடுகிறது — அதனால் மேலே உள்ள 50% கணக்கு அடிப்படையில் மாறுவதில்லை.)</p>
+<h2 id="occupancy-register-கள-எபபட-warp-எணணககய-வரமபடகனறன">Occupancy: register-கள் எப்படி warp எண்ணிக்கையை வரம்பிடுகின்றன<a class="anchor" href="#occupancy-register-%e0%ae%95%e0%ae%b3-%e0%ae%8e%e0%ae%aa%e0%ae%aa%e0%ae%9f-warp-%e0%ae%8e%e0%ae%a3%e0%ae%a3%e0%ae%95%e0%ae%95%e0%ae%af-%e0%ae%b5%e0%ae%b0%e0%ae%ae%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%a9%e0%ae%b1%e0%ae%a9">#</a></h2>
+<p>V100 SM-இல் 65,536 register-கள், அதிகபட்சம் 64 warp-கள் (2,048 thread-கள்). ஒரு kernel-இன் ஒவ்வொரு thread-உம் R register-களைப் பயன்படுத்தினால், குடியிருக்கக்கூடிய thread-கள் ≤ 65,536 ÷ R. (உண்மையான வன்பொருள் register-களைச் சிறு தொகுப்புகளாக ஒதுக்குவதால் எண்கள் சற்றுக் குறையலாம்; இங்கே அதைப் புறக்கணிக்கிறோம்.)</p>
+<table>
+	<thead>
+			<tr>
+					<th>R (register/thread)</th>
+					<th>65,536 ÷ R</th>
+					<th>Warp-கள் (≤ 64)</th>
+					<th>Occupancy</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>32</td>
+					<td>2,048</td>
+					<td>64</td>
+					<td>100%</td>
+			</tr>
+			<tr>
+					<td>64</td>
+					<td>1,024</td>
+					<td>32</td>
+					<td>50%</td>
+			</tr>
+			<tr>
+					<td>128</td>
+					<td>512</td>
+					<td>16</td>
+					<td>25%</td>
+			</tr>
+			<tr>
+					<td>255</td>
+					<td>257 → 256 (முழு warp-களாக)</td>
+					<td>8</td>
+					<td>12.5%</td>
+			</tr>
+	</tbody>
+</table>
+<p>Shared memory-உம் இதே போல வரம்பிடுகிறது: ஒரு block 48 KB shared memory பயன்படுத்தினால், 96 KB SM-இல் 96 ÷ 48 = 2 block-கள் மட்டுமே குடியிருக்க முடியும்.</p>
+<h2 id="எததன-warp-கள-பதம-littles-law-கணகக">எத்தனை warp-கள் &ldquo;போதும்&rdquo;? Little&rsquo;s law கணக்கு<a class="anchor" href="#%e0%ae%8e%e0%ae%a4%e0%ae%a4%e0%ae%a9-warp-%e0%ae%95%e0%ae%b3-%e0%ae%aa%e0%ae%a4%e0%ae%ae-littles-law-%e0%ae%95%e0%ae%a3%e0%ae%95%e0%ae%95">#</a></h2>
+<p>ஒரு warp scheduler ஒவ்வொரு cycle-இலும் ஏதாவது ஒரு warp-இலிருந்து ஒரு அறிவுறுத்தலை வெளியிட விரும்புகிறது. ஒரு warp நினைவகத்திலிருந்து load செய்தால், பதில் வர L cycle-கள் ஆகும்; அதற்கு முன் அந்த warp, load முடிவைச் சாராத I அறிவுறுத்தல்களை மட்டுமே வெளியிட முடியும். Scheduler சும்மா இருக்காமல் இருக்க, அந்த L cycle-களை மற்ற warp-கள் நிரப்ப வேண்டும்:</p>
+<p><strong>ஒரு scheduler-க்குத் தேவையான warp-கள் ≈ L ÷ I</strong></p>
+<p><strong>எடுத்துக்காட்டு மதிப்புகள் 1:</strong> L = 400 cycle, I = 8 → 400 ÷ 8 = <strong>50 warp-கள் ஒரு scheduler-க்கு</strong>. V100 SM-இல் 4 scheduler-கள், மொத்தம் 64 warp-கள் → ஒரு scheduler-க்கு 16 மட்டுமே. 100% occupancy-இலும் போதாது! தீர்வு occupancy அல்ல — I-ஐ உயர்த்துவது (ஒரு thread பல சுயாதீன load-களை முன்கூட்டியே வெளியிடுவது) அல்லது L-ஐக் குறைப்பது (தரவை shared memory/cache-இல் வைத்திருப்பது).</p>
+<p><strong>எடுத்துக்காட்டு மதிப்புகள் 2:</strong> L = 200 cycle, I = 20 → 200 ÷ 20 = 10 warp-கள் ஒரு scheduler-க்கு → SM முழுவதற்கும் 40 warp-கள் → 40 ÷ 64 = <strong>62.5% occupancy போதும்</strong>. இதற்கு மேல் warp-களைச் சேர்ப்பது வேகத்தைக் கூட்டாது. அதனால் ஒவ்வொரு thread-க்கும் அதிக register கொடுத்து (மேலே உள்ள அட்டவணையில் R = 32-இலிருந்து 48 வரை, 65,536 ÷ 48 ≈ 1,365 → 42 warp-கள்) நினைவகப் போக்குவரத்தைக் குறைத்தால், குறைந்த occupancy-இலும் kernel வேகமாக முடியலாம். ஆங்கிலப் பதிவு சொல்லும் &ldquo;maximize and stop அல்ல&rdquo; என்பதன் எண் வடிவம் இதுதான்.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<p>(பயிற்சிகளில் புதிதாக வரும் உள்ளீட்டு எண்கள், மூலத்துடன் குறிக்கப்பட்டவை தவிர, எடுத்துக்காட்டு மதிப்புகள்.)</p>
+<ol>
+<li>blockDim = 128, blockIdx = 10, threadIdx = 77. i என்ன? எந்த warp, எந்த lane?
+<em>விடை:</em> i = 10 × 128 + 77 = 1,357. Warp 77 ÷ 32 = 2, lane 77 mod 32 = 13.</li>
+<li>ஒரு warp-இல் 8 thread-கள் பாதை A (12 அறிவுறுத்தல்), 24 thread-கள் பாதை B (4 அறிவுறுத்தல்). SIMT செயல்திறன்?
+<em>விடை:</em> நேரம் 16 படிகள் → 32 × 16 = 512 lane-படிகள். பயனுள்ளவை 8 × 12 + 24 × 4 = 96 + 96 = 192. 192 ÷ 512 = 37.5%.</li>
+<li>V100 SM-இல் ஒரு kernel ஒரு thread-க்கு 80 register பயன்படுத்துகிறது. அதிகபட்ச occupancy (தொகுப்பு ஒதுக்கீட்டைப் புறக்கணித்து)?
+<em>விடை:</em> 65,536 ÷ 80 = 819 thread-கள் → முழு warp-களாக 25 warp-கள் (800 thread-கள்) → 25 ÷ 64 ≈ 39%.</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>பல்செயலி ஓட்டத் தொகுதி</td>
+					<td>Streaming Multiprocessor (SM)</td>
+			</tr>
+			<tr>
+					<td>வார்ப் / அலைமுகப்பு</td>
+					<td>warp / wavefront</td>
+			</tr>
+			<tr>
+					<td>இழை / இழைத் தொகுதி / வலை</td>
+					<td>thread / thread block / grid</td>
+			</tr>
+			<tr>
+					<td>தடம்</td>
+					<td>lane</td>
+			</tr>
+			<tr>
+					<td>பதிவேட்டுக் கோப்பு</td>
+					<td>register file</td>
+			</tr>
+			<tr>
+					<td>பகிர் நினைவகம்</td>
+					<td>shared memory</td>
+			</tr>
+			<tr>
+					<td>வார்ப் நிரல்படுத்தி</td>
+					<td>warp scheduler</td>
+			</tr>
+			<tr>
+					<td>கிளைப் பிரிதல்</td>
+					<td>branch divergence</td>
+			</tr>
+			<tr>
+					<td>மறைத்தல் (mask)</td>
+					<td>masking</td>
+			</tr>
+			<tr>
+					<td>நிறைவு விகிதம்</td>
+					<td>occupancy</td>
+			</tr>
+			<tr>
+					<td>தாமத மறைப்பு</td>
+					<td>latency hiding</td>
+			</tr>
+			<tr>
+					<td>காவல் நிபந்தனை</td>
+					<td>bounds check / guard</td>
+			</tr>
+			<tr>
+					<td>சுயாதீன இழை நிரல்படுத்தல்</td>
+					<td>independent thread scheduling</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;CUDA&#43;Cores%2C&#43;Warps&#43;%E0%AE%AE%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AF%81%E0%AE%AE%E0%AF%8D&#43;Occupancy&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F53-cuda-cores-warps-and-occupancy%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F53-cuda-cores-warps-and-occupancy.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F53-cuda-cores-warps-and-occupancy.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/52-why-gpus-exist/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>GPU-கள் ஏன் உள்ளன</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/54-gpu-memory-hierarchy/" class="flex align-center">
+        <span>GPU Memory Hierarchy</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#streaming-multiprocessor">Streaming Multiprocessor</a></li>
+    <li><a href="#warps-lockstep-அலகக">Warps: Lockstep அலகாக</a></li>
+    <li><a href="#branch-divergence-lockstep-சலவகம-இடம">Branch Divergence: Lockstep செலவாகும் இடம்</a></li>
+    <li><a href="#occupancy-தயரன-வலயல-latency-மறததல">Occupancy: தயாரான வேலையால் Latency மறைத்தல்</a></li>
+    <li><a href="#ஒர-உணமயன-sm-v100-இன-எணகள">ஒரு உண்மையான SM: V100-இன் எண்கள்</a></li>
+    <li><a href="#thread-கள-தஙகள-இடதத-எபபட-அறகனறன">Thread-கள் தங்கள் இடத்தை எப்படி அறிகின்றன</a></li>
+    <li><a href="#branch-divergence-எணகளல">Branch divergence, எண்களில்</a></li>
+    <li><a href="#occupancy-register-கள-எபபட-warp-எணணககய-வரமபடகனறன">Occupancy: register-கள் எப்படி warp எண்ணிக்கையை வரம்பிடுகின்றன</a></li>
+    <li><a href="#எததன-warp-கள-பதம-littles-law-கணகக">எத்தனை warp-கள் &ldquo;போதும்&rdquo;? Little&rsquo;s law கணக்கு</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

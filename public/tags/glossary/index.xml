@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Glossary on How We Got There</title>
+		<link>http://localhost:1478/tags/glossary/</link>
+		<description>Recent content in Glossary on How We Got There</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:31:05 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/tags/glossary/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Glossary</title>
+				<link>http://localhost:1478/posts/99-glossary/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/99-glossary/</guid>
+				<description>Key terms used throughout the series, defined precisely</description>
+			</item>
+	</channel>
+</rss>

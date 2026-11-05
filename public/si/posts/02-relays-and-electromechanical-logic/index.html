@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Relays ද්විමය තර්කය ක්‍රියා කරන බව ඔප්පු කළේය — සහ චලනය වන ලෝහට ඉදිරියට යා නොහැකි බවද">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/02-relays-and-electromechanical-logic/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය">
+	<meta property="og:description" content="Relays ද්විමය තර්කය ක්‍රියා කරන බව ඔප්පු කළේය — සහ චලනය වන ලෝහට ඉදිරියට යා නොහැකි බවද">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය">
+	<meta itemprop="description" content="Relays ද්විමය තර්කය ක්‍රියා කරන බව ඔප්පු කළේය — සහ චලනය වන ලෝහට ඉදිරියට යා නොහැකි බවද">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1880">
+
+<title>Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/02-relays-and-electromechanical-logic/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/02-relays-and-electromechanical-logic/" title="Relays and Electromechanical Logic">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/02-relays-and-electromechanical-logic/" title="รีเลย์และตรรกะไฟฟ้ากลไก">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/02-relays-and-electromechanical-logic/" title="ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/02-relays-and-electromechanical-logic/" title="Relee și logica electromecanică">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/02-relays-and-electromechanical-logic/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/02-relays-and-electromechanical-logic/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="active">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#තරකය-ලස-relays">තර්කය ලෙස Relays</a></li>
+    <li><a href="#relays-ඉත-මනදගම-වය-ඇය">Relays ඉතා මන්දගාමී වූයේ ඇයි</a></li>
+    <li><a href="#ඉලකටරනකස-වත-පලම">ඉලෙක්ට්‍රොනිකස් වෙත පාලම</a></li>
+    <li><a href="#ගඹරන-සවච-රල-සහ-බලයන-වජ-ගණතය--shannon-ග-අදහස-පයවරන-පයවර">ගැඹුරින්: ස්විච, රිලේ සහ බූලියානු වීජ ගණිතය — Shannon ගේ අදහස පියවරෙන් පියවර</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-පසල-පත-සවචය-සට-රල-දකව-වනස-කමකද">2. පාසල් පොතේ ස්විචයේ සිට රිලේ දක්වා: වෙනස කුමක්ද?</a></li>
+        <li><a href="#3-ශරණගත--and-සමනතර--or">3. ශ්‍රේණිගත = AND, සමාන්තර = OR</a></li>
+        <li><a href="#4-shannon-ග-1938-ලපය-hindrance-සමමතය">4. Shannon ගේ 1938 ලිපිය: &ldquo;hindrance&rdquo; සම්මුතිය</a></li>
+        <li><a href="#5-වඩ-කළ-උදහරණය-සමබනධක-4ක-එකකට-අඩ-කරම">5. වැඩ කළ උදාහරණය: සම්බන්ධක 4ක් එකකට අඩු කිරීම</a></li>
+        <li><a href="#6-රල-වලන-දවමය-එකත-කරම-අරධ-ආකලකය">6. රිලේ වලින් ද්විමය එකතු කිරීම: අර්ධ ආකලකය</a></li>
+        <li><a href="#7-රල-මනදගම-වය-කතරමද--ගණනය-කර-බලම">7. රිලේ මන්දගාමී වූයේ කොතරම්ද? — ගණනය කර බලමු</a></li>
+        <li><a href="#8-දනම-උතසහ-කරනන">8. දැන්ම උත්සාහ කරන්න</a></li>
+        <li><a href="#9-පනසලන-අභයසය">9. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Relay එකක් පාහේ ලැජ්ජා සහගත තරම් සරලයි: විද්‍යුත් චුම්භකයක්, උල්පත්-පටවන ලද armature එකක්, සම්බන්ධක කට්ටලයක්. Coil එක උද්දීපනය කරන්න, armature ඇතුළට ඇදේ, සම්බන්ධක විවෘත වේ හෝ වැසේ. ආසන්න වශයෙන් දශකයක්හමාරක් පමණ, එය පරිගණකකරණයේ මාරු කිරීමේ මූලික ඒකකය විය.</p>
+<h2 id="තරකය-ලස-relays">තර්කය ලෙස Relays<a class="anchor" href="#%e0%b6%ad%e0%b6%bb%e0%b6%9a%e0%b6%ba-%e0%b6%bd%e0%b7%83-relays">#</a></h2>
+<p>සම්බන්ධක දෙකක් ශ්‍රේණිගතව සම්බන්ධ කළහොත් AND ලැබේ: <em>දෙකම</em> වසා ඇත්නම් පමණක් ධාරාව ගලයි. සමාන්තරව සම්බන්ධ කළහොත් OR ලැබේ. සාමාන්‍යයෙන් වසා ඇති (normally closed) සම්බන්ධකයක් එකතු කළහොත් NOT ලැබේ. ඒවා ඒකාබද්ධ කර ඕනෑම බූලියන් ශ්‍රිතයක් — එකතුකරන්නන්, සංසන්දක, විකේතක — තැනිය හැක — Phase 2 සිලිකන්හි ගොඩනඟන එම තර්ක පවුල්ම, මෙහි විද්‍යුත් යාන්ත්‍රික දෘඪාංගයෙන්.</p>
+<p>20 වන සියවසේ මුල් භාගය වන විට දුරකථන හුවමාරු දැනටමත් relays වලින් පිරී තිබූ අතර, මෙවැනිම සංයෝජනාත්මක මාරු කිරීම්වලින් ඇමතුම් මාර්ගගත කළේය. එම කාර්මික පදනම — සමූහ නිෂ්පාදිත, හොඳින් තේරුම් ගත්, ප්‍රමාණවත් තරම් විශ්වාසනීය — relay පරිගණක කිසිසේත් තැනිය හැකි වීමට විශාල හේතුවකි. Konrad Zuse ගේ Z3 (1941) කැපී පෙනේ: ආසන්න වශයෙන් relays 2,000–2,600 ක්, ද්විමය floating-point, පන්ච් කළ සෙලියුලොයිඩ් ෆිල්ම් මත වැඩසටහනක්. එය බොහෝ විට පළමු ක්‍රියාකාරී ක්‍රමලේඛනය කළ හැකි, සම්පූර්ණයෙන්ම ස්වයංක්‍රීය ඩිජිටල් පරිගණකය ලෙස හඳුන්වයි — නම් කළ යුතු එක් සීමාවක් සමඟ: Z3 හට සැබෑ conditional branching නොතිබිණි. Raúl Rojas 1998 දී පෙන්වූයේ එය <em>මූලධර්මයෙන්</em> Turing-සම්පූර්ණ බවයි — ධාවන කාලයේ ශාඛාගත වීම වෙනුවට වැඩසටහනට හැකි සෑම ශාඛා ප්‍රතිඵලයක්ම ගණනය කරවීමෙනි.</p>
+<p><strong>පිටවීමේ දොර:</strong> Raúl Rojas, &ldquo;How to Make Zuse&rsquo;s Z3 a Universal Computer&rdquo; (1998) — Z3 Turing-සම්පූර්ණත්වය සහ එහි සීමා පිළිබඳ ප්‍රවේශම්‍ය තර්කය.</p>
+<h2 id="relays-ඉත-මනදගම-වය-ඇය">Relays ඉතා මන්දගාමී වූයේ ඇයි<a class="anchor" href="#relays-%e0%b6%89%e0%b6%ad-%e0%b6%b8%e0%b6%b1%e0%b6%af%e0%b6%9c%e0%b6%b8-%e0%b7%80%e0%b6%ba-%e0%b6%87%e0%b6%ba">#</a></h2>
+<p>Relay එකක මාරු කාලය ප්‍රධාන වශයෙන් තීරණය වන්නේ <em>යාන්ත්‍රික</em> චලනයෙනි: armature චලනය විය යුතුය — මිලිතත්පර පරිමාණයේ. Z3 ආසන්න වශයෙන් 5–10 Hz ට ධාවනය විය (බොහෝ විට 5.3 Hz පමණ උපුටා දක්වයි). තත්පරයට බිලියන ගණනක් චක්‍ර ඇති නවීන CPU එකක් අසල තැබූ විට පරතරය ක්‍රමානුකූල නොවේ; එය පැවැත්මම තර්ජනය කරන තරමේය. කොතරම් හොඳින් ඉංජිනේරු කළත්, යාන්ත්‍රික ස්විච වලින් ප්‍රයෝජනවත් නවීන පරිගණකයක් තැනිය නොහැක.</p>
+<p>දෙවන ගැටලුව: සම්බන්ධක ගෙවී යයි. සෑම වැසීමක්ම ලෝහ මත ලෝහයි — arcing, විදාරණය, අවසානයේ අසාර්ථකත්වය. Relays දහස් ගණනක් යනු ගෙවීයාමේ ස්ථාන දහස් ගණනකි. විශ්වාසනීයත්වය සහ වේගය එකම සීමාවට එරෙහිව සටන් කළේය: චලනය වන කොටස්.</p>
+<h2 id="ඉලකටරනකස-වත-පලම">ඉලෙක්ට්‍රොනිකස් වෙත පාලම<a class="anchor" href="#%e0%b6%89%e0%b6%bd%e0%b6%9a%e0%b6%a7%e0%b6%bb%e0%b6%b1%e0%b6%9a%e0%b7%83-%e0%b7%80%e0%b6%ad-%e0%b6%b4%e0%b6%bd%e0%b6%b8">#</a></h2>
+<p>Relays ගෘහ නිර්මාණ ශිල්පය ඔප්පු කළේය: ද්විමය නිරූපණය, සරල ස්විච වලින් බූලියන් ද්වාර, දත්ත ලෙස වැඩසටහන්. ඒවාට ඔප්පු කළ නොහැකි වූයේ ගෘහ නිර්මාණ ශිල්පය <em>වේගයෙන්</em> ධාවනය විය හැකි බවයි. එය විසඳීමට යාන්ත්‍රික ස්විචය ලෝහ වෙනුවට ඉලෙක්ට්‍රෝන චලනය කර තත්ත්වය වෙනස් කරන දෙයකින් ප්‍රතිස්ථාපනය කිරීම අවශ්‍ය විය — රික්තක නලය, විශාල බලය සහ තාපයේ මිලට. එම හුවමාරුව ඊළඟටයි.</p>
+<h2 id="ගඹරන-සවච-රල-සහ-බලයන-වජ-ගණතය--shannon-ග-අදහස-පයවරන-පයවර">ගැඹුරින්: ස්විච, රිලේ සහ බූලියානු වීජ ගණිතය — Shannon ගේ අදහස පියවරෙන් පියවර<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-%e0%b7%83%e0%b7%80%e0%b6%a0-%e0%b6%bb%e0%b6%bd-%e0%b7%83%e0%b7%84-%e0%b6%b6%e0%b6%bd%e0%b6%ba%e0%b6%b1-%e0%b7%80%e0%b6%a2-%e0%b6%9c%e0%b6%ab%e0%b6%ad%e0%b6%ba--shannon-%e0%b6%9c-%e0%b6%85%e0%b6%af%e0%b7%84%e0%b7%83-%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb%e0%b6%b1-%e0%b6%b4%e0%b6%ba%e0%b7%80%e0%b6%bb">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> අ.පො.ස. (සා.පෙ.) 10 ශ්‍රේණියේ ICT පෙළපොත (අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුව) AND සහ OR ද්වාර පැහැදිලි කරන්නේ බැටරියක්, ස්විච දෙකක් සහ බල්බයක් ඇති සරල පරිපථවලිනි (4.3.1 කොටස, 117 පිටුව සිට). සිංහල YouTube හි රිලේ ගැන ඇති වීඩියෝ බොහොමයක් වාහන හෝ විදුලි පරිපථවල <em>උපාංගයක්</em> ලෙස රිලේ ගැන කතා කරයි (PLC &ldquo;ladder&rdquo; වැඩසටහන්කරණය පිළිබඳ පාඩමක් ද ඇත). නමුත් රිලේ මගින් <em>ගණනය කිරීම</em> කරන ආකාරය සහ Claude Shannon ගේ 1938 සොයාගැනීම — ස්විච පරිපථ බූලියානු වීජ ගණිතයම බව — සිංහලෙන් පැහැදිලි කළ මූලාශ්‍රයක් 2026 සැප්තැම්බර් සමීක්ෂණයේදී අපට හමු නොවීය. මෙම කොටස පාසල් පොතේ ස්විච පරිපථයෙන් පටන්ගෙන එතැනින් ඉදිරියට යයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>ස්විචය (switch):</strong> පරිපථයක් විවෘත (open — ධාරාව නොගලයි) හෝ සංවෘත (closed — ධාරාව ගලයි) කරන උපාංගය.</li>
+<li><strong>රිලේ (relay):</strong> <em>විදුලියෙන්ම</em> ක්‍රියාත්මක වන ස්විචයක්. එහි කොටස් තුනකි:
+<ul>
+<li><strong>දඟරය (coil):</strong> ධාරාවක් ගලන විට විද්‍යුත් චුම්බකයක් වේ.</li>
+<li><strong>Armature (චලනය වන ලෝහ පටිය):</strong> චුම්බකය එය ඇදගනී; දඟරයේ ධාරාව නැවතුණු විට උල්පතක් (spring) එය ආපසු ඇදගනී.</li>
+<li><strong>සම්බන්ධක (contacts):</strong> armature චලනය වන විට ස්පර්ශ වන හෝ වෙන් වන ලෝහ ලක්ෂ්‍ය.</li>
+</ul>
+</li>
+<li><strong>සාමාන්‍යයෙන් විවෘත සම්බන්ධකය (normally open, NO):</strong> දඟරයට ධාරාවක් නැති විට විවෘතයි; දඟරය උද්දීපනය වූ විට සංවෘත වේ.</li>
+<li><strong>සාමාන්‍යයෙන් සංවෘත සම්බන්ධකය (normally closed, NC):</strong> ප්‍රතිවිරුද්ධය — දඟරය උද්දීපනය වූ විට විවෘත වේ.</li>
+<li><strong>ශ්‍රේණිගත (series):</strong> සම්බන්ධක එකක් පසුපස එකක් — ධාරාවට යා හැක්කේ සියල්ල හරහාම පමණි.</li>
+<li><strong>සමාන්තර (parallel):</strong> සම්බන්ධක පැති පැත්තට — ධාරාවට ඕනෑම එකක් හරහා යා හැක.</li>
+<li><strong>බූලියානු වීජ ගණිතය (Boolean algebra):</strong> අගයන් දෙකක් (0 සහ 1) පමණක් ඇති, AND (·), OR (+), NOT (′) යන මෙහෙයුම් සහිත වීජ ගණිතය. George Boole 19 වන සියවසේ තර්කය සඳහා මෙය ගොඩනැගීය.</li>
+<li><strong>සත්‍යතා වගුව (truth table):</strong> ආදානවල සියලු සංයෝජන සඳහා ප්‍රතිදානය ලැයිස්තුගත කරන වගුව.</li>
+</ul>
+<h3 id="2-පසල-පත-සවචය-සට-රල-දකව-වනස-කමකද">2. පාසල් පොතේ ස්විචයේ සිට රිලේ දක්වා: වෙනස කුමක්ද?<a class="anchor" href="#2-%e0%b6%b4%e0%b7%83%e0%b6%bd-%e0%b6%b4%e0%b6%ad-%e0%b7%83%e0%b7%80%e0%b6%a0%e0%b6%ba-%e0%b7%83%e0%b6%a7-%e0%b6%bb%e0%b6%bd-%e0%b6%af%e0%b6%9a%e0%b7%80-%e0%b7%80%e0%b6%b1%e0%b7%83-%e0%b6%9a%e0%b6%b8%e0%b6%9a%e0%b6%af">#</a></h3>
+<p>පාසල් පොතේ පරිපථයේ A සහ B ස්විච <em>මිනිසෙකු අතින්</em> ක්‍රියාත්මක කරයි; ප්‍රතිදානය බල්බයකි. රිලේ එකක් එකම ස්විචයයි — නමුත් එය ක්‍රියාත්මක කරන්නේ <strong>තවත් පරිපථයක ධාරාවකින්</strong>. එබැවින්:</p>
+<ol>
+<li>එක් පරිපථයක ප්‍රතිදාන ධාරාව ඊළඟ රිලේ එකක දඟරයට යැවිය හැක.</li>
+<li>එම රිලේ එකේ සම්බන්ධක තවත් පරිපථයක් පාලනය කරයි.</li>
+<li>මෙසේ ද්වාර <em>දාම</em> ගොඩනැගිය හැක — එක් ද්වාරයක ප්‍රතිදානය තවත් ද්වාරයක ආදානයයි. <strong>ගණනය කිරීම</strong> හැකි වන්නේ මෙම දාම නිසාය.</li>
+</ol>
+<p>&ldquo;1&rdquo; = දඟරයේ ධාරාව ඇත / සම්බන්ධකය සංවෘතයි, &ldquo;0&rdquo; = නැත / විවෘතයි ලෙස ගනිමු (මෙය නූතන සම්මුතියයි):</p>
+<table>
+	<thead>
+			<tr>
+					<th>දඟරය A</th>
+					<th>NO සම්බන්ධකය</th>
+					<th>NC සම්බන්ධකය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0 (විවෘත)</td>
+					<td>1 (සංවෘත)</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1 (සංවෘත)</td>
+					<td>0 (විවෘත)</td>
+			</tr>
+	</tbody>
+</table>
+<p>NO සම්බන්ධකය A ම පිටපත් කරයි; NC සම්බන්ධකය <strong>NOT A (A′)</strong> ලබා දෙයි. ස්විචයකට නොහැකි &ldquo;NOT&rdquo; එක රිලේ එකට ලැබෙන්නේ මෙලෙසිනි.</p>
+<h3 id="3-ශරණගත--and-සමනතර--or">3. ශ්‍රේණිගත = AND, සමාන්තර = OR<a class="anchor" href="#3-%e0%b7%81%e0%b6%bb%e0%b6%ab%e0%b6%9c%e0%b6%ad--and-%e0%b7%83%e0%b6%b8%e0%b6%b1%e0%b6%ad%e0%b6%bb--or">#</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>A</th>
+					<th>B</th>
+					<th>ශ්‍රේණිගත (A සහ B NO සම්බන්ධක එක පෙළට)</th>
+					<th>සමාන්තර (A සහ B පැති පැත්තට)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td><strong>1</strong></td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<p>ශ්‍රේණිගත පරිපථය AND (A·B) හි සත්‍යතා වගුවම ය; සමාන්තර පරිපථය OR (A + B) හි වගුවම ය. එනම් <strong>ඕනෑම බූලියානු ප්‍රකාශනයක් රිලේ සම්බන්ධක පරිපථයක් ලෙස ඇඳිය හැකි අතර, ඕනෑම එවැනි පරිපථයක් බූලියානු ප්‍රකාශනයක් ලෙස ලිවිය හැක.</strong></p>
+<h3 id="4-shannon-ග-1938-ලපය-hindrance-සමමතය">4. Shannon ගේ 1938 ලිපිය: &ldquo;hindrance&rdquo; සම්මුතිය<a class="anchor" href="#4-shannon-%e0%b6%9c-1938-%e0%b6%bd%e0%b6%b4%e0%b6%ba-hindrance-%e0%b7%83%e0%b6%b8%e0%b6%b8%e0%b6%ad%e0%b6%ba">#</a></h3>
+<p>Claude E. Shannon (එවකට MIT හි ශිෂ්‍යයෙක්) 1938 දී <em>AIEE Transactions</em> හි &ldquo;A Symbolic Analysis of Relay and Switching Circuits&rdquo; පළ කළේය. ඔහු සම්මුතිය <strong>ප්‍රතිවිරුද්ධ</strong> ලෙස ගත්තේය: පරිපථයක <strong>hindrance (බාධාව)</strong> —</p>
+<ul>
+<li><strong>0</strong> = සංවෘත පරිපථය (බාධාවක් නැත), <strong>1</strong> = විවෘත පරිපථය;</li>
+<li><strong>+</strong> = ශ්‍රේණිගත සම්බන්ධ කිරීම; <strong>·</strong> (ගුණ කිරීම) = සමාන්තර සම්බන්ධ කිරීම.</li>
+</ul>
+<p>ඔහුගේ මූලික ප්‍රත්‍යක්ෂ (postulates) කිහිපයක් (ලිපියේ II කොටස):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Shannon ගේ ප්‍රකාශය</th>
+					<th>අර්ථය</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0 · 0 = 0</td>
+					<td>සංවෘත පරිපථයක් සංවෘත පරිපථයකට සමාන්තරව = සංවෘත</td>
+			</tr>
+			<tr>
+					<td>1 + 1 = 1</td>
+					<td>විවෘත පරිපථයක් විවෘත පරිපථයකට ශ්‍රේණිගතව = විවෘත</td>
+			</tr>
+			<tr>
+					<td>1 + 0 = 0 + 1 = 1</td>
+					<td>විවෘත එකක් සංවෘත එකකට ශ්‍රේණිගතව = විවෘත</td>
+			</tr>
+			<tr>
+					<td>0 · 1 = 1 · 0 = 0</td>
+					<td>සංවෘත එකක් විවෘත එකකට සමාන්තරව = සංවෘත</td>
+			</tr>
+	</tbody>
+</table>
+<p>&ldquo;1 + 1 = 1&rdquo; සාමාන්‍ය අංක ගණිතයේ වැරදියි — නමුත් මෙය අංක ගණිතය නොවේ; එය &ldquo;විවෘතද?&rdquo; යන ප්‍රශ්නයට ඇති තර්කයයි. Shannon ගේ සම්මුතියේ + යනු &ldquo;විවෘත බවෙහි OR&rdquo; ය: ශ්‍රේණිගත පරිපථයක් විවෘත වන්නේ A <strong>හෝ</strong> B විවෘත නම්. නූතන සම්මුතියේ (1 = සංවෘත) එම පරිපථයම &ldquo;A <strong>සහ</strong> B සංවෘත නම් පමණක් සංවෘත&rdquo; — AND. පරිපථය එකමයි; ලේබල් පමණක් මාරු වී ඇත. (මෙය <strong>ද්විත්ව බව (duality)</strong> ලෙස හැඳින්වේ; Shannon ද එය ලිපියේ සාකච්ඡා කරයි.)</p>
+<p>ඔහුගේ ලිපියේ Table 1 රිලේ පරිපථ සහ <strong>ප්‍රස්තුත ගණිතය (calculus of propositions)</strong> — එනම් &ldquo;සත්‍ය/අසත්‍ය&rdquo; තර්කය — අතර සම්පූර්ණ සමානකමක් පෙන්වයි. වැදගත් ප්‍රතිඵලය: <strong>පරිපථ සැලසුම් කිරීම වීජ ගණිත ගැටලුවක් බවට පත් විය.</strong> පරිපථයක් අඳින්න පෙර එය සරල කළ හැකි විය.</p>
+<h3 id="5-වඩ-කළ-උදහරණය-සමබනධක-4ක-එකකට-අඩ-කරම">5. වැඩ කළ උදාහරණය: සම්බන්ධක 4ක් එකකට අඩු කිරීම<a class="anchor" href="#5-%e0%b7%80%e0%b6%a9-%e0%b6%9a%e0%b7%85-%e0%b6%8b%e0%b6%af%e0%b7%84%e0%b6%bb%e0%b6%ab%e0%b6%ba-%e0%b7%83%e0%b6%b8%e0%b6%b6%e0%b6%b1%e0%b6%b0%e0%b6%9a-4%e0%b6%9a-%e0%b6%91%e0%b6%9a%e0%b6%9a%e0%b6%a7-%e0%b6%85%e0%b6%a9-%e0%b6%9a%e0%b6%bb%e0%b6%b8">#</a></h3>
+<p>(නූතන සම්මුතිය.) ඉංජිනේරුවෙකු මෙවැනි පරිපථයක් ඇඳ ඇතැයි සිතමු: ශාඛා දෙකක් සමාන්තරව; පළමු ශාඛාවේ X (NO) සහ Y (NO) ශ්‍රේණිගතව; දෙවන ශාඛාවේ X (NO) සහ Y (NC) ශ්‍රේණිගතව. සම්බන්ධක 4කි.</p>
+<ol>
+<li>ප්‍රකාශනය ලියන්න: <strong>X·Y + X·Y′</strong></li>
+<li>X පොදු සාධකයක් ලෙස ගන්න (බෙදාහැරීමේ නියමය, distributive law): <strong>X·(Y + Y′)</strong></li>
+<li>Y + Y′ = 1 (Y හෝ Y′ අනිවාර්යයෙන් සංවෘතයි): <strong>X·1</strong></li>
+<li>X·1 = <strong>X</strong></li>
+</ol>
+<p>සත්‍යතා වගුවෙන් තහවුරු කරමු:</p>
+<table>
+	<thead>
+			<tr>
+					<th>X</th>
+					<th>Y</th>
+					<th>X·Y</th>
+					<th>X·Y′</th>
+					<th>X·Y + X·Y′</th>
+					<th>X</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<p>අවසන් තීරු දෙක සමානයි. සම්බන්ධක 4ක පරිපථයක් <strong>X NO සම්බන්ධකයක් එකකින්</strong> ප්‍රතිස්ථාපනය කළ හැක — Y රිලේ එක අවශ්‍යම නැත! දහස් ගණනක් රිලේ සහිත දුරකථන හුවමාරුවකට (සහ පසුව පරිගණකයකට) මෙවැනි ඉතිරි කිරීම් යනු මුදල්, ඉඩ, සහ ගෙවී යන ස්ථාන අඩු වීමයි. Shannon ගේ ලිපියේ ප්‍රකාශිත අරමුණද මෙයයි: අවම සම්බන්ධක ගණනක් සහිත පරිපථ සොයා ගැනීම.</p>
+<h3 id="6-රල-වලන-දවමය-එකත-කරම-අරධ-ආකලකය">6. රිලේ වලින් ද්විමය එකතු කිරීම: අර්ධ ආකලකය<a class="anchor" href="#6-%e0%b6%bb%e0%b6%bd-%e0%b7%80%e0%b6%bd%e0%b6%b1-%e0%b6%af%e0%b7%80%e0%b6%b8%e0%b6%ba-%e0%b6%91%e0%b6%9a%e0%b6%ad-%e0%b6%9a%e0%b6%bb%e0%b6%b8-%e0%b6%85%e0%b6%bb%e0%b6%b0-%e0%b6%86%e0%b6%9a%e0%b6%bd%e0%b6%9a%e0%b6%ba">#</a></h3>
+<p>ද්විමය ඉලක්කම් දෙකක් A සහ B එකතු කිරීමට:</p>
+<table>
+	<thead>
+			<tr>
+					<th>A</th>
+					<th>B</th>
+					<th>එකතුව S</th>
+					<th>රැගෙන යාම C (carry)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li><strong>C = A·B</strong> → A (NO) සහ B (NO) ශ්‍රේණිගතව.</li>
+<li><strong>S = A·B′ + A′·B</strong> (XOR) → ශාඛා දෙකක් සමාන්තරව: [A (NO) ශ්‍රේණිගතව B (NC)] සහ [A (NC) ශ්‍රේණිගතව B (NO)].</li>
+</ul>
+<p>එනම් A රිලේ එකට NO සම්බන්ධක 2ක් සහ NC සම්බන්ධකයක් 1ක් අවශ්‍යයි; B රිලේ එකටත් එසේමයි. පරීක්ෂා කරන්න: A = 1, B = 1 නම් — පළමු ශාඛාවේ B (NC) විවෘතයි, දෙවන ශාඛාවේ A (NC) විවෘතයි → S = 0; C ශ්‍රේණිගත පරිපථය සංවෘතයි → C = 1. එනම් 1 + 1 = ද්විමය <strong>10</strong> ✔.</p>
+<p>Shannon ගේ ලිපියේ අවසාන උදාහරණය &ldquo;Electric Adder to the Base Two&rdquo; හරියටම මෙයයි: &ldquo;රිලේ සහ ස්විච පමණක් භාවිත කර සංඛ්‍යා දෙකක් ස්වයංක්‍රීයව එකතු කරන පරිපථයක්&rdquo;, සහ ඔහු සඳහන් කරන පරිදි ඕනෑම පාදයක් භාවිත කළ හැකි නමුත් <strong>පාදය දෙක (ද්විමය)</strong> භාවිතයෙන් පරිපථය බෙහෙවින් සරල වේ. ඉලක්කම් කිහිපයක් එකතු කිරීමට, එක් තීරුවක carry එක ඊළඟ තීරුවේ ආදානයක් වන පූර්ණ ආකලක (full adder) දාමයක් අවශ්‍ය වේ (Post 08).</p>
+<h3 id="7-රල-මනදගම-වය-කතරමද--ගණනය-කර-බලම">7. රිලේ මන්දගාමී වූයේ කොතරම්ද? — ගණනය කර බලමු<a class="anchor" href="#7-%e0%b6%bb%e0%b6%bd-%e0%b6%b8%e0%b6%b1%e0%b6%af%e0%b6%9c%e0%b6%b8-%e0%b7%80%e0%b6%ba-%e0%b6%9a%e0%b6%ad%e0%b6%bb%e0%b6%b8%e0%b6%af--%e0%b6%9c%e0%b6%ab%e0%b6%b1%e0%b6%ba-%e0%b6%9a%e0%b6%bb-%e0%b6%b6%e0%b6%bd%e0%b6%b8">#</a></h3>
+<p>(අංක ප්‍රමාණයේ අනුපිළිවෙළ පෙන්වීමට තෝරාගත් ඒවා.) රිලේ එකක් ක්‍රියාත්මක වීමට <strong>10 ms</strong> (මිලි තත්පර) ගත වේ යැයි සිතමු — ඉහත කොටසේ සඳහන් පරිදි armature භෞතිකව චලනය විය යුතුය.</p>
+<ul>
+<li>බිට් 8ක ආකලකයක carry එක තීරුවෙන් තීරුවට ගමන් කරයි. සෑම තීරුවකදීම එක් රිලේ මට්ටමක් යැයි සිතුවොත්: 8 × 10 ms = <strong>80 ms</strong>.</li>
+<li>එබැවින් තත්පරයකට එකතු කිරීම් 1000 ÷ 80 ≈ <strong>12</strong> ක් පමණ.</li>
+<li>නවීන CMOS ද්වාරයක ප්‍රමාදය නැනෝ තත්පරයකටත් වඩා බොහෝ අඩුය (Post 07). ද්වාරයකට 10 ps (පිකෝ තත්පර, 10⁻¹¹ s) ලෙස ගතහොත්: 10 ms ÷ 10 ps = 10⁻² ÷ 10⁻¹¹ = <strong>10⁹</strong> — බිලියන ගුණයක වෙනසක්.</li>
+</ul>
+<p>තර්කය (logic) එකමයි; ස්විචය පමණක් වෙනස් විය. එබැවින් ඉහත &ldquo;ඉලෙක්ට්‍රොනිකස් වෙත පාලම&rdquo; කොටසේ කීවා මෙන්, රිලේ ගෘහ නිර්මාණය <em>ඔප්පු කළේය</em> — වේගය ලැබුණේ ස්විචය වෙනස් කිරීමෙනි.</p>
+<h3 id="8-දනම-උතසහ-කරනන">8. දැන්ම උත්සාහ කරන්න<a class="anchor" href="#8-%e0%b6%af%e0%b6%b1%e0%b6%b8-%e0%b6%8b%e0%b6%ad%e0%b7%83%e0%b7%84-%e0%b6%9a%e0%b6%bb%e0%b6%b1%e0%b6%b1">#</a></h3>
+<p>මෙම පිටුවට lab එකක් නැත. <strong>Post 07</strong> සහ <strong>Post 08</strong> හි breadboard lab එක AND ද්වාරයකින් (ආදාන ස්විච දෙකක් සහ ප්‍රතිදානයක්) විවෘත වේ. ආදාන දෙක එකින් එක මාරු කරමින් ඉහත 3 වන කොටසේ &ldquo;ශ්‍රේණිගත&rdquo; තීරුවම (පේළි හතරම) ලැබෙන බව පරීක්ෂා කරන්න — එම ද්වාරය ඇතුළත ඇත්තේ රිලේ නොව ඉලෙක්ට්‍රොනික ස්විච වුවද, බූලියානු ශ්‍රිතය එකමයි.</p>
+<h3 id="9-පනසලන-අභයසය">9. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#9-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>A (NO) සම්බන්ධකයක්, B (NO) සහ C (NO) සමාන්තර යුගලයකට ශ්‍රේණිගතව සම්බන්ධ කර ඇත. ප්‍රකාශනය ලියා සත්‍යතා වගුව (පේළි 8) අඳින්න. ප්‍රතිදානය 1 වන්නේ පේළි කීයකද?</li>
+<li><strong>A·B + A·B′·C</strong> සරල කරන්න. සම්බන්ධක කීයක් ඉතිරි වේද?</li>
+<li>Shannon ගේ සම්මුතියෙන් 0 + 1 සහ 1 · 1 කීයද? වචනවලින් පැහැදිලි කරන්න.</li>
+<li>රිලේ එකක් 5 ms ගනී නම්, බිට් 16 ආකලකයකට (එක් තීරුවකට එක් රිලේ මට්ටමක්) තත්පරයකට එකතු කිරීම් කීයක් කළ හැකිද?</li>
+</ol>
+<p>(පිළිතුරු: 1 → A·(B + C); පේළි 3 (A = 1 සහ B, C අතරින් අවම එකක් 1: 101, 110, 111). 2 → A·(B + B′·C) = A·(B + C) (B + B′C = B + C නියමය); සම්බන්ධක 5 සිට 3 දක්වා — 2ක් ඉතිරියි. 3 → 0 + 1 = 1: සංවෘත එකක් විවෘත එකකට ශ්‍රේණිගතව = විවෘත; 1 · 1 = 1: විවෘත දෙකක් සමාන්තරව = විවෘත. 4 → 16 × 5 ms = 80 ms → ≈ 12.5.)</p>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong> Claude E. Shannon, &ldquo;A Symbolic Analysis of Relay and Switching Circuits&rdquo;, <em>Transactions of the American Institute of Electrical Engineers</em> 57(12), 1938 — ලිපියේ PDF පිටපතක්: <a href="https://home.engineering.iastate.edu/alexs/classes/2025_Fall_2810/readings/Shannon_1938.pdf">https://home.engineering.iastate.edu/alexs/classes/2025_Fall_2810/readings/Shannon_1938.pdf</a> (II කොටස: hindrance අර්ථ දැක්වීම් සහ ප්‍රත්‍යක්ෂ; Table 1: ප්‍රස්තුත ගණිතය සමඟ සමානකම; අවසාන කොටස: &ldquo;Electric Adder to the Base Two&rdquo;). පාසල් පොත: අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුව, <em>තොරතුරු හා සන්නිවේදන තාක්ෂණය — 10 ශ්‍රේණිය</em> (සිංහල මාධ්‍යය), 4.3.1 කොටස, 117 පිටුව සිට (edupub.gov.lk වෙතින් බාගත කළ හැක).</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Relays&#43;%E0%B7%83%E0%B7%84&#43;%E0%B7%80%E0%B7%92%E0%B6%AF%E0%B7%8A%E2%80%8D%E0%B6%BA%E0%B7%94%E0%B6%AD%E0%B7%8A&#43;%E0%B6%BA%E0%B7%8F%E0%B6%B1%E0%B7%8A%E0%B6%AD%E0%B7%8A%E2%80%8D%E0%B6%BB%E0%B7%92%E0%B6%9A&#43;%E0%B6%AD%E0%B6%BB%E0%B7%8A%E0%B6%9A%E0%B6%BA&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F02-relays-and-electromechanical-logic%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F02-relays-and-electromechanical-logic.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F02-relays-and-electromechanical-logic.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/01-mechanical-electromechanical-computing/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/03-the-vacuum-tube-era/" class="flex align-center">
+        <span>රික්තක නල යුගය</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#තරකය-ලස-relays">තර්කය ලෙස Relays</a></li>
+    <li><a href="#relays-ඉත-මනදගම-වය-ඇය">Relays ඉතා මන්දගාමී වූයේ ඇයි</a></li>
+    <li><a href="#ඉලකටරනකස-වත-පලම">ඉලෙක්ට්‍රොනිකස් වෙත පාලම</a></li>
+    <li><a href="#ගඹරන-සවච-රල-සහ-බලයන-වජ-ගණතය--shannon-ග-අදහස-පයවරන-පයවර">ගැඹුරින්: ස්විච, රිලේ සහ බූලියානු වීජ ගණිතය — Shannon ගේ අදහස පියවරෙන් පියවර</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-පසල-පත-සවචය-සට-රල-දකව-වනස-කමකද">2. පාසල් පොතේ ස්විචයේ සිට රිලේ දක්වා: වෙනස කුමක්ද?</a></li>
+        <li><a href="#3-ශරණගත--and-සමනතර--or">3. ශ්‍රේණිගත = AND, සමාන්තර = OR</a></li>
+        <li><a href="#4-shannon-ග-1938-ලපය-hindrance-සමමතය">4. Shannon ගේ 1938 ලිපිය: &ldquo;hindrance&rdquo; සම්මුතිය</a></li>
+        <li><a href="#5-වඩ-කළ-උදහරණය-සමබනධක-4ක-එකකට-අඩ-කරම">5. වැඩ කළ උදාහරණය: සම්බන්ධක 4ක් එකකට අඩු කිරීම</a></li>
+        <li><a href="#6-රල-වලන-දවමය-එකත-කරම-අරධ-ආකලකය">6. රිලේ වලින් ද්විමය එකතු කිරීම: අර්ධ ආකලකය</a></li>
+        <li><a href="#7-රල-මනදගම-වය-කතරමද--ගණනය-කර-බලම">7. රිලේ මන්දගාමී වූයේ කොතරම්ද? — ගණනය කර බලමු</a></li>
+        <li><a href="#8-දනම-උතසහ-කරනන">8. දැන්ම උත්සාහ කරන්න</a></li>
+        <li><a href="#9-පනසලන-අභයසය">9. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

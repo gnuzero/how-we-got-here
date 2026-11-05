@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ஆயிரக்கணக்கான GPU-கள் — topology மற்றும் all-reduce எந்த chip-இன் peak FLOPS போலவே முக்கியம்">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/61-interconnect-at-datacenter-scale/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Datacenter அளவில் Interconnect">
+	<meta property="og:description" content="ஆயிரக்கணக்கான GPU-கள் — topology மற்றும் all-reduce எந்த chip-இன் peak FLOPS போலவே முக்கியம்">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Datacenter அளவில் Interconnect">
+	<meta itemprop="description" content="ஆயிரக்கணக்கான GPU-கள் — topology மற்றும் all-reduce எந்த chip-இன் peak FLOPS போலவே முக்கியம்">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1300">
+
+<title>Datacenter அளவில் Interconnect • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/61-interconnect-at-datacenter-scale/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/61-interconnect-at-datacenter-scale/" title="Interconnect at Datacenter Scale">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/61-interconnect-at-datacenter-scale/" title="อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/61-interconnect-at-datacenter-scale/" title="Datacenter පරිමාණයේ Interconnect">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/61-interconnect-at-datacenter-scale/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="active">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Datacenter அளவில் Interconnect</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#naive-wiring-அளவடத">Naive Wiring அளவிடாது</a></li>
+    <li><a href="#fat-tree-பயறசககச-சரசயயபபடடத">Fat-Tree, பயிற்சிக்குச் சரிசெய்யப்பட்டது</a></li>
+    <li><a href="#all-reduce-கடடபபடததம-pattern">All-Reduce கட்டுப்படுத்தும் Pattern</a></li>
+    <li><a href="#topology-spec-sheets-ஐ-வலலலம">Topology Spec Sheets-ஐ வெல்லலாம்</a></li>
+    <li><a href="#ஏன-எலலரயம-எலலரடனம-இணகக-மடயத">ஏன் &ldquo;எல்லோரையும் எல்லோருடனும்&rdquo; இணைக்க முடியாது</a></li>
+    <li><a href="#அபபவ-all-reduce-ஒரவரடம-சர">அப்பாவி all-reduce: ஒருவரிடம் சேர்</a></li>
+    <li><a href="#ring-all-reduce-மனற-gpu-களடன-படபபடயக">Ring all-reduce: மூன்று GPU-களுடன் படிப்படியாக</a></li>
+    <li><a href="#நர-மதர-bandwidth-மறறம-latency">நேர மாதிரி: bandwidth மற்றும் latency</a></li>
+    <li><a href="#fat-tree-மறறம-oversubscription-எணகளல">Fat-tree மற்றும் oversubscription, எண்களில்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Datacenter அளவில் Interconnect
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவு 56 சில servers-க்குள் மற்றும் குறுக்கே multi-GPU scaling-ஐ உள்ளடக்கியது — NVLink, NVSwitch, GPUDirect RDMA. பெரிய அளவிலான பயிற்சி மற்றொரு அளவு வரிசை: நூற்றுக்கணக்கான முதல் ஆயிரக்கணக்கான servers குறுக்கே ஆயிரக்கணக்கான முதல் பத்தாயிரக்கணக்கான GPU-கள். அவற்றை எப்படிக் கம்பி இணைக்கிறீர்கள் என்பது எந்தத் தனி GPU-வின் specs போலவே முக்கியம்.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> All-reduce மற்றும் collective communication பற்றித் தமிழில் விளக்கமோ காணொளியோ இல்லை. இங்கே ring all-reduce-ஐ மூன்று GPU-களுடன் படிப்படியாகத் தடம் பிடித்து, பதிவு 56 பயன்படுத்திய 2(N − 1)/N × S சூத்திரத்தைப் பெறுகிறோம்; பிறகு fat-tree மற்றும் oversubscription கணக்குகள். Bandwidth, latency, switch அளவுகள் &ldquo;எடுத்துக்காட்டு மதிப்பு&rdquo; என்று குறிக்கப்பட்டுள்ளன.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Collective (கூட்டுத் தொடர்பு):</strong> ஒரு குழுவில் உள்ள எல்லா GPU-களும் ஒரே நேரத்தில் பங்கேற்கும் தொடர்பு முறை.</li>
+<li><strong>Reduce (குறை):</strong> பலரின் தரவைக் கூட்டி (அல்லது அதிகபட்சம் எடுத்து) ஒரே விடையாக்குவது.</li>
+<li><strong>Broadcast (ஒலிபரப்பு):</strong> ஒருவரின் தரவை எல்லோருக்கும் அனுப்புவது.</li>
+<li><strong>All-reduce:</strong> reduce + எல்லோருக்கும் விடை. <strong>Reduce-scatter:</strong> விடையின் வெவ்வேறு துண்டுகள் வெவ்வேறு GPU-களுக்கு. <strong>All-gather:</strong> ஒவ்வொருவரின் துண்டையும் எல்லோருக்கும் சேர்ப்பது. All-reduce = reduce-scatter + all-gather.</li>
+<li><strong>Ring (வளையம்):</strong> GPU-களை ஒரு வட்டமாக அமைத்து, ஒவ்வொன்றும் அடுத்ததுக்கு மட்டும் அனுப்புவது.</li>
+<li><strong>Switch (இணைப்பி), leaf / spine:</strong> server-களை இணைக்கும் வலையமைப்புச் சாதனம்; leaf switch-கள் server-களுடனும், spine switch-கள் leaf-களுடனும் இணைகின்றன.</li>
+<li><strong>Bisection bandwidth (இருகூறு அலைக்கற்றை):</strong> வலையமைப்பை இரண்டு சம பாதிகளாக வெட்டினால், இரு பாதிகளுக்கும் இடையே ஒரே நேரத்தில் செல்லக்கூடிய மொத்த bandwidth.</li>
+<li><strong>Oversubscription (மிகைச் சந்தா):</strong> ஒரு switch-இன் கீழ்நோக்கிய மொத்த bandwidth அதன் மேல்நோக்கிய bandwidth-ஐ விட அதிகமாக இருப்பது — எல்லோரும் ஒரே நேரத்தில் வெளியே பேசினால் போதாது.</li>
+</ul>
+<h2 id="naive-wiring-அளவடத">Naive Wiring அளவிடாது<a class="anchor" href="#naive-wiring-%e0%ae%85%e0%ae%b3%e0%ae%b5%e0%ae%9f%e0%ae%a4">#</a></h2>
+<p>ஒவ்வொரு server-ஐயும் மற்ற ஒவ்வொன்றுடன் இணைப்பது இணைப்புகளை இருபடி வளர்க்கும் — ஆயிரக்கணக்கான nodes-க்கு முன்பே அபத்தம். உண்மையான clusters படிநிலை switching பயன்படுத்தும்; தேர்ந்தெடுக்கப்பட்ட அமைப்பு அடையக்கூடிய bandwidth மற்றும் கனமான பயிற்சி போக்கின் கீழ் அந்த bandwidth எவ்வளவு <em>சமமாக</em> நிற்கிறது என்பதையும் தீர்மானிக்கும்.</p>
+<h2 id="fat-tree-பயறசககச-சரசயயபபடடத">Fat-Tree, பயிற்சிக்குச் சரிசெய்யப்பட்டது<a class="anchor" href="#fat-tree-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%95%e0%ae%9a-%e0%ae%9a%e0%ae%b0%e0%ae%9a%e0%ae%af%e0%ae%af%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%9f%e0%ae%a4">#</a></h2>
+<p>ஒரு fat-tree switches-ஐ அடுக்கும் — servers-இல் leaf switches, leaves-ஐ இணைக்கும் spine switches — உயர் (இலட்சியமாக non-oversubscribed) bisection bandwidth இலக்கு; உண்மையான AI clusters இன்னும் oversubscribe செய்யலாம் அல்லது rail-optimized மாறுபாடுகள் பயன்படுத்தலாம். இது பதிவு 42-இன் datacenter வலையமைப்புக் கருத்து ஆயிரக்கணக்கான-GPU ஆட்சியில்.</p>
+<p>Rail-optimized வடிவமைப்புகள் பெரிய பயிற்சி வேலைகள் உண்மையில் உருவாக்கும் தொடர்பு patterns-ஐச் சுற்றி மேலும் சரிசெய்யும் — பொதுவான datacenter போக்கு அல்ல. பயிற்சி போக்கு வேறு; அதற்காகக் கட்டப்பட்ட topology பொதுவான ஒன்றை வெல்லலாம்.</p>
+<h2 id="all-reduce-கடடபபடததம-pattern">All-Reduce கட்டுப்படுத்தும் Pattern<a class="anchor" href="#all-reduce-%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%a4%e0%ae%a4%e0%ae%ae-pattern">#</a></h2>
+<p>Data-parallel பயிற்சி (பதிவு 46) ஒவ்வொரு படிநிலையிலும் பங்கேற்கும் ஒவ்வொரு GPU குறுக்கே gradients ஒத்திசைக்க வேண்டும் — ஒவ்வொரு batch slice-இலிருந்து உள்ளூர் gradients, பிறகு அடுத்த படிக்கு முன் இணைக்கவும் (பொதுவாக சராசரி). அந்த all-reduce முழுப் பயிற்சி ஓட்டம் முழுவதும் தொடர்ந்து ஓடும். அதன் திறன் மூல bandwidth <em>மற்றும்</em> topology-ஐப் பொறுத்தது: ring அல்லது tree அல்காரிதங்கள் தத்துவார்த்த மொத்த peak மட்டும் அல்ல, இயற்பியல் கம்பியை உணரும்.</p>
+<h2 id="topology-spec-sheets-ஐ-வலலலம">Topology Spec Sheets-ஐ வெல்லலாம்<a class="anchor" href="#topology-spec-sheets-%e0%ae%90-%e0%ae%b5%e0%ae%b2%e0%ae%b2%e0%ae%b2%e0%ae%ae">#</a></h2>
+<p>மோசமாக வடிவமைக்கப்பட்ட அல்லது oversubscribed fabric-இல் சிறந்த GPU-கள் கவனமாக rail-optimized வலையமைப்பில் மிதமான GPU-களுக்குத் தோற்கலாம் — ஏனெனில் all-reduce bottleneck ஆகிறது, எந்த chip-இன் peak FLOPS அல்ல. தொடர் தீம் மீண்டும்: கூறு specs (டிரான்சிஸ்டர் எண்ணிக்கை, clock, peak FLOPS) கதையின் ஒரு பகுதி மட்டும். பாகங்கள் எப்படி இணைக்கப்படுகின்றன — ஒரு chip-இன் buses (Phase 5) முதல் ஒரு பயிற்சி cluster-இன் topology வரை — அடிக்கடி உண்மையில் அடையப்பட்ட செயல்திறனைத் தீர்மானிக்கும்.</p>
+<h2 id="ஏன-எலலரயம-எலலரடனம-இணகக-மடயத">ஏன் &ldquo;எல்லோரையும் எல்லோருடனும்&rdquo; இணைக்க முடியாது<a class="anchor" href="#%e0%ae%8f%e0%ae%a9-%e0%ae%8e%e0%ae%b2%e0%ae%b2%e0%ae%b0%e0%ae%af%e0%ae%ae-%e0%ae%8e%e0%ae%b2%e0%ae%b2%e0%ae%b0%e0%ae%9f%e0%ae%a9%e0%ae%ae-%e0%ae%87%e0%ae%a3%e0%ae%95%e0%ae%95-%e0%ae%ae%e0%ae%9f%e0%ae%af%e0%ae%a4">#</a></h2>
+<p>N server-களை ஒவ்வொன்றையும் மற்ற ஒவ்வொன்றுடனும் நேரடியாக இணைத்தால் இணைப்புகள் = N(N − 1)/2.</p>
+<ul>
+<li>N = 1,000: 1,000 × 999 ÷ 2 = <strong>4,99,500 கம்பிகள்</strong>, ஒவ்வொரு server-க்கும் 999 port-கள்.</li>
+</ul>
+<p>சாத்தியமில்லை. அதனால் switch-களின் படிநிலை; அதனால் &ldquo;எந்த வடிவில் இணைப்பது&rdquo; (topology) என்ற கேள்வி.</p>
+<h2 id="அபபவ-all-reduce-ஒரவரடம-சர">அப்பாவி all-reduce: ஒருவரிடம் சேர்<a class="anchor" href="#%e0%ae%85%e0%ae%aa%e0%ae%aa%e0%ae%b5-all-reduce-%e0%ae%92%e0%ae%b0%e0%ae%b5%e0%ae%b0%e0%ae%9f%e0%ae%ae-%e0%ae%9a%e0%ae%b0">#</a></h2>
+<p>எல்லா GPU-களும் தங்கள் S byte gradient-களை ஒரு &ldquo;தலைவர்&rdquo; GPU-க்கு அனுப்புகின்றன; அது கூட்டி, விடையை எல்லோருக்கும் திருப்பி அனுப்புகிறது.</p>
+<ul>
+<li>தலைவர் பெறுவது: (N − 1) × S; அனுப்புவது: (N − 1) × S</li>
+<li>N = 8, S = 2 GB: தலைவருக்கு 14 GB உள்ளே, 14 GB வெளியே — மற்ற 7 GPU-களின் இணைப்புகள் பெரும்பாலும் சும்மா.</li>
+</ul>
+<p>N இரட்டிப்பானால் தலைவரின் சுமையும் இரட்டிப்பாகிறது. ஒரு இணைப்பு bottleneck, மற்றவை வீண்.</p>
+<h2 id="ring-all-reduce-மனற-gpu-களடன-படபபடயக">Ring all-reduce: மூன்று GPU-களுடன் படிப்படியாக<a class="anchor" href="#ring-all-reduce-%e0%ae%ae%e0%ae%a9%e0%ae%b1-gpu-%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9-%e0%ae%aa%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f%e0%ae%af%e0%ae%95">#</a></h2>
+<p>யோசனை: தரவை N துண்டுகளாக (chunk) வெட்டு; ஒவ்வொரு படியிலும் <strong>ஒவ்வொரு</strong> GPU-வும் ஒரு துண்டை அடுத்த GPU-க்கு அனுப்புகிறது — எல்லா இணைப்புகளும் ஒரே நேரத்தில் வேலை செய்கின்றன.</p>
+<p><strong>எடுத்துக்காட்டு மதிப்புகள்:</strong> மூன்று GPU-கள் (G0 → G1 → G2 → G0 வளையம்), ஒவ்வொன்றிலும் மூன்று எண்கள் (ஒவ்வொரு எண்ணும் ஒரு துண்டு):</p>
+<ul>
+<li>G0 = [1, 2, 3], G1 = [10, 20, 30], G2 = [100, 200, 300]</li>
+<li>இலக்கு: எல்லோரிடமும் [111, 222, 333]</li>
+</ul>
+<p><strong>கட்டம் 1 — reduce-scatter (N − 1 = 2 படிகள்):</strong> படி s-இல் (s = 1, 2) Gi, துண்டு (i − s + 1) mod N-ஐ அடுத்தவருக்கு அனுப்புகிறது; பெறுபவர் அதைத் தன் மதிப்புடன் கூட்டுகிறார்.</p>
+<table>
+	<thead>
+			<tr>
+					<th>படி</th>
+					<th>அனுப்புதல்கள்</th>
+					<th>G0</th>
+					<th>G1</th>
+					<th>G2</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>தொடக்கம்</td>
+					<td>—</td>
+					<td>[1, 2, 3]</td>
+					<td>[10, 20, 30]</td>
+					<td>[100, 200, 300]</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>G0→G1 துண்டு 0 (1); G1→G2 துண்டு 1 (20); G2→G0 துண்டு 2 (300)</td>
+					<td>[1, 2, <strong>303</strong>]</td>
+					<td>[<strong>11</strong>, 20, 30]</td>
+					<td>[100, <strong>220</strong>, 300]</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>G0→G1 துண்டு 2 (303); G1→G2 துண்டு 0 (11); G2→G0 துண்டு 1 (220)</td>
+					<td>[1, <strong>222</strong>, 303]</td>
+					<td>[11, 20, <strong>333</strong>]</td>
+					<td>[<strong>111</strong>, 220, 300]</td>
+			</tr>
+	</tbody>
+</table>
+<p>இப்போது ஒவ்வொரு GPU-விடமும் <strong>ஒரு</strong> முழுமையாகக் கூட்டிய துண்டு: G0-இடம் 222, G1-இடம் 333, G2-இடம் 111.</p>
+<p><strong>கட்டம் 2 — all-gather (மீண்டும் 2 படிகள்):</strong> முழுத் துண்டுகளை வளையத்தில் சுற்றவிடு; பெறுபவர் கூட்டாமல் <strong>மாற்றி எழுதுகிறார்</strong>.</p>
+<table>
+	<thead>
+			<tr>
+					<th>படி</th>
+					<th>அனுப்புதல்கள்</th>
+					<th>G0</th>
+					<th>G1</th>
+					<th>G2</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>G0→G1 (222); G1→G2 (333); G2→G0 (111)</td>
+					<td>[<strong>111</strong>, 222, 303]</td>
+					<td>[11, <strong>222</strong>, 333]</td>
+					<td>[111, 220, <strong>333</strong>]</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>G0→G1 (111); G1→G2 (222); G2→G0 (333)</td>
+					<td>[111, 222, <strong>333</strong>]</td>
+					<td>[<strong>111</strong>, 222, 333]</td>
+					<td>[111, <strong>222</strong>, 333]</td>
+			</tr>
+	</tbody>
+</table>
+<p>எல்லோரிடமும் [111, 222, 333]. (இந்த trace-ஐ ஒரு சிறிய Python simulator கொண்டு உருவாக்கிச் சரிபார்த்தோம்.)</p>
+<p><strong>சூத்திரம்:</strong> மொத்தம் 2(N − 1) படிகள்; ஒவ்வொரு படியிலும் ஒவ்வொரு GPU-வும் S/N byte அனுப்புகிறது.</p>
+<ul>
+<li>ஒவ்வொரு GPU-வும் அனுப்புவது = 2(N − 1) × S/N = <strong>2(N − 1)/N × S</strong></li>
+<li>N பெரிதானால் இது 2S-ஐ நெருங்குகிறது — <strong>GPU-களின் எண்ணிக்கையைச் சாராமல்</strong>. அப்பாவி முறையில் தலைவரின் சுமை (N − 1)S; ring-இல் ஒவ்வொருவரின் சுமையும் 2S-க்குக் கீழே.</li>
+</ul>
+<h2 id="நர-மதர-bandwidth-மறறம-latency">நேர மாதிரி: bandwidth மற்றும் latency<a class="anchor" href="#%e0%ae%a8%e0%ae%b0-%e0%ae%ae%e0%ae%a4%e0%ae%b0-bandwidth-%e0%ae%ae%e0%ae%b1%e0%ae%b1%e0%ae%ae-latency">#</a></h2>
+<p>ஒவ்வொரு படிக்கும் ஒரு நிலையான தொடக்கச் செலவு α (மென்பொருள், switch, கம்பித் தாமதம்) உண்டு. Ring all-reduce நேரம் தோராயமாக:</p>
+<p><strong>T ≈ 2(N − 1)/N × S/B + 2(N − 1) × α</strong></p>
+<p><strong>எடுத்துக்காட்டு மதிப்புகள்:</strong> N = 1,024 GPU-கள், S = 2 GB, ஒவ்வொரு இணைப்பும் B = 50 GB/s, α = 5 µs.</p>
+<ol>
+<li>Bandwidth பகுதி: 2 × 1,023 ÷ 1,024 × 2 ÷ 50 ≈ <strong>0.080 s</strong></li>
+<li>Latency பகுதி: 2 × 1,023 × 5 µs ≈ <strong>0.010 s</strong></li>
+</ol>
+<p>பெரிய செய்திகளுக்கு bandwidth ஆதிக்கம் செலுத்துகிறது. ஆனால் S சிறியதானால் (எ.கா. 2 MB → bandwidth பகுதி 0.08 ms) latency பகுதி (10 ms) முழுவதும் ஆதிக்கம் செலுத்துகிறது — 2,046 படிகள் மிக அதிகம். அதனால் tree (மர) அடிப்படையிலான algorithm-கள்: படிகள் ≈ log₂ N — 1,024 GPU-களுக்கு 10 மட்டுமே. நடைமுறை நூலகங்கள் செய்தியின் அளவைப் பொறுத்து வடிவத்தைத் தேர்கின்றன. ஆங்கிலப் பதிவு சொல்வதுபோல்: &ldquo;ring அல்லது tree algorithm-கள் physical wiring-ஐ உணர்கின்றன&rdquo;.</p>
+<h2 id="fat-tree-மறறம-oversubscription-எணகளல">Fat-tree மற்றும் oversubscription, எண்களில்<a class="anchor" href="#fat-tree-%e0%ae%ae%e0%ae%b1%e0%ae%b1%e0%ae%ae-oversubscription-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%b2">#</a></h2>
+<p><strong>Leaf switch எடுத்துக்காட்டு மதிப்புகள்:</strong> 32 server-களை நோக்கி 32 port-கள், spine-ஐ நோக்கி 16 port-கள், ஒவ்வொன்றும் 400 Gb/s.</p>
+<ul>
+<li>கீழ்நோக்கி: 32 × 400 = 12,800 Gb/s</li>
+<li>மேல்நோக்கி: 16 × 400 = 6,400 Gb/s</li>
+<li>Oversubscription = 12,800 ÷ 6,400 = <strong>2 : 1</strong></li>
+</ul>
+<p>எல்லா 32 server-களும் ஒரே நேரத்தில் வேறு leaf-களில் உள்ள server-களுடன் பேசினால் (பயிற்சியின் all-reduce சரியாக அப்படித்தான்), ஒவ்வொருவருக்கும் 400 Gb/s-க்குப் பதிலாக 200 Gb/s மட்டுமே. மேலே உள்ள நேர மாதிரியில் B பாதியானால் bandwidth பகுதி இரட்டிப்பாகிறது — GPU-கள் மாறாமலே.</p>
+<p><strong>Non-oversubscribed fat-tree:</strong> Al-Fares, Loukissas, Vahdat (SIGCOMM 2008) விவரித்த மூன்றடுக்கு fat-tree-இல், k port-கள் கொண்ட ஒரே மாதிரியான switch-களால் k³/4 server-களை முழு bisection bandwidth உடன் இணைக்கலாம்.</p>
+<ul>
+<li>k = 64: 64³ ÷ 4 = 2,62,144 ÷ 4 = <strong>65,536 server-கள்</strong>, 5k²/4 = 5,120 switch-கள்</li>
+</ul>
+<p><strong>Rail-optimized:</strong> 8 GPU-கள் கொண்ட server-களில், ஒவ்வொரு server-இன் GPU 0-உம் &ldquo;rail 0&rdquo; switch-உடன், GPU 1-கள் அனைத்தும் &ldquo;rail 1&rdquo; switch-உடன்… என்று இணைப்பது. பெரிய பயிற்சி வேலைகளில் ஒரே index கொண்ட GPU-கள் அடிக்கடி ஒன்றாகத் தொடர்பு கொள்வதால், அவற்றின் போக்குவரத்து ஒரே switch hop-இல் முடிகிறது; spine வரை ஏற வேண்டிய போக்குவரத்து குறைகிறது. பொதுவான data center போக்குவரத்துக்கு அல்ல — பயிற்சியின் தொடர்பு வடிவத்துக்கு ஏற்ப வடிவமைத்தது.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<p>(பயிற்சிகளில் புதிதாக வரும் உள்ளீட்டு எண்கள், மூலத்துடன் குறிக்கப்பட்டவை தவிர, எடுத்துக்காட்டு மதிப்புகள்.)</p>
+<ol>
+<li>N = 4 GPU-கள், S = 8 GB. Ring all-reduce-இல் ஒவ்வொரு GPU-வும் அனுப்புவது? அப்பாவி முறையில் தலைவர் பெறுவது?
+<em>விடை:</em> 2 × 3 ÷ 4 × 8 = 12 GB; தலைவர் (4 − 1) × 8 = 24 GB பெறுகிறார் (மேலும் 24 GB அனுப்புகிறார்).</li>
+<li>N = 256, S = 1 GB, B = 25 GB/s, α = 10 µs. Ring நேரம்?
+<em>விடை:</em> 2 × 255 ÷ 256 × 1 ÷ 25 ≈ 0.0797 s; 2 × 255 × 10 µs = 5.1 ms; மொத்தம் ≈ 0.085 s.</li>
+<li>Leaf switch: 48 கீழ்நோக்கிய port-கள் 100 Gb/s, 8 மேல்நோக்கிய port-கள் 400 Gb/s. Oversubscription?
+<em>விடை:</em> 4,800 ÷ 3,200 = 1.5 : 1.</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>கூட்டுத் தொடர்பு</td>
+					<td>collective communication</td>
+			</tr>
+			<tr>
+					<td>குறை / ஒலிபரப்பு</td>
+					<td>reduce / broadcast</td>
+			</tr>
+			<tr>
+					<td>அனைத்தும்-குறை</td>
+					<td>all-reduce</td>
+			</tr>
+			<tr>
+					<td>குறைத்துச் சிதறடி / அனைத்தும்-சேர்</td>
+					<td>reduce-scatter / all-gather</td>
+			</tr>
+			<tr>
+					<td>வளையம் / மரம்</td>
+					<td>ring / tree</td>
+			</tr>
+			<tr>
+					<td>துண்டு</td>
+					<td>chunk</td>
+			</tr>
+			<tr>
+					<td>இணைப்பி (இலை / முதுகெலும்பு)</td>
+					<td>switch (leaf / spine)</td>
+			</tr>
+			<tr>
+					<td>வலையமைப்பு வடிவம்</td>
+					<td>topology</td>
+			</tr>
+			<tr>
+					<td>கொழுத்த மரம்</td>
+					<td>fat-tree</td>
+			</tr>
+			<tr>
+					<td>இருகூறு அலைக்கற்றை</td>
+					<td>bisection bandwidth</td>
+			</tr>
+			<tr>
+					<td>மிகைச் சந்தா</td>
+					<td>oversubscription</td>
+			</tr>
+			<tr>
+					<td>தண்டவாள-உகந்த வடிவமைப்பு</td>
+					<td>rail-optimized design</td>
+			</tr>
+			<tr>
+					<td>தொடக்கச் செலவு (தாமதம்)</td>
+					<td>per-message latency (α)</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Datacenter&#43;%E0%AE%85%E0%AE%B3%E0%AE%B5%E0%AE%BF%E0%AE%B2%E0%AF%8D&#43;Interconnect&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F61-interconnect-at-datacenter-scale%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F61-interconnect-at-datacenter-scale.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F61-interconnect-at-datacenter-scale.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/60-sparsity-in-hardware/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>வன்பொருளில் Sparsity</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/62-where-it-s-headed/" class="flex align-center">
+        <span>அது எங்கே போகிறது</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#naive-wiring-அளவடத">Naive Wiring அளவிடாது</a></li>
+    <li><a href="#fat-tree-பயறசககச-சரசயயபபடடத">Fat-Tree, பயிற்சிக்குச் சரிசெய்யப்பட்டது</a></li>
+    <li><a href="#all-reduce-கடடபபடததம-pattern">All-Reduce கட்டுப்படுத்தும் Pattern</a></li>
+    <li><a href="#topology-spec-sheets-ஐ-வலலலம">Topology Spec Sheets-ஐ வெல்லலாம்</a></li>
+    <li><a href="#ஏன-எலலரயம-எலலரடனம-இணகக-மடயத">ஏன் &ldquo;எல்லோரையும் எல்லோருடனும்&rdquo; இணைக்க முடியாது</a></li>
+    <li><a href="#அபபவ-all-reduce-ஒரவரடம-சர">அப்பாவி all-reduce: ஒருவரிடம் சேர்</a></li>
+    <li><a href="#ring-all-reduce-மனற-gpu-களடன-படபபடயக">Ring all-reduce: மூன்று GPU-களுடன் படிப்படியாக</a></li>
+    <li><a href="#நர-மதர-bandwidth-மறறம-latency">நேர மாதிரி: bandwidth மற்றும் latency</a></li>
+    <li><a href="#fat-tree-மறறம-oversubscription-எணகளல">Fat-tree மற்றும் oversubscription, எண்களில்</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

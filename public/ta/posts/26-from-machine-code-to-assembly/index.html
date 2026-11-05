@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CPU ஓட்டுவது raw binary — assembly முதல் வாசிப்புத்திறன் அடுக்கு, இன்னும் mnemonic ஒன்றுக்கு ஒரு அறிவுறுத்தல்">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/26-from-machine-code-to-assembly/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Machine Code-இலிருந்து Assembly வரை">
+	<meta property="og:description" content="CPU ஓட்டுவது raw binary — assembly முதல் வாசிப்புத்திறன் அடுக்கு, இன்னும் mnemonic ஒன்றுக்கு ஒரு அறிவுறுத்தல்">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:48:08+05:30">
+
+
+	<meta itemprop="name" content="Machine Code-இலிருந்து Assembly வரை">
+	<meta itemprop="description" content="CPU ஓட்டுவது raw binary — assembly முதல் வாசிப்புத்திறன் அடுக்கு, இன்னும் mnemonic ஒன்றுக்கு ஒரு அறிவுறுத்தல்">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:48:08+05:30">
+	<meta itemprop="wordCount" content="1118">
+
+<title>Machine Code-இலிருந்து Assembly வரை • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/26-from-machine-code-to-assembly/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/26-from-machine-code-to-assembly/" title="From Machine Code to Assembly">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/26-from-machine-code-to-assembly/" title="จากรหัสเครื่องสู่ Assembly">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/26-from-machine-code-to-assembly/" title="යන්ත්‍ර කේතයේ සිට Assembly දක්වා">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/26-from-machine-code-to-assembly/" title="De la codul mașină la limbajul de asamblare">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/26-from-machine-code-to-assembly/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="active">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Machine Code-இலிருந்து Assembly வரை</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#assembly-உணமயல-எனன">Assembly உண்மையில் என்ன</a></li>
+    <li><a href="#ஒனறகக-ஒனற-ஒர-அடடவணயல">ஒன்றுக்கு ஒன்று: ஒரு அட்டவணையில்</a></li>
+    <li><a href="#assembler-இன-வல">Assembler-இன் வேலை</a></li>
+    <li><a href="#கயல-assemble-சயவம-label-களடன-ஒர-loop">கையால் assemble செய்வோம்: label-களுடன் ஒரு loop</a></li>
+    <li><a href="#label-இலலமல-ஒர-வர-சரததல">Label இல்லாமல் ஒரு வரி சேர்த்தால்</a></li>
+    <li><a href="#இத-ஏன-நடகக-வணடயரநதத">இது ஏன் நடக்க வேண்டியிருந்தது</a></li>
+    <li><a href="#assembly-இனனம-எஙக-மககயம">Assembly இன்னும் எங்கே முக்கியம்</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Machine Code-இலிருந்து Assembly வரை
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Phase 3-இன் ஒவ்வொரு அறிவுறுத்தலும் — datapath, pipeline, ISA — இறுதியில் raw binary ஆக உள்ளது: வன்பொருள் நேரடியாக decode செய்யும் பிட் வடிவங்கள். யாரும் அளவில் அவ்வாறு நிரல்களை எழுதுவதில்லை. Assembly அந்த binary மேல் முதல் abstraction. அது வாங்குவது — மற்றும் <em>மாற்றாதது</em> — மென்பொருள் வரலாற்றில் கீழ்நிலை எல்லாவற்றிற்கும் முக்கியம்.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> எந்திரமொழி (machine code), சில்லுமொழி (assembly) பற்றித் தமிழில் அறிமுக அளவிலான எழுத்து உண்டு (கீழே மேலும் படிக்க); காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. ஒரு நிரலைக் கையால் assemble செய்வது, label-களை assembler எப்படித் தீர்க்கிறது, label இல்லாமல் ஒரு வரியைச் சேர்த்தால் என்ன உடையும் — இவை படிப்படியாக விளக்கப்பட்டதாகத் தெரியவில்லை. இங்கே உள்ள எல்லா mini-CPU நிரல்களும் lab-இன் மூலக் குறியீட்டுக்கு எதிராகவும் அதன் simulator-இல் ஓட்டியும் சரிபார்க்கப்பட்டவை; x86 குறியாக்கம் capstone disassembler மூலம்.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>எந்திரமொழி (machine code):</strong> CPU நேரடியாக decode செய்யும் பிட் வடிவங்கள் — எ.கா. <code>0101 0011</code>.</li>
+<li><strong>சில்லுமொழி (assembly language):</strong> அதே instruction-களுக்கு மனிதர் படிக்கக்கூடிய பெயர்கள் — எ.கா. <code>LDI 3</code>. ஒரு வரி = ஒரு machine instruction.</li>
+<li><strong>Mnemonic (நினைவுக்குறி):</strong> opcode-க்கான சுருக்கப் பெயர் (<code>LDI</code>, <code>ADD</code>, <code>JMP</code>).</li>
+<li><strong>Assembler (சில்லுமொழி பெயர்ப்பி):</strong> assembly உரையை machine code ஆக மாற்றும் நிரல்.</li>
+<li><strong>Label (குறிப்பெயர்):</strong> ஒரு முகவரிக்கு வைக்கும் பெயர் (<code>loop</code>, <code>end</code>); assembler அதை எண்ணாக மாற்றும்.</li>
+<li><strong>Symbol table (குறியீட்டு அட்டவணை):</strong> ஒவ்வொரு label-க்கும் அதன் முகவரி — assembler-இன் முதல் சுற்று கட்டும் அட்டவணை.</li>
+<li><strong>Two-pass assembler (இரு-சுற்று):</strong> முதல் சுற்றில் label முகவரிகளைக் கண்டுபிடித்து, இரண்டாம் சுற்றில் குறியாக்கும் assembler.</li>
+<li><strong>Disassembler:</strong> எதிர்த்திசை — machine code-ஐ மீண்டும் assembly ஆகப் படிக்கும் கருவி.</li>
+</ul>
+<h2 id="assembly-உணமயல-எனன">Assembly உண்மையில் என்ன<a class="anchor" href="#assembly-%e0%ae%89%e0%ae%a3%e0%ae%ae%e0%ae%af%e0%ae%b2-%e0%ae%8e%e0%ae%a9%e0%ae%a9">#</a></h2>
+<p>Assembly ஒவ்வொரு அறிவுறுத்தலுக்கும் மனிதர் வாசிக்கக்கூடிய mnemonic கொடுக்கிறது — <code>ADD</code>, <code>LDA</code>, <code>JMP</code> — machine-code பிட் வடிவத்துடன் ஒன்றுக்கு ஒன்று பொருந்தும். பதிவு 27-இன் மொழிகள் போல் அது &ldquo;உயர்நிலை&rdquo; அல்ல; அடிப்படை வன்பொருள் ops மேல் abstraction இல்லை. ஒவ்வொரு assembly அறிவுறுத்தலும் சரியாக ஒரே machine அறிவுறுத்தலுக்கு வரைபடமாகிறது. நீங்கள் பெறுவது <em>வாசிப்புத்திறன்</em> மற்றும் <em>குறியீட்டு குறிப்பு</em>: opcode <code>0101</code>-ஐ நினைவில் வைப்பதற்குப் பதிலாக <code>LDI</code> எழுதுங்கள்; முழு assembler-இல், label எழுதி அதுவே jump இலக்கைக் கணக்கிடட்டும் — byte முகவரிகளைக் கையால் மீண்டும் கணக்கிடாமல். (Mini-CPU lab-இன் சிறிய assembler-இல் label-கள் இல்லை; அங்கே முகவரிகளை நீங்களே எழுத வேண்டும்.)</p>
+<h2 id="ஒனறகக-ஒனற-ஒர-அடடவணயல">ஒன்றுக்கு ஒன்று: ஒரு அட்டவணையில்<a class="anchor" href="#%e0%ae%92%e0%ae%a9%e0%ae%b1%e0%ae%95%e0%ae%95-%e0%ae%92%e0%ae%a9%e0%ae%b1-%e0%ae%92%e0%ae%b0-%e0%ae%85%e0%ae%9f%e0%ae%9f%e0%ae%b5%e0%ae%a3%e0%ae%af%e0%ae%b2">#</a></h2>
+<p>Mini-CPU-இன் வழிகாட்டும் நிரல், மூன்று வடிவங்களில் (lab மூலக் குறியீட்டின் குறியாக்க விதி: opcode × 16 + operand):</p>
+<table>
+	<thead>
+			<tr>
+					<th>முகவரி</th>
+					<th>Assembly</th>
+					<th>இருமம்</th>
+					<th>Hex</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>LDI 5</td>
+					<td>0101 0101</td>
+					<td>55</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>STA 14</td>
+					<td>0100 1110</td>
+					<td>4E</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>LDI 8</td>
+					<td>0101 1000</td>
+					<td>58</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>ADD 14</td>
+					<td>0010 1110</td>
+					<td>2E</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>STA 15</td>
+					<td>0100 1111</td>
+					<td>4F</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>LDA 15</td>
+					<td>0001 1111</td>
+					<td>1F</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>OUT</td>
+					<td>1110 0000</td>
+					<td>E0</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>HLT</td>
+					<td>1111 0000</td>
+					<td>F0</td>
+			</tr>
+	</tbody>
+</table>
+<p>எட்டு வரிகள் → எட்டு byte-கள். எதுவும் சேர்க்கப்படவில்லை, எதுவும் மறுசீரமைக்கப்படவில்லை. Assembly-க்கு முன் நிரலாளர் நடு நெடுவரிசையை (அல்லது hex-ஐ) நேரடியாக உள்ளிட்டார்.</p>
+<p><strong>உண்மையான ISA-விலும் அதே உறவு.</strong> x86-64-இல் <code>add eax, ebx</code> ↔ byte-கள் <code>01 D8</code>; disassembler <code>01 D8</code>-ஐப் படித்து மீண்டும் <code>add eax, ebx</code> என்று தருகிறது (capstone சரிபார்த்தது). பதிவு 11-இல் பார்த்ததுபோல் x86 instruction-களின் நீளம் மாறும், ஆனால் ஒவ்வொரு assembly வரியும் இன்னும் சரியாக ஒரு machine instruction.</p>
+<h2 id="assembler-இன-வல">Assembler-இன் வேலை<a class="anchor" href="#assembler-%e0%ae%87%e0%ae%a9-%e0%ae%b5%e0%ae%b2">#</a></h2>
+<p>Assembler assembly உரையை machine code-ஆக மொழிபெயர்க்கிறது — labels-ஐ முகவரிகளாகத் தீர்த்தல், mnemonics-ஐ opcode பிட்களாக, operands-ஐ ISA-இன் encoding புலங்களில் பொதித்தல் (பதிவு 11). இயந்திரவியல், பெரும்பாலும் ஒன்றுக்கு ஒன்று. ஆழமான அர்த்தத்தில் எதுவும் மேம்படுத்தப்படவோ மறுகட்டமைக்கப்படவோ இல்லை — முழு compiler (பதிவு 28) உயர்நிலை மொழியுடன் செய்வதைப் போல் அல்ல.</p>
+<h2 id="கயல-assemble-சயவம-label-களடன-ஒர-loop">கையால் assemble செய்வோம்: label-களுடன் ஒரு loop<a class="anchor" href="#%e0%ae%95%e0%ae%af%e0%ae%b2-assemble-%e0%ae%9a%e0%ae%af%e0%ae%b5%e0%ae%ae-label-%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9-%e0%ae%92%e0%ae%b0-loop">#</a></h2>
+<p>3-இலிருந்து 0 வரை எண்ணி ஒவ்வொரு எண்ணையும் Output-க்கு அனுப்பும் நிரல். <code>loop</code>, <code>end</code> label-கள், <code>ONE</code> என்ற மாறிலி முகவரி:</p>
+<pre tabindex="0"><code>        LDI 1
+        STA ONE      ; mem[ONE] = 1
+        LDI 3        ; A = 3
+loop:   OUT          ; Output ← A
+        SUB ONE      ; A = A − 1
+        JZ  end      ; A = 0 என்றால் முடி
+        JMP loop
+end:    OUT
+        HLT</code></pre><p><strong>சுற்று 1 — முகவரிகளை எண்ணுதல்.</strong> ஒவ்வொரு instruction-உம் ஒரு word என்பதால் வரிசை எண்ணே முகவரி:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Label</th>
+					<th>முகவரி</th>
+					<th>ஏன்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>loop</td>
+					<td>3</td>
+					<td>நான்காவது instruction (0, 1, 2, <strong>3</strong>)</td>
+			</tr>
+			<tr>
+					<td>end</td>
+					<td>7</td>
+					<td>எட்டாவது instruction</td>
+			</tr>
+			<tr>
+					<td>ONE</td>
+					<td>15</td>
+					<td>தரவுக்காக நாம் தேர்ந்த கடைசி நினைவக word (நிரல் 0–8 மட்டும் பயன்படுத்துகிறது)</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>சுற்று 2 — குறியாக்குதல்.</strong> Label-களை எண்களால் மாற்றி, opcode × 16 + operand:</p>
+<table>
+	<thead>
+			<tr>
+					<th>முகவரி</th>
+					<th>Assembly (label தீர்த்த பின்)</th>
+					<th>Hex</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>LDI 1</td>
+					<td>5 × 16 + 1 = 81 = <strong>51</strong></td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>STA 15</td>
+					<td><strong>4F</strong></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>LDI 3</td>
+					<td><strong>53</strong></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>OUT</td>
+					<td><strong>E0</strong></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>SUB 15</td>
+					<td><strong>3F</strong></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>JZ 7</td>
+					<td><strong>87</strong></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>JMP 3</td>
+					<td><strong>63</strong></td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>OUT</td>
+					<td><strong>E0</strong></td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>HLT</td>
+					<td><strong>F0</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>ஓட்டம் (simulator-இல் சரிபார்த்தது):</strong> 16 படிகள். Output 3 → 2 → 1 → 0 என மாறுகிறது; A = 0 ஆனதும் SUB zero கொடியை 1 ஆக்குகிறது, JZ 7-க்குத் தாவுகிறது, கடைசி OUT 0-ஐ அனுப்பி HLT.</p>
+<h2 id="label-இலலமல-ஒர-வர-சரததல">Label இல்லாமல் ஒரு வரி சேர்த்தால்<a class="anchor" href="#label-%e0%ae%87%e0%ae%b2%e0%ae%b2%e0%ae%ae%e0%ae%b2-%e0%ae%92%e0%ae%b0-%e0%ae%b5%e0%ae%b0-%e0%ae%9a%e0%ae%b0%e0%ae%a4%e0%ae%a4%e0%ae%b2">#</a></h2>
+<p>இப்போது நிரலின் தொடக்கத்தில் ஒரு <code>NOP</code> சேர்க்கிறோம் என்று வைத்துக்கொள்வோம். எல்லா instruction-களும் ஒரு முகவரி கீழே நகர்கின்றன: <code>loop</code> 3 → 4, <code>end</code> 7 → 8.</p>
+<ul>
+<li><strong>Label-களுடன்:</strong> assembler சுற்று 1-ஐ மீண்டும் ஓட்டி புதிய முகவரிகளைத் தானே கணிக்கிறது. நீங்கள் எதையும் மாற்ற வேண்டாம்.</li>
+<li><strong>கையால் எழுதிய எண்களுடன் (<code>JZ 7</code>, <code>JMP 3</code> அப்படியே விட்டால்):</strong> simulator-இல் ஓட்டியபோது <code>JMP 3</code> இப்போது <code>LDI 3</code>-இல் இறங்குகிறது → A மீண்டும் 3 → நிரல் <strong>முடிவில்லாமல் சுற்றுகிறது</strong>, Output 3-இலேயே நிற்கிறது (simulator 500 படி வரம்பில் நிறுத்தியது).</li>
+<li><strong>சரியான கைத்திருத்தம்:</strong> <code>JZ 8</code>, <code>JMP 4</code> — இரண்டு வரிகளையும் தேடிக் கண்டுபிடித்துத் திருத்த வேண்டும். 9 வரி நிரலில் இரண்டு; ஆயிரம் வரி நிரலில் நூற்றுக்கணக்கான தாவல்கள்.</li>
+</ul>
+<p>ஆங்கிலப் பதிவு சொல்லும் &ldquo;குறியீட்டு label-கள் மட்டுமே மாற்றம் தந்தன&rdquo; என்பது இதுதான்.</p>
+<h2 id="இத-ஏன-நடகக-வணடயரநதத">இது ஏன் நடக்க வேண்டியிருந்தது<a class="anchor" href="#%e0%ae%87%e0%ae%a4-%e0%ae%8f%e0%ae%a9-%e0%ae%a8%e0%ae%9f%e0%ae%95%e0%ae%95-%e0%ae%b5%e0%ae%a3%e0%ae%9f%e0%ae%af%e0%ae%b0%e0%ae%a8%e0%ae%a4%e0%ae%a4">#</a></h2>
+<p>Assembly-க்கு முன், நிரலாக்கம் binary அல்லது சிறந்த நிலையில் raw hex அல்லது octal opcodes உள்ளீடு செய்வதாக இருந்தது — அற்ப நிரல்களுக்கு அப்பால் கையாள முடியாதது, அளவில் debug அல்லது மாற்ற கிட்டத்தட்ட இயலாதது. குறியீட்டு labels மட்டும் மாற்றும் தன்மை கொண்டவை: ஒரு அறிவுறுத்தலைச் செருகுங்கள் அல்லது அகற்றுங்கள், ஒவ்வொரு jump-ஐயும் கையால் மீண்டும் கணக்கிட வேண்டாம் — assembler கணிதத்தைச் செய்கிறது.</p>
+<h2 id="assembly-இனனம-எஙக-மககயம">Assembly இன்னும் எங்கே முக்கியம்<a class="anchor" href="#assembly-%e0%ae%87%e0%ae%a9%e0%ae%a9%e0%ae%ae-%e0%ae%8e%e0%ae%99%e0%ae%95-%e0%ae%ae%e0%ae%95%e0%ae%95%e0%ae%af%e0%ae%ae">#</a></h2>
+<p>நவீன மென்பொருள் மிகைப் பெரும்பாலும் உயர்நிலை மொழிகளில் எழுதப்பட்டு பதிவு 28-இன் pipeline வழியாகத் தொகுக்கப்படுகிறது. Assembly மறைந்துவிடவில்லை. பொறியாளர்கள் இன்னும் compiler சரியாக என்ன உருவாக்கியது என்பதைப் புரிந்துகொள்ள அதற்கு இறங்குகிறார்கள் (hot loops, பாதுகாப்பு ஆய்வு, reverse engineering), அல்லது மிகக் குறைந்த அடுக்குகளை எழுத — boot குறியீடு, interrupt handlers, kernel-இன் பாகங்கள் — அறிவுறுத்தல்-நிலை கட்டுப்பாடு தேவைப்படும் இடத்தில் உயர் abstractions மறைக்கும் அல்லது தடுக்கும்.</p>
+<p><strong>இப்போது முயல்க.</strong> கீழே உள்ள mini-CPU lab தொடரில் மிக நேரடி hands-on இணைப்பு: வழிகாட்டும் நிரலை Assemble செய்து, பிறகு Step — ஒவ்வொரு mnemonic-உம் (<code>LDI</code>, <code>ADD</code>, <code>STA</code>, <code>OUT</code>) opcode பிட்களுக்கு ஒன்றுக்கு ஒன்று வரைபடமாகிறது, இந்தப் பதிவு விவரிப்பது போலவே. அதை விட abstraction இல்லை.</p>
+<p><strong>இப்போது முயல்க: assembler-ஆக நீங்களே இருங்கள்.</strong> இந்த lab-இன் assembler label-களை ஏற்காது — mnemonic, 0–15 எண் மட்டும் (lab மூலக் குறியீடு). அதனால் சுற்று 1, 2-ஐ நீங்கள் செய்ய வேண்டும்:</p>
+<ol>
+<li>மேலே &ldquo;சுற்று 2&rdquo; அட்டவணையின் ஒன்பது வரிகளை (label தீர்த்த வடிவம்: <code>LDI 1</code>, <code>STA 15</code>, <code>LDI 3</code>, <code>OUT</code>, <code>SUB 15</code>, <code>JZ 7</code>, <code>JMP 3</code>, <code>OUT</code>, <code>HLT</code>) மூல உரைப் பெட்டியில் எழுதி <strong>Assemble</strong> அழுத்துங்கள். நினைவக grid ஒவ்வொரு byte-ஐயும் மீண்டும் mnemonic ஆகக் காட்டும் (&ldquo;0: LDI 1&rdquo;, &ldquo;5: JZ 7&rdquo; …) — அது ஒரு சிறிய disassembler. Step செய்யும்போது IR பெட்டியில் hex வடிவம் தெரியும்: 51 4F 53 E0 3F 87 63 …</li>
+<li><strong>Step</strong>-ஐ அழுத்திக்கொண்டே இருங்கள்: Output Register 3, 2, 1, 0 என மாறி, 16-ஆவது படியில் HALT.</li>
+<li>இப்போது முதல் வரியாக <code>NOP</code> சேர்த்து, மற்றதை மாற்றாமல் Assemble செய்து <strong>Run</strong> அழுத்துங்கள்: நிரல் நிற்காது, Output 3-இலேயே இருக்கும். <strong>Stop</strong> அழுத்துங்கள்.</li>
+<li><code>JZ 7</code> → <code>JZ 8</code>, <code>JMP 3</code> → <code>JMP 4</code> எனத் திருத்தி மீண்டும் Assemble, Run: இப்போது 17 படிகளில் HALT, Output 0. இந்தத் திருத்தத்தைத்தான் ஒரு assembler label-களிலிருந்து தானாகச் செய்கிறது.</li>
+</ol>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=ta"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>எந்திரமொழி</td>
+					<td>machine code / machine language</td>
+			</tr>
+			<tr>
+					<td>சில்லுமொழி</td>
+					<td>assembly language</td>
+			</tr>
+			<tr>
+					<td>சில்லுமொழி பெயர்ப்பி</td>
+					<td>assembler</td>
+			</tr>
+			<tr>
+					<td>நினைவுக்குறி</td>
+					<td>mnemonic</td>
+			</tr>
+			<tr>
+					<td>குறிப்பெயர்</td>
+					<td>label</td>
+			</tr>
+			<tr>
+					<td>குறியீட்டு அட்டவணை</td>
+					<td>symbol table</td>
+			</tr>
+			<tr>
+					<td>இரு-சுற்று assembler</td>
+					<td>two-pass assembler</td>
+			</tr>
+			<tr>
+					<td>எதிர்ப்பெயர்ப்பி</td>
+					<td>disassembler</td>
+			</tr>
+			<tr>
+					<td>மாறிலி</td>
+					<td>constant</td>
+			</tr>
+			<tr>
+					<td>நிபந்தனைத் தாவல்</td>
+					<td>conditional jump / branch</td>
+			</tr>
+			<tr>
+					<td>முடிவிலாச் சுற்று</td>
+					<td>infinite loop</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ் இணையக் கல்விக்கழகம் (Tamil Virtual Academy), பாடம் 5.4: கணினிமொழி மென்பொருள் (எந்திரமொழி, சில்லுமொழி / assembly, சில்லுமொழி பெயர்ப்பி / assembler — அறிமுகம்)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/91bfcb84741aa7b3bde9e54c3dadb5e799d4e597" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Machine&#43;Code-%E0%AE%87%E0%AE%B2%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%A8%E0%AF%8D%E0%AE%A4%E0%AF%81&#43;Assembly&#43;%E0%AE%B5%E0%AE%B0%E0%AF%88&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F26-from-machine-code-to-assembly%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F26-from-machine-code-to-assembly.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F26-from-machine-code-to-assembly.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Containers மற்றும் நவீன OS Isolation</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="flex align-center">
+        <span>உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#assembly-உணமயல-எனன">Assembly உண்மையில் என்ன</a></li>
+    <li><a href="#ஒனறகக-ஒனற-ஒர-அடடவணயல">ஒன்றுக்கு ஒன்று: ஒரு அட்டவணையில்</a></li>
+    <li><a href="#assembler-இன-வல">Assembler-இன் வேலை</a></li>
+    <li><a href="#கயல-assemble-சயவம-label-களடன-ஒர-loop">கையால் assemble செய்வோம்: label-களுடன் ஒரு loop</a></li>
+    <li><a href="#label-இலலமல-ஒர-வர-சரததல">Label இல்லாமல் ஒரு வரி சேர்த்தால்</a></li>
+    <li><a href="#இத-ஏன-நடகக-வணடயரநதத">இது ஏன் நடக்க வேண்டியிருந்தது</a></li>
+    <li><a href="#assembly-இனனம-எஙக-மககயம">Assembly இன்னும் எங்கே முக்கியம்</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

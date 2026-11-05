@@ -1,0 +1,71 @@
+
+    Generate and display the Fibonacci series
+    along with the ratio between successive terms
+    
+N006    30      . Number of terms to compute
+    
+N000    0       . Constant zero
+N005    1       . Constant 1
+    
+    Current and next terms
+N001    0       . Previous term
+N002    1       . Current term
+
+    Working variables
+ N003           . Temporary for next term
+N004    0       . Iteration count
+ N007           . n−2 term for ratio
+
+A write in columns
+
+(?
+A write numbers as 9
+
++
+L002    . temp = current + previous
+P       . Print current term while it's on the Mill axis
+L001
+S003
+
+L001    . n−2 = previous
+L000
+S007
+
+L002    . previous = next
+L000
+S001
+
+L003    . current = temp
+L000
+S002
+
+A write annotation  
+
+−       . don't print ratio for first term
+L004
+L005
+
+{?
+÷
+L001    . Compute and print running ratio
+<10
+L007
+S003'
+A write numbers as 9.9999999999
+P
+}
+
+A write new line
+
++
+L004    . Increment iteration count
+L005
+S004
+
+−
+L004    . Test if number of iterations reached
+L006
+)
+
+A write timing
+H

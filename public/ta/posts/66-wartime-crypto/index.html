@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Enigma, Bletchley மற்றும் Colossus — cipher-களை உடைப்பது ஏன் மின்னணுக் கணினியைக் கட்டாயப்படுத்தியது">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/66-wartime-crypto/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="போர்க்கால Crypto">
+	<meta property="og:description" content="Enigma, Bletchley மற்றும் Colossus — cipher-களை உடைப்பது ஏன் மின்னணுக் கணினியைக் கட்டாயப்படுத்தியது">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-06T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="போர்க்கால Crypto">
+	<meta itemprop="description" content="Enigma, Bletchley மற்றும் Colossus — cipher-களை உடைப்பது ஏன் மின்னணுக் கணினியைக் கட்டாயப்படுத்தியது">
+	<meta itemprop="datePublished" content="2026-09-06T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1851">
+
+<title>போர்க்கால Crypto • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/66-wartime-crypto/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/66-wartime-crypto/" title="Wartime Crypto">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/66-wartime-crypto/" title="รหัสลับยามสงคราม">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/66-wartime-crypto/" title="යුද්ධකාලීන Crypto">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/66-wartime-crypto/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/66-wartime-crypto/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/66-wartime-crypto/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="active">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>போர்க்கால Crypto</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#enigma-நகரம-இலகக">Enigma நகரும் இலக்கு</a></li>
+    <li><a href="#rotor-நகரவ--ஒர-மழ-எடததககடட">Rotor நகர்வு — ஒரு முழு எடுத்துக்காட்டு</a></li>
+    <li><a href="#bombe-ஏன-தட-வணடயரநதத--எணகளல">Bombe ஏன் தேட வேண்டியிருந்தது — எண்களில்</a></li>
+    <li><a href="#colossus-workload-உலகததத-தணடயபத">Colossus: Workload உலோகத்தைத் தாண்டியபோது</a></li>
+    <li><a href="#tunny--கடடல-எனறல-எனன">Tunny — &ldquo;கூட்டல்&rdquo; என்றால் என்ன</a></li>
+    <li><a href="#transistor-வதததறக-மன-இத-ஏன-சரகறத">Transistor வாதத்திற்கு முன் இது ஏன் சேர்கிறது</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    போர்க்கால Crypto
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>செப்டம்பர் 6, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>பதிவுகள் 01–02 gears மற்றும் relays தானியங்கிக் கணினி சாத்தியம் என நிரூபித்ததைக் காட்டுகின்றன. போர் அந்தச் சாத்தியத்தை <em>அவசரமாக்கியது</em>: cipher போக்கு எந்த மனித அறையும் படிக்கக்கூடியதை விட வேகமாக வந்தது, மற்றும் தொடரக்கூடிய இயந்திரங்கள் கணினியை மின்னியந்திரத்திலிருந்து மின்னணுவியலுக்கு இழுத்தன.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> gaps.md மதிப்பீடு: Enigma — தமிழ் எழுத்து இல்லை, காணொளி குறைவு; Bletchley / Turing — எழுத்து போதுமானது, காணொளி குறைவு; Colossus — எழுத்து இல்லை, காணொளி குறைவு (காணொளித் தேடல்: YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை). அதனால் இந்தச் சேர்க்கை Enigma-வின் rotor நகர்வையும் Colossus செய்த எண்ணுதலையும் முதல் கொள்கைகளிலிருந்து, கணக்குகளுடன் காட்டுகிறது. சரிபார்த்த மூலங்கள்: Crypto Museum-இன் &ldquo;Enigma wiring&rdquo;, &ldquo;Enigma I&rdquo;, &ldquo;Lorenz SZ-40/42&rdquo; பக்கங்கள்; The National Museum of Computing (TNMOC)-இன் Colossus பக்கம்; B. Jack Copeland, &ldquo;Colossus: Breaking the German &lsquo;Tunny&rsquo; Code at Bletchley Park&rdquo; (<em>The Rutherford Journal</em>, தொகுதி 3). Enigma எடுத்துக்காட்டு Python-இல் ஒரு சிறு simulator மூலம் சரிபார்க்கப்பட்டது. இந்தப் பதிவுக்கு lab இல்லை; காகிதப் பயிற்சிகள் கீழே.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Rotor (சுழலி):</strong> இரு பக்கமும் 26 தொடர்புகள், உள்ளே குழப்பமான கம்பி இணைப்பு — ஒரு எழுத்தை இன்னொன்றாக மாற்றும் வட்டு.</li>
+<li><strong>Substitution (பதிலீடு):</strong> ஒவ்வொரு எழுத்தையும் இன்னொரு எழுத்தால் மாற்றுதல்; Enigma-வில் இந்த அட்டவணை ஒவ்வொரு விசை அழுத்தத்திலும் மாறுகிறது.</li>
+<li><strong>Reflector / UKW (பிரதிபலிப்பான்):</strong> மின்னோட்டத்தை rotor-கள் வழியே திருப்பி அனுப்பும் நிலையான வட்டு.</li>
+<li><strong>Plugboard / Steckerbrett (இணைப்புப் பலகை):</strong> எழுத்துகளை ஜோடி ஜோடியாக மாற்றும் கம்பிகள்.</li>
+<li><strong>Turnover / notch (திருப்புப் புள்ளி):</strong> வலது rotor இந்த நிலையைக் கடக்கும்போது இடது பக்க rotor ஒரு படி நகர்கிறது.</li>
+<li><strong>Keystream (சாவி ஓடை):</strong> செய்தியுடன் எழுத்துக்கு எழுத்து &ldquo;கூட்டப்படும்&rdquo; இயந்திரம் உருவாக்கிய எழுத்து வரிசை (Tunny).</li>
+<li><strong>Delta (Δ, மாற்ற ஓடை):</strong> அடுத்தடுத்த இரு எழுத்துகளைக் கூட்டுவது — மாறினால் cross, மாறாவிட்டால் dot.</li>
+</ul>
+<p>இது <strong>workload-ஆக இரகசியம்</strong> மற்றும் பதிவு 03-இன் வெற்றிடக் குழாய் இயந்திரங்களுக்கு இடையேயான இணைப்புத் திசு — போரின் இரண்டாவது வரலாறு அல்ல.</p>
+<h2 id="enigma-நகரம-இலகக">Enigma நகரும் இலக்கு<a class="anchor" href="#enigma-%e0%ae%a8%e0%ae%95%e0%ae%b0%e0%ae%ae-%e0%ae%87%e0%ae%b2%e0%ae%95%e0%ae%95">#</a></h2>
+<p>ஜெர்மன் Enigma குடும்பம் நீங்கள் தட்டச்சு செய்யும்போது படிப்படியாக நகரும் rotors-உடன் செயல்பாட்டுப் போக்கை மறையாக்கியது, எனவே மாற்று ஒவ்வொரு எழுத்திலும் மாறியது. ஒரு செய்தியை உடைத்ததால் அடுத்த நாளின் செய்திகள் இலவசமாகத் திறந்துவிடவில்லை. போருக்கு முன், போலந்து Cipher Bureau கணிதவியலாளர்கள் — Marian Rejewski, Jerzy Różycki மற்றும் Henryk Zygalski உடன் — வரையறுக்கப்பட்ட இடைமறிப்புகள் மற்றும் ஆவணங்களிலிருந்து Enigma-வின் உள் wiring-ஐ மறுகட்டமைத்து, அந்த அடித்தளத்தை பிரிட்டிஷ் மற்றும் பிரெஞ்சுக்குப் பகிர்ந்தனர். Door out: Rejewski-இன் சொந்தக் கணக்குகள் மற்றும் அருங்காட்சியகங்கள்/காப்பகங்கள் வைத்திருக்கும் போலந்து–நட்பு நாடு பரிமாற்ற வரலாறுகள், Wikipedia paraphrase அல்ல.</p>
+<h2 id="rotor-நகரவ--ஒர-மழ-எடததககடட">Rotor நகர்வு — ஒரு முழு எடுத்துக்காட்டு<a class="anchor" href="#rotor-%e0%ae%a8%e0%ae%95%e0%ae%b0%e0%ae%b5--%e0%ae%92%e0%ae%b0-%e0%ae%ae%e0%ae%b4-%e0%ae%8e%e0%ae%9f%e0%ae%a4%e0%ae%a4%e0%ae%95%e0%ae%95%e0%ae%9f%e0%ae%9f">#</a></h2>
+<p>Crypto Museum தரும் Enigma I (இராணுவ / விமானப்படை இயந்திரம்) கம்பி இணைப்பு, rotor I, II, III மற்றும் reflector UKW-B:</p>
+<table>
+	<thead>
+			<tr>
+					<th>வட்டு</th>
+					<th>ABCDEFGHIJKLMNOPQRSTUVWXYZ →</th>
+					<th>Turnover</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>I</td>
+					<td>EKMFLGDQVZNTOWYHXUSPAIBRCJ</td>
+					<td>Q</td>
+			</tr>
+			<tr>
+					<td>II</td>
+					<td>AJDKSIRUXBLHWTMCQGZNPYFVOE</td>
+					<td>E</td>
+			</tr>
+			<tr>
+					<td>III</td>
+					<td>BDFHJLCPRTXVZNYEIWGAKMUSQO</td>
+					<td>V</td>
+			</tr>
+			<tr>
+					<td>UKW-B</td>
+					<td>YRUHQSLDPXNGOKMIEBFZCWVJAT</td>
+					<td>—</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>படி 1 — முதலில் நகர்வு, பிறகு மின்னோட்டம்.</strong> Crypto Museum: ஒவ்வொரு விசை அழுத்தத்திலும் வலது rotor ஒரு படி நகர்கிறது; அது ஒரு முழுச் சுற்று முடித்ததும் இடதுபுற rotor ஒரு படி நகர்கிறது — காரின் odometer போல. ஆக rotor-கள் I-II-III (இடமிருந்து வலம்), ring அமைப்பு A, தொடக்க நிலை AAA என்றால், முதல் விசை அழுத்தத்தில் நிலை AAB ஆகிறது; அதன் பிறகுதான் மின்னோட்டம் பாய்கிறது.</p>
+<p><strong>படி 2 — A-ஐ அழுத்துதல் (நிலை AAB; plugboard கம்பிகள் இல்லை).</strong> Rotor ஒரு படி நகர்ந்திருந்தால், உள்ளீட்டை அந்த அளவு முன்னகர்த்தி, கம்பி அட்டவணையைப் பார்த்து, வெளியீட்டை அதே அளவு பின்னகர்த்த வேண்டும்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>கட்டம்</th>
+					<th>கணக்கு</th>
+					<th>முடிவு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>III (நிலை B = 1 படி)</td>
+					<td>A + 1 = B; III[B] = D; D − 1</td>
+					<td><strong>C</strong></td>
+			</tr>
+			<tr>
+					<td>II (நிலை A)</td>
+					<td>II[C]</td>
+					<td><strong>D</strong></td>
+			</tr>
+			<tr>
+					<td>I (நிலை A)</td>
+					<td>I[D]</td>
+					<td><strong>F</strong></td>
+			</tr>
+			<tr>
+					<td>UKW-B</td>
+					<td>UKW[F]</td>
+					<td><strong>S</strong></td>
+			</tr>
+			<tr>
+					<td>I, பின்னோக்கு</td>
+					<td>I-இல் எந்த எழுத்து S-ஆக மாறுகிறது? S</td>
+					<td><strong>S</strong></td>
+			</tr>
+			<tr>
+					<td>II, பின்னோக்கு</td>
+					<td>II-இல் S-ஆக மாறுவது E</td>
+					<td><strong>E</strong></td>
+			</tr>
+			<tr>
+					<td>III, பின்னோக்கு (நிலை B)</td>
+					<td>E + 1 = F; III-இல் F-ஆக மாறுவது C; C − 1</td>
+					<td><strong>B</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>A → <strong>B</strong>. தொடர்ந்து A-ஐ அழுத்தினால் (AAC, AAD, AAE, AAF நிலைகள்): <strong>B D Z G O</strong> — ஒரே எழுத்து ஒவ்வொரு முறையும் வேறு எழுத்தாகிறது. பதிவு சொல்லும் &ldquo;நகரும் இலக்கு&rdquo; இதுதான். எங்கள் Python simulator இதே BDZGO-வைத் தருகிறது; BDZGO-வை அதே அமைப்பில் தட்டினால் AAAAA திரும்ப வருகிறது — reflector இருப்பதால் குறியாக்கமும் குறிவிலக்கமும் ஒரே செயல்.</p>
+<p><strong>படி 3 — ஒரு பலவீனம், கம்பியிலிருந்தே.</strong> UKW-B அட்டவணையில் எந்த எழுத்தும் தன்னிடமே செல்வதில்லை (A → Y, Y → A, …; 13 ஜோடிகள்). மின்னோட்டம் அதே பாதையில் திரும்ப முடியாததால், Enigma <strong>எந்த எழுத்தையும் அதுவாகவே ஒருபோதும் குறியாக்குவதில்லை</strong> — ciphertext-இல் உள்ள ஒவ்வொரு எழுத்தும் &ldquo;இந்த இடத்தில் plaintext இந்த எழுத்து அல்ல&rdquo; என்று சொல்கிறது.</p>
+<p><strong>படி 4 — double stepping.</strong> Middle rotor தன் turnover நிலைக்கு வந்தால், அடுத்த அழுத்தத்தில் அது தானும் நகர்ந்து இடது rotor-ஐயும் நகர்த்துகிறது (David Hamer 1997-இல் விவரித்த &ldquo;double stepping anomaly&rdquo; என்று Crypto Museum குறிப்பிடுகிறது). I-II-III, தொடக்கம் ADU:</p>
+<table>
+	<thead>
+			<tr>
+					<th>அழுத்தம்</th>
+					<th>முன்</th>
+					<th>பின்</th>
+					<th>ஏன்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>ADU</td>
+					<td>ADV</td>
+					<td>வலது மட்டும்</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>ADV</td>
+					<td>AEW</td>
+					<td>வலது V-இல் (III turnover) → middle நகர்கிறது</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>AEW</td>
+					<td>BFX</td>
+					<td>middle E-இல் (II turnover) → middle மீண்டும், இடதும் நகர்கின்றன</td>
+			</tr>
+	</tbody>
+</table>
+<p>Middle rotor இரண்டு அடுத்தடுத்த அழுத்தங்களில் நகர்ந்தது (D → E → F).</p>
+<p>Bletchley Park-இல், Alan Turing (Hut 8) மற்றும் சகாக்கள் அந்தக் கணித உடைப்பைத் தொழில்துறைத் தேடலாக மாற்றினர்: பிரிட்டிஷ் Bombe (முக்கிய வடிவமைப்பு மேம்பாடுகளில் Gordon Welchman-இன் diagonal board உடன்) Enigma அமைப்புகளை மின்னியந்திர சாத்திய-வெளித் தேடலாக ஓட்டியது. Relays மற்றும் drums <em>வேட்டையாட</em> முடிந்தது. பின்னர் teleprinter cipher-கள் கோரிய வேகத்தில் ciphertext எண்ண முடியவில்லை.</p>
+<h2 id="bombe-ஏன-தட-வணடயரநதத--எணகளல">Bombe ஏன் தேட வேண்டியிருந்தது — எண்களில்<a class="anchor" href="#bombe-%e0%ae%8f%e0%ae%a9-%e0%ae%a4%e0%ae%9f-%e0%ae%b5%e0%ae%a3%e0%ae%9f%e0%ae%af%e0%ae%b0%e0%ae%a8%e0%ae%a4%e0%ae%a4--%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3%e0%ae%b2">#</a></h2>
+<p>Crypto Museum-இன் Enigma I விவரம்: 5 rotor-களில் 3 இயந்திரத்தில் — வரிசைகள் 5 × 4 × 3 = <strong>60</strong> (15 டிசம்பர் 1938-க்கு முன் 3 × 2 × 1 = 6); plugboard-இல் அதிகபட்சம் 13 கம்பிகள், ஆனால் நடைமுறையில் பொதுவாக <strong>10</strong>.</p>
+<table>
+	<thead>
+			<tr>
+					<th>கூறு</th>
+					<th>கணக்கு</th>
+					<th>எண்ணிக்கை</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Rotor வரிசை</td>
+					<td>5 × 4 × 3</td>
+					<td>60</td>
+			</tr>
+			<tr>
+					<td>தொடக்க நிலைகள்</td>
+					<td>26 × 26 × 26</td>
+					<td>17,576</td>
+			</tr>
+			<tr>
+					<td>Plugboard, 10 கம்பிகள்</td>
+					<td>26! ÷ (6! × 10! × 2¹⁰)</td>
+					<td>150,738,274,937,250</td>
+			</tr>
+			<tr>
+					<td>மொத்தம் (ring அமைப்புகளைச் சேர்க்காமல்)</td>
+					<td>60 × 17,576 × 150,738,274,937,250</td>
+					<td>≈ <strong>1.59 × 10²⁰</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>Plugboard சூத்திரம்: 26 எழுத்துகளை வரிசைப்படுத்தி (26!), கம்பியில்லாத 6 எழுத்துகளின் வரிசையையும் (6!), 10 ஜோடிகளின் வரிசையையும் (10!), ஒவ்வொரு ஜோடிக்குள்ளும் இரு முனைகளின் வரிசையையும் (2¹⁰) வகுத்தல். Plugboard தான் மிகப் பெரிய பங்களிப்பு — Crypto Museum-உம் அதையே சொல்கிறது. அதே பக்கம்: plugboard ஜோடிகளின் இருதிசைத் தன்மையை (A↔Z என்றால் Z↔A) Gordon Welchman Bombe மேம்பாட்டில் பயன்படுத்தினார். Crypto Museum-இன் சொற்களில் அது Steckerbrett-ஐ &ldquo;சமன்பாட்டிலிருந்தே&rdquo; நடைமுறையில் நீக்கியது. அப்படியானால் மின்னியந்திரத் தேடலுக்கு எஞ்சுவது rotor வரிசைகள் × நிலைகள் = 60 × 17,576 = <strong>1,054,560</strong> — 10²⁰-ஐ விட மிகச் சிறியது, ஆனாலும் கையால் முடியாத அளவு.</p>
+<h2 id="colossus-workload-உலகததத-தணடயபத">Colossus: Workload உலோகத்தைத் தாண்டியபோது<a class="anchor" href="#colossus-workload-%e0%ae%89%e0%ae%b2%e0%ae%95%e0%ae%a4%e0%ae%a4%e0%ae%a4-%e0%ae%a4%e0%ae%a3%e0%ae%9f%e0%ae%af%e0%ae%aa%e0%ae%a4">#</a></h2>
+<p>Lorenz teleprinter cipher-கள் (&ldquo;Tunny&rdquo;) வேறு பிரச்சினையை உருவாக்கின: மின்னணு வேகத்தில் புள்ளியியல் தாக்குதல் தேவைப்படும் நீண்ட ஓடைகள். Max Newman அந்தத் தாக்குதலைச் சுற்றி Newmanry-ஐ ஒழுங்குபடுத்தினார். Tommy Flowers, தொலைபேசி மாறுதலில் ஏற்கனவே வெற்றிடக் குழாய்களை நம்பிய Post Office பொறியாளர், <strong>Colossus</strong>-ஐக் கட்டினார் (முதல் இயந்திரம் 1944 ஜனவரியில் Bletchley Park-க்கு வந்து, 5 பிப்ரவரி 1944 அன்று முதல் செய்தியைத் தாக்கியது — Copeland மேற்கோள் காட்டும் Flowers-இன் நாட்குறிப்பும் Crypto Museum-உம் வருகையை 18 ஜனவரி 1944 எனத் தருகின்றன; TNMOC: 1943 டிசம்பர் இறுதி / 1944 ஜனவரியில் வருகை, 1944 பிப்ரவரி தொடக்கத்தில் இயக்கம்; Mark II 1944 ஜூனிலிருந்து) — காகித நாடா படித்து உடைக்கக்கூடிய அமைப்புகளை நோக்கி எண்ணும் குழாய்களின் racks.</p>
+<h2 id="tunny--கடடல-எனறல-எனன">Tunny — &ldquo;கூட்டல்&rdquo; என்றால் என்ன<a class="anchor" href="#tunny--%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%b2-%e0%ae%8e%e0%ae%a9%e0%ae%b1%e0%ae%b2-%e0%ae%8e%e0%ae%a9%e0%ae%a9">#</a></h2>
+<p>Copeland விளக்குவது: teleprinter குறியீட்டில் ஒவ்வொரு எழுத்தும் ஐந்து துடிப்பு / இடைவெளி — Bletchley குறியீட்டில் cross (x) = துடிப்பு, dot (•) = இல்லை. Tunny இயந்திரம் plaintext-இன் ஒவ்வொரு எழுத்துடனும் சாவி ஓடையின் ஒரு எழுத்தைக் &ldquo;கூட்டியது&rdquo;: • + • = •, x + x = •, x + • = x — இன்றைய XOR. அதே சாவியை மீண்டும் கூட்டினால் plaintext திரும்பும்.</p>
+<table>
+	<thead>
+			<tr>
+					<th>எழுத்து</th>
+					<th>துடிப்புகள் 1–5</th>
+					<th>bits</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>C</td>
+					<td>• x x x •</td>
+					<td>01110</td>
+			</tr>
+			<tr>
+					<td>W (சாவி)</td>
+					<td>x x • • x</td>
+					<td>11001</td>
+			</tr>
+			<tr>
+					<td>C + W</td>
+					<td>x • x x x</td>
+					<td>10111 = <strong>X</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>Copeland-இன் எடுத்துக்காட்டில் COLOSSUS + WZHI/NR9 = XDIVSDFE; முதல் எழுத்து X — மேலே உள்ள கணக்குடன் பொருந்துகிறது. (O + Z: 00011 ⊕ 10001 = 10010 = D — இரண்டாம் எழுத்து.)</p>
+<p><strong>சாவி எங்கிருந்து.</strong> பன்னிரண்டு சக்கரங்கள்: ஐந்து chi, ஐந்து psi, இரண்டு motor; சாவி = chi ஓடை + psi ஓடை. Chi சக்கரங்களின் cam எண்ணிக்கை 41, 31, 29, 26, 23 (Copeland). ஒவ்வொரு chi-யும் தன் நீளத்துக்குப் பிறகு திரும்பத் திரும்ப வருகிறது; ஐந்தும் சேர்ந்து மீண்டும் அதே நிலைக்கு வர 41 × 31 × 29 × 26 × 23 = <strong>22,041,682</strong> படிகள் (இவை ஜோடி ஜோடியாகப் பொதுக் காரணி இல்லாதவை: 41, 31, 29, 23 பகா எண்கள், 26 = 2 × 13).</p>
+<p><strong>Colossus என்ன எண்ணியது.</strong> Bill Tutte-இன் &ldquo;1 + 2&rdquo; முறை (Copeland): psi சக்கரங்கள் சில நேரங்களில் அசையாமல் நிற்பதால், முதல் இரு துடிப்புகளின் psi பங்களிப்பின் delta சுமார் 70% dot; plaintext-இன் அதே delta சுமார் 60% dot. இரண்டும் சேர்ந்து, chi1, chi2-இன் சரியான தொடக்க நிலையில் ciphertext-இன் delta-வும் chi-யின் delta-வும் சுமார் <strong>55%</strong> ஒத்துப்போகின்றன — தவறான நிலையில் சீரற்ற ஒப்பீடு போலச் சுமார் 50% (எங்கள் விளக்கம்). ஆக:</p>
+<ul>
+<li>chi1 × chi2 நிலைகள்: 41 × 31 = <strong>1,271</strong> வேட்பாளர்கள்;</li>
+<li>ஒவ்வொன்றுக்கும் முழு message tape-ஐ ஓட்டி, ஒத்துப்போகும் இடங்களை எண்ணுதல்.</li>
+</ul>
+<p><strong>வேகம் ஏன் முக்கியம் (எளிய மாதிரி).</strong> Copeland-இன் விளக்க எடுத்துக்காட்டைப் போல 10,000 எழுத்து ciphertext. Prototype Colossus சுமார் 1,600 valves-உடன் வினாடிக்கு 5,000 எழுத்துகள்; பிந்தைய மாதிரிகள் சுமார் 2,400 valves-உடன் ஐந்து ஓடைகளை இணையாகச் செயலாக்கி வினாடிக்கு 25,000 எழுத்துகள் (Copeland; TNMOC 2,500 valves என்கிறது). அதற்கு முந்தைய Heath Robinson இரண்டு காகித நாடாக்களை வினாடிக்கு 1,000 எழுத்து வேகத்தில் ஓட்டியது (Copeland அதிகபட்ச வேகத்தை வினாடிக்கு 2,000 எழுத்து என்கிறார்) — அந்த வேகத்தில் நாடாக்கள் நீண்டு ஒத்திசைவு கடினமானது (Crypto Museum).</p>
+<table>
+	<thead>
+			<tr>
+					<th>இயந்திரம்</th>
+					<th>வேகம்</th>
+					<th>ஒரு வேட்பாளர் (10,000 ÷ வேகம்)</th>
+					<th>1,271 வேட்பாளர்கள்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Heath Robinson</td>
+					<td>1,000 / s (Crypto Museum)</td>
+					<td>10 s</td>
+					<td>12,710 s ≈ <strong>3.5 மணி</strong></td>
+			</tr>
+			<tr>
+					<td>Colossus prototype</td>
+					<td>5,000 / s</td>
+					<td>2 s</td>
+					<td>2,542 s ≈ <strong>42 நிமிடம்</strong></td>
+			</tr>
+			<tr>
+					<td>பிந்தைய Colossus</td>
+					<td>25,000 / s</td>
+					<td>0.4 s</td>
+					<td>508 s ≈ <strong>8.5 நிமிடம்</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>(நாடாவைச் சுற்றும் நேரம், மற்ற chi சக்கரங்கள், மனிதச் சரிபார்ப்பு ஆகியவற்றைப் புறக்கணித்த கணக்கு.) Colossus chi ஓடையை மின்னணு முறையில் தானே உருவாக்கியதால் ஒரே நாடா போதுமானது — ஒத்திசைவுப் பிரச்சினை மறைந்தது (Copeland).</p>
+<p><strong>TNMOC-இன் எண்கள்.</strong> Tommy Flowers, Dollis Hill-இல் பதினொரு மாதங்களில் வடிவமைத்துக் கட்டினார்; Colossus Mk 1 1943 டிசம்பர் இறுதி / 1944 ஜனவரியில் Bletchley Park-க்கு வந்து, 1944 பிப்ரவரி தொடக்கத்தில் வேலை செய்தது. போர் முடிவில் 550 பேர், பத்து Colossus கணினிகளின் உதவியுடன், 6.3 கோடி (63 மில்லியன்) எழுத்துகள் அளவிலான உயர்நிலை ஜெர்மன் தகவல்தொடர்புகளைக் குறிவிலக்கியிருந்தனர்.</p>
+<p>கட்டுப்பாட்டைப் பெயரிடுங்கள், புராணத்தை அல்ல: Colossus சிறப்பு-நோக்கு cryptanalytic மின்னணுவியல், பொது stored-program கணினி அல்ல. அது <em>கட்டாயப்படுத்தியது</em> பெரிய எண்ணிக்கையிலான குழாய்களை அந்த workload-இல் எந்த relay பண்ணையையும் வெல்லும் போதிய நம்பக இயந்திரமாகக் கம்பி இணைக்க முடியும் என்பதன் நிரூபணம். அது பதிவு 03 unpack செய்யும் அதே இயற்பியல் பந்தயம் — சுவிட்சில் நகரும் தொடர்புகள் இல்லை — அமைதிக்கால ஆராய்ச்சி ஓய்வுக்குப் பதிலாகப் போர்க்கால அழுத்தத்தின் கீழ்.</p>
+<p>Door out: <a href="https://www.tnmoc.org/">The National Museum of Computing</a> (Colossus rebuild மற்றும் முதன்மைப் பொருள்); அறிவார்ந்த Colossus இலக்கியத்தில் Tommy Flowers மற்றும் Max Newman (எ.கா. Copeland-இன் தொகுக்கப்பட்ட வரலாறுகள்); Enigma/Bombe-க்கு Bletchley Park-இன் சொந்தக் காப்பக வழிகாட்டிகள்.</p>
+<h2 id="transistor-வதததறக-மன-இத-ஏன-சரகறத">Transistor வாதத்திற்கு முன் இது ஏன் சேர்கிறது<a class="anchor" href="#transistor-%e0%ae%b5%e0%ae%a4%e0%ae%a4%e0%ae%a4%e0%ae%b1%e0%ae%95-%e0%ae%ae%e0%ae%a9-%e0%ae%87%e0%ae%a4-%e0%ae%8f%e0%ae%a9-%e0%ae%9a%e0%ae%b0%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>Spine-ஐ முன்னோக்கிப் படியுங்கள்:</p>
+<ul>
+<li><strong>பதிவு 02</strong> — relays இரும தர்க்கத்தை நிரூபிக்கின்றன மற்றும் நகரும் உலோகம் மிக மெதுவானதும் என நிரூபிக்கின்றன.</li>
+<li><strong>இந்தப் பதிவு</strong> — உண்மையான workload (cipher தேடல் மற்றும் ஓடை எண்ணல்) &ldquo;மிக மெதுவானது&rdquo; செயல்பாட்டளவில் ஏற்றுக்கொள்ள முடியாததாக்குகிறது.</li>
+<li><strong>பதிவு 03</strong> — குழாய்கள் இயந்திர இயக்கத்தை அகற்றுகின்றன; ENIAC-அளவு இயந்திரங்கள் வெவ்வேறு நிரல்களின் கீழ் மின்னணுச் சுவிட்சைப் பெறுகின்றன.</li>
+<li><strong>பதிவு 04</strong> — குழாய்கள் பிறகு <em>தன்</em> கூரையைத் தாக்கும் (வெப்பம், ஆற்றல், தோல்வி), அதனால்தான் டிரான்சிஸ்டர் நடக்க வேண்டியிருந்தது.</li>
+</ul>
+<p>போர்க்கால crypto கணினியைக் கண்டுபிடிக்கவில்லை. அது நூற்றாண்டின் கடினமான தகவல் பிரச்சினைகளில் ஒன்றுக்கு மின்னியந்திரத்திலிருந்து மின்னணுவியலுக்குத் தாவலை <em>விருப்பமல்லாததாக்கியது</em> — மற்றும் வேலையைச் செய்த பெயரிடப்பட்ட மக்களின் பாதையை விட்டுச் சென்றது. விருப்பப் பக்கப் பாதை; முக்கிய பயணம் பதிவு 03-இல் தொடர்கிறது.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<ol>
+<li>
+<p><strong>மேலே உள்ள அட்டவணைகளை மட்டும் பயன்படுத்தி: நிலை AAA-இல் (நகர்வைப் புறக்கணித்து) rotor III மட்டும் A-ஐ எதுவாக மாற்றும்? நிலை AAB-இல்?</strong>
+விடை: AAA: III[A] = <strong>B</strong>. AAB: A + 1 = B; III[B] = D; D − 1 = <strong>C</strong> (மேலே உள்ள அட்டவணையின் முதல் வரி).</p>
+</li>
+<li>
+<p><strong>I-II-III, தொடக்கம் AAU. மூன்று அழுத்தங்களுக்குப் பிறகு நிலைகள்?</strong>
+விடை: AAV → ABW (U→V; பிறகு V-இலிருந்து நகரும்போது middle நகர்கிறது) → ABX. வரிசை: <strong>AAV, ABW, ABX</strong>. (Middle B, II-இன் turnover E அல்ல — double step இல்லை.)</p>
+</li>
+<li>
+<p><strong>1938-க்கு முன் 3 rotor-கள் மட்டும்: rotor வரிசைகள் × தொடக்க நிலைகள்?</strong>
+விடை: 6 × 17,576 = <strong>105,456</strong>.</p>
+</li>
+<li>
+<p><strong>Plugboard-இல் 10, 11, 13 கம்பிகள் — எது அதிக அமைப்புகள் தரும்?</strong>
+விடை: சூத்திரம் 26! ÷ ((26 − 2p)! × p! × 2ᵖ): p = 10 → 150,738,274,937,250; p = 11 → <strong>205,552,193,096,250</strong>; p = 13 → 7,905,853,580,625. அதிகபட்சம் <strong>11</strong>-இல்; 13 கம்பிகள் 10-ஐ விடக் குறைவு.</p>
+</li>
+<li>
+<p><strong>Teleprinter குறியீட்டில் M = ••xxx, N = ••xx•. M + N? பிறகு (M + N) + N?</strong>
+விடை: 00111 ⊕ 00110 = 00001 = ••••x = <strong>T</strong> (Copeland-இன் அட்டவணை). T + N = 00001 ⊕ 00110 = 00111 = <strong>M</strong> — அதே சாவியை மீண்டும் கூட்டினால் திரும்பக் கிடைக்கும்.</p>
+</li>
+<li>
+<p><strong>chi1, chi2 மட்டும் தேட 1,271 வேட்பாளர்கள். 5,000 எழுத்து ciphertext, வினாடிக்கு 5,000 எழுத்து (நீளம் எடுத்துக்காட்டு மதிப்பு). மொத்த நேரம் (எளிய மாதிரி)?</strong>
+விடை: ஒரு வேட்பாளருக்கு 1 s; 1,271 s ≈ <strong>21 நிமிடம்</strong>.</p>
+</li>
+</ol>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>சுழலி</td>
+					<td>rotor</td>
+			</tr>
+			<tr>
+					<td>பதிலீடு</td>
+					<td>substitution</td>
+			</tr>
+			<tr>
+					<td>பிரதிபலிப்பான்</td>
+					<td>reflector (UKW)</td>
+			</tr>
+			<tr>
+					<td>இணைப்புப் பலகை</td>
+					<td>plugboard (Steckerbrett)</td>
+			</tr>
+			<tr>
+					<td>திருப்புப் புள்ளி</td>
+					<td>turnover / notch</td>
+			</tr>
+			<tr>
+					<td>இரட்டை நகர்வு</td>
+					<td>double stepping</td>
+			</tr>
+			<tr>
+					<td>சாத்திய வெளி</td>
+					<td>key space</td>
+			</tr>
+			<tr>
+					<td>சாவி ஓடை</td>
+					<td>keystream</td>
+			</tr>
+			<tr>
+					<td>மாற்ற ஓடை</td>
+					<td>delta stream</td>
+			</tr>
+			<tr>
+					<td>மறையாக்கப் பகுப்பாய்வு</td>
+					<td>cryptanalysis</td>
+			</tr>
+			<tr>
+					<td>வெற்றிடக் குழாய்</td>
+					<td>valve / vacuum tube</td>
+			</tr>
+			<tr>
+					<td>காகித நாடா</td>
+					<td>paper tape</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%AE%AA%E0%AF%8B%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BE%E0%AE%B2&#43;Crypto&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F66-wartime-crypto%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F66-wartime-crypto.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F66-wartime-crypto.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/64-who-decides-the-wire/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="flex align-center">
+        <span>தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#enigma-நகரம-இலகக">Enigma நகரும் இலக்கு</a></li>
+    <li><a href="#rotor-நகரவ--ஒர-மழ-எடததககடட">Rotor நகர்வு — ஒரு முழு எடுத்துக்காட்டு</a></li>
+    <li><a href="#bombe-ஏன-தட-வணடயரநதத--எணகளல">Bombe ஏன் தேட வேண்டியிருந்தது — எண்களில்</a></li>
+    <li><a href="#colossus-workload-உலகததத-தணடயபத">Colossus: Workload உலோகத்தைத் தாண்டியபோது</a></li>
+    <li><a href="#tunny--கடடல-எனறல-எனன">Tunny — &ldquo;கூட்டல்&rdquo; என்றால் என்ன</a></li>
+    <li><a href="#transistor-வதததறக-மன-இத-ஏன-சரகறத">Transistor வாதத்திற்கு முன் இது ஏன் சேர்கிறது</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

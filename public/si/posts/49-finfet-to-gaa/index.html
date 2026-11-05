@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Short-channel leakage planar shrink මැරුවේය — gate එක ඔතන්න (FinFET), පසුව එය සියලු අතට ඔතන්න (GAA)">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/49-finfet-to-gaa/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="FinFET සිට GAA දක්වා">
+	<meta property="og:description" content="Short-channel leakage planar shrink මැරුවේය — gate එක ඔතන්න (FinFET), පසුව එය සියලු අතට ඔතන්න (GAA)">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="FinFET සිට GAA දක්වා">
+	<meta itemprop="description" content="Short-channel leakage planar shrink මැරුවේය — gate එක ඔතන්න (FinFET), පසුව එය සියලු අතට ඔතන්න (GAA)">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1731">
+
+<title>FinFET සිට GAA දක්වා • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/49-finfet-to-gaa/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/49-finfet-to-gaa/" title="FinFET to GAA">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/49-finfet-to-gaa/" title="จาก FinFET ถึง GAA">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/49-finfet-to-gaa/" title="FinFET முதல் GAA வரை">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/49-finfet-to-gaa/" title="De la FinFET la GAA">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/49-finfet-to-gaa/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/49-finfet-to-gaa/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/49-finfet-to-gaa/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/49-finfet-to-gaa/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="active">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>FinFET සිට GAA දක්වා</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#short-channel-effects">Short-Channel Effects</a></li>
+    <li><a href="#finfet-පලනය-පත-තනක">FinFET: පාලනයේ පැති තුනක්</a></li>
+    <li><a href="#gate-all-around-පත-හතරක">Gate-All-Around: පැති හතරක්</a></li>
+    <li><a href="#නවත-නවත-එන-රටව">නැවත නැවත එන රටාව</a></li>
+    <li><a href="#ගඹරන-gate-එක-ඔතන-තරමට--fin-ජයමතය-sub-threshold-slope-සහ-nanosheet-පළල">ගැඹුරින්: Gate එක ඔතන තරමට — fin ජ්‍යාමිතිය, sub-threshold slope සහ nanosheet පළල</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-intel-22-nm-tri-gate-නල-අක">2. Intel 22 nm tri-gate: නිල අංක</a></li>
+        <li><a href="#3-fin-ජයමතය-එකම-බම-පරමණය-වඩ-පළලක">3. Fin ජ්‍යාමිතිය: එකම බිම් ප්‍රමාණයේ වැඩි පළලක්</a></li>
+        <li><a href="#4-nanosheet-පත-හතර-සහ-සසර-කළ-හක-පළල">4. Nanosheet: පැති හතර සහ සුසර කළ හැකි පළල</a></li>
+        <li><a href="#5-sub-threshold-slope-off-වම-කතරම-හඳද">5. Sub-threshold slope: &ldquo;off&rdquo; වීම කොතරම් හොඳද</a></li>
+        <li><a href="#6-gaa-නල-පරතඵල">6. GAA: නිල ප්‍රතිඵල</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    FinFET සිට GAA දක්වා
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>Post 6 planar MOSFET එක හඳුන්වා දුන්නේය — gate, source, drain සිලිකන් මත පැතලි. එම ජ්‍යාමිතිය දශක ගණනක් සේවය කළේය. ට්‍රාන්සිස්ටර හැකිලුණු විට (Post 48 හි lithography), planar නිර්මාණය තවදුරටත් හැකිලීම පමණක් නිවැරදි කළ නොහැකි බිත්තියකට ගැටුණේය: gate එක channel එකේ විශ්වාසනීය පාලනය අහිමි විය.</p>
+<h2 id="short-channel-effects">Short-Channel Effects<a class="anchor" href="#short-channel-effects">#</a></h2>
+<p>Planar channel length හැකිලෙන විට, channel ඉහත gate එකට (Post 6 හි විද්‍යුත්-ක්ෂේත්‍ර පාලනය) සමානුපාතිකව අඩු අධිකාරියක් ඇත, සහ උපාංගය off විය යුතු විට ධාරාව කාන්දු වේ. එය භෞතික විද්‍යාවයි, process bug එකක් නොවේ. යම් ලක්ෂ්‍යයකට පසු, <em>planar</em> ට්‍රාන්සිස්ටරයක් හැකිලීම පිරිසිදු switching ලබා දීම නවත්වයි — එබැවින් තවදුරටත් planar scaling වටිනා නොවේ.</p>
+<h2 id="finfet-පලනය-පත-තනක">FinFET: පාලනයේ පැති තුනක්<a class="anchor" href="#finfet-%e0%b6%b4%e0%b6%bd%e0%b6%b1%e0%b6%ba-%e0%b6%b4%e0%b6%ad-%e0%b6%ad%e0%b6%b1%e0%b6%9a">#</a></h2>
+<p>FinFET වෙනස් කරන්නේ ජ්‍යාමිතියයි, ප්‍රමාණය පමණක් නොවේ: channel එක තුනී සිරස් fin එකකට ඔසවා gate එක පැති තුනක් වටා ඔතන්න (ඉහළ සහ බිත්ති දෙකම). එකම channel length එකේදී channel හි වැඩි කොටසක් gate බලපෑම යටතේ රැඳේ, එය planar shrink මරා දැමූ short-channel leakage මර්දනය කරයි.</p>
+<p>කර්මාන්තය 2010 ගණන්වල මුල් භාගයේ පරිමාණයෙන් FinFET වෙත ගියේය (Intel හි 22 nm Ivy Bridge පරම්පරාව, 2011–2012, මුල් ඉහළ-පරිමාණ සන්ධිස්ථානයකි). Post 17 හි multicore හැරීම clock-speed බිත්තියට (Post 36) පසුව එකම රටාවයි: ප්‍රවේශයක් සැබෑ භෞතික උඩුකුරු සීමාවකට ගැටෙන විට, ව්‍යුහය වෙනස් කරන්න — පැරණි හැඩය තදින් තල්ලු කිරීම පමණක් නොකරන්න.</p>
+<h2 id="gate-all-around-පත-හතරක">Gate-All-Around: පැති හතරක්<a class="anchor" href="#gate-all-around-%e0%b6%b4%e0%b6%ad-%e0%b7%84%e0%b6%ad%e0%b6%bb%e0%b6%9a">#</a></h2>
+<p>පැති-තුන ඔතීම electrostatic උපරිමය නොවේ. Gate-all-around (GAA) — තිරස් nanosheet හෝ nanowire channels — gate එකට channel එක පැති හතරම වටා වට කිරීමට ඉඩ දෙයි. Leading-edge nodes (Post 47) FinFET එකම ප්‍රායෝගික සීමාවලට ළඟා වන විට එහිට යයි: එකම planar→FinFET චලනය, එක් ජ්‍යාමිතියකට පසුව.</p>
+<h2 id="නවත-නවත-එන-රටව">නැවත නැවත එන රටාව<a class="anchor" href="#%e0%b6%b1%e0%b7%80%e0%b6%ad-%e0%b6%b1%e0%b7%80%e0%b6%ad-%e0%b6%91%e0%b6%b1-%e0%b6%bb%e0%b6%a7%e0%b7%80">#</a></h2>
+<p>Planar → FinFET → GAA යනු මෙම මාලාවේ පරිමාණ පාඩම උපාංග ආකාරයෙනි. විද්‍යුත් බිත්ති (මෙහි short-channel effects), තාප බිත්ති (Post 36), latency බිත්ති (Post 35) සියල්ල අවසානයේ ගෘහ නිර්මාණය බල කරයි, එකම නිර්මාණයේ දැඩි උත්සාහය පමණක් නොවේ. Chiplets (Post 51) එම රටාව එක් මට්ටමක් ඉහළට යොදයි — ට්‍රාන්සිස්ටරයට නොව, සම්පූර්ණ චිප එකලස් වන ආකාරයට.</p>
+<h2 id="ගඹරන-gate-එක-ඔතන-තරමට--fin-ජයමතය-sub-threshold-slope-සහ-nanosheet-පළල">ගැඹුරින්: Gate එක ඔතන තරමට — fin ජ්‍යාමිතිය, sub-threshold slope සහ nanosheet පළල<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-gate-%e0%b6%91%e0%b6%9a-%e0%b6%94%e0%b6%ad%e0%b6%b1-%e0%b6%ad%e0%b6%bb%e0%b6%b8%e0%b6%a7--fin-%e0%b6%a2%e0%b6%ba%e0%b6%b8%e0%b6%ad%e0%b6%ba-sub-threshold-slope-%e0%b7%83%e0%b7%84-nanosheet-%e0%b6%b4%e0%b7%85%e0%b6%bd">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> ට්‍රාන්සිස්ටර සහ MOSFET මූලික කරුණු මෙම පොතේම සිංහලෙන් ඇත (Posts 05–06 බලන්න). එහෙත් FinFET, tri-gate හෝ gate-all-around (GAA) nanosheet ට්‍රාන්සිස්ටර ගැන සිංහල විකිපීඩියා ලිපියක්, පාඩමක් හෝ වීඩියෝවක් අපට හමු නොවීය (&ldquo;FinFET sinhala&rdquo;, &ldquo;transistor 3nm GAA sinhala&rdquo; සෙවුම්වලට අදාළ ප්‍රතිඵල නොලැබුණි). එබැවින් මෙම කොටස Intel, Samsung සහ IBM හි නිල ප්‍රකාශනවල අංක භාවිතා කර, ජ්‍යාමිතියෙන් මුල සිට ගණනය කරයි.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>නාලිකාව (channel):</strong> ට්‍රාන්සිස්ටරයේ source සහ drain අතර ධාරාව ගලන සිලිකන් කොටසයි.</li>
+<li><strong>Gate දිග (gate length):</strong> නාලිකාවේ දිග ඔස්සේ gate එකේ දිගයි.</li>
+<li><strong>කෙටි-නාලිකා ආචරණ (short-channel effects):</strong> gate දිග ඉතා කෙටි වූ විට drain එකේ විභවය නාලිකාව පාලනය කිරීමට පටන් ගැනීමයි. එවිට gate එක &ldquo;off&rdquo; වූ විටත් ධාරාව කාන්දු (leak) වේ.</li>
+<li><strong>Sub-threshold slope (S):</strong> ට්‍රාන්සිස්ටරය &ldquo;off&rdquo; කලාපයේ ඇති විට, ධාරාව 10 ගුණයකින් වෙනස් කිරීමට gate voltage එක කොපමණ වෙනස් කළ යුතුද යන්නයි (mV/decade). S කුඩා නම් (&ldquo;steeper&rdquo;), ට්‍රාන්සිස්ටරය වඩා හොඳින් &ldquo;off&rdquo; වේ.</li>
+<li><strong>සම්පූර්ණයෙන් ක්ෂය වූ (fully depleted):</strong> නාලිකාව ඉතා තුනී නිසා gate එකේ ක්ෂේත්‍රය සම්පූර්ණ සිලිකන් පරිමාව පුරා පාලනය කරන තත්ත්වයයි.</li>
+<li><strong>Fin:</strong> සිරස්ව නැගී සිටින සිලිකන් &ldquo;වරලකි&rdquo;. gate එක එහි පැති තුනම ආවරණය කරයි.</li>
+<li><strong>Nanosheet:</strong> තිරස්ව තට්ටු කර ඇති තුනී සිලිකන් පත්‍රයකි. gate එක එහි පැති හතරම වට කරයි (GAA).</li>
+<li><strong>ඵලදායී පළල (effective width, W_eff):</strong> gate එක ස්පර්ශ කරන නාලිකා පෘෂ්ඨයේ මුළු පළලයි. ධාරාව දළ වශයෙන් එයට සමානුපාතික වේ.</li>
+</ul>
+<h3 id="2-intel-22-nm-tri-gate-නල-අක">2. Intel 22 nm tri-gate: නිල අංක<a class="anchor" href="#2-intel-22-nm-tri-gate-%e0%b6%b1%e0%b6%bd-%e0%b6%85%e0%b6%9a">#</a></h3>
+<p>Intel 2011 මැයි මස නිකුත් කළ &ldquo;Intel&rsquo;s Revolutionary 22 nm Transistor Technology&rdquo; ඉදිරිපත් කිරීමේ (Mark Bohr සහ Kaizad Mistry) කරුණු:</p>
+<ul>
+<li>Tri-gate ට්‍රාන්සිස්ටර සිරස් fin එකක <strong>පැති තුනේ</strong> නාලිකා සාදයි. එමගින් &ldquo;fully depleted&rdquo; ක්‍රියාකාරිත්වය ලැබේ (slide 5).</li>
+<li>වැඩි ධාවන ශක්තියක් (drive strength) සඳහා <strong>fins කිහිපයක්</strong> එකට සම්බන්ධ කළ හැකිය (slides 6–7).</li>
+<li>වඩා බෑවුම් (steeper) sub-threshold slope එකක් නිසා කාන්දු ධාරාව අඩු වේ. නැතහොත් threshold voltage එක අඩු කර, අඩු වෝල්ටීයතාවකින් ක්‍රියා කළ හැකිය (slides 16–17).</li>
+<li>32 nm planar හා සසඳන විට, අඩු වෝල්ටීයතාවේදී gate delay එක <strong>37%</strong> කින් වේගවත්ය. ඉහළ වෝල්ටීයතාවේදී <strong>18%</strong> කින් වේගවත්ය (slide 20).</li>
+<li>එම කාර්ය සාධනයේදී වෝල්ට් <strong>0.2</strong> ක් අඩුවෙන් ක්‍රියා කළ හැකි නිසා ක්‍රියාකාරී බලය <strong>50% කට වඩා</strong> අඩු වේ (slide 21).</li>
+<li>ක්‍රියාවලි පිරිවැය එකතුව <strong>2–3%</strong> පමණි. extremely-thin SOI විකල්පය <strong>~10%</strong> ක් එකතු කරයි (slides 13–14).</li>
+</ul>
+<p><strong>Post 36 සූත්‍රය සමඟ (ආදර්ශ ගණනය):</strong> P ≈ C·V²·f. V = 1.0 V සිට 0.8 V දක්වා අඩු කළ විට V² = 0.64 වේ. එනම් වෝල්ටීයතාවෙන් පමණක් <strong>36%</strong> ක අඩු වීමක් ලැබේ. එහෙත් −0.2 V හි බලපෑම ආරම්භක වෝල්ටීයතාව මත රඳා පවතී: V = 0.7 V සිට 0.5 V දක්වා නම් (0.5 ÷ 0.7)² ≈ 0.51, එනම් <strong>49%</strong> ක අඩු වීමකි. ආරම්භක අගය අඩු වන තරමට −0.2 V හි බලපෑම වැඩිය. Intel slide එක දක්වන්නේ −0.2 V සහ &ldquo;&gt;50%&rdquo; පමණි. ආරම්භක වෝල්ටීයතාව හෝ &gt;50% හි සාධක බෙදීම එහි නැත. එබැවින් මෙම slide එකෙන් පමණක් ඉතිරිය කුමන සාධකයකින්දැයි නිගමනය කළ නොහැක. 1.0/0.8 V සහ 0.7/0.5 V අපේ ආදර්ශ අගයන් වේ.</p>
+<h3 id="3-fin-ජයමතය-එකම-බම-පරමණය-වඩ-පළලක">3. Fin ජ්‍යාමිතිය: එකම බිම් ප්‍රමාණයේ වැඩි පළලක්<a class="anchor" href="#3-fin-%e0%b6%a2%e0%b6%ba%e0%b6%b8%e0%b6%ad%e0%b6%ba-%e0%b6%91%e0%b6%9a%e0%b6%b8-%e0%b6%b6%e0%b6%b8-%e0%b6%b4%e0%b6%bb%e0%b6%b8%e0%b6%ab%e0%b6%ba-%e0%b7%80%e0%b6%a9-%e0%b6%b4%e0%b7%85%e0%b6%bd%e0%b6%9a">#</a></h3>
+<p>planar ට්‍රාන්සිස්ටරයක W_eff = බිම් පළල වේ. fin එකක gate එක පැති දෙකක් (උස H) සහ මුදුන (පළල W_fin) ආවරණය කරයි:</p>
+<p><strong>W_eff (fin එකට) = 2·H + W_fin</strong></p>
+<p>Kaizad Mistry ගේ Intel Technology and Manufacturing Day 2017 ඉදිරිපත් කිරීමෙන්:</p>
+<ul>
+<li>10 nm fin pitch = <strong>34 nm</strong>, fin උස = <strong>53 nm</strong> (slide 10).</li>
+<li>10 nm fins 14 nm ට වඩා &ldquo;~25% taller and ~25% more closely spaced&rdquo; (slide 9).</li>
+<li>14 nm fin pitch = <strong>42 nm</strong> (slide 6).</li>
+</ul>
+<p>එයින් 14 nm fin උස ≈ 53 ÷ 1.25 ≈ <strong>42 nm</strong> ලෙස අපි ව්‍යුත්පන්න කරමු. fin පළල Intel slides වල නැත. එබැවින් අපි <strong>W_fin = 7 nm</strong> ආදර්ශ අගයක් ලෙස ගනිමු.</p>
+<table>
+	<thead>
+			<tr>
+					<th>ක්‍රියාවලිය</th>
+					<th>fin pitch</th>
+					<th>H</th>
+					<th>W_eff = 2H + 7</th>
+					<th>pitch එකට W_eff (planar = 1)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>14 nm</td>
+					<td>42 nm</td>
+					<td>≈42 nm</td>
+					<td>91 nm</td>
+					<td>91 ÷ 42 ≈ <strong>2.2×</strong></td>
+			</tr>
+			<tr>
+					<td>10 nm</td>
+					<td>34 nm</td>
+					<td>53 nm</td>
+					<td>113 nm</td>
+					<td>113 ÷ 34 ≈ <strong>3.3×</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>fins උස් වූ සහ ළං වූ විට, එකම බිම් ප්‍රමාණයෙන් වැඩි ධාරාවක් ලැබේ. fin එක තුළ gate එක පැති තුනකින් පාලනය කරන නිසා කාන්දුවද අඩුය.</p>
+<p><strong>Fin ගණනේ ප්‍රමාණකරණය:</strong> fins සංඛ්‍යාව පූර්ණ සංඛ්‍යාවක් විය යුතුය (1, 2, 3 …). 10 nm හි fins 2 ක් = 226 nm, fins 3 ක් = 339 nm වේ. ඒ අතර අගයක් (&ldquo;fins 2.5&rdquo;) තෝරා ගත නොහැක. නිර්මාණකරුවන්ට ධාරාව සියුම්ව සුසර කළ නොහැකි විය.</p>
+<h3 id="4-nanosheet-පත-හතර-සහ-සසර-කළ-හක-පළල">4. Nanosheet: පැති හතර සහ සුසර කළ හැකි පළල<a class="anchor" href="#4-nanosheet-%e0%b6%b4%e0%b6%ad-%e0%b7%84%e0%b6%ad%e0%b6%bb-%e0%b7%83%e0%b7%84-%e0%b7%83%e0%b7%83%e0%b6%bb-%e0%b6%9a%e0%b7%85-%e0%b7%84%e0%b6%9a-%e0%b6%b4%e0%b7%85%e0%b6%bd">#</a></h3>
+<p>GAA nanosheet එකක gate එක පත්‍රයේ පැති හතරම වට කරයි. පත්‍රයක පළල W සහ ඝනකම t නම්:</p>
+<p><strong>W_eff (පත්‍රයට) = 2·(W + t)</strong>. පත්‍ර N ක් තට්ටු කළ විට එය N ගුණයක් වේ.</p>
+<p><strong>ආදර්ශ ගණනය</strong> (ඝනකම t = 5 nm, තට්ටු N = 3; මේවා අපේ ආදර්ශ අගයන්):</p>
+<table>
+	<thead>
+			<tr>
+					<th>පත්‍ර පළල W</th>
+					<th>W_eff = 3 × 2(W + 5)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>20 nm</td>
+					<td><strong>150 nm</strong></td>
+			</tr>
+			<tr>
+					<td>30 nm</td>
+					<td><strong>210 nm</strong></td>
+			</tr>
+			<tr>
+					<td>40 nm</td>
+					<td><strong>270 nm</strong></td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>පළල සන්තතික (continuous) ලෙස තෝරා ගත හැකිය. fins වල මෙන් පූර්ණ සංඛ්‍යා පියවරවලට සීමා නොවේ.</li>
+<li>Samsung හි 2022 ජූනි 30 නිවේදනය මෙයම කියයි. එහි &ldquo;nanosheets with wider channels&rdquo; භාවිතා කරන බවත්, &ldquo;adjust the channel width of the nanosheet&rdquo; කළ හැකි බවත්, එමගින් බලය සහ කාර්ය සාධනය සුසර කළ හැකි බවත් සඳහන් වේ.</li>
+</ul>
+<h3 id="5-sub-threshold-slope-off-වම-කතරම-හඳද">5. Sub-threshold slope: &ldquo;off&rdquo; වීම කොතරම් හොඳද<a class="anchor" href="#5-sub-threshold-slope-off-%e0%b7%80%e0%b6%b8-%e0%b6%9a%e0%b6%ad%e0%b6%bb%e0%b6%b8-%e0%b7%84%e0%b6%b3%e0%b6%af">#</a></h3>
+<p>&ldquo;off&rdquo; කලාපයේ ධාරාව, gate voltage එකෙහි S mV වෙනසකට 10 ගුණයකින් වෙනස් වේ. threshold voltage එකේ සිට 0 V දක්වා <strong>300 mV</strong> ක් ඇත්නම්, &ldquo;on&rdquo; සිට &ldquo;off&rdquo; දක්වා ධාරාව අඩු වන්නේ 10^(300/S) ගුණයකිනි.</p>
+<p><strong>ආදර්ශ ගණනය (S අගයන් ආදර්ශ):</strong></p>
+<ul>
+<li>S = 100 mV/decade: 10^(300/100) = 10³ = <strong>1,000×</strong>.</li>
+<li>S = 70 mV/decade: 10^(300/70) ≈ <strong>19,300×</strong>.</li>
+<li>එනම් එම වෝල්ටීයතාවේදී කාන්දු ධාරාව ≈ <strong>19</strong> ගුණයකින් අඩුය.</li>
+<li>නැතහොත් එම කාන්දුවම පවත්වා ගෙන threshold voltage එක අඩු කර, වෝල්ටීයතාව අඩු කළ හැකිය. Intel slide 17 හි &ldquo;lower threshold voltage … operate at lower voltage&rdquo; යන්නෙහි අර්ථය මෙයයි.</li>
+</ul>
+<p>gate එක නාලිකාව වඩාත් සම්පූර්ණයෙන් වට කරන තරමට (පැති 1 → 3 → 4), drain එකේ බලපෑම අඩු වී S බෑවුම් වේ.</p>
+<h3 id="6-gaa-නල-පරතඵල">6. GAA: නිල ප්‍රතිඵල<a class="anchor" href="#6-gaa-%e0%b6%b1%e0%b6%bd-%e0%b6%b4%e0%b6%bb%e0%b6%ad%e0%b6%b5%e0%b6%bd">#</a></h3>
+<ul>
+<li>
+<p><strong>Samsung</strong> (2022 ජූනි 30): පළමු පරම්පරාවේ 3 nm GAA (MBCFET) ක්‍රියාවලිය, 5 nm හා සසඳන විට:</p>
+<ul>
+<li>බලය 45% දක්වා අඩු වේ</li>
+<li>කාර්ය සාධනය 23% කින් වැඩි වේ</li>
+<li>ප්‍රදේශය 16% කින් අඩු වේ</li>
+</ul>
+<p>දෙවන පරම්පරාව බලය 50% කින් අඩු කිරීමට, කාර්ය සාධනය 30% කින් වැඩි කිරීමට සහ ප්‍රදේශය 35% කින් අඩු කිරීමට නියමිතය.</p>
+</li>
+<li>
+<p><strong>IBM</strong> (2021 මැයි 6): 2 nm nanosheet තාක්ෂණය නියපොත්තක ප්‍රමාණයේ ඉඩක ට්‍රාන්සිස්ටර <strong>බිලියන 50</strong> ක් තැබිය හැකි බව කියයි.</p>
+<ul>
+<li>එවකට වඩාත්ම දියුණු 7 nm චිප හා සසඳන විට කාර්ය සාධනය <strong>45%</strong> කින් වැඩි වීම, <strong>නැතහොත්</strong> ශක්ති භාවිතය <strong>75%</strong> කින් අඩු වීම <em>පුරෝකථනය</em> (&ldquo;projected&rdquo;) කරයි. IBM හි පාද සටහනට අනුව මේවා මනින ලද අගයන් නොව &ldquo;projected industry standard scaling roadmap&rdquo; මත පදනම් වූ ඇස්තමේන්තු වේ.</li>
+<li>IBM Research බ්ලොගයට අනුව gate දිග <strong>12 nm</strong> වේ.</li>
+</ul>
+</li>
+</ul>
+<p><strong>ගණනය:</strong> ප්‍රදේශය 16% කින් අඩු වීම යනු ඝනත්වය 1 ÷ 0.84 ≈ <strong>1.19×</strong> වීමයි. 35% නම් 1 ÷ 0.65 ≈ <strong>1.54×</strong> වේ. IBM &ldquo;නියපොත්ත&rdquo; ප්‍රමාණය mm² වලින් දක්වා නැත. අපි එය 150 mm² යැයි <em>උපකල්පනය</em> කළහොත්, ඝනත්වය 50 × 10⁹ ÷ 150 ≈ <strong>333 MTr/mm²</strong> වේ. මෙය ආදර්ශ ගණනයක් පමණි. Post 47 හි &ldquo;ස්වාධීනව මැනිය හැකි ප්‍රමාණ&rdquo; (වර්ග මිලිමීටරයකට ට්‍රාන්සිස්ටර) සාකච්ඡාව සමඟ සසඳන්න.</p>
+<h3 id="7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#7-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>fin උස 60 nm, පළල 6 nm නම් fin එකක W_eff කීයද? fins 3 ක් නම්?</li>
+<li>පළල 25 nm, ඝනකම 5 nm nanosheets 4 ක W_eff කීයද?</li>
+<li>S = 80 mV/decade සහ threshold සිට 0 V දක්වා 320 mV නම්, ධාරාව කී ගුණයකින් අඩු වේද?</li>
+<li>P ≈ CV²f අනුව වෝල්ටීයතාව 0.9 V සිට 0.7 V දක්වා අඩු කළ විට ගතික බලය කොපමණ ප්‍රතිශතයකින් අඩු වේද (C සහ f නොවෙනස්ව)?</li>
+<li>ප්‍රදේශය 35% කින් අඩු වූ ක්‍රියාවලියක, පෙර 1000 mm² ට ගැළපුණු පරිපථය දැන් කොපමණ ප්‍රදේශයක් ගනීද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>2 × 60 + 6 = <strong>126 nm</strong>. fins 3 ක් = <strong>378 nm</strong>.</li>
+<li>4 × 2 × (25 + 5) = <strong>240 nm</strong>.</li>
+<li>10^(320/80) = 10⁴ = <strong>10,000×</strong>.</li>
+<li>(0.7/0.9)² = 0.605 → ≈ <strong>39.5%</strong> අඩු වේ.</li>
+<li>1000 × 0.65 = <strong>650 mm²</strong>.)</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>Mark Bohr සහ Kaizad Mistry, <em>Intel&rsquo;s Revolutionary 22 nm Transistor Technology</em>, Intel ඉදිරිපත් කිරීම, 2011 මැයි (Intel හි download.intel.com නිල පිටපත). slides 5–7, 13–14, 16–17, 20–21 භාවිත කළෙමු. <a href="https://download.intel.com/newsroom/kits/22nm/pdfs/22nm-Details_Presentation.pdf">https://download.intel.com/newsroom/kits/22nm/pdfs/22nm-Details_Presentation.pdf</a></li>
+<li>Kaizad Mistry, <em>10 nm Technology Leadership</em>, Intel Technology and Manufacturing Day, 2017 මාර්තු 28. Intel newsroom නිල URL එකේ archive.org පිටපත. slides 6, 9, 10 භාවිත කළෙමු. <a href="http://web.archive.org/web/20221007074404/http://newsroom.intel.com/newsroom/wp-content/uploads/sites/11/2017/03/Kaizad-Mistry-2017-Manufacturing.pdf">http://web.archive.org/web/20221007074404/http://newsroom.intel.com/newsroom/wp-content/uploads/sites/11/2017/03/Kaizad-Mistry-2017-Manufacturing.pdf</a></li>
+<li>Samsung Global Newsroom, &ldquo;Samsung Begins Chip Production Using 3nm Process Technology With GAA Architecture&rdquo;, 2022 ජූනි 30: <a href="https://news.samsung.com/global/samsung-begins-chip-production-using-3nm-process-technology-with-gaa-architecture">https://news.samsung.com/global/samsung-begins-chip-production-using-3nm-process-technology-with-gaa-architecture</a></li>
+<li>IBM Newsroom, &ldquo;IBM Unveils World&rsquo;s First 2 Nanometer Chip Technology, Opening a New Frontier for Semiconductors&rdquo;, 2021 මැයි 6: <a href="https://newsroom.ibm.com/2021-05-06-IBM-Unveils-Worlds-First-2-Nanometer-Chip-Technology,-Opening-a-New-Frontier-for-Semiconductors">https://newsroom.ibm.com/2021-05-06-IBM-Unveils-Worlds-First-2-Nanometer-Chip-Technology,-Opening-a-New-Frontier-for-Semiconductors</a></li>
+<li>IBM Research බ්ලොගය, &ldquo;Introducing the world&rsquo;s first 2 nm node chip&rdquo;, 2021 මැයි 6: <a href="https://research.ibm.com/blog/2-nm-chip">https://research.ibm.com/blog/2-nm-chip</a></li>
+</ul>
+<p>fin පළල (7 nm), nanosheet මාන, S අගයන්, 1.0/0.8 V සහ 0.7/0.5 V, සහ 150 mm² ආදර්ශ අගයන් වේ. 14 nm fin උස ≈ 42 nm යනු Intel slides වලින් අප කළ ව්‍යුත්පන්නයකි (53 ÷ 1.25), Intel ප්‍රකාශ කළ අගයක් නොවේ.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;FinFET&#43;%E0%B7%83%E0%B7%92%E0%B6%A7&#43;GAA&#43;%E0%B6%AF%E0%B6%9A%E0%B7%8A%E0%B7%80%E0%B7%8F&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F49-finfet-to-gaa%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F49-finfet-to-gaa.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F49-finfet-to-gaa.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/48-photolithography/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Photolithography</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/50-moore-s-law/" class="flex align-center">
+        <span>Moore&#39;s Law</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#short-channel-effects">Short-Channel Effects</a></li>
+    <li><a href="#finfet-පලනය-පත-තනක">FinFET: පාලනයේ පැති තුනක්</a></li>
+    <li><a href="#gate-all-around-පත-හතරක">Gate-All-Around: පැති හතරක්</a></li>
+    <li><a href="#නවත-නවත-එන-රටව">නැවත නැවත එන රටාව</a></li>
+    <li><a href="#ගඹරන-gate-එක-ඔතන-තරමට--fin-ජයමතය-sub-threshold-slope-සහ-nanosheet-පළල">ගැඹුරින්: Gate එක ඔතන තරමට — fin ජ්‍යාමිතිය, sub-threshold slope සහ nanosheet පළල</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-intel-22-nm-tri-gate-නල-අක">2. Intel 22 nm tri-gate: නිල අංක</a></li>
+        <li><a href="#3-fin-ජයමතය-එකම-බම-පරමණය-වඩ-පළලක">3. Fin ජ්‍යාමිතිය: එකම බිම් ප්‍රමාණයේ වැඩි පළලක්</a></li>
+        <li><a href="#4-nanosheet-පත-හතර-සහ-සසර-කළ-හක-පළල">4. Nanosheet: පැති හතර සහ සුසර කළ හැකි පළල</a></li>
+        <li><a href="#5-sub-threshold-slope-off-වම-කතරම-හඳද">5. Sub-threshold slope: &ldquo;off&rdquo; වීම කොතරම් හොඳද</a></li>
+        <li><a href="#6-gaa-නල-පරතඵල">6. GAA: නිල ප්‍රතිඵල</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

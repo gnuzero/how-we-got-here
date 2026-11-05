@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>打咭 on 我們如何走到那裡</title>
+		<link>http://localhost:1478/zh-hant/tags/%E6%89%93%E5%92%AD/</link>
+		<description>Recent content in 打咭 on 我們如何走到那裡</description>
+		<generator>Hugo</generator>
+		<language>zh-Hant</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hant/tags/%E6%89%93%E5%92%AD/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>香港：打孔卡、主機與天文台的電腦</title>
+				<link>http://localhost:1478/zh-hant/posts/18-zh-hong-kong-computing/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hant/posts/18-zh-hong-kong-computing/</guid>
+				<description>1960 年代的香港，打孔卡設備和電腦先後進入航空公司、保險公司、銀行和政府部門；天文台三十年間從借用政府電腦，到自購 IBM、Data General，再到克雷超級電腦。</description>
+			</item>
+	</channel>
+</rss>

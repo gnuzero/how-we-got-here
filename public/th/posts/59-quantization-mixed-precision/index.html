@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="บิตน้อยกว่าต่อ MAC หมายถึง MAC มากขึ้นในงบพลังงานเดิม — ผสมความละเอียดที่ความแม่นยังต้องการ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/th/posts/59-quantization-mixed-precision/">
+	<meta property="og:site_name" content="เราไปถึงจุดนั้นได้อย่างไร">
+	<meta property="og:title" content="Quantization และ Mixed Precision">
+	<meta property="og:description" content="บิตน้อยกว่าต่อ MAC หมายถึง MAC มากขึ้นในงบพลังงานเดิม — ผสมความละเอียดที่ความแม่นยังต้องการ">
+	<meta property="og:locale" content="th">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Quantization และ Mixed Precision">
+	<meta itemprop="description" content="บิตน้อยกว่าต่อ MAC หมายถึง MAC มากขึ้นในงบพลังงานเดิม — ผสมความละเอียดที่ความแม่นยังต้องการ">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="908">
+
+<title>Quantization และ Mixed Precision • เราไปถึงจุดนั้นได้อย่างไร</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/th/posts/59-quantization-mixed-precision/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/59-quantization-mixed-precision/" title="Quantization &amp; Mixed Precision">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/59-quantization-mixed-precision/" title="Quantization සහ Mixed Precision">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/59-quantization-mixed-precision/" title="Quantization மற்றும் Mixed Precision">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/th.search.min.c5cc34486a28ef14fcbc4e54da38610e1cc2201de4a1bbee3bc66469d01b8395.js" integrity="sha256-xcw0SGoo7xT8vE5U2jhhDhzCIB3kobvuO8ZkadAbg5U=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/th/"><span>เราไปถึงจุดนั้นได้อย่างไร</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        ไทย</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/59-quantization-mixed-precision/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/59-quantization-mixed-precision/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/59-quantization-mixed-precision/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-credits/" class="">
+      กิตติกรรมประกาศและแหล่งข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/00-foreword/" class="">
+      คำนำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01-what-is-this-thing/" class="">
+      นี่คืออะไร?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01a-babbage-engines/" class="">
+      เครื่องจักรของแบบเบจ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/02-relays-and-electromechanical-logic/" class="">
+      รีเลย์และตรรกะไฟฟ้ากลไก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01b-jacquard-loom/" class="">
+      กี่ทอแบบฌักการ์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/03-the-vacuum-tube-era/" class="">
+      ยุคหลอดสุญญากาศ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/01c-why-mechanical-matters/" class="">
+      ทำไมการคำนวณเชิงกลจึงสำคัญ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="">
+      เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/05-semiconductors-from-first-principles/" class="">
+      เซมิคอนดักเตอร์จากหลักการพื้นฐาน</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ทรานซิสเตอร์: จาก BJT สู่ MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/07-logic-gates-from-transistors/" class="">
+      เกตตรรกะจากทรานซิสเตอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/08-from-gates-to-combinational-logic/" class="">
+      จากเกตสู่ตรรกะเชิงผสม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/09-sequential-logic/" class="">
+      ตรรกะเชิงลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/10-the-memory-hierarchy-begins/" class="">
+      ลำดับชั้นหน่วยความจำเริ่มต้น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/11-instruction-sets/" class="">
+      ชุดคำสั่ง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/12-datapath-design/" class="">
+      การออกแบบ Datapath</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/13-pipelining/" class="">
+      ไปป์ไลน์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/14-branch-prediction/" class="">
+      การทำนาย Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/15-caches/" class="">
+      แคช</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/16-out-of-order-execution/" class="">
+      การประมวลผลนอกลำดับ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/17-superscalar-multicore/" class="">
+      Superscalar และ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      จากเมนเฟรมสู่มินิคอมพิวเตอร์สู่ไมโครโพรเซสเซอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/19-the-x86-vs-risc-split/" class="">
+      การแยกทางของ x86 กับ RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM และ RISC-V: ภูมิทัศน์สถาปัตยกรรมวันนี้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing และการถือกำเนิดของระบบปฏิบัติการ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing และสายเลือด Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/23-the-gnu-movement-and-linux/" class="">
+      ขบวนการ GNU และ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/24-virtual-memory-and-multitasking/" class="">
+      หน่วยความจำเสมือนและการมัลติทาสก์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/25-containers-and-modern-os-isolation/" class="">
+      คอนเทนเนอร์และการแยกของ OS สมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/26-from-machine-code-to-assembly/" class="">
+      จากรหัสเครื่องสู่ Assembly</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ภาษาระดับสูง: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      คอมไพเลอร์, JIT และรันไทม์ภาษาสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      ระบบเรียลไทม์และการจัดตารางแบบกำหนดได้</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/30-real-time-systems-in-practice/" class="">
+      ระบบเรียลไทม์ในทางปฏิบัติ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/31-buses-101/" class="">
+      บัส 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      จาก ISA Bus ถึง PCI ถึง PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/33-pcie-deep-dive/" class="">
+      เจาะลึก PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/34-memory-buses/" class="">
+      บัสหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/35-the-memory-wall/" class="">
+      กำแพงหน่วยความจำ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/36-the-clock-speed-wall/" class="">
+      กำแพงความเร็วคล็อก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/37-interconnects-at-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับสเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ลิงก์อนุกรมและการเชื่อมต่อเครื่องต่อเครื่องครั้งแรก</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET และการสลับแพ็กเก็ต</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet และเครือข่ายท้องถิ่น</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP และสแตกอินเทอร์เน็ตสมัยใหม่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/42-datacenter-networking-and-rdma/" class="">
+      เครือข่ายศูนย์ข้อมูลและ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher และอินเทอร์เน็ตก่อนเว็บ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes และการจัดการคอนเทนเนอร์ที่สเกล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/46-the-machine-learning-software-stack/" class="">
+      สแตกซอฟต์แวร์ Machine Learning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; หมายถึงอะไรจริง ๆ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/49-finfet-to-gaa/" class="">
+      จาก FinFET ถึง GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/50-moore-s-law/" class="">
+      กฎของมัวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets และการบรรจุขั้นสูง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/52-why-gpus-exist/" class="">
+      เหตุใด GPU จึงมีอยู่</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Core, Warp และ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/54-gpu-memory-hierarchy/" class="">
+      ลำดับชั้นหน่วยความจำ GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/55-tensor-cores/" class="">
+      Tensor Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/56-multi-gpu-scaling/" class="">
+      การขยายหลาย GPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      เหตุใดการคูณเมทริกซ์จึงเปลี่ยนการออกแบบชิป</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/58-systolic-arrays/" class="">
+      Systolic Array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/59-quantization-mixed-precision/" class="active">
+      Quantization และ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/60-sparsity-in-hardware/" class="">
+      Sparsity ในฮาร์ดแวร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/61-interconnect-at-datacenter-scale/" class="">
+      อินเตอร์คอนเนกต์ในระดับศูนย์ข้อมูล</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/62-where-it-s-headed/" class="">
+      ทิศทางข้างหน้า</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/64-who-decides-the-wire/" class="">
+      ใครเป็นคนตัดสินสาย</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/66-wartime-crypto/" class="">
+      รหัสลับยามสงคราม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/67-privacy-consent-identity-cyber/" class="">
+      ความเป็นส่วนตัว ความยินยอม อัตลักษณ์ ไซเบอร์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/68-visions-that-shipped/" class="">
+      วิสัยทัศน์ที่เกิดขึ้นจริง</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/69-platform-synthesis/" class="">
+      การสังเคราะห์แพลตฟอร์ม</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/99-glossary/" class="">
+      อภิธานศัพท์</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/th/posts/98-timeline/" class="">
+      ไทม์ไลน์</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Quantization และ Mixed Precision</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ความละเอยดหมายความวาอะไรทน">ความละเอียดหมายความว่าอะไรที่นี่</a>
+      <ul>
+        <li><a href="#ถอดรปแบบจดลอยตวทละสวน">ถอดรูปแบบจุดลอยตัวทีละส่วน</a></li>
+      </ul>
+    </li>
+    <li><a href="#บตนอยกวา-ปรมาณงานมากขน">บิตน้อยกว่า ปริมาณงานมากขึ้น</a></li>
+    <li><a href="#การแจงหนวยเปนจำนวนเตม-สตรเดยวทตองเขาใจ">การแจงหน่วยเป็นจำนวนเต็ม: สูตรเดียวที่ต้องเข้าใจ</a>
+      <ul>
+        <li><a href="#ตวอยางท-1-ชวง-1-3-ลงใน-uint8">ตัวอย่างที่ 1: ช่วง [−1, 3] ลงใน uint8</a></li>
+        <li><a href="#ตวอยางท-2-คาผดปกตตวเดยวทำลายทงชด">ตัวอย่างที่ 2: ค่าผิดปกติตัวเดียวทำลายทั้งชุด</a></li>
+        <li><a href="#คณดวย-8-บต-แตตองสะสมดวย-32-บต">คูณด้วย 8 บิต แต่ต้องสะสมด้วย 32 บิต</a></li>
+      </ul>
+    </li>
+    <li><a href="#อะไรถกแลก">อะไรถูกแลก</a></li>
+    <li><a href="#ผสม-ไมใชตำคลมทว">ผสม ไม่ใช่ต่ำคลุมทั่ว</a></li>
+    <li><a href="#คนโยกถดไป">คันโยกถัดไป</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Quantization และ Mixed Precision
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>มกราคม 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>บทที่ 55 ชี้การเชื่อม: ประสิทธิภาพของ tensor core และ systolic array พึ่งความละเอียดเชิงตัวเลขที่รัน บทนี้คือเหตุผลที่ความละเอียดต่ำกลายเป็นคันโยกกลาง — และอะไรถูกแลกไปเพื่อได้มัน</p>
+<p>คำศัพท์สองคำในชื่อบท: <strong>quantization</strong> ในความหมายนี้ ศัพท์บัญญัติสาขาเทคโนโลยีสารสนเทศคือ <strong>การแจงหน่วย</strong> หมายถึงการแทนค่าจำนวนจริงที่ต่อเนื่องด้วยค่าจากชุดจำกัดที่นับได้ เช่น จำนวนเต็ม 256 ค่า ส่วน <strong>mixed precision</strong> คือการใช้ความละเอียดหลายระดับผสมกันในการคำนวณเดียว (precision มีศัพท์บัญญัติว่า <em>ความเที่ยง</em> บทนี้ใช้คำว่า &ldquo;ความละเอียด&rdquo; ในความหมายเดียวกัน)</p>
+<h2 id="ความละเอยดหมายความวาอะไรทน">ความละเอียดหมายความว่าอะไรที่นี่<a class="anchor" href="#%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%a5%e0%b8%b0%e0%b9%80%e0%b8%ad%e0%b8%a2%e0%b8%94%e0%b8%ab%e0%b8%a1%e0%b8%b2%e0%b8%a2%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%a7%e0%b8%b2%e0%b8%ad%e0%b8%b0%e0%b9%84%e0%b8%a3%e0%b8%97%e0%b8%99">#</a></h2>
+<p>ฟอร์แมตแลกช่วงกับความละเอียดภายใต้งบบิตคงที่ FP32 (เครื่องหมาย เลขชี้กำลัง 8 บิต mantissa 23 บิต) คือค่าเริ่มต้นวิทยาศาสตร์ดั้งเดิม FP16 และ BF16 ใช้บิตครึ่งหนึ่ง — BF16 คงช่วงเลขชี้กำลังของ FP32 และใช้น้อยลงบน mantissa ให้ความสำคัญช่วงพลวัตเหนือความละเอียดละเอียด FP8 ไปต่อ; INT8 ทิ้ง floating point เพื่อจำนวนเต็มจุดตรึงบวกตัวคูณสเกลกลับช่วงที่ต้องการ</p>
+<h3 id="ถอดรปแบบจดลอยตวทละสวน">ถอดรูปแบบจุดลอยตัวทีละส่วน<a class="anchor" href="#%e0%b8%96%e0%b8%ad%e0%b8%94%e0%b8%a3%e0%b8%9b%e0%b9%81%e0%b8%9a%e0%b8%9a%e0%b8%88%e0%b8%94%e0%b8%a5%e0%b8%ad%e0%b8%a2%e0%b8%95%e0%b8%a7%e0%b8%97%e0%b8%a5%e0%b8%b0%e0%b8%aa%e0%b8%a7%e0%b8%99">#</a></h3>
+<p>เลขจุดลอยตัว (floating point) เหมือนการเขียนเลขแบบวิทยาศาสตร์ในฐานสอง ค่าที่เก็บคือ</p>
+<p>ค่า = (−1)^เครื่องหมาย × 1.mmm…m (ฐานสอง) × 2^(e − bias)</p>
+<ul>
+<li><strong>เลขชี้กำลัง</strong> (exponent, ศัพท์บัญญัติ) e กำหนดว่าตัวเลขใหญ่หรือเล็กแค่ไหน จำนวนบิตของมันกำหนด <em>ช่วง</em> (range)</li>
+<li><strong>แมนทิสซา</strong> (mantissa, ศัพท์บัญญัติ) m คือตัวเลขนัยสำคัญหลังจุด จำนวนบิตของมันกำหนดว่าตัวเลขที่อยู่ติดกันห่างกันแค่ไหน คือ <em>ความละเอียด</em></li>
+<li>bias คือค่าที่ลบออกเพื่อให้เลขชี้กำลังติดลบได้ (FP16 ใช้ 15)</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>ฟอร์แมต</th>
+					<th>เครื่องหมาย / เลขชี้กำลัง / แมนทิสซา</th>
+					<th>ค่าบวกสูงสุด</th>
+					<th>ระยะห่างถัดจาก 1.0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>FP32</td>
+					<td>1 / 8 / 23</td>
+					<td>≈ 3.4×10³⁸</td>
+					<td>2⁻²³ ≈ 1.19×10⁻⁷</td>
+			</tr>
+			<tr>
+					<td>FP16</td>
+					<td>1 / 5 / 10</td>
+					<td>65,504</td>
+					<td>2⁻¹⁰ ≈ 0.000977</td>
+			</tr>
+			<tr>
+					<td>BF16</td>
+					<td>1 / 8 / 7</td>
+					<td>≈ 3.39×10³⁸</td>
+					<td>2⁻⁷ ≈ 0.0078</td>
+			</tr>
+	</tbody>
+</table>
+<p>ตรวจค่าสูงสุดของ FP16 ด้วยมือ: เลขชี้กำลัง 5 บิตมีค่าได้ 0–31 แต่ 31 สงวนไว้สำหรับอนันต์และ NaN ค่าที่ใช้ได้สูงสุดคือ 30 จึงได้ 2^(30 − 15) = 2¹⁵ แมนทิสซาที่ใหญ่ที่สุดคือ 1.1111111111 (ฐานสอง) = 2 − 2⁻¹⁰ รวมเป็น (2 − 2⁻¹⁰) × 2¹⁵ = <strong>65,504</strong> ค่าใดที่ใหญ่กว่านี้คือ <strong>การล้น</strong> (overflow, ศัพท์บัญญัติ) กลายเป็นอนันต์ ส่วนปลายเล็ก ค่าที่เล็กกว่า 2⁻²⁴ ≈ 5.96×10⁻⁸ ปัดเป็นศูนย์</p>
+<p>ตารางนี้อธิบายการออกแบบ BF16 ได้ทันที: มันคือ FP32 ที่ตัดแมนทิสซาเหลือ 7 บิต ช่วงยังกว้างเท่า FP32 เกือบทุกประการ จึงแทบไม่ต้องกังวลเรื่องล้นหรือหายเป็นศูนย์ แต่ความละเอียดหยาบกว่า FP16 ราว 8 เท่า (2⁻⁷ เทียบ 2⁻¹⁰) FP16 เลือกกลับกัน: ละเอียดกว่า แต่ช่วงแคบ ต้องใช้เทคนิคเพิ่มเพื่อไม่ให้ค่าหลุดช่วง (ดูหัวข้อ loss scaling ข้างล่าง)</p>
+<h2 id="บตนอยกวา-ปรมาณงานมากขน">บิตน้อยกว่า ปริมาณงานมากขึ้น<a class="anchor" href="#%e0%b8%9a%e0%b8%95%e0%b8%99%e0%b8%ad%e0%b8%a2%e0%b8%81%e0%b8%a7%e0%b8%b2-%e0%b8%9b%e0%b8%a3%e0%b8%a1%e0%b8%b2%e0%b8%93%e0%b8%87%e0%b8%b2%e0%b8%99%e0%b8%a1%e0%b8%b2%e0%b8%81%e0%b8%82%e0%b8%99">#</a></h2>
+<p>บทที่ 6–7 วางว่าพื้นที่วงจรสเกลกับสิ่งที่คำนวณ MAC ของ FP32 ต้องการทรานซิสเตอร์และพลังงานมากกว่า FP16 หรือ INT8 เมื่อมีพื้นที่และงบพลังงานคงที่ (กำแพงของบทที่ 36 ยังผูกตัวเร่ง) ความละเอียดต่ำกว่าบรรจุปริมาณงาน MAC ขนานได้มากกว่าในซองเดียวกัน นั่นคือเหตุผลทางกายภาพ — ไม่ใช่ทางเลือกอัลกอริทึมอย่างเดียว — ที่ tensor core และ systolic array มักถูกออกแบบรอบฟอร์แมตความละเอียดต่ำเฉพาะ</p>
+<p>อีกด้านหนึ่งที่มักถูกมองข้ามคือหน่วยความจำ จำนวนบิตต่อค่าคูณตรง ๆ กับขนาดโมเดลและปริมาณข้อมูลที่ต้องย้าย ลองคิดโมเดลที่มีพารามิเตอร์ 7 พันล้านตัว</p>
+<table>
+	<thead>
+			<tr>
+					<th>ฟอร์แมต</th>
+					<th>ไบต์ต่อพารามิเตอร์</th>
+					<th>น้ำหนักทั้งหมด</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>FP32</td>
+					<td>4</td>
+					<td>28 GB</td>
+			</tr>
+			<tr>
+					<td>FP16 / BF16</td>
+					<td>2</td>
+					<td>14 GB</td>
+			</tr>
+			<tr>
+					<td>INT8</td>
+					<td>1</td>
+					<td>7 GB</td>
+			</tr>
+			<tr>
+					<td>INT4</td>
+					<td>0.5</td>
+					<td>3.5 GB</td>
+			</tr>
+	</tbody>
+</table>
+<p>(นับเฉพาะน้ำหนัก ไม่รวมหน่วยความจำอื่นที่ใช้ระหว่างรัน) ความต่างระหว่าง 28 GB กับ 7 GB คือความต่างระหว่างต้องใช้ตัวเร่งหลายตัวกับใส่ในตัวเดียวได้ และเมื่อสร้างข้อความทีละโทเค็นโดยมีคำขอพร้อมกันน้อย งานหลักคือการคูณเมทริกซ์น้ำหนักกับเวกเตอร์ น้ำหนักแต่ละตัวที่อ่านมาจากหน่วยความจำถูกใช้เพียงครั้งเดียว (คูณหนึ่ง บวกหนึ่ง) ซึ่งต่ำกว่าอัตราส่วน FLOP ต่อไบต์ของเครื่องไปมาก (ดูวิธีคิดในบทที่ 55) งานแบบนี้ติดที่แบนด์วิดท์หน่วยความจำ ข้อมูลที่เล็กลงสี่เท่าจึงแปลงเป็นความเร็วได้แทบโดยตรง</p>
+<h2 id="การแจงหนวยเปนจำนวนเตม-สตรเดยวทตองเขาใจ">การแจงหน่วยเป็นจำนวนเต็ม: สูตรเดียวที่ต้องเข้าใจ<a class="anchor" href="#%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%81%e0%b8%88%e0%b8%87%e0%b8%ab%e0%b8%99%e0%b8%a7%e0%b8%a2%e0%b9%80%e0%b8%9b%e0%b8%99%e0%b8%88%e0%b8%b3%e0%b8%99%e0%b8%a7%e0%b8%99%e0%b9%80%e0%b8%95%e0%b8%a1-%e0%b8%aa%e0%b8%95%e0%b8%a3%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7%e0%b8%97%e0%b8%95%e0%b8%ad%e0%b8%87%e0%b9%80%e0%b8%82%e0%b8%b2%e0%b9%83%e0%b8%88">#</a></h2>
+<p>Jacob และคณะ (2017) ซึ่งเป็นงานเบื้องหลังการรัน inference แบบ 8 บิตบนมือถือ ใช้ความสัมพันธ์</p>
+<p>r = S × (q − Z)</p>
+<ul>
+<li>r คือค่าจำนวนจริง q คือจำนวนเต็มที่เก็บจริง (เช่น uint8 ค่า 0–255)</li>
+<li><strong>ค่าสเกล</strong> (scale factor, ศัพท์บัญญัติ) S คือจำนวนจริงบวก บอกว่าจำนวนเต็มขยับหนึ่งขั้นเท่ากับค่าจริงเท่าไร</li>
+<li><strong>จุดศูนย์</strong> (zero-point) Z คือจำนวนเต็มที่แทนค่าจริง 0 พอดี Jacob และคณะกำหนดแบบนี้เพื่อให้ 0 แทนได้ <em>แบบไม่มีความคลาดเคลื่อน</em> เพราะงานโครงข่ายประสาทเติมศูนย์รอบขอบอาร์เรย์บ่อยมาก</li>
+</ul>
+<h3 id="ตวอยางท-1-ชวง-1-3-ลงใน-uint8">ตัวอย่างที่ 1: ช่วง [−1, 3] ลงใน uint8<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b8%97-1-%e0%b8%8a%e0%b8%a7%e0%b8%87-1-3-%e0%b8%a5%e0%b8%87%e0%b9%83%e0%b8%99-uint8">#</a></h3>
+<p>ช่วงกว้าง 4 ต้องแบ่งเป็น 255 ขั้น (256 ค่า)</p>
+<ol>
+<li>S = (3 − (−1)) / 255 = 4/255 ≈ 0.015686</li>
+<li>Z = ปัดเศษของ 1/S = ปัดเศษของ 63.75 = 64 (ค่าจริง −1 ต้องตรงกับ q = 0 ดังนั้น 0 อยู่ที่ประมาณ 1/S ขั้นถัดขึ้นไป)</li>
+<li>แจงหน่วย x = 1.5: x/S = 95.625 <strong>การปัดเศษ</strong> (rounding, ศัพท์บัญญัติ) ได้ 96 บวก Z ได้ q = <strong>160</strong></li>
+<li>แปลงกลับ: S × (160 − 64) = 96 × 0.015686 ≈ <strong>1.50588</strong> คลาดเคลื่อน ≈ 0.0059</li>
+</ol>
+<p>ตรวจค่าอื่น: x = 0 → q = 64 แปลงกลับได้ 0 พอดี, x = −1 → q = 0 แปลงกลับได้ −1.0039, x = 3 → q = 255 แปลงกลับได้ 2.9961 ความคลาดเคลื่อนสูงสุดจากการปัดเศษคือครึ่งขั้น คือ S/2 ≈ 0.0078</p>
+<h3 id="ตวอยางท-2-คาผดปกตตวเดยวทำลายทงชด">ตัวอย่างที่ 2: ค่าผิดปกติตัวเดียวทำลายทั้งชุด<a class="anchor" href="#%e0%b8%95%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b8%b2%e0%b8%87%e0%b8%97-2-%e0%b8%84%e0%b8%b2%e0%b8%9c%e0%b8%94%e0%b8%9b%e0%b8%81%e0%b8%95%e0%b8%95%e0%b8%a7%e0%b9%80%e0%b8%94%e0%b8%a2%e0%b8%a7%e0%b8%97%e0%b8%b3%e0%b8%a5%e0%b8%b2%e0%b8%a2%e0%b8%97%e0%b8%87%e0%b8%8a%e0%b8%94">#</a></h3>
+<p>แบบสมมาตรสำหรับ int8 (Z = 0, ใช้ −127 ถึง 127) ตั้ง S = ค่าสัมบูรณ์สูงสุด / 127 ลองชุดน้ำหนัก 0.1, 0.3, −0.2, 0.9 ที่มีค่าผิดปกติ (outlier) 50 ปนอยู่หนึ่งตัว</p>
+<ul>
+<li>มีค่า 50: S = 50/127 ≈ 0.394 ค่าทั้งสี่ถูกแจงหน่วยเป็น q = 0, 1, −1, 2 ค่า 0.1 กลายเป็นศูนย์ และ 0.3 กับ −0.2 เหลือขั้นเดียว ข้อมูลเกือบทั้งหมดหายไป</li>
+<li>ไม่มีค่า 50 (ค่าสูงสุด 0.9): S = 0.9/127 ≈ 0.00709 ได้ q = 14, 42, −28, 127 ใช้ช่วงเต็ม</li>
+</ul>
+<p>ค่าผิดปกติตัวเดียวทำให้ขั้นหยาบลงราว 56 เท่า นี่คือเหตุผลที่การแจงหน่วยในทางปฏิบัติต้องระวังเรื่องการเลือกช่วง ในแบบของ Jacob และคณะ ใช้ S และ Z ชุดเดียวต่ออาร์เรย์ของน้ำหนักหรือ activation แต่ละชุด ถ้าค่าผิดปกติกระจุกอยู่ในบางช่อง (channel) ทางแก้ที่ตามมาโดยธรรมชาติคือใช้ค่าสเกลแยกต่อช่อง ช่องที่ไม่มีค่าผิดปกติจะไม่ต้องเสียความละเอียดตามไปด้วย</p>
+<h3 id="คณดวย-8-บต-แตตองสะสมดวย-32-บต">คูณด้วย 8 บิต แต่ต้องสะสมด้วย 32 บิต<a class="anchor" href="#%e0%b8%84%e0%b8%93%e0%b8%94%e0%b8%a7%e0%b8%a2-8-%e0%b8%9a%e0%b8%95-%e0%b9%81%e0%b8%95%e0%b8%95%e0%b8%ad%e0%b8%87%e0%b8%aa%e0%b8%b0%e0%b8%aa%e0%b8%a1%e0%b8%94%e0%b8%a7%e0%b8%a2-32-%e0%b8%9a%e0%b8%95">#</a></h3>
+<p>ผลคูณของ int8 สองตัวใหญ่ได้ถึง 127 × 127 = 16,129 ผลรวมตามความยาว K = 4096 ใหญ่ได้ถึง 16,129 × 4096 = 66,064,384 ซึ่งเกินขีด int16 (32,767) ไปไกล แต่ยังอยู่ในขีด int32 (ราว 2.1×10⁹) Jacob และคณะจึงสะสมผลคูณ uint8 ลงในตัวสะสม int32 นี่คือเรื่องเดียวกับ &ldquo;คูณ FP16 สะสม FP32&rdquo; ในบทที่ 55 ในโลกของจำนวนเต็ม</p>
+<p>ตัวอย่างผลคูณจุดแบบจำนวนเต็ม (สมมาตร Z = 0): x_q = [12, −5, 100, 64], w_q = [−3, 20, 7, −1]</p>
+<p>12×(−3) + (−5)×20 + 100×7 + 64×(−1) = −36 − 100 + 700 − 64 = <strong>500</strong></p>
+<p>ถ้า S_x = 0.02 และ S_w = 0.01 ผลที่เป็นจำนวนจริงคือ 500 × 0.02 × 0.01 = 0.1 สังเกตว่าการคูณสเกลทำครั้งเดียวตอนจบ ไม่ใช่ทุกพจน์ งานหนักทั้งหมดเป็นเลขจำนวนเต็มล้วน ซึ่งคือสิ่งที่ฮาร์ดแวร์ INT8 ทำได้ถูกที่สุด</p>
+<h2 id="อะไรถกแลก">อะไรถูกแลก<a class="anchor" href="#%e0%b8%ad%e0%b8%b0%e0%b9%84%e0%b8%a3%e0%b8%96%e0%b8%81%e0%b9%81%e0%b8%a5%e0%b8%81">#</a></h2>
+<p>ความละเอียดลดหมายถึงค่าหยาบกว่าและข้อผิดพลาดการปัดมากขึ้นข้ามสายยาว เชิงประจักษ์ โครงข่ายประสาทจำนวนมากทนได้ดี — โดยเฉพาะสำหรับ inference และด้วยความระมัดระวังสำหรับส่วนใหญ่ที่มีความหมายของการฝึก — ซึ่งไม่ชัดล่วงหน้า; ต้องถูกแสดง</p>
+<h2 id="ผสม-ไมใชตำคลมทว">ผสม ไม่ใช่ต่ำคลุมทั่ว<a class="anchor" href="#%e0%b8%9c%e0%b8%aa%e0%b8%a1-%e0%b9%84%e0%b8%a1%e0%b9%83%e0%b8%8a%e0%b8%95%e0%b8%b3%e0%b8%84%e0%b8%a5%e0%b8%a1%e0%b8%97%e0%b8%a7">#</a></h2>
+<p>การฝึกและ inference แบบ mixed-precision ใช้ความละเอียดต่ำกว่า (มัก FP16 หรือ BF16) สำหรับ matmul หนักที่ฮาร์ดแวร์ได้ปริมาณงาน และคงความละเอียดสูงกว่า (มัก FP32) สำหรับงานที่ไวเชิงตัวเลข — อย่างการสะสมที่การปัดจะทบ ความละเอียดเต็มเฉพาะที่คุ้ม: นั่นคือเหตุผลที่คำคือ <em>mixed</em> ไม่ใช่เพียง <em>ต่ำ</em></p>
+<p>Micikevicius และคณะ (ICLR 2018) อธิบายสูตรการฝึกแบบ mixed precision ด้วย FP16 ซึ่งมีสามส่วน แต่ละส่วนแก้ปัญหาตัวเลขคนละแบบ</p>
+<p><strong>1. สำเนาน้ำหนักหลักใน FP32 (FP32 master weights)</strong> การอัปเดตน้ำหนักแต่ละครั้งคือ <strong>เกรเดียนต์</strong> (gradient, ศัพท์บัญญัติ) คูณอัตราการเรียนรู้ ซึ่งมักเล็กกว่าตัวน้ำหนักมาก ลองดู: น้ำหนัก w = 1.0 ใน FP16 บวกการอัปเดต 0.0001 ระยะห่างของ FP16 ถัดจาก 1.0 คือ 0.000977 การอัปเดตเล็กกว่าครึ่งระยะห่าง ผลจึงปัดกลับเป็น 1.0 การอัปเดตหายไปทั้งก้อน (จำลองด้วย NumPy แล้ว) เปเปอร์ระบุว่าปัญหานี้เกิดเมื่อน้ำหนักใหญ่กว่าการอัปเดตตั้งแต่ราว 2048 เท่าขึ้นไป (ในตัวอย่างนี้ 10,000 เท่า) ทางแก้คือเก็บสำเนาน้ำหนักหลักไว้ใน FP32 อัปเดตที่สำเนานั้น แล้วค่อยแปลงเป็น FP16 เพื่อใช้ในรอบถัดไป</p>
+<p><strong>2. การสเกล loss (loss scaling)</strong> เกรเดียนต์จำนวนมากเล็กมาก ค่าที่เล็กกว่า 2⁻²⁴ กลายเป็นศูนย์ใน FP16 เช่น 1×10⁻⁸ ใน FP16 คือ 0 เปเปอร์แสดงว่าในโมเดลหนึ่ง เกรเดียนต์ในช่วง 2⁻²⁷ ถึง 2⁻²⁴ ยังสำคัญต่อการฝึก ทางแก้คือคูณค่า loss ด้วยค่าคงที่ก่อนเริ่มการแพร่ย้อนกลับ กฎลูกโซ่ทำให้เกรเดียนต์ทุกตัวถูกคูณด้วยค่าเดียวกันโดยอัตโนมัติ เช่น คูณ 1024: 1×10⁻⁸ กลายเป็น 1.024×10⁻⁵ ซึ่ง FP16 แทนได้ แล้วหารกลับก่อนอัปเดตน้ำหนัก เปเปอร์ใช้ค่าสเกลตั้งแต่ 8 ถึง 32K และระบุว่าเลือกค่าใหญ่ได้ตราบที่เกรเดียนต์สูงสุดหลังคูณยังไม่เกิน 65,504 ซึ่งคือเพดานการล้นของ FP16 ที่คำนวณไว้ข้างบน</p>
+<p><strong>3. คูณ FP16 สะสม FP32</strong> ผลคูณจุดยาว ๆ สะสมใน FP32 แล้วค่อยแปลงเป็น FP16 ตอนเก็บ ด้วยเหตุผลเดียวกับที่บทที่ 55 แสดง (บวก 1 สี่พันครั้งด้วยตัวสะสม FP16 ติดอยู่ที่ 2048)</p>
+<p>โดยหลักการ BF16 ซึ่งมีช่วงกว้างเท่า FP32 ลดความจำเป็นของส่วนที่ 2 ลงมาก เพราะเกรเดียนต์เล็ก ๆ ยังอยู่ในช่วงที่แทนได้ ราคาที่จ่ายคือความละเอียดที่หยาบกว่า ส่วนที่ 1 และ 3 จึงยังสำคัญ</p>
+<h2 id="คนโยกถดไป">คันโยกถัดไป<a class="anchor" href="#%e0%b8%84%e0%b8%99%e0%b9%82%e0%b8%a2%e0%b8%81%e0%b8%96%e0%b8%94%e0%b9%84%e0%b8%9b">#</a></h2>
+<p>ความละเอียดทำให้แต่ละปฏิบัติการถูกกว่า Sparsity ในบทถัดไปมุ่งข้ามปฏิบัติการบางอย่างทั้งหมด เมื่อศูนย์ที่รู้แล้วจะไม่มีส่วนใด ๆ</p>
+<h2 id="อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง<a class="anchor" href="#%e0%b8%ad%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%a1--%e0%b8%ad%e0%b8%b2%e0%b8%87%e0%b8%ad%e0%b8%87">#</a></h2>
+<ul>
+<li>สุพจน์ เฮงพระพรหม, <em>การเรียนรู้ของเครื่อง MACHINE LEARNING</em></li>
+<li>นวลวรรณ สุนทรภิษัช, <em>การเรียนรู้ของเครื่อง Machine Learning</em></li>
+<li>รศ.ดร.วฤษาย์ ร่มสายหยุด, <em>การเรียนรู้ของเครื่องสำหรับการวิเคราะห์ข้อมูลเชิงทำนายและการประยุกต์</em></li>
+<li>ทรงพล กาญจนชูชัย, <em>อุปกรณ์สารกึ่งตัวนำ</em></li>
+<li>Benoit Jacob และคณะ, &ldquo;Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference&rdquo;, <a href="https://arxiv.org/abs/1712.05877">arXiv:1712.05877</a> (2017) — สูตร r = S(q − Z) จุดศูนย์ และตัวสะสม int32</li>
+<li>Paulius Micikevicius และคณะ, &ldquo;Mixed Precision Training&rdquo;, ICLR 2018, <a href="https://arxiv.org/abs/1710.03740">arXiv:1710.03740</a> — สำเนาน้ำหนักหลัก FP32, loss scaling และการสะสม FP32</li>
+<li>Wikipedia (ภาษาอังกฤษ), <a href="https://en.wikipedia.org/wiki/Half-precision_floating-point_format">Half-precision floating-point format</a> และ <a href="https://en.wikipedia.org/wiki/Bfloat16_floating-point_format">bfloat16 floating-point format</a> — โครงสร้างบิตและช่วงของ FP16 และ BF16</li>
+<li>ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, <a href="https://coined-word.orst.go.th/">coined-word.orst.go.th</a> — <em>การแจงหน่วย</em> (quantization), <em>ความเที่ยง</em> (precision), <em>เลขชี้กำลัง</em> (exponent), <em>แมนทิสซา</em> (mantissa), <em>การล้น</em> (overflow), <em>ค่าสเกล</em> (scale factor)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | พฤศจิกายน 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>พฤศจิกายน 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Quantization&#43;%E0%B9%81%E0%B8%A5%E0%B8%B0&#43;Mixed&#43;Precision&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fth%2Fposts%2F59-quantization-mixed-precision%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.th%2Fposts%2F59-quantization-mixed-precision.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.th%2Fposts%2F59-quantization-mixed-precision.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/th/posts/58-systolic-arrays/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Systolic Array</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/th/posts/60-sparsity-in-hardware/" class="flex align-center">
+        <span>Sparsity ในฮาร์ดแวร์</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ความละเอยดหมายความวาอะไรทน">ความละเอียดหมายความว่าอะไรที่นี่</a>
+      <ul>
+        <li><a href="#ถอดรปแบบจดลอยตวทละสวน">ถอดรูปแบบจุดลอยตัวทีละส่วน</a></li>
+      </ul>
+    </li>
+    <li><a href="#บตนอยกวา-ปรมาณงานมากขน">บิตน้อยกว่า ปริมาณงานมากขึ้น</a></li>
+    <li><a href="#การแจงหนวยเปนจำนวนเตม-สตรเดยวทตองเขาใจ">การแจงหน่วยเป็นจำนวนเต็ม: สูตรเดียวที่ต้องเข้าใจ</a>
+      <ul>
+        <li><a href="#ตวอยางท-1-ชวง-1-3-ลงใน-uint8">ตัวอย่างที่ 1: ช่วง [−1, 3] ลงใน uint8</a></li>
+        <li><a href="#ตวอยางท-2-คาผดปกตตวเดยวทำลายทงชด">ตัวอย่างที่ 2: ค่าผิดปกติตัวเดียวทำลายทั้งชุด</a></li>
+        <li><a href="#คณดวย-8-บต-แตตองสะสมดวย-32-บต">คูณด้วย 8 บิต แต่ต้องสะสมด้วย 32 บิต</a></li>
+      </ul>
+    </li>
+    <li><a href="#อะไรถกแลก">อะไรถูกแลก</a></li>
+    <li><a href="#ผสม-ไมใชตำคลมทว">ผสม ไม่ใช่ต่ำคลุมทั่ว</a></li>
+    <li><a href="#คนโยกถดไป">คันโยกถัดไป</a></li>
+    <li><a href="#อานเพม--อางอง">อ่านเพิ่ม / อ้างอิง</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

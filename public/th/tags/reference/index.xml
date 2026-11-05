@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Reference on เราไปถึงจุดนั้นได้อย่างไร</title>
+		<link>http://localhost:1478/th/tags/reference/</link>
+		<description>Recent content in Reference on เราไปถึงจุดนั้นได้อย่างไร</description>
+		<generator>Hugo</generator>
+		<language>th</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:40:04 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/th/tags/reference/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>อภิธานศัพท์</title>
+				<link>http://localhost:1478/th/posts/99-glossary/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/99-glossary/</guid>
+				<description>คำสำคัญที่ใช้ตลอดชุดบทความ นิยามอย่างแม่นยำ</description>
+			</item>
+			<item>
+				<title>ไทม์ไลน์</title>
+				<link>http://localhost:1478/th/posts/98-timeline/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/th/posts/98-timeline/</guid>
+				<description>ลำดับเหตุการณ์ย่อจากการคำนวณเชิงกลสู่กลไก Attention สมัยใหม่</description>
+			</item>
+	</channel>
+</rss>

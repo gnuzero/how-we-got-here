@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Web-அளவு தரவு failure-as-normal சேமிப்பைக் கட்டாயப்படுத்தியது, பிறகு cluster-ஐ மறைத்த நிரலாக்க மாதிரி — GFS, MapReduce, Bigtable">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/44-google-s-big-data-infrastructure-why-they-won/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்">
+	<meta property="og:description" content="Web-அளவு தரவு failure-as-normal சேமிப்பைக் கட்டாயப்படுத்தியது, பிறகு cluster-ஐ மறைத்த நிரலாக்க மாதிரி — GFS, MapReduce, Bigtable">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்">
+	<meta itemprop="description" content="Web-அளவு தரவு failure-as-normal சேமிப்பைக் கட்டாயப்படுத்தியது, பிறகு cluster-ஐ மறைத்த நிரலாக்க மாதிரி — GFS, MapReduce, Bigtable">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1297">
+
+<title>Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள் • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/44-google-s-big-data-infrastructure-why-they-won/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/44-google-s-big-data-infrastructure-why-they-won/" title="Google&#39;s Big Data Infrastructure — Why They Won">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/44-google-s-big-data-infrastructure-why-they-won/" title="โครงสร้างพื้นฐานบิ๊กดาต้าของ Google — เหตุใดพวกเขาจึงชนะ">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/44-google-s-big-data-infrastructure-why-they-won/" title="Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/44-google-s-big-data-infrastructure-why-they-won/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/44-google-s-big-data-infrastructure-why-they-won/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="active">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#கடடபபட-web-ஒறற-box-ஐ-வஞசனத">கட்டுப்பாடு: Web ஒற்றை Box-ஐ விஞ்சினது</a></li>
+    <li><a href="#failure-சதரணம--எனவ-storage-அதக-கரத-வணடயரநதத">Failure சாதாரணம் — எனவே Storage அதைக் கருத வேண்டியிருந்தது</a></li>
+    <li><a href="#gfs-இன-எணகள-கடடரயலரநத">GFS-இன் எண்கள், கட்டுரையிலிருந்து</a></li>
+    <li><a href="#cluster-ஐ-மணடம-கணடபடககமல-சயலககம">Cluster-ஐ மீண்டும் கண்டுபிடிக்காமல் செயலாக்கம்</a></li>
+    <li><a href="#mapreduce-கயல-ஒரமற">MapReduce, கையால் ஒருமுறை</a></li>
+    <li><a href="#மலவன-bytes-மத-அமபப">மலிவான Bytes மீது அமைப்பு</a></li>
+    <li><a href="#bigtable-இன-webtable-கடடரயலரநத">Bigtable-இன் webtable, கட்டுரையிலிருந்து</a></li>
+    <li><a href="#இத-ஏன-moat-ஆனத">இது ஏன் Moat ஆனது</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>1990களின் இறுதியில் பல நிறுவனங்கள் web தேடலைக் கட்டின. Google ranking நுணுக்கத்தால் மட்டும் வெல்லவில்லை — PageRank முக்கியம், ஆனால் நீடித்த நன்மை infrastructure: ஒரு இயந்திரம் ஒருபோதும் போதாதபோது தொடர்ந்து மாறும் web-ஐச் சேமித்துச் செயலாக்க முடியும் அமைப்புகள்.</p>
+<blockquote class='book-hint '>
+<p><strong>தமிழ் இடைவெளிக் குறிப்பு:</strong> GFS, Bigtable இரண்டுக்கும் தமிழில் எழுத்தும் காணொளியும் இல்லை; MapReduce-க்குத் தமிழ் எழுத்து விளக்கம் இல்லை; காணொளிச் சான்று YouTube தேடல் முடிவுகள் மட்டும் — காணொளிகள் பார்க்கப்படவில்லை. இங்குள்ள உண்மை எண்கள் ஆங்கிலப் பதிவு &ldquo;Door out&rdquo;-இல் பெயரிடும் மூன்று மூலக் கட்டுரைகளிலிருந்தே நேரடியாகச் சரிபார்க்கப்பட்டவை: GFS (SOSP 2003) — 64 MB chunk, இயல்பாக 3 நகல்கள், ஒரு chunk-க்கு 64 byte-க்குக் குறைவான master metadata, chunkserver மீட்புச் சோதனை; MapReduce (OSDI 2004) — word count எடுத்துக்காட்டு, 1 TB grep அளவீடு; Bigtable (OSDI 2006) — <code>com.cnn.www</code> webtable எடுத்துக்காட்டு. இயந்திரத் தோல்வி விகிதம் போன்றவை &ldquo;எடுத்துக்காட்டு மதிப்புகள்&rdquo;. இந்தப் பதிவுக்கு lab இல்லை; காகிதப் பயிற்சிகள் கீழே.</p>
+</blockquote><h2 id="மதலல-சறகள">முதலில் சொற்கள்<a class="anchor" href="#%e0%ae%ae%e0%ae%a4%e0%ae%b2%e0%ae%b2-%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<ul>
+<li><strong>Commodity இயந்திரம் (சாதாரணச் சந்தைக் கணினி):</strong> சிறப்பு நம்பகத்தன்மை இல்லாத, மலிவான, பெருமளவில் கிடைக்கும் சேவையகம்.</li>
+<li><strong>Chunk (துண்டு):</strong> GFS கோப்பைப் பிரிக்கும் நிலைத்த அளவுப் பகுதி (64 MB).</li>
+<li><strong>Replica (நகல்):</strong> அதே chunk-இன் இன்னொரு இயந்திரத்தில் உள்ள பிரதி; ஒன்று இறந்தாலும் தரவு பிழைக்கிறது.</li>
+<li><strong>Master / chunkserver:</strong> chunk-கள் எங்கே உள்ளன என்ற metadata-வை வைத்திருக்கும் ஒற்றை ஒருங்கிணைப்பாளர் / chunk-களை உண்மையில் சேமிக்கும் இயந்திரங்கள்.</li>
+<li><strong>Map / reduce:</strong> ஒரு record-இலிருந்து (key, value) இணைகளை வெளியிடும் செயல்கூறு / ஒரே key கொண்ட values-ஐத் தொகுக்கும் செயல்கூறு.</li>
+<li><strong>Shuffle (கலைத்து அடுக்குதல்):</strong> map வெளியீடுகளை key வாரியாகப் பிரித்து, சரியான reduce-க்கு அனுப்பி வரிசைப்படுத்தும் படி.</li>
+<li><strong>Sparse table (அரிதான அட்டவணை):</strong> பெரும்பாலான கலங்கள் காலியாக உள்ள அட்டவணை; காலியானவற்றுக்கு இடம் செலவாகாது.</li>
+<li><strong>Moat (அகழி):</strong> போட்டியாளர்கள் எளிதில் நகலெடுக்க முடியாத நீடித்த நன்மை.</li>
+</ul>
+<h2 id="கடடபபட-web-ஒறற-box-ஐ-வஞசனத">கட்டுப்பாடு: Web ஒற்றை Box-ஐ விஞ்சினது<a class="anchor" href="#%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%aa%e0%ae%aa%e0%ae%9f-web-%e0%ae%92%e0%ae%b1%e0%ae%b1-box-%e0%ae%90-%e0%ae%b5%e0%ae%9e%e0%ae%9a%e0%ae%a9%e0%ae%a4">#</a></h2>
+<p>&ldquo;முழு web&rdquo;-ஐ index செய்வது என்பது எந்த ஒற்றை disk அல்லது memory-ஐயும் விடப் பெரிய dataset — ஒருமுறை எடுக்கப்பட்ட snapshot அல்ல, தொடர்ந்து வருவது. Phase 3 <em>ஒரு</em> இயந்திரத்தை வேகமாக்கியது. இந்தப் பிரச்சனை வேறு: <em>பல</em> இயந்திரங்களை ஒருங்கிணைத்து, எந்த ஒன்றிற்கும் மிகப் பெரிய ஒன்றை அவை கூட்டாக வைத்துச் செயலாக்கச் செய்யுங்கள்.</p>
+<h2 id="failure-சதரணம--எனவ-storage-அதக-கரத-வணடயரநதத">Failure சாதாரணம் — எனவே Storage அதைக் கருத வேண்டியிருந்தது<a class="anchor" href="#failure-%e0%ae%9a%e0%ae%a4%e0%ae%b0%e0%ae%a3%e0%ae%ae--%e0%ae%8e%e0%ae%a9%e0%ae%b5-storage-%e0%ae%85%e0%ae%a4%e0%ae%95-%e0%ae%95%e0%ae%b0%e0%ae%a4-%e0%ae%b5%e0%ae%a3%e0%ae%9f%e0%ae%af%e0%ae%b0%e0%ae%a8%e0%ae%a4%e0%ae%a4">#</a></h2>
+<p>Google File System (Ghemawat, Gobioff, மற்றும் Leung, SOSP 2003) பெரும்பாலான filesystems இன்னும் விதிவிலக்காகக் கருதிய வடிவமைப்பு அனுமானத்திலிருந்து தொடங்கியது: ஆயிரக்கணக்கான commodity இயந்திரங்களுடன், வன்பொருள் failure வழக்கம். கோப்புகளைப் பெரிய chunks-ஆகப் பிரிங்கள், ஒவ்வொரு chunk-ஐயும் chunkservers குறுக்கே replicate செய்யுங்கள், மற்றும் chunks எங்கே வாழ்கின்றன என master கண்காணிக்கட்டும் — எனவே ஒரு இயந்திரத்தை இழப்பது தானாக உறிஞ்சப்படுகிறது, நெருக்கடியாகக் கையாளப்படுவதில்லை. அது பதிவு 42-இன் fabric பணி datacenter-க்குள் செய்யும் அதே <em>வகை</em> பந்தயம்: பகுதி failure-இன் பொதுவான வழக்கிற்குப் பொறியியல் செய்யுங்கள்.</p>
+<p>&ldquo;தோல்வி வழக்கம்&rdquo; என்பதன் கணக்கு (எடுத்துக்காட்டு மதிப்புகள்): ஒவ்வொரு இயந்திரமும் சராசரியாக 1,000 நாட்களுக்கு ஒருமுறை (சுமார் மூன்று ஆண்டுகள்) செயலிழக்கிறது என்றால்:</p>
+<table>
+	<thead>
+			<tr>
+					<th>இயந்திரங்கள்</th>
+					<th>ஒரு நாளில் எதிர்பார்க்கும் தோல்விகள்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>1 ÷ 1,000 = 0.001</td>
+			</tr>
+			<tr>
+					<td>1,000</td>
+					<td>1,000 ÷ 1,000 = 1</td>
+			</tr>
+			<tr>
+					<td>10,000</td>
+					<td>10,000 ÷ 1,000 = 10</td>
+			</tr>
+	</tbody>
+</table>
+<p>ஒரு கணினிக்கு &ldquo;அரிதான விபத்து&rdquo;, ஆயிரம் கணினிகளுக்கு &ldquo;தினசரி நிகழ்வு&rdquo;.</p>
+<h2 id="gfs-இன-எணகள-கடடரயலரநத">GFS-இன் எண்கள், கட்டுரையிலிருந்து<a class="anchor" href="#gfs-%e0%ae%87%e0%ae%a9-%e0%ae%8e%e0%ae%a3%e0%ae%95%e0%ae%b3-%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%b0%e0%ae%af%e0%ae%b2%e0%ae%b0%e0%ae%a8%e0%ae%a4">#</a></h2>
+<p>GFS கட்டுரை: chunk அளவு <strong>64 MB</strong>; இயல்பாக ஒவ்வொரு chunk-க்கும் <strong>3</strong> நகல்கள்; master ஒவ்வொரு 64 MB chunk-க்கும் <strong>64 byte-க்குக் குறைவான</strong> metadata-வை நினைவகத்தில் வைக்கிறது. 1 TB கோப்புக்குக் கணக்கு (1 TB = 1,048,576 MB):</p>
+<ul>
+<li>Chunk-கள் = 1,048,576 ÷ 64 = <strong>16,384</strong></li>
+<li>நகல்கள் உட்பட சேமிப்பு = 3 × 1 TB = 3 TB; chunk நகல்கள் = 3 × 16,384 = 49,152</li>
+<li>Master metadata &lt; 16,384 × 64 byte = 1,048,576 byte = <strong>1 MB</strong> — ஒரு TB தரவுக்கு ஒரு MB நினைவகம். அதனால்தான் ஒற்றை master போதுமானது.</li>
+</ul>
+<p>மீட்பு, கட்டுரையின் சொந்தச் சோதனை: cluster B-இல் சுமார் 15,000 chunk-கள், 600 GB தரவு கொண்ட ஒரு chunkserver வேண்டுமென்றே நிறுத்தப்பட்டது. ஒரே நேரத்தில் 91 நகலெடுப்புகள் (chunkserver-களில் 40%), ஒவ்வொன்றும் அதிகபட்சம் 6.25 MB/s என்று வரம்பிடப்பட்டது; எல்லா chunk-களும் <strong>23.2 நிமிடங்களில்</strong> மீட்கப்பட்டன, பயனுள்ள வீதம் 440 MB/s.</p>
+<ul>
+<li>வரம்பு: 91 × 6.25 = 568.75 MB/s அதிகபட்சம்; அடைந்தது 440 MB/s ≈ 77%.</li>
+<li>சரிபார்ப்பு: 600 GB ≈ 614,400 MB; ÷ 440 MB/s ≈ 1,396 s ≈ 23.3 நிமிடம் — கட்டுரையின் 23.2-உடன் ஒத்துப்போகிறது.</li>
+</ul>
+<p>ஒரு இயந்திர இழப்பு: யாரும் அழைக்கப்படவில்லை, அரை மணிக்குள் முழு நகல் நிலை மீண்டது.</p>
+<h2 id="cluster-ஐ-மணடம-கணடபடககமல-சயலககம">Cluster-ஐ மீண்டும் கண்டுபிடிக்காமல் செயலாக்கம்<a class="anchor" href="#cluster-%e0%ae%90-%e0%ae%ae%e0%ae%a3%e0%ae%9f%e0%ae%ae-%e0%ae%95%e0%ae%a3%e0%ae%9f%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95%e0%ae%ae%e0%ae%b2-%e0%ae%9a%e0%ae%af%e0%ae%b2%e0%ae%95%e0%ae%95%e0%ae%ae">#</a></h2>
+<p>சேமிப்பு மட்டும் போதாது. அந்த அளவில் செயலாக்கத்திற்கு ஒவ்வொரு பொறியாளரும் distribution மற்றும் recovery-ஐ மீண்டும் கண்டுபிடிக்காதபடி ஒரு நிரலாக்க மாதிரி தேவைப்பட்டது. MapReduce (Dean மற்றும் Ghemawat, OSDI 2004) இரண்டு hooks கொடுத்தது — ஒரு record-இலிருந்து key-value pairs வெளியிடும் <strong>map</strong>, மற்றும் ஒரு key பகிரும் values-ஐத் தொகுக்கும் <strong>reduce</strong> — மற்றும் <em>அமைப்பு</em> split, parallel map, key-ஆல் shuffle/sort, parallel reduce, மற்றும் தோல்வியுற்ற tasks-இன் retry-ஐக் கையாண்டது. கட்டுப்பாடு இயற்பியல் சார்ந்தது போலவே அறிவுசார்ந்ததும் கூட: cluster-ஐ மறைத்து வேலையின் தர்க்கம் சிறியதாக இருக்கட்டும்.</p>
+<h2 id="mapreduce-கயல-ஒரமற">MapReduce, கையால் ஒருமுறை<a class="anchor" href="#mapreduce-%e0%ae%95%e0%ae%af%e0%ae%b2-%e0%ae%92%e0%ae%b0%e0%ae%ae%e0%ae%b1">#</a></h2>
+<p>கட்டுரையின் முதல் எடுத்துக்காட்டு word count: map ஒவ்வொரு சொல் w-க்கும் <code>(w, &quot;1&quot;)</code> வெளியிடுகிறது; reduce ஒரு சொல்லின் எல்லா 1-களையும் கூட்டுகிறது. இரண்டு சிறு ஆவணங்களுடன் (எடுத்துக்காட்டு உள்ளீடு):</p>
+<ul>
+<li>ஆவணம் 1: <code>கணினி நினைவகம் கணினி</code></li>
+<li>ஆவணம் 2: <code>நினைவகம் வலை கணினி</code></li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>படி</th>
+					<th>வெளியீடு</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Map (ஆவணம் 1)</td>
+					<td>(கணினி,1) (நினைவகம்,1) (கணினி,1)</td>
+			</tr>
+			<tr>
+					<td>Map (ஆவணம் 2)</td>
+					<td>(நினைவகம்,1) (வலை,1) (கணினி,1)</td>
+			</tr>
+			<tr>
+					<td>Shuffle / sort (key வாரியாக)</td>
+					<td>கணினி → [1,1,1]; நினைவகம் → [1,1]; வலை → [1]</td>
+			</tr>
+			<tr>
+					<td>Reduce</td>
+					<td>(கணினி,3) (நினைவகம்,2) (வலை,1)</td>
+			</tr>
+	</tbody>
+</table>
+<p>நிரலாளர் எழுதியது map-உம் reduce-உம் மட்டும்; பிரித்தல், இயந்திரங்களுக்கு அனுப்புதல், shuffle, தோல்வியுற்ற task-ஐ மீண்டும் ஓட்டுதல் — அமைப்பின் வேலை.</p>
+<p>அளவில், கட்டுரையின் grep அளவீடு: 10¹⁰ record-கள் × 100 byte = 10¹² byte ≈ <strong>1 TB</strong>; உள்ளீடு சுமார் 64 MB துண்டுகளாக, M = 15,000 map task-கள் (10¹² ÷ 15,000 ≈ 66.7 MB — &ldquo;சுமார் 64 MB&rdquo; உடன் ஒத்தது); சுமார் 1,800 இயந்திரங்கள்; 1,764 worker-கள் ஒதுக்கப்பட்டபோது உச்ச வேகம் 30 GB/s-க்கு மேல்; மொத்தம் சுமார் <strong>150 வினாடிகள்</strong>, அதில் சுமார் ஒரு நிமிடம் தொடக்கச் செலவு. ஒரு இயந்திரம் 100 MB/s-இல் படித்தால் (எடுத்துக்காட்டு மதிப்பு) அதே 1 TB-க்கு 10¹² ÷ 10⁸ = 10,000 s ≈ 2.8 மணி நேரம்.</p>
+<h2 id="மலவன-bytes-மத-அமபப">மலிவான Bytes மீது அமைப்பு<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%b5%e0%ae%a9-bytes-%e0%ae%ae%e0%ae%a4-%e0%ae%85%e0%ae%ae%e0%ae%aa%e0%ae%aa">#</a></h2>
+<p>Bigtable (Chang et al., OSDI 2006) தொடர்புடைய தேவைக்குப் பதிலளித்தது: web அளவில் sparse structured storage — rows URLs ஆக, columns crawled versions அல்லது metadata ஆக, பெரும்பாலான cells காலி — அடியில் GFS மீது கட்டப்பட்டது. வடிவமைப்பு தொழில் பின்னர் NoSQL என அழைத்ததில் பெரும்பகுதியை வடிவமைத்தது; இணைப்புத் திசு ஒன்றுதான்: failure-tolerant bulk storage மற்றும் batch நிரலாக்க மாதிரி இருந்தவுடன், structured அணுகல் அடுத்த கட்டாய அடுக்கு ஆகிறது.</p>
+<h2 id="bigtable-இன-webtable-கடடரயலரநத">Bigtable-இன் webtable, கட்டுரையிலிருந்து<a class="anchor" href="#bigtable-%e0%ae%87%e0%ae%a9-webtable-%e0%ae%95%e0%ae%9f%e0%ae%9f%e0%ae%b0%e0%ae%af%e0%ae%b2%e0%ae%b0%e0%ae%a8%e0%ae%a4">#</a></h2>
+<p>Bigtable கட்டுரையின் எடுத்துக்காட்டு: row key <code>com.cnn.www</code> (URL பின்னோக்கி — அதே domain-இன் பக்கங்கள் அருகருகே வரிசைப்படும்); <code>contents:</code> column பக்க உள்ளடக்கத்தை மூன்று பதிப்புகளாக (நேரமுத்திரைகள் t3, t5, t6) வைக்கிறது; <code>anchor:cnnsi.com</code>, <code>anchor:my.look.ca</code> columns அந்தப் பக்கத்தைச் சுட்டும் பிற தளங்களின் இணைப்பு உரையை வைக்கின்றன.</p>
+<p>Sparse ஏன் முக்கியம் (எடுத்துக்காட்டு மதிப்புகள்): 1,000,000 பக்கங்கள் (rows); சுட்டும் தளங்களின் மொத்த எண்ணிக்கை 100,000 (சாத்தியமான <code>anchor:</code> columns); ஒவ்வொரு பக்கத்தையும் சராசரியாக 10 தளங்கள் சுட்டுகின்றன.</p>
+<ul>
+<li>சாத்தியமான கலங்கள் = 1,000,000 × 100,000 = 10¹¹</li>
+<li>நிரம்பியவை = 1,000,000 × 10 = 10⁷</li>
+<li>நிரம்பிய பங்கு = 10⁷ ÷ 10¹¹ = 0.0001 = <strong>0.01%</strong></li>
+</ul>
+<p>ஒவ்வொரு கலத்துக்கும் இடம் ஒதுக்கும் சாதாரண அட்டவணை 99.99% காலியாக இருக்கும்; Bigtable நிரம்பிய கலங்களை மட்டுமே சேமிக்கிறது.</p>
+<h2 id="இத-ஏன-moat-ஆனத">இது ஏன் Moat ஆனது<a class="anchor" href="#%e0%ae%87%e0%ae%a4-%e0%ae%8f%e0%ae%a9-moat-%e0%ae%86%e0%ae%a9%e0%ae%a4">#</a></h2>
+<p>போட்டியாளர்கள் ranking கருத்துகளை நகலெடுக்க முடியும். Commodity வன்பொருளில் முழு web-ஐச் சேமித்து, செயலாக்கி, தொடர்ந்து மீண்டும் index செய்யும் திறனை — இயந்திர இறப்பை சாதாரணமாகக் கருதி — பிரதிபண்ணுவது மிகக் கடினம். Hadoop மற்றும் பிந்தைய &ldquo;big data&rdquo; stack Google-இன் உள் code இல்லாமலே <em>வெளியிடப்பட்ட</em> papers-ஐப் பின்தொடர்ந்தன: papers அந்த வகைப் பிரச்சனையை எப்படித் தீர்ப்பது எனக் காட்டின.</p>
+<p>Batch map/reduce சக்திவாய்ந்ததும் நெகிழ்வற்றதும். அடுத்த பதிவு <em>செயலாக்கும்</em> விநியோகிக்கப்பட்ட தரவிலிருந்து, முதிர்ந்த விநியோகிக்கப்பட்ட அமைப்பு ஆன பல சேவைகளை <em>deploy செய்து குணப்படுத்துவதற்கு</em> திரும்புகிறது.</p>
+<h2 id="ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)<a class="anchor" href="#%e0%ae%95%e0%ae%95%e0%ae%a4%e0%ae%aa-%e0%ae%aa%e0%ae%af%e0%ae%b1%e0%ae%9a%e0%ae%95%e0%ae%b3-%e0%ae%b5%e0%ae%9f%e0%ae%95%e0%ae%b3%e0%ae%9f%e0%ae%a9">#</a></h2>
+<ol>
+<li>
+<p><strong>10 TB தரவு GFS-இல், 64 MB chunk-கள், 3 நகல்கள். எத்தனை chunk-கள்? மொத்த வட்டு இடம்? Master metadata-வின் மேல் வரம்பு?</strong>
+விடை: 10 × 1,048,576 ÷ 64 = <strong>163,840</strong> chunk-கள்; 3 × 10 = <strong>30 TB</strong>; &lt; 163,840 × 64 byte = 10,485,760 byte = <strong>10 MB</strong>.</p>
+</li>
+<li>
+<p><strong>கட்டுரையின் மீட்புச் சோதனையில் வரம்பு 91 × 6.25 MB/s. அதே 600 GB-ஐ அந்த முழு வரம்பில் மீட்டிருந்தால் எவ்வளவு நேரம்?</strong>
+விடை: 614,400 MB ÷ 568.75 MB/s ≈ 1,080 s ≈ <strong>18 நிமிடம்</strong> (உண்மையில் 23.2 நிமிடம் ஆனது).</p>
+</li>
+<li>
+<p><strong>ஆவணங்கள்: &ldquo;அ ஆ அ&rdquo;, &ldquo;ஆ இ&rdquo;, &ldquo;அ&rdquo;. Word count-இன் reduce வெளியீடு என்ன? Map எத்தனை (key, value) இணைகளை வெளியிட்டது?</strong>
+விடை: (அ,3) (ஆ,2) (இ,1); map இணைகள் = 3 + 2 + 1 = <strong>6</strong>.</p>
+</li>
+<li>
+<p><strong>5,000 இயந்திரங்கள், ஒவ்வொன்றும் சராசரியாக 1,000 நாட்களுக்கு ஒருமுறை தோல்வி (எடுத்துக்காட்டு மதிப்புகள்). ஒரு வாரத்தில் எத்தனை தோல்விகள் எதிர்பார்க்கலாம்?</strong>
+விடை: ஒரு நாளுக்கு 5,000 ÷ 1,000 = 5; ஒரு வாரம் 5 × 7 = <strong>35</strong>.</p>
+</li>
+<li>
+<p><strong>Hadoop Google-இன் குறியீடு இல்லாமல் எப்படி உருவானது?</strong>
+விடை: ஆங்கிலப் பதிவு சொல்வதுபடி, Google <em>வெளியிட்ட</em> GFS, MapReduce கட்டுரைகள் அந்த வகைப் பிரச்சினையை எப்படித் தீர்ப்பது — பெரிய chunk-கள், நகல்கள், map/reduce, தோல்வியுற்ற task-களை மீண்டும் ஓட்டுதல் — என்று காட்டின; குறியீடு இல்லாமலும் வடிவமைப்பை மீண்டும் உருவாக்க முடிந்தது.</p>
+</li>
+</ol>
+<p><strong>Door out:</strong> Sanjay Ghemawat, Howard Gobioff, மற்றும் Shun-Tak Leung, &ldquo;The Google File System&rdquo; (SOSP 2003); Jeffrey Dean மற்றும் Sanjay Ghemawat, &ldquo;MapReduce: Simplified Data Processing on Large Clusters&rdquo; (OSDI 2004); Fay Chang et al., &ldquo;Bigtable: A Distributed Storage System for Structured Data&rdquo; (OSDI 2006) — இந்த infrastructure கதையின் பின்னால் உள்ள மூன்று முதன்மைகள்.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>சாதாரணச் சந்தைக் கணினி</td>
+					<td>commodity machine</td>
+			</tr>
+			<tr>
+					<td>கோப்பு அமைப்பு</td>
+					<td>file system</td>
+			</tr>
+			<tr>
+					<td>துண்டு</td>
+					<td>chunk</td>
+			</tr>
+			<tr>
+					<td>நகல் / நகலாக்கம்</td>
+					<td>replica / replication</td>
+			</tr>
+			<tr>
+					<td>ஒருங்கிணைப்பாளர்</td>
+					<td>master</td>
+			</tr>
+			<tr>
+					<td>நிரலாக்க மாதிரி</td>
+					<td>programming model</td>
+			</tr>
+			<tr>
+					<td>விசை-மதிப்பு இணை</td>
+					<td>key-value pair</td>
+			</tr>
+			<tr>
+					<td>கலைத்து அடுக்குதல்</td>
+					<td>shuffle / sort</td>
+			</tr>
+			<tr>
+					<td>அரிதான அட்டவணை</td>
+					<td>sparse table</td>
+			</tr>
+			<tr>
+					<td>நேரமுத்திரை</td>
+					<td>timestamp</td>
+			</tr>
+			<tr>
+					<td>அட்டவணையிடுதல்</td>
+					<td>indexing</td>
+			</tr>
+			<tr>
+					<td>பகுதித் தோல்வி</td>
+					<td>partial failure</td>
+			</tr>
+			<tr>
+					<td>அகழி (நீடித்த நன்மை)</td>
+					<td>moat</td>
+			</tr>
+	</tbody>
+</table>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Google-%E0%AE%87%E0%AE%A9%E0%AF%8D&#43;Big&#43;Data&#43;Infrastructure&#43;%E2%80%94&#43;%E0%AE%85%E0%AE%B5%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D&#43;%E0%AE%8F%E0%AE%A9%E0%AF%8D&#43;%E0%AE%B5%E0%AF%86%E0%AE%A9%E0%AF%8D%E0%AE%B1%E0%AE%BE%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F44-google-s-big-data-infrastructure-why-they-won%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F44-google-s-big-data-infrastructure-why-they-won.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F44-google-s-big-data-infrastructure-why-they-won.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="flex align-center">
+        <span>Kubernetes மற்றும் Container Orchestration அளவில்</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#மதலல-சறகள">முதலில் சொற்கள்</a></li>
+    <li><a href="#கடடபபட-web-ஒறற-box-ஐ-வஞசனத">கட்டுப்பாடு: Web ஒற்றை Box-ஐ விஞ்சினது</a></li>
+    <li><a href="#failure-சதரணம--எனவ-storage-அதக-கரத-வணடயரநதத">Failure சாதாரணம் — எனவே Storage அதைக் கருத வேண்டியிருந்தது</a></li>
+    <li><a href="#gfs-இன-எணகள-கடடரயலரநத">GFS-இன் எண்கள், கட்டுரையிலிருந்து</a></li>
+    <li><a href="#cluster-ஐ-மணடம-கணடபடககமல-சயலககம">Cluster-ஐ மீண்டும் கண்டுபிடிக்காமல் செயலாக்கம்</a></li>
+    <li><a href="#mapreduce-கயல-ஒரமற">MapReduce, கையால் ஒருமுறை</a></li>
+    <li><a href="#மலவன-bytes-மத-அமபப">மலிவான Bytes மீது அமைப்பு</a></li>
+    <li><a href="#bigtable-இன-webtable-கடடரயலரநத">Bigtable-இன் webtable, கட்டுரையிலிருந்து</a></li>
+    <li><a href="#இத-ஏன-moat-ஆனத">இது ஏன் Moat ஆனது</a></li>
+    <li><a href="#ககதப-பயறசகள-வடகளடன">காகிதப் பயிற்சிகள் (விடைகளுடன்)</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

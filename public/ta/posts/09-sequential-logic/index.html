@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="ta" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="பின்னூட்டம் இருநிலை நினைவகத்தை உருவாக்குகிறது; edge-triggered flip-flop-கள் ஒத்திசைவு வடிவமைப்பைக் கையாளக்கூடியதாக்குகின்றன — setup/hold clock-ஐக் கட்டுப்படுத்தும் வரை">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ta/posts/09-sequential-logic/">
+	<meta property="og:site_name" content="நாம் அங்கு எப்படிச் சென்றடைந்தோம்">
+	<meta property="og:title" content="தொடர்நிலைத் தர்க்கம்">
+	<meta property="og:description" content="பின்னூட்டம் இருநிலை நினைவகத்தை உருவாக்குகிறது; edge-triggered flip-flop-கள் ஒத்திசைவு வடிவமைப்பைக் கையாளக்கூடியதாக்குகின்றன — setup/hold clock-ஐக் கட்டுப்படுத்தும் வரை">
+	<meta property="og:locale" content="ta">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="தொடர்நிலைத் தர்க்கம்">
+	<meta itemprop="description" content="பின்னூட்டம் இருநிலை நினைவகத்தை உருவாக்குகிறது; edge-triggered flip-flop-கள் ஒத்திசைவு வடிவமைப்பைக் கையாளக்கூடியதாக்குகின்றன — setup/hold clock-ஐக் கட்டுப்படுத்தும் வரை">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1496">
+
+<title>தொடர்நிலைத் தர்க்கம் • நாம் அங்கு எப்படிச் சென்றடைந்தோம்</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ta/posts/09-sequential-logic/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/09-sequential-logic/" title="Sequential Logic">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/09-sequential-logic/" title="ตรรกะเชิงลำดับ">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/09-sequential-logic/" title="අනුක්‍රමික තර්කය">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/09-sequential-logic/" title="Logică secvențială">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ta.search.min.6be7f754a54824198a06bbdf17f3660ebf5b066ead567db71e9d82dd22099490.js" integrity="sha256-a&#43;f3VKVIJBmKBrvfF/NmDr9bBm6tVn23Hp2C3SIJlJA=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ta/"><span>நாம் அங்கு எப்படிச் சென்றடைந்தோம்</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        தமிழ்</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/09-sequential-logic/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/09-sequential-logic/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/09-sequential-logic/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/09-sequential-logic/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-credits/" class="">
+      நன்றியுரையும் மூலாதாரங்களும்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/00-foreword/" class="">
+      முன்னுரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01-what-is-this-thing/" class="">
+      இது என்ன?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01a-babbage-engines/" class="">
+      Babbage இன் இயந்திரங்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/02-relays-and-electromechanical-logic/" class="">
+      ரிலேக்கள் மற்றும் மின்னியந்திர தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01b-jacquard-loom/" class="">
+      Jacquard தறி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/03-the-vacuum-tube-era/" class="">
+      வெற்றிடக் குழாய் காலம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/01c-why-mechanical-matters/" class="">
+      இயந்திரக் கணினி ஏன் முக்கியம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="">
+      டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/05-semiconductors-from-first-principles/" class="">
+      முதல் கொள்கைகளிலிருந்து குறைகடத்திகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      டிரான்சிஸ்டர்: BJT முதல் MOSFET வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/07-logic-gates-from-transistors/" class="">
+      டிரான்சிஸ்டர்களிலிருந்து தர்க்க வாயில்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="">
+      வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/09-sequential-logic/" class="active">
+      தொடர்நிலைத் தர்க்கம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="">
+      நினைவகப் படிநிலை தொடங்குகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/11-instruction-sets/" class="">
+      அறிவுறுத்தல் தொகுப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/12-datapath-design/" class="">
+      Datapath வடிவமைப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/17-superscalar-multicore/" class="">
+      Superscalar &amp; Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes முதல் Minicomputers முதல் Microprocessors வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/19-the-x86-vs-risc-split/" class="">
+      x86 vs RISC பிளவு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM மற்றும் RISC-V: இன்றைய கட்டமைப்பு நிலப்பரப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Batch Processing மற்றும் Operating System-இன் பிறப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing மற்றும் Unix வம்சாவளி</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU இயக்கம் மற்றும் Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/24-virtual-memory-and-multitasking/" class="">
+      Virtual Memory மற்றும் Multitasking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers மற்றும் நவீன OS Isolation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/26-from-machine-code-to-assembly/" class="">
+      Machine Code-இலிருந்து Assembly வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      உயர்நிலை மொழிகள்: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, மற்றும் நவீன மொழி Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Real-Time அமைப்புகள் மற்றும் Deterministic Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/30-real-time-systems-in-practice/" class="">
+      நடைமுறையில் Real-Time அமைப்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/31-buses-101/" class="">
+      Buses 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus-இலிருந்து PCI-க்கு, PCIe-க்கு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/33-pcie-deep-dive/" class="">
+      PCIe Deep Dive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/34-memory-buses/" class="">
+      Memory Buses</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/35-the-memory-wall/" class="">
+      The Memory Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/36-the-clock-speed-wall/" class="">
+      The Clock Speed Wall</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/37-interconnects-at-scale/" class="">
+      Interconnects at Scale</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      Serial இணைப்புகள் மற்றும் முதல் இயந்திரத்திலிருந்து-இயந்திரத் தொடர்புகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET மற்றும் Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet மற்றும் Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP மற்றும் நவீன இணைய Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/42-datacenter-networking-and-rdma/" class="">
+      Datacenter Networking மற்றும் RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher மற்றும் Pre-Web இணையம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google-இன் Big Data Infrastructure — அவர்கள் ஏன் வென்றார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes மற்றும் Container Orchestration அளவில்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/46-the-machine-learning-software-stack/" class="">
+      Machine Learning மென்பொருள் Stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; உண்மையில் என்ன அர்த்தம்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/49-finfet-to-gaa/" class="">
+      FinFET முதல் GAA வரை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets மற்றும் Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/52-why-gpus-exist/" class="">
+      GPU-கள் ஏன் உள்ளன</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps மற்றும் Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/54-gpu-memory-hierarchy/" class="">
+      GPU Memory Hierarchy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply Chip வடிவமைப்பை ஏன் மறுவடிவமைத்தது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/59-quantization-mixed-precision/" class="">
+      Quantization மற்றும் Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/60-sparsity-in-hardware/" class="">
+      வன்பொருளில் Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter அளவில் Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/62-where-it-s-headed/" class="">
+      அது எங்கே போகிறது</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/63-attention-is-all-you-need/" class="">
+      Attention Is All You Need</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/64-who-decides-the-wire/" class="">
+      கம்பிக்கு யார் முடிவெடுக்கிறார்கள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/66-wartime-crypto/" class="">
+      போர்க்கால Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/67-privacy-consent-identity-cyber/" class="">
+      தனியுரிமை, ஒப்புதல், அடையாளம், Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/68-visions-that-shipped/" class="">
+      நடைமுறைக்கு வந்த பார்வைகள்</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/69-platform-synthesis/" class="">
+      Platform தொகுப்பு</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/98-timeline/" class="">
+      காலவரிசை</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ta/posts/99-glossary/" class="">
+      சொற்களஞ்சியம்</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>தொடர்நிலைத் தர்க்கம்</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#sr-latch-பனனடடததலரநத-நனவகம">SR Latch: பின்னூட்டத்திலிருந்து நினைவகம்</a></li>
+    <li><a href="#clock-கணனயன-இதயத-தடபப">Clock: கணினியின் இதயத் துடிப்பு</a></li>
+    <li><a href="#d-flip-flop-edge-களல-transparency-ஐத-தரததல">D Flip-Flop: Edge-களால் Transparency-ஐத் தீர்த்தல்</a></li>
+    <li><a href="#setup-மறறம-hold-நரம-இயறபயல-நழயம-இடம">Setup மற்றும் Hold நேரம்: இயற்பியல் நுழையும் இடம்</a></li>
+    <li><a href="#metastability-மல-உசசயல-நறகம-பநத">Metastability: மலை உச்சியில் நிற்கும் பந்து</a></li>
+    <li><a href="#இத-எதத-தறககறத">இது எதைத் திறக்கிறது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    தொடர்நிலைத் தர்க்கம்
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ஜனவரி 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>முந்தைய பதிவில் உள்ள அனைத்தும் சேர்க்கை — தற்போதைய உள்ளீடுகளின் தூய சார்புகள், பூஜ்ய நினைவகம். இப்போது 2+2 கணிக்கும் ஒரு full adder ஒரு கணம் முன் என்ன கணித்தது என்று அறியாது, அதற்குத் தேவையும் இல்லை. ஆனால் ஒரு கணினிக்கு <em>நிலை</em> தேவை — பதிவேட்டு மதிப்புகள், நிரல் கவுண்டர்கள், நினைவக உள்ளடக்கங்கள் — clock சுழற்சிகள் முழுவதும் நீடிக்கும். அதற்கு உண்மையிலேயே வேறு வகையான சுற்று தேவை: பின்னூட்டம் கொண்ட ஒன்று.</p>
+<p>Flip-flop-களுக்குத் தமிழில் பாடநூல் மற்றும் தேர்வுக் காணொளிகள் உள்ளன; <strong>clock</strong> பற்றிச் சில தமிழ்க் காணொளிகள் மட்டுமே, தமிழ் விக்கிப்பீடியாவில் கட்டுரை இல்லை; <strong>setup / hold நேரம்</strong>, <strong>metastability</strong> — ஒரு சிப் எவ்வளவு வேகமாக ஓட முடியும் என்பதைத் தீர்மானிக்கும் இயற்பியல் — பற்றித் தமிழ் விக்கிப்பீடியாவிலும் தமிழ் YouTube-இலும் விளக்கம் இந்தத் தணிக்கையில் கிடைக்கவில்லை. இந்தப் பக்கத்தின் பின்பாதி அதை எண்களோடு நிரப்புகிறது.</p>
+<h2 id="sr-latch-பனனடடததலரநத-நனவகம">SR Latch: பின்னூட்டத்திலிருந்து நினைவகம்<a class="anchor" href="#sr-latch-%e0%ae%aa%e0%ae%a9%e0%ae%a9%e0%ae%9f%e0%ae%9f%e0%ae%a4%e0%ae%a4%e0%ae%b2%e0%ae%b0%e0%ae%a8%e0%ae%a4-%e0%ae%a8%e0%ae%a9%e0%ae%b5%e0%ae%95%e0%ae%ae">#</a></h2>
+<p>மிக எளிய சாத்தியமான நினைவக உறுப்பு இரண்டு குறுக்கு-இணைக்கப்பட்ட NOR (அல்லது NAND) வாயில்களிலிருந்து கட்டப்படுகிறது — ஒவ்வொரு வாயிலின் வெளியீடும் மற்ற வாயிலின் உள்ளீட்டை ஊட்டுகிறது. இது இரண்டு நிலைத்த நிலைகளை உருவாக்குகிறது (<strong>இருநிலைத்தன்மை</strong>, bistability), மேலும் சுற்று கடைசியாக அமைக்கப்பட்டதில், மின்சாரம் இருக்கும் வரை, காலவரையின்றி அமர்ந்திருக்கும். அதுவே நினைவகத்தின் சாரம்: ஏதோ சுருக்க அர்த்தத்தில் ஒரு மதிப்பைச் சேமிப்பது அல்ல, இருநிலைத்ததும் நீங்கள் கடைசியாகத் தள்ளிய இடத்திலேயே நிற்கும் ஒரு இயற்பியல் சுற்று.</p>
+<p>NOR அடிப்படையிலான SR latch-இன் நடத்தை (S = set, R = reset, Q = சேமித்த பிட்):</p>
+<table>
+	<thead>
+			<tr>
+					<th>S</th>
+					<th>R</th>
+					<th>அடுத்த Q</th>
+					<th>பொருள்</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>முந்தைய Q</td>
+					<td>வைத்திரு (hold) — நினைவகம்</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>set</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+					<td>reset</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>—</td>
+					<td>தடைசெய்யப்பட்டது: இரண்டு வெளியீடுகளும் 0 ஆகின்றன; இரண்டையும் ஒரே நேரத்தில் விடுவித்தால் எந்த நிலைக்கு விழும் என்று சொல்ல முடியாது</td>
+			</tr>
+	</tbody>
+</table>
+<p>முதல் வரிதான் முக்கியம்: உள்ளீடுகள் இரண்டும் 0 ஆக இருக்கும்போது வெளியீடு <em>உள்ளீடுகளால் அல்ல, தன் சொந்த கடந்த காலத்தால்</em> தீர்மானிக்கப்படுகிறது. அதுதான் <strong>தொடர்நிலைத் தர்க்கம்</strong> (sequential logic) — வெளியீடு தற்போதைய உள்ளீடுகளையும் சேமித்த நிலையையும் சார்ந்தது.</p>
+<p>ஒரு ungated SR latch எப்போதும் தன் Set/Reset உள்ளீடுகளுக்கு உணர்திறன் கொண்டது. ஒத்திசைவு வடிவமைப்பிற்கு மிக முக்கியமான இடைநிலைப் படி ஒரு gated (level-sensitive) latch: அதன் enable உயர்வாக இருக்கும்போது latch <em>transparent</em> — வெளியீடு தரவு உள்ளீட்டைப் பின்தொடர்கிறது — மற்றும் enable குறைவாகச் செல்லும்போது மட்டுமே அது வைத்திருக்கிறது. அந்த transparency சாளரம் சில பயன்பாடுகளுக்கு நன்றாக உள்ளது ஆனால் பல நிலை உறுப்புகள் ஒருங்கிணைந்த வழியில் புதுப்பிக்க வேண்டியபோது அசெளகரியம்.</p>
+<p><strong>இப்போது முயல்க.</strong> கீழே உள்ள lab இன்னும் ஒரு நேரடி வாயில் — உள்ளீடுகளை மாற்றி வெளியீடு <em>உடனே</em> மாறுவதைப் பாருங்கள். அந்த உடனடி பதில் சேர்க்கைத் தர்க்கம். இந்தப் பதிவு வாயில்களைத் தங்களுக்குள்ளேயே மீண்டும் இணைக்கும்போது என்ன நடக்கிறது என்பது — உள்ளீடு விலகிய பிறகும் வெளியீடு <em>வைத்திருக்க</em> முடியும். (இரண்டாவது முயற்சி — ஒரு உண்மையான D flip-flop — கீழே &ldquo;Clock&rdquo; பகுதிக்குப் பின் உள்ளது.)</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/breadboard/?lang=ta"
+    style="width:100%; height:700px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="Interactive lab: breadboard">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/breadboard/?lang=ta" target="_blank" rel="noopener">Open lab in new tab ↗</a>
+  </div>
+</div>
+
+<h2 id="clock-கணனயன-இதயத-தடபப">Clock: கணினியின் இதயத் துடிப்பு<a class="anchor" href="#clock-%e0%ae%95%e0%ae%a3%e0%ae%a9%e0%ae%af%e0%ae%a9-%e0%ae%87%e0%ae%a4%e0%ae%af%e0%ae%a4-%e0%ae%a4%e0%ae%9f%e0%ae%aa%e0%ae%aa">#</a></h2>
+<p><strong>Clock சமிக்ஞை</strong> (clock signal) என்பது 0 மற்றும் 1-க்கு இடையே ஒழுங்காக மாறி மாறிச் செல்லும் ஒரு சதுர அலை. சில சொற்கள்:</p>
+<ul>
+<li><strong>காலம்</strong> (period, T) — ஒரு முழுச் சுழற்சியின் நேரம்.</li>
+<li><strong>அதிர்வெண்</strong> (frequency, f) — ஒரு விநாடிக்கு எத்தனை சுழற்சிகள்; f = 1 / T. அலகு hertz (Hz).</li>
+<li><strong>உயரும் விளிம்பு</strong> (rising edge) — 0-இலிருந்து 1-க்கு மாறும் கணம்; <strong>இறங்கும் விளிம்பு</strong> (falling edge) — 1-இலிருந்து 0.</li>
+<li><strong>Duty cycle</strong> — ஒரு காலத்தில் சமிக்ஞை 1 ஆக இருக்கும் பங்கு (பொதுவாக 50%).</li>
+</ul>
+<p>கணக்கு: 3 GHz clock என்றால் f = 3 × 10⁹ Hz, எனவே T = 1 / (3 × 10⁹) விநாடி ≈ 0.333 நானோவிநாடி = <strong>333 பிக்கோவிநாடிகள்</strong> (ps). ஒளி வெற்றிடத்தில் அந்த நேரத்தில் சுமார் 10 செ.மீ. மட்டுமே செல்கிறது; சிப்பில் உள்ள கம்பிகளில் சமிக்ஞைகள் அதைவிட மெதுவாக. ஒவ்வொரு சுழற்சிக்குள்ளும் ஒரு கணக்கு முடிந்தாக வேண்டும் — இந்தப் பக்கத்தின் மீதி அந்த &ldquo;முடிந்தாக வேண்டும்&rdquo; என்பதன் பொருள்.</p>
+<h2 id="d-flip-flop-edge-களல-transparency-ஐத-தரததல">D Flip-Flop: Edge-களால் Transparency-ஐத் தீர்த்தல்<a class="anchor" href="#d-flip-flop-edge-%e0%ae%95%e0%ae%b3%e0%ae%b2-transparency-%e0%ae%90%e0%ae%a4-%e0%ae%a4%e0%ae%b0%e0%ae%a4%e0%ae%a4%e0%ae%b2">#</a></h2>
+<p>ஒரு D (Data) flip-flop இதை இரண்டு latch-களை master-slave அமைப்பில் பயன்படுத்தி சரிசெய்கிறது, ஒரு clock சமிக்ஞையால் கட்டுப்படுத்தப்படுகிறது. முக்கியத் தன்மை: வெளியீடு ஒரு clock <em>edge</em>-இல் மட்டுமே மாறுகிறது (எடுத்துக்காட்டாக, உயரும் edge), clock உயர்வாக இருக்கும்போது தொடர்ச்சியாக அல்ல. Edge-களுக்கு இடையே, flip-flop தன் உள்ளீட்டிலிருந்து முழுவதும் மூடப்பட்டுள்ளது — D உள்ளீடு என்ன செய்தாலும் அது தன் மதிப்பை வைத்திருக்கிறது.</p>
+<p>விதி ஒரே வரி: <strong>உயரும் விளிம்பில் Q ← D; மற்ற எல்லா நேரங்களிலும் Q மாறாது.</strong> ஒரு சுவடு (ஒவ்வொரு நெடுவரிசையும் ஒரு உயரும் விளிம்புக்குச் சற்று முன்/பின்):</p>
+<table>
+	<thead>
+			<tr>
+					<th>உயரும் விளிம்பு</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>விளிம்புக்கு முன் D</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>விளிம்புக்குப் பின் Q</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+	</tbody>
+</table>
+<p>விளிம்புகளுக்கு இடையே D பலமுறை மாறினாலும் (glitch-கள், பாதி-கணக்கிட்ட மதிப்புகள்) Q-ஐ அது தொடாது — விளிம்பின் கணத்தில் D என்ன என்பது மட்டுமே முக்கியம். இந்த edge-triggered நடத்தைதான் ஒத்திசைவு டிஜிட்டல் வடிவமைப்பை (synchronous design) எல்லாம் கையாளக்கூடியதாக்குகிறது. ஒரு சிப்பில் உள்ள ஒவ்வொரு flip-flop-ம் அதே clock edge-இல் புதுப்பிக்கிறது, எனவே முழு அமைப்பையும் ஒரு தனித்த படியாகப் புரிந்துகொள்ளலாம் — சமிக்ஞைகள் ஒன்றையொன்று ஓடும் தொடர்ச்சியான, ஒத்திசையற்ற குழப்பமாக அல்ல.</p>
+<p><strong>இப்போது முயல்க (D flip-flop).</strong> மேலே உள்ள lab-இன் &ldquo;Open lab in new tab&rdquo; இணைப்பைத் திறந்து, அங்குள்ள &ldquo;Open AND gate in new tab&rdquo; பொத்தானால் Falstad circuit simulator-ஐ முழுத் திரையில் திறங்கள். பிறகு:</p>
+<ol>
+<li><strong>Draw → Digital Chips → Add D Flip-Flop</strong> தேர்ந்தெடுத்து ஒரு flip-flop-ஐ வையுங்கள்.</li>
+<li><strong>Draw → Logic Gates, Input and Output → Add Logic Input</strong> மூலம் இரண்டு உள்ளீடுகள் வையுங்கள்: ஒன்றை D-க்கு, மற்றொன்றை clock முனைக்கு (சிறிய &ldquo;&gt;&rdquo; குறி) இணையுங்கள். <strong>Add Logic Output</strong> ஒன்றை Q-க்கு இணையுங்கள். (மெனு பெயர்கள் simulator பதிப்புக்கேற்ப சற்று மாறலாம்.)</li>
+<li>clock உள்ளீடு 0-இல் இருக்கும்போது D-ஐப் பலமுறை 0/1 என மாற்றுங்கள் — Q மாறாது.</li>
+<li>இப்போது clock உள்ளீட்டை 0 → 1 என மாற்றுங்கள் (உயரும் விளிம்பு) — Q அந்தக் கணத்தின் D-ஐ நகலெடுக்கிறது. clock-ஐ 1 → 0 எனத் திருப்புங்கள் — எதுவும் நடக்காது.</li>
+<li>மேலே உள்ள சுவடு அட்டவணையைக் கையால் மீண்டும் உருவாக்குங்கள்: D-ஐ 1, 1, 0, 1, 0 என வைத்து ஒவ்வொரு முறையும் clock-ஐ 0→1→0 என இயக்கி, Q-ஐக் குறியுங்கள்.</li>
+</ol>
+<h2 id="setup-மறறம-hold-நரம-இயறபயல-நழயம-இடம">Setup மற்றும் Hold நேரம்: இயற்பியல் நுழையும் இடம்<a class="anchor" href="#setup-%e0%ae%ae%e0%ae%b1%e0%ae%b1%e0%ae%ae-hold-%e0%ae%a8%e0%ae%b0%e0%ae%ae-%e0%ae%87%e0%ae%af%e0%ae%b1%e0%ae%aa%e0%ae%af%e0%ae%b2-%e0%ae%a8%e0%ae%b4%e0%ae%af%e0%ae%ae-%e0%ae%87%e0%ae%9f%e0%ae%ae">#</a></h2>
+<p>Edge-triggering உடனடியானது அல்ல அல்லது கட்டுப்பாடுகள் இல்லாதது அல்ல. மூன்று நேர அளவுகள்:</p>
+<ul>
+<li><strong>Setup நேரம்</strong> (t_setup) — clock விளிம்புக்கு <em>முன்</em> D நிலைத்திருக்க வேண்டிய குறைந்தபட்ச நேரம்.</li>
+<li><strong>Hold நேரம்</strong> (t_hold) — விளிம்புக்கு <em>பின்</em> D நிலைத்திருக்க வேண்டிய குறைந்தபட்ச நேரம்.</li>
+<li><strong>Clock-to-Q தாமதம்</strong> (t_clk→q) — விளிம்புக்குப் பின் புதிய மதிப்பு Q-இல் தோன்ற எடுக்கும் நேரம்.</li>
+</ul>
+<p>ஒரு flip-flop-இலிருந்து சேர்க்கைத் தர்க்கம் வழியாக அடுத்த flip-flop-க்குச் செல்லும் பாதையை நினையுங்கள். விளிம்பு 1-இல் முதல் flip-flop புதிய மதிப்பை வெளியிடுகிறது; அது தர்க்கம் வழியாகப் பரவி, விளிம்பு 2-க்கு t_setup முன்பாகவே இரண்டாம் flip-flop-இன் D-ஐ அடைந்தாக வேண்டும். எனவே:</p>
+<blockquote class='book-hint '>
+<p>T ≥ t_clk→q + t_logic(மிக நீண்ட பாதை) + t_setup</p>
+</blockquote><p><strong>கணக்கு.</strong> t_clk→q = 50 ps, மிக நீண்ட தர்க்கப் பாதை = 250 ps, t_setup = 30 ps என்று வைத்தால் T_min = 50 + 250 + 30 = 330 ps, எனவே f_max = 1 / 330 ps ≈ <strong>3.03 GHz</strong>. யாராவது அந்தப் பாதையில் இன்னொரு adder நிலையைச் சேர்த்து அதை 400 ps ஆக்கினால்: T_min = 480 ps, f_max ≈ <strong>2.08 GHz</strong>. ஒரே ஒரு மெதுவான பாதை முழு சிப்பின் clock-ஐயும் இழுத்துவிடுகிறது — அதனால்தான் அதை <strong>critical path</strong> (தீர்மானப் பாதை) என்கிறார்கள். தீர்வு: நீண்ட தர்க்கத்தை இடையில் flip-flop-கள் வைத்து இரண்டு குறுகிய பாதிகளாக வெட்டுவது — அதாவது pipelining (பதிவு 13). 250 ps தர்க்கத்தை 125 + 125 ஆகப் பிரித்தால் T_min = 50 + 125 + 30 = 205 ps (≈ 4.9 GHz), ஆனால் ஒவ்வொரு கணக்கும் இப்போது இரண்டு சுழற்சிகள் எடுக்கிறது.</p>
+<p><strong>Hold விதி வேறு விதமானது.</strong> விளிம்பில் புதிய மதிப்பு மிக <em>வேகமாக</em> அடுத்த flip-flop-ஐ அடைந்தால், அதே விளிம்பில் அது பழைய மதிப்பைப் பிடிக்கும் முன்பே மாறிவிடலாம். விதி:</p>
+<blockquote class='book-hint '>
+<p>t_clk→q + t_logic(மிகக் குறுகிய பாதை) ≥ t_hold</p>
+</blockquote><p>எ.கா. t_hold = 20 ps, குறுகிய பாதை 10 ps: 50 + 10 = 60 ≥ 20 — சரி. கவனியுங்கள்: இந்தச் சமன்பாட்டில் T இல்லை. Setup மீறலை clock-ஐ மெதுவாக்கிச் சரிசெய்யலாம்; hold மீறலை எந்த clock வேகமும் சரிசெய்யாது — சுற்றையே மாற்ற வேண்டும் (தாமத buffer-கள் சேர்த்து). உண்மையான சிப்களில் clock ஒவ்வொரு flip-flop-ஐயும் சற்று வெவ்வேறு நேரத்தில் அடைகிறது (<strong>clock skew</strong>); அது இரண்டு சமன்பாடுகளிலும் கூடுதல் விளிம்பாகச் சேர்கிறது.</p>
+<p>இது கோட்பாட்டுக் கவலை அல்ல. Setup/hold கட்டுப்பாடுகளே எந்தக் கொடுக்கப்பட்ட சுற்றுக்கும் அதிகபட்ச clock அதிர்வெண்ணுக்குக் கடினமான உச்சவரம்பு உள்ளதற்குக் காரணம். பதிவு 36 (The Clock Speed Wall) clock அதிர்வெண்ணை வெறுமனே உயர்த்துவது ஏன் சாத்தியமில்லாமல் போனது என்பதை விளக்கும்போது இந்தச் சரியான கட்டுப்பாட்டை மீண்டும் எடுக்கிறது.</p>
+<h2 id="metastability-மல-உசசயல-நறகம-பநத">Metastability: மலை உச்சியில் நிற்கும் பந்து<a class="anchor" href="#metastability-%e0%ae%ae%e0%ae%b2-%e0%ae%89%e0%ae%9a%e0%ae%9a%e0%ae%af%e0%ae%b2-%e0%ae%a8%e0%ae%b1%e0%ae%95%e0%ae%ae-%e0%ae%aa%e0%ae%a8%e0%ae%a4">#</a></h2>
+<p>Setup அல்லது hold மீறப்பட்டால் flip-flop <strong>metastability</strong>-க்குள் (நிலையற்ற சமநிலை) நுழையலாம் — செல்லுபடியான 0-உம் அல்லாத 1-உம் அல்லாத இடைநிலை மின்னழுத்தம். உவமை: இரண்டு பள்ளத்தாக்குகளுக்கு (0, 1) இடையே ஒரு கூர்மையான மலை உச்சி. பந்தை உச்சியில் சரியாக வைத்தால், அது எந்தப் பக்கம் உருளும், எப்போது உருளும் என்று சொல்ல முடியாது. அதேபோல் metastable flip-flop 0 அல்லது 1-க்குத் தீர ஊகிக்க முடியாத நேரம் எடுக்கலாம், மேலும் அதைப் படிக்கும் வெவ்வேறு கீழ்நிலை வாயில்கள் வெவ்வேறு மதிப்புகளைப் பார்க்கவும் கூடும் — ஒரு பகுதி &ldquo;1&rdquo; என்றும் இன்னொரு பகுதி &ldquo;0&rdquo; என்றும் முடிவெடுக்கும் பிழை.</p>
+<p>ஒத்திசைவு வடிவமைப்பில் (ஒரே clock, நேரக் கணக்குகள் சரி) இது நடக்காது. ஆனால் <strong>ஒத்திசையாத உள்ளீடுகள்</strong> (asynchronous inputs) — ஒரு பொத்தான் அழுத்தம், வேறொரு clock-இல் ஓடும் சாதனத்திலிருந்து வரும் சமிக்ஞை — எப்போது வேண்டுமானாலும் மாறலாம்; எனவே சில நேரம் அவை setup/hold சாளரத்துக்குள் விழுவது <em>தவிர்க்க முடியாதது</em>. Metastability-ஐ முற்றிலும் நீக்க முடியாது; அதன் நிகழ்தகவைக் குறைக்கத்தான் முடியும்.</p>
+<p>நிலையான தீர்வு <strong>இரு-flip-flop ஒத்திசைப்பான்</strong> (two-flip-flop synchronizer): ஒத்திசையாத சமிக்ஞை முதல் flip-flop-க்குள் செல்கிறது; அதன் வெளியீடு உடனே பயன்படுத்தப்படாமல், இரண்டாவது flip-flop-க்குள் செல்கிறது. முதல் flip-flop metastable ஆனாலும், அடுத்த விளிம்பு வரை — ஒரு முழுச் சுழற்சி — தீர அவகாசம் கிடைக்கிறது. தீர்வு நேரத்தின் நிகழ்தகவு <em>அடுக்குக்குறி</em> (exponential) முறையில் குறைவதால் இது மிகச் சக்தி வாய்ந்தது. பொதுவாகப் பயன்படும் மாதிரி:</p>
+<blockquote class='book-hint '>
+<p>MTBF = e^(t_r / τ) / (T₀ × f_clk × f_data)</p>
+</blockquote><p>இங்கே MTBF = தோல்விகளுக்கு இடையிலான சராசரி நேரம், t_r = தீர அனுமதிக்கப்பட்ட நேரம், τ மற்றும் T₀ = flip-flop-இன் இயற்பியல் மாறிலிகள், f_clk மற்றும் f_data = clock மற்றும் தரவு மாறும் வீதங்கள். எண்களின் பொருள்: t_r-இல் ஒவ்வொரு கூடுதல் τ-உம் MTBF-ஐ e ≈ 2.718 மடங்காக்குகிறது. (விளக்கத்துக்கான எண்கள் மட்டும்:) τ = 20 ps என்றால், 200 ps கூடுதல் தீர்வு நேரம் = 10τ, அது MTBF-ஐ e¹⁰ ≈ 22,000 மடங்கு உயர்த்துகிறது. அதனால்தான் &ldquo;ஒரு flip-flop கூடுதலாக&rdquo; என்ற மலிவான தந்திரம் மணிநேரங்களில் வரும் தோல்வியை ஆண்டுகளுக்கு ஒருமுறையாகத் தள்ள முடிகிறது.</p>
+<h2 id="இத-எதத-தறககறத">இது எதைத் திறக்கிறது<a class="anchor" href="#%e0%ae%87%e0%ae%a4-%e0%ae%8e%e0%ae%a4%e0%ae%a4-%e0%ae%a4%e0%ae%b1%e0%ae%95%e0%ae%95%e0%ae%b1%e0%ae%a4">#</a></h2>
+<p>Edge-triggered flip-flop-கள் கையில் இருந்தால், பதிவேடுகளைக் கட்டலாம் (பல-பிட் மதிப்பை வைத்திருக்கும் flip-flop அணிகள்), கவுண்டர்கள், நிலை இயந்திரங்கள், மற்றும் — Phase 3-க்கு முக்கியமாக — ஒரு CPU-ஐ நிலைத்த சேர்க்கைச் சார்பாக அல்லாமல் ஒரு <em>தொடர்நிலை</em> இயந்திரமாக்கும் நிரல் கவுண்டரும் pipeline பதிவேடுகளும். Mini-CPU lab-இல் (பதிவு 11, 12) நீங்கள் அழுத்தும் ஒவ்வொரு <strong>Step</strong>-உம் ஒரு clock விளிம்பு: PC, A, IR பதிவேடுகள் ஒரே நேரத்தில் புதிய மதிப்புக்குத் தாவுகின்றன. அடுத்த பதிவு இந்த அதே இருநிலைத்த-சேமிப்பு யோசனையை ஒரு நோக்கத்திற்காகச் சிறப்பாக்குகிறது: பெரிய அளவு தரவைத் திறமையாக வைத்திருத்தல், அங்குதான் SRAM மற்றும் DRAM பிரிகின்றன.</p>
+<h2 id="சறகள">சொற்கள்<a class="anchor" href="#%e0%ae%9a%e0%ae%b1%e0%ae%95%e0%ae%b3">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>தமிழ்</th>
+					<th>English</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>தொடர்நிலைத் தர்க்கம்</td>
+					<td>sequential logic</td>
+			</tr>
+			<tr>
+					<td>இருநிலைத்தன்மை</td>
+					<td>bistability</td>
+			</tr>
+			<tr>
+					<td>உயரும் / இறங்கும் விளிம்பு</td>
+					<td>rising / falling edge</td>
+			</tr>
+			<tr>
+					<td>காலம், அதிர்வெண்</td>
+					<td>period, frequency</td>
+			</tr>
+			<tr>
+					<td>தீர்மானப் பாதை</td>
+					<td>critical path</td>
+			</tr>
+			<tr>
+					<td>நிலையற்ற சமநிலை</td>
+					<td>metastability</td>
+			</tr>
+			<tr>
+					<td>ஒத்திசையாத உள்ளீடு</td>
+					<td>asynchronous input</td>
+			</tr>
+			<tr>
+					<td>இரு-flip-flop ஒத்திசைப்பான்</td>
+					<td>two-flip-flop synchronizer</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="மலம-படகக">மேலும் படிக்க<a class="anchor" href="#%e0%ae%ae%e0%ae%b2%e0%ae%ae-%e0%ae%aa%e0%ae%9f%e0%ae%95%e0%ae%95">#</a></h2>
+<ul>
+<li>தமிழ்நாடு அரசு, <em>கணினி அறிவியல் தொகுதி 1: Concepts</em> (2005), அத்தியாயம் 4.5: The Flip-Flop</li>
+<li>தமிழ்நாடு அரசு, <em>12ஆம் வகுப்பு இயற்பியல் தொகுதி 2</em>, அலகு 10a: குறைகடத்தி எலக்ட்ரானியல் (இலக்கமுறை எலக்ட்ரானியல்)</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | நவம்பர் 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>நவம்பர் 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;%E0%AE%A4%E0%AF%8A%E0%AE%9F%E0%AE%B0%E0%AF%8D%E0%AE%A8%E0%AE%BF%E0%AE%B2%E0%AF%88%E0%AE%A4%E0%AF%8D&#43;%E0%AE%A4%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fta%2Fposts%2F09-sequential-logic%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ta%2Fposts%2F09-sequential-logic.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ta%2Fposts%2F09-sequential-logic.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ta/posts/08-from-gates-to-combinational-logic/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>வாயில்களிலிருந்து சேர்க்கைத் தர்க்கம்</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ta/posts/10-the-memory-hierarchy-begins/" class="flex align-center">
+        <span>நினைவகப் படிநிலை தொடங்குகிறது</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#sr-latch-பனனடடததலரநத-நனவகம">SR Latch: பின்னூட்டத்திலிருந்து நினைவகம்</a></li>
+    <li><a href="#clock-கணனயன-இதயத-தடபப">Clock: கணினியின் இதயத் துடிப்பு</a></li>
+    <li><a href="#d-flip-flop-edge-களல-transparency-ஐத-தரததல">D Flip-Flop: Edge-களால் Transparency-ஐத் தீர்த்தல்</a></li>
+    <li><a href="#setup-மறறம-hold-நரம-இயறபயல-நழயம-இடம">Setup மற்றும் Hold நேரம்: இயற்பியல் நுழையும் இடம்</a></li>
+    <li><a href="#metastability-மல-உசசயல-நறகம-பநத">Metastability: மலை உச்சியில் நிற்கும் பந்து</a></li>
+    <li><a href="#இத-எதத-தறககறத">இது எதைத் திறக்கிறது</a></li>
+    <li><a href="#சறகள">சொற்கள்</a></li>
+    <li><a href="#மலம-படகக">மேலும் படிக்க</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

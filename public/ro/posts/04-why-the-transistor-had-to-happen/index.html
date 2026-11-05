@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dimensiune, putere, fiabilitate — trei plafoane ale tubului care au făcut comutarea solid-state inevitabilă">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/ro/posts/04-why-the-transistor-had-to-happen/">
+	<meta property="og:site_name" content="Cum am ajuns acolo">
+	<meta property="og:title" content="De ce trebuia să apară tranzistorul">
+	<meta property="og:description" content="Dimensiune, putere, fiabilitate — trei plafoane ale tubului care au făcut comutarea solid-state inevitabilă">
+	<meta property="og:locale" content="ro">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:44:14+05:30">
+
+
+	<meta itemprop="name" content="De ce trebuia să apară tranzistorul">
+	<meta itemprop="description" content="Dimensiune, putere, fiabilitate — trei plafoane ale tubului care au făcut comutarea solid-state inevitabilă">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:44:14+05:30">
+	<meta itemprop="wordCount" content="518">
+
+<title>De ce trebuia să apară tranzistorul • Cum am ajuns acolo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/ro/posts/04-why-the-transistor-had-to-happen/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/04-why-the-transistor-had-to-happen/" title="Why the Transistor Had to Happen">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/04-why-the-transistor-had-to-happen/" title="เหตุใดทรานซิสเตอร์จึงต้องเกิดขึ้น">
+  <link rel="alternate" hreflang="si" href="http://localhost:1478/si/posts/04-why-the-transistor-had-to-happen/" title="ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/04-why-the-transistor-had-to-happen/" title="டிரான்சிஸ்டர் ஏன் நிகழ வேண்டியிருந்தது">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/ro.search.min.0eb471488403f03fc161dcbdf8666048ea1fd391da78d06b30f0541352316c67.js" integrity="sha256-DrRxSIQD8D/BYdy9&#43;GZgSOof05HaeNBrMPBUE1IxbGc=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/ro/"><span>Cum am ajuns acolo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Căutare"
+    aria-label="Căutare"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Limbi" />
+        Română</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Afișează" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/04-why-the-transistor-had-to-happen/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/04-why-the-transistor-had-to-happen/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="flex flex-auto">
+          සිංහල
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/04-why-the-transistor-had-to-happen/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-credits/" class="">
+      Credite și uși de ieșire</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/00-foreword/" class="">
+      Cuvânt înainte</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/03-the-vacuum-tube-era/" class="">
+      Era tuburilor vidate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="">
+      Relee și logica electromecanică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/04-why-the-transistor-had-to-happen/" class="active">
+      De ce trebuia să apară tranzistorul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/05-semiconductors-from-first-principles/" class="">
+      Semiconductori de la primele principii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      Tranzistorul: de la BJT la MOSFET</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/07-logic-gates-from-transistors/" class="">
+      Porți logice din tranzistori</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/08-from-gates-to-combinational-logic/" class="">
+      De la porți la logică combinațională</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/09-sequential-logic/" class="">
+      Logică secvențială</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/10-the-memory-hierarchy-begins/" class="">
+      Începutul ierarhiei de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/11-instruction-sets/" class="">
+      Seturi de instrucțiuni</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/12-datapath-design/" class="">
+      Proiectarea căii de date</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/13-pipelining/" class="">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/14-branch-prediction/" class="">
+      Predicția salturilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/15-caches/" class="">
+      Cache-uri</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/16-out-of-order-execution/" class="">
+      Execuția în afara ordinii</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/17-superscalar-multicore/" class="">
+      Superscalar și multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      De la mainframe-uri la minicalculatoare și microprocesoare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/19-the-x86-vs-risc-split/" class="">
+      Ruptura x86 versus RISC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM și RISC-V: peisajul de arhitecturi azi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      Prelucrarea pe loturi și nașterea sistemului de operare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Partajarea timpului și descendența Unix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/23-the-gnu-movement-and-linux/" class="">
+      Mișcarea GNU și Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/24-virtual-memory-and-multitasking/" class="">
+      Memoria virtuală și multitaskingul</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/25-containers-and-modern-os-isolation/" class="">
+      Containerele și izolarea în sistemele de operare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/26-from-machine-code-to-assembly/" class="">
+      De la codul mașină la limbajul de asamblare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilatoare, JIT și medii de rulare moderne</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      Sisteme în timp real și planificarea deterministă</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/30-real-time-systems-in-practice/" class="">
+      Sisteme în timp real în practică</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/31-buses-101/" class="">
+      Magistrale 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      De la magistrala ISA la PCI și la PCIe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/33-pcie-deep-dive/" class="">
+      PCIe în detaliu</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/34-memory-buses/" class="">
+      Magistralele de memorie</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/35-the-memory-wall/" class="">
+      Zidul memoriei</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/47-what-7nm-actually-means/" class="">
+      Ce înseamnă de fapt „7nm”</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/48-photolithography/" class="">
+      Fotolitografia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/49-finfet-to-gaa/" class="">
+      De la FinFET la GAA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      Nuclee CUDA, warp-uri și ocupare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/54-gpu-memory-hierarchy/" class="">
+      Ierarhia de memorie a GPU-ului</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      De ce înmulțirea de matrice a remodelat proiectarea cipurilor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/58-systolic-arrays/" class="">
+      Matrice sistolice</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ro/posts/60-sparsity-in-hardware/" class="">
+      Sparsity în hardware</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Meniu" />
+  </label>
+
+  <h3>De ce trebuia să apară tranzistorul</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Cuprins" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#trei-constrângeri-un-gât-de-sticlă">Trei constrângeri, un gât de sticlă</a></li>
+    <li><a href="#ce-a-sosit-la-bell-labs">Ce a sosit la Bell Labs</a></li>
+    <li><a href="#de-ce-trebuia-să-apară">De ce „trebuia să apară”</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    De ce trebuia să apară tranzistorul
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ianuarie 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>La începutul anilor 1950, tubul vidat demonstrase deja conceptul: comutare electronică, fără piese în mișcare, viteză de ordinul microsecundelor (<em>First Draft</em>, §4.3 — vezi capitolul 03). Ce nu rezolvase era <em>scara</em>. Fiecare tub în plus adaugă căldură, putere și încă o șansă de defect. Tranzistorul nu a înlocuit tubul pentru că era o jucărie elegantă — l-a înlocuit pentru că fizica tubului avea un plafon dur, iar calculul trebuia să treacă dincolo de el.</p>
+<h2 id="trei-constrângeri-un-gât-de-sticlă">Trei constrângeri, un gât de sticlă<a class="anchor" href="#trei-constr%c3%a2ngeri-un-g%c3%a2t-de-sticl%c4%83">#</a></h2>
+<p><strong>Dimensiune.</strong> Un tub vidat are nevoie de un balon de sticlă evacuat, suficient de mare ca să separe catodul, grila și anodul, și suficient de rezistent ca să țină vidul. Există o podea pe cât de mic poate fi. Un tranzistor e <em>solid-state</em> — fără vid, fără balon — iar dimensiunea lui e dată de precizia de fabricație, nu de fizica unei camere evacuate. E o curbă de scalare diferită; e cea care ajunge, mai târziu, la miliarde de tranzistoare pe un singur die (Faza 8).</p>
+<p><strong>Putere.</strong> Catodul unui tub trebuie încălzit pentru emisie termionică — filamentul consumă și când tubul nu comută. Înmulțit cu zeci de mii de tuburi: ENIAC la circa <strong>150 kW</strong>, pe pagina instituțională Penn Engineering (Penn Engineering, „What ENIAC Was…”, <a href="https://www.engineering.upenn.edu/about/history-heritage/eniac/">engineering.upenn.edu/…/eniac/</a>, accesat 2026-11-05). Un tranzistor nu are filament; comută modulând o regiune de epuizare sau un canal, cu putere de așteptare neglijabilă față de încălzirea termionică. Asta e cel mai mare motiv pentru care mașinile tranzistorizate au putut fi mult mai dense fără să se topească.</p>
+<p><strong>Fiabilitate.</strong> Tuburile cedează prin arderea filamentului și degradarea etanșării — uzură încorporată în ciclul termic normal. Toma descrie, pe CIFA-1, verificarea la fiecare pornire a lămpilor arse și scăderea fiabilității din cauza celor ~5 kVA (Toma, interviu <em>Market Watch</em> 2008, <a href="https://cronica-it.github.io/amintiri/2008/vtoma-amintiri-inceputuri/">Cronica IT&amp;C</a>, accesat 2026-11-05). Tranzistoarele solid-state nu împărtășesc <em>același</em> mecanism de defect (filament + vid).</p>
+<h2 id="ce-a-sosit-la-bell-labs">Ce a sosit la Bell Labs<a class="anchor" href="#ce-a-sosit-la-bell-labs">#</a></h2>
+<p>Premiul Nobel pentru Fizică 1956 a fost acordat lui William Bradford Shockley, John Bardeen și Walter Houser Brattain „for their researches on semiconductors and their discovery of the transistor effect” (Nobel Prize Outreach, „The Nobel Prize in Physics 1956”, <a href="https://www.nobelprize.org/prizes/physics/1956/summary/">nobelprize.org/prizes/physics/1956/summary/</a>, accesat 2026-11-05).</p>
+<p>John Bardeen, în prelegerea Nobel din 11 decembrie 1956, plasează descoperirea efectului de tranzistor în cursul unui program fundamental de cercetare a semiconductorilor — în special germaniu și siliciu — la Bell Telephone Laboratories, sub direcția generală a lui Shockley; Brattain lucra mai ales pe proprietăți de suprafață (Bardeen, Nobel Lecture, 11 Dec. 1956, pp. 318–319 ale textului tipărit; PDF <a href="https://www.nobelprize.org/uploads/2018/06/bardeen-lecture.pdf">nobelprize.org/uploads/2018/06/bardeen-lecture.pdf</a>, accesat 2026-11-05). Forma tip <em>point-contact</em> e cea în care Bardeen și Brattain au încorporat efectul; Shockley dezvoltă ulterior structura pe joncțiune (Bardeen, ibid.; Shockley, Nobel Lecture, 11 Dec. 1956, PDF <a href="https://www.nobelprize.org/uploads/2018/06/shockley-lecture.pdf">shockley-lecture.pdf</a>, accesat 2026-11-05, pasajele despre junction transistor).</p>
+<!-- NEVERIFICAT din APS Phys. Rev. 74 (Bardeen–Brattain 1948): articolul returnează 403 la fetch automat. Nu cităm cifre din el; vezi SOURCES-B1 („unverified by automated fetch”). Data „1947” pentru demonstrația de laborator e standard în narațiunea Bell Labs / Nobel, dar articolul de jurnal nu a fost deschis aici. -->
+<h2 id="de-ce-trebuia-să-apară">De ce „trebuia să apară”<a class="anchor" href="#de-ce-trebuia-s%c4%83-apar%c4%83">#</a></h2>
+<p>Tubul rezolvase viteza față de releu (<em>First Draft</em>, §4.3). Nu rezolvase densitatea, puterea de așteptare și defectul de filament. Tranzistorul atacă exact acel triunghi. Nu înseamnă că dispozitivul a sosit gata: fizica <em>modului</em> în care comută — semiconductori, dopare, bandă interzisă — încă trebuia înțeleasă și inginerită. Asta e alt subiect decât <em>de ce</em> trebuia să apară. Capitolul 05 începe acolo.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/12d32601b961c2c800839bec9e98c7451da8d186" title='Ultima modificare de Nayana | noiembrie 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>noiembrie 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;De&#43;ce&#43;trebuia&#43;s%C4%83&#43;apar%C4%83&#43;tranzistorul&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fro%2Fposts%2F04-why-the-transistor-had-to-happen%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.ro%2Fposts%2F04-why-the-transistor-had-to-happen.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.ro%2Fposts%2F04-why-the-transistor-had-to-happen.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/ro/posts/02-relays-and-electromechanical-logic/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Înapoi" />
+        <span>Relee și logica electromecanică</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/ro/posts/05-semiconductors-from-first-principles/" class="flex align-center">
+        <span>Semiconductori de la primele principii</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Înainte" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#trei-constrângeri-un-gât-de-sticlă">Trei constrângeri, un gât de sticlă</a></li>
+    <li><a href="#ce-a-sosit-la-bell-labs">Ce a sosit la Bell Labs</a></li>
+    <li><a href="#de-ce-trebuia-să-apară">De ce „trebuia să apară”</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Sources on How We Got There</title>
+		<link>http://localhost:1478/tags/sources/</link>
+		<description>Recent content in Sources on How We Got There</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:20:52 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/tags/sources/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Credits &amp; Doors Out</title>
+				<link>http://localhost:1478/posts/00-credits/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/posts/00-credits/</guid>
+				<description>Credits due first — published sources, existing interactives, and images this journey stands on</description>
+			</item>
+	</channel>
+</rss>

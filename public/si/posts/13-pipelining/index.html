@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="si" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1478&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Throughput සඳහා උපදෙස් අතිච්ඡාදනය කරන්න — පසුව hazards මගින් forwarding, stalls, සහ ඊට පසු සියල්ල බල කෙරේ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1478/si/posts/13-pipelining/">
+	<meta property="og:site_name" content="අප එතැනට පැමිණි ආකාරය">
+	<meta property="og:title" content="Pipelining">
+	<meta property="og:description" content="Throughput සඳහා උපදෙස් අතිච්ඡාදනය කරන්න — පසුව hazards මගින් forwarding, stalls, සහ ඊට පසු සියල්ල බල කෙරේ">
+	<meta property="og:locale" content="si">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T14:25:53+05:30">
+
+
+	<meta itemprop="name" content="Pipelining">
+	<meta itemprop="description" content="Throughput සඳහා උපදෙස් අතිච්ඡාදනය කරන්න — පසුව hazards මගින් forwarding, stalls, සහ ඊට පසු සියල්ල බල කෙරේ">
+	<meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T14:25:53+05:30">
+	<meta itemprop="wordCount" content="1815">
+
+<title>Pipelining • අප එතැනට පැමිණි ආකාරය</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1478/si/posts/13-pipelining/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1478/posts/13-pipelining/" title="Pipelining">
+  <link rel="alternate" hreflang="th" href="http://localhost:1478/th/posts/13-pipelining/" title="ไปป์ไลน์">
+  <link rel="alternate" hreflang="ta" href="http://localhost:1478/ta/posts/13-pipelining/" title="Pipelining">
+  <link rel="alternate" hreflang="ro" href="http://localhost:1478/ro/posts/13-pipelining/" title="Pipelining">
+<link rel="stylesheet" href="/book.min.9f5d37a6ad5acb25c8f4e792bf096c6dbf12923d7aa8e473dea4cd95654177c2.css" integrity="sha256-n103pq1ayyXI9OeSvwlsbb8Skj16qORz3qTNlWVBd8I=" crossorigin="anonymous">
+
+
+
+  <script defer type="module" src="/si.search.min.ed22e485958f3577bf68ca649159cada2d37ccff890cef165b90c86940c7e63f.js" integrity="sha256-7SLkhZWPNXe/aMpkkVnK2i03zP&#43;JDO8WW5DIaUDH5j8=" crossorigin="anonymous"></script>
+
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/si/"><span>අප එතැනට පැමිණි ආකාරය</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="/icons/translate.svg" class="book-icon" alt="Languages" />
+        සිංහල</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/posts/13-pipelining/" class="flex flex-auto">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/th/posts/13-pipelining/" class="flex flex-auto">
+          ไทย
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ta/posts/13-pipelining/" class="flex flex-auto">
+          தமிழ்
+        </a>
+      </li>
+      
+      <li>
+        <a href="/ro/posts/13-pipelining/" class="flex flex-auto">
+          Română
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-credits/" class="">
+      ස්තුතිය සහ මූලාශ්‍ර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/00-foreword/" class="">
+      පෙරවදන</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/01-mechanical-electromechanical-computing/" class="">
+      යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/02-relays-and-electromechanical-logic/" class="">
+      Relays සහ විද්‍යුත් යාන්ත්‍රික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/03-the-vacuum-tube-era/" class="">
+      රික්තක නල යුගය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/04-why-the-transistor-had-to-happen/" class="">
+      ට්‍රාන්සිස්ටරය සිදුවිය යුතු වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/05-semiconductors-from-first-principles/" class="">
+      පළමු මූලධර්මවලින් අර්ධසන්නායක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/06-the-transistor-bjt-to-mosfet/" class="">
+      ට්‍රාන්සිස්ටරය: BJT සිට MOSFET දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/07-logic-gates-from-transistors/" class="">
+      ට්‍රාන්සිස්ටරවලින් තර්ක ද්වාර</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/08-from-gates-to-combinational-logic/" class="">
+      ද්වාරවලින් සංයෝජන තර්කය දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/09-sequential-logic/" class="">
+      අනුක්‍රමික තර්කය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/10-the-memory-hierarchy-begins/" class="">
+      මතක ධූරාවලිය ආරම්භ වේ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/11-instruction-sets/" class="">
+      උපදෙස් කට්ටල</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/12-datapath-design/" class="">
+      Datapath නිර්මාණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/13-pipelining/" class="active">
+      Pipelining</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/14-branch-prediction/" class="">
+      Branch Prediction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/15-caches/" class="">
+      Caches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/16-out-of-order-execution/" class="">
+      Out-of-Order Execution</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/17-superscalar-multicore/" class="">
+      Superscalar සහ Multicore</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/18-mainframes-to-minicomputers-to-microprocessors/" class="">
+      Mainframes සිට Minicomputers සිට Microprocessors දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/19-the-x86-vs-risc-split/" class="">
+      x86 එදිරිව RISC බෙදීම</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/20-arm-and-risc-v-the-architecture-landscape-today/" class="">
+      ARM සහ RISC-V: අද ගෘහ නිර්මාණ භූ දර්ශනය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/21-batch-processing-and-the-birth-of-the-operating-system/" class="">
+      කණ්ඩායම් සැකසුම සහ මෙහෙයුම් පද්ධතියේ උපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/22-time-sharing-and-the-unix-lineage/" class="">
+      Time-Sharing සහ Unix පෙළපත</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/23-the-gnu-movement-and-linux/" class="">
+      GNU ව්‍යාපාරය සහ Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/24-virtual-memory-and-multitasking/" class="">
+      අතථ්‍ය මතකය සහ බහුකාර්යතාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/25-containers-and-modern-os-isolation/" class="">
+      Containers සහ නවීන OS හුදකලාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/26-from-machine-code-to-assembly/" class="">
+      යන්ත්‍ර කේතයේ සිට Assembly දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/27-high-level-languages-fortran-cobol-lisp-c/" class="">
+      ඉහළ-මට්ටමේ භාෂා: FORTRAN, COBOL, Lisp, C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/28-compilers-jit-and-modern-language-runtimes/" class="">
+      Compilers, JIT, සහ නවීන භාෂා Runtimes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/29-real-time-systems-and-deterministic-scheduling/" class="">
+      තත්‍ය කාල පද්ධති සහ නිශ්චයාත්මක Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/30-real-time-systems-in-practice/" class="">
+      ප්‍රායෝගිකව තත්‍ය කාල පද්ධති</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/31-buses-101/" class="">
+      බස් 101</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/32-from-isa-bus-to-pci-to-pcie/" class="">
+      ISA Bus සිට PCI දක්වා PCIe දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/33-pcie-deep-dive/" class="">
+      PCIe ගැඹුරු ගවේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/34-memory-buses/" class="">
+      මතක බස්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/35-the-memory-wall/" class="">
+      මතක බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/36-the-clock-speed-wall/" class="">
+      Clock Speed බිත්තිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/37-interconnects-at-scale/" class="">
+      පරිමාණයේ Interconnects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/38-serial-links-and-the-first-machine-to-machine-connections/" class="">
+      ශ්‍රේණි සබැඳි සහ පළමු යන්ත්‍ර-සිට-යන්ත්‍ර සම්බන්ධතා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/39-arpanet-and-packet-switching/" class="">
+      ARPANET සහ Packet Switching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/40-ethernet-and-the-local-area-network/" class="">
+      Ethernet සහ Local Area Network</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/41-tcp-ip-and-the-modern-internet-stack/" class="">
+      TCP/IP සහ නවීන අන්තර්ජාල Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/42-datacenter-networking-and-rdma/" class="">
+      දත්ත මධ්‍යස්ථාන ජාලකරණය සහ RDMA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/43-usenet-archie-gopher-and-the-pre-web-internet/" class="">
+      Usenet, Archie, Gopher සහ Web ට පෙර අන්තර්ජාලය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/44-google-s-big-data-infrastructure-why-they-won/" class="">
+      Google හි Big Data යටිතල පහසුකම — ඔවුන් ජයග්‍රහණය කළේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/45-kubernetes-and-container-orchestration-at-scale/" class="">
+      Kubernetes සහ පරිමාණයේ Container Orchestration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/46-the-machine-learning-software-stack/" class="">
+      යන්ත්‍ර ඉගෙනුම් මෘදුකාංග Stack එක</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/47-what-7nm-actually-means/" class="">
+      &#39;7nm&#39; යනුවෙන් ඇත්තටම අදහස් වන්නේ කුමක්ද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/48-photolithography/" class="">
+      Photolithography</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/49-finfet-to-gaa/" class="">
+      FinFET සිට GAA දක්වා</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/50-moore-s-law/" class="">
+      Moore&#39;s Law</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/51-chiplets-advanced-packaging/" class="">
+      Chiplets සහ Advanced Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/52-why-gpus-exist/" class="">
+      GPU පවතින්නේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/53-cuda-cores-warps-and-occupancy/" class="">
+      CUDA Cores, Warps සහ Occupancy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/54-gpu-memory-hierarchy/" class="">
+      GPU මතක ධුරාවලිය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/55-tensor-cores/" class="">
+      Tensor Cores</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/56-multi-gpu-scaling/" class="">
+      Multi-GPU Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/57-why-matrix-multiply-reshaped-chip-design/" class="">
+      Matrix Multiply චිප නිර්මාණය හැඩගැස්වූයේ ඇයි</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/58-systolic-arrays/" class="">
+      Systolic Arrays</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/59-quantization-mixed-precision/" class="">
+      Quantization සහ Mixed Precision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/60-sparsity-in-hardware/" class="">
+      දෘඪාංගයේ Sparsity</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/61-interconnect-at-datacenter-scale/" class="">
+      Datacenter පරිමාණයේ Interconnect</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/62-where-it-s-headed/" class="">
+      එය යන්නේ කොහේටද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/63-attention-is-all-you-need/" class="">
+      අවධානය පමණක් ප්‍රමාණවත්ය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/64-who-decides-the-wire/" class="">
+      වයර් එක තීරණය කරන්නේ කවුද</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/66-wartime-crypto/" class="">
+      යුද්ධකාලීන Crypto</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/67-privacy-consent-identity-cyber/" class="">
+      රහස්‍යතාව, එකඟතාව, අනන්‍යතාව, Cyber</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/68-visions-that-shipped/" class="">
+      ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/69-platform-synthesis/" class="">
+      Platform සංස්ලේෂණය</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/98-timeline/" class="">
+      කාලරේඛාව</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/si/posts/99-glossary/" class="">
+      පාරිභාෂික ශබ්දකෝෂය</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Pipelining</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#අදයර-පහක-අතචඡදනය-ව">අදියර පහක්, අතිච්ඡාදනය වූ</a></li>
+    <li><a href="#hazards-සවධනතවය-බඳන-තන">Hazards: ස්වාධීනත්වය බිඳෙන තැන්</a></li>
+    <li><a href="#එම-වයදම-ඊළඟට-බල-කරන-ද">එම වියදම් ඊළඟට බල කරන දේ</a></li>
+    <li><a href="#ගඹරන-pipeline-කල-ගණතය-forwarding-සහ-load-use-stall-චකරයන-චකරයට">ගැඹුරින්: pipeline කාල ගණිතය, forwarding සහ load-use stall චක්‍රයෙන් චක්‍රයට</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-අදයර-පහ-කල-ගණනය-cs-61c-අගයන">2. අදියර පහේ කාල ගණනය (CS 61C අගයන්)</a></li>
+        <li><a href="#3-forwarding-stall-නත-දතත-hazard-එකක">3. Forwarding: stall නැති දත්ත hazard එකක්</a></li>
+        <li><a href="#4-load-use-forwarding-පව-බර-ගත-නහක-තන">4. Load-use: forwarding පවා බේරා ගත නොහැකි තැන</a></li>
+        <li><a href="#5-compiler-එකන-stall-ඉවත-කරම-code-scheduling">5. Compiler එකෙන් stall ඉවත් කිරීම (code scheduling)</a></li>
+        <li><a href="#6-වයහතමක-hazard-structural-hazard">6. ව්‍යුහාත්මක hazard (structural hazard)</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Pipelining
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>දුරුතු 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>තනි-චක්‍ර datapath එක (Post 12) throughput මේසය මත තබා හරියි: සෑම උපදෙස් එකක්ම මන්දගාමීම මාර්ගයට රැඳෙයි. Pipelining ක්‍රියාත්මක කිරීම අදියරවලට කපා, විවිධ උපදෙස් <em>එකවර</em> විවිධ අදියරවල රැඳෙන්නට ඉඩ දෙයි.</p>
+<h2 id="අදයර-පහක-අතචඡදනය-ව">අදියර පහක්, අතිච්ඡාදනය වූ<a class="anchor" href="#%e0%b6%85%e0%b6%af%e0%b6%ba%e0%b6%bb-%e0%b6%b4%e0%b7%84%e0%b6%9a-%e0%b6%85%e0%b6%ad%e0%b6%a0%e0%b6%a1%e0%b6%af%e0%b6%b1%e0%b6%ba-%e0%b7%80">#</a></h2>
+<p>සම්භාව්‍ය RISC pipeline එකක්: <strong>IF</strong> (fetch), <strong>ID</strong> (decode / register කියවීම), <strong>EX</strong> (ALU), <strong>MEM</strong> (load/store), <strong>WB</strong> (write back). Pipeline registers (නැවතත් Post 9) සෑම clock එකකදී අදියර අතර ප්‍රතිඵල latch කරයි.</p>
+<p>උපදෙස් N EX හි ඇති අතරතුර, N+1 ID හිත් N+2 IF හිත් රැඳිය හැක. Steady state එකේදී නව උපදෙස් එකක් <em>සම්පූර්ණ වන්නේ</em> සෑම චක්‍රයකම — එක් එක් එක ආරම්භයේ සිට අවසානය දක්වා තවමත් චක්‍ර පහක් ගත කළද. Latency රැඳෙයි; throughput ඉහළ යයි. එම වෙන්කිරීම මෙයින් පසු සෑම තැනකම දිස් වේ.</p>
+<p><strong>දැන් මෙය උත්සාහ කරන්න.</strong> පහත mini-CPU එක උපදෙස් එකකට වරක් Step කරන්න — එය Post 12 දෘශ්‍යමාන කළ තනි-චක්‍ර පුරුද්දයි. Pipelining ගේ ඔට්ටුව throughput ය: එකම fetch / decode / execute කොටස් උපදෙස් හරහා අතිච්ඡාදනය වීම, ටික් එකකට සම්පූර්ණ උපදෙස් එකක් නොවේ. අනුක්‍රමික Step එක දැනෙන්න, පසුව සැබෑ pipelines එතරම් සරලව රැඳිය නොහැකි වන්නේ ඇයි යන්න දැනගෙන hazard කොටස කියවන්න.</p>
+
+
+
+
+
+<div class="lab-embed" style="margin: 1.5em 0;">
+  <iframe
+    src="/labs/mini-cpu/?lang=si"
+    style="width:100%; height:560px; border:1px solid #30363d; border-radius:8px;"
+    loading="lazy"
+    title="අන්තර්ක්‍රියාකාරී lab: mini-cpu">
+  </iframe>
+  <div style="text-align:right; font-size:11px; margin-top:4px;">
+    <a href="/labs/mini-cpu/?lang=si" target="_blank" rel="noopener">Lab එක නව tab එකක විවෘත කරන්න ↗</a>
+  </div>
+</div>
+
+<h2 id="hazards-සවධනතවය-බඳන-තන">Hazards: ස්වාධීනත්වය බිඳෙන තැන්<a class="anchor" href="#hazards-%e0%b7%83%e0%b7%80%e0%b6%b0%e0%b6%b1%e0%b6%ad%e0%b7%80%e0%b6%ba-%e0%b6%b6%e0%b6%b3%e0%b6%b1-%e0%b6%ad%e0%b6%b1">#</a></h2>
+<p>උපදෙස් කලාතුරකින් ස්වාධීන වේ.</p>
+<p><strong>Data hazards</strong> — උපදෙස් එකකට අවශ්‍ය අගයක්, තවමත් ගුවන්ගතව ඇති පෙර උපදෙස් එකක් ලිවීම අවසන් කර නැත. <strong>Forwarding</strong> (bypassing) ALU ප්‍රතිඵලය පසු pipeline register එකකින් සෘජුව EX වෙත යළි මාර්ගගත කරයි — register file එක මඟහරිමින් — එබැවින් යැපෙන උපදෙස් එකට බොහෝ විට stall අවශ්‍ය නොවේ. Forwarding සෑම පරතරයක්ම වසා දැමිය නොහැක: load එකකට වහාම පසුව භාවිතයක් තිබේ නම්, MEM අදියර අවසන් වන තුරු තවමත් <strong>stall</strong> එකක් (bubble එකක්) අවශ්‍ය වේ.</p>
+<p><strong>Control hazards</strong> — branches. Pipeline එකට taken/not-taken, හෝ ඉලක්කය, ප්‍රමාද වන තුරු නොදැනේ — නමුත් පසු උපදෙස් දැනටමත් fetch කර ඇත. Taken branch එකකදී ඒවා flush කළ යුතුය. වැරදි මාර්ගයේ ගත කළ චක්‍ර නාස්තියකි.</p>
+<h2 id="එම-වයදම-ඊළඟට-බල-කරන-ද">එම වියදම් ඊළඟට බල කරන දේ<a class="anchor" href="#%e0%b6%91%e0%b6%b8-%e0%b7%80%e0%b6%ba%e0%b6%af%e0%b6%b8-%e0%b6%8a%e0%b7%85%e0%b6%9f%e0%b6%a7-%e0%b6%b6%e0%b6%bd-%e0%b6%9a%e0%b6%bb%e0%b6%b1-%e0%b6%af">#</a></h2>
+<p>Misprediction flush මිල අධිකය — එබැවින්ම branch prediction (Post 14) පවතී: මුලින්ම සහ ප්‍රමාණවත් නිරවද්‍යතාවයකින් අනුමාන කරන්න, flush දුර්ලභ වන තරමට. Load-use stall එක නිසාම out-of-order execution (Post 16) පවතී: රැඳෙන උපදෙස් එක පමණක් stall කරන්න, සම්පූර්ණ pipeline එක නොවේ, සහ ඊට පසු ස්වාධීන වැඩ ධාවනය වන්නට ඉඩ දෙන්න.</p>
+<h2 id="ගඹරන-pipeline-කල-ගණතය-forwarding-සහ-load-use-stall-චකරයන-චකරයට">ගැඹුරින්: pipeline කාල ගණිතය, forwarding සහ load-use stall චක්‍රයෙන් චක්‍රයට<a class="anchor" href="#%e0%b6%9c%e0%b6%b9%e0%b6%bb%e0%b6%b1-pipeline-%e0%b6%9a%e0%b6%bd-%e0%b6%9c%e0%b6%ab%e0%b6%ad%e0%b6%ba-forwarding-%e0%b7%83%e0%b7%84-load-use-stall-%e0%b6%a0%e0%b6%9a%e0%b6%bb%e0%b6%ba%e0%b6%b1-%e0%b6%a0%e0%b6%9a%e0%b6%bb%e0%b6%ba%e0%b6%a7">#</a></h2>
+<blockquote class='book-hint '>
+<p><strong>සිංහල මූලාශ්‍ර පිළිබඳ සටහන:</strong> Pipelining ගැන සිංහලෙන් යම් තරමක ද්‍රව්‍ය තිබේ, නමුත් ඒවා නොගැඹුරුය.</p>
+<ul>
+<li>si.wikipedia හි &ldquo;CPU - නියෝග නල මාර්ග (Instruction pipeline)&rdquo; ලිපිය (අක්ෂර ~2.9k) අදියර පහ නම් කරයි. ඊට අමතරව, &ldquo;උපද්‍රව&rdquo; (hazards) සහ &ldquo;ෆෝවර්ඩින් හා ස්ටෝලින්&rdquo; (forwarding and stalling) යන වචන සඳහන් කරයි.</li>
+<li>Chamali නාලිකාවේ pipelining වීඩියෝවක් ද ඇත (<a href="https://www.youtube.com/watch?v=vPTmNtIi4gI">YT vPTmNtIi4gI</a>). අප එය හඳුනා ගත්තේ මාතෘකාවෙන් පමණි. එය නැරඹුවේ නැත.</li>
+<li>NIE A/L ICT ගුරු මාර්ගෝපදේශ (Gr12, Gr13) සහ සම්පත් පොතේ text layer එකෙහි &ldquo;pipelining&rdquo; යන ඉංග්‍රීසි පදය හමු නොවීය.</li>
+</ul>
+<p>ඒ කිසිවක පහත දේවල් නැත: කාල ගණනය, අදියර අසමතුලිතතාව (stage imbalance), චක්‍රයෙන් චක්‍රයට hazard වගුවක්, load-use stall එක ඇයි වළක්වා ගත නොහැක්කේද යන්න. මෙම කොටස UC Berkeley CS 61C පාඨමාලා සටහන් භාවිතා කර ඒවා ගණනයෙන් පෙන්වයි. Branch penalty සහ predictors Post 14 හි ද, out-of-order ක්‍රියාත්මක කිරීම Post 16 හි ද ආවරණය වේ. මෙහි ඒවා නැවත නොකියමු.</p>
+</blockquote><h3 id="1-මලක-පද">1. මූලික පද<a class="anchor" href="#1-%e0%b6%b8%e0%b6%bd%e0%b6%9a-%e0%b6%b4%e0%b6%af">#</a></h3>
+<ul>
+<li><strong>අදියර (stage):</strong> උපදෙසක (instruction) ක්‍රියාවලියේ එක් කොටසකි: IF, ID, EX, MEM, WB.</li>
+<li><strong>Pipeline register:</strong> අදියර දෙකක් අතර ඇති register එකයි. සෑම clock එකකදීම එය ප්‍රතිඵල ඊළඟ අදියරට යවයි.</li>
+<li><strong>ප්‍රමාදය (latency):</strong> එක් උපදෙසක් ආරම්භයේ සිට අවසානය දක්වා ගන්නා කාලයයි.</li>
+<li><strong>ප්‍රතිදාන වේගය (throughput):</strong> ඒකක කාලයකදී අවසන් වන උපදෙස් ගණනයි.</li>
+<li><strong>Bubble / stall:</strong> Pipeline එකට හිතාමතාම ඇතුළු කරන හිස් චක්‍රයකි (nop).</li>
+<li><strong>Load delay slot:</strong> Load උපදෙසකට වහාම පසුව ඇති ස්ථානයයි.</li>
+</ul>
+<h3 id="2-අදයර-පහ-කල-ගණනය-cs-61c-අගයන">2. අදියර පහේ කාල ගණනය (CS 61C අගයන්)<a class="anchor" href="#2-%e0%b6%85%e0%b6%af%e0%b6%ba%e0%b6%bb-%e0%b6%b4%e0%b7%84-%e0%b6%9a%e0%b6%bd-%e0%b6%9c%e0%b6%ab%e0%b6%b1%e0%b6%ba-cs-61c-%e0%b6%85%e0%b6%9c%e0%b6%ba%e0%b6%b1">#</a></h3>
+<p>CS 61C සටහන් (&ldquo;Pipelining Laundry&rdquo; කොටස) තනි-චක්‍ර (single-cycle) processor එකක අදියර කාල මෙසේ ගනී:</p>
+<table>
+	<thead>
+			<tr>
+					<th>අදියර</th>
+					<th>IF</th>
+					<th>ID</th>
+					<th>EX</th>
+					<th>MEM</th>
+					<th>WB</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>කාලය</td>
+					<td>200 ps</td>
+					<td>100 ps</td>
+					<td>200 ps</td>
+					<td>200 ps</td>
+					<td>100 ps</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li><strong>තනි-චක්‍ර:</strong> clock period = 200 + 100 + 200 + 200 + 100 = <strong>800 ps</strong>, එනම් 1.25 GHz.</li>
+<li><strong>Pipeline:</strong> සියලු අදියර එකම clock එකක් බෙදා ගනී. එබැවින් period එක මන්දගාමීම අදියරට සමාන වේ: <strong>200 ps</strong> (5 GHz).</li>
+<li><strong>එක් උපදෙසක ප්‍රමාදය:</strong> 5 × 200 = <strong>1000 ps</strong>. එය තනි-චක්‍ර 800 ps ට වඩා <em>වැඩිය</em>. ID සහ WB 100 ps වැඩක් සඳහා 200 ps බලා සිටී.</li>
+</ul>
+<p><strong>උපදෙස් n ක් සඳහා මුළු කාලය:</strong> k-අදියර pipeline එකක් පිරවීමට (fill) චක්‍ර k − 1 ක් යයි. ඉන්පසු සෑම චක්‍රයකම එක් උපදෙසක් අවසන් වේ:</p>
+<p><strong>T_pipe = (k + n − 1) × t_cycle</strong></p>
+<p>CS 61C උදාහරණය (lw උපදෙස් 10⁶):</p>
+<ul>
+<li>තනි-චක්‍ර: 10⁶ × 800 ps = <strong>800,000,000 ps</strong></li>
+<li>Pipeline: (10⁶ + 4) × 200 ps = <strong>200,000,800 ps</strong></li>
+<li>අනුපාතය ≈ 800/200 = <strong>4×</strong>. එය 5× නොවේ.</li>
+</ul>
+<p>සටහන් එයට හේතු දෙකක් දෙයි: අදියර සම්පූර්ණයෙන් සමතුලිත නැත, සහ pipelining සඳහා අමතර වියදමක් (overhead) ඇත.</p>
+<p><strong>Overhead එකේ බලපෑම (ආදර්ශ අගයන්):</strong> සෑම pipeline register එකක්ම setup සහ clock-to-output සඳහා 20 ps ක් එකතු කරයි යැයි සිතමු. එවිට t_cycle = 200 + 20 = 220 ps වේ. වේගවත් වීම 800/220 ≈ <strong>3.6×</strong> දක්වා අඩු වේ.</p>
+<p>එම තර්කයම ගැඹුරු pipeline වලටද අදාළය. 800 ps තර්කය අදියර 10 කට සම්පූර්ණයෙන් සමව බෙදුවොත් සෑම අදියරක්ම 80 ps වේ. 20 ps overhead එක සමඟ t_cycle = 100 ps වන අතර වේගවත් වීම <strong>8×</strong> වේ. එය 10× නොවේ. අදියර ගණන වැඩි වන තරමට overhead එක cycle එකෙන් විශාල කොටසක් බවට පත් වේ.</p>
+<p><strong>කෙටි වැඩසටහන් සඳහා (ආදර්ශ):</strong> n = 5 නම් තනි-චක්‍ර කාලය 5 × 800 = 4000 ps ද pipeline කාලය (5 + 4) × 200 = 1800 ps ද වේ. වේගවත් වීම ≈ <strong>2.2×</strong> පමණි. Fill කාලය එහි ආධිපත්‍යය දරයි.</p>
+<h3 id="3-forwarding-stall-නත-දතත-hazard-එකක">3. Forwarding: stall නැති දත්ත hazard එකක්<a class="anchor" href="#3-forwarding-stall-%e0%b6%b1%e0%b6%ad-%e0%b6%af%e0%b6%ad%e0%b6%ad-hazard-%e0%b6%91%e0%b6%9a%e0%b6%9a">#</a></h3>
+<p>CS 61C &ldquo;Data Hazards&rdquo; සටහනේ Example 3:</p>
+<pre tabindex="0"><code>add s0, t0, t1
+sub t2, s0, t0
+or  t6, s0, t3</code></pre><table>
+	<thead>
+			<tr>
+					<th>උපදෙස</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>add</td>
+					<td>IF</td>
+					<td>ID</td>
+					<td>EX</td>
+					<td>MEM</td>
+					<td>WB</td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>sub</td>
+					<td></td>
+					<td>IF</td>
+					<td>ID</td>
+					<td><strong>EX</strong></td>
+					<td>MEM</td>
+					<td>WB</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>or</td>
+					<td></td>
+					<td></td>
+					<td>IF</td>
+					<td>ID</td>
+					<td><strong>EX</strong></td>
+					<td>MEM</td>
+					<td>WB</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>add හි එකතුව චක්‍රය 3 හි EX අවසානයේ සූදානම්ය. නමුත් register file එකට ලියවෙන්නේ චක්‍රය 5 හි WB හිදීය.</li>
+<li><strong>MEM → EX forwarding:</strong> චක්‍රය 4 දී අගය EX/MEM pipeline register එකෙන් කෙලින්ම sub හි ALU එකට යයි.</li>
+<li><strong>WB → EX forwarding:</strong> චක්‍රය 5 දී අගය MEM/WB register එකෙන් or හි ALU එකට යයි.</li>
+<li>ප්‍රතිඵලය: <strong>stall නැත</strong>. උපදෙස් 3 ක් චක්‍ර 3 + 4 = <strong>7</strong> කින් අවසන් වේ.</li>
+</ul>
+<p>Register file එක &ldquo;write-then-read&rdquo; ලෙස සැලසුම් කර ඇත්නම් (WB පළමු අර්ධයේ ලියයි, ID දෙවන අර්ධයේ කියවයි), චක්‍ර තුනක් ඈතින් ඇති යැපීමකට forwarding පවා අවශ්‍ය නොවේ.</p>
+<h3 id="4-load-use-forwarding-පව-බර-ගත-නහක-තන">4. Load-use: forwarding පවා බේරා ගත නොහැකි තැන<a class="anchor" href="#4-load-use-forwarding-%e0%b6%b4%e0%b7%80-%e0%b6%b6%e0%b6%bb-%e0%b6%9c%e0%b6%ad-%e0%b6%b1%e0%b7%84%e0%b6%9a-%e0%b6%ad%e0%b6%b1">#</a></h3>
+<p>CS 61C Example 4 (Table 7):</p>
+<pre tabindex="0"><code>add s0, t1, t2
+lw  s1, 8(s0)
+or  t3, s1, t5     # s1 ට වහාම අවශ්‍යයි
+and t4, s1, t2</code></pre><table>
+	<thead>
+			<tr>
+					<th>උපදෙස</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+					<th>8</th>
+					<th>9</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>add</td>
+					<td>IF</td>
+					<td>ID</td>
+					<td>EX</td>
+					<td>MEM</td>
+					<td>WB</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>lw</td>
+					<td></td>
+					<td>IF</td>
+					<td>ID</td>
+					<td>EX</td>
+					<td><strong>MEM</strong></td>
+					<td>WB</td>
+					<td></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>or → nop</td>
+					<td></td>
+					<td></td>
+					<td>IF</td>
+					<td>ID</td>
+					<td>—</td>
+					<td>—</td>
+					<td>—</td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>or</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>IF</td>
+					<td>ID</td>
+					<td><strong>EX</strong></td>
+					<td>MEM</td>
+					<td>WB</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>and</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>IF</td>
+					<td>ID</td>
+					<td>EX</td>
+					<td>MEM</td>
+					<td>WB</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>lw හි දත්ත මතකයෙන් ලැබෙන්නේ චක්‍රය 5 හි <strong>MEM අවසානයේදීය</strong>. or ට එය චක්‍රය 5 හි <strong>EX ආරම්භයේදීම</strong> අවශ්‍යය. කාලයේ පසුපසට යවන්නට forwarding එකකට නොහැක.</li>
+<li>ID අදියරේ ඇති hazard detection unit එක bubble එකක් ඇතුළු කරයි. or හි EX චක්‍රය 6 දක්වා කල් යයි. එවිට WB → EX forwarding ක්‍රියා කරයි.</li>
+<li>and හි EX චක්‍රය 7 දී වේ. lw විසින් s1 චක්‍රය 6 දී ලියන නිසා (write-then-read register file) and ට අමතර stall එකක් අවශ්‍ය නැත. එහෙත් or පසු වූ නිසා and ද එක් චක්‍රයක් පසු වේ.</li>
+<li>ප්‍රතිඵලය: උපදෙස් 4 ක් stall නැතිව චක්‍ර 4 + 4 = 8 කින් අවසන් විය යුතුය. Stall එක නිසා <strong>9</strong> ක් ගත වේ.</li>
+</ul>
+<p><strong>CPI මත බලපෑම (ආදර්ශ අගයන්):</strong> උපදෙස්වලින් 25% ක් loads යැයි ද, ඉන් 40% කට වහාම පසුව භාවිතයක් ඇතැයි ද සිතමු. එවිට උපදෙසකට stalls = 0.25 × 0.4 × 1 = 0.1 වේ. <strong>CPI = 1 + 0.1 = 1.1</strong> වේ. එනම් 10% ක කාර්ය සාධන අලාභයකි.</p>
+<h3 id="5-compiler-එකන-stall-ඉවත-කරම-code-scheduling">5. Compiler එකෙන් stall ඉවත් කිරීම (code scheduling)<a class="anchor" href="#5-compiler-%e0%b6%91%e0%b6%9a%e0%b6%b1-stall-%e0%b6%89%e0%b7%80%e0%b6%ad-%e0%b6%9a%e0%b6%bb%e0%b6%b8-code-scheduling">#</a></h3>
+<p>CS 61C සටහන් <code>A[3] = A[0] + A[1]; A[4] = A[0] + A[2];</code> සඳහා සරල සම්පාදනයක් පෙන්වයි:</p>
+<pre tabindex="0"><code>lw  t0, 0(a0)
+lw  t1, 4(a0)
+add t2, t0, t1     # stall 1
+sw  t2, 12(a0)
+lw  t3, 8(a0)
+add t4, t0, t3     # stall 1
+sw  t4, 16(a0)</code></pre><p><code>lw t3</code> එක දෙවන lw ට පසුව (<code>add t2</code> ට පෙර) ඉහළට ගෙන ගිය විට, load delay slot දෙකේම ස්වාධීන උපදෙස් ඇත. සටහන්වලට අනුව, forwarding සමඟ <strong>stall නැත</strong>.</p>
+<ul>
+<li>ගණනය: උපදෙස් 7 ක් = චක්‍ර 7 + 4 = 11 ක් stall නැතිව. පළමු අනුපිළිවෙලට stalls 2 ක් සමඟ <strong>13</strong> ක් වේ. නැවත පෙළගැස්වූ අනුපිළිවෙලට <strong>11</strong> ක් වේ.</li>
+<li>Post 16 හි out-of-order දෘඪාංගය මෙම නැවත පෙළගැස්වීමම ධාවන කාලයේදී (runtime) කරයි.</li>
+</ul>
+<h3 id="6-වයහතමක-hazard-structural-hazard">6. ව්‍යුහාත්මක hazard (structural hazard)<a class="anchor" href="#6-%e0%b7%80%e0%b6%ba%e0%b7%84%e0%b6%ad%e0%b6%b8%e0%b6%9a-hazard-structural-hazard">#</a></h3>
+<p>CS 61C &ldquo;Structural Hazards&rdquo; සටහන්: සම්පත් එකක් (resource) එකම චක්‍රයේ උපදෙස් දෙකකට අවශ්‍ය වූ විට එය ඇති වේ.</p>
+<ul>
+<li>RV32I pipeline එකෙහි උපදෙස් මතකය (IMEM) සහ දත්ත මතකය (DMEM) වෙනම ඒකක වේ. (ඇත්ත වශයෙන්ම ඒවා වෙනම L1 caches වේ; Post 15.)</li>
+<li>එක් මතක port එකක් පමණක් තිබුණේ නම්, IF හි ඇති උපදෙසක් සහ MEM හි ඇති load එකක් එකම චක්‍රයේ ගැටෙනු ඇත.</li>
+<li>Register file එකද කියවීම් දෙකක් සහ ලිවීමක් එකවර ඉඩ දෙන ලෙස සැලසුම් කර ඇත්තේ එබැවිනි.</li>
+</ul>
+<h3 id="7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය<a class="anchor" href="#7-%e0%b6%b4%e0%b6%b1%e0%b7%83%e0%b6%bd%e0%b6%b1-%e0%b6%85%e0%b6%b7%e0%b6%ba%e0%b7%83%e0%b6%ba">#</a></h3>
+<ol>
+<li>අදියර කාල 250, 150, 250, 200, 150 ps (ආදර්ශ අගයන්). තනි-චක්‍ර period එක කීයද? Pipeline period එක කීයද? උපදෙස් විශාල ගණනකට වේගවත් වීම කීයද? එක් pipeline register එකකට 25 ps overhead එකක් එකතු කළොත් කීයද?</li>
+<li>අදියර 5 ක pipeline එකක උපදෙස් 100 ක් stall නැතිව ධාවනය වේ. චක්‍ර කීයක් ගත වේද? සඵල CPI (චක්‍ර ÷ උපදෙස්) කීයද?</li>
+<li><code>lw x1, 0(x2)</code> → <code>add x3, x1, x4</code> → <code>sub x5, x3, x6</code>. Forwarding ඇති 5-අදියර pipeline එකක stalls කීයද? මුළු චක්‍ර කීයද?</li>
+<li>ඉහත අනුපිළිවෙලට ස්වාධීන <code>lw x7, 4(x2)</code> එකක් එකතු කළ යුතුය. Stall නැති වන පරිදි එය කොතැනක තැබිය යුතුද?</li>
+<li>ඉහත mini-CPU lab එකේ Step පහක් කර, එක් Step එකකට එක් උපදෙසක් යන බව බලන්න. එම උපදෙස් පහ ස්වාධීන යැයි සිතමු. ඒවා 5-අදියර pipeline එකක (stall නැතිව) ධාවනය වූවා නම් චක්‍ර කීයක් ගත වේද?</li>
+</ol>
+<p>(පිළිතුරු:</p>
+<ol>
+<li>250 + 150 + 250 + 200 + 150 = <strong>1000 ps</strong>. Pipeline period = <strong>250 ps</strong>. වේගවත් වීම ≈ 1000/250 = <strong>4×</strong>. Overhead සමඟ 1000/275 ≈ <strong>3.6×</strong>.</li>
+<li>5 + 100 − 1 = <strong>104</strong> චක්‍ර. CPI = 104/100 = <strong>1.04</strong>.</li>
+<li>lw → add අතර load-use නිසා <strong>stall 1</strong> ක් ඇත. add → sub අතර MEM → EX forwarding ඇති නිසා stall නැත. මුළු චක්‍ර = 3 + 4 + 1 = <strong>8</strong>.</li>
+<li><code>lw x1</code> සහ <code>add</code> අතරට: <code>lw x1</code> → <code>lw x7</code> → <code>add</code> → <code>sub</code>. එවිට x1 දෙකක් පිටුපසින් ඇති නිසා WB → EX forwarding ප්‍රමාණවත් වේ. Stall නැත. චක්‍ර = 4 + 4 = <strong>8</strong>.</li>
+<li>5 + 4 = <strong>9</strong> චක්‍ර. (Lab එක එක් උපදෙසක් බැගින් පෙන්වයි. Pipeline එකක අතිච්ඡාදනය එහි නොපෙන්වයි.))</li>
+</ol>
+<p><strong>මෙම කොටසේ මූලාශ්‍ර:</strong></p>
+<ul>
+<li>UC Berkeley CS 61C, <em>Course Notes</em> (Lisa Yan සහ CS 61C උපදේශකයින්, Spring 2026):
+<ul>
+<li>&ldquo;Pipelining Laundry&rdquo; (§5 අදියර කාල 200/100/200/200/100 ps; 800 ps එදිරිව 200 ps; 800,000,000 ps එදිරිව 200,000,800 ps; &ldquo;Why not a 5x speedup?&rdquo;): <a href="https://notes.cs61c.org/content/pipeline/laundry/">https://notes.cs61c.org/content/pipeline/laundry/</a></li>
+<li>&ldquo;Data Hazards&rdquo; (Example 3 forwarding; Example 4 / Table 7 load-use bubble; §5.2 code scheduling): <a href="https://notes.cs61c.org/content/pipeline-hazards/data-hazards/">https://notes.cs61c.org/content/pipeline-hazards/data-hazards/</a></li>
+<li>&ldquo;Structural Hazards&rdquo; (RegFile සහ IMEM/DMEM): <a href="https://notes.cs61c.org/content/pipeline-hazards/structural-hazards/">https://notes.cs61c.org/content/pipeline-hazards/structural-hazards/</a></li>
+</ul>
+</li>
+<li>si.wikipedia, &ldquo;CPU - නියෝග නල මාර්ග (Instruction pipeline)&rdquo;: <a href="https://si.wikipedia.org/wiki/CPU_-_%e0%b6%b1%e0%b7%92%e0%b6%ba%e0%b7%9d%e0%b6%9c_%e0%b6%b1%e0%b6%bd_%e0%b6%b8%e0%b7%8f%e0%b6%bb%e0%b7%8a%e0%b6%9c_%28Instruction_pipeline%29">https://si.wikipedia.org/wiki/CPU_-_නියෝග_නල_මාර්ග_(Instruction_pipeline)</a></li>
+</ul>
+<p>20 ps සහ 25 ps overhead, අදියර-10 බෙදීම, n = 5, 25%/40% load අනුපාත, සහ අභ්‍යාසයේ අදියර කාල ආදර්ශ අගයන් වේ.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  
+  <div class="flex flex-wrap justify-between">
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/commit/9899fa7943774573c0a4aa7971a31e6e66e95cc1" title='Last modified by Nayana | ඉල් 5, 2026' target="_blank" rel="noopener">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>ඉල් 5, 2026</span>
+  </a>
+
+</div>
+
+<div>
+<a class="flex align-center" href="https://github.com/gnuzero/how-we-got-here/issues/new?title=Feedback%3A&#43;Pipelining&amp;body=%3C%21--&#43;Please&#43;keep&#43;the&#43;page%2Fsource&#43;lines&#43;so&#43;we&#43;can&#43;find&#43;the&#43;spot.&#43;--%3E%0A%0A%2A%2APage%3A%2A%2A&#43;http%3A%2F%2Flocalhost%3A1478%2Fsi%2Fposts%2F13-pipelining%2F%0A%2A%2ASource%3A%2A%2A&#43;%60content.si%2Fposts%2F13-pipelining.md%60%0A%2A%2ASource&#43;on&#43;GitHub%3A%2A%2A&#43;https%3A%2F%2Fgithub.com%2Fgnuzero%2Fhow-we-got-here%2Fblob%2Fmain%2Fcontent.si%2Fposts%2F13-pipelining.md%0A%0A%23%23&#43;Feedback%0A%0A" target="_blank" rel="noopener">
+    <img src="/icons/edit.svg" class="book-icon" alt="Issue" />
+    <span>Open an issue</span>
+  </a>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/si/posts/12-datapath-design/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Datapath නිර්මාණය</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/si/posts/14-branch-prediction/" class="flex align-center">
+        <span>Branch Prediction</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#අදයර-පහක-අතචඡදනය-ව">අදියර පහක්, අතිච්ඡාදනය වූ</a></li>
+    <li><a href="#hazards-සවධනතවය-බඳන-තන">Hazards: ස්වාධීනත්වය බිඳෙන තැන්</a></li>
+    <li><a href="#එම-වයදම-ඊළඟට-බල-කරන-ද">එම වියදම් ඊළඟට බල කරන දේ</a></li>
+    <li><a href="#ගඹරන-pipeline-කල-ගණතය-forwarding-සහ-load-use-stall-චකරයන-චකරයට">ගැඹුරින්: pipeline කාල ගණිතය, forwarding සහ load-use stall චක්‍රයෙන් චක්‍රයට</a>
+      <ul>
+        <li><a href="#1-මලක-පද">1. මූලික පද</a></li>
+        <li><a href="#2-අදයර-පහ-කල-ගණනය-cs-61c-අගයන">2. අදියර පහේ කාල ගණනය (CS 61C අගයන්)</a></li>
+        <li><a href="#3-forwarding-stall-නත-දතත-hazard-එකක">3. Forwarding: stall නැති දත්ත hazard එකක්</a></li>
+        <li><a href="#4-load-use-forwarding-පව-බර-ගත-නහක-තන">4. Load-use: forwarding පවා බේරා ගත නොහැකි තැන</a></li>
+        <li><a href="#5-compiler-එකන-stall-ඉවත-කරම-code-scheduling">5. Compiler එකෙන් stall ඉවත් කිරීම (code scheduling)</a></li>
+        <li><a href="#6-වයහතමක-hazard-structural-hazard">6. ව්‍යුහාත්මක hazard (structural hazard)</a></li>
+        <li><a href="#7-පනසලන-අභයසය">7. පැන්සලෙන් අභ්‍යාසය</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

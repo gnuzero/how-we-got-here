@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>天工开物 on 我们如何走到那里</title>
+		<link>http://localhost:1478/zh-hans/tags/%E5%A4%A9%E5%B7%A5%E5%BC%80%E7%89%A9/</link>
+		<description>Recent content in 天工开物 on 我们如何走到那里</description>
+		<generator>Hugo</generator>
+		<language>zh-Hans</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 14:25:53 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1478/zh-hans/tags/%E5%A4%A9%E5%B7%A5%E5%BC%80%E7%89%A9/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>花本：程序第一次和机器分开</title>
+				<link>http://localhost:1478/zh-hans/posts/01-zh-drawloom-huaben/</link>
+				<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1478/zh-hans/posts/01-zh-drawloom-huaben/</guid>
+				<description>从老官山汉墓的多综提花机到《天工开物》的结花本：织出什么花，记在一束丝线里，而不在织工脑子里。</description>
+			</item>
+	</channel>
+</rss>
