@@ -142,6 +142,43 @@
 - 41-tcp-ip… — thin-add: “එක් ජාලයක Protocols වලින් Stack එකකට” (NCP → 1983 flag day → apps); summary synced; draft:false; RFC 1034/1035 links kept
 - 08-from-gates… — Try-this-now half-adder carry hook + breadboard height=700 (mirrored EN); draft:false
 
+## Coverage-audit direction: deep Sinhala explainers (2026-09-26, Asia/Bangkok)
+
+- **Direction change (author correction):** the Sinhala "gap" now means technical topics on the spine that are missing or thin *on the Sinhala internet*. This replaces the earlier local-Sri-Lankan-history framing.
+- **Audit:** we checked si.wikipedia, YouTube (English+"sinhala" and Sinhala-script queries) and the NIE A/L ICT teacher's guides. Each of the 68 rows is rated none/thin/adequate. The audit lives outside the repo at `si-desk/research/gaps.md`.
+  - 28 none
+  - 25 thin
+  - 12 adequate
+  - 3 n/a
+- **Written this round:** deep sections headed "ගැඹුරින්: …". Each is inserted before the page's පිටවීමේ දොර (or before the asset checklist where a page has none). Existing text, labs and Try-this-now hooks are unchanged. Each opens with a short සිංහල මූලාශ්‍ර පිළිබඳ සටහන. Every term is given with its English equivalent, and the worked numbers were checked.
+  - 14-branch-prediction.md: pipeline penalty, CPI arithmetic, 1-bit vs 2-bit predictors, mini-cpu countdown exercise, BTB, global history, Spectre note
+  - 16-out-of-order-execution.md: RAW/WAR/WAW, 16 vs 11 cycle worked example, register renaming, reservation stations/ROB, dependency exercise on the default mini-cpu program
+  - 35-the-memory-wall.md: latency vs bandwidth, AMAT tables, locality with 64-byte lines, Wulf & McKee figures (PDF p. 2), mini-cpu memory-time exercise
+  - 36-the-clock-speed-wall.md: derivation of P ≈ αCV²f, 100 W worked table, Dennard Table I with κ = 1.4 arithmetic, why voltage stopped scaling (60 mV/decade), dark silicon, pencil exercise
+  - 57-why-matrix-multiply-reshaped-chip-design.md: matmul step by step, n³ MACs, neuron layer example with ReLU, arithmetic intensity (≈341 vs 0.167 FLOP/byte), multiply-by-addition mini-cpu exercise. **Added the `labs: ["mini-cpu"]` frontmatter field and a mini-cpu lab embed.**
+  - 58-systolic-arrays.md: weight-stationary 2×2 trace cycle by cycle (4 cycles, 8 MACs, 1-3-3-1), reuse and utilisation, TPU v1 256×256 MXU (Jouppi 2017, pp. 3–4), pencil exercise
+  - 63-attention-is-all-you-need.md: softmax by hand, 3-token self-attention with invented teaching numbers, matrix form and O(n²·d) cost, why √d_k (footnote 4), multi-head (h = 8, d_k = 64), causal −∞ mask, pencil exercise
+- **Fixed in fact-check:** the pre-existing 14 text said the mini-cpu lab lets you watch predictor state. The lab has no predictor, pipeline or cache; the sentence now says to track the counter on paper. The asset-checklist comment in 14 and 16 no longer contains a live lab shortcode (it rendered a hidden iframe inside the HTML comment).
+- Hugo build clean (with `--themesDir` pointing at the main checkout's theme). No lock file or build output was committed.
+
+## si-gaps-2: deep Sinhala explainers (2026-09-26, Asia/Bangkok)
+
+Branch `si-gaps-2` from `origin/main` `85f3ae0`, with si-gaps-1 merged in so this entry stacks after #16's (merge after #16). One "ගැඹුරින්: …" section per page, each with a Sinhala-sources honesty note, worked examples, pencil exercises with answers, and a sources list. Existing text, labs and Try-this-now hooks kept; no new lab embeds; draft:false; UTF-8 clean.
+
+- 02-relays-and-electromechanical-logic.md — relay contacts → AND/OR/NOT; Shannon 1938 hindrance algebra; relay half adder (before the asset checklist; the door-out is mid-page)
+- 50-moore-s-law.md — Moore 1965 minimum-cost curve and doubling; Moore 1975 revision; 4004 → GA100 doubling check
+- 19-the-x86-vs-risc-split.md — CPU time = IC × CPI × T; Patterson & Ditzel 1980 evidence
+- 22-time-sharing-and-the-unix-lineage.md — 1974 UNIX paper statistics; round-robin arithmetic; i-nodes, links, permissions, pipes; vm-terminal exercises
+- 31-buses-101.md — address/data/control buses; 2ⁿ addressing; 8086 bus cycle, wait states, bandwidth; HOLD/HLDA; tri-state
+- 34-memory-buses.md — DDR4 latency in ns; channel bandwidth; row hit/idle/conflict; banks; refresh
+- 47-what-7nm-actually-means.md — node names vs pitches; density metric; Intel 2021 renaming
+- 48-photolithography.md — Rayleigh CD = k1·λ/NA; DUV/EUV/High-NA k1; multi-patterning
+- 53-cuda-cores-warps-and-occupancy.md — warps, divergence, occupancy on A100
+- 54-gpu-memory-hierarchy.md — HBM bandwidth; ridge point; coalescing; shared-memory banks
+- 55-tensor-cores.md — MMA shapes; TFLOPS arithmetic; FP32 accumulation
+- ch31 school-material check: the NIE Gr12 ICT TG (PDF p. 86, printed p. 73, "4. පථය") defines only the data bus and control bus; the Gr13 TG, resource book and EPD G10/G11 textbooks have syllabus, glossary or topology mentions only; e-thaksalawa links to a si.wiki bullet list. So 31 was re-rated none → thin, and the section recaps the NIE terms and goes deeper on the rest. 34 and 48 were also re-rated to thin (consumer-level videos only). Details are in the desk's gaps.md, which lives outside the repo.
+- Flags: sections on 31, 34, 47, 48, 53, 54, 55 sit before the asset checklist because those pages have no door-out. Illustrative and model numbers are labelled as such. Some sources were read via mirrors (Bohr editorial, Micron datasheets, the Intel 8086 datasheet). The pre-existing lab shortcode inside the asset-checklist HTML comments was left alone.
+- **Fixed in fact-check:** the asset-checklist comments in 19 and 22 no longer contain a live lab shortcode. In 47, the "~0.5x" traditional area scaling is on Mistry slide 20, not 22; the Bohr editorial now points to the Internet Archive copy of the official Intel Newsroom page, not a third-party repost. In 53, added a note that the occupancy maths ignores the 256-register-per-warp allocation unit and the 1 KB per-block shared-memory reservation. Neither changes the page's results.
 ## si-gaps-3: deep explainers for the remaining "none" topics (2026-09-26, Asia/Bangkok)
 
 Branch `si-gaps-3` from `origin/main` `85f3ae0`; not pushed. One "ගැඹුරින්: …" section per page, placed before the ASSET CHECKLIST (after any existing lab); existing text, labs and Try-this-now hooks untouched; draft:false; UTF-8 clean. Sources are official copies (publisher/vendor/institution/RFC Editor/arXiv, or archive.org of the official URL); illustrative numbers are labelled.
