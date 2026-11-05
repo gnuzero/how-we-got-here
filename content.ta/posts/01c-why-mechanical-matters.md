@@ -28,7 +28,7 @@ schematics: "Diagram: instruction sequence + execution unit + store — logical 
 
 <figure>
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Charles_Babbage%27s_Difference_Engine_No._2_%282586166238%29.jpg" alt="Computer History Museum-இல் Difference Engine No. 2, Serial #2" loading="lazy" width="1280">
-<figcaption>Difference Engine No. 2, Serial #2 (Computer History Museum) — 19-ஆம் நூற்றாண்டு வரைபடங்களின்படி, நவீன காலத்தில் கட்டப்பட்டது. படம்: <a href="https://commons.wikimedia.org/wiki/File:Charles_Babbage%27s_Difference_Engine_No._2_(2586166238).jpg">Erik Pitti</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
+<figcaption>Difference Engine No. 2, Serial #2 (Computer History Museum) — 19-ஆம் நூற்றாண்டு வரைபடங்களின்படி 2008-இல் முடிக்கப்பட்டது (CHM press release 2008-05-05; Science Museum: London machine calculator 1991 / printer 2002). படம்: <a href="https://commons.wikimedia.org/wiki/File:Charles_Babbage%27s_Difference_Engine_No._2_(2586166238).jpg">Erik Pitti</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
 </figure>
 
 ## பித்தளையின் கூரை

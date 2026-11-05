@@ -144,7 +144,7 @@ Computer History Museum-இன் "The Engines" பக்கத்திலி�
 
 | தமிழ் | English |
 |---|---|
-| வேறுபாட்டுப் பொறி | Difference Engine |
+| வித்தியாசப் பொறி | Difference Engine |
 | பகுப்புப் பொறி | Analytical Engine |
 | முடிவுள்ள வேறுபாடுகள் முறை | method of finite differences |
 | பல்லுறுப்புக் கோவை | polynomial |

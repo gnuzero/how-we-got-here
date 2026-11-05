@@ -31,7 +31,9 @@ schematics: "Diagram: Jacquard loom punch card mechanism (hole → lift, no hole
 <figcaption>Jacquard தறி, Musée d'art et d'industrie, Saint-Étienne. படம்: <a href="https://commons.wikimedia.org/wiki/File:02_Metier_jacquard_etroit.jpg">Hélène Rival</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</figcaption>
 </figure>
 
-Jacquard-க்கு முன், வடிவத் துணி நெய்ய ஒரு உதவியாளர் ("draw boy") தறியின் மேல் அமர்ந்து, ஒவ்வொரு வீச்சுக்கும் எந்தப் பாவு இழைகளைத் தூக்க வேண்டும் என்று கையால் இழுக்க வேண்டியிருந்தது — மெதுவான, சோர்வான வேலை. Joseph-Marie Jacquard 1801-இல் Lyon-இல் (CHM) ஒரு தீர்வைக் காட்டினார்; 1804-இல் அதற்குக் காப்புரிமை பெற்றார் (Science and Industry Museum). தறியின் மேல் பொருத்தப்பட்ட அவரது பொறி, ஒன்றோடொன்று கட்டப்பட்ட பஞ்ச் கார்டுகளின் சங்கிலியைப் படித்தது.
+Jacquard-க்கு முன், வடிவத் துணி நெய்ய ஒரு உதவியாளர் ("draw boy") drawloom முறையில் தறியின் மேல் அமர்ந்து, ஒவ்வொரு வீச்சுக்கும் எந்தப் பாவு இழைகளைத் தூக்க வேண்டும் என்று கையால் இழுக்க வேண்டியிருந்தது — மெதுவான, சோர்வான வேலை. Joseph-Marie Jacquard-இன் பொறி ஒரு தறியே அல்ல; drawloom-இன் draw boy பணியை ஏற்கும் **தறி இணைப்பு** (loom attachment). அவர் 1801-இல் Lyon-இல் அதைக் காட்டினார் (CHM). Manchester Science and Industry Museum காப்புரிமையை 1804 என்கிறது; Musée des Arts et Métiers 23 திசம்பர் 1801 காப்புரிமையைப் பதிவு செய்கிறது. தறியின் மேல் பொருத்தப்பட்ட அவரது பொறி, ஒன்றோடொன்று கட்டப்பட்ட பஞ்ச் கார்டுகளின் சங்கிலியைப் படித்தது.
+
+<!-- UNVERIFIED: Jacquard patent year | SI Museum "patented … in 1804"; Musée des Arts et Métiers model note: brevet 23 Dec 1801; napoleon.org same 1801 brevet + 1804 gold medal. We state both museum dates. -->
 
 ஒவ்வொரு வீச்சுக்கும் ஒரு அட்டை ஊசிகளின் வரிசைக்கு எதிராகத் தள்ளப்படுகிறது. துளை இருக்கும் இடத்தில் ஊசி கடந்து செல்கிறது, அதன் கொக்கி பாவு இழையைத் **தூக்குகிறது**. துளை இல்லாத இடத்தில் ஊசி அட்டையில் மோதி நின்றுவிடுகிறது; அந்த இழை **தூக்கப்படுவதில்லை**. பிறகு ஷட்டில், தூக்கிய இழைகளுக்குக் கீழாகவும் மற்றவற்றுக்கு மேலாகவும் ஊடையைக் கொண்டு செல்கிறது. அடுத்த அட்டை, அடுத்த வரிசை.
 
