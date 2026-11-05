@@ -120,10 +120,3 @@ Step-ஐ அழுத்தி எண்ணுங்கள்: Output 3, 2, 1 �
 | சான்றளிப்பு | certification |
 | உத்தரவாத நிலை | assurance level |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

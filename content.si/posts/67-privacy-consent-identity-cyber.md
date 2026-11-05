@@ -46,9 +46,3 @@ Cybersecurity යනු ජාලය, supply chain, සහ සමහර වි�
 
 පොත OS isolation, ජාල, බෙදාහැරුණු පද්ධති, සහ AI infra ගොඩනඟා තිබෙන තුරු platform එකක රහස්‍යතාව ගැන අවංකව කතා කළ නොහැක. එම පරිච්ඡේද substrate එකයි. මෙය ඉහළින් ගමන් කරන විරුද්ධකාරී සහ එකඟතාව-හැඩැති සීමා නම් කරයි — එසේ නම් Post 69 ගේ platform සංස්ලේෂණයට privacy engineering පළමු පන්තියේ ස්ථරයක් ලෙස සැලකිය හැක, appendix එකක් ලෙස නොවේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

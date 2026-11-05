@@ -109,10 +109,3 @@ ASML ට අනුව EXE පද්ධතිය රටාව එක් දිශ
 
 **මෙම කොටසේ මූලාශ්‍ර:** ASML, "The Rayleigh criterion for resolution" (<https://www.asml.com/en/technology/lithography-principles/rayleigh-criterion>) — CD = k1·λ/NA සහ k1 = 0.25 භෞතික සීමාව. ASML, "TWINSCAN NXT:2100i" නිෂ්පාදන පිටුව (<https://www.asml.com/en/products/duv-lithography-systems/twinscan-nxt2100i>) — ArF 193 nm, 1.35 NA, විභේදනය ≤ 38 nm, පැයකට wafers 295. Christine Middleton, "5 things you should know about High NA EUV lithography", ASML, 2024 ජනවාරි 25 (<https://www.asml.com/en/company/stories/2024/5-things-high-na-euv>) — 13.5 nm එදිරිව 193 nm, NXE CD 13 nm, NA 0.33 → 0.55, EXE CD 8 nm, 1.7× කුඩා / 2.9× ඝනත්වය, anamorphic 4x/8x, අර්ධ field, 8g/32g stages, පැයකට wafers 185+, multi-patterning පිරිවැය. Intel 10 nm SAQP සහ 36 nm ලෝහ pitch: Kaizad Mistry, Intel Technology and Manufacturing Day 2017, slide 6. k1 අගයන්, "pitch ≈ 2 × CD" ආදර්ශය සහ ෆෝටෝන ශක්ති අපේ ගණනය කිරීම්ය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

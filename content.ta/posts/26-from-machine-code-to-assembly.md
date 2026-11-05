@@ -143,10 +143,3 @@ Assembly-க்கு முன், நிரலாக்கம் binary அல
 
 - தமிழ் இணையக் கல்விக்கழகம் (Tamil Virtual Academy), பாடம் 5.4: கணினிமொழி மென்பொருள் (எந்திரமொழி, சில்லுமொழி / assembly, சில்லுமொழி பெயர்ப்பி / assembler — அறிமுகம்)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

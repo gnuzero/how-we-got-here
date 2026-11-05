@@ -94,10 +94,3 @@ occupancy คือค่าที่ *น้อยที่สุด* ในบ
 - NVIDIA, *CUDA C++ Programming Guide* — หัวข้อ SIMT architecture และ hardware multithreading (ภาษาอังกฤษ) เป็นแหล่งอ้างอิงหลักของนิยาม warp และข้อจำกัดทรัพยากรต่อ SM
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *สายโยงใย* (thread), *ขนาน* (parallel), *มัลติโพรเซสเซอร์* (multiprocessor)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

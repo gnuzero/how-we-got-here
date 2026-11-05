@@ -133,10 +133,3 @@ Mixed precision-இல் Adam optimizer உடன் பயிற்சி ச�
 | GPU-இடை இணைப்பு / இணைப்புச் சுவிட்ச் | NVLink / NVSwitch |
 | உகப்பாக்கி நிலைகள் | optimizer states |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

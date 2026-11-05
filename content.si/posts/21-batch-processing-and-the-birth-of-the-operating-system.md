@@ -35,10 +35,3 @@ Batch පද්ධති පරිණත වූ විට, job control languages
 
 එය විසඳීමට batch ගෘහ නිර්මාණයට ලබා දිය නොහැකි දෙයක් අවශ්‍ය විය: බහු පරිශීලකයන් *එකම වේලාවේ* සක්‍රිය, එක් එක් කෙනාට කැප වූ session එකක මායාව සමඟ. එය time-sharing ය — රැකියා අනුපිළිවෙල ස්වයංක්‍රීය කිරීම පමණක් නොව, මාරුවීම නොපෙනෙන තෙක් එකවර සක්‍රිය වැඩසටහන් අන්තර්ලේඛනය කිරීම. ඊළඟ පෝස්ට් එක එතැනින් පටන් ගනී.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

@@ -114,10 +114,3 @@ ENIAC හි නල 19,000 වෙනුවට එම ගණනම ට්‍ර�
 
 **පිටවීමේ දොර:** Bardeen, Brattain, සහ Shockley ගේ Bell Labs ට්‍රාන්සිස්ටර පත්‍රිකා (1940 දශකයේ අග / 1950 දශකයේ මුල්) — නල උඩුකුරු සීමාව කැඩූ solid-state ස්විචයේ ප්‍රාථමික භෞතික විද්‍යාව.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

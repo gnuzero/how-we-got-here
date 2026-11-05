@@ -41,10 +41,3 @@ This is the one post tagged with both interactive labs, deliberately: the mini-C
 
 **Door out:** RTCA DO-178C, *Software Considerations in Airborne Systems and Equipment Certification* — the primary civil-avionics software assurance standard this post names (assurance objectives scale by Design Assurance Level).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

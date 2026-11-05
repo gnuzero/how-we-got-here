@@ -138,10 +138,3 @@ HLT
 - Stephen A. Edwards, "Fundamentals of Computer Systems: A Single Cycle MIPS Processor" (สไลด์ Columbia University, Fall 2011; สไลด์ระบุว่าภาพประกอบเป็นลิขสิทธิ์ของ Elsevier ปี 2007) — การสร้าง datapath ทีละคำสั่ง ตารางตัวถอดรหัสหลัก ค่าความหน่วงตัวอย่าง และการคำนวณคาบ 925 ps: https://www.cs.columbia.edu/~sedwards/classes/2011/3827-fall/mips-uarch.pdf
 - ซอร์สโค้ดของแล็บ mini-CPU ในรีโปของหนังสือเล่มนี้ (`static/labs/mini-cpu/index.html`) — ที่มาของตารางควบคุม mini-CPU ข้างต้น
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

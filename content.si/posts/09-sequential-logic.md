@@ -41,10 +41,3 @@ Edge-triggering ක්ෂණික නොවන අතර සීමා රහි
 
 Edge-triggered flip-flops අතේ ඇති විට, ඔබට registers (බහු-bit අගයක් රඳවන flip-flop අරා), counters, state machines, සහ — Phase 3 සඳහා තීරණාත්මක ලෙස — program counter සහ pipeline registers ගොඩනැගිය හැකි අතර ඒවා CPU එකක් ස්ථිර සංයෝජන ශ්‍රිතයක් වෙනුවට *අනුක්‍රමික* යන්ත්‍රයක් කරයි. ඊළඟ පෝස්ට් එක මෙමම bistable-ගබඩා අදහස ගෙන එක් අරමුණක් සඳහා විශේෂීකරණය කරයි: විශාල දත්ත ප්‍රමාණයක් කාර්යක්ෂමව රඳවා ගැනීම, එහිදී SRAM සහ DRAM වෙන් වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

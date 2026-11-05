@@ -35,10 +35,3 @@ Each step tracks fabrication density from Phase 8: more transistors, less area, 
 
 **Door out:** G. M. Amdahl, G. A. Blaauw, and F. P. Brooks Jr., "Architecture of the IBM System/360" (*IBM Journal of Research and Development*, 1964) — the primary statement of a compatible machine family and the ISA/implementation split.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

@@ -137,10 +137,3 @@ BJT ไม่ได้หายไป: ยังสำคัญที่ซึ�
 - Manuel Toledo Quiñones, "Metal-Oxide-Semiconductor FETs", Lecture Notes for INEL 6055, University of Puerto Rico Mayagüez (2005) — ตัวเก็บประจุ MOS สะสม/พร่อง/ผกผัน, V_T ที่ φ_S = 2φ_F, C_ox = ε_ox/t_ox, สมการ LEVEL 1 ช่วงไทรโอดและอิ่มตัว, ผลลำดับที่สองและกระแสต่ำกว่าขีดเริ่ม: http://ece.uprm.edu/~mtoledo/6055/Handouts/mos.pdf
 - Computer History Museum, "1960: Metal Oxide Semiconductor (MOS) Transistor Demonstrated" (The Silicon Engine) — สถานะที่ผิว, ออกไซด์ปลูกด้วยความร้อน, บันทึกของ Kahng ปี 1961, MOS เชิงพาณิชย์ปี 1964: https://www.computerhistory.org/siliconengine/metal-oxide-semiconductor-mos-transistor-demonstrated/
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

@@ -60,13 +60,3 @@ schematics: "Diagram 1: four strategies and their constraint (compatibility with
 - 科技部，《申威处理器 中国超算最强芯》（English: The Sunway processor, the strongest chip in Chinese supercomputing），科技部网站，2016-06-29。[链接](https://most.gov.cn/kjbgz/201606/t20160628_126168.html)
 - TOP500, “November 2010”, “June 2013”, “June 2016”, “June 2018”（English: TOP500 list pages），top500.org。[2010-11](https://www.top500.org/lists/top500/2010/11/) · [2013-06](https://www.top500.org/lists/top500/2013/06/) · [2016-06](https://www.top500.org/lists/top500/2016/06/) · [2018-06](https://www.top500.org/lists/top500/2018/06/)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s): none set (mini-cpu considered for ISA compatibility but it is a toy ISA, not a fit)
-[ ] Photos: none used. No openly licensed image is verified in the dossier for threads 04/14. Candidates to check on Commons before use: Sunway TaihuLight, Tianhe-2, Yinhe-I at a museum, DJS-130.
-[ ] Native-reader proofread
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review); Taiwan-reader proofread still pending
--->

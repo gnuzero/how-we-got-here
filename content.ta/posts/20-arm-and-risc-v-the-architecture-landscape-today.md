@@ -188,10 +188,3 @@ Mini-CPU-இல் இதே வேலைக்கு SUB ஒரு zero கொ�
 | இரண்டின் நிரப்பு | two's complement |
 | குறியாக்க அடர்த்தி | code density |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

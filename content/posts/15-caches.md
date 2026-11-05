@@ -36,9 +36,3 @@ Coherence is not free, and its cost grows with core count — one reason "just a
 
 **Door out:** M. V. Wilkes, "Slave Memories and Dynamic Storage Allocation" (*IEEE Transactions on Electronic Computers*, 1965) — early statement of the cache idea as a fast slave store beside slower main memory.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

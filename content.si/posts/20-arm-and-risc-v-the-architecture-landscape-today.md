@@ -147,10 +147,3 @@ K. Asanović සහ D. A. Patterson, "Instruction Sets Should Be Free: The Case 
 
 **පිටවීමේ දොර:** The RISC-V Instruction Set Manual (riscv.org) — මෙම පෝස්ට් එක නම් කරන විවෘත ISA එක සඳහා ජීවමාන ප්‍රාථමික පිරිවිතරය; unprivileged ISA වෙළුමෙන් පටන් ගන්න.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

@@ -75,10 +75,3 @@ CD (critical dimension) คือขนาดลายเล็กที่ส�
 - M.D. Ackermann และคณะ (XUV Group, University of Twente), "Improving multilayers for maximum reflectivity" (EUV Litho Workshop 2024) — กระจก Mo/Si คาบ 6.9 nm, การสะท้อน 69.5–71.2% เทียบขีดทฤษฎี 75%, กระจก 10 ชิ้นให้โฟตอนผ่าน 2.6%: https://euvlitho.com/2024/P2.pdf
 - imec, "High-NA EUV lithography: the next step after EUVL" — NA กับจำนวนลำดับการเลี้ยวเบน และความละเอียด 8 nm (ลายคาบ 16 nm) ในการพิมพ์ครั้งเดียว: https://www.imec-int.com/en/articles/high-na-euvl-next-major-step-lithography
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

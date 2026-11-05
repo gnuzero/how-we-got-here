@@ -144,10 +144,3 @@ Managed மொழிகள் (Java, C#, மற்றும் பல்வே�
 
 - தமிழ் இணையக் கல்விக்கழகம் (Tamil Virtual Academy), பாடம் 5.4: கணினிமொழி மென்பொருள் (நிரல் பெயர்ப்பி / compiler, ஆணை பெயர்ப்பி / interpreter — JIT / GC ஆழமாக அல்ல)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

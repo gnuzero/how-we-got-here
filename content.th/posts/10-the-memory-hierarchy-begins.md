@@ -136,10 +136,3 @@ Dynamic RAM เก็บบิตเป็นประจุบนตัวเ�
 - Jamie Liu, Ben Jaiyen, Richard Veras, Onur Mutlu, "RAIDR: Retention-Aware Intelligent DRAM Refresh", ISCA 2012 — ลำดับการเปิดแถว, การรีเฟรชด้วยการเปิดแถว, tREFI 7.8/3.9 µs, tRFC ราว 300 ns, การกระจายของเวลาคงข้อมูล: https://users.ece.cmu.edu/~omutlu/pub/raidr-dram-refresh_isca12.pdf
 - Robert H. Dennard, US Patent 3,387,286 "Field-effect transistor memory" (ยื่น 14 ก.ค. 1967, ออก 4 มิ.ย. 1968) — เซลล์หนึ่งทรานซิสเตอร์หนึ่งตัวเก็บประจุ, การอ่านแบบทำลาย, รีเฟรชทุก 200 µs และ 10% ของเวลา: https://patents.google.com/patent/US3387286A/en
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

@@ -32,10 +32,3 @@ An FPGA memory-fabric card has to live in this stack: form TLPs the root complex
 
 **Door out:** The PCI Express Base Specification (PCI-SIG) — the living primary for lanes, TLPs, and the layered stack this post names; it is versioned (the Base Spec, not a frozen paper).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

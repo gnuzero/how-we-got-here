@@ -182,10 +182,3 @@ links ගණන **1** දක්වා අඩු වී ඇති නමුත්
 
 **පිටවීමේ දොර:** Dennis M. Ritchie and Ken Thompson, "The UNIX Time-Sharing System" (*Communications of the ACM*, 1974) — Unix හි නිර්මාණය පිළිබඳ සම්භාව්‍ය ප්‍රාථමික ප්‍රකාශය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

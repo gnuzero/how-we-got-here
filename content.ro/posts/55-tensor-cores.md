@@ -153,10 +153,3 @@ Tensor Cores sunt răspunsul NVIDIA *în interiorul* unui GPU general. Capitolul
 - TF32: 1+8+10 biți; BF16: 1+8+7 biți (A100 whitepaper, p. 26).
 - Hopper: fără cifre în acest capitol (whitepaper nedeschis).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

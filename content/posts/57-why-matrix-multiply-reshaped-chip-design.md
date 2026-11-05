@@ -28,10 +28,3 @@ Once matmul was recognized as the dominant share of AI compute, specializing for
 
 This is the same *kind* of story as Post 17's superscalar-to-multicore pivot and Post 49's planar-to-FinFET-to-GAA evolution, now at whole-chip architecture: once a workload's shape is well understood and dominant enough, specialized hardware for that shape beats general-purpose hardware treating it as one case among many. Matmul's dominance is why so much of this phase is purpose-built silicon rather than incremental CPU — or even general GPU — improvement alone.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

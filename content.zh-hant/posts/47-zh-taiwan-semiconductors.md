@@ -63,13 +63,3 @@ schematics: "Diagram 1: timeline 1974-02-07 breakfast → 1976-03-05 RCA contrac
 - 王百祿，《學李國鼎做事》摘錄（English: excerpt from “Learning to work like K. T. Li”, with Morris Chang's account of the foundry idea），時報出版，工商時報轉載，2023-01-09。[連結](https://www.ctee.com.tw/news/20230109700513-431001)
 - 台灣事實查核中心，報告 #3514（English: Taiwan FactCheck Center report #3514 on TSMC's government shareholding, citing Morris Chang's autobiography and the National Development Fund），2025-03-13。[連結](https://tfc-taiwan.org.tw/fact-check-reports/tsmc-government-shareholding-sale-bipartisan-period/)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s): none set (no existing lab fits fabrication or industrial policy)
-[ ] Photos: none used. No openly licensed image is verified in the dossier for thread 25. Candidates to check on Commons before use: Hsinchu Science Park, ITRI campus, early TSMC fab.
-[ ] Native-reader proofread (Taiwan names in Simplified script, e.g. 孫運璿; Taiwan terms 積體電路, 工研院, 良率)
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review); Taiwan-reader proofread still pending
--->

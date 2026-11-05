@@ -41,9 +41,3 @@ Read the spine forward:
 
 Wartime crypto did not invent computing. It made the jump from electromechanical to electronic *non-optional* for one of the hardest information problems of the century — and left a trail of named people who did the work. Optional side path; the main journey continues at Post 03.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

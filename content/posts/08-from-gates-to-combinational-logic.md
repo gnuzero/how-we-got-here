@@ -33,10 +33,3 @@ Put a mux in front of the same adder hardware: control bits select add, subtract
 
 Everything so far is combinational — outputs depend only on current inputs. A sequence of operations needs state that persists across time. That is the next post.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

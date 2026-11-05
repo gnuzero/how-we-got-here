@@ -126,10 +126,3 @@ Post එකේ "Packaging වයර් එක ආපසු මිලදී ග�
 
 දෝෂ ඝනත්වය 0.1 cm⁻² සහ 1 TB/s ඉල්ලුම ආදර්ශ අගයන් වේ. වගු අගයන් ඉහත මූලාශ්‍රවලින් ගත් ඒවාය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

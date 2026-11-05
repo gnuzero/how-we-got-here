@@ -36,10 +36,3 @@ C (1972, Dennis Ritchie, Unix සමඟ සංවර්ධනය විය — P
 
 **පිටවීමේ දොර:** Dennis M. Ritchie, "The Development of the C Language" (HOPL-II / ACM) — Unix අසල C හි නිර්මාණය පිළිබඳ ප්‍රාථමික ගිණුම; Lisp හි ආරම්භක ප්‍රකාශය සඳහා, සංකේතාත්මක ප්‍රකාශනවල recursive functions පිළිබඳ John McCarthy ගේ මුල් CACM පත්‍රිකා බලන්න.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

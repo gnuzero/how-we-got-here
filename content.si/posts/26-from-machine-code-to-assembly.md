@@ -170,10 +170,3 @@ rel8 හට −128 සිට +127 දක්වා පමණක් යා හැ�
 
 x86 bytes සහ අභ්‍යාසය 5 හි `eb f6` අප GNU as 2.44 සහ objdump මගින් නිපදවා පරීක්ෂා කළ ඒවාය. §3 හි "STA 14" ඇතුළු කිරීම සහ ගණන් කරන වැඩසටහන අප නිර්මාණය කළ ආදර්ශ (illustrative) උදාහරණ වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

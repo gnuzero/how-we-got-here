@@ -37,10 +37,3 @@ ALU (Arithmetic Logic Unit) මෙම අදහස සාමාන්‍යක�
 
 මෙය සංකල්පීයව සැබෑවටම කුඩා පියවරක් නමුත් ප්‍රායෝගිකව විශාල පියවරකි: මෙම මාලාවේ "තර්ක ද්වාර" "CPU එකක් ඇතුළත සැබෑවටම අංක ගණිතය කරන දෙය" බවට පත් වන පළමු තැනයි. මෙතෙක් මෙහි ඇති සියල්ල සංයෝජන වේ — ප්‍රතිදාන අද ආදාන මත පමණක් රඳා පවතී, අතීතයේ මතකයක් නැත. ඊළඟ පෝස්ට් එක තවමත් මග හැරී ඇති කොටස හඳුන්වා දෙයි: කාලය හරහා පවතින තත්ත්වය, එය තනි ක්ෂණික ගණනයක් වෙනුවට ක්‍රියාකාරකම් *අනුක්‍රමයක්* කළ හැකි කරයි.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

@@ -108,10 +108,3 @@ WP350 தரும் Gen 2 TLP அமைப்பு, கம்பியில�
 | நிறைவு | completion |
 | வேர் அமைப்பு / இறுதிச் சாதனம் | root complex / endpoint |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

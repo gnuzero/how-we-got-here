@@ -55,16 +55,3 @@ schematics: "Diagram 1: the DianNao family 2014-2016 (DianNao ASPLOS'14, DaDianN
 - IT之家，《华为深度解读达芬奇架构：3D Cube计算引擎加速运算》（English: Huawei explains the Da Vinci architecture and its 3D Cube engine），2019-08-22。[链接](https://www.ithome.com/0/440/590.htm)
 - 央视网，《华为正式发布最新AI处理器昇腾910及全场景AI计算框架MindSpore》（English: Huawei launches the Ascend 910 AI processor and the MindSpore framework），2019-08-23。[链接](http://news.cctv.com/2019/08/23/ARTI2cqgeaCmXn6WauhnfNyy190823.shtml)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] No figure: no openly licensed photo of a DianNao or Cambricon die found. File:Cambricon Technologies.svg is a logo (trademark) and was not used.
-[ ] No lab. Idea for Reed: a MAC-grid toy: a small weight-stationary grid multiplies two matrices step by step, with a slider for on-chip buffer size showing how DRAM traffic drops (the DianNao argument), and a 16x16x16 cube view (Da Vinci). Would also serve English chapters 57/58.
-[ ] Evidence note for the fact-checker: the TPU paper's "no chips were fabricated" (F08-04) concerns the published DianNao-family designs; CAS's 2015 "prototype chip" tape-out (F08-12, medium, attributed) is a separate claim whose design is unnamed. The page keeps them side by side and does not call them a conflict.
-[ ] Left out as unverified: DianNao headline numbers from the ACM abstract snippet (452 GOP/s etc.); the Science "pioneer" article (F08-05, not located); Nvidia-as-top-citer (F08-05); the 新智元 speculation piece; any neutral check of "first commercial DL processor". Taiwan/Hong Kong DL-accelerator history: no primary source yet (gap).
-[ ] TODO after PR #23 merges: relref to 17-zh-supercomputers-cpus.md at the Loongson mention; relref to 63-zh-road-to-attention.md at the end (software side of the same years).
-[ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/58-zh-deep-learning-chips.md); Taiwan-reader proofread still pending (流片 → 投片 per desk VERIFY decision)
--->

@@ -133,10 +133,3 @@ Moore ගේ රාමුවේ ආර්ථික භාගය — ඝනත්
 
 **පිටවීමේ දොර:** Gordon E. Moore, "Cramming more components onto integrated circuits" (*Electronics*, April 19, 1965) — පසුව Moore's Law යන අන්වර්ථ නාමය ලැබුණු ආර්ථික සංරචක-ගණන් නිරීක්ෂණයේ ප්‍රාථමික ප්‍රකාශනය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

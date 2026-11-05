@@ -183,10 +183,3 @@ CS 61C "Structural Hazards" සටහන්: සම්පත් එකක් (re
 
 20 ps සහ 25 ps overhead, අදියර-10 බෙදීම, n = 5, 25%/40% load අනුපාත, සහ අභ්‍යාසයේ අදියර කාල ආදර්ශ අගයන් වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

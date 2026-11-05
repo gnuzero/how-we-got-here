@@ -30,10 +30,3 @@ A modern node name is mostly a generational marker — "our next denser, more ef
 
 "TSMC's 5nm vs Samsung's 5nm" is not apples-to-apples because the strings match. The naming gap opened in the planar era and widened once the design space stopped being one-dimensional — planar gate length gave way to 3D geometry and multi-pitch tradeoffs. That is the setup for the next posts: lithography that can still print those structures (Post 48), and the transistor geometry shifts that made a single length obsolete (Post 49).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

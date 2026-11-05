@@ -112,10 +112,3 @@ GPU ทุกตัวถือสำเนาโมเดลเต็ม แต
 - Y. Huang และคณะ, "GPipe: Easy Scaling with Micro-Batch Pipeline Parallelism" (arXiv 2018; ฉบับแก้ไข 2019) — กลุ่มย่อยและฟองอากาศของไปป์ไลน์: https://arxiv.org/abs/1811.06965
 - NVIDIA, *NVIDIA A100 Tensor Core GPU Architecture* (whitepaper, 2020) — NVLink รุ่นที่ 3 (12 ลิงก์ × 25 GB/s ต่อทิศทาง), PCIe Gen 4 31.5 GB/s, HBM2 40 GB: https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

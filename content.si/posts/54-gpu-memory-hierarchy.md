@@ -127,10 +127,3 @@ thread t (0–31) වචනය `s × t` කියවයි නම් (s = stride
 
 **මෙම කොටසේ මූලාශ්‍ර:** NVIDIA, *NVIDIA A100 Tensor Core GPU Architecture* whitepaper (<https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf>) — පිටුව 21 (SM එකකට ඒකාබද්ධ shared memory/L1 192 KB), පිටු 36–37 (P100/V100/A100 වගුව: interface පළල, data rate, 720/900/1555 GB/s, L2 40,960 KB, register file, shared memory 164 KB, FP32 19.5 TFLOPS). NVIDIA, *CUDA Programming Guide* (2026 සැප්තැම්බර් 10), "2.3 Writing SIMT Kernels" (<https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html>) — §2.3.3.2 (shared memory, L1 සමඟ එකම සම්පත), §2.3.4.1 (බයිට් 32 transactions, 100% / 12.5% උදාහරණ), §2.3.4.2 (banks 32, bits 32/චක්‍රය, stride 1/2/3), §2.3.4.2.2 (transpose හි 32-way conflict සහ +1 padding). DDR4 සංසන්දනය Post 34 හි Micron datasheets වලිනි. Ridge point සහ bank වගු අපේ ගණනය කිරීම්ය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

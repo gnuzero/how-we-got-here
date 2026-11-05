@@ -34,10 +34,3 @@ The same loop now runs not only web services but distributed training and infere
 
 **Door out:** Abhishek Verma et al., "Large-scale cluster management at Google with Borg" (EuroSys 2015) — the primary account of the internal system Kubernetes descends from; Brendan Burns et al., "Borg, Omega, and Kubernetes" (*ACM Queue*, 2016) — the short lineage paper that ties Borg, Omega, and the open control plane together.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

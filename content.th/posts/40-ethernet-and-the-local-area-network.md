@@ -163,10 +163,3 @@ Ethernet ท้องถิ่นบวกการกำหนดเส้น�
 - Jon Postel (บรรณาธิการ, Information Sciences Institute), RFC 791 *Internet Protocol* (1981) — datagram 68 octet: https://www.rfc-editor.org/rfc/rfc791.txt
 - v86 (โครงการโอเพนซอร์ส github.com/copy/v86), `src/ne2k.js` (สาขา master) — ฟังก์ชันรับเฟรมของการ์ด NE2000 จำลอง รวมทั้งกรณี multicast ที่ถูกทิ้ง (ในแล็บเป็นไฟล์ย่อขนาด `libv86.js`): https://github.com/copy/v86/blob/master/src/ne2k.js
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

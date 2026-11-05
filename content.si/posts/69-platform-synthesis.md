@@ -38,9 +38,3 @@ Post 67 විරුද්ධකාරී සහ එකඟතාව-හැඩැ
 
 **විශාල platform එකක් යනු බෙදාහැරුණු පද්ධති + networking + AI infrastructure + privacy engineering + software engineering**, protocol සහ governance commons (Posts 41, 64) මගින් ඇලවූ, මානව අවධානය වෙත යොමු කළ (Post 63). Post 68 ගේ දැක්මන් යනු කෙනෙකු එම සංයුක්තයේ කොටසක් ව්‍යාපාරයක් හෝ commons එකක් ලෙස නිකුත් කරන විට සිදු වන දෙයයි. දැන් ඔබට සිතියම තිබේ; ගැඹුර අවශ්‍ය වූ විට එක් එක් ස්ථරයට ආපසු යන දොර labs සහ යොමු ය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

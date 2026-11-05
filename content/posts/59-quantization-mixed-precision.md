@@ -34,10 +34,3 @@ Mixed-precision training and inference use lower precision (often FP16 or BF16) 
 
 Precision makes each operation cheaper. The next post's sparsity aims to skip some operations entirely when a known zero would contribute nothing.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

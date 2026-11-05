@@ -36,10 +36,3 @@ ENIAC (1945) คือจุดสังเกตของยุค และข
 
 นั่นเตรียมบทถัดไป ทรานซิสเตอร์ไม่ได้ชนะเพราะวิศวกรฉลาดเพื่อความฉลาด มันชนะเพราะฟิสิกส์ของหลอดเอง — ความร้อน ขนาด และซองสุญญากาศที่เปราะ — วางเพดานแข็งไว้ว่าแนวทางนี้ขยายได้ไกลแค่ไหน
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

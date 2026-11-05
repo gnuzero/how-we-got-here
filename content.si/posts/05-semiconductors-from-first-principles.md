@@ -32,10 +32,3 @@ schematics: "Diagram: energy band diagram + silicon lattice with N-type and P-ty
 
 N-type හෝ P-type එකක් තනිවම ස්විචයක් නොවේ. ස්විචය එනේ ඒවා *එකට* තැබීමෙන් — P-N junction එකක් — එය පසුව එන සෑම ඩයෝඩයකගේම සහ ට්‍රාන්සිස්ටරයකගේම මූලික ගොඩනැගුම් ඒකකයයි. Post 6 හරියටම එතැනින් අරඹයි: junction එකක් (හෝ MOSFET එකක gate-පාලිත channel එකක්) doped සිලිකන් බාහිර සංඥාවකින් ක්‍රියාත්මක සහ නිවා දැමිය හැකි දෙයක් බවට පත් කරන ආකාරය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

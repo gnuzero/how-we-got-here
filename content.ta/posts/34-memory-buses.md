@@ -121,10 +121,3 @@ Bandwidth 2 மடங்கு; முதல்-bit காத்திருப�
 
 - தமிழ்நாடு அரசு, *11ஆம் வகுப்பு கணினி அறிவியல்*, அலகு 3: கணினி அமைப்பு (நினைவகச் சாதனங்கள்: DRAM அறிமுகம்; DDR generation / channel–rank–bank அமைப்பு அல்ல)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

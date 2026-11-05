@@ -189,10 +189,3 @@ Heart, Kahn, Ornstein, Crowther සහ Walden (BBN) 1970 දී IMP විස්
 
 ද්විපද එකතුව, 8000-bit පණිවිඩයේ 640/220 ms, 112 ms ඇස්තමේන්තුව, 1.7% ගණනය, සබැඳි 970 සහ 52,326, සහ අභ්‍යාසවල 1500 bytes, 6000 bits, 50 Mb/s අගයන් අප ගණනය කළ හෝ ආදර්ශ අගයන් වේ. Lab විධාන lab image එකේ BusyBox v1.28.4 `awk` මත පරීක්ෂා කළෙමු.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

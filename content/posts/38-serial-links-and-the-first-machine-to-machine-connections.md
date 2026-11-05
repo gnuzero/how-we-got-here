@@ -31,10 +31,3 @@ A point-to-point serial link — RS-232 direct or modem-over-phone — connects 
 
 {{< lab type="vm-terminal" >}}
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

@@ -158,10 +158,3 @@ Boolean தர்க்கத்தைச் செயல்படுத்த�
 | பெருமொழி மாதிரி | large language model (LLM) |
 | திட்ட விலக்கம் / மாறுபாடு | standard deviation / variance |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

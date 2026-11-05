@@ -151,10 +151,3 @@ mini-CPU ด้านบนเป็นเครื่องแบบ **ตั�
 - David A. Patterson และ John L. Hennessy, *Computer Organization and Design* (RISC-V edition) — บทไปป์ไลน์เป็นต้นแบบของตัวอย่างการส่งต่อและ load-use ในหน้านี้
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — ที่มาของคำว่า *การทำงานแบบสายท่อ* (pipeline), *ภัย* (hazard), *ปริมาณงาน* (throughput), *เวลาแฝง* (latency)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

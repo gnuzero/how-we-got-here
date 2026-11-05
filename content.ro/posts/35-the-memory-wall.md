@@ -245,10 +245,3 @@ Gholami et al. (2024) cer explicit o regândire a arhitecturii modelelor, a antr
 
 **Ușa de ieșire:** citiți nota originală de cinci pagini a lui Wulf și McKee ([doi:10.1145/216585.216588](https://doi.org/10.1145/216585.216588)), apoi articolul roofline ([CACM, 2009](https://cacm.acm.org/research/roofline-an-insightful-visual-performance-model-for-multicore-architectures/)) și, pentru epoca LLM, „AI and Memory Wall” ([arXiv:2403.14123](https://arxiv.org/abs/2403.14123)). Următorul capitol: un zid înrudit, pe latura calculului, apărut aproape în același moment istoric.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

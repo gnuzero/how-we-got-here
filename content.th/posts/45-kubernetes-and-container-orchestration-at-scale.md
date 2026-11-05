@@ -38,10 +38,3 @@ Google รันปัญหาประเภทนี้ภายในมา�
 - อาณัติ รัตนถิรกุล, *Docker พื้นฐานสู่การใช้งานจริง*
 - ณัฐโชติ พรหมฤทธิ์, *Practical DevOps and Cloud Engineering*
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

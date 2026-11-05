@@ -134,10 +134,3 @@ Matmul හි සෑම අංකයක්ම n වාරයක් නැවත 
 
 (පිළිතුරු: 1 → [[8, 2], [10, 16]], MAC 8; 2 → 8,589,934,592, 8 ගුණයක්; 3 → [3, 2] (0.5×2 + 0 + 2×1 = 3; 1×2 + 0 − 1 + 1 = 2).)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

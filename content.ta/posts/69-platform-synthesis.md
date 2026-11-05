@@ -125,9 +125,3 @@ schematics: "Diagram: one platform = distributed systems + networking + AI infra
 | படிப்படியான வெளியீடு | staged rollout |
 | திரும்பப் பெறுதல் | rollback |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

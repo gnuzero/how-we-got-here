@@ -159,10 +159,3 @@ Legătura cu capitolul 59 e directă: Mishra et al. recomandă să aplici calibr
 - Rețeta: antrenare densă, pruning 2:4, reantrenare cu același program; acuratețea rămâne practic neschimbată în majoritatea testelor (Mishra et al., 2021, §4–5).
 - Accelerarea măsurată ajunge „aproape de 2×” doar pe GEMM-uri mari (Mishra et al., 2021, Fig. 3). Regimurile memory-bound câștigă mai puțin, iar antrenarea rămâne un domeniu de cercetare (A100 whitepaper, p. 31).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

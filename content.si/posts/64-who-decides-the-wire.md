@@ -360,9 +360,3 @@ printf '\340\267\201\340\267\212\342\200\215\340\266\273\340\267\223' | od -An -
 
 "ZWJ ඉවත් වුවහොත්" උදාහරණය සහ පරිවර්තක පියවර ආදර්ශ වේ. UCSC PDF එකේ font නාමය සහ `@k` bytes අපි `pdffonts` සහ `pdftotext` මගින් එම (archived) PDF එකෙන් කෙලින්ම ලබා ගත්තෙමු.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

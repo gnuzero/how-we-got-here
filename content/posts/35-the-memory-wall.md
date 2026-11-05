@@ -30,10 +30,3 @@ Poor locality — large random structures, some graphs, some databases — still
 
 **Door out:** Wm. A. Wulf and Sally A. McKee, "Hitting the Memory Wall: Implications of the Obvious" (*ACM SIGARCH Computer Architecture News*, 1995) — the short note that named the wall and showed why the gap would dominate unless something basic changed.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

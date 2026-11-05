@@ -32,10 +32,3 @@ An SM has finite registers and shared memory; every resident warp consumes a sha
 
 It is not "maximize and stop." A kernel that uses more registers or shared memory per thread may run fewer warps and still finish faster if those resources cut redundant work or memory traffic. Occupancy versus per-thread resources is a real tradeoff — one that shows up when kernels meet real silicon, not only when reasoned about in the abstract.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

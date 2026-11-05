@@ -35,10 +35,3 @@ schematics: "Comparison table/diagram: tube vs transistor — size, power draw, 
 ## อ่านเพิ่ม / อ้างอิง
 - ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

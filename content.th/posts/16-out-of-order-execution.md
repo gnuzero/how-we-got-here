@@ -131,10 +131,3 @@ HLT
 - John L. Hennessy และ David A. Patterson, *Computer Architecture: A Quantitative Approach* — บทว่าด้วย ILP มีตัวอย่างตาราง reservation station แบบ Tomasulo ทีละรอบ
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *เรจิสเตอร์*, *ตัวสะสม* (accumulator), *สิ่งผิดปรกติ* (exception), *แถวคอย* (queue)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

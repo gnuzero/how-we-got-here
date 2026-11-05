@@ -54,18 +54,3 @@ schematics: "Diagram 1: the 1996 national project -> CERNET task 'network inform
 - 赛尔网络，《中国第一批搜索引擎往事丨CERNET30周年》（English: Stories of China's first search engines: CERNET at 30），中国教育和科研计算机网，2024-10-14。[链接](https://www.cernet.com/hlw30/202410/4811.html)
 - 《中国教育网络》，《百度与天网—你不知道的那些事》（English: Baidu and Tianwang: things you didn't know），中国教育网，2014-11-05。[链接](https://www.edu.cn/cxcy_12722/20141105/t20141105_1198967.shtml)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] No lab: none of the existing labs fits search or segmentation. Idea for Reed: a segmentation toy (type a Chinese sentence, toggle character-by-character vs dictionary-word indexing, see which queries hit), then a "one server vs N servers" toy where a growing page count overwhelms one indexer and is split across several.
-[ ] No figure: no openly licensed image in the dossier for thread 29 (the CERNET article's engine home-page screenshots are not openly licensed).
-[ ] Twin: kept English 44 (Google's big data infrastructure). The fit is direct: Li Xing names MapReduce and centralised-vs-distributed as his first regret, and Tianwang started as one server and one PC. English 43 (Archie/Gopher, "find, then talk") would also fit the "find" side; the BBS page 43-zh-bbs sits there and the two pages cross-link.
-[ ] Not repeated from batch 1 (63-zh-road-to-attention): Tianwang team names beyond 刘建国, the Baidu hiring story and dates, the Web InfoMall's use as LLM training data. Only one clause each.
-[ ] Left out as unverified or single-source: 木棉 launch date (1998-12) and the keyword-filtering crawler claim; the "Google blocked in late 2002" episode; 李彦宏's patent; 张朝阳's 指南针/搜狐 naming anecdote (in the 2024 article but not in the dossier findings).
-[ ] Source details beyond the dossier finding summaries (all in the findings' own cited sources; saved text in /workspace/tmp/wd/cernet_search.txt and educn_tw.txt): the six tasks incl. 网络信息发现技术; the "我国第一个互联网领域…通过验收" quote; the segmentation reasoning and the 红楼梦 / 邸报看真 example; 1999-12 to 2000-08 usage (10万多 users, 80多万 queries); 刘建国's 一台服务器、一台PC quote; 一要准，二要快; 千万级 pages and 闫宏飞/彭波 parallelisation (2000); 李星's two-regrets quote and the article's explanation; its MapReduce gloss.
-[ ] TODO after PR #23 merges: relref 63-zh-road-to-attention (Tianwang → Baidu; Web InfoMall → LLM corpora; segmentation standard 1992) and 39-zh-networks-1986-1994 (CERNET).
-[ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/44-zh-chinese-search.md); Taiwan-reader proofread still pending
--->

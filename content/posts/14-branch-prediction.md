@@ -37,10 +37,3 @@ Real predictors combine counter tables (often with global history) and a BTB; hi
 
 **Door out:** James E. Smith, "A Study of Branch Prediction Strategies" (ISCA 1981) — early systematic treatment of dynamic branch prediction, including saturating-counter ideas that became textbook.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

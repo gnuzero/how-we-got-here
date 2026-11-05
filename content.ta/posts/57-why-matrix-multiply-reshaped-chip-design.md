@@ -122,10 +122,3 @@ M × K × N matmul-இல் W-இன் ஒவ்வொரு எண்ணு�
 | மறுபயன்பாடு | reuse |
 | நினைவகத்தால் வரம்பிடப்பட்ட | memory-bound |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

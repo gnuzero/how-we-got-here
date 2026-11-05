@@ -38,9 +38,3 @@ schematics: "Diagram: protocol/OS/hardware spine → forward-link seeds (interne
 
 ชื่อเหล่านี้คือทางออก ไม่ใช่บท แต่ละอันชี้ที่ที่เครื่องจักรของหนังสือกลายเป็นธุรกิจหรือคอมมอนส์: อินเทอร์เน็ตเวิร์กสำหรับขาย ซอฟต์แวร์เป็นแพลตฟอร์ม เครื่องส่วนบุคคลบูรณาการ เซิร์ฟเวอร์เสรี/เปิด และวิสัยทัศน์สเกลยุคหลัง บทที่ 69 อัดสิ่งที่ *แพลตฟอร์มใหญ่* ประกอบด้วยเมื่อตัดผังองค์กรออกแล้วมองชั้นวิศวกรรม
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

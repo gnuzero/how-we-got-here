@@ -46,9 +46,3 @@ Door out: CVE program documentation; classical security-engineering texts that c
 
 You cannot talk honestly about privacy on a platform until the book has built OS isolation, networks, distributed systems, and AI infra. Those chapters are the substrate. This one names the adversarial and consent-shaped constraints that ride on top — so Post 69's platform synthesis can treat privacy engineering as a first-class layer, not an appendix.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

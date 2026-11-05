@@ -32,10 +32,3 @@ Post 35 හි මතක බිත්තිය HBM (54) සහ weight-stationary
 
 රිලේ සිට අවධානය දක්වා: තාක්ෂණය සෑම පියවරකදීම පාහේ හඳුනා ගත නොහැකි තරම් වෙනස් විය. ඉංජිනේරු තර්කය — සැබෑ සීමාව හඳුනා ගන්න, පසුව ගෘහ නිර්මාණය වෙනස් කරන්න — වෙනස් වී නැත, සහ එය වෙනස් වනු ඇතැයි බලවත් හේතුවක් නැත.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

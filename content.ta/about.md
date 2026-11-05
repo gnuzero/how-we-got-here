@@ -26,7 +26,7 @@ type: docs
 
 இந்தப் பணி **Creative Commons Attribution 4.0 International (CC BY 4.0)** உரிமத்தின் கீழ் வெளியிடப்படுகிறது. பொருத்தமான கடனுடன் பொருளைப் பகிரவும் தழுவவும் உங்களுக்குச் சுதந்திரம் உண்டு.
 
-முழு விதிமுறைகளுக்கு [LICENSE](https://github.com/devzer01/how-computers-work/blob/main/LICENSE) கோப்பைப் பார்க்கவும்.
+முழு விதிமுறைகள்: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
 
 ## ஊடாடும் ஆய்வகங்கள்
 

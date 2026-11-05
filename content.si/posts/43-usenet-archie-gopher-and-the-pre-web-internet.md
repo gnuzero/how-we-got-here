@@ -178,10 +178,3 @@ printf 'Prices/\r\n' | wc -c
 
 printf, tr, od සහ wc විධාන lab එකේ BusyBox v1.28.4 image එකේ ඇති බව පරීක්ෂා කරන ලදී. mesh සහ bytes ගණනය, සහ GROUP අංක ආදර්ශ වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

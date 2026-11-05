@@ -178,10 +178,3 @@ Moore-இன் வடிவமைப்பின் பொருளாதார
 | அளவு வரிசை | order of magnitude |
 | போக்குக்கோடு | trend line |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

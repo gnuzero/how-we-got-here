@@ -161,10 +161,3 @@ Q, K, V එන්නේ කොහෙන්ද? Embeddings matrix එක X නම
 
 **පිටවීමේ දොර:** Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin, "Attention Is All You Need" (NeurIPS 2017) — Transformer හඳුන්වා දුන් සහ self-attention ප්‍රමුඛ අනුක්‍රම-ආකෘතිකරණ යාන්ත්‍රණය කළ ප්‍රාථමික පත්‍රිකාව.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

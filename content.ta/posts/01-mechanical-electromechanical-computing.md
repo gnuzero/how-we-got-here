@@ -157,10 +157,3 @@ Computer History Museum-இன் "The Engines" பக்கத்திலி�
 | பதின்மம் / இருமம் | decimal / binary |
 | பிழை கண்டறிதல் | error detection |
 
-<!--
-ASSET CHECKLIST
-[x] Hero: CC BY 2.0 Commons hotlink (Marcin Wichary / Difference Engine No. 2) — not hosted
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

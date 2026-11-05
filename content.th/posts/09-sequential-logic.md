@@ -137,10 +137,3 @@ Flop ที่กระตุ้นด้วยขอบกลายเป็น
 - Ran Ginosar, "Metastability and Synchronizers: A Tutorial", *IEEE Design & Test of Computers* ฉบับกันยายน/ตุลาคม 2011 — สูตร MTBF ตัวอย่าง 28 nm และซิงโครไนเซอร์สองฟลิปฟล็อป
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *แลตช์* (latch), *ฟลิปฟล็อป* (flip-flop), *ประสานเวลา* (synchronous), *นาฬิกา* (clock), *อุปเสถียร* (metastable), *เวลาประวิงการแพร่กระจาย* (propagation delay)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

@@ -36,10 +36,3 @@ Transistor count: still scaling. Clock speed: flat since the mid-2000s for known
 
 **Door out:** Gordon E. Moore, "Cramming more components onto integrated circuits" (*Electronics*, April 19, 1965) — the primary statement of the economic component-count observation later nicknamed Moore's Law.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

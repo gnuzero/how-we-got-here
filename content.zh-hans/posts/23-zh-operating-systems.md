@@ -67,16 +67,3 @@ labs: ["vm-terminal"]
 - ZDNet Taiwan，《尋找台灣自由軟體力量：黃志偉專訪問答實錄》（English: Looking for Taiwan's free-software strength: interview with CLE coordinator Huang Chih-wei），2004-03-04（Wayback Machine 存档）。[链接](https://web.archive.org/web/20080604032823/http:/www.zdnet.com.tw/enterprise/feature/0,2000085762,20087861-7,00.htm)
 - 自由軟體鑄造場，〈關於 OpenFoundry & OSSF〉（English: About OpenFoundry and the OSSF），2025 年存档。[链接](https://web-archive-2025.openfoundry.org/tw/about-openfoundry.html)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[x] Lab embedded via {{</* lab type="vm-terminal" height="720" */>}}, framed by Yang Fuqing's Daqing simulation of the 150 (a program on one machine emulating another machine's hardware). Same lab as English twins 22/23.
-[ ] No figure: Commons "File:Kylin OS.png" and later Kylin screenshots appear to show the later Ubuntu-derived Kylin, not NUDT's 2006 FreeBSD-based system; not used. No open photo of the 150 or 108B verified.
-[ ] Left out as unverified: whether COSIX co-author 孙玉方 is Red Flag's 孙玉芳 (so the paper is cited under its published byline and not linked to her); COSIX origin (UNIX SVR4?); Kylin's "world's first non-Linux kernel with FSG certification" (FSG registry not checked); later Kylin kernel lineage; Deepin/UOS; RedOffice "first cross-platform office suite" superlative. Year of the Daqing trip not stated in the memoir (the page says only that the OS design took over a year after the Dec 1969 task).
-[ ] Lab idea for Reed: a two-machine emulator toy: write a 4-instruction program for an imaginary "150", run it on a visible interpreter written for a different toy CPU (mini-cpu), and watch each 150 instruction expand into host instructions.
-[ ] TODO after PR #23 merges: relref to 17-zh-supercomputers-cpus.md (NUDT's Yinhe line, same institution as Kylin) and to 26-zh-input-and-typesetting.md at the 朱邦复 mention.
-[ ] Native-reader proofread (zh-Hans) before final; Taiwan and Hong Kong quotations kept in Traditional script per desk house style
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/23-zh-operating-systems.md); Taiwan-reader proofread still pending (中国科学院软件研究所 keeps 軟件 as a PRC name)
--->

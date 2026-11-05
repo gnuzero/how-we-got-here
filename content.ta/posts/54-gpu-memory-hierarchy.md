@@ -133,10 +133,3 @@ N × N FP32 matrix பெருக்கல் C = A × B:
 | சமநிலைப் புள்ளி | ridge point (roofline) |
 | நினைவகத்தால் / கணக்கால் வரம்பிடப்பட்ட | memory-bound / compute-bound |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

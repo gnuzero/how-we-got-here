@@ -50,9 +50,3 @@ Posts 39–41 are the engineering bet: packets, layers, unreliable substrate. Th
 
 Optional side paths from here: how people *found* things and *talked* on that shared wire (Post 43), or how wartime crypto forced machines that could keep secrets (Post 66). The main spine stays packets → systems → silicon → attention; this is a widen-the-lens beat you can take or skip.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

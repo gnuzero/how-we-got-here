@@ -100,10 +100,3 @@ Tensor core นั่งในสถาปัตยกรรม SIMT ที่�
 - Norman P. Jouppi และคณะ, "In-Datacenter Performance Analysis of a Tensor Processing Unit" (ISCA 2017) — แหล่งของตัวเลข MXU 256×256 และ 92 TOPS
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *เมทริกซ์* (matrix), *ขนาน* (parallel)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

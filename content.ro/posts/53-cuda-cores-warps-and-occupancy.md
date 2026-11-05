@@ -139,10 +139,3 @@ Capitolul 54 deschide ierarhia de memorie în care trăiesc aceste warp-uri; cap
 - Ocupare = warp-uri active / warp-uri maxime; limitele sunt thread-uri, blocuri, registre, memorie partajată (*CUDA PG*, Release 13.5, §2.3.7, p. 74–75, accesat 2026-11-05).
 - Exemplu A100 (ilustrativ): 256 thread-uri, 64 registre, 48 KB → 3 blocuri → 37,5%.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

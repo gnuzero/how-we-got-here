@@ -76,14 +76,3 @@ Big5 收 13053 字（去掉两个重复字后为 13051），字集取自 1983 �
 - 国务院办公厅，国办发〔2001〕56 号通知（English: State Council General Office notice on the functions of AQSIQ, CNCA and SAC），国务院公报 2001 年第 27 号。[链接](https://www.gov.cn/gongbao/content/2001/content_61007.htm)
 - 中国中文信息学会，《中文信息处理大事记》（English: Chronicle of Chinese information processing），CIPS。[链接](http://bj.bcebos.com/cips-upload/cipsc30.pdf)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] No figure: no openly licensed scan of a dated 电报新书 page verified; HKID image not usable (identity document)
-[ ] No lab: idea for Reed: type a character, see its telegraph code, add a key digit-wise without carry, then see GB 2312 / Big5 / GB 18030 bytes
-[ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review); Taiwan-reader proofread still pending
-[ ] Cross-link to English 64-who-decides-the-wire once zh-hans language config is wired (not done here: no cross-language relref on this branch)
--->

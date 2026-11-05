@@ -36,10 +36,3 @@ Vacuum tubes fail: filaments burn out, seals leak, emission degrades. With ~18,0
 
 That sets up the next post. The transistor did not win because engineers were clever for cleverness's sake. It won because the tube's own physics — heat, size, and the fragile vacuum envelope — put a hard ceiling on how far this approach could scale.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

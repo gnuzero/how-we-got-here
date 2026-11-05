@@ -137,9 +137,3 @@ Coherence ไม่ฟรี และต้นทุนโตตามจำน
 - John L. Hennessy และ David A. Patterson, *Computer Architecture: A Quantitative Approach* — ภาคผนวกและบทว่าด้วยลำดับชั้นหน่วยความจำ
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *หน่วยความจำแคช* (cache memory), *ป้ายระบุ* (tag), *ดรรชนี* (index)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

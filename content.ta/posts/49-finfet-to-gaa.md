@@ -129,10 +129,3 @@ Planar → FinFET → GAA இந்தத் தொடரின் scaling ப�
 | பயனுள்ள அகலம் | effective width (W_eff) |
 | துடுப்பு எண்ணிக்கைப் படிநிலை | fin quantization |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

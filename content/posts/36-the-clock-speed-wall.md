@@ -34,10 +34,3 @@ Diminishing ILP (Post 17) *and* a hard power ceiling on one core: stop making on
 
 The memory wall is DRAM latency losing to compute. The clock-speed wall is compute itself hitting heat. Different physics, same decade. Together they ended "make one core faster" as the growth story and forced "more cores — and, increasingly, move work onto specialized parallel hardware, then connect those units without going back through a general-purpose CPU." That last clause is Post 37, and later GPUs (Phase 9) and accelerators (Phase 10).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

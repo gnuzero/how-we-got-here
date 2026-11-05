@@ -161,9 +161,3 @@ Bletchley Park ට අනුව Lorenz SZ42 හි cipher රෝද **12** ක�
 
 Plugboard සූත්‍රය, 1.59 × 10²⁰ එකතුව සහ 650 අනුපාතය අපේ ගණනය කිරීම් වේ. වසර මිලියන 5, crib ciphertext, XOR bits, අකුරු 10,000 පටිය සහ settings 1,000 ආදර්ශ (illustrative) අංක වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

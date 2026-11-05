@@ -137,10 +137,3 @@ NVIDIA හි *GPUDirect RDMA* ලේඛනය (docs.nvidia.com, "Overview" ස�
 
 s = 0.05, පරාමිති බිලියන 1, ගණනය 100 ms සහ අභ්‍යාසවල අගයන් ආදර්ශ අගයන් වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

@@ -148,10 +148,3 @@ gate එක නාලිකාව වඩාත් සම්පූර්ණයෙ
 
 fin පළල (7 nm), nanosheet මාන, S අගයන්, 1.0/0.8 V සහ 0.7/0.5 V, සහ 150 mm² ආදර්ශ අගයන් වේ. 14 nm fin උස ≈ 42 nm යනු Intel slides වලින් අප කළ ව්‍යුත්පන්නයකි (53 ÷ 1.25), Intel ප්‍රකාශ කළ අගයක් නොවේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

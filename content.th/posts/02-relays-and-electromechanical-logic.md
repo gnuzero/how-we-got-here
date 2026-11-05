@@ -32,10 +32,3 @@ schematics: "Diagram: relay schematic symbol + physical cutaway, plus simple rel
 
 รีเลย์พิสูจน์สถาปัตยกรรม: การแทนค่าแบบไบนารี เกตบูลีนจากสวิตช์ง่าย ๆ โปรแกรมในฐานะข้อมูล สิ่งที่พิสูจน์ไม่ได้คือสถาปัตยกรรมนั้นรันได้ *เร็ว* การแก้หมายถึงแทนที่สวิตช์เชิงกลไกด้วยสิ่งที่เปลี่ยนสถานะโดยเคลื่อนอิเล็กตรอนแทนโลหะ — หลอดสุญญากาศ ด้วยต้นทุนพลังงานและความร้อนมหาศาล ข้อแลกเปลี่ยนนั้นคือบทถัดไป
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

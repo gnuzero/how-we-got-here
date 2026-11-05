@@ -76,14 +76,3 @@ labs: ["difference-engine"]
 - 洪萬生，《〈數理精蘊〉（一）內容摘要》（English: Summary of the *Shuli Jingyun*, part 1），国立台湾师范大学数学系。[链接](https://math.ntnu.edu.tw/~horng/study/0525.htm)
 - 姚远、杨琳琳、亢小玉，《〈六合丛谈〉与其数理化传播》（English: The *Shanghai Serial* and its transmission of mathematics, physics and chemistry），《西北大学学报（自然科学版）》40(3)，2010-06。[链接](https://wap.sciencenet.cn/upload/blog/file/2010/9/2010971519421827.pdf)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[x] Lab embedded: difference-engine (shared English UI in static/labs; not forked)
-[x] Figure: Su Song clock-tower diagram, Wikimedia Commons, PD-old-70-1923 (licence template and upload URL verified via Commons API 2026-09-26). Provenance checked 2026-09-26 (fact-check gate): the file is a 2007 photo of p. 451 of Needham, Science and Civilisation in China vol. 4 pt. 2 (1965), reproducing the woodcut from Su Song's 新仪象法要 (text 1090s; the same woodcut appears in the 1844 守山阁丛书 edition on Commons). The underlying woodcut is centuries old and a faithful photo of a 2D work adds no copyright (PD-Art), so PD is established; image kept. Optional: swap in the 守山阁 scan to avoid the Needham intermediary.
-[ ] Not used: south-pointing chariot model photos (licence not checked); Palace Museum calculator photos (copyright Palace Museum); Shanghai Serial illustration (journal copyright)
-[ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review); Taiwan-reader proofread still pending
--->

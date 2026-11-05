@@ -89,10 +89,3 @@ DIMM คือแพ็กเกจกายภาพ — ชิปบนแผ�
 - รศ.ดร.เกริก ภิรมย์โสภา, *สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์*
 - Micron, *8Gb: x4, x8, x16 DDR4 SDRAM* data sheet (Rev. S 12/2020; สำเนาที่เปิดอ่านอยู่ในหน้าวิชา CE3101 ของ MSOE) — ตาราง 1 ค่า CL/tAA/tRCD/tRP ของแต่ละรุ่นความเร็ว, tCK, 8n-bit prefetch, 16 แบงก์ใน 4 bank group, ตาราง 2 การระบุที่อยู่, ตาราง 70 tCCD_S/tCCD_L, ตาราง 164 tRAS/tRC ของ DDR4-3200: https://faculty-web.msoe.edu/johnsontimoj/CE3101/files3101/dram_spec.pdf
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

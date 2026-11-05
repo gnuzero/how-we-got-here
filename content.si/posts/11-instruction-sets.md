@@ -214,10 +214,3 @@ C = A + B ව්‍යාජ-එසෙම්බ්ලි, mem[12–14] ලිප
 
 **පිටවීමේ දොර:** David A. Patterson and David R. Ditzel, "The Case for the Reduced Instruction Set Computer" (*Computer Architecture News*, 1980) — මෙම බෙදීමේ RISC පැත්ත ආරම්භ කළ සම්භාව්‍ය තර්කය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

@@ -41,10 +41,3 @@ C (1972, Dennis Ritchie พัฒนาคู่กับ Unix — บทที�
 - ธีรวัฒน์ ประกอบผล, *การโปรแกรมภาษาซีสำหรับงานวิทยาศาสตร์*
 - จารุโลจน์ จงสถิตย์วัฒนา, *หลักการและการประมวลผลภาษาโปรแกรม*
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

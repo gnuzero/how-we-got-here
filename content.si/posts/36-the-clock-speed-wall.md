@@ -133,10 +133,3 @@ Voltage **ස්ථිරව** තබා, මාන සහ සංඛ්‍යා
 
 **මෙම කොටසේ මූලාශ්‍රය:** R. H. Dennard, F. H. Gaensslen, H.-N. Yu, V. L. Rideout, E. Bassous, A. R. LeBlanc, "Design of Ion-Implanted MOSFET's with Very Small Physical Dimensions", *IEEE Journal of Solid-State Circuits*, වෙළුම 9, අංක 5, 1974 ඔක්තෝබර්, පිටු 256–268; Table I (පිටුව 265). විවෘත PDF පිටපත: <https://stanford.edu/class/cs114/readings/dennard.pdf>. (60 mV/දශකය යන්න kT/q × ln 10 ≈ 59.5 mV (300 K) යන සම්මත අර්ධ සන්නායක භෞතික ප්‍රතිඵලයයි.)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

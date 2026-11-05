@@ -32,10 +32,3 @@ In Google's TPU, the Matrix Multiply Unit (MXU) is the systolic array that carri
 
 **Door out:** H. T. Kung and Charles E. Leiserson, "Systolic Arrays (for VLSI)" (*Sparse Matrix Proceedings 1978*, SIAM, 1979) — the classic statement of rhythmic MAC arrays for matrix computation; a closely related form also appears in Mead and Conway's *Introduction to VLSI Systems* (1980).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

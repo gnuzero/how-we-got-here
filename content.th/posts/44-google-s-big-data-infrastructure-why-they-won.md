@@ -42,10 +42,3 @@ Map/reduce แบบ batch ทรงพลังและแข็ง บทถ�
 - อสมา กุลวานิชไชยนันท์, *Big Data Series I: Introduction to a Big Data Project ปฐมบทในการทำโปรเจคบิ๊กดาต้า*
 - โอภาส เอี่ยมสิริวงศ์, *เครือข่ายคอมพิวเตอร์และการสื่อสาร*
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

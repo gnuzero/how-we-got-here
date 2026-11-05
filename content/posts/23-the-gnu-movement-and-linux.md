@@ -39,10 +39,3 @@ The GPL's structure meant companies could build commercial products around Linux
 
 **Door out:** The GNU General Public License (Free Software Foundation) — the primary legal text that made copyleft enforceable; read alongside Stallman's GNU Manifesto (1985) for the project's stated goal.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

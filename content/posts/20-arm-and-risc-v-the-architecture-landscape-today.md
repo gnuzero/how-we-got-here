@@ -35,10 +35,3 @@ Post 19's pattern again: the winner in a segment is not always the "best" ISA in
 
 **Door out:** The RISC-V Instruction Set Manual (riscv.org) — the living primary specification for the open ISA this post names; start with the unprivileged ISA volume.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

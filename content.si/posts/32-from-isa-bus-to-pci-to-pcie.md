@@ -120,10 +120,3 @@ Bhatt 2002 දී 2.5 Gb/s ආරම්භක වේගය සිලිකන්
 
 PCI-SIG, FAQ "How does the PCIe 3.0 8.0 GT/s 'double' the PCIe 2.0 5.0 GT/s bit rate?": <https://pcisig.com/how-does-pcie-30-8gts-double-pcie-20-5gts-bit-rate>. Skew වගුව සහ PCI බෙදාගැනීමේ උදාහරණය ආදර්ශ ගණනය කිරීම් වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

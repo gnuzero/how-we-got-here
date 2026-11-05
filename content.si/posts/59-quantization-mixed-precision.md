@@ -136,10 +136,3 @@ Jacob et al. (CVPR 2018, §2.1, සමීකරණය 1): **r = S (q − Z)**. S
 
 FP16/BF16 අගයන් (0.1, 100,000, 2048 + 1, −6.5 = 0xC680, 1.0252 × 10⁻⁵) අපි numpy 2.2 වලින් ගණනය කළ ඒවාය. පරාමිති බිලියන 7, gradient 10⁻⁸, −1.0…1.5 පරාසය සහ ගුණක වර්ග ගණනය ආදර්ශ (illustrative) අංක වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

@@ -38,9 +38,3 @@ Post 23 already named **Richard Stallman** (GNU, GPL) and **Linus Torvalds** (Li
 
 These names are exits, not chapters. Each points at a place where the book's machinery became a business or a commons: internetworks for sale, software as platform, integrated personal machines, free/open servers, and late-era scale visions. Post 69 compresses what a *large platform* is made of when you cut the org chart away and look at the engineering layers.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

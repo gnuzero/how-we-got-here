@@ -91,10 +91,3 @@ Memory wall คือ latency ของ DRAM แพ้ compute Clock-speed wall 
 - Wikipedia (ภาษาอังกฤษ), [Dennard scaling](https://en.wikipedia.org/wiki/Dennard_scaling) — การสเกลแบบสนามคงที่ (0.7× มิติ, 1.4× ความถี่, กำลังต่อทรานซิสเตอร์ลด 51%) การพังราวปี 2005–2007 การยกเลิก Tejas และ dark silicon
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *ความจุ* (capacitance), *กระแสรั่ว* (leakage current), *แรงดันขีดเริ่มเปลี่ยน* (threshold voltage)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

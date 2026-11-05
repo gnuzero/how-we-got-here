@@ -120,10 +120,3 @@ VM แบบดั้งเดิมรัน guest OS ครบ — เคอ�
 - Linux kernel documentation, *Control Group v2* — น้ำหนัก [1, 10000] ค่าเริ่มต้น 100, work-conserving, cpu.max, memory.max และ OOM killer: https://raw.githubusercontent.com/torvalds/linux/master/Documentation/admin-guide/cgroup-v2.rst ; *CFS Scheduler* — cpu.shares ของ cgroup v1: https://raw.githubusercontent.com/torvalds/linux/master/Documentation/scheduler/sched-design-CFS.rst ; *Freezer Subsystem* — สถานะ THAWED/FREEZING/FROZEN: https://raw.githubusercontent.com/torvalds/linux/master/Documentation/admin-guide/cgroup-v1/freezer-subsystem.rst
 - ซอร์สเคอร์เนล Linux 4.16: `include/linux/proc_ns.h` (หมายเลข inode ของเนมสเปซเริ่มต้น): https://raw.githubusercontent.com/torvalds/linux/v4.16/include/linux/proc_ns.h ; `kernel/sched/sched.h` (MIN_SHARES, MAX_SHARES): https://raw.githubusercontent.com/torvalds/linux/v4.16/kernel/sched/sched.h
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

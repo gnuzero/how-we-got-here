@@ -30,10 +30,3 @@ The payoff is direct: every lane in a group runs the *same* instruction at the s
 
 The industry-reshaping realization: the same SIMT shape fits a much broader class than triangles, whenever the math is massively parallel and regular. Neural-network training and inference are built almost entirely from that kind of matrix and vector work — which is why hardware born for rendering became the dominant AI compute substrate, and why the rest of this phase is about programming and feeding that parallel architecture, not about graphics specifically.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

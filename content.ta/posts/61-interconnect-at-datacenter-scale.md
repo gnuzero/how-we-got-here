@@ -146,10 +146,3 @@ N இரட்டிப்பானால் தலைவரின் சும�
 | தண்டவாள-உகந்த வடிவமைப்பு | rail-optimized design |
 | தொடக்கச் செலவு (தாமதம்) | per-message latency (α) |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

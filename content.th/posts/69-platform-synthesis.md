@@ -44,9 +44,3 @@ Phase 9–10 คือเหตุผลที่ "โมเดล" ไม่ใ
 - โอภาส เอี่ยมสิริวงศ์, *เครือข่ายคอมพิวเตอร์และการสื่อสาร*
 - สุพจน์ เฮงพระพรหม, *การเรียนรู้ของเครื่อง MACHINE LEARNING*
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

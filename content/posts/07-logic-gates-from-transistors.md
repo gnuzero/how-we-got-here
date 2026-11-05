@@ -35,10 +35,3 @@ A 2-input CMOS NAND puts NMOS in series (both high to pull low) and PMOS in para
 
 Every Phase 3 CPU structure — full-adder, ALU, register file — is composition of these gates. Next: the first real structure, combinational logic, starting with the adder.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

@@ -32,10 +32,3 @@ Three-sided wrap is not the electrostatic maximum. Gate-all-around (GAA) — hor
 
 Planar → FinFET → GAA is this series's scaling lesson in device form. Electrical walls (short-channel effects here), thermal walls (Post 36), latency walls (Post 35) all eventually force architecture, not only harder effort at the same design. Chiplets (Post 51) apply that pattern one level up — not to the transistor, but to how whole chips are assembled.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

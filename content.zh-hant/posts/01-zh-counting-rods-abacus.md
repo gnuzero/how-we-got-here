@@ -74,14 +74,3 @@ labs: ["pebble-trays"]
 - 姜鐵英，《中國珠算被正式列入聯合國教科文組織非遺名錄》（English: Chinese zhusuan formally inscribed on the UNESCO intangible heritage list），新華網（人民網轉載），2013-12-04。[連結](http://culture.people.com.cn/n/2013/1205/c172318-23747049.html)
 - 徐祖哲、司宏偉，《中國計算機：從核物理到衛星測控》（English: Chinese computers: from nuclear physics to satellite tracking），《中國科學院院刊》，2025, 40(Z2): 109–118。[連結](http://old2022.bulletin.cas.cn/publish_article/2025/Z2/zgkxyyk-40-Z2-109.htm)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[x] Lab embedded: pebble-trays (shared English UI in static/labs; not forked)
-[x] Figure: Western Han lead counting rods, Gary Todd, Wikimedia Commons, CC0 (licence and upload URL verified via Commons API 2026-09-26)
-[ ] Not used: Suanfa Tongzong scans on Commons (licence not verified); Qianyang bone rods (no open image found)
-[ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review); Taiwan-reader proofread still pending
--->

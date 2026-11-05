@@ -28,10 +28,3 @@ At EUV wavelengths, ordinary tricks fail. **Generating the light** means hitting
 
 Without that wavelength step, the finer FinFET and Gate-All-Around structures of the next post would not be producible at acceptable yield and cost. Diffraction set the constraint; tin plasma and mirrors were the forced architecture.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->
