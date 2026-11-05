@@ -137,6 +137,16 @@
 - **Still NEVERIFICAT (6):** control-loop timing; microcontroller no-cache generalisation; address/data/control triad label; IBM AT exact clock; ISA skew physics wording; DDR1 JESD79.
 - **Conflict stated on page:** Pathfinder patch — Jones/Wilner (VxWorks C interpreter) vs Reeves (specialized patch process; page follows Reeves).
 
+
+### Early hub + 01a–01c + takes (batch 6, fact-checked 2026-11-05)
+
+- **Pages:** `01-what-is-this-thing` (hub), `01a-babbage-engines`, `01b-jacquard-loom`, `01c-why-mechanical-matters`, nine `01-take-*` (bookHidden). `01-mechanical-electromechanical-computing` left `draft: true` (overlap with 01a; Lucas).
+- **Primaries opened (batch 6):** Menabrea/Lovelace *Sketch* (Fourmilab); CHM Babbage Engine / Engines / Modern Sequel / press 2008-05-05; Science Museum Babbage article; CHM Jacquard storage + Punched Card’s Pedigree; Arts et Métiers Jacquard model; Science and Industry Museum Jacquard loom story; Europeana „Creating music out of thin air” (via WebFetch; curl 403).
+- **Jacquard dating fix:** page now states what each source supports — 1801 exhibition/demonstration (CHM) and Arts et Métiers brevet 23.12.1801 for replacing *tireur de lacs*; 1804 patent date for the punched-card attachment (Science and Industry Museum). EN „patented 1804” left as conventional dating (proposal only).
+- **Tolerances argument (01c):** kept directed shape (ceiling = manufacturing, not lack of ideas; reconstructions once shops held tolerances). Facts checked against Science Museum / CHM; not softened.
+- **Still NEVERIFICAT:** fine 1832 vs 1833 halt reconciliation; INPI brevet full text / whether 1801 brevet already covers punched cards; Europeana/Met/SMG dump blocks (cited content from WebFetch only).
+- **Take pages:** each marked „Analogie ilustrativă”; factual mechanism claims only where sourced (Europeana barrel/pianola; CHM silk-cards).
+
 ## Not yet (pending)
 
 - Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (next: early chapters 36+ per PLAN)
