@@ -32,10 +32,3 @@ Data-parallel training (Post 46) must synchronize gradients across every partici
 
 Excellent GPUs on a poorly designed or oversubscribed fabric can lose to more modest GPUs on a carefully rail-optimized network — because all-reduce becomes the bottleneck, not any chip's peak FLOPS. The series theme again: component specs (transistor count, clock, peak FLOPS) only part of the story. How parts are connected — from a chip's buses (Phase 5) up to a training cluster's topology — often decides real achieved performance.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

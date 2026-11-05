@@ -68,17 +68,3 @@ labs: ["mini-cpu"]
 - 易语言官网，《易语言获得〈科技项目技术经济评议书〉》（English: EPL receives a technical-economic review certificate, vendor news），2004-11-18。[链接](http://epl.eyuyan.com/news/2004/111801.html)
 - 南京大学，《华为发布通用编程语言“仓颉”，南京大学计算机科学与技术系冯新宇教授作为首席架构师领导研发》（English: Huawei releases the general-purpose language Cangjie, with NJU's Feng Xinyu as chief architect），2024-06-21。[链接](https://www.nju.edu.cn/info/1067/369771.htm)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field (include the side table of 'first' claims with each source's exact wording)
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[x] Lab embedded via {{</* lab type="mini-cpu" */>}}, framed as hand-writing machine instructions (the 104 standard library was machine language) and what a compiler automates. The page says the toy CPU is unrelated to the 104's instruction set.
-[ ] No figure: no open-licence image of the 104, 119, J-501 or DJS-21, or of the CCF-recognised manuscripts, was found on Commons. Asset lead: ask CCF / Zhang Qixia's family for photos of the flowchart templates, coding sheets and the 104 standard program collection.
-[ ] Left out as unverified: BCY's name expansion; whether the 104 compiler came from a Soviet design; what BCY's "Chinese-character support" meant technically; Knuth's English wording (the CAS article gives only a Chinese rendering, so no quote is used); CCDS year (the article implies 1986 via 「第二年」 after March 1985; the page gives no year); the LL-grammar detail in the CCF Dong citation (not a dossier finding).
-[x] BCY origin (desk decision 2026-09-26): both accounts are on the page, each attributed to its own source: CAS profile (F09-02): 董韫美, on the 119, 1964–65; CCF manuscripts record (same page as F09-06): 中科院计算所三室姚伟民等, on the 109/111 from 1971. The page does not choose between them.
-[ ] Lab idea for Reed: a "hand compiler" toy: type one arithmetic line (X = A*B + C) and watch it expand into mini-cpu instructions, with a counter comparing hand-written vs generated instruction counts.
-[ ] TODO after PR #23 merges: relref to 26-zh-input-and-typesetting.md at the Wang Xuan sentence (his move to laser typesetting) and at LCCD/CCDS (glyph description by parameters).
-[ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/27-zh-languages-compilers.md); Taiwan-reader proofread still pending
--->

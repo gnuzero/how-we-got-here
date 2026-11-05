@@ -31,10 +31,3 @@ That clock period must be long enough for the *slowest* instruction's full path 
 
 Pipelining answers that constraint: cut the long path into stages, clock each stage for *its* worst case, and let different instructions occupy different stages at once. Same ISA. Far more work finished per second. That is the next post — and the central idea of classical microarchitecture.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

@@ -24,7 +24,7 @@ Conceptul și inspirația lucrării îi aparțin lui Nayana Hettiarachchi. Cerce
 
 Lucrarea este publicată sub licența **Creative Commons Attribution 4.0 International (CC BY 4.0)**. Sunteți liberi să distribuiți și să adaptați conținutul, cu atribuirea corespunzătoare.
 
-Vedeți fișierul [LICENSE](https://github.com/devzer01/how-computers-work/blob/main/LICENSE) pentru termenii completi.
+Termenii compleți: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
 
 ## Laboratoare interactive
 

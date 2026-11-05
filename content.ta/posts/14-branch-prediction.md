@@ -155,10 +155,3 @@ HLT        ; 10
 
 **Door out:** James E. Smith, "A Study of Branch Prediction Strategies" (ISCA 1981) — dynamic branch prediction-இன் ஆரம்ப முறையான சிகிச்சை, பாடநூலாக மாறிய saturating-counter யோசனைகள் உட்பட. மேலும்: T.-Y. Yeh and Y. N. Patt, "Two-Level Adaptive Training Branch Prediction" (MICRO-24, 1991); S. McFarling, "Combining Branch Predictors" (DEC WRL Technical Note TN-36, 1993).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

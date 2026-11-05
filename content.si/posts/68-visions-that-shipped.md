@@ -38,9 +38,3 @@ Post 23 දැනටමත් **Richard Stallman** (GNU, GPL) සහ **Linus Tor
 
 මෙම නම් පිටවීම් ය, පරිච්ඡේද නොවේ. එකිනෙක පොතේ යන්ත්‍රෝපකරණය ව්‍යාපාරයක් හෝ commons එකක් වූ ස්ථානයක් දක්වයි: විකිණීමට internetworks, platform එක ලෙස software, ඒකාබද්ධ පුද්ගලික යන්ත්‍ර, free/open servers, සහ පසුකාලීන පරිමාණ දැක්මන්. Post 69 org chart එක කපා ඉංජිනේරු ස්ථර දෙස බලන විට *විශාල platform* එකක් සෑදෙන දේ සම්පීඩනය කරයි.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

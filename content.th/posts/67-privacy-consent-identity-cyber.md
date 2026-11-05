@@ -166,9 +166,3 @@ RFC 7748 นิยาม X25519 เป็นการแลกเปลี่ย
 - NIST SP 800-57 Part 1 Rev. 5 (ตาราง 2 ความแข็งแรงของกุญแจ): https://doi.org/10.6028/NIST.SP.800-57pt1r5
 - RFC 7748, *Elliptic Curves for Security*: https://www.rfc-editor.org/rfc/rfc7748
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

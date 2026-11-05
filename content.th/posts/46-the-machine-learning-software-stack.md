@@ -200,10 +200,3 @@ Baydin และคณะสรุปว่าแนวคิด AD ย้อน
 - PyTorch, *Autograd mechanics* (เอกสาร v2.14) — กราฟ DAG ใบ/ราก, กราฟสร้างใหม่ทุกรอบ, saved tensors, กฎเกรเดียนต์ของฟังก์ชันที่หาอนุพันธ์ไม่ได้ (relu, sqrt ที่ 0, max), การหารด้วยศูนย์กับ nan: https://docs.pytorch.org/docs/2.14/notes/autograd.html
 - PyTorch Tutorials, *A Gentle Introduction to torch.autograd* — การสะสมเกรเดียนต์ใน `.grad`: https://docs.pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html ; *Zeroing out gradients in PyTorch* — เกรเดียนต์สะสมโดยปริยายและควรล้างในลูปการฝึก: https://docs.pytorch.org/tutorials/recipes/recipes/zeroing_out_gradients.html
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

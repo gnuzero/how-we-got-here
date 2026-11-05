@@ -103,10 +103,3 @@ GPUDirect RDMA ให้ NIC อ่านหรือเขียนหน่ว
 - CXL Consortium, "About CXL": https://computeexpresslink.org/about-cxl/
 - The Linux Kernel documentation, "Devices and Protocols" (CXL device types): https://docs.kernel.org/driver-api/cxl/devices/device-types.html
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

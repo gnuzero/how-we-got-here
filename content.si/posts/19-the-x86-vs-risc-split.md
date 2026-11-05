@@ -138,10 +138,3 @@ Output Register හි **12** පෙනිය යුතුය. උපදෙස�
 
 **පිටවීමේ දොර:** David A. Patterson and David R. Ditzel, "The Case for the Reduced Instruction Set Computer" (*Computer Architecture News*, 1980) — මෙම වාණිජ සටනේ RISC පැත්තේ ප්‍රකාශනය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

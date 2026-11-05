@@ -146,10 +146,3 @@ FP32 பெருக்கியின் இடத்தில் சுமா�
 | விலகல் மதிப்பு | outlier |
 | கலப்புத் துல்லியம் | mixed precision |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

@@ -28,10 +28,3 @@ Intrinsic silicon conducts poorly and uniformly. Doping introduces trace impurit
 
 Neither alone is a switch. Putting them together — a P-N junction — is the building block of every diode and transistor that follows. Post 6 picks up there: how a junction (or a gate-controlled channel) turns doped silicon into something an external signal can turn on and off.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

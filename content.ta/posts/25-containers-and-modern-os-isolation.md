@@ -144,10 +144,3 @@ Containers host kernel பகிர்வதால், அவை பொதுவ
 | நினைவகம் தீர்ந்த கொலை | OOM kill |
 | உறைய வைத்தல் / உருக்குதல் | freeze / thaw |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

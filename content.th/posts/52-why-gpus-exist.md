@@ -124,10 +124,3 @@ SIMD นำคำสั่งเดียวไปใช้ข้ามองค
 - NVIDIA, *CUDA Programming Guide* (v13.4.2) — บท Introduction (CPU กับ GPU, การใช้ทรานซิสเตอร์, CUDA ปี 2006): https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html ; บท Programming Model (warp 32 เธรด, การปิดบังเลน, SIMT เทียบ SIMD, warp สุดท้ายที่ไม่เต็ม): https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html ; บท Intro to CUDA C++ (vecAdd, workIndex, การตรวจขอบเขต, การหารปัดขึ้น): https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/intro-to-cuda-cpp.html
 - NVIDIA, *NVIDIA A100 Tensor Core GPU Architecture* (whitepaper, 2020) — 108 SM, 64 แกน FP32 ต่อ SM, สัญญาณนาฬิกาบูสต์ 1410 MHz, FP32 19.5 TFLOPS: https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

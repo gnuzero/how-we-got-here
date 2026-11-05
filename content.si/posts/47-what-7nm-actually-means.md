@@ -131,10 +131,3 @@ NVIDIA A100 whitepaper (පිටුව 37 හි සංසන්දන වග�
 
 **මෙම කොටසේ මූලාශ්‍ර:** Kaizad Mistry, "10 nm Technology Leadership", Intel Technology and Manufacturing Day, 2017 මාර්තු 28 (PDF: <https://faculty-web.msoe.edu/johnsontimoj/EE4980/files4980/Kaizad-Mistry-2017-Manufacturing.pdf>) — slide 6 (pitch වගුව), slide 8 (MTr/mm² පෙළ), slide 20 (~0.5x), slide 22 (0.37x වර්ගඵලය), slide 23 (~2.7x). Mark Bohr, "Let's Clear Up the Node Naming Mess", Intel editorial, 2017 මාර්තු 28 (මුල් Intel Newsroom URL එක දැන් විවෘත නොවේ; Internet Archive හි නිල පිටුවේ පිටපත: <https://web.archive.org/web/20170407072933/https://newsroom.intel.com/editorials/lets-clear-up-node-naming-mess/>). Intel Corporation, "Intel Accelerates Process and Packaging Innovations", 2021 ජූලි 26 (SEC Form 8-K, Exhibit 99.1: <https://www.intc.com/filings-reports/all-sec-filings/content/0001193125-21-224438/d199788dex991.htm>). NVIDIA, *NVIDIA A100 Tensor Core GPU Architecture* whitepaper, පිටුව 37 (P100/V100/A100 සංසන්දන වගුව). සෛල වර්ගඵල ආදර්ශ පමණි.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

@@ -136,10 +136,3 @@ EUV ஒளியணு DUV-ஐவிடச் சுமார் 14 மடங்
 | விளைச்சல் | yield |
 | செதுக்குதல் / படிவித்தல் / மாசூட்டல் | etch / deposit / dope |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

@@ -58,16 +58,3 @@ schematics: "Diagram 1: step-and-repeat vs scanning exposure (stepper exposes on
 - 上海微電子裝備（集團）股份有限公司，《SSX600系列光刻機》（English: SSX600-series scanner product page），smee.com.cn。[連結](https://www.smee.com.cn/eis.pub?method=indexinfo&onclicknodeno=1_4_1_1&service=homepageService)
 - 國務院，《國家集成電路產業發展推進綱要》（English: National guideline for the development of the IC industry），2014 年 6 月，國家網信辦網站轉載。[連結](http://www.cac.gov.cn/2014-06/26/c_1111325916.htm)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] No figure: no openly licensed Commons photo verified for the 1964 home-made aligner, the Tsinghua steppers, Hua Hong, SMIC or SMEE. Museum asset request: the Tsinghua step-and-repeat camera PCB held by 清華大學科學博物館 (donated by 謝樹煜); the 芝麻管 photo in the 半導體所 article (institute rights).
-[ ] No lab. Idea for Reed: a step-and-repeat exposure toy: pick a wavelength (532 nm green, 436/365 nm UV, 13.5 nm EUV) and a lens NA, step one pattern across a wafer grid, and watch the smallest printable line change (ties Xu Duanyi's 532 nm / 2-3 µm remark to chapter 48's diffraction argument).
-[ ] Left out for length (sourced): YMTC Xtacking wafer bonding (F16-09) fits chapter 51 better. Left out as unverified: 742 factory / 1978 Toshiba line, 908 project details, "造不如買" slogan, SMEE 28 nm claims, Richard Chang's background.
-[x] SMIC legal opinion link: the dossier gave no URL; the SSE PDF 000497_20200622_RC98.pdf was found and checked 2026-09-26 (contains both quoted passages of F16-06).
-[ ] TODO after PR #23 merges: add a relref to 47-zh-taiwan-semiconductors.md at the SMIC-TSMC paragraph.
-[ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/48-zh-lithography-fabs.md); Taiwan-reader proofread still pending (光刻 → 微影 / 曝光機 per glossary OVERRIDE; 流片 not used)
--->

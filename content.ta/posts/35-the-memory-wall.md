@@ -107,10 +107,3 @@ L2 இல்லாவிட்டால்: 4 + 0.10 × 300 = **34 சுழற�
 | வேலைத் தொகுப்பு | working set |
 | அண்மை | locality |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

@@ -25,7 +25,7 @@ The journey was conceptualized and directed by Nayana Hettiarachchi. Research, n
 
 This work is released under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license. You are free to share and adapt the material with appropriate credit.
 
-See the [LICENSE](https://github.com/devzer01/how-computers-work/blob/main/LICENSE) file for full terms.
+Full terms: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
 
 ## Interactive Labs
 

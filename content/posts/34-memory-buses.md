@@ -30,10 +30,3 @@ A DIMM is the physical package — chips on a board with a standard edge connect
 
 The next two posts are what happens when this negotiation falls short: the memory wall, and its cousin on the compute side, the clock-speed wall.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

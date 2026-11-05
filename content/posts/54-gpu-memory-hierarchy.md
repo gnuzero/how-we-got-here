@@ -30,10 +30,3 @@ Beyond HBM-vs-DDR, the GPU has its own pyramid, echoing Post 10's register–cac
 
 This architecture exists to keep an enormous compute appetite fed. Peak FLOPS mean nothing if operands cannot arrive and results cannot leave. The next post's tensor cores are the compute structure HBM's bandwidth is built to supply — carry the bandwidth framing forward: a tensor core's peak only means something against a memory system that can sustain it.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

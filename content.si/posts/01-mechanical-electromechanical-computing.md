@@ -170,10 +170,3 @@ CHM ට අනුව Babbage 1834 දී Analytical Engine සිතුවේය
 
 x³ සහ 2x + 1 උදාහරණ, වැරදි Δ² අගය, 0999 සහ 9999 රෙජිස්ටර්, Horner සැසඳීම, 1,786 සහ ඉලක්කම් රෝදයකට කොටස් 16 ආදර්ශ අගයන් හෝ අප ගණනය කළ අගයන් වේ.
 
-<!--
-ASSET CHECKLIST
-[x] Hero: CC BY 2.0 Commons hotlink (Marcin Wichary / Difference Engine No. 2) — not hosted
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

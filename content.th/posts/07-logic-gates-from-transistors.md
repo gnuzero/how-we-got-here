@@ -136,10 +136,3 @@ Computer History Museum บันทึกว่าในปี 1963 C. T. Sah �
 - David Harris, "Lecture 6: Logical Effort", สไลด์ประกอบ *CMOS VLSI Design* 4th Ed. — อินเวอร์เตอร์หน่วย 2:1, ความจุอินพุต 3/4/5, logical effort ของ NAND (n+2)/3 และ NOR (2n+1)/3: https://pages.hmc.edu/harris/class/e158/lect6-logicaleffort.pdf
 - Computer History Museum, "1963: Complementary MOS Circuit Configuration is Invented" (The Silicon Engine) — Sah และ Wanlass, "Nanowatt Logic" (ISSCC 1963), RCA CD4000, นาฬิกาดิจิทัล, Hitachi 1978: https://www.computerhistory.org/siliconengine/complementary-mos-circuit-configuration-is-invented/
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

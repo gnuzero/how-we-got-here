@@ -61,16 +61,3 @@ schematics: "Timeline 1955-1967, two lanes. Mainland: 1955 first semiconductor-p
 - 阳明交通大学奈米中心，〈歷史發展〉（English: History of the NYCU Nano Facility Center），nycu.edu.tw。[链接](https://nanofc.web.nycu.edu.tw/%e6%ad%b7%e5%8f%b2%e7%99%bc%e5%b1%95-2/)
 - 國家科學及技術委員會，〈2023 年總統科學獎 張俊彥〉（English: 2023 Presidential Science Prize citation for Chun-Yen Chang），nstc.gov.tw。[链接](https://web.nstc.gov.tw/SciencePrize/2023/Chun-Yen-Chan-ch.html)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Figure removed at the fact-check gate (2026-09-26): File:Huangkun.png (Huang Kun with student Gan Zizhao, People's Pictorial 1963 no. 1) carries only {{PD-CN}} on Commons, no US licence tag. URAA: first published in China in 1963, still in copyright in China on 1 Jan 1996 (50-year term ran to end-2013), so US copyright was restored (95 years from publication, to end-2058). The repo is US-hosted, so the image was dropped and the caption kept as prose. Replacement only with a US-PD or freely licensed photo (e.g. a pre-1931 image, or a licensed PKU photo).
-[ ] Rejected: File:黄昆.JPG (CC BY-SA 3.0, Gisling 2008) shows the bronze bust of Huang Kun INSIDE the PKU physics building, with a portrait photo and text panels behind it. China's freedom of panorama covers outdoor public places only, and the background photo's rights are unknown, so it was not used.
-[ ] No lab. Idea for Reed: a breadboard (Falstad) preset of a DTL NAND gate (diodes + one transistor), the circuit type of the 1965 GT31, so readers can see the first Chinese practical IC was a single NAND gate.
-[ ] TODO after PR #23 merges: turn the plain-text mention of the 109C page into a relref to 03-zh-first-electronic-computers.md; consider a relref to 47-zh-taiwan-semiconductors.md at the end of the Hsinchu section (NCTU is the pre-history of ITRI/TSMC).
-[ ] Museum/archive asset requests: 1956-08-25 Chen Yi approval and 1960-09-06 State S&T Commission documents (半导体所档案室); Huang Kun's 2001 top-award certificate (半导体所综合档案室); NYCU 1970 photo of Ling, Chang and Kuo (courtesy 徐秀鑾).
-[ ] Native-reader proofread (zh-Hans) before final; Taiwan quotations kept in Traditional script per desk house style
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/05-zh-transistors-semiconductors.md); Taiwan-reader proofread still pending
--->

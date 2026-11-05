@@ -127,10 +127,3 @@ Bohr முன்மொழிந்த அளவீடு இரண்டு ப
 | பெயர் மாற்றம் | renaming |
 | தட்டை / முப்பரிமாண டிரான்சிஸ்டர் | planar / 3D transistor |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

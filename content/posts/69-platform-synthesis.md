@@ -38,9 +38,3 @@ Languages, compilers, OS isolation, buses, and the GNU/Linux commons (Posts 22â€
 
 **A large platform is distributed systems + networking + AI infrastructure + privacy engineering + software engineering**, glued by the protocol and governance commons (Posts 41, 64) and pointed at human attention (Post 63). Post 68's visions are what happens when someone ships a slice of that composition as a business or a commons. You now have the map; the labs and references are the doors back into each layer when you want depth.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

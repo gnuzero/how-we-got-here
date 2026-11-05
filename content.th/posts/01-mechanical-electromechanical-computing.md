@@ -39,10 +39,3 @@ schematics: "Diagram: Jacquard loom punch card mechanism + Babbage difference en
 
 สิ่งที่การคำนวณเชิงกลไก *ทำไม่ได้* คือขยายขนาด ชุดเฟืองมีแรงเสียดทาน backlash และการสะสมความคลาดเคลื่อน; ทุกหลักความแม่นยำที่เพิ่มทำให้เครื่องสร้างให้เชื่อถือได้ยากขึ้น เพดานนั้น — ไม่ใช่การขาดแนวคิด — คือสิ่งที่ผลักการคำนวณไปสู่การสลับด้วยไฟฟ้า ต่อไป: รีเลย์ และตรรกะไฟฟ้ากลไกที่พาสถาปัตยกรรมเข้าสู่สงครามโลกครั้งที่สอง
 
-<!--
-ASSET CHECKLIST
-[x] Hero: CC BY 2.0 Commons hotlink (Marcin Wichary / Difference Engine No. 2) — not hosted
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

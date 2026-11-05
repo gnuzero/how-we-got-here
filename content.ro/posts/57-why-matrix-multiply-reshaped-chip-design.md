@@ -118,10 +118,3 @@ Kung (1982) formulase deja criteriul economic: un sistem specializat trebuie să
 
 **Ușa de ieșire:** citiți Kung (1982) pentru criteriul compute-bound / I/O și pentru motto-ul „multiple computations for each memory access”; apoi Vaswani et al. (2017), ec. 1, ca să vedeți atenția ca matmul; apoi treceți la capitolul 58, unde aceeași observație devine o grilă de MAC-uri care pulsează.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

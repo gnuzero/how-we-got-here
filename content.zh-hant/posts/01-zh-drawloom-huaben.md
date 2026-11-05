@@ -69,14 +69,3 @@ schematics: "Diagram 1: Laoguanshan single-hook multi-heddle loom as program sto
 - UNESCO，“Craftsmanship of Nanjing Yunjin brocade”（中文：南京雲錦織造技藝），人類非物質文化遺產代表作名錄，2009。[連結](https://ich.unesco.org/en/RL/craftsmanship-of-nanjing-yunjin-brocade-00200)
 - Encyclopaedia Britannica，“Joseph-Marie Jacquard”（中文：《不列顛百科全書》雅卡爾詞條），britannica.com。[連結](https://www.britannica.com/biography/Joseph-Marie-Jacquard)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[x] Figure: Tiangong Kaiwu drawloom woodcut (1637), Wikimedia Commons, PD-old (licence template and upload URL verified via Commons API 2026-09-26). Source scan is only 500x353, so width is set to 500.
-[ ] Not used: Laoguanshan loom photos (no open licence found); Southern Song Cansi Tu scan (not searched/verified); UNESCO yunjin photos (not open)
-[ ] No lab: no existing lab fits a string-matrix program store (idea for Reed: knot a 8x8 huaben and watch the pattern weave)
-[ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review); Taiwan-reader proofread still pending
--->

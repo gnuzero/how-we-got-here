@@ -304,9 +304,3 @@ printf '\340\270\201' | xxd
 - สำนักงานมาตรฐานผลิตภัณฑ์อุตสาหกรรม, *มอก. 620-2533 รหัสสำหรับอักขระไทยที่ใช้กับคอมพิวเตอร์* (ข้อความบนหน้าของ NECTEC)
 - RFC 3492, *Punycode* และ RFC 5892, *The Unicode Code Points and IDNA*: https://www.rfc-editor.org/
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

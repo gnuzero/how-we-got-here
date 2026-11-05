@@ -128,10 +128,3 @@ Nu apar în acest capitol. Nu am folosit aici documentații primare (paper / dat
 
 **Ușa de ieșire:** Kung & Leiserson, CMU-CS-79-103 (1978/79) și Kung, „Why Systolic Architectures?” (1982), apoi Jouppi et al., ISCA 2017 — citiți §2 (microarhitectura) și Fig. 4–5 (dataflow + roofline) înainte să credeți orice slide de marketing despre „TPU”.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

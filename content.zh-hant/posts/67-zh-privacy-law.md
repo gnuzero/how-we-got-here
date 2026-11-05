@@ -56,18 +56,3 @@ schematics: "Timeline: 1995-08-03 HK PDPO enacted -> 1995-08-11 Taiwan Computer-
 - 新華社，《中華人民共和國主席令（第九十一號）》（English: Presidential Order No. 91 promulgating the Personal Information Protection Law），中國政府網，2021-08-20。[連結](https://www.gov.cn/xinwen/2021-08/20/content_5632404.htm)
 - 全國人大常委會，《中華人民共和國個人信息保護法》（English: Personal Information Protection Law of the PRC, full text），中央網信辦網站，2021-08-20。[連結](https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] No lab: none of the existing labs fits. Idea for Reed: a feed toy with a "不針對個人特徵" (non-personalised) switch (PIPL Art. 24): the same catalogue ranked by a profile vs. unranked, plus a price shown to two profiles to illustrate what 不合理的差別待遇 forbids.
-[ ] No figure: no openly licensed image in the dossier for thread 28.
-[ ] Statute quotes checked character by character against the CAC full text (saved /workspace/tmp/wd/pipl.txt): Arts. 13(1), 24 (three paragraphs), 28, 66 para. 2. Arts. 3 and 38 are paraphrased (no quotation marks).
-[ ] Source details beyond the dossier finding summaries (same official pages as F28-01 / F28-02): LegCo passage of the anti-doxxing bill on 2021-09-29 (PCPD page); 2024-01-01 transfer of competence from the National Development Council to the PDPC preparatory office (PDPC page; also noted in F28-01's info-gap line).
-[ ] Left out: the "Asia's first data-privacy law" label (not on the page opened); the 2012 NPC decision and the 2016 Cybersecurity Law as PIPL precursors; the 2022 Constitutional Court ruling on NHI data; any comparison with GDPR (no dossier source).
-[ ] Names/terms: 劉嘉敏 (PCPD page: 劉嘉敏先生JP); law titles given in Simplified in prose, in Traditional in the reading list.
-[ ] Native-reader proofread (zh-Hans) before final; Hong Kong reader for 私隱 / 起底 usage
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/67-zh-privacy-law.md); Taiwan-reader proofread still pending
-[x] zh-Hant title (PR #35 follow-up): 兩岸三地的個人資料保護法制, not 個人資料保護法 (the name of Taiwan's own statute), because the page covers all three jurisdictions; 個人資料保護法制 is Taiwan's generic term (NDC release 2018-07-04). 66-zh link text updated to match.
--->

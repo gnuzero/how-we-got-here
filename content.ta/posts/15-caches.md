@@ -140,9 +140,3 @@ Coherence இலவசம் அல்ல, மற்றும் அதன் �
 
 - தமிழ்நாடு அரசு, *11ஆம் வகுப்பு கணினி அறிவியல்*, அலகு 3: கணினி அமைப்பு (கேச் நினைவகம் — அறிமுக வகைகள், associativity / MESI அல்ல)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

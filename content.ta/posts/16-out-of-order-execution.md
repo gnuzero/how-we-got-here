@@ -123,10 +123,3 @@ I3, I4 இரண்டும் I1 நினைவகத்துக்குக
 
 **Door out:** R. M. Tomasulo, "An Efficient Algorithm for Exploiting Multiple Arithmetic Units" (*IBM Journal of Research and Development*, 1967) — நவீன out-of-order issue மற்றும் rename-க்குப் பின்னால் உள்ள முதன்மை ஆய்வுக்கட்டுரை. மேலும்: J. E. Smith and A. R. Pleszkun, "Implementation of Precise Interrupts in Pipelined Processors" (ISCA 1985) — reorder buffer.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

@@ -44,12 +44,3 @@ Origin: [Fourmilab / John Walker](https://www.fourmilab.ch/babbage/) — [source
 
 That borrowing is the next stop: the Jacquard loom, and the separation of program from machine.
 
-<!--
-ASSET CHECKLIST
-[x] Hero: CC BY 2.0 Commons hotlink (Marcin Wichary / Difference Engine No. 2) — not hosted
-[x] Carry close-up: CC BY 2.0 Commons hotlink (Jitze Couperus)
-[x] Lab: original difference-engine carry (CC BY 4.0)
-[x] Lab: hosted Fourmilab Analytical Engine (public domain) — static/labs/analytical-engine/
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

@@ -139,10 +139,3 @@ schematics: "Diagram: three-panel graph — transistor count, clock frequency, c
 - Intel, "Intel Chips" timeline poster (2012, 327635-001US): https://www.intel.com/content/dam/www/public/us/en/documents/corporate-information/history-intel-chips-timeline-poster.pdf
 - NVIDIA, "NVIDIA Blackwell Platform Arrives to Power a New Era of Computing" (ข่าวประชาสัมพันธ์ 18 March 2024): https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

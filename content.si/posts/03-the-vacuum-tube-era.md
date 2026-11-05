@@ -149,10 +149,3 @@ ARL ලේඛන නල අසාර්ථක වීමේ *අනුපාත�
 
 τ අගයන්, ස්වාධීන-අසාර්ථකතා ආකෘතිය, 9 W, 34-bit සැසඳීම, 2,400, 1.19, 60% සහ අභ්‍යාසවල ආදාන ආදර්ශ අගයන් හෝ අප ගණනය කළ අගයන් වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

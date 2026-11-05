@@ -37,10 +37,3 @@ The D input must be stable for a minimum window *before* the edge (setup) and *a
 
 Edge-triggered flops become registers, counters, state machines — and, in Phase 3, the program counter and pipeline registers that make a CPU a *sequential* machine. Next: specialize bistable storage for density — where SRAM and DRAM diverge.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

@@ -132,10 +132,3 @@ Jouppi மற்றும் சகாக்களின் 2017 ISCA கட்�
 | ஊகக் கணக்கு (பயிற்சி அல்லாத பயன்பாடு) | inference |
 | குறிப்பிட்ட பயன்பாட்டுச் சுற்று | ASIC |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

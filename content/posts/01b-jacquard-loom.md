@@ -34,10 +34,3 @@ Ada Lovelace saw what that separation implied. The machine could manipulate *any
 
 Next: why this mechanical chapter still shapes everything after — and why gears alone could not scale.
 
-<!--
-ASSET CHECKLIST
-[x] Hero: CC BY-SA 3.0 Commons hotlink (Hélène Rival / Jacquard loom)
-[x] Cards: public-domain Commons hotlink (George H. Williams)
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

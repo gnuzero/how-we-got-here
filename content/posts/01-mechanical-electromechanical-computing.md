@@ -39,10 +39,3 @@ Instruction sets, stored programs, control separated from datapath — all of th
 
 What mechanical computing *could not* do was scale. Gear trains have friction, backlash, and tolerance stack-up; every extra digit of precision made the machine harder to build reliably. That ceiling — not a lack of ideas — is what pushed computing toward electrical switching. Next: relays, and the electromechanical logic that carried the architecture into WWII.
 
-<!--
-ASSET CHECKLIST
-[x] Hero: CC BY 2.0 Commons hotlink (Marcin Wichary / Difference Engine No. 2) — not hosted
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

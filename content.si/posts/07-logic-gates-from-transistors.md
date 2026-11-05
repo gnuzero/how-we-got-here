@@ -41,10 +41,3 @@ NAND සහ NOR ක්‍රියාකාරීව සම්පූර්ණය
 
 Full-adder එක, ALU එක, register file එක — Phase 3 හි CPU-ගොඩනැගීමේ පෝස්ට්වල සෑම ව්‍යුහයක්ම, යටින්, හරියටම මෙම ද්වාරවල සංයුක්තයකි. ඊළඟ පෝස්ට් එක ඒවායින් පළමු සැබෑ ව්‍යුහය ගොඩනඟයි: සංයෝජන තර්කය (combinational logic), නිහතමානී adder එකෙන් ආරම්භ වෙමින්.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

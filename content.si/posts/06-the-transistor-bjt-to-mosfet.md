@@ -34,10 +34,3 @@ BJT එකකින් තීරණාත්මක වෙනස: **MOSFET හි
 
 BJT අතුරුදහන් නොවීය — අනුපාතයට වඩා අමු ධාරා-ධාවන ශක්තිය හෝ ඇනලොග් රේඛීයතාව වැදගත් වන තැන තවමත් භාවිතා වේ. නමුත් ඕනෑම බරපතල පරිමාණයක ඩිජිටල් තර්කය සඳහා, MOSFET හි අඩු static බලය එය එකම ශක්‍ය තේරීම කළ අතර, ඊළඟ පෝස්ට් එකේ සෑම තර්ක ද්වාරයක්ම (logic gate) ගොඩනැගෙන්නේ එම උපාංගයෙනි.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

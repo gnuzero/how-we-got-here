@@ -116,10 +116,3 @@ component datasheet හි Table 2 (පිටුව 2) — x8 (1024 Meg x 8) ස
 
 **මෙම කොටසේ මූලාශ්‍ර:** Micron, *8Gb: x4, x8, x16 DDR4 SDRAM* datasheet, Rev. M 10/17 (8gb_ddr4_dram.pdf; අප විවෘත කළ පිටපත: <https://xonstorage.z8.web.core.windows.net/pdf/1665304_MT40A1G8WE083EB_link.pdf>) — පිටුව 1 (විශේෂාංග: banks 16 = කණ්ඩායම් 4 × 4, 8n prefetch, 64ms/8192 refresh; Table 1: -062E DDR4-3200 22-22-22 = 13.75 ns), පිටුව 2 (Table 1 ඉතිරිය සහ පසුගාමී අනුකූලතා සටහන් — 1600 CL11; Table 2 ලිපිනකරණය සහ page size සූත්‍රය). Micron, *8GB (x64, SR) 288-Pin DDR4 UDIMM* (MTA8ATF1G64AZ) datasheet, Rev. G 3/21 (අප විවෘත කළ පිටපත: <https://www.yic-electronics.com/datasheet/06/MTA8ATF1G64AZ-3G2E1.pdf>) — පිටුව 1 (BL8, PC4-3200), පිටුව 2 (Table 3: 1 Gig x 64, 25.6 / 21.3 / 19.2 GB/s, මූලික උපාංගය MT40A1G8). NIE 12 ශ්‍රේණි ICT ගුරු මාර්ගෝපදේශය, මුද්‍රිත පිටුව 75: <https://nie.lk/pdffiles/tg/sGr12TG%20ICT.pdf>. කාල රේඛා සහ "ඉල්ලීම් 12" ගණනය අපේ සරල ආදර්ශයයි.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

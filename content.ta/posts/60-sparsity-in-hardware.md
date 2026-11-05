@@ -157,10 +157,3 @@ INT8 weight-களுக்கு: dense 32 பிட்; 2:4 = 16 + 4 = 20 ப�
 | சுமைச் சமநிலை | load balance |
 | மீண்டும் பயிற்றுவித்தல் | retraining / fine-tuning |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

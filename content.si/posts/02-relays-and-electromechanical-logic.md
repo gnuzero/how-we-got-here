@@ -161,10 +161,3 @@ Shannon ගේ ලිපියේ අවසාන උදාහරණය "Electri
 
 **මෙම කොටසේ මූලාශ්‍ර:** Claude E. Shannon, "A Symbolic Analysis of Relay and Switching Circuits", *Transactions of the American Institute of Electrical Engineers* 57(12), 1938 — ලිපියේ PDF පිටපතක්: <https://home.engineering.iastate.edu/alexs/classes/2025_Fall_2810/readings/Shannon_1938.pdf> (II කොටස: hindrance අර්ථ දැක්වීම් සහ ප්‍රත්‍යක්ෂ; Table 1: ප්‍රස්තුත ගණිතය සමඟ සමානකම; අවසාන කොටස: "Electric Adder to the Base Two"). පාසල් පොත: අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුව, *තොරතුරු හා සන්නිවේදන තාක්ෂණය — 10 ශ්‍රේණිය* (සිංහල මාධ්‍යය), 4.3.1 කොටස, 117 පිටුව සිට (edupub.gov.lk වෙතින් බාගත කළ හැක).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

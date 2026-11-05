@@ -60,13 +60,3 @@ schematics: "Diagram 1: direct control (step-by-step: dial pulses drive selector
 - 甘晓，《中国从此“有了”计算机》（English: From then on, China "had" a computer），《中国科学报》，中国科学院官网转载，2024-04-01。[链接](https://www.cas.cn/cm/202404/t20240401_5010362.shtml)
 - 新华社，《我国第一套拥有自主知识产权的大型数字程控交换机诞生》（English: China's first large digital stored-program exchange with its own intellectual property is born），《经济日报》，2009-11-11。[链接](http://paper.ce.cn/jjrb/html/2009-11/11/content_86815.htm)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] No figure: no openly licensed photo of the Shanghai 7A1 rotary switch, the 1959 crossbar or HJD04 was verified; Ericsson Review figures (copyright not checked); China Telecom Museum photos (not open)
-[ ] No lab: breadboard lab not a fit for switching; idea for Reed: a register + marker crossbar toy
-[ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review); Taiwan-reader proofread still pending
--->

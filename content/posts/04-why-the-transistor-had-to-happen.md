@@ -32,10 +32,3 @@ The point-contact transistor arrived at Bell Labs in 1947 (Bardeen, Brattain; Sh
 
 **Door out:** Bardeen, Brattain, and Shockley's Bell Labs transistor papers (late 1940s / early 1950s) — the primary physics of the solid-state switch that broke the tube ceiling.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

@@ -144,9 +144,3 @@ Mark D. Hill සහ Michael R. Marty, "Amdahl's Law in the Multicore Era" (*IEEE
 
 **පිටවීමේ දොර:** Kunle Olukotun, Basem A. Nayfeh, Lance Hammond, Ken Wilson, and Kunyung Chang, "The Case for a Single-Chip Multiprocessor" (ASPLOS 1996) — ILP ප්‍රතිලාභ සමතල වන විට එක් die එකක cores කිහිපයක් තැබීමට මුල්, පැහැදිලි තර්කයක්.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

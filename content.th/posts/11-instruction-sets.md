@@ -156,10 +156,3 @@ LDI รับได้แค่ 0–15 และแอสเซมเบลอ�
 - Intel, *Intel 64 and IA-32 Architectures Software Developer's Manual, Volume 2* (Order Number 325383-093US, กันยายน 2026) — ความยาวคำสั่งสูงสุด 15 ไบต์: https://cdrdv2.intel.com/v1/dl/getContent/671110
 - Félix Cloutier, หน้า ADD ที่ถอดจากคู่มือ Intel (ฉบับธันวาคม 2023; ไม่ใช่เอกสารทางการ) — รหัส 01/03/05/81/83 และการขยายบิตเครื่องหมายของค่าคงที่: https://www.felixcloutier.com/x86/add
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

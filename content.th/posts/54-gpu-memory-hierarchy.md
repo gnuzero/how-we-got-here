@@ -130,10 +130,3 @@ roofline เป็น *ขอบบน* ไม่ใช่การทำนา�
 - Samuel Williams, Andrew Waterman, David Patterson, "Roofline: An Insightful Visual Performance Model for Multicore Architectures", *Communications of the ACM* 52(4): 65–76, เมษายน 2009, doi:10.1145/1498765.1498785 (https://doi.org/10.1145/1498765.1498785) — สมการ min(P, B × I), นิยาม operational intensity, จุดสัน และตัวอย่าง Opteron; คำพูดที่ยกมาในบทนี้ตรวจกับฉบับร่างที่เปิดอ่านได้ฟรี ชื่อ "Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures" (แก้ไขเดือนสิงหาคมและตุลาคม 2008; ถ้อยคำอาจต่างจากฉบับตีพิมพ์เล็กน้อย): https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf
 - NVIDIA, *NVIDIA A100 Tensor Core GPU Architecture* (whitepaper, 2020) — HBM2 5 กอง × 8 ได, ตัวควบคุม 512 บิต 10 ตัว, 1,215 MHz DDR, 1,555 GB/s, L2 40 MB, L1/shared 192 KB ต่อ SM, แฟ้มเรจิสเตอร์ 256 KB ต่อ SM, 108 SM, ค่ายอด FP16/FP32: https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

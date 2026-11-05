@@ -113,10 +113,3 @@ Post 57 හි අභ්‍යාසයේ matrices ගන්න: A = [[2, 0], [
 
 **පිටවීමේ දොර:** H. T. Kung and Charles E. Leiserson, "Systolic Arrays (for VLSI)" (*Sparse Matrix Proceedings 1978*, SIAM, 1979) — matrix ගණනය කිරීම සඳහා රිද්මික MAC arrays පිළිබඳ සම්භාව්‍ය ප්‍රකාශනය; සමීපව සම්බන්ධ ස්වරූපයක් Mead and Conway ගේ *Introduction to VLSI Systems* (1980) හිද පෙනේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

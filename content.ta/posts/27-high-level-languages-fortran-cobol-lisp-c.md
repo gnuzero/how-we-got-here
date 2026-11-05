@@ -131,10 +131,3 @@ C (1972, Dennis Ritchie, Unix உடன் உருவாக்கப்பட�
 
 - தமிழ் இணையக் கல்விக்கழகம் (Tamil Virtual Academy), பாடம் 5.4: கணினிமொழி மென்பொருள் (FORTRAN, COBOL, C / Dennis Ritchie, நிரல் பெயர்ப்பி — Lisp ஆழமாக அல்ல)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

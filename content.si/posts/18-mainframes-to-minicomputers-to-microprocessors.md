@@ -148,10 +148,3 @@ Assemble කළ විට මතකය: `1C 2D 3E 79 4F 51 E0 1F 6A 2E E0 F0 07 
 
 **පිටවීමේ දොර:** G. M. Amdahl, G. A. Blaauw, and F. P. Brooks Jr., "Architecture of the IBM System/360" (*IBM Journal of Research and Development*, 1964) — අනුකූල යන්ත්‍ර පවුලක් සහ ISA/ක්‍රියාත්මක කිරීම බෙදීම පිළිබඳ ප්‍රාථමික ප්‍රකාශය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

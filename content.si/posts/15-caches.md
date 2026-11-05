@@ -176,9 +176,3 @@ MIT 6.823 (L14, slide 24) E තත්ත්වය එකතු කිරීම�
 
 **පිටවීමේ දොර:** M. V. Wilkes, "Slave Memories and Dynamic Storage Allocation" (*IEEE Transactions on Electronic Computers*, 1965) — මන්දගාමී ප්‍රධාන මතකය අසල ඉක්මන් slave store එකක් ලෙස cache අදහසේ මුල් ප්‍රකාශය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

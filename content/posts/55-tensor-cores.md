@@ -30,10 +30,3 @@ Tensor cores often run most efficiently at lower precisions (FP16, BF16, INT8, i
 
 Tensor cores are NVIDIA's answer inside an otherwise general GPU. Phase 10 covers systolic arrays — Google's TPU most prominently — built for the same matmul goal, organized differently at the hardware level. Same constraint; different architecture.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

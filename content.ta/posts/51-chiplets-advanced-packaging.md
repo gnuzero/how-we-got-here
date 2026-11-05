@@ -132,10 +132,3 @@ Pitch-ஐப் பாதியாக்கினால் அடர்த்த
 | முப்பரிமாண அடுக்கு | 3D stacking |
 | உள்ளீடு/வெளியீட்டுச் சில்லு | I/O die |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

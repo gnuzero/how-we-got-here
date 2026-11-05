@@ -59,10 +59,3 @@ Transformer ต้นฉบับใช้ 8 หัว LLM สมัยใหม
 - นวลวรรณ สุนทรภิษัช, *การเรียนรู้ของเครื่อง Machine Learning*
 - รศ.ดร.วฤษาย์ ร่มสายหยุด, *การเรียนรู้ของเครื่องสำหรับการวิเคราะห์ข้อมูลเชิงทำนายและการประยุกต์*
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

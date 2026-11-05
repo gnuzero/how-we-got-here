@@ -89,10 +89,3 @@ Sparsity กับความละเอียดลดไม่ใช่ท�
 - รศ.ดร.เกริก ภิรมย์โสภา, *สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์*
 - Asit Mishra และคณะ, "Accelerating Sparse Deep Neural Networks" (arXiv:2104.08378, 2021) — คำอธิบายรูปแบบ 2:4 และขั้นตอนตัดแต่งแล้วฝึกต่อ จากฝั่งผู้ออกแบบฮาร์ดแวร์ (ภาษาอังกฤษ)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

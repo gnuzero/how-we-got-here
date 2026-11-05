@@ -126,10 +126,3 @@ Edge-triggered flip-flop-கள் கையில் இருந்தால�
 - தமிழ்நாடு அரசு, *கணினி அறிவியல் தொகுதி 1: Concepts* (2005), அத்தியாயம் 4.5: The Flip-Flop
 - தமிழ்நாடு அரசு, *12ஆம் வகுப்பு இயற்பியல் தொகுதி 2*, அலகு 10a: குறைகடத்தி எலக்ட்ரானியல் (இலக்கமுறை எலக்ட்ரானியல்)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

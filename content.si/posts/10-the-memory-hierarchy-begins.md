@@ -35,10 +35,3 @@ Dynamic RAM (DRAM) ඉතා වෙනස් වෙළඳාමක් කරය�
 
 {{< lab type="breadboard" >}}
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

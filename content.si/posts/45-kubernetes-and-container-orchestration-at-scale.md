@@ -34,10 +34,3 @@ Google මෙම ගැටලු පන්තිය අභ්‍යන්තර�
 
 **පිටවීමේ දොර:** Abhishek Verma et al., "Large-scale cluster management at Google with Borg" (EuroSys 2015) — Kubernetes බැස එන අභ්‍යන්තර පද්ධතියේ ප්‍රාථමික වාර්තාව; Brendan Burns et al., "Borg, Omega, and Kubernetes" (*ACM Queue*, 2016) — Borg, Omega, සහ විවෘත control plane එක එකට බඳින කෙටි පෙළපත් paper එක.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

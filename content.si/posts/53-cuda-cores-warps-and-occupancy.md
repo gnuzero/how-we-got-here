@@ -123,10 +123,3 @@ Registers 32 ට අඩු කළොත්: 256 × 32 = 8,192 → 65,536 ÷ 8,19
 
 **මෙම කොටසේ මූලාශ්‍ර:** NVIDIA, *CUDA Programming Guide* (2026 සැප්තැම්බර් 10 යාවත්කාලීන කළ): §1.2.2.2 "Warps and SIMT" (<https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html>) — warp = threads 32, lanes 0–31, divergence mask කිරීම, 32 හි ගුණාකාර; §2.3.7 "Kernel Launch and Occupancy" (<https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html>) — occupancy අර්ථ දැක්වීම, 768-thread (75%) සහ 32-thread (50%) උදාහරණ, `--maxrregcount` සහ spilling; Compute Capabilities, Tables 30–31 (<https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/compute-capabilities.html>) — compute capability 8.0: threads 2048, warps 64, registers 64 K, thread එකකට 255, shared memory 164 KB. NVIDIA, *NVIDIA A100 Tensor Core GPU Architecture* whitepaper — පිටුව 19 (SMs 108, SM එකකට FP32 cores 64, 6912), පිටුව 43 (Table 5, compute capability 8.0 සීමා). registers/shared memory occupancy ගණනය සරල කළ ඒවාය; divergence සහ latency අංක ආදර්ශ පමණි.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

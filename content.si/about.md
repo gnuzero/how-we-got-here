@@ -26,7 +26,7 @@ type: docs
 
 මෙම කාර්යය **Creative Commons Attribution 4.0 International (CC BY 4.0)** බලපත්‍රය යටතේ නිකුත් කෙරේ. සුදුසු ණය සමඟ ද්‍රව්‍ය බෙදා ගැනීමට සහ අනුවර්තනය කිරීමට ඔබට නිදහස ඇත.
 
-සම්පූර්ණ කොන්දේසි සඳහා [LICENSE](https://github.com/devzer01/how-computers-work/blob/main/LICENSE) ගොනුව බලන්න.
+සම්පූර්ණ කොන්දේසි: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
 
 ## අන්තර්ක්‍රියාකාරී රසායනාගාර
 

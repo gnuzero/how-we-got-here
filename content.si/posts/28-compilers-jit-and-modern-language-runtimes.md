@@ -154,10 +154,3 @@ print "y =", y, " dispatches =", d}'
 
 Dispatches 6,000,000 / 4,000,000 සහ JIT break-even ගණනය (100 ns, 10 ns, 1 ms) ආදර්ශ (illustrative) අංක වේ. CPython `dis` ප්‍රතිදානය සහ awk ප්‍රතිදානය අප ධාවනය කර ලබාගත් ඒවාය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

@@ -95,9 +95,3 @@ p = 0.9, n = 8: 1 / (0.1 + 0.1125) ≈ **4.7 மடங்கு** — 8 அல�
 
 **Door out:** Kunle Olukotun, Basem A. Nayfeh, Lance Hammond, Ken Wilson, and Kunyung Chang, "The Case for a Single-Chip Multiprocessor" (ASPLOS 1996) — ILP வருவாய் தட்டையாகும்போது ஒரு die-இல் பல cores வைப்பதற்கான ஆரம்ப, வெளிப்படையான வாதம். மேலும்: G. M. Amdahl, "Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities" (AFIPS Spring Joint Computer Conference, 1967).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

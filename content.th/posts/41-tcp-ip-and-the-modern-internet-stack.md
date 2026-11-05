@@ -127,10 +127,3 @@ ARPANET เดิมพูดโปรโตคอล host-to-host ของต�
 - J. Chu และคณะ, [RFC 6928](https://www.rfc-editor.org/rfc/rfc6928) "Increasing TCP's Initial Window" (2013, ฉบับทดลอง) — IW 10 segment
 - L. Xu และคณะ, [RFC 9438](https://www.rfc-editor.org/rfc/rfc9438) "CUBIC for Fast and Long-Distance Networks" (2023) — ฟังก์ชัน W(t), β = 0.7, C = 0.4 และตารางอัตราสูญหายที่ 10 Gb/s
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

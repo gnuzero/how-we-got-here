@@ -177,10 +177,3 @@ PCI-SIG නිල පිටු:
 
 **පිටවීමේ දොර:** The PCI Express Base Specification (PCI-SIG) — මෙම පෝස්ට් එක නම් කරන lanes, TLPs, සහ ස්ථරීය stack එක සඳහා ජීවමාන ප්‍රාථමිකය; එය අනුවාදගත ය (Base Spec, ශීත කළ පත්‍රිකාවක් නොවේ).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

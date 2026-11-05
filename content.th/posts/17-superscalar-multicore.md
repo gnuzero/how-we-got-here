@@ -97,9 +97,3 @@ Dennard และคณะ (1974) เสนอกฎการย่อขนา�
 - Kunle Olukotun, Basem A. Nayfeh, Lance Hammond, Ken Wilson, Kunyung Chang, "The Case for a Single-Chip Multiprocessor", ASPLOS VII, 1996 — ตัวเปรียบเทียบ n × Q × O × W, คิวคำสั่ง PA-8000 20% ของได, แบบกว้าง 6 เทียบ 4 × กว้าง 2 บนได 430 mm², ผล 30% / 10% / 50–100% (สำเนาที่มหาวิทยาลัยสแตนฟอร์ด): https://arsenalfc.stanford.edu/publications/hydra_ASPLOS_VII.pdf
 - Robert H. Dennard และคณะ, "Design of Ion-Implanted MOSFET's with Very Small Physical Dimensions", *IEEE Journal of Solid-State Circuits* SC-9(5), 1974 — ตารางที่ 1 ผลของการย่อขนาดต่อวงจร และกำลังต่อพื้นที่คงที่ (สำเนาที่ UC Davis): https://www.ece.ucdavis.edu/~bbaas/116/docs/paper.dennard1974.scaling.pdf
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

@@ -41,10 +41,3 @@ Post 29 න්‍යාය ආවරණය කළේය: දැඩි එදි�
 
 **පිටවීමේ දොර:** RTCA DO-178C, *Software Considerations in Airborne Systems and Equipment Certification* — මෙම පෝස්ට් එක නම් කරන ප්‍රාථමික සිවිල්-avionics මෘදුකාංග සහතික ප්‍රමිතිය (සහතික අරමුණු Design Assurance Level අනුව පරිමාණය වේ).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

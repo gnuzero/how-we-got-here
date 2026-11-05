@@ -113,10 +113,3 @@ Neural network එකක dot product එකකට පද දහස් ගණන�
 
 **මෙම කොටසේ මූලාශ්‍ර:** NVIDIA, *NVIDIA Tesla V100 GPU Architecture* whitepaper, WP-08608-001_v1.1 (<https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf>) — මුද්‍රිත පිටුව 10 (Table 1: SMs 80, tensor cores 640, boost clock 1530 MHz, FP32 15.7 TFLOPS), මුද්‍රිත පිටුව 14 (SM එකකට tensor cores 8, core එකකට FMA 64 / clock, 125 Tensor TFLOPS), මුද්‍රිත පිටුව 15 (4×4 `D = A×B + C`, FP16 ආදාන, FP32 accumulation, 4×4×4). NVIDIA, *NVIDIA A100 Tensor Core GPU Architecture* whitepaper — පිටුව 15 (312 TFLOPS FP16 Tensor), පිටුව 20 (core එකකට FMA 256, SM එකකට 1024), පිටුව 24 (8×4×8, tensor cores 432, V100 FP32 මෙන් 20×), පිටු 36–37 (boost clock 1410 MHz, 1555 GB/s). FP16 accumulation පරීක්ෂණය NumPy `float16` සමඟ අප ධාවනය කළ එකකි; ගණිත තීව්‍රතා ආදර්ශය පරමාදර්ශී (එක් වරක් කියවීම) උපකල්පනයකි.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

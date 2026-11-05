@@ -131,10 +131,3 @@ TLB มีจำนวนช่องจำกัด ถ้ามี 64 ช่�
 - วิกิพีเดียภาษาไทย, [หน่วยความจำเสมือน](https://th.wikipedia.org/wiki/%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%88%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%99) — ภาพรวมสั้น ๆ ของแนวคิด
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *หน่วยความจำเสมือน*, *เลขที่อยู่เสมือน* (virtual address), *หน้า* (page), *สับเปลี่ยน* (swap)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

@@ -115,10 +115,3 @@ Tensor core คือคำตอบของ NVIDIA ภายใน GPU ที�
 - NVIDIA, *NVIDIA Tesla V100 GPU Architecture* (whitepaper WP-08608-001_v1.1, สิงหาคม 2017) — จำนวน tensor core, 64 FMA ต่อคล็อก, D = A×B + C บน 4×4, FP16 คูณกับ FP32 สะสม, 125 Tensor TFLOPS, HBM2 900 GB/s และอินเทอร์เฟซระดับ warp 16×16
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *เทนเซอร์* (tensor), *การปัดเศษ* (rounding)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

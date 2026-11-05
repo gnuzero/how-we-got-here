@@ -22,7 +22,7 @@ type: docs
 
 งานนี้เผยแพร่ภายใต้สัญญาอนุญาต **Creative Commons Attribution 4.0 International (CC BY 4.0)** คุณมีอิสระในการแบ่งปันและดัดแปลงเนื้อหาโดยให้เครดิตที่เหมาะสม
 
-ดูไฟล์ [LICENSE](https://github.com/devzer01/how-computers-work/blob/main/LICENSE) สำหรับข้อกำหนดเต็ม
+ข้อกำหนดฉบับเต็ม: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/)
 
 ## แล็บเชิงโต้ตอบ
 

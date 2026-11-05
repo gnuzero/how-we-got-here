@@ -164,10 +164,3 @@ n = 3 ได้ 20 ขั้น n = 9 ได้ 50 ขั้น n = 15 ได้
 - Mike Jones, "What really happened on Mars Rover Pathfinder", [*The Risks Digest* เล่ม 19 ฉบับ 49](https://catless.ncl.ac.uk/Risks/19.49.html) (ธันวาคม 1997)
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *เวลาจริง* (real time), *เส้นตาย* (deadline), *ลำดับความสำคัญ* (priority), *คาบ* (period), *การไม่เกิดร่วม* (mutual exclusion)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

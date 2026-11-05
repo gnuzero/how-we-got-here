@@ -110,10 +110,3 @@ Planar → FinFET → GAA คือบทเรียนการสเกลข
 - Wikipedia (ภาษาอังกฤษ), [Drain-induced barrier lowering](https://en.wikipedia.org/wiki/Drain-induced_barrier_lowering) — นิยาม DIBL หน่วย mV/V แบบจำลองการแบ่งประจุ และการที่เกตปิดอุปกรณ์ไม่ลงเมื่อช่องทางสั้นมาก
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *แรงดันขีดเริ่มเปลี่ยน* (threshold voltage), *กระแสรั่ว* (leakage current)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

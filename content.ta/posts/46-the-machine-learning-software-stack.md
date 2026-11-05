@@ -164,10 +164,3 @@ t ≥ 14 ÷ 100 × 1.75 = **0.245 s** ஒவ்வொரு படிக்க�
 | கூட்டுச் செயல் | collective operation |
 | அலைவரிசை | bandwidth |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

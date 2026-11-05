@@ -165,9 +165,3 @@ Python-இல் `'த'.encode()` அதே `E0 AE A4` தந்தது. ம�
 | ஒருங்குறி | Unicode |
 | இடைசெயல்பாடு | interoperation |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

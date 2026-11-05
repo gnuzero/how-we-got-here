@@ -30,10 +30,3 @@ GPUDirect RDMA lets a NIC read or write GPU memory directly. Without it, a GPU-t
 
 This is the conceptual base under the custom GPU memory fabric the series keeps pointing at: make remote GPU memory addressable without a general-purpose CPU in the path. NVLink and GPUDirect solve that inside one vendor's stack. An open, PCIe-based alternative has to remove the same inefficiency — which is why Posts 32–33's TLP-level peer path, and this post's "why the dedicated link exists," are the same story.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

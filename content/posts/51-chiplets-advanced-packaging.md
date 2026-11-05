@@ -30,10 +30,3 @@ Disaggregation only works if inter-chiplet bandwidth and latency stay close enou
 
 The same advanced-packaging family enables HBM in Phase 9: stack memory dies, attach them to a compute die through a high-density interposer, and treat physically separate silicon as nearly one piece from a bandwidth perspective. Chiplet compute and HBM memory are two instances of one constraint — get enough bandwidth between separate dies that the split stops being the performance penalty.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

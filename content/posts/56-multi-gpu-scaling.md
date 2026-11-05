@@ -30,10 +30,3 @@ Large training spans many servers. Post 42's RDMA ideas return: GPUDirect RDMA l
 
 Direct GPU-to-GPU paths, fewer unnecessary hops, interconnect as a first-class constraint — the same philosophy behind the custom GPU memory fabric this series has referenced: an open, PCIe-based approach to what proprietary GPU fabrics do inside one vendor's stack. Phase 10 picks the thread up at true datacenter scale — not a handful of GPUs in one box, but thousands across a training cluster, wired so aggregate theoretical compute is not lost to coordination.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

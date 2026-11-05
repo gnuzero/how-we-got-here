@@ -127,10 +127,3 @@ Micikevicius และคณะ (ICLR 2018) อธิบายสูตรกา
 - Wikipedia (ภาษาอังกฤษ), [Half-precision floating-point format](https://en.wikipedia.org/wiki/Half-precision_floating-point_format) และ [bfloat16 floating-point format](https://en.wikipedia.org/wiki/Bfloat16_floating-point_format) — โครงสร้างบิตและช่วงของ FP16 และ BF16
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *การแจงหน่วย* (quantization), *ความเที่ยง* (precision), *เลขชี้กำลัง* (exponent), *แมนทิสซา* (mantissa), *การล้น* (overflow), *ค่าสเกล* (scale factor)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

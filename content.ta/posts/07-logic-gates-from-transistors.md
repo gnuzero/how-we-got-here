@@ -138,10 +138,3 @@ Full-adder, ALU, register file — Phase 3-இன் CPU-கட்டும் �
 - தமிழ்நாடு அரசு, *12ஆம் வகுப்பு இயற்பியல் தொகுதி 2*, அலகு 10a: குறைகடத்தி எலக்ட்ரானியல் (லாஜிக் கேட்டுகள் / இலக்கமுறை எலக்ட்ரானியல்)
 - தமிழ்நாடு அரசு, *11ஆம் வகுப்பு கணினி அறிவியல்*, அலகு 2b: பூலியன் இயற்கணிதம்
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

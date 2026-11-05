@@ -39,10 +39,3 @@ Phase 4 හි මෙතෙක් සියල්ල — batch, time-sharing, �
 
 **පිටවීමේ දොර:** C. L. Liu and James W. Layland, "Scheduling Algorithms for Multiprogramming in a Hard-Real-Time Environment" (*Journal of the ACM*, 1973) — rate-monotonic scheduling සහ සම්භාව්‍ය දැඩි-තත්‍ය-කාල schedulability පිටුපස ප්‍රාථමික පත්‍රිකාව.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

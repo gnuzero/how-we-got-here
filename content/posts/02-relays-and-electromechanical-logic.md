@@ -32,10 +32,3 @@ Second problem: contacts wear. Every closure is metal on metal — arcing, pitti
 
 Relays proved the architecture: binary representation, boolean gates from simple switches, programs as data. What they could not prove was that the architecture could run *fast*. Solving that meant replacing the mechanical switch with something that changed state by moving electrons instead of metal — the vacuum tube, at the cost of enormous power and heat. That tradeoff is next.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

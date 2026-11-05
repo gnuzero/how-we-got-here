@@ -60,18 +60,3 @@ schematics: "Timeline: 1999-10-07 Decree 273 (Art. 3 'technology is a state secr
 - 新华社，《维护国家密码安全 促进密码事业发展——国家密码管理局负责人就〈中华人民共和国密码法〉答记者问》（English: OSCCA official answers questions on the Cryptography Law），中国人大网，2019-10-28。[链接](http://www.npc.gov.cn/npc/c2/c30834/201910/t20191028_301731.html)
 - 国务院，《商用密码管理条例》（2023 年修订，国务院令第 760 号）（English: Commercial Cryptography Regulations, 2023 revision, State Council Decree No. 760），中国政府网。[链接](https://www.gov.cn/zhengce/zhengceku/202305/content_6875928.htm)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] No lab: none of the existing labs fits. Idea for Reed: a toy block cipher / hash playground (not SM4 itself) that shows why a published algorithm can still be secure (Kerckhoffs), or a "who may do what" timeline toggle (1999 / 2019 / 2023) over R&D, production, sale, use and import.
-[ ] No figure: no openly licensed image in the dossier for thread 27.
-[ ] Tone: descriptive only; every rule is stated as the text says it, with the article number. No evaluation of the policy.
-[ ] Statute details beyond the dossier finding summaries (same official texts as F27-01 / F27-05; saved in /workspace/tmp/wd/jsmm1999.txt, mimafa.txt, npc_qa.txt, gov760.txt): 1999 Art. 2 definition, Arts. 5, 7, 10, 12 (user registration), 13 (no sale of foreign products); the full Q&A sentence (产品销售、服务提供、使用、进出口); 2023 Art. 2 definition quoted in full; absence of the Art. 3 sentence in the 2023 text checked by search.
-[ ] Left out as unverified: SM4 in ISO/IEC 18033-3 AMD1 (2021); the exact NPC adoption date 2019-10-26 (page says only 日前 in a 10-27 dispatch); the 2004 WAPI deferral's reasons; ZUC in 3GPP.
-[ ] Quote format note: the 1999 text on jsmm.gov.cn uses half-width commas; quotes were chosen to avoid comma-bearing spans except Art. 3 (full-width in the source). The SM3 notice has a half-width comma after 需求; the quote stops before it.
-[ ] TODO after PR #23 merges: mention/relref 64-zh-hanzi-encoding (the telegraph-code cipher books) as the Qing-era prequel.
-[ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/66-zh-commercial-crypto.md); Taiwan-reader proofread still pending
--->

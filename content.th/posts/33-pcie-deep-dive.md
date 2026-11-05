@@ -108,10 +108,3 @@ PCIe 6.0 เปลี่ยนวิธีการส่งสัญญาณ�
 - รศ.ดร.เกริก ภิรมย์โสภา, *สถาปัตยกรรมคอมพิวเตอร์ การออกแบบและวิเคราะห์*
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *กลุ่มข้อมูล* (packet), *การเข้ารหัส* (encoding), *การตอบรับ* (acknowledgement), *การควบคุมสายงาน* (flow control), *เชื่อมโยง* (link)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

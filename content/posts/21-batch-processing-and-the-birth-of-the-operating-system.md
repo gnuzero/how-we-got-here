@@ -35,10 +35,3 @@ No interactivity. A job ran start to finish with no chance to intervene, inspect
 
 Solving it required something batch architecture could not provide: multiple users active *at the same time*, each with the illusion of a dedicated session. That is time-sharing — not just automating job sequencing, but interleaving simultaneously active programs until the switching is invisible. The next post picks up there.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

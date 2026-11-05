@@ -34,10 +34,3 @@ One GPU's memory (Phase 9's HBM) often cannot hold a modern large model, let alo
 
 Modern ML training is a distributed-systems problem wearing a neural-network costume: coordinate many compute units, absorb partial failure (GFS, Kubernetes), move enormous intermediate data efficiently. Hardware without that software half — or software without the silicon and fabric — is only half the story Phase 9 and 10 finish.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

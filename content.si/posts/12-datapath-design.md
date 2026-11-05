@@ -31,10 +31,3 @@ ADD ගන්න. PC එක instruction memory සුචිගත කරයි. 
 
 Pipelining එම සීමාවට පිළිතුරු දෙයි: දිගු මාර්ගය අදියරවලට කපන්න, එක් එක් අදියර *එහි* අවම-නරකම අවස්ථාවට clock කරන්න, සහ විවිධ උපදෙස් එකවර විවිධ අදියරවල රැඳෙන්නට ඉඩ දෙන්න. එකම ISA. තත්පරයකට බොහෝ වැඩ අවසන් වේ. එය ඊළඟ පෝස්ට් එකයි — සහ සම්භාව්‍ය microarchitecture හි මධ්‍යම අදහසයි.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

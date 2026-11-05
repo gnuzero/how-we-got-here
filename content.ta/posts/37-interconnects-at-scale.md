@@ -151,10 +151,3 @@ NIC GPU நினைவகத்தை PCIe BAR எனும் முகவர�
 | கூட்டுச் செயல் | collective operation |
 | பிணைய அட்டை | network interface card (NIC) / HCA |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

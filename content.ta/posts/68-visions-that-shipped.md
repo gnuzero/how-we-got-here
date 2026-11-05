@@ -130,9 +130,3 @@ Copyleft இவை மாற்றிய பதிப்புகளுக்க
 | பயன்பாட்டு விகிதம் | utilization |
 | பகிரப்பட்ட குளம் | shared pool |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

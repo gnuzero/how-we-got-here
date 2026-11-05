@@ -32,10 +32,3 @@ Each direction is the series pattern again: name the binding constraint precisel
 
 From relays to attention: the technology changed almost beyond recognition at every step. The engineering logic — identify the real constraint, then change the architecture — has not, and there is no strong reason to expect it will.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

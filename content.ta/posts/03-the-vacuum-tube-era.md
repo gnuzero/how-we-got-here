@@ -133,10 +133,3 @@ Herman H. Goldstine இன் ஆரம்ப மின்னணுக் கண
 | பேட்ச் கேபிள் | patch cable |
 | சேமிக்கப்பட்ட நிரல் | stored program |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

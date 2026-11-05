@@ -54,16 +54,3 @@ BBS 把找人和交谈放进了同一台机器：版面就是目录，帖子就�
 - 批踢踢實業坊，《批踢踢歷史沿革》（English: PTT official history, with its table of peak concurrent users），PTT。[链接](https://www.ptt.cc/about.history.html)
 - 黃力信，《中大電子通訊簡史 1991-2003》（English: A short history of electronic communication at CUHK, 1991–2003），《中大四十年》。[链接](https://cusp.hk/cu40/?p=73)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] No lab: vm-terminal is already used on the batch-1 networks page (39-zh) for SMTH's 386/Linux origin; not repeated here. Idea for Reed: a text-mode BBS simulator with a concurrent-login cap (set the cap, watch "too many users" refusals, then "upgrade" the server), plus a board list and a thread view in a telnet-style window.
-[ ] No figure: no openly licensed image verified in the dossier for thread 26. Candidates to check on Commons: a PTT telnet screenshot (licence of the interface?), an NTU dorm photo, the SMTH 1990s login banner.
-[ ] Source details beyond the dossier finding summaries (all in the finding's own cited source; saved text in /workspace/tmp/wd/): SMTH post: registered users 数万 / 数百 concurrent, the 上站人数上限 sentence, 1997-12-07 22:16 migration to a 8G disk / 512M RAM 天演 server supporting 上千人, WWW service restored, 关站、地下开站 sentence (F26-01 source); CERNET 2014: 500+ boards, peak ~4000 after 2005-05, 小百合 as one of the busiest, 北大未名 on an IBM-donated S/390 (F26-02 source); CUHK memoir (F26-04 source): the TCLBBS chat-room quote (黄力信's narration of a student's experience); PTT page: dorm BBS names, 2004-06-14 merger, 1997-01-19 first record of 38, exact counts 1,029 / 10,504, and the page's own "(太陽花學運)" note (F26-03 source).
-[ ] Left out as unverified (dossier UNVERIFIED list): 杜奕瑾 as PTT founder (not named on the official page); CFido / 中国惠多网 1991 dial-up boards; the 天涯 / 西祠胡同 era. Also left out: any "first BBS in mainland China" claim (disputed; 39-zh already handles it).
-[ ] TODO after PR #23 merges: relref the batch-1 networks page 39-zh-networks-1986-1994 (first-BBS dispute, CUBBS, 1995 founding details) and the batch-1 page 17-zh-supercomputers-cpus (曙光 machines) where 曙光 is mentioned.
-[ ] Native-reader proofread (zh-Hans) before final; Taiwan reader for the PTT dorm-board names
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/43-zh-bbs.md); Taiwan-reader proofread still pending
--->

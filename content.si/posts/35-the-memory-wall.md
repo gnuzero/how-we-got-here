@@ -106,10 +106,3 @@ Post 12 හෝ Post 26 හි Mini-CPU lab එක විවෘත කරන්�
 
 **පිටවීමේ දොර:** Wm. A. Wulf සහ Sally A. McKee, "Hitting the Memory Wall: Implications of the Obvious" (*ACM SIGARCH Computer Architecture News*, 1995) — බිත්තිය නම් කර පරතරය මූලික යමක් වෙනස් නොවුණොත් ආධිපත්‍යය දරනු ඇති බව පෙන්වූ කෙටි සටහන.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

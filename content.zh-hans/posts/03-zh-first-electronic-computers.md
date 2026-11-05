@@ -66,13 +66,3 @@ schematics: "Timeline diagram 1952-1979: 1952 group; 1956 twelve-year plan and f
 - 吕文超，《100系列计算机联合设计成功的启示》（English: Lessons from the successful joint design of the 100-series computers），清华大学计算机系，2018-07-24。[链接](https://www.cs.tsinghua.edu.cn/info/1169/4071.htm)
 - 林行良，《DJS100系列机系统软件联合设计》（English: Joint design of system software for the DJS-100 series），清华大学计算机系，2018-07-24。[链接](https://www.cs.tsinghua.edu.cn/info/1169/4069.htm)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] No figure: museum photos of the Shanghai Tongyong 201 (NMC) and Flying Fish JSY-20 (Tsinghua) are not openly licensed; no open photo of the 103/104/107 verified. Qufu Normal University's surviving 103 would be a good photo request.
-[ ] No lab: mini-cpu could illustrate machine-language coding (the 596L story) but is not an honest fit for tube machines; left out
-[ ] Native-reader proofread (zh-Hans) before final
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review); Taiwan-reader proofread still pending
--->

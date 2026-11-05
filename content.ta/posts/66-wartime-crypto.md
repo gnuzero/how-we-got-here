@@ -173,9 +173,3 @@ Spine-ஐ முன்னோக்கிப் படியுங்கள்:
 | வெற்றிடக் குழாய் | valve / vacuum tube |
 | காகித நாடா | paper tape |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

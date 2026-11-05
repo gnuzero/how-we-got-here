@@ -129,10 +129,3 @@ N-type அல்லது P-type தனியாக ஒரு மாறி அ�
 - ச. சம்பத்து, *அடிப்படைத் திண்மநிலை இயற்பியல்* (தமிழ்நாடு பாடநூல் மற்றும் கல்வியியல் பணிகள் கழகம்)
 - தமிழ்நாடு அரசு, *12ஆம் வகுப்பு இயற்பியல் தொகுதி 2*, அலகு 10a: குறைகடத்தி எலக்ட்ரானியல்
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

@@ -25,9 +25,3 @@ The reconstruction above is the exception that proves the rule: once machine sho
 
 Next: relays, and the electromechanical logic that carried the architecture into WWII.
 
-<!--
-ASSET CHECKLIST
-[x] Hero: CC BY 2.0 Commons hotlink (Erik Pitti / CHM Difference Engine No. 2)
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

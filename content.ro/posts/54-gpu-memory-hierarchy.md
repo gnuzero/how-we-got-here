@@ -98,10 +98,3 @@ Nimic din FlashAttention nu face mai puține operații aritmetice decât atenți
 - Memoria globală: tranzacții de 32 B; acces consecutiv = coalescere completă (*CUDA PG* 13.5, §2.3.4.1).
 - FlashAttention: atenție exactă, IO-aware, cu tiling în SRAM (Dao et al., 2022).
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

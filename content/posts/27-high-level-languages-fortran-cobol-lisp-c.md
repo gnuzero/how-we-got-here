@@ -36,10 +36,3 @@ Each language optimized for a different priority — FORTRAN for numerical expre
 
 **Door out:** Dennis M. Ritchie, "The Development of the C Language" (HOPL-II / ACM) — primary account of C's design beside Unix; for Lisp's founding statement, see John McCarthy's early CACM papers on recursive functions of symbolic expressions.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

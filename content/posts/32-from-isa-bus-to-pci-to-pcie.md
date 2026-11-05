@@ -30,10 +30,3 @@ PCI Express (2003) changed the topology. Instead of one shared parallel bus, eac
 
 Fewer physical wires. Higher achievable bandwidth. The shared-bus ceiling is gone. Post 33 is how those serial links structure a transfer so the rest of the machine can still *mean* a read or a write.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

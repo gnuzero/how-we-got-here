@@ -65,13 +65,3 @@ Transformer 的原始任务是机器翻译。沿着中文这条线往回走，�
 - Touvron et al.，“LLaMA: Open and Efficient Foundation Language Models”（English: original English title），arXiv:2302.13971。[链接](https://arxiv.org/abs/2302.13971)
 - Vaswani et al.，“Attention Is All You Need”（English: original English title），arXiv:1706.03762。[链接](https://arxiv.org/abs/1706.03762)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field (RoPE rotation diagram is the priority)
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s): none set (no existing lab fits attention or RoPE; a future RoPE rotation widget would fit)
-[ ] Photos: none used. No openly licensed image is verified in the dossier for threads 06/13/29. Candidates to check on Commons before use: Wu Wenjun portrait, the 104 computer.
-[ ] Native-reader proofread
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review); Taiwan-reader proofread still pending
--->

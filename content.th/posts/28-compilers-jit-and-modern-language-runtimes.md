@@ -139,10 +139,3 @@ CPython ก็ใช้รุ่นกับตัวเก็บวง: เอ�
 - Eric Snow, Eddie Elizondo, "PEP 683 – Immortal Objects, Using a Fixed Refcount" (Final, Python 3.12) — อมตะโดยบังเอิญบน 64 บิตกับ 32 บิต (หัวข้อ Accidental Immortality): https://peps.python.org/pep-0683/
 - John McCarthy, "Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I", *Communications of the ACM* 3(4), 1960 — รายการพื้นที่ว่างและการทำเครื่องหมายแล้วกวาด: http://jmc.stanford.edu/articles/recursive/recursive.pdf
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

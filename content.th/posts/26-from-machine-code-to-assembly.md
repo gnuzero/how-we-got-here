@@ -40,10 +40,3 @@ Assembly ให้ทุกคำสั่งมี mnemonic ที่มนุ�
 - จารุโลจน์ จงสถิตย์วัฒนา, *หลักการและการประมวลผลภาษาโปรแกรม*
 - จันทนา จันทราพรชัย, *สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ*
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via {{< lab type="..." >}} shortcode if labs field is set
--->

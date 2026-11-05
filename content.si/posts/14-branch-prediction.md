@@ -165,10 +165,3 @@ Output register එක 10, 9, 8, … 1, 0 ලෙස වෙනස් වී, උ�
 
 **පිටවීමේ දොර:** James E. Smith, "A Study of Branch Prediction Strategies" (ISCA 1981) — dynamic branch prediction පිළිබඳ මුල් ක්‍රමානුකූල සැලකිල්ල, පසුව පෙළපොත් බවට පත් වූ saturating-counter අදහස් ඇතුළුව.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

@@ -140,10 +140,3 @@ post එකේ "end-to-end ජාල ~1.3–1.5×" යන්න මෙම ගණ
 
 1024 × 1024 matrix, CSR index පළල සහ p අගයන් ආදර්ශ අගයන් වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

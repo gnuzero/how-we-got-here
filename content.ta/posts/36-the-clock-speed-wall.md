@@ -165,10 +165,3 @@ Memory wall என்பது DRAM latency compute-ஐ இழப்பது. C
 | உற்பத்தித் தலைமுறை | process node / generation |
 | மாறா மின்னழுத்த அளவுக் குறைப்பு | constant-voltage scaling |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

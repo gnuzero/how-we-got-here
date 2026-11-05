@@ -137,10 +137,3 @@ HLT        ; 10
 - John L. Hennessy และ David A. Patterson, *Computer Architecture: A Quantitative Approach* — บทว่าด้วย ILP อธิบายตัวทำนายแบบสัมพันธ์ (correlating) และ BTB ละเอียด
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *ตัวนับระบุตำแหน่งคำสั่ง* (program counter), *แตกกิ่ง / แยกทาง* (branch), *การทำนาย* (prediction)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

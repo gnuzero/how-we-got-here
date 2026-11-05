@@ -142,10 +142,3 @@ T0 cycle 20 දී නවතී. T1, T2, T3 එකිනෙක cycles 20 බැ�
 
 තිර ප්‍රමාණ සහ රාමු අනුපාත, pixel එකකට උපදෙස් 100, 3 GHz core එක, branch උදාහරණ, 20–texture–20 shader එක, සහ අභ්‍යාසවල ආදාන ආදර්ශ අගයන් වේ. (T − 1) × C ≥ L නීතිය සහ 44%, 2.25 ගුණය අප ලිපියේ උදාහරණයෙන් ගණනය කළ අගයන් වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

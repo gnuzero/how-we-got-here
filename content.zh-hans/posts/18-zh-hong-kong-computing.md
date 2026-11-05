@@ -51,16 +51,3 @@ IT PRO 杂志 2017 年根据 IBM 香港 60 周年材料整理的回顾说，1961
 - Joint Universities Computer Centre，“About JUCC”（English original）。[链接](https://www.jucc.edu.hk/)
 - 《中大校友》，〈校園網絡貫通師生〉（English: A campus network connecting staff and students, CUHK alumni magazine），1999 年 3 月號。[链接](https://www.alumni.cuhk.edu.hk/magazine/mar99/html/p06-07.htm)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] No lab. Lab idea for Reed: a punched-card (打咭) widget: type one line of a program, punch it onto an 80-column card, drop cards in a reader queue, and see a turnaround delay before the printout (batch-era feel; would also suit English ch. 21).
-[ ] No figure: no openly licensed image of HSBC's S/360, the HKO machines or CUHK's card room verified. Leads: the 1967 Causeway Bay unloading photo in the IBM HK retrospective (IBM copyright; ask IBM/HSBC archives); CHM's 1965 Fairchild Hong Kong plant photo (rights with CHM). File:Mpf-I.jpg (Commons, CC BY-SA 2.0) shows the Taiwanese Micro-Professor I and does not fit this page.
-[ ] Short page by design (only 3 high-confidence findings in dossier 19: F19-06, F19-07, F19-08). Medium-high findings (F19-01, F19-05, F19-09, F19-10) are attributed to their sources; medium F19-02/F19-03 are attributed as reproductions and flagged as awaiting the original newspapers.
-[ ] Left out: F19-04 (IBM 1620 at HKU, year unknown; Anthony O's "first computer order at HKU" is a blurb); F19-11 (Bank of China 1977 order, medium-low self-description); F19-12 (Fairchild Kwun Tong: TMTPost 1962 lease vs CHM 1964 plant, medium; better placed on a manufacturing page); HSBC as "Asia's first real-time banking system" (low); IBM's own "首部" wording for the 5550; the S/34 price claim; JUCC's original 1970 members and shared machine; 陳天機.
-[ ] TODO after PR #23 merges: a plain-text mention / relref to 17-zh-supercomputers-cpus.md for Data General NOVA → DJS-100 (that link comes from dossier 14, not 19, so the page does not state it now); relref to 26-zh-input-and-typesetting.md near the IBM 5550 (Chinese-capable machines).
-[ ] Native-reader proofread (zh-Hans) before final; Hong Kong quotations kept in Traditional script per desk house style
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review, review/decisions/18-zh-hong-kong-computing.md); Taiwan-reader proofread still pending
--->

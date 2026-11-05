@@ -178,10 +178,3 @@ Data parallelism දී සෑම GPU එකකටම model එකේ සම්�
 
 η = 0.5 පියවර, 10⁹ සහ 7 × 10⁹ පරාමිතීන්, N = 10⁶, 28/12 MB සහ 7 GB ගණනය, සහ අභ්‍යාස 2, 3, 5 හි ආදාන ආදර්ශ අගයන් හෝ අප ගණනය කළ අගයන් වේ.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

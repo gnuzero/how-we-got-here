@@ -66,13 +66,3 @@ schematics: "Diagram 1: the three bottlenecks (too many characters / too few key
 - 中国科学技术馆，《汉字激光照排》展品说明（English: Exhibit text: Chinese laser phototypesetting），中国数字科技馆，2021。[链接](https://www.cdstm.cn/museum/zphc/kcbnjd100znkjcjkpz/art/2021/art_4523f8dfceb24aabb9a29605ba2f17b6.html)
 - 黄橙，《1987年：第一张国产激光照排系统整版输出的中文日报》（English: 1987: the first Chinese daily output in full pages by a domestic laser typesetting system），中国工程院网站，2009-06-15 转载。[链接](https://www.cae.cn/cae/html/main/col278/2012-02/27/20120227140259086980845_1.html)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s): none set (no existing lab fits input methods or glyph compression)
-[ ] Photos: none used. No openly licensed image is verified in the dossier for threads 03/12/22/23. Candidates to check on Commons before use (licence + upload.wikimedia.org URL): Shu Zhendong typewriter, Double Pigeon typewriter, Great Wall 0520, Legend card, Huaguang typesetter.
-[ ] Native-reader proofread (names, Taiwan terms in the Chu Bong-Foo passage)
-[x] zh-Hant derived 2026-09-26 (tools/zh_hant.py: OpenCC s2twp + protections, then desk terminology review); Taiwan-reader proofread still pending
--->

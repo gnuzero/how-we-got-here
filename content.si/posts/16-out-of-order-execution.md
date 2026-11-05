@@ -133,10 +133,3 @@ Step ඔබමින් යමින්, සෑම උපදෙස් යුග�
 
 **පිටවීමේ දොර:** R. M. Tomasulo, "An Efficient Algorithm for Exploiting Multiple Arithmetic Units" (*IBM Journal of Research and Development*, 1967) — නවීන out-of-order issue සහ rename පිටුපස ප්‍රාථමික පත්‍රය.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-[ ] Lab(s) embedded via the lab shortcode (lab type="...") if labs field is set
--->

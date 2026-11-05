@@ -137,10 +137,3 @@ GPU ยอดเยี่ยมบน fabric ออกแบบไม่ดี�
 - Weiyang Wang และคณะ, "Rail-only: A Low-Cost High-Performance Network for Training LLMs with Trillion Parameters" (arXiv:2307.12169) — คำอธิบายเครือข่ายจูนรางและการวิเคราะห์ทราฟฟิก (ภาษาอังกฤษ)
 - ระบบศัพท์บัญญัติ สำนักงานราชบัณฑิตยสภา, [coined-word.orst.go.th](https://coined-word.orst.go.th/) — *เกรเดียนต์* (gradient), *ทอพอโลยี* (topology), *สวิตช์* (switch)
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

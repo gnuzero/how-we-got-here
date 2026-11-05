@@ -38,10 +38,3 @@ Batch map/reduce is powerful and rigid. The next post turns from *processing* di
 
 **Door out:** Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung, "The Google File System" (SOSP 2003); Jeffrey Dean and Sanjay Ghemawat, "MapReduce: Simplified Data Processing on Large Clusters" (OSDI 2004); Fay Chang et al., "Bigtable: A Distributed Storage System for Structured Data" (OSDI 2006) — the three primaries behind this infrastructure story.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

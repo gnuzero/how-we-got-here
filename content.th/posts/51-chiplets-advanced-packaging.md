@@ -134,10 +134,3 @@ UCIe (Universal Chiplet Interconnect Express) เป็นมาตรฐาน�
 - UCIe Consortium (D. Das Sharma), "Building an open ecosystem of chiplets for on-package innovations" (2023) สไลด์ 24 "UCIe 1.0: Characteristics and Key Metrics": https://www.uciexpress.org/_files/ugd/0c1418_064d8c3247284b8da8a09674714a2c78.pdf
 - NVIDIA, "NVIDIA Blackwell Platform Arrives to Power a New Era of Computing" (18 March 2024): https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

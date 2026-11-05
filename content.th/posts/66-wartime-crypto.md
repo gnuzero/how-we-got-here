@@ -44,9 +44,3 @@ schematics: "Diagram: Enigma rotor stepping → Bombe search → Colossus electr
 ## อ่านเพิ่ม / อ้างอิง
 - วรเศรษฐ สุวรรณิก, *วิทยาการรหัสลับ*
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
--->

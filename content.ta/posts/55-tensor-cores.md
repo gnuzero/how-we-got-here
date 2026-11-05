@@ -122,10 +122,3 @@ FP16-இல் 1 sign பிட், 5 exponent பிட், 10 fraction பி�
 | முழுமையாக்கல் | rounding |
 | டென்சர் கோர் | tensor core |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

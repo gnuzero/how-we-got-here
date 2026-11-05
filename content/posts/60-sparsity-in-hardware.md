@@ -32,10 +32,3 @@ Hardware with structured-sparsity support can, on 2:4 weight matrices, advertise
 
 Sparsity and reduced precision are not alternatives. Modern accelerators often exploit both: lower-precision, structurally sparse MACs — cheaper ops *and* fewer of them — inside the same fixed area and power budget.
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->

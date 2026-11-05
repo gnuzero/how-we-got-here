@@ -139,10 +139,3 @@ Borg கட்டுரை: Google-இன் median cell சுமார் **10
 | படிப்படியான புதுப்பிப்பு | rolling update |
 | இயந்திரத் தொகுப்பு | fleet / cluster |
 
-<!--
-ASSET CHECKLIST
-[ ] Hero image generated from image_prompt above
-[ ] Schematic(s) drawn/rendered per schematics field
-[ ] Short-form video clip generated from video_prompt (optional, for LinkedIn/promo cross-post)
-
--->
