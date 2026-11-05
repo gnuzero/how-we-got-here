@@ -55,3 +55,10 @@ other = """
   }
 }
 """
+
+# Lab embed chrome (layouts/shortcodes/lab.html). Taiwan usage.
+[labIframeTitle]
+other = "互動實驗：{{ .Type }}"
+
+[labOpenNewTab]
+other = "在新分頁開啟實驗 ↗"
