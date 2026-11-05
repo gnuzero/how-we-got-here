@@ -147,9 +147,21 @@
 - **Still NEVERIFICAT:** fine 1832 vs 1833 halt reconciliation; INPI brevet full text / whether 1801 brevet already covers punched cards; Europeana/Met/SMG dump blocks (cited content from WebFetch only).
 - **Take pages:** each marked „Analogie ilustrativă”; factual mechanism claims only where sourced (Europeana barrel/pianola; CHM silk-cards).
 
+
+
+### Early 01d + 43b drafts (batch 7, fact-checked 2026-11-05)
+
+- **Pages:** `01d-woodblock-to-movable-type` (~1475 words, Romanian section: Macarie / Coresi / Casa Mureșenilor), `43b-from-press-to-pixel` (~1320 words, no Romanian phototypesetting section). Both `draft: true`, date `2026-01-02` (match EN).
+- **Phase 43b:** `7 — Sisteme distribuite, Big Data și orchestrare` (first RO phase-7 string; `&` → `și` as in phases 4/5).
+- **Restored after opening sources:** Feng Dao / Changxing 2 = 931 (*Nongshu* j22); Qingli years 1041–1048 (Asian Art Museum); Muybridge 19 Jun 1878 Sallie Gardner (Smarthistory; LoC dump blocked); Le Prince disappeared 1890 (NSMM blog); Grand Café / Salon Indien (Catalogue Lumière FAQ; Institut Lumière heading alone insufficient).
+- **Kept NEVERIFICAT / omitted:** Tetraevanghel as first all-Romanian book (press only); Coresi technique wood vs metal / Liubavici; anonymous Transylvanian slide deck not cited; BRV only via Erich & Vârgolici.
+- **Conflicts stated on page:** Coresi ~40/1556–1588 (museum) vs ~35/1556–1583 (ro.wikipedia); Liturghier 1508 print place (authors lean Dealu–Târgoviște); Dingjunshan 1905 vs 1908; Wenzhou fragment nature.
+- **UDN wording:** RO follows source („primul cotidian în limba chineză”); EN „world first” is looser — left as EN discrepancy, RO unchanged.
+- **Romanian section sources:** Erich & Vârgolici 2009 + INP/BNR Tetraevanghel + Prima Școală + Casa Mureșenilor (Wayback) — sufficient; BRV not opened directly.
+
 ## Not yet (pending)
 
-- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (next: early chapters 36+ per PLAN)
+- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (next: early chapters 36+ / labs strings per PLAN; 01d+43b drafts shipped batch 7)
 
 ## Notes
 
