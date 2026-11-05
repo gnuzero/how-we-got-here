@@ -1,5 +1,6 @@
 ---
 title: "From copying a page to pasting it, pigeons to cables to satellites, relays to machines that ask for attention: how we got here."
+aliases: []
 type: docs
 ---
 

@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "4 — 软件基础：操作系统、编程语言与实时系统"
 series_index: 15
+aliases: []
 tags: ["操作系统", "杨芙清", "150机", "虚拟机", "红旗Linux", "银河麒麟", "openEuler", "CLE"]
 summary: "1970 年代初，北大的操作系统组在大庆油田的另一台计算机上模拟出 150 机，用 23 天调通了操作系统；半个世纪后，中国的操作系统走进了开源基金会。"
 image_prompt: "Early-1970s computer room at Daqing oilfield in winter: a dozen young engineers in padded coats working night shifts at a large transistor computer console, paper tape and printouts everywhere, a thermos and enamel mugs, frost on the window; black-and-white documentary photo style, no text"

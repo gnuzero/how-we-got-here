@@ -1,5 +1,6 @@
 ---
 title: "විකල්ප ඉගෙනුම් මාර්ග"
+aliases: []
 draft: false
 ---
 

@@ -69,66 +69,66 @@ Romanian titles are listed **only** for chapters that actually have a `content.r
 | Chapter (shared slug) | Romanian title | Status |
 |----------|-------|--------|
 | `posts/00-credits.md` | Credite și uși de ieșire | shipped (fact-checked) |
-| `posts/00-foreword.md` | Cuvânt înainte | placeholder (Nayana's lane; not expanded) |
-| `posts/01-mechanical-electromechanical-computing.md` | Calcul mecanic și electromecanic | shipped draft (`draft: true`, mirrors English) |
-| `posts/01-what-is-this-thing.md` | Ce e chestia asta? | shipped (fact-checked; hub) |
-| `posts/01-take-barrel-organ.md` | Flașneta | shipped (fact-checked; bookHidden) |
-| `posts/01-take-caravan.md` | Caravana | shipped (fact-checked; bookHidden) |
-| `posts/01-take-clerk.md` | Funcționarul de birou | shipped (fact-checked; bookHidden) |
-| `posts/01-take-feast-scoop.md` | Lingura de la nuntă | shipped (fact-checked; bookHidden) |
-| `posts/01-take-pebbles.md` | Tăvi cu pietricele | shipped (fact-checked; bookHidden) |
-| `posts/01-take-player-piano.md` | Pianola | shipped (fact-checked; bookHidden) |
-| `posts/01-take-silk-cards.md` | Cartonașe de model pe mătase | shipped (fact-checked; bookHidden) |
-| `posts/01-take-stubborn-helper.md` | Ajutorul încăpățânat | shipped (fact-checked; bookHidden) |
-| `posts/01-take-water-wheel.md` | Roata de apă | shipped (fact-checked; bookHidden) |
-| `posts/01a-babbage-engines.md` | Motoarele lui Babbage | shipped (fact-checked) |
-| `posts/01b-jacquard-loom.md` | Războiul Jacquard | shipped (fact-checked) |
-| `posts/01c-why-mechanical-matters.md` | De ce contează calculul mecanic | shipped (fact-checked) |
-| `posts/01d-woodblock-to-movable-type.md` | De la gravura în lemn la literele mobile | shipped (fact-checked batch 7; published 2026-11-05 with renumber) |
-| `posts/02-relays-and-electromechanical-logic.md` | Relee și logica electromecanică | shipped (fact-checked; deep) |
-| `posts/03-the-vacuum-tube-era.md` | Era tuburilor vidate | shipped (fact-checked) |
-| `posts/04-why-the-transistor-had-to-happen.md` | De ce trebuia să apară tranzistorul | shipped (fact-checked) |
-| `posts/05-semiconductors-from-first-principles.md` | Semiconductori de la primele principii | shipped (fact-checked) |
-| `posts/06-the-transistor-bjt-to-mosfet.md` | Tranzistorul: de la BJT la MOSFET | shipped (fact-checked) |
-| `posts/07-logic-gates-from-transistors.md` | Porți logice din tranzistori | shipped (fact-checked) |
-| `posts/08-from-gates-to-combinational-logic.md` | De la porți la logică combinațională | shipped (fact-checked) |
-| `posts/09-sequential-logic.md` | Logică secvențială | shipped (fact-checked) |
-| `posts/10-the-memory-hierarchy-begins.md` | Începutul ierarhiei de memorie | shipped (fact-checked) |
-| `posts/11-instruction-sets.md` | Seturi de instrucțiuni | shipped (fact-checked) |
-| `posts/12-datapath-design.md` | Proiectarea căii de date | shipped (fact-checked) |
-| `posts/13-pipelining.md` | Pipelining | shipped (fact-checked) |
-| `posts/14-branch-prediction.md` | Predicția salturilor | shipped (fact-checked) |
-| `posts/15-caches.md` | Cache-uri | shipped (fact-checked) |
-| `posts/16-out-of-order-execution.md` | Execuția în afara ordinii | shipped (fact-checked) |
-| `posts/17-superscalar-multicore.md` | Superscalar și multicore | shipped (fact-checked) |
-| `posts/18-mainframes-to-minicomputers-to-microprocessors.md` | De la mainframe-uri la minicalculatoare și microprocesoare | shipped (fact-checked) |
-| `posts/19-the-x86-vs-risc-split.md` | Ruptura x86 versus RISC | shipped (fact-checked) |
-| `posts/20-arm-and-risc-v-the-architecture-landscape-today.md` | ARM și RISC-V: peisajul de arhitecturi azi | shipped (fact-checked) |
-| `posts/21-batch-processing-and-the-birth-of-the-operating-system.md` | Prelucrarea pe loturi și nașterea sistemului de operare | shipped (fact-checked) |
-| `posts/22-time-sharing-and-the-unix-lineage.md` | Partajarea timpului și descendența Unix | shipped (fact-checked) |
-| `posts/23-the-gnu-movement-and-linux.md` | Mișcarea GNU și Linux | shipped (fact-checked) |
-| `posts/24-virtual-memory-and-multitasking.md` | Memoria virtuală și multitaskingul | shipped (fact-checked) |
-| `posts/25-containers-and-modern-os-isolation.md` | Containerele și izolarea în sistemele de operare moderne | shipped (fact-checked) |
-| `posts/26-from-machine-code-to-assembly.md` | De la codul mașină la limbajul de asamblare | shipped (fact-checked) |
-| `posts/27-high-level-languages-fortran-cobol-lisp-c.md` | Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C | shipped (fact-checked) |
-| `posts/28-compilers-jit-and-modern-language-runtimes.md` | Compilatoare, JIT și medii de rulare moderne | shipped (fact-checked) |
-| `posts/29-real-time-systems-and-deterministic-scheduling.md` | Sisteme în timp real și planificarea deterministă | shipped (fact-checked) |
-| `posts/30-real-time-systems-in-practice.md` | Sisteme în timp real în practică | shipped (fact-checked) |
-| `posts/31-buses-101.md` | Magistrale 101 | shipped (fact-checked) |
-| `posts/32-from-isa-bus-to-pci-to-pcie.md` | De la magistrala ISA la PCI și la PCIe | shipped (fact-checked) |
-| `posts/33-pcie-deep-dive.md` | PCIe în detaliu | shipped (fact-checked) |
-| `posts/34-memory-buses.md` | Magistralele de memorie | shipped (fact-checked) |
-| `posts/35-the-memory-wall.md` | Zidul memoriei | shipped (fact-checked) |
-| `posts/43b-from-press-to-pixel.md` | De la presă la pixel | shipped (fact-checked batch 7; published 2026-11-05 with renumber) |
-| `posts/47-what-7nm-actually-means.md` | Ce înseamnă de fapt „7nm” | shipped (fact-checked) |
-| `posts/48-photolithography.md` | Fotolitografia | shipped (fact-checked) |
-| `posts/49-finfet-to-gaa.md` | De la FinFET la GAA | shipped (fact-checked) |
-| `posts/53-cuda-cores-warps-and-occupancy.md` | Nuclee CUDA, warp-uri și ocupare | shipped (fact-checked) |
-| `posts/54-gpu-memory-hierarchy.md` | Ierarhia de memorie a GPU-ului | shipped (fact-checked) |
-| `posts/55-tensor-cores.md` | Tensor Cores | shipped (fact-checked) |
-| `posts/57-why-matrix-multiply-reshaped-chip-design.md` | De ce înmulțirea de matrice a remodelat proiectarea cipurilor | shipped (fact-checked) |
-| `posts/58-systolic-arrays.md` | Matrice sistolice | shipped (fact-checked) |
-| `posts/60-sparsity-in-hardware.md` | Sparsity în hardware | shipped (fact-checked) |
+| `posts/01-foreword.md` | Cuvânt înainte | placeholder (Nayana's lane; not expanded) |
+| `posts/02-mechanical-electromechanical-computing.md` | Calcul mecanic și electromecanic | shipped draft (`draft: true`, mirrors English) |
+| `posts/02-what-is-this-thing.md` | Ce e chestia asta? | shipped (fact-checked; hub) |
+| `posts/02-take-barrel-organ.md` | Flașneta | shipped (fact-checked; bookHidden) |
+| `posts/02-take-caravan.md` | Caravana | shipped (fact-checked; bookHidden) |
+| `posts/02-take-clerk.md` | Funcționarul de birou | shipped (fact-checked; bookHidden) |
+| `posts/02-take-feast-scoop.md` | Lingura de la nuntă | shipped (fact-checked; bookHidden) |
+| `posts/02-take-pebbles.md` | Tăvi cu pietricele | shipped (fact-checked; bookHidden) |
+| `posts/02-take-player-piano.md` | Pianola | shipped (fact-checked; bookHidden) |
+| `posts/02-take-silk-cards.md` | Cartonașe de model pe mătase | shipped (fact-checked; bookHidden) |
+| `posts/02-take-stubborn-helper.md` | Ajutorul încăpățânat | shipped (fact-checked; bookHidden) |
+| `posts/02-take-water-wheel.md` | Roata de apă | shipped (fact-checked; bookHidden) |
+| `posts/03-babbage-engines.md` | Motoarele lui Babbage | shipped (fact-checked) |
+| `posts/04-jacquard-loom.md` | Războiul Jacquard | shipped (fact-checked) |
+| `posts/05-why-mechanical-matters.md` | De ce contează calculul mecanic | shipped (fact-checked) |
+| `posts/06-woodblock-to-movable-type.md` | De la gravura în lemn la literele mobile | shipped (fact-checked batch 7; published 2026-11-05 with renumber) |
+| `posts/07-relays-and-electromechanical-logic.md` | Relee și logica electromecanică | shipped (fact-checked; deep) |
+| `posts/08-the-vacuum-tube-era.md` | Era tuburilor vidate | shipped (fact-checked) |
+| `posts/09-why-the-transistor-had-to-happen.md` | De ce trebuia să apară tranzistorul | shipped (fact-checked) |
+| `posts/10-semiconductors-from-first-principles.md` | Semiconductori de la primele principii | shipped (fact-checked) |
+| `posts/11-the-transistor-bjt-to-mosfet.md` | Tranzistorul: de la BJT la MOSFET | shipped (fact-checked) |
+| `posts/12-logic-gates-from-transistors.md` | Porți logice din tranzistori | shipped (fact-checked) |
+| `posts/13-from-gates-to-combinational-logic.md` | De la porți la logică combinațională | shipped (fact-checked) |
+| `posts/14-sequential-logic.md` | Logică secvențială | shipped (fact-checked) |
+| `posts/15-the-memory-hierarchy-begins.md` | Începutul ierarhiei de memorie | shipped (fact-checked) |
+| `posts/16-instruction-sets.md` | Seturi de instrucțiuni | shipped (fact-checked) |
+| `posts/17-datapath-design.md` | Proiectarea căii de date | shipped (fact-checked) |
+| `posts/18-pipelining.md` | Pipelining | shipped (fact-checked) |
+| `posts/19-branch-prediction.md` | Predicția salturilor | shipped (fact-checked) |
+| `posts/20-caches.md` | Cache-uri | shipped (fact-checked) |
+| `posts/21-out-of-order-execution.md` | Execuția în afara ordinii | shipped (fact-checked) |
+| `posts/22-superscalar-multicore.md` | Superscalar și multicore | shipped (fact-checked) |
+| `posts/23-mainframes-to-minicomputers-to-microprocessors.md` | De la mainframe-uri la minicalculatoare și microprocesoare | shipped (fact-checked) |
+| `posts/24-the-x86-vs-risc-split.md` | Ruptura x86 versus RISC | shipped (fact-checked) |
+| `posts/25-arm-and-risc-v-the-architecture-landscape-today.md` | ARM și RISC-V: peisajul de arhitecturi azi | shipped (fact-checked) |
+| `posts/26-batch-processing-and-the-birth-of-the-operating-system.md` | Prelucrarea pe loturi și nașterea sistemului de operare | shipped (fact-checked) |
+| `posts/27-time-sharing-and-the-unix-lineage.md` | Partajarea timpului și descendența Unix | shipped (fact-checked) |
+| `posts/28-the-gnu-movement-and-linux.md` | Mișcarea GNU și Linux | shipped (fact-checked) |
+| `posts/29-virtual-memory-and-multitasking.md` | Memoria virtuală și multitaskingul | shipped (fact-checked) |
+| `posts/30-containers-and-modern-os-isolation.md` | Containerele și izolarea în sistemele de operare moderne | shipped (fact-checked) |
+| `posts/31-from-machine-code-to-assembly.md` | De la codul mașină la limbajul de asamblare | shipped (fact-checked) |
+| `posts/32-high-level-languages-fortran-cobol-lisp-c.md` | Limbaje de nivel înalt: FORTRAN, COBOL, Lisp, C | shipped (fact-checked) |
+| `posts/33-compilers-jit-and-modern-language-runtimes.md` | Compilatoare, JIT și medii de rulare moderne | shipped (fact-checked) |
+| `posts/34-real-time-systems-and-deterministic-scheduling.md` | Sisteme în timp real și planificarea deterministă | shipped (fact-checked) |
+| `posts/35-real-time-systems-in-practice.md` | Sisteme în timp real în practică | shipped (fact-checked) |
+| `posts/36-buses-101.md` | Magistrale 101 | shipped (fact-checked) |
+| `posts/37-from-isa-bus-to-pci-to-pcie.md` | De la magistrala ISA la PCI și la PCIe | shipped (fact-checked) |
+| `posts/38-pcie-deep-dive.md` | PCIe în detaliu | shipped (fact-checked) |
+| `posts/39-memory-buses.md` | Magistralele de memorie | shipped (fact-checked) |
+| `posts/40-the-memory-wall.md` | Zidul memoriei | shipped (fact-checked) |
+| `posts/49-from-press-to-pixel.md` | De la presă la pixel | shipped (fact-checked batch 7; published 2026-11-05 with renumber) |
+| `posts/53-what-7nm-actually-means.md` | Ce înseamnă de fapt „7nm” | shipped (fact-checked) |
+| `posts/54-photolithography.md` | Fotolitografia | shipped (fact-checked) |
+| `posts/55-finfet-to-gaa.md` | De la FinFET la GAA | shipped (fact-checked) |
+| `posts/59-cuda-cores-warps-and-occupancy.md` | Nuclee CUDA, warp-uri și ocupare | shipped (fact-checked) |
+| `posts/60-gpu-memory-hierarchy.md` | Ierarhia de memorie a GPU-ului | shipped (fact-checked) |
+| `posts/61-tensor-cores.md` | Tensor Cores | shipped (fact-checked) |
+| `posts/63-why-matrix-multiply-reshaped-chip-design.md` | De ce înmulțirea de matrice a remodelat proiectarea cipurilor | shipped (fact-checked) |
+| `posts/64-systolic-arrays.md` | Matrice sistolice | shipped (fact-checked) |
+| `posts/66-sparsity-in-hardware.md` | Sparsity în hardware | shipped (fact-checked) |
 | Home (`_index.md`) | Cum am ajuns acolo | shipped |
 | `about.md` | Despre și credite | shipped |
 | All other chapters | — | pending |
@@ -167,8 +167,8 @@ Conceptul și inspirația acestei lucrări îi aparțin lui Nayana Hettiarachchi
 - **Announcement MVP bodies:** Foreword + Phase 1 (01–04) + Attention (63) + glossary/home chrome in TH / SI / TA
 - Full remaining chapter bodies: after announcement (phased)
 - **Chinese (zh-Hans / zh-Hant), 2026-09-26:** locales wired; placeholder landing only. Pages come from the Chinese desk, written from Chinese primary sources. Not translated from English. Native-reader proofread before final.
-- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `00`–`34` (early chapters, batches 1–6; phase 5 string „5 — Magistralele și arhitectura sistemului” approved; batch 6 adds hub `01-what-is-this-thing`, `01a`–`01c`, and nine `01-take-*` pages; `01-mechanical-…` stays `draft: true`), `01d-woodblock-to-movable-type` and `43b-from-press-to-pixel` (batch 7; published 2026-11-05; phase 7 „7 — Sisteme distribuite, Big Data și orchestrare”; weights renumbered with English spine), `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
-- Last updated: 2026-11-05 (ro 01d + 43b published; spine weights renumbered)
+- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `00`–`34` (early chapters, batches 1–6; phase 5 string „5 — Magistralele și arhitectura sistemului” approved; batch 6 adds hub `02-what-is-this-thing`, `ch 3 (03-babbage-engines)`–`ch 5 (05-why-mechanical-matters)`, and nine `01-take-*` pages; `01-mechanical-…` stays `draft: true`), `06-woodblock-to-movable-type` and `49-from-press-to-pixel` (batch 7; published 2026-11-05; phase 7 „7 — Sisteme distribuite, Big Data și orchestrare”; weights renumbered with English spine), `40-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
+- Last updated: 2026-11-05 (ro ch 6 (06-woodblock-to-movable-type) + ch 49 (49-from-press-to-pixel) published; spine weights renumbered)
 
 ## Fact-check notes (ongoing)
 

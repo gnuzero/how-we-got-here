@@ -5,6 +5,7 @@ date: 2026-09-13
 draft: false
 phase: "0 — Credits"
 series_index: -1
+aliases: []
 tags: ["credits", "sources", "attribution"]
 summary: "Credits due first — published sources, existing interactives, and images this journey stands on"
 ---

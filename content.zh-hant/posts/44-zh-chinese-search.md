@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "7 — 分散式系統、大數據與編排"
 series_index: 19
+aliases: []
 tags: ["搜尋引擎", "網絡指南針", "天網", "木棉", "CERNET", "中文斷詞", "九五攻關", "集中式與分散式"]
 summary: "據賽爾網絡的回顧，中國大陸第一批搜尋引擎誕生在三所大學的實驗室裡；它們先撞上中文沒有空格這堵牆，再撞上網頁多到一台機器裝不下這堵牆。"
 image_prompt: "1997 university network lab in Beijing: one beige tower server and one PC on a desk, cables to a wall socket labelled CERNET, a whiteboard with a sentence of Chinese characters split by vertical strokes; later-era racks faintly overlaid behind them to suggest growth; documentary illustration, no readable text"

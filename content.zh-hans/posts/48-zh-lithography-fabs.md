@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "8 — 工艺节点与制造"
 series_index: 13
+aliases: []
 tags: ["光刻", "光刻机", "分步重复", "清华大学", "909工程", "华虹", "中芯国际", "上海微电子"]
 summary: "1964 年的“土光刻机”是两台显微镜加一盏紫外灯；1980 年清华做出自动对准的分步投影光刻机；1990 年代，摩尔定律成了审批流程的时钟。"
 image_prompt: "Split composition: left, a 1964 Beijing lab bench with two brass microscopes and a small UV lamp improvised into a mask aligner; right, a modern white lithography scanner in a cleanroom under yellow light; thin line of light connecting them; documentary illustration style, no text"

@@ -1,5 +1,6 @@
 ---
 title: "我們如何走到那裡"
+aliases: []
 type: docs
 # Placeholder landing. Traditional is derived from content.zh-hans/_index.md with OpenCC s2twp, then terminology-reviewed (VISION.md, Language authority lock 2026-09-26).
 # Status: not final. Needs a native-reader proofread before it is marked final.

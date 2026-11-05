@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "3 — 構建 CPU 及其架構"
 series_index: 17
+aliases: []
 tags: ["香港", "打孔卡", "IBM System/360", "滙豐銀行", "香港天文台", "Data General", "政府統計處", "聯合大學電腦中心", "打咭"]
 summary: "1960 年代的香港，打孔卡設備和電腦先後進入航空公司、保險公司、銀行和政府部門；天文台三十年間從借用政府電腦，到自購 IBM、Data General，再到克雷超級電腦。"
 image_prompt: "1967 Hong Kong harbour at Causeway Bay: crates holding a mainframe computer being lifted from a small motor launch onto a pier, workers in shorts and vests, junks and Star Ferry-era buildings in the background; black-and-white press photo style, no text, no logos"

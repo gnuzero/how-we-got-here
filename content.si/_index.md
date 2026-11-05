@@ -1,5 +1,6 @@
 ---
 title: "අප එතැනට පැමිණි ආකාරය"
+aliases: []
 type: docs
 ---
 

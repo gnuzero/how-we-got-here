@@ -1,5 +1,6 @@
 ---
 title: "පිළිබඳව සහ ආරෝපණය"
+aliases: []
 type: docs
 ---
 

@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "密码与战时计算"
 series_index: 20
+aliases: []
 tags: ["商用密码", "商用密码管理条例", "密码法", "SM2", "SM3", "SM4", "SM9", "国家密码管理局", "ISO/IEC"]
 summary: "1999 年的条例写明商用密码技术属于国家秘密，2006 年起算法陆续公开，2018 年进入 ISO/IEC 国际标准，2019 年的《密码法》把密码分成三类：谁可以造、卖、用密码，二十年里被改写了好几次。"
 image_prompt: "Editorial still life on a desk: a 1999 printed regulation booklet, a 2010s smart card and USB security token, and a printed ISO standard cover, arranged along a timeline ruler; cool neutral light, documentary style, no readable text"

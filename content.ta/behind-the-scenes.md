@@ -1,5 +1,6 @@
 ---
 title: "திரைக்குப் பின்னால்"
+aliases: []
 type: docs
 draft: false
 ---

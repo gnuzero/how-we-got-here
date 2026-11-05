@@ -1,5 +1,6 @@
 ---
 title: "เกี่ยวกับและเครดิต"
+aliases: []
 type: docs
 ---
 

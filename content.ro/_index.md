@@ -1,5 +1,6 @@
 ---
 title: "Cum am ajuns acolo"
+aliases: []
 type: docs
 ---
 

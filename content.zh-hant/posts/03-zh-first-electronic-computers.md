@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "1 — 基礎：從機械計算到真空管計算"
 series_index: 5
+aliases: []
 tags: ["103機", "104機", "109丙", "兩彈一星", "手搖計算機", "DJS-130", "逆向工程", "夏培肅"]
 summary: "從 1956 年的“緊急措施”到 DJS-100 系列：中國早期電腦為誰而造、在哪裡日夜運轉，以及為什麼“算盤造原子彈”是誤傳。"
 image_prompt: "Late-1950s Beijing computer room: tall grey vacuum-tube cabinets with rows of glowing tubes, a paper-tape reader, two young engineers at a control console at night, a hand-cranked mechanical calculator on a side desk, period-accurate, black-and-white documentary photo style, no text"

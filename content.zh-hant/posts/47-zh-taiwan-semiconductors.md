@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "8 — 製程節點與製造"
 series_index: 9
+aliases: []
 tags: ["台灣", "積體電路", "工研院", "RCA", "聯電", "新竹科學園區", "台積電", "晶圓代工"]
 summary: "1974 年 2 月 7 日的一頓豆漿早餐、一次公開招標和一個政府提出的請求，決定了台灣半導體的路，也催生了專業晶圓代工這種模式。"
 image_prompt: "1970s Taipei breakfast shop on Nanyang Street at dawn: seven men in suits around a small table with bowls of soy milk and youtiao, papers spread out; through the window, a faint overlay of a modern wafer fab cleanroom; warm documentary illustration style"

@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "4 — 软件基础：操作系统、编程语言与实时系统"
 series_index: 7
+aliases: []
 tags: ["汉字输入", "中文打字机", "仓颉", "五笔字型", "汉卡", "联想", "激光照排", "王选"]
 summary: "英文键盘一键一个字母，汉字却有几千上万个；从打字机字盘到输入法、汉卡和王选的字形压缩，每一步都在绕过同一个瓶颈。"
 image_prompt: "Split composition: left, a 1920s Chinese typewriter with a large flat tray of metal character slugs and a selector arm; right, a 1980s beige PC with a Chinese-character expansion card and a laser-typeset newspaper page coming out of a phototypesetter; warm archival lighting, clean editorial illustration style"

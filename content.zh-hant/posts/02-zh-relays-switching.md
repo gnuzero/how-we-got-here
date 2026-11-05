@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "1 — 基礎：從機械計算到真空管計算"
 series_index: 4
+aliases: []
 tags: ["繼電器", "電話交換", "旋轉制", "縱橫制", "記發器", "七國八制", "HJD04", "上海"]
 summary: "從 1882 年外灘的人工交換所到 1991 年的 HJD04：上海的繼電器交換機一用幾十年，改線就是改程式。"
 image_prompt: "Interior of a mid-20th-century Shanghai telephone exchange: long rows of grey relay racks and rotary switch frames, cable-laced wiring looms, a technician in a work coat checking a rack with a test set, period-accurate, muted documentary photography style, no text"

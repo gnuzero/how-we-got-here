@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "3 — 构建 CPU 及其架构"
 series_index: 10
+aliases: []
 tags: ["超级计算机", "DJS-130", "银河-I", "曙光", "龙芯", "神威·太湖之光", "天河", "指令系统"]
 summary: "兼容别人、手工自造、用商品芯片拼、再自己设计芯片：中国的大型计算机四十年里换了几条路，每一次转向都被一个具体的约束逼出来。"
 image_prompt: "Triptych: left, 1983 technicians hand-soldering a huge backplane of wires for the Yinhe-I; centre, a 1993 rack of VME boards with Motorola chips; right, rows of modern supercomputer cabinets glowing blue in a hall; clean technical illustration style"

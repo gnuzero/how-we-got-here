@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "4 — 軟體基礎：作業系統、程式語言與即時系統"
 series_index: 15
+aliases: []
 tags: ["作業系統", "楊芙清", "150機", "虛擬機器", "紅旗Linux", "銀河麒麟", "openEuler", "CLE"]
 summary: "1970 年代初，北大的作業系統組在大慶油田的另一台電腦上模擬出 150 機，用 23 天調通了作業系統；半個世紀後，中國的作業系統走進了開源基金會。"
 image_prompt: "Early-1970s computer room at Daqing oilfield in winter: a dozen young engineers in padded coats working night shifts at a large transistor computer console, paper tape and printouts everywhere, a thermos and enamel mugs, frost on the window; black-and-white documentary photo style, no text"

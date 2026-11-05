@@ -5,6 +5,7 @@ date: 2026-09-13
 draft: false
 phase: "0 — Credits"
 series_index: -1
+aliases: []
 tags: ["credits", "sources", "attribution"]
 summary: "පළමුව ස්තුතිය — මෙම ගමන රැඳෙන ප්‍රකාශිත මූලාශ්‍ර, දැනටමත් ඇති අන්තර්ක්‍රියාකාරී මාධ්‍ය, සහ රූප"
 ---

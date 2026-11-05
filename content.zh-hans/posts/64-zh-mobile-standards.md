@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "治理 / 互联网公民"
 series_index: 22
+aliases: []
 tags: ["移动通信", "TACS", "大哥大", "GSM", "TD-SCDMA", "小灵通", "WAPI", "WiMAX", "频率", "标准必要专利"]
 summary: "频率只有一份，制式却有好几种：从 1987 年广州的第一个模拟网，到截稿前几个小时送出的 TD-SCDMA、为它让路的小灵通和一项强制性的无线局域网国标，空中的规则同样有人在决定。"
 image_prompt: "Split composition: on the left a 1987 Guangzhou street with a man holding a brick-sized analogue mobile phone; on the right a 2009 phone-shop counter with slim 3G handsets; a thin frequency spectrum bar runs across the image with one band being handed from one side to the other; documentary illustration, no readable text"

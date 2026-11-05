@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "1 — 基礎：從機械計算到真空管計算"
 series_index: 3
+aliases: []
 tags: ["記里鼓車", "指南車", "水運儀象台", "蘇頌", "手搖計算機", "數理精蘊", "六合叢談", "巴貝奇"]
 summary: "宋代的齒輪已經會十進位制計數，蘇頌想把人手從儀器裡拿走，清宮造出了自己的手搖計算機，1858 年（一說 1859 年）的上海雜誌用中文介紹了巴貝奇的差分機。"
 image_prompt: "Cutaway reconstruction drawing of a Song-dynasty odometer cart: road wheel, vertical and horizontal wooden gear wheels with visible teeth, two carved wooden figures with drum and bell on upper decks, parchment-toned technical illustration style, no text"

@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "1 — 基础：从机械计算到电子管计算"
 series_index: 1
+aliases: []
 tags: ["算筹", "算盘", "珠算", "位值制", "口诀", "程大位", "孙子算经"]
 summary: "从《孙子算经》的纵横摆筹到程大位的珠算口诀：数存在筹和珠里，算法存在口诀里，执行它的是人。"
 image_prompt: "Overhead view of a dark wooden table: bamboo counting rods laid out in alternating vertical and horizontal groups to show a four-digit number, beside a Ming-style abacus and an open woodblock-printed arithmetic book, soft museum lighting, historically accurate, no text"

@@ -5,6 +5,7 @@ date: 2026-11-05
 draft: false
 phase: "0 — 致谢"
 series_index: -1
+aliases: []
 tags: ["致谢", "来源", "署名"]
 summary: "先致谢：本书中文版所依据的已出版资料、机构与图像来源"
 # Status: not final. Needs a native-reader proofread before it is marked final.

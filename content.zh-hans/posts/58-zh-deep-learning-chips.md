@@ -5,6 +5,7 @@ date: 2026-09-26
 draft: false
 phase: "10 — 现代 AI 硬件"
 series_index: 14
+aliases: []
 tags: ["深度学习处理器", "DianNao", "寒武纪", "计算所", "TPU", "NPU", "麒麟970", "昇腾"]
 summary: "2014 年，计算所与法国 Inria 合作的 DianNao 拿下 ASPLOS 最佳论文；三年后，这条路线进了手机，而华为的发布稿里没有提到寒武纪。"
 image_prompt: "A cramped glass-walled lab room at night, under 30 square metres, two researchers leaning over a debug host whose screen shows a test passing, a bare prototype chip on a small board connected by a serial cable, whiteboard with a grid of multiply-accumulate units; warm documentary illustration style, no text"
