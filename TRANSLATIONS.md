@@ -40,7 +40,7 @@ Serie educațională care urmărește întregul drum al calculului digital — d
 | **Sinhala** | පෙරවදන |
 | **Tamil** | முன்னுரை |
 | **Chinese (zh-Hans / zh-Hant)** | 前言 |
-| **Romanian** | *(pending — no Romanian foreword page yet)* |
+| **Romanian** | Cuvânt înainte (placeholder; Nayana's lane) |
 
 ## Post 63 Title
 
@@ -68,6 +68,13 @@ Romanian titles are listed **only** for chapters that actually have a `content.r
 
 | Chapter (shared slug) | Romanian title | Status |
 |----------|-------|--------|
+| `posts/00-credits.md` | Credite și uși de ieșire | shipped (fact-checked) |
+| `posts/00-foreword.md` | Cuvânt înainte | placeholder (Nayana's lane; not expanded) |
+| `posts/01-mechanical-electromechanical-computing.md` | Calcul mecanic și electromecanic | shipped draft (`draft: true`, mirrors English) |
+| `posts/02-relays-and-electromechanical-logic.md` | Relee și logica electromecanică | shipped (fact-checked; deep) |
+| `posts/03-the-vacuum-tube-era.md` | Era tuburilor vidate | shipped (fact-checked) |
+| `posts/04-why-the-transistor-had-to-happen.md` | De ce trebuia să apară tranzistorul | shipped (fact-checked) |
+| `posts/05-semiconductors-from-first-principles.md` | Semiconductori de la primele principii | shipped (fact-checked) |
 | `posts/35-the-memory-wall.md` | Zidul memoriei | shipped (fact-checked) |
 | `posts/47-what-7nm-actually-means.md` | Ce înseamnă de fapt „7nm” | shipped (fact-checked) |
 | `posts/48-photolithography.md` | Fotolitografia | shipped (fact-checked) |

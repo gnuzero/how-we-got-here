@@ -9,7 +9,38 @@
 
 - `_index.md` — series landing (from ro-desk checked; unchanged in fact-check)
 - `about.md` — Despre și credite (from ro-desk checked; unchanged in fact-check)
+- `posts/00-credits.md` — **Credite și uși de ieșire** (weight -1; fact-checked 2026-11-05)
+- `posts/00-foreword.md` — **Cuvânt înainte** (placeholder; Nayana's lane)
+- `posts/01-mechanical-electromechanical-computing.md` — **Calcul mecanic și electromecanic** (draft: true; fact-checked 2026-11-05)
+- `posts/02-relays-and-electromechanical-logic.md` — **Relee și logica electromecanică** (weight 6 / series_index 5; deep; fact-checked 2026-11-05)
+- `posts/03-the-vacuum-tube-era.md` — **Era tuburilor vidate** (weight 6 / series_index 5; fact-checked 2026-11-05)
+- `posts/04-why-the-transistor-had-to-happen.md` — **De ce trebuia să apară tranzistorul** (weight 7 / series_index 6; fact-checked 2026-11-05)
+- `posts/05-semiconductors-from-first-principles.md` — **Semiconductori de la primele principii** (weight 8 / series_index 7; fact-checked 2026-11-05)
 - `posts/35-the-memory-wall.md` — **Zidul memoriei** (weight 38 / series_index 37; fact-checked 2026-11-05)
+
+
+### Early chapters 00–05 (batch 1, fact-checked 2026-11-05)
+
+- `posts/00-credits.md` — **Credite și uși de ieșire** (weight -1 / series_index -1; date 2026-01-01; aligned with softened English credits; About link `/ro/about/`)
+- `posts/00-foreword.md` — **Cuvânt înainte** (placeholder only; Nayana's lane — not expanded by Romanian desk)
+- `posts/01-mechanical-electromechanical-computing.md` — **Calcul mecanic și electromecanic** (weight 2 / series_index 1; `draft: true` mirrors English; 1822 Babbage announcement from Science Museum)
+- `posts/02-relays-and-electromechanical-logic.md` — **Relee și logica electromecanică** (weight 6 / series_index 5, shared with 03 as in English; deep; MARICA sidebar from Rosman 1962 pp. 203–210)
+- `posts/03-the-vacuum-tube-era.md` — **Era tuburilor vidate** (weight 6 / series_index 5; CIFA/MECIPT from Toma 2008 + Iancu 2013; no Felix claim)
+- `posts/04-why-the-transistor-had-to-happen.md` — **De ce trebuia să apară tranzistorul** (weight 7 / series_index 6)
+- `posts/05-semiconductors-from-first-principles.md` — **Semiconductori de la primele principii** (weight 8 / series_index 7; Si 1.12 eV / Ge 0.66 eV at 300 K from Ioffe NSM)
+
+**Primaries opened (batch 1):** CHM Babbage; Menabrea/Lovelace Sketch (Fourmilab); Shannon 1937/1940 thesis; Rojas 1997; von Neumann First Draft; Penn Engineering ENIAC; Nobel 1956 Bardeen/Brattain/Shockley lectures; Rosman 1962 scan (ICTP); ICTP MARICA page; Toma 2008 Market Watch interview; Iancu 2013 AOS; Science Museum (1822); Ioffe NSM Si/Ge band gaps.
+
+**Still NEVERIFICAT (HTML comments only; nothing on-page relies on them):**
+1. Burks–Goldstine–von Neumann 1946 IAS report (image-only scan; no figures cited)
+2. Toma, *Buletin Științific* 1957 (catalog only; CIFA figures rest on Toma 2008 + Iancu 2013)
+3. MECIPT detail beyond Iancu 2013 (Drăgănescu 2001 unopened)
+4. Bardeen–Brattain, Phys. Rev. 74 (1948) — fetch 403; no figures cited
+5. Si/SiO₂ as MOSFET reason — deferred to ch. 06
+6. Z3 relay count and clock — omitted from prose
+7. Felix — no claim; no source found
+
+**Discrepancies noted (not on-page errors):** Iancu says MARICA built 1957 vs ICTP experimental 1959 (page uses ICTP 1959); ICTP article landing pp. 183–191 vs scan/history 203–210 (page uses 203–210).
 
 ### 47 — Ce înseamnă de fapt „7nm”
 
@@ -67,7 +98,7 @@
 
 ## Not yet (pending)
 
-- All other chapters — pending until present under `checked/` with REPORT coverage
+- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (batch 2: ch. 6–13 drafting)
 
 ## Notes
 
