@@ -3,3 +3,10 @@ other = "අප එතැනට පැමිණි ආකාරය"
 
 [foreword]
 other = "පෙරවදන"
+
+# Lab embed chrome (layouts/shortcodes/lab.html).
+[labIframeTitle]
+other = "අන්තර්ක්‍රියාකාරී lab: {{ .Type }}"
+
+[labOpenNewTab]
+other = "Lab එක නව tab එකක විවෘත කරන්න ↗"
