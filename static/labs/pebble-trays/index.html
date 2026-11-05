@@ -4,8 +4,9 @@
 <!-- NOINDEX-PRELAUNCH: remove at announcement -->
 <meta name="robots" content="noindex,nofollow">
 <meta charset="UTF-8">
+<script src="../_shared/i18n.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pebble Trays Lab</title>
+<title data-i18n="page.title">Pebble Trays Lab</title>
 <style>
   :root {
     --bg:#0d1117; --panel:#161b22; --border:#30363d;
@@ -98,37 +99,37 @@
 </style>
 </head>
 <body>
-  <h1>Pebble Trays</h1>
-  <div class="sub">Original for this book · CC BY 4.0 · Hold marks · follow the list · write the result</div>
+  <h1 data-i18n="page.heading">Pebble Trays</h1>
+  <div class="sub" data-i18n="page.subtitle">Original for this book · CC BY 4.0 · Hold marks · follow the list · write the result</div>
 
   <div class="guide">
-    <h2>Guided beat</h2>
-    <div class="phase" id="phase">Ready</div>
-    <div class="body" id="guideBody">Keep marks in the trays. Reveal one recipe step at a time and do only that step. When the list ends, copy how many marks sit in the last tray onto the strip.</div>
+    <h2 data-i18n="guide.heading">Guided beat</h2>
+    <div class="phase" id="phase" data-i18n="guide.ready.phase">Ready</div>
+    <div class="body" id="guideBody" data-i18n="guide.ready.body">Keep marks in the trays. Reveal one recipe step at a time and do only that step. When the list ends, copy how many marks sit in the last tray onto the strip.</div>
   </div>
   <div id="live" class="live" role="status" aria-live="polite"></div>
 
   <div class="layout">
     <div class="panel">
-      <h2>Three trays</h2>
+      <h2 data-i18n="panel.trays">Three trays</h2>
       <div class="trays" id="trays"></div>
       <div class="btnrow">
-        <button type="button" onclick="resetAll()">Clear all trays</button>
+        <button type="button" onclick="resetAll()" data-i18n="btn.clear">Clear all trays</button>
       </div>
     </div>
     <div class="panel">
-      <h2>Recipe card</h2>
+      <h2 data-i18n="panel.recipe">Recipe card</h2>
       <div class="recipe" id="recipe"></div>
       <div class="btnrow">
-        <button type="button" class="primary" id="btnNext" onclick="nextStep()">Show next step</button>
-        <button type="button" id="btnRestart" onclick="restartRecipe()">Restart recipe</button>
+        <button type="button" class="primary" id="btnNext" onclick="nextStep()" data-i18n="btn.next">Show next step</button>
+        <button type="button" id="btnRestart" onclick="restartRecipe()" data-i18n="btn.restart">Restart recipe</button>
       </div>
       <div class="strip">
-        <label for="answer">Answer strip — copy the count from the last tray</label>
+        <label for="answer" data-i18n="answer.label">Answer strip — copy the count from the last tray</label>
         <input id="answer" type="number" min="0" step="1" inputmode="numeric" aria-describedby="answerCheck">
         <div class="check" id="answerCheck"></div>
       </div>
-      <div class="note">
+      <div class="note" data-i18n="note">
         A shared practice for the “what is this kind of machine?” pages — one English copy for every language of the book.
       </div>
     </div>
@@ -136,14 +137,10 @@
 
 <script>
 // Original lab — CC BY 4.0 (Grok Team / Reed). No third-party simulator.
-const NAMES = ['First tray', 'Middle tray', 'Last tray'];
-const RECIPE = [
-  'Put three pebbles in the first tray.',
-  'Put two pebbles in the middle tray.',
-  'Move every pebble from the first tray into the last tray.',
-  'Move every pebble from the middle tray into the last tray.',
-  'Look at the last tray. Copy that count onto the answer strip.'
-];
+let NAMES = [];
+let RECIPE = [];
+function esc(v) { return String(v).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]); }
+function pebbles(n) { return n === 1 ? t('count.one', { n: n }) : t('count.other', { n: n }); }
 
 let counts = [0, 0, 0];
 let step = -1; // -1 = not started; 0..len-1 revealed through that index
@@ -164,14 +161,14 @@ function renderTrays() {
     const el = document.createElement('div');
     el.className = 'tray' + (step >= 0 && i === 2 && step >= RECIPE.length - 1 ? ' highlight' : '');
     el.innerHTML =
-      '<div class="tray-name">' + NAMES[i] + '</div>' +
-      '<div class="tray-count" id="count-' + i + '">' + n + ' pebble' + (n === 1 ? '' : 's') + '</div>' +
+      '<div class="tray-name">' + esc(NAMES[i]) + '</div>' +
+      '<div class="tray-count" id="count-' + i + '">' + esc(pebbles(n)) + '</div>' +
       '<div class="pebbles" id="pebbles-' + i + '" aria-hidden="true"></div>' +
       '<div class="tray-btns">' +
-        '<button type="button" aria-label="Add one pebble to ' + NAMES[i] + '" onclick="addPebble(' + i + ')">+1</button>' +
-        '<button type="button" aria-label="Remove one pebble from ' + NAMES[i] + '" onclick="removePebble(' + i + ')">−1</button>' +
+        '<button type="button" aria-label="' + esc(t('aria.add', { tray: NAMES[i] })) + '" onclick="addPebble(' + i + ')">+1</button>' +
+        '<button type="button" aria-label="' + esc(t('aria.remove', { tray: NAMES[i] })) + '" onclick="removePebble(' + i + ')">−1</button>' +
         (i < 2
-          ? '<button type="button" aria-label="Empty ' + NAMES[i] + ' into the last tray" onclick="pourIntoLast(' + i + ')">Empty into last</button>'
+          ? '<button type="button" aria-label="' + esc(t('aria.empty', { tray: NAMES[i] })) + '" onclick="pourIntoLast(' + i + ')">' + esc(t('btn.emptyIntoLast')) + '</button>'
           : '') +
       '</div>';
     root.appendChild(el);
@@ -188,24 +185,24 @@ function renderRecipe() {
   const box = document.getElementById('recipe');
   const btn = document.getElementById('btnNext');
   if (step < 0) {
-    box.innerHTML = '<div class="step-text">The card is face-down. Press <strong>Show next step</strong> to reveal the first line only.</div>';
+    box.innerHTML = '<div class="step-text">' + t('recipe.facedown_html') + '</div>';
     btn.disabled = false;
-    btn.textContent = 'Show next step';
+    btn.textContent = t('btn.next');
     return;
   }
   let html = '';
   for (let i = 0; i <= step && i < RECIPE.length; i++) {
     const current = i === step;
-    html += '<div class="step-num">Step ' + (i + 1) + (current ? ' (do this now)' : '') + '</div>';
-    html += '<div class="step-text" style="margin-bottom:10px;' + (current ? '' : 'color:var(--muted);') + '">' + RECIPE[i] + '</div>';
+    html += '<div class="step-num">' + esc(current ? t('recipe.stepnum.current', { n: i + 1 }) : t('recipe.stepnum', { n: i + 1 })) + '</div>';
+    html += '<div class="step-text" style="margin-bottom:10px;' + (current ? '' : 'color:var(--muted);') + '">' + esc(RECIPE[i]) + '</div>';
   }
   if (step >= RECIPE.length - 1) {
-    html += '<div class="done">List finished. Copy the last tray onto the strip.</div>';
+    html += '<div class="done">' + esc(t('recipe.done')) + '</div>';
     btn.disabled = true;
-    btn.textContent = 'All steps shown';
+    btn.textContent = t('btn.allShown');
   } else {
     btn.disabled = false;
-    btn.textContent = 'Show next step';
+    btn.textContent = t('btn.next');
   }
   box.innerHTML = html;
 }
@@ -218,7 +215,7 @@ function pourIntoLast(from) {
   counts[2] += n;
   renderTrays();
   checkAnswerQuiet();
-  if (n) announce('Moved ' + n + ' pebble' + (n === 1 ? '' : 's') + ' into the last tray.');
+  if (n) announce(n === 1 ? t('live.moved.one', { n: n }) : t('live.moved.other', { n: n }));
 }
 
 function addPebble(i) {
@@ -240,14 +237,14 @@ function nextStep() {
   step++;
   renderRecipe();
   renderTrays();
-  const line = 'Step ' + (step + 1) + ' of ' + RECIPE.length + ': ' + RECIPE[step];
+  const line = t('live.step', { n: step + 1, total: RECIPE.length, text: RECIPE[step] });
   announce(line);
   setGuide(
-    'Step ' + (step + 1) + ' of ' + RECIPE.length,
-    'Do only this step. Use +1 / −1 on the trays. Do not skip ahead.'
+    t('guide.step.phase', { n: step + 1, total: RECIPE.length }),
+    t('guide.step.body')
   );
   if (step >= RECIPE.length - 1) {
-    setGuide('Write the result', 'Copy how many pebbles sit in the last tray onto the answer strip.');
+    setGuide(t('guide.write.phase'), t('guide.write.body'));
   }
 }
 
@@ -258,15 +255,15 @@ function restartRecipe() {
   document.getElementById('answerCheck').className = 'check';
   renderRecipe();
   renderTrays();
-  announce('Recipe restarted. Card is face-down.');
-  setGuide('Ready', 'Keep marks in the trays. Reveal one recipe step at a time and do only that step. When the list ends, copy how many marks sit in the last tray onto the strip.');
+  announce(t('live.restarted'));
+  setGuide(t('guide.ready.phase'), t('guide.ready.body'));
 }
 
 function resetAll() {
   counts = [0, 0, 0];
   renderTrays();
   checkAnswerQuiet();
-  announce('All trays cleared.');
+  announce(t('live.cleared'));
 }
 
 function checkAnswerQuiet() {
@@ -279,22 +276,26 @@ function checkAnswerQuiet() {
   }
   const v = Number(input.value);
   if (step < RECIPE.length - 1) {
-    check.textContent = 'Finish the recipe steps first.';
+    check.textContent = t('check.finishFirst');
     check.className = 'check';
     return;
   }
   if (v === counts[2]) {
-    check.textContent = 'Matches the last tray.';
+    check.textContent = t('check.ok');
     check.className = 'check ok';
   } else {
-    check.textContent = 'Does not match the last tray yet — count again.';
+    check.textContent = t('check.bad');
     check.className = 'check bad';
   }
 }
 
 document.getElementById('answer').addEventListener('input', checkAnswerQuiet);
 
-restartRecipe();
+LabI18n.ready.then(() => {
+  NAMES = [t('tray.first'), t('tray.middle'), t('tray.last')];
+  RECIPE = [t('recipe.1'), t('recipe.2'), t('recipe.3'), t('recipe.4'), t('recipe.5')];
+  restartRecipe();
+});
 </script>
 </body>
 </html>
