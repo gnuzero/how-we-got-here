@@ -160,3 +160,22 @@
   - 63-attention-is-all-you-need.md: softmax by hand, 3-token self-attention with invented teaching numbers, matrix form and O(n²·d) cost, why √d_k (footnote 4), multi-head (h = 8, d_k = 64), causal −∞ mask, pencil exercise
 - **Fixed in fact-check:** the pre-existing 14 text said the mini-cpu lab lets you watch predictor state. The lab has no predictor, pipeline or cache; the sentence now says to track the counter on paper. The asset-checklist comment in 14 and 16 no longer contains a live lab shortcode (it rendered a hidden iframe inside the HTML comment).
 - Hugo build clean (with `--themesDir` pointing at the main checkout's theme). No lock file or build output was committed.
+
+## si-gaps-2: deep Sinhala explainers (2026-09-26, Asia/Bangkok)
+
+Branch `si-gaps-2` from `origin/main` `85f3ae0`, with si-gaps-1 merged in so this entry stacks after #16's (merge after #16). One "ගැඹුරින්: …" section per page, each with a Sinhala-sources honesty note, worked examples, pencil exercises with answers, and a sources list. Existing text, labs and Try-this-now hooks kept; no new lab embeds; draft:false; UTF-8 clean.
+
+- 02-relays-and-electromechanical-logic.md — relay contacts → AND/OR/NOT; Shannon 1938 hindrance algebra; relay half adder (before the asset checklist; the door-out is mid-page)
+- 50-moore-s-law.md — Moore 1965 minimum-cost curve and doubling; Moore 1975 revision; 4004 → GA100 doubling check
+- 19-the-x86-vs-risc-split.md — CPU time = IC × CPI × T; Patterson & Ditzel 1980 evidence
+- 22-time-sharing-and-the-unix-lineage.md — 1974 UNIX paper statistics; round-robin arithmetic; i-nodes, links, permissions, pipes; vm-terminal exercises
+- 31-buses-101.md — address/data/control buses; 2ⁿ addressing; 8086 bus cycle, wait states, bandwidth; HOLD/HLDA; tri-state
+- 34-memory-buses.md — DDR4 latency in ns; channel bandwidth; row hit/idle/conflict; banks; refresh
+- 47-what-7nm-actually-means.md — node names vs pitches; density metric; Intel 2021 renaming
+- 48-photolithography.md — Rayleigh CD = k1·λ/NA; DUV/EUV/High-NA k1; multi-patterning
+- 53-cuda-cores-warps-and-occupancy.md — warps, divergence, occupancy on A100
+- 54-gpu-memory-hierarchy.md — HBM bandwidth; ridge point; coalescing; shared-memory banks
+- 55-tensor-cores.md — MMA shapes; TFLOPS arithmetic; FP32 accumulation
+- ch31 school-material check: the NIE Gr12 ICT TG (PDF p. 86, printed p. 73, "4. පථය") defines only the data bus and control bus; the Gr13 TG, resource book and EPD G10/G11 textbooks have syllabus, glossary or topology mentions only; e-thaksalawa links to a si.wiki bullet list. So 31 was re-rated none → thin, and the section recaps the NIE terms and goes deeper on the rest. 34 and 48 were also re-rated to thin (consumer-level videos only). Details are in the desk's gaps.md, which lives outside the repo.
+- Flags: sections on 31, 34, 47, 48, 53, 54, 55 sit before the asset checklist because those pages have no door-out. Illustrative and model numbers are labelled as such. Some sources were read via mirrors (Bohr editorial, Micron datasheets, the Intel 8086 datasheet). The pre-existing lab shortcode inside the asset-checklist HTML comments was left alone.
+- **Fixed in fact-check:** the asset-checklist comments in 19 and 22 no longer contain a live lab shortcode. In 47, the "~0.5x" traditional area scaling is on Mistry slide 20, not 22; the Bohr editorial now points to the Internet Archive copy of the official Intel Newsroom page, not a third-party repost. In 53, added a note that the occupancy maths ignores the 256-register-per-warp allocation unit and the 1 KB per-block shared-memory reservation. Neither changes the page's results.
