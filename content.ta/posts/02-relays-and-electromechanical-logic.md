@@ -26,6 +26,24 @@ schematics: "Diagram: relay schematic symbol + physical cutaway, plus simple rel
 - **Turing-complete (Turing-முழுமை):** போதுமான நினைவகம் இருந்தால் எந்தக் கணக்கீட்டையும் செய்யக்கூடிய தன்மை.
 - **Clock frequency (கடிகார அதிர்வெண்):** வினாடிக்கு எத்தனை அடிப்படைச் சுழற்சிகள் — Hz.
 
+## ஒரே பாகத்துக்கு இரண்டு வேலைகள்
+
+இந்த அத்தியாயத்தில் **ரிலே** ஒரு சுவிட்ச்: பலவீனமான சுருள் ஒரு வலிய சுற்றைத் திறக்கிறது அல்லது மூடுகிறது; பின்னர் அது AND, OR, NOT கட்டுமானக் கூறாகிறது. தந்திக் கம்பியில் ரிலே வேறொரு வேலை செய்கிறது: நீண்ட கம்பியில் வந்த பலவீனமான சமிக்ஞை, ஒரு புதிய உள்ளூர் மின்னோட்டத்தை இயக்குகிறது — அதனால் செய்தி மேலும் தூரம் போகிறது. ஒரே பாகக் குடும்பம், இரண்டு வேலைகள். 1835-இல் Princeton-இல் Joseph Henry, ஒரு சிறிய "intensity" காந்தம் பெரிய "quantity" காந்தத்தைக் கட்டுப்படுத்தும் ஆரம்ப ரிலேயைக் கட்டினார். Morse-இன் தந்தி பயன்படுத்திய repeater-இன் அடிப்படைக் கொள்கையாக Smithsonian அதைக் கருதுகிறது. Henry-யை ரிலேயின் ஒரே கண்டுபிடிப்பாளர் என்று நாங்கள் சொல்லவில்லை. ([Smithsonian Institution Archives, Joseph Henry](https://siarchives.si.edu/collections/siris_sic_12484))
+
+### கம்பிக்கு முன்: இறக்கைகளில் செய்திகள்
+
+செய்தியைத் தாவல்களாக நகர்த்துவது மின்சாரத்தை விடப் பழையது. Mutina முற்றுகையின்போது (கி.மு. 43) Hirtius புறாக்களை இருட்டில் உணவின்றி வைத்து, அவற்றின் கழுத்தில் கடிதங்களைக் கட்டி நகரச் சுவர்களுக்கு அருகே விடுவித்தார் என்று Frontinus பதிவு செய்கிறார்; பறவைகள் மிக உயர்ந்த கட்டடங்களை நோக்கிப் பறந்தன, அங்கே Brutus கடிதங்களை எடுத்தார். ([Frontinus, *Strategemata* 3.13.8](https://penelope.uchicago.edu/thayer/e/roman/texts/frontinus/strategemata/3*.html))
+
+28 ஏப்ரல் 1850 அன்று Paul Julius Reuter, Heinrich Geller-இடம் வாங்கிய 45 பறவைகளுடன் Aachen–Brussels இடையே புறாச் சேவையைத் தொடங்கினார் — தந்தி இன்னும் எட்டாத ஒரு பகுதியை நிரப்ப. 14 ஜூன் 1851 அன்று, தந்திக் கம்பிகளையும் புறாக்களையும் இணைத்த செய்திச் சேவையை நடத்திய பின், அவர் லண்டன் வந்தார். விடுபட்ட ஒரு பகுதியைக் கடக்கும் store-and-forward அது. ([The Baron, Reuters history](https://www.thebaron.info/archives/history))
+
+### மின்சாரச் செய்தி
+
+Cooke, Wheatstone இருவரும் 10 ஜூன் 1837 அன்று தங்கள் தந்திக்குக் காப்புரிமை பெற்று, 6 செப்டம்பர் 1837-க்குள் London and Birmingham Railway-இன் Euston Square-இல் இயக்கினர். ([Distant Writing, Cooke & Wheatstone](https://www.distantwriting.co.uk/cookewheatstone.html)) Morse, Vail ஆகியோரின் அதிகாரப்பூர்வ Washington–Baltimore செயல்விளக்கம் **24 மே 1844** அன்று நடந்தது; முதல் செய்தியை Annie Ellsworth தேர்ந்தெடுத்தார்: "What hath God wrought." ([U.S. Senate history](https://www.senate.gov/artandhistory/senate-stories/morses-telegraph-in-the-capitol.htm))
+
+<!-- மூலங்கள் (Lucas fact-check): Frontinus 3.13.8; The Baron Reuter timeline; Distant Writing Cooke & Wheatstone (10 Jun / 6 Sep 1837); U.S. Senate Morse 24 May 1844; Smithsonian Archives siris_sic_12484 via Wayback 2012-10-03 (Henry 1835 intensity/quantity). -->
+
+மீண்டும் தர்க்கமாக ரிலேக்கு.
+
 ## தர்க்கமாக ரிலேக்கள்
 
 இரண்டு தொடர்புகளைத் தொடரில் இணைத்தால் AND கிடைக்கும்: *இரண்டும்* மூடியிருந்தால் மட்டுமே மின்னோட்டம். அவற்றை இணையாக இணைத்தால் OR. Normally closed தொடர்பைச் சேர்த்தால் NOT. அவற்றை இணைத்து எந்த boolean சார்பையும் கட்டலாம் — கூட்டிகள், ஒப்பீட்டாளர்கள், டிகோடர்கள் — Phase 2 சிலிகானில் கட்டும் அதே தர்க்கக் குடும்பங்கள், இங்கு மின்னியந்திர வன்பொருளில்.
