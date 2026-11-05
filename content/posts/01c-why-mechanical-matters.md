@@ -16,7 +16,7 @@ Instruction sets, stored programs, control separated from datapath — all of th
 
 <figure>
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Charles_Babbage%27s_Difference_Engine_No._2_%282586166238%29.jpg" alt="Difference Engine No. 2, Serial #2 at the Computer History Museum" loading="lazy" width="1280">
-<figcaption>Difference Engine No. 2, Serial #2 (Computer History Museum) — built in the 20th century to 19th-century tolerances. Photo: <a href="https://commons.wikimedia.org/wiki/File:Charles_Babbage%27s_Difference_Engine_No._2_(2586166238).jpg">Erik Pitti</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
+<figcaption>Difference Engine No. 2, Serial #2 (Computer History Museum) — completed in 2008 to 19th-century tolerances. Photo: <a href="https://commons.wikimedia.org/wiki/File:Charles_Babbage%27s_Difference_Engine_No._2_(2586166238).jpg">Erik Pitti</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
 </figure>
 
 What mechanical computing *could not* do, in Babbage's lifetime, was scale. Gear trains have friction, backlash, and manufacturing-tolerance stack-up. Every extra digit of precision made the machine harder to build reliably. That ceiling — not a lack of ideas — is what pushed computing toward electrical switching.
