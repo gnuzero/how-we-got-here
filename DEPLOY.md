@@ -1,4 +1,4 @@
-# Deploy — From Relays to Attention
+# Deploy — How We Got There
 
 Production site: https://how-we-got-here.org/  
 Repo: https://github.com/gnuzero/how-we-got-here  

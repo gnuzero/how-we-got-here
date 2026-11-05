@@ -5,7 +5,7 @@ type: docs
 
 # About This Journey
 
-**From Relays to Attention: How We Got Here** is an interactive journey along the engineering lineage of digital computing — from gears and relays through tubes, transistors, processors, operating systems, networks, GPUs, and the attention mechanisms behind large language models.
+**How We Got There** is an interactive journey along the engineering lineage of digital computing — from gears and relays through tubes, transistors, processors, operating systems, networks, GPUs, and the attention mechanisms behind large language models.
 
 It is not an encyclopedia. The spine is constraint → architecture. Experience and labs come first; references are doors out where a topic already has strong primary sources.
 

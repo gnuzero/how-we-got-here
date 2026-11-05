@@ -5,7 +5,7 @@ type: docs
 
 # Despre această serie
 
-**De la relee la Attention: cum am ajuns aici** este o serie educațională care urmărește firul ingineresc continuu al calculului digital. Drumul pornește de la calculul mecanic și releele electromecanice și trece prin tuburile electronice, tranzistori, procesoarele moderne, sistemele de operare, rețele, GPU-uri și acceleratoarele AI specializate. Se încheie cu mecanismul attention care stă la baza modelelor mari de limbaj.
+**Cum am ajuns acolo** este o serie educațională care urmărește firul ingineresc continuu al calculului digital. Drumul pornește de la calculul mecanic și releele electromecanice și trece prin tuburile electronice, tranzistori, procesoarele moderne, sistemele de operare, rețele, GPU-uri și acceleratoarele AI specializate. Se încheie cu mecanismul attention care stă la baza modelelor mari de limbaj.
 
 > **Notă:** în ediția în română, numele de oameni, proiecte și surse locale nu sunt încă traduse sau adaptate, iar o parte din pagini lipsesc încă.
 

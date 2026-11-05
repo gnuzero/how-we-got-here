@@ -1,11 +1,11 @@
 ---
-title: "從繼電器到注意力機制：我們如何走到今天"
+title: "我們如何走到那裡"
 type: docs
 # Placeholder landing. Traditional is derived from content.zh-hans/_index.md with OpenCC s2twp, then terminology-reviewed (VISION.md, Language authority lock 2026-09-26).
 # Status: not final. Needs a native-reader proofread before it is marked final.
 ---
 
-# 從繼電器到注意力機制：我們如何走到今天
+# 我們如何走到那裡
 
 中文版正在依據中文一手資料撰寫，首批頁面即將上線。
 

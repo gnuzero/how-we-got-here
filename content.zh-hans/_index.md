@@ -1,11 +1,11 @@
 ---
-title: "从继电器到注意力机制：我们如何走到今天"
+title: "我们如何走到那里"
 type: docs
 # Placeholder landing. Simplified is the master text (VISION.md, Language authority lock 2026-09-26).
 # Status: not final. Needs a native-reader proofread before it is marked final.
 ---
 
-# 从继电器到注意力机制：我们如何走到今天
+# 我们如何走到那里
 
 中文版正在依据中文一手资料撰写，首批页面即将上线。
 

@@ -1,7 +1,7 @@
 # GitHub setup — you do this on github.com
 
 **Goal:** New GitHub **organization** for the open-source program.  
-**Book role:** *From Relays to Attention* is the **learning phase** — people work through the book to participate in the open-source project. It is not the OSS product itself.
+**Book role:** *How We Got There* is the **learning phase** — people work through the book to participate in the open-source project. It is not the OSS product itself.
 
 Fill in the blanks as you go:
 

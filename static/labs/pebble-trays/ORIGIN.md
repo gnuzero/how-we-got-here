@@ -2,7 +2,7 @@
 
 **License:** CC BY 4.0 (same as the book `LICENSE`).
 
-**Origin:** Original interactive for *From Relays to Attention* / *How We Got Here* (Grok Team / Reed labs desk).
+**Origin:** Original interactive for *How We Got There* (Grok Team / Reed labs desk).
 
 **What it shows:** Three trays of pebbles, a recipe card revealed one step at a time, and an answer strip. The reader holds marks, follows only the next step, and copies the last tray onto the strip — without naming the jobs.
 

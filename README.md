@@ -1,4 +1,4 @@
-# From Relays to Attention: How We Got Here
+# How We Got There
 
 Educational series at 3 posts/week — electronics fundamentals through modern AI hardware, plus the software and networking layers built on top. 63 technical chapters + Foreword + Glossary, ~45,000 words of draft text.
 
