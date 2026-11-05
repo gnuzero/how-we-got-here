@@ -32,13 +32,29 @@
 **Primaries opened (batch 1):** CHM Babbage; Menabrea/Lovelace Sketch (Fourmilab); Shannon 1937/1940 thesis; Rojas 1997; von Neumann First Draft; Penn Engineering ENIAC; Nobel 1956 Bardeen/Brattain/Shockley lectures; Rosman 1962 scan (ICTP); ICTP MARICA page; Toma 2008 Market Watch interview; Iancu 2013 AOS; Science Museum (1822); Ioffe NSM Si/Ge band gaps.
 
 **Still NEVERIFICAT (HTML comments only; nothing on-page relies on them):**
-1. Burks–Goldstine–von Neumann 1946 IAS report (image-only scan; no figures cited)
+1. ~~Burks–Goldstine–von Neumann 1946 IAS report~~ — closed in batch 2 (IAS scan OCR + UNC transcription)
 2. Toma, *Buletin Științific* 1957 (catalog only; CIFA figures rest on Toma 2008 + Iancu 2013)
 3. MECIPT detail beyond Iancu 2013 (Drăgănescu 2001 unopened)
 4. Bardeen–Brattain, Phys. Rev. 74 (1948) — fetch 403; no figures cited
 5. Si/SiO₂ as MOSFET reason — deferred to ch. 06
 6. Z3 relay count and clock — omitted from prose
 7. Felix — no claim; no source found
+
+### Early chapters 06–13 (batch 2, fact-checked 2026-11-05)
+
+- `posts/06-the-transistor-bjt-to-mosfet.md` — **Tranzistorul: de la BJT la MOSFET** (weight 9 / series_index 8)
+- `posts/07-logic-gates-from-transistors.md` — **Porți logice din tranzistori** (weight 10 / series_index 9; NOR completeness from Sheffer 1913)
+- `posts/08-from-gates-to-combinational-logic.md` — **De la porți la logică combinațională** (weight 11 / series_index 10; Shannon pp. 59–61)
+- `posts/09-sequential-logic.md` — **Logică secvențială** (weight 12 / series_index 11; 74LS74A + 74LS75)
+- `posts/10-the-memory-hierarchy-begins.md` — **Începutul ierarhiei de memorie** (weight 13 / series_index 12; Dennard granted 4 Jun 1968)
+- `posts/11-instruction-sets.md` — **Seturi de instrucțiuni** (weight 14 / series_index 13; phase "3 — Construirea unui CPU și arhitecturile lui"; RISC-V 20240411 ratified; Patterson & Ditzel 1980)
+- `posts/12-datapath-design.md` — **Proiectarea căii de date** (weight 15 / series_index 14)
+- `posts/13-pipelining.md` — **Pipelining** (weight 16 / series_index 15; Bloch 1959)
+
+**Primaries opened (batch 2):** CHM Silicon Engine 1947/1948/1951/1960/1963/1966/1970; Kahng, Wanlass, Dennard patents; TI SN74LS00, SN74LS74A, SN74LS75, SN74LS283; Sheffer 1913; Shannon 1937/1940; Burks–Goldstine–von Neumann 1946 (IAS scan via OCR + UNC/Collected Works transcription); First Draft; Amdahl et al. 1964; Bloch 1959; RISC-V Unprivileged 20240411; Patterson & Ditzel 1980.
+
+**Still NEVERIFICAT (batch 2, HTML comments only):** 22 markers — didactic generalisations (sync design, timing budget, hold, single-cycle datapath, 5-stage model, structural hazard, CISC/RISC traits), SRAM cell, inverter topology / ISSCC 1963, LS = bipolar, Peirce, 74181 ALU, x86 (deferred to ch. 19). Full list in the batch-2 fact-check report (ro-desk).
+
 
 **Discrepancies noted (not on-page errors):** Iancu says MARICA built 1957 vs ICTP experimental 1959 (page uses ICTP 1959); ICTP article landing pp. 183–191 vs scan/history 203–210 (page uses 203–210).
 

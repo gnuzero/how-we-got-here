@@ -75,6 +75,14 @@ Romanian titles are listed **only** for chapters that actually have a `content.r
 | `posts/03-the-vacuum-tube-era.md` | Era tuburilor vidate | shipped (fact-checked) |
 | `posts/04-why-the-transistor-had-to-happen.md` | De ce trebuia să apară tranzistorul | shipped (fact-checked) |
 | `posts/05-semiconductors-from-first-principles.md` | Semiconductori de la primele principii | shipped (fact-checked) |
+| `posts/06-the-transistor-bjt-to-mosfet.md` | Tranzistorul: de la BJT la MOSFET | shipped (fact-checked) |
+| `posts/07-logic-gates-from-transistors.md` | Porți logice din tranzistori | shipped (fact-checked) |
+| `posts/08-from-gates-to-combinational-logic.md` | De la porți la logică combinațională | shipped (fact-checked) |
+| `posts/09-sequential-logic.md` | Logică secvențială | shipped (fact-checked) |
+| `posts/10-the-memory-hierarchy-begins.md` | Începutul ierarhiei de memorie | shipped (fact-checked) |
+| `posts/11-instruction-sets.md` | Seturi de instrucțiuni | shipped (fact-checked) |
+| `posts/12-datapath-design.md` | Proiectarea căii de date | shipped (fact-checked) |
+| `posts/13-pipelining.md` | Pipelining | shipped (fact-checked) |
 | `posts/35-the-memory-wall.md` | Zidul memoriei | shipped (fact-checked) |
 | `posts/47-what-7nm-actually-means.md` | Ce înseamnă de fapt „7nm” | shipped (fact-checked) |
 | `posts/48-photolithography.md` | Fotolitografia | shipped (fact-checked) |
@@ -123,8 +131,8 @@ Conceptul și inspirația acestei lucrări îi aparțin lui Nayana Hettiarachchi
 - **Announcement MVP bodies:** Foreword + Phase 1 (01–04) + Attention (63) + glossary/home chrome in TH / SI / TA
 - Full remaining chapter bodies: after announcement (phased)
 - **Chinese (zh-Hans / zh-Hant), 2026-09-26:** locales wired; placeholder landing only. Pages come from the Chinese desk, written from Chinese primary sources. Not translated from English. Native-reader proofread before final.
-- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
-- Last updated: 2026-11-05 (ro pages 47/48/49 + 53/54/55/57/58/60)
+- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `00`–`13` (early chapters, batches 1–2), `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
+- Last updated: 2026-11-05 (ro early chapters 06–13, batch 2)
 
 ## Fact-check notes (ongoing)
 
