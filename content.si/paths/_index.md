@@ -13,6 +13,6 @@ draft: false
 - [අන්තර්ජාලය ධාවනය කරන්නේ කවුද](/paths/who-runs-the-internet/) — අංක, නම්, encodings, සහ යටතේ ඇති protocols
 - [සොයන්න, ඉන්පසු කතා කරන්න](/paths/find-then-talk/) — විවෘත web එකට පෙර (සහ අසල) සෙවීම සහ peer සන්නිවේදනය
 - [රහස්‍යතාව / අනන්‍යතාව / එකඟතාව](/paths/privacy-identity-consent/) — protection, crypto, auth, සහ විරුද්ධකාරී ඉංජිනේරුකරණය
-- [නැව්ගත වූ දැක්මන්](/paths/visions-that-shipped/) — stack එකේ සිට ජීවත් වන platforms වෙත forward links
+- [ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්](/paths/visions-that-shipped/) — stack එකේ සිට ජීවත් වන platforms වෙත forward links
 
 අත්දැකීම තවමත් පළමුවයි: කියවීම ප්‍රමාණවත් නොවන තැන කශේරුකාව මත [labs](/labs/) වාඩි වේ.

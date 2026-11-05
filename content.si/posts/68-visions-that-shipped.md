@@ -1,9 +1,9 @@
 ---
-title: "නැව්ගත වූ දැක්මන්"
+title: "ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්"
 weight: 69
 date: 2026-01-01
 draft: false
-phase: "නැව්ගත වූ දැක්මන්"
+phase: "ප්‍රායෝගික භාවිතයට පැමිණි දැක්මන්"
 series_index: 68
 tags: []
 summary: "ගමනෙන් ඉදිරියට යන සබැඳි — Cisco, Gates, Jobs, GNU+Linus, Elon, Bezos stack එක ජීවත් වන platforms බවට පත් කළ වර්ගවල බීජ ලෙස"
@@ -16,7 +16,7 @@ schematics: "Diagram: protocol/OS/hardware spine → forward-link seeds (interne
 
 ## Cisco — ව්‍යාපාරයක් ලෙස Internetworks
 
-Posts 39–41 protocol ඔට්ටුවයි. **Cisco** (Leonard Bosack සහ Sandy Lerner, 1980 දශකය මැද) multiprotocol routing මිලදී ගත හැකි නිෂ්පාදනයක් වන විට සිදු වන දෙයයි: router එක internetwork කතාවේ වාණිජ වස්තුව ලෙස. ඥාතීන් ව්‍යුත්පන්න කර නවත්වන්න — අනෙක් networking vendors සහ carrier equipment පෙළපත් එම *වර්ගයම* ය (විෂම ජාල අතර ඇලවුම් නැව්ගත කරන්න), කටපාඩම් කළ යුතු නාමාවලියක් නොවේ.
+Posts 39–41 protocol ඔට්ටුවයි. **Cisco** (Leonard Bosack සහ Sandy Lerner, 1980 දශකය මැද) multiprotocol routing මිලදී ගත හැකි නිෂ්පාදනයක් වන විට සිදු වන දෙයයි: router එක internetwork කතාවේ වාණිජ වස්තුව ලෙස. ඥාතීන් ව්‍යුත්පන්න කර නවත්වන්න — අනෙක් networking vendors සහ carrier equipment පෙළපත් එම *වර්ගයම* ය (විෂම ජාල අතර ඇලවුම් නිකුත් කරන්න), කටපාඩම් කළ යුතු නාමාවලියක් නොවේ.
 
 ## Bill Gates / Microsoft — Mass Platform එක ලෙස Software
 
@@ -28,7 +28,7 @@ Posts 39–41 protocol ඔට්ටුවයි. **Cisco** (Leonard Bosack ස�
 
 ## GNU + Linus — මෙම පොත දැනටමත් පදනම් වන Free/Open Stack එක
 
-Post 23 දැනටමත් **Richard Stallman** (GNU, GPL) සහ **Linus Torvalds** (Linux kernel, 1992 මුල් භාගයේ GPL relicensing) නම් කළේය. පොත අවසානයට අවශ්‍ය වන්නේ forward link එක පමණි: නවීන platforms යටතේ servers, clouds, phones, සහ toolchains අතිමහත් ලෙස එම free/open stack එක මත වාඩි වේ. නැව්ගත වූ දැක්ම brand එකක් නොවේ — එය කර්මාන්තයේ ඉතිරි කොටස ගොඩනැගූ නීතිමය සහ ඉංජිනේරු commons එකකි.
+Post 23 දැනටමත් **Richard Stallman** (GNU, GPL) සහ **Linus Torvalds** (Linux kernel, 1992 මුල් භාගයේ GPL relicensing) නම් කළේය. පොත අවසානයට අවශ්‍ය වන්නේ forward link එක පමණි: නවීන platforms යටතේ servers, clouds, phones, සහ toolchains අතිමහත් ලෙස එම free/open stack එක මත වාඩි වේ. ප්‍රායෝගික භාවිතයට පැමිණි දැක්ම brand එකක් නොවේ — එය කර්මාන්තයේ ඉතිරි කොටස ගොඩනැගූ නීතිමය සහ ඉංජිනේරු commons එකකි.
 
 ## Elon Musk සහ Jeff Bezos — පරිමාණයේ වර්තමාන-කාල බීජ
 

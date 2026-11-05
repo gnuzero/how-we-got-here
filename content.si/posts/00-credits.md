@@ -126,7 +126,7 @@ Wikimedia Commons රූප දොරයි (පහත බලන්න). භා�
 
 ## දැනටමත් ඇති අන්තර්ක්‍රියාකාරී මාධ්‍ය
 
-අප දැනටමත් නැව්ගත කරන රසායනාගාර. අනුකාරක අප ලිව්වේ නැත.
+අප දැනටමත් නිකුත් කරන රසායනාගාර. අනුකාරක අප ලිව්වේ නැත.
 
 - **Breadboard** — [CircuitJS](https://www.falstad.com/circuit/) by Paul Falstad, JavaScript port by Iain Sharp. බලපත්‍රය: [GNU GPL v2 or later](https://github.com/pfalstad/circuitjs1). falstad.com වෙතින් එබ්බවා ඇත.
 - **VM terminal** — [v86](https://github.com/copy/v86) by Fabian (@copy) සහ දායකයන්. බලපත්‍රය: [BSD 2-Clause](https://github.com/copy/v86/blob/master/LICENSE). Firmware (`seabios.bin` / `vgabios.bin`) සහ Linux තැටි රූපය upstream [v86 images](https://github.com/copy/images) සමඟයි — මෙම පොතේ CC BY පෙළ නොවේ. SeaBIOS සාමාන්‍යයෙන් LGPL ([seabios.org](https://www.seabios.org/)).
@@ -134,7 +134,7 @@ Wikimedia Commons රූප දොරයි (පහත බලන්න). භා�
 - **Difference Engine** — මෙම පොතේ මුල් figure-wheel carry රසායනාගාරය (Grok / Reed). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). තෙවන පාර්ශ්ව sim එකක් නොවේ.
 - **Analytical Engine** — [John Walker / Fourmilab](https://www.fourmilab.ch/babbage/). Public domain. [aemsource.zip](https://www.fourmilab.ch/babbage/release/aemsource.zip) පිටපතක් මෙහි ධාරණය කර මුල් සබැඳිය තබමු.
 
-Wokwi යනු breadboard පිටුවෙන් පිටතට යන සබැඳියකි, අප නැව්ගත කරන embed එකක් නොවේ. තෙවන පාර්ශ්ව Difference Engine *අනුකාරක* තිබේ; බලපත්‍ර තහවුරු නොවූ බැවින් මෙහි කිසිවක් එබ්බවා නැත.
+Wokwi යනු breadboard පිටුවෙන් පිටතට යන සබැඳියකි, අප නිකුත් කරන embed එකක් නොවේ. තෙවන පාර්ශ්ව Difference Engine *අනුකාරක* තිබේ; බලපත්‍ර තහවුරු නොවූ බැවින් මෙහි කිසිවක් එබ්බවා නැත.
 
 ## රූප සහ ප්‍රතිනිර්මාණ
 
