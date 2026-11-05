@@ -4,7 +4,8 @@
 <!-- NOINDEX-PRELAUNCH: remove at announcement -->
 <meta name="robots" content="noindex,nofollow">
 <meta charset="UTF-8">
-<title>Mini-CPU Lab — 8-bit Toy ISA</title>
+<script src="../_shared/i18n.js"></script>
+<title data-i18n="page.title">Mini-CPU Lab — 8-bit Toy ISA</title>
 <style>
   :root {
     --bg: #0d1117; --panel: #161b22; --border: #30363d;
@@ -73,21 +74,21 @@
 </head>
 <body>
 
-<h1>Mini-CPU Lab</h1>
-<div class="sub">8-bit toy ISA · 4-bit opcode / 4-bit operand · 16 bytes RAM · A/B registers · Carry/Zero flags</div>
+<h1 data-i18n="page.heading">Mini-CPU Lab</h1>
+<div class="sub" data-i18n="page.subtitle">8-bit toy ISA · 4-bit opcode / 4-bit operand · 16 bytes RAM · A/B registers · Carry/Zero flags</div>
 
 <div class="guide" id="guide">
-  <h2>Guided beat</h2>
-  <div class="phase" id="guidePhase">Ready</div>
-  <div class="body" id="guideBody"></div>
-  <div class="hint" id="guideHint"></div>
+  <h2 data-i18n="guide.heading">Guided beat</h2>
+  <div class="phase" id="guidePhase" data-i18n="guide.intro.phase">Fetch → Decode → Execute</div>
+  <div class="body" id="guideBody" data-i18n="guide.intro.body">A canned 8-instruction program is already loaded: load 5, store it at mem[14], load 8, add the stored 5, store the sum at mem[15], reload it, OUT, then HLT. Press Step repeatedly — watch register A and the memory grid light up as PC advances. Edit the source anytime, then Assemble before stepping again.</div>
+  <div class="hint" id="guideHint" data-i18n="guide.intro.hint">Tip: amber border on a memory cell marks the current PC. After each Step, this panel narrates fetch / decode / execute.</div>
 </div>
 
 <div class="layout">
 
   <div class="panel">
-    <h2>Assembly</h2>
-    <textarea id="src">; Guided beat (8 instructions): load 5, store it,
+    <h2 data-i18n="panel.assembly">Assembly</h2>
+    <textarea id="src" data-i18n="src.default">; Guided beat (8 instructions): load 5, store it,
 ; load 8, add the stored 5, save result, reload, OUT, HLT
 LDI 5
 STA 14
@@ -98,45 +99,45 @@ LDA 15
 OUT
 HLT</textarea>
     <div class="btnrow">
-      <button class="primary" onclick="assembleAndLoad()">Assemble</button>
-      <button onclick="step()">Step</button>
-      <button onclick="run()">Run</button>
-      <button onclick="stop()">Stop</button>
-      <button class="danger" onclick="reset()">Reset</button>
+      <button class="primary" onclick="assembleAndLoad()" data-i18n="btn.assemble">Assemble</button>
+      <button onclick="step()" data-i18n="btn.step">Step</button>
+      <button onclick="run()" data-i18n="btn.run">Run</button>
+      <button onclick="stop()" data-i18n="btn.stop">Stop</button>
+      <button class="danger" onclick="reset()" data-i18n="btn.reset">Reset</button>
     </div>
     <div class="isa">
-      <strong>ISA:</strong> <code>NOP</code> <code>LDA a</code> <code>ADD a</code> <code>SUB a</code>
+      <div data-i18n-html="isa.lead_html"><strong>ISA:</strong> <code>NOP</code> <code>LDA a</code> <code>ADD a</code> <code>SUB a</code>
       <code>STA a</code> <code>LDI n</code> <code>JMP a</code> <code>JC a</code> <code>JZ a</code>
-      <code>OUT</code> <code>HLT</code> — addresses/immediates 0–15, written in decimal (<code>13</code>) or hex (<code>0xD</code>)
+      <code>OUT</code> <code>HLT</code> — addresses/immediates 0–15, written in decimal (<code>13</code>) or hex (<code>0xD</code>)</div>
       <ul class="notes">
-        <li>Operands must be whole numbers 0–15. Anything else (<code>0xZZ</code>, <code>300</code>, a missing address) stops Assemble with an error naming the line — it is never quietly read as 0. <code>NOP</code>, <code>OUT</code> and <code>HLT</code> ignore an operand when they run, so <code>NOP 7</code> is a way to put the value 7 in memory.</li>
-        <li>ZERO lights when A ends up 0 after <code>LDI</code>, <code>LDA</code>, <code>ADD</code> or <code>SUB</code>. <code>STA</code>, <code>OUT</code> and jumps leave it alone. Reset clears it, so a <code>JZ</code> before any of those falls through.</li>
-        <li>Registers are 8-bit: 0 − 1 wraps to 255 (and sets CARRY). A countdown from n=0 runs 256 loops, not zero.</li>
-        <li>Program and values share the same 16 words. A <code>STA</code> can overwrite an instruction — even your final <code>HLT</code>, and then the CPU runs on past it.</li>
+        <li data-i18n-html="isa.note1_html">Operands must be whole numbers 0–15. Anything else (<code>0xZZ</code>, <code>300</code>, a missing address) stops Assemble with an error naming the line — it is never quietly read as 0. <code>NOP</code>, <code>OUT</code> and <code>HLT</code> ignore an operand when they run, so <code>NOP 7</code> is a way to put the value 7 in memory.</li>
+        <li data-i18n-html="isa.note2_html">ZERO lights when A ends up 0 after <code>LDI</code>, <code>LDA</code>, <code>ADD</code> or <code>SUB</code>. <code>STA</code>, <code>OUT</code> and jumps leave it alone. Reset clears it, so a <code>JZ</code> before any of those falls through.</li>
+        <li data-i18n-html="isa.note3_html">Registers are 8-bit: 0 − 1 wraps to 255 (and sets CARRY). A countdown from n=0 runs 256 loops, not zero.</li>
+        <li data-i18n-html="isa.note4_html">Program and values share the same 16 words. A <code>STA</code> can overwrite an instruction — even your final <code>HLT</code>, and then the CPU runs on past it.</li>
       </ul>
     </div>
     <div id="log" class="log"></div>
   </div>
 
   <div class="panel">
-    <h2>CPU State</h2>
+    <h2 data-i18n="panel.cpu">CPU State</h2>
     <div class="regs">
-      <div class="reg"><div class="label">A</div><div class="val" id="regA">00</div></div>
-      <div class="reg"><div class="label">B</div><div class="val" id="regB">00</div></div>
-      <div class="reg"><div class="label">PC</div><div class="val" id="regPC">0</div></div>
-      <div class="reg"><div class="label">IR</div><div class="val" id="regIR">--</div></div>
+      <div class="reg"><div class="label" data-i18n="reg.a">A</div><div class="val" id="regA">00</div></div>
+      <div class="reg"><div class="label" data-i18n="reg.b">B</div><div class="val" id="regB">00</div></div>
+      <div class="reg"><div class="label" data-i18n="reg.pc">PC</div><div class="val" id="regPC">0</div></div>
+      <div class="reg"><div class="label" data-i18n="reg.ir">IR</div><div class="val" id="regIR">--</div></div>
     </div>
     <div class="flags">
-      <div class="flag" id="flagC">CARRY</div>
-      <div class="flag" id="flagZ">ZERO</div>
-      <div class="flag" id="flagH">HALT</div>
+      <div class="flag" id="flagC" data-i18n="flag.carry">CARRY</div>
+      <div class="flag" id="flagZ" data-i18n="flag.zero">ZERO</div>
+      <div class="flag" id="flagH" data-i18n="flag.halt">HALT</div>
     </div>
-    <h2 style="margin-top:14px">Output Register</h2>
+    <h2 style="margin-top:14px" data-i18n="panel.output">Output Register</h2>
     <div class="out" id="outReg">0</div>
   </div>
 
   <div class="panel">
-    <h2>Memory (16 × 8-bit)</h2>
+    <h2 data-i18n="panel.memory">Memory (16 × 8-bit)</h2>
     <div class="mem" id="memGrid"></div>
   </div>
 
@@ -151,11 +152,6 @@ let mem = new Uint8Array(16);
 let A=0, B=0, PC=0, IR=0, carry=0, zero=0, halted=false, outReg=0, running=false, timer=null;
 let stepCount = 0;
 
-const INTRO_PHASE = 'Fetch → Decode → Execute';
-const INTRO_BODY =
-  'A canned 8-instruction program is already loaded: load 5, store it at mem[14], load 8, add the stored 5, store the sum at mem[15], reload it, OUT, then HLT. Press Step repeatedly — watch register A and the memory grid light up as PC advances. Edit the source anytime, then Assemble before stepping again.';
-const INTRO_HINT = 'Tip: amber border on a memory cell marks the current PC. After each Step, this panel narrates fetch / decode / execute.';
-
 function setGuide(phase, body, hint) {
   document.getElementById('guidePhase').textContent = phase;
   document.getElementById('guideBody').textContent = body;
@@ -165,29 +161,29 @@ function setGuide(phase, body, hint) {
 function explainExecute(op, arg, prevA, prevMem) {
   switch (op) {
     case OPS.NOP:
-      return 'NOP does nothing. PC already advanced.';
+      return t('exec.nop');
     case OPS.LDA:
-      return 'LDA ' + arg + ': A ← mem[' + arg + '] (was ' + prevA + ', now ' + A + '; zero=' + zero + '). Watch A.';
+      return t('exec.lda', { arg: arg, prevA: prevA, A: A, zero: zero });
     case OPS.ADD:
-      return 'ADD ' + arg + ': A ← A + mem[' + arg + '] → ' + A + ' (carry=' + carry + ', zero=' + zero + '). Watch A.';
+      return t('exec.add', { arg: arg, A: A, carry: carry, zero: zero });
     case OPS.SUB:
-      return 'SUB ' + arg + ': A ← A − mem[' + arg + '] → ' + A + ' (carry=' + carry + ', zero=' + zero + '). Watch A.';
+      return t('exec.sub', { arg: arg, A: A, carry: carry, zero: zero });
     case OPS.STA:
-      return 'STA ' + arg + ': mem[' + arg + '] ← A (' + A + '). Was ' + prevMem + '; watch that memory cell.';
+      return t('exec.sta', { arg: arg, A: A, prevMem: prevMem });
     case OPS.LDI:
-      return 'LDI ' + arg + ': A ← immediate ' + arg + ' (was ' + prevA + '; zero=' + zero + '). Watch A.';
+      return t('exec.ldi', { arg: arg, prevA: prevA, zero: zero });
     case OPS.JMP:
-      return 'JMP ' + arg + ': PC ← ' + arg + ' (unconditional). Watch PC on the memory grid.';
+      return t('exec.jmp', { arg: arg });
     case OPS.JC:
-      return 'JC ' + arg + ': ' + (carry ? 'carry set → PC ← ' + arg : 'carry clear → fall through') + '.';
+      return carry ? t('exec.jc.taken', { arg: arg }) : t('exec.jc.fall', { arg: arg });
     case OPS.JZ:
-      return 'JZ ' + arg + ': ' + (zero ? 'zero set → PC ← ' + arg : 'zero clear → fall through') + '.';
+      return zero ? t('exec.jz.taken', { arg: arg }) : t('exec.jz.fall', { arg: arg });
     case OPS.OUT:
-      return 'OUT: output register ← A (' + A + '). Watch the Output Register panel.';
+      return t('exec.out', { A: A });
     case OPS.HLT:
-      return 'HLT: CPU stops. Output = ' + outReg + '. Press Reset to replay, or edit + Assemble.';
+      return t('exec.hlt', { out: outReg });
     default:
-      return 'Unknown opcode.';
+      return t('exec.unknown');
   }
 }
 
@@ -223,21 +219,21 @@ function assemble(src) {
     const [mnem, argStr, ...extra] = line.split(/\s+/);
     const name = mnem.toUpperCase();
     const op = OPS[name];
-    if (op === undefined) throw new Error(`Line ${lineNo}: unknown mnemonic '${mnem}'`);
-    if (count >= 16) throw new Error(`Line ${lineNo}: program exceeds 16 words`);
+    if (op === undefined) throw new Error(t('asm.unknownMnemonic', { line: lineNo, mnem: mnem }));
+    if (count >= 16) throw new Error(t('asm.exceeds', { line: lineNo }));
     let arg = 0;
     const optional = NO_OPERAND.has(name);
     if (optional && argStr === undefined) {
       // NOP / OUT / HLT on their own: operand 0.
     } else {
-      const what = optional ? 'operand' : name === 'LDI' ? 'value' : 'address';
-      if (argStr === undefined) throw new Error(`Line ${lineNo}: ${name} needs an ${what} (0–15)`);
-      if (extra.length) throw new Error(`Line ${lineNo}: unexpected '${extra[0]}' after '${mnem} ${argStr}'`);
+      const what = optional ? t('asm.what.operand') : name === 'LDI' ? t('asm.what.value') : t('asm.what.address');
+      if (argStr === undefined) throw new Error(t('asm.needsOperand', { line: lineNo, name: name, what: what }));
+      if (extra.length) throw new Error(t('asm.unexpected', { line: lineNo, extra: extra[0], mnem: mnem, arg: argStr }));
       arg = parseOperand(argStr);
-      if (isNaN(arg)) throw new Error(`Line ${lineNo}: bad ${what} '${argStr}' — write a number 0–15 in decimal (13) or hex (0xD)`);
+      if (isNaN(arg)) throw new Error(t('asm.badOperand', { line: lineNo, what: what, arg: argStr }));
       if (arg > 15) throw new Error(name === 'LDI' || optional
-        ? `Line ${lineNo}: ${what} '${argStr}' is out of range — ${name} takes 0–15 (the operand is 4 bits)`
-        : `Line ${lineNo}: address '${argStr}' is past the end of memory — addresses are 0–15`);
+        ? t('asm.outOfRangeValue', { line: lineNo, what: what, arg: argStr, name: name })
+        : t('asm.outOfRangeAddr', { line: lineNo, arg: argStr }));
     }
     bytes[count++] = (op << 4) | arg;
   });
@@ -250,11 +246,11 @@ function assembleAndLoad() {
     const result = assemble(document.getElementById('src').value);
     mem = result.bytes;
     reset(false);
-    logMsg('Assembled ' + result.count + ' words into memory. Ready.');
-    setGuide(INTRO_PHASE, INTRO_BODY, INTRO_HINT);
+    logMsg(t('log.assembled', { count: result.count }));
+    setGuide(t('guide.intro.phase'), t('guide.intro.body'), t('guide.intro.hint'));
   } catch (e) {
     logMsg(e.message, true);
-    setGuide('Assemble error', e.message, 'Fix the source, then press Assemble.');
+    setGuide(t('guide.assembleError.phase'), e.message, t('guide.assembleError.hint'));
   }
   render();
 }
@@ -264,16 +260,16 @@ function reset(doLog=true) {
   stepCount = 0;
   stop();
   if (doLog) {
-    logMsg('Reset.');
-    setGuide(INTRO_PHASE, INTRO_BODY, 'CPU registers cleared; memory still holds the assembled program. Press Step.');
+    logMsg(t('log.reset'));
+    setGuide(t('guide.intro.phase'), t('guide.intro.body'), t('guide.reset.hint'));
   }
   render();
 }
 
 function step() {
   if (halted) {
-    logMsg('CPU halted — reset to run again.', true);
-    setGuide('Halted', 'CPU is stopped after HLT. Press Reset to replay the beat, or edit the program and Assemble.', '');
+    logMsg(t('log.halted'), true);
+    setGuide(t('guide.halted.phase'), t('guide.halted.body'), '');
     return;
   }
 
@@ -301,18 +297,27 @@ function step() {
     case OPS.JC: if (carry) PC = arg; break;
     case OPS.JZ: if (zero) PC = arg; break;
     case OPS.OUT: outReg = A; break;
-    case OPS.HLT: halted = true; stop(); logMsg('HLT — program finished. Output = ' + outReg); break;
-    default: logMsg('Unknown opcode 0x' + op.toString(16) + ' at PC ' + fetchPC, true); halted = true; stop();
+    case OPS.HLT: halted = true; stop(); logMsg(t('log.hlt', { out: outReg })); break;
+    default: logMsg(t('log.unknownOpcode', { op: op.toString(16), pc: fetchPC }), true); halted = true; stop();
   }
 
   stepCount += 1;
-  const fetchText = 'FETCH: IR ← mem[' + fetchPC + '] = 0x' + fetched.toString(16).padStart(2,'0').toUpperCase() + '; PC → ' + ((fetchPC + 1) & 0xF);
-  const decodeText = 'DECODE: ' + name + (name !== 'NOP' && name !== 'OUT' && name !== 'HLT' ? ' ' + arg : '') + ' (opcode 0x' + op.toString(16).toUpperCase() + ', operand ' + arg + ')';
-  const execText = 'EXECUTE: ' + explainExecute(op, arg, prevA, prevMem);
+  const fetchText = t('step.fetch', {
+    pc: fetchPC,
+    byte: fetched.toString(16).padStart(2,'0').toUpperCase(),
+    next: (fetchPC + 1) & 0xF
+  });
+  const insn = (name !== 'NOP' && name !== 'OUT' && name !== 'HLT') ? (name + ' ' + arg) : name;
+  const decodeText = t('step.decode', {
+    insn: insn,
+    op: op.toString(16).toUpperCase(),
+    arg: arg
+  });
+  const execText = t('step.execute', { detail: explainExecute(op, arg, prevA, prevMem) });
   setGuide(
-    'Step ' + stepCount + ' · Fetch / Decode / Execute',
-    fetchText + ' · ' + decodeText + ' · ' + execText,
-    halted ? 'Beat complete — Output should be 13 (5+8). Reset to watch again.' : 'Press Step again. Keep watching A and memory.'
+    t('guide.step.phase', { n: stepCount }),
+    t('guide.body.joined', { fetch: fetchText, decode: decodeText, execute: execText }),
+    halted ? t('guide.step.hintDone') : t('guide.step.hint')
   );
 
   render();
@@ -321,7 +326,7 @@ function step() {
 function run() {
   if (running) return;
   running = true;
-  setGuide('Run', 'Auto-stepping every 250ms. Watch A, PC, and memory — or press Stop and Step manually for narration.', '');
+  setGuide(t('guide.run.phase'), t('guide.run.body'), '');
   timer = setInterval(() => { if (halted) { stop(); return; } step(); }, 250);
 }
 
@@ -353,7 +358,7 @@ function render() {
   }
 }
 
-assembleAndLoad();
+LabI18n.ready.then(assembleAndLoad);
 </script>
 </body>
 </html>
