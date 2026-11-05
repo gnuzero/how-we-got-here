@@ -533,3 +533,20 @@ All arithmetic was checked in Python.
   - Checker: 0 errors.
   - Headless Chrome with `?lang=ta`: button reads அசெம்பிள்; Assemble, Step, Run to HLT (Output 13), Reset; the `LDA` error shows அசெம்பிள் பிழை.
   - Hugo build: exit 0.
+
+## ta-labs-3: breadboard and analytical-engine lab strings
+
+- **breadboard** `strings.ta.json` (7 keys): wrapper only; the Falstad CircuitJS1 UI stays English. AND, Wokwi and MCU are kept, and so are the ↗ arrows, all the tags and the curly apostrophe in Falstad’s. Gate = வாயில்.
+- **analytical-engine** `strings.ta.json` (36 keys):
+  - The alt.* text and the chrome are in Tamil. The terms follow 01a and 99: Store = நினைவகம் (Store) and Mill = கணித அலகு (Mill).
+  - Ingress/Egress keep U+00A0 (5 labels; bytes checked).
+  - The Fourmilab hrefs in footer_html are unchanged.
+  - The alert() text, the Timing report and Set/Not set/Running/Stopped are left in Walker's English.
+  - "Emulator", "Run-up", "Ingress" and "Egress" are kept in English because they are Babbage/Walker technical terms.
+- **Checks:** `check-lab-strings.py` gives 0 errors and 0 warnings for both labs.
+- **Headless Chrome tests:**
+  - Both labs with `?lang=ta`.
+  - Tamil chapters 01a, 07, 08, 09 and 10: the lab iframe loads with lang=ta.
+  - On the analytical engine: Reset, Step ×5 and Start.
+  - No console errors and no leftover placeholders. The PNG section titles show in English by design; only their alt text is in Tamil.
+  - **Not tested:** inside the external Falstad iframe; it loads, but its UI is English and not ours.
