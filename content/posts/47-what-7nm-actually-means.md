@@ -16,7 +16,7 @@ Every silicon device earlier in this series — MOSFET (Post 6), CMOS (Post 7), 
 
 ## When the Name Was a Length
 
-Historically the process-node name tracked a real dimension — roughly the minimum gate length of a planar MOSFET (Post 6). A "90nm process" meant something you could point at on the device. That correspondence held through the planar era, then broke.
+Historically the process-node name tracked a real dimension — roughly the minimum gate length of a planar MOSFET (Post 6). For decades a node name meant something you could point at on the device. That correspondence broke well before planar transistors gave way: Intel's July 2021 node-renaming announcement (filed with the SEC on Form 8-K) says the industry "has long recognized that traditional nanometer-based process node naming stopped matching the actual gate-length metric in 1997." Planar transistors stayed in production into the 2010s, so for much of the planar era the name was already a label, not a measurement.
 
 ## Why One Number Stopped Sufficing
 
@@ -28,7 +28,7 @@ A modern node name is mostly a generational marker — "our next denser, more ef
 
 ## Why the Gap Matters
 
-"TSMC's 5nm vs Samsung's 5nm" is not apples-to-apples because the strings match. The naming gap exists because the design space stopped being one-dimensional — planar gate length gave way to 3D geometry and multi-pitch tradeoffs. That is the setup for the next posts: lithography that can still print those structures (Post 48), and the transistor geometry shifts that made a single length obsolete (Post 49).
+"TSMC's 5nm vs Samsung's 5nm" is not apples-to-apples because the strings match. The naming gap opened in the planar era and widened once the design space stopped being one-dimensional — planar gate length gave way to 3D geometry and multi-pitch tradeoffs. That is the setup for the next posts: lithography that can still print those structures (Post 48), and the transistor geometry shifts that made a single length obsolete (Post 49).
 
 <!--
 ASSET CHECKLIST
