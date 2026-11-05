@@ -84,6 +84,7 @@ Romanian titles are listed **only** for chapters that actually have a `content.r
 | `posts/01a-babbage-engines.md` | Motoarele lui Babbage | shipped (fact-checked) |
 | `posts/01b-jacquard-loom.md` | Războiul Jacquard | shipped (fact-checked) |
 | `posts/01c-why-mechanical-matters.md` | De ce contează calculul mecanic | shipped (fact-checked) |
+| `posts/01d-woodblock-to-movable-type.md` | De la gravura în lemn la literele mobile | shipped draft (`draft: true`; fact-checked batch 7) |
 | `posts/02-relays-and-electromechanical-logic.md` | Relee și logica electromecanică | shipped (fact-checked; deep) |
 | `posts/03-the-vacuum-tube-era.md` | Era tuburilor vidate | shipped (fact-checked) |
 | `posts/04-why-the-transistor-had-to-happen.md` | De ce trebuia să apară tranzistorul | shipped (fact-checked) |
@@ -118,6 +119,7 @@ Romanian titles are listed **only** for chapters that actually have a `content.r
 | `posts/33-pcie-deep-dive.md` | PCIe în detaliu | shipped (fact-checked) |
 | `posts/34-memory-buses.md` | Magistralele de memorie | shipped (fact-checked) |
 | `posts/35-the-memory-wall.md` | Zidul memoriei | shipped (fact-checked) |
+| `posts/43b-from-press-to-pixel.md` | De la presă la pixel | shipped draft (`draft: true`; fact-checked batch 7) |
 | `posts/47-what-7nm-actually-means.md` | Ce înseamnă de fapt „7nm” | shipped (fact-checked) |
 | `posts/48-photolithography.md` | Fotolitografia | shipped (fact-checked) |
 | `posts/49-finfet-to-gaa.md` | De la FinFET la GAA | shipped (fact-checked) |
@@ -165,8 +167,8 @@ Conceptul și inspirația acestei lucrări îi aparțin lui Nayana Hettiarachchi
 - **Announcement MVP bodies:** Foreword + Phase 1 (01–04) + Attention (63) + glossary/home chrome in TH / SI / TA
 - Full remaining chapter bodies: after announcement (phased)
 - **Chinese (zh-Hans / zh-Hant), 2026-09-26:** locales wired; placeholder landing only. Pages come from the Chinese desk, written from Chinese primary sources. Not translated from English. Native-reader proofread before final.
-- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `00`–`34` (early chapters, batches 1–6; phase 5 string „5 — Magistralele și arhitectura sistemului” approved; batch 6 adds hub `01-what-is-this-thing`, `01a`–`01c`, and nine `01-take-*` pages; `01-mechanical-…` stays `draft: true`), `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
-- Last updated: 2026-11-05 (ro early hub / 01a–01c / takes, batch 6)
+- **Romanian (ro), 2026-11-05:** locale wired as a gap-filling edition (like SI/TA/TH). Shipped pages: home, about, `00`–`34` (early chapters, batches 1–6; phase 5 string „5 — Magistralele și arhitectura sistemului” approved; batch 6 adds hub `01-what-is-this-thing`, `01a`–`01c`, and nine `01-take-*` pages; `01-mechanical-…` stays `draft: true`), draft `01d-woodblock-to-movable-type` and `43b-from-press-to-pixel` (batch 7; phase 7 „7 — Sisteme distribuite, Big Data și orchestrare”), `35-the-memory-wall`, then `47`/`48`/`49`/`53`/`54`/`55`/`57`/`58`/`60` (fact-checked by Lucas). Other chapters pending. Original pages, not translations.
+- Last updated: 2026-11-05 (ro 01d + 43b drafts, batch 7)
 
 ## Fact-check notes (ongoing)
 
