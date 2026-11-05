@@ -1,0 +1,57 @@
+[title]
+other = "從繼電器到注意力機制：我們如何走到今天"
+
+[foreword]
+other = "前言"
+
+# hugo-book chrome. The theme only ships zh.yaml / zh-TW.yaml (few keys, different
+# language keys), so every key the theme looks up is set here. Taiwan usage.
+[Search]
+other = "搜尋"
+
+["Edit this page"]
+other = "編輯此頁"
+
+["Last modified by"]
+other = "最後修改者"
+
+[Languages]
+other = "語言"
+
+[Expand]
+other = "展開"
+
+[Calendar]
+other = "日曆"
+
+[Backward]
+other = "上一頁"
+
+[Forward]
+other = "下一頁"
+
+[Edit]
+other = "編輯"
+
+[Logo]
+other = "標誌"
+
+[Menu]
+other = "選單"
+
+["Table of Contents"]
+other = "目錄"
+
+[Thumbnail]
+other = "縮圖"
+
+# CJK has no spaces between words: index per character (same config as theme zh-TW.yaml).
+[bookSearchConfig]
+other = """
+{
+  encode: false,
+  tokenize: function(str) {
+    return str.replace(/[\\x00-\\x7F]/g, '').split('');
+  }
+}
+"""
