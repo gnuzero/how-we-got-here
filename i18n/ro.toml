@@ -43,3 +43,10 @@ other = "Cuprins"
 
 [Thumbnail]
 other = "Miniatură"
+
+# Lab embed chrome (layouts/shortcodes/lab.html).
+[labIframeTitle]
+other = "Laborator interactiv: {{ .Type }}"
+
+[labOpenNewTab]
+other = "Deschide laboratorul într-o filă nouă ↗"

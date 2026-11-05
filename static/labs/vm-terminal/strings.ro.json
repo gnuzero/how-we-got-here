@@ -1,0 +1,17 @@
+{
+  "page.title": "Laboratorul Terminal VM",
+  "page.heading": "Laboratorul Terminal VM",
+  "page.subtitle": "O mașină x86 reală, care rulează în browserul tău prin WASM: pornește un Linux real, cu shell și comenzi reale",
+  "btn.boot": "Pornește VM",
+  "btn.restart": "Repornește",
+  "status.idle": "Neînceput — apasă Pornește VM",
+  "first.heading": "Primele comenzi",
+  "first.body_html": "Apasă <strong>Pornește VM</strong>, așteaptă promptul de autentificare sau de shell, apoi <strong>dă clic pe ecranul negru</strong> ca tastatura să treacă la VM. Încearcă:",
+  "first.hint": "Scrie fiecare comandă și apasă Enter. Repornește te duce la o pornire curată dacă sesiunea se blochează.",
+  "note_html": "Funcționează cu <strong>v86</strong>, un emulator x86 complet în WebAssembly. Mediul de rulare, BIOS-ul și imaginea Linux sunt incluse în <code>assets/</code>, lângă această pagină (prima pornire nu are nevoie de un CDN). <a href=\"ORIGIN.md\">sursă și licențe</a>",
+  "status.already": "Rulează deja — dă clic pe ecran pentru tastatură",
+  "status.loading": "Se încarcă imaginea VM locală și pornește…",
+  "status.booting": "Pornește nucleul…",
+  "status.running": "Rulează — dă clic pe ecran, apoi încearcă whoami / uname / ls",
+  "status.restarted": "Repornit — dă clic pe ecran când revine promptul"
+}
