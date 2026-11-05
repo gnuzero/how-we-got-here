@@ -26,7 +26,7 @@ In the same 1999 piece, Wang says the team fixed its own page-description format
 
 ## Taiwan: a parallel first
 
-The United Daily News in Taipei switched on its computer typesetting system on 16 September 1982. The paper describes it as a world first; it grew separately from the mainland laser-phototypesetting line. ([United Daily News anniversary book](https://reading.udn.com/act/flipbook/20210203/files/basic-html/page273.html))
+The United Daily News in Taipei switched on its computer typesetting system on 16 September 1982. The paper describes it as the first Chinese-language daily to adopt computer typesetting; it grew separately from the mainland laser-phototypesetting line. ([United Daily News anniversary book](https://reading.udn.com/act/flipbook/20210203/files/basic-html/page273.html))
 
 ## What the page became
 
