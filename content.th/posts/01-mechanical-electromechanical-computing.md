@@ -2,7 +2,7 @@
 title: "การคำนวณเชิงกลไกและไฟฟ้ากลไก"
 weight: 2
 date: 2026-01-01
-draft: false
+draft: true
 phase: "1 — รากฐาน: จากการคำนวณเชิงกลไกสู่หลอดสุญญากาศ"
 series_index: 1
 tags: []
