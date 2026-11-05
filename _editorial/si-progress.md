@@ -238,3 +238,20 @@ Branch `si-fixes-1` from `origin/main` `85f3ae0`; not pushed. Every "ship"/"ship
 
 - Files: posts/00-credits.md (lines 129, 137), 19-the-x86-vs-risc-split.md (22), 45-kubernetes-and-container-orchestration-at-scale.md (29), 58-systolic-arrays.md (15), 64-who-decides-the-wire.md (21, 45), 68-visions-that-shipped.md (2, 6, 19, 31), 69-platform-synthesis.md (39), paths/_index.md (16), paths/visions-that-shipped.md (2, 10)
 - The older entries above (lines 105 and 125) still say නැව්ගත වූ දැක්මන්; they are kept as history.
+## si-b7: deep sections on 23, 27, 29, 30, 38, 40 (2026-11-05, Asia/Colombo)
+
+Branch `si-b7` in fork `forks/sena` from main `79821ce`; not pushed. One "ගැඹුරින්: …" section per page, placed before the bold exit door (23, 27, 29, 30, 40) or appended after the final vm-terminal lab (38, which has no door). Existing text untouched; draft:false; UTF-8 clean. Illustrative numbers are labelled. Mini-CPU programs use numeric addresses only and were run from the lab's own source (PR #26 lab: LDA sets Zero). VM commands were run in the lab image (Linux 4.16.13, BusyBox 1.28.4) over its serial console.
+
+- 23-the-gnu-movement-and-linux — four freedoms 0–3, GNU announcement (27 Sep 1983) and Manifesto (1985), GPLv2 §0/§1/§2(b)/§3(a)–(c) with a four-scenario table, RELNOTES-0.01 ("not even handling costs") and 0.12 (GNU copyleft from "the first of February"), VM userland (uname -o, BusyBox, uClibc, no gcc/bash), Hurd on Mach
+- 27-high-level-languages-fortran-cobol-lisp-c — X = A·B + C hand-compiled for the mini-CPU (no multiply; 17 in 34 steps = 8B + 2; Reset-without-Assemble gives 17 in 2,050 steps), Backus 1978 pp. 167–168, 171, 173, McCarthy 1960 car/cdr/cons, ff and apply traces (pp. 10–12, 16), Ritchie on B's word pointers and C's scaled byte pointers; no new COBOL facts
+- 29-real-time-systems-and-deterministic-scheduling — Liu & Layland Theorems 2, 5, 7 (pp. 51, 54, 56), bound table to ln 2, three simulated illustrative task sets (RM fails / EDF succeeds at U = 0.9714), countdown WCET 4n + 4 and the n = 0 wrap (1,028 steps), illustrative priority inversion
+- 30-real-time-systems-in-practice — illustrative 100 Hz budget, Reeves' Pathfinder email (8 Hz / .125 s, bc_sched/bc_dist, select() semaphore, <18 h reproduction, global semMCreate options fix), constant-time branch on the mini-CPU (6 steps both paths), VM `time` variance (0.61–0.72 s) and `chrt`, FAA AC 20-115D recognising DO-178C (13 Dec 2011)
+- 38-serial-links-and-the-first-machine-to-machine-connections — 'H' in an 8N1 frame, 9600 baud → 104.17 µs, 960 chars/s, TI SLLA037A levels (p. 8), ITU-T V.21 300 bit/s, Shannon Theorem 17 with an illustrative 30,898 bit/s, VM ttyS0 16550A / 9600 baud / hexdump
+- 40-ethernet-and-the-local-area-network — Metcalfe & Boggs CSL 75-7 (3 Mb/s, 1 km, 8-bit addresses, 16-bit CRC, backoff, efficiency model pp. 26–29), illustrative 1/2^k backoff, RFC 894 (46-octet minimum, 1500 maximum), VM eth0 (ne2k-pci, MTU 1500, down at boot, OUI 00-22-15 = ASUSTek per IEEE RA), CRC-3 by hand
+- UNVERIFIED markers (in the page source):
+  - 23: the 0.12 relicensing year 1992 (RELNOTES-0.12 prints no year)
+  - 23: BusyBox `uname -o` as a compile-time constant (source not opened)
+  - 38: UART mid-bit sampling (no UART datasheet opened)
+  - 38: `stty -F /dev/ttyS0` from the browser lab's tty1 session (run only over serial)
+- Source discrepancies noted in the text: RFC 894 says "minimum length … is 1500 octets" where maximum is meant (40); Metcalfe & Boggs state T = 8 µs but their p. 29 table matches T = 16 µs (40).
+- Audit: all six stay thin, rated by their own subjects; record in the desk's gaps.md ("si-b7 record"). Non-official copies used: Backus (softwarepreservation.org), Liu & Layland (cs.ru.nl), Reeves email (cs.unc.edu), Mike Jones (cornell.edu), Shannon (math.harvard.edu), Metcalfe & Boggs (web.mit.edu).
