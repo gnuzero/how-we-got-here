@@ -1,0 +1,9 @@
+{
+  "page.title": "Laboratorul Breadboard virtual",
+  "page.heading": "Laboratorul Breadboard virtual",
+  "page.subtitle": "Simulator interactiv de circuite — o poartă reală la încărcare, nu o pânză goală",
+  "btn.open_and": "Deschide poarta AND într-o filă nouă ↗",
+  "btn.wokwi": "Wokwi (breadboard fizic + MCU real) ↗",
+  "iframe.title": "Simulator de circuite — poartă AND",
+  "note_html": "\n  Privești o <strong>poartă AND</strong>: ieșirea e 1 doar când ambele intrări sunt 1.\n  Apasă pe cele două intrări din stânga ca să le comuți și urmărește ieșirea din dreapta.\n  <div class=\"meta\">Datele circuitului sunt înglobate în URL (<code>cct=</code>) — nu sunt încărcate din <code>/circuits/and.txt</code> eliminat de pe Falstad. Interfața simulatorului încă are nevoie de falstad.com. Copie locală a circuitului: <code>and.txt</code> lângă această pagină.</div>\n"
+}
