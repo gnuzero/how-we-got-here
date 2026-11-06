@@ -132,4 +132,4 @@ Britannica ට අනුව, Johannes Gutenberg යුරෝපයේ මුල�
 
 **පිටවීමේ දොර:** Tsien Tsuen-hsuin, *Paper and Printing* (Joseph Needham, *Science and Civilisation in China*, Vol. 5 Part 1, Cambridge University Press, 1985) — චීන කඩදාසි සහ මුද්‍රණය පිළිබඳ විස්තීර්ණ ඉංග්‍රීසි විද්වත් ග්‍රන්ථය ([WorldCat](https://search.worldcat.org/title/79441618)).
 
-ඊළඟට: [relays]({{< relref "07-relays-and-electromechanical-logic" >}}), එහිදී දුර්වල ධාරාවක් ශක්තිමත් ධාරාවක් මාරු කිරීමට ඉගෙන ගනී.
+ඊළඟට: [පණිවිඩය ගමන් කළ ආකාරය]({{< relref "03-how-the-message-travelled" >}}), එහිදී පණිවිඩය පියාපත් සහ කම්බි ඔස්සේ දුරට යයි.
