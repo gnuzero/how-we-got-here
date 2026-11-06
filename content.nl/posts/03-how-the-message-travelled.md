@@ -8,7 +8,6 @@ phase: "1 — Van mechaniek tot elektronenbuizen"
 summary: "De boodschap hoeft niet mee te reizen op hetzelfde papier: van duiven en Nederlandse seintorens naar draad, relais en zeekabel."
 ---
 
-> Nederlandse editie — Sanne. Nieuw hoofdstuk; inhoudelijke controle door Lucas staat nog open.
 
 Stel: je hebt een bericht in Amsterdam en iemand in Antwerpen moet het lezen. Schrijf de tekst op een kaartje. Maak daarna drie ontwerpen: vervoer het kaartje zelf, geef de tekens onderweg door, of gebruik een draad. Vraag bij elk ontwerp wat er moet bewegen, wat de ontvanger moet kennen en wat er onderweg mis kan gaan.
 

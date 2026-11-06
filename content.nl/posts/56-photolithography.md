@@ -13,7 +13,6 @@ tags: []
 summary: "ASML, EUV en de prijs van kortgolviger licht: een Nederlandse en Vlaamse ingang tot chipfabricage."
 ---
 
-> Eerste Nederlandse bijdrage — inhoudelijke controle door Lucas staat nog open.
 
 Teken twee evenwijdige lijnen, dicht naast elkaar. Stel je nu voor dat je dat patroon met licht op een oppervlak moet afbeelden. Welke knop zou je willen hebben om ze nog dichter bij elkaar te zetten?
 

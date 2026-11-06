@@ -10,7 +10,6 @@ tags: []
 summary: "Een beeld zien, bewaren en vermenigvuldigen zijn drie verschillende opgaven: van Niépce en Talbot naar Gent en Asser."
 ---
 
-> Nederlandse editie — Sanne. Nieuw hoofdstuk; inhoudelijke controle door Lucas staat nog open.
 
 Ga voor een raam staan. Kies één detail buiten: een dakrand, een boomtak, een overbuur. Stel jezelf drie opdrachten. Breng dat detail binnen als beeld. Bewaar het nadat het licht verdwenen is. Maak er vervolgens tien exemplaren van. Behandel die opdrachten niet als één probleem.
 

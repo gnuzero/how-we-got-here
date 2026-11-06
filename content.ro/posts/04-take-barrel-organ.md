@@ -16,7 +16,6 @@ summary: "Nu cunoaște un imn — cuiele decid melodia"
 
 **Analogie ilustrativă.** O flașnetă nu „cunoaște” un imn. Europeana descrie mecanismul astfel: pe măsură ce butoiul se rotește, dinții (cuiele) ridică pârghii care lasă aerul să treacă în țevi de înălțimi diferite; instrumentul poate cânta doar melodiile „programate” pe fiecare butoi (Europeana, „Creating music out of thin air”, [europeana.eu](https://www.europeana.eu/en/exhibitions/music-and-mechanics/creating-music-out-of-thin-air), accesat 2026-11-05). Schimbi aranjamentul cuielor, schimbi melodia. Cutia n-are o părere despre muzică — doar aranjamentul.
 
-<!-- NEVERIFICAT dump: curl direct pe Europeana a returnat 403; conținutul citat vine din WebFetch reușit (acceptat de Lucas). Met Museum barrel organ: 429 — nicio cifră din Met pe pagină. -->
 
 <figure>
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Gem_Roller_Organ%2C_Lightner_Museum.jpg" alt="Gem Roller Organ cu cilindru cuie la Lightner Museum" loading="lazy" width="1280">

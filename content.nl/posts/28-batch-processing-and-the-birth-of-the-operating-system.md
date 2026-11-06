@@ -13,7 +13,6 @@ tags: []
 summary: "Wachten, seinpalen en lagen: een systeem begrijpen zonder alle tijdvolgordes uit te tekenen."
 ---
 
-> Eerste Nederlandse bijdrage — inhoudelijke controle door Lucas staat nog open.
 
 Stel je twee taken voor die allebei dezelfde printer willen gebruiken. Geef ze ieder een kaartje met een opdracht. Wie mag beginnen? Wie moet wachten? Wat moet er gebeuren zodra de printer vrijkomt?
 

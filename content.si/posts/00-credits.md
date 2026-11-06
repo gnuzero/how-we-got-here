@@ -154,7 +154,6 @@ Wokwi යනු breadboard පිටුවෙන් පිටතට යන ස�
 Science Museum Group සංරක්ෂණ ඇඳීම් බොහෝ විට CC BY-NC-SA — සබැඳියට හොඳයි, නිදහස් වාණිජ කලාව ලෙස නොසැලකේ. CC BY / CC BY-SA යටතේ නරඹන්නන්ගේ ඡායාරූප රූප දොරයි.
 
 
-<!-- TODO(desk): EN credits (PR credits-zh-tone) softened the vocalist note and the closing line, and added a 'Chinese published sources' section. Mirror both in this locale's language; see content/posts/00-credits.md. -->
 
 ## ඇසෙන හඬකටත් තවම නමක් දිය නොහැක
 

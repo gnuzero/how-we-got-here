@@ -49,15 +49,11 @@ A fotografia sobrevivente mais antiga feita com auxílio de câmara escura é a 
 
 Em 1829 Niépce entrou em sociedade com Louis-Jacques-Mandé Daguerre. Daguerre seguiu aperfeiçoando o método depois da morte de Niépce e apresentou o daguerreótipo em 1839 — o ano em que a invenção da fotografia foi anunciada na França e na Inglaterra (Harry Ransom Center, «The Niépce Heliograph», acessado 2026-11-06).
 
-Na Inglaterra, o calótipo de William Henry Fox Talbot tomou outro caminho. O History of Science Museum (Universidade de Oxford) descreve o Calotype / «Talbotype» como refinamento do *photogenic drawing* pela **imagem latente**: inventado por Fox Talbot em **setembro de 1840** e patenteado a **8 de fevereiro de 1841** (History of Science Museum, Oxford, «Calotypes», [mhs.ox.ac.uk](https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html), acessado 2026-11-06). O mesmo texto descreve a preparação do papel: escovar com solução de nitrato de prata, secar, e depois imergir em solução de iodeto de potássio, formando uma camada sensível de iodeto de prata; imediatamente antes do uso, a superfície recebe «gallo-nitrate of silver» (nitrato de prata + ácido gálico) como acelerador; a exposição na câmara produz uma imagem latente (invisível), revelada por lavagem no mesmo gallo-nitrato e fixada em hipo (mesma fonte). **A HSM não usa a expressão inglesa «iodized paper»**; descreve essa preparação AgNO₃ → KI (iodeto de prata). Usamos essa descrição como o papel iodizado do processo.
+Na Inglaterra, o calótipo de William Henry Fox Talbot tomou outro caminho. O History of Science Museum (Universidade de Oxford) descreve o Calotype / «Talbotype» como refinamento do *photogenic drawing* pela **imagem latente**: inventado por Fox Talbot em **setembro de 1840** e patenteado a **8 de fevereiro de 1841** (History of Science Museum, Oxford, «Calotypes», [mhs.ox.ac.uk](https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html), acessado 2026-11-06). Segundo a HSM, o papel é escovado com solução de nitrato de prata, seco, e depois imerso em solução de iodeto de potássio, formando uma camada sensível de iodeto de prata; imediatamente antes do uso, a superfície recebe «gallo-nitrate of silver» (mistura de solução de nitrato de prata e ácido gálico) como acelerador; a exposição na câmara produz uma imagem latente (invisível), revelada por lavagem no gallo-nitrato de prata e fixada em hipo; um positivo pode obter-se repetindo o processo ou por *printing out*, e, com tom, um «salted paper print» (mesma fonte).
 
-A Britannica data a invenção do calótipo nos anos 1830 e a patente em **1841** (ano, sem dia) e fala de papel revestido com **cloreto** de prata e desenvolvimento com ácido gálico, reduzindo a exposição de cerca de uma hora para cerca de um minuto; o negativo podia gerar qualquer número de positivos por contacto, ao contrário do daguerreótipo único em metal (Encyclopaedia Britannica, «calotype», [britannica.com](https://www.britannica.com/technology/calotype), acessado 2026-11-06).
+O ensaio do Metropolitan Museum (Malcolm Daniel, 2004) situa a descoberta da imagem latente em **23 de setembro de 1840** e chama o processo *calotype*, do grego *kalos*, «belo» (Met / Heilbrunn Timeline of Art History; cópia [Wayback](https://web.archive.org/web/20250121105220/https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm), acessado 2026-11-06).
 
-O ensaio do Metropolitan Museum (Malcolm Daniel, 2004) situa a descoberta da imagem latente em **23 de setembro de 1840** e a patente em **fevereiro de 1841** (mês, sem dia no texto que recuperámos), com revelação por «exciting liquid» / ácido gálico, e nome *calotype* do grego *kalos* (Met / Heilbrunn; cópia [Wayback](https://web.archive.org/web/20250121105220/https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm), acessado 2026-11-06).
-
-**Flag para Lucas — datas e química:** HSM dá patente **8 Feb 1841** e preparação com **iodeto** de prata; Britannica dá só **1841** e fala de **cloreto** de prata; Met dá **23 Sep 1840** para a imagem latente e **February 1841** sem dia. Não escolhemos um dia contra outro: citamos HSM para o dia 8 e marcamos a discrepância de mês/ano e de cloreto vs iodeto.
-
-O essencial para este livro: um negativo de papel podia gerar qualquer número de positivos por cópia de contacto noutro papel sensibilizado, enquanto o daguerreótipo era uma única imagem em metal, que não se duplicava (Britannica, «calotype»; HSM, «Calotypes», acessados 2026-11-06).
+O essencial para este livro: o negativo de papel do calótipo admite positivos por repetição / *printing out*, ao passo que o daguerreótipo é uma imagem única — contraste que a HSM marca ao situar o calótipo como alternativa ao daguerreótipo (HSM, «Calotypes», acessado 2026-11-06; **interpretação nossa** do lugar no eixo do livro).
 
 ## Por que este capítulo fica aqui
 
@@ -65,7 +61,7 @@ O essencial para este livro: um negativo de papel podia gerar qualquer número d
 
 Uma vez que a luz podia ser guardada e copiada, o passo seguinte foi guardá-la em sequência e reproduzi-la. Essa história — de Muybridge ao primeiro cinema, e ao primeiro filme da China — está em [Da prensa ao pixel]({{< relref path="/posts/51-from-press-to-pixel.md" lang="en" >}}) (capítulo em inglês até a edição em português existir).
 
-**Próximo:** relés, onde a eletricidade começa a fazer a comutação — [Relés e lógica eletromecânica]({{< relref path="/posts/09-relays-and-electromechanical-logic.md" lang="en" >}}) (em inglês por enquanto).
+**Próximo:** [Relés e lógica eletromecânica](/posts/09-relays-and-electromechanical-logic/).
 
 ## Fontes
 
@@ -74,5 +70,4 @@ Uma vez que a luz podia ser guardada e copiada, o passo seguinte foi guardá-la 
 - Instituto Moreira Salles, ficha «Hercule Florence»: <https://ims.com.br/titular-colecao/hercule-florence/>
 - Harry Ransom Center, The University of Texas at Austin, «The Niépce Heliograph»: <https://www.hrc.utexas.edu/niepce-heliograph/>
 - History of Science Museum, Oxford, «Calotypes»: <https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html>
-- Malcolm Daniel, The Metropolitan Museum of Art, «William Henry Fox Talbot (1800–1877) and the Invention of Photography» (2004): <https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm> (fetch direto bloqueado nesta sessão; [Wayback 2025-01-21](https://web.archive.org/web/20250121105220/https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm))
-- Encyclopaedia Britannica, «calotype»: <https://www.britannica.com/technology/calotype>
+- Malcolm Daniel, The Metropolitan Museum of Art, «William Henry Fox Talbot (1800–1877) and the Invention of Photography» (2004): <https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm> ([Wayback 2025-01-21](https://web.archive.org/web/20250121105220/https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm))
