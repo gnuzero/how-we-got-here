@@ -1,0 +1,51 @@
+[title]
+other = "How We Got There"
+
+[foreword]
+other = "הקדמה"
+
+[Search]
+other = "חיפוש"
+
+["Edit this page"]
+other = "עריכת דף זה"
+
+["Last modified by"]
+other = "שונה לאחרונה על ידי"
+
+[Languages]
+other = "שפות"
+
+[Expand]
+other = "הרחבה"
+
+[Calendar]
+other = "לוח שנה"
+
+[Backward]
+other = "הקודם"
+
+[Forward]
+other = "הבא"
+
+[Edit]
+other = "עריכה"
+
+[Logo]
+other = "לוגו"
+
+[Menu]
+other = "תפריט"
+
+["Table of Contents"]
+other = "תוכן העניינים"
+
+[Thumbnail]
+other = "תמונה ממוזערת"
+
+[labIframeTitle]
+other = "מעבדה אינטראקטיבית: {{ .Type }}"
+
+[labOpenNewTab]
+other = "פתיחת המעבדה בכרטיסייה חדשה ↗"
+

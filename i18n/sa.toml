@@ -1,0 +1,51 @@
+[title]
+other = "How We Got There"
+
+[foreword]
+other = "प्रस्तावना"
+
+[Search]
+other = "अन्वेषणम्"
+
+["Edit this page"]
+other = "Edit this page"
+
+["Last modified by"]
+other = "Last modified by"
+
+[Languages]
+other = "भाषाः"
+
+[Expand]
+other = "Expand"
+
+[Calendar]
+other = "Calendar"
+
+[Backward]
+other = "Backward"
+
+[Forward]
+other = "Forward"
+
+[Edit]
+other = "Edit"
+
+[Logo]
+other = "Logo"
+
+[Menu]
+other = "Menu"
+
+["Table of Contents"]
+other = "Table of Contents"
+
+[Thumbnail]
+other = "Thumbnail"
+
+[labIframeTitle]
+other = "Interactive lab: {{ .Type }}"
+
+[labOpenNewTab]
+other = "Open the lab in a new tab ↗"
+

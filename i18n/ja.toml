@@ -1,0 +1,51 @@
+[title]
+other = "How We Got There"
+
+[foreword]
+other = "まえがき"
+
+[Search]
+other = "検索"
+
+["Edit this page"]
+other = "このページを編集"
+
+["Last modified by"]
+other = "最終更新者"
+
+[Languages]
+other = "言語"
+
+[Expand]
+other = "展開"
+
+[Calendar]
+other = "カレンダー"
+
+[Backward]
+other = "前へ"
+
+[Forward]
+other = "次へ"
+
+[Edit]
+other = "編集"
+
+[Logo]
+other = "ロゴ"
+
+[Menu]
+other = "メニュー"
+
+["Table of Contents"]
+other = "目次"
+
+[Thumbnail]
+other = "サムネイル"
+
+[labIframeTitle]
+other = "インタラクティブ・ラボ: {{ .Type }}"
+
+[labOpenNewTab]
+other = "ラボを新しいタブで開く ↗"
+

@@ -1,0 +1,51 @@
+[title]
+other = "How We Got There"
+
+[foreword]
+other = "प्राक्कथन"
+
+[Search]
+other = "खोजें"
+
+["Edit this page"]
+other = "इस पृष्ठ को संपादित करें"
+
+["Last modified by"]
+other = "अंतिम बार संशोधित"
+
+[Languages]
+other = "भाषाएँ"
+
+[Expand]
+other = "विस्तार करें"
+
+[Calendar]
+other = "कैलेंडर"
+
+[Backward]
+other = "पीछे"
+
+[Forward]
+other = "आगे"
+
+[Edit]
+other = "संपादित करें"
+
+[Logo]
+other = "लोगो"
+
+[Menu]
+other = "मेनू"
+
+["Table of Contents"]
+other = "विषय-सूची"
+
+[Thumbnail]
+other = "थंबनेल"
+
+[labIframeTitle]
+other = "इंटरैक्टिव प्रयोगशाला: {{ .Type }}"
+
+[labOpenNewTab]
+other = "प्रयोगशाला नए टैब में खोलें ↗"
+
