@@ -49,3 +49,22 @@ other = "インタラクティブ・ラボ: {{ .Type }}"
 [labOpenNewTab]
 other = "ラボを新しいタブで開く ↗"
 
+
+# Lab display-name overrides (layouts/shortcodes/lab.html labDisplayName-<type>)
+[labDisplayName-difference-engine]
+other = "差分機関"
+
+[labDisplayName-analytical-engine]
+other = "解析機関"
+
+[labDisplayName-breadboard]
+other = "ブレッドボード"
+
+[labDisplayName-mini-cpu]
+other = "Mini-CPU"
+
+[labDisplayName-vm-terminal]
+other = "端末"
+
+[labDisplayName-pebble-trays]
+other = "小石のトレイ"
