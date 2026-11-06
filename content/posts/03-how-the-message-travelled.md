@@ -2,6 +2,7 @@
 title: "How the message travelled"
 weight: 3
 series_index: 2
+aliases: []
 draft: false
 phase: "1 — Foundations: Mechanical to Vacuum-Tube Computing"
 summary: "From messages on wings to the electric message"
@@ -23,4 +24,4 @@ On 28 April 1850, Paul Julius Reuter started a pigeon service between Brussels a
 
 Cooke and Wheatstone patented their telegraph on 10 June 1837. Distant Writing records an hour-long trial of the whole Euston Square–Camden Town circuit on the London and Birmingham Railway on 6 September 1837. ([Distant Writing, Cooke & Wheatstone](https://www.distantwriting.co.uk/cookewheatstone.html)) On 24 May 1844 Morse officially opened the Washington–Baltimore line; Annie Ellsworth chose the message "What hath God wrought," and Alfred Vail returned an identical message from Baltimore. ([U.S. Senate history](https://www.senate.gov/artandhistory/senate-stories/morses-telegraph-in-the-capitol.htm))
 
-Next: [What is this thing?]({{< relref "02-what-is-this-thing" >}})
+Next: [What is this thing?]({{< relref "04-what-is-this-thing" >}})

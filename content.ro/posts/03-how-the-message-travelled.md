@@ -5,6 +5,7 @@ date: 2026-01-01
 draft: false
 phase: "1 — Fundamente: de la calcul mecanic la tuburi vidate"
 series_index: 2
+aliases: []
 tags: []
 summary: "Porumbei, ace și puncte: cum a ajuns un mesaj departe fără nimeni care să-l ducă"
 ---
@@ -29,4 +30,4 @@ William Fothergill Cooke și Charles Wheatstone au obținut brevetul lor la 10 i
 
 În Statele Unite, Biroul istoric al Senatului relatează că la 24 mai 1844, cu firul întins pe 38 de mile între Washington și depoul feroviar din Baltimore, Samuel Morse a deschis oficial linia, iar Annie Ellsworth, fiica comisarului pentru brevete, a ales primul mesaj, „What hath God wrought” (Ce a făcut Dumnezeu) (Senate Historical Office, „"What Hath God Wrought": Morse's Telegraph in the Capitol”, [senate.gov](https://www.senate.gov/artandhistory/senate-stories/morses-telegraph-in-the-capitol.htm), neverificat prin fetch automat; copie [Wayback](https://web.archive.org/web/20240515140632/https://www.senate.gov/artandhistory/senate-stories/morses-telegraph-in-the-capitol.htm), accesat 2026-11-05). Câteva momente mai târziu, Alfred Vail a trimis înapoi din Baltimore un mesaj identic (aceeași sursă). Tot acolo se arată că manipulatorul telegrafic folosit, se crede, la această transmisie a fost construit de Vail (aceeași sursă). Lectura noastră: acul lui Wheatstone arăta direct o literă, pe când manipulatorul lui Morse și Vail doar deschide și închide circuitul, iar sensul stă în codul de puncte și linii, adică tot un comutator cu două stări.
 
-**Următorul:** [Ce e chestia asta?]({{< relref "02-what-is-this-thing.md" >}})
+**Următorul:** [Ce e chestia asta?]({{< relref "04-what-is-this-thing.md" >}})

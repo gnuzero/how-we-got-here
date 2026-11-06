@@ -81,7 +81,7 @@ Weights 1–11 are unique and equal `series_index`. Every page has: status comme
 
 - Files: `content.zh-hans/posts/01-zh-drawloom-huaben.md`, `content.zh-hant/posts/01-zh-drawloom-huaben.md`
 - Title: 花本：程序第一次和机器分开 / 花本：程式第一次和機器分開
-- Feeds English: ch 4 (04-jacquard-loom) Jacquard loom, 02-take-silk-cards
+- Feeds English: ch 4 (06-jacquard-loom) Jacquard loom, 04-take-silk-cards
 - Sources: F31-01…F31-10. Main primary sources: 宋应星《天工开物》(1637) 结花本 / 花机式; 成都老官山汉墓 loom models (中国丝绸博物馆 reconstruction, 龙博 2021); 赵丰; 中国丝绸博物馆《神机妙算》exhibition; 南京云锦 intangible-heritage records; UNESCO yunjin inscription.
 - Omitted / unverified: Jacquard date now sourced to Encyclopaedia Britannica (1801 demonstration; 1804–05 punched-card attachment; 1806 public property), fact-check gate 2026-09-26; the Silk Museum exhibition text still gives both 1817 and 1799 (shown as contradictory); medium findings attributed (赵丰's 6th-century argument, 挑花结本 description, 1910 铁机 arrival).
 - Image: 《天工开物》drawloom woodcut, PD-old; the Commons source scan is only 500×353, so `width="500"`.
@@ -91,7 +91,7 @@ Weights 1–11 are unique and equal `series_index`. Every page has: status comme
 
 - Files: `content.zh-hans/posts/01-zh-gears-and-calculators.md`, `content.zh-hant/posts/01-zh-gears-and-calculators.md`
 - Title: 齿轮会数数：从记里鼓车到“较数器” / 齒輪會數數：從記里鼓車到“較數器”
-- Feeds English: ch 3 (03-babbage-engines) Babbage engines (digit wheels, carry), ch 5 (05-why-mechanical-matters) / take-water-wheel (Su Song), south-pointing chariot correction
+- Feeds English: ch 3 (05-babbage-engines) Babbage engines (digit wheels, carry), ch 5 (07-why-mechanical-matters) / take-water-wheel (Su Song), south-pointing chariot correction
 - Sources: F32-01…F32-06, F30-01…F30-05, F30-07, F33-01…F33-03. Main primary sources: 《宋史·舆服一》(1027 odometer cart, south-pointing chariots); 苏颂《新仪象法要》; Palace Museum collection records for the Qing hand-cranked calculators; 《御制数理精蕴》; 《六合丛谈》(1857–58, arithmometer and difference engine “较数器”).
 - Mechanical fix in this pass: the page had no **出处** labels; four were added, citing sources already listed on the page.
 - Omitted / unverified: Su Song's completion date 1088 (only the 1086 edict is given); 《六合丛谈》 vol. 2 no. 2 dated 1858 vs 1859 (flagged in text); the Zhou Qian dial-label account shown against the museum database.

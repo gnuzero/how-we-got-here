@@ -5,6 +5,7 @@ date: 2026-01-01
 draft: false
 phase: "1 — அடித்தளங்கள்: இயந்திரத்திலிருந்து வெற்றிடக் குழாய் கணினி வரை"
 series_index: 2
+aliases: []
 tags: []
 summary: "புறாவிலிருந்து தந்திக் கம்பி வரை — செய்தி எப்படித் தாவல்களாகப் பயணித்தது; ரிலே repeater ஆக மாறிய கதை"
 ---
@@ -27,4 +28,4 @@ Cooke, Wheatstone இருவரும் **10 ஜூன் 1837** அன்ற
 
 <!-- sources (Lucas): Frontinus 3.13.8 + note 67 (43 BC), Decimus Brutus, altissima aedificiorum; The Baron Reuter (Brussels–Aachen; gap = our reading); Distant Writing hour-long trial 6 Sep 1837; Senate Morse opened line / Ellsworth / Vail return; SIA siris_sic_12484 College of New Jersey; Hochfelder PDF for Morse repeater. -->
 
-அடுத்து: [இது என்ன?]({{< relref "02-what-is-this-thing" >}})
+அடுத்து: [இது என்ன?]({{< relref "04-what-is-this-thing" >}})
