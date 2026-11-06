@@ -27,15 +27,15 @@ Once personal machines existed, the scarce layer was not only silicon — it was
 
 ## Steve Jobs / Apple — The Integrated Personal Machine
 
-**Steve Jobs** and **Apple** (founded 1976, [Wikipedia](https://en.wikipedia.org/wiki/Apple_Inc.)) bet the other way: integrate hardware, OS, and interaction model so the *product* is the computer, not a bag of parts. From early Apple machines through the later phone-class integrated devices, the pattern is vertical coherence — experience as a systems problem. Derive kin (other integrated personal-device lines) and stop.
+**Steve Jobs** and **Apple** (founded 1976, [Wikipedia](https://en.wikipedia.org/wiki/Apple_Inc.)), with **Steve Wozniak** at the start — Wozniak co-founded Apple and designed its first computer, the Apple I ([Wikipedia, Steve Wozniak](https://en.wikipedia.org/wiki/Steve_Wozniak)) — bet the other way: integrate hardware, OS, and interaction model so the *product* is the computer, not a bag of parts. From early Apple machines through the later phone-class integrated devices, the pattern is vertical coherence — experience as a systems problem. Derive kin (other integrated personal-device lines) and stop.
 
 ## GNU + Linus — The Free/Open Stack This Book Already Stands On
 
 [Post 30]({{< relref "30-the-gnu-movement-and-linux" >}}) already named **Richard Stallman** (GNU, GPL) and **Linus Torvalds** (Linux kernel, GPL relicensing in early 1992). Close-of-book only needs the forward link: the servers, clouds, phones, and toolchains underneath modern platforms overwhelmingly sit on that free/open stack. The vision that shipped is not a brand — it is a legal and engineering commons the rest of the industry built on.
 
-## Jeff Bezos — A Present-Tense Seed of Scale
+## Elon Musk and Jeff Bezos — Present-Tense Seeds of Scale
 
-**Jeff Bezos** / Amazon (founded 1994, [Wikipedia](https://en.wikipedia.org/wiki/Amazon_(company))) is a seed of a *kind*: logistics and retail demand forced a software and datacenter platform (and later a rented one) at global scale — cloud as the productization of distributed systems chapters you already read. Use it to derive peers in scale, logistics, infrastructure, and platform-behind-the-product — then stop. Not fan pages. Not a scorecard.
+**Jeff Bezos** / Amazon (founded 1994, [Wikipedia](https://en.wikipedia.org/wiki/Amazon_(company))) is a seed of a *kind*: logistics and retail demand forced a software and datacenter platform (and later a rented one) at global scale — cloud as the productization of distributed systems chapters you already read. **Elon Musk**'s companies run through several layers of this book: Zip2, a web software company; X.com, an online payments company that merged with Confinity in March 2000 to form PayPal ([Wikipedia, Elon Musk](https://en.wikipedia.org/wiki/Elon_Musk); [Wikipedia, PayPal](https://en.wikipedia.org/wiki/PayPal)); SpaceX, founded in 2002 ([Wikipedia, SpaceX](https://en.wikipedia.org/wiki/SpaceX)); Tesla, where he led the first funding round and became chairman, and which later entered energy storage ([Wikipedia, Tesla, Inc.](https://en.wikipedia.org/wiki/Tesla,_Inc.)); and Starlink, whose first 60 satellites launched on 24 May 2019 ([SpaceX FCC filing](https://apps.fcc.gov/els/GetAtt.html?id=233157&x=)). Our interpretation: a seed of another present-tense *kind*, companies that treat software, manufacturing, energy, and space as one coupled stack rather than separate industries. Use them to derive peers in scale, logistics, infrastructure, and platform-behind-the-product — then stop. Not fan pages. Not a scorecard.
 
 ## How to Read This Door
 
