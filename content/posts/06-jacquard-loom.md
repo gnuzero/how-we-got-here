@@ -22,7 +22,7 @@ Babbage did not invent punched-card control. He borrowed it.
 <figcaption>Jacquard loom, Musée d'art et d'industrie, Saint-Étienne. Photo: <a href="https://commons.wikimedia.org/wiki/File:02_Metier_jacquard_etroit.jpg">Hélène Rival</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</figcaption>
 </figure>
 
-Joseph-Marie Jacquard's loom attachment (first patented on 23 December 1801, per the [Musée des Arts et Métiers](https://www.arts-et-metiers.net/musee/modele-metier-original-de-jacquard); the improved mechanism usually dated 1804 is the one that spread) took over the drawloom's draw boy: it used a chain of punched cards to decide which threads lifted at each pass of the shuttle: hole → lift, no hole → block. Change the cards, change the pattern. The loom did not know "silk brocade"; it executed a fixed, physically encoded sequence of lift/no-lift decisions.
+Joseph-Marie Jacquard's loom attachment (patented 23 December 1801, per the [Musée des Arts et Métiers](https://www.arts-et-metiers.net/musee/modele-metier-original-de-jacquard)) took over the drawloom's draw boy: it used a chain of punched cards to decide which threads lifted at each pass of the shuttle: hole → lift, no hole → block. Change the cards, change the pattern. The loom did not know "silk brocade"; it executed a fixed, physically encoded sequence of lift/no-lift decisions.
 
 <figure>
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Jacquard.loom.cards.jpg" alt="Close-up of Jacquard loom punched cards at the Museum of Science and Industry, Manchester" loading="lazy" width="249">
