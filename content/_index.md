@@ -14,7 +14,7 @@ An interactive journey — not an encyclopedia. You live through systems and tou
 
 The spine is one continuous engineering argument: how each era's hard constraint forced the next architecture.
 
-**Mechanical → relays → tubes → transistor → CPU → OS & languages → buses → networks → fabric & scale → GPUs → attention.**
+**Print → delivery → mechanical → relays → tubes → transistor → CPU → OS & languages → buses → networks → fabric & scale → GPUs → attention.**
 
 ---
 
