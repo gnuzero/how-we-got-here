@@ -17,7 +17,7 @@ labs: ["breadboard"]
 schematics: "Diagram: 6T SRAM cell + 1T1C DRAM cell + memory hierarchy pyramid"
 ---
 
-A D flip-flop (Post 9) is a fine memory element — and expensive per bit: on the order of twenty transistors once clocking, reset, and scan land. A few registers are fine. Gigabytes of main memory that way are not. Two cell designs split the tradeoff: SRAM for speed close to the CPU, DRAM for density farther out.
+A D flip-flop (Post 9) is a fine memory element — and expensive per bit: two latches' worth of transistors, more once clocking, reset, and scan land. A few registers are fine. Gigabytes of main memory that way are not. Two cell designs split the tradeoff: SRAM for speed close to the CPU, DRAM for density farther out.
 
 ## SRAM: Fast, Stable, Area-Heavy
 
