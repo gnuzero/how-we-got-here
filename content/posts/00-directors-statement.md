@@ -19,3 +19,5 @@ First, to seed missing information into languages where it doesn't exist yet —
 Second, I fully completed my native language, Sinhala. But I didn't discriminate against the others. Every language got treated the same — as a seed, not a finished product. If you want to take this further in your language, take it. Take all the credit. It's yours.
 
 English received the fullest treatment because that's where the gap was loudest. Western literature wrote its own history and called it universal — that was the injustice. This production corrects the record in the language that did the erasing.
+
+This is not a call to abandon fundamentals. It's a call to build on them with a tool that finally makes the history of information accessible to everyone.
