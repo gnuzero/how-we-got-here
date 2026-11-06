@@ -1,0 +1,17 @@
+{
+  "page.title": "仮想マシン端末ラボ",
+  "page.heading": "仮想マシン端末ラボ",
+  "page.subtitle": "本物の x86 マシンを WASM でブラウザ内に——本物の Linux、本物のシェル、本物のコマンド",
+  "btn.boot": "仮想マシンを起動",
+  "btn.restart": "再起動",
+  "status.idle": "未起動——「仮想マシンを起動」を押す",
+  "first.heading": "まずこれらのコマンドを",
+  "first.body_html": "<strong>仮想マシンを起動</strong>を押し、ログイン／シェルのプロンプトが出たら<strong>黒い画面をクリック</strong>してキーボード入力を仮想マシンへ向ける。試す：",
+  "first.hint": "コマンドを一行ずつ入力して Enter。セッションが固まったら「再起動」で新しいシステムを立ち上げ直す。",
+  "note_html": "<strong>v86</strong> 駆動——WebAssembly 上の完全な x86 エミュレータ。ランタイム・BIOS・Linux イメージはすべて本頁の <code>assets/</code> にある（初回起動にオンライン CDN は不要）。<a href=\"ORIGIN.md\">出典とライセンス</a>",
+  "status.already": "実行中——画面をクリックしてキーボードを使う",
+  "status.loading": "ローカル仮想マシン・イメージを読み込み、起動中…",
+  "status.booting": "カーネル起動中…",
+  "status.running": "実行中——画面をクリックし、whoami / uname / ls を試す",
+  "status.restarted": "再起動した——プロンプトが出たら画面をクリック"
+}

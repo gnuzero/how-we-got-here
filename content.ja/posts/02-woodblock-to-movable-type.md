@@ -23,17 +23,19 @@ schematics: "Diagram: Hyakumantō Darani (770) → Diamond Sutra woodblock (868)
 
 国立国会図書館は、神護景雲4（770）年の『無垢浄光陀羅尼』を展示解説でこう呼ぶ。「制作年代が明確なものとしては世界最古の印刷物として著名な、いわゆる『百万塔陀羅尼』」であり、奈良時代の女帝・称徳天皇が作らせた、と書く。根本陀羅尼をはじめ四種の陀羅尼を百万基の小塔に納め、十か所の寺に奉納したとされるが、現存するのは法隆寺に納められていたものだけだ、とも同館は記す。([国立国会図書館「本の玉手箱」展示解説](https://www.ndl.go.jp/exhibit70/42.html))
 
-印刷博物館（東京）は、制作を天平宝字8（764）年から神護景雲4（770）年までとし、「現存する中では、印刷された年代が明確な世界最古の印刷物」と紹介する。『続日本紀』に国家事業として記録され、完成まで5年8か月、157名の技術者が関わった、と同館は書く。陀羅尼は根本・相輪・六度・自心印の四種で、印刷法については木版説と銅凸版説があり、「そのどちらであるかは現在にいたってもわかっていません」と明記する。([印刷博物館「百万塔陀羅尼」](https://www.printing-museum.org/collection/looking/33154.php))
+印刷博物館（東京）は、制作を天平宝字8（764）年から神護景雲4（770）年までとし、「現存する中では、印刷された年代が明確な世界最古の印刷物」と紹介する。『続日本紀』に国家事業として記録され、完成まで5年8か月、157名の技術者が関わった、と同館は書く。陀羅尼は根本・相輪・六度・自心印の四種だ。印刷の方法について同館は、版木に経文を彫った**木版説**と、銅版に文字を鋳造した**銅凸版説**の二説があり、「そのどちらであるかは現在にいたってもわかっていません」と明記する。([印刷博物館「百万塔陀羅尼」](https://www.printing-museum.org/collection/looking/33154.php))
 
-東京国立博物館の ColBase は、所蔵の百万塔陀羅尼（機関管理番号 B-2104）を「奈良時代、称徳天皇の発願で製作された百万基の木製小塔の中に納入された『陀羅尼経』」と説明し、品質形状を紙本墨摺とする。印刷方法に「銅版説、木版説などがある」と、やはり決着を書かない。([ColBase / 東京国立博物館 B-2104](https://colbase.nich.go.jp/collection_items/tnm/B-2104?locale=ja))
+東京国立博物館の ColBase は、所蔵の百万塔陀羅尼（機関管理番号 B-2104）を「奈良時代、称徳天皇の発願で製作された百万基の木製小塔の中に納入された『陀羅尼経』」と説明し、品質形状を紙本墨摺とする。ここでも印刷方法に「銅版説、木版説などがある」と書き、一方を採用しない。([ColBase / 東京国立博物館 B-2104](https://colbase.nich.go.jp/collection_items/tnm/B-2104?locale=ja))
 
-日本印刷学会誌の総説（辻本直彦、2021）も、木版説と銅凸版説のどちらにも「まだ結論に至っていない」と述べる。決めない。争点そのものが史料の状態だ。([日本印刷学会誌 58巻5号](https://www.jstage.jst.go.jp/article/nig/58/5/58_224/_article/-char/ja/))
+日本印刷学会誌の総説（辻本直彦、2021）も、木版説と銅凸版説のどちらにも「まだ結論に至っていない」と述べる。([日本印刷学会誌 58巻5号](https://www.jstage.jst.go.jp/article/nig/58/5/58_224/_article/-char/ja/))
+
+出典どうしが食い違う。わたしたちは木版とも銅凸版とも決めない。争点そのものが史料の状態だ。
 
 筆者の解釈では、ここで運ぶ糸は一つだけだ。770年には、日本で「同じ文を大量に刷る」国家事業がすでに動いていた。手写しではない。版がある。
 
 ## 868：紀年のある木版経
 
-大英図書館は、敦煌出土の木版『金剛般若波羅蜜経』（Or.8210/P.2）を所蔵する。国際敦煌プロジェクトのパネルは、これを「the earliest dated printed book」と呼び、巻末題記を「王玠が両親のために咸通九年四月十五日に敬造し普施流通した」と英訳し、日付を868年5月11日に換算する。([IDP / British Library, colophon panel](https://idp.bl.uk/blog/the-diamond-sutra-on-display-text-panel-6-with-colophon/))
+大英図書館は、敦煌出土の木版『金剛般若波羅蜜経』（Or.8210/P.2）を所蔵する。国際敦煌プロジェクトのパネルは、これを「the earliest dated printed book」と呼び、巻末題記を「王玠が両親のために咸通九年四月十五日に敬造し普施流通した」と英訳し、日付を868年5月11日に換算する。([IDP / British Library, colophon panel](https://idp.bl.uk/blog/the-diamond-sutra-on-display-text-panel-6-with-colophon/)
 
 のちの著者は、経典の官刻を馮道に結びつける。沈括は、唐では板印はまだ盛んでなく、馮道のときに五経が印されたと書く。王禎は年を与える——長興二年、馮道らが九経の校正・刻板を請うた、と。それは**国家**が経典を刷った話であって、印刷の始まりの話ではない。百万塔陀羅尼と868年の経は、どちらもその前にある。([沈括『夢渓筆談』巻十八](https://zh.wikisource.org/wiki/%E5%A4%A2%E6%BA%AA%E7%AD%86%E8%AB%87_(%E5%9B%9B%E9%83%A8%E5%8F%A2%E5%88%8A%E6%9C%AC)/%E5%8D%B7%E5%8D%81%E5%85%AB); [王禎『農書』巻二十二](https://zh.wikisource.org/wiki/%E7%8E%8B%E7%A6%8E%E8%BE%B2%E6%9B%B8/%E5%8D%B7%E4%BA%8C%E5%8D%81%E4%BA%8C))
 
@@ -53,7 +55,7 @@ schematics: "Diagram: Hyakumantō Darani (770) → Diamond Sutra woodblock (868)
 
 ## 銅・金属・規模
 
-台湾の文化部文化資産局は、華燧の会通館が明弘治三年（1490）に銅活字で刷った『會通館印正宋諸臣奏議』を、「現存最早銅活字印本」として登録する。([台湾・文化資産局](https://twh.boch.gov.tw/world-memory/tw_detail.aspx?id=107))
+台湾の文化部文化資産局は、華燧の会通館が明弘治三年（1490）に銅活字で刷った『會通館印正宋諸臣奏議』を、「現存最早銅活字印本」として登録する。([台湾・文化資産局](https://twh.boch.gov.tw/world-memory/tw_detail.aspx?id=107)
 
 朝鮮では、1377年7月、清州・興徳寺で金属活字の『直指』下巻が刷られた。ユネスコ世界記憶遺産は、現存する最古の金属活字印刷の証拠と呼ぶ。現存本はフランス国立図書館にある。([UNESCO Memory of the World](https://www.unesco.org/en/memory-world/baegun-hwasang-chorok-buljo-jikji-simche-yojeol-volii-second-volume-anthology-great-buddhist-priests); [BnF](https://www.bnf.fr/en/jikji-treasure-world-printing))
 
@@ -63,6 +65,6 @@ schematics: "Diagram: Hyakumantō Darani (770) → Diamond Sutra woodblock (868)
 
 ## 最後に：グーテンベルク
 
-ブリタニカは、ヨハネス・グーテンベルクがヨーロッパで最初に知られる機械式印刷機を設計・建造したとし、1455年にグーテンベルク聖書を刷ったと書く。また、彼が活字印刷を発明したのではなく、それは14世紀の朝鮮で起きた、とも書く。その一文は畢昇を飛ばす。このページは、すでに畢昇を先に置き、さらにその前に日本の百万塔陀羅尼を置いた。([Britannica, Johannes Gutenberg](https://www.britannica.com/biography/Johannes-Gutenberg))
+ブリタニカは、ヨハネス・グーテンベルクがヨーロッパで最初に知られる機械式印刷機を設計・建造したとし、1455年にグーテンベルク聖書を刷ったと書く。また、彼が活字印刷を発明したのではなく、それは14世紀の朝鮮で起きた、とも書く。その一文は畢昇を飛ばす。このページは、すでに畢昇を先に置き、さらにその前に日本の百万塔陀羅尼を置いた。([Britannica, Johannes Gutenberg](https://www.britannica.com/biography/Johannes-Gutenberg)
 
-次へ（英語版）: [How the message travelled](/posts/03-how-the-message-travelled/)。日本語版の隣章は、まだ揃っていない。
+次へ: [メッセージはどう旅したか]({{< relref "03-how-the-message-travelled" >}})
