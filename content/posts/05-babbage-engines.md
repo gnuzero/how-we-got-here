@@ -22,7 +22,7 @@ Computing didn't start with electricity. It started with gears.
 <figcaption>Difference Engine No. 2 (Science Museum, London). Photo: <a href="https://commons.wikimedia.org/wiki/File:London_Science_Museum_by_Marcin_Wichary_-_Difference_Engine_No._2,_pt._1_(2290036668).jpg">Marcin Wichary</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
 </figure>
 
-In 1822, Charles Babbage proposed the Difference Engine — a mechanical calculator for polynomial functions, using the method of finite differences, entirely through interlocking gears and column wheels. No electricity. Each column was a digit; carrying a "1" was a physical event: a gear tooth catching and turning its neighbor.
+Charles Babbage began the Difference Engine in 1821, by the [Computer History Museum](https://www.computerhistory.org/babbage/engines/)'s account, and announced it in a paper read to the Royal Astronomical Society on 14 June 1822, per the [Science Museum](https://www.sciencemuseum.org.uk/objects-and-stories/charles-babbages-difference-engines-and-science-museum): a mechanical calculator for polynomial functions, using the method of finite differences, entirely through interlocking gears and column wheels. No electricity. Each column was a digit; carrying a "1" was a physical event: a gear tooth catching and turning its neighbor.
 
 <figure>
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Babbage_Difference_Engine_%28Counter_detail_-_rear_side%29.jpg" alt="Close-up of Difference Engine No. 2 carry arms between digit columns" loading="lazy" width="1280">
