@@ -16,7 +16,7 @@ video_prompt: "20-second animation: a short algorithm expressed in FORTRAN, COBO
 schematics: "Diagram: language paradigm comparison + language family tree"
 ---
 
-Assembly (Post 26) is a one-to-one layer over machine code — better than raw binary, still forcing the programmer to think in instructions, registers, and manual layout. High-level languages introduced something different: abstractions that do not map one-to-one onto hardware at all. Express *what* to compute; a compiler (Post 28) figures out *how*.
+Assembly ([Post 33]({{< relref "33-from-machine-code-to-assembly" >}})) is a one-to-one layer over machine code — better than raw binary, still forcing the programmer to think in instructions, registers, and manual layout. High-level languages introduced something different: abstractions that do not map one-to-one onto hardware at all. Express *what* to compute; a compiler ([Post 35]({{< relref "35-compilers-jit-and-modern-language-runtimes" >}})) figures out *how*.
 
 ## FORTRAN: Formula Translation
 
@@ -24,15 +24,15 @@ FORTRAN (1957, IBM) was built for scientific and engineering computation — the
 
 ## COBOL: Business, Not Science
 
-COBOL (1959–60, CODASYL) targeted a different domain: payroll, accounting, inventory — business data processing, not science. Grace Hopper did not write COBOL herself, but her earlier FLOW-MATIC was a primary influence, and she is often credited as the "mother of COBOL" for that influence and her advocacy. Design choice: verbose, English-like syntax (`ADD SALARY TO TOTAL-PAY`), meant to be readable by non-programmer analysts and auditors. Legacy is enormous and still underappreciated: a significant fraction of core banking, insurance, and government systems still run COBOL written decades ago — rewriting mission-critical financial systems is expensive and risky enough that many organizations keep maintaining the original instead.
+COBOL (design started 1959 by CODASYL) targeted a different domain: payroll, accounting, inventory — business data processing, not science. Grace Hopper did not write COBOL herself; it was partly based on her earlier FLOW-MATIC ([Wikipedia, COBOL](https://en.wikipedia.org/wiki/COBOL)). Design choice: verbose, English-like syntax (`ADD SALARY TO TOTAL-PAY`), meant to be readable by non-programmer analysts and auditors. Legacy is large: core banking, insurance, and government systems still run COBOL written decades ago — rewriting mission-critical financial systems is expensive and risky enough that many organizations keep maintaining the original instead.
 
 ## Lisp: A Different Paradigm
 
-Lisp (1958, John McCarthy) left FORTRAN and COBOL's imperative style entirely — functions as first-class values, and a minimal uniform syntax where code and data share the same list structure. Not just style: programs that construct and execute other programs at runtime became foundational to decades of AI and symbolic computation, and still influence functional features in mainstream languages today.
+Lisp (begun by John McCarthy at MIT in 1958, per [Wikipedia, Lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language)) and McCarthy's [History of Lisp](http://jmc.stanford.edu/articles/lisp/lisp.pdf)) left FORTRAN and COBOL's imperative style entirely — functions as first-class values, and a minimal uniform syntax where code and data share the same list structure. Not just style: programs that construct and execute other programs at runtime became foundational to decades of AI and symbolic computation, and still influence functional features in mainstream languages today.
 
 ## C: Systems Programming, Close to the Machine
 
-C (1972, Dennis Ritchie, developed alongside Unix — Post 22) took yet another trade: high-level enough for real productivity over assembly, close enough to hardware that an entire OS kernel could be written in it — unusual then. Pointer arithmetic, minimal runtime, predictable mapping to machine ops made Unix portable: port the C compiler to a new machine, not rewrite the OS in each target's assembly.
+C (1972, Dennis Ritchie, developed alongside Unix — [Post 29]({{< relref "29-time-sharing-and-the-unix-lineage" >}})) took yet another trade: high-level enough for real productivity over assembly, close enough to hardware that an entire OS kernel could be written in it — unusual then. Pointer arithmetic, minimal runtime, predictable mapping to machine ops made Unix portable: port the C compiler to a new machine, not rewrite the OS in each target's assembly.
 
 ## The Common Thread
 

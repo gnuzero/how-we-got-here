@@ -16,7 +16,7 @@ video_prompt: "20-second animation: a monolithic die splitting into chiplets con
 schematics: "Diagram: monolithic die vs chiplet+interposer cross-section + yield-vs-die-size curve"
 ---
 
-Post 49 restated a pattern: when scaling inside one geometry hits a wall, change the structure. Chiplets apply that pattern one level up from the transistor — not a new device physics, but a new answer to how a whole chip is assembled once monolithic dies get too large to yield.
+[Post 57]({{< relref "57-finfet-to-gaa" >}}) restated a pattern: when scaling inside one geometry hits a wall, change the structure. Chiplets apply that pattern one level up from the transistor — not a new device physics, but a new answer to how a whole chip is assembled once monolithic dies get too large to yield.
 
 ## Monolithic Dies and the Yield Wall
 

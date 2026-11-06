@@ -21,11 +21,11 @@ ENIAC (Phase 1) occupied 1,800 square feet by the Army Ordnance Corps' data shee
 
 ## Mainframes: One Machine, Shared
 
-1950s–60s: room-filling machines for universities, corporations, governments — shared through batch processing (Post 21). IBM's System/360 (1964) mattered beyond scale: a *family* of compatible machines across a performance range, same software. Deliberate separation of ISA (Post 11) from the box underneath, so a customer's code survived a hardware upgrade. Gene Amdahl, Gerrit Blaauw, and Fred Brooks drove that architecture.
+1950s–60s: room-filling machines for universities, corporations, governments — shared through batch processing ([Post 28]({{< relref "28-batch-processing-and-the-birth-of-the-operating-system" >}})). IBM's System/360 (1964) mattered beyond scale: a *family* of compatible machines across a performance range, same software. Deliberate separation of ISA ([Post 18]({{< relref "18-instruction-sets" >}})) from the box underneath, so a customer's code survived a hardware upgrade. Gene Amdahl, Gerrit Blaauw, and Fred Brooks drove that architecture.
 
 ## Minicomputers: A Department Can Afford One
 
-1970s: DEC's PDP-11 (1970) and kin shrank the machine to something a department — not a whole institution — could buy and run without a central bureau. By May 1990, DEC counted [more than 600,000 PDP-11s installed](http://archive.computerhistory.org/resources/text/DEC/dec.digital_%28DEC%29_timeline_1957-1997.102630354/timelinetext.htm). The ISA's orthogonal addressing and clean encoding shaped later design, including habits in C (Post 27), which grew up with Unix (Post 22) largely on PDP-11 hardware.
+1970s: DEC's PDP-11 (1970) and kin shrank the machine to something a department — not a whole institution — could buy and run without a central bureau. By May 1990, DEC counted [more than 600,000 PDP-11s installed](http://archive.computerhistory.org/resources/text/DEC/dec.digital_%28DEC%29_timeline_1957-1997.102630354/timelinetext.htm). The ISA's orthogonal addressing and clean encoding shaped later design, including habits in C ([Post 34]({{< relref "34-high-level-languages-fortran-cobol-lisp-c" >}})), which grew up with Unix ([Post 29]({{< relref "29-time-sharing-and-the-unix-lineage" >}})) largely on PDP-11 hardware.
 
 ## Microprocessors: The CPU on One Die
 

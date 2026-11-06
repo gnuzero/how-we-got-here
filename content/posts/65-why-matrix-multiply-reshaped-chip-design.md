@@ -26,9 +26,9 @@ A fully connected layer's forward pass is a matrix multiplication: activations t
 
 A Phase 3 CPU core is built for arbitrary sequential code — branches, varied memory access, unpredictable control flow. That generality costs area and power on machinery (prediction, out-of-order, sophisticated caches) that a workload dominated by one regular operation does not need.
 
-Once matmul was recognized as the dominant share of AI compute, specializing for it became worthwhile: silicon that skips general-purpose machinery and spends its budget on MAC throughput. Tensor cores (Post 55) embed that idea inside a still-general GPU. The next post goes further — the systolic array — specializing the whole architecture around the same realization.
+Once matmul was recognized as the dominant share of AI compute, specializing for it became worthwhile: silicon that skips general-purpose machinery and spends its budget on MAC throughput. Tensor cores ([Post 63]({{< relref "63-tensor-cores" >}})) embed that idea inside a still-general GPU. The next post goes further — the systolic array — specializing the whole architecture around the same realization.
 
 ## The Recurring Pattern
 
-This is the same *kind* of story as Post 17's superscalar-to-multicore pivot and Post 49's planar-to-FinFET-to-GAA evolution, now at whole-chip architecture: once a workload's shape is well understood and dominant enough, specialized hardware for that shape beats general-purpose hardware treating it as one case among many. Matmul's dominance is why so much of this phase is purpose-built silicon rather than incremental CPU — or even general GPU — improvement alone.
+This is the same *kind* of story as [Post 24]({{< relref "24-superscalar-multicore" >}})'s superscalar-to-multicore pivot and [Post 57]({{< relref "57-finfet-to-gaa" >}})'s planar-to-FinFET-to-GAA evolution, now at whole-chip architecture: once a workload's shape is well understood and dominant enough, specialized hardware for that shape beats general-purpose hardware treating it as one case among many. Matmul's dominance is why so much of this phase is purpose-built silicon rather than incremental CPU — or even general GPU — improvement alone.
 

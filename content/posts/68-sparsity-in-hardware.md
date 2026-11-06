@@ -16,7 +16,7 @@ video_prompt: "20-second animation: a dense matrix pruned to a structured 2:4 sp
 schematics: "Diagram: 2:4 structured sparsity pattern + sparse tensor core compute flow"
 ---
 
-Post 59 made each operation cheaper via reduced precision. Sparsity is the complementary lever: skip operations that contribute nothing — multiplications where an operand is already zero.
+[Post 67]({{< relref "67-quantization-mixed-precision" >}}) made each operation cheaper via reduced precision. Sparsity is the complementary lever: skip operations that contribute nothing — multiplications where an operand is already zero.
 
 ## Why Networks Are Often Sparse
 
@@ -30,7 +30,7 @@ Trained networks often have many weights near zero — from training dynamics, o
 
 ## The Payoff — and the Gap
 
-Hardware with structured-sparsity support can, on 2:4 weight matrices, advertise up to 2× math throughput versus dense. Real GEMMs often land closer to ~1.3–1.8×; end-to-end networks nearer ~1.3–1.5×, limited by kernels, memory, and accuracy-preserving prune/retrain. Still the Post 57 theme: once you know which computation is structurally unnecessary, silicon can be built to skip it — even if theory and production stay apart.
+Hardware with structured-sparsity support can, on 2:4 weight matrices, advertise up to 2× math throughput versus dense. Real GEMMs often land closer to ~1.3–1.8×; end-to-end networks nearer ~1.3–1.5×, limited by kernels, memory, and accuracy-preserving prune/retrain. Still the [Post 65]({{< relref "65-why-matrix-multiply-reshaped-chip-design" >}}) theme: once you know which computation is structurally unnecessary, silicon can be built to skip it — even if theory and production stay apart.
 
 ## Compose With Precision
 

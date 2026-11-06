@@ -16,7 +16,7 @@ video_prompt: "20-second animation: a memory address split into tag/index/offset
 schematics: "Diagram: cache address breakdown + set-associative structure + MESI coherence diagram"
 ---
 
-Post 10 set up the memory hierarchy: registers, SRAM cache, DRAM, disk — capacity traded for speed at every step. Caches are where that tradeoff carries every CPU's performance. The premise is one empirical fact about real programs: **locality**.
+[Post 17]({{< relref "17-the-memory-hierarchy-begins" >}}) set up the memory hierarchy: registers, SRAM cache, DRAM, disk — capacity traded for speed at every step. Caches are where that tradeoff carries every CPU's performance. The premise is one empirical fact about real programs: **locality**.
 
 ## Why Caches Work at All
 
@@ -36,7 +36,7 @@ Lookup splits an address into **offset** (byte in the line), **index** (which se
 
 One core, one private cache: fine. Many cores, each with a cache: core A writes a line core B still holds — without a protocol, B reads stale forever. MESI (Modified, Exclusive, Shared, Invalid) is the classic answer: tag every line with a state, and communicate transitions (bus snoop or directory) so a write invalidates or updates copies elsewhere.
 
-Coherence is not free, and its cost grows with core count — one reason "just add cores" (Post 17) has diminishing returns of its own, separate from ILP limits.
+Coherence is not free, and its cost grows with core count — one reason "just add cores" ([Post 24]({{< relref "24-superscalar-multicore" >}})) has diminishing returns of its own, separate from ILP limits.
 
 **Door out:** M. V. Wilkes, "Slave Memories and Dynamic Storage Allocation" (*IEEE Transactions on Electronic Computers*, 1965) — early statement of the cache idea as a fast slave store beside slower main memory.
 

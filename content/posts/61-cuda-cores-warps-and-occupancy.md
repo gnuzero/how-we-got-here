@@ -16,23 +16,23 @@ video_prompt: "20-second animation: a warp of 32 threads executing in lockstep, 
 schematics: "Diagram: SM block diagram + warp scheduling timeline + occupancy calculation illustration"
 ---
 
-Post 52 covered *why* GPUs bet on massively parallel SIMT. This post is the concrete map: Streaming Multiprocessors, warps, and occupancy — how fully that parallel hardware is actually used.
+[Post 60]({{< relref "60-why-gpus-exist" >}}) covered *why* GPUs bet on massively parallel SIMT. This post is the concrete map: Streaming Multiprocessors, warps, and occupancy — how fully that parallel hardware is actually used.
 
 ## The Streaming Multiprocessor
 
-A GPU is many Streaming Multiprocessors (SMs) — each a largely self-contained parallel unit with many simple CUDA cores (ALU-style lanes, deliberately far less complex than a Phase 3 CPU core: no out-of-order execution, no sophisticated branch prediction of the Post 14 kind), a warp scheduler, and a register file shared by resident threads. Dozens of SMs running largely independently are the source of a GPU's aggregate parallelism versus a CPU's handful of complex cores.
+A GPU is many Streaming Multiprocessors (SMs) — each a largely self-contained parallel unit with many simple CUDA cores (ALU-style lanes, deliberately far less complex than a Phase 3 CPU core: no out-of-order execution, no sophisticated branch prediction of the [Post 21]({{< relref "21-branch-prediction" >}}) kind), a warp scheduler, and a register file shared by resident threads. Dozens of SMs running largely independently are the source of a GPU's aggregate parallelism versus a CPU's handful of complex cores.
 
 ## Warps: Lockstep as the Unit
 
-Threads on an SM are grouped into warps — on NVIDIA hardware, always 32 threads (AMD wavefronts historically used 64). A warp is the granularity at which Post 52's SIMT is enforced: all 32 execute the *same* instruction on the *same* cycle, each on its own data. That is the hardware form of "one shared control unit, many lanes."
+Threads on an SM are grouped into warps — on NVIDIA hardware, groups of 32 threads ([CUDA C++ Programming Guide, SIMT](https://docs.nvidia.com/cuda/archive/12.4.0/cuda-c-programming-guide/index.html#simt-architecture)). A warp is the granularity at which [Post 60]({{< relref "60-why-gpus-exist" >}})'s SIMT is enforced: all 32 execute the *same* instruction on the *same* cycle, each on its own data. That is the hardware form of "one shared control unit, many lanes."
 
 ## Branch Divergence: Where Lockstep Costs
 
-When threads *inside one warp* take different branches, the hardware executes both paths sequentially and masks the inactive half. The warp takes as long as both paths even though each thread needs only one — a direct tax of the same lockstep that makes the non-divergent case cheap. Keeping threads in a warp on the same path is therefore a real optimization, not a style preference.
+When threads *inside one warp* take different branches, the warp executes each branch path taken, disabling threads that are not on that path ([CUDA Guide](https://docs.nvidia.com/cuda/archive/12.4.0/cuda-c-programming-guide/index.html#simt-architecture)). The warp takes as long as both paths even though each thread needs only one — a direct tax of the same lockstep that makes the non-divergent case cheap. Keeping threads in a warp on the same path is therefore a real optimization, not a style preference.
 
 ## Occupancy: Hiding Latency With Ready Work
 
-An SM has finite registers and shared memory; every resident warp consumes a share. Occupancy is how many warps are resident and eligible relative to what the hardware could support. Higher occupancy helps hide memory latency (Post 35 again): while one warp stalls on a slow access, the scheduler switches to a ready warp and keeps the lanes busy.
+An SM has finite registers and shared memory; every resident warp consumes a share. Occupancy ([CUDA Guide, occupancy calculator](https://docs.nvidia.com/cuda/archive/12.4.0/cuda-c-programming-guide/index.html#occupancy-calculator)) is how many warps are resident and eligible relative to what the hardware could support. Higher occupancy helps hide memory latency ([Post 42]({{< relref "42-the-memory-wall" >}}) again): while one warp stalls on a slow access, the scheduler switches to a ready warp and keeps the lanes busy.
 
 It is not "maximize and stop." A kernel that uses more registers or shared memory per thread may run fewer warps and still finish faster if those resources cut redundant work or memory traffic. Occupancy versus per-thread resources is a real tradeoff — one that shows up when kernels meet real silicon, not only when reasoned about in the abstract.
 

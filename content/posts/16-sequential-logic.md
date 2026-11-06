@@ -17,7 +17,7 @@ labs: ["breadboard"]
 schematics: "Diagram: SR latch + D flip-flop schematic + timing diagram with setup/hold windows"
 ---
 
-Combinational logic (Post 8) is a pure function of current inputs — no memory of the past. A computer needs *state*: registers, a program counter, memory contents that persist across cycles. That requires feedback.
+Combinational logic ([Post 15]({{< relref "15-from-gates-to-combinational-logic" >}})) is a pure function of current inputs — no memory of the past. A computer needs *state*: registers, a program counter, memory contents that persist across cycles. That requires feedback.
 
 ## Memory From Feedback
 
@@ -35,7 +35,7 @@ A D flip-flop stacks two latches master–slave under a clock. The output change
 
 ## Setup, Hold, and the Clock Ceiling
 
-The D input must be stable for a minimum window *before* the edge (setup) and *after* it (hold). Violate either and the flop can go metastable — an undefined state that resolves late or inconsistently downstream. That is not textbook pedantry: it is why maximum clock frequency has a hard ceiling. The period must cover combinational propagation *plus* the next flop's setup, with margin. The two failures differ: a setup violation can be fixed by slowing the clock, while a hold violation makes the chip fail at any speed ([Harris & Harris, CMOS VLSI Design lecture 11, "Sequential Circuits"](https://pages.hmc.edu/harris/cmosvlsi/4e/lect/lect11.pdf)). Post 36 (The Clock Speed Wall) returns to this exact constraint when simply raising frequency stopped working.
+The D input must be stable for a minimum window *before* the edge (setup) and *after* it (hold). Violate either and the flop can go metastable — an undefined state that resolves late or inconsistently downstream. That is not textbook pedantry: it is why maximum clock frequency has a hard ceiling. The period must cover combinational propagation *plus* the next flop's setup, with margin. The two failures differ: a setup violation can be fixed by slowing the clock, while a hold violation makes the chip fail at any speed ([Harris & Harris, CMOS VLSI Design lecture 11, "Sequential Circuits"](https://pages.hmc.edu/harris/cmosvlsi/4e/lect/lect11.pdf)). [Post 43]({{< relref "43-the-clock-speed-wall" >}}) (The Clock Speed Wall) returns to this exact constraint when simply raising frequency stopped working.
 
 ## What This Unlocks
 

@@ -22,7 +22,7 @@ Out-of-order issue, deeper pipelines, wider superscalar width — everything so 
 
 Real programs do not offer unlimited independent work. Branches, true data dependencies, and memory latency cap how many instructions can run in parallel from a single stream. Bigger ROBs, more reservation stations, wider issue: shrinking returns for growing area and power. That is an architectural wall.
 
-At the same time, dynamic power scales roughly with capacitance, frequency, and voltage squared (P ≈ CV²f). Pushing clocks higher to compensate for ILP's dwindling gains ran into heat — the clock-speed wall Post 36 covers in detail. Two independent ceilings, mid-2000s, neither with a clean solo fix.
+At the same time, dynamic power scales roughly with capacitance, frequency, and voltage squared (P ≈ CV²f). Pushing clocks higher to compensate for ILP's dwindling gains ran into heat — the clock-speed wall [Post 43]({{< relref "43-the-clock-speed-wall" >}}) covers in detail. Two independent ceilings, mid-2000s, neither with a clean solo fix.
 
 ## Wide Instead of Fast
 

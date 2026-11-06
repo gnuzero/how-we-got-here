@@ -17,11 +17,11 @@ labs: ["vm-terminal"]
 schematics: "Diagram: early ARPANET topology map + packet switching vs circuit switching comparison"
 ---
 
-Post 38's serial links connect exactly two endpoints. ARPANET, live in 1969 under ARPA (later DARPA), set out to prove something else: many machines reaching many others without a dedicated circuit between every pair, by breaking data into packets routed independently hop by hop.
+[Post 45]({{< relref "45-serial-links-and-the-first-machine-to-machine-connections" >}})'s serial links connect exactly two endpoints. ARPANET, live in 1969 under ARPA (later DARPA), set out to prove something else: many machines reaching many others without a dedicated circuit between every pair, by breaking data into packets routed independently hop by hop.
 
 ## Circuit Switching vs Packet Switching
 
-The telephone network Post 38 rode used circuit switching: reserve a continuous end-to-end path for the *entire* call, whether anyone is speaking or not. Fine for continuous voice; a poor fit for computer traffic, which is bursty — active transfer, then idle stretches during which a reserved circuit sits unused.
+The telephone network [Post 45]({{< relref "45-serial-links-and-the-first-machine-to-machine-connections" >}}) rode used circuit switching: reserve a continuous end-to-end path for the *entire* call, whether anyone is speaking or not. Fine for continuous voice; a poor fit for computer traffic, which is bursty — active transfer, then idle stretches during which a reserved circuit sits unused.
 
 Packet switching takes the opposite bet. Break data into packets, each carrying a destination address; route each independently; share the physical links among many conversations. No path reserved for a whole session — packets from different transfers interleave, may take different routes, and reassemble at the destination. Paul Baran's RAND work on distributed, survivable communications and Leonard Kleinrock's queueing analysis of packet networks supplied the intellectual ground; Lawrence Roberts at ARPA turned the bet into a funded research network.
 
@@ -35,7 +35,7 @@ Telecom engineers steeped in circuit switching often doubted a network without r
 
 ## What This Set Up
 
-ARPANET's own host-to-host protocols were not yet TCP/IP (Post 41). The architectural win — packets over dedicated circuits — is the foundation every later network in this phase builds on, through the modern internet, datacenter fabrics in Post 42, and Phase 10's training-cluster interconnects. Next, local: how buildings standardized on Ethernet (Post 40) before TCP/IP tied heterogeneous nets into one internetwork.
+ARPANET's own host-to-host protocols were not yet TCP/IP ([Post 48]({{< relref "48-tcp-ip-and-the-modern-internet-stack" >}})). The architectural win — packets over dedicated circuits — is the foundation every later network in this phase builds on, through the modern internet, datacenter fabrics in [Post 49]({{< relref "49-datacenter-networking-and-rdma" >}}), and Phase 10's training-cluster interconnects. Next, local: how buildings standardized on Ethernet ([Post 47]({{< relref "47-ethernet-and-the-local-area-network" >}})) before TCP/IP tied heterogeneous nets into one internetwork.
 
 **Door out:** Paul Baran, *On Distributed Communications* (RAND Corporation, 1964) — the classic distributed/packet argument that, with Kleinrock's queueing work and Roberts's ARPA program, underwrites why ARPANET could bet against circuit switching.
 

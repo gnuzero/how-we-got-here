@@ -17,7 +17,7 @@ labs: ["vm-terminal"]
 schematics: "Diagram: VM vs container stack comparison + Linux namespaces/cgroups diagram"
 ---
 
-Virtual memory (Post 24) isolates processes from each other's memory. It does not isolate them from sharing the same filesystem, process-ID space, or network configuration — a traditional Unix process can still see and sometimes interfere with others in plenty of ways beyond raw RAM. Containers extend isolation across more of that surface, without going all the way to full hardware virtualization.
+Virtual memory ([Post 31]({{< relref "31-virtual-memory-and-multitasking" >}})) isolates processes from each other's memory. It does not isolate them from sharing the same filesystem, process-ID space, or network configuration — a traditional Unix process can still see and sometimes interfere with others in plenty of ways beyond raw RAM. Containers extend isolation across more of that surface, without going all the way to full hardware virtualization.
 
 ## Full Virtualization: Strong, Heavy
 
@@ -33,7 +33,7 @@ The lineage is older than the buzzword: chroot (changing a process's apparent fi
 
 Because containers share the host kernel, they typically start in a fraction of a second (no kernel boot) and carry a much smaller footprint per instance — no duplicated kernel image or kernel-level caches. That efficiency is why they became the default packaging and deployment unit for modern cloud infrastructure: far more containers than VMs on the same hardware, which matters at the scale distributed systems (Phase 7) actually run.
 
-Tradeoff: shared kernel means a serious enough kernel vulnerability can, in principle, break container isolation in a way that is structurally harder under separate-kernel virtualization. Most production systems accept that deliberately, sometimes layering more sandboxing on top. Post 45's Kubernetes discussion picks up here: once you have a lightweight, fast-starting isolation unit, the next problem is orchestrating thousands of them across a fleet.
+Tradeoff: shared kernel means a serious enough kernel vulnerability can, in principle, break container isolation in a way that is structurally harder under separate-kernel virtualization. Most production systems accept that deliberately, sometimes layering more sandboxing on top. [Post 53]({{< relref "53-kubernetes-and-container-orchestration-at-scale" >}})'s Kubernetes discussion picks up here: once you have a lightweight, fast-starting isolation unit, the next problem is orchestrating thousands of them across a fleet.
 
 {{< lab type="vm-terminal" >}}
 

@@ -16,7 +16,7 @@ video_prompt: "20-second animation: a packet gaining meaning only after number, 
 schematics: "Diagram: numbers (IANA) / addresses (RIRs) / names (DNS+ICANN) / encodings (Unicode) as four shared coordination layers above TCP/IP"
 ---
 
-ARPANET (Post 39) and TCP/IP (Post 41) solved how packets move. They did not, on their own, answer a quieter question: *who gets to say what the bits mean?* Port 80, an IPv4 prefix, `.com`, the code point for ก — none of those work unless distant operators treat the same identifiers the same way. The internet's governance story is the story of that agreement: not a parliament over the network, but a set of shared ledgers for **numbers**, **names**, and **encodings**.
+ARPANET ([Post 46]({{< relref "46-arpanet-and-packet-switching" >}})) and TCP/IP ([Post 48]({{< relref "48-tcp-ip-and-the-modern-internet-stack" >}})) solved how packets move. They did not, on their own, answer a quieter question: *who gets to say what the bits mean?* Port 80, an IPv4 prefix, `.com`, the code point for ก — none of those work unless distant operators treat the same identifiers the same way. The internet's governance story is the story of that agreement: not a parliament over the network, but a set of shared ledgers for **numbers**, **names**, and **encodings**.
 
 ## Documents Before Institutions
 
@@ -45,12 +45,12 @@ Interoperation fails quietly when two ends disagree what a byte sequence *is*. T
 A few peers earn a sentence — same *kind* of shared meaning, not a standards-body tour:
 
 - **W3C and WHATWG** — Tim Berners-Lee founded the World Wide Web Consortium (1994) to steward web platform standards; WHATWG later carried the living HTML/DOM specs when the browser vendors needed a faster iteration path. Same *kind*: who may define what a document and an API mean in the browser.
-- **IEEE** — IEEE 802 is why Ethernet (Post 40) and Wi-Fi are not proprietary island dialects at the link layer.
+- **IEEE** — IEEE 802 is why Ethernet ([Post 47]({{< relref "47-ethernet-and-the-local-area-network" >}})) and Wi-Fi are not proprietary island dialects at the link layer.
 - **ISO and peers** — formal international standards sit beside the RFC world where procurement, safety, or national bodies demand them; the internet mostly shipped on RFCs first and harmonized later.
 
 ## Why This Belongs in the Journey
 
-Posts 39–41 are the engineering bet: packets, layers, unreliable substrate. This post is the civics bet underneath them: **shared meaning is infrastructure**. Without someone (and some process) deciding numbers, names, and encodings, every new network is a private language. The doors above are the primary sources — RFCs, registries, consortium pages.
+Posts [46]({{< relref "46-arpanet-and-packet-switching" >}})–[48]({{< relref "48-tcp-ip-and-the-modern-internet-stack" >}}) are the engineering bet: packets, layers, unreliable substrate. This post is the civics bet underneath them: **shared meaning is infrastructure**. Without someone (and some process) deciding numbers, names, and encodings, every new network is a private language. The doors above are the primary sources — RFCs, registries, consortium pages.
 
-Optional side paths from here: how people *found* things and *talked* on that shared wire (Post 43), or how wartime crypto forced machines that could keep secrets (Post 66). The main spine stays packets → systems → silicon → attention; this is a widen-the-lens beat you can take or skip.
+Optional side paths from here: how people *found* things and *talked* on that shared wire ([Post 50]({{< relref "50-usenet-archie-gopher-and-the-pre-web-internet" >}})), or how wartime crypto forced machines that could keep secrets ([Post 73]({{< relref "73-wartime-crypto" >}})). The main spine stays packets → systems → silicon → attention; this is a widen-the-lens beat you can take or skip.
 

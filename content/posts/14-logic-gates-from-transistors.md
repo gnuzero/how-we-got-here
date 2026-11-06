@@ -17,7 +17,7 @@ labs: ["breadboard"]
 schematics: "Diagram: CMOS inverter schematic + NAND/NOR gate transistor-level schematics"
 ---
 
-CMOS — Complementary Metal-Oxide-Semiconductor — is the circuit topology behind nearly every digital chip since it replaced NMOS as the mainstream of VLSI, from the late 1970s through the 1980s ([Makimoto, SHMJ Makimoto Library VI-12](https://www.shmj.or.jp/makimoto/en/pdf/makimoto_E_06_12.pdf)). Pair an NMOS with a PMOS so that, in steady state, exactly one conducts. Device-level near-zero static current (Post 6) becomes a composable logic family.
+CMOS — Complementary Metal-Oxide-Semiconductor — is the circuit topology behind nearly every digital chip since it replaced NMOS as the mainstream of VLSI, from the late 1970s through the 1980s ([Makimoto, SHMJ Makimoto Library VI-12](https://www.shmj.or.jp/makimoto/en/pdf/makimoto_E_06_12.pdf)). Pair an NMOS with a PMOS so that, in steady state, exactly one conducts. Device-level near-zero static current ([Post 13]({{< relref "13-the-transistor-bjt-to-mosfet" >}})) becomes a composable logic family.
 
 ## The Inverter: Smallest CMOS Unit
 

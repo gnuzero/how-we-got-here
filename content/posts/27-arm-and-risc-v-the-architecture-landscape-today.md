@@ -17,7 +17,7 @@ labs: ["mini-cpu"]
 schematics: "Diagram: ARM licensing tiers vs RISC-V open ISA model + market share chart"
 ---
 
-The x86-versus-RISC fight (Post 19) mostly settled desktop and server by the late 1990s. Competition did not end — it moved. Mobile, embedded, and edge care more about watts than single-thread peak, and the *business model* around an ISA turned out to matter as much as the encoding.
+The x86-versus-RISC fight ([Post 26]({{< relref "26-the-x86-vs-risc-split" >}})) mostly settled desktop and server by the late 1990s. Competition did not end — it moved. Mobile, embedded, and edge care more about watts than single-thread peak, and the *business model* around an ISA turned out to matter as much as the encoding.
 
 ## ARM: License the ISA, Don't Build the Fab
 
@@ -33,7 +33,7 @@ RISC-V (work starting around 2010 at UC Berkeley, with Krste Asanović, David Pa
 
 Rough map: x86 still owns much of desktop and server on compatibility inertia. ARM owns mobile, with real server and laptop inroads (custom cloud ARM; Apple Silicon). RISC-V is earlier commercially, growing fastest where royalty-free flexibility beats a mature software stack.
 
-Post 19's pattern again: the winner in a segment is not always the "best" ISA in isolation — it is the one whose economics fit what that segment buys. ARM won mobile on watts *and* a licensing model phone makers could customize under. RISC-V bets that "free and open" beats even that for a growing set of cases. Whether that reaches x86 or ARM scale is still open.
+[Post 26]({{< relref "26-the-x86-vs-risc-split" >}})'s pattern again: the winner in a segment is not always the "best" ISA in isolation — it is the one whose economics fit what that segment buys. ARM won mobile on watts *and* a licensing model phone makers could customize under. RISC-V bets that "free and open" beats even that for a growing set of cases. Whether that reaches x86 or ARM scale is still open.
 
 {{< lab type="mini-cpu" >}}
 

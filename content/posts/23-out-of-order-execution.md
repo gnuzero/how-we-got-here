@@ -17,7 +17,7 @@ labs: ["mini-cpu"]
 schematics: "Diagram: register renaming table + reorder buffer + Tomasulo's algorithm block diagram"
 ---
 
-Post 13's load-use hazard stalls an in-order pipeline *behind* one waiting instruction — even when later instructions are independent and ready. Out-of-order execution answers that constraint: run independent work whenever operands are ready; enforce program order only where architecture requires it.
+[Post 20]({{< relref "20-pipelining" >}})'s load-use hazard stalls an in-order pipeline *behind* one waiting instruction — even when later instructions are independent and ready. Out-of-order execution answers that constraint: run independent work whenever operands are ready; enforce program order only where architecture requires it.
 
 ## False Dependencies and Register Renaming
 

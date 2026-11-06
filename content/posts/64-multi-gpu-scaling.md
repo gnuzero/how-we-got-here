@@ -16,21 +16,21 @@ video_prompt: "25-second animation: data moving between 8 GPUs through an NVSwit
 schematics: "Diagram: NVSwitch all-to-all topology + PCIe tree topology bottleneck comparison"
 ---
 
-A single GPU has finite compute and finite HBM (Post 54). Today's largest models need many GPUs — in one server, then across a cluster — and how those GPUs talk to each other often decides real throughput as much as any single GPU's peak specs.
+A single GPU has finite compute and finite HBM ([Post 62]({{< relref "62-gpu-memory-hierarchy" >}})). Today's largest models need many GPUs — in one server, then across a cluster — and how those GPUs talk to each other often decides real throughput as much as any single GPU's peak specs.
 
 ## Splitting Work Is Not Free
 
-Post 46 covered *why* data-parallel and model-parallel splits are often necessary. Efficiency depends on how fast GPUs exchange data. If communication is slow relative to each GPU's compute, peers stall waiting on each other — the memory wall (Post 35) again, applied to GPU-to-GPU links instead of CPU-to-DRAM.
+[Post 54]({{< relref "54-the-machine-learning-software-stack" >}}) covered *why* data-parallel and model-parallel splits are often necessary. Efficiency depends on how fast GPUs exchange data. If communication is slow relative to each GPU's compute, peers stall waiting on each other — the memory wall ([Post 42]({{< relref "42-the-memory-wall" >}})) again, applied to GPU-to-GPU links instead of CPU-to-DRAM.
 
 ## Direct Paths Inside One Server
 
-Post 37 introduced NVLink as a high-bandwidth GPU-to-GPU interconnect that bypasses the CPU-mediated PCIe path. Within a server, NVSwitch turns that into all-to-all: every GPU reaches every other at NVLink bandwidth rather than through PCIe and the host. For workloads that exchange large gradients constantly, that direct path often determines achieved training throughput more than any isolated peak-FLOPS number.
+[Post 44]({{< relref "44-interconnects-at-scale" >}}) introduced NVLink as a high-bandwidth GPU-to-GPU interconnect that bypasses the CPU-mediated PCIe path. Within a server, NVSwitch ([A100 whitepaper](https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf)) turns that into all-to-all: every GPU reaches every other at NVLink bandwidth rather than through PCIe and the host. For workloads that exchange large gradients constantly, that direct path often determines achieved training throughput more than any isolated peak-FLOPS number.
 
 ## Beyond One Box
 
-Large training spans many servers. Post 42's RDMA ideas return: GPUDirect RDMA lets a network adapter read or write GPU memory across servers without extra copies through host DRAM — the same "minimize hops, maximize direct bandwidth" bet, now at cluster scale.
+Large training spans many servers. [Post 49]({{< relref "49-datacenter-networking-and-rdma" >}})'s RDMA ideas return: GPUDirect RDMA ([NVIDIA](https://developer.download.nvidia.com/devzone/devcenter/cuda/docs/GPUDirect_Technology_Overview.pdf)) lets a network adapter read or write GPU memory across servers without extra copies through host DRAM — the same "minimize hops, maximize direct bandwidth" bet, now at cluster scale.
 
 ## The Philosophy This Series Keeps Naming
 
-Direct GPU-to-GPU paths, fewer unnecessary hops, interconnect as a first-class constraint — the same philosophy behind the custom GPU memory fabric this series has referenced: an open, PCIe-based approach to what proprietary GPU fabrics do inside one vendor's stack. Phase 10 picks the thread up at true datacenter scale — not a handful of GPUs in one box, but thousands across a training cluster, wired so aggregate theoretical compute is not lost to coordination.
+Direct GPU-to-GPU paths, fewer unnecessary hops, interconnect as a first-class constraint — the same philosophy behind the custom GPU memory fabric this series has referenced. Phase 10 picks the thread up at true datacenter scale — not a handful of GPUs in one box, but thousands across a training cluster, wired so aggregate theoretical compute is not lost to coordination.
 

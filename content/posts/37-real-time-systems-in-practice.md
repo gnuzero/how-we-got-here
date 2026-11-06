@@ -17,7 +17,7 @@ labs: ["mini-cpu", "vm-terminal"]
 schematics: "Diagram: closed-loop control system block diagram with real-time timing budget annotated"
 ---
 
-Post 29 covered the theory: hard vs soft deadlines, rate-monotonic scheduling, why "fast" and "real-time" differ. This post is where those guarantees get deployed — and what building for them looks like in practice.
+[Post 36]({{< relref "36-real-time-systems-and-deterministic-scheduling" >}}) covered the theory: hard vs soft deadlines, rate-monotonic scheduling, why "fast" and "real-time" differ. This post is where those guarantees get deployed — and what building for them looks like in practice.
 
 ## Avionics: Missed Deadline as Catastrophe
 

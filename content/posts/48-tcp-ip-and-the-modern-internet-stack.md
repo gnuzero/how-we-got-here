@@ -17,11 +17,11 @@ labs: ["vm-terminal"]
 schematics: "Diagram: TCP/IP four-layer model with encapsulation + TCP three-way handshake diagram"
 ---
 
-ARPANET (Post 39) proved packet switching. Ethernet (Post 40) standardized the local wire. Neither alone says how to stitch *different* networks — different media, different addressing — into one internetwork any two machines can use. Vint Cerf and Bob Kahn's TCP/IP suite solved that; it is still the foundation the modern internet runs on.
+ARPANET ([Post 46]({{< relref "46-arpanet-and-packet-switching" >}})) proved packet switching. Ethernet ([Post 47]({{< relref "47-ethernet-and-the-local-area-network" >}})) standardized the local wire. Neither alone says how to stitch *different* networks — different media, different addressing — into one internetwork any two machines can use. Vint Cerf and Bob Kahn's TCP/IP suite solved that; it is still the foundation the modern internet runs on.
 
 ## The Layered Model
 
-TCP/IP splits concerns the way PCIe's stack does (Post 33), at internetworking scale. **Link** handles the local hop — Ethernet, Wi-Fi, fiber. **Internet (IP)** gives universal addressing and routing *across* those links; an IP packet does not care what medium carries it. **Transport (TCP or UDP)** offers either reliable ordered delivery (TCP) or minimal-overhead best-effort (UDP) on top of IP. **Application** is where HTTP, DNS, SMTP and kin sit, picking the transport that fits.
+TCP/IP splits concerns the way PCIe's stack does ([Post 40]({{< relref "40-pcie-deep-dive" >}})), at internetworking scale. **Link** handles the local hop — Ethernet, Wi-Fi, fiber. **Internet (IP)** gives universal addressing and routing *across* those links; an IP packet does not care what medium carries it. **Transport (TCP or UDP)** offers either reliable ordered delivery (TCP) or minimal-overhead best-effort (UDP) on top of IP. **Application** is where HTTP, DNS, SMTP and kin sit, picking the transport that fits.
 
 ## Encapsulation
 
@@ -29,7 +29,7 @@ Data moving down gains a header at each layer — application bytes under TCP/UD
 
 ## TCP on an Unreliable Substrate
 
-IP is explicitly best-effort — no delivery promise, no ordering promise, drops allowed. TCP builds a reliable ordered byte stream on top with sequence numbers and acknowledgments (and retransmission when ACKs do not arrive) — the same reliability *kind* as PCIe's data-link layer (Post 33), stretched across a whole unreliable internetwork instead of one dedicated link.
+IP is explicitly best-effort — no delivery promise, no ordering promise, drops allowed. TCP builds a reliable ordered byte stream on top with sequence numbers and acknowledgments (and retransmission when ACKs do not arrive) — the same reliability *kind* as PCIe's data-link layer ([Post 40]({{< relref "40-pcie-deep-dive" >}})), stretched across a whole unreliable internetwork instead of one dedicated link.
 
 A connection starts with a three-way handshake: SYN (client proposes a sequence number), SYN-ACK (server acknowledges and proposes its own), final ACK. Only then does application data flow — a small deliberate cost so both sides share synchronized state first.
 
@@ -37,7 +37,7 @@ A connection starts with a three-way handshake: SYN (client proposes a sequence 
 
 ARPANET originally spoke its own host-to-host protocol (NCP), not TCP/IP. Cerf and Kahn's bet was larger: a *protocol stack* that could internet *many* packet networks, so the transport and the local wire could evolve separately. The practical cutover on the ARPANET itself was the January 1, 1983 "flag day," when NCP was turned off and TCP/IP became mandatory — a rare hard cut that made the layered story operational, not only architectural.
 
-Application protocols then stacked *because* that substrate existed. DNS (Post 64's doors: [RFC 1034](https://www.rfc-editor.org/rfc/rfc1034) / [RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)) made names usable at scale; mail and the web (SMTP, HTTP and kin) rode TCP as clients of a reliable stream rather than reinventing addressing and retransmission. The pattern is the point: each layer buys one constraint so the layer above can assume it. That is a story about stacking, not a catalog of every RFC.
+Application protocols then stacked *because* that substrate existed. DNS ([Post 72]({{< relref "72-who-decides-the-wire" >}})'s doors: [RFC 1034](https://www.rfc-editor.org/rfc/rfc1034) / [RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)) made names usable at scale; mail and the web (SMTP, HTTP and kin) rode TCP as clients of a reliable stream rather than reinventing addressing and retransmission. The pattern is the point: each layer buys one constraint so the layer above can assume it. That is a story about stacking, not a catalog of every RFC.
 
 ## Why This Design Won
 

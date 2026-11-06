@@ -16,7 +16,7 @@ video_prompt: "20-second animation: parallel bus wires struggling with skew, mor
 schematics: "Diagram: parallel bus signal skew illustration + PCIe differential signaling diagram"
 ---
 
-Post 31's ceiling: every device contends for the same wires. ISA, then PCI, then PCIe is the engineering around that ceiling — not a catalog of buses, a sequence of constraints. The surprise at the end: going *serial* (fewer wires) beat staying parallel (more wires).
+[Post 38]({{< relref "38-buses-101" >}})'s ceiling: every device contends for the same wires. ISA, then PCI, then PCIe is the engineering around that ceiling — not a catalog of buses, a sequence of constraints. The surprise at the end: going *serial* (fewer wires) beat staying parallel (more wires).
 
 ## The Parallel Intuition, and Where It Breaks
 
@@ -26,11 +26,11 @@ Every wire has slightly different length and capacitance, so bits do not arrive 
 
 ## PCI Bought Headroom, Not Escape
 
-PCI (Peripheral Component Interconnect, 1992) was faster than ISA — better arbitration, plug-and-play configuration, more practical bandwidth. It was still a shared parallel bus, still subject to skew as clocks rose. Headroom, not a new architecture.
+PCI (Peripheral Component Interconnect, 1992 per [PCI-SIG](https://pcisig.com/sites/default/files/files/30%20Years%20of%20PCI-SIG%20Innovation%20Webinar_Updated%203.23.2023.pdf)) was faster than ISA — better arbitration, plug-and-play configuration, more practical bandwidth. It was still a shared parallel bus, still subject to skew as clocks rose. Headroom, not a new architecture.
 
 ## PCIe Left the Shared Wires
 
-PCI Express (2003) changed the topology. Instead of one shared parallel bus, each device gets a dedicated point-to-point serial link (a lane, or a bundle of lanes) to a switch. One differential pair per direction per lane: nothing to keep in lockstep across a dozen wires, so per-lane clocks can climb far past any parallel bus. Lanes bond (x1, x4, x8, x16) for devices that need more — a GPU takes x16 because it moves far more than a NIC in x1. Unrelated devices no longer share wires, so they no longer wait on each other's arbitration.
+PCI Express (specification 2003, 2.5 GT/s per lane, per [PCI-SIG](https://pcisig.com/sites/default/files/files/30%20Years%20of%20PCI-SIG%20Innovation%20Webinar_Updated%203.23.2023.pdf)) changed the topology. Instead of one shared parallel bus, each device gets a dedicated point-to-point serial link (a lane, or a bundle of lanes) to a switch. One differential pair per direction per lane: nothing to keep in lockstep across a dozen wires, so per-lane clocks can climb far past any parallel bus. Lanes bond (x1, x4, x8, x16) for devices that need more — a GPU takes x16 because it moves far more than a NIC in x1. Unrelated devices no longer share wires, so they no longer wait on each other's arbitration.
 
-Fewer physical wires. Higher achievable bandwidth. The shared-bus ceiling is gone. Post 33 is how those serial links structure a transfer so the rest of the machine can still *mean* a read or a write.
+Fewer physical wires. Higher achievable bandwidth. The shared-bus ceiling is gone. [Post 40]({{< relref "40-pcie-deep-dive" >}}) is how those serial links structure a transfer so the rest of the machine can still *mean* a read or a write.
 

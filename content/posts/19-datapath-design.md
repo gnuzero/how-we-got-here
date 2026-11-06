@@ -17,11 +17,11 @@ labs: ["mini-cpu"]
 schematics: "Diagram: full single-cycle datapath block diagram with control unit and muxes labeled"
 ---
 
-An ISA (Post 11) is a contract. A datapath is the hardware that carries it out. The simplest version — a *single-cycle* datapath — finishes one whole instruction per clock tick: fetch, decode, execute, write-back, done. Real CPUs are not built this way today. It is still the clearest way to see how Phase 2's pieces connect.
+An ISA ([Post 18]({{< relref "18-instruction-sets" >}})) is a contract. A datapath is the hardware that carries it out. The simplest version — a *single-cycle* datapath — finishes one whole instruction per clock tick: fetch, decode, execute, write-back, done. Real CPUs are not built this way today. It is still the clearest way to see how Phase 2's pieces connect.
 
 ## One Instruction, One Clock
 
-The pieces: a **program counter** (Post 9's flip-flops) holding the next instruction address; **instruction memory** indexed by that PC; a **register file** for operands and results; an **ALU** (Post 8) for the operation; **data memory** for loads and stores; and a **control unit** that reads the opcode and drives every mux and enable.
+The pieces: a **program counter** ([Post 16]({{< relref "16-sequential-logic" >}})'s flip-flops) holding the next instruction address; **instruction memory** indexed by that PC; a **register file** for operands and results; an **ALU** ([Post 15]({{< relref "15-from-gates-to-combinational-logic" >}})) for the operation; **data memory** for loads and stores; and a **control unit** that reads the opcode and drives every mux and enable.
 
 Take ADD. The PC indexes instruction memory. The control unit sees a register-register ADD. Two source registers feed the ALU; the ALU result writes the destination; the PC advances. Fetch, decode, register read, ALU, write-back, PC update — all inside *one* clock period.
 

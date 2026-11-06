@@ -17,7 +17,7 @@ labs: ["mini-cpu"]
 schematics: "Diagram: ISA family tree + instruction complexity comparison table"
 ---
 
-Post 11 named CISC and RISC as philosophies. This post is what happened when they competed commercially — and why the "cleaner" ISA did not simply win.
+[Post 18]({{< relref "18-instruction-sets" >}}) named CISC and RISC as philosophies. This post is what happened when they competed commercially — and why the "cleaner" ISA did not simply win.
 
 ## The RISC Argument
 
@@ -29,7 +29,7 @@ MIPS, SPARC, and PowerPC all shipped. For a stretch they beat x86 on pure comput
 
 x86's edge was never elegance — it was the software already sitting on IBM PC compatibility. Once that became the desktop standard, an enormous installed base only ran on x86. Backward compatibility became a moat: new chips had to run old binaries, so the ISA could not be cleanly redesigned RISC-style — only extended, wart by wart, while Intel and later AMD made the *implementation* fast despite the surface.
 
-The real resolution: modern x86 does not execute CISC ops directly in the out-of-order core. A decoder translates each x86 instruction into one or more fixed-format internal micro-operations (µops) — RISC-like — and *those* flow through the reservation stations, ROB, and execution units from Post 16. Outside: CISC-compatible. Inside: a RISC-style pipeline under a translation layer.
+The real resolution: modern x86 does not execute CISC ops directly in the out-of-order core. A decoder translates each x86 instruction into one or more fixed-format internal micro-operations (µops) — RISC-like — and *those* flow through the reservation stations, ROB, and execution units from [Post 23]({{< relref "23-out-of-order-execution" >}}). Outside: CISC-compatible. Inside: a RISC-style pipeline under a translation layer.
 
 ## The Pattern to Keep
 

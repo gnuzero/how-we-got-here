@@ -23,7 +23,7 @@ Posts in Phase 7 (and neighbors) are the reliability and scale spine: partition 
 
 ## Networking
 
-Posts 38–42 and 61 are the movement of bytes: serial links → packets → TCP/IP → datacenter fabrics. The platform is unreachable without addressing, congestion control, load balancing, and interconnects that keep storage, compute, and clients in one logical machine room — even when the room is a continent.
+Posts [45]({{< relref "45-serial-links-and-the-first-machine-to-machine-connections" >}})–[49]({{< relref "49-datacenter-networking-and-rdma" >}}) and [69]({{< relref "69-interconnect-at-datacenter-scale" >}}) are the movement of bytes: serial links → packets → TCP/IP → datacenter fabrics. The platform is unreachable without addressing, congestion control, load balancing, and interconnects that keep storage, compute, and clients in one logical machine room — even when the room is a continent.
 
 ## AI Infrastructure
 
@@ -31,13 +31,13 @@ Phases 9–10 are why "the model" is not magic: GPUs, memory hierarchies, interc
 
 ## Privacy Engineering
 
-Post 67 is the adversarial and consent-shaped layer: isolation, cryptography on a public network, identity protocols, scoped authorization, and operations that assume misuse. A platform that skips this layer is not "done early" — it is unfinished systems work.
+[Post 74]({{< relref "74-privacy-consent-identity-cyber" >}}) is the adversarial and consent-shaped layer: isolation, cryptography on a public network, identity protocols, scoped authorization, and operations that assume misuse. A platform that skips this layer is not "done early" — it is unfinished systems work.
 
 ## Software Engineering
 
-Languages, compilers, OS isolation, buses, and the GNU/Linux commons (Posts 22–28, 23, 68) are how humans change the platform safely: versioned APIs, automated tests, staged rollout, observable services. The product moves because the software engineering loop moves.
+Languages, compilers, OS isolation, buses, and the GNU/Linux commons (Posts [28]({{< relref "28-batch-processing-and-the-birth-of-the-operating-system" >}})–[35]({{< relref "35-compilers-jit-and-modern-language-runtimes" >}}), [75]({{< relref "75-visions-that-shipped" >}})) are how humans change the platform safely: versioned APIs, automated tests, staged rollout, observable services. The product moves because the software engineering loop moves.
 
 ## The One-Sentence Compression
 
-**A large platform is distributed systems + networking + AI infrastructure + privacy engineering + software engineering**, glued by the protocol and governance commons (Posts 41, 64) and pointed at human attention (Post 63). Post 68's visions are what happens when someone ships a slice of that composition as a business or a commons. You now have the map; the labs and references are the doors back into each layer when you want depth.
+**A large platform is distributed systems + networking + AI infrastructure + privacy engineering + software engineering**, glued by the protocol and governance commons (Posts [48]({{< relref "48-tcp-ip-and-the-modern-internet-stack" >}}), [72]({{< relref "72-who-decides-the-wire" >}})) and pointed at human attention ([Post 71]({{< relref "71-attention-is-all-you-need" >}})). [Post 75]({{< relref "75-visions-that-shipped" >}})'s visions are what happens when someone ships a slice of that composition as a business or a commons. You now have the map; the labs and references are the doors back into each layer when you want depth.
 
