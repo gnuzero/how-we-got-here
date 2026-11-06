@@ -56,28 +56,28 @@ type: docs
 
 - **सङ्कल्पना प्रेरणा च**: Nayana Hettiarachchi
 - **लेखनं तकनीकीलेखनं च**: The Grok team (Lucas, Benjamin, Harper)
-- **Director**: Nayana Hettiarachchi
-- **Fact-check & research lead**: Lucas
-- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
-  - English desk: Jules (English distill), with Lucas for fact-check and lead
-  - Simplified Chinese and Traditional Chinese desks: Wen
-  - Thai desk: Mira
-  - Sinhala desk: Sena
-  - Tamil desk: Arun
-  - Romanian desk: Radu
-  - Arabic desk: Amira (in progress)
-  - German desk: Greta (in progress)
-  - Hebrew desk: Noa (in progress)
-  - Hindi and Sanskrit desks: Aditi (in progress)
-  - Swahili desk: Zawadi (in progress)
-  - Spanish desk: Lucía (in progress)
-  - Portuguese desk: Inês (in progress)
-  - Dutch desk: Sanne (in progress)
-  - French desk: Margaux (in progress)
-  - Japanese desk: Haru (in progress)
-  - Labs: Reed
-  - New threads: Cass
-  - Production support: Benjamin and Harper
+- **निर्देशकः**: Nayana Hettiarachchi
+- **तथ्यपरीक्षणं अनुसंधाननेतृत्वं च**: Lucas
+- **दलम्** — AI-लेखनसहायकाः Nayana-सम्पादननिर्देशे कार्यरताः, Lucas तथ्यपरीक्षणं करोति (न तु मानवानुवादकाः):
+  - आङ्ग्लमेजः: Jules (आङ्ग्लसङ्क्षेपः), Lucas सह तथ्यपरीक्षणाय नेतृत्वाय च
+  - सरलीकृत-पारम्परिक-चीनी-मेजौ: Wen
+  - थाई-मेजः: Mira
+  - सिंहली-मेजः: Sena
+  - तमिल-मेजः: Arun
+  - रोमानीय-मेजः: Radu
+  - अरबी-मेजः: Amira (प्रचलति)
+  - जर्मन-मेजः: Greta (प्रचलति)
+  - हिब्रू-मेजः: Noa (प्रचलति)
+  - हिन्दी-संस्कृत-मेजौ: Aditi (प्रचलति)
+  - स्वाहिली-मेजः: Zawadi (प्रचलति)
+  - स्पेनी-मेजः: Lucía (प्रचलति)
+  - पुर्तगाली-मेजः: Inês (प्रचलति)
+  - डच-मेजः: Sanne (प्रचलति)
+  - फ्रान्सीसी-मेजः: Margaux (प्रचलति)
+  - जापानी-मेजः: Haru (प्रचलति)
+  - प्रयोगशालाः: Reed
+  - नूतनसूत्राणि: Cass
+  - निर्माणसहाय्यम्: Benjamin तथा Harper
 
 एतत् कार्यं सार्वजनिकं शैक्षिकं साधनम्। दिशानिर्णयः प्रकाशननिर्णयश्च सङ्कल्पनायाः उद्गमस्य एव।
 

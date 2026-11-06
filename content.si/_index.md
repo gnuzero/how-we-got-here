@@ -32,28 +32,28 @@ type: docs
 
 - **සංකල්පය සහ ආශ්වාදය**: Nayana Hettiarachchi  
 - **කතෘත්වය සහ තාක්ෂණික ලේඛනය**: Grok කණ්ඩායම (Grok, Lucas, Benjamin, Harper)  
-- **Director**: Nayana Hettiarachchi
-- **Fact-check & research lead**: Lucas
-- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
-  - English desk: Jules (English distill), with Lucas for fact-check and lead
-  - Simplified Chinese and Traditional Chinese desks: Wen
-  - Thai desk: Mira
-  - Sinhala desk: Sena
-  - Tamil desk: Arun
-  - Romanian desk: Radu
-  - Arabic desk: Amira (in progress)
-  - German desk: Greta (in progress)
-  - Hebrew desk: Noa (in progress)
-  - Hindi and Sanskrit desks: Aditi (in progress)
-  - Swahili desk: Zawadi (in progress)
-  - Spanish desk: Lucía (in progress)
-  - Portuguese desk: Inês (in progress)
-  - Dutch desk: Sanne (in progress)
-  - French desk: Margaux (in progress)
-  - Japanese desk: Haru (in progress)
-  - Labs: Reed
-  - New threads: Cass
-  - Production support: Benjamin and Harper
+- **අධ්‍යක්ෂක**: Nayana Hettiarachchi
+- **කරුණු පරීක්ෂාව සහ පර්යේෂණ නායකත්වය**: Lucas
+- **කාර්ය මණ්ඩලය** — Nayana ගේ සංස්කාරක මඟපෙන්වීම යටතේ වැඩ කරන AI ලේඛන සහායකයන්, Lucas කරුණු පරීක්ෂා කරයි (මිනිස් පරිවර්තකයන් නොවේ):
+  - ඉංග්‍රීසි මේසය: Jules (ඉංග්‍රීසි සංක්ෂිප්ත කිරීම), Lucas සමඟ කරුණු පරීක්ෂාව සහ නායකත්වය සඳහා
+  - සරල සහ සාම්ප්‍රදායික චීන මේස: Wen
+  - තායි මේසය: Mira
+  - සිංහල මේසය: Sena
+  - දෙමළ මේසය: Arun
+  - රුමේනියානු මේසය: Radu
+  - අරාබි මේසය: Amira (ප්‍රගතියේ)
+  - ජර්මානු මේසය: Greta (ප්‍රගතියේ)
+  - හීබෲ මේසය: Noa (ප්‍රගතියේ)
+  - හින්දි සහ සංස්කෘත මේස: Aditi (ප්‍රගතියේ)
+  - ස්වාහිලි මේසය: Zawadi (ප්‍රගතියේ)
+  - ස්පාඤ්ඤ මේසය: Lucía (ප්‍රගතියේ)
+  - පෘතුගීසි මේසය: Inês (ප්‍රගතියේ)
+  - ලන්දේසි මේසය: Sanne (ප්‍රගතියේ)
+  - ප්‍රංශ මේසය: Margaux (ප්‍රගතියේ)
+  - ජපන් මේසය: Haru (ප්‍රගතියේ)
+  - රසායනාගාර: Reed
+  - නව නූල්: Cass
+  - නිෂ්පාදන සහාය: Benjamin සහ Harper
 
 මෙම කාර්යයේ සංකල්පය සහ ආශ්වාදය Nayana Hettiarachchi විසිනි. පර්යේෂණ, ව්‍යුහය, තාක්ෂණික ලේඛනය සහ අන්තර්ක්‍රියාකාරී සංරචක සංවර්ධනය Grok කණ්ඩායම විසින් සිදු කරන ලදී. සිංහල සංස්කරණය **Sena** මේසයෙන් — සිංහල පාඨකයන් නමින් දකින මේස පෞරුෂය; “Grok කණ්ඩායම” පමණක් නොවේ.
 

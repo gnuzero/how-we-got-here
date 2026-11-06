@@ -56,7 +56,7 @@ Ese patrón es el verdadero tema de este recorrido.
 - **Dirección**: Nayana Hettiarachchi
 - **Verificación de hechos y liderazgo de investigación**: Lucas
 - **Equipo** — asistentes de escritura con IA bajo la dirección editorial de Nayana, con verificación de hechos de Lucas (no traductores humanos):
-  - Mesa de inglés: Jules (English distill), con Lucas para verificación de hechos y liderazgo
+  - Mesa de inglés: Jules (síntesis en inglés), con Lucas para verificación de hechos y liderazgo
   - Mesas de chino simplificado y tradicional: Wen
   - Mesa de tailandés: Mira
   - Mesa de cingalés: Sena
@@ -72,9 +72,9 @@ Ese patrón es el verdadero tema de este recorrido.
   - Mesa de neerlandés: Sanne (en curso)
   - Mesa de francés: Margaux (en curso)
   - Mesa de japonés: Haru (en curso)
-  - Labs: Reed
+  - Laboratorios: Reed
   - Nuevos hilos: Cass
-  - Apoyo de producción: Benjamin and Harper
+  - Apoyo de producción: Benjamin y Harper
 
 Esta obra se ofrece como recurso educativo público. La dirección y la decisión de publicar corresponden a quien concibió la idea.
 

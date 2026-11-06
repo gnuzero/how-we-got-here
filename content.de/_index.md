@@ -52,26 +52,26 @@ Dieses Muster ist das eigentliche Thema dieser Reise.
 - **Autorschaft und technisches Schreiben**: Das Grok-Team (Lucas, Benjamin, Harper)
 - **Regie**: Nayana Hettiarachchi
 - **Faktencheck & Rechercheleitung**: Lucas
-- **Crew** — KI-Schreibassistenten unter Nayanas redaktioneller Leitung, mit Faktencheck durch Lucas (keine menschlichen Übersetzer):
-  - Englisch-Desk: Jules (English distill), mit Lucas für Faktencheck und Leitung
-  - Desks für vereinfachtes und traditionelles Chinesisch: Wen
-  - Thai-Desk: Mira
-  - Singhalesisch-Desk: Sena
-  - Tamil-Desk: Arun
-  - Rumänisch-Desk: Radu
-  - Arabisch-Desk: Amira (in Arbeit)
-  - Deutsch-Desk: Greta (in Arbeit)
-  - Hebräisch-Desk: Noa (in Arbeit)
-  - Hindi- und Sanskrit-Desks: Aditi (in Arbeit)
-  - Swahili-Desk: Zawadi (in Arbeit)
-  - Spanisch-Desk: Lucía (in Arbeit)
-  - Portugiesisch-Desk: Inês (in Arbeit)
-  - Niederländisch-Desk: Sanne (in Arbeit)
-  - Französisch-Desk: Margaux (in Arbeit)
-  - Japanisch-Desk: Haru (in Arbeit)
-  - Labs: Reed
+- **Stab** — KI-Schreibassistenten unter Nayanas redaktioneller Leitung, mit Faktencheck durch Lucas (keine menschlichen Übersetzer):
+  - Englisch-Redaktion: Jules (englische Kurzfassung), mit Lucas für Faktencheck und Leitung
+  - Redaktionen für vereinfachtes und traditionelles Chinesisch: Wen
+  - Thai-Redaktion: Mira
+  - Singhalesisch-Redaktion: Sena
+  - Tamil-Redaktion: Arun
+  - Rumänisch-Redaktion: Radu
+  - Arabisch-Redaktion: Amira (in Arbeit)
+  - Deutsch-Redaktion: Greta (in Arbeit)
+  - Hebräisch-Redaktion: Noa (in Arbeit)
+  - Hindi- und Sanskrit-Redaktionen: Aditi (in Arbeit)
+  - Swahili-Redaktion: Zawadi (in Arbeit)
+  - Spanisch-Redaktion: Lucía (in Arbeit)
+  - Portugiesisch-Redaktion: Inês (in Arbeit)
+  - Niederländisch-Redaktion: Sanne (in Arbeit)
+  - Französisch-Redaktion: Margaux (in Arbeit)
+  - Japanisch-Redaktion: Haru (in Arbeit)
+  - Labore: Reed
   - Neue Fäden: Cass
-  - Produktionsunterstützung: Benjamin and Harper
+  - Produktionsunterstützung: Benjamin und Harper
 
 Dieses Werk ist als öffentliche Bildungsressource gedacht. Die Ausrichtung und die Entscheidung zur Veröffentlichung liegen bei der Person, von der die Idee stammt.
 

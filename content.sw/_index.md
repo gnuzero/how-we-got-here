@@ -54,28 +54,28 @@ Mtindo huo ndio somo halisi la safari hii.
 
 - **Wazo na msukumo**: Nayana Hettiarachchi
 - **Uandishi na maandishi ya kiufundi**: timu ya Grok (Lucas, Benjamin, Harper)
-- **Director**: Nayana Hettiarachchi
-- **Fact-check & research lead**: Lucas
-- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
-  - English desk: Jules (English distill), with Lucas for fact-check and lead
-  - Simplified Chinese and Traditional Chinese desks: Wen
-  - Thai desk: Mira
-  - Sinhala desk: Sena
-  - Tamil desk: Arun
-  - Romanian desk: Radu
-  - Arabic desk: Amira (in progress)
-  - German desk: Greta (in progress)
-  - Hebrew desk: Noa (in progress)
-  - Hindi and Sanskrit desks: Aditi (in progress)
-  - Swahili desk: Zawadi (in progress)
-  - Spanish desk: Lucía (in progress)
-  - Portuguese desk: Inês (in progress)
-  - Dutch desk: Sanne (in progress)
-  - French desk: Margaux (in progress)
-  - Japanese desk: Haru (in progress)
-  - Labs: Reed
-  - New threads: Cass
-  - Production support: Benjamin and Harper
+- **Mkurugenzi**: Nayana Hettiarachchi
+- **Ukaguzi wa ukweli na uongozi wa utafiti**: Lucas
+- **Kikosi** — wasaidizi wa uandishi wa AI wanaofanya kazi chini ya uongozi wa uhariri wa Nayana, Lucas akifanya ukaguzi wa ukweli (si watafsiri binadamu):
+  - Dawati la Kiingereza: Jules (ufupisho wa Kiingereza), pamoja na Lucas kwa ukaguzi wa ukweli na uongozi
+  - Madawati ya Kichina kilichorahisishwa na cha jadi: Wen
+  - Dawati la Kithai: Mira
+  - Dawati la Kisinhala: Sena
+  - Dawati la Kitamil: Arun
+  - Dawati la Kiromania: Radu
+  - Dawati la Kiarabu: Amira (inaendelea)
+  - Dawati la Kijerumani: Greta (inaendelea)
+  - Dawati la Kiebrania: Noa (inaendelea)
+  - Madawati ya Kihindi na Kisanskriti: Aditi (inaendelea)
+  - Dawati la Kiswahili: Zawadi (inaendelea)
+  - Dawati la Kihispania: Lucía (inaendelea)
+  - Dawati la Kireno: Inês (inaendelea)
+  - Dawati la Kiholanzi: Sanne (inaendelea)
+  - Dawati la Kifaransa: Margaux (inaendelea)
+  - Dawati la Kijapani: Haru (inaendelea)
+  - Maabara: Reed
+  - Nyuzi mpya: Cass
+  - Msaada wa uzalishaji: Benjamin na Harper
 
 Kazi hii inatolewa kama rasilimali ya elimu kwa umma. Mwelekeo na uamuzi wa kuchapisha ni wa mwanzilishi wa wazo.
 
