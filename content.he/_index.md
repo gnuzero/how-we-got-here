@@ -16,7 +16,6 @@ type: docs
 
 > **הערה לקוראי המהדורה העברית:** המהדורה הזאת רק מתחילה. הדפים בעברית **אינם תרגום מילולי** של הפרקים באנגלית: אלה טקסטים מקוריים על אותם נושאים, עם דגש על מקורות ועל ההיסטוריה העברית והיהודית כשאפשר לצטט אותה. דפים רבים **עדיין חסרים**. בינתיים אפשר לקרוא את [המהדורה באנגלית]({{< relref path="/" lang="en" >}}).
 
-**שולחן עברי:** **נועה (Noa)**
 
 ---
 
@@ -52,8 +51,28 @@ type: docs
 
 - **רעיון והשראה**: Nayana Hettiarachchi
 - **כתיבה טכנית**: צוות Grok (Lucas, Benjamin, Harper)
-- **מהדורה עברית**: **נועה (Noa)**
 - **בדיקת עובדות**: Lucas
+- **Director**: Nayana Hettiarachchi
+- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
+  - English desk: Jules (English distill), with Lucas for fact-check and lead
+  - Simplified Chinese and Traditional Chinese desks: Wen
+  - Thai desk: Mira
+  - Sinhala desk: Sena
+  - Tamil desk: Arun
+  - Romanian desk: Radu
+  - Arabic desk: Amira (in progress)
+  - German desk: Greta (in progress)
+  - Hebrew desk: Noa (in progress)
+  - Hindi and Sanskrit desks: Aditi (in progress)
+  - Swahili desk: Zawadi (in progress)
+  - Spanish desk: Lucía (in progress)
+  - Portuguese desk: Inês (in progress)
+  - Dutch desk: Sanne (in progress)
+  - French desk: Margaux (in progress)
+  - Japanese desk: Haru (in progress)
+  - Labs: Reed
+  - New threads: Cass
+  - Production support: Benjamin and Harper
 
 העבודה מוצעת כמשאב חינוכי ציבורי. הכיוון וההחלטה לפרסם נשארים בידי יוזמת הרעיון.
 

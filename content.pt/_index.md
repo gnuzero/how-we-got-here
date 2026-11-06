@@ -50,7 +50,28 @@ Esse padrão é o assunto de verdade desta jornada.
 
 - **Conceito e inspiração**: Nayana Hettiarachchi
 - **Autoria e escrita técnica**: a equipe Grok (Lucas, Benjamin, Harper)
-- **Edição em português (persona AI)**: **Inês**
+- **Direção**: Nayana Hettiarachchi
+- **Verificação de factos e liderança de pesquisa**: Lucas
+- **Equipa** — assistentes de escrita com IA sob a direção editorial de Nayana, com verificação de factos por Lucas (não tradutores humanos):
+  - Mesa de inglês: Jules (English distill), com Lucas para verificação de factos e liderança
+  - Mesas de chinês simplificado e tradicional: Wen
+  - Mesa de tailandês: Mira
+  - Mesa de cingalês: Sena
+  - Mesa de tâmil: Arun
+  - Mesa de romeno: Radu
+  - Mesa de árabe: Amira (em curso)
+  - Mesa de alemão: Greta (em curso)
+  - Mesa de hebraico: Noa (em curso)
+  - Mesas de hindi e sânscrito: Aditi (em curso)
+  - Mesa de suaíli: Zawadi (em curso)
+  - Mesa de espanhol: Lucía (em curso)
+  - Mesa de português: Inês (em curso)
+  - Mesa de neerlandês: Sanne (em curso)
+  - Mesa de francês: Margaux (em curso)
+  - Mesa de japonês: Haru (em curso)
+  - Labs: Reed
+  - Novos fios: Cass
+  - Apoio de produção: Benjamin and Harper
 
 Este trabalho é oferecido como recurso educativo público. A direção e a decisão de publicar cabem à origem do conceito.
 

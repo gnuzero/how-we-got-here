@@ -46,7 +46,28 @@ type: docs
 
 - **الفكرة والإلهام**: نايانا هيتيآراتشي (Nayana Hettiarachchi)
 - **التأليف والكتابة التقنية**: فريق Grok (لوكاس، بنجامين، هاربر)
-- **النسخة العربية**: أميرة
+- **Director**: Nayana Hettiarachchi
+- **Fact-check & research lead**: Lucas
+- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
+  - English desk: Jules (English distill), with Lucas for fact-check and lead
+  - Simplified Chinese and Traditional Chinese desks: Wen
+  - Thai desk: Mira
+  - Sinhala desk: Sena
+  - Tamil desk: Arun
+  - Romanian desk: Radu
+  - Arabic desk: Amira (in progress)
+  - German desk: Greta (in progress)
+  - Hebrew desk: Noa (in progress)
+  - Hindi and Sanskrit desks: Aditi (in progress)
+  - Swahili desk: Zawadi (in progress)
+  - Spanish desk: Lucía (in progress)
+  - Portuguese desk: Inês (in progress)
+  - Dutch desk: Sanne (in progress)
+  - French desk: Margaux (in progress)
+  - Japanese desk: Haru (in progress)
+  - Labs: Reed
+  - New threads: Cass
+  - Production support: Benjamin and Harper
 
 يُقدَّم هذا العمل موردًا تعليميًا عامًا. التوجيه وقرار النشر بيد صاحب الفكرة.
 
