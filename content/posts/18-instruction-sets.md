@@ -27,7 +27,7 @@ CISC (Complex Instruction Set Computing) — the lineage behind x86 — packs a 
 
 RISC (Reduced Instruction Set Computing) goes the other way: fixed-length instructions, a strict load/store model (ALU ops on registers only), uniform fields. More instructions per program; each one simple enough to fetch and decode predictably, stage after stage. That uniformity is why pipelining (Post 13) became tractable on RISC first — a fixed-width instruction is far easier to stage than a CISC instruction whose length is unknown until you have already started decoding it.
 
-Concretely: a typical RISC instruction is 32 bits with fields in fixed places. An x86 instruction can run from 1 byte to 15, with optional prefixes — dense and powerful, expensive to decode at high throughput.
+Concretely: a typical RISC instruction is 32 bits with fields in fixed places. An x86 instruction can run from 1 byte to 15 (the longest possible is 15 bytes, per [Wikipedia, "Instruction set architecture"](https://en.wikipedia.org/wiki/Instruction_set_architecture)), with optional prefixes — dense and powerful, expensive to decode at high throughput.
 
 **Try this now.** The mini-CPU below is a tiny ISA: 4-bit opcode, 4-bit operand, sixteen words of memory. Step the guided 8-instruction program and watch fetch / decode / execute move A and memory — the same contract this post just named, small enough to hold in one screen.
 
