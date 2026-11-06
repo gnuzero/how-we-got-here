@@ -20,7 +20,7 @@ Assembly ([Post 33]({{< relref "33-from-machine-code-to-assembly" >}})) is a one
 
 ## FORTRAN: Formula Translation
 
-FORTRAN (1957, IBM) was built for scientific and engineering computation — the name means "Formula Translation." Write `X = A * B + C` instead of a sequence of arithmetic instructions with explicit register allocation. That required real compiler cleverness. Early skepticism held that compiled code could not compete with hand-written assembly; FORTRAN's compiler had to prove that wrong through aggressive optimization, and largely did.
+FORTRAN (1957, IBM ([Wikipedia, Fortran](https://en.wikipedia.org/wiki/Fortran))) was built for scientific and engineering computation — the name means "Formula Translation." Write `X = A * B + C` instead of a sequence of arithmetic instructions with explicit register allocation. That required real compiler cleverness. Early skepticism held that compiled code could not compete with hand-written assembly; FORTRAN's compiler had to prove that wrong through aggressive optimization, and largely did.
 
 ## COBOL: Business, Not Science
 
@@ -32,7 +32,7 @@ Lisp (begun by John McCarthy at MIT in 1958, per [Wikipedia, Lisp](https://en.wi
 
 ## C: Systems Programming, Close to the Machine
 
-C (1972, Dennis Ritchie, developed alongside Unix — [Post 29]({{< relref "29-time-sharing-and-the-unix-lineage" >}})) took yet another trade: high-level enough for real productivity over assembly, close enough to hardware that an entire OS kernel could be written in it — unusual then. Pointer arithmetic, minimal runtime, predictable mapping to machine ops made Unix portable: port the C compiler to a new machine, not rewrite the OS in each target's assembly.
+C (1972, Dennis Ritchie ([Wikipedia, C](https://en.wikipedia.org/wiki/C_(programming_language))), developed alongside Unix — [Post 29]({{< relref "29-time-sharing-and-the-unix-lineage" >}})) took yet another trade: high-level enough for real productivity over assembly, close enough to hardware that an entire OS kernel could be written in it — unusual then. Pointer arithmetic, minimal runtime, predictable mapping to machine ops made Unix portable: port the C compiler to a new machine, not rewrite the OS in each target's assembly.
 
 ## The Common Thread
 

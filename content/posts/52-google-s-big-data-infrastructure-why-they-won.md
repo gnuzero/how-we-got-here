@@ -24,15 +24,15 @@ Indexing "the entire web" means a dataset larger than any single disk or memory,
 
 ## Failure Is Normal — So Storage Had to Assume It
 
-The Google File System (Ghemawat, Gobioff, and Leung, SOSP 2003) started from a design assumption most filesystems still treated as exceptional: with thousands of commodity machines, hardware failure is routine. Split files into large chunks, replicate each chunk across chunkservers, and let a master track where chunks live — so losing a machine is absorbed automatically, not handled as a crisis. That is the same *kind* of bet [Post 49]({{< relref "49-datacenter-networking-and-rdma" >}})'s fabric work makes inside a datacenter: engineer for the common case of partial failure.
+The Google File System (Ghemawat, Gobioff, and Leung, SOSP 2003 ([Wikipedia, Google File System](https://en.wikipedia.org/wiki/Google_File_System))) started from a design assumption most filesystems still treated as exceptional: with thousands of commodity machines, hardware failure is routine. Split files into large chunks, replicate each chunk across chunkservers, and let a master track where chunks live — so losing a machine is absorbed automatically, not handled as a crisis. That is the same *kind* of bet [Post 49]({{< relref "49-datacenter-networking-and-rdma" >}})'s fabric work makes inside a datacenter: engineer for the common case of partial failure.
 
 ## Processing Without Reinventing the Cluster
 
-Storage alone was not enough. Processing at that scale needed a programming model so every engineer did not reinvent distribution and recovery. MapReduce (Dean and Ghemawat, OSDI 2004) gave two hooks — a **map** that emits key-value pairs from a record, and a **reduce** that aggregates values sharing a key — and the *system* handled split, parallel map, shuffle/sort by key, parallel reduce, and retry of failed tasks. The constraint was cognitive as much as physical: hide the cluster so the logic of the job could stay small.
+Storage alone was not enough. Processing at that scale needed a programming model so every engineer did not reinvent distribution and recovery. MapReduce (Dean and Ghemawat, OSDI 2004 ([Wikipedia, MapReduce](https://en.wikipedia.org/wiki/MapReduce))) gave two hooks — a **map** that emits key-value pairs from a record, and a **reduce** that aggregates values sharing a key — and the *system* handled split, parallel map, shuffle/sort by key, parallel reduce, and retry of failed tasks. The constraint was cognitive as much as physical: hide the cluster so the logic of the job could stay small.
 
 ## Structure on Top of Cheap Bytes
 
-Bigtable (Chang et al., OSDI 2006) answered a related need: sparse structured storage at web scale — rows as URLs, columns as crawled versions or metadata, most cells empty — built on GFS underneath. The design shaped much of what the industry later called NoSQL; the connective tissue is the same: once failure-tolerant bulk storage and a batch programming model exist, structured access becomes the next forced layer.
+Bigtable (Chang et al., OSDI 2006 ([Wikipedia, Bigtable](https://en.wikipedia.org/wiki/Bigtable))) answered a related need: sparse structured storage at web scale — rows as URLs, columns as crawled versions or metadata, most cells empty — built on GFS underneath. The design shaped much of what the industry later called NoSQL; the connective tissue is the same: once failure-tolerant bulk storage and a batch programming model exist, structured access becomes the next forced layer.
 
 ## Why This Was the Moat
 

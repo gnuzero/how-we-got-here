@@ -20,7 +20,7 @@ schematics: "Diagram: three-panel graph — transistor count, clock frequency, c
 
 ## What Moore Actually Wrote
 
-Gordon Moore's 1965 *Electronics* article observed component *count*: the number of components that could be economically placed on one integrated circuit was doubling on a roughly yearly pace (revised around 1975 to roughly every two years). Notice what that claim is *not*: it is not a law of clock speed, not a promise about single-thread performance, and not a separate theorem about cost per transistor beyond the word "economically." Popular usage often bundles those metrics under one slogan; the underlying drivers are distinct.
+Gordon Moore's 1965 *Electronics* article observed component *count*: the number of components that could be economically placed on one integrated circuit was doubling on a roughly yearly pace (revised around 1975 to roughly every two years) ([Wikipedia, Moore's law](https://en.wikipedia.org/wiki/Moore%27s_law)). Notice what that claim is *not*: it is not a law of clock speed, not a promise about single-thread performance, and not a separate theorem about cost per transistor beyond the word "economically." Popular usage often bundles those metrics under one slogan; the underlying drivers are distinct.
 
 ## Transistor Count: Still Climbing
 
@@ -28,7 +28,7 @@ Measured as Moore framed it — components (today: transistors) per chip — the
 
 ## Clock Speed: A Different Wall
 
-Clock frequency climbed with transistor count for decades, then flattened around 2005 — not because transistor scaling stopped, but because of the power/thermal wall in [Post 43]({{< relref "43-the-clock-speed-wall" >}}). Calling that "the death of Moore's Law" conflates two metrics. Count kept rising through the clock plateau; the industry spent the new transistors on more cores and specialized on-chip function ([Post 24]({{< relref "24-superscalar-multicore" >}})), not on pushing one core's frequency further.
+Clock frequency climbed with transistor count for decades, then stopped scaling rapidly in the early 2000s ([Horowitz, ISSCC 2014](https://osmarks.net/assets/misc/2014-horowitz.pdf)) — not because transistor scaling stopped, but because of the power/thermal wall in [Post 43]({{< relref "43-the-clock-speed-wall" >}}). Calling that "the death of Moore's Law" conflates two metrics. Count kept rising through the clock plateau; the industry spent the new transistors on more cores and specialized on-chip function ([Post 24]({{< relref "24-superscalar-multicore" >}})), not on pushing one core's frequency further.
 
 ## Cost Per Transistor: Where Friction Shows
 

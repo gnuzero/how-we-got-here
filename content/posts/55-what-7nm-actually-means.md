@@ -28,7 +28,7 @@ FinFET and later Gate-All-Around structures (Posts [56]({{< relref "56-photolith
 
 ## What the Label Is Now
 
-A modern node name is mostly a generational marker — "our next denser, more efficient generation" — not a cross-foundry physical spec. Meaningful comparison uses independently measurable quantities: fin pitch, gate pitch, transistors per square millimeter. Those often show one foundry's "7nm" denser than another's, because the branding decoupled from any single length.
+A modern node name is mostly a generational marker — "our next denser, more efficient generation" — not a cross-foundry physical spec. Meaningful comparison uses independently measurable quantities: fin pitch, gate pitch, transistors per square millimeter ([Wikipedia, Transistor count](https://en.wikipedia.org/wiki/Transistor_count)). Those often show one foundry's "7nm" denser than another's, because the branding decoupled from any single length.
 
 ## Why the Gap Matters
 

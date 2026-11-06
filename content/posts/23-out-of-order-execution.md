@@ -33,7 +33,7 @@ Architectural effects still must look in-order: visible registers, memory, excep
 
 ## Tomasulo's Core Idea
 
-"Execute whenever ready, commit strictly in order" — the pattern often credited to Robert Tomasulo's algorithm for the IBM System/360 Model 91 floating-point unit (published 1967) — is the conceptual core of essentially every high-performance out-of-order CPU since. It is also expensive: renaming tables, reservation stations, and the ROB cost area and power. Adding more of that machinery has diminishing returns — the wall the next post hits head-on.
+"Execute whenever ready, commit strictly in order" — the pattern often credited to Robert Tomasulo's algorithm for the IBM System/360 Model 91 floating-point unit (published 1967 ([Wikipedia, Tomasulo's algorithm](https://en.wikipedia.org/wiki/Tomasulo%27s_algorithm))) — is the conceptual core of essentially every high-performance out-of-order CPU since. It is also expensive: renaming tables, reservation stations, and the ROB cost area and power. Adding more of that machinery has diminishing returns — the wall the next post hits head-on.
 
 {{< lab type="mini-cpu" >}}
 

@@ -18,7 +18,7 @@ schematics: "Diagram: Scaled Dot-Product Attention + Multi-Head Attention block 
 
 The title of this series is *From Relays to Attention*. Everything up to here was the long physical and architectural path that made large-scale matrix multiplication practical. This chapter is the algorithmic destination that path enabled.
 
-In 2017, **Vaswani et al.** published "Attention Is All You Need." The paper introduced the Transformer and made *self-attention* the primary mechanism for modeling sequences — replacing the sequential recurrence of RNNs and LSTMs with a fully parallelizable operation that can look at every position at once.
+In 2017, **Vaswani et al.** published "Attention Is All You Need" ([Wikipedia, Attention Is All You Need](https://en.wikipedia.org/wiki/Attention_Is_All_You_Need)). The paper introduced the Transformer and made *self-attention* the primary mechanism for modeling sequences — replacing the sequential recurrence of RNNs and LSTMs with a fully parallelizable operation that can look at every position at once.
 
 ## What Self-Attention Does
 

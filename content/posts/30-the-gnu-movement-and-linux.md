@@ -17,7 +17,7 @@ labs: ["vm-terminal"]
 schematics: "Diagram: GNU/Linux stack (kernel/GNU userland/applications) + free software licensing spectrum (BSD/MIT/GPL)"
 ---
 
-By the early 1980s, Unix ([Post 29]({{< relref "29-time-sharing-and-the-unix-lineage" >}})) was technically excellent and increasingly proprietary — AT&T asserting commercial control, academic and hobbyist access tightening. Richard Stallman's response, starting in 1983, was not primarily a technical fix. It was ideological and legal: build a completely free (as in freedom, not just price) Unix replacement from scratch, and back it with a license designed to keep it that way.
+By the early 1980s, Unix ([Post 29]({{< relref "29-time-sharing-and-the-unix-lineage" >}})) was technically excellent and increasingly proprietary — AT&T asserting commercial control, academic and hobbyist access tightening. Richard Stallman's response, starting in 1983 ([Wikipedia, GNU Project](https://en.wikipedia.org/wiki/GNU_Project)), was not primarily a technical fix. It was ideological and legal: build a completely free (as in freedom, not just price) Unix replacement from scratch, and back it with a license designed to keep it that way.
 
 ## GNU: Userland Without a Kernel
 
@@ -31,7 +31,7 @@ Stallman's other major contribution was the GNU General Public License (GPL) —
 
 ## Linux Fills the Gap
 
-In 1991, Finnish student Linus Torvalds started a kernel as a personal project for his own PC. He released it that year under a restrictive non-commercial license of his own, then — critically — relicensed it under the GPL in early 1992. That combination was the missing piece: GNU had mature userland with no practical kernel; Linux was a functional kernel with essentially no userland. Together, GNU utilities on the Linux kernel formed a complete, freely licensed, Unix-compatible system — commonly called "Linux," though "GNU/Linux" is the more historically precise name for the combination (to Stallman's occasional public frustration).
+In 1991, Finnish student Linus Torvalds started a kernel as a personal project for his own PC. He released it that year under a restrictive non-commercial license of his own, then — critically — relicensed it under the GPL in early 1992 ([Wikipedia, History of Linux](https://en.wikipedia.org/wiki/History_of_Linux)). That combination was the missing piece: GNU had mature userland with no practical kernel; Linux was a functional kernel with essentially no userland. Together, GNU utilities on the Linux kernel formed a complete, freely licensed, Unix-compatible system — commonly called "Linux," though "GNU/Linux" is the more historically precise name for the combination (to Stallman's occasional public frustration).
 
 **Try this now.** Boot the VM below, click the screen, then try `uname`, `whoami`, and `ls` — you are on the GNU/Linux side of that combination, in your browser.
 

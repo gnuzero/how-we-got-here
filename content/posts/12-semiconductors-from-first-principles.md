@@ -24,7 +24,7 @@ In a metal, valence and conduction bands overlap — electrons move freely; you 
 
 ## Why Silicon Won Over Germanium
 
-Germanium was the first practical transistor material (Bell Labs, 1947: Bardeen and Brattain's point-contact device). Silicon took the long game. Its wider gap (1.11 eV vs germanium's 0.66 eV at 300 K, same table) means devices keep working at higher temperature before thermal carriers swamp the signal. Thermally grown silicon dioxide forms a quiet, stable Si/SiO₂ interface — the insulating gate dielectric the MOSFET depends on ([Post 13]({{< relref "13-the-transistor-bjt-to-mosfet" >}})). And silicon is, practically, sand: abundant enough to manufacture at volume. Those three constraints — temperature headroom, oxide quality, supply — are why the industry standardized on Si, not Ge.
+Germanium was the first practical transistor material (Bell Labs, December 1947: Bardeen and Brattain's germanium point-contact device, per [CHM](https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/)). Silicon took the long game. Its wider gap (1.11 eV vs germanium's 0.66 eV at 300 K, same table) means devices keep working at higher temperature before thermal carriers swamp the signal. Thermally grown silicon dioxide forms a quiet, stable Si/SiO₂ interface — the insulating gate dielectric the MOSFET depends on ([Post 13]({{< relref "13-the-transistor-bjt-to-mosfet" >}})). And silicon is, practically, sand: abundant enough to manufacture at volume. Those three constraints — temperature headroom, oxide quality, supply — are why the industry standardized on Si, not Ge.
 
 ## Doping: From Crystal to Switch
 

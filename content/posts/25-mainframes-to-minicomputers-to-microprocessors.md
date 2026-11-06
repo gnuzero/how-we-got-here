@@ -21,7 +21,7 @@ ENIAC (Phase 1) occupied 1,800 square feet by the Army Ordnance Corps' data shee
 
 ## Mainframes: One Machine, Shared
 
-1950s–60s: room-filling machines for universities, corporations, governments — shared through batch processing ([Post 28]({{< relref "28-batch-processing-and-the-birth-of-the-operating-system" >}})). IBM's System/360 (1964) mattered beyond scale: a *family* of compatible machines across a performance range, same software. Deliberate separation of ISA ([Post 18]({{< relref "18-instruction-sets" >}})) from the box underneath, so a customer's code survived a hardware upgrade. Gene Amdahl, Gerrit Blaauw, and Fred Brooks drove that architecture.
+1950s and 1960s: room-filling machines for universities, corporations, governments — shared through batch processing ([Post 28]({{< relref "28-batch-processing-and-the-birth-of-the-operating-system" >}})). IBM's System/360 (1964 ([Wikipedia, IBM System/360](https://en.wikipedia.org/wiki/IBM_System/360))) mattered beyond scale: a *family* of compatible machines across a performance range, same software. Deliberate separation of ISA ([Post 18]({{< relref "18-instruction-sets" >}})) from the box underneath, so a customer's code survived a hardware upgrade. Gene Amdahl, Gerrit Blaauw, and Fred Brooks drove that architecture.
 
 ## Minicomputers: A Department Can Afford One
 

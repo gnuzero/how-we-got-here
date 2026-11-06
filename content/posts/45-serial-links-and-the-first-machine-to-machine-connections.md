@@ -21,7 +21,7 @@ Every bus in Phase 5 stays *inside* one machine. Networking starts when separate
 
 ## RS-232: The Baseline Serial Link
 
-RS-232 (EIA, 1960) fixed voltage levels and asynchronous serial conventions between two devices — both ends agree on baud rate in advance, because no clock rides with the data. No addressing, no routing, no error correction beyond whatever simple parity the ends chose. Just two devices, one bit at a time.
+RS-232 (EIA, 1960 ([Wikipedia, RS-232](https://en.wikipedia.org/wiki/RS-232))) fixed voltage levels and asynchronous serial conventions between two devices — both ends agree on baud rate in advance, because no clock rides with the data. No addressing, no routing, no error correction beyond whatever simple parity the ends chose. Just two devices, one bit at a time.
 
 That was enough. Terminals used it to reach mainframes and minicomputers (Phase 3's lineage). It is still the dead-simple console path into routers and embedded gear when you need a channel that does not depend on any higher networking stack.
 

@@ -24,7 +24,7 @@ Coat the wafer with photoresist; shine light through a patterned mask; chemicall
 
 ## Diffraction Forces Shorter Wavelengths
 
-How small a feature you can resolve is tied to wavelength: shorter light, finer pattern. That physical ceiling is why the industry spent decades walking down the spectrum — ultraviolet, then deep ultraviolet (DUV, around 193 nm), then extreme ultraviolet (EUV, around 13.5 nm) — each step buying the finer features [Post 55]({{< relref "55-what-7nm-actually-means" >}})'s shrinking labels gesture at.
+How small a feature you can resolve is tied to wavelength: shorter light, finer pattern. That physical ceiling is why the industry spent decades walking down the spectrum — ultraviolet, then deep ultraviolet (DUV, around 193 nm ([Wikipedia, Photolithography](https://en.wikipedia.org/wiki/Photolithography))), then extreme ultraviolet (EUV, around 13.5 nm ([Wikipedia, EUV lithography](https://en.wikipedia.org/wiki/Extreme_ultraviolet_lithography))) — each step buying the finer features [Post 55]({{< relref "55-what-7nm-actually-means" >}})'s shrinking labels gesture at.
 
 ## Why EUV Was Exceptionally Hard
 

@@ -27,7 +27,7 @@ Technically, ARM entered the mobile era already tuned for power efficiency — R
 
 ## RISC-V: Open Instead of Licensed
 
-RISC-V (work starting around 2010 at UC Berkeley, with Krste Asanović, David Patterson, and colleagues among the named drivers) goes further: the ISA is open and royalty-free. Implement a core without negotiating with a controlling vendor. That matters most where deep customization or zero ISA licensing cost is the point — embedded systems, and accelerators that want custom instructions on a RISC-V base without asking permission.
+RISC-V (work starting in 2010 at UC Berkeley ([Wikipedia, RISC-V](https://en.wikipedia.org/wiki/RISC-V)), with Krste Asanović, David Patterson, and colleagues among the named drivers) goes further: the ISA is open and royalty-free. Implement a core without negotiating with a controlling vendor. That matters most where deep customization or zero ISA licensing cost is the point — embedded systems, and accelerators that want custom instructions on a RISC-V base without asking permission.
 
 ## Same Lesson, One Layer Deeper
 

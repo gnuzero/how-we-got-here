@@ -17,7 +17,7 @@ labs: ["vm-terminal"]
 schematics: "Diagram: CSMA/CD collision detection and backoff timing + Ethernet frame structure"
 ---
 
-ARPANET ([Post 46]({{< relref "46-arpanet-and-packet-switching" >}})) solved wide-area packet switching between distant sites. Inside one building, IMP-style routing for a few dozen meters of cable is the wrong tool. Ethernet, begun at Xerox PARC in 1973 by Robert Metcalfe and David Boggs, became the dominant local answer.
+ARPANET ([Post 46]({{< relref "46-arpanet-and-packet-switching" >}})) solved wide-area packet switching between distant sites. Inside one building, IMP-style routing for a few dozen meters of cable is the wrong tool. Ethernet, begun at Xerox PARC in 1973 by Robert Metcalfe and David Boggs ([Wikipedia, Ethernet](https://en.wikipedia.org/wiki/Ethernet)), became the dominant local answer.
 
 ## The Shared-Medium Problem
 
