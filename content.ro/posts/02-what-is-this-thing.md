@@ -13,7 +13,7 @@ tags: []
 summary: "Nouă uși spre aceeași idee — alege oricare, apoi întâlnești motoarele de alamă"
 ---
 
-Cu mult înaintea motoarelor de alamă, oamenii predau deja treburi unor lucruri care continuă singure: o roată care se învârte, o lingură care măsoară, un cartelă care repetă un model. Trebăria e fixă. Lucrul nu inventează alta pe drum.
+Tiparul a făcut o pagină pe care o puteai copia fără copist, iar firul a făcut un mesaj care putea călători fără călăreț. Pasul următor a fost o treabă care putea merge fără ca cineva să stea cu ochii pe ea. Oamenii predau de mult treburi fixe unor lucruri: o roată care se învârte, o lingură care măsoară, o cartelă care repetă un model. Treaba e fixă. Lucrul nu inventează alta pe drum.
 
 Iată nouă uși spre aceeași idee. Sunt egale — alege oricare. Fiecare e o scurtă analogie ilustrativă pe pagina ei. Mai târziu putem vedea pe care uși le deschid cititorii.
 

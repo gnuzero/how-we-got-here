@@ -62,4 +62,4 @@ Toate acestea sunt tipărite cu litere chirilice. Muzeul Casa Mureșenilor din B
 
 Britannica atribuie lui Johannes Gutenberg prima presă de tipar mecanizată cunoscută în Europa și datează Biblia lui în 1455 (Hellmut E. Lehmann-Haupt, „Johannes Gutenberg”, *Encyclopædia Britannica*, rev. 30 octombrie 2026, „Top Questions”; [britannica.com/biography/Johannes-Gutenberg](https://www.britannica.com/biography/Johannes-Gutenberg), accesat 2026-11-05; unverified by automated fetch: `curl` → 403, text citit prin WebFetch). Același articol precizează că Gutenberg nu a inventat tiparul cu litere mobile, „which occurred in Korea in the 14th century” (ibid.). Fraza lasă deoparte pe Bi Sheng; pagina aceasta l-a pus deja primul.
 
-Mai departe: [releele]({{< relref "07-relays-and-electromechanical-logic" >}}), unde un curent slab învață să comute unul puternic.
+Mai departe: [cum a călătorit mesajul]({{< relref "03-how-the-message-travelled.md" >}}), de la porumbei la telegraful electric.
