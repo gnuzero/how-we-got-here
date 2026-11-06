@@ -49,3 +49,20 @@ other = "Laboratoire interactif : {{ .Type }}"
 [labOpenNewTab]
 other = "Ouvrir le laboratoire dans un nouvel onglet ↗"
 
+[labDisplayName-breadboard]
+other = "Breadboard"
+
+[labDisplayName-difference-engine]
+other = "Difference Engine"
+
+[labDisplayName-analytical-engine]
+other = "Analytical Engine"
+
+[labDisplayName-mini-cpu]
+other = "Mini-CPU"
+
+[labDisplayName-vm-terminal]
+other = "Terminal"
+
+[labDisplayName-pebble-trays]
+other = "Plateaux de cailloux"
