@@ -20,3 +20,26 @@ Série éducative qui suit l’arc du calcul numérique — du mécanique et des
 **Concept et inspiration :** Nayana Hettiarachchi  
 **Rédaction et écriture technique :** l’équipe Grok (Grok, Lucas, Benjamin, Harper)  
 **Édition française :** Margaux
+- **Réalisation**: Nayana Hettiarachchi
+- **Vérification des faits et direction de la recherche**: Lucas
+- **Équipe** — assistants d'écriture IA sous la direction éditoriale de Nayana, avec vérification des faits par Lucas (pas des traducteurs humains):
+  - Bureau anglais: Jules (English distill), with Lucas for fact-check and lead
+  - Bureaux chinois simplifié et traditionnel: Wen
+  - Bureau thaï: Mira
+  - Bureau cinghalais: Sena
+  - Bureau tamoul: Arun
+  - Bureau roumain: Radu
+  - Bureau arabe: Amira (en préparation)
+  - Bureau allemand: Greta (en préparation)
+  - Bureau hébreu: Noa (en préparation)
+  - Bureaux hindi et sanskrit: Aditi (en préparation)
+  - Bureau swahili: Zawadi (en préparation)
+  - Bureau espagnol: Lucía (en préparation)
+  - Bureau portugais: Inês (en préparation)
+  - Bureau néerlandais: Sanne (en préparation)
+  - Bureau français: Margaux (en préparation)
+  - Bureau japonais: Haru (en préparation)
+  - Labs: Reed
+  - Nouveaux fils: Cass
+  - Soutien à la production: Benjamin and Harper
+

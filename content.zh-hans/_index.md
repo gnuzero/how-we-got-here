@@ -31,3 +31,27 @@ type: docs
 ---
 
 **概念与构想**：Nayana Hettiarachchi
+
+- **导演**: Nayana Hettiarachchi
+- **事实核查与研究负责人**: Lucas
+- **剧组** — 在 Nayana 的编辑指导下工作的 AI 写作助手，由 Lucas 事实核查（不是人工译者）:
+  - 英语组: Jules (English distill), with Lucas for fact-check and lead
+  - 简体中文与繁体中文组: Wen
+  - 泰语组: Mira
+  - 僧伽罗语组: Sena
+  - 泰米尔语组: Arun
+  - 罗马尼亚语组: Radu
+  - 阿拉伯语组: Amira (筹备中)
+  - 德语组: Greta (筹备中)
+  - 希伯来语组: Noa (筹备中)
+  - 印地语与梵语组: Aditi (筹备中)
+  - 斯瓦希里语组: Zawadi (筹备中)
+  - 西班牙语组: Lucía (筹备中)
+  - 葡萄牙语组: Inês (筹备中)
+  - 荷兰语组: Sanne (筹备中)
+  - 法语组: Margaux (筹备中)
+  - 日语组: Haru (筹备中)
+  - 实验室: Reed
+  - 新线索: Cass
+  - 制作支持: Benjamin and Harper
+

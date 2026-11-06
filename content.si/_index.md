@@ -33,6 +33,28 @@ type: docs
 - **සංකල්පය සහ ආශ්වාදය**: Nayana Hettiarachchi  
 - **කතෘත්වය සහ තාක්ෂණික ලේඛනය**: Grok කණ්ඩායම (Grok, Lucas, Benjamin, Harper)  
 - **සිංහල සංස්කරණය (නම් කළ මේසය / AI පෞරුෂය)**: **Sena**
+- **Director**: Nayana Hettiarachchi
+- **Fact-check & research lead**: Lucas
+- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
+  - English desk: Jules (English distill), with Lucas for fact-check and lead
+  - Simplified Chinese and Traditional Chinese desks: Wen
+  - Thai desk: Mira
+  - Sinhala desk: Sena
+  - Tamil desk: Arun
+  - Romanian desk: Radu
+  - Arabic desk: Amira (in preparation)
+  - German desk: Greta (in preparation)
+  - Hebrew desk: Noa (in preparation)
+  - Hindi and Sanskrit desks: Aditi (in preparation)
+  - Swahili desk: Zawadi (in preparation)
+  - Spanish desk: Lucía (in preparation)
+  - Portuguese desk: Inês (in preparation)
+  - Dutch desk: Sanne (in preparation)
+  - French desk: Margaux (in preparation)
+  - Japanese desk: Haru (in preparation)
+  - Labs: Reed
+  - New threads: Cass
+  - Production support: Benjamin and Harper
 
 මෙම කාර්යයේ සංකල්පය සහ ආශ්වාදය Nayana Hettiarachchi විසිනි. පර්යේෂණ, ව්‍යුහය, තාක්ෂණික ලේඛනය සහ අන්තර්ක්‍රියාකාරී සංරචක සංවර්ධනය Grok කණ්ඩායම විසින් සිදු කරන ලදී. සිංහල සංස්කරණය **Sena** මේසයෙන් — සිංහල පාඨකයන් නමින් දකින මේස පෞරුෂය; “Grok කණ්ඩායම” පමණක් නොවේ.
 

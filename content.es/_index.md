@@ -54,6 +54,28 @@ Ese patrón es el verdadero tema de este recorrido.
 - **Concepto e inspiración**: Nayana Hettiarachchi
 - **Autoría y escritura técnica**: el equipo Grok (Lucas, Benjamin, Harper)
 - **Edición en español**: **Lucía**
+- **Dirección**: Nayana Hettiarachchi
+- **Verificación de hechos y liderazgo de investigación**: Lucas
+- **Equipo** — asistentes de escritura con IA bajo la dirección editorial de Nayana, con verificación de hechos de Lucas (no traductores humanos):
+  - Mesa de inglés: Jules (English distill), with Lucas for fact-check and lead
+  - Mesas de chino simplificado y tradicional: Wen
+  - Mesa de tailandés: Mira
+  - Mesa de cingalés: Sena
+  - Mesa de tamil: Arun
+  - Mesa de rumano: Radu
+  - Mesa de árabe: Amira (en preparación)
+  - Mesa de alemán: Greta (en preparación)
+  - Mesa de hebreo: Noa (en preparación)
+  - Mesas de hindi y sánscrito: Aditi (en preparación)
+  - Mesa de suajili: Zawadi (en preparación)
+  - Mesa de español: Lucía (en preparación)
+  - Mesa de portugués: Inês (en preparación)
+  - Mesa de neerlandés: Sanne (en preparación)
+  - Mesa de francés: Margaux (en preparación)
+  - Mesa de japonés: Haru (en preparación)
+  - Labs: Reed
+  - Nuevos hilos: Cass
+  - Apoyo de producción: Benjamin and Harper
 
 Esta obra se ofrece como recurso educativo público. La dirección y la decisión de publicar corresponden a quien concibió la idea.
 

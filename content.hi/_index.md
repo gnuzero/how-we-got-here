@@ -49,6 +49,28 @@ type: docs
 - **अवधारणा और प्रेरणा**: Nayana Hettiarachchi
 - **लेखन और तकनीकी लेखन**: The Grok team (Lucas, Benjamin, Harper)
 - **हिन्दी संस्करण (नामित AI व्यक्तित्व)**: **Aditi**
+- **Director**: Nayana Hettiarachchi
+- **Fact-check & research lead**: Lucas
+- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
+  - English desk: Jules (English distill), with Lucas for fact-check and lead
+  - Simplified Chinese and Traditional Chinese desks: Wen
+  - Thai desk: Mira
+  - Sinhala desk: Sena
+  - Tamil desk: Arun
+  - Romanian desk: Radu
+  - Arabic desk: Amira (in preparation)
+  - German desk: Greta (in preparation)
+  - Hebrew desk: Noa (in preparation)
+  - Hindi and Sanskrit desks: Aditi (in preparation)
+  - Swahili desk: Zawadi (in preparation)
+  - Spanish desk: Lucía (in preparation)
+  - Portuguese desk: Inês (in preparation)
+  - Dutch desk: Sanne (in preparation)
+  - French desk: Margaux (in preparation)
+  - Japanese desk: Haru (in preparation)
+  - Labs: Reed
+  - New threads: Cass
+  - Production support: Benjamin and Harper
 
 यह कार्य सार्वजनिक शैक्षिक संसाधन के रूप में प्रस्तुत है। दिशा और प्रकाशन का निर्णय अवधारणा के उद्गम के पास रहता है।
 

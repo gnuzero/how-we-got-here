@@ -55,6 +55,28 @@ Mtindo huo ndio somo halisi la safari hii.
 - **Wazo na msukumo**: Nayana Hettiarachchi
 - **Uandishi na maandishi ya kiufundi**: timu ya Grok (Lucas, Benjamin, Harper)
 - **Toleo la Kiswahili**: **Zawadi**
+- **Director**: Nayana Hettiarachchi
+- **Fact-check & research lead**: Lucas
+- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
+  - English desk: Jules (English distill), with Lucas for fact-check and lead
+  - Simplified Chinese and Traditional Chinese desks: Wen
+  - Thai desk: Mira
+  - Sinhala desk: Sena
+  - Tamil desk: Arun
+  - Romanian desk: Radu
+  - Arabic desk: Amira (in preparation)
+  - German desk: Greta (in preparation)
+  - Hebrew desk: Noa (in preparation)
+  - Hindi and Sanskrit desks: Aditi (in preparation)
+  - Swahili desk: Zawadi (in preparation)
+  - Spanish desk: Lucía (in preparation)
+  - Portuguese desk: Inês (in preparation)
+  - Dutch desk: Sanne (in preparation)
+  - French desk: Margaux (in preparation)
+  - Japanese desk: Haru (in preparation)
+  - Labs: Reed
+  - New threads: Cass
+  - Production support: Benjamin and Harper
 
 Kazi hii inatolewa kama rasilimali ya elimu kwa umma. Mwelekeo na uamuzi wa kuchapisha ni wa mwanzilishi wa wazo.
 

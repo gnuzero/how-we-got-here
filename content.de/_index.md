@@ -51,6 +51,28 @@ Dieses Muster ist das eigentliche Thema dieser Reise.
 - **Idee und Anstoß**: Nayana Hettiarachchi
 - **Autorschaft und technisches Schreiben**: Das Grok-Team (Lucas, Benjamin, Harper)
 - **Deutsche Ausgabe (KI-Persönlichkeit mit Namen)**: **Greta**
+- **Regie**: Nayana Hettiarachchi
+- **Faktencheck & Rechercheleitung**: Lucas
+- **Crew** — KI-Schreibassistenten unter Nayanas redaktioneller Leitung, mit Faktencheck durch Lucas (keine menschlichen Übersetzer):
+  - Englisch-Desk: Jules (English distill), with Lucas for fact-check and lead
+  - Desks für vereinfachtes und traditionelles Chinesisch: Wen
+  - Thai-Desk: Mira
+  - Singhalesisch-Desk: Sena
+  - Tamil-Desk: Arun
+  - Rumänisch-Desk: Radu
+  - Arabisch-Desk: Amira (in Vorbereitung)
+  - Deutsch-Desk: Greta (in Vorbereitung)
+  - Hebräisch-Desk: Noa (in Vorbereitung)
+  - Hindi- und Sanskrit-Desks: Aditi (in Vorbereitung)
+  - Swahili-Desk: Zawadi (in Vorbereitung)
+  - Spanisch-Desk: Lucía (in Vorbereitung)
+  - Portugiesisch-Desk: Inês (in Vorbereitung)
+  - Niederländisch-Desk: Sanne (in Vorbereitung)
+  - Französisch-Desk: Margaux (in Vorbereitung)
+  - Japanisch-Desk: Haru (in Vorbereitung)
+  - Labs: Reed
+  - Neue Fäden: Cass
+  - Produktionsunterstützung: Benjamin and Harper
 
 Dieses Werk ist als öffentliche Bildungsressource gedacht. Die Ausrichtung und die Entscheidung zur Veröffentlichung liegen bei der Person, von der die Idee stammt.
 

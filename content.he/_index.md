@@ -54,6 +54,27 @@ type: docs
 - **כתיבה טכנית**: צוות Grok (Lucas, Benjamin, Harper)
 - **מהדורה עברית**: **נועה (Noa)**
 - **בדיקת עובדות**: Lucas
+- **Director**: Nayana Hettiarachchi
+- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
+  - English desk: Jules (English distill), with Lucas for fact-check and lead
+  - Simplified Chinese and Traditional Chinese desks: Wen
+  - Thai desk: Mira
+  - Sinhala desk: Sena
+  - Tamil desk: Arun
+  - Romanian desk: Radu
+  - Arabic desk: Amira (in preparation)
+  - German desk: Greta (in preparation)
+  - Hebrew desk: Noa (in preparation)
+  - Hindi and Sanskrit desks: Aditi (in preparation)
+  - Swahili desk: Zawadi (in preparation)
+  - Spanish desk: Lucía (in preparation)
+  - Portuguese desk: Inês (in preparation)
+  - Dutch desk: Sanne (in preparation)
+  - French desk: Margaux (in preparation)
+  - Japanese desk: Haru (in preparation)
+  - Labs: Reed
+  - New threads: Cass
+  - Production support: Benjamin and Harper
 
 העבודה מוצעת כמשאב חינוכי ציבורי. הכיוון וההחלטה לפרסם נשארים בידי יוזמת הרעיון.
 
