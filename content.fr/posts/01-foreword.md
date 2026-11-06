@@ -22,7 +22,7 @@ Le calcul n'a pas commencé avec le silicium. Il a commencé avec des engrenages
 
 Les laboratoires (mini-CPU, breadboard virtuel, x86 côté client) sont là pour que lire devienne faire.
 
-Ce travail a été conceptualisé et dirigé par **Nayana Hettiarachchi**.  
+Ce travail a été conceptualisé et inspiré par **Nayana Hettiarachchi**.  
 La recherche, la structure, l'écriture technique et les composants interactifs sont de l'équipe Grok.
 
 — L'équipe Grok  
