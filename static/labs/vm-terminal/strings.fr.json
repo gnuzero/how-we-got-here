@@ -1,0 +1,17 @@
+{
+  "page.title": "Labo Terminal VM",
+  "page.heading": "Labo Terminal VM",
+  "page.subtitle": "Vraie machine x86, exécutée côté client dans votre navigateur via WASM — démarre un vrai Linux, un vrai shell, de vraies commandes",
+  "btn.boot": "Démarrer la VM",
+  "btn.restart": "Redémarrer",
+  "status.idle": "Pas démarrée — appuyez sur Démarrer la VM",
+  "first.heading": "Premières commandes",
+  "first.body_html": "Appuyez sur <strong>Démarrer la VM</strong>, attendez l'invite login/shell, puis <strong>cliquez l'écran noir</strong> pour que le clavier focalise la VM. Essayez ceci :",
+  "first.hint": "Tapez chaque commande et appuyez sur Entrée. Redémarrer vous ramène à un boot frais si la session bloque.",
+  "note_html": "Propulsé par <strong>v86</strong> — un émulateur x86 complet en WebAssembly. Runtime, BIOS et image Linux sont fournis sous <code>assets/</code> à côté de cette page (pas de CDN live requis pour le premier démarrage). <a href=\"ORIGIN.md\">source &amp; licences</a>",
+  "status.already": "Déjà en cours — cliquez l'écran pour le clavier",
+  "status.loading": "Chargement de l'image VM locale + démarrage…",
+  "status.booting": "Démarrage du noyau…",
+  "status.running": "En cours — cliquez l'écran, puis essayez whoami / uname / ls",
+  "status.restarted": "Redémarrée — cliquez l'écran quand l'invite revient"
+}
