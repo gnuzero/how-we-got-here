@@ -72,7 +72,6 @@ Historians and canonical textbooks this spine stands on. Title, year, publisher 
 
 Already cited by name in the Chinese edition (延伸阅读). The Chinese desk (Wen) wrote these pages as originals in Simplified Chinese, co-authoritative with English; Traditional is converted from Simplified, then reviewed. A sample of the named authors and works, as cited there — the full lists stay in each chapter.
 
-<!-- TODO(zh-desk): sample only, copied from content.zh-hans/posts/*/延伸阅读. Desk to confirm the selection and add any named Chinese-language books it wants on this page. -->
 
 - 宋應星 (Song Yingxing) — 《天工開物》 (*Tiangong Kaiwu*), 1637 — [维基文库](https://zh.wikisource.org/wiki/天工開物/結花本)
 - 蘇頌 (Su Song) — 《新儀象法要》 (*New Design for an Armillary Clock*), Siku edition — [维基文库](https://zh.wikisource.org/wiki/新儀象法要_(四庫全書本)/卷上)

@@ -52,7 +52,7 @@ schematics: "Diagram: camera obscura → light-sensitive plate (heliograph) → 
 ## 出典
 
 - Harry Ransom Center, The University of Texas at Austin, "The Niépce Heliograph": <https://www.hrc.utexas.edu/niepce-heliograph/>
-- Encyclopaedia Britannica, "calotype": <https://www.britannica.com/technology/calotype>（`curl` 403、WebFetchで確認）
+- Encyclopaedia Britannica, "calotype": <https://www.britannica.com/technology/calotype>
 - Museum of the History of Science, University of Oxford, "Calotypes": <https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html>
 - William Henry Fox Talbot Catalogue Raisonné (Bodleian), Schaaf 2468: <https://talbot.bodleian.ox.ac.uk/search/catalog/schaaf-2468>
 - 国指定文化財等データベース「銀板写真（島津斉彬像）」: <https://kunishitei.bunka.go.jp/heritage/detail/201/10342>

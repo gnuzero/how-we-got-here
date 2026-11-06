@@ -169,7 +169,6 @@ Wokwi เป็นลิงก์ออกจากหน้า breadboard ไ�
 ภาพวาดคลัง Science Museum Group มักเป็น CC BY-NC-SA — ลิงก์ได้ ไม่ถือเป็นศิลปะเชิงพาณิชย์อิสระ ภาพผู้เยี่ยมชมภายใต้ CC BY / CC BY-SA คือประตูภาพ
 
 
-<!-- TODO(desk): EN credits (PR credits-zh-tone) softened the vocalist note and the closing line, and added a 'Chinese published sources' section. Mirror both in this locale's language; see content/posts/00-credits.md. -->
 
 ## เสียงที่ได้ยิน แต่ยังให้เครดิตไม่ได้
 

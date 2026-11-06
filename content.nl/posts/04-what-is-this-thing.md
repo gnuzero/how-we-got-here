@@ -14,7 +14,6 @@ tags: []
 summary: "Negen ingangen tot dezelfde ontwerpvraag: waar leg je de opdracht vast, en wie of wat voert haar uit?"
 ---
 
-> Nederlandse editie — Sanne. Nieuw hoofdstuk; inhoudelijke controle door Lucas staat nog open.
 
 Leg voor een nieuwe denkproef een kaartje, wat stenen en twee lege bakjes klaar. Je wilt ditmaal niet alleen een bericht laten aankomen. Je wilt een klus overdragen: laat iemand iets doen volgens jouw aanwijzingen, zonder onderweg jouw bedoeling te hoeven raden.
 

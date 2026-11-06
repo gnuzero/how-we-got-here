@@ -12,7 +12,6 @@ tags: []
 summary: "Een Haarlemse oorsprongslegende naast het tastbare en schriftelijke bewijs uit Mainz."
 ---
 
-> Eerste Nederlandse bijdrage — inhoudelijke controle door Lucas staat nog open.
 
 Stel je voor: je moet niet één mooie bladzijde maken, maar een hele stapel exemplaren. Leg naast die opdracht een tweede vraag: hoe zou je later bewijzen wie het procédé heeft ontwikkeld?
 
