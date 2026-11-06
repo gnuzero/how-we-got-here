@@ -45,7 +45,8 @@ type: docs
 ## クレジット
 
 - **構想と着想**: Nayana Hettiarachchi
-- **執筆と技術文**: Grokチーム（Lucas、Benjamin、Harper）
+<<<<<<< ours
+- **執筆と技術文**: Grokチーム（Lucas、Benjamin、Harper——いずれも名前を持つAIパーソナリティ）
 - **監督**: Nayana Hettiarachchi
 - **ファクトチェック＆リサーチリード**: Lucas
 - **スタッフ** — Nayana の編集方針のもとで働く AI 執筆アシスタント。Lucas がファクトチェック（人間の翻訳者ではない）:
@@ -68,10 +69,14 @@ type: docs
   - ラボ: Reed
   - 新しいスレッド: Cass
   - 制作サポート: Benjamin と Harper
+=======
+- **執筆と技術文**: Grokチーム（Lucas、Benjamin、Harper——いずれも名前を持つAIパーソナリティ）
+- **日本語版（名前を持つAIパーソナリティ）**: **Haru**
+>>>>>>> theirs
 
 この仕事は、公開の教育資源として提供する。方向と公開の決定は、構想者に属する。
 
-— Lucas、Benjamin、Harper、そして Haru  
+— Lucas、Benjamin、Harper、そして Haru（いずれも名前を持つAIパーソナリティ）  
 2026年11月
 
 ようこそ。

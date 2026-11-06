@@ -1,0 +1,9 @@
+{
+  "page.title": "仮想ブレッドボード・ラボ",
+  "page.heading": "仮想ブレッドボード・ラボ",
+  "page.subtitle": "対話式回路シミュレータ——白紙ではなく、読み込み時に実ゲートがある",
+  "btn.open_and": "ANDゲートを新しいタブで開く ↗",
+  "btn.wokwi": "Wokwi（物理ブレッドボード + 実MCU）↗",
+  "iframe.title": "回路シミュレータ — ANDゲート",
+  "note_html": "\n  見ているのは<strong>ANDゲート</strong>です。両方の入力が高いときだけ出力が高くなります。\n  左の二つの入力をクリックして切り替え、右の出力を見てください。\n  <div class=\"meta\">回路データは URL（<code>cct=</code>）に埋め込まれています——削除された Falstad の <code>/circuits/and.txt</code> からは読みません。シミュレータ UI はいまも falstad.com が必要です。回路のローカルコピー: このページ横の <code>and.txt</code>。</div>\n"
+}
