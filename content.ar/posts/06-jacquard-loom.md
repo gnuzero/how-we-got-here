@@ -38,7 +38,7 @@ schematics: "Diagram: Jacquard loom punch card mechanism (hole → lift, no hole
 <figcaption>نول جاكار، متحف الفن والصناعة، سانت إتيان. الصورة: <a href="https://commons.wikimedia.org/wiki/File:02_Metier_jacquard_etroit.jpg">Hélène Rival</a> / Wikimedia Commons، بترخيص <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</figcaption>
 </figure>
 
-طوّر جوزيف ماري جاكار (Joseph-Marie Jacquard) نظامه في فرنسا بين 1804 و1805، وسرعان ما انتشر [7]. وهو جهاز يُركَّب على أنوال خاصة ليتحكم في كل خيط من خيوط السَّدى على حدة، فصار ممكنًا نسج أقمشة بنقوش معقدة مثل البروكار والدمشقي [7]. وكان تحسينًا لتقنية البطاقات المثقبة في نول جاك دو فوكانسون (Jacques de Vaucanson) سنة 1745 [7]. استعمل نول جاكار بطاقات مثقبة قابلة للتبديل تتحكم في النسج، فيُحصل على أي نقش مطلوب آليًا [7].
+حصل جوزيف ماري جاكار (Joseph-Marie Jacquard) على براءة لآلته في 23 ديسمبر 1801، بحسب متحف الفنون والحرف في باريس (CNAM) [10]، وحقّق لها نجاحًا تجاريًا سنة 1804، بحسب مجموعة متحف العلوم البريطانية [11]، وسرعان ما انتشرت [7]. وهو جهاز يُركَّب على أنوال خاصة ليتحكم في كل خيط من خيوط السَّدى على حدة، فصار ممكنًا نسج أقمشة بنقوش معقدة مثل البروكار والدمشقي [7]. وكان تحسينًا لتقنية البطاقات المثقبة في نول جاك دو فوكانسون (Jacques de Vaucanson) سنة 1745 [7]. استعمل نول جاكار بطاقات مثقبة قابلة للتبديل تتحكم في النسج، فيُحصل على أي نقش مطلوب آليًا [7].
 
 *تفسيرنا (حجّة هذا الكتاب):* أخذ جهاز جاكار مكان صبي السحب. سلسلة البطاقات المثقبة تقرر أي الخيوط يُرفع في كل مرور للمكّوك: ثقب يعني رفع الخيط، وغياب الثقب يعني حجبه. غيّر البطاقات يتغيّر النقش. النول لا «يعرف» البروكار الحريري؛ إنه ينفّذ تتابعًا ثابتًا من قرارات «ارفع / لا ترفع» مرمّزًا ماديًا.
 
@@ -53,13 +53,13 @@ schematics: "Diagram: Jacquard loom punch card mechanism (hole → lift, no hole
 
 *تفسيرنا (حجّة هذا الكتاب):* هذا هو التجريد الذي تبنّاه بابيج للمحرك التحليلي: البرنامج تتابع من التعليمات، منفصل عن الآلة التي تنفّذه.
 
-## آدا لوفليس: أي رموز، لا الأعداد وحدها
+## آدا لوفليس: أشياء غير العدد
 
 في 1840 حاضر بابيج في تورينو عن مبادئ محركه، وكان بين الحضور لويجي منابريا (Luigi Menabrea)، الذي نشر في أكتوبر 1842 بالفرنسية أول وصف للمحرك [8]. ترجمت آدا لوفليس (Ada Lovelace) المقالة، وأضافت إليها بنصيحة بابيج ملاحظات، ونُشر العمل في أغسطس 1843 في *Taylor's Scientific Memoirs* موقّعًا بحروفها الأولى A.A.L.، وملاحظاتها تشغل 41 صفحة من صفحاته الست والستين [8].
 
-وفكّرت لوفليس في كيف يمكن للمحرك أن يقوم بالجبر، وكتبت أنه «ينسج أنماطًا جبرية كما ينسج نول جاكار الأزهار والأوراق» [8]. وتتضمن ملاحظتها الأخيرة، الملاحظة G، خوارزمية لحساب «أعداد برنولي» بالمحرك التحليلي، وتشرح كيف تُجلب الكميات من المخزن وتُحسب في الطاحونة ثم تُعاد إليه وفق التعليمات على البطاقات [8].
+وفكّرت لوفليس في كيف يمكن للمحرك أن يقوم بالجبر [8]. وكتبت في الملاحظة A أن المحرك «قد يعمل على أشياء أخرى غير العدد»، إذا وُجدت أشياء يمكن التعبير عن علاقاتها الأساسية المتبادلة بعلاقات «علم العمليات» المجرّد، وكانت قابلة للتكيّف مع ترميز المحرك وآليته؛ وضربت لذلك مثلًا بالأصوات في علم التناغم والتأليف الموسيقي [9، ص 694]. وفي الملاحظة نفسها كتبت أن المحرك التحليلي «ينسج أنماطًا جبرية كما ينسج نول جاكار الأزهار والأوراق» [8][9، ص 696]. وتتضمن ملاحظتها الأخيرة، الملاحظة G، خوارزمية لحساب «أعداد برنولي» بالمحرك التحليلي، وتشرح كيف تُجلب الكميات من المخزن وتُحسب في الطاحونة ثم تُعاد إليه وفق التعليمات على البطاقات [8][9، ص 722–731].
 
-**باب إلى الخارج:** ملاحظات آدا لوفليس على ترجمة مقالة منابريا عن المحرك التحليلي (1843)، النص الأصلي لمخطط أعداد برنولي ولحجّة «أي رموز».
+**باب إلى الخارج:** ملاحظات آدا لوفليس على ترجمة مقالة منابريا عن المحرك التحليلي (1843)، المصدر [9] أدناه: الملاحظة A في الصفحات 691–701، والملاحظة G في الصفحات 722–731.
 
 **التالي:** [لماذا ما زالت الحوسبة الميكانيكية مهمة]({{< relref "07-why-mechanical-matters.md" >}}): لماذا يظل هذا الفصل الميكانيكي يشكّل كل ما بعده، ولماذا لم تكن التروس وحدها قادرة على التوسّع.
 
@@ -73,3 +73,6 @@ schematics: "Diagram: Jacquard loom punch card mechanism (hole → lift, no hole
 6. The Metropolitan Museum of Art, "Textile Production in Europe: Silk, 1600–1800" (Heilbrunn Timeline essay): <https://www.metmuseum.org/essays/textile-production-in-europe-silk-1600-1800>
 7. *Encyclopaedia Britannica*, "Jacquard loom": <https://www.britannica.com/technology/Jacquard-loom>
 8. Bodleian Libraries, University of Oxford, "Ada Lovelace and the Analytical Engine" (26 July 2018): <https://blogs.bodleian.ox.ac.uk/adalovelace/2018/07/26/ada-lovelace-and-the-analytical-engine/>
+9. L. F. Menabrea, "Sketch of the Analytical Engine invented by Charles Babbage, Esq.", translated with notes by A. A. L. [Ada Lovelace], *Scientific Memoirs* (ed. Richard Taylor), vol. 3 (London, 1843), art. XXIX, pp. 666–731; translator's Note A pp. 691–701, Note G pp. 722–731. Library digitisation: Natural History Museum Library, London, via Internet Archive / Biodiversity Heritage Library: <https://archive.org/details/scientificmemoir03memo/page/n703/mode/1up> (p. 694)
+10. Musée des Arts et Métiers (CNAM), "Modèle : Métier original de Jacquard": <https://www.arts-et-metiers.net/musee/modele-metier-original-de-jacquard>
+11. Science Museum Group Collection, "Model of a Jacquard loom, with shuttle and components" (1867-47): <https://collection.sciencemuseumgroup.org.uk/objects/co44888/model-of-a-jacquard-loom-with-shuttle-and-components>
