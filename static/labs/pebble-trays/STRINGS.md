@@ -22,7 +22,7 @@ imperative instructions; the trays have no symbols, so word the counts naturally
 | `btn.next` | Show next step | Button: reveal the next recipe line. Quoted inside recipe.facedown_html — keep identical. |
 | `btn.restart` | Restart recipe | Button: hide the recipe again. |
 | `answer.label` | Answer strip — copy the count from the last tray | Label of the number input. |
-| `note` | A shared practice for the “what is this kind of machine?” pages — one English copy for every language of the book. | Footnote. English says "one English copy for every language"; translate the meaning for your locale (e.g. "the same lab in every language") — do not claim it is English. |
+| `note` | A shared practice for the “what is this kind of machine?” pages — the same lab in every language of the book. | Footnote. English says "the same lab in every language"; translate the meaning for your locale (e.g. "the same lab in every language") — do not claim it is English. |
 | `tray.first` | First tray | Tray name; also {tray} in aria labels. |
 | `tray.middle` | Middle tray | Tray name; also {tray}. |
 | `tray.last` | Last tray | Tray name; also {tray}. |
