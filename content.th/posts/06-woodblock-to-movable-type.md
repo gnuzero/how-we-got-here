@@ -50,4 +50,4 @@ schematics: "Diagram: woodblock → clay type (Bi Sheng via Shen Kuo) → wooden
 
 บริแทนนิกาวางแท่นพิมพ์ของโยฮันเนส กูเทนแบร์ก (Johannes Gutenberg) ไว้ในยุโรปช่วงทศวรรษ 1450 และระบุปีของคัมภีร์ไบเบิลกูเทนแบร์กว่า 1455 บริแทนนิกายังเขียนด้วยว่าเขาไม่ได้ประดิษฐ์การพิมพ์ด้วยตัวพิมพ์เรียง ซึ่งเกิดขึ้นในเกาหลีตั้งแต่ศตวรรษที่ 14 ประโยคนั้นข้ามปี้เซิงไป แต่หน้านี้ได้วางเขาไว้เป็นคนแรกแล้ว ([Britannica, Johannes Gutenberg](https://www.britannica.com/biography/Johannes-Gutenberg))
 
-ถัดไป: [รีเลย์]({{< relref "07-relays-and-electromechanical-logic.md" >}}) ที่ซึ่งกระแสไฟอ่อน ๆ เรียนรู้ที่จะสับกระแสที่แรงกว่า
+ถัดไป: [ข้อความเดินทางอย่างไร]({{< relref "03-how-the-message-travelled.md" >}})
