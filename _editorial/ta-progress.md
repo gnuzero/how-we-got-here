@@ -555,3 +555,11 @@ All arithmetic was checked in Python.
 
 - `static/labs/breadboard/strings.ta.json` `note_html`: "Falstad’s நீக்கப்பட்ட `/circuits/and.txt`" → "Falstad தளத்திலிருந்து நீக்கப்பட்ட …". Tags/`<code>` unchanged; checker 0 errors; Hugo build exit 0.
 - Swept all `static/labs/*/strings.ta.json`, `i18n/ta.toml`, `content.ta` for 's inside Tamil sentences. All other hits are proper names, titles, quotes, or English glosses and were left as-is: Little's law (40-the-memory-wall, 59-cuda-cores-warps-and-occupancy), Amdahl's law (22-superscalar-multicore), two's complement (13-from-gates-to-combinational-logic, 25-arm-and-risc-v-the-architecture-landscape-today), Moore's Law (41-the-clock-speed-wall, 53-what-7nm-actually-means, 56-moore-s-law), GNU's Not Unix (28-the-gnu-movement-and-linux), source titles in 03-babbage-engines, 07-relays-and-electromechanical-logic, 41, 48-usenet-archie-gopher-and-the-pre-web-internet, 53, and King's College London (06-woodblock-to-movable-type).
+
+## ta-opening-order (base 521e2f1 / origin/main, includes PR #97)
+
+- New `content.ta/posts/03-how-the-message-travelled.md` — title **செய்தி எப்படிப் பயணித்தது**, weight 3, series_index 2, draft false, same phase as 07-relays-and-electromechanical-logic, Tamil summary, no aliases. Opening bridges from print (no new facts). Moved word-for-word from 07 with citations: telegraph-repeater part of "ஒரே பாகத்துக்கு இரண்டு வேலைகள்", "கம்பிக்கு முன்: இறக்கைகளில் செய்திகள்", "மின்சாரச் செய்தி" (+ Lucas sources comment). Ends with Next → 02-what-is-this-thing.
+- 07-relays-and-electromechanical-logic: left the short relay-as-switch definition + one-line relref pointer to the new page; removed the moved sections. Inline citation links all travel with the moved prose (no footnote renumbering needed).
+- 06-woodblock-to-movable-type: Next now points at 03-how-the-message-travelled.
+- 02-what-is-this-thing: replaced the first paragraph with the Tamil of Lucas's print/wire/chore opening.
+- No renames/reweights of existing files. Hugo build exit 0; new page renders under `/ta/posts/03-how-the-message-travelled/`.
