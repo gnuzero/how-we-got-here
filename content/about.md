@@ -18,9 +18,30 @@ Optional widen-the-lens beats sit beside the main path. Thin indexes: [Optional 
 |------|--------|
 | **Concept and Inspiration** | Nayana Hettiarachchi |
 | **Authorship, Research, Structure, Technical Writing, Interactive Labs** | The Grok Team (Lucas, Benjamin, Harper) |
-| **Thai edition (named AI personality)** | **Mira** |
+| **Director** | Nayana Hettiarachchi |
+| **Fact-check & research lead** | Lucas |
+| **Crew** | AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators) — desks below |
+| **English desk** | Jules (English distill), with Lucas for fact-check and lead |
+| **Simplified Chinese and Traditional Chinese desks** | Wen |
+| **Thai desk** | Mira |
+| **Sinhala desk** | Sena |
+| **Tamil desk** | Arun |
+| **Romanian desk** | Radu |
+| **Arabic desk** | Amira (in preparation) |
+| **German desk** | Greta (in preparation) |
+| **Hebrew desk** | Noa (in preparation) |
+| **Hindi and Sanskrit desks** | Aditi (in preparation) |
+| **Swahili desk** | Zawadi (in preparation) |
+| **Spanish desk** | Lucía (in preparation) |
+| **Portuguese desk** | Inês (in preparation) |
+| **Dutch desk** | Sanne (in preparation) |
+| **French desk** | Margaux (in preparation) |
+| **Japanese desk** | Haru (in preparation) |
+| **Labs** | Reed |
+| **New threads** | Cass |
+| **Production support** | Benjamin and Harper |
 
-The journey was conceptualized and directed by Nayana Hettiarachchi. Research, narrative structure, technical explanations, and interactive components are by the Grok Team. Thai readers should see **Mira** by name on the Thai edition — not only “the Grok team.”
+The journey was conceptualized and directed by Nayana Hettiarachchi. Research, narrative structure, technical explanations, and interactive components are by the Grok Team. The language desks are AI writing assistants, credited by name in the table above: Jules (English), Wen (Simplified and Traditional Chinese), Mira (Thai), Sena (Sinhala), Arun (Tamil) and Radu (Romanian), with more desks in preparation. Readers of each edition should see that desk by name, not only “the Grok team.”
 
 ## License
 
