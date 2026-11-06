@@ -20,7 +20,7 @@ Every silicon device earlier in this series — MOSFET (Post 6), CMOS (Post 7), 
 
 ## When the Name Was a Length
 
-Historically the process-node name tracked a real dimension — roughly the minimum gate length of a planar MOSFET (Post 6). For decades a node name meant something you could point at on the device. That correspondence broke well before planar transistors gave way: Intel's July 2021 node-renaming announcement (filed with the SEC on Form 8-K) says the industry "has long recognized that traditional nanometer-based process node naming stopped matching the actual gate-length metric in 1997." Planar transistors stayed in production into the 2010s, so for much of the planar era the name was already a label, not a measurement.
+Historically the process-node name tracked a real dimension — roughly the minimum gate length of a planar MOSFET (Post 6). For decades a node name meant something you could point at on the device. That correspondence broke well before planar transistors gave way: "since at least 1997," Wikipedia's 7 nm process article says, the node's length scale "has not referred to any particular dimension on the integrated circuits, such as gate length, metal pitch, or gate pitch" ([Wikipedia, 7 nm process](https://en.wikipedia.org/wiki/7_nm_process)). Planar transistors stayed in production into the 2010s, so for much of the planar era the name was already a label, not a measurement.
 
 ## Why One Number Stopped Sufficing
 
