@@ -5,8 +5,8 @@ Date: 2026-09-06 (Asia/Bangkok)
 
 ## Scope
 
-- Phase 3: `content/posts/17-instruction-sets.md` through `26-arm-and-risc-v-the-architecture-landscape-today.md`
-- Phase 4: `content/posts/27-batch-processing-and-the-birth-of-the-operating-system.md` through `36-real-time-systems-in-practice.md`
+- Phase 3: `content/posts/18-instruction-sets.md` through `27-arm-and-risc-v-the-architecture-landscape-today.md`
+- Phase 4: `content/posts/28-batch-processing-and-the-birth-of-the-operating-system.md` through `37-real-time-systems-in-practice.md`
 - Not touched: `content.th/`, `content.si/`, `content.ta/`; no git commit/push; no images/schematics generated; prompts / labs / ASSET CHECKLIST comments left in place
 
 ## Result
@@ -23,29 +23,29 @@ Note: A parallel completed editorial wave also set posts 00–30 to `draft: fals
 
 ## Files — Phase 3 (11–20)
 
-- `17-instruction-sets.md` — tightened ISA definition and closing CISC/RISC compromise paragraph; `draft: false`
-- `18-datapath-design.md` — light prose tighten (single-cycle framing, pipelining bridge); `draft: false`
-- `19-pipelining.md` — tightened opening and downstream hazards bridge; `draft: false`
-- `20-branch-prediction.md` — softened misprediction-cost wording; tightened predictor/BTB wrap-up; `draft: false`
-- `21-caches.md` — light tighten; coherence closing; checklist whitespace cleanup; `draft: false`
-- `22-out-of-order-execution.md` — light tighten; Tomasulo / Model 91 timing softened to “mid-to-late 1960s”; `draft: false`
-- `23-superscalar-multicore.md` — clarified P ≈ CV²f (capacitance named); multicore software-demand paragraph tightened; checklist whitespace; `draft: false`
-- `24-mainframes-to-minicomputers-to-microprocessors.md` — softened ENIAC figures (“about” / “roughly”); PDP-11 / 4004 wording; 4004 clock “up to ~740 kHz”; facts verified (ENIAC ~1800 sq ft / ~30 tons; PDP-11 ~600k sold; 4004 ~2300 transistors / ~740 kHz); `draft: false`
-- `25-the-x86-vs-risc-split.md` — light prose tighten on RISC argument and closing lesson; `draft: false`
-- `26-arm-and-risc-v-the-architecture-landscape-today.md` — light tighten on licensing / market segments; dropped “as of this writing”; `draft: false`
+- `18-instruction-sets.md` — tightened ISA definition and closing CISC/RISC compromise paragraph; `draft: false`
+- `19-datapath-design.md` — light prose tighten (single-cycle framing, pipelining bridge); `draft: false`
+- `20-pipelining.md` — tightened opening and downstream hazards bridge; `draft: false`
+- `21-branch-prediction.md` — softened misprediction-cost wording; tightened predictor/BTB wrap-up; `draft: false`
+- `22-caches.md` — light tighten; coherence closing; checklist whitespace cleanup; `draft: false`
+- `23-out-of-order-execution.md` — light tighten; Tomasulo / Model 91 timing softened to “mid-to-late 1960s”; `draft: false`
+- `24-superscalar-multicore.md` — clarified P ≈ CV²f (capacitance named); multicore software-demand paragraph tightened; checklist whitespace; `draft: false`
+- `25-mainframes-to-minicomputers-to-microprocessors.md` — softened ENIAC figures (“about” / “roughly”); PDP-11 / 4004 wording; 4004 clock “up to ~740 kHz”; facts verified (ENIAC ~1800 sq ft / ~30 tons; PDP-11 ~600k sold; 4004 ~2300 transistors / ~740 kHz); `draft: false`
+- `26-the-x86-vs-risc-split.md` — light prose tighten on RISC argument and closing lesson; `draft: false`
+- `27-arm-and-risc-v-the-architecture-landscape-today.md` — light tighten on licensing / market segments; dropped “as of this writing”; `draft: false`
 
 ## Files — Phase 4 (21–30)
 
-- `27-batch-processing-and-the-birth-of-the-operating-system.md` — light prose tighten; `draft: false`
-- `28-time-sharing-and-the-unix-lineage.md` — Multics / Unix licensing wording softened; `draft: false`
-- `29-the-gnu-movement-and-linux.md` — **fact fix:** Linux was not GPL on first 1991 release; corrected to restrictive non-commercial license in 1991, GPL relicensing early 1992; `draft: false`
-- `30-virtual-memory-and-multitasking.md` — page size / segfault / swapping wording softened; `draft: false`
-- `31-containers-and-modern-os-isolation.md` — VM startup cost softened (“many seconds”); isolation-breakout claim softened; `draft: false`
-- `32-from-machine-code-to-assembly.md` — read/verified; already polished + `draft: false` (parallel wave); no further edit
-- `33-high-level-languages-fortran-cobol-lisp-c.md` — read/verified; already `draft: false`; no further edit (see soft flag on COBOL year)
-- `34-compilers-jit-and-modern-language-runtimes.md` — read/verified; already polished + `draft: false`; no further edit
-- `35-real-time-systems-and-deterministic-scheduling.md` — read/verified; already polished + `draft: false`; no further edit
-- `36-real-time-systems-in-practice.md` — read/verified; already polished + `draft: false`; no further edit
+- `28-batch-processing-and-the-birth-of-the-operating-system.md` — light prose tighten; `draft: false`
+- `29-time-sharing-and-the-unix-lineage.md` — Multics / Unix licensing wording softened; `draft: false`
+- `30-the-gnu-movement-and-linux.md` — **fact fix:** Linux was not GPL on first 1991 release; corrected to restrictive non-commercial license in 1991, GPL relicensing early 1992; `draft: false`
+- `31-virtual-memory-and-multitasking.md` — page size / segfault / swapping wording softened; `draft: false`
+- `32-containers-and-modern-os-isolation.md` — VM startup cost softened (“many seconds”); isolation-breakout claim softened; `draft: false`
+- `33-from-machine-code-to-assembly.md` — read/verified; already polished + `draft: false` (parallel wave); no further edit
+- `34-high-level-languages-fortran-cobol-lisp-c.md` — read/verified; already `draft: false`; no further edit (see soft flag on COBOL year)
+- `35-compilers-jit-and-modern-language-runtimes.md` — read/verified; already polished + `draft: false`; no further edit
+- `36-real-time-systems-and-deterministic-scheduling.md` — read/verified; already polished + `draft: false`; no further edit
+- `37-real-time-systems-in-practice.md` — read/verified; already polished + `draft: false`; no further edit
 
 ## Fact-check summary (hard claims)
 

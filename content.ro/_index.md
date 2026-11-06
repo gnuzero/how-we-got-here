@@ -12,15 +12,19 @@ O serie educațională care urmărește întregul drum al calculului digital, de
 
 **63 de capitole tehnice + prefață + glosar, aproximativ 45 000 de cuvinte, laboratoare interactive**
 
+**Tipar → transmiterea mesajelor → mecanic → fotografie → relee → tuburi → tranzistor → CPU → SO și limbaje → magistrale → rețele → fabric și scalare → GPU → attention.**
+
 ---
 
 ## Prefață
 
-Această serie există pentru că uneltele pe care le folosim zilnic ca să antrenăm și să rulăm rețele neuronale mari nu sunt magie. Ele sunt cel mai recent capitol al unei povești inginerești continue. Povestea începe cu roți dințate de alamă și cartele perforate și continuă cu releele și tuburile electronice, apoi cu tranzistorul, microprocesorul, ierarhia de memorie și stivele de rețea. La capăt stă siliciul specializat care accelerează înmulțirea matricelor la scară mare.
+Această serie există pentru că uneltele pe care le folosim zilnic ca să antrenăm și să rulăm rețele neuronale mari nu sunt magie. Ele sunt cel mai recent capitol al unei povești inginerești continue. Povestea începe cu tiparul și continuă cu transmiterea mesajelor, mașinile mecanice și fotografia, apoi cu releele și tuburile electronice, apoi cu tranzistorul, microprocesorul, ierarhia de memorie și stivele de rețea. La capăt stă siliciul specializat care accelerează înmulțirea matricelor la scară mare.
 
 Contează să înțelegeți întreaga curbă.
 
 Când știți de ce releele au fost abandonate în favoarea tuburilor, de ce tuburile au fost abandonate în favoarea tranzistorilor, de ce creșterea frecvenței unui singur nucleu s-a lovit de un zid și de ce debitul de înmulțiri de matrice a devenit principala constrângere de proiectare a ultimului deceniu, încetați să vedeți hardware-ul AI modern ca pe o cutie neagră. Începeți să vedeți același tipar repetându-se. O limită fizică sau economică dură este identificată, iar arhitectura se schimbă, în loc ca cineva să împingă și mai tare în același zid.
+
+Începutul cărții arată aceeași mișcare de cinci ori. Tiparul a permis copierea unei pagini fără copist. Firul a permis unui mesaj să călătorească fără curier călare. Cartelele și roțile dințate au permis unei sarcini să meargă fără ca cineva să o supravegheze. Aparatul foto a lăsat lumina să facă o imagine fără ca cineva să miște cerneală. Apoi releele au făcut din comutare ceva ce putea face electricitatea. Fiecare pas a scos un om dintr-o muncă și a dat-o unui material sau unei mașini.
 
 Acest tipar este adevăratul subiect al seriei.
 
@@ -42,6 +46,8 @@ noiembrie 2026
 ---
 
 ## Cum să folosiți această serie
+
+Capitolele de început sunt scurte și, intenționat, fără exerciții practice. Tiparul, transmiterea mesajelor, mașinile mecanice, fotografia și releele pregătesc argumentul înainte ca laboratoarele să vă ceară să construiți ceva. Când ajungeți la relee, știți deja ce se comută și de ce.
 
 - Începeți de la capăt dacă vreți toate fundamentele istorice și fizice.  
 - Săriți la fazele de mai târziu dacă știți deja istoria timpurie și vă interesează mai ales siliciul și sistemele AI moderne.  
