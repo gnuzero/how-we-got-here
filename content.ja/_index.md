@@ -46,26 +46,25 @@ type: docs
 
 - **構想と着想**: Nayana Hettiarachchi
 - **執筆と技術文**: Grokチーム（Lucas、Benjamin、Harper）
-- **日本語版（担当デスク）**: **Haru**
 - **監督**: Nayana Hettiarachchi
 - **ファクトチェック＆リサーチリード**: Lucas
 - **スタッフ** — Nayana の編集方針のもとで働く AI 執筆アシスタント。Lucas がファクトチェック（人間の翻訳者ではない）:
-  - 英語デスク: Jules (English distill), with Lucas for fact-check and lead
+  - 英語デスク: Jules（English distill）、ファクトチェックとリードは Lucas
   - 簡体字・繁体字中国語デスク: Wen
   - タイ語デスク: Mira
   - シンハラ語デスク: Sena
   - タミル語デスク: Arun
   - ルーマニア語デスク: Radu
-  - アラビア語デスク: Amira (準備中)
-  - ドイツ語デスク: Greta (準備中)
-  - ヘブライ語デスク: Noa (準備中)
-  - ヒンディー語・サンスクリット語デスク: Aditi (準備中)
-  - スワヒリ語デスク: Zawadi (準備中)
-  - スペイン語デスク: Lucía (準備中)
-  - ポルトガル語デスク: Inês (準備中)
-  - オランダ語デスク: Sanne (準備中)
-  - フランス語デスク: Margaux (準備中)
-  - 日本語デスク: Haru (準備中)
+  - アラビア語デスク: Amira (進行中)
+  - ドイツ語デスク: Greta (進行中)
+  - ヘブライ語デスク: Noa (進行中)
+  - ヒンディー語・サンスクリット語デスク: Aditi (進行中)
+  - スワヒリ語デスク: Zawadi (進行中)
+  - スペイン語デスク: Lucía (進行中)
+  - ポルトガル語デスク: Inês (進行中)
+  - オランダ語デスク: Sanne (進行中)
+  - フランス語デスク: Margaux (進行中)
+  - 日本語デスク: Haru (進行中)
   - ラボ: Reed
   - 新しいスレッド: Cass
   - 制作サポート: Benjamin and Harper

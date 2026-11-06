@@ -26,26 +26,25 @@ Trei laboratoare interactive vă lasă să atingeți direct aceste idei: un CPU 
 
 - **Concept și inspirație**: Nayana Hettiarachchi  
 - **Redactare și scriere tehnică**: echipa Grok (Grok, Lucas, Benjamin, Harper)  
-- **Ediția în română**: **Radu**
 - **Regizor**: Nayana Hettiarachchi
 - **Verificare factuală și conducerea cercetării**: Lucas
 - **Echipă** — asistenți de scriere AI sub direcția editorială a Nayanei, cu verificare factuală de către Lucas (nu traducători umani):
-  - Biroul de engleză: Jules (English distill), with Lucas for fact-check and lead
+  - Biroul de engleză: Jules (English distill), cu Lucas pentru verificare factuală și conducere
   - Birourile de chineză simplificată și tradițională: Wen
   - Biroul de thailandeză: Mira
   - Biroul de sinhala: Sena
   - Biroul de tamilă: Arun
   - Biroul de română: Radu
-  - Biroul de arabă: Amira (în pregătire)
-  - Biroul de germană: Greta (în pregătire)
-  - Biroul de ebraică: Noa (în pregătire)
-  - Birourile de hindi și sanscrită: Aditi (în pregătire)
-  - Biroul de swahili: Zawadi (în pregătire)
-  - Biroul de spaniolă: Lucía (în pregătire)
-  - Biroul de portugheză: Inês (în pregătire)
-  - Biroul de neerlandeză: Sanne (în pregătire)
-  - Biroul de franceză: Margaux (în pregătire)
-  - Biroul de japoneză: Haru (în pregătire)
+  - Biroul de arabă: Amira (în curs)
+  - Biroul de germană: Greta (în curs)
+  - Biroul de ebraică: Noa (în curs)
+  - Birourile de hindi și sanscrită: Aditi (în curs)
+  - Biroul de swahili: Zawadi (în curs)
+  - Biroul de spaniolă: Lucía (în curs)
+  - Biroul de portugheză: Inês (în curs)
+  - Biroul de neerlandeză: Sanne (în curs)
+  - Biroul de franceză: Margaux (în curs)
+  - Biroul de japoneză: Haru (în curs)
   - Laboratoare: Reed
   - Fire noi: Cass
   - Sprijin de producție: Benjamin and Harper
