@@ -14,6 +14,8 @@ Languages are not a final set. Any language missing here is an invitation for yo
 
 This production was organized so that students can interactively engage with the learning material, and so far I have used Creative Commons-licensed existing interactive tools. I am yet to produce my own, mostly because I was focused on content. However, before the announcement of the book, my plans are to make sure that there are no gaps on the learning paths in the interactivity tools.
 
+If you happen to get here while the missing tools are in production or development, make sure you raise that in a [GitHub issue](https://github.com/gnuzero/how-we-got-here/issues).
+
 An interactive journey — not an encyclopedia. You live through systems and touch them; you do not collect articles.
 
 The spine is one continuous engineering argument: how each era's hard constraint forced the next architecture.
