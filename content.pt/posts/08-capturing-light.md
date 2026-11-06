@@ -61,7 +61,7 @@ O essencial para este livro: o negativo de papel do calótipo admite positivos p
 
 Uma vez que a luz podia ser guardada e copiada, o passo seguinte foi guardá-la em sequência e reproduzi-la. Essa história — de Muybridge ao primeiro cinema, e ao primeiro filme da China — está em [Da prensa ao pixel]({{< relref path="/posts/51-from-press-to-pixel.md" lang="en" >}}) (capítulo em inglês até a edição em português existir).
 
-**Próximo:** [Relés e lógica eletromecânica](/posts/09-relays-and-electromechanical-logic/).
+**Próximo:** [Relés e lógica eletromecânica]({{< relref "/posts/09-relays-and-electromechanical-logic.md" >}}).
 
 ## Fontes
 
