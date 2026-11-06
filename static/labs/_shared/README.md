@@ -17,7 +17,7 @@ they never edit lab HTML/JS and never fork a lab per language.
    - `data-i18n="key"` → element `textContent`
    - `data-i18n-html="key"` → element `innerHTML` (only for keys ending `_html`, e.g. text with links)
    - `data-i18n-attr="title:key1;aria-label:key2"` → attributes
-   - sets `<html lang>` to the locale actually loaded (`en` if it fell back); `zh-hans`/`zh-hant` become BCP-47 `zh-Hans`/`zh-Hant` on the attribute only (file names stay lowercase)
+   - sets `<html lang>` (and `dir`, see RTL below) to the locale actually loaded (`en` if it fell back); `zh-hans`/`zh-hant` become BCP-47 `zh-Hans`/`zh-Hant` on the attribute only (file names stay lowercase)
    - exposes `t(key, vars)` (also `LabI18n.t`) for JS-generated text and `LabI18n.ready`
      (a Promise; start the lab's first render in `LabI18n.ready.then(...)`).
 4. Fallbacks, per key: locale file → `strings.en.json` → the English text already in the
@@ -52,4 +52,11 @@ See `_editorial/lab-i18n-recipe.md`.
   local server (`hugo server` or `python3 -m http.server` in `static/`). Firefox works from disk.
 - Guest output inside vm-terminal (Linux) and third-party simulators (circuitjs, Walker's
   Analytical Engine) are not covered; only the wrapper chrome we own is translatable.
-- No RTL support (no RTL locale in the book).
+- RTL: `i18n.js` keeps a list of right-to-left codes (`ar`, `he`). When one of them is the
+  loaded locale it sets `<html dir="rtl">` (otherwise `dir="ltr"`, the default in each lab's
+  `index.html`), so headings, notes and other text containers flow right to left. A shared
+  rule keeps `code`/`pre`/`kbd`/`samp`, form controls and buttons, tables, `svg`/`canvas`
+  and simulator `iframe`s `direction:ltr; unicode-bidi:isolate`, so circuits, register
+  dumps and program text read the same in every language. Lab monospace stacks include
+  Arabic- and Hebrew-capable fallbacks (Noto Sans Arabic/Hebrew, Arial). If the RTL locale
+  file is missing, the lab falls back to English and stays LTR.
