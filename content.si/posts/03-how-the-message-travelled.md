@@ -30,4 +30,4 @@ Relay එකක් යනු දුර්වල ධාරාවකින් ප�
 
 1835 දී College of New Jersey හි (පසුව Princeton) Joseph Henry, කුඩා "intensity" චුම්බකයකින් විශාල "quantity" චුම්බකයක් පාලනය කළ මුල් relay එකක් ගොඩනැඟීය. ([Smithsonian Institution Archives නාමාවලිය](https://siarchives.si.edu/collections/siris_sic_12484)) Joseph Henry Papers හි David Hochfelder ගේ ලිපිය එකතු කරන්නේ, මෙම intensity-සිට-quantity සැකැස්ම, යම් වෙනස්කම් සහිතව, Morse ගේ ප්‍රතිරාවකයේ (repeater) සහ දේශීය ලැබීම් පරිපථයේ පදනම වූ බවයි. අපි Henry relay හි එකම නිර්මාපකයා ලෙස නොහඳුන්වමු. ([Hochfelder, "Joseph Henry: Inventor of the Telegraph?"](https://siarchives.si.edu/sites/default/files/pdfs/jhpp/JHP_Inventor_of_the_Telegraph.pdf))
 
-ඊළඟට: [relays]({{< relref "09-relays-and-electromechanical-logic" >}}), එහිදී එම ස්විචයම තර්කය බවට පත් වේ.
+ඊළඟට: [යාන්ත්‍රික සහ විද්‍යුත් යාන්ත්‍රික පරිගණකකරණය]({{< relref "04-mechanical-electromechanical-computing" >}}); ඉන්පසු [relays]({{< relref "09-relays-and-electromechanical-logic" >}}), එහිදී එම ස්විචයම තර්කය බවට පත් වේ.

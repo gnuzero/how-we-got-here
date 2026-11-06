@@ -28,4 +28,4 @@ Ce calculul mecanic *nu* a putut face, în viața lui Babbage, a fost să scalez
 
 Reconstrucțiile de mai sus sunt excepția care confirmă regula: odată ce atelierele au putut ține toleranțele, desenul de alamă a mers. Forma logică era deja acolo. Mediul a trebuit să se schimbe primul.
 
-Următorul: relee și logica electromecanică care duc arhitectura în al Doilea Război Mondial.
+**Următorul:** [Lumina care scrie singură]({{< relref "08-capturing-light.md" >}}), apoi releele și logica electromecanică care duc arhitectura în al Doilea Război Mondial.
