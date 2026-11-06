@@ -25,16 +25,17 @@ In 1829 Niépce went into partnership with Louis-Jacques-Mandé Daguerre. Daguer
 
 In England, William Henry Fox Talbot took a different route. What he showed the Royal Society in January and February 1839 was photogenic drawing: salted paper brushed with silver nitrate that darkened in the sun. The calotype came later. On 23 September 1840 Talbot found that an exposure of mere seconds left an invisible latent image that an "exciting liquid", essentially gallic acid, could bring out, and he patented the process in February 1841. ([Malcolm Daniel, The Met, "William Henry Fox Talbot (1800–1877) and the Invention of Photography", via Wayback](https://web.archive.org/web/20250121105220/https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm))
 
-In the calotype, paper coated with silver chloride was exposed in the camera, giving a negative, and by Britannica's account developing it cut exposure from about an hour to about a minute. One paper negative could then print any number of positives, while a daguerreotype was a single image on metal that could not be duplicated. ([Britannica, "calotype"](https://www.britannica.com/technology/calotype))
+The calotype negative used iodized paper, sensitised and then developed with silver nitrate and gallic acid; camera exposures were usually closer to a minute, and positives were contact-printed on salted paper. ([University of Glasgow Library, "The Calotype Process"](https://www.gla.ac.uk/myglasgow/library/files/special/ha/text/calotype.html)) By Britannica's account, developing cut exposure from about an hour to about a minute. One paper negative could then print any number of positives, while a daguerreotype was a single image on metal that could not be duplicated. ([Britannica, "calotype"](https://www.britannica.com/technology/calotype))
 
 ## Why it sits here
 
 The pattern is the same one this book keeps finding. The daguerreotype was a one-off, like a hand-built engine. The calotype negative was a master that could be copied, like a carved block or a punched card. Once light could be stored and copied, the next step was to store it in sequence and play it back. That story, from Muybridge's horse to the first film screenings, and China's first film, is told in [From Press to Pixel]({{< relref "51-from-press-to-pixel" >}}).
 
-Next: relays, where electricity starts doing the switching.
+**Next:** [Relays and Electromechanical Logic]({{< relref "09-relays-and-electromechanical-logic.md" >}}), where electricity starts doing the switching.
 
 ## Sources
 
 - Harry Ransom Center, The University of Texas at Austin, "The Niépce Heliograph": <https://www.hrc.utexas.edu/niepce-heliograph/>
 - Malcolm Daniel, The Metropolitan Museum of Art, "William Henry Fox Talbot (1800–1877) and the Invention of Photography" (2004): <https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm> (archived: <https://web.archive.org/web/20250121105220/https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm>)
+- University of Glasgow Library, "The Calotype Process" (Hill & Adamson catalogue): <https://www.gla.ac.uk/myglasgow/library/files/special/ha/text/calotype.html>
 - Encyclopaedia Britannica, "calotype": <https://www.britannica.com/technology/calotype>

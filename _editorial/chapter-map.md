@@ -29,7 +29,7 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 | 5 | `05-babbage-engines.md` | `01a-babbage-engines`, `03-babbage-engines` | `01a` | 4 | en,th,ta,ro |
 | 6 | `06-jacquard-loom.md` | `01b-jacquard-loom`, `04-jacquard-loom` | `01b` | 5 | en,th,ta,ro |
 | 7 | `07-why-mechanical-matters.md` | `01c-why-mechanical-matters`, `05-why-mechanical-matters` | `01c` | 6 | en,th,ta,ro |
-| 8 | `08-capturing-light.md` | — | — | 7 | en,ro |
+| 8 | `08-capturing-light.md` | — | — | 7 | en,si,ro |
 | 9 | `09-relays-and-electromechanical-logic.md` | `02-relays-and-electromechanical-logic`, `07-relays-and-electromechanical-logic`, `08-relays-and-electromechanical-logic` | `02` | 8 | en,th,si,ta,ro |
 | 10 | `10-the-vacuum-tube-era.md` | `03-the-vacuum-tube-era`, `08-the-vacuum-tube-era`, `09-the-vacuum-tube-era` | `03` | 9 | en,th,si,ta,ro |
 | 11 | `11-why-the-transistor-had-to-happen.md` | `04-why-the-transistor-had-to-happen`, `09-why-the-transistor-had-to-happen`, `10-why-the-transistor-had-to-happen` | `04` | 10 | en,th,si,ta,ro |

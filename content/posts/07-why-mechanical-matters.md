@@ -26,5 +26,5 @@ What mechanical computing *could not* do, in Babbage's lifetime, was scale. Gear
 
 The reconstruction above is the exception that proves the rule: once machine shops could hold those tolerances, the brass design ran. The logical shape was already there. The medium had to change first.
 
-Next: relays, and the electromechanical logic that carried the architecture into WWII.
+**Next:** [Capturing Light]({{< relref "08-capturing-light.md" >}}), then relays and the electromechanical logic that carried the architecture into WWII.
 
