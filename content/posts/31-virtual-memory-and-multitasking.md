@@ -17,7 +17,7 @@ labs: ["vm-terminal"]
 schematics: "Diagram: page table translation + multiple process address spaces sharing physical memory"
 ---
 
-Time-sharing (Post 22) requires multiple processes to run — apparently simultaneously — on one machine. Immediate problem: if every process could freely read and write any physical address, one buggy or malicious program could corrupt another's data, or the OS itself. Virtual memory prevents that by giving every process the *illusion* of owning the entire address space, while the OS manages the truth underneath.
+Time-sharing ([Post 29]({{< relref "29-time-sharing-and-the-unix-lineage" >}})) requires multiple processes to run — apparently simultaneously — on one machine. Immediate problem: if every process could freely read and write any physical address, one buggy or malicious program could corrupt another's data, or the OS itself. Virtual memory prevents that by giving every process the *illusion* of owning the entire address space, while the OS manages the truth underneath.
 
 ## The Core Illusion
 

@@ -16,7 +16,7 @@ video_prompt: "25-second animation: a pod failing and Kubernetes automatically r
 schematics: "Diagram: Kubernetes control plane architecture (API server/scheduler/controller manager/etcd) + pod scheduling and reconciliation loop"
 ---
 
-Post 25 covered containers — lightweight isolation sharing a host kernel. One container on one machine is manageable by hand. Thousands across hundreds of machines, with boxes and processes failing routinely (the same "failure is normal" bet as GFS in Post 44), is a different operational problem. Kubernetes is Google's open answer to that constraint, distilled from internal cluster managers that had already lived it.
+[Post 32]({{< relref "32-containers-and-modern-os-isolation" >}}) covered containers — lightweight isolation sharing a host kernel. One container on one machine is manageable by hand. Thousands across hundreds of machines, with boxes and processes failing routinely (the same "failure is normal" bet as GFS in [Post 52]({{< relref "52-google-s-big-data-infrastructure-why-they-won" >}})), is a different operational problem. Kubernetes is Google's open answer to that constraint, distilled from internal cluster managers that had already lived it.
 
 ## Manual Placement Does Not Scale
 
@@ -34,7 +34,7 @@ Google had already run this class of problem internally for more than a decade (
 
 ## Why ML Clusters Care
 
-The same loop now runs not only web services but distributed training and inference — jobs that span many GPU machines, must restart on routine hardware failure, and scale with available capacity. That hands off to Post 46's software stack and to Phase 9–10's hardware: silicon alone does not place or heal a training fleet.
+The same loop now runs not only web services but distributed training and inference — jobs that span many GPU machines, must restart on routine hardware failure, and scale with available capacity. That hands off to [Post 54]({{< relref "54-the-machine-learning-software-stack" >}})'s software stack and to Phase 9–10's hardware: silicon alone does not place or heal a training fleet.
 
 **Door out:** Abhishek Verma et al., "Large-scale cluster management at Google with Borg" (EuroSys 2015) — the primary account of the internal system Kubernetes descends from; Brendan Burns et al., "Borg, Omega, and Kubernetes" (*ACM Queue*, 2016) — the short lineage paper that ties Borg, Omega, and the open control plane together.
 

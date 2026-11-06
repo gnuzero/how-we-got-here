@@ -25,7 +25,7 @@ That split — architecture (what software sees) versus microarchitecture (how t
 
 CISC (Complex Instruction Set Computing) — the lineage behind x86 — packs a lot into each instruction: variable length, rich addressing modes, arithmetic that can touch memory directly. Fewer instructions per program; a harder decoder.
 
-RISC (Reduced Instruction Set Computing) goes the other way: fixed-length instructions, a strict load/store model (ALU ops on registers only), uniform fields. More instructions per program; each one simple enough to fetch and decode predictably, stage after stage. That uniformity is why pipelining (Post 13) became tractable on RISC first — a fixed-width instruction is far easier to stage than a CISC instruction whose length is unknown until you have already started decoding it.
+RISC (Reduced Instruction Set Computing) goes the other way: fixed-length instructions, a strict load/store model (ALU ops on registers only), uniform fields. More instructions per program; each one simple enough to fetch and decode predictably, stage after stage. That uniformity is why pipelining ([Post 20]({{< relref "20-pipelining" >}})) became tractable on RISC first — a fixed-width instruction is far easier to stage than a CISC instruction whose length is unknown until you have already started decoding it.
 
 Concretely: a typical RISC instruction is 32 bits with fields in fixed places. An x86 instruction can run from 1 byte to 15 (the longest possible is 15 bytes, per [Wikipedia, "Instruction set architecture"](https://en.wikipedia.org/wiki/Instruction_set_architecture)), with optional prefixes — dense and powerful, expensive to decode at high throughput.
 
@@ -35,7 +35,7 @@ Concretely: a typical RISC instruction is 32 bits with fields in fixed places. A
 
 ## Why x86 Persisted Anyway
 
-If RISC is simpler to pipeline, why does x86 still dominate desktop and server? Compatibility and decades of engineering investment — not raw elegance. Modern x86 chips *translate* CISC instructions into simpler, RISC-like internal micro-ops, then run those on a RISC-style core behind a CISC front end (Post 19). The debate is less a clean binary than the labels suggest.
+If RISC is simpler to pipeline, why does x86 still dominate desktop and server? Compatibility and decades of engineering investment — not raw elegance. Modern x86 chips *translate* CISC instructions into simpler, RISC-like internal micro-ops, then run those on a RISC-style core behind a CISC front end ([Post 26]({{< relref "26-the-x86-vs-risc-split" >}})). The debate is less a clean binary than the labels suggest.
 
 Next: build an actual datapath — the physical structure an ISA executes on.
 

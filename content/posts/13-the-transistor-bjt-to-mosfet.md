@@ -24,13 +24,13 @@ A bipolar junction transistor (NPN: N emitter, P base, N collector) uses a small
 
 ## The MOSFET: Voltage Controls a Channel
 
-A MOSFET puts a metal (or polysilicon) gate over silicon, separated by a thin oxide — that stable SiO₂ from Post 5. Gate voltage does not push current *through* the gate; the oxide blocks DC. It creates a field that forms or removes a conductive channel between source and drain. For NMOS, positive gate voltage attracts electrons into an inversion layer in a P-type body; current flows. Drop the gate voltage, the channel disappears, current stops.
+A MOSFET puts a metal (or polysilicon) gate over silicon, separated by a thin oxide — that stable SiO₂ from [Post 12]({{< relref "12-semiconductors-from-first-principles" >}}). Gate voltage does not push current *through* the gate; the oxide blocks DC. It creates a field that forms or removes a conductive channel between source and drain. For NMOS, positive gate voltage attracts electrons into an inversion layer in a P-type body; current flows. Drop the gate voltage, the channel disappears, current stops.
 
 **The gate draws essentially no steady-state current.** Once the gate capacitance is charged, holding the device on costs almost nothing. That is the opposite of the BJT's continuous base current.
 
 ## Why MOSFET Won for Digital Logic
 
-Near-zero static gate current is the whole story. CMOS (Post 7) builds on it so meaningful current flows mainly *while switching*, not while holding state. That is what let transistor counts climb from thousands to billions without melting the die — the scaling arc Phase 8 returns to at process-node resolution.
+Near-zero static gate current is the whole story. CMOS ([Post 14]({{< relref "14-logic-gates-from-transistors" >}})) builds on it so meaningful current flows mainly *while switching*, not while holding state. That is what let transistor counts climb from thousands to billions without melting the die — the scaling arc Phase 8 returns to at process-node resolution.
 
 The history took time. M. M. (John) Atalla and Dawon Kahng at Bell Labs achieved the first successful MOS transistor in 1959; Bell did not pursue it, but Fairchild and RCA did, and MOS devices reached the market in 1964 (General Microelectronics and Fairchild p-channel parts, an RCA n-channel transistor). Because of their smaller size and lower power than bipolar devices, CHM notes, over 99 percent of microchips made today use MOS transistors ([CHM, "1960: Metal Oxide Semiconductor (MOS) Transistor Demonstrated"](https://www.computerhistory.org/siliconengine/metal-oxide-semiconductor-mos-transistor-demonstrated/)).
 

@@ -16,7 +16,7 @@ video_prompt: "25-second animation: a PCIe TLP assembled at the transaction laye
 schematics: "Diagram: PCIe layered protocol stack + TLP header breakdown + differential pair lane diagram — relevant to Nitefury fabric project"
 ---
 
-Post 32 covered *why* PCIe went serial and point-to-point. This post is *how* a transfer is structured on those links — the layer that matters if you are building hardware that has to speak the fabric, including the Nitefury-based GPU memory work this series comes back to.
+[Post 39]({{< relref "39-from-isa-bus-to-pci-to-pcie" >}}) covered *why* PCIe went serial and point-to-point. This post is *how* a transfer is structured on those links — the layer that matters if you are building hardware that has to speak the fabric, including the Nitefury-based GPU memory work this series comes back to.
 
 ## Intent, Reliability, Electrons
 
@@ -28,11 +28,11 @@ The unit is the Transaction Layer Packet. A TLP names the type (memory read or w
 
 ## Lanes Scale Width; Generations Scale Rate
 
-A lane is one differential pair each way — the smallest link. Bond lanes (x1…x16) to multiply bandwidth. Each generation roughly doubles per-lane rate (higher signaling, tighter encoding). Same x16 slot, Gen 5 versus Gen 3: about 4× unidirectional bandwidth (~64 GB/s vs ~16 GB/s) with no extra wires. The serial bet from Post 32 is what made that climb possible.
+A lane is one differential pair each way — the smallest link. Bond lanes (x1…x16) to multiply bandwidth. Each generation roughly doubles per-lane rate (higher signaling, tighter encoding). Same x16 slot, Gen 5 versus Gen 3: about 4× unidirectional bandwidth (~64 GB/s vs ~16 GB/s) with no extra wires. The serial bet from [Post 39]({{< relref "39-from-isa-bus-to-pci-to-pcie" >}}) is what made that climb possible.
 
 ## Why a Custom Fabric Cares
 
-An FPGA memory-fabric card has to live in this stack: form TLPs the root complex and other endpoints will accept, and let established IP handle link reliability and the physical layer. GPUDirect-style peer-to-peer (Post 37) is the same idea taken further — TLPs addressed between two endpoints, CPU out of the data path.
+An FPGA memory-fabric card has to live in this stack: form TLPs the root complex and other endpoints will accept, and let established IP handle link reliability and the physical layer. GPUDirect-style peer-to-peer ([Post 44]({{< relref "44-interconnects-at-scale" >}})) is the same idea taken further — TLPs addressed between two endpoints, CPU out of the data path.
 
 **Door out:** The PCI Express Base Specification (PCI-SIG) — the living primary for lanes, TLPs, and the layered stack this post names; it is versioned (the Base Spec, not a frozen paper).
 

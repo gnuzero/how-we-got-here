@@ -17,11 +17,11 @@ labs: ["vm-terminal"]
 schematics: "Diagram: GNU/Linux stack (kernel/GNU userland/applications) + free software licensing spectrum (BSD/MIT/GPL)"
 ---
 
-By the early 1980s, Unix (Post 22) was technically excellent and increasingly proprietary — AT&T asserting commercial control, academic and hobbyist access tightening. Richard Stallman's response, starting in 1983, was not primarily a technical fix. It was ideological and legal: build a completely free (as in freedom, not just price) Unix replacement from scratch, and back it with a license designed to keep it that way.
+By the early 1980s, Unix ([Post 29]({{< relref "29-time-sharing-and-the-unix-lineage" >}})) was technically excellent and increasingly proprietary — AT&T asserting commercial control, academic and hobbyist access tightening. Richard Stallman's response, starting in 1983, was not primarily a technical fix. It was ideological and legal: build a completely free (as in freedom, not just price) Unix replacement from scratch, and back it with a license designed to keep it that way.
 
 ## GNU: Userland Without a Kernel
 
-GNU — "GNU's Not Unix" — set out to build a complete, Unix-compatible operating system where every component was free software: usable, modifiable, and redistributable, including redistribution of your own modifications. Over the following decade the project produced essential infrastructure: GCC (still one of the most widely used compilers — Post 28), Bash, GNU coreutils, Emacs, and much more.
+GNU — "GNU's Not Unix" — set out to build a complete, Unix-compatible operating system where every component was free software: usable, modifiable, and redistributable, including redistribution of your own modifications. Over the following decade the project produced essential infrastructure: GCC (still one of the most widely used compilers — [Post 35]({{< relref "35-compilers-jit-and-modern-language-runtimes" >}})), Bash, GNU coreutils, Emacs, and much more.
 
 What GNU did not have, for years, was a working kernel. Its planned kernel, GNU Hurd, ran into serious technical difficulties and never reached broad practical usability. Complete userland; no kernel underneath it for real hardware.
 

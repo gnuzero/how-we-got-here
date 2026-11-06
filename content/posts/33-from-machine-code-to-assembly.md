@@ -21,11 +21,11 @@ Every instruction in Phase 3 — datapath, pipeline, ISA — ultimately exists a
 
 ## What Assembly Actually Is
 
-Assembly gives every instruction a human-readable mnemonic — `ADD`, `LDA`, `JMP` — corresponding one-to-one with a machine-code bit pattern. It is not "higher-level" the way Post 27's languages are; there is no abstraction over the underlying hardware ops. Every assembly instruction maps to exactly one machine instruction. What you get is *readability* and *symbolic reference*: write `LDI` instead of remembering opcode `0101`; in a full assembler, write a label and let it compute the jump target instead of recalculating byte addresses by hand. (The mini-CPU lab's tiny assembler has no labels; there you write the addresses yourself.)
+Assembly gives every instruction a human-readable mnemonic — `ADD`, `LDA`, `JMP` — corresponding one-to-one with a machine-code bit pattern. It is not "higher-level" the way [Post 34]({{< relref "34-high-level-languages-fortran-cobol-lisp-c" >}})'s languages are; there is no abstraction over the underlying hardware ops. Every assembly instruction maps to exactly one machine instruction. What you get is *readability* and *symbolic reference*: write `LDI` instead of remembering opcode `0101`; in a full assembler, write a label and let it compute the jump target instead of recalculating byte addresses by hand. (The mini-CPU lab's tiny assembler has no labels; there you write the addresses yourself.)
 
 ## The Assembler's Job
 
-An assembler translates assembly text into machine code — resolving labels into addresses, mnemonics into opcode bits, packing operands into the ISA's encoding fields (Post 11). Mechanical, largely one-to-one. Nothing is being optimized or restructured in any deep sense — unlike what a full compiler (Post 28) does with a high-level language.
+An assembler translates assembly text into machine code — resolving labels into addresses, mnemonics into opcode bits, packing operands into the ISA's encoding fields ([Post 18]({{< relref "18-instruction-sets" >}})). Mechanical, largely one-to-one. Nothing is being optimized or restructured in any deep sense — unlike what a full compiler ([Post 35]({{< relref "35-compilers-jit-and-modern-language-runtimes" >}})) does with a high-level language.
 
 ## Why It Had to Happen
 
@@ -33,7 +33,7 @@ Before assembly, programming meant entering binary or, at best, raw hex or octal
 
 ## Where Assembly Still Matters
 
-Modern software is overwhelmingly written in higher-level languages and compiled through the pipeline in Post 28. Assembly has not disappeared. Engineers still drop to it to reason about exactly what a compiler produced (hot loops, security review, reverse engineering), or to write the lowest layers — boot code, interrupt handlers, parts of a kernel — where instruction-level control is required and higher abstractions would obscure or prevent it.
+Modern software is overwhelmingly written in higher-level languages and compiled through the pipeline in [Post 35]({{< relref "35-compilers-jit-and-modern-language-runtimes" >}}). Assembly has not disappeared. Engineers still drop to it to reason about exactly what a compiler produced (hot loops, security review, reverse engineering), or to write the lowest layers — boot code, interrupt handlers, parts of a kernel — where instruction-level control is required and higher abstractions would obscure or prevent it.
 
 **Try this now.** The mini-CPU lab below is the most direct hands-on connection in the series: Assemble the guided program, then Step — each mnemonic (`LDI`, `ADD`, `STA`, `OUT`) maps one-to-one onto opcode bits, exactly as this post describes. Nothing more abstract than that.
 

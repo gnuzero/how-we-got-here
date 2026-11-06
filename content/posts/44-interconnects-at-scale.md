@@ -26,9 +26,9 @@ Without a peer path, GPU A writes through system memory and GPU B reads it back 
 
 NVIDIA's NVLink is a purpose-built GPU-to-GPU interconnect — CPU and system memory out of the transfer. An NVSwitch can make every GPU in a node reachable from every other, at bandwidth well above the PCIe-and-CPU path. For frequent, large exchanges — the pattern large-scale training returns to in Phases 7 and 10 — that direct path is first-order, not a tweak.
 
-CXL (Compute Express Link) answers a neighboring constraint: cache-coherent access beyond one die, and, further out, pooled memory that is not soldered to a single socket. Capacity can move among compute nodes instead of being frozen to whichever DIMM slot it landed in — a flexibility neither DDR (Post 34) nor raw PCIe gives you.
+CXL (Compute Express Link) answers a neighboring constraint: cache-coherent access beyond one die, and, further out, pooled memory that is not soldered to a single socket. Capacity can move among compute nodes instead of being frozen to whichever DIMM slot it landed in — a flexibility neither DDR ([Post 41]({{< relref "41-memory-buses" >}})) nor raw PCIe gives you.
 
-GPUDirect RDMA lets a NIC read or write GPU memory directly. Without it, a GPU-to-GPU transfer across a network is GPU → system memory → NIC → far system memory → far GPU — copies that cost latency and memory bandwidth. Collapse that to GPU → network → GPU, for the same reason RDMA (Post 42) wins in storage and messaging: fewer copies, less CPU babysitting the move.
+GPUDirect RDMA lets a NIC read or write GPU memory directly. Without it, a GPU-to-GPU transfer across a network is GPU → system memory → NIC → far system memory → far GPU — copies that cost latency and memory bandwidth. Collapse that to GPU → network → GPU, for the same reason RDMA ([Post 49]({{< relref "49-datacenter-networking-and-rdma" >}})) wins in storage and messaging: fewer copies, less CPU babysitting the move.
 
 ## The Same Problem, Open Hardware
 

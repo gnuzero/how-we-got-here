@@ -24,15 +24,15 @@ Gordon Moore's 1965 *Electronics* article observed component *count*: the number
 
 ## Transistor Count: Still Climbing
 
-Measured as Moore framed it — components (today: transistors) per chip — the trend held for decades and still climbs, driven by lithography and transistor-structure advances in Posts 48 and 49. Modern high-end chips hold many billions of transistors against the roughly 2,300 on Intel's 4004 (Post 18) five decades earlier.
+Measured as Moore framed it — components (today: transistors) per chip — the trend held for decades and still climbs, driven by lithography and transistor-structure advances in Posts [56]({{< relref "56-photolithography" >}}) and [57]({{< relref "57-finfet-to-gaa" >}}). Modern high-end chips hold many billions of transistors against the roughly 2,300 on Intel's 4004 ([Post 25]({{< relref "25-mainframes-to-minicomputers-to-microprocessors" >}})) five decades earlier.
 
 ## Clock Speed: A Different Wall
 
-Clock frequency climbed with transistor count for decades, then flattened around 2005 — not because transistor scaling stopped, but because of the power/thermal wall in Post 36. Calling that "the death of Moore's Law" conflates two metrics. Count kept rising through the clock plateau; the industry spent the new transistors on more cores and specialized on-chip function (Post 17), not on pushing one core's frequency further.
+Clock frequency climbed with transistor count for decades, then flattened around 2005 — not because transistor scaling stopped, but because of the power/thermal wall in [Post 43]({{< relref "43-the-clock-speed-wall" >}}). Calling that "the death of Moore's Law" conflates two metrics. Count kept rising through the clock plateau; the industry spent the new transistors on more cores and specialized on-chip function ([Post 24]({{< relref "24-superscalar-multicore" >}})), not on pushing one core's frequency further.
 
 ## Cost Per Transistor: Where Friction Shows
 
-The economic half of Moore's framing — cheaper components as density rose — is where recent leading-edge friction is clearest. EUV tools (Post 48) are extraordinarily expensive; each node generation needs more elaborate process steps. For decades, more transistors per wafer drove cost per transistor down even when absolute chip cost held or grew modestly. At the newest nodes that relationship has weakened: density still climbs; cost-per-transistor improvement is no longer automatic at historical rates.
+The economic half of Moore's framing — cheaper components as density rose — is where recent leading-edge friction is clearest. EUV tools ([Post 56]({{< relref "56-photolithography" >}})) are extraordinarily expensive; each node generation needs more elaborate process steps. For decades, more transistors per wafer drove cost per transistor down even when absolute chip cost held or grew modestly. At the newest nodes that relationship has weakened: density still climbs; cost-per-transistor improvement is no longer automatic at historical rates.
 
 ## Three Metrics, One Slogan
 

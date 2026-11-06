@@ -19,7 +19,7 @@ The spine of this book ends at attention. The world outside did not stop for a g
 
 ## Cisco — Internetworks as a Business
 
-Posts 39–41 are the protocol bet. **Cisco** (Leonard Bosack and Sandy Lerner, mid-1980s) is what happens when multiprotocol routing becomes a product you can buy: the router as the commercial object of the internetwork story. Derive the kin and stop — other networking vendors and carrier equipment lines are the same *category* (ship the glue between heterogeneous nets), not a roster to memorize.
+Posts [46]({{< relref "46-arpanet-and-packet-switching" >}})–[48]({{< relref "48-tcp-ip-and-the-modern-internet-stack" >}}) are the protocol bet. **Cisco** (Leonard Bosack and Sandy Lerner, mid-1980s) is what happens when multiprotocol routing becomes a product you can buy: the router as the commercial object of the internetwork story. Derive the kin and stop — other networking vendors and carrier equipment lines are the same *category* (ship the glue between heterogeneous nets), not a roster to memorize.
 
 ## Bill Gates / Microsoft — Software as the Mass Platform
 
@@ -31,7 +31,7 @@ Once personal machines existed, the scarce layer was not only silicon — it was
 
 ## GNU + Linus — The Free/Open Stack This Book Already Stands On
 
-Post 23 already named **Richard Stallman** (GNU, GPL) and **Linus Torvalds** (Linux kernel, GPL relicensing in early 1992). Close-of-book only needs the forward link: the servers, clouds, phones, and toolchains underneath modern platforms overwhelmingly sit on that free/open stack. The vision that shipped is not a brand — it is a legal and engineering commons the rest of the industry built on.
+[Post 30]({{< relref "30-the-gnu-movement-and-linux" >}}) already named **Richard Stallman** (GNU, GPL) and **Linus Torvalds** (Linux kernel, GPL relicensing in early 1992). Close-of-book only needs the forward link: the servers, clouds, phones, and toolchains underneath modern platforms overwhelmingly sit on that free/open stack. The vision that shipped is not a brand — it is a legal and engineering commons the rest of the industry built on.
 
 ## Elon Musk and Jeff Bezos — Present-Tense Seeds of Scale
 
@@ -39,5 +39,5 @@ Post 23 already named **Richard Stallman** (GNU, GPL) and **Linus Torvalds** (Li
 
 ## How to Read This Door
 
-These names are exits, not chapters. Each points at a place where the book's machinery became a business or a commons: internetworks for sale, software as platform, integrated personal machines, free/open servers, and late-era scale visions. Post 69 compresses what a *large platform* is made of when you cut the org chart away and look at the engineering layers.
+These names are exits, not chapters. Each points at a place where the book's machinery became a business or a commons: internetworks for sale, software as platform, integrated personal machines, free/open servers, and late-era scale visions. [Post 76]({{< relref "76-platform-synthesis" >}}) compresses what a *large platform* is made of when you cut the org chart away and look at the engineering layers.
 

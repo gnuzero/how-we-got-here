@@ -17,7 +17,7 @@ labs: ["vm-terminal"]
 schematics: "Diagram: batch job queue flow + early OS resident monitor block diagram"
 ---
 
-The mainframes of Post 18 did not run an operating system in any sense we would recognize. Someone loaded a program, ran it, waited, then loaded the next. That works for one user with exclusive access. It falls apart the moment multiple jobs must share an expensive machine — which, given mainframe cost, happened almost immediately.
+The mainframes of [Post 25]({{< relref "25-mainframes-to-minicomputers-to-microprocessors" >}}) did not run an operating system in any sense we would recognize. Someone loaded a program, ran it, waited, then loaded the next. That works for one user with exclusive access. It falls apart the moment multiple jobs must share an expensive machine — which, given mainframe cost, happened almost immediately.
 
 ## Idle Time Was the Constraint
 

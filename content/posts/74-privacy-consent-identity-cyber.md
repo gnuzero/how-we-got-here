@@ -15,11 +15,11 @@ video_prompt: "20-second animation: a shared wire gaining encryption, then authe
 schematics: "Diagram: isolation (OS) → crypto on the wire → identity/auth → consent scopes → adversarial ops as one engineering arc"
 ---
 
-Wartime crypto (Post 66) was secrecy against a state adversary with a dedicated machine room. The open internet poses a different engineering problem: *many* parties share the wire, the hosts, and the platforms — and some of them are hostile, curious, or simply larger than the user. Privacy, consent, identity, and cybersecurity are names for that problem as it evolved in code and protocols. This is not a policy pamphlet.
+Wartime crypto ([Post 73]({{< relref "73-wartime-crypto" >}})) was secrecy against a state adversary with a dedicated machine room. The open internet poses a different engineering problem: *many* parties share the wire, the hosts, and the platforms — and some of them are hostile, curious, or simply larger than the user. Privacy, consent, identity, and cybersecurity are names for that problem as it evolved in code and protocols. This is not a policy pamphlet.
 
 ## Isolation Came First
 
-Before "privacy product," there was **protection**. Jerome Saltzer and Michael Schroeder's 1975 survey, [*The Protection of Information in Computer Systems*](https://web.mit.edu/Saltzer/www/publications/protection/), framed design principles that still read as engineering law: least privilege, complete mediation, fail-safe defaults, economy of mechanism. Virtual memory (Post 24) and containers (Post 25) are later instances of the same bet — draw a boundary the hardware and kernel enforce, so one program cannot casually read another.
+Before "privacy product," there was **protection**. Jerome Saltzer and Michael Schroeder's 1975 survey, [*The Protection of Information in Computer Systems*](https://web.mit.edu/Saltzer/www/publications/protection/), framed design principles that still read as engineering law: least privilege, complete mediation, fail-safe defaults, economy of mechanism. Virtual memory ([Post 31]({{< relref "31-virtual-memory-and-multitasking" >}})) and containers ([Post 32]({{< relref "32-containers-and-modern-os-isolation" >}})) are later instances of the same bet — draw a boundary the hardware and kernel enforce, so one program cannot casually read another.
 
 Door out: Saltzer & Schroeder (1975).
 
@@ -37,7 +37,7 @@ Named constraint: identity systems fail as engineering when the verifier, the cr
 
 ## Consent as an Interface to Power
 
-Consent shows up in the stack wherever a system needs permission to act across a boundary: cookie jars and same-origin policy in browsers (the web platform's isolation story), permission prompts on devices, and scoped API tokens on platforms. The engineering question is always the same — *what capability was granted, to whom, for how long, and can it be revoked?* — whether the UI copy says "Accept" or the header says `Authorization`. Post 64's governance layer decides names and numbers; this layer decides *who may use them on your behalf*.
+Consent shows up in the stack wherever a system needs permission to act across a boundary: cookie jars and same-origin policy in browsers (the web platform's isolation story), permission prompts on devices, and scoped API tokens on platforms. The engineering question is always the same — *what capability was granted, to whom, for how long, and can it be revoked?* — whether the UI copy says "Accept" or the header says `Authorization`. [Post 72]({{< relref "72-who-decides-the-wire" >}})'s governance layer decides names and numbers; this layer decides *who may use them on your behalf*.
 
 ## Cybersecurity: Adversarial Systems Engineering
 
@@ -47,5 +47,5 @@ Door out: CVE program documentation; classical security-engineering texts that c
 
 ## Why This Belongs Late in the Journey
 
-You cannot talk honestly about privacy on a platform until the book has built OS isolation, networks, distributed systems, and AI infra. Those chapters are the substrate. This one names the adversarial and consent-shaped constraints that ride on top — so Post 69's platform synthesis can treat privacy engineering as a first-class layer, not an appendix.
+You cannot talk honestly about privacy on a platform until the book has built OS isolation, networks, distributed systems, and AI infra. Those chapters are the substrate. This one names the adversarial and consent-shaped constraints that ride on top — so [Post 76]({{< relref "76-platform-synthesis" >}})'s platform synthesis can treat privacy engineering as a first-class layer, not an appendix.
 

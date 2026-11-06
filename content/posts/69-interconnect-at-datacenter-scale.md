@@ -16,7 +16,7 @@ video_prompt: "25-second animation: a datacenter-scale fat-tree topology with an
 schematics: "Diagram: rail-optimized fat-tree topology + all-reduce ring/tree communication pattern"
 ---
 
-Post 56 covered multi-GPU scaling within and across a few servers — NVLink, NVSwitch, GPUDirect RDMA. Large-scale training is another order of magnitude: thousands to tens of thousands of GPUs across hundreds to thousands of servers. How you wire them matters as much as any individual GPU's specs.
+[Post 64]({{< relref "64-multi-gpu-scaling" >}}) covered multi-GPU scaling within and across a few servers — NVLink, NVSwitch, GPUDirect RDMA. Large-scale training is another order of magnitude: thousands to tens of thousands of GPUs across hundreds to thousands of servers. How you wire them matters as much as any individual GPU's specs.
 
 ## Naive Wiring Does Not Scale
 
@@ -24,13 +24,13 @@ Connecting every server to every other grows connections quadratically — absur
 
 ## Fat-Tree, Tuned for Training
 
-A fat-tree layers switches — leaf switches at servers, spine switches connecting leaves — aiming for high (ideally non-oversubscribed) bisection bandwidth; real AI clusters may still oversubscribe or use rail-optimized variants. This is Post 42's datacenter networking idea at the thousands-of-GPU regime.
+A fat-tree layers switches — leaf switches at servers, spine switches connecting leaves — aiming for high (ideally non-oversubscribed) bisection bandwidth; real AI clusters may still oversubscribe or use rail-optimized variants. This is [Post 49]({{< relref "49-datacenter-networking-and-rdma" >}})'s datacenter networking idea at the thousands-of-GPU regime.
 
 Rail-optimized designs further tune around the communication patterns large training jobs actually generate — not generic datacenter traffic. Training traffic is different; a topology built for it can beat a generic one.
 
 ## All-Reduce Is the Pattern That Binds
 
-Data-parallel training (Post 46) must synchronize gradients across every participating GPU each step — local gradients from each batch slice, then combine (typically average) before the next step. That all-reduce runs constantly over a full training run. Its efficiency depends on raw bandwidth *and* topology: ring or tree algorithms feel the physical wiring, not only a theoretical aggregate peak.
+Data-parallel training ([Post 54]({{< relref "54-the-machine-learning-software-stack" >}})) must synchronize gradients across every participating GPU each step — local gradients from each batch slice, then combine (typically average) before the next step. That all-reduce runs constantly over a full training run. Its efficiency depends on raw bandwidth *and* topology: ring or tree algorithms feel the physical wiring, not only a theoretical aggregate peak.
 
 ## Topology Can Beat Spec Sheets
 

@@ -17,7 +17,7 @@ labs: ["vm-terminal"]
 schematics: "Diagram: compiler pipeline block diagram + JIT vs AOT comparison"
 ---
 
-Post 27 covered *why* high-level languages exist. This post is the machinery that makes them usable: the compiler, translating source into something a real CPU (Phase 3) can execute.
+[Post 34]({{< relref "34-high-level-languages-fortran-cobol-lisp-c" >}}) covered *why* high-level languages exist. This post is the machinery that makes them usable: the compiler, translating source into something a real CPU (Phase 3) can execute.
 
 ## The Classical Pipeline (Short)
 

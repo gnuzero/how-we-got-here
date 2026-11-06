@@ -12,12 +12,12 @@ tags: []
 summary: "Enigma, Bletchley, and Colossus — why breaking ciphers forced electronic computing"
 image_prompt: "Clean historical-technical diagram: Enigma rotors beside a Colossus rack of vacuum tubes at Bletchley, connective arrows from cipher traffic to electronic counting, muted wartime-engineering style"
 video_prompt: "20-second animation: Enigma rotors stepping, intercept traffic flooding in, electromechanical Bombe searching, then Colossus tubes counting at electronic speed, clean technical motion graphics"
-schematics: "Diagram: Enigma rotor stepping → Bombe search → Colossus electronic counting, bridging Posts 02–03"
+schematics: "Diagram: Enigma rotor stepping → Bombe search → Colossus electronic counting, bridging Posts 09–10"
 ---
 
-Posts 01–02 show gears and relays proving that automatic computation was possible. The war made that possibility *urgent*: cipher traffic arrived faster than any human room could read, and the machines that could keep up dragged computing out of electromechanics into electronics.
+Posts [5]({{< relref "05-babbage-engines" >}})–[9]({{< relref "09-relays-and-electromechanical-logic" >}}) show gears and relays proving that automatic computation was possible. The war made that possibility *urgent*: cipher traffic arrived faster than any human room could read, and the machines that could keep up dragged computing out of electromechanics into electronics.
 
-This is connective tissue between **secrecy as a workload** and the vacuum-tube machines in Post 03 — not a second history of the war.
+This is connective tissue between **secrecy as a workload** and the vacuum-tube machines in [Post 10]({{< relref "10-the-vacuum-tube-era" >}}) — not a second history of the war.
 
 ## Enigma Was a Moving Target
 
@@ -29,7 +29,7 @@ At Bletchley Park, Alan Turing (Hut 8) and colleagues turned that mathematical b
 
 Lorenz teleprinter ciphers ("Tunny") produced a different problem: long streams that needed statistical attack at electronic speed. Max Newman organized the Newmanry around that attack. Tommy Flowers, a Post Office engineer who already trusted vacuum tubes in telephone switching, built **Colossus** (the first machine was delivered to Bletchley Park in January 1944 and attacked its first message on 5 February 1944, per Flowers' diary as cited by Copeland and per Crypto Museum; TNMOC gives late December 1943 / January 1944 for delivery and early February 1944 for working; Mark II followed from June 1944) — racks of tubes reading paper tape and counting toward breakable settings.
 
-Name the constraint, not the mythology: Colossus was special-purpose cryptanalytic electronics, not a general stored-program computer. What it *forced* was the proof that large numbers of tubes could be wired into a reliable-enough machine that beat any relay farm on that workload. That is the same physical bet Post 03 unpacks — no moving contacts in the switch — under wartime pressure instead of peacetime research leisure.
+Name the constraint, not the mythology: Colossus was special-purpose cryptanalytic electronics, not a general stored-program computer. What it *forced* was the proof that large numbers of tubes could be wired into a reliable-enough machine that beat any relay farm on that workload. That is the same physical bet [Post 10]({{< relref "10-the-vacuum-tube-era" >}}) unpacks — no moving contacts in the switch — under wartime pressure instead of peacetime research leisure.
 
 Door out: [The National Museum of Computing](https://www.tnmoc.org/) (Colossus rebuild and primary material); Tommy Flowers and Max Newman in the scholarly Colossus literature (e.g. Copeland's edited histories); Bletchley Park's own archival guides for Enigma/Bombe.
 
@@ -37,10 +37,10 @@ Door out: [The National Museum of Computing](https://www.tnmoc.org/) (Colossus r
 
 Read the spine forward:
 
-- **Post 02** — relays prove binary logic and also prove moving metal is too slow.
+- **[Post 9]({{< relref "09-relays-and-electromechanical-logic" >}})** — relays prove binary logic and also prove moving metal is too slow.
 - **This post** — a real workload (cipher search and stream counting) makes "too slow" operationally unacceptable.
-- **Post 03** — tubes remove the mechanical motion; ENIAC-scale machines inherit the electronic switch under different programs.
-- **Post 04** — tubes then hit *their* ceiling (heat, power, failure), which is why the transistor had to happen.
+- **[Post 10]({{< relref "10-the-vacuum-tube-era" >}})** — tubes remove the mechanical motion; ENIAC-scale machines inherit the electronic switch under different programs.
+- **[Post 11]({{< relref "11-why-the-transistor-had-to-happen" >}})** — tubes then hit *their* ceiling (heat, power, failure), which is why the transistor had to happen.
 
-Wartime crypto did not invent computing. It made the jump from electromechanical to electronic *non-optional* for one of the hardest information problems of the century — and left a trail of named people who did the work. Optional side path; the main journey continues at Post 03.
+Wartime crypto did not invent computing. It made the jump from electromechanical to electronic *non-optional* for one of the hardest information problems of the century — and left a trail of named people who did the work. Optional side path; the main journey continues at [Post 10]({{< relref "10-the-vacuum-tube-era" >}}).
 

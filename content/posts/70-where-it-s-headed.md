@@ -20,15 +20,15 @@ This series opened with gears and relays — mechanical and electromechanical co
 
 ## Chiplet AI Accelerators
 
-Post 51 covered chiplets as a yield answer; Post 54 covered HBM packaging for bandwidth beside compute. The natural combination is both: disaggregated compute chiplets — sometimes specialized differently — plus stacked HBM, tied by high-density interposer or advanced-substrate links inside one package. Disaggregate for yield and specialization; spend packaging to keep the split from becoming a new interconnect wall. Same pattern, applied to AI silicon.
+[Post 59]({{< relref "59-chiplets-advanced-packaging" >}}) covered chiplets as a yield answer; [Post 62]({{< relref "62-gpu-memory-hierarchy" >}}) covered HBM packaging for bandwidth beside compute. The natural combination is both: disaggregated compute chiplets — sometimes specialized differently — plus stacked HBM, tied by high-density interposer or advanced-substrate links inside one package. Disaggregate for yield and specialization; spend packaging to keep the split from becoming a new interconnect wall. Same pattern, applied to AI silicon.
 
 ## Optics Closer to the Package
 
-Short in-rack links are still often copper. Rack-to-rack and many leaf–spine AI fabrics already use optical fiber with pluggable transceivers. Electrical SerDes still face reach, power, and density limits. Silicon photonics and co-packaged optics push E/O conversion onto the switch or GPU package — cutting SerDes/DSP power and reach costs versus long electrical traces plus discrete pluggables. Not "introducing light for the first time," but moving conversion where Posts 56 and 61 said bandwidth between GPUs and racks is increasingly binding.
+Short in-rack links are still often copper. Rack-to-rack and many leaf–spine AI fabrics already use optical fiber with pluggable transceivers. Electrical SerDes still face reach, power, and density limits. Silicon photonics and co-packaged optics push E/O conversion onto the switch or GPU package — cutting SerDes/DSP power and reach costs versus long electrical traces plus discrete pluggables. Not "introducing light for the first time," but moving conversion where Posts [64]({{< relref "64-multi-gpu-scaling" >}}) and [69]({{< relref "69-interconnect-at-datacenter-scale" >}}) said bandwidth between GPUs and racks is increasingly binding.
 
 ## Processing-in-Memory
 
-Post 35's memory wall echoed through HBM (54) and weight-stationary systolic dataflow (58) — minimize movement, or make it wider. Processing-in-memory goes further: do some compute *inside* the memory array so a fraction of movement never happens. Early as broadly deployed technology; still a real attempt to attack the wall at its root rather than only elaborating hierarchies around it.
+[Post 42]({{< relref "42-the-memory-wall" >}})'s memory wall echoed through HBM (54) and weight-stationary systolic dataflow (58) — minimize movement, or make it wider. Processing-in-memory goes further: do some compute *inside* the memory array so a fraction of movement never happens. Early as broadly deployed technology; still a real attempt to attack the wall at its root rather than only elaborating hierarchies around it.
 
 ## The Continuous Thread
 

@@ -24,7 +24,7 @@ Indexing "the entire web" means a dataset larger than any single disk or memory,
 
 ## Failure Is Normal — So Storage Had to Assume It
 
-The Google File System (Ghemawat, Gobioff, and Leung, SOSP 2003) started from a design assumption most filesystems still treated as exceptional: with thousands of commodity machines, hardware failure is routine. Split files into large chunks, replicate each chunk across chunkservers, and let a master track where chunks live — so losing a machine is absorbed automatically, not handled as a crisis. That is the same *kind* of bet Post 42's fabric work makes inside a datacenter: engineer for the common case of partial failure.
+The Google File System (Ghemawat, Gobioff, and Leung, SOSP 2003) started from a design assumption most filesystems still treated as exceptional: with thousands of commodity machines, hardware failure is routine. Split files into large chunks, replicate each chunk across chunkservers, and let a master track where chunks live — so losing a machine is absorbed automatically, not handled as a crisis. That is the same *kind* of bet [Post 49]({{< relref "49-datacenter-networking-and-rdma" >}})'s fabric work makes inside a datacenter: engineer for the common case of partial failure.
 
 ## Processing Without Reinventing the Cluster
 

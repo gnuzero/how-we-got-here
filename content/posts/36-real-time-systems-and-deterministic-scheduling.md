@@ -21,7 +21,7 @@ Everything so far in Phase 4 — batch, time-sharing, virtual memory, containers
 
 ## Fast Is Not Deterministic
 
-A general-purpose scheduler (Posts 21–25) optimizes for good *average-case* responsiveness and fair sharing — usually quite fast in the common case. "Usually fast" is not "always finishes within a specified deadline, no exceptions." Cache effects, interrupt handling, or garbage-collection pauses (Post 28) can stretch a delay. For most apps, occasional variance does not matter. For a real-time system, it can be the entire ballgame.
+A general-purpose scheduler (Posts 21–25) optimizes for good *average-case* responsiveness and fair sharing — usually quite fast in the common case. "Usually fast" is not "always finishes within a specified deadline, no exceptions." Cache effects, interrupt handling, or garbage-collection pauses ([Post 35]({{< relref "35-compilers-jit-and-modern-language-runtimes" >}})) can stretch a delay. For most apps, occasional variance does not matter. For a real-time system, it can be the entire ballgame.
 
 ## Hard vs Soft
 

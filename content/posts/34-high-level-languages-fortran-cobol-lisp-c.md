@@ -16,7 +16,7 @@ video_prompt: "20-second animation: a short algorithm expressed in FORTRAN, COBO
 schematics: "Diagram: language paradigm comparison + language family tree"
 ---
 
-Assembly (Post 26) is a one-to-one layer over machine code — better than raw binary, still forcing the programmer to think in instructions, registers, and manual layout. High-level languages introduced something different: abstractions that do not map one-to-one onto hardware at all. Express *what* to compute; a compiler (Post 28) figures out *how*.
+Assembly ([Post 33]({{< relref "33-from-machine-code-to-assembly" >}})) is a one-to-one layer over machine code — better than raw binary, still forcing the programmer to think in instructions, registers, and manual layout. High-level languages introduced something different: abstractions that do not map one-to-one onto hardware at all. Express *what* to compute; a compiler ([Post 35]({{< relref "35-compilers-jit-and-modern-language-runtimes" >}})) figures out *how*.
 
 ## FORTRAN: Formula Translation
 
@@ -32,7 +32,7 @@ Lisp (1958, John McCarthy) left FORTRAN and COBOL's imperative style entirely �
 
 ## C: Systems Programming, Close to the Machine
 
-C (1972, Dennis Ritchie, developed alongside Unix — Post 22) took yet another trade: high-level enough for real productivity over assembly, close enough to hardware that an entire OS kernel could be written in it — unusual then. Pointer arithmetic, minimal runtime, predictable mapping to machine ops made Unix portable: port the C compiler to a new machine, not rewrite the OS in each target's assembly.
+C (1972, Dennis Ritchie, developed alongside Unix — [Post 29]({{< relref "29-time-sharing-and-the-unix-lineage" >}})) took yet another trade: high-level enough for real productivity over assembly, close enough to hardware that an entire OS kernel could be written in it — unusual then. Pointer arithmetic, minimal runtime, predictable mapping to machine ops made Unix portable: port the C compiler to a new machine, not rewrite the OS in each target's assembly.
 
 ## The Common Thread
 

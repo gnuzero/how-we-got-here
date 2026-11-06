@@ -17,7 +17,7 @@ labs: ["mini-cpu"]
 schematics: "Diagram: 2-bit saturating counter FSM + branch target buffer block diagram"
 ---
 
-A mispredicted branch flushes everything fetched down the wrong path. On a deep pipeline that can cost well over ten cycles. Post 13 left that cost on the table; this post is the answer: guess direction (and target) early enough that flushes become rare.
+A mispredicted branch flushes everything fetched down the wrong path. On a deep pipeline that can cost well over ten cycles. [Post 20]({{< relref "20-pipelining" >}}) left that cost on the table; this post is the answer: guess direction (and target) early enough that flushes become rare.
 
 ## Static Guessing Is Not Enough
 

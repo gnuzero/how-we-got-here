@@ -17,13 +17,13 @@ labs: ["vm-terminal"]
 schematics: "Diagram: find (Archie/Gopher) + talk (Usenet/IRC) converging into consumer portals, then into the open web"
 ---
 
-TCP/IP (Post 41) gave the internet a universal addressing and transport foundation. What ran *on top* of it, for roughly two decades before the World Wide Web became the dominant interface, was one arc with two faces: **find** something, then **talk** to someone. Distributed discussion, early search, menu-driven browsing, real-time chat, and finally consumer portals each solved a piece of that arc with the technology available at the time.
+TCP/IP ([Post 48]({{< relref "48-tcp-ip-and-the-modern-internet-stack" >}})) gave the internet a universal addressing and transport foundation. What ran *on top* of it, for roughly two decades before the World Wide Web became the dominant interface, was one arc with two faces: **find** something, then **talk** to someone. Distributed discussion, early search, menu-driven browsing, real-time chat, and finally consumer portals each solved a piece of that arc with the technology available at the time.
 
 ## Usenet: Distributed Discussion, No Central Server
 
 Usenet (Tom Truscott and Jim Ellis at Duke, conceived 1979, public 1980) predates the modern web by over a decade. No central server hosts all discussion. Participating servers exchange messages store-and-forward — first over UUCP dial-up, later over TCP/IP via NNTP (1986) — so a server receives posts from its peers, stores them, and forwards them on. A post propagates without a single central point of control.
 
-Hierarchical newsgroups (`comp.lang.c`, `rec.arts.movies`, …) let discussion self-organize by topic without a central moderator imposing the tree. That design is a different philosophy from most of what replaced it — closer in spirit to distributed-systems ideas Post 44 covers, applied to human talk rather than data processing.
+Hierarchical newsgroups (`comp.lang.c`, `rec.arts.movies`, …) let discussion self-organize by topic without a central moderator imposing the tree. That design is a different philosophy from most of what replaced it — closer in spirit to distributed-systems ideas [Post 52]({{< relref "52-google-s-big-data-infrastructure-why-they-won" >}}) covers, applied to human talk rather than data processing.
 
 ## Archie: The First Search Tool
 
@@ -49,7 +49,7 @@ Yahoo is the seed of that *kind*. In 1994, Stanford graduate students Jerry Yang
 
 The web's core move — HTML with hyperlinks that could point to *any* other document, anywhere, not locked to a fixed menu hierarchy or one portal's taxonomy — was a more flexible find model than Gopher menus or a curated directory. Netscape Navigator (1994), from a company founded by former NCSA Mosaic developers with commercial backing and fast iteration, pushed that model from research tool into mainstream use. Portals kept packaging the arc; the open hyperlink graph (and later, crawler-scale search in the next post) kept winning the *find* half.
 
-Gopher faded from mainstream use. Usenet and IRC never fully disappeared — they just stopped being most people's first door. Archie's filename index was a seed of a *kind* that Post 44 scales into indexing a whole decentralized web.
+Gopher faded from mainstream use. Usenet and IRC never fully disappeared — they just stopped being most people's first door. Archie's filename index was a seed of a *kind* that [Post 52]({{< relref "52-google-s-big-data-infrastructure-why-they-won" >}}) scales into indexing a whole decentralized web.
 
 ## Why This Belongs in This Series
 

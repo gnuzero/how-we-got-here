@@ -16,7 +16,7 @@ video_prompt: "25-second animation: EUV light generated and reflected through mi
 schematics: "Diagram: EUV light path through mirror system + DUV vs EUV wavelength/resolution comparison"
 ---
 
-Every transistor on a modern chip — billions of them, denser than Post 47's node labels can honestly name — has to be *patterned* onto silicon. Photolithography is that patterning, and the push to EUV (extreme ultraviolet) is one of the hardest engineering chains under the semiconductor industry.
+Every transistor on a modern chip — billions of them, denser than [Post 55]({{< relref "55-what-7nm-actually-means" >}})'s node labels can honestly name — has to be *patterned* onto silicon. Photolithography is that patterning, and the push to EUV (extreme ultraviolet) is one of the hardest engineering chains under the semiconductor industry.
 
 ## Print With Light, Then Build
 
@@ -24,7 +24,7 @@ Coat the wafer with photoresist; shine light through a patterned mask; chemicall
 
 ## Diffraction Forces Shorter Wavelengths
 
-How small a feature you can resolve is tied to wavelength: shorter light, finer pattern. That physical ceiling is why the industry spent decades walking down the spectrum — ultraviolet, then deep ultraviolet (DUV, around 193 nm), then extreme ultraviolet (EUV, around 13.5 nm) — each step buying the finer features Post 47's shrinking labels gesture at.
+How small a feature you can resolve is tied to wavelength: shorter light, finer pattern. That physical ceiling is why the industry spent decades walking down the spectrum — ultraviolet, then deep ultraviolet (DUV, around 193 nm), then extreme ultraviolet (EUV, around 13.5 nm) — each step buying the finer features [Post 55]({{< relref "55-what-7nm-actually-means" >}})'s shrinking labels gesture at.
 
 ## Why EUV Was Exceptionally Hard
 

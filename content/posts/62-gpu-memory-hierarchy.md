@@ -16,19 +16,19 @@ video_prompt: "20-second animation: data flowing up through TSVs in a stacked HB
 schematics: "Diagram: HBM stack cross-section with TSVs + GPU memory hierarchy"
 ---
 
-Post 35 named the memory wall: DRAM latency lagged compute, so the industry chased *bandwidth* where latency stayed stubborn. Nowhere is that response more consequential than GPU memory — Posts 52–53's parallel throughput creates an appetite conventional DDR (Post 34) cannot feed.
+[Post 42]({{< relref "42-the-memory-wall" >}}) named the memory wall: DRAM latency lagged compute, so the industry chased *bandwidth* where latency stayed stubborn. Nowhere is that response more consequential than GPU memory — Posts 52–53's parallel throughput creates an appetite conventional DDR ([Post 41]({{< relref "41-memory-buses" >}})) cannot feed.
 
 ## Why GPUs Starve on CPU-Style Memory
 
-A CPU runs a modest number of instruction streams; caches (Post 15) often absorb the working set. A GPU may have thousands of threads across many SMs wanting memory at once. On-chip caching helps, but aggregate bandwidth demand is dramatically higher than a CPU memory subsystem at similar power — the constraint that forced a different physical answer.
+A CPU runs a modest number of instruction streams; caches ([Post 22]({{< relref "22-caches" >}})) often absorb the working set. A GPU may have thousands of threads across many SMs wanting memory at once. On-chip caching helps, but aggregate bandwidth demand is dramatically higher than a CPU memory subsystem at similar power — the constraint that forced a different physical answer.
 
 ## HBM: Stack Beside the Die
 
-High Bandwidth Memory stacks DRAM dies vertically, connected through through-silicon vias (TSVs) rather than long PCB traces to a separate DIMM. Combined with a very wide interface, that delivers far more bandwidth than equivalent DDR — paid for in the advanced packaging of Post 51. HBM and the GPU compute die typically share a silicon interposer: the same packaging family used for chiplets, applied here to put memory *beside* compute instead of disaggregating functional dies.
+High Bandwidth Memory stacks DRAM dies vertically, connected through through-silicon vias (TSVs) rather than long PCB traces to a separate DIMM. Combined with a very wide interface, that delivers far more bandwidth than equivalent DDR — paid for in the advanced packaging of [Post 59]({{< relref "59-chiplets-advanced-packaging" >}}). HBM and the GPU compute die typically share a silicon interposer: the same packaging family used for chiplets, applied here to put memory *beside* compute instead of disaggregating functional dies.
 
 ## The Hierarchy Inside the GPU
 
-Beyond HBM-vs-DDR, the GPU has its own pyramid, echoing Post 10's register–cache–main-memory shape with GPU-specific tiers. Each SM's register file is the fastest local store. Shared memory — a programmer-managed scratchpad on the SM — lets threads in a block share data without round-tripping farther away. An L2 cache spans the whole GPU. HBM is the "main memory" tier: much higher bandwidth than CPU DRAM, still higher latency than anything on-chip — the same latency-versus-capacity tradeoff, at GPU scale.
+Beyond HBM-vs-DDR, the GPU has its own pyramid, echoing [Post 17]({{< relref "17-the-memory-hierarchy-begins" >}})'s register–cache–main-memory shape with GPU-specific tiers. Each SM's register file is the fastest local store. Shared memory — a programmer-managed scratchpad on the SM — lets threads in a block share data without round-tripping farther away. An L2 cache spans the whole GPU. HBM is the "main memory" tier: much higher bandwidth than CPU DRAM, still higher latency than anything on-chip — the same latency-versus-capacity tradeoff, at GPU scale.
 
 ## Feeding What Comes Next
 

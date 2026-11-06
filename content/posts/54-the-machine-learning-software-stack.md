@@ -24,15 +24,15 @@ The practical floor is multidimensional arrays (tensors) and vectorized ops — 
 
 ## Frameworks: Gradients and Hardware as One Contract
 
-Deep-learning frameworks (PyTorch and TensorFlow as the dominant examples) add what training needs on top of arrays. **Automatic differentiation** builds a computation graph and produces gradients without a human re-deriving calculus for every architecture — the constraint that makes gradient descent practical at research pace. A **hardware abstraction** lets the same model code target CPU, NVIDIA GPU via CUDA (Phase 9), or other accelerators by lowering tensor ops to optimized kernels — the same *kind* of contract as Post 11's ISA/microarchitecture split, one software layer higher.
+Deep-learning frameworks (PyTorch and TensorFlow as the dominant examples) add what training needs on top of arrays. **Automatic differentiation** builds a computation graph and produces gradients without a human re-deriving calculus for every architecture — the constraint that makes gradient descent practical at research pace. A **hardware abstraction** lets the same model code target CPU, NVIDIA GPU via CUDA (Phase 9), or other accelerators by lowering tensor ops to optimized kernels — the same *kind* of contract as [Post 18]({{< relref "18-instruction-sets" >}})'s ISA/microarchitecture split, one software layer higher.
 
 ## Lowering the Graph
 
-A compiler layer increasingly sits between framework ops and device kernels: fuse operators, cut memory traffic, lower an intermediate representation toward the target. That is Post 28's compiler idea applied to tensor graphs rather than general imperative code — optimize and lower, do not re-lex every time.
+A compiler layer increasingly sits between framework ops and device kernels: fuse operators, cut memory traffic, lower an intermediate representation toward the target. That is [Post 35]({{< relref "35-compilers-jit-and-modern-language-runtimes" >}})'s compiler idea applied to tensor graphs rather than general imperative code — optimize and lower, do not re-lex every time.
 
 ## Distribution Hits the Wire
 
-One GPU's memory (Phase 9's HBM) often cannot hold a modern large model, let alone train it alone. **Data parallelism** replicates the model, splits the batch, and synchronizes gradients (all-reduce — Phase 10 / Posts 37 and 42). **Model parallelism** splits the model itself across devices when it will not fit anywhere once. Real training mixes both. Throughput is then often limited by how fast GPUs exchange gradients and activations — not by how fast any single GPU multiplies in isolation. The interconnect wall from earlier posts returns as the training wall.
+One GPU's memory (Phase 9's HBM) often cannot hold a modern large model, let alone train it alone. **Data parallelism** replicates the model, splits the batch, and synchronizes gradients (all-reduce — Phase 10 / Posts [44]({{< relref "44-interconnects-at-scale" >}}) and [49]({{< relref "49-datacenter-networking-and-rdma" >}})). **Model parallelism** splits the model itself across devices when it will not fit anywhere once. Real training mixes both. Throughput is then often limited by how fast GPUs exchange gradients and activations — not by how fast any single GPU multiplies in isolation. The interconnect wall from earlier posts returns as the training wall.
 
 ## Closing This Phase's Loop
 
