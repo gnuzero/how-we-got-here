@@ -34,13 +34,13 @@ Das Deutsche Museum besitzt ein Relais aus der Bauart der Z3: ein Klappanker-Rel
 
 Unsere Deutung: Hier zeigt sich, warum Relaisrechner überhaupt baubar waren. Die Bauteile kamen aus einer bestehenden Industrie der Fernsprechtechnik, nicht aus einer eigens geschaffenen.
 
-Vorher kamen Z1 und Z2. Die Z1 wurde 1938 fertig, ein elektrisch angetriebener, aber mechanischer Rechner. ([SWR2 Zeitwort, 12.05.1941](https://www.swr.de/swrkultur/leben-und-gesellschaft/swr2-zeitwort-2022-05-12-100.pdf)) Mit der Z2 (1938–39) testete Zuse die Zuverlässigkeit der Relaistechnik; sie überzeugte ihn, und er baute die Z3 vollständig aus Relais. Die Z3 wurde am 12. Mai 1941 fertiggestellt. ([Horst Zuse, „Z3-Detail“](https://horst-zuse.hier-im-netz.de/z3-detail.html))
+Vorher kamen Z1 und Z2. Laut einem Beitrag des Radiosenders SWR2 wurde die Z1 1938 fertig, ein elektrisch angetriebener, aber mechanischer Rechner. ([SWR2 Zeitwort, 12.05.1941](https://www.swr.de/swrkultur/leben-und-gesellschaft/swr2-zeitwort-2022-05-12-100.pdf)) Horst Zuse, Informatiker und Sohn Konrad Zuses, schreibt: Mit der Z2 (1938–39) testete Zuse die Zuverlässigkeit der Relaistechnik; sie überzeugte ihn, und er baute die Z3 vollständig aus Relais. Die Z3 wurde am 12. Mai 1941 fertiggestellt. ([Horst Zuse, „Z3-Detail“](https://horst-zuse.hier-im-netz.de/z3-detail.html))
 
-Das Deutsche Museum nennt die Z3 den ersten programmierbaren Binär-Computer der Welt. ([Deutsches Museum, Ausstellung Informatik](https://www.deutsches-museum.de/museumsinsel/ausstellung/informatik)) Sie rechnete mit binären Gleitkommazahlen zu 22 Bit und hatte einen Speicher von 64 Wörtern. Das Programm las sie, wie schon die Z1, von einem 8-Kanal-Filmstreifen. ([Horst Zuse, „Z3-Detail“](https://horst-zuse.hier-im-netz.de/z3-detail.html)) Dafür diente gebrauchter 35-Millimeter-Kinofilm, in den pro Zahl und Zeichen bis zu acht Löcher gestanzt wurden. ([HNF-Blog, „Löcher im Streifen“](https://blog.hnf.de/loecher-im-streifen/))
+Das Deutsche Museum nennt die Z3 den ersten programmierbaren Binär-Computer der Welt. ([Deutsches Museum, Ausstellung Informatik](https://www.deutsches-museum.de/museumsinsel/ausstellung/informatik)) Nach Horst Zuse rechnete sie mit binären Gleitkommazahlen zu 22 Bit und hatte einen Speicher von 64 Wörtern. Das Programm las sie, wie schon die Z1, von einem 8-Kanal-Filmstreifen. ([Horst Zuse, „Z3-Detail“](https://horst-zuse.hier-im-netz.de/z3-detail.html)) Dafür diente gebrauchter 35-Millimeter-Kinofilm, in den pro Zahl und Zeichen bis zu acht Löcher gestanzt wurden. ([HNF-Blog, „Löcher im Streifen“](https://blog.hnf.de/loecher-im-streifen/))
 
-Wie viele Relais? Die Quellen sind sich nicht einig. Horst Zuse nennt rund 600 im Rechenwerk und 1.600 im Speicher, weist aber darauf hin, dass Konrad Zuse selbst 1961 die Zahl 2.600 angab. ([Horst Zuse, „Z3-Detail“](https://horst-zuse.hier-im-netz.de/z3-detail.html)) Auch der SWR nennt 600 plus 1.600. Die Maschine schaffte demnach zwei Additionen pro Sekunde und alle drei Sekunden eine Multiplikation; ihre „Taktwalze“ drehte sich 5,3-mal pro Sekunde. ([SWR2 Zeitwort](https://www.swr.de/swrkultur/leben-und-gesellschaft/swr2-zeitwort-2022-05-12-100.pdf))
+Wie viele Relais? Die Quellen sind sich nicht einig. Horst Zuse nennt rund 600 im Rechenwerk und 1.600 im Speicher, weist aber darauf hin, dass Konrad Zuse selbst 1961 die Zahl 2.600 angab. ([Horst Zuse, „Z3-Detail“](https://horst-zuse.hier-im-netz.de/z3-detail.html)) Auch SWR2 nennt 600 plus 1.600. Die Maschine schaffte laut SWR2 zwei Additionen pro Sekunde und alle drei Sekunden eine Multiplikation; ihre „Taktwalze“ drehte sich 5,3-mal pro Sekunde. ([SWR2 Zeitwort](https://www.swr.de/swrkultur/leben-und-gesellschaft/swr2-zeitwort-2022-05-12-100.pdf))
 
-Die Original-Z3 wurde beim Bombenangriff vom 21. Dezember 1943 zerstört. 1961 ließ Konrad Zuse sie zu Werbezwecken nachbauen, mit nur einem statt zwei Speicherschränken. ([Horst Zuse, „Z3-Detail“](https://horst-zuse.hier-im-netz.de/z3-detail.html)) Das Deutsche Museum zeigt ein Foto von Zuse vor seinem Nachbau der Z3 im Museum, aufgenommen im Juni 1984. ([Deutsches Museum, Ausstellung Informatik](https://www.deutsches-museum.de/museumsinsel/ausstellung/informatik))
+Nach Horst Zuse wurde die Original-Z3 beim Bombenangriff vom 21. Dezember 1943 zerstört; 1961 ließ Konrad Zuse sie zu Werbezwecken nachbauen, mit nur einem statt zwei Speicherschränken. ([Horst Zuse, „Z3-Detail“](https://horst-zuse.hier-im-netz.de/z3-detail.html)) Das Deutsche Museum zeigt ein Foto von Zuse vor seinem Nachbau der Z3 im Museum, aufgenommen im Juni 1984. ([Deutsches Museum, Ausstellung Informatik](https://www.deutsches-museum.de/museumsinsel/ausstellung/informatik))
 
 ### Der Vorbehalt: keine bedingte Verzweigung
 
@@ -50,7 +50,7 @@ Raúl Rojas von der Freien Universität Berlin zeigte 1998, dass die Z3 nur fest
 
 ## Warum Relais zu langsam waren
 
-Die These dieses Buchs: Die Schaltzeit eines Relais wird von *mechanischer* Bewegung bestimmt; der Anker muss sich bewegen, in der Größenordnung von Millisekunden. Die 5,3 Umdrehungen der Taktwalze pro Sekunde (siehe oben) neben einer heutigen CPU mit Milliarden Takten pro Sekunde: Der Abstand ist nicht graduell, er ist existenziell. Aus mechanischen Schaltern lässt sich kein brauchbarer moderner Computer bauen, so gut sie auch konstruiert sein mögen.
+Die These dieses Buchs: Die Schaltzeit eines Relais wird von *mechanischer* Bewegung bestimmt; der Anker muss sich bewegen, in der Größenordnung von Millisekunden. Die 5,3 Umdrehungen der Taktwalze pro Sekunde (laut SWR2, siehe oben) neben einer heutigen CPU mit Milliarden Takten pro Sekunde: Der Abstand ist nicht graduell, er ist existenziell. Aus mechanischen Schaltern lässt sich kein brauchbarer moderner Computer bauen, so gut sie auch konstruiert sein mögen.
 
 Die These dieses Buchs: Das zweite Problem ist der Verschleiß. Jedes Schließen ist Metall auf Metall: Funkenbildung, Abbrand, irgendwann Ausfall. Tausende Relais heißen Tausende Verschleißstellen. Zuverlässigkeit und Geschwindigkeit kämpften gegen dieselbe Grenze: bewegte Teile.
 
@@ -58,7 +58,7 @@ Die These dieses Buchs: Das zweite Problem ist der Verschleiß. Jedes Schließen
 
 Die These dieses Buchs: Relais bewiesen die Architektur, also binäre Darstellung, boolesche Gatter aus einfachen Schaltern und Programme als Daten. Was sie nicht beweisen konnten, war, dass diese Architektur *schnell* laufen kann. Dafür musste der mechanische Schalter durch etwas ersetzt werden, das seinen Zustand durch bewegte Elektronen statt durch bewegtes Metall ändert: die Elektronenröhre, um den Preis von enormem Strombedarf und enormer Hitze. Dieser Zielkonflikt folgt als Nächstes.
 
-**Weiter:** [Das Zeitalter der Elektronenröhre]({{< relref path="10-the-vacuum-tube-era.md" lang="en" >}}) (vorerst auf Englisch)
+**Weiter:** [Das Zeitalter der Elektronenröhre]({{< relref "10-the-vacuum-tube-era.md" >}})
 
 ## Quellen
 
