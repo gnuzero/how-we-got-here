@@ -1,0 +1,51 @@
+[title]
+other = "How We Got There"
+
+[foreword]
+other = "Voorwoord"
+
+[Search]
+other = "Zoeken"
+
+["Edit this page"]
+other = "Deze pagina bewerken"
+
+["Last modified by"]
+other = "Laatst gewijzigd door"
+
+[Languages]
+other = "Talen"
+
+[Expand]
+other = "Uitklappen"
+
+[Calendar]
+other = "Kalender"
+
+[Backward]
+other = "Vorige"
+
+[Forward]
+other = "Volgende"
+
+[Edit]
+other = "Bewerken"
+
+[Logo]
+other = "Logo"
+
+[Menu]
+other = "Menu"
+
+["Table of Contents"]
+other = "Inhoudsopgave"
+
+[Thumbnail]
+other = "Miniatuur"
+
+[labIframeTitle]
+other = "Interactief lab: {{ .Type }}"
+
+[labOpenNewTab]
+other = "Open het lab in een nieuw tabblad ↗"
+

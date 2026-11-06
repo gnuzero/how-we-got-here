@@ -31,6 +31,17 @@ LOCALE_DIRS = {
     "ro": ROOT / "content.ro" / "posts",
     "zh-hans": ROOT / "content.zh-hans" / "posts",
     "zh-hant": ROOT / "content.zh-hant" / "posts",
+    "ar": ROOT / "content.ar" / "posts",
+    "de": ROOT / "content.de" / "posts",
+    "he": ROOT / "content.he" / "posts",
+    "hi": ROOT / "content.hi" / "posts",
+    "sa": ROOT / "content.sa" / "posts",
+    "sw": ROOT / "content.sw" / "posts",
+    "es": ROOT / "content.es" / "posts",
+    "pt": ROOT / "content.pt" / "posts",
+    "nl": ROOT / "content.nl" / "posts",
+    "fr": ROOT / "content.fr" / "posts",
+    "ja": ROOT / "content.ja" / "posts",
 }
 NOTE_GLOBS = ["TRANSLATIONS.md", "README.md", "_editorial/*.md"]
 FM_SPLIT = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n", re.S)

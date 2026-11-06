@@ -73,7 +73,16 @@
         "th",
         "si",
         "ta",
-        "ro"
+        "ro",
+        "ar",
+        "de",
+        "he",
+        "hi",
+        "sw",
+        "es",
+        "pt",
+        "nl",
+        "ja"
       ]
     },
     {
@@ -92,7 +101,43 @@
         "th",
         "si",
         "ta",
-        "ro"
+        "ro",
+        "ar",
+        "de",
+        "he",
+        "hi",
+        "sw",
+        "es",
+        "nl",
+        "fr"
+      ]
+    },
+    {
+      "public": 4,
+      "weight": 4,
+      "series_index": 3,
+      "slug": "what-is-this-thing",
+      "title": "What is this thing?",
+      "draft": false,
+      "file": "04-what-is-this-thing.md",
+      "former_file": null,
+      "former_tags": [
+        "01"
+      ],
+      "alias_history": [
+        "01-what-is-this-thing",
+        "02-what-is-this-thing"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "ta",
+        "ro",
+        "ar",
+        "de",
+        "he",
+        "hi",
+        "es"
       ]
     },
     {
@@ -327,29 +372,6 @@
       ]
     },
     {
-      "public": 4,
-      "weight": 4,
-      "series_index": 3,
-      "slug": "what-is-this-thing",
-      "title": "What is this thing?",
-      "draft": false,
-      "file": "04-what-is-this-thing.md",
-      "former_file": null,
-      "former_tags": [
-        "01"
-      ],
-      "alias_history": [
-        "01-what-is-this-thing",
-        "02-what-is-this-thing"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "ta",
-        "ro"
-      ]
-    },
-    {
       "public": 5,
       "weight": 5,
       "series_index": 4,
@@ -369,7 +391,12 @@
         "en",
         "th",
         "ta",
-        "ro"
+        "ro",
+        "ar",
+        "de",
+        "he",
+        "es",
+        "fr"
       ]
     },
     {
@@ -392,7 +419,9 @@
         "en",
         "th",
         "ta",
-        "ro"
+        "ro",
+        "ar",
+        "fr"
       ]
     },
     {
@@ -415,7 +444,10 @@
         "en",
         "th",
         "ta",
-        "ro"
+        "ro",
+        "ar",
+        "es",
+        "fr"
       ]
     },
     {
@@ -432,7 +464,17 @@
       "locales": [
         "en",
         "si",
-        "ro"
+        "ro",
+        "ar",
+        "de",
+        "he",
+        "hi",
+        "sw",
+        "es",
+        "pt",
+        "nl",
+        "fr",
+        "ja"
       ]
     },
     {
@@ -932,7 +974,8 @@
         "th",
         "si",
         "ta",
-        "ro"
+        "ro",
+        "nl"
       ]
     },
     {
@@ -1621,7 +1664,8 @@
         "th",
         "si",
         "ta",
-        "ro"
+        "ro",
+        "nl"
       ]
     },
     {

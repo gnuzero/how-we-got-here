@@ -63,3 +63,16 @@ html:lang(zh-Hant) {
 .markdown {
   overflow-wrap: break-word;
 }
+
+/* RTL locales (ar, he): hugo-book sets dir="rtl" on <html>/<body> from
+   [languages.*] direction. Keep code, math-ish blocks and lab embeds LTR. */
+[dir="rtl"] pre,
+[dir="rtl"] code,
+[dir="rtl"] .highlight,
+[dir="rtl"] .lab-embed {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: isolate;
+}
+[dir="rtl"] table { direction: rtl; }
+[dir="rtl"] td, [dir="rtl"] th { text-align: right; }

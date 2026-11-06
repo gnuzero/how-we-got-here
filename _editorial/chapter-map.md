@@ -13,8 +13,9 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 |---:|---|---|---|---:|---|
 | 0 | `00-credits.md` | — | — | -1 | en,th,si,ta,ro,zh-hans,zh-hant |
 | 1 | `01-foreword.md` | `00-foreword` | `00` | 0 | en,th,si,ta,ro |
-| 2 | `02-woodblock-to-movable-type.md` | `01d-woodblock-to-movable-type`, `06-woodblock-to-movable-type` | `01d` | 1 | en,th,si,ta,ro |
-| 3 | `03-how-the-message-travelled.md` | — | — | 2 | en,th,si,ta,ro |
+| 2 | `02-woodblock-to-movable-type.md` | `01d-woodblock-to-movable-type`, `06-woodblock-to-movable-type` | `01d` | 1 | en,th,si,ta,ro,ar,de,he,hi,sw,es,pt,nl,ja |
+| 3 | `03-how-the-message-travelled.md` | — | — | 2 | en,th,si,ta,ro,ar,de,he,hi,sw,es,nl,fr |
+| 4 | `04-what-is-this-thing.md` | `01-what-is-this-thing`, `02-what-is-this-thing` | `01` | 3 | en,th,ta,ro,ar,de,he,hi,es |
 | 4 | `04-mechanical-electromechanical-computing.md` | `01-mechanical-electromechanical-computing`, `02-mechanical-electromechanical-computing` | `01` | 3 | en,th,si,ta,ro |
 | 4 | `04-take-barrel-organ.md` | `01-take-barrel-organ`, `02-take-barrel-organ` | `01` | 3 | en,th,ta,ro |
 | 4 | `04-take-caravan.md` | `01-take-caravan`, `02-take-caravan` | `01` | 3 | en,th,ta,ro |
@@ -25,11 +26,10 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 | 4 | `04-take-silk-cards.md` | `01-take-silk-cards`, `02-take-silk-cards` | `01` | 3 | en,th,ta,ro |
 | 4 | `04-take-stubborn-helper.md` | `01-take-stubborn-helper`, `02-take-stubborn-helper` | `01` | 3 | en,th,ta,ro |
 | 4 | `04-take-water-wheel.md` | `01-take-water-wheel`, `02-take-water-wheel` | `01` | 3 | en,th,ta,ro |
-| 4 | `04-what-is-this-thing.md` | `01-what-is-this-thing`, `02-what-is-this-thing` | `01` | 3 | en,th,ta,ro |
-| 5 | `05-babbage-engines.md` | `01a-babbage-engines`, `03-babbage-engines` | `01a` | 4 | en,th,ta,ro |
-| 6 | `06-jacquard-loom.md` | `01b-jacquard-loom`, `04-jacquard-loom` | `01b` | 5 | en,th,ta,ro |
-| 7 | `07-why-mechanical-matters.md` | `01c-why-mechanical-matters`, `05-why-mechanical-matters` | `01c` | 6 | en,th,ta,ro |
-| 8 | `08-capturing-light.md` | — | — | 7 | en,si,ro |
+| 5 | `05-babbage-engines.md` | `01a-babbage-engines`, `03-babbage-engines` | `01a` | 4 | en,th,ta,ro,ar,de,he,es,fr |
+| 6 | `06-jacquard-loom.md` | `01b-jacquard-loom`, `04-jacquard-loom` | `01b` | 5 | en,th,ta,ro,ar,fr |
+| 7 | `07-why-mechanical-matters.md` | `01c-why-mechanical-matters`, `05-why-mechanical-matters` | `01c` | 6 | en,th,ta,ro,ar,es,fr |
+| 8 | `08-capturing-light.md` | — | — | 7 | en,si,ro,ar,de,he,hi,sw,es,pt,nl,fr,ja |
 | 9 | `09-relays-and-electromechanical-logic.md` | `02-relays-and-electromechanical-logic`, `07-relays-and-electromechanical-logic`, `08-relays-and-electromechanical-logic` | `02` | 8 | en,th,si,ta,ro |
 | 10 | `10-the-vacuum-tube-era.md` | `03-the-vacuum-tube-era`, `08-the-vacuum-tube-era`, `09-the-vacuum-tube-era` | `03` | 9 | en,th,si,ta,ro |
 | 11 | `11-why-the-transistor-had-to-happen.md` | `04-why-the-transistor-had-to-happen`, `09-why-the-transistor-had-to-happen`, `10-why-the-transistor-had-to-happen` | `04` | 10 | en,th,si,ta,ro |
@@ -49,7 +49,7 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 | 25 | `25-mainframes-to-minicomputers-to-microprocessors.md` | `18-mainframes-to-minicomputers-to-microprocessors`, `23-mainframes-to-minicomputers-to-microprocessors`, `24-mainframes-to-minicomputers-to-microprocessors` | `18` | 24 | en,th,si,ta,ro |
 | 26 | `26-the-x86-vs-risc-split.md` | `19-the-x86-vs-risc-split`, `24-the-x86-vs-risc-split`, `25-the-x86-vs-risc-split` | `19` | 25 | en,th,si,ta,ro |
 | 27 | `27-arm-and-risc-v-the-architecture-landscape-today.md` | `20-arm-and-risc-v-the-architecture-landscape-today`, `25-arm-and-risc-v-the-architecture-landscape-today`, `26-arm-and-risc-v-the-architecture-landscape-today` | `20` | 26 | en,th,si,ta,ro |
-| 28 | `28-batch-processing-and-the-birth-of-the-operating-system.md` | `21-batch-processing-and-the-birth-of-the-operating-system`, `26-batch-processing-and-the-birth-of-the-operating-system`, `27-batch-processing-and-the-birth-of-the-operating-system` | `21` | 27 | en,th,si,ta,ro |
+| 28 | `28-batch-processing-and-the-birth-of-the-operating-system.md` | `21-batch-processing-and-the-birth-of-the-operating-system`, `26-batch-processing-and-the-birth-of-the-operating-system`, `27-batch-processing-and-the-birth-of-the-operating-system` | `21` | 27 | en,th,si,ta,ro,nl |
 | 29 | `29-time-sharing-and-the-unix-lineage.md` | `22-time-sharing-and-the-unix-lineage`, `27-time-sharing-and-the-unix-lineage`, `28-time-sharing-and-the-unix-lineage` | `22` | 28 | en,th,si,ta,ro |
 | 30 | `30-the-gnu-movement-and-linux.md` | `23-the-gnu-movement-and-linux`, `28-the-gnu-movement-and-linux`, `29-the-gnu-movement-and-linux` | `23` | 29 | en,th,si,ta,ro |
 | 31 | `31-virtual-memory-and-multitasking.md` | `24-virtual-memory-and-multitasking`, `29-virtual-memory-and-multitasking`, `30-virtual-memory-and-multitasking` | `24` | 30 | en,th,si,ta,ro |
@@ -77,7 +77,7 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 | 53 | `53-kubernetes-and-container-orchestration-at-scale.md` | `45-kubernetes-and-container-orchestration-at-scale`, `51-kubernetes-and-container-orchestration-at-scale`, `52-kubernetes-and-container-orchestration-at-scale` | `45` | 52 | en,th,si,ta |
 | 54 | `54-the-machine-learning-software-stack.md` | `46-the-machine-learning-software-stack`, `52-the-machine-learning-software-stack`, `53-the-machine-learning-software-stack` | `46` | 53 | en,th,si,ta |
 | 55 | `55-what-7nm-actually-means.md` | `47-what-7nm-actually-means`, `53-what-7nm-actually-means`, `54-what-7nm-actually-means` | `47` | 54 | en,th,si,ta,ro |
-| 56 | `56-photolithography.md` | `48-photolithography`, `54-photolithography`, `55-photolithography` | `48` | 55 | en,th,si,ta,ro |
+| 56 | `56-photolithography.md` | `48-photolithography`, `54-photolithography`, `55-photolithography` | `48` | 55 | en,th,si,ta,ro,nl |
 | 57 | `57-finfet-to-gaa.md` | `49-finfet-to-gaa`, `55-finfet-to-gaa`, `56-finfet-to-gaa` | `49` | 56 | en,th,si,ta,ro |
 | 58 | `58-moore-s-law.md` | `50-moore-s-law`, `56-moore-s-law`, `57-moore-s-law` | `50` | 57 | en,th,si,ta |
 | 59 | `59-chiplets-advanced-packaging.md` | `51-chiplets-advanced-packaging`, `57-chiplets-advanced-packaging`, `58-chiplets-advanced-packaging` | `51` | 58 | en,th,si,ta |

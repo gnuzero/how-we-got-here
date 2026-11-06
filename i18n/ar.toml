@@ -1,0 +1,51 @@
+[title]
+other = "How We Got There"
+
+[foreword]
+other = "تمهيد"
+
+[Search]
+other = "بحث"
+
+["Edit this page"]
+other = "تحرير هذه الصفحة"
+
+["Last modified by"]
+other = "آخر تعديل بواسطة"
+
+[Languages]
+other = "اللغات"
+
+[Expand]
+other = "توسيع"
+
+[Calendar]
+other = "التقويم"
+
+[Backward]
+other = "السابق"
+
+[Forward]
+other = "التالي"
+
+[Edit]
+other = "تحرير"
+
+[Logo]
+other = "الشعار"
+
+[Menu]
+other = "القائمة"
+
+["Table of Contents"]
+other = "جدول المحتويات"
+
+[Thumbnail]
+other = "صورة مصغرة"
+
+[labIframeTitle]
+other = "مختبر تفاعلي: {{ .Type }}"
+
+[labOpenNewTab]
+other = "افتح المختبر في علامة تبويب جديدة ↗"
+

@@ -1,0 +1,51 @@
+[title]
+other = "How We Got There"
+
+[foreword]
+other = "Dibaji"
+
+[Search]
+other = "Tafuta"
+
+["Edit this page"]
+other = "Hariri ukurasa huu"
+
+["Last modified by"]
+other = "Ilibadilishwa mwisho na"
+
+[Languages]
+other = "Lugha"
+
+[Expand]
+other = "Panua"
+
+[Calendar]
+other = "Kalenda"
+
+[Backward]
+other = "Nyuma"
+
+[Forward]
+other = "Mbele"
+
+[Edit]
+other = "Hariri"
+
+[Logo]
+other = "Nembo"
+
+[Menu]
+other = "Menyu"
+
+["Table of Contents"]
+other = "Yaliyomo"
+
+[Thumbnail]
+other = "Picha ndogo"
+
+[labIframeTitle]
+other = "Maabara shirikishi: {{ .Type }}"
+
+[labOpenNewTab]
+other = "Fungua maabara kwenye kichupo kipya ↗"
+

@@ -60,6 +60,86 @@ defaultContentLanguageInSubdir = false
   weight = 7
   title = "Cum am ajuns acolo"
 
+# New locales (structural PR, Nov 2026). Title stays English in every locale.
+[languages.ar]
+  label = "العربية"
+  locale = "ar"
+  contentDir = "content.ar"
+  weight = 8
+  title = "How We Got There"
+  direction = "rtl"
+
+[languages.de]
+  label = "Deutsch"
+  locale = "de"
+  contentDir = "content.de"
+  weight = 9
+  title = "How We Got There"
+
+[languages.he]
+  label = "עברית"
+  locale = "he"
+  contentDir = "content.he"
+  weight = 10
+  title = "How We Got There"
+  direction = "rtl"
+
+[languages.hi]
+  label = "हिन्दी"
+  locale = "hi"
+  contentDir = "content.hi"
+  weight = 11
+  title = "How We Got There"
+
+[languages.sa]
+  label = "संस्कृतम्"
+  locale = "sa"
+  contentDir = "content.sa"
+  weight = 12
+  title = "How We Got There"
+
+[languages.sw]
+  label = "Kiswahili"
+  locale = "sw"
+  contentDir = "content.sw"
+  weight = 13
+  title = "How We Got There"
+
+[languages.es]
+  label = "Español"
+  locale = "es"
+  contentDir = "content.es"
+  weight = 14
+  title = "How We Got There"
+
+[languages.pt]
+  label = "Português"
+  locale = "pt-BR"
+  contentDir = "content.pt"
+  weight = 15
+  title = "How We Got There"
+
+[languages.nl]
+  label = "Nederlands"
+  locale = "nl"
+  contentDir = "content.nl"
+  weight = 16
+  title = "How We Got There"
+
+[languages.fr]
+  label = "Français"
+  locale = "fr"
+  contentDir = "content.fr"
+  weight = 17
+  title = "How We Got There"
+
+[languages.ja]
+  label = "日本語"
+  locale = "ja"
+  contentDir = "content.ja"
+  weight = 18
+  title = "How We Got There"
+
 [params]
   # Site-wide <meta name="robots" content="noindex, nofollow"> via layouts/_partials/docs/inject/head.html.
   # true = emit tag (pre-launch default). false = emit nothing. Flip to false at announcement (one line).

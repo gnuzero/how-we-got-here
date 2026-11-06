@@ -1,0 +1,51 @@
+[title]
+other = "How We Got There"
+
+[foreword]
+other = "Prefácio"
+
+[Search]
+other = "Buscar"
+
+["Edit this page"]
+other = "Editar esta página"
+
+["Last modified by"]
+other = "Última modificação por"
+
+[Languages]
+other = "Idiomas"
+
+[Expand]
+other = "Expandir"
+
+[Calendar]
+other = "Calendário"
+
+[Backward]
+other = "Anterior"
+
+[Forward]
+other = "Próximo"
+
+[Edit]
+other = "Editar"
+
+[Logo]
+other = "Logotipo"
+
+[Menu]
+other = "Menu"
+
+["Table of Contents"]
+other = "Sumário"
+
+[Thumbnail]
+other = "Miniatura"
+
+[labIframeTitle]
+other = "Laboratório interativo: {{ .Type }}"
+
+[labOpenNewTab]
+other = "Abrir o laboratório em uma nova aba ↗"
+
