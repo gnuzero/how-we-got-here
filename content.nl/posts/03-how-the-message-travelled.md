@@ -8,7 +8,6 @@ phase: "1 — Van mechaniek tot elektronenbuizen"
 summary: "De boodschap hoeft niet mee te reizen op hetzelfde papier: van duiven en Nederlandse seintorens naar draad, relais en zeekabel."
 ---
 
-
 Stel: je hebt een bericht in Amsterdam en iemand in Antwerpen moet het lezen. Schrijf de tekst op een kaartje. Maak daarna drie ontwerpen: vervoer het kaartje zelf, geef de tekens onderweg door, of gebruik een draad. Vraag bij elk ontwerp wat er moet bewegen, wat de ontvanger moet kennen en wat er onderweg mis kan gaan.
 
 ## Een duif naast de draad
@@ -71,4 +70,4 @@ Een latere technische verdieping: [9 — Relais en elektromechanische logica (En
 
 ---
 
-Alle aangehaalde webpagina’s en de relevante passages uit beide PDF’s zijn voor dit hoofdstuk geopend op 6 november 2026 (Asia/Colombo). De verantwoording en bronverschillen staan in het Nederlandse bronnenlogboek voor hoofdstuk 3.
+Nederlandse editie: **Sanne**.

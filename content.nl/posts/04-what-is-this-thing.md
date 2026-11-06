@@ -14,7 +14,6 @@ tags: []
 summary: "Negen ingangen tot dezelfde ontwerpvraag: waar leg je de opdracht vast, en wie of wat voert haar uit?"
 ---
 
-
 Leg voor een nieuwe denkproef een kaartje, wat stenen en twee lege bakjes klaar. Je wilt ditmaal niet alleen een bericht laten aankomen. Je wilt een klus overdragen: laat iemand iets doen volgens jouw aanwijzingen, zonder onderweg jouw bedoeling te hoeven raden.
 
 Gebruik hier drie vragen als leesbril: **wat geef je mee, welke stappen spreek je af, en waar komt de uitkomst terecht?** Dat is onze ontwerpbril voor dit keuzepunt, geen definitie waarmee we alle machines over één kam willen scheren.
@@ -63,8 +62,8 @@ Voor zijn Analytical Engine voorzag Charles Babbage ponskaarten om getallen en o
 
 Neem straks niet alleen de vraag ‘kan het rekenen?’ mee. Vraag ook waar de getallen blijven, hoe de volgende opdracht wordt gekozen en wat je moet veranderen om een andere taak op te geven. Let daarbij steeds op welke van Babbages machines wordt besproken; schrijf niet ieder apparaat zomaar alle eigenschappen van dit ene ontwerp toe.
 
-**Vorige:** [3 — Hoe het bericht reisde]({{< relref "03-how-the-message-travelled.md" >}}). **Volgende:** [5 — Babbages rekenmachines (Engels · EN)]({{< relref path="05-babbage-engines.md" lang="en" >}}).
+**Vorige:** [3 — Hoe het bericht reisde]({{< relref "03-how-the-message-travelled.md" >}}). **Volgende:** [5 — Babbages rekenmachines]({{< relref "05-babbage-engines.md" >}}).
 
 ---
 
-De vier museumbronnen zijn voor dit hoofdstuk geopend op 6 november 2026 (Asia/Colombo). De bronverantwoording en de grenzen van de vergelijkingen staan in het Nederlandse bronnenlogboek voor hoofdstuk 4.
+Nederlandse editie: **Sanne**.

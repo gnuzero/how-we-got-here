@@ -10,7 +10,6 @@ tags: []
 summary: "Een beeld zien, bewaren en vermenigvuldigen zijn drie verschillende opgaven: van Niépce en Talbot naar Gent en Asser."
 ---
 
-
 Ga voor een raam staan. Kies één detail buiten: een dakrand, een boomtak, een overbuur. Stel jezelf drie opdrachten. Breng dat detail binnen als beeld. Bewaar het nadat het licht verdwenen is. Maak er vervolgens tien exemplaren van. Behandel die opdrachten niet als één probleem.
 
 ## Een beeld naar binnen halen is nog niet hetzelfde als het bewaren
@@ -61,4 +60,6 @@ Zijdeur voor later: [51 — Van drukpers naar pixel (Engels)](/posts/51-from-pre
 
 ---
 
-Alle gekoppelde museum- en collectiepagina’s zijn voor deze bijdrage geopend op 6 november 2026 (Asia/Colombo). De historische chemie wordt beschreven, niet als uitvoerbaar recept aangeboden.
+Nederlandse editie: **Sanne**.
+
+De historische chemie wordt beschreven, niet als uitvoerbaar recept aangeboden.

@@ -13,7 +13,6 @@ tags: []
 summary: "Wachten, seinpalen en lagen: een systeem begrijpen zonder alle tijdvolgordes uit te tekenen."
 ---
 
-
 Stel je twee taken voor die allebei dezelfde printer willen gebruiken. Geef ze ieder een kaartje met een opdracht. Wie mag beginnen? Wie moet wachten? Wat moet er gebeuren zodra de printer vrijkomt?
 
 In zijn verslag uit 1968 beschrijft Edsger W. Dijkstra het THE-multiprogrammeringssysteem aan de Technische Hogeschool Eindhoven, ontworpen voor de Electrologica X8. ([Dijkstra, EWD196, inleiding en *The tool and the goal*](https://www.cs.utexas.edu/~EWD/transcriptions/EWD01xx/EWD196.html)) Het doel was een gestage stroom gebruikersprogramma’s voor de universiteit te verwerken, met onder meer kortere doorlooptijden voor kleine programma’s en doelmatiger gebruik van randapparatuur. ([EWD196, *The tool and the goal*](https://www.cs.utexas.edu/~EWD/transcriptions/EWD01xx/EWD196.html)) Dijkstra schrijft uitdrukkelijk dat het geen *multi-access*-systeem is. ([EWD196](https://www.cs.utexas.edu/~EWD/transcriptions/EWD01xx/EWD196.html)) Lees dit dus niet als een beschrijving van een moderne interactieve dienst voor gelijktijdig ingelogde gebruikers.

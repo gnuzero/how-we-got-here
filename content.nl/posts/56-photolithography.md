@@ -13,7 +13,6 @@ tags: []
 summary: "ASML, EUV en de prijs van kortgolviger licht: een Nederlandse en Vlaamse ingang tot chipfabricage."
 ---
 
-
 Teken twee evenwijdige lijnen, dicht naast elkaar. Stel je nu voor dat je dat patroon met licht op een oppervlak moet afbeelden. Welke knop zou je willen hebben om ze nog dichter bij elkaar te zetten?
 
 ASML vat de lithografische resolutie samen met **CD = k₁ · λ / NA**: de kritische afmeting CD hangt af van de golflengte λ, de numerieke apertuur NA van de optiek en een procesafhankelijke factor k₁. ([ASML, *The Rayleigh criterion*](https://www.asml.com/en/technology/lithography-principles/rayleigh-criterion)) Volgens die beschrijving zijn er drie hefbomen: kortgolviger licht, een grotere numerieke apertuur en verbeteringen aan het proces die k₁ verlagen. ([ASML, *The Rayleigh criterion*](https://www.asml.com/en/technology/lithography-principles/rayleigh-criterion))
