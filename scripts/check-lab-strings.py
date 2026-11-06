@@ -4,6 +4,7 @@ JSON (object of string values), have exactly the keys of strings.en.json, use th
 {placeholders}, and (for *_html keys) the same set of HTML tags. Also checks that every
 data-i18n / data-i18n-html / data-i18n-attr key and every t('key') call in the lab's
 index.html exists in strings.en.json.
+Warns (does not fail) for each site language in hugo.toml with no strings.<lang>.json.
 Usage: scripts/check-lab-strings.py [lab ...]     exit 1 on any error."""
 import json, re, sys, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent / 'static' / 'labs'
@@ -55,12 +56,26 @@ def check(lab, errs, warns):
             if not d[k].strip() and en[k].strip(): errs.append(f'{lab.name}/{p.name}: {k!r} is empty')
     return True
 
+def site_langs():
+    toml = ROOT.parent.parent / 'hugo.toml'
+    try: src = toml.read_text(encoding='utf-8')
+    except OSError: return []
+    return [l for l in re.findall(r'^\[languages\.([A-Za-z0-9-]+)\]\s*$', src, re.M) if l.lower() != 'en']
+
+def missing_locales(lab, warns):
+    if not (lab / 'strings.en.json').exists(): return
+    for l in site_langs():
+        if not (lab / f'strings.{l.lower()}.json').exists():
+            warns.append(f'{lab.name}: no strings.{l.lower()}.json (site language {l!r} falls back to English)')
+
 def main():
     names = sys.argv[1:]
     labs = [ROOT / n for n in names] if names else sorted(p for p in ROOT.iterdir() if p.is_dir() and not p.name.startswith('_'))
     errs, warns, n = [], [], 0
     for lab in labs:
-        if check(lab, errs, warns): n += 1
+        if check(lab, errs, warns):
+            n += 1
+            missing_locales(lab, warns)
     for w in warns: print('WARN ', w)
     for e in errs: print('ERROR', e)
     print(f'checked {n} lab(s) with strings.en.json: {len(errs)} error(s), {len(warns)} warning(s)')

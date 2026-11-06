@@ -11,6 +11,16 @@
   try { raw = (new URLSearchParams(location.search).get('lang') || '').trim().toLowerCase(); } catch (e) {}
   var lang = /^[a-z]{2,3}(-[a-z0-9]{2,8})*$/.test(raw) ? raw : 'en';
   var en = {}, loc = {}, active = 'en';
+  // Right-to-left site languages. Text containers follow the page direction; code,
+  // simulator iframes and controls stay LTR (isolated) so circuits, registers and
+  // program text read the same in every language.
+  var RTL = ['ar', 'he'];
+  var bidi = document.createElement('style');
+  bidi.textContent = 'html[dir=rtl] code,html[dir=rtl] pre,html[dir=rtl] kbd,html[dir=rtl] samp,' +
+    'html[dir=rtl] textarea,html[dir=rtl] input,html[dir=rtl] select,html[dir=rtl] button,' +
+    'html[dir=rtl] iframe,html[dir=rtl] canvas,html[dir=rtl] svg,html[dir=rtl] .controls,html[dir=rtl] .ctrl,' +
+    'html[dir=rtl] .toolbar,html[dir=rtl] .regs,html[dir=rtl] table{direction:ltr;unicode-bidi:isolate}';
+  (document.head || root).appendChild(bidi);
 
   // Hide the body (no reflow; just paint) until strings are applied, max 1.5 s.
   var style = document.createElement('style');
@@ -101,6 +111,7 @@
       if (r[1]) { loc = r[1]; active = lang; }
       else if (lang !== 'en') console.info('[lab-i18n] no strings.' + lang + '.json; falling back to English.');
       // File codes stay lowercase (strings.zh-hans.json); html lang uses BCP-47 case.
+      root.dir = RTL.indexOf(active.split('-')[0]) >= 0 ? 'rtl' : 'ltr';
       root.lang = active === 'zh-hans' ? 'zh-Hans' : active === 'zh-hant' ? 'zh-Hant' : active;
       apply(document);
     })
