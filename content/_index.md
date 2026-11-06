@@ -10,6 +10,10 @@ type: docs
 
 Read in: [English](/) · [ไทย](/th/) · [සිංහල](/si/) · [தமிழ்](/ta/) · [简体中文](/zh-hans/) · [繁體中文](/zh-hant/) · [Română](/ro/) · [العربية](/ar/) · [Deutsch](/de/) · [עברית](/he/) · [हिन्दी](/hi/) · [संस्कृतम्](/sa/) · [Kiswahili](/sw/) · [Español](/es/) · [Português](/pt/) · [Nederlands](/nl/) · [Français](/fr/) · [日本語](/ja/) · [한국어](/ko/)
 
+Languages are not a final set. Any language missing here is an invitation for you to start. If seeding is something you need, let me know and I'll help with the initial seeding.
+
+This production was organized so that students can interactively engage with the learning material, and so far I have used Creative Commons-licensed existing interactive tools. I am yet to produce my own, mostly because I was focused on content. However, before the announcement of the book, my plans are to make sure that there are no gaps on the learning paths in the interactivity tools.
+
 An interactive journey — not an encyclopedia. You live through systems and touch them; you do not collect articles.
 
 The spine is one continuous engineering argument: how each era's hard constraint forced the next architecture.
