@@ -1,0 +1,26 @@
+---
+title: "Cartele de model pe mătase"
+weight: 4
+date: 2026-01-01
+draft: false
+phase: "1 — Fundamente: de la calcul mecanic la tuburi vidate"
+series_index: 3
+aliases:
+  - /posts/01-take-silk-cards/
+  - /posts/02-take-silk-cards/
+bookHidden: true
+arm: silk-cards
+tags: []
+summary: "Schimbi cartelele, schimbi floarea — mâinile țesătorului rămân aceleași"
+---
+
+**Analogie ilustrativă**, ancorată pe mecanismul Jacquard citat. Computer History Museum descrie războiul Jacquard ca fiind controlat de un lanț de cartele perforate care decid care fire din urzeală se ridică la fiecare trecere a suveicii; fiecare rând de pe cartelă corespunde unui rând din model, iar fiecare gaură controlează dacă firul trece pe deasupra sau pe dedesubt (Computer History Museum, „1801: Punched cards control Jacquard loom”, [computerhistory.org/storageengine/punched-cards-control-jacquard-loom/](https://www.computerhistory.org/storageengine/punched-cards-control-jacquard-loom/), și „The Punched Card’s Pedigree”, [computerhistory.org/revolution/punched-cards/2/4](https://www.computerhistory.org/revolution/punched-cards/2/4), ambele accesate 2026-11-05). Schimbi cartelele și apare o floare altfel; mâinile și războiul rămân aceleași. Modelul trăiește în cartele, nu într-un set nou de mușchi de fiecare dată.
+
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/India_-_Sights_%26_Culture_-_Hand-loom_pattern_cards_for_silk_sari_weaving_%282507306023%29.jpg" alt="Cartele de model pentru țeserea sari-urilor de mătase" loading="lazy" width="1280">
+<figcaption>Cartele de model pentru țeserea sari-urilor de mătase. Foto: <a href="https://commons.wikimedia.org/wiki/File:India_-_Sights_%26_Culture_-_Hand-loom_pattern_cards_for_silk_sari_weaving_(2507306023).jpg">McKay Savage</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
+</figure>
+
+Această separare — schimbi cartelele, păstrezi războiul — e obiceiul pe care capitolele următoare îl duc în alamă.
+
+**Înapoi:** [Ce e chestia asta?]({{< relref "04-what-is-this-thing.md" >}}) · **Următorul:** [Motoarele lui Babbage]({{< relref "05-babbage-engines.md" >}})

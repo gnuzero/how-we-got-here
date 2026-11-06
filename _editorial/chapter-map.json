@@ -56,16 +56,17 @@
       "public": 2,
       "weight": 2,
       "series_index": 1,
-      "slug": "mechanical-electromechanical-computing",
-      "title": "Mechanical & Electromechanical Computing",
-      "draft": true,
-      "file": "02-mechanical-electromechanical-computing.md",
+      "slug": "woodblock-to-movable-type",
+      "title": "From Woodblock to Movable Type",
+      "draft": false,
+      "file": "02-woodblock-to-movable-type.md",
       "former_file": null,
       "former_tags": [
-        "01"
+        "01d"
       ],
       "alias_history": [
-        "01-mechanical-electromechanical-computing"
+        "01d-woodblock-to-movable-type",
+        "06-woodblock-to-movable-type"
       ],
       "locales": [
         "en",
@@ -76,239 +77,63 @@
       ]
     },
     {
-      "public": 2,
-      "weight": 2,
-      "series_index": 1,
-      "slug": "take-barrel-organ",
-      "title": "The barrel organ",
-      "draft": false,
-      "file": "02-take-barrel-organ.md",
-      "former_file": null,
-      "former_tags": [
-        "01"
-      ],
-      "alias_history": [
-        "01-take-barrel-organ"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "ta",
-        "ro"
-      ]
-    },
-    {
-      "public": 2,
-      "weight": 2,
-      "series_index": 1,
-      "slug": "take-caravan",
-      "title": "The caravan",
-      "draft": false,
-      "file": "02-take-caravan.md",
-      "former_file": null,
-      "former_tags": [
-        "01"
-      ],
-      "alias_history": [
-        "01-take-caravan"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "ta",
-        "ro"
-      ]
-    },
-    {
-      "public": 2,
-      "weight": 2,
-      "series_index": 1,
-      "slug": "take-clerk",
-      "title": "The desk clerk",
-      "draft": false,
-      "file": "02-take-clerk.md",
-      "former_file": null,
-      "former_tags": [
-        "01"
-      ],
-      "alias_history": [
-        "01-take-clerk"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "ta",
-        "ro"
-      ]
-    },
-    {
-      "public": 2,
-      "weight": 2,
-      "series_index": 1,
-      "slug": "take-feast-scoop",
-      "title": "The feast scoop",
-      "draft": false,
-      "file": "02-take-feast-scoop.md",
-      "former_file": null,
-      "former_tags": [
-        "01"
-      ],
-      "alias_history": [
-        "01-take-feast-scoop"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "ta",
-        "ro"
-      ]
-    },
-    {
-      "public": 2,
-      "weight": 2,
-      "series_index": 1,
-      "slug": "take-pebbles",
-      "title": "Trays of pebbles",
-      "draft": false,
-      "file": "02-take-pebbles.md",
-      "former_file": null,
-      "former_tags": [
-        "01"
-      ],
-      "alias_history": [
-        "01-take-pebbles"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "ta",
-        "ro"
-      ]
-    },
-    {
-      "public": 2,
-      "weight": 2,
-      "series_index": 1,
-      "slug": "take-player-piano",
-      "title": "The player piano",
-      "draft": false,
-      "file": "02-take-player-piano.md",
-      "former_file": null,
-      "former_tags": [
-        "01"
-      ],
-      "alias_history": [
-        "01-take-player-piano"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "ta",
-        "ro"
-      ]
-    },
-    {
-      "public": 2,
-      "weight": 2,
-      "series_index": 1,
-      "slug": "take-silk-cards",
-      "title": "Pattern cards on silk",
-      "draft": false,
-      "file": "02-take-silk-cards.md",
-      "former_file": null,
-      "former_tags": [
-        "01"
-      ],
-      "alias_history": [
-        "01-take-silk-cards"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "ta",
-        "ro"
-      ]
-    },
-    {
-      "public": 2,
-      "weight": 2,
-      "series_index": 1,
-      "slug": "take-stubborn-helper",
-      "title": "The stubborn helper",
-      "draft": false,
-      "file": "02-take-stubborn-helper.md",
-      "former_file": null,
-      "former_tags": [
-        "01"
-      ],
-      "alias_history": [
-        "01-take-stubborn-helper"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "ta",
-        "ro"
-      ]
-    },
-    {
-      "public": 2,
-      "weight": 2,
-      "series_index": 1,
-      "slug": "take-water-wheel",
-      "title": "The water wheel",
-      "draft": false,
-      "file": "02-take-water-wheel.md",
-      "former_file": null,
-      "former_tags": [
-        "01"
-      ],
-      "alias_history": [
-        "01-take-water-wheel"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "ta",
-        "ro"
-      ]
-    },
-    {
-      "public": 2,
-      "weight": 2,
-      "series_index": 1,
-      "slug": "what-is-this-thing",
-      "title": "What is this thing?",
-      "draft": false,
-      "file": "02-what-is-this-thing.md",
-      "former_file": null,
-      "former_tags": [
-        "01"
-      ],
-      "alias_history": [
-        "01-what-is-this-thing"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "ta",
-        "ro"
-      ]
-    },
-    {
       "public": 3,
       "weight": 3,
       "series_index": 2,
-      "slug": "babbage-engines",
-      "title": "Babbage's Engines",
+      "slug": "how-the-message-travelled",
+      "title": "How the message travelled",
       "draft": false,
-      "file": "03-babbage-engines.md",
+      "file": "03-how-the-message-travelled.md",
+      "former_file": null,
+      "former_tags": [],
+      "alias_history": [],
+      "locales": [
+        "en",
+        "th",
+        "si",
+        "ta",
+        "ro"
+      ]
+    },
+    {
+      "public": 4,
+      "weight": 4,
+      "series_index": 3,
+      "slug": "mechanical-electromechanical-computing",
+      "title": "Mechanical & Electromechanical Computing",
+      "draft": true,
+      "file": "04-mechanical-electromechanical-computing.md",
       "former_file": null,
       "former_tags": [
-        "01a"
+        "01"
       ],
       "alias_history": [
-        "01a-babbage-engines"
+        "01-mechanical-electromechanical-computing",
+        "02-mechanical-electromechanical-computing"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "si",
+        "ta",
+        "ro"
+      ]
+    },
+    {
+      "public": 4,
+      "weight": 4,
+      "series_index": 3,
+      "slug": "take-barrel-organ",
+      "title": "The barrel organ",
+      "draft": false,
+      "file": "04-take-barrel-organ.md",
+      "former_file": null,
+      "former_tags": [
+        "01"
+      ],
+      "alias_history": [
+        "01-take-barrel-organ",
+        "02-take-barrel-organ"
       ],
       "locales": [
         "en",
@@ -321,16 +146,201 @@
       "public": 4,
       "weight": 4,
       "series_index": 3,
-      "slug": "jacquard-loom",
-      "title": "The Jacquard Loom",
+      "slug": "take-caravan",
+      "title": "The caravan",
       "draft": false,
-      "file": "04-jacquard-loom.md",
+      "file": "04-take-caravan.md",
       "former_file": null,
       "former_tags": [
-        "01b"
+        "01"
       ],
       "alias_history": [
-        "01b-jacquard-loom"
+        "01-take-caravan",
+        "02-take-caravan"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "ta",
+        "ro"
+      ]
+    },
+    {
+      "public": 4,
+      "weight": 4,
+      "series_index": 3,
+      "slug": "take-clerk",
+      "title": "The desk clerk",
+      "draft": false,
+      "file": "04-take-clerk.md",
+      "former_file": null,
+      "former_tags": [
+        "01"
+      ],
+      "alias_history": [
+        "01-take-clerk",
+        "02-take-clerk"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "ta",
+        "ro"
+      ]
+    },
+    {
+      "public": 4,
+      "weight": 4,
+      "series_index": 3,
+      "slug": "take-feast-scoop",
+      "title": "The feast scoop",
+      "draft": false,
+      "file": "04-take-feast-scoop.md",
+      "former_file": null,
+      "former_tags": [
+        "01"
+      ],
+      "alias_history": [
+        "01-take-feast-scoop",
+        "02-take-feast-scoop"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "ta",
+        "ro"
+      ]
+    },
+    {
+      "public": 4,
+      "weight": 4,
+      "series_index": 3,
+      "slug": "take-pebbles",
+      "title": "Trays of pebbles",
+      "draft": false,
+      "file": "04-take-pebbles.md",
+      "former_file": null,
+      "former_tags": [
+        "01"
+      ],
+      "alias_history": [
+        "01-take-pebbles",
+        "02-take-pebbles"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "ta",
+        "ro"
+      ]
+    },
+    {
+      "public": 4,
+      "weight": 4,
+      "series_index": 3,
+      "slug": "take-player-piano",
+      "title": "The player piano",
+      "draft": false,
+      "file": "04-take-player-piano.md",
+      "former_file": null,
+      "former_tags": [
+        "01"
+      ],
+      "alias_history": [
+        "01-take-player-piano",
+        "02-take-player-piano"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "ta",
+        "ro"
+      ]
+    },
+    {
+      "public": 4,
+      "weight": 4,
+      "series_index": 3,
+      "slug": "take-silk-cards",
+      "title": "Pattern cards on silk",
+      "draft": false,
+      "file": "04-take-silk-cards.md",
+      "former_file": null,
+      "former_tags": [
+        "01"
+      ],
+      "alias_history": [
+        "01-take-silk-cards",
+        "02-take-silk-cards"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "ta",
+        "ro"
+      ]
+    },
+    {
+      "public": 4,
+      "weight": 4,
+      "series_index": 3,
+      "slug": "take-stubborn-helper",
+      "title": "The stubborn helper",
+      "draft": false,
+      "file": "04-take-stubborn-helper.md",
+      "former_file": null,
+      "former_tags": [
+        "01"
+      ],
+      "alias_history": [
+        "01-take-stubborn-helper",
+        "02-take-stubborn-helper"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "ta",
+        "ro"
+      ]
+    },
+    {
+      "public": 4,
+      "weight": 4,
+      "series_index": 3,
+      "slug": "take-water-wheel",
+      "title": "The water wheel",
+      "draft": false,
+      "file": "04-take-water-wheel.md",
+      "former_file": null,
+      "former_tags": [
+        "01"
+      ],
+      "alias_history": [
+        "01-take-water-wheel",
+        "02-take-water-wheel"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "ta",
+        "ro"
+      ]
+    },
+    {
+      "public": 4,
+      "weight": 4,
+      "series_index": 3,
+      "slug": "what-is-this-thing",
+      "title": "What is this thing?",
+      "draft": false,
+      "file": "04-what-is-this-thing.md",
+      "former_file": null,
+      "former_tags": [
+        "01"
+      ],
+      "alias_history": [
+        "01-what-is-this-thing",
+        "02-what-is-this-thing"
       ],
       "locales": [
         "en",
@@ -343,16 +353,17 @@
       "public": 5,
       "weight": 5,
       "series_index": 4,
-      "slug": "why-mechanical-matters",
-      "title": "Why Mechanical Computing Matters",
+      "slug": "babbage-engines",
+      "title": "Babbage's Engines",
       "draft": false,
-      "file": "05-why-mechanical-matters.md",
+      "file": "05-babbage-engines.md",
       "former_file": null,
       "former_tags": [
-        "01c"
+        "01a"
       ],
       "alias_history": [
-        "01c-why-mechanical-matters"
+        "01a-babbage-engines",
+        "03-babbage-engines"
       ],
       "locales": [
         "en",
@@ -365,21 +376,21 @@
       "public": 6,
       "weight": 6,
       "series_index": 5,
-      "slug": "woodblock-to-movable-type",
-      "title": "From Woodblock to Movable Type",
+      "slug": "jacquard-loom",
+      "title": "The Jacquard Loom",
       "draft": false,
-      "file": "06-woodblock-to-movable-type.md",
+      "file": "06-jacquard-loom.md",
       "former_file": null,
       "former_tags": [
-        "01d"
+        "01b"
       ],
       "alias_history": [
-        "01d-woodblock-to-movable-type"
+        "01b-jacquard-loom",
+        "04-jacquard-loom"
       ],
       "locales": [
         "en",
         "th",
-        "si",
         "ta",
         "ro"
       ]
@@ -388,21 +399,21 @@
       "public": 7,
       "weight": 7,
       "series_index": 6,
-      "slug": "relays-and-electromechanical-logic",
-      "title": "Relays and Electromechanical Logic",
+      "slug": "why-mechanical-matters",
+      "title": "Why Mechanical Computing Matters",
       "draft": false,
-      "file": "07-relays-and-electromechanical-logic.md",
+      "file": "07-why-mechanical-matters.md",
       "former_file": null,
       "former_tags": [
-        "02"
+        "01c"
       ],
       "alias_history": [
-        "02-relays-and-electromechanical-logic"
+        "01c-why-mechanical-matters",
+        "05-why-mechanical-matters"
       ],
       "locales": [
         "en",
         "th",
-        "si",
         "ta",
         "ro"
       ]
@@ -411,16 +422,17 @@
       "public": 8,
       "weight": 8,
       "series_index": 7,
-      "slug": "the-vacuum-tube-era",
-      "title": "The Vacuum Tube Era",
+      "slug": "relays-and-electromechanical-logic",
+      "title": "Relays and Electromechanical Logic",
       "draft": false,
-      "file": "08-the-vacuum-tube-era.md",
+      "file": "08-relays-and-electromechanical-logic.md",
       "former_file": null,
       "former_tags": [
-        "03"
+        "02"
       ],
       "alias_history": [
-        "03-the-vacuum-tube-era"
+        "02-relays-and-electromechanical-logic",
+        "07-relays-and-electromechanical-logic"
       ],
       "locales": [
         "en",
@@ -434,16 +446,17 @@
       "public": 9,
       "weight": 9,
       "series_index": 8,
-      "slug": "why-the-transistor-had-to-happen",
-      "title": "Why the Transistor Had to Happen",
+      "slug": "the-vacuum-tube-era",
+      "title": "The Vacuum Tube Era",
       "draft": false,
-      "file": "09-why-the-transistor-had-to-happen.md",
+      "file": "09-the-vacuum-tube-era.md",
       "former_file": null,
       "former_tags": [
-        "04"
+        "03"
       ],
       "alias_history": [
-        "04-why-the-transistor-had-to-happen"
+        "03-the-vacuum-tube-era",
+        "08-the-vacuum-tube-era"
       ],
       "locales": [
         "en",
@@ -457,16 +470,17 @@
       "public": 10,
       "weight": 10,
       "series_index": 9,
-      "slug": "semiconductors-from-first-principles",
-      "title": "Semiconductors from First Principles",
+      "slug": "why-the-transistor-had-to-happen",
+      "title": "Why the Transistor Had to Happen",
       "draft": false,
-      "file": "10-semiconductors-from-first-principles.md",
+      "file": "10-why-the-transistor-had-to-happen.md",
       "former_file": null,
       "former_tags": [
-        "05"
+        "04"
       ],
       "alias_history": [
-        "05-semiconductors-from-first-principles"
+        "04-why-the-transistor-had-to-happen",
+        "09-why-the-transistor-had-to-happen"
       ],
       "locales": [
         "en",
@@ -480,16 +494,17 @@
       "public": 11,
       "weight": 11,
       "series_index": 10,
-      "slug": "the-transistor-bjt-to-mosfet",
-      "title": "The Transistor: BJT to MOSFET",
+      "slug": "semiconductors-from-first-principles",
+      "title": "Semiconductors from First Principles",
       "draft": false,
-      "file": "11-the-transistor-bjt-to-mosfet.md",
+      "file": "11-semiconductors-from-first-principles.md",
       "former_file": null,
       "former_tags": [
-        "06"
+        "05"
       ],
       "alias_history": [
-        "06-the-transistor-bjt-to-mosfet"
+        "05-semiconductors-from-first-principles",
+        "10-semiconductors-from-first-principles"
       ],
       "locales": [
         "en",
@@ -503,16 +518,17 @@
       "public": 12,
       "weight": 12,
       "series_index": 11,
-      "slug": "logic-gates-from-transistors",
-      "title": "Logic Gates from Transistors",
+      "slug": "the-transistor-bjt-to-mosfet",
+      "title": "The Transistor: BJT to MOSFET",
       "draft": false,
-      "file": "12-logic-gates-from-transistors.md",
+      "file": "12-the-transistor-bjt-to-mosfet.md",
       "former_file": null,
       "former_tags": [
-        "07"
+        "06"
       ],
       "alias_history": [
-        "07-logic-gates-from-transistors"
+        "06-the-transistor-bjt-to-mosfet",
+        "11-the-transistor-bjt-to-mosfet"
       ],
       "locales": [
         "en",
@@ -526,16 +542,17 @@
       "public": 13,
       "weight": 13,
       "series_index": 12,
-      "slug": "from-gates-to-combinational-logic",
-      "title": "From Gates to Combinational Logic",
+      "slug": "logic-gates-from-transistors",
+      "title": "Logic Gates from Transistors",
       "draft": false,
-      "file": "13-from-gates-to-combinational-logic.md",
+      "file": "13-logic-gates-from-transistors.md",
       "former_file": null,
       "former_tags": [
-        "08"
+        "07"
       ],
       "alias_history": [
-        "08-from-gates-to-combinational-logic"
+        "07-logic-gates-from-transistors",
+        "12-logic-gates-from-transistors"
       ],
       "locales": [
         "en",
@@ -549,16 +566,17 @@
       "public": 14,
       "weight": 14,
       "series_index": 13,
-      "slug": "sequential-logic",
-      "title": "Sequential Logic",
+      "slug": "from-gates-to-combinational-logic",
+      "title": "From Gates to Combinational Logic",
       "draft": false,
-      "file": "14-sequential-logic.md",
+      "file": "14-from-gates-to-combinational-logic.md",
       "former_file": null,
       "former_tags": [
-        "09"
+        "08"
       ],
       "alias_history": [
-        "09-sequential-logic"
+        "08-from-gates-to-combinational-logic",
+        "13-from-gates-to-combinational-logic"
       ],
       "locales": [
         "en",
@@ -572,16 +590,17 @@
       "public": 15,
       "weight": 15,
       "series_index": 14,
-      "slug": "the-memory-hierarchy-begins",
-      "title": "The Memory Hierarchy Begins",
+      "slug": "sequential-logic",
+      "title": "Sequential Logic",
       "draft": false,
-      "file": "15-the-memory-hierarchy-begins.md",
+      "file": "15-sequential-logic.md",
       "former_file": null,
       "former_tags": [
-        "10"
+        "09"
       ],
       "alias_history": [
-        "10-the-memory-hierarchy-begins"
+        "09-sequential-logic",
+        "14-sequential-logic"
       ],
       "locales": [
         "en",
@@ -595,16 +614,17 @@
       "public": 16,
       "weight": 16,
       "series_index": 15,
-      "slug": "instruction-sets",
-      "title": "Instruction Sets",
+      "slug": "the-memory-hierarchy-begins",
+      "title": "The Memory Hierarchy Begins",
       "draft": false,
-      "file": "16-instruction-sets.md",
+      "file": "16-the-memory-hierarchy-begins.md",
       "former_file": null,
       "former_tags": [
-        "11"
+        "10"
       ],
       "alias_history": [
-        "11-instruction-sets"
+        "10-the-memory-hierarchy-begins",
+        "15-the-memory-hierarchy-begins"
       ],
       "locales": [
         "en",
@@ -618,16 +638,17 @@
       "public": 17,
       "weight": 17,
       "series_index": 16,
-      "slug": "datapath-design",
-      "title": "Datapath Design",
+      "slug": "instruction-sets",
+      "title": "Instruction Sets",
       "draft": false,
-      "file": "17-datapath-design.md",
+      "file": "17-instruction-sets.md",
       "former_file": null,
       "former_tags": [
-        "12"
+        "11"
       ],
       "alias_history": [
-        "12-datapath-design"
+        "11-instruction-sets",
+        "16-instruction-sets"
       ],
       "locales": [
         "en",
@@ -641,16 +662,17 @@
       "public": 18,
       "weight": 18,
       "series_index": 17,
-      "slug": "pipelining",
-      "title": "Pipelining",
+      "slug": "datapath-design",
+      "title": "Datapath Design",
       "draft": false,
-      "file": "18-pipelining.md",
+      "file": "18-datapath-design.md",
       "former_file": null,
       "former_tags": [
-        "13"
+        "12"
       ],
       "alias_history": [
-        "13-pipelining"
+        "12-datapath-design",
+        "17-datapath-design"
       ],
       "locales": [
         "en",
@@ -664,16 +686,17 @@
       "public": 19,
       "weight": 19,
       "series_index": 18,
-      "slug": "branch-prediction",
-      "title": "Branch Prediction",
+      "slug": "pipelining",
+      "title": "Pipelining",
       "draft": false,
-      "file": "19-branch-prediction.md",
+      "file": "19-pipelining.md",
       "former_file": null,
       "former_tags": [
-        "14"
+        "13"
       ],
       "alias_history": [
-        "14-branch-prediction"
+        "13-pipelining",
+        "18-pipelining"
       ],
       "locales": [
         "en",
@@ -687,16 +710,17 @@
       "public": 20,
       "weight": 20,
       "series_index": 19,
-      "slug": "caches",
-      "title": "Caches",
+      "slug": "branch-prediction",
+      "title": "Branch Prediction",
       "draft": false,
-      "file": "20-caches.md",
+      "file": "20-branch-prediction.md",
       "former_file": null,
       "former_tags": [
-        "15"
+        "14"
       ],
       "alias_history": [
-        "15-caches"
+        "14-branch-prediction",
+        "19-branch-prediction"
       ],
       "locales": [
         "en",
@@ -710,16 +734,17 @@
       "public": 21,
       "weight": 21,
       "series_index": 20,
-      "slug": "out-of-order-execution",
-      "title": "Out-of-Order Execution",
+      "slug": "caches",
+      "title": "Caches",
       "draft": false,
-      "file": "21-out-of-order-execution.md",
+      "file": "21-caches.md",
       "former_file": null,
       "former_tags": [
-        "16"
+        "15"
       ],
       "alias_history": [
-        "16-out-of-order-execution"
+        "15-caches",
+        "20-caches"
       ],
       "locales": [
         "en",
@@ -733,16 +758,17 @@
       "public": 22,
       "weight": 22,
       "series_index": 21,
-      "slug": "superscalar-multicore",
-      "title": "Superscalar & Multicore",
+      "slug": "out-of-order-execution",
+      "title": "Out-of-Order Execution",
       "draft": false,
-      "file": "22-superscalar-multicore.md",
+      "file": "22-out-of-order-execution.md",
       "former_file": null,
       "former_tags": [
-        "17"
+        "16"
       ],
       "alias_history": [
-        "17-superscalar-multicore"
+        "16-out-of-order-execution",
+        "21-out-of-order-execution"
       ],
       "locales": [
         "en",
@@ -756,16 +782,17 @@
       "public": 23,
       "weight": 23,
       "series_index": 22,
-      "slug": "mainframes-to-minicomputers-to-microprocessors",
-      "title": "Mainframes to Minicomputers to Microprocessors",
+      "slug": "superscalar-multicore",
+      "title": "Superscalar & Multicore",
       "draft": false,
-      "file": "23-mainframes-to-minicomputers-to-microprocessors.md",
+      "file": "23-superscalar-multicore.md",
       "former_file": null,
       "former_tags": [
-        "18"
+        "17"
       ],
       "alias_history": [
-        "18-mainframes-to-minicomputers-to-microprocessors"
+        "17-superscalar-multicore",
+        "22-superscalar-multicore"
       ],
       "locales": [
         "en",
@@ -779,16 +806,17 @@
       "public": 24,
       "weight": 24,
       "series_index": 23,
-      "slug": "the-x86-vs-risc-split",
-      "title": "The x86 vs RISC Split",
+      "slug": "mainframes-to-minicomputers-to-microprocessors",
+      "title": "Mainframes to Minicomputers to Microprocessors",
       "draft": false,
-      "file": "24-the-x86-vs-risc-split.md",
+      "file": "24-mainframes-to-minicomputers-to-microprocessors.md",
       "former_file": null,
       "former_tags": [
-        "19"
+        "18"
       ],
       "alias_history": [
-        "19-the-x86-vs-risc-split"
+        "18-mainframes-to-minicomputers-to-microprocessors",
+        "23-mainframes-to-minicomputers-to-microprocessors"
       ],
       "locales": [
         "en",
@@ -802,16 +830,17 @@
       "public": 25,
       "weight": 25,
       "series_index": 24,
-      "slug": "arm-and-risc-v-the-architecture-landscape-today",
-      "title": "ARM and RISC-V: The Architecture Landscape Today",
+      "slug": "the-x86-vs-risc-split",
+      "title": "The x86 vs RISC Split",
       "draft": false,
-      "file": "25-arm-and-risc-v-the-architecture-landscape-today.md",
+      "file": "25-the-x86-vs-risc-split.md",
       "former_file": null,
       "former_tags": [
-        "20"
+        "19"
       ],
       "alias_history": [
-        "20-arm-and-risc-v-the-architecture-landscape-today"
+        "19-the-x86-vs-risc-split",
+        "24-the-x86-vs-risc-split"
       ],
       "locales": [
         "en",
@@ -825,16 +854,17 @@
       "public": 26,
       "weight": 26,
       "series_index": 25,
-      "slug": "batch-processing-and-the-birth-of-the-operating-system",
-      "title": "Batch Processing and the Birth of the Operating System",
+      "slug": "arm-and-risc-v-the-architecture-landscape-today",
+      "title": "ARM and RISC-V: The Architecture Landscape Today",
       "draft": false,
-      "file": "26-batch-processing-and-the-birth-of-the-operating-system.md",
+      "file": "26-arm-and-risc-v-the-architecture-landscape-today.md",
       "former_file": null,
       "former_tags": [
-        "21"
+        "20"
       ],
       "alias_history": [
-        "21-batch-processing-and-the-birth-of-the-operating-system"
+        "20-arm-and-risc-v-the-architecture-landscape-today",
+        "25-arm-and-risc-v-the-architecture-landscape-today"
       ],
       "locales": [
         "en",
@@ -848,16 +878,17 @@
       "public": 27,
       "weight": 27,
       "series_index": 26,
-      "slug": "time-sharing-and-the-unix-lineage",
-      "title": "Time-Sharing and the Unix Lineage",
+      "slug": "batch-processing-and-the-birth-of-the-operating-system",
+      "title": "Batch Processing and the Birth of the Operating System",
       "draft": false,
-      "file": "27-time-sharing-and-the-unix-lineage.md",
+      "file": "27-batch-processing-and-the-birth-of-the-operating-system.md",
       "former_file": null,
       "former_tags": [
-        "22"
+        "21"
       ],
       "alias_history": [
-        "22-time-sharing-and-the-unix-lineage"
+        "21-batch-processing-and-the-birth-of-the-operating-system",
+        "26-batch-processing-and-the-birth-of-the-operating-system"
       ],
       "locales": [
         "en",
@@ -871,16 +902,17 @@
       "public": 28,
       "weight": 28,
       "series_index": 27,
-      "slug": "the-gnu-movement-and-linux",
-      "title": "The GNU Movement and Linux",
+      "slug": "time-sharing-and-the-unix-lineage",
+      "title": "Time-Sharing and the Unix Lineage",
       "draft": false,
-      "file": "28-the-gnu-movement-and-linux.md",
+      "file": "28-time-sharing-and-the-unix-lineage.md",
       "former_file": null,
       "former_tags": [
-        "23"
+        "22"
       ],
       "alias_history": [
-        "23-the-gnu-movement-and-linux"
+        "22-time-sharing-and-the-unix-lineage",
+        "27-time-sharing-and-the-unix-lineage"
       ],
       "locales": [
         "en",
@@ -894,16 +926,17 @@
       "public": 29,
       "weight": 29,
       "series_index": 28,
-      "slug": "virtual-memory-and-multitasking",
-      "title": "Virtual Memory and Multitasking",
+      "slug": "the-gnu-movement-and-linux",
+      "title": "The GNU Movement and Linux",
       "draft": false,
-      "file": "29-virtual-memory-and-multitasking.md",
+      "file": "29-the-gnu-movement-and-linux.md",
       "former_file": null,
       "former_tags": [
-        "24"
+        "23"
       ],
       "alias_history": [
-        "24-virtual-memory-and-multitasking"
+        "23-the-gnu-movement-and-linux",
+        "28-the-gnu-movement-and-linux"
       ],
       "locales": [
         "en",
@@ -917,16 +950,17 @@
       "public": 30,
       "weight": 30,
       "series_index": 29,
-      "slug": "containers-and-modern-os-isolation",
-      "title": "Containers and Modern OS Isolation",
+      "slug": "virtual-memory-and-multitasking",
+      "title": "Virtual Memory and Multitasking",
       "draft": false,
-      "file": "30-containers-and-modern-os-isolation.md",
+      "file": "30-virtual-memory-and-multitasking.md",
       "former_file": null,
       "former_tags": [
-        "25"
+        "24"
       ],
       "alias_history": [
-        "25-containers-and-modern-os-isolation"
+        "24-virtual-memory-and-multitasking",
+        "29-virtual-memory-and-multitasking"
       ],
       "locales": [
         "en",
@@ -940,16 +974,17 @@
       "public": 31,
       "weight": 31,
       "series_index": 30,
-      "slug": "from-machine-code-to-assembly",
-      "title": "From Machine Code to Assembly",
+      "slug": "containers-and-modern-os-isolation",
+      "title": "Containers and Modern OS Isolation",
       "draft": false,
-      "file": "31-from-machine-code-to-assembly.md",
+      "file": "31-containers-and-modern-os-isolation.md",
       "former_file": null,
       "former_tags": [
-        "26"
+        "25"
       ],
       "alias_history": [
-        "26-from-machine-code-to-assembly"
+        "25-containers-and-modern-os-isolation",
+        "30-containers-and-modern-os-isolation"
       ],
       "locales": [
         "en",
@@ -963,16 +998,17 @@
       "public": 32,
       "weight": 32,
       "series_index": 31,
-      "slug": "high-level-languages-fortran-cobol-lisp-c",
-      "title": "High-Level Languages: FORTRAN, COBOL, Lisp, C",
+      "slug": "from-machine-code-to-assembly",
+      "title": "From Machine Code to Assembly",
       "draft": false,
-      "file": "32-high-level-languages-fortran-cobol-lisp-c.md",
+      "file": "32-from-machine-code-to-assembly.md",
       "former_file": null,
       "former_tags": [
-        "27"
+        "26"
       ],
       "alias_history": [
-        "27-high-level-languages-fortran-cobol-lisp-c"
+        "26-from-machine-code-to-assembly",
+        "31-from-machine-code-to-assembly"
       ],
       "locales": [
         "en",
@@ -986,16 +1022,17 @@
       "public": 33,
       "weight": 33,
       "series_index": 32,
-      "slug": "compilers-jit-and-modern-language-runtimes",
-      "title": "Compilers, JIT, and Modern Language Runtimes",
+      "slug": "high-level-languages-fortran-cobol-lisp-c",
+      "title": "High-Level Languages: FORTRAN, COBOL, Lisp, C",
       "draft": false,
-      "file": "33-compilers-jit-and-modern-language-runtimes.md",
+      "file": "33-high-level-languages-fortran-cobol-lisp-c.md",
       "former_file": null,
       "former_tags": [
-        "28"
+        "27"
       ],
       "alias_history": [
-        "28-compilers-jit-and-modern-language-runtimes"
+        "27-high-level-languages-fortran-cobol-lisp-c",
+        "32-high-level-languages-fortran-cobol-lisp-c"
       ],
       "locales": [
         "en",
@@ -1009,16 +1046,17 @@
       "public": 34,
       "weight": 34,
       "series_index": 33,
-      "slug": "real-time-systems-and-deterministic-scheduling",
-      "title": "Real-Time Systems and Deterministic Scheduling",
+      "slug": "compilers-jit-and-modern-language-runtimes",
+      "title": "Compilers, JIT, and Modern Language Runtimes",
       "draft": false,
-      "file": "34-real-time-systems-and-deterministic-scheduling.md",
+      "file": "34-compilers-jit-and-modern-language-runtimes.md",
       "former_file": null,
       "former_tags": [
-        "29"
+        "28"
       ],
       "alias_history": [
-        "29-real-time-systems-and-deterministic-scheduling"
+        "28-compilers-jit-and-modern-language-runtimes",
+        "33-compilers-jit-and-modern-language-runtimes"
       ],
       "locales": [
         "en",
@@ -1032,16 +1070,17 @@
       "public": 35,
       "weight": 35,
       "series_index": 34,
-      "slug": "real-time-systems-in-practice",
-      "title": "Real-Time Systems in Practice",
+      "slug": "real-time-systems-and-deterministic-scheduling",
+      "title": "Real-Time Systems and Deterministic Scheduling",
       "draft": false,
-      "file": "35-real-time-systems-in-practice.md",
+      "file": "35-real-time-systems-and-deterministic-scheduling.md",
       "former_file": null,
       "former_tags": [
-        "30"
+        "29"
       ],
       "alias_history": [
-        "30-real-time-systems-in-practice"
+        "29-real-time-systems-and-deterministic-scheduling",
+        "34-real-time-systems-and-deterministic-scheduling"
       ],
       "locales": [
         "en",
@@ -1055,16 +1094,17 @@
       "public": 36,
       "weight": 36,
       "series_index": 35,
-      "slug": "buses-101",
-      "title": "Buses 101",
+      "slug": "real-time-systems-in-practice",
+      "title": "Real-Time Systems in Practice",
       "draft": false,
-      "file": "36-buses-101.md",
+      "file": "36-real-time-systems-in-practice.md",
       "former_file": null,
       "former_tags": [
-        "31"
+        "30"
       ],
       "alias_history": [
-        "31-buses-101"
+        "30-real-time-systems-in-practice",
+        "35-real-time-systems-in-practice"
       ],
       "locales": [
         "en",
@@ -1078,16 +1118,17 @@
       "public": 37,
       "weight": 37,
       "series_index": 36,
-      "slug": "from-isa-bus-to-pci-to-pcie",
-      "title": "From ISA Bus to PCI to PCIe",
+      "slug": "buses-101",
+      "title": "Buses 101",
       "draft": false,
-      "file": "37-from-isa-bus-to-pci-to-pcie.md",
+      "file": "37-buses-101.md",
       "former_file": null,
       "former_tags": [
-        "32"
+        "31"
       ],
       "alias_history": [
-        "32-from-isa-bus-to-pci-to-pcie"
+        "31-buses-101",
+        "36-buses-101"
       ],
       "locales": [
         "en",
@@ -1101,16 +1142,17 @@
       "public": 38,
       "weight": 38,
       "series_index": 37,
-      "slug": "pcie-deep-dive",
-      "title": "PCIe Deep Dive",
+      "slug": "from-isa-bus-to-pci-to-pcie",
+      "title": "From ISA Bus to PCI to PCIe",
       "draft": false,
-      "file": "38-pcie-deep-dive.md",
+      "file": "38-from-isa-bus-to-pci-to-pcie.md",
       "former_file": null,
       "former_tags": [
-        "33"
+        "32"
       ],
       "alias_history": [
-        "33-pcie-deep-dive"
+        "32-from-isa-bus-to-pci-to-pcie",
+        "37-from-isa-bus-to-pci-to-pcie"
       ],
       "locales": [
         "en",
@@ -1124,16 +1166,17 @@
       "public": 39,
       "weight": 39,
       "series_index": 38,
-      "slug": "memory-buses",
-      "title": "Memory Buses",
+      "slug": "pcie-deep-dive",
+      "title": "PCIe Deep Dive",
       "draft": false,
-      "file": "39-memory-buses.md",
+      "file": "39-pcie-deep-dive.md",
       "former_file": null,
       "former_tags": [
-        "34"
+        "33"
       ],
       "alias_history": [
-        "34-memory-buses"
+        "33-pcie-deep-dive",
+        "38-pcie-deep-dive"
       ],
       "locales": [
         "en",
@@ -1147,16 +1190,17 @@
       "public": 40,
       "weight": 40,
       "series_index": 39,
-      "slug": "the-memory-wall",
-      "title": "The Memory Wall",
+      "slug": "memory-buses",
+      "title": "Memory Buses",
       "draft": false,
-      "file": "40-the-memory-wall.md",
+      "file": "40-memory-buses.md",
       "former_file": null,
       "former_tags": [
-        "35"
+        "34"
       ],
       "alias_history": [
-        "35-the-memory-wall"
+        "34-memory-buses",
+        "39-memory-buses"
       ],
       "locales": [
         "en",
@@ -1170,38 +1214,41 @@
       "public": 41,
       "weight": 41,
       "series_index": 40,
-      "slug": "the-clock-speed-wall",
-      "title": "The Clock Speed Wall",
+      "slug": "the-memory-wall",
+      "title": "The Memory Wall",
       "draft": false,
-      "file": "41-the-clock-speed-wall.md",
+      "file": "41-the-memory-wall.md",
       "former_file": null,
       "former_tags": [
-        "36"
+        "35"
       ],
       "alias_history": [
-        "36-the-clock-speed-wall"
+        "35-the-memory-wall",
+        "40-the-memory-wall"
       ],
       "locales": [
         "en",
         "th",
         "si",
-        "ta"
+        "ta",
+        "ro"
       ]
     },
     {
       "public": 42,
       "weight": 42,
       "series_index": 41,
-      "slug": "interconnects-at-scale",
-      "title": "Interconnects at Scale",
+      "slug": "the-clock-speed-wall",
+      "title": "The Clock Speed Wall",
       "draft": false,
-      "file": "42-interconnects-at-scale.md",
+      "file": "42-the-clock-speed-wall.md",
       "former_file": null,
       "former_tags": [
-        "37"
+        "36"
       ],
       "alias_history": [
-        "37-interconnects-at-scale"
+        "36-the-clock-speed-wall",
+        "41-the-clock-speed-wall"
       ],
       "locales": [
         "en",
@@ -1214,16 +1261,17 @@
       "public": 43,
       "weight": 43,
       "series_index": 42,
-      "slug": "serial-links-and-the-first-machine-to-machine-connections",
-      "title": "Serial Links and the First Machine-to-Machine Connections",
+      "slug": "interconnects-at-scale",
+      "title": "Interconnects at Scale",
       "draft": false,
-      "file": "43-serial-links-and-the-first-machine-to-machine-connections.md",
+      "file": "43-interconnects-at-scale.md",
       "former_file": null,
       "former_tags": [
-        "38"
+        "37"
       ],
       "alias_history": [
-        "38-serial-links-and-the-first-machine-to-machine-connections"
+        "37-interconnects-at-scale",
+        "42-interconnects-at-scale"
       ],
       "locales": [
         "en",
@@ -1236,16 +1284,17 @@
       "public": 44,
       "weight": 44,
       "series_index": 43,
-      "slug": "arpanet-and-packet-switching",
-      "title": "ARPANET and Packet Switching",
+      "slug": "serial-links-and-the-first-machine-to-machine-connections",
+      "title": "Serial Links and the First Machine-to-Machine Connections",
       "draft": false,
-      "file": "44-arpanet-and-packet-switching.md",
+      "file": "44-serial-links-and-the-first-machine-to-machine-connections.md",
       "former_file": null,
       "former_tags": [
-        "39"
+        "38"
       ],
       "alias_history": [
-        "39-arpanet-and-packet-switching"
+        "38-serial-links-and-the-first-machine-to-machine-connections",
+        "43-serial-links-and-the-first-machine-to-machine-connections"
       ],
       "locales": [
         "en",
@@ -1258,16 +1307,17 @@
       "public": 45,
       "weight": 45,
       "series_index": 44,
-      "slug": "ethernet-and-the-local-area-network",
-      "title": "Ethernet and the Local Area Network",
+      "slug": "arpanet-and-packet-switching",
+      "title": "ARPANET and Packet Switching",
       "draft": false,
-      "file": "45-ethernet-and-the-local-area-network.md",
+      "file": "45-arpanet-and-packet-switching.md",
       "former_file": null,
       "former_tags": [
-        "40"
+        "39"
       ],
       "alias_history": [
-        "40-ethernet-and-the-local-area-network"
+        "39-arpanet-and-packet-switching",
+        "44-arpanet-and-packet-switching"
       ],
       "locales": [
         "en",
@@ -1280,16 +1330,17 @@
       "public": 46,
       "weight": 46,
       "series_index": 45,
-      "slug": "tcp-ip-and-the-modern-internet-stack",
-      "title": "TCP/IP and the Modern Internet Stack",
+      "slug": "ethernet-and-the-local-area-network",
+      "title": "Ethernet and the Local Area Network",
       "draft": false,
-      "file": "46-tcp-ip-and-the-modern-internet-stack.md",
+      "file": "46-ethernet-and-the-local-area-network.md",
       "former_file": null,
       "former_tags": [
-        "41"
+        "40"
       ],
       "alias_history": [
-        "41-tcp-ip-and-the-modern-internet-stack"
+        "40-ethernet-and-the-local-area-network",
+        "45-ethernet-and-the-local-area-network"
       ],
       "locales": [
         "en",
@@ -1302,16 +1353,17 @@
       "public": 47,
       "weight": 47,
       "series_index": 46,
-      "slug": "datacenter-networking-and-rdma",
-      "title": "Datacenter Networking and RDMA",
+      "slug": "tcp-ip-and-the-modern-internet-stack",
+      "title": "TCP/IP and the Modern Internet Stack",
       "draft": false,
-      "file": "47-datacenter-networking-and-rdma.md",
+      "file": "47-tcp-ip-and-the-modern-internet-stack.md",
       "former_file": null,
       "former_tags": [
-        "42"
+        "41"
       ],
       "alias_history": [
-        "42-datacenter-networking-and-rdma"
+        "41-tcp-ip-and-the-modern-internet-stack",
+        "46-tcp-ip-and-the-modern-internet-stack"
       ],
       "locales": [
         "en",
@@ -1324,16 +1376,17 @@
       "public": 48,
       "weight": 48,
       "series_index": 47,
-      "slug": "usenet-archie-gopher-and-the-pre-web-internet",
-      "title": "Usenet, Archie, Gopher, and the Pre-Web Internet",
+      "slug": "datacenter-networking-and-rdma",
+      "title": "Datacenter Networking and RDMA",
       "draft": false,
-      "file": "48-usenet-archie-gopher-and-the-pre-web-internet.md",
+      "file": "48-datacenter-networking-and-rdma.md",
       "former_file": null,
       "former_tags": [
-        "43"
+        "42"
       ],
       "alias_history": [
-        "43-usenet-archie-gopher-and-the-pre-web-internet"
+        "42-datacenter-networking-and-rdma",
+        "47-datacenter-networking-and-rdma"
       ],
       "locales": [
         "en",
@@ -1346,16 +1399,40 @@
       "public": 49,
       "weight": 49,
       "series_index": 48,
+      "slug": "usenet-archie-gopher-and-the-pre-web-internet",
+      "title": "Usenet, Archie, Gopher, and the Pre-Web Internet",
+      "draft": false,
+      "file": "49-usenet-archie-gopher-and-the-pre-web-internet.md",
+      "former_file": null,
+      "former_tags": [
+        "43"
+      ],
+      "alias_history": [
+        "43-usenet-archie-gopher-and-the-pre-web-internet",
+        "48-usenet-archie-gopher-and-the-pre-web-internet"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "si",
+        "ta"
+      ]
+    },
+    {
+      "public": 50,
+      "weight": 50,
+      "series_index": 49,
       "slug": "from-press-to-pixel",
       "title": "From Press to Pixel",
       "draft": false,
-      "file": "49-from-press-to-pixel.md",
+      "file": "50-from-press-to-pixel.md",
       "former_file": null,
       "former_tags": [
         "43b"
       ],
       "alias_history": [
-        "43b-from-press-to-pixel"
+        "43b-from-press-to-pixel",
+        "49-from-press-to-pixel"
       ],
       "locales": [
         "en",
@@ -1366,41 +1443,20 @@
       ]
     },
     {
-      "public": 50,
-      "weight": 50,
-      "series_index": 49,
+      "public": 51,
+      "weight": 51,
+      "series_index": 50,
       "slug": "google-s-big-data-infrastructure-why-they-won",
       "title": "Google's Big Data Infrastructure — Why They Won",
       "draft": false,
-      "file": "50-google-s-big-data-infrastructure-why-they-won.md",
+      "file": "51-google-s-big-data-infrastructure-why-they-won.md",
       "former_file": null,
       "former_tags": [
         "44"
       ],
       "alias_history": [
-        "44-google-s-big-data-infrastructure-why-they-won"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "si",
-        "ta"
-      ]
-    },
-    {
-      "public": 51,
-      "weight": 51,
-      "series_index": 50,
-      "slug": "kubernetes-and-container-orchestration-at-scale",
-      "title": "Kubernetes and Container Orchestration at Scale",
-      "draft": false,
-      "file": "51-kubernetes-and-container-orchestration-at-scale.md",
-      "former_file": null,
-      "former_tags": [
-        "45"
-      ],
-      "alias_history": [
-        "45-kubernetes-and-container-orchestration-at-scale"
+        "44-google-s-big-data-infrastructure-why-they-won",
+        "50-google-s-big-data-infrastructure-why-they-won"
       ],
       "locales": [
         "en",
@@ -1413,16 +1469,17 @@
       "public": 52,
       "weight": 52,
       "series_index": 51,
-      "slug": "the-machine-learning-software-stack",
-      "title": "The Machine Learning Software Stack",
+      "slug": "kubernetes-and-container-orchestration-at-scale",
+      "title": "Kubernetes and Container Orchestration at Scale",
       "draft": false,
-      "file": "52-the-machine-learning-software-stack.md",
+      "file": "52-kubernetes-and-container-orchestration-at-scale.md",
       "former_file": null,
       "former_tags": [
-        "46"
+        "45"
       ],
       "alias_history": [
-        "46-the-machine-learning-software-stack"
+        "45-kubernetes-and-container-orchestration-at-scale",
+        "51-kubernetes-and-container-orchestration-at-scale"
       ],
       "locales": [
         "en",
@@ -1435,39 +1492,40 @@
       "public": 53,
       "weight": 53,
       "series_index": 52,
-      "slug": "what-7nm-actually-means",
-      "title": "What '7nm' Actually Means",
+      "slug": "the-machine-learning-software-stack",
+      "title": "The Machine Learning Software Stack",
       "draft": false,
-      "file": "53-what-7nm-actually-means.md",
+      "file": "53-the-machine-learning-software-stack.md",
       "former_file": null,
       "former_tags": [
-        "47"
+        "46"
       ],
       "alias_history": [
-        "47-what-7nm-actually-means"
+        "46-the-machine-learning-software-stack",
+        "52-the-machine-learning-software-stack"
       ],
       "locales": [
         "en",
         "th",
         "si",
-        "ta",
-        "ro"
+        "ta"
       ]
     },
     {
       "public": 54,
       "weight": 54,
       "series_index": 53,
-      "slug": "photolithography",
-      "title": "Photolithography",
+      "slug": "what-7nm-actually-means",
+      "title": "What '7nm' Actually Means",
       "draft": false,
-      "file": "54-photolithography.md",
+      "file": "54-what-7nm-actually-means.md",
       "former_file": null,
       "former_tags": [
-        "48"
+        "47"
       ],
       "alias_history": [
-        "48-photolithography"
+        "47-what-7nm-actually-means",
+        "53-what-7nm-actually-means"
       ],
       "locales": [
         "en",
@@ -1481,16 +1539,17 @@
       "public": 55,
       "weight": 55,
       "series_index": 54,
-      "slug": "finfet-to-gaa",
-      "title": "FinFET to GAA",
+      "slug": "photolithography",
+      "title": "Photolithography",
       "draft": false,
-      "file": "55-finfet-to-gaa.md",
+      "file": "55-photolithography.md",
       "former_file": null,
       "former_tags": [
-        "49"
+        "48"
       ],
       "alias_history": [
-        "49-finfet-to-gaa"
+        "48-photolithography",
+        "54-photolithography"
       ],
       "locales": [
         "en",
@@ -1504,38 +1563,41 @@
       "public": 56,
       "weight": 56,
       "series_index": 55,
-      "slug": "moore-s-law",
-      "title": "Moore's Law",
+      "slug": "finfet-to-gaa",
+      "title": "FinFET to GAA",
       "draft": false,
-      "file": "56-moore-s-law.md",
+      "file": "56-finfet-to-gaa.md",
       "former_file": null,
       "former_tags": [
-        "50"
+        "49"
       ],
       "alias_history": [
-        "50-moore-s-law"
+        "49-finfet-to-gaa",
+        "55-finfet-to-gaa"
       ],
       "locales": [
         "en",
         "th",
         "si",
-        "ta"
+        "ta",
+        "ro"
       ]
     },
     {
       "public": 57,
       "weight": 57,
       "series_index": 56,
-      "slug": "chiplets-advanced-packaging",
-      "title": "Chiplets & Advanced Packaging",
+      "slug": "moore-s-law",
+      "title": "Moore's Law",
       "draft": false,
-      "file": "57-chiplets-advanced-packaging.md",
+      "file": "57-moore-s-law.md",
       "former_file": null,
       "former_tags": [
-        "51"
+        "50"
       ],
       "alias_history": [
-        "51-chiplets-advanced-packaging"
+        "50-moore-s-law",
+        "56-moore-s-law"
       ],
       "locales": [
         "en",
@@ -1548,16 +1610,17 @@
       "public": 58,
       "weight": 58,
       "series_index": 57,
-      "slug": "why-gpus-exist",
-      "title": "Why GPUs Exist",
+      "slug": "chiplets-advanced-packaging",
+      "title": "Chiplets & Advanced Packaging",
       "draft": false,
-      "file": "58-why-gpus-exist.md",
+      "file": "58-chiplets-advanced-packaging.md",
       "former_file": null,
       "former_tags": [
-        "52"
+        "51"
       ],
       "alias_history": [
-        "52-why-gpus-exist"
+        "51-chiplets-advanced-packaging",
+        "57-chiplets-advanced-packaging"
       ],
       "locales": [
         "en",
@@ -1570,39 +1633,40 @@
       "public": 59,
       "weight": 59,
       "series_index": 58,
-      "slug": "cuda-cores-warps-and-occupancy",
-      "title": "CUDA Cores, Warps, and Occupancy",
+      "slug": "why-gpus-exist",
+      "title": "Why GPUs Exist",
       "draft": false,
-      "file": "59-cuda-cores-warps-and-occupancy.md",
+      "file": "59-why-gpus-exist.md",
       "former_file": null,
       "former_tags": [
-        "53"
+        "52"
       ],
       "alias_history": [
-        "53-cuda-cores-warps-and-occupancy"
+        "52-why-gpus-exist",
+        "58-why-gpus-exist"
       ],
       "locales": [
         "en",
         "th",
         "si",
-        "ta",
-        "ro"
+        "ta"
       ]
     },
     {
       "public": 60,
       "weight": 60,
       "series_index": 59,
-      "slug": "gpu-memory-hierarchy",
-      "title": "GPU Memory Hierarchy",
+      "slug": "cuda-cores-warps-and-occupancy",
+      "title": "CUDA Cores, Warps, and Occupancy",
       "draft": false,
-      "file": "60-gpu-memory-hierarchy.md",
+      "file": "60-cuda-cores-warps-and-occupancy.md",
       "former_file": null,
       "former_tags": [
-        "54"
+        "53"
       ],
       "alias_history": [
-        "54-gpu-memory-hierarchy"
+        "53-cuda-cores-warps-and-occupancy",
+        "59-cuda-cores-warps-and-occupancy"
       ],
       "locales": [
         "en",
@@ -1616,16 +1680,17 @@
       "public": 61,
       "weight": 61,
       "series_index": 60,
-      "slug": "tensor-cores",
-      "title": "Tensor Cores",
+      "slug": "gpu-memory-hierarchy",
+      "title": "GPU Memory Hierarchy",
       "draft": false,
-      "file": "61-tensor-cores.md",
+      "file": "61-gpu-memory-hierarchy.md",
       "former_file": null,
       "former_tags": [
-        "55"
+        "54"
       ],
       "alias_history": [
-        "55-tensor-cores"
+        "54-gpu-memory-hierarchy",
+        "60-gpu-memory-hierarchy"
       ],
       "locales": [
         "en",
@@ -1639,38 +1704,17 @@
       "public": 62,
       "weight": 62,
       "series_index": 61,
-      "slug": "multi-gpu-scaling",
-      "title": "Multi-GPU Scaling",
+      "slug": "tensor-cores",
+      "title": "Tensor Cores",
       "draft": false,
-      "file": "62-multi-gpu-scaling.md",
+      "file": "62-tensor-cores.md",
       "former_file": null,
       "former_tags": [
-        "56"
+        "55"
       ],
       "alias_history": [
-        "56-multi-gpu-scaling"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "si",
-        "ta"
-      ]
-    },
-    {
-      "public": 63,
-      "weight": 63,
-      "series_index": 62,
-      "slug": "why-matrix-multiply-reshaped-chip-design",
-      "title": "Why Matrix Multiply Reshaped Chip Design",
-      "draft": false,
-      "file": "63-why-matrix-multiply-reshaped-chip-design.md",
-      "former_file": null,
-      "former_tags": [
-        "57"
-      ],
-      "alias_history": [
-        "57-why-matrix-multiply-reshaped-chip-design"
+        "55-tensor-cores",
+        "61-tensor-cores"
       ],
       "locales": [
         "en",
@@ -1681,19 +1725,43 @@
       ]
     },
     {
+      "public": 63,
+      "weight": 63,
+      "series_index": 62,
+      "slug": "multi-gpu-scaling",
+      "title": "Multi-GPU Scaling",
+      "draft": false,
+      "file": "63-multi-gpu-scaling.md",
+      "former_file": null,
+      "former_tags": [
+        "56"
+      ],
+      "alias_history": [
+        "56-multi-gpu-scaling",
+        "62-multi-gpu-scaling"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "si",
+        "ta"
+      ]
+    },
+    {
       "public": 64,
       "weight": 64,
       "series_index": 63,
-      "slug": "systolic-arrays",
-      "title": "Systolic Arrays",
+      "slug": "why-matrix-multiply-reshaped-chip-design",
+      "title": "Why Matrix Multiply Reshaped Chip Design",
       "draft": false,
-      "file": "64-systolic-arrays.md",
+      "file": "64-why-matrix-multiply-reshaped-chip-design.md",
       "former_file": null,
       "former_tags": [
-        "58"
+        "57"
       ],
       "alias_history": [
-        "58-systolic-arrays"
+        "57-why-matrix-multiply-reshaped-chip-design",
+        "63-why-matrix-multiply-reshaped-chip-design"
       ],
       "locales": [
         "en",
@@ -1707,38 +1775,17 @@
       "public": 65,
       "weight": 65,
       "series_index": 64,
-      "slug": "quantization-mixed-precision",
-      "title": "Quantization & Mixed Precision",
+      "slug": "systolic-arrays",
+      "title": "Systolic Arrays",
       "draft": false,
-      "file": "65-quantization-mixed-precision.md",
+      "file": "65-systolic-arrays.md",
       "former_file": null,
       "former_tags": [
-        "59"
+        "58"
       ],
       "alias_history": [
-        "59-quantization-mixed-precision"
-      ],
-      "locales": [
-        "en",
-        "th",
-        "si",
-        "ta"
-      ]
-    },
-    {
-      "public": 66,
-      "weight": 66,
-      "series_index": 65,
-      "slug": "sparsity-in-hardware",
-      "title": "Sparsity in Hardware",
-      "draft": false,
-      "file": "66-sparsity-in-hardware.md",
-      "former_file": null,
-      "former_tags": [
-        "60"
-      ],
-      "alias_history": [
-        "60-sparsity-in-hardware"
+        "58-systolic-arrays",
+        "64-systolic-arrays"
       ],
       "locales": [
         "en",
@@ -1749,19 +1796,20 @@
       ]
     },
     {
-      "public": 67,
-      "weight": 67,
-      "series_index": 66,
-      "slug": "interconnect-at-datacenter-scale",
-      "title": "Interconnect at Datacenter Scale",
+      "public": 66,
+      "weight": 66,
+      "series_index": 65,
+      "slug": "quantization-mixed-precision",
+      "title": "Quantization & Mixed Precision",
       "draft": false,
-      "file": "67-interconnect-at-datacenter-scale.md",
+      "file": "66-quantization-mixed-precision.md",
       "former_file": null,
       "former_tags": [
-        "61"
+        "59"
       ],
       "alias_history": [
-        "61-interconnect-at-datacenter-scale"
+        "59-quantization-mixed-precision",
+        "65-quantization-mixed-precision"
       ],
       "locales": [
         "en",
@@ -1771,19 +1819,44 @@
       ]
     },
     {
+      "public": 67,
+      "weight": 67,
+      "series_index": 66,
+      "slug": "sparsity-in-hardware",
+      "title": "Sparsity in Hardware",
+      "draft": false,
+      "file": "67-sparsity-in-hardware.md",
+      "former_file": null,
+      "former_tags": [
+        "60"
+      ],
+      "alias_history": [
+        "60-sparsity-in-hardware",
+        "66-sparsity-in-hardware"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "si",
+        "ta",
+        "ro"
+      ]
+    },
+    {
       "public": 68,
       "weight": 68,
       "series_index": 67,
-      "slug": "where-it-s-headed",
-      "title": "Where It's Headed",
+      "slug": "interconnect-at-datacenter-scale",
+      "title": "Interconnect at Datacenter Scale",
       "draft": false,
-      "file": "68-where-it-s-headed.md",
+      "file": "68-interconnect-at-datacenter-scale.md",
       "former_file": null,
       "former_tags": [
-        "62"
+        "61"
       ],
       "alias_history": [
-        "62-where-it-s-headed"
+        "61-interconnect-at-datacenter-scale",
+        "67-interconnect-at-datacenter-scale"
       ],
       "locales": [
         "en",
@@ -1796,16 +1869,17 @@
       "public": 69,
       "weight": 69,
       "series_index": 68,
-      "slug": "attention-is-all-you-need",
-      "title": "Attention Is All You Need",
+      "slug": "where-it-s-headed",
+      "title": "Where It's Headed",
       "draft": false,
-      "file": "69-attention-is-all-you-need.md",
+      "file": "69-where-it-s-headed.md",
       "former_file": null,
       "former_tags": [
-        "63"
+        "62"
       ],
       "alias_history": [
-        "63-attention-is-all-you-need"
+        "62-where-it-s-headed",
+        "68-where-it-s-headed"
       ],
       "locales": [
         "en",
@@ -1818,16 +1892,17 @@
       "public": 70,
       "weight": 70,
       "series_index": 69,
-      "slug": "who-decides-the-wire",
-      "title": "Who Decides the Wire",
+      "slug": "attention-is-all-you-need",
+      "title": "Attention Is All You Need",
       "draft": false,
-      "file": "70-who-decides-the-wire.md",
+      "file": "70-attention-is-all-you-need.md",
       "former_file": null,
       "former_tags": [
-        "64"
+        "63"
       ],
       "alias_history": [
-        "64-who-decides-the-wire"
+        "63-attention-is-all-you-need",
+        "69-attention-is-all-you-need"
       ],
       "locales": [
         "en",
@@ -1837,19 +1912,20 @@
       ]
     },
     {
-      "public": 72,
-      "weight": 72,
-      "series_index": 71,
-      "slug": "wartime-crypto",
-      "title": "Wartime Crypto",
+      "public": 71,
+      "weight": 71,
+      "series_index": 70,
+      "slug": "who-decides-the-wire",
+      "title": "Who Decides the Wire",
       "draft": false,
-      "file": "72-wartime-crypto.md",
+      "file": "71-who-decides-the-wire.md",
       "former_file": null,
       "former_tags": [
-        "66"
+        "64"
       ],
       "alias_history": [
-        "66-wartime-crypto"
+        "64-who-decides-the-wire",
+        "70-who-decides-the-wire"
       ],
       "locales": [
         "en",
@@ -1862,16 +1938,17 @@
       "public": 73,
       "weight": 73,
       "series_index": 72,
-      "slug": "privacy-consent-identity-cyber",
-      "title": "Privacy, Consent, Identity, Cyber",
+      "slug": "wartime-crypto",
+      "title": "Wartime Crypto",
       "draft": false,
-      "file": "73-privacy-consent-identity-cyber.md",
+      "file": "73-wartime-crypto.md",
       "former_file": null,
       "former_tags": [
-        "67"
+        "66"
       ],
       "alias_history": [
-        "67-privacy-consent-identity-cyber"
+        "66-wartime-crypto",
+        "72-wartime-crypto"
       ],
       "locales": [
         "en",
@@ -1884,16 +1961,17 @@
       "public": 74,
       "weight": 74,
       "series_index": 73,
-      "slug": "visions-that-shipped",
-      "title": "Visions That Shipped",
+      "slug": "privacy-consent-identity-cyber",
+      "title": "Privacy, Consent, Identity, Cyber",
       "draft": false,
-      "file": "74-visions-that-shipped.md",
+      "file": "74-privacy-consent-identity-cyber.md",
       "former_file": null,
       "former_tags": [
-        "68"
+        "67"
       ],
       "alias_history": [
-        "68-visions-that-shipped"
+        "67-privacy-consent-identity-cyber",
+        "73-privacy-consent-identity-cyber"
       ],
       "locales": [
         "en",
@@ -1906,16 +1984,40 @@
       "public": 75,
       "weight": 75,
       "series_index": 74,
+      "slug": "visions-that-shipped",
+      "title": "Visions That Shipped",
+      "draft": false,
+      "file": "75-visions-that-shipped.md",
+      "former_file": null,
+      "former_tags": [
+        "68"
+      ],
+      "alias_history": [
+        "68-visions-that-shipped",
+        "74-visions-that-shipped"
+      ],
+      "locales": [
+        "en",
+        "th",
+        "si",
+        "ta"
+      ]
+    },
+    {
+      "public": 76,
+      "weight": 76,
+      "series_index": 75,
       "slug": "platform-synthesis",
       "title": "Platform Synthesis",
       "draft": false,
-      "file": "75-platform-synthesis.md",
+      "file": "76-platform-synthesis.md",
       "former_file": null,
       "former_tags": [
         "69"
       ],
       "alias_history": [
-        "69-platform-synthesis"
+        "69-platform-synthesis",
+        "75-platform-synthesis"
       ],
       "locales": [
         "en",

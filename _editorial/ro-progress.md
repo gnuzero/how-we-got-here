@@ -11,23 +11,23 @@
 - `about.md` — Despre și credite (from ro-desk checked; unchanged in fact-check)
 - `posts/00-credits.md` — **Credite și uși de ieșire** (weight -1; fact-checked 2026-11-05)
 - `posts/01-foreword.md` — **Cuvânt înainte** (placeholder; Nayana's lane)
-- `posts/02-mechanical-electromechanical-computing.md` — **Calcul mecanic și electromecanic** (draft: true; fact-checked 2026-11-05)
-- `posts/07-relays-and-electromechanical-logic.md` — **Relee și logica electromecanică** (weight 6 / series_index 5; deep; fact-checked 2026-11-05)
-- `posts/08-the-vacuum-tube-era.md` — **Era tuburilor vidate** (weight 6 / series_index 5; fact-checked 2026-11-05)
-- `posts/09-why-the-transistor-had-to-happen.md` — **De ce trebuia să apară tranzistorul** (weight 7 / series_index 6; fact-checked 2026-11-05)
-- `posts/10-semiconductors-from-first-principles.md` — **Semiconductori de la primele principii** (weight 8 / series_index 7; fact-checked 2026-11-05)
-- `posts/40-the-memory-wall.md` — **Zidul memoriei** (weight 38 / series_index 37; fact-checked 2026-11-05)
+- `posts/04-mechanical-electromechanical-computing.md` — **Calcul mecanic și electromecanic** (draft: true; fact-checked 2026-11-05)
+- `posts/08-relays-and-electromechanical-logic.md` — **Relee și logica electromecanică** (weight 6 / series_index 5; deep; fact-checked 2026-11-05)
+- `posts/09-the-vacuum-tube-era.md` — **Era tuburilor vidate** (weight 6 / series_index 5; fact-checked 2026-11-05)
+- `posts/10-why-the-transistor-had-to-happen.md` — **De ce trebuia să apară tranzistorul** (weight 7 / series_index 6; fact-checked 2026-11-05)
+- `posts/11-semiconductors-from-first-principles.md` — **Semiconductori de la primele principii** (weight 8 / series_index 7; fact-checked 2026-11-05)
+- `posts/41-the-memory-wall.md` — **Zidul memoriei** (weight 38 / series_index 37; fact-checked 2026-11-05)
 
 
 ### Early chapters 00–05 (batch 1, fact-checked 2026-11-05)
 
 - `posts/00-credits.md` — **Credite și uși de ieșire** (weight -1 / series_index -1; date 2026-01-01; aligned with softened English credits; About link `/ro/about/`)
 - `posts/01-foreword.md` — **Cuvânt înainte** (placeholder only; Nayana's lane — not expanded by Romanian desk)
-- `posts/02-mechanical-electromechanical-computing.md` — **Calcul mecanic și electromecanic** (weight 2 / series_index 1; `draft: true` mirrors English; 1822 Babbage announcement from Science Museum)
-- `posts/07-relays-and-electromechanical-logic.md` — **Relee și logica electromecanică** (weight 6 / series_index 5, shared with 03 as in English; deep; MARICA sidebar from Rosman 1962 pp. 203–210)
-- `posts/08-the-vacuum-tube-era.md` — **Era tuburilor vidate** (weight 6 / series_index 5; CIFA/MECIPT from Toma 2008 + Iancu 2013; no Felix claim)
-- `posts/09-why-the-transistor-had-to-happen.md` — **De ce trebuia să apară tranzistorul** (weight 7 / series_index 6)
-- `posts/10-semiconductors-from-first-principles.md` — **Semiconductori de la primele principii** (weight 8 / series_index 7; Si 1.12 eV / Ge 0.66 eV at 300 K from Ioffe NSM)
+- `posts/04-mechanical-electromechanical-computing.md` — **Calcul mecanic și electromecanic** (weight 2 / series_index 1; `draft: true` mirrors English; 1822 Babbage announcement from Science Museum)
+- `posts/08-relays-and-electromechanical-logic.md` — **Relee și logica electromecanică** (weight 6 / series_index 5, shared with 03 as in English; deep; MARICA sidebar from Rosman 1962 pp. 203–210)
+- `posts/09-the-vacuum-tube-era.md` — **Era tuburilor vidate** (weight 6 / series_index 5; CIFA/MECIPT from Toma 2008 + Iancu 2013; no Felix claim)
+- `posts/10-why-the-transistor-had-to-happen.md` — **De ce trebuia să apară tranzistorul** (weight 7 / series_index 6)
+- `posts/11-semiconductors-from-first-principles.md` — **Semiconductori de la primele principii** (weight 8 / series_index 7; Si 1.12 eV / Ge 0.66 eV at 300 K from Ioffe NSM)
 
 **Primaries opened (batch 1):** CHM Babbage; Menabrea/Lovelace Sketch (Fourmilab); Shannon 1937/1940 thesis; Rojas 1997; von Neumann First Draft; Penn Engineering ENIAC; Nobel 1956 Bardeen/Brattain/Shockley lectures; Rosman 1962 scan (ICTP); ICTP MARICA page; Toma 2008 Market Watch interview; Iancu 2013 AOS; Science Museum (1822); Ioffe NSM Si/Ge band gaps.
 
@@ -42,14 +42,14 @@
 
 ### Early chapters 06–13 (batch 2, fact-checked 2026-11-05)
 
-- `posts/11-the-transistor-bjt-to-mosfet.md` — **Tranzistorul: de la BJT la MOSFET** (weight 9 / series_index 8)
-- `posts/12-logic-gates-from-transistors.md` — **Porți logice din tranzistori** (weight 10 / series_index 9; NOR completeness from Sheffer 1913)
-- `posts/13-from-gates-to-combinational-logic.md` — **De la porți la logică combinațională** (weight 11 / series_index 10; Shannon pp. 59–61)
-- `posts/14-sequential-logic.md` — **Logică secvențială** (weight 12 / series_index 11; 74LS74A + 74LS75)
-- `posts/15-the-memory-hierarchy-begins.md` — **Începutul ierarhiei de memorie** (weight 13 / series_index 12; Dennard granted 4 Jun 1968)
-- `posts/16-instruction-sets.md` — **Seturi de instrucțiuni** (weight 14 / series_index 13; phase "3 — Construirea unui CPU și arhitecturile lui"; RISC-V 20240411 ratified; Patterson & Ditzel 1980)
-- `posts/17-datapath-design.md` — **Proiectarea căii de date** (weight 15 / series_index 14)
-- `posts/18-pipelining.md` — **Pipelining** (weight 16 / series_index 15; Bloch 1959)
+- `posts/12-the-transistor-bjt-to-mosfet.md` — **Tranzistorul: de la BJT la MOSFET** (weight 9 / series_index 8)
+- `posts/13-logic-gates-from-transistors.md` — **Porți logice din tranzistori** (weight 10 / series_index 9; NOR completeness from Sheffer 1913)
+- `posts/14-from-gates-to-combinational-logic.md` — **De la porți la logică combinațională** (weight 11 / series_index 10; Shannon pp. 59–61)
+- `posts/15-sequential-logic.md` — **Logică secvențială** (weight 12 / series_index 11; 74LS74A + 74LS75)
+- `posts/16-the-memory-hierarchy-begins.md` — **Începutul ierarhiei de memorie** (weight 13 / series_index 12; Dennard granted 4 Jun 1968)
+- `posts/17-instruction-sets.md` — **Seturi de instrucțiuni** (weight 14 / series_index 13; phase "3 — Construirea unui CPU și arhitecturile lui"; RISC-V 20240411 ratified; Patterson & Ditzel 1980)
+- `posts/18-datapath-design.md` — **Proiectarea căii de date** (weight 15 / series_index 14)
+- `posts/19-pipelining.md` — **Pipelining** (weight 16 / series_index 15; Bloch 1959)
 
 **Primaries opened (batch 2):** CHM Silicon Engine 1947/1948/1951/1960/1963/1966/1970; Kahng, Wanlass, Dennard patents; TI SN74LS00, SN74LS74A, SN74LS75, SN74LS283; Sheffer 1913; Shannon 1937/1940; Burks–Goldstine–von Neumann 1946 (IAS scan via OCR + UNC/Collected Works transcription); First Draft; Amdahl et al. 1964; Bloch 1959; RISC-V Unprivileged 20240411; Patterson & Ditzel 1980.
 
@@ -138,21 +138,21 @@
 - **Conflict stated on page:** Pathfinder patch — Jones/Wilner (VxWorks C interpreter) vs Reeves (specialized patch process; page follows Reeves).
 
 
-### Early hub + ch 3 (03-babbage-engines)–ch 5 (05-why-mechanical-matters) + takes (batch 6, fact-checked 2026-11-05)
+### Early hub + ch 3 (05-babbage-engines)–ch 5 (07-why-mechanical-matters) + takes (batch 6, fact-checked 2026-11-05)
 
-- **Pages:** `02-what-is-this-thing` (hub), `03-babbage-engines`, `04-jacquard-loom`, `05-why-mechanical-matters`, nine `01-take-*` (bookHidden). `02-mechanical-electromechanical-computing` left `draft: true` (overlap with ch 3 (03-babbage-engines); Lucas).
+- **Pages:** `04-what-is-this-thing` (hub), `05-babbage-engines`, `06-jacquard-loom`, `07-why-mechanical-matters`, nine `01-take-*` (bookHidden). `04-mechanical-electromechanical-computing` left `draft: true` (overlap with ch 3 (05-babbage-engines); Lucas).
 - **Primaries opened (batch 6):** Menabrea/Lovelace *Sketch* (Fourmilab); CHM Babbage Engine / Engines / Modern Sequel / press 2008-05-05; Science Museum Babbage article; CHM Jacquard storage + Punched Card’s Pedigree; Arts et Métiers Jacquard model; Science and Industry Museum Jacquard loom story; Europeana „Creating music out of thin air” (via WebFetch; curl 403).
 - **Jacquard dating fix:** page now states what each source supports — 1801 exhibition/demonstration (CHM) and Arts et Métiers brevet 23.12.1801 for replacing *tireur de lacs*; 1804 patent date for the punched-card attachment (Science and Industry Museum). EN „patented 1804” left as conventional dating (proposal only).
-- **Tolerances argument (ch 5 (05-why-mechanical-matters)):** kept directed shape (ceiling = manufacturing, not lack of ideas; reconstructions once shops held tolerances). Facts checked against Science Museum / CHM; not softened.
+- **Tolerances argument (ch 5 (07-why-mechanical-matters)):** kept directed shape (ceiling = manufacturing, not lack of ideas; reconstructions once shops held tolerances). Facts checked against Science Museum / CHM; not softened.
 - **Still NEVERIFICAT:** fine 1832 vs 1833 halt reconciliation; INPI brevet full text / whether 1801 brevet already covers punched cards; Europeana/Met/SMG dump blocks (cited content from WebFetch only).
 - **Take pages:** each marked „Analogie ilustrativă”; factual mechanism claims only where sourced (Europeana barrel/pianola; CHM silk-cards).
 
 
 
-### Early ch 6 (06-woodblock-to-movable-type) + ch 49 (49-from-press-to-pixel) (batch 7, fact-checked 2026-11-05; published with renumber)
+### Early ch 6 (02-woodblock-to-movable-type) + ch 49 (50-from-press-to-pixel) (batch 7, fact-checked 2026-11-05; published with renumber)
 
-- **Pages:** `06-woodblock-to-movable-type` (~1475 words, Romanian section: Macarie / Coresi / Casa Mureșenilor), `49-from-press-to-pixel` (~1320 words, no Romanian phototypesetting section). Published `draft: false` 2026-11-05 (with English renumber); date `2026-01-02` (match EN). New weights: ch 6 (06-woodblock-to-movable-type) 6/5, ch 49 (49-from-press-to-pixel) 49/48.
-- **Phase ch 49 (49-from-press-to-pixel):** `7 — Sisteme distribuite, Big Data și orchestrare` (first RO phase-7 string; `&` → `și` as in phases 4/5).
+- **Pages:** `02-woodblock-to-movable-type` (~1475 words, Romanian section: Macarie / Coresi / Casa Mureșenilor), `50-from-press-to-pixel` (~1320 words, no Romanian phototypesetting section). Published `draft: false` 2026-11-05 (with English renumber); date `2026-01-02` (match EN). New weights: ch 6 (02-woodblock-to-movable-type) 6/5, ch 49 (50-from-press-to-pixel) 49/48.
+- **Phase ch 49 (50-from-press-to-pixel):** `7 — Sisteme distribuite, Big Data și orchestrare` (first RO phase-7 string; `&` → `și` as in phases 4/5).
 - **Restored after opening sources:** Feng Dao / Changxing 2 = 931 (*Nongshu* j22); Qingli years 1041–1048 (Asian Art Museum); Muybridge 19 Jun 1878 Sallie Gardner (Smarthistory; LoC dump blocked); Le Prince disappeared 1890 (NSMM blog); Grand Café / Salon Indien (Catalogue Lumière FAQ; Institut Lumière heading alone insufficient).
 - **Kept NEVERIFICAT / omitted:** Tetraevanghel as first all-Romanian book (press only); Coresi technique wood vs metal / Liubavici; anonymous Transylvanian slide deck not cited; BRV only via Erich & Vârgolici.
 - **Conflicts stated on page:** Coresi ~40/1556–1588 (museum) vs ~35/1556–1583 (ro.wikipedia); Liturghier 1508 print place (authors lean Dealu–Târgoviște); Dingjunshan 1905 vs 1908; Wenzhou fragment nature.
@@ -161,7 +161,7 @@
 
 ## Not yet (pending)
 
-- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (next: early chapters 36+ / labs strings per PLAN; ch 6 (06-woodblock-to-movable-type)+ch 49 (49-from-press-to-pixel) published with renumber)
+- Remaining chapters — pending until present under `checked/` / `checked-early/` with REPORT coverage (next: early chapters 36+ / labs strings per PLAN; ch 6 (02-woodblock-to-movable-type)+ch 49 (50-from-press-to-pixel) published with renumber)
 
 ## Notes
 
