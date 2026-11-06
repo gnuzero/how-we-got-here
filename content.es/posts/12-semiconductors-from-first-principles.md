@@ -1,0 +1,33 @@
+---
+title: "Semiconductores desde los primeros principios"
+weight: 12
+date: 2026-01-01
+draft: false
+phase: "2 — Física y dispositivos"
+series_index: 11
+aliases:
+  - /posts/05-semiconductors-from-first-principles/
+  - /posts/10-semiconductors-from-first-principles/
+  - /posts/11-semiconductors-from-first-principles/
+tags: []
+summary: "Una banda prohibida que se puede empujar en ambos sentidos: el dopado convierte el silicio en un interruptor controlable"
+image_prompt: "Technical illustration of a silicon crystal lattice showing band gap diagram, labeled, textbook diagram style, blue/orange color coding"
+video_prompt: "20-second animation: electron jumping across the band gap into the conduction band, clean scientific animation"
+schematics: "Diagram: energy band diagram + silicon lattice with N-type and P-type doping"
+---
+
+El silicio no es especial por arte de magia: lo es porque su estructura de bandas está justo donde se puede *controlar* la conducción, en vez de tenerla siempre encendida o siempre apagada (planteamiento del capítulo).
+
+## Por qué importa una banda que se puede cruzar
+
+En un metal, la banda de valencia y la de conducción se solapan y los electrones se mueven libremente; en un aislante, una gran banda prohibida separa los electrones de valencia de la banda de conducción; en un semiconductor, la banda prohibida es lo bastante pequeña para que excitaciones térmicas o de otro tipo la crucen, y un pequeño porcentaje de dopante puede aumentar mucho la conductividad (HyperPhysics (R. Nave, Georgia State University), «Band Theory of Solids»; [hyperphysics.phy-astr.gsu.edu/hbase/Solids/band.html](http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/band.html), consultado 2026-11-06). La banda prohibida del silicio es de unos 1,1 eV a 300 K (HyperPhysics (Georgia State University), «Semiconductor Band Gaps», datos de C. Kittel, *Introduction to Solid State Physics*, 6.ª ed., 1986, p. 185; [hyperphysics.phy-astr.gsu.edu/hbase/Tables/Semgap.html](http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/Semgap.html), consultado 2026-11-06). Es lo bastante pequeña para que un campo eléctrico moderado (o un poco de calor o de luz) ponga portadores donde conducen, y lo bastante grande para que a temperatura ambiente el material no esté ya inundado de ellos: esa propiedad de «empujable en los dos sentidos» es lo que necesita un transistor (explicación del capítulo). El techo del tubo, como vimos en [Por qué tenía que llegar el transistor]({{< relref "11-why-the-transistor-had-to-happen.md" >}}), era tamaño, consumo y fiabilidad; el remedio empieza aquí, en un sólido que se puede dopar y controlar con un campo (encuadre del capítulo).
+
+## Por qué el silicio ganó al germanio
+
+El germanio fue el primer material práctico: el transistor de puntas de contacto que Bardeen y Brattain hicieron funcionar en Bell Labs en diciembre de 1947 era de germanio (CHM, «1947: Invention of the Point-Contact Transistor», *The Silicon Engine*; [computerhistory.org/siliconengine/invention-of-the-point-contact-transistor](https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/), consultado 2026-11-06). El silicio ganó a la larga. Su banda prohibida es más ancha —unos 1,11 eV frente a unos 0,66 eV del germanio, ambos a 300 K (HyperPhysics (Georgia State University), «Semiconductor Band Gaps», datos de C. Kittel, *Introduction to Solid State Physics*, 6.ª ed., 1986, p. 185; [hyperphysics.phy-astr.gsu.edu/hbase/Tables/Semgap.html](http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/Semgap.html), consultado 2026-11-06)—, lo que significa que los dispositivos siguen funcionando a temperaturas más altas antes de que los portadores térmicos ahoguen la señal (argumento del capítulo). En 1954 Morris Tanenbaum fabricó en Bell Labs el primer transistor de silicio, y los ingenieros de Texas Instruments construyeron y comercializaron los primeros dispositivos; en 1955 Carl Frosch y Lincoln Derick hicieron crecer una película de dióxido de silicio sobre las obleas para proteger la superficie y controlar la difusión; y en 1960 John Atalla y Dawon Kahng demostraron el primer amplificador MOS de efecto de campo (CHM, «Timeline», *The Silicon Engine*; [computerhistory.org/siliconengine/timeline](https://www.computerhistory.org/siliconengine/timeline/), consultado 2026-11-06). Ese óxido estable es el dieléctrico de puerta del que depende el MOSFET del [capítulo siguiente sobre el transistor]({{< relref "13-the-transistor-bjt-to-mosfet.md" >}}). Y el silicio procede de la sílice en formas naturales como la cuarcita, con recursos abundantes en la mayoría de los países productores (U.S. Geological Survey, *Mineral Commodity Summaries 2024*, «Silicon»; [pubs.usgs.gov/periodicals/mcs2024/mcs2024-silicon.pdf](https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-silicon.pdf), consultado 2026-11-06); el Servicio Geológico de Estados Unidos registra incluso producción de silicio metal y ferrosilicio en España (ibíd.). Temperatura, calidad del óxido y abundancia: por esas tres razones la industria se estandarizó en silicio y no en germanio (argumento del capítulo).
+
+## Dopado: del cristal al interruptor
+
+El silicio intrínseco conduce poco y de manera uniforme. El dopado introduce impurezas en pequeña proporción que fijan el *tipo* y la *concentración* de los portadores (explicación del capítulo). Las impurezas pentavalentes, con 5 electrones de valencia, como el fósforo, el arsénico o el antimonio, aportan electrones libres y dan un semiconductor de tipo N; las trivalentes, con 3 electrones de valencia, como el boro, el aluminio o el galio, crean deficiencias de electrones de valencia, los «huecos», y dan uno de tipo P (HyperPhysics (Georgia State University), «The Doping of Semiconductors»; [hyperphysics.phy-astr.gsu.edu/hbase/Solids/dope.html](http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/dope.html), consultado 2026-11-06). En la fabricación, el fósforo puede añadirse por difusión de gas fosfina y el boro con gas diborano (ibíd.).
+
+Ninguno de los dos, por separado, es un interruptor. Juntarlos —una unión P-N— da la pieza básica de todos los diodos y transistores que vienen después (explicación del capítulo); Russell Ohl descubrió la unión p-n en silicio en 1940 (CHM, «Timeline», *The Silicon Engine*; [computerhistory.org/siliconengine/timeline](https://www.computerhistory.org/siliconengine/timeline/), consultado 2026-11-06). El [capítulo siguiente, «El transistor: del BJT al MOSFET»]({{< relref "13-the-transistor-bjt-to-mosfet.md" >}}) retoma desde ahí: cómo una unión, o un canal controlado por una puerta, convierte el silicio dopado en algo que una señal externa puede encender y apagar.

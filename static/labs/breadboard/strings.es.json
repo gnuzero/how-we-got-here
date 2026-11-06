@@ -1,0 +1,9 @@
+{
+  "page.title": "Laboratorio de protoboard virtual",
+  "page.heading": "Laboratorio de protoboard virtual",
+  "page.subtitle": "Simulador interactivo de circuitos — una puerta real al cargar, no un lienzo en blanco",
+  "btn.open_and": "Abrir la puerta AND en una pestaña nueva ↗",
+  "btn.wokwi": "Wokwi (protoboard física + MCU real) ↗",
+  "iframe.title": "Simulador de circuitos — puerta AND",
+  "note_html": "\n  Estás viendo una <strong>puerta AND</strong>: la salida está en alto solo cuando ambas entradas están en alto.\n  Haz clic en las dos entradas de la izquierda para cambiarlas y observa la salida a la derecha.\n  <div class=\"meta\">Los datos del circuito van incrustados en la URL (<code>cct=</code>), no se cargan desde <code>/circuits/and.txt</code>, que Falstad retiró. La interfaz del simulador sigue necesitando falstad.com. Copia local del circuito: <code>and.txt</code>, junto a esta página.</div>\n"
+}
