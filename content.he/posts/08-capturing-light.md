@@ -23,20 +23,23 @@ schematics: "Diagram: camera obscura → light-sensitive plate (heliograph) → 
 
 ב־1829 Niépce נכנס לשותפות עם Louis-Jacques-Mandé Daguerre. Daguerre המשיך לשפר את השיטה אחרי מות Niépce והציג את הדאגרוטיפ ב־1839 — השנה שבה הוכרזה המצאת הצילום גם בצרפת וגם באנגליה. ([Harry Ransom Center](https://www.hrc.utexas.edu/niepce-heliograph/))
 
-באנגליה הלך William Henry Fox Talbot בדרך אחרת. נייר מצופה ביודיד הכסף נחשף במצלמה ונתן נגטיב ([Oxford, "Calotypes"](https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html)). לפי אנציקלופדיה בריטניקה, Talbot מצא שחומצה גאלית יכולה ״לפתח״ את התמונה ולקצר את זמן החשיפה מכשעה בערך לדקה בערך; נגטיב נייר אחד יכול אז להדפיס כל מספר של פוזיטיבים, בעוד שדאגרוטיפ היה תמונה יחידה על מתכת שאי אפשר לשכפל. ([Britannica, "calotype"](https://www.britannica.com/technology/calotype))
+באנגליה הלך William Henry Fox Talbot בדרך אחרת. לפני הקלוטיפ פיתח את ״האמנות של ציור פוטוגני״ (photogenic drawing): נייר כתיבה דק מצופה במלח ומרוח בתמיסת חנקת כסף, שכהה בשמש — תהליך ששימש בעיקר להעתקות מגע של דגימות בוטניות. ([Metropolitan Museum of Art, Heilbrunn essay on Talbot](https://www.metmuseum.org/essays/william-henry-fox-talbot-1800-1877-and-the-invention-of-photography))
 
-תאריכי הקלוטיפ לפי מקורות שאפשר לבדוק: מוזיאון ההיסטוריה של המדע באוקספורד כותב שהקלוטיפ (או Talbotype) הומצא בידי Fox Talbot בספטמבר 1840 — דרך רגישה יותר הנשענת על תופעת התמונה הלטנטית — ופטנט נרשם ב־8 בפברואר 1841. ([Museum of the History of Science, Oxford](https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html)) בריטניקה מציינת את הפטנט ב־1841. ([Britannica, "calotype"](https://www.britannica.com/technology/calotype))
+ב־23 בספטמבר 1840 גילה Talbot שחשיפה של שניות בודדות, בלי עקבה נראית על הנייר המטופל כימית, משאירה בכל זאת תמונה לטנטית שאפשר להוציא בנוזל ״מעורר״ — בעיקרו תמיסת חומצה גאלית. את התגלית הזאת רשם כפטנט בפברואר 1841 כתהליך ה־calotype. ([Metropolitan Museum of Art, Heilbrunn essay on Talbot](https://www.metmuseum.org/essays/william-henry-fox-talbot-1800-1877-and-the-invention-of-photography)) מוזיאון ההיסטוריה של המדע באוקספורד מתארך את המצאת הקלוטיפ (או Talbotype) לספטמבר 1840 ואת הפטנט ל־8 בפברואר 1841, ומפרט את הכימיה של הנגטיב: מריחת נייר בחנקת כסף, ייבוש, ואז השקעה בתמיסת יודיד אשלגן ליצירת שכבת יודיד כסף רגישה לאור; לפני השימוש מאיצים ב־gallo-nitrate of silver (חנקת כסף וחומצה גאלית), והתמונה הלטנטית מפותחת באותו תכשיר. ([Museum of the History of Science, Oxford](https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html)) גם ה־V&A מתאר נגטיבי קלוטיפ כנייר שעובד ביד בתמיסות יודיד אשלגן וחנקת כסף. ([V&A, Benjamin Brecknell Turner working methods](https://www.vam.ac.uk/articles/benjamin-brecknell-turner-working-methods))
 
-> **פרשנות (נועה):** ההבחנה בין גילוי התמונה הלטנטית (1840) לבין הפטנט (1841) חשובה לשדרה של הספר: קודם מופיע שלב שאפשר לאחסן ולשכפל, ורק אחר כך הוא מקבל מסגרת משפטית. זה קריאתנו של שני המקורות שלמעלה, לא טענה נפרדת שלהם.
+נגטיב נייר אחד יכול להדפיס מספר רב של פוזיטיבים במגע, בעוד שדאגרוטיפ היה תמונה יחידה על מתכת שאי אפשר לשכפל באותה דרך. ([Museum of the History of Science, Oxford](https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html); [Metropolitan Museum of Art, Heilbrunn essay on Talbot](https://www.metmuseum.org/essays/william-henry-fox-talbot-1800-1877-and-the-invention-of-photography))
+
+> **פרשנות (נועה):** ההבחנה בין גילוי התמונה הלטנטית (23 בספטמבר 1840) לבין הפטנט (פברואר 1841; 8 בפברואר לפי MHS) חשובה לשדרה של הספר: קודם מופיע שלב שאפשר לאחסן ולשכפל, ורק אחר כך הוא מקבל מסגרת משפטית. זה קריאתנו של המקורות שלמעלה, לא טענה נפרדת שלהם.
 
 ## למה זה יושב כאן
 
 התבנית היא אותה תבנית שהספר מוצא שוב ושוב. הדאגרוטיפ היה חד־פעמי, כמו מנוע שנבנה ביד. נגטיב הקלוטיפ היה מקור שאפשר להעתיק, כמו בלוק חרוט או כרטיס מנוקב. ברגע שאור יכול להישמר ולהישכפל, הצעד הבא הוא לשמור אותו ברצף ולהשמיע אותו בחזרה. הסיפור הזה — מסוס של Muybridge עד הקרנות הקולנוע הראשונות, וגם הקולנוע הסיני הראשון — מסופר ב־[ממכבש לפיקסל]({{< relref path="51-from-press-to-pixel" lang="en" >}}) (באנגלית בינתיים).
 
-הבא: ממסרים, שם החשמל מתחיל לעשות את ההחלפה.
+הבא: [ממסרים ולוגיקה אלקטרו־מכנית]({{< relref "09-relays-and-electromechanical-logic.md" >}}), שם החשמל מתחיל לעשות את ההחלפה.
 
 ## מקורות
 
 - Harry Ransom Center, The University of Texas at Austin, "The Niépce Heliograph": <https://www.hrc.utexas.edu/niepce-heliograph/>
-- Encyclopaedia Britannica, "calotype": <https://www.britannica.com/technology/calotype>
+- Metropolitan Museum of Art, "William Henry Fox Talbot (1800–1877) and the Invention of Photography" (Heilbrunn Timeline essay): <https://www.metmuseum.org/essays/william-henry-fox-talbot-1800-1877-and-the-invention-of-photography>
 - Museum of the History of Science, University of Oxford, "Calotypes": <https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html>
+- Victoria and Albert Museum, "Benjamin Brecknell Turner – working methods": <https://www.vam.ac.uk/articles/benjamin-brecknell-turner-working-methods>

@@ -49,7 +49,7 @@ schematics: "Diagram: Babbage difference engine gear train (carry mechanism deta
 
 ההשאלה הזאת היא התחנה הבאה: נול Jacquard, וההפרדה בין תוכנית למכונה.
 
-**הבא:** [נול Jacquard]({{< relref path="06-jacquard-loom.md" lang="en" >}}) (באנגלית בינתיים)
+**הבא:** [נול Jacquard]({{< relref "06-jacquard-loom.md" >}})
 
 ## מקורות
 
