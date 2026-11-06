@@ -50,4 +50,4 @@ The thread to carry forward: a Latin printer needs a few dozen sorts, a Chinese 
 
 Britannica places Johannes Gutenberg's press in Europe in the 1450s and dates his Bible to 1455. It also says he did not invent printing with movable type, which happened in Korea in the 14th century. That sentence skips Bi Sheng; this page has already put him first. ([Britannica, Johannes Gutenberg](https://www.britannica.com/biography/Johannes-Gutenberg))
 
-Next: [relays]({{< relref "07-relays-and-electromechanical-logic" >}}), where a weak current learns to switch a strong one.
+Next: [How the message travelled]({{< relref "03-how-the-message-travelled" >}})
