@@ -35,7 +35,7 @@ A D flip-flop stacks two latches master–slave under a clock. The output change
 
 ## Setup, Hold, and the Clock Ceiling
 
-The D input must be stable for a minimum window *before* the edge (setup) and *after* it (hold). Violate either and the flop can go metastable — an undefined state that resolves late or inconsistently downstream. That is not textbook pedantry: it is why maximum clock frequency has a hard ceiling. The period must cover combinational propagation *plus* the next flop's setup, with margin. Post 36 (The Clock Speed Wall) returns to this exact constraint when simply raising frequency stopped working.
+The D input must be stable for a minimum window *before* the edge (setup) and *after* it (hold). Violate either and the flop can go metastable — an undefined state that resolves late or inconsistently downstream. That is not textbook pedantry: it is why maximum clock frequency has a hard ceiling. The period must cover combinational propagation *plus* the next flop's setup, with margin. The two failures differ: a setup violation can be fixed by slowing the clock, while a hold violation makes the chip fail at any speed ([Harris & Harris, CMOS VLSI Design lecture 11, "Sequential Circuits"](https://pages.hmc.edu/harris/cmosvlsi/4e/lect/lect11.pdf)). Post 36 (The Clock Speed Wall) returns to this exact constraint when simply raising frequency stopped working.
 
 ## What This Unlocks
 

@@ -26,7 +26,7 @@ Nothing moves except electrons. That is why tubes could switch in microseconds w
 
 ## ENIAC: The 30-Ton Switchboard
 
-ENIAC (1945) is the era's landmark, and the physical scale matters: about 18,000 vacuum tubes, roughly 1,800 square feet, about 30 tons. It drew about 150–174 kilowatts — the "whole west side of Philadelphia dimmed" story is folklore, but the power draw was genuinely industrial.
+ENIAC (built 1943–45, announced 14 February 1946) is the era's landmark, and the physical scale matters. Penn Engineering gives about 18,000 vacuum tubes, a 30-by-50-foot room, 30 tons and 150 kilowatts ([Penn Engineering](https://www.seas.upenn.edu/about/history-heritage/eniac/)); the Army Ordnance Corps' own data sheet lists 17,468 tubes, 1,800 square feet and 174 kW ([US Army Ordnance Corps, *Electronic Computers Within the Ordnance Corps*, App. I](https://ftp.arl.army.mil/mike/comphist/61ordnance/app1.html)). Either way, the power draw was industrial.
 
 "Programming" ENIAC meant physically rewiring it: patch cables, switches set function by function — a giant switchboard. There was no stored program in the modern sense; the *sequence of operations* lived in the cable routing. Reconfiguring for a new calculation could take days. That pain is the direct ancestor of the CPU-architecture story in Phase 3 — a *stored* program, instructions in the same memory as data, was the fix ENIAC originally lacked (it gained a limited stored-program mode in 1948), and that defined the general-purpose machines that followed.
 
@@ -36,7 +36,7 @@ Herman H. Goldstine's history of the early electronic computers remains the clas
 
 ## Why 18,000 Tubes Was a Nightmare
 
-Vacuum tubes fail: filaments burn out, seals leak, emission degrades. With ~18,000 tubes, something failed regularly — early on often enough that downtime was severe. After derating heaters and burning in tubes, ENIAC settled to roughly one tube failure every couple of days, [by Eckert's account](https://www.computerworld.com/article/1701347/q-a-a-lost-interview-with-eniac-co-inventor-j-presper-eckert.html) (not the scavenger-hunt myth). Failures were real and costly. Each tube also dissipates real heat — rooms full of them needed serious cooling — so the machine was powerful for its era and brutally expensive to keep running.
+Vacuum tubes fail: filaments burn out, seals leak, emission degrades. With ~18,000 tubes, something failed regularly. Running tubes well below their ratings helped (Penn: Eckert ran them at one-quarter power); ENIAC still lost roughly one tube every day or two, and the maintenance team learned to fix a failure in about 15 minutes ([CHM, *Revolution*: ENIAC](https://www.computerhistory.org/revolution/birth-of-the-computer/4/78); compare [Eckert's account](https://www.computerworld.com/article/1701347/q-a-a-lost-interview-with-eniac-co-inventor-j-presper-eckert.html), not the scavenger-hunt myth). Failures were real and costly. Each tube also dissipates real heat — rooms full of them needed serious cooling — so the machine was powerful for its era and brutally expensive to keep running.
 
 That sets up the next post. The transistor did not win because engineers were clever for cleverness's sake. It won because the tube's own physics — heat, size, and the fragile vacuum envelope — put a hard ceiling on how far this approach could scale.
 

@@ -33,7 +33,7 @@ Four full adders in a row make a 4-bit ripple-carry adder. Bit 3's carry cannot 
 
 ## From Adders to a Simple ALU
 
-Put a mux in front of the same adder hardware: control bits select add, subtract (add with inverted operand plus Cin — reuse the adder), AND, OR. One block, several combinational paths. Conceptually small; practically the first moment "gates" become CPU arithmetic.
+Build the adder and the logic units side by side, and put a mux on their outputs: control bits select which result (add, AND, OR) leaves the block. Subtraction needs no new unit: an inverter on B in front of the adder, plus a carry-in of 1, turns A + B into A + B′ + 1 = A − B ([Gottlieb, NYU Computer Systems Design, lecture 9](https://cs.nyu.edu/~gottlieb/courses/2000s/2001-02-fall/arch/lectures/lecture-09.html); [Harris, HMC E158 lecture 15](https://pages.hmc.edu/harris/class/e158/01/lect15.pdf) on muxing a separate logic unit with the adder; adder designs in [Harris & Harris, CMOS VLSI Design lecture 17](https://pages.hmc.edu/harris/cmosvlsi/4e/lect/lect17.pdf)). One block, several combinational paths. Conceptually small; practically the first moment "gates" become CPU arithmetic.
 
 Everything so far is combinational — outputs depend only on current inputs. A sequence of operations needs state that persists across time. That is the next post.
 

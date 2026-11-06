@@ -20,7 +20,7 @@ Two device families both get called "transistors." They switch on different phys
 
 ## The BJT: Current Controls Current
 
-A bipolar junction transistor (NPN: N emitter, P base, N collector) uses a small base *current* to control a larger collector–emitter current. To hold it on, you keep supplying base current. At chip scale that idle cost compounds: bipolar logic families in the 1970s hit a real thermal wall from static dissipation alone, even when gates were not switching.
+A bipolar junction transistor (NPN: N emitter, P base, N collector) uses a small base *current* to control a larger collector–emitter current. To hold it on, you keep supplying base current. At chip scale that idle cost compounds: the more bipolar gates you pack together, the more power they burn just holding their state.
 
 ## The MOSFET: Voltage Controls a Channel
 
@@ -32,7 +32,9 @@ A MOSFET puts a metal (or polysilicon) gate over silicon, separated by a thin ox
 
 Near-zero static gate current is the whole story. CMOS (Post 7) builds on it so meaningful current flows mainly *while switching*, not while holding state. That is what let transistor counts climb from thousands to billions without melting the die — the scaling arc Phase 8 returns to at process-node resolution.
 
+The history took time. M. M. (John) Atalla and Dawon Kahng at Bell Labs achieved the first successful MOS transistor in 1959; Bell did not pursue it, but Fairchild and RCA did, and MOS devices reached the market in 1964 (General Microelectronics and Fairchild p-channel parts, an RCA n-channel transistor). Because of their smaller size and lower power than bipolar devices, CHM notes, over 99 percent of microchips made today use MOS transistors ([CHM, "1960: Metal Oxide Semiconductor (MOS) Transistor Demonstrated"](https://www.computerhistory.org/siliconengine/metal-oxide-semiconductor-mos-transistor-demonstrated/)).
+
 BJTs did not vanish: they still matter where current drive or analog linearity beats density. For digital logic at serious scale, the MOSFET's idle-power physics made it the only viable path — and every gate in the next post is built from it.
 
-**Door out:** D. Kahng and M. M. Atalla's 1960 silicon MOSFET work (Bell Labs / IRE–AIEE Solid-State Device Research Conference) — the practical field-effect device that made oxide-gated voltage control the digital standard.
+**Door out:** Dawon Kahng, "Electric Field Controlled Semiconductor Device," U.S. Patent 3,102,230 (filed 31 May 1960, granted 27 August 1963), listed on CHM's MOS milestone page above — the field-effect device whose descendants became the digital standard.
 
