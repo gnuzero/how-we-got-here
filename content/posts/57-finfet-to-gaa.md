@@ -26,7 +26,7 @@ As planar channel length shrinks, the gate above the channel ([Post 13]({{< relr
 
 FinFET changes geometry, not just size: raise the channel into a thin vertical fin and wrap the gate around three sides (top and both walls). More of the channel sits under gate influence at the same channel length, which suppresses the short-channel leakage that was killing planar shrink.
 
-The industry moved to FinFET in volume in the early 2010s (Intel's 22 nm Ivy Bridge generation, 2011–2012, was an early high-volume milestone). Same pattern as [Post 24]({{< relref "24-superscalar-multicore" >}})'s multicore pivot after the clock-speed wall ([Post 43]({{< relref "43-the-clock-speed-wall" >}})): when an approach hits a real physical ceiling, change the structure — do not only push the old shape harder.
+The industry moved to FinFET in volume in the early 2010s (Intel's 22 nm Ivy Bridge generation, 2011–2012, was an early high-volume milestone ([Wikipedia, FinFET](https://en.wikipedia.org/wiki/Fin_field-effect_transistor))). Same pattern as [Post 24]({{< relref "24-superscalar-multicore" >}})'s multicore pivot after the clock-speed wall ([Post 43]({{< relref "43-the-clock-speed-wall" >}})): when an approach hits a real physical ceiling, change the structure — do not only push the old shape harder.
 
 ## Gate-All-Around: Four Sides
 

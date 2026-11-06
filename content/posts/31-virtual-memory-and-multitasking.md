@@ -25,7 +25,7 @@ Every process sees a full virtual address space — on a 64-bit system, far larg
 
 ## Pages, Faults, Swap
 
-Memory is divided into fixed-size pages (commonly 4 KB on many architectures; larger "huge pages" also exist). The page table maps virtual pages to physical frames. Critically, not every virtual page needs a frame *at all times* — mark it "not present," and a reference traps into the OS as a page fault. The OS can load the page from disk (lazy bring-in of code and data), or treat it as a genuine error (accessing memory never granted — one common path to a segmentation fault).
+Memory is divided into fixed-size pages (commonly 4 KB on many architectures ([Wikipedia, Page](https://en.wikipedia.org/wiki/Page_(computer_memory))); larger "huge pages" also exist). The page table maps virtual pages to physical frames. Critically, not every virtual page needs a frame *at all times* — mark it "not present," and a reference traps into the OS as a page fault. The OS can load the page from disk (lazy bring-in of code and data), or treat it as a genuine error (accessing memory never granted — one common path to a segmentation fault).
 
 The same mechanism enables swapping: under memory pressure, write a cold page to disk, mark it not-present, free the frame. The system behaves as if it has more RAM than it physically does — at disk-speed cost if that page is touched again. Abundant RAM makes heavy swapping less common than it once was; the mechanism remains fundamental.
 

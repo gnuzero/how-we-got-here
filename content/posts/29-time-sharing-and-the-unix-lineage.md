@@ -23,11 +23,11 @@ Batch processing ([Post 28]({{< relref "28-batch-processing-and-the-birth-of-the
 
 A CPU is fast relative to human reaction time. Switch between many users' processes many times per second — each gets a small slice — and no one perceives the gaps. Software-scheduling analog of [Post 16]({{< relref "16-sequential-logic" >}})'s clocked logic: discrete, rapid switching that *looks* continuous, even though only one process runs on a single core at any instant.
 
-Multics (MULTiplexed Information and Computing Service), a joint MIT / Bell Labs / GE project planned from 1964 and publicly described in 1965, was hugely ambitious — hierarchical file systems, dynamic linking, fine-grained access control that took decades to become standard elsewhere. It was also, by most accounts, over-engineered for the hardware of its time, and commercially it struggled.
+Multics (MULTiplexed Information and Computing Service), a joint MIT / Bell Labs / GE project planned from 1964 and publicly described in 1965 ([Wikipedia, Multics](https://en.wikipedia.org/wiki/Multics)), was hugely ambitious — hierarchical file systems, dynamic linking, fine-grained access control that took decades to become standard elsewhere. It was also, by most accounts, over-engineered for the hardware of its time, and commercially it struggled.
 
 ## From Multics to Unix
 
-Bell Labs pulled out of Multics in 1969. Ken Thompson and Dennis Ritchie, who had worked on it, kept iterating at a much smaller scale — deliberately simpler, on far less powerful hardware (initially a spare PDP-7). The result was Unix: a time-sharing OS built around a small set of composable ideas — "everything is a file," small single-purpose programs connected by pipes, and a portable design once rewritten in C ([Post 34]({{< relref "34-high-level-languages-fortran-cobol-lisp-c" >}}) covers that language, largely by the same people).
+Bell Labs pulled out of Multics in 1969 ([Wikipedia, Unix](https://en.wikipedia.org/wiki/Unix)). Ken Thompson and Dennis Ritchie, who had worked on it, kept iterating at a much smaller scale — deliberately simpler, on far less powerful hardware (initially a spare PDP-7). The result was Unix: a time-sharing OS built around a small set of composable ideas — "everything is a file," small single-purpose programs connected by pipes, and a portable design once rewritten in C ([Post 34]({{< relref "34-high-level-languages-fortran-cobol-lisp-c" >}}) covers that language, largely by the same people).
 
 Portability mattered. Unix was not locked to one manufacturer's box the way many contemporaries were, so it could spread across vendors with modest porting effort — a structural advantage over systems tied to a single product line.
 

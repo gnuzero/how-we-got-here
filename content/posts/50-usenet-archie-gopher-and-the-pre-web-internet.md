@@ -21,21 +21,21 @@ TCP/IP ([Post 48]({{< relref "48-tcp-ip-and-the-modern-internet-stack" >}})) gav
 
 ## Usenet: Distributed Discussion, No Central Server
 
-Usenet (Tom Truscott and Jim Ellis at Duke, conceived 1979, public 1980) predates the modern web by over a decade. No central server hosts all discussion. Participating servers exchange messages store-and-forward — first over UUCP dial-up, later over TCP/IP via NNTP (1986) — so a server receives posts from its peers, stores them, and forwards them on. A post propagates without a single central point of control.
+Usenet (Tom Truscott and Jim Ellis at Duke, conceived 1979, public 1980 ([Wikipedia, Usenet](https://en.wikipedia.org/wiki/Usenet))) predates the modern web by over a decade. No central server hosts all discussion. Participating servers exchange messages store-and-forward — first over UUCP dial-up, later over TCP/IP via NNTP (1986 ([Wikipedia, NNTP](https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol))) — so a server receives posts from its peers, stores them, and forwards them on. A post propagates without a single central point of control.
 
 Hierarchical newsgroups (`comp.lang.c`, `rec.arts.movies`, …) let discussion self-organize by topic without a central moderator imposing the tree. That design is a different philosophy from most of what replaced it — closer in spirit to distributed-systems ideas [Post 52]({{< relref "52-google-s-big-data-infrastructure-why-they-won" >}}) covers, applied to human talk rather than data processing.
 
 ## Archie: The First Search Tool
 
-Before anything resembling a modern search engine, finding a specific file meant knowing which host held it. Archie (1990, McGill; Alan Emtage with Bill Heelan and Peter Deutsch) took a narrower cut: periodically poll known FTP servers, index public filenames, let users search the index. Contents were out of scope — only names — but that was still a large step past guessing the server.
+Before anything resembling a modern search engine, finding a specific file meant knowing which host held it. Archie (1990, McGill; Alan Emtage with Bill Heelan and Peter Deutsch ([Wikipedia, Archie](https://en.wikipedia.org/wiki/Archie_(search_engine)))) took a narrower cut: periodically poll known FTP servers, index public filenames, let users search the index. Contents were out of scope — only names — but that was still a large step past guessing the server.
 
 ## Gopher: Menu-Driven Browsing Before the Web
 
-Gopher (1991, University of Minnesota; Mark McCahill and colleagues) offered hierarchical, menu-driven navigation: documents, submenus, links to other Gopher servers, selected by number rather than free-form hyperlinks. More constrained than the web — and for a brief stretch in the early 1990s, a serious contender for how the internet's information space would be organized.
+Gopher (1991, University of Minnesota; Mark McCahill and colleagues ([Wikipedia, Gopher](https://en.wikipedia.org/wiki/Gopher_(protocol)))) offered hierarchical, menu-driven navigation: documents, submenus, links to other Gopher servers, selected by number rather than free-form hyperlinks. More constrained than the web — and for a brief stretch in the early 1990s, a serious contender for how the internet's information space would be organized.
 
 ## IRC: Peer Talk in Real Time
 
-Usenet was talk that *propagated*. IRC was talk that *happened now*. In August 1988, Jarkko Oikarinen at the University of Oulu built Internet Relay Chat to improve multi-user conversation on the OuluBox BBS — inspired in part by Bitnet Relay and local tools from Jyrki Kuoppala and Jukka Pihl — then watched servers link Finland to North America as friends ran `ircd` elsewhere. Channels, nicknames, and a federated mesh of servers gave the internet a live room without a single corporate host. The protocol later landed in RFC 1459 (Oikarinen and Darren Reed, 1993).
+Usenet was talk that *propagated*. IRC was talk that *happened now*. In August 1988, Jarkko Oikarinen at the University of Oulu built Internet Relay Chat to improve multi-user conversation on the OuluBox BBS — inspired in part by Bitnet Relay — then watched servers link Finland to North America as friends ran `ircd` elsewhere. Channels, nicknames, and a federated mesh of servers gave the internet a live room without a single corporate host. The protocol later landed in RFC 1459 (1993) ([Wikipedia, IRC](https://en.wikipedia.org/wiki/IRC)).
 
 **Door out:** [RFC 1459](https://www.rfc-editor.org/rfc/rfc1459) — the primary IRC protocol specification.
 
@@ -43,11 +43,11 @@ Usenet was talk that *propagated*. IRC was talk that *happened now*. In August 1
 
 By the mid-1990s, the open tools above still assumed you knew where to point a client. Consumer portals sold a different bet: one homepage that *bundled* directory finding, news, mail, and chat so a newcomer did not have to assemble the arc themselves.
 
-Yahoo is the seed of that *kind*. In 1994, Stanford graduate students Jerry Yang and David Filo started "Jerry and David's Guide to the World Wide Web" — a human-curated hierarchical directory — renamed it Yahoo!, and grew it into a portal that layered search, mail, and other sticky services on top of the directory. Derive the kin and stop: AOL's walled garden, Excite, Lycos, and similar front doors were the same *category* — attention hubs that packaged find-then-talk for a mass audience — not a second company encyclopedia. Door out: treat the portal era as product history sitting on the protocols above, not as a replacement for them.
+Yahoo is the seed of that *kind*. In 1994, Stanford graduate students Jerry Yang and David Filo started "Jerry and David's Guide to the World Wide Web" — a human-curated hierarchical directory — renamed it Yahoo! ([Wikipedia, Yahoo](https://en.wikipedia.org/wiki/Yahoo)), and grew it into a portal that layered search, mail, and other sticky services on top of the directory. Derive the kin and stop: AOL's walled garden, Excite, Lycos, and similar front doors were the same *category* — attention hubs that packaged find-then-talk for a mass audience — not a second company encyclopedia. Door out: treat the portal era as product history sitting on the protocols above, not as a replacement for them.
 
 ## Why the Open Web Outran the Menus and the Hubs
 
-The web's core move — HTML with hyperlinks that could point to *any* other document, anywhere, not locked to a fixed menu hierarchy or one portal's taxonomy — was a more flexible find model than Gopher menus or a curated directory. Netscape Navigator (1994), from a company founded by former NCSA Mosaic developers with commercial backing and fast iteration, pushed that model from research tool into mainstream use. Portals kept packaging the arc; the open hyperlink graph (and later, crawler-scale search in the next post) kept winning the *find* half.
+The web's core move — HTML with hyperlinks that could point to *any* other document, anywhere, not locked to a fixed menu hierarchy or one portal's taxonomy — was a more flexible find model than Gopher menus or a curated directory. Netscape Navigator (1994 ([Wikipedia, Netscape Navigator](https://en.wikipedia.org/wiki/Netscape_Navigator))), from a company founded by former NCSA Mosaic developers with commercial backing and fast iteration, pushed that model from research tool into mainstream use. Portals kept packaging the arc; the open hyperlink graph (and later, crawler-scale search in the next post) kept winning the *find* half.
 
 Gopher faded from mainstream use. Usenet and IRC never fully disappeared — they just stopped being most people's first door. Archie's filename index was a seed of a *kind* that [Post 52]({{< relref "52-google-s-big-data-infrastructure-why-they-won" >}}) scales into indexing a whole decentralized web.
 

@@ -21,7 +21,7 @@ Wartime crypto ([Post 73]({{< relref "73-wartime-crypto" >}})) was secrecy again
 
 Before "privacy product," there was **protection**. Jerome Saltzer and Michael Schroeder's 1975 survey, [*The Protection of Information in Computer Systems*](https://web.mit.edu/Saltzer/www/publications/protection/), framed design principles that still read as engineering law: least privilege, complete mediation, fail-safe defaults, economy of mechanism. Virtual memory ([Post 31]({{< relref "31-virtual-memory-and-multitasking" >}})) and containers ([Post 32]({{< relref "32-containers-and-modern-os-isolation" >}})) are later instances of the same bet — draw a boundary the hardware and kernel enforce, so one program cannot casually read another.
 
-Door out: Saltzer & Schroeder (1975).
+Door out: Saltzer & Schroeder (1975) ([Wikipedia, The Protection of Information in Computer Systems](https://en.wikipedia.org/wiki/The_Protection_of_Information_in_Computer_Systems)).
 
 ## Crypto on a Public Network
 

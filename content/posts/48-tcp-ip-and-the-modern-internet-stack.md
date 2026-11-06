@@ -35,7 +35,7 @@ A connection starts with a three-way handshake: SYN (client proposes a sequence 
 
 ## From One Network's Protocols to a Stack
 
-ARPANET originally spoke its own host-to-host protocol (NCP), not TCP/IP. Cerf and Kahn's bet was larger: a *protocol stack* that could internet *many* packet networks, so the transport and the local wire could evolve separately. The practical cutover on the ARPANET itself was the January 1, 1983 "flag day," when NCP was turned off and TCP/IP became mandatory — a rare hard cut that made the layered story operational, not only architectural.
+ARPANET originally spoke its own host-to-host protocol (NCP), not TCP/IP. Cerf and Kahn's bet was larger: a *protocol stack* that could internet *many* packet networks, so the transport and the local wire could evolve separately. The practical cutover on the ARPANET itself was the January 1, 1983 "flag day" ([Wikipedia, Flag day](https://en.wikipedia.org/wiki/Flag_day_(computing))), when NCP was turned off and TCP/IP became mandatory — a rare hard cut that made the layered story operational, not only architectural.
 
 Application protocols then stacked *because* that substrate existed. DNS ([Post 72]({{< relref "72-who-decides-the-wire" >}})'s doors: [RFC 1034](https://www.rfc-editor.org/rfc/rfc1034) / [RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)) made names usable at scale; mail and the web (SMTP, HTTP and kin) rode TCP as clients of a reliable stream rather than reinventing addressing and retransmission. The pattern is the point: each layer buys one constraint so the layer above can assume it. That is a story about stacking, not a catalog of every RFC.
 

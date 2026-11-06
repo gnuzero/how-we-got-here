@@ -44,7 +44,7 @@ Interoperation fails quietly when two ends disagree what a byte sequence *is*. T
 
 A few peers earn a sentence — same *kind* of shared meaning, not a standards-body tour:
 
-- **W3C and WHATWG** — Tim Berners-Lee founded the World Wide Web Consortium (1994) to steward web platform standards; WHATWG later carried the living HTML/DOM specs when the browser vendors needed a faster iteration path. Same *kind*: who may define what a document and an API mean in the browser.
+- **W3C and WHATWG** — Tim Berners-Lee founded the World Wide Web Consortium (1994 ([Wikipedia, W3C](https://en.wikipedia.org/wiki/World_Wide_Web_Consortium))) to steward web platform standards; WHATWG later carried the living HTML/DOM specs when the browser vendors needed a faster iteration path. Same *kind*: who may define what a document and an API mean in the browser.
 - **IEEE** — IEEE 802 is why Ethernet ([Post 47]({{< relref "47-ethernet-and-the-local-area-network" >}})) and Wi-Fi are not proprietary island dialects at the link layer.
 - **ISO and peers** — formal international standards sit beside the RFC world where procurement, safety, or national bodies demand them; the internet mostly shipped on RFCs first and harmonized later.
 

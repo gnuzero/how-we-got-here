@@ -29,7 +29,7 @@ Two bits A and B: sum is XOR, carry is AND. That half adder cannot accept a carr
 
 ## Ripple-Carry: Simple, Slow for a Reason
 
-Four full adders in a row make a 4-bit ripple-carry adder. Bit 3's carry cannot be right until bit 2's has settled, which waits on bit 1, which waits on bit 0. The carry *ripples*. Fine at 4 bits; at 64 bits that chain sets how fast the whole ALU can clock. That delay constraint is exactly why real CPUs add carry-lookahead (and kin): more gates, shorter worst-case path. Same pattern as the rest of this book — a physical bottleneck forces the next architecture.
+Four full adders in a row make a 4-bit ripple-carry adder ([Wikipedia, Adder](https://en.wikipedia.org/wiki/Adder_(electronics))). Bit 3's carry cannot be right until bit 2's has settled, which waits on bit 1, which waits on bit 0. The carry *ripples*. Fine at 4 bits; at 64 bits that chain sets how fast the whole ALU can clock. That delay constraint is exactly why real CPUs add carry-lookahead (and kin): more gates, shorter worst-case path. Same pattern as the rest of this book — a physical bottleneck forces the next architecture.
 
 ## From Adders to a Simple ALU
 

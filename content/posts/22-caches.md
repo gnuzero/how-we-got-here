@@ -20,7 +20,7 @@ schematics: "Diagram: cache address breakdown + set-associative structure + MESI
 
 ## Why Caches Work at All
 
-**Temporal locality** — a location just touched is likely to be touched again soon (loop variables, hot code). **Spatial locality** — nearby locations are likely next (arrays, sequential fetch). Caches keep recently used data close, and fetch whole *lines* (often 64 bytes) on a miss, betting neighbors arrive soon.
+**Temporal locality** — a location just touched is likely to be touched again soon (loop variables, hot code). **Spatial locality** — nearby locations are likely next (arrays, sequential fetch). Caches keep recently used data close, and fetch whole *lines* (64 bytes is a common size ([Wikipedia, CPU cache](https://en.wikipedia.org/wiki/CPU_cache))) on a miss, betting neighbors arrive soon.
 
 Lookup splits an address into **offset** (byte in the line), **index** (which set), and **tag** (is the line present actually the one we want?).
 

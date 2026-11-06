@@ -17,7 +17,7 @@ labs: ["vm-terminal"]
 schematics: "Diagram: early ARPANET topology map + packet switching vs circuit switching comparison"
 ---
 
-[Post 45]({{< relref "45-serial-links-and-the-first-machine-to-machine-connections" >}})'s serial links connect exactly two endpoints. ARPANET, live in 1969 under ARPA (later DARPA), set out to prove something else: many machines reaching many others without a dedicated circuit between every pair, by breaking data into packets routed independently hop by hop.
+[Post 45]({{< relref "45-serial-links-and-the-first-machine-to-machine-connections" >}})'s serial links connect exactly two endpoints. ARPANET, live in 1969 ([Wikipedia, ARPANET](https://en.wikipedia.org/wiki/ARPANET)) under ARPA (later DARPA), set out to prove something else: many machines reaching many others without a dedicated circuit between every pair, by breaking data into packets routed independently hop by hop.
 
 ## Circuit Switching vs Packet Switching
 
