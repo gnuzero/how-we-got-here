@@ -13,7 +13,7 @@ tags: []
 summary: "Thousands of GPUs — topology and all-reduce matter as much as any chip's peak FLOPS"
 image_prompt: "System diagram of a multi-rack AI training cluster showing a fat-tree network topology, clean datacenter network architecture diagram style"
 video_prompt: "25-second animation: a datacenter-scale fat-tree topology with an all-reduce operation propagating gradient data, clean technical animation"
-schematics: "Diagram: rail-optimized fat-tree topology + all-reduce ring/tree communication pattern"
+schematics: "Diagram: fat-tree topology + all-reduce ring/tree communication pattern"
 ---
 
 [Post 64]({{< relref "64-multi-gpu-scaling" >}}) covered multi-GPU scaling within and across a few servers — NVLink, NVSwitch, GPUDirect RDMA. Large-scale training is another order of magnitude: thousands to tens of thousands of GPUs across hundreds to thousands of servers. How you wire them matters as much as any individual GPU's specs.
@@ -24,9 +24,9 @@ Connecting every server to every other grows connections quadratically — absur
 
 ## Fat-Tree, Tuned for Training
 
-A fat-tree layers switches — leaf switches at servers, spine switches connecting leaves — aiming for high (ideally non-oversubscribed) bisection bandwidth; real AI clusters may still oversubscribe or use rail-optimized variants. This is [Post 49]({{< relref "49-datacenter-networking-and-rdma" >}})'s datacenter networking idea at the thousands-of-GPU regime.
+A fat-tree layers switches — leaf switches at servers, spine switches connecting leaves — aiming for high (ideally non-oversubscribed) bisection bandwidth; real clusters may still oversubscribe it. Charles Leiserson introduced the fat tree at MIT in 1985 as a provably efficient universal network ([Wikipedia, Fat tree](https://en.wikipedia.org/wiki/Fat_tree)). This is [Post 49]({{< relref "49-datacenter-networking-and-rdma" >}})'s datacenter networking idea at the thousands-of-GPU regime.
 
-Rail-optimized designs further tune around the communication patterns large training jobs actually generate — not generic datacenter traffic. Training traffic is different; a topology built for it can beat a generic one.
+Training traffic is not generic datacenter traffic: all-reduce repeats the same exchange pattern every step, so a fabric's bisection bandwidth and oversubscription matter more than its peak link speed.
 
 ## All-Reduce Is the Pattern That Binds
 
@@ -34,5 +34,5 @@ Data-parallel training ([Post 54]({{< relref "54-the-machine-learning-software-s
 
 ## Topology Can Beat Spec Sheets
 
-Excellent GPUs on a poorly designed or oversubscribed fabric can lose to more modest GPUs on a carefully rail-optimized network — because all-reduce becomes the bottleneck, not any chip's peak FLOPS. The series theme again: component specs (transistor count, clock, peak FLOPS) only part of the story. How parts are connected — from a chip's buses (Phase 5) up to a training cluster's topology — often decides real achieved performance.
+Excellent GPUs on a poorly designed or oversubscribed fabric can lose to more modest GPUs on a well-provisioned fat tree — because all-reduce becomes the bottleneck, not any chip's peak FLOPS. The series theme again: component specs (transistor count, clock, peak FLOPS) only part of the story. How parts are connected — from a chip's buses (Phase 5) up to a training cluster's topology — often decides real achieved performance.
 

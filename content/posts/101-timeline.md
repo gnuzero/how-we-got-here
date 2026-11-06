@@ -52,8 +52,8 @@ A condensed chronology of the major milestones covered in this series.
 - **2000s–** — Datacenter networking, RDMA, high-bandwidth fabrics
 
 ## AI Hardware & Algorithms
-- **1999–2000s** — GPUs begin general-purpose use (GPGPU)
-- **2006–2007** — CUDA released
+- **~2001** — programmable shaders and floating point make general-purpose GPU computing practical ([Wikipedia, GPGPU](https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units))
+- **2004 / 2007** — CUDA created (2004) and officially released (2007) ([Wikipedia, CUDA](https://en.wikipedia.org/wiki/CUDA))
 - **2017** — NVIDIA Volta introduces Tensor Cores
 - **2017** — “Attention Is All You Need” (Vaswani et al.) — Transformer architecture
 - **2018–** — Rapid scaling of large language models on specialized matrix-multiply hardware
