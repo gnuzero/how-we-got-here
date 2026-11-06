@@ -29,7 +29,7 @@ ENIAC (Phase 1) occupied 1,800 square feet by the Army Ordnance Corps' data shee
 
 ## Microprocessors: The CPU on One Die
 
-The discontinuity: fabricate the whole CPU on one integrated circuit instead of wiring racks of discrete parts. Intel's 4004 (1971), built for a calculator, is usually credited as the first commercial single-chip CPU — 4-bit, about 2,300 transistors. Its clock is quoted two ways: 108 kHz in the Intel Museum archive ([Calisphere](https://calisphere.org/item/ark:/13030/kt729020f8/)), and a maximum of about 740 kHz from the datasheet's minimum cycle time ([Wikipedia, Intel 4004](https://en.wikipedia.org/wiki/Intel_4004)). Weak by any modern measure; the direct ancestor of the 8080, the Z80, and the x86 line in the next post.
+The discontinuity: fabricate the whole CPU on one integrated circuit instead of wiring racks of discrete parts. Intel's 4004 (1971), built for a calculator, is usually credited as the first commercial single-chip CPU — 4-bit, about 2,300 transistors. Its clock is quoted three ways: 108 kHz in the Intel Museum archive ([Calisphere](https://calisphere.org/item/ark:/13030/kt729020f8/)); 750 kHz in the IPSJ Computer Museum's profile of co-designer Masatoshi Shima ([IPSJ](https://museum.ipsj.or.jp/en/pioneer/shima.html)); and a maximum of about 740 kHz from the datasheet's minimum cycle time ([Wikipedia, Intel 4004](https://en.wikipedia.org/wiki/Intel_4004)). Weak by any modern measure; the direct ancestor of the 8080, the Z80, and the x86 line in the next post.
 
 ## Why the Collapse Compounded
 
