@@ -49,3 +49,20 @@ other = "مختبر تفاعلي: {{ .Type }}"
 [labOpenNewTab]
 other = "افتح المختبر في علامة تبويب جديدة ↗"
 
+[labDisplayName-difference-engine]
+other = "محرك الفروق"
+
+[labDisplayName-pebble-trays]
+other = "صواني الحصى"
+
+[labDisplayName-mini-cpu]
+other = "المعالج المصغّر"
+
+[labDisplayName-vm-terminal]
+other = "الطرفية"
+
+[labDisplayName-breadboard]
+other = "لوحة التوصيل"
+
+[labDisplayName-analytical-engine]
+other = "المحرك التحليلي"
