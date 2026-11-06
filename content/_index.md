@@ -14,11 +14,13 @@ An interactive journey — not an encyclopedia. You live through systems and tou
 
 The spine is one continuous engineering argument: how each era's hard constraint forced the next architecture.
 
-**Print → delivery → mechanical → relays → tubes → transistor → CPU → OS & languages → buses → networks → fabric & scale → GPUs → attention.**
+**Print → delivery → mechanical → film → relays → tubes → transistor → CPU → OS & languages → buses → networks → fabric & scale → GPUs → attention.**
 
 ---
 
 ## Experience first
+
+The opening chapters are short and hands-off on purpose. Print, delivery, the mechanical engines, film and relays set up the argument before the labs ask you to build anything. By the time you reach relays, you already know what is being switched and why.
 
 Three client-side labs sit on the path so reading becomes doing:
 
@@ -33,6 +35,8 @@ Optional side paths widen the lens without breaking the spine. Thin indexes live
 ---
 
 ## The pattern
+
+The opener shows the move five times. Print made a page you could copy without a scribe. The wire made a message that could travel without a rider. Cards and gears made a chore that could run without anyone minding it. The camera let light make a picture without anyone moving ink. Relays then made switching something electricity could do. Each step took a person out of one job and handed it to a material or a machine.
 
 When you know why relays gave way to tubes, why tubes gave way to transistors, why single-core frequency scaling hit a wall, and why matrix-multiply throughput became the dominant design constraint of the last decade, modern AI hardware stops looking like a black box. You see the same move repeating: name the constraint, change the architecture — do not merely push harder against the same wall.
 

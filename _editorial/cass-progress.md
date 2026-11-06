@@ -7,7 +7,7 @@
 
 ## Done
 
-### 71-who-decides-the-wire.md (2026-09-06)
+### 72-who-decides-the-wire.md (2026-09-06)
 - Governance / numbers-names-encodings seeds
 
 ### 43 find-then-talk extend-in-place (2026-09-06)
@@ -45,7 +45,7 @@
 ### Protocols-as-story needle (2026-09-07)
 
 - Assessed 39 / 41 / 64: 39 = packets bet; 64 = who decides; 41 = stack but thin on growth story
-- Extended `content/posts/47-tcp-ip-and-the-modern-internet-stack.md` in place — short section *From One Network's Protocols to a Stack* (NCP → flag day 1983 → apps as consequence; DNS/SMTP/HTTP as kin not catalog; doors to RFC 1034/1035)
+- Extended `content/posts/48-tcp-ip-and-the-modern-internet-stack.md` in place — short section *From One Network's Protocols to a Stack* (NCP → flag day 1983 → apps as consequence; DNS/SMTP/HTTP as kin not catalog; doors to RFC 1034/1035)
 - No new post; no SI/TA; no git
 
 ## Status (updated)

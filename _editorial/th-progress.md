@@ -10,79 +10,79 @@
 
 ### Retrofit อ่านเพิ่ม (05–12)
 
-- 11-semiconductors-from-first-principles.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ* (verified via WebSearch / Chula Eng textbook list). สุวิทย์ กิระวิทยา NU e-Camp basics: no matching named teaching title verified → not used.
-- 12-the-transistor-bjt-to-mosfet.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*; เพื่อชาติ สุขเรือน, *การวิเคราะห์วงจรทรานซิสเตอร์*
-- 13-logic-gates-from-transistors.md — ทรงยศ นาคอริยกุล; ศิริพร เดชะศิลารักษ์; ธีรวัฒน์ ประกอบผล
-- 14-from-gates-to-combinational-logic.md — ทรงยศ นาคอริยกุล; ศิริพร เดชะศิลารักษ์; ธีรวัฒน์ ประกอบผล
-- 15-sequential-logic.md — ทรงยศ นาคอริยกุล; ศิริพร เดชะศิลารักษ์
-- 16-the-memory-hierarchy-begins.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี
-- 17-instruction-sets.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา
-- 18-datapath-design.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา
+- 12-semiconductors-from-first-principles.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ* (verified via WebSearch / Chula Eng textbook list). สุวิทย์ กิระวิทยา NU e-Camp basics: no matching named teaching title verified → not used.
+- 13-the-transistor-bjt-to-mosfet.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*; เพื่อชาติ สุขเรือน, *การวิเคราะห์วงจรทรานซิสเตอร์*
+- 14-logic-gates-from-transistors.md — ทรงยศ นาคอริยกุล; ศิริพร เดชะศิลารักษ์; ธีรวัฒน์ ประกอบผล
+- 15-from-gates-to-combinational-logic.md — ทรงยศ นาคอริยกุล; ศิริพร เดชะศิลารักษ์; ธีรวัฒน์ ประกอบผล
+- 16-sequential-logic.md — ทรงยศ นาคอริยกุล; ศิริพร เดชะศิลารักษ์
+- 17-the-memory-hierarchy-begins.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี
+- 18-instruction-sets.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา
+- 19-datapath-design.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา
 
 ### New full bodies (13–22)
 
-- 19-pipelining.md — จันทนา; ปัทมา; เกริก
-- 20-branch-prediction.md — จันทนา; ปัทมา; เกริก
-- 21-caches.md — จันทนา; ปัทมา; เกริก
-- 22-out-of-order-execution.md — จันทนา; ปัทมา; เกริก (historical: Tomasulo / IBM System/360 Model 91)
-- 23-superscalar-multicore.md — จันทนา; ปัทมา; เกริก
-- 24-mainframes-to-minicomputers-to-microprocessors.md — จันทนา; ปัทมา; เกริก (historical: IBM S/360, DEC PDP-11, Intel 4004)
-- 25-the-x86-vs-risc-split.md — จันทนา; ปัทมา; เกริก
-- 26-arm-and-risc-v-the-architecture-landscape-today.md — จันทนา; ปัทมา; เกริก
-- 27-batch-processing-and-the-birth-of-the-operating-system.md — ยรรยง เต็งอำนวย, *ระบบปฏิบัติการ*; ชูเกียรติ วรสุชีพ, *ระบบปฏิบัติการคอมพิวเตอร์ยุคใหม่*; พิรพร หมุนสนิท และคณะ, *ระบบปฏิบัติการ*
-- 28-time-sharing-and-the-unix-lineage.md — same OS trio (historical: Ken Thompson, Dennis Ritchie, Multics, BSD, System V)
+- 20-pipelining.md — จันทนา; ปัทมา; เกริก
+- 21-branch-prediction.md — จันทนา; ปัทมา; เกริก
+- 22-caches.md — จันทนา; ปัทมา; เกริก
+- 23-out-of-order-execution.md — จันทนา; ปัทมา; เกริก (historical: Tomasulo / IBM System/360 Model 91)
+- 24-superscalar-multicore.md — จันทนา; ปัทมา; เกริก
+- 25-mainframes-to-minicomputers-to-microprocessors.md — จันทนา; ปัทมา; เกริก (historical: IBM S/360, DEC PDP-11, Intel 4004)
+- 26-the-x86-vs-risc-split.md — จันทนา; ปัทมา; เกริก
+- 27-arm-and-risc-v-the-architecture-landscape-today.md — จันทนา; ปัทมา; เกริก
+- 28-batch-processing-and-the-birth-of-the-operating-system.md — ยรรยง เต็งอำนวย, *ระบบปฏิบัติการ*; ชูเกียรติ วรสุชีพ, *ระบบปฏิบัติการคอมพิวเตอร์ยุคใหม่*; พิรพร หมุนสนิท และคณะ, *ระบบปฏิบัติการ*
+- 29-time-sharing-and-the-unix-lineage.md — same OS trio (historical: Ken Thompson, Dennis Ritchie, Multics, BSD, System V)
 
 ### New full bodies (23–32)
 
-- 29-the-gnu-movement-and-linux.md — ยรรยง เต็งอำนวย, *ระบบปฏิบัติการ*; ชูเกียรติ วรสุชีพ, *ระบบปฏิบัติการคอมพิวเตอร์ยุคใหม่*; พิรพร หมุนสนิท และคณะ, *ระบบปฏิบัติการ*; วิรุฬห์ ศรีบริรักษ์, *Embedded Android Development* (historical: Richard Stallman, Linus Torvalds, GNU, GPL, Linux)
-- 30-virtual-memory-and-multitasking.md — same OS trio (ยรรยง; ชูเกียรติ; พิรพร)
-- 31-containers-and-modern-os-isolation.md — OS trio + อาณัติ รัตนถิรกุล, *Docker พื้นฐานสู่การใช้งานจริง*
-- 32-from-machine-code-to-assembly.md — ธีรวัฒน์ ประกอบผล, *ภาษาแอสเซมบลีสำหรับ MCS-51*; จารุโลจน์ จงสถิตย์วัฒนา, *หลักการและการประมวลผลภาษาโปรแกรม*; จันทนา จันทราพรชัย, *สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ*
-- 33-high-level-languages-fortran-cobol-lisp-c.md — อรพิน ประวัติบริสุทธิ์, *คู่มือเขียนโปรแกรมด้วยภาษา C ฉบับสมบูรณ์*; ธีรวัฒน์ ประกอบผล, *การโปรแกรมภาษาซีสำหรับงานวิทยาศาสตร์*; จารุโลจน์ จงสถิตย์วัฒนา, *หลักการและการประมวลผลภาษาโปรแกรม* (historical: Grace Hopper / FLOW-MATIC→COBOL; FORTRAN 1957 IBM; John McCarthy / Lisp; Dennis Ritchie / C)
-- 34-compilers-jit-and-modern-language-runtimes.md — จารุโลจน์ จงสถิตย์วัฒนา, *หลักการและการประมวลผลภาษาโปรแกรม*; เกียรติกูล เจียรนัยธนะกิจ, *ทฤษฎีการคำนวณ*; อรพิน ประวัติบริสุทธิ์, *คู่มือเขียนโปรแกรมด้วยภาษา C ฉบับสมบูรณ์*
-- 35-real-time-systems-and-deterministic-scheduling.md — วโรดม ตู้จินดา, *ระบบควบคุมฝังตัว*; วิรุฬห์ ศรีบริรักษ์, *Embedded Android Development*; ดอนสัน ปงผาบ, *ไมโครคอนโทรลเลอร์และการประยุกต์ใช้งาน 1*
-- 36-real-time-systems-in-practice.md — same real-time/embedded trio (วโรดม; วิรุฬห์; ดอนสัน)
-- 37-buses-101.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา
-- 38-from-isa-bus-to-pci-to-pcie.md — จันทนา; ปัทมา; เกริก
+- 30-the-gnu-movement-and-linux.md — ยรรยง เต็งอำนวย, *ระบบปฏิบัติการ*; ชูเกียรติ วรสุชีพ, *ระบบปฏิบัติการคอมพิวเตอร์ยุคใหม่*; พิรพร หมุนสนิท และคณะ, *ระบบปฏิบัติการ*; วิรุฬห์ ศรีบริรักษ์, *Embedded Android Development* (historical: Richard Stallman, Linus Torvalds, GNU, GPL, Linux)
+- 31-virtual-memory-and-multitasking.md — same OS trio (ยรรยง; ชูเกียรติ; พิรพร)
+- 32-containers-and-modern-os-isolation.md — OS trio + อาณัติ รัตนถิรกุล, *Docker พื้นฐานสู่การใช้งานจริง*
+- 33-from-machine-code-to-assembly.md — ธีรวัฒน์ ประกอบผล, *ภาษาแอสเซมบลีสำหรับ MCS-51*; จารุโลจน์ จงสถิตย์วัฒนา, *หลักการและการประมวลผลภาษาโปรแกรม*; จันทนา จันทราพรชัย, *สถาปัตยกรรมคอมพิวเตอร์และการออกแบบ*
+- 34-high-level-languages-fortran-cobol-lisp-c.md — อรพิน ประวัติบริสุทธิ์, *คู่มือเขียนโปรแกรมด้วยภาษา C ฉบับสมบูรณ์*; ธีรวัฒน์ ประกอบผล, *การโปรแกรมภาษาซีสำหรับงานวิทยาศาสตร์*; จารุโลจน์ จงสถิตย์วัฒนา, *หลักการและการประมวลผลภาษาโปรแกรม* (historical: Grace Hopper / FLOW-MATIC→COBOL; FORTRAN 1957 IBM; John McCarthy / Lisp; Dennis Ritchie / C)
+- 35-compilers-jit-and-modern-language-runtimes.md — จารุโลจน์ จงสถิตย์วัฒนา, *หลักการและการประมวลผลภาษาโปรแกรม*; เกียรติกูล เจียรนัยธนะกิจ, *ทฤษฎีการคำนวณ*; อรพิน ประวัติบริสุทธิ์, *คู่มือเขียนโปรแกรมด้วยภาษา C ฉบับสมบูรณ์*
+- 36-real-time-systems-and-deterministic-scheduling.md — วโรดม ตู้จินดา, *ระบบควบคุมฝังตัว*; วิรุฬห์ ศรีบริรักษ์, *Embedded Android Development*; ดอนสัน ปงผาบ, *ไมโครคอนโทรลเลอร์และการประยุกต์ใช้งาน 1*
+- 37-real-time-systems-in-practice.md — same real-time/embedded trio (วโรดม; วิรุฬห์; ดอนสัน)
+- 38-buses-101.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา
+- 39-from-isa-bus-to-pci-to-pcie.md — จันทนา; ปัทมา; เกริก
 
 ### New full bodies (33–42)
 
-- 39-pcie-deep-dive.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา
-- 40-memory-buses.md — จันทนา; ปัทมา; เกริก
-- 41-the-memory-wall.md — จันทนา; ปัทมา; เกริก
-- 42-the-clock-speed-wall.md — จันทนา; ปัทมา; เกริก
-- 43-interconnects-at-scale.md — จันทนา; ปัทมา; เกริก
-- 44-serial-links-and-the-first-machine-to-machine-connections.md — โอภาส เอี่ยมสิริวงศ์, *เครือข่ายคอมพิวเตอร์และการสื่อสาร*; สุธี พงศาสกุลชัย, *การสื่อสารข้อมูลและเครือข่ายคอมพิวเตอร์*; จตุชัย แพงจันทร์ และ อนุโชต วุฒิพรพงษ์, *เจาะระบบ Network*
-- 45-arpanet-and-packet-switching.md — โอภาส เอี่ยมสิริวงศ์; ภัทรสินี ภัทรโกศล, *เครือข่ายคอมพิวเตอร์*; สุวัฒน์ ปุณณชัยยะ และคณะ, *เปิดโลก TCP/IP และโปรโตคอลของอินเตอร์เน็ต*
-- 46-ethernet-and-the-local-area-network.md — โอภาส; จตุชัย/อนุโชต; ภัทรสินี (historical: Xerox PARC / Ethernet 1973)
-- 47-tcp-ip-and-the-modern-internet-stack.md — โอภาส; สุวัฒน์ ปุณณชัยยะ และคณะ; ภัทรสินี
-- 48-datacenter-networking-and-rdma.md — โอภาส; จตุชัย/อนุโชต; ภัทรสินี
+- 40-pcie-deep-dive.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา
+- 41-memory-buses.md — จันทนา; ปัทมา; เกริก
+- 42-the-memory-wall.md — จันทนา; ปัทมา; เกริก
+- 43-the-clock-speed-wall.md — จันทนา; ปัทมา; เกริก
+- 44-interconnects-at-scale.md — จันทนา; ปัทมา; เกริก
+- 45-serial-links-and-the-first-machine-to-machine-connections.md — โอภาส เอี่ยมสิริวงศ์, *เครือข่ายคอมพิวเตอร์และการสื่อสาร*; สุธี พงศาสกุลชัย, *การสื่อสารข้อมูลและเครือข่ายคอมพิวเตอร์*; จตุชัย แพงจันทร์ และ อนุโชต วุฒิพรพงษ์, *เจาะระบบ Network*
+- 46-arpanet-and-packet-switching.md — โอภาส เอี่ยมสิริวงศ์; ภัทรสินี ภัทรโกศล, *เครือข่ายคอมพิวเตอร์*; สุวัฒน์ ปุณณชัยยะ และคณะ, *เปิดโลก TCP/IP และโปรโตคอลของอินเตอร์เน็ต*
+- 47-ethernet-and-the-local-area-network.md — โอภาส; จตุชัย/อนุโชต; ภัทรสินี (historical: Xerox PARC / Ethernet 1973)
+- 48-tcp-ip-and-the-modern-internet-stack.md — โอภาส; สุวัฒน์ ปุณณชัยยะ และคณะ; ภัทรสินี
+- 49-datacenter-networking-and-rdma.md — โอภาส; จตุชัย/อนุโชต; ภัทรสินี
 
 ### New full bodies (43–52)
 
-- 49-usenet-archie-gopher-and-the-pre-web-internet.md — โอภาส เอี่ยมสิริวงศ์; จตุชัย/อนุโชต; ภัทรสินี (historical: Tom Truscott, Jim Ellis / Usenet; Archie McGill 1990; Gopher Minnesota 1991; Netscape Navigator 1994)
-- 51-google-s-big-data-infrastructure-why-they-won.md — อสมา กุลวานิชไชยนันท์, *Big Data Series I: Introduction to a Big Data Project ปฐมบทในการทำโปรเจคบิ๊กดาต้า*; โอภาส เอี่ยมสิริวงศ์ (historical: GFS 2003, MapReduce 2004, Bigtable 2006, Hadoop)
-- 52-kubernetes-and-container-orchestration-at-scale.md — อาณัติ รัตนถิรกุล, *Docker พื้นฐานสู่การใช้งานจริง*; ณัฐโชติ พรหมฤทธิ์, *Practical DevOps and Cloud Engineering*
-- 53-the-machine-learning-software-stack.md — สุพจน์ เฮงพระพรหม, *การเรียนรู้ของเครื่อง MACHINE LEARNING*; นวลวรรณ สุนทรภิษัช, *การเรียนรู้ของเครื่อง Machine Learning*; รศ.ดร.วฤษาย์ ร่มสายหยุด, *การเรียนรู้ของเครื่องสำหรับการวิเคราะห์ข้อมูลเชิงทำนายและการประยุกต์*
-- 54-what-7nm-actually-means.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*
-- 55-photolithography.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ* (historical: ASML EUV; Reuters Shenzhen prototype Dec 2025)
-- 56-finfet-to-gaa.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ* (historical: Intel Ivy Bridge 22 nm 2011–2012)
-- 57-moore-s-law.md — ทรงพล กาญจนชูชัย; จันทนา จันทราพรชัย; รศ.ดร.เกริก ภิรมย์โสภา (historical: Gordon Moore 1965/1975; Intel 4004)
-- 58-chiplets-advanced-packaging.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*
-- 59-why-gpus-exist.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา (SIMD coverage via Flynn taxonomy in architecture texts)
+- 50-usenet-archie-gopher-and-the-pre-web-internet.md — โอภาส เอี่ยมสิริวงศ์; จตุชัย/อนุโชต; ภัทรสินี (historical: Tom Truscott, Jim Ellis / Usenet; Archie McGill 1990; Gopher Minnesota 1991; Netscape Navigator 1994)
+- 52-google-s-big-data-infrastructure-why-they-won.md — อสมา กุลวานิชไชยนันท์, *Big Data Series I: Introduction to a Big Data Project ปฐมบทในการทำโปรเจคบิ๊กดาต้า*; โอภาส เอี่ยมสิริวงศ์ (historical: GFS 2003, MapReduce 2004, Bigtable 2006, Hadoop)
+- 53-kubernetes-and-container-orchestration-at-scale.md — อาณัติ รัตนถิรกุล, *Docker พื้นฐานสู่การใช้งานจริง*; ณัฐโชติ พรหมฤทธิ์, *Practical DevOps and Cloud Engineering*
+- 54-the-machine-learning-software-stack.md — สุพจน์ เฮงพระพรหม, *การเรียนรู้ของเครื่อง MACHINE LEARNING*; นวลวรรณ สุนทรภิษัช, *การเรียนรู้ของเครื่อง Machine Learning*; รศ.ดร.วฤษาย์ ร่มสายหยุด, *การเรียนรู้ของเครื่องสำหรับการวิเคราะห์ข้อมูลเชิงทำนายและการประยุกต์*
+- 55-what-7nm-actually-means.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*
+- 56-photolithography.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ* (historical: ASML EUV; Reuters Shenzhen prototype Dec 2025)
+- 57-finfet-to-gaa.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ* (historical: Intel Ivy Bridge 22 nm 2011–2012)
+- 58-moore-s-law.md — ทรงพล กาญจนชูชัย; จันทนา จันทราพรชัย; รศ.ดร.เกริก ภิรมย์โสภา (historical: Gordon Moore 1965/1975; Intel 4004)
+- 59-chiplets-advanced-packaging.md — ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*
+- 60-why-gpus-exist.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา (SIMD coverage via Flynn taxonomy in architecture texts)
 
 ### New full bodies (53–62)
 
-- 60-cuda-cores-warps-and-occupancy.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา (no named Thai CUDA book found; blogs only — remixman.net / BUA Labs not used)
-- 61-gpu-memory-hierarchy.md — จันทนา; ปัทมา; เกริก (memory hierarchy + GPU bandwidth)
-- 62-tensor-cores.md — จันทนา; ปัทมา; เกริก (historical: NVIDIA tensor cores / Volta implicit; Google TPU named as alternative)
-- 63-multi-gpu-scaling.md — จันทนา; ปัทมา; เกริก
-- 64-why-matrix-multiply-reshaped-chip-design.md — จันทนา; เกริก; ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*; สุพจน์ เฮงพระพรหม; นวลวรรณ สุนทรภิษัช; รศ.ดร.วฤษาย์ ร่มสายหยุด (NN layer = matrix multiply)
-- 65-systolic-arrays.md — จันทนา; ปัทมา; เกริก; ทรงพล (historical: Google TPU / MXU)
-- 66-quantization-mixed-precision.md — สุพจน์; นวลวรรณ; วฤษาย์ (NN numerics); ทรงพล (area/power of arithmetic circuits)
-- 67-sparsity-in-hardware.md — สุพจน์; นวลวรรณ; วฤษาย์; จันทนา; เกริก (historical: NVIDIA Ampere Sparse Tensor Cores)
-- 68-interconnect-at-datacenter-scale.md — โอภาส เอี่ยมสิริวงศ์, *เครือข่ายคอมพิวเตอร์และการสื่อสาร*; จตุชัย แพงจันทร์ และ อนุโชต วุฒิพรพงษ์, *เจาะระบบ Network*; ภัทรสินี ภัทรโกศล, *เครือข่ายคอมพิวเตอร์*; จันทนา
-- 69-where-it-s-headed.md — ทรงพล; จันทนา; เกริก; โอภาส
+- 61-cuda-cores-warps-and-occupancy.md — จันทนา จันทราพรชัย; ผศ.ดร. ปัทมา ลงกานี; รศ.ดร.เกริก ภิรมย์โสภา (no named Thai CUDA book found; blogs only — remixman.net / BUA Labs not used)
+- 62-gpu-memory-hierarchy.md — จันทนา; ปัทมา; เกริก (memory hierarchy + GPU bandwidth)
+- 63-tensor-cores.md — จันทนา; ปัทมา; เกริก (historical: NVIDIA tensor cores / Volta implicit; Google TPU named as alternative)
+- 64-multi-gpu-scaling.md — จันทนา; ปัทมา; เกริก
+- 65-why-matrix-multiply-reshaped-chip-design.md — จันทนา; เกริก; ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*; สุพจน์ เฮงพระพรหม; นวลวรรณ สุนทรภิษัช; รศ.ดร.วฤษาย์ ร่มสายหยุด (NN layer = matrix multiply)
+- 66-systolic-arrays.md — จันทนา; ปัทมา; เกริก; ทรงพล (historical: Google TPU / MXU)
+- 67-quantization-mixed-precision.md — สุพจน์; นวลวรรณ; วฤษาย์ (NN numerics); ทรงพล (area/power of arithmetic circuits)
+- 68-sparsity-in-hardware.md — สุพจน์; นวลวรรณ; วฤษาย์; จันทนา; เกริก (historical: NVIDIA Ampere Sparse Tensor Cores)
+- 69-interconnect-at-datacenter-scale.md — โอภาส เอี่ยมสิริวงศ์, *เครือข่ายคอมพิวเตอร์และการสื่อสาร*; จตุชัย แพงจันทร์ และ อนุโชต วุฒิพรพงษ์, *เจาะระบบ Network*; ภัทรสินี ภัทรโกศล, *เครือข่ายคอมพิวเตอร์*; จันทนา
+- 70-where-it-s-headed.md — ทรงพล; จันทนา; เกริก; โอภาส
 
 ### 101-timeline + about
 
@@ -92,7 +92,7 @@
 ### VISION distill + widen-lens (2026-09-06 Mira pass)
 
 #### A) 64 verified
-- 71-who-decides-the-wire.md — body already matched English distill; draft:false; named people + RFC links kept; อ่านเพิ่ม kept (verified): โอภาส เอี่ยมสิริวงศ์; ภัทรสินี ภัทรโกศล; สุวัฒน์ ปุณณชัยยะ และคณะ
+- 72-who-decides-the-wire.md — body already matched English distill; draft:false; named people + RFC links kept; อ่านเพิ่ม kept (verified): โอภาส เอี่ยมสิริวงศ์; ภัทรสินี ภัทรโกศล; สุวัฒน์ ปุณณชัยยะ และคณะ
 
 #### B) New / verify widen-lens posts
 - 73-wartime-crypto.md — verified match to English; draft:false; อ่านเพิ่ม: วรเศรษฐ สุวรรณิก, *วิทยาการรหัสลับ* (Chula OPAC bib=1858617)
@@ -102,10 +102,10 @@
 
 #### C) Phase 1 distill (match CURRENT English)
 - 04-mechanical-electromechanical-computing.md — already matched English distill; draft:false; อ่านเพิ่ม omitted (no verified named Thai computing-history textbook)
-- 08-relays-and-electromechanical-logic.md — already matched; draft:false; อ่านเพิ่ม omitted
-- 09-the-vacuum-tube-era.md — **rewritten**; draft:false (was draft:true); Goldstine door out + named credit; summary aligned; no encyclopedia padding; อ่านเพิ่ม omitted
-- 10-why-the-transistor-had-to-happen.md — **rewritten**; draft:false (was draft:true); Bardeen/Brattain/Shockley named + door out; Phase 8 ref; อ่านเพิ่ม: ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*
-- 70-attention-is-all-you-need.md — **rewritten**; draft:false (was draft:true); summary + body match English distill; full Vaswani et al. author list door out; อ่านเพิ่ม: สุพจน์; นวลวรรณ; วฤษาย์ (verified ML trio from 46)
+- 09-relays-and-electromechanical-logic.md — already matched; draft:false; อ่านเพิ่ม omitted
+- 10-the-vacuum-tube-era.md — **rewritten**; draft:false (was draft:true); Goldstine door out + named credit; summary aligned; no encyclopedia padding; อ่านเพิ่ม omitted
+- 11-why-the-transistor-had-to-happen.md — **rewritten**; draft:false (was draft:true); Bardeen/Brattain/Shockley named + door out; Phase 8 ref; อ่านเพิ่ม: ทรงพล กาญจนชูชัย, *อุปกรณ์สารกึ่งตัวนำ*
+- 71-attention-is-all-you-need.md — **rewritten**; draft:false (was draft:true); summary + body match English distill; full Vaswani et al. author list door out; อ่านเพิ่ม: สุพจน์; นวลวรรณ; วฤษาย์ (verified ML trio from 46)
 
 #### D) Paths
 - content/paths/ had English files → mirrored to content.th/paths/:
@@ -131,14 +131,14 @@ Rewrote content.th/posts/05–12 to match CURRENT English Jules distill (content
 
 | slug | EN lines | TH lines | อ่านเพิ่ม |
 |------|----------|----------|-----------|
-| 11-semiconductors-from-first-principles | 36 | 39 | kept (ทรงพล กาญจนชูชัย) |
-| 12-the-transistor-bjt-to-mosfet | 40 | 44 | kept (ทรงพล; เพื่อชาติ สุขเรือน) |
-| 13-logic-gates-from-transistors | 43 | 48 | kept (ทรงยศ; ศิริพร; ธีรวัฒน์) |
-| 14-from-gates-to-combinational-logic | 41 | 44 | kept (ทรงยศ; ศิริพร; ธีรวัฒน์) |
-| 15-sequential-logic | 43 | 47 | kept (ทรงยศ; ศิริพร) |
-| 16-the-memory-hierarchy-begins | 39 | 43 | kept (จันทนา; ปัทมา) |
-| 17-instruction-sets | 45 | 50 | kept (จันทนา; ปัทมา; เกริก) |
-| 18-datapath-design | 37 | 42 | kept (จันทนา; ปัทมา; เกริก) |
+| 12-semiconductors-from-first-principles | 36 | 39 | kept (ทรงพล กาญจนชูชัย) |
+| 13-the-transistor-bjt-to-mosfet | 40 | 44 | kept (ทรงพล; เพื่อชาติ สุขเรือน) |
+| 14-logic-gates-from-transistors | 43 | 48 | kept (ทรงยศ; ศิริพร; ธีรวัฒน์) |
+| 15-from-gates-to-combinational-logic | 41 | 44 | kept (ทรงยศ; ศิริพร; ธีรวัฒน์) |
+| 16-sequential-logic | 43 | 47 | kept (ทรงยศ; ศิริพร) |
+| 17-the-memory-hierarchy-begins | 39 | 43 | kept (จันทนา; ปัทมา) |
+| 18-instruction-sets | 45 | 50 | kept (จันทนา; ปัทมา; เกริก) |
+| 19-datapath-design | 37 | 42 | kept (จันทนา; ปัทมา; เกริก) |
 
 Notes:
 - Summaries translated from current EN distill; phase/title Thai-localized kept; image/video/schematics/labs + {{< lab >}} + ASSET CHECKLIST English kept.
@@ -153,14 +153,14 @@ Rewrote content.th/posts/13–20 to match CURRENT English Jules distill (content
 
 | slug | EN lines | TH lines | อ่านเพิ่ม |
 |------|----------|----------|-----------|
-| 19-pipelining | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
-| 20-branch-prediction | 45 | 50 | kept (จันทนา; ปัทมา; เกริก) |
-| 21-caches | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
-| 22-out-of-order-execution | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
-| 23-superscalar-multicore | 39 | 44 | kept (จันทนา; ปัทมา; เกริก) |
-| 24-mainframes-to-minicomputers-to-microprocessors | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
-| 25-the-x86-vs-risc-split | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
-| 26-arm-and-risc-v-the-architecture-landscape-today | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+| 20-pipelining | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+| 21-branch-prediction | 45 | 50 | kept (จันทนา; ปัทมา; เกริก) |
+| 22-caches | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+| 23-out-of-order-execution | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+| 24-superscalar-multicore | 39 | 44 | kept (จันทนา; ปัทมา; เกริก) |
+| 25-mainframes-to-minicomputers-to-microprocessors | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+| 26-the-x86-vs-risc-split | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
+| 27-arm-and-risc-v-the-architecture-landscape-today | 43 | 48 | kept (จันทนา; ปัทมา; เกริก) |
 
 Notes:
 - Summaries translated from current EN distill; phase/title Thai-localized kept; image/video/schematics/labs + {{< lab >}} + ASSET CHECKLIST English kept.
@@ -176,16 +176,16 @@ Rewrote content.th/posts/41–50 to match CURRENT English Jules distill (content
 
 | slug | EN lines | TH lines | อ่านเพิ่ม |
 |------|----------|----------|-----------|
-| 47-tcp-ip-and-the-modern-internet-stack | 51 | 56 | kept (โอภาส; สุวัฒน์ ปุณณชัยยะ และคณะ; ภัทรสินี) |
-| 48-datacenter-networking-and-rdma | 41 | 46 | kept (โอภาส; จตุชัย/อนุโชต; ภัทรสินี) |
-| 49-usenet-archie-gopher-and-the-pre-web-internet | 61 | 66 | kept (โอภาส; จตุชัย/อนุโชต; ภัทรสินี) |
-| 51-google-s-big-data-infrastructure-why-they-won | 46 | 50 | kept (อสมา; โอภาส) |
-| 52-kubernetes-and-container-orchestration-at-scale | 42 | 46 | kept (อาณัติ; ณัฐโชติ) |
-| 53-the-machine-learning-software-stack | 42 | 47 | kept (สุพจน์; นวลวรรณ; วฤษาย์) |
-| 54-what-7nm-actually-means | 38 | 41 | kept (ทรงพล กาญจนชูชัย) |
-| 55-photolithography | 36 | 39 | kept (ทรงพล กาญจนชูชัย) |
-| 56-finfet-to-gaa | 40 | 43 | kept (ทรงพล กาญจนชูชัย) |
-| 57-moore-s-law | 44 | 49 | kept (ทรงพล; จันทนา; เกริก) |
+| 48-tcp-ip-and-the-modern-internet-stack | 51 | 56 | kept (โอภาส; สุวัฒน์ ปุณณชัยยะ และคณะ; ภัทรสินี) |
+| 49-datacenter-networking-and-rdma | 41 | 46 | kept (โอภาส; จตุชัย/อนุโชต; ภัทรสินี) |
+| 50-usenet-archie-gopher-and-the-pre-web-internet | 61 | 66 | kept (โอภาส; จตุชัย/อนุโชต; ภัทรสินี) |
+| 52-google-s-big-data-infrastructure-why-they-won | 46 | 50 | kept (อสมา; โอภาส) |
+| 53-kubernetes-and-container-orchestration-at-scale | 42 | 46 | kept (อาณัติ; ณัฐโชติ) |
+| 54-the-machine-learning-software-stack | 42 | 47 | kept (สุพจน์; นวลวรรณ; วฤษาย์) |
+| 55-what-7nm-actually-means | 38 | 41 | kept (ทรงพล กาญจนชูชัย) |
+| 56-photolithography | 36 | 39 | kept (ทรงพล กาญจนชูชัย) |
+| 57-finfet-to-gaa | 40 | 43 | kept (ทรงพล กาญจนชูชัย) |
+| 58-moore-s-law | 44 | 49 | kept (ทรงพล; จันทนา; เกริก) |
 
 Notes:
 - Summaries translated from current EN distill; phase/title Thai-localized kept; image/video/schematics/labs + {{< lab >}} + ASSET CHECKLIST English kept.

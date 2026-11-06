@@ -1,0 +1,43 @@
+---
+title: "ද්වාරවලින් සංයෝජන තර්කය දක්වා"
+weight: 15
+date: 2026-01-01
+draft: false
+phase: "2 — භෞතික විද්‍යාව සහ උපාංග"
+series_index: 14
+aliases:
+  - /posts/08-from-gates-to-combinational-logic/
+  - /posts/13-from-gates-to-combinational-logic/
+  - /posts/14-from-gates-to-combinational-logic/
+tags: []
+summary: "Adders, muxes, සහ ALUs"
+image_prompt: "Block diagram of a 1-bit full adder with truth table, clean digital logic textbook style"
+video_prompt: "20-second animation: full adder circuit computing a sum with carry propagation, clean technical animation"
+labs: ["breadboard"]
+schematics: "Diagram: full adder gate-level schematic + 4-bit ripple carry adder + 2-bit ALU block diagram"
+---
+
+තනි තර්ක ද්වාරයක් (logic gate) තනිවම පාහේ ප්‍රයෝජනවත් කිසිවක් නොකරයි. රසවත් හැසිරීම ආරම්භ වන්නේ ඒවා යමක් ගණනය කරන ව්‍යුහවලට සංයුක්ත කළ විටය — සහ සෑම ඩිජිටල් නිර්මාණ පාඨමාලාවක්ම විවෘත කරන ප්‍රමාණික ආරම්භක උදාහරණය වන්නේ adder එකයි.
+
+## Half Adder එක
+
+තනි bit දෙකක්, A සහ B, එකතු කිරීමෙන් sum bit එකක් සහ carry-out bit එකක් නිපදවයි. Sum යනු A XOR B (හරියටම එක් ආදානයක් 1 නම් 1); carry යනු A AND B (ආදාන දෙකම 1 නම් පමණක් 1). ද්වාර දෙකක්, සහ ඔබ එකතු කරන පරිපථයක් ගොඩනඟා ඇත — නමුත් යමක් මග හැරී ඇත: පෙර, අඩු-වැදගත්කම් bit පිහිටීමකින් carry-*in* එකක් පිළිගැනීමට මාර්ගයක් නැත. එබැවින් එය "half" adder ලෙස හැඳින්වේ.
+
+## Full Adder එක
+
+Full adder එකක් ආදාන තුනක් ගනී — A, B, සහ Carry-in — සහ Sum සහ Carry-out නිපදවයි. එය half adder දෙකකින් ප්ලස් හැකි carry-out මූලාශ්‍ර දෙක ඒකාබද්ධ කිරීමට OR ද්වාරයකින් ගොඩනැගිය හැක, නැතහොත් සෘජුවම Sum = A XOR B XOR Cin, සහ Carry-out = (A AND B) OR (Cin AND (A XOR B)) ලෙස. ඕනෑම ආකාරයකින්, ප්‍රධාන ගුණය නම් එය *සංයුක්ත කළ හැකි* බවයි: එක් full adder එකක carry-out ඊළඟ එකේ carry-in වෙත දාම කරන්න, එවිට ඔබට අත්තනෝමතික පළලක සංඛ්‍යා, එකවර එක් bit පිහිටීමක් බැගින්, එකතු කළ හැක.
+
+**දැන් මෙය උත්සාහ කරන්න.** පහත lab එක තවමත් AND ද්වාරයකින් විවෘත වේ — එය half-adder එකේ carry එකයි. ආදාන දෙකම high කර output එක high වන බව බලන්න; ඔබ ඊළඟ කොටසේ adders දාම කරන විට ripple වන සීමාව එම තනි ද්වාරයයි.
+
+{{< lab type="breadboard" height="700" >}}
+
+## Ripple-Carry: සරලයි, සහ තේරුම් ගත යුතු හේතුවකට මන්දගාමීය
+
+මේ ආකාරයෙන් full adder හතරක් දාම කරන්න, ඔබට 4-bit ripple-carry adder එකක් ලැබේ. එය ක්‍රියා කරයි, සහ එය සංකල්පීයව සරලම බහු-bit adder එකයි — නමුත් පරායත්තතාව නිරීක්ෂණය කරන්න: bit 3 හි carry-out නිවැරදි විය නොහැක bit 2 හි carry-out ස්ථායී වන තුරු, එය bit 1 මත රඳා පවතී, එය bit 0 මත රඳා පවතී. අවසාන ප්‍රතිඵලය වලංගු වීමට පෙර carry භෞතිකව සෑම අදියරක් හරහාම "ripple" විය යුතුය. 4-bit adder එකක් සඳහා එය කුඩා ප්‍රමාදයකි; 64-bit adder එකක් සඳහා, එම ripple ප්‍රමාදය මුළු ALU එක කොතරම් වේගයෙන් ධාවනය විය හැකිද යන්නට සැබෑ බාධකයක් බවට පත් වේ — එය හරියටම සැබෑ CPU වල වඩාත් සංකීර්ණ carry-lookahead adder නිර්මාණ කරා තල්ලු කරන ආකාරයේ සීමාවකි, ද්වාර ගණන අවම-නරකම-අවස්ථා ප්‍රමාදයට වෙළඳාම් කරමින්.
+
+## Adders වලින් සරල ALU එකකට
+
+ALU (Arithmetic Logic Unit) මෙම අදහස සාමාන්‍යකරණය කරයි: *පමණක්* එකතු කිරීම වෙනුවට, adder තර්කය ඉදිරියේ multiplexer එකක් එකතු කර ක්‍රියාකාරකම් අතර තෝරයි — add, subtract (inverted-operand-plus-carry-in සමඟ එකතු කිරීම ලෙස ක්‍රියාත්මක, එමම adder දෘඪාංගය නැවත භාවිතා කරන සිත්ගන්නා උපක්‍රමයකි), AND, OR — පාලන bit කිහිපයක් මත පදනම්ව. ප්‍රතිදානය වන්නේ පාලන සංඥාව තෝරා ගත් ක්‍රියාකාරකමයි, කලින් රැහැන් කළ සංයෝජන මාර්ග මෙනුවකින් තෝරා ගනිමින්.
+
+මෙය සංකල්පීයව සැබෑවටම කුඩා පියවරක් නමුත් ප්‍රායෝගිකව විශාල පියවරකි: මෙම මාලාවේ "තර්ක ද්වාර" "CPU එකක් ඇතුළත සැබෑවටම අංක ගණිතය කරන දෙය" බවට පත් වන පළමු තැනයි. මෙතෙක් මෙහි ඇති සියල්ල සංයෝජන වේ — ප්‍රතිදාන අද ආදාන මත පමණක් රඳා පවතී, අතීතයේ මතකයක් නැත. ඊළඟ පෝස්ට් එක තවමත් මග හැරී ඇති කොටස හඳුන්වා දෙයි: කාලය හරහා පවතින තත්ත්වය, එය තනි ක්ෂණික ගණනයක් වෙනුවට ක්‍රියාකාරකම් *අනුක්‍රමයක්* කළ හැකි කරයි.
+
