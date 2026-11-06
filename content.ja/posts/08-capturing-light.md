@@ -23,7 +23,7 @@ schematics: "Diagram: camera obscura → light-sensitive plate (heliograph) → 
 
 1829年、Niépce は Louis-Jacques-Mandé Daguerre と正式に組んだ。Niépce の死後も Daguerre は改良を続け、1839年にダゲレオタイプを導入した。写真の発明がフランスとイギリスで同時に発表された年である。([Harry Ransom Center](https://www.hrc.utexas.edu/niepce-heliograph/))
 
-イギリスでは、William Henry Fox Talbot のカロタイプが別の道を取った。ヨウ化銀を塗った紙をカメラで露光し、ネガを得る（[Oxford, "Calotypes"](https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html)）。Talbot は没食子酸で像を「現像」できることを見つけ、露光をおよそ一時間からおよそ一分へ縮めた。一枚の紙ネガから任意の枚数のポジを刷れる。ダゲレオタイプは金属上の一枚きりの像で、複写できない。([Britannica, "calotype"](https://www.britannica.com/technology/calotype); WebFetchで本文確認、`curl` は403)
+イギリスでは、William Henry Fox Talbot のカロタイプが別の道を取った。ヨウ化銀を塗った紙をカメラで露光し、ネガを得る（[Oxford, "Calotypes"](https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html)）。Talbot は没食子酸で像を「現像」できることを見つけ、露光をおよそ一時間からおよそ一分へ縮めた。一枚の紙ネガから任意の枚数のポジを刷れる。ダゲレオタイプは金属上の一枚きりの像で、複写できない。([Britannica, "calotype"](https://www.britannica.com/technology/calotype))
 
 潜像の発見そのものは1840年である。オックスフォード科学史博物館は、カロタイプを「1840年9月に Fox Talbot が発明し、1841年2月8日に特許を取った」と書く。([Museum of the History of Science, Oxford](https://www.mhs.ox.ac.uk/features/ephotos/ctypes.html)) ボドリアンの Talbot Catalogue Raisonné 付記は、Harold White の注として、1841年2月5日付の Literary Gazette 宛書簡で Talbot 自身が「カロタイプ過程の最初の発見」を1840年9月20日とした、と伝える。([Talbot Catalogue Raisonné, Schaaf 2468](https://talbot.bodleian.ox.ac.uk/search/catalog/schaaf-2468)) 特許は1841年である。([Britannica, "calotype"](https://www.britannica.com/technology/calotype))
 

@@ -1,0 +1,9 @@
+{
+  "page.title": "Laboratoire breadboard virtuel",
+  "page.heading": "Laboratoire breadboard virtuel",
+  "page.subtitle": "Simulateur de circuits interactif — une vraie porte au chargement, pas une toile vide",
+  "btn.open_and": "Ouvrir la porte AND dans un nouvel onglet ↗",
+  "btn.wokwi": "Wokwi (breadboard physique + vrai MCU) ↗",
+  "iframe.title": "Simulateur de circuits — porte AND",
+  "note_html": "\n  Tu regardes une <strong>porte AND</strong> : la sortie est haute seulement quand les deux entrées sont hautes.\n  Clique sur les deux entrées à gauche pour les basculer, et observe la sortie à droite.\n  <div class=\"meta\">Les données du circuit sont embarquées dans l'URL (<code>cct=</code>) — elles ne sont plus chargées depuis le <code>/circuits/and.txt</code> retiré de Falstad. L'interface du simulateur a encore besoin de falstad.com. Copie locale du circuit : <code>and.txt</code> à côté de cette page.</div>\n"
+}

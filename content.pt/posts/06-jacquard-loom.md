@@ -28,22 +28,24 @@ O Musée des Arts et Métiers (CNAM) regista que, a **23 de dezembro de 1801**, 
 
 A ficha da Science Museum Group Collection sobre um modelo de tear Jacquard afirma: «Jacquard made a commercial success of this loom accessory in **1804**», baseado em invenções de Falcon, Vaucanson e do próprio Jacquard; a contribuição atribuída a Jacquard é a apresentação automática do cartão ao «card reader» (Science Museum Group Collection, «Model of a Jacquard loom, with shuttle and components», object 1867-47, [collection.sciencemuseumgroup.org.uk](https://collection.sciencemuseumgroup.org.uk/objects/co44888/model-of-a-jacquard-loom-with-shuttle-and-components), acessado 2026-11-06).
 
-A **2 de fevereiro de 1804**, a Société d’encouragement pour l’industrie nationale «lui décerne une médaille d’or» (Fondation Napoléon / *napoleon.org*, biografia «JACQUARD, Joseph Marie…», Marc Allégret, *Revue du Souvenir Napoléonien* n.º 433, [napoleon.org](https://www.napoleon.org/histoire-des-2-empires/biographies/jacquard-joseph-marie-1752-1834-mecanicien-tisserand/), acessado 2026-11-06). A mesma biografia não especifica, nessa frase, por qual invenção a medalha foi dada.
+A **2 de fevereiro de 1804**, a Société d’encouragement pour l’industrie nationale «lui décerne une médaille d’or» (Fondation Napoléon / *napoleon.org*, biografia «JACQUARD, Joseph Marie…», Marc Allégret, *Revue du Souvenir Napoléonien* n.º 433, [napoleon.org](https://www.napoleon.org/histoire-des-2-empires/biographies/jacquard-joseph-marie-1752-1834-mecanicien-tisserand/), acessado 2026-11-06). A mesma biografia não especifica, nessa frase, por qual invenção a medalha foi dada — mantemos a formulação neutra.
 
 ## O que o mecanismo faz
 
-O acessório de Jacquard assumiu o papel do *draw boy* do tear de tiro: uma cadeia de cartões perfurados decide quais fios de urdidura sobem a cada passagem da lançadeira — buraco → sobe; sem buraco → bloqueia. Troque os cartões, muda o padrão. O tear não «conhece» brocado de seda; executa uma sequência fixa, codificada fisicamente, de decisões sobe/não-sobe (**interpretação nossa** da abstração; o mecanismo de cartões e do draw boy aparece nas fichas CNAM/SMG acima e na narrativa do Science and Industry Museum, Manchester, [scienceandindustrymuseum.org.uk](https://www.scienceandindustrymuseum.org.uk/objects-and-stories/jacquard-loom), acessado 2026-11-06).
+O acessório de Jacquard, na formulação da Science Museum Group Collection, baseia-se em Falcon, Vaucanson e no próprio Jacquard; a contribuição atribuída a Jacquard é a apresentação automática do cartão ao «card reader», sendo o princípio dos buracos no cartão a controlar quais urdiduras sobem já estabelecido anos antes (Science Museum Group Collection, loc. cit.). **Interpretação nossa:** buraco → sobe; sem buraco → bloqueia; troque os cartões, muda o padrão — o tear não «conhece» brocado de seda; executa uma sequência fixa, codificada fisicamente.
 
 <figure>
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Jacquard.loom.cards.jpg" alt="Cartões perfurados num tear Jacquard no Museum of Science and Industry, Manchester" loading="lazy" width="249">
 <figcaption>Cartões perfurados num tear Jacquard (Museum of Science and Industry, Manchester). Foto: <a href="https://commons.wikimedia.org/wiki/File:Jacquard.loom.cards.jpg">George H. Williams</a>, domínio público.</figcaption>
 </figure>
 
-É essa a abstração que Babbage adotou para o Motor Analítico: um programa é uma sequência de instruções, separada da máquina que as corre (**interpretação nossa** do fio do livro; CHM e o Science and Industry Museum ligam os cartões Jacquard ao Motor Analítico — Science and Industry Museum, loc. cit.).
+É essa a abstração que Babbage adotou para o Motor Analítico: um programa é uma sequência de instruções, separada da máquina que as corre (**interpretação nossa** do fio deste livro).
 
-## Uma ligação lusófona: Brusque
+## Ligações lusófonas
 
 O acervo digital Brusque Memória / Acervo Museu Casa de Brusque (AMCB) cataloga um «Tear manual jacquard que pertenceu à Indústria Schlösser», relacionando a máquina à economia e tradição têxtil iniciadas na cidade em 1890 (Brusque Memória, «Tear manual jacquard da Indústria Schlösser», [brusquememoria.com.br](https://brusquememoria.com.br/acervo-imagem/1994), acessado 2026-11-06). **Não extrapolamos daí datas de introdução do Jacquard no Brasil** — a ficha só sustenta a existência desse exemplar e o vínculo com a Schlösser / Brusque.
+
+O Museu de Lanifícios da Universidade da Beira Interior anuncia a exposição «Debuxos tipo Jacquard: arte e técnica», de desenhos têxteis concebidos por Jorge Trindade (n. 1945) (Museu de Lanifícios / UBI, [museu.ubi.pt](https://museu.ubi.pt/?cix=cartaz184), acessado 2026-11-06). O jornal universitário URBI (UBI) descreve a mesma mostra na Galeria de Exposições do Museu de Lanifícios / Real Fábrica Veiga, inaugurada a 22 de setembro de 2018 e patente até 4 de novembro, dedicada ao desenho têxtil também chamado Debuxo na indústria de lanifícios, com base na experiência de Trindade como debuxador (1960–2005), nomeadamente no Grupo Paulo de Oliveira, S.A. (Covilhã) (URBI, «Exposição de desenhos têxteis no Museu de Lanifícios», 12 set. 2018, [urbi.ubi.pt](https://www.urbi.ubi.pt/pag/17629), acessado 2026-11-06). **Não afirmamos nada além do que essas páginas enunciam.**
 
 **Próximo:** [Por que a computação mecânica importa]({{< relref "/posts/07-why-mechanical-matters.md" >}}).
 
@@ -52,5 +54,6 @@ O acervo digital Brusque Memória / Acervo Museu Casa de Brusque (AMCB) cataloga
 - Musée des Arts et Métiers (CNAM), «Modèle : Métier original de Jacquard»: <https://www.arts-et-metiers.net/musee/modele-metier-original-de-jacquard>
 - Science Museum Group Collection, «Model of a Jacquard loom…» (1867-47): <https://collection.sciencemuseumgroup.org.uk/objects/co44888/model-of-a-jacquard-loom-with-shuttle-and-components>
 - Fondation Napoléon / napoleon.org, biografia Jacquard (Allégret): <https://www.napoleon.org/histoire-des-2-empires/biographies/jacquard-joseph-marie-1752-1834-mecanicien-tisserand/>
-- Science and Industry Museum, «The story of the Jacquard loom»: <https://www.scienceandindustrymuseum.org.uk/objects-and-stories/jacquard-loom>
 - Brusque Memória / AMCB, «Tear manual jacquard da Indústria Schlösser»: <https://brusquememoria.com.br/acervo-imagem/1994>
+- Museu de Lanifícios / UBI, anúncio «Debuxos tipo Jacquard»: <https://museu.ubi.pt/?cix=cartaz184>
+- URBI (UBI), «Exposição de desenhos têxteis no Museu de Lanifícios» (12 set. 2018): <https://www.urbi.ubi.pt/pag/17629>

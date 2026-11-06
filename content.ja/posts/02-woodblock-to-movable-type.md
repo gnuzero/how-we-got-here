@@ -33,7 +33,7 @@ schematics: "Diagram: Hyakumantō Darani (770) → Diamond Sutra woodblock (868)
 
 ## 868：紀年のある木版経
 
-大英図書館は、敦煌出土の木版『金剛般若波羅蜜経』（Or.8210/P.2）を所蔵する。国際敦煌プロジェクトのパネルは、これを「the earliest dated printed book」と呼び、巻末題記を「王玠が両親のために咸通九年四月十五日に敬造し普施流通した」と英訳し、日付を868年5月11日に換算する。([IDP / British Library, colophon panel](https://idp.bl.uk/blog/the-diamond-sutra-on-display-text-panel-6-with-colophon/); WebFetchで本文確認、`curl` は403)
+大英図書館は、敦煌出土の木版『金剛般若波羅蜜経』（Or.8210/P.2）を所蔵する。国際敦煌プロジェクトのパネルは、これを「the earliest dated printed book」と呼び、巻末題記を「王玠が両親のために咸通九年四月十五日に敬造し普施流通した」と英訳し、日付を868年5月11日に換算する。([IDP / British Library, colophon panel](https://idp.bl.uk/blog/the-diamond-sutra-on-display-text-panel-6-with-colophon/))
 
 のちの著者は、経典の官刻を馮道に結びつける。沈括は、唐では板印はまだ盛んでなく、馮道のときに五経が印されたと書く。王禎は年を与える——長興二年、馮道らが九経の校正・刻板を請うた、と。それは**国家**が経典を刷った話であって、印刷の始まりの話ではない。百万塔陀羅尼と868年の経は、どちらもその前にある。([沈括『夢渓筆談』巻十八](https://zh.wikisource.org/wiki/%E5%A4%A2%E6%BA%AA%E7%AD%86%E8%AB%87_(%E5%9B%9B%E9%83%A8%E5%8F%A2%E5%88%8A%E6%9C%AC)/%E5%8D%B7%E5%8D%81%E5%85%AB); [王禎『農書』巻二十二](https://zh.wikisource.org/wiki/%E7%8E%8B%E7%A6%8E%E8%BE%B2%E6%9B%B8/%E5%8D%B7%E4%BA%8C%E5%8D%81%E4%BA%8C))
 
@@ -53,7 +53,7 @@ schematics: "Diagram: Hyakumantō Darani (770) → Diamond Sutra woodblock (868)
 
 ## 銅・金属・規模
 
-台湾の文化部文化資産局は、華燧の会通館が明弘治三年（1490）に銅活字で刷った『會通館印正宋諸臣奏議』を、「現存最早銅活字印本」として登録する。([台湾・文化資産局](https://twh.boch.gov.tw/world-memory/tw_detail.aspx?id=107); WebFetchで本文確認、この環境の `curl` は失敗)
+台湾の文化部文化資産局は、華燧の会通館が明弘治三年（1490）に銅活字で刷った『會通館印正宋諸臣奏議』を、「現存最早銅活字印本」として登録する。([台湾・文化資産局](https://twh.boch.gov.tw/world-memory/tw_detail.aspx?id=107))
 
 朝鮮では、1377年7月、清州・興徳寺で金属活字の『直指』下巻が刷られた。ユネスコ世界記憶遺産は、現存する最古の金属活字印刷の証拠と呼ぶ。現存本はフランス国立図書館にある。([UNESCO Memory of the World](https://www.unesco.org/en/memory-world/baegun-hwasang-chorok-buljo-jikji-simche-yojeol-volii-second-volume-anthology-great-buddhist-priests); [BnF](https://www.bnf.fr/en/jikji-treasure-world-printing))
 
@@ -63,6 +63,6 @@ schematics: "Diagram: Hyakumantō Darani (770) → Diamond Sutra woodblock (868)
 
 ## 最後に：グーテンベルク
 
-ブリタニカは、ヨハネス・グーテンベルクがヨーロッパで最初に知られる機械式印刷機を設計・建造したとし、1455年にグーテンベルク聖書を刷ったと書く。また、彼が活字印刷を発明したのではなく、それは14世紀の朝鮮で起きた、とも書く。その一文は畢昇を飛ばす。このページは、すでに畢昇を先に置き、さらにその前に日本の百万塔陀羅尼を置いた。([Britannica, Johannes Gutenberg](https://www.britannica.com/biography/Johannes-Gutenberg); WebFetchで本文確認、`curl` は403)
+ブリタニカは、ヨハネス・グーテンベルクがヨーロッパで最初に知られる機械式印刷機を設計・建造したとし、1455年にグーテンベルク聖書を刷ったと書く。また、彼が活字印刷を発明したのではなく、それは14世紀の朝鮮で起きた、とも書く。その一文は畢昇を飛ばす。このページは、すでに畢昇を先に置き、さらにその前に日本の百万塔陀羅尼を置いた。([Britannica, Johannes Gutenberg](https://www.britannica.com/biography/Johannes-Gutenberg))
 
 次へ（英語版）: [How the message travelled](/posts/03-how-the-message-travelled/)。日本語版の隣章は、まだ揃っていない。

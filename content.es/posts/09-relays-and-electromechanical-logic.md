@@ -54,4 +54,4 @@ Segundo problema: los contactos se desgastan. Cada cierre es metal contra metal,
 
 ## El puente hacia la electrónica
 
-Los relés demostraron la arquitectura: representación binaria, puertas booleanas hechas con interruptores sencillos, programas como datos. Lo que no podían demostrar es que esa arquitectura corriera *deprisa*. Para eso había que sustituir el interruptor mecánico por algo que cambiara de estado moviendo electrones en vez de metal: el tubo de vacío, a costa de un enorme consumo y calor (encuadre del capítulo). Ese compromiso es [lo siguiente]({{< relref path="10-the-vacuum-tube-era.md" lang="en" >}}) (en inglés por ahora).
+Los relés demostraron la arquitectura: representación binaria, puertas booleanas hechas con interruptores sencillos, programas como datos. Lo que no podían demostrar es que esa arquitectura corriera *deprisa*. Para eso había que sustituir el interruptor mecánico por algo que cambiara de estado moviendo electrones en vez de metal: el tubo de vacío, a costa de un enorme consumo y calor (encuadre del capítulo). Ese compromiso es [lo siguiente]({{< relref "10-the-vacuum-tube-era.md" >}}).

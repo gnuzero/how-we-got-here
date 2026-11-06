@@ -1,0 +1,9 @@
+{
+  "page.title": "Laboratório de breadboard virtual",
+  "page.heading": "Laboratório de breadboard virtual",
+  "page.subtitle": "Simulador de circuitos interativo — uma porta real sob carga, não uma tela em branco",
+  "btn.open_and": "Abrir porta AND num novo separador ↗",
+  "btn.wokwi": "Wokwi (breadboard físico + MCU real) ↗",
+  "iframe.title": "Simulador de circuitos — porta AND",
+  "note_html": "\n  Está a ver uma <strong>porta AND</strong>: a saída só fica alta quando as duas entradas estão altas.\n  Clique nas duas entradas à esquerda para as alternar e observe a saída à direita.\n  <div class=\"meta\">Os dados do circuito estão embutidos no URL (<code>cct=</code>) — não são carregados do <code>/circuits/and.txt</code> removido do Falstad. A interface do simulador ainda precisa de falstad.com. Cópia local do circuito: <code>and.txt</code> ao lado desta página.</div>\n"
+}

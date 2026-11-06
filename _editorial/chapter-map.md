@@ -12,11 +12,11 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 | Public | New file | Alias history (former URL stems) | Former tags | series_index | Locales |
 |---:|---|---|---|---:|---|
 | 0 | `00-credits.md` | — | — | -1 | en,th,si,ta,ro,zh-hans,zh-hant |
-| 1 | `01-foreword.md` | `00-foreword` | `00` | 0 | en,th,si,ta,ro |
-| 2 | `02-woodblock-to-movable-type.md` | `01d-woodblock-to-movable-type`, `06-woodblock-to-movable-type` | `01d` | 1 | en,th,si,ta,ro,ar,de,he,hi,sa,sw,es,pt,nl,ja |
+| 1 | `01-foreword.md` | `00-foreword` | `00` | 0 | en,th,si,ta,ro,fr |
+| 2 | `02-woodblock-to-movable-type.md` | `01d-woodblock-to-movable-type`, `06-woodblock-to-movable-type` | `01d` | 1 | en,th,si,ta,ro,ar,de,he,hi,sa,sw,es,pt,nl,fr,ja |
 | 3 | `03-how-the-message-travelled.md` | — | — | 2 | en,th,si,ta,ro,ar,de,he,hi,sa,sw,es,pt,nl,fr |
 | 4 | `04-what-is-this-thing.md` | `01-what-is-this-thing`, `02-what-is-this-thing` | `01` | 3 | en,th,ta,ro,ar,de,he,hi,sa,sw,es,pt,nl |
-| 4 | `04-mechanical-electromechanical-computing.md` | `01-mechanical-electromechanical-computing`, `02-mechanical-electromechanical-computing` | `01` | 3 | en,th,si,ta,ro |
+| 4 | `04-mechanical-electromechanical-computing.md` | `01-mechanical-electromechanical-computing`, `02-mechanical-electromechanical-computing` | `01` | 3 | en,th,si,ta,ro,fr |
 | 4 | `04-take-barrel-organ.md` | `01-take-barrel-organ`, `02-take-barrel-organ` | `01` | 3 | en,th,ta,ro |
 | 4 | `04-take-caravan.md` | `01-take-caravan`, `02-take-caravan` | `01` | 3 | en,th,ta,ro |
 | 4 | `04-take-clerk.md` | `01-take-clerk`, `02-take-clerk` | `01` | 3 | en,th,ta,ro |
@@ -26,20 +26,20 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 | 4 | `04-take-silk-cards.md` | `01-take-silk-cards`, `02-take-silk-cards` | `01` | 3 | en,th,ta,ro |
 | 4 | `04-take-stubborn-helper.md` | `01-take-stubborn-helper`, `02-take-stubborn-helper` | `01` | 3 | en,th,ta,ro |
 | 4 | `04-take-water-wheel.md` | `01-take-water-wheel`, `02-take-water-wheel` | `01` | 3 | en,th,ta,ro |
-| 5 | `05-babbage-engines.md` | `01a-babbage-engines`, `03-babbage-engines` | `01a` | 4 | en,th,ta,ro,ar,de,he,hi,sa,sw,es,pt,fr |
-| 6 | `06-jacquard-loom.md` | `01b-jacquard-loom`, `04-jacquard-loom` | `01b` | 5 | en,th,ta,ro,ar,de,he,hi,sa,sw,es,pt,fr |
+| 5 | `05-babbage-engines.md` | `01a-babbage-engines`, `03-babbage-engines` | `01a` | 4 | en,th,ta,ro,ar,de,he,hi,sa,sw,es,pt,nl,fr |
+| 6 | `06-jacquard-loom.md` | `01b-jacquard-loom`, `04-jacquard-loom` | `01b` | 5 | en,th,ta,ro,ar,de,he,hi,sa,sw,es,pt,nl,fr |
 | 7 | `07-why-mechanical-matters.md` | `01c-why-mechanical-matters`, `05-why-mechanical-matters` | `01c` | 6 | en,th,ta,ro,ar,de,he,hi,sa,sw,es,pt,fr |
-| 8 | `08-capturing-light.md` | — | — | 7 | en,si,ro,ar,de,he,hi,sw,es,pt,nl,fr,ja |
-| 9 | `09-relays-and-electromechanical-logic.md` | `02-relays-and-electromechanical-logic`, `07-relays-and-electromechanical-logic`, `08-relays-and-electromechanical-logic` | `02` | 8 | en,th,si,ta,ro,ar,de,he,hi,es |
-| 10 | `10-the-vacuum-tube-era.md` | `03-the-vacuum-tube-era`, `08-the-vacuum-tube-era`, `09-the-vacuum-tube-era` | `03` | 9 | en,th,si,ta,ro |
-| 11 | `11-why-the-transistor-had-to-happen.md` | `04-why-the-transistor-had-to-happen`, `09-why-the-transistor-had-to-happen`, `10-why-the-transistor-had-to-happen` | `04` | 10 | en,th,si,ta,ro |
-| 12 | `12-semiconductors-from-first-principles.md` | `05-semiconductors-from-first-principles`, `10-semiconductors-from-first-principles`, `11-semiconductors-from-first-principles` | `05` | 11 | en,th,si,ta,ro |
-| 13 | `13-the-transistor-bjt-to-mosfet.md` | `06-the-transistor-bjt-to-mosfet`, `11-the-transistor-bjt-to-mosfet`, `12-the-transistor-bjt-to-mosfet` | `06` | 12 | en,th,si,ta,ro |
-| 14 | `14-logic-gates-from-transistors.md` | `07-logic-gates-from-transistors`, `12-logic-gates-from-transistors`, `13-logic-gates-from-transistors` | `07` | 13 | en,th,si,ta,ro |
-| 15 | `15-from-gates-to-combinational-logic.md` | `08-from-gates-to-combinational-logic`, `13-from-gates-to-combinational-logic`, `14-from-gates-to-combinational-logic` | `08` | 14 | en,th,si,ta,ro |
-| 16 | `16-sequential-logic.md` | `09-sequential-logic`, `14-sequential-logic`, `15-sequential-logic` | `09` | 15 | en,th,si,ta,ro |
-| 17 | `17-the-memory-hierarchy-begins.md` | `10-the-memory-hierarchy-begins`, `15-the-memory-hierarchy-begins`, `16-the-memory-hierarchy-begins` | `10` | 16 | en,th,si,ta,ro |
-| 18 | `18-instruction-sets.md` | `11-instruction-sets`, `16-instruction-sets`, `17-instruction-sets` | `11` | 17 | en,th,si,ta,ro |
+| 8 | `08-capturing-light.md` | — | — | 7 | en,si,ro,ar,de,he,hi,sa,sw,es,pt,nl,fr,ja |
+| 9 | `09-relays-and-electromechanical-logic.md` | `02-relays-and-electromechanical-logic`, `07-relays-and-electromechanical-logic`, `08-relays-and-electromechanical-logic` | `02` | 8 | en,th,si,ta,ro,ar,de,he,hi,sa,sw,es,pt,fr |
+| 10 | `10-the-vacuum-tube-era.md` | `03-the-vacuum-tube-era`, `08-the-vacuum-tube-era`, `09-the-vacuum-tube-era` | `03` | 9 | en,th,si,ta,ro,ar,de,he,hi,sa,sw,es,pt,fr |
+| 11 | `11-why-the-transistor-had-to-happen.md` | `04-why-the-transistor-had-to-happen`, `09-why-the-transistor-had-to-happen`, `10-why-the-transistor-had-to-happen` | `04` | 10 | en,th,si,ta,ro,ar,de,he,hi,sa,sw,es,pt,fr |
+| 12 | `12-semiconductors-from-first-principles.md` | `05-semiconductors-from-first-principles`, `10-semiconductors-from-first-principles`, `11-semiconductors-from-first-principles` | `05` | 11 | en,th,si,ta,ro,ar,de,he,hi,sa,sw,es,pt,fr |
+| 13 | `13-the-transistor-bjt-to-mosfet.md` | `06-the-transistor-bjt-to-mosfet`, `11-the-transistor-bjt-to-mosfet`, `12-the-transistor-bjt-to-mosfet` | `06` | 12 | en,th,si,ta,ro,ar,de,he,hi,sa,sw,es,pt,fr |
+| 14 | `14-logic-gates-from-transistors.md` | `07-logic-gates-from-transistors`, `12-logic-gates-from-transistors`, `13-logic-gates-from-transistors` | `07` | 13 | en,th,si,ta,ro,ar,he,hi,sa,sw,es,pt,fr |
+| 15 | `15-from-gates-to-combinational-logic.md` | `08-from-gates-to-combinational-logic`, `13-from-gates-to-combinational-logic`, `14-from-gates-to-combinational-logic` | `08` | 14 | en,th,si,ta,ro,ar,he,hi,sa,sw,es,pt,fr |
+| 16 | `16-sequential-logic.md` | `09-sequential-logic`, `14-sequential-logic`, `15-sequential-logic` | `09` | 15 | en,th,si,ta,ro,he,hi,sa,es |
+| 17 | `17-the-memory-hierarchy-begins.md` | `10-the-memory-hierarchy-begins`, `15-the-memory-hierarchy-begins`, `16-the-memory-hierarchy-begins` | `10` | 16 | en,th,si,ta,ro,hi,sa,es |
+| 18 | `18-instruction-sets.md` | `11-instruction-sets`, `16-instruction-sets`, `17-instruction-sets` | `11` | 17 | en,th,si,ta,ro,hi |
 | 19 | `19-datapath-design.md` | `12-datapath-design`, `17-datapath-design`, `18-datapath-design` | `12` | 18 | en,th,si,ta,ro |
 | 20 | `20-pipelining.md` | `13-pipelining`, `18-pipelining`, `19-pipelining` | `13` | 19 | en,th,si,ta,ro |
 | 21 | `21-branch-prediction.md` | `14-branch-prediction`, `19-branch-prediction`, `20-branch-prediction` | `14` | 20 | en,th,si,ta,ro |
@@ -93,7 +93,7 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 | 69 | `69-interconnect-at-datacenter-scale.md` | `61-interconnect-at-datacenter-scale`, `67-interconnect-at-datacenter-scale`, `68-interconnect-at-datacenter-scale` | `61` | 68 | en,th,si,ta |
 | 70 | `70-where-it-s-headed.md` | `62-where-it-s-headed`, `68-where-it-s-headed`, `69-where-it-s-headed` | `62` | 69 | en,th,si,ta |
 | 71 | `71-attention-is-all-you-need.md` | `63-attention-is-all-you-need`, `69-attention-is-all-you-need`, `70-attention-is-all-you-need` | `63` | 70 | en,th,si,ta |
-| 72 | `72-who-decides-the-wire.md` | `64-who-decides-the-wire`, `70-who-decides-the-wire`, `71-who-decides-the-wire` | `64` | 71 | en,th,si,ta |
+| 72 | `72-who-decides-the-wire.md` | `64-who-decides-the-wire`, `70-who-decides-the-wire`, `71-who-decides-the-wire` | `64` | 71 | en,th,si,ta,fr |
 | 73 | `73-wartime-crypto.md` | `66-wartime-crypto`, `72-wartime-crypto` | `66` | 72 | en,th,si,ta |
 | 74 | `74-privacy-consent-identity-cyber.md` | `67-privacy-consent-identity-cyber`, `73-privacy-consent-identity-cyber` | `67` | 73 | en,th,si,ta |
 | 75 | `75-visions-that-shipped.md` | `68-visions-that-shipped`, `74-visions-that-shipped` | `68` | 74 | en,th,si,ta |
