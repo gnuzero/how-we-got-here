@@ -8,9 +8,7 @@ type: docs
 
 > **Notă pentru cititorii ediției în română:** această ediție abia a început. **Numele (de oameni, proiecte și surse locale) nu sunt încă traduse sau adaptate** și apar deocamdată în forma originală. Multe pagini **lipsesc încă** din versiunea în română. Paginile românești nu sunt traduceri ale capitolelor în engleză, ci texte originale scrise pe aceleași teme. Până la apariția lor, capitolele lipsă pot fi citite în ediția în engleză.
 
-O serie educațională care urmărește întregul drum al calculului digital, de la tipar și relee până la GPU-uri, Tensor Cores și hardware-ul care face posibile mecanismele Attention la scară mare. Seria cuprinde 63 de capitole tehnice, o prefață, un glosar și laboratoare interactive.
-
-**63 de capitole tehnice + prefață + glosar, aproximativ 45 000 de cuvinte, laboratoare interactive**
+O serie educațională care urmărește întregul drum al calculului digital, de la tipar și relee până la GPU-uri, Tensor Cores și hardware-ul care face posibile mecanismele Attention la scară mare. Seria cuprinde capitole tehnice, o prefață, un glosar și laboratoare interactive.
 
 **Tipar → transmiterea mesajelor → calcul mecanic → fotografie → relee → tuburi → tranzistor → CPU → SO și limbaje → magistrale → rețele → interconectare și scalare → GPU → attention.**
 
