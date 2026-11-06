@@ -8,7 +8,7 @@ type: docs
 
 **how we got here.**
 
-Read in: [English](/) · [ไทย](/th/) · [සිංහල](/si/) · [தமிழ்](/ta/) · [简体中文](/zh-hans/) · [繁體中文](/zh-hant/) · [Română](/ro/) · [العربية](/ar/) · [Deutsch](/de/) · [עברית](/he/) · [हिन्दी](/hi/) · [संस्कृतम्](/sa/) · [Kiswahili](/sw/) · [Español](/es/) · [Português](/pt/) · [Nederlands](/nl/) · [Français](/fr/) · [日本語](/ja/)
+Read in: [English](/) · [ไทย](/th/) · [සිංහල](/si/) · [தமிழ்](/ta/) · [简体中文](/zh-hans/) · [繁體中文](/zh-hant/) · [Română](/ro/) · [العربية](/ar/) · [Deutsch](/de/) · [עברית](/he/) · [हिन्दी](/hi/) · [संस्कृतम्](/sa/) · [Kiswahili](/sw/) · [Español](/es/) · [Português](/pt/) · [Nederlands](/nl/) · [Français](/fr/) · [日本語](/ja/) · [한국어](/ko/)
 
 An interactive journey — not an encyclopedia. You live through systems and touch them; you do not collect articles.
 
@@ -67,6 +67,7 @@ That pattern is the real subject of this journey.
   - Dutch desk: Sanne (in progress)
   - French desk: Margaux (in progress)
   - Japanese desk: Haru (in progress)
+  - Korean desk: Jiwoo (in progress)
   - Labs: Reed
   - New threads: Cass
   - Production support: Benjamin and Harper

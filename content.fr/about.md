@@ -37,6 +37,7 @@ Des battements optionnels élargissent le regard à côté du chemin principal. 
 | **Desk néerlandais** | Sanne (en préparation) |
 | **Desk français** | Margaux (en préparation) |
 | **Desk japonais** | Haru (en préparation) |
+| **Desk coréen** | Jiwoo (en préparation) |
 | **Laboratoires** | Reed |
 | **Nouveaux fils** | Cass |
 | **Soutien à la production** | Benjamin et Harper |

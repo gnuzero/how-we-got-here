@@ -37,6 +37,7 @@ Optional widen-the-lens beats sit beside the main path. Thin indexes: [Optional 
 | **Dutch desk** | Sanne (in progress) |
 | **French desk** | Margaux (in progress) |
 | **Japanese desk** | Haru (in progress) |
+| **Korean desk** | Jiwoo (in progress) |
 | **Labs** | Reed |
 | **New threads** | Cass |
 | **Production support** | Benjamin and Harper |

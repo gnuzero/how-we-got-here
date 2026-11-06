@@ -45,6 +45,7 @@ Trei laboratoare interactive vă lasă să atingeți direct aceste idei: un CPU 
   - Biroul de neerlandeză: Sanne (în curs)
   - Biroul de franceză: Margaux (în curs)
   - Biroul de japoneză: Haru (în curs)
+  - Biroul de coreeană: Jiwoo (în curs)
   - Laboratoare: Reed
   - Fire noi: Cass
   - Sprijin de producție: Benjamin și Harper

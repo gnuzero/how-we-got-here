@@ -51,6 +51,7 @@ type: docs
   - 荷兰语组: Sanne (进行中)
   - 法语组: Margaux (进行中)
   - 日语组: Haru (进行中)
+  - 韩语组: Jiwoo (进行中)
   - 实验室: Reed
   - 新线索: Cass
   - 制作支持: Benjamin 和 Harper

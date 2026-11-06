@@ -69,6 +69,7 @@ Dieses Muster ist das eigentliche Thema dieser Reise.
   - Niederländisch-Redaktion: Sanne (in Arbeit)
   - Französisch-Redaktion: Margaux (in Arbeit)
   - Japanisch-Redaktion: Haru (in Arbeit)
+  - Koreanisch-Redaktion: Jiwoo (in Arbeit)
   - Labore: Reed
   - Neue Fäden: Cass
   - Produktionsunterstützung: Benjamin und Harper

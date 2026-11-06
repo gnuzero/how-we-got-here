@@ -76,3 +76,19 @@ html:lang(zh-Hant) {
 }
 [dir="rtl"] table { direction: rtl; }
 [dir="rtl"] td, [dir="rtl"] th { text-align: right; }
+
+/* Korean (ko): Latin faces first, then Hangul-capable local fonts. No web-font download. */
+html:lang(ko) {
+  font-family:
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans KR',
+    'Noto Sans CJK KR',
+    'Source Han Sans K',
+    'Apple SD Gothic Neo',
+    'Malgun Gothic',
+    sans-serif;
+}
+:lang(ko) .markdown { word-break: keep-all; }

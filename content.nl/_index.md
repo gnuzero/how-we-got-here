@@ -67,6 +67,7 @@ Dat patroon is het eigenlijke onderwerp van deze reis.
   - Nederlandse redactie: Sanne (in uitvoering)
   - Franse redactie: Margaux (in uitvoering)
   - Japanse redactie: Haru (in uitvoering)
+  - Koreaanse redactie: Jiwoo (in uitvoering)
   - Laboratoria: Reed
   - Nieuwe draden: Cass
   - Productieondersteuning: Benjamin en Harper

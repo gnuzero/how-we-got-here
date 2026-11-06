@@ -36,6 +36,7 @@ Série éducative qui suit l’arc du calcul numérique — du mécanique et des
   - Bureau néerlandais: Sanne (en cours)
   - Bureau français: Margaux (en cours)
   - Bureau japonais: Haru (en cours)
+  - Bureau coréen: Jiwoo (en cours)
   - Laboratoires: Reed
   - Nouveaux fils: Cass
   - Soutien à la production: Benjamin et Harper
