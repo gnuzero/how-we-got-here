@@ -16,6 +16,8 @@ summary: "같은 생각으로 들어가는 아홉 문 — 아무거나 고른 �
 
 인쇄는 필사 없이 복사할 수 있는 페이지를 만들었고, 전선은 기수 없이 가는 메시지를 만들었다. 다음 단계는, 아무도 지키지 않아도 돌아가는 잡무였다. 사람들은 오래전부터 고정된 잡무를 물건에 넘겨 왔다. 도는 물레, 계량하는 국자, 무늬를 반복하는 카드. 잡무는 고정되어 있다. 물건은 중간에 새로운 잡무를 발명하지 않는다.
 
+그 고정된 단계 목록에, 나중에 이 여행이 쓰는 말 — **알고리즘** — 의 어원이 걸려 있다. Max Planck Institute for the History of Science의 Islamic Scientific Manuscripts Initiative는 al-Khwārizmī의 『Kitāb al-ḥisāb al-hindī』(힌두 계산의 책)가 인도에서 발전한 십진 자리값 체계를 소개했고, 라틴어로 번역된 첫 아라비아 산술서이며, 「algorithm」이라는 말이 al-Khwārizmī의 이름에서 왔다고 적는다. 중세 라틴 전승 제목 가운데 하나가 *Algoritmi de numero indorum*이다. ([ISMI — Kitāb al-ḥisāb al-hindī](https://ismi.mpiwg-berlin.mpg.de/text/113887)) 여기서는 어원만 짚는다. Fibonacci나 『Liber Abaci』는 이 뼈대에 넣지 않는다.
+
 그 생각으로 들어가는 문이 아홉 있다. 동등하다 — 아무거나 고르면 된다. 영어판에서는 각 문이 짧은 단독 쪽에 있다. 한국어판에서는 먼저 놋쇠 기관으로 간다. 문들의 이름은 그대로 둔다.
 
 - **서기** — 표시, 적힌 단계 목록, 지칠 수 있는 사람.

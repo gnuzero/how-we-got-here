@@ -37,6 +37,16 @@ BnF는 같은 책을 「금속활자로 인쇄된, 알려진 가장 오래된 �
 
 유네스코는 더 이른 금속활자 인쇄가 옛 한국 문헌에 언급된다고도 적는다. 이 쪽은 현존 인쇄물과 그 간기에 머문다. ([UNESCO Memory of the World](https://www.unesco.org/en/memory-world/baegun-hwasang-chorok-buljo-jikji-simche-yojeol-volii-second-volume-anthology-great-buddhist-priests))
 
+## 훈민정음: 1443 창제, 1446 반포
+
+직지가 금속으로 *다시 찍는* 쪽을 보여 준다면, 훈민정음은 글자 자체를 새로 만든 쪽이다. 한국의 다른 정보 돌파구로, 직지 옆에 짧게 둔다. 컴퓨터에서의 한글 부호화(KS X 1001, Unicode Hangul Syllables 등)는 [누가 전선을 정하는가]({{< relref "72-who-decides-the-wire" >}})에서 다룬다.
+
+유네스코 세계기록유산 「훈민정음 원고」(Hunminjeongum Manuscript)는 세종이 1443년에 완성한 문자(오늘날 한글)의 반포를 담은 책이 1446년 음력 9월에 나왔다고 적는다. 집현전 학자들의 해례(해설)가 붙어 있어 해례본이라 부르며, 간송미술관이 소장한다. 등재 연도는 1997년이다. ([UNESCO Memory of the World — Hunminjeongum Manuscript](https://www.unesco.org/en/memory-world/hunminjeongum-manuscript))
+
+한국민족문화대백과 「훈민정음」은 1446년에 정인지·신숙주 등이 예의·해례·정인지 서문을 담아 간행한 해설서라 정의하고, 정인지 서문이 세종이 1443년(세종 25) 겨울에 창제했음을 밝힌다고 쓴다. 완성일은 서문의 「정통 11년(1446) 9월 상한」이다. ([한국민족문화대백과 — 훈민정음](https://encykorea.aks.ac.kr/Article/E0065805)) 「한글」 항목은 『세종실록』에 1443년 음력 12월 창제와 1446년 음력 9월 「이 달에 훈민정음이 이루어졌다」 기록을 나란히 읽는다. ([한국민족문화대백과 — 한글](https://encykorea.aks.ac.kr/Article/E0061508))
+
+국가유산포털은 국보 「훈민정음」을 조선 세종 28년(1446)으로 두고, 간송미술관 소장·1962년 12월 20일 지정으로 적는다. ([국가유산포털 — 국보 훈민정음](https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1111100700000))
+
 ## 868: 연대가 적힌 목판 경
 
 대영도서관은 둔황 출토 목판 『금강반야바라밀경』(Or.8210/P.2)을 소장한다. 국제둔황프로젝트 패널은 이를 「the earliest dated printed book」이라 부르고, 권말 제기를 왕개가 부모를 위해 함통 9년 4월 15일에 공양했다고 영역하며, 날짜를 868년 5월 11일로 환산한다. ([IDP / British Library, colophon panel](https://idp.bl.uk/blog/the-diamond-sutra-on-display-text-panel-6-with-colophon/))
