@@ -51,6 +51,7 @@ type: docs
   - 荷蘭語組: Sanne (進行中)
   - 法語組: Margaux (進行中)
   - 日語組: Haru (進行中)
+  - 韓語組: Jiwoo (進行中)
   - 實驗室: Reed
   - 新線索: Cass
   - 製作支持: Benjamin 與 Harper

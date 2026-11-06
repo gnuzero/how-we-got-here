@@ -73,6 +73,7 @@ Mtindo huo ndio somo halisi la safari hii.
   - Dawati la Kiholanzi: Sanne (inaendelea)
   - Dawati la Kifaransa: Margaux (inaendelea)
   - Dawati la Kijapani: Haru (inaendelea)
+  - Dawati la Kikorea: Jiwoo (inaendelea)
   - Maabara: Reed
   - Nyuzi mpya: Cass
   - Msaada wa uzalishaji: Benjamin na Harper

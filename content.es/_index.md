@@ -72,6 +72,7 @@ Ese patrón es el verdadero tema de este recorrido.
   - Mesa de neerlandés: Sanne (en curso)
   - Mesa de francés: Margaux (en curso)
   - Mesa de japonés: Haru (en curso)
+  - Mesa de coreano: Jiwoo (en curso)
   - Laboratorios: Reed
   - Nuevos hilos: Cass
   - Apoyo de producción: Benjamin y Harper

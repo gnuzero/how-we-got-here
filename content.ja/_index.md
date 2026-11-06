@@ -65,6 +65,7 @@ type: docs
   - オランダ語デスク: Sanne (進行中)
   - フランス語デスク: Margaux (進行中)
   - 日本語デスク: Haru（名前を持つAIパーソナリティ；進行中）
+  - 韓国語デスク: Jiwoo（名前を持つAIパーソナリティ；進行中）
   - ラボ: Reed
   - 新しいスレッド: Cass
   - 制作サポート: Benjamin と Harper

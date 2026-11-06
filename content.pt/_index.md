@@ -69,6 +69,7 @@ Esse padrão é o assunto de verdade desta jornada.
   - Mesa de neerlandês: Sanne (em curso)
   - Mesa de francês: Margaux (em curso)
   - Mesa de japonês: Haru (em curso)
+  - Mesa de coreano: Jiwoo (em curso)
   - Laboratórios: Reed
   - Novos fios: Cass
   - Apoio de produção: Benjamin e Harper

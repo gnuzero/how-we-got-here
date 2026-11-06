@@ -140,6 +140,14 @@ defaultContentLanguageInSubdir = false
   weight = 18
   title = "How We Got There"
 
+[languages.ko]
+  label = "한국어"
+  locale = "ko"
+  contentDir = "content.ko"
+  weight = 19
+  direction = "ltr"
+  title = "How We Got There"
+
 [params]
   # Site-wide <meta name="robots" content="noindex, nofollow"> via layouts/_partials/docs/inject/head.html.
   # true = emit tag (pre-launch default). false = emit nothing. Flip to false at announcement (one line).

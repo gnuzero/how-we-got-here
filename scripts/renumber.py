@@ -42,6 +42,7 @@ LOCALE_DIRS = {
     "nl": ROOT / "content.nl" / "posts",
     "fr": ROOT / "content.fr" / "posts",
     "ja": ROOT / "content.ja" / "posts",
+    "ko": ROOT / "content.ko" / "posts",
 }
 NOTE_GLOBS = ["TRANSLATIONS.md", "README.md", "_editorial/*.md"]
 FM_SPLIT = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n", re.S)
