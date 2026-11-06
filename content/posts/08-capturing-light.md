@@ -23,7 +23,9 @@ The earliest surviving photograph made in a camera obscura is a view from a wind
 
 In 1829 Niépce went into partnership with Louis-Jacques-Mandé Daguerre. Daguerre kept improving the method after Niépce died and introduced the daguerreotype in 1839, the year the invention of photography was announced in both France and England. ([Harry Ransom Center](https://www.hrc.utexas.edu/niepce-heliograph/))
 
-In England, William Henry Fox Talbot's calotype took a different route. Paper coated with silver chloride was exposed in the camera, giving a negative. Talbot found that gallic acid could "develop" the image, cutting exposure from about an hour to about a minute. One paper negative could then print any number of positives, while a daguerreotype was a single image on metal that could not be duplicated. Talbot patented the process in 1841. ([Britannica, "calotype"](https://www.britannica.com/technology/calotype))
+In England, William Henry Fox Talbot took a different route. What he showed the Royal Society in January and February 1839 was photogenic drawing: salted paper brushed with silver nitrate that darkened in the sun. The calotype came later. On 23 September 1840 Talbot found that an exposure of mere seconds left an invisible latent image that an "exciting liquid", essentially gallic acid, could bring out, and he patented the process in February 1841. ([Malcolm Daniel, The Met, "William Henry Fox Talbot (1800–1877) and the Invention of Photography", via Wayback](https://web.archive.org/web/20250121105220/https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm))
+
+In the calotype, paper coated with silver chloride was exposed in the camera, giving a negative, and by Britannica's account developing it cut exposure from about an hour to about a minute. One paper negative could then print any number of positives, while a daguerreotype was a single image on metal that could not be duplicated. ([Britannica, "calotype"](https://www.britannica.com/technology/calotype))
 
 ## Why it sits here
 
@@ -34,4 +36,5 @@ Next: relays, where electricity starts doing the switching.
 ## Sources
 
 - Harry Ransom Center, The University of Texas at Austin, "The Niépce Heliograph": <https://www.hrc.utexas.edu/niepce-heliograph/>
+- Malcolm Daniel, The Metropolitan Museum of Art, "William Henry Fox Talbot (1800–1877) and the Invention of Photography" (2004): <https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm> (archived: <https://web.archive.org/web/20250121105220/https://www.metmuseum.org/toah/hd/tlbt/hd_tlbt.htm>)
 - Encyclopaedia Britannica, "calotype": <https://www.britannica.com/technology/calotype>
