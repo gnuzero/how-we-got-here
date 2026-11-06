@@ -21,3 +21,7 @@ Second, I fully completed my native language, Sinhala. But I didn't discriminate
 English received the fullest treatment because that's where the gap was loudest. Western literature wrote its own history and called it universal — that was the injustice. This production corrects the record in the language that did the erasing.
 
 This is not a call to abandon fundamentals. It's a call to build on them with a tool that finally makes the history of information accessible to everyone.
+
+Languages are not a final set. Any language missing here is an invitation for you to start. If seeding is something you need, let me know and I'll help with the initial seeding.
+
+This production was organized so that students can interactively engage with the learning material, and so far I have used Creative Commons-licensed existing interactive tools. I am yet to produce my own, mostly because I was focused on content. However, before the announcement of the book, my plans are to make sure that there are no gaps on the learning paths in the interactivity tools.
