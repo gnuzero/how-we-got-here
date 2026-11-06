@@ -11,7 +11,7 @@ other = "검색"
 other = "이 페이지 편집"
 
 ["Last modified by"]
-other = "마지막 수정"
+other = "최종 수정"
 
 [Languages]
 other = "언어"
@@ -41,7 +41,7 @@ other = "메뉴"
 other = "목차"
 
 [Thumbnail]
-other = "썸네일"
+other = "미리보기"
 
 [labIframeTitle]
 other = "인터랙티브 랩: {{ .Type }}"
@@ -49,19 +49,17 @@ other = "인터랙티브 랩: {{ .Type }}"
 [labOpenNewTab]
 other = "랩을 새 탭에서 열기 ↗"
 
+[labDisplayName-breadboard]
+other = "브레드보드"
 
-# Lab display-name overrides (layouts/shortcodes/lab.html labDisplayName-<type>)
 [labDisplayName-difference-engine]
 other = "차분기관"
 
 [labDisplayName-analytical-engine]
 other = "해석기관"
 
-[labDisplayName-breadboard]
-other = "브레드보드"
-
 [labDisplayName-mini-cpu]
-other = "Mini-CPU"
+other = "미니 CPU"
 
 [labDisplayName-vm-terminal]
 other = "터미널"

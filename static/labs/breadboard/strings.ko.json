@@ -1,0 +1,9 @@
+{
+  "page.title": "가상 브레드보드 랩",
+  "page.heading": "가상 브레드보드 랩",
+  "page.subtitle": "대화형 회로 시뮬레이터 — 빈 화면이 아니라, 불러오면 실제 게이트가 있다",
+  "btn.open_and": "AND 게이트를 새 탭에서 열기 ↗",
+  "btn.wokwi": "Wokwi (물리 브레드보드 + 실제 MCU) ↗",
+  "iframe.title": "회로 시뮬레이터 — AND 게이트",
+  "note_html": "\n  보고 있는 것은 <strong>AND 게이트</strong>입니다. 두 입력이 모두 높을 때만 출력이 높아집니다.\n  왼쪽의 두 입력을 클릭해 전환하고, 오른쪽 출력을 보세요.\n  <div class=\"meta\">회로 데이터는 URL(<code>cct=</code>)에 들어 있습니다 — 삭제된 Falstad의 <code>/circuits/and.txt</code>에서 읽지 않습니다. 시뮬레이터 UI는 여전히 falstad.com이 필요합니다. 회로의 로컬 사본: 이 페이지 옆의 <code>and.txt</code>.</div>\n"
+}
