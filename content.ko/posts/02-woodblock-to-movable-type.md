@@ -39,7 +39,7 @@ BnF는 같은 책을 「금속활자로 인쇄된, 알려진 가장 오래된 �
 
 ## 훈민정음: 1443 창제, 1446 반포
 
-직지가 금속으로 *다시 찍는* 쪽을 보여 준다면, 훈민정음은 글자 자체를 새로 만든 쪽이다. 한국의 다른 정보 돌파구로, 직지 옆에 짧게 둔다. 컴퓨터에서의 한글 부호화(KS X 1001, Unicode Hangul Syllables 등)는 [누가 전선을 정하는가](/posts/72-who-decides-the-wire/)에서 다룬다.
+직지가 금속으로 *다시 찍는* 쪽을 보여 준다면, 훈민정음은 글자 자체를 새로 만든 쪽이다. 한국의 다른 정보 돌파구로, 직지 옆에 짧게 둔다. 컴퓨터에서의 한글 부호화(KS X 1001, Unicode Hangul Syllables 등)는 [누가 전선을 정하는가]({{< relref "72-who-decides-the-wire" >}})에서 다룬다.
 
 유네스코 세계기록유산 「훈민정음 원고」(Hunminjeongum Manuscript)는 세종이 1443년에 완성한 문자(오늘날 한글)의 반포를 담은 책이 1446년 음력 9월에 나왔다고 적는다. 집현전 학자들의 해례(해설)가 붙어 있어 해례본이라 부르며, 간송미술관이 소장한다. 등재 연도는 1997년이다. ([UNESCO Memory of the World — Hunminjeongum Manuscript](https://www.unesco.org/en/memory-world/hunminjeongum-manuscript))
 

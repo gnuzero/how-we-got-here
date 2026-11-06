@@ -25,7 +25,7 @@ ENIAC(1단계)은 육군 병기단 자료표([App. I](https://ftp.arl.army.mil/m
 
 ## 미니컴퓨터: 부서가 살 수 있다
 
-1970년대: DEC의 PDP-11(1970)과 친척들이 기계를 기관 전체가 아니라 부서가 사서, 중앙 사무소 없이 돌릴 수 있는 크기로 줄였다. 1990년 5월까지 DEC는 [PDP-11 설치 60만 대 이상](http://archive.computerhistory.org/resources/text/DEC/dec.digital_%28DEC%29_timeline_1957-1997.102630354/timelinetext.htm)을 집계했다. ISA의 직교 주소 지정과 깔끔한 부호화는 이후 설계 습관 — C([Post 34](/posts/34-high-level-languages-fortran-cobol-lisp-c/)) 포함 — 을 빚었고, C는 Unix([Post 29]({{< relref "29-time-sharing-and-the-unix-lineage" >}}))와 함께 대체로 PDP-11 하드웨어 위에서 자랐다.
+1970년대: DEC의 PDP-11(1970)과 친척들이 기계를 기관 전체가 아니라 부서가 사서, 중앙 사무소 없이 돌릴 수 있는 크기로 줄였다. 1990년 5월까지 DEC는 [PDP-11 설치 60만 대 이상](http://archive.computerhistory.org/resources/text/DEC/dec.digital_%28DEC%29_timeline_1957-1997.102630354/timelinetext.htm)을 집계했다. ISA의 직교 주소 지정과 깔끔한 부호화는 이후 설계 습관 — C([Post 34]({{< relref "34-high-level-languages-fortran-cobol-lisp-c" >}})) 포함 — 을 빚었고, C는 Unix([Post 29]({{< relref "29-time-sharing-and-the-unix-lineage" >}}))와 함께 대체로 PDP-11 하드웨어 위에서 자랐다.
 
 ## 마이크로프로세서: 한 다이 위의 CPU
 
