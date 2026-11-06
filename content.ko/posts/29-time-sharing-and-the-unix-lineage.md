@@ -27,7 +27,7 @@ Multics(MULTiplexed Information and Computing Service)는 MIT / Bell Labs / GE �
 
 ## Multics에서 Unix로
 
-Bell Labs는 1969년에 Multics에서 손을 뗐다([Wikipedia, Unix](https://en.wikipedia.org/wiki/Unix)). 거기에 일했던 Ken Thompson과 Dennis Ritchie는 훨씬 작은 규모로 — 의도적으로 더 단순하게, 훨씬 약한 하드웨어(처음에는 여분의 PDP-7)에서 — 계속 반복했다. 결과가 Unix다. 「모든 것은 파일」, 파이프로 이어지는 작은 단일 목적 프로그램, C로 다시 쓰인 뒤의 이식 가능한 설계([Post 34]({{< relref "34-high-level-languages-fortran-cobol-lisp-c" >}})가 그 언어를, 대체로 같은 사람들이, 다룬다)를 중심으로 한 타임쉐어링 OS.
+Bell Labs는 1969년에 Multics에서 손을 뗐다([Wikipedia, Unix](https://en.wikipedia.org/wiki/Unix)). 거기에 일했던 Ken Thompson과 Dennis Ritchie는 훨씬 작은 규모로 — 의도적으로 더 단순하게, 훨씬 약한 하드웨어(처음에는 여분의 PDP-7)에서 — 계속 반복했다. 결과가 Unix다. 「모든 것은 파일」, 파이프로 이어지는 작은 단일 목적 프로그램, C로 다시 쓰인 뒤의 이식 가능한 설계([Post 34](/posts/34-high-level-languages-fortran-cobol-lisp-c/)가 그 언어를, 대체로 같은 사람들이, 다룬다)를 중심으로 한 타임쉐어링 OS.
 
 이식성이 중요했다. Unix는 동시대의 많은 시스템처럼 한 제조사 상자에 묶이지 않아서, 적당한 이식 노력으로 벤더를 넘나들 수 있었다 — 단일 제품 라인에 묶인 시스템에 대한 구조적 우위.
 
