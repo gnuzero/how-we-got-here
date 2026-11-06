@@ -15,11 +15,11 @@ video_prompt: "15-second motion graphic: gears morphing into relay contacts, sam
 schematics: "Diagram: instruction sequence + execution unit + store — logical shape that survives medium change"
 ---
 
-Interpretación nuestra, la misma tesis de la edición en inglés: los conjuntos de instrucciones, los programas almacenados y la separación entre control y datos tienen raíces en las máquinas de Babbage y en las tarjetas de Jacquard. El medio cambiará por completo (relés, tubos, transistores). La forma lógica no: una secuencia de instrucciones, una unidad que las ejecuta y un almacén que guarda el estado entre un paso y el siguiente.
+Interpretación nuestra, la misma tesis de la edición en inglés: los conjuntos de instrucciones, los programas almacenados y la separación entre control y datos tienen raíces en las [máquinas de Babbage]({{< relref "05-babbage-engines.md" >}}) y en las [tarjetas de Jacquard]({{< relref "06-jacquard-loom.md" >}}). El medio cambiará por completo (relés, tubos, transistores). La forma lógica no: una secuencia de instrucciones, una unidad que las ejecuta y un almacén que guarda el estado entre un paso y el siguiente.
 
 <figure>
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Charles_Babbage%27s_Difference_Engine_No._2_%282586166238%29.jpg" alt="Máquina diferencial n.º 2 de Babbage, segundo ejemplar, en el Computer History Museum" loading="lazy" width="1280">
-<figcaption>Máquina diferencial n.º 2, segundo ejemplar (Computer History Museum). Foto: <a href="https://commons.wikimedia.org/wiki/File:Charles_Babbage%27s_Difference_Engine_No._2_(2586166238).jpg">Erik Pitti</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
+<figcaption>Máquina diferencial n.º 2, segundo ejemplar, expuesto en el Computer History Museum de mayo de 2008 a enero de 2016. Foto: <a href="https://commons.wikimedia.org/wiki/File:Charles_Babbage%27s_Difference_Engine_No._2_(2586166238).jpg">Erik Pitti</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.</figcaption>
 </figure>
 
 ## El techo: tolerancias que se acumulan
@@ -50,4 +50,4 @@ Para demostrar que las máquinas podían asumir trabajos reservados hasta entonc
 
 Interpretación nuestra: la forma lógica (instrucciones, ejecución, almacén) nació en bronce; lo que obligó a cambiar de medio fue el coste físico de escalarla. Torres Quevedo lo dijo con sus propias palabras en 1914 y apostó por el electroimán y el contacto, aceptando que un contacto puede fallar.
 
-Siguiente: [Atrapar la luz](/es/posts/08-capturing-light/), y después los relés y la lógica electromecánica.
+Siguiente: [Atrapar la luz]({{< relref "08-capturing-light.md" >}}), y después los relés y la lógica electromecánica.
