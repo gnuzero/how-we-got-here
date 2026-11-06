@@ -13,9 +13,9 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 |---:|---|---|---|---:|---|
 | 0 | `00-credits.md` | — | — | -1 | en,th,si,ta,ro,zh-hans,zh-hant |
 | 1 | `01-foreword.md` | `00-foreword` | `00` | 0 | en,th,si,ta,ro |
-| 2 | `02-woodblock-to-movable-type.md` | `01d-woodblock-to-movable-type`, `06-woodblock-to-movable-type` | `01d` | 1 | en,th,si,ta,ro,ar,de,he,hi,sw,es,pt,nl,ja |
-| 3 | `03-how-the-message-travelled.md` | — | — | 2 | en,th,si,ta,ro,ar,de,he,hi,sw,es,nl,fr |
-| 4 | `04-what-is-this-thing.md` | `01-what-is-this-thing`, `02-what-is-this-thing` | `01` | 3 | en,th,ta,ro,ar,de,he,hi,es |
+| 2 | `02-woodblock-to-movable-type.md` | `01d-woodblock-to-movable-type`, `06-woodblock-to-movable-type` | `01d` | 1 | en,th,si,ta,ro,ar,de,he,hi,sa,sw,es,pt,nl,ja |
+| 3 | `03-how-the-message-travelled.md` | — | — | 2 | en,th,si,ta,ro,ar,de,he,hi,sa,sw,es,pt,nl,fr |
+| 4 | `04-what-is-this-thing.md` | `01-what-is-this-thing`, `02-what-is-this-thing` | `01` | 3 | en,th,ta,ro,ar,de,he,hi,sa,sw,es,pt,nl |
 | 4 | `04-mechanical-electromechanical-computing.md` | `01-mechanical-electromechanical-computing`, `02-mechanical-electromechanical-computing` | `01` | 3 | en,th,si,ta,ro |
 | 4 | `04-take-barrel-organ.md` | `01-take-barrel-organ`, `02-take-barrel-organ` | `01` | 3 | en,th,ta,ro |
 | 4 | `04-take-caravan.md` | `01-take-caravan`, `02-take-caravan` | `01` | 3 | en,th,ta,ro |
@@ -26,11 +26,11 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 | 4 | `04-take-silk-cards.md` | `01-take-silk-cards`, `02-take-silk-cards` | `01` | 3 | en,th,ta,ro |
 | 4 | `04-take-stubborn-helper.md` | `01-take-stubborn-helper`, `02-take-stubborn-helper` | `01` | 3 | en,th,ta,ro |
 | 4 | `04-take-water-wheel.md` | `01-take-water-wheel`, `02-take-water-wheel` | `01` | 3 | en,th,ta,ro |
-| 5 | `05-babbage-engines.md` | `01a-babbage-engines`, `03-babbage-engines` | `01a` | 4 | en,th,ta,ro,ar,de,he,es,fr |
-| 6 | `06-jacquard-loom.md` | `01b-jacquard-loom`, `04-jacquard-loom` | `01b` | 5 | en,th,ta,ro,ar,fr |
-| 7 | `07-why-mechanical-matters.md` | `01c-why-mechanical-matters`, `05-why-mechanical-matters` | `01c` | 6 | en,th,ta,ro,ar,es,fr |
+| 5 | `05-babbage-engines.md` | `01a-babbage-engines`, `03-babbage-engines` | `01a` | 4 | en,th,ta,ro,ar,de,he,hi,sa,sw,es,pt,fr |
+| 6 | `06-jacquard-loom.md` | `01b-jacquard-loom`, `04-jacquard-loom` | `01b` | 5 | en,th,ta,ro,ar,de,he,hi,sa,sw,es,pt,fr |
+| 7 | `07-why-mechanical-matters.md` | `01c-why-mechanical-matters`, `05-why-mechanical-matters` | `01c` | 6 | en,th,ta,ro,ar,de,he,hi,sa,sw,es,pt,fr |
 | 8 | `08-capturing-light.md` | — | — | 7 | en,si,ro,ar,de,he,hi,sw,es,pt,nl,fr,ja |
-| 9 | `09-relays-and-electromechanical-logic.md` | `02-relays-and-electromechanical-logic`, `07-relays-and-electromechanical-logic`, `08-relays-and-electromechanical-logic` | `02` | 8 | en,th,si,ta,ro |
+| 9 | `09-relays-and-electromechanical-logic.md` | `02-relays-and-electromechanical-logic`, `07-relays-and-electromechanical-logic`, `08-relays-and-electromechanical-logic` | `02` | 8 | en,th,si,ta,ro,ar,de,he,hi,es |
 | 10 | `10-the-vacuum-tube-era.md` | `03-the-vacuum-tube-era`, `08-the-vacuum-tube-era`, `09-the-vacuum-tube-era` | `03` | 9 | en,th,si,ta,ro |
 | 11 | `11-why-the-transistor-had-to-happen.md` | `04-why-the-transistor-had-to-happen`, `09-why-the-transistor-had-to-happen`, `10-why-the-transistor-had-to-happen` | `04` | 10 | en,th,si,ta,ro |
 | 12 | `12-semiconductors-from-first-principles.md` | `05-semiconductors-from-first-principles`, `10-semiconductors-from-first-principles`, `11-semiconductors-from-first-principles` | `05` | 11 | en,th,si,ta,ro |
@@ -72,7 +72,7 @@ Spine numbering is provisional. Another renumbering pass may land within ~48h if
 | 48 | `48-tcp-ip-and-the-modern-internet-stack.md` | `41-tcp-ip-and-the-modern-internet-stack`, `46-tcp-ip-and-the-modern-internet-stack`, `47-tcp-ip-and-the-modern-internet-stack` | `41` | 47 | en,th,si,ta |
 | 49 | `49-datacenter-networking-and-rdma.md` | `42-datacenter-networking-and-rdma`, `47-datacenter-networking-and-rdma`, `48-datacenter-networking-and-rdma` | `42` | 48 | en,th,si,ta |
 | 50 | `50-usenet-archie-gopher-and-the-pre-web-internet.md` | `43-usenet-archie-gopher-and-the-pre-web-internet`, `48-usenet-archie-gopher-and-the-pre-web-internet`, `49-usenet-archie-gopher-and-the-pre-web-internet` | `43` | 49 | en,th,si,ta |
-| 51 | `51-from-press-to-pixel.md` | `43b-from-press-to-pixel`, `49-from-press-to-pixel`, `50-from-press-to-pixel` | `43b` | 50 | en,th,si,ta,ro |
+| 51 | `51-from-press-to-pixel.md` | `43b-from-press-to-pixel`, `49-from-press-to-pixel`, `50-from-press-to-pixel` | `43b` | 50 | en,th,si,ta,ro,fr |
 | 52 | `52-google-s-big-data-infrastructure-why-they-won.md` | `44-google-s-big-data-infrastructure-why-they-won`, `50-google-s-big-data-infrastructure-why-they-won`, `51-google-s-big-data-infrastructure-why-they-won` | `44` | 51 | en,th,si,ta |
 | 53 | `53-kubernetes-and-container-orchestration-at-scale.md` | `45-kubernetes-and-container-orchestration-at-scale`, `51-kubernetes-and-container-orchestration-at-scale`, `52-kubernetes-and-container-orchestration-at-scale` | `45` | 52 | en,th,si,ta |
 | 54 | `54-the-machine-learning-software-stack.md` | `46-the-machine-learning-software-stack`, `52-the-machine-learning-software-stack`, `53-the-machine-learning-software-stack` | `46` | 53 | en,th,si,ta |

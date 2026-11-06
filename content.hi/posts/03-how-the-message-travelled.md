@@ -37,7 +37,7 @@ Indian Journal of History of Science में National Council of Science Museu
 
 **व्याख्या:** 1839 के बाग़-प्रयोग (अपने कागज़ में बाईस-मील सर्किट) और 1851 की आधिकारिक कलकत्ता–Diamond Harbour लाइन अलग चरण हैं — पहले वाले को «Diamond Harbour तक की 1839 लाइन» कहना स्रोत नहीं कहते; हम वह दावा नहीं जोड़ते।
 
-अगला: [यह चीज़ क्या है?](/posts/04-what-is-this-thing/)
+अगला: [यह चीज़ क्या है?]({{< relref "04-what-is-this-thing" >}})
 
 ## स्रोत
 

@@ -66,7 +66,7 @@ Vraag bij een kaart met een keurige verbindingslijn steeds: wie legt die lijn, w
 
 ## Verder op de route
 
-Vorige: [2 — Van drukblok naar losse letter: Coster en het bewijs](/nl/posts/02-woodblock-to-movable-type/). Volgende: [4 — Wat is dit voor ding? (Engels)](/posts/04-what-is-this-thing/).
+Vorige: [2 — Van drukblok naar losse letter: Coster en het bewijs](/nl/posts/02-woodblock-to-movable-type/). Volgende: [4 — Wat is dit voor ding?](/nl/posts/04-what-is-this-thing/).
 
 Een latere technische verdieping: [9 — Relais en elektromechanische logica (Engels)](/posts/09-relays-and-electromechanical-logic/).
 

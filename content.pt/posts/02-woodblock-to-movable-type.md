@@ -9,7 +9,7 @@ aliases:
   - /posts/01d-woodblock-to-movable-type/
   - /posts/06-woodblock-to-movable-type/
 tags: []
-summary: "Um signo que se reproduz sem copiar à mão — tipografias hebraicas em Portugal, Impressão Régia no Rio, e o arco asiático da xilogravura aos tipos móveis"
+summary: "Um signo que se reproduz sem copiar à mão — tipografias hebraicas em Portugal, a oficina de Fonseca no Rio (1747), Impressão Régia em 1808, e o arco asiático da xilogravura aos tipos móveis"
 image_prompt: "Technical illustration of Hebrew movable type in Faro/Lisbon beside woodblock and clay type trays, clean line art on white background"
 video_prompt: "20-second animation: woodblock stamp, clay type in a frame, Hebrew letters set in Faro 1487, then presses arriving in Rio 1808, muted historical tones"
 schematics: "Diagram: woodblock → clay type (Bi Sheng) → metal type (Jikji) → Gutenberg; side path: Faro 1487 / Lisbon / Leiria → Rio Impressão Régia 1808"
@@ -17,7 +17,7 @@ schematics: "Diagram: woodblock → clay type (Bi Sheng) → metal type (Jikji) 
 
 A impressão separa um signo reproduzível da mão que o copia. Grave ou compose os caracteres uma vez, e a página pode sair de novo sem ninguém reescrevê-la. Por isso esta página fica na Fase 1, antes das engrenagens e dos relés.
 
-A história da Ásia oriental, onde a impressão começa, aparece mais abaixo. Aqui abrimos pelo mundo lusófono, onde as fontes sustentam tipografias hebraicas em Portugal no final do século XV e a criação da Impressão Régia no Rio de Janeiro em 1808.
+A história da Ásia oriental, onde a impressão começa, aparece mais abaixo. Aqui abrimos pelo mundo lusófono, onde as fontes sustentam tipografias hebraicas em Portugal no final do século XV, a oficina de António Isidoro da Fonseca no Rio de Janeiro em 1747, e a criação da Impressão Régia no Rio em 1808.
 
 ## Portugal, 1487–1490s: tipografias hebraicas antes do vernáculo
 
@@ -30,6 +30,19 @@ O colofón situa a conclusão em Faro no 9.º de Tamuz do ano hebraico 5247 — 
 Oficinas hebraicas também operaram em Lisboa e em Leiria. A Biblioteca Nacional de Portugal conserva, na coleção de Incunábulos, entre outros: o *Perush Ha-Torah* (comentário de Nahmánides ao Pentateuco), Lisboa, Elieser Toledano, 1489 (INC. 551); o Pentateuco com Targum Onkelos, Lisboa, Elieser Toledano, 1491 (INC. 552); Isaías e Jeremias com comentário de David Kimhi, Lisboa, Elieser Toledano, 1492 (INC. 1413); e os *Nevi'im Rishonim* (Profetas Anteriores) com comentários, Leiria, Samuel d'Ortas e filhos, 1494 (INC. 1414 e INC. 1415) (Western Sephardic Diaspora Roadmap / DHLAB, ficha «Incunábulos», Biblioteca Nacional de Portugal, [projetos.dhlab.fcsh.unl.pt](https://projetos.dhlab.fcsh.unl.pt/s/wsdroadmap/item/5187), acessado 2026-11-06). A mesma ficha registra um fragmento do tratado *Gittin* impresso em Faro por Samuel Gacon (ou Samuel Porteiro), datado 1492 ou 1496 (INC. 1412) — distinto do Pentateuco de 1487 (mesma fonte).
 
 Pereira situa a tipografia hebraica portuguesa entre 1487 e cerca de 1496, interrompida pelo decreto de expulsão de D. Manuel I (5 de dezembro de 1496) e pela conversão forçada que se seguiu (Pereira, loc. cit.). **Não repetimos aqui totais exatos de incunábulos** — as contas variam entre catálogos; citamos só os exemplares e datas que as fontes acima nomeiam.
+
+
+## Rio de Janeiro, 1747: a oficina de António Isidoro da Fonseca
+
+Antes da Impressão Régia, há um episódio curto e documentado. Um relatório do Programa Nacional de Apoio à Pesquisa da Fundação Biblioteca Nacional (Ministério da Cultura), de Jerônimo Duque Estrada de Barros, situa o tipógrafo António (Antônio) Isidoro da Fonseca — já estabelecido em Lisboa — no Rio de Janeiro entre 1746 e 1749 e chama-o de «único caso comprovado de instalação e funcionamento de uma oficina de impressão da América portuguesa, até 1808» (Barros, «Na oficina de Antônio Isidoro da Fonseca: Levantamento e análise das obras produzidas pelo primeiro tipógrafo da América portuguesa», PNAP / Fundação Biblioteca Nacional, 2012, [gov.br/bn](https://www.gov.br/bn/pt-br/atuacao/pesquisa-e-editoracao/programa-nacional-de-apoio-a-pesquisa/pnap-2012/jeronimo_duque_estrada_de_barros_trab_revisado_0.pdf), acessado 2026-11-06).
+
+Entre as obras da «segunda Officina» fluminense, Barros cataloga a *Relação da Entrada que Fez o Excellentissimo, e Reverendíssimo Senhor D. Antonio do Desterro Malheyro Bispo do Rio de Janeiro…*, composta por Luiz Antonio Rosado da Cunha, com impressão «Na segunda officina de Antonio Isidoro da Fonceca» e licenças do bispo; a data na folha de rosto varia entre exemplares (Barros registra gralhas tipográficas como «M. DCC. LXVII» / «M.CC.LXVII» e data correta «M.DCC.XLVII» = 1747 em parte dos exemplares), e a Biblioteca Nacional (BN) guarda exemplares (Barros, loc. cit.).
+
+O exemplar digitalizado da Biblioteca Brasiliana Guita e José Mindlin (USP) confirma o impresso como fonte primária: a ficha catalográfica dá editor «Rio de Janeiro : Na Segunda Officina de Antonio Isidoro da Fonseca», data 1747, e suporte físico «20 p.» (BBM Digital, handle bbm/3829, [digital.bbm.usp.br](https://digital.bbm.usp.br/handle/bbm/3829), acessado 2026-11-06). No PDF do scan (`039081_COMPLETO.pdf`, mesmo handle), a **folha de rosto** (PDF p. 9) — sem número impresso próprio — lê-se: título *RELACAÕ DA ENTRADA QUE FEZ…*; autor Luiz Antonio Rosado da Cunha; «RIO DE JANEIRO / Na Segunda Officina de ANTONIO ISIDORO DA FONSECA.»; «Anno de M. CC. XLVII.»; «Com licenças do Senhor Bispo» (scan BBM, [bitstream](https://digital.bbm.usp.br/bitstream/bbm/3829/1/039081_COMPLETO.pdf), acessado 2026-11-06). O texto narrativo impresso abre em **p. 3 (PDF p. 11)** do folheto.
+
+Barros também registra o *Compromisso da Irmandade de Nossa Senhora do Rozario…* de 1748 e escreve que a existência dessa obra, licenciada pelo bispo António do Desterro Malheiro, «comprova que ele manteve-se em atividade mesmo após as proibições Régias de 1747 que mandava o governador recolher todas as “letras de prensa” que o governador tivesse notícia» (Barros, loc. cit.). **Atribuímos a formulação das «proibições Régias de 1747» a Barros; não nomeamos aqui o texto de um decreto específico**, que esta sessão não recuperou como fonte primária/oficial avulsa.
+
+**Interpretação nossa:** Fonseca não «abre o Brasil à tipografia» de modo contínuo — é um intervalo curto e reprimido; o salto institucional estável continua sendo 1808. O episódio reforça o mesmo problema de «quem guarda os tipos».
 
 ## Rio de Janeiro, 13 de maio de 1808: a Impressão Régia
 
@@ -61,12 +74,15 @@ A Britannica situa a prensa de Johannes Gutenberg na Europa nos anos 1450 e data
 
 **Interpretação nossa:** um tipógrafo latino precisa de poucas dezenas de sorts; um tipógrafo chinês, de dezenas de milhares; uma oficina hebraica em Faro ou Lisboa corta tipos locais e decide o que cabe na página; a Impressão Régia no Rio decide o que o Estado imprime. O problema de «onde está o signo e quanto tempo levo para achá-lo» volta quando as páginas viram software.
 
-**Próximo:** [Como a mensagem viajou]({{< relref path="/posts/03-how-the-message-travelled.md" lang="en" >}}) (capítulo em inglês até existir em português).
+**Próximo:** [Como a mensagem viajou]({{< relref "/posts/03-how-the-message-travelled.md" >}}).
 
 ## Fontes
 
 - Shlomo Pereira, «From Faro to Mantua to London: The Odyssey of Portugal’s First Printed Book — The Faro Pentateuch of 1487», *Sephardic Horizons* 16, n.º 1–2: <https://www.sephardichorizons.org/Volume16/Issue1-2/Pereira.html>
 - Western Sephardic Diaspora Roadmap / DHLAB, ficha «Incunábulos» (Biblioteca Nacional de Portugal): <https://projetos.dhlab.fcsh.unl.pt/s/wsdroadmap/item/5187>
+- Jerônimo Duque Estrada de Barros, «Na oficina de Antônio Isidoro da Fonseca…», PNAP / Fundação Biblioteca Nacional, 2012: <https://www.gov.br/bn/pt-br/atuacao/pesquisa-e-editoracao/programa-nacional-de-apoio-a-pesquisa/pnap-2012/jeronimo_duque_estrada_de_barros_trab_revisado_0.pdf>
+- Biblioteca Brasiliana Guita e José Mindlin (USP), *Relação da entrada…* (handle bbm/3829): <https://digital.bbm.usp.br/handle/bbm/3829>
+- Mesmo exemplar, PDF `039081_COMPLETO.pdf`: <https://digital.bbm.usp.br/bitstream/bbm/3829/1/039081_COMPLETO.pdf>
 - Presidência da República / Casa Civil, Decreto de 13 de maio de 1808 (cria a Impressão Régia): <https://www.planalto.gov.br/ccivil_03/decreto/historicos/dim/dim-13-5-1808-3.htm>
 - Imprensa Nacional, verbete «Impressão Régia» (Angélica Ricci Camargo / Arquivo Nacional): <https://biblioteca.in.gov.br/web/dicionario-eletronico/-/impress%c3%a3o-r%c3%a9gia>
 - International Dunhuang Programme / British Library, «The Diamond Sutra on display: Text panel 6 with colophon»: <https://idp.bl.uk/blog/the-diamond-sutra-on-display-text-panel-6-with-colophon/>

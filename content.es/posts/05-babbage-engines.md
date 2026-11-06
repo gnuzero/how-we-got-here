@@ -35,6 +35,8 @@ Charles Babbage dio a conocer su primera máquina de calcular, la máquina de di
 
 Original para este libro, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Es un modelo didáctico de columnas, no una reconstrucción completa de la n.º 2.
 
+Cuando se pagaron las últimas facturas de la primera máquina de diferencias, el Tesoro británico había gastado 17.500 libras (Science Museum, «Charles Babbage’s Difference Engines and the Science Museum», loc. cit.). En 1842 el Gobierno tomó la decisión definitiva de abandonar la máquina de diferencias (Science Museum Group Collection, «Charles Babbage 1791-1871»; [collection.sciencemuseumgroup.org.uk/people/ap8/babbage-charles](https://collection.sciencemuseumgroup.org.uk/people/ap8/babbage-charles), consultado 2026-11-06).
+
 Babbage nunca terminó una máquina de diferencias a escala completa: ninguno de sus diseños se construyó entero en vida suya (Computer History Museum, «The Engines», sitio *The Babbage Engine*; [computerhistory.org/babbage/engines](https://www.computerhistory.org/babbage/engines/), consultado 2026-11-06). El argumento de este capítulo es que la financiación jugó en su contra, y también las tolerancias de fabricación de la época: cada cifra más de precisión era otra ocasión para que el rozamiento, la holgura y la acumulación de errores arruinaran el resultado.
 
 ### Una mirada desde Madrid, 1914
@@ -51,4 +53,4 @@ El emulador alojado aquí abajo es el Analytical Engine de Fourmilab, de John Wa
 
 Origen: [Fourmilab / John Walker](https://www.fourmilab.ch/babbage/) — [código fuente (zip)](https://www.fourmilab.ch/babbage/release/aemsource.zip) (dominio público). Mapas: [Difference Engine](https://en.wikipedia.org/wiki/Difference_Engine), [Analytical Engine](https://en.wikipedia.org/wiki/Analytical_Engine) (en inglés).
 
-Ese préstamo es la próxima parada: el telar de Jacquard y la separación entre el programa y la máquina.
+Ese préstamo es la próxima parada: [el telar de Jacquard]({{< relref "06-jacquard-loom.md" >}}) y la separación entre el programa y la máquina.

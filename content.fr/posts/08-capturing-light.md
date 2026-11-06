@@ -31,7 +31,7 @@ En Angleterre, William Henry Fox Talbot suit une autre voie. Le Metropolitan Mus
 
 ## Pourquoi ici
 
-Le motif est le même que partout dans ce livre. Le daguerréotype est un exemplaire unique, comme un moteur construit à la main. Le négatif calotype est un maître dont on tire des copies, comme un bois gravé ou une carte perforée. Une fois la lumière stockée et recopiable, l'étape suivante est de la stocker en séquence et de la rejouer. Cette histoire — du cheval de Muybridge aux premières séances publiques, et au premier film chinois — est celle de [De la presse au pixel]({{< relref path="51-from-press-to-pixel" lang="en" >}}).
+Le motif est le même que partout dans ce livre. Le daguerréotype est un exemplaire unique, comme un moteur construit à la main. Le négatif calotype est un maître dont on tire des copies, comme un bois gravé ou une carte perforée. Une fois la lumière stockée et recopiable, l'étape suivante est de la stocker en séquence et de la rejouer. Cette histoire — du cheval de Muybridge aux premières séances publiques, et au premier film chinois — est celle de [De la presse au pixel]({{< relref "51-from-press-to-pixel" >}}).
 
 Ensuite : les relais, où l'électricité commence à faire la commutation.
 

@@ -41,7 +41,7 @@ Die ersten Aufnahmen mit dem Objektiv machte 1840 der Wiener Bibliothekar Anton 
 
 Unsere Deutung: Das Muster ist dasselbe, das dieses Buch immer wieder findet. Die Daguerreotypie war ein Einzelstück wie eine handgebaute Maschine. Das Kalotypie-Negativ war eine Vorlage, die sich kopieren ließ, wie ein geschnittener Holzstock oder eine gelochte Karte. Und Petzvals Objektiv zeigt den zweiten Zug: Die Grenze war die Belichtungszeit, und gelöst wurde sie, indem man das Objektiv rechnete, statt weiter nur zu probieren. Sobald sich Licht speichern und kopieren ließ, lag der nächste Schritt nahe, es in Folge zu speichern und wieder abzuspielen. Diese Geschichte erzählt das Kapitel „From Press to Pixel“ der englischen Ausgabe.
 
-Weiter: [die Relais, mit denen die Elektrizität das Schalten übernimmt](/posts/09-relays-and-electromechanical-logic/) (Kapitel 9, vorerst in der englischen Ausgabe).
+**Weiter:** [Relais und elektromechanische Logik]({{< relref "09-relays-and-electromechanical-logic.md" >}})
 
 ## Quellen
 

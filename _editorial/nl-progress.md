@@ -67,3 +67,11 @@ Commits use per-command desk attribution `Sanne (Dutch desk) <sanne@localhost>`;
 - Chapter 2 now points to Dutch chapter 3; chapter 3 points back to Dutch 2 and onward to the real English chapter-4 route already used by EN. Five Dutch chapter pages now exist: 2, 3, 8, 28, 56.
 - Unchanged external scaffold patch: `/workspace/freebook/forks/nl-scaffold.patch`; test-only language registration remains in ignored `.nl-build/scaffold.toml`. No locale configuration, i18n, landing page or shared index staged.
 - Verification results are recorded in the chapter-3 source ledger after the checks run.
+
+## Chapter 3 rulings + chapter 4 hub — 6 November 2026 (Asia/Colombo)
+
+- Separate correction commit `ef4d80749276a037fa3c96c15577e1094c70269c`: optical dates attached explicitly to named sources; Westbroek neighbours attributed to secondary local history; approved Henry/Morse and Rijkstelegraaf passages kept. Cable section reduced to attributed 1859 laying and immediate failure, supported by Mikko Toivanen's Arcadia/Rachel Carson Center essay instead of the 1877-memoir web transcript. See updated ch.3 ledger.
+- New original Dutch hub `04-what-is-this-thing.md`, metadata/aliases from the canonical EN hub, not the adjacent draft mechanical-computing page. Six Dutch chapter pages now exist: 2, 3, 4, 8, 28, 56.
+- Amira reference read only: `/workspace/freebook/forks/ar/content.ar/posts/04-what-is-this-thing.md`. Mirrored nine-card grid, explicit `relref path=… lang="en"` targets and visible per-card EN labels. NL additionally sets `hreflang="en"`. New NL hub links back to NL 3 and forward explicitly to EN 5; NL 3 now links to NL 4.
+- Chapter-4 factual mechanism paragraphs independently sourced to Museum Speelklok, Science and Industry Museum and Science Museum; the invented exercise is labelled, and absolute repeatability/autonomy claims were not imported. Evidence/review notes in `_editorial/nl-ch04-sources.md`.
+- No shared map/config, i18n, landing page, other desk, remote or theme changes. All build/test output remains ignored; scaffold patch still outside repo. Final checks recorded in ch.4 ledger.

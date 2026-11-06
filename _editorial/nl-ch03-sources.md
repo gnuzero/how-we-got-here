@@ -105,3 +105,7 @@ De oefeningen en ontwerpvragen zijn nieuw geschreven en als fictief/zelfbedacht 
 - Henry/Morse en de goedgekeurde Nationaal Archief-datering ongewijzigd gelaten.
 - Kabelbewijs vervangen door het hierboven geopende wetenschappelijke/institutionele essay; geen resterende historische claim afhankelijk van de webtranscriptie.
 - Deze correctie wordt apart vastgelegd, vóór het nieuwe Nederlandse hubhoofdstuk 4. Eerdere buildresultaten hierboven zijn die van de eerste versie; de correctieronde is opnieuw met de Dutch-overlay gebouwd en de nummeringscheck is opnieuw uitgevoerd.
+
+## Navigatie na toevoeging van NL 4
+
+De oorspronkelijke EN-next hierboven beschrijft de eerste ch.3-versie. Nu het Nederlandse hubhoofdstuk bestaat, wijst NL 3 vooruit naar `/nl/posts/04-what-is-this-thing/` (zonder 'Engels'-label); terug blijft NL 2. De gedeelde canonieke route-stam en nummering veranderen niet. Deze navigatie-update hoort bij de afzonderlijke ch.4-commit, niet bij de voorafgaande correctiecommit.

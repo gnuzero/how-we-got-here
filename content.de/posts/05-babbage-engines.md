@@ -51,7 +51,7 @@ Diese Entlehnung ist die nächste Station: der Jacquard-Webstuhl und die Trennun
 
 Das Bonner Arithmeum besitzt Nachbauten der Differenzmaschine von 1833 und des bis 1871 entstandenen Fragments der Analytischen Maschine. ([HNF-Blog, „Die Geburt des Computers“](https://blog.hnf.de/die-geburt-des-computers/))
 
-**Weiter:** [Der Jacquard-Webstuhl]({{< relref path="06-jacquard-loom.md" lang="en" >}}) (vorerst auf Englisch)
+**Weiter:** [Der Jacquard-Webstuhl]({{< relref "06-jacquard-loom.md" >}})
 
 ## Quellen
 
