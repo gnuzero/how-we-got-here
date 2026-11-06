@@ -114,3 +114,27 @@ grep -l 'labs:' content/posts/*.md
 - Theme: `hugo-book` — clean, good code-block/diagram support, no bloat
 - `unsafe = true` in markup config lets you drop raw SVG/HTML for schematics inline
 - Series metadata (`phase`, `series_index`) in frontmatter — can build a phase-nav template later if wanted
+
+## Contributing and forking
+
+Corrections, sources and new languages are welcome.
+
+- **Report a problem or a missing tool:** open a [GitHub issue](https://github.com/gnuzero/how-we-got-here/issues). Please name the page, quote the claim, and link a public source. Wikipedia, museum and institutional pages, and open course notes are all fine.
+- **Fix something:** fork the repo, make the change on a branch, and open a pull request. Keep one topic per PR. Every factual claim needs a cited public source that actually supports it. Where sources disagree, give both and say who says what.
+- **Start a language:** languages are not a final set. Open an issue first and we'll help with the initial seeding. Each locale lives in `content.<lang>/`, with its interface strings in `i18n/<lang>.toml` and lab strings in `static/labs/<lab>/strings.<lang>.json`. The foreword mirrors the English one exactly.
+- **Before you open a PR:** run `hugo` (all locales must build), `python3 scripts/renumber.py --check` and `python3 scripts/check-lab-strings.py`. Leave no internal notes, TODOs, HTML comments or merge-conflict markers in `content*/`.
+- **Forks:** you can fork and republish under the licence terms below. Please keep the attribution and the source links, and say that your copy is modified.
+
+## Licence
+
+- **Book text** in `content*/`, the site layout, and the in-repo labs (`static/labs/difference-engine`, `mini-cpu`, `pebble-trays`, and the `breadboard` wrapper page) are licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). See `LICENSE`.
+- **Third-party labs and components keep their own licences.** Each lab's `ORIGIN.md` gives the details:
+
+| Lab | Upstream | Licence |
+|---|---|---|
+| `analytical-engine` | John Walker, Analytical Engine emulator ([fourmilab.ch/babbage](https://www.fourmilab.ch/babbage/)); BigInteger.js by Peter Olson | Public domain / Unlicense |
+| `breadboard` (simulator) | Paul Falstad / CircuitJS1 ([falstad.com/circuit](https://www.falstad.com/circuit/), [sharpie7/circuitjs1](https://github.com/sharpie7/circuitjs1)) | GPL-2.0-or-later |
+| `vm-terminal` | v86 by Fabian and contributors ([copy/v86](https://github.com/copy/v86)); bundled binaries | BSD-2-Clause; binaries keep their upstream licences |
+| `themes/hugo-book` (submodule) | [alex-shpak/hugo-book](https://github.com/alex-shpak/hugo-book) | MIT |
+
+- **Images** keep the licence and credit shown in each caption.
