@@ -16,7 +16,7 @@ video_prompt: "20-second animation: DRAM burst transfer, comparing burst length 
 schematics: "Diagram: DDR generation comparison table + memory channel/rank/bank organization diagram"
 ---
 
-PCIe (Posts 32–33) is the path to expansion devices. The memory bus is the path that actually feeds the CPU — DRAM from [Post 17]({{< relref "17-the-memory-hierarchy-begins" >}}) — and its evolution is a running negotiation among bandwidth, latency, and power. The generation names are not the story. The split between those three is.
+PCIe (Posts [39]({{< relref "39-from-isa-bus-to-pci-to-pcie" >}})–[40]({{< relref "40-pcie-deep-dive" >}})) is the path to expansion devices. The memory bus is the path that actually feeds the CPU — DRAM from [Post 17]({{< relref "17-the-memory-hierarchy-begins" >}}) — and its evolution is a running negotiation among bandwidth, latency, and power. The generation names are not the story. The split between those three is.
 
 ## Both Edges, Not a Faster Clock
 

@@ -16,7 +16,7 @@ video_prompt: "20-second animation: data flowing up through TSVs in a stacked HB
 schematics: "Diagram: HBM stack cross-section with TSVs + GPU memory hierarchy"
 ---
 
-[Post 42]({{< relref "42-the-memory-wall" >}}) named the memory wall: DRAM latency lagged compute, so the industry chased *bandwidth* where latency stayed stubborn. Nowhere is that response more consequential than GPU memory — Posts 52–53's parallel throughput creates an appetite conventional DDR ([Post 41]({{< relref "41-memory-buses" >}})) cannot feed.
+[Post 42]({{< relref "42-the-memory-wall" >}}) named the memory wall: DRAM latency lagged compute, so the industry chased *bandwidth* where latency stayed stubborn. Nowhere is that response more consequential than GPU memory — Posts [60]({{< relref "60-why-gpus-exist" >}})–[61]({{< relref "61-cuda-cores-warps-and-occupancy" >}})'s parallel throughput creates an appetite conventional DDR ([Post 41]({{< relref "41-memory-buses" >}})) cannot feed.
 
 ## Why GPUs Starve on CPU-Style Memory
 
@@ -24,7 +24,7 @@ A CPU runs a modest number of instruction streams; caches ([Post 22]({{< relref 
 
 ## HBM: Stack Beside the Die
 
-High Bandwidth Memory stacks DRAM dies vertically, connected through through-silicon vias (TSVs) rather than long PCB traces to a separate DIMM. Combined with a very wide interface, that delivers far more bandwidth than equivalent DDR — paid for in the advanced packaging of [Post 59]({{< relref "59-chiplets-advanced-packaging" >}}). HBM and the GPU compute die typically share a silicon interposer: the same packaging family used for chiplets, applied here to put memory *beside* compute instead of disaggregating functional dies.
+High Bandwidth Memory stacks DRAM dies vertically, connected through through-silicon vias (TSVs) rather than long PCB traces to a separate DIMM. Combined with a very wide interface, that delivers far more bandwidth than equivalent DDR (the A100's 40 GB of HBM2 runs at 1,555 GB/s, per the [A100 whitepaper](https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf)) — paid for in the advanced packaging of [Post 59]({{< relref "59-chiplets-advanced-packaging" >}}). HBM and the GPU compute die typically share a silicon interposer: the same packaging family used for chiplets, applied here to put memory *beside* compute instead of disaggregating functional dies.
 
 ## The Hierarchy Inside the GPU
 

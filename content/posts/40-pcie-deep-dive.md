@@ -28,7 +28,7 @@ The unit is the Transaction Layer Packet. A TLP names the type (memory read or w
 
 ## Lanes Scale Width; Generations Scale Rate
 
-A lane is one differential pair each way — the smallest link. Bond lanes (x1…x16) to multiply bandwidth. Each generation roughly doubles per-lane rate (higher signaling, tighter encoding). Same x16 slot, Gen 5 versus Gen 3: about 4× unidirectional bandwidth (~64 GB/s vs ~16 GB/s) with no extra wires. The serial bet from [Post 39]({{< relref "39-from-isa-bus-to-pci-to-pcie" >}}) is what made that climb possible.
+A lane is one differential pair each way — the smallest link. Bond lanes (x1…x16) to multiply bandwidth. Each generation roughly doubles per-lane rate (higher signaling, tighter encoding). Same x16 slot, Gen 5 versus Gen 3: about 4× bandwidth per direction (~63 GB/s vs ~15.8 GB/s, [Wikipedia, PCI Express](https://en.wikipedia.org/wiki/PCI_Express#Comparison_table)) with no extra wires. The serial bet from [Post 39]({{< relref "39-from-isa-bus-to-pci-to-pcie" >}}) is what made that climb possible.
 
 ## Why a Custom Fabric Cares
 

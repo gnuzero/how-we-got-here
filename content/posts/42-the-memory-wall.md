@@ -20,7 +20,7 @@ schematics: "Diagram: CPU vs DRAM performance divergence graph + memory latency 
 
 ## Diverging Exponentials
 
-Wm. A. Wulf and Sally A. McKee named it in 1995. Processor speed and DRAM speed both improve exponentially, but the exponents differ — and the difference of diverging exponentials grows exponentially. CPU performance (Phase 3's clocks and architecture) ran away; DRAM latency improved by a much smaller factor. They called the result the **memory wall**: not a nuisance better engineering quietly absorbs, a structural limit.
+Wm. A. Wulf and Sally A. McKee named it in 1995 ([PDF](https://intranet.di.unisa.it/~vitsca/SC-2011/DesignPrinciplesMulticoreProcessors/Wulf1995.pdf)), projecting that each memory access would soon cost "tens or even hundreds of processor cycles." Processor speed and DRAM speed both improve exponentially, but the exponents differ — and the difference of diverging exponentials grows exponentially. CPU performance (Phase 3's clocks and architecture) ran away; DRAM latency improved by a much smaller factor. They called the result the **memory wall**: not a nuisance better engineering quietly absorbs, a structural limit.
 
 ## Why Bandwidth Moved and Latency Did Not
 

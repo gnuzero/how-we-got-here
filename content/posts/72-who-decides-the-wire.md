@@ -50,7 +50,7 @@ A few peers earn a sentence — same *kind* of shared meaning, not a standards-b
 
 ## Why This Belongs in the Journey
 
-Posts 39–41 are the engineering bet: packets, layers, unreliable substrate. This post is the civics bet underneath them: **shared meaning is infrastructure**. Without someone (and some process) deciding numbers, names, and encodings, every new network is a private language. The doors above are the primary sources — RFCs, registries, consortium pages.
+Posts [46]({{< relref "46-arpanet-and-packet-switching" >}})–[48]({{< relref "48-tcp-ip-and-the-modern-internet-stack" >}}) are the engineering bet: packets, layers, unreliable substrate. This post is the civics bet underneath them: **shared meaning is infrastructure**. Without someone (and some process) deciding numbers, names, and encodings, every new network is a private language. The doors above are the primary sources — RFCs, registries, consortium pages.
 
 Optional side paths from here: how people *found* things and *talked* on that shared wire ([Post 50]({{< relref "50-usenet-archie-gopher-and-the-pre-web-internet" >}})), or how wartime crypto forced machines that could keep secrets ([Post 73]({{< relref "73-wartime-crypto" >}})). The main spine stays packets → systems → silicon → attention; this is a widen-the-lens beat you can take or skip.
 

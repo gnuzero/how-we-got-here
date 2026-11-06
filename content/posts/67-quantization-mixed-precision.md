@@ -24,7 +24,7 @@ Formats trade range against precision with a fixed bit budget. FP32 (sign, 8 exp
 
 ## Fewer Bits, More Throughput
 
-Posts 6–7 established that circuit area scales with what you compute. An FP32 MAC needs more transistors and power than FP16 or INT8. Given a fixed area and power budget ([Post 43]({{< relref "43-the-clock-speed-wall" >}})'s wall still binds accelerators), lower precision packs more parallel MAC throughput into the same envelope. That is a physical reason — not only an algorithmic choice — that tensor cores and systolic arrays are often designed around specific lower-precision formats.
+Posts [13]({{< relref "13-the-transistor-bjt-to-mosfet" >}})–[14]({{< relref "14-logic-gates-from-transistors" >}}) established that circuit area scales with what you compute. An FP32 MAC needs more transistors and power than FP16 or INT8. Given a fixed area and power budget ([Post 43]({{< relref "43-the-clock-speed-wall" >}})'s wall still binds accelerators), lower precision packs more parallel MAC throughput into the same envelope. That is a physical reason — not only an algorithmic choice — that tensor cores and systolic arrays are often designed around specific lower-precision formats.
 
 ## What Is Traded
 

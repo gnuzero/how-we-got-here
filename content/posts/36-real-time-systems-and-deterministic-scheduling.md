@@ -21,7 +21,7 @@ Everything so far in Phase 4 — batch, time-sharing, virtual memory, containers
 
 ## Fast Is Not Deterministic
 
-A general-purpose scheduler (Posts 21–25) optimizes for good *average-case* responsiveness and fair sharing — usually quite fast in the common case. "Usually fast" is not "always finishes within a specified deadline, no exceptions." Cache effects, interrupt handling, or garbage-collection pauses ([Post 35]({{< relref "35-compilers-jit-and-modern-language-runtimes" >}})) can stretch a delay. For most apps, occasional variance does not matter. For a real-time system, it can be the entire ballgame.
+A general-purpose scheduler (Posts [28]({{< relref "28-batch-processing-and-the-birth-of-the-operating-system" >}})–[32]({{< relref "32-containers-and-modern-os-isolation" >}})) optimizes for good *average-case* responsiveness and fair sharing — usually quite fast in the common case. "Usually fast" is not "always finishes within a specified deadline, no exceptions." Cache effects, interrupt handling, or garbage-collection pauses ([Post 35]({{< relref "35-compilers-jit-and-modern-language-runtimes" >}})) can stretch a delay. For most apps, occasional variance does not matter. For a real-time system, it can be the entire ballgame.
 
 ## Hard vs Soft
 
@@ -31,11 +31,11 @@ A **soft** deadline: missing it degrades quality but is not outright failure —
 
 ## Rate-Monotonic Scheduling
 
-One classical approach to hard real-time: rate-monotonic scheduling — assign each periodic task a fixed priority from how frequently it must run; shorter period → higher priority. Provably optimal among fixed-priority algorithms for a well-defined class of periodic task sets: if *any* fixed-priority assignment can meet every deadline for that workload, rate-monotonic will too. A mathematical schedulability bound — exactly the kind of formal property hard real-time systems need to certify against.
+One classical approach to hard real-time: rate-monotonic scheduling — assign each periodic task a fixed priority from how frequently it must run; shorter period → higher priority. Provably optimal among fixed-priority algorithms ([Liu & Layland 1973, via Wikipedia](https://en.wikipedia.org/wiki/Rate-monotonic_scheduling)) for a well-defined class of periodic task sets: if *any* fixed-priority assignment can meet every deadline for that workload, rate-monotonic will too. A mathematical schedulability bound — exactly the kind of formal property hard real-time systems need to certify against.
 
 ## Why a Different Kind of OS
 
-Meeting these guarantees requires an OS designed around bounded worst-case timing — a Real-Time Operating System (RTOS) — not the throughput/fairness lineage of Posts 21–25. Interrupt latency must be bounded and known. Memory allocation typically cannot rely on unpredictable-latency mechanisms like a general-purpose GC. Even a mutex needs careful design (priority inheritance) so a low-priority task cannot block a high-priority one for an unbounded time — priority inversion, a classic real-time pitfall.
+Meeting these guarantees requires an OS designed around bounded worst-case timing — a Real-Time Operating System (RTOS) — not the throughput/fairness lineage of Posts [28]({{< relref "28-batch-processing-and-the-birth-of-the-operating-system" >}})–[32]({{< relref "32-containers-and-modern-os-isolation" >}}). Interrupt latency must be bounded and known. Memory allocation typically cannot rely on unpredictable-latency mechanisms like a general-purpose GC. Even a mutex needs careful design (priority inheritance) so a low-priority task cannot block a high-priority one for an unbounded time — priority inversion, a classic real-time pitfall.
 
 Revisit the mini-CPU lab through this lens: on simple hardware, every instruction's timing is deterministic and countable — the predictability RTOS design fights to preserve as systems grow more complex. The next post takes these principles into avionics, industrial control, and embedded deployments where the guarantees are load-bearing.
 

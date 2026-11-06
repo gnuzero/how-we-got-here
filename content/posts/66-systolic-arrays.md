@@ -28,7 +28,7 @@ Keep weights *stationary* — loaded once into each PE — while activations str
 
 ## GPU Tensor Cores vs a Systolic Chip
 
-Tensor cores sit inside a still-general SIMT architecture (Posts 52–53) that can run many parallel workloads beyond matmul. A systolic-array chip like a TPU makes a narrower bet: organize the *whole* chip around efficient matrix multiplication, with less flexibility for work that does not fit that shape. Neither is strictly better — efficiency on matmul-dominated loads versus flexibility on a wider parallel mix.
+Tensor cores sit inside a still-general SIMT architecture (Posts [60]({{< relref "60-why-gpus-exist" >}})–[61]({{< relref "61-cuda-cores-warps-and-occupancy" >}})) that can run many parallel workloads beyond matmul. A systolic-array chip like a TPU makes a narrower bet: organize the *whole* chip around efficient matrix multiplication, with less flexibility for work that does not fit that shape. Neither is strictly better — efficiency on matmul-dominated loads versus flexibility on a wider parallel mix.
 
 ## The MXU as Specialized Heart
 

@@ -24,11 +24,11 @@ Fully connected layers, convolutions (reformulated as matmul), and attention in 
 
 ## What a Tensor Core Does
 
-A tensor core fuses a small fixed-size matrix multiply-accumulate — for example two 4×4 matrices into a third — as one hardware operation rather than a long sequence of separate multiply and add instructions through general CUDA cores. Fusion cuts per-op overhead (fetch, decode, operand routing) relative to useful arithmetic. Larger products are tiled: feed sub-blocks in sequence, accumulate partials — the coordination work that makes efficient deep-learning kernels its own craft.
+A tensor core fuses a small fixed-size matrix multiply-accumulate as one hardware operation (each Volta tensor core did a 4×4×4 matrix multiply per clock, per the [A100 whitepaper](https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf)), rather than a long sequence of separate multiply and add instructions through general CUDA cores. Fusion cuts per-op overhead (fetch, decode, operand routing) relative to useful arithmetic. Larger products are tiled: feed sub-blocks in sequence, accumulate partials — the coordination work that makes efficient deep-learning kernels its own craft.
 
 ## Precision Is Coupled to the Silicon
 
-Tensor cores often run most efficiently at lower precisions (FP16, BF16, INT8, increasingly FP8). Narrower arithmetic needs less area and power per op, so a given budget packs more MAC throughput. [Post 67]({{< relref "67-quantization-mixed-precision" >}}) returns to this fully: precision reduction is not a pure software choice — it is coupled to how efficiently the underlying MAC hardware runs at each format.
+Tensor cores often run most efficiently at lower precisions (FP16, BF16, INT8 on A100 per its [whitepaper](https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf); newer parts add FP8). Narrower arithmetic needs less area and power per op, so a given budget packs more MAC throughput. [Post 67]({{< relref "67-quantization-mixed-precision" >}}) returns to this fully: precision reduction is not a pure software choice — it is coupled to how efficiently the underlying MAC hardware runs at each format.
 
 ## Not the Only Answer
 

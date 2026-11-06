@@ -24,7 +24,7 @@ Historically the process-node name tracked a real dimension — roughly the mini
 
 ## Why One Number Stopped Sufficing
 
-FinFET and later Gate-All-Around structures (Posts 48–49) made gate length only one of several load-bearing dimensions. Fin height, fin pitch, gate pitch, and interconnect pitch all matter independently — and different foundries (TSMC, Samsung, Intel) trade them off differently. Two "7nm" processes are not the same physics under the same label.
+FinFET and later Gate-All-Around structures (Posts [56]({{< relref "56-photolithography" >}})–[57]({{< relref "57-finfet-to-gaa" >}})) made gate length only one of several load-bearing dimensions. Fin height, fin pitch, gate pitch, and interconnect pitch all matter independently — and different foundries (TSMC, Samsung, Intel) trade them off differently. Two "7nm" processes are not the same physics under the same label.
 
 ## What the Label Is Now
 

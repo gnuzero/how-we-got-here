@@ -44,7 +44,7 @@ The original Transformer's base model used 8 heads (the big model used 16). Mode
 
 1. **Parallelism** — Unlike RNNs, every position can run at once. Training throughput scales with sequence length and hardware matmul capacity, not sequential steps.
 2. **Long-range dependency** — In principle any token attends directly to any other, limited by the quadratic attention matrix and practical context windows.
-3. **Hardware affinity** — The dominant work is dense matrix multiplication — exactly what tensor cores, systolic arrays, and modern GPU memory hierarchies were optimized for (Posts 55–58).
+3. **Hardware affinity** — The dominant work is dense matrix multiplication — exactly what tensor cores, systolic arrays, and modern GPU memory hierarchies were optimized for (Posts [63]({{< relref "63-tensor-cores" >}})–[66]({{< relref "66-systolic-arrays" >}})).
 
 The quadratic cost of full attention remains real — hence sparse, linear, sliding-window, and other approximations. The core insight still stands: a simple, parallelizable attention mechanism could replace recurrence.
 

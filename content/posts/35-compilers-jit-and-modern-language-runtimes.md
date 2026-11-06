@@ -33,7 +33,7 @@ The JIT's advantage is information an AOT compiler never had: observed branches,
 
 ## Runtimes: More Than Compilation
 
-Managed languages (Java, C#, and to varying degrees JavaScript and Python) pair the compiler with a broader runtime — most consequentially automatic memory management via garbage collection, freeing programmers from tracking every allocation's lifetime (a major bug source in C). Complexity shifts into the runtime: manual effort traded for overhead and, historically, less predictable pauses. That tension is exactly why Posts 29–30 treat "real-time" and "garbage-collected managed runtime" as frequently at odds.
+Managed languages (Java, C#, and to varying degrees JavaScript and Python) pair the compiler with a broader runtime — most consequentially automatic memory management via garbage collection, freeing programmers from tracking every allocation's lifetime (a major bug source in C). Complexity shifts into the runtime: manual effort traded for overhead and, historically, less predictable pauses. That tension is exactly why Posts [36]({{< relref "36-real-time-systems-and-deterministic-scheduling" >}})–[37]({{< relref "37-real-time-systems-in-practice" >}}) treat "real-time" and "garbage-collected managed runtime" as frequently at odds.
 
 ## See It Live
 

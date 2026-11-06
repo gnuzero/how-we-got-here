@@ -26,11 +26,11 @@ Every wire has slightly different length and capacitance, so bits do not arrive 
 
 ## PCI Bought Headroom, Not Escape
 
-PCI (Peripheral Component Interconnect, 1992) was faster than ISA — better arbitration, plug-and-play configuration, more practical bandwidth. It was still a shared parallel bus, still subject to skew as clocks rose. Headroom, not a new architecture.
+PCI (Peripheral Component Interconnect, 1992 per [PCI-SIG](https://pcisig.com/sites/default/files/files/30%20Years%20of%20PCI-SIG%20Innovation%20Webinar_Updated%203.23.2023.pdf)) was faster than ISA — better arbitration, plug-and-play configuration, more practical bandwidth. It was still a shared parallel bus, still subject to skew as clocks rose. Headroom, not a new architecture.
 
 ## PCIe Left the Shared Wires
 
-PCI Express (2003) changed the topology. Instead of one shared parallel bus, each device gets a dedicated point-to-point serial link (a lane, or a bundle of lanes) to a switch. One differential pair per direction per lane: nothing to keep in lockstep across a dozen wires, so per-lane clocks can climb far past any parallel bus. Lanes bond (x1, x4, x8, x16) for devices that need more — a GPU takes x16 because it moves far more than a NIC in x1. Unrelated devices no longer share wires, so they no longer wait on each other's arbitration.
+PCI Express (specification 2003, 2.5 GT/s per lane, per [PCI-SIG](https://pcisig.com/sites/default/files/files/30%20Years%20of%20PCI-SIG%20Innovation%20Webinar_Updated%203.23.2023.pdf)) changed the topology. Instead of one shared parallel bus, each device gets a dedicated point-to-point serial link (a lane, or a bundle of lanes) to a switch. One differential pair per direction per lane: nothing to keep in lockstep across a dozen wires, so per-lane clocks can climb far past any parallel bus. Lanes bond (x1, x4, x8, x16) for devices that need more — a GPU takes x16 because it moves far more than a NIC in x1. Unrelated devices no longer share wires, so they no longer wait on each other's arbitration.
 
 Fewer physical wires. Higher achievable bandwidth. The shared-bus ceiling is gone. [Post 40]({{< relref "40-pcie-deep-dive" >}}) is how those serial links structure a transfer so the rest of the machine can still *mean* a read or a write.
 
