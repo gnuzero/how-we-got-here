@@ -17,7 +17,7 @@ labs: ["mini-cpu"]
 schematics: "Diagram: mainframe/minicomputer/microprocessor size/cost timeline + IBM S/360 vs PDP-11 vs Intel 4004 comparison"
 ---
 
-ENIAC (Phase 1) occupied about 1,800 square feet and weighed roughly 30 tons. A phone CPU outperforms it by orders of magnitude on a fingertip. That collapse was not one leap — three eras, each answering differently: *who gets a computer, and how many exist?*
+ENIAC (Phase 1) occupied 1,800 square feet by the Army Ordnance Corps' data sheet ([App. I](https://ftp.arl.army.mil/mike/comphist/61ordnance/app1.html)), "more than 1,000 square feet" in the [CHM timeline](https://www.computerhistory.org/timeline/computers/), and weighed roughly 30 tons. A phone CPU outperforms it by orders of magnitude on a fingertip. That collapse was not one leap — three eras, each answering differently: *who gets a computer, and how many exist?*
 
 ## Mainframes: One Machine, Shared
 
@@ -29,7 +29,7 @@ ENIAC (Phase 1) occupied about 1,800 square feet and weighed roughly 30 tons. A 
 
 ## Microprocessors: The CPU on One Die
 
-The discontinuity: fabricate the whole CPU on one integrated circuit instead of wiring racks of discrete parts. Intel's 4004 (1971), built for a calculator, is usually credited as the first commercial single-chip CPU — 4-bit, about 2,300 transistors, up to roughly 740 kHz. Weak by any modern measure; the direct ancestor of the 8080, the Z80, and the x86 line in the next post.
+The discontinuity: fabricate the whole CPU on one integrated circuit instead of wiring racks of discrete parts. Intel's 4004 (1971), built for a calculator, is usually credited as the first commercial single-chip CPU — 4-bit, about 2,300 transistors. Its clock is quoted two ways: 108 kHz in the Intel Museum archive ([Calisphere](https://calisphere.org/item/ark:/13030/kt729020f8/)), and a maximum of about 740 kHz from the datasheet's minimum cycle time ([Wikipedia, Intel 4004](https://en.wikipedia.org/wiki/Intel_4004)). Weak by any modern measure; the direct ancestor of the 8080, the Z80, and the x86 line in the next post.
 
 ## Why the Collapse Compounded
 

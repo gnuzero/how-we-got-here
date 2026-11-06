@@ -25,7 +25,7 @@ Static RAM uses the same bistable feedback idea as a latch, packed as a 6-transi
 
 ## DRAM: Dense, Cheap, High-Maintenance
 
-Dynamic RAM stores the bit as charge on a capacitor, gated by one transistor (1T1C). One transistor instead of six is the density win — and why main memory is DRAM. The cost is in the name: capacitors leak. Commodity parts require every cell refreshed inside a ~64 ms window at normal temperature, or the value fades into ambiguity. Refresh burns bandwidth and complicates the memory controller; it is the price of density. Reads are also destructive — sensing the tiny charge disturbs it — so every read is followed by a rewrite. SRAM has neither problem.
+Dynamic RAM stores the bit as charge on a capacitor, gated by one transistor (1T1C). One transistor instead of six is the density win — and why main memory is DRAM. The cost is in the name: capacitors leak. Commodity parts require every cell refreshed inside a fixed window (64 ms for DDR and DDR2 SDRAM, halved above 85 °C, per [Wikipedia, "Memory refresh"](https://en.wikipedia.org/wiki/Memory_refresh)), or the value fades into ambiguity. Refresh burns bandwidth and complicates the memory controller; it is the price of density. Reads are also destructive — sensing the tiny charge disturbs it — so every read is followed by a rewrite. SRAM has neither problem.
 
 **Door out:** Robert H. Dennard's one-transistor DRAM cell (U.S. Patent 3,387,286, 1968) — the 1T1C idea that made dense main memory practical.
 
