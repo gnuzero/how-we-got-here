@@ -13,7 +13,7 @@ tags: []
 summary: "Nine doors into the same idea — pick any, then meet the brass engines"
 ---
 
-Long before brass engines, people already handed chores to things that keep going: a wheel that turns, a scoop that measures, a card that repeats a pattern. The chore is fixed. The thing does not invent a new one halfway through.
+Print made a page you could copy without a scribe, and the wire made a message that could travel without a rider. The next step was a chore that could run without anyone minding it. People had handed fixed chores to things for a long time: a wheel that turns, a scoop that measures, a card that repeats a pattern. The chore is fixed. The thing does not invent a new one halfway through.
 
 Here are nine doors into that idea. They are equals — pick any. Each is a short take on its own page. Later we can see which doors people open.
 
