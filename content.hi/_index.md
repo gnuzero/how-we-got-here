@@ -48,28 +48,28 @@ type: docs
 
 - **अवधारणा और प्रेरणा**: Nayana Hettiarachchi
 - **लेखन और तकनीकी लेखन**: The Grok team (Lucas, Benjamin, Harper)
-- **Director**: Nayana Hettiarachchi
-- **Fact-check & research lead**: Lucas
-- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
-  - English desk: Jules (English distill), with Lucas for fact-check and lead
-  - Simplified Chinese and Traditional Chinese desks: Wen
-  - Thai desk: Mira
-  - Sinhala desk: Sena
-  - Tamil desk: Arun
-  - Romanian desk: Radu
-  - Arabic desk: Amira (in progress)
-  - German desk: Greta (in progress)
-  - Hebrew desk: Noa (in progress)
-  - Hindi and Sanskrit desks: Aditi (in progress)
-  - Swahili desk: Zawadi (in progress)
-  - Spanish desk: Lucía (in progress)
-  - Portuguese desk: Inês (in progress)
-  - Dutch desk: Sanne (in progress)
-  - French desk: Margaux (in progress)
-  - Japanese desk: Haru (in progress)
-  - Labs: Reed
-  - New threads: Cass
-  - Production support: Benjamin and Harper
+- **निर्देशक**: Nayana Hettiarachchi
+- **तथ्य-जाँच और अनुसंधान प्रमुख**: Lucas
+- **दल** — AI लेखन सहायक जो Nayana के संपादकीय निर्देशन में काम करते हैं, Lucas तथ्य-जाँच करते हैं (मानव अनुवादक नहीं):
+  - अंग्रेज़ी डेस्क: Jules (अंग्रेज़ी संक्षेप), Lucas के साथ तथ्य-जाँच और नेतृत्व के लिए
+  - सरलीकृत और पारंपरिक चीनी डेस्क: Wen
+  - थाई डेस्क: Mira
+  - सिंहला डेस्क: Sena
+  - तमिल डेस्क: Arun
+  - रोमानियाई डेस्क: Radu
+  - अरबी डेस्क: Amira (प्रगति पर)
+  - जर्मन डेस्क: Greta (प्रगति पर)
+  - हिब्रू डेस्क: Noa (प्रगति पर)
+  - हिन्दी और संस्कृत डेस्क: Aditi (प्रगति पर)
+  - स्वाहिली डेस्क: Zawadi (प्रगति पर)
+  - स्पेनिश डेस्क: Lucía (प्रगति पर)
+  - पुर्तगाली डेस्क: Inês (प्रगति पर)
+  - डच डेस्क: Sanne (प्रगति पर)
+  - फ्रेंच डेस्क: Margaux (प्रगति पर)
+  - जापानी डेस्क: Haru (प्रगति पर)
+  - प्रयोगशालाएँ: Reed
+  - नए सूत्र: Cass
+  - उत्पादन सहायता: Benjamin और Harper
 
 यह कार्य सार्वजनिक शैक्षिक संसाधन के रूप में प्रस्तुत है। दिशा और प्रकाशन का निर्णय अवधारणा के उद्गम के पास रहता है।
 

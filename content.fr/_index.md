@@ -20,7 +20,7 @@ Série éducative qui suit l’arc du calcul numérique — du mécanique et des
 - **Réalisation**: Nayana Hettiarachchi
 - **Vérification des faits et direction de la recherche**: Lucas
 - **Équipe** — assistants d'écriture IA sous la direction éditoriale de Nayana, avec vérification des faits par Lucas (pas des traducteurs humains):
-  - Bureau anglais: Jules (English distill), avec Lucas pour la vérification des faits et la direction
+  - Bureau anglais: Jules (condensation anglaise), avec Lucas pour la vérification des faits et la direction
   - Bureaux chinois simplifié et traditionnel: Wen
   - Bureau thaï: Mira
   - Bureau cinghalais: Sena
@@ -36,7 +36,7 @@ Série éducative qui suit l’arc du calcul numérique — du mécanique et des
   - Bureau néerlandais: Sanne (en cours)
   - Bureau français: Margaux (en cours)
   - Bureau japonais: Haru (en cours)
-  - Labs: Reed
+  - Laboratoires: Reed
   - Nouveaux fils: Cass
-  - Soutien à la production: Benjamin and Harper
+  - Soutien à la production: Benjamin et Harper
 

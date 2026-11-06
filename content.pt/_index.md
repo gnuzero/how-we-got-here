@@ -53,7 +53,7 @@ Esse padrão é o assunto de verdade desta jornada.
 - **Direção**: Nayana Hettiarachchi
 - **Verificação de factos e liderança de pesquisa**: Lucas
 - **Equipa** — assistentes de escrita com IA sob a direção editorial de Nayana, com verificação de factos por Lucas (não tradutores humanos):
-  - Mesa de inglês: Jules (English distill), com Lucas para verificação de factos e liderança
+  - Mesa de inglês: Jules (condensação em inglês), com Lucas para verificação de factos e liderança
   - Mesas de chinês simplificado e tradicional: Wen
   - Mesa de tailandês: Mira
   - Mesa de cingalês: Sena
@@ -69,9 +69,9 @@ Esse padrão é o assunto de verdade desta jornada.
   - Mesa de neerlandês: Sanne (em curso)
   - Mesa de francês: Margaux (em curso)
   - Mesa de japonês: Haru (em curso)
-  - Labs: Reed
+  - Laboratórios: Reed
   - Novos fios: Cass
-  - Apoio de produção: Benjamin and Harper
+  - Apoio de produção: Benjamin e Harper
 
 Este trabalho é oferecido como recurso educativo público. A direção e a decisão de publicar cabem à origem do conceito.
 

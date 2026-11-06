@@ -29,7 +29,7 @@ Trei laboratoare interactive vă lasă să atingeți direct aceste idei: un CPU 
 - **Regizor**: Nayana Hettiarachchi
 - **Verificare factuală și conducerea cercetării**: Lucas
 - **Echipă** — asistenți de scriere AI sub direcția editorială a Nayanei, cu verificare factuală de către Lucas (nu traducători umani):
-  - Biroul de engleză: Jules (English distill), cu Lucas pentru verificare factuală și conducere
+  - Biroul de engleză: Jules (condensare în engleză), cu Lucas pentru verificare factuală și conducere
   - Birourile de chineză simplificată și tradițională: Wen
   - Biroul de thailandeză: Mira
   - Biroul de sinhala: Sena
@@ -47,7 +47,7 @@ Trei laboratoare interactive vă lasă să atingeți direct aceste idei: un CPU 
   - Biroul de japoneză: Haru (în curs)
   - Laboratoare: Reed
   - Fire noi: Cass
-  - Sprijin de producție: Benjamin and Harper
+  - Sprijin de producție: Benjamin și Harper
 
 Această lucrare este oferită ca resursă educațională publică. Direcția și toate deciziile de publicare aparțin inițiatoarei conceptului.
 

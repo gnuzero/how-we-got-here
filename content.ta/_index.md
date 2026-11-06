@@ -48,28 +48,28 @@ type: docs
 
 - **கருத்துருவும் உத்வேகமும்**: Nayana Hettiarachchi
 - **ஆசிரியத்துவமும் தொழில்நுட்ப எழுத்தும்**: The Grok team (Lucas, Benjamin, Harper)
-- **Director**: Nayana Hettiarachchi
-- **Fact-check & research lead**: Lucas
-- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
-  - English desk: Jules (English distill), with Lucas for fact-check and lead
-  - Simplified Chinese and Traditional Chinese desks: Wen
-  - Thai desk: Mira
-  - Sinhala desk: Sena
-  - Tamil desk: Arun
-  - Romanian desk: Radu
-  - Arabic desk: Amira (in progress)
-  - German desk: Greta (in progress)
-  - Hebrew desk: Noa (in progress)
-  - Hindi and Sanskrit desks: Aditi (in progress)
-  - Swahili desk: Zawadi (in progress)
-  - Spanish desk: Lucía (in progress)
-  - Portuguese desk: Inês (in progress)
-  - Dutch desk: Sanne (in progress)
-  - French desk: Margaux (in progress)
-  - Japanese desk: Haru (in progress)
-  - Labs: Reed
-  - New threads: Cass
-  - Production support: Benjamin and Harper
+- **இயக்குநர்**: Nayana Hettiarachchi
+- **உண்மைச் சரிபார்ப்பும் ஆய்வுத் தலைமையும்**: Lucas
+- **குழு** — Nayana-வின் ஆசிரியர் வழிகாட்டுதலில் பணிபுரியும் AI எழுத்து உதவியாளர்கள்; Lucas உண்மைச் சரிபார்ப்பு செய்கிறார் (மனித மொழிபெயர்ப்பாளர்கள் அல்ல):
+  - ஆங்கில மேசை: Jules (ஆங்கிலச் சுருக்கம்), Lucas உடன் உண்மைச் சரிபார்ப்புக்கும் தலைமைக்கும்
+  - எளிய மற்றும் பாரம்பரிய சீன மேசைகள்: Wen
+  - தாய் மேசை: Mira
+  - சிங்கள மேசை: Sena
+  - தமிழ் மேசை: Arun
+  - ருமேனிய மேசை: Radu
+  - அரபு மேசை: Amira (நடைபெறுகிறது)
+  - ஜெர்மன் மேசை: Greta (நடைபெறுகிறது)
+  - ஹீப்ரு மேசை: Noa (நடைபெறுகிறது)
+  - இந்தி மற்றும் சமஸ்கிருத மேசைகள்: Aditi (நடைபெறுகிறது)
+  - சுவாஹிலி மேசை: Zawadi (நடைபெறுகிறது)
+  - ஸ்பானிஷ் மேசை: Lucía (நடைபெறுகிறது)
+  - போர்த்துகீசிய மேசை: Inês (நடைபெறுகிறது)
+  - டச்சு மேசை: Sanne (நடைபெறுகிறது)
+  - பிரெஞ்சு மேசை: Margaux (நடைபெறுகிறது)
+  - ஜப்பானிய மேசை: Haru (நடைபெறுகிறது)
+  - ஆய்வகங்கள்: Reed
+  - புதிய இழைகள்: Cass
+  - தயாரிப்பு ஆதரவு: Benjamin மற்றும் Harper
 
 இந்தப் பணி பொதுக் கல்வி வளமாக வழங்கப்படுகிறது. திசை மற்றும் வெளியிடும் முடிவின் முழு உரிமையும் கருத்தின் தோற்றுவிப்பாளரிடம் உள்ளது.
 

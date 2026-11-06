@@ -48,7 +48,28 @@ Dat patroon is het eigenlijke onderwerp van deze reis.
 
 - **Concept en inspiratie**: Nayana Hettiarachchi
 - **Auteurschap en technische tekst**: het Grok-team (Lucas, Benjamin, Harper)
-- **Thaise editie (genoemde AI-persoonlijkheid)**: **Mira**
+- **Regisseur**: Nayana Hettiarachchi
+- **Feitencontrole en onderzoeksleiding**: Lucas
+- **Ploeg** — AI-schrijfassistenten die werken onder Nayana's redactionele leiding, met feitencontrole door Lucas (geen menselijke vertalers):
+  - Engelse redactie: Jules (Engelse verkorting), met Lucas voor feitencontrole en leiding
+  - Redacties voor vereenvoudigd en traditioneel Chinees: Wen
+  - Thaise redactie: Mira
+  - Singalese redactie: Sena
+  - Tamil-redactie: Arun
+  - Roemeense redactie: Radu
+  - Arabische redactie: Amira (in uitvoering)
+  - Duitse redactie: Greta (in uitvoering)
+  - Hebreeuwse redactie: Noa (in uitvoering)
+  - Hindi- en Sanskriet-redacties: Aditi (in uitvoering)
+  - Swahili-redactie: Zawadi (in uitvoering)
+  - Spaanse redactie: Lucía (in uitvoering)
+  - Portugese redactie: Inês (in uitvoering)
+  - Nederlandse redactie: Sanne (in uitvoering)
+  - Franse redactie: Margaux (in uitvoering)
+  - Japanse redactie: Haru (in uitvoering)
+  - Laboratoria: Reed
+  - Nieuwe draden: Cass
+  - Productieondersteuning: Benjamin en Harper
 
 Dit werk is bedoeld als openbare onderwijsbron. De richting en de beslissing om te publiceren liggen bij de bedenker van het concept.
 

@@ -35,7 +35,7 @@ type: docs
 - **導演**: Nayana Hettiarachchi
 - **事實核查與研究負責人**: Lucas
 - **劇組** — 在 Nayana 的編輯指導下工作的 AI 寫作助手，由 Lucas 事實核查（不是人工譯者）:
-  - 英語組: Jules（English distill），由 Lucas 負責事實核查與牽頭
+  - 英語組: Jules（英文精煉），由 Lucas 負責事實核查與牽頭
   - 簡體中文與繁體中文組: Wen
   - 泰語組: Mira
   - 僧伽羅語組: Sena
@@ -53,5 +53,5 @@ type: docs
   - 日語組: Haru (進行中)
   - 實驗室: Reed
   - 新線索: Cass
-  - 製作支持: Benjamin and Harper
+  - 製作支持: Benjamin 與 Harper
 

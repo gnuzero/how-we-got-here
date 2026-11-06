@@ -46,28 +46,28 @@ type: docs
 
 - **الفكرة والإلهام**: نايانا هيتيآراتشي (Nayana Hettiarachchi)
 - **التأليف والكتابة التقنية**: فريق Grok (لوكاس، بنجامين، هاربر)
-- **Director**: Nayana Hettiarachchi
-- **Fact-check & research lead**: Lucas
-- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
-  - English desk: Jules (English distill), with Lucas for fact-check and lead
-  - Simplified Chinese and Traditional Chinese desks: Wen
-  - Thai desk: Mira
-  - Sinhala desk: Sena
-  - Tamil desk: Arun
-  - Romanian desk: Radu
-  - Arabic desk: Amira (in progress)
-  - German desk: Greta (in progress)
-  - Hebrew desk: Noa (in progress)
-  - Hindi and Sanskrit desks: Aditi (in progress)
-  - Swahili desk: Zawadi (in progress)
-  - Spanish desk: Lucía (in progress)
-  - Portuguese desk: Inês (in progress)
-  - Dutch desk: Sanne (in progress)
-  - French desk: Margaux (in progress)
-  - Japanese desk: Haru (in progress)
-  - Labs: Reed
-  - New threads: Cass
-  - Production support: Benjamin and Harper
+- **المخرج**: Nayana Hettiarachchi
+- **التحقق من الوقائع وقيادة البحث**: Lucas
+- **الفريق** — مساعدو كتابة بالذكاء الاصطناعي يعملون تحت التوجيه التحريري لـ Nayana، مع تحقق Lucas من الوقائع (وليسوا مترجمين بشريين):
+  - مكتب الإنجليزية: Jules (تلخيص إنجليزي)، مع Lucas للتحقق من الوقائع والقيادة
+  - مكتبا الصينية المبسطة والتقليدية: Wen
+  - مكتب التايلاندية: Mira
+  - مكتب السنهالية: Sena
+  - مكتب التاميلية: Arun
+  - مكتب الرومانية: Radu
+  - مكتب العربية: Amira (قيد الإنجاز)
+  - مكتب الألمانية: Greta (قيد الإنجاز)
+  - مكتب العبرية: Noa (قيد الإنجاز)
+  - مكتبا الهندية والسنسكريتية: Aditi (قيد الإنجاز)
+  - مكتب السواحلية: Zawadi (قيد الإنجاز)
+  - مكتب الإسبانية: Lucía (قيد الإنجاز)
+  - مكتب البرتغالية: Inês (قيد الإنجاز)
+  - مكتب الهولندية: Sanne (قيد الإنجاز)
+  - مكتب الفرنسية: Margaux (قيد الإنجاز)
+  - مكتب اليابانية: Haru (قيد الإنجاز)
+  - المختبرات: Reed
+  - خيوط جديدة: Cass
+  - دعم الإنتاج: Benjamin و Harper
 
 يُقدَّم هذا العمل موردًا تعليميًا عامًا. التوجيه وقرار النشر بيد صاحب الفكرة.
 

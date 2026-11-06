@@ -49,7 +49,7 @@ type: docs
 - **監督**: Nayana Hettiarachchi
 - **ファクトチェック＆リサーチリード**: Lucas
 - **スタッフ** — Nayana の編集方針のもとで働く AI 執筆アシスタント。Lucas がファクトチェック（人間の翻訳者ではない）:
-  - 英語デスク: Jules（English distill）、ファクトチェックとリードは Lucas
+  - 英語デスク: Jules（英語の要約）、ファクトチェックとリードは Lucas
   - 簡体字・繁体字中国語デスク: Wen
   - タイ語デスク: Mira
   - シンハラ語デスク: Sena
@@ -67,7 +67,7 @@ type: docs
   - 日本語デスク: Haru (進行中)
   - ラボ: Reed
   - 新しいスレッド: Cass
-  - 制作サポート: Benjamin and Harper
+  - 制作サポート: Benjamin と Harper
 
 この仕事は、公開の教育資源として提供する。方向と公開の決定は、構想者に属する。
 

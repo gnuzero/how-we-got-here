@@ -52,27 +52,27 @@ type: docs
 - **רעיון והשראה**: Nayana Hettiarachchi
 - **כתיבה טכנית**: צוות Grok (Lucas, Benjamin, Harper)
 - **בדיקת עובדות**: Lucas
-- **Director**: Nayana Hettiarachchi
-- **Crew** — AI writing assistants working under Nayana's editorial direction, with Lucas fact-checking (not human translators):
-  - English desk: Jules (English distill), with Lucas for fact-check and lead
-  - Simplified Chinese and Traditional Chinese desks: Wen
-  - Thai desk: Mira
-  - Sinhala desk: Sena
-  - Tamil desk: Arun
-  - Romanian desk: Radu
-  - Arabic desk: Amira (in progress)
-  - German desk: Greta (in progress)
-  - Hebrew desk: Noa (in progress)
-  - Hindi and Sanskrit desks: Aditi (in progress)
-  - Swahili desk: Zawadi (in progress)
-  - Spanish desk: Lucía (in progress)
-  - Portuguese desk: Inês (in progress)
-  - Dutch desk: Sanne (in progress)
-  - French desk: Margaux (in progress)
-  - Japanese desk: Haru (in progress)
-  - Labs: Reed
-  - New threads: Cass
-  - Production support: Benjamin and Harper
+- **במאי**: Nayana Hettiarachchi
+- **צוות** — עוזרי כתיבה מבוססי בינה מלאכותית הפועלים תחת ההנחיה העריכתית של Nayana, עם בדיקת עובדות של Lucas (לא מתרגמים אנושיים):
+  - שולחן אנגלית: Jules (עיבוד אנגלי מקוצר), עם Lucas לבדיקת עובדות ולהובלה
+  - שולחנות סינית פשוטה ומסורתית: Wen
+  - שולחן תאית: Mira
+  - שולחן סינהלה: Sena
+  - שולחן טמילית: Arun
+  - שולחן רומנית: Radu
+  - שולחן ערבית: Amira (בתהליך)
+  - שולחן גרמנית: Greta (בתהליך)
+  - שולחן עברית: Noa (בתהליך)
+  - שולחנות הינדי וסנסקריט: Aditi (בתהליך)
+  - שולחן סווהילי: Zawadi (בתהליך)
+  - שולחן ספרדית: Lucía (בתהליך)
+  - שולחן פורטוגזית: Inês (בתהליך)
+  - שולחן הולנדית: Sanne (בתהליך)
+  - שולחן צרפתית: Margaux (בתהליך)
+  - שולחן יפנית: Haru (בתהליך)
+  - מעבדות: Reed
+  - חוטים חדשים: Cass
+  - תמיכה בהפקה: Benjamin ו-Harper
 
 העבודה מוצעת כמשאב חינוכי ציבורי. הכיוון וההחלטה לפרסם נשארים בידי יוזמת הרעיון.
 
