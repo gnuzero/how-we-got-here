@@ -39,7 +39,7 @@ Upigaji picha haukuchelewa kufika pwani ya Afrika Mashariki. Kwa mujibu wa tovut
 **Kwa maoni yetu:** mtindo ni uleule ambao kitabu hiki kinaendelea kuukuta. *Daguerreotype* ilikuwa kitu kimoja kisichorudiwa, kama injini iliyojengwa kwa mkono. Hasi ya *calotype* ilikuwa nakala-mama inayoweza kunakiliwa, kama bamba la mbao lililochongwa au kadi iliyotobolewa. Na taswira fiche ya Talbot ni wazo tutakaloliona tena: hali iliyohifadhiwa ambayo haionekani mpaka iibuliwe, kama biti iliyohifadhiwa kwenye kumbukumbu ya kompyuta. Mwanga ukishaweza kuhifadhiwa na kunakiliwa, hatua inayofuata ni kuuhifadhi kwa mfuatano na kuucheza tena; hadithi hiyo inasimuliwa katika [From Press to Pixel (kwa Kiingereza kwa sasa)]({{< relref path="51-from-press-to-pixel.md" lang="en" >}}).
 
 **Iliyotangulia:** [Sura ya 7: Kwa nini ukokotoaji wa kimakanika ni muhimu]({{< relref "07-why-mechanical-matters" >}})
-**Inayofuata:** [Sura ya 9: Relays and Electromechanical Logic (kwa Kiingereza kwa sasa)]({{< relref path="09-relays-and-electromechanical-logic.md" lang="en" >}}), ambapo umeme unaanza kufanya kazi ya kuwasha na kuzima.
+**Inayofuata:** [Sura ya 9: Relei na mantiki ya kielektromakanika]({{< relref "09-relays-and-electromechanical-logic" >}}), ambapo umeme unaanza kufanya kazi ya kuwasha na kuzima.
 
 ## Vyanzo
 

@@ -42,7 +42,7 @@ Huko Marekani, Ofisi ya Historia ya Seneti inaeleza kwamba tarehe 24 Mei 1844, w
 
 ## Relei: kupokea na kusambaza upya
 
-**Kwa maoni yetu:** katika sura ya 9 ([relei](/posts/09-relays-and-electromechanical-logic/), kwa Kiingereza kwa sasa) tutaona relei kama swichi: koili dhaifu inayofunga au kufungua mzunguko wenye nguvu zaidi. Kwenye laini ndefu ya telegrafu, wazo hilohilo lina kazi nyingine: mkondo dhaifu unaofika mwishoni mwa waya mrefu hauhitaji kusogeza kifaa chote peke yake, unatosha kuamrisha mkondo mpya kutoka betri ya kituo husika. Hiyo ndiyo tabia ya "pokea, kisha sambaza upya", ileile ya vituo vya misafara, ila sasa kwa umeme. Tutaiona tena tunapofika kwenye vipanga njia (routers) vya intaneti.
+**Kwa maoni yetu:** katika sura ya 9 ([relei]({{< relref "09-relays-and-electromechanical-logic" >}})) tutaona relei kama swichi: koili dhaifu inayofunga au kufungua mzunguko wenye nguvu zaidi. Kwenye laini ndefu ya telegrafu, wazo hilohilo lina kazi nyingine: mkondo dhaifu unaofika mwishoni mwa waya mrefu hauhitaji kusogeza kifaa chote peke yake, unatosha kuamrisha mkondo mpya kutoka betri ya kituo husika. Hiyo ndiyo tabia ya "pokea, kisha sambaza upya", ileile ya vituo vya misafara, ila sasa kwa umeme. Tutaiona tena tunapofika kwenye vipanga njia (routers) vya intaneti.
 
 ## Kebo chini ya bahari: Aden hadi Unguja
 

@@ -49,3 +49,20 @@ other = "Maabara shirikishi: {{ .Type }}"
 [labOpenNewTab]
 other = "Fungua maabara kwenye kichupo kipya ↗"
 
+[labDisplayName-difference-engine]
+other = "Difference Engine"
+
+[labDisplayName-analytical-engine]
+other = "Analytical Engine"
+
+[labDisplayName-breadboard]
+other = "Ubao wa saketi"
+
+[labDisplayName-mini-cpu]
+other = "CPU ndogo"
+
+[labDisplayName-vm-terminal]
+other = "Terminali"
+
+[labDisplayName-pebble-trays]
+other = "Trei za kokoto"

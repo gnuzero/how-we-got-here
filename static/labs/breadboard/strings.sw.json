@@ -1,0 +1,9 @@
+{
+  "page.title": "Maabara ya Ubao wa Saketi Pepe",
+  "page.heading": "Maabara ya Ubao wa Saketi Pepe",
+  "page.subtitle": "Kiigaji cha saketi unachoweza kukichezea — mlango halisi unafunguka, si ukurasa mtupu",
+  "btn.open_and": "Fungua mlango wa AND kwenye kichupo kipya ↗",
+  "btn.wokwi": "Wokwi (ubao halisi wa saketi + MCU halisi) ↗",
+  "iframe.title": "Kiigaji cha saketi — mlango wa AND",
+  "note_html": "\n  Unatazama <strong>mlango wa AND</strong>: tokeo liko juu tu pale pembejeo zote mbili ziko juu.\n  Bofya pembejeo mbili zilizo kushoto ili kuzibadilisha, na utazame tokeo lililo kulia.\n  <div class=\"meta\">Data ya saketi imo ndani ya URL (<code>cct=</code>) — haipakiwi kutoka <code>/circuits/and.txt</code> ya Falstad iliyoondolewa. Kiolesura cha kiigaji bado kinahitaji falstad.com. Nakala ya ndani ya saketi: <code>and.txt</code> kando ya ukurasa huu.</div>\n"
+}
