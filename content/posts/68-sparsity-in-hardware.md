@@ -30,7 +30,7 @@ Trained networks often have many weights near zero — from training dynamics, o
 
 ## The Payoff — and the Gap
 
-Hardware with structured-sparsity support can, on 2:4 weight matrices, advertise up to 2× math throughput versus dense. Real GEMMs often land closer to ~1.3–1.8×; end-to-end networks nearer ~1.3–1.5×, limited by kernels, memory, and accuracy-preserving prune/retrain. Still the [Post 65]({{< relref "65-why-matrix-multiply-reshaped-chip-design" >}}) theme: once you know which computation is structurally unnecessary, silicon can be built to skip it — even if theory and production stay apart.
+On 2:4 weight matrices, NVIDIA says its A100 sparsity feature "further accelerates math operations by up to 2x" ([A100 whitepaper](https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf)). Whole networks gain less than that peak, limited by kernels, memory, and accuracy-preserving prune/retrain. Still the [Post 65]({{< relref "65-why-matrix-multiply-reshaped-chip-design" >}}) theme: once you know which computation is structurally unnecessary, silicon can be built to skip it — even if theory and production stay apart.
 
 ## Compose With Precision
 

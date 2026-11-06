@@ -20,7 +20,7 @@ This final phase is hardware built for modern AI workloads. Why chip design bent
 
 ## What a Layer Computes
 
-A fully connected layer's forward pass is a matrix multiplication: activations times weights, then a cheap elementwise nonlinearity. Convolutions reformulate as matmul (im2col). Attention — the core of the transformers behind most large language models — is likewise matrix multiplies at its computational heart: query-key scores, then weighted values. This is not a teaching simplification. The overwhelming majority of raw cycles in modern deep learning, training and inference, are matrix multiply-accumulate — massive scale, repeated endlessly.
+A fully connected layer's forward pass is a matrix multiplication: activations times weights, then a cheap elementwise nonlinearity. Convolutions can be lowered to matmul (the im2col approach; cuDNN's authors describe it in [Chetlur et al. 2014](https://arxiv.org/abs/1410.0759)). Attention — the core of the transformers behind most large language models — is likewise matrix multiplies at its computational heart: query-key scores, then weighted values. This is not a teaching simplification. The overwhelming majority of raw cycles in modern deep learning, training and inference, are matrix multiply-accumulate — massive scale, repeated endlessly.
 
 ## Why Hardware Followed
 
