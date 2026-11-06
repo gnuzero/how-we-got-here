@@ -41,7 +41,7 @@ Optional widen-the-lens beats sit beside the main path. Thin indexes: [Optional 
 | **New threads** | Cass |
 | **Production support** | Benjamin and Harper |
 
-The journey was conceptualized and directed by Nayana Hettiarachchi. Research, narrative structure, technical explanations, and interactive components are by the Grok Team. Thai readers should see **Mira** by name on the Thai edition — not only “the Grok team.”
+The journey was conceptualized and directed by Nayana Hettiarachchi. Research, narrative structure, technical explanations, and interactive components are by the Grok Team. The language desks are AI writing assistants, credited by name in the table above: Jules (English), Wen (Simplified and Traditional Chinese), Mira (Thai), Sena (Sinhala), Arun (Tamil) and Radu (Romanian), with more desks in preparation. Readers of each edition should see that desk by name, not only “the Grok team.”
 
 ## License
 
