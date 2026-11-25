@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ขายอุปกรณ์คอมพิวเตอร์มือสอง</title>
+  <meta name="description" content="อุปกรณ์คอมพิวเตอร์มือสอง สภาพดี ราคาเป็นกันเอง — การ์ดจอ ซีพียู แรม เครื่องเก็บข้อมูล และอื่นๆ">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="th_TH">
+  <meta property="og:title" content="ขายอุปกรณ์คอมพิวเตอร์มือสอง">
+  <meta property="og:description" content="อุปกรณ์คอมพิวเตอร์มือสอง สภาพดี ราคาเป็นกันเอง — การ์ดจอ ซีพียู แรม เครื่องเก็บข้อมูล และอื่นๆ">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ขายอุปกรณ์คอมพิวเตอร์มือสอง">
+  <meta name="twitter:description" content="อุปกรณ์คอมพิวเตอร์มือสอง สภาพดี ราคาเป็นกันเอง — การ์ดจอ ซีพียู แรม เครื่องเก็บข้อมูล และอื่นๆ">
+  <style>
+    :root {
+      --bg: #f6f3ee;
+      --card: #fff;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #e7e0d8;
+      --accent: #9a3412;
+      --wa: #128c3f;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, "Noto Sans Thai", "Sarabun", "Sukhumvit Set", "Thonburi", Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      font-size: 16px;
+    }
+    header, main, footer { width: min(720px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 28px 0 8px; }
+    h1 { font-size: 1.55rem; line-height: 1.25; margin: 0 0 8px; }
+    .lede { color: var(--muted); margin: 0 0 12px; }
+    .notices { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; margin: 0 0 20px; }
+    .notices p { margin: 0 0 8px; font-size: .95rem; }
+    .notices p:last-child { margin: 0; }
+    .list { display: grid; gap: 10px; padding: 0 0 28px; }
+    article {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    article h2 { font-size: 1.05rem; margin: 0 0 4px; }
+    .price { font-weight: 700; font-size: 1.2rem; color: var(--accent); margin: 0; }
+    .unit { font-weight: 500; font-size: .9rem; color: var(--muted); }
+    .desc, .qty, .age, .verify { margin: 6px 0 0; color: var(--muted); font-size: .95rem; }
+    .contact {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 28px;
+    }
+    .contact h2 { margin: 0 0 6px; font-size: 1.15rem; }
+    .note { margin: 0 0 12px; color: var(--muted); font-size: .95rem; }
+    .actions { display: grid; gap: 8px; }
+    .btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--ink);
+      background: #fafaf9;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      min-height: 48px;
+      font-weight: 600;
+    }
+    .btn span { font-weight: 500; color: var(--muted); font-size: .85rem; }
+    .btn-wa { border-color: #a7f3d0; background: #ecfdf5; }
+    .btn.is-placeholder { opacity: .85; }
+    footer { color: var(--muted); font-size: .85rem; padding: 0 0 32px; }
+    @media (min-width: 640px) {
+      .actions { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ขายอุปกรณ์คอมพิวเตอร์มือสอง</h1>
+    <p class="lede">สินค้ามือสอง สภาพดี ราคาต่อชิ้นเป็นบาท สอบถามหรือนัดดูของได้ตามช่องทางด้านล่าง</p>
+    <div class="notices">
+      <p>ผู้ขายเป็นชาวต่างชาติที่กำลังจะเดินทางออกนอกประเทศ</p>
+      <p>เคสคอมพิวเตอร์มีรอยถลอกจากการขนย้าย แต่ฮาร์ดแวร์ทั้งหมดใช้งานได้ปกติ</p>
+      <p>ผู้ซื้อขอตรวจเช็กเพิ่มเติมเพื่อยืนยันสภาพสินค้าได้ก่อนต่อรองราคา</p>
+    </div>
+  </header>
+  <main>
+    <section id="items" class="list" aria-live="polite"></section>
+    <section class="contact" id="contact">
+      <h2>ติดต่อผู้ขาย</h2>
+      <p class="note">ช่องทางด้านล่างกำลังอัปเดต — ยังใช้ติดต่อไม่ได้ในขณะนี้</p>
+      <div class="actions">
+        <a class="btn btn-wa is-placeholder" href="https://wa.me/PLACEHOLDER" rel="nofollow noopener">WhatsApp Business<span>กำลังอัปเดต</span></a>
+        <a class="btn is-placeholder" href="tel:PLACEHOLDER" rel="nofollow noopener">โทรศัพท์<span>กำลังอัปเดต</span></a>
+        <a class="btn is-placeholder" href="https://line.me/ti/p/PLACEHOLDER" rel="nofollow noopener">LINE<span>กำลังอัปเดต</span></a>
+        <a class="btn is-placeholder" href="https://m.me/PLACEHOLDER" rel="nofollow noopener">Facebook Messenger<span>กำลังอัปเดต</span></a>
+        <a class="btn is-placeholder" href="mailto:PLACEHOLDER" rel="nofollow noopener">อีเมล<span>กำลังอัปเดต</span></a>
+      </div>
+    </section>
+  </main>
+  <footer>ราคามีจำนวนจำกัด และอาจมีการเปลี่ยนแปลง</footer>
+  <script type="application/json" id="fallback-items">[{"name":"Gigabyte GeForce RTX 5070 Ti Eagle OC SFF 16GB","price":25000,"description":"การ์ดจอ 16GB GDDR7 รุ่นกะทัดรัด (SFF) มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพได้ด้วย GPU-Z หรือ 3DMark และดูอุณหภูมิ"},{"name":"G.Skill Trident Z5 RGB 64GB DDR5-6400","price":18000,"description":"แรม 64GB (32GB×2) DDR5 6400MHz Intel XMP สีดำ มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพได้ด้วย MemTest86 และการตั้งค่า XMP"},{"name":"Corsair Vengeance RGB 64GB DDR5-5600","price":12000,"description":"แรม 64GB (32GB×2) DDR5 5600MHz AMD EXPO / Intel XMP มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพได้ด้วย MemTest86 และการตั้งค่า XMP"},{"name":"AMD Ryzen 9 9900X3D","price":10000,"description":"ซีพียู 12 คอร์ 24 เธรด 4.4–5.5GHz ซ็อกเก็ต AM5 ไม่รวมคูลเลอร์ มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพได้ด้วย Cinebench และดูอุณหภูมิ"},{"name":"AMD Ryzen 9 9950X","price":10000,"description":"ซีพียู 16 คอร์ 32 เธรด 4.3–5.7GHz ซ็อกเก็ต AM5 ไม่รวมคูลเลอร์ มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพได้ด้วย Cinebench และดูอุณหภูมิ"},{"name":"Synology HAT3310 12TB","price":15000,"description":"ฮาร์ดดิสก์ 3.5 นิ้ว 12TB 7200rpm SATA มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 7 เดือน","verify":"ตรวจสุขภาพไดรฟ์ได้ด้วย CrystalDiskInfo"},{"name":"QNAP TS-433","price":11900,"description":"NAS 4 ช่อง ARM 4 คอร์ หน่วยความจำ 4GB มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 5 เดือน","verify":"ตรวจสภาพภายนอกได้ด้วยตา"},{"name":"ASUS ROG Strix X870E-E Gaming WiFi","price":8000,"description":"เมนบอร์ด ATX ซ็อกเก็ต AM5 DDR5 มี WiFi มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพภายนอกได้ด้วยตา"},{"name":"WD Black SN850X 2TB","price":9500,"description":"SSD NVMe M.2 2280 PCIe 4.0 ไม่มีฮีตซิงก์ มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสุขภาพไดรฟ์ได้ด้วย CrystalDiskInfo"},{"name":"G.Skill Trident Z RGB 32GB DDR4-3200","price":4500,"description":"แรม 32GB (16GB×2) DDR4 3200MHz มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพได้ด้วย MemTest86 และการตั้งค่า XMP"},{"name":"Seagate IronWolf Pro 6TB","price":7500,"description":"ฮาร์ดดิสก์ 3.5 นิ้ว 6TB 7200rpm SATA สำหรับ NAS มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสุขภาพไดรฟ์ได้ด้วย CrystalDiskInfo"},{"name":"ASUS Prime X870-P WiFi-CSM","price":5400,"description":"เมนบอร์ด ATX ซ็อกเก็ต AM5 DDR5 มี WiFi มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพภายนอกได้ด้วยตา"},{"name":"Synology DiskStation DS223j","price":3600,"description":"NAS 2 ช่อง หน่วยความจำ 1GB มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพภายนอกได้ด้วยตา"},{"name":"Xiaomi TV A 43\" FHD 2026","price":5000,"description":"สมาร์ททีวี 43 นิ้ว Full HD ปี 2026 มือสอง สภาพดี","quantity":2,"age":"ใช้งานมาแล้ว 5 เดือน","verify":"ตรวจสภาพภายนอกได้ด้วยตา"},{"name":"WD Red Plus 4TB","price":4900,"description":"ฮาร์ดดิสก์ 3.5 นิ้ว 4TB 5400rpm SATA สำหรับ NAS มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 5 เดือน","verify":"ตรวจสุขภาพไดรฟ์ได้ด้วย CrystalDiskInfo"},{"name":"WD Black SN850X 1TB","price":5000,"description":"SSD NVMe M.2 2280 PCIe 4.0 ไม่มีฮีตซิงก์ มือสอง สภาพดี","quantity":2,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสุขภาพไดรฟ์ได้ด้วย CrystalDiskInfo"},{"name":"AMD Ryzen 5 7500F","price":4300,"description":"ซีพียู 6 คอร์ 12 เธรด 3.7–5.0GHz ซ็อกเก็ต AM5 มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 5 เดือน","verify":"ตรวจสภาพได้ด้วย Cinebench และดูอุณหภูมิ"},{"name":"Kingston Fury Beast 8GB DDR5-5200","price":3200,"description":"แรม 8GB (8GB×1) DDR5 5200MHz สีดำ มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 5 เดือน","verify":"ตรวจสภาพได้ด้วย MemTest86 และการตั้งค่า XMP"},{"name":"NZXT H7 Flow สีขาวด้าน","price":2500,"description":"เคส E-ATX สีขาวด้าน มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพภายนอกได้ด้วยตา"},{"name":"Thermaltake TH360 V2 Ultra ARGB Snow","price":3500,"description":"คูลเลอร์น้ำ 360 มม. สีขาว มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพได้ด้วย Cinebench และดูอุณหภูมิ"},{"name":"TP-Link EAP610-Outdoor","price":3000,"description":"แอคเซสพอยต์ WiFi 6 AX1800 ใช้ในและนอกอาคาร มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 5 เดือน","verify":"ตรวจสภาพภายนอกได้ด้วยตา"},{"name":"Seagate Barracuda 2TB","price":1200,"description":"ฮาร์ดดิสก์ 3.5 นิ้ว 2TB 7200rpm SATA มือสอง สภาพดี","quantity":2,"age":"ใช้งานมาแล้ว 5 เดือน","verify":"ตรวจสุขภาพไดรฟ์ได้ด้วย CrystalDiskInfo"},{"name":"AMD Ryzen 5 5600","price":3300,"description":"ซีพียู 6 คอร์ 3.5GHz ซ็อกเก็ต AM4 มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพได้ด้วย Cinebench และดูอุณหภูมิ"},{"name":"TP-Link TL-SG108-M2","price":2100,"description":"สวิตช์ 8 พอร์ต 2.5GbE ตัวถังโลหะ มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 6 เดือน","verify":"ตรวจสภาพภายนอกได้ด้วยตา"},{"name":"Wiko T30 5G 4GB/128GB","price":2800,"description":"สมาร์ทโฟน 5G สีดำ หน่วยความจำ 4GB/128GB มือสอง สภาพดี","quantity":2,"age":"ใช้งานมาแล้ว 5 เดือน","verify":"ตรวจสภาพภายนอกได้ด้วยตา"},{"name":"Thermaltake Toughpower GT Snow 850W","price":2800,"description":"พาวเวอร์ซัพพลาย 850W 80 Plus Gold สีขาว มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพได้ด้วยการทดสอบโหลด"},{"name":"Hiksemi Wave(P) 512GB","price":1500,"description":"SSD NVMe M.2 2280 PCIe 3.0 มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 5 เดือน","verify":"ตรวจสุขภาพไดรฟ์ได้ด้วย CrystalDiskInfo"},{"name":"Corsair RM850e 850W","price":2800,"description":"พาวเวอร์ซัพพลาย 850W Cybenetics Gold สีดำ มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพได้ด้วยการทดสอบโหลด"},{"name":"Arctic Liquid Freezer III 240 A-RGB","price":2800,"description":"คูลเลอร์น้ำ 240 มม. สีดำ มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพได้ด้วย Cinebench และดูอุณหภูมิ"},{"name":"Gigabyte B550M Aorus Elite","price":2990,"description":"เมนบอร์ด Micro-ATX ซ็อกเก็ต AM4 DDR4 มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 8 เดือน","verify":"ตรวจสภาพภายนอกได้ด้วยตา"},{"name":"Gigabyte B650M D3HP","price":3000,"description":"เมนบอร์ด Micro-ATX ซ็อกเก็ต AM5 DDR5 มือสอง สภาพดี","quantity":1,"age":"ใช้งานมาแล้ว 5 เดือน","verify":"ตรวจสภาพภายนอกได้ด้วยตา"}]</script>
+  <script>
+    (function () {
+      var root = document.getElementById("items");
+      function baht(n) {
+        return Number(n).toLocaleString("th-TH") + " บาท";
+      }
+      function render(items) {
+        if (!items || !items.length) {
+          root.innerHTML = "<p class=\"lede\">ยังไม่มีรายการสินค้าในขณะนี้</p>";
+          return;
+        }
+        var html = "";
+        for (var i = 0; i < items.length; i++) {
+          var it = items[i];
+          var qty = Number(it.quantity) || 1;
+          html += "<article><h2>" + escapeHtml(it.name) + "</h2>";
+          html += "<p class=\"price\">" + baht(it.price);
+          if (qty > 1) html += " <span class=\"unit\">ต่อชิ้น</span>";
+          html += "</p><p class=\"desc\">" + escapeHtml(it.description || "") + "</p>";
+          if (it.age) html += "<p class=\"age\">" + escapeHtml(it.age) + "</p>";
+          if (it.verify) html += "<p class=\"verify\">" + escapeHtml(it.verify) + "</p>";
+          if (qty > 1) html += "<p class=\"qty\">มี " + qty + " ชิ้น</p>";
+          html += "</article>";
+        }
+        root.innerHTML = html;
+      }
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+      var fallback = [];
+      try {
+        fallback = JSON.parse(document.getElementById("fallback-items").textContent);
+      } catch (e) {}
+      render(fallback);
+      fetch("/migration/items.json", { headers: { Accept: "application/json" }, cache: "no-store" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (Array.isArray(data)) render(data);
+          else if (data && data.items) render(data.items);
+        })
+        .catch(function () {});
+    })();
+  </script>
+</body>
+</html>
