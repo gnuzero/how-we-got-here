@@ -1,14 +1,6 @@
 {
   "items": [
     {
-      "name": "Gigabyte GeForce RTX 5070 Ti Eagle OC SFF 16GB",
-      "price": 25600,
-      "description": "การ์ดจอ 16GB GDDR7 รุ่นกะทัดรัด (SFF) มือสอง สภาพดี",
-      "quantity": 1,
-      "age": "ใช้งานมาแล้ว 8 เดือน",
-      "verify": "ตรวจสภาพได้ด้วย GPU-Z หรือ 3DMark และดูอุณหภูมิ"
-    },
-    {
       "name": "G.Skill Trident Z5 RGB 64GB DDR5-6400",
       "price": 18000,
       "description": "แรม 64GB (32GB×2) DDR5 6400MHz Intel XMP สีดำ มือสอง สภาพดี",
@@ -81,12 +73,12 @@
       "verify": "ตรวจสภาพได้ด้วย MemTest86 และการตั้งค่า XMP"
     },
     {
-      "name": "Seagate IronWolf Pro 6TB",
-      "price": 7500,
-      "description": "ฮาร์ดดิสก์ 3.5 นิ้ว 6TB 7200rpm SATA สำหรับ NAS มือสอง สภาพดี",
+      "name": "MSI PRO MP341CQW 34\"",
+      "price": 5500,
+      "description": "จอโค้ง 34 นิ้ว VA 2K 100Hz มือสอง สภาพดี",
       "quantity": 1,
-      "age": "ใช้งานมาแล้ว 8 เดือน",
-      "verify": "ตรวจสุขภาพไดรฟ์ได้ด้วย CrystalDiskInfo"
+      "age": "ใช้งานมาแล้ว 7 เดือน",
+      "verify": "ตรวจจุดเสีย (dead pixel) ได้บนหน้าจอ"
     },
     {
       "name": "ASUS Prime X870-P WiFi-CSM",
@@ -129,12 +121,12 @@
       "verify": "ตรวจสุขภาพไดรฟ์ได้ด้วย CrystalDiskInfo"
     },
     {
-      "name": "AMD Ryzen 5 7500F",
-      "price": 4300,
-      "description": "ซีพียู 6 คอร์ 12 เธรด 3.7–5.0GHz ซ็อกเก็ต AM5 มือสอง สภาพดี",
+      "name": "ViewSonic VA3209-MH 31.5\"",
+      "price": 3800,
+      "description": "จอ IPS 31.5 นิ้ว Full HD 75Hz มือสอง สภาพดี",
       "quantity": 1,
-      "age": "ใช้งานมาแล้ว 5 เดือน",
-      "verify": "ตรวจสภาพได้ด้วย Cinebench และดูอุณหภูมิ"
+      "age": "ใช้งานมาแล้ว 8 เดือน",
+      "verify": "ตรวจจุดเสีย (dead pixel) ได้บนหน้าจอ"
     },
     {
       "name": "Kingston Fury Beast 8GB DDR5-5200",
@@ -246,6 +238,14 @@
       "description": "เมนบอร์ด Micro-ATX ซ็อกเก็ต AM5 DDR5 มือสอง สภาพดี",
       "quantity": 1,
       "age": "ใช้งานมาแล้ว 5 เดือน",
+      "verify": "ตรวจสภาพภายนอกได้ด้วยตา"
+    },
+    {
+      "name": "Montech Sky Two (white) (atx)",
+      "price": 3190,
+      "description": "อุปกรณ์คอมพิวเตอร์มือสอง สภาพดี",
+      "quantity": 1,
+      "age": "ใช้งานมาแล้ว 8 เดือน",
       "verify": "ตรวจสภาพภายนอกได้ด้วยตา"
     }
   ]
